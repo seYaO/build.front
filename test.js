@@ -1,0 +1,1 @@
+require('./build/upload-static-file')();

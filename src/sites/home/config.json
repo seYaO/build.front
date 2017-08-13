@@ -1,0 +1,10 @@
+{
+    "desc": "首页sd",
+    "sort": 10,
+    "route": "home",
+    "path": "/home/home.ftl",
+    "url": "/home",
+    "versionsJs": "2017072902",
+    "versionsCss": "2017072902",
+    "state": ""
+}

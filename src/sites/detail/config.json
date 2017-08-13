@@ -1,0 +1,10 @@
+{
+    "desc": "详情页",
+    "sort": 11,
+    "route": "detail",
+    "path": "/detail/detail.ftl",
+    "url": "/detail",
+    "versionsJs": "2017072901",
+    "versionsCss": "2017072901",
+    "state": ""
+}

@@ -1,0 +1,7 @@
+node_modules/*
+.vscode/*
+dest/*
+output/*
+.temp/*
+*.log
+.config
