@@ -6,10 +6,79 @@
         test
     </title>
     <meta charset="UTF-8">
+    <style>
+        img {
+            display: block;
+            width: 600px;
+            height: 500px;
+            margin-top: 20px;
+            background: url(//img1.40017.cn/cn/c/home/2016/new/loading.png) center #f5f5f5 no-repeat!important;
+        }
+    </style>
 </head>
 
 <body>
-    
+    <img alt="" class="photo" data-src="//pic4.40017.cn/line/admin/2016/12/27/17/6fpSBH.jpg">
+    <img alt="" class="photo" data-src="//pic3.40017.cn/gny/line/2015/11/03/17/jdFMSk.jpg">
+    <img alt="" class="photo" data-src="//pic5.40017.cn/01/000/63/67/rBANC1jwM2mAJWtgAAQAAH0gbv4857.jpg">
+    <img alt="" class="photo" data-src="//pic4.40017.cn/gny/line/2017/03/07/14/rirbVu.jpg">
+    <img alt="" class="photo" data-src="//pic4.40017.cn/zzy/rimage/2016/10/05/16/Udgv27.jpg">
+    <img alt="" class="photo" data-src="//pic4.40017.cn/zzy/rimage/2016/10/04/15/Dee6QX.jpg">
+    <img alt="" class="photo" data-src="//pic4.40017.cn/scenery/destination/2016/10/26/15/avCb7X.jpg">
+    <img alt="" class="photo" data-src="//pic4.40017.cn/line/admin/2016/12/27/17/6fpSBH.jpg">
+    <img alt="" class="photo" data-src="//pic3.40017.cn/shortTour/2015/10/11/11/mrEBz5.jpg">
 </body>
+<script>
+    /**
+     * 
+     * @param {*} el 
+     */
+    function isInSight(el) {
+        const bound = el.getBoundingClientRect();
+        const clientHeight = window.innerHeight;
+
+        // 如果只考虑向下滚动加载
+        // const clientWidth = window.innerWidth;
+        return bound.top <= clientHeight + 100; // +100 提前加载
+
+    }
+
+    function checkImgs() {
+        const imgs = document.querySelectorAll('.photo');
+        Array.from(imgs).forEach(el => {
+            if (isInSight(el)) {
+                loadImg(el);
+            }
+        })
+    }
+
+    function loadImg(el) {
+        if (!el.src) {
+            const source = el.dataset.src;
+            el.src = source;
+        }
+    }
+
+    function throttle(fn, mustRun = 500) {
+        const timer = null;
+        let previous = null;
+        return function () {
+            const now = new Date();
+            const context = this;
+            const args = arguments;
+            if (!previous) {
+                previous = now;
+            }
+            const remaining = now - previous;
+            if (mustRun && remaining >= mustRun) {
+                fn.apply(context, args);
+                previous = now;
+            }
+        }
+    }
+
+    window.onload = checkImgs;
+    window.onscroll = throttle(checkImgs);
+</script>
 
 </html>
