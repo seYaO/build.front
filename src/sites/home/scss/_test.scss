@@ -1,9 +1,0 @@
-$urlStr:"/modules/demo/img/";
-
-body{
-    font-size: 12px;
-    background: #fff;
-    color: #333;
-    display: block;
-    background: url(#{$urlStr}test.png);
-}
