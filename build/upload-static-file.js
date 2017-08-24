@@ -21,7 +21,7 @@ let obj = {
     // 上传静态资源  狮子座1.0
     uploadFile1(file, callback) {
         let pId = config.pId;
-        var url = config.leon.uploadfileAddress
+        var url = config.leon.uploadfileAddress1;
         var subpath = path.relative('output/static', file).replace(/\\/g, '/')
         var form = new FormData();
         form.append('userToken', config.userToken);
@@ -44,7 +44,7 @@ let obj = {
     // 上传静态资源   狮子座3.0
     uploadFile2(file, callback) {
         let reg = /(.*?)[0-9a-zA-Z-\.]*?\.(css|js|jpg|jpeg|png|bmp|webp|gif|map)$/
-        let url = config.leon.uploadfileAddress
+        let url = config.leon.uploadfileAddress3;
         let subpath = path.relative('output/static', file).replace(/\\/g, '/');
         subpath = `/${subpath.replace(reg, '$1')}`;
         let headers = {
@@ -65,15 +65,23 @@ let obj = {
             headers: headers,
             body: form
         }).then(function (res) {
-            return res.json();
+            // console.log(res.status)
+            if (res.status == 200) {
+                return res.json();
+            } else {
+                console.log(res.status)
+                return res.json();
+            }
+
         }).then(function (data) {
             callback.call(null, null, data);
         }).catch(function (e) {
-            callback.call(null, new Error(subpath + ' upload error'));
+            // console.log(file);
+            callback.call(null, new Error(file + ' upload error'));
         })
     },
     uploadFile(file, callback) {
-        obj.uploadFile2(file, callback);
+        obj.uploadFile1(file, callback);
     },
     // 部署静态资源
     deployAssets() {
@@ -81,7 +89,7 @@ let obj = {
             glob("output/static/**", {
                 nodir: true
             }, (er, files) => {
-                let bagpipe = new Bagpipe(100);
+                let bagpipe = new Bagpipe(50);
                 let total = files.length;
                 let failed = [];
                 files.forEach(file => {
@@ -91,8 +99,13 @@ let obj = {
                             failed.push(err.toString());
                         }
                         if (bagpipe.active === 0) {
-                            log(colors.green('静态资源上传成功'))
-                            resolve('静态资源上传成功')
+                            if (failed && failed[0]) {
+                                // log(colors.red(failed));
+                                reject(failed);
+                            } else {
+                                // log(colors.green('静态资源上传成功'));
+                                resolve('静态资源上传成功')
+                            }
                         }
                     })
                 })
@@ -106,9 +119,10 @@ let obj = {
 module.exports = async() => {
     try {
         log('开始处理上传...')
-        await obj.deployAssets();
+        let tip = await obj.deployAssets();
+        log(colors.green(tip));
     } catch (err) {
         err.message += `\n 上传失败，请重新上传一次...`;
-        log(err);
+        log(colors.red(err));
     }
 }

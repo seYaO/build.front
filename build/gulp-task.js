@@ -28,8 +28,7 @@ let nodemon = require('gulp-nodemon'); // 让node 自动重启
 let watch = require('gulp-watch'); // 
 let minifycss = require('gulp-minify-css'); // 压缩css
 let uglify = require('gulp-uglify'); // 压缩js
-let base64 = require('gulp-base64');
-let cssBase64 = require('gulp-css-base64');
+const cssBase64 = require('gulp-css-base64');
 
 let gulpTempMerge = require('./gulp-template-merge');
 let gulpReplacePath = require('./gulp-replace-path');
@@ -102,7 +101,8 @@ let obj = {
     // 编译所有的js
     jsCompile(callback) {
         glob('./src/sites/**/!(_)*.js', {}, (err, files) => {
-            let num = files.length;
+            let num = files.length,
+                _i = 0;
 
             files.forEach((file, index) => {
 
@@ -125,10 +125,19 @@ let obj = {
                     });
                 }
                 obj.bundle(b, file, fileName, index, (_index) => {
+                    _i++;
 
-                    NODE_ENV !== 'development' && log(gutil.colors.green("SUCCESS: " + file + '  finished!'));
+                    // NODE_ENV !== 'development' && log(gutil.colors.green("SUCCESS: " + file + '  finished!'));
 
-                    _index + 1 === num && callback();
+                    _i === num && function () {
+                        if (NODE_ENV !== 'development') {
+                            let _obj = gulpReplacePath._manifest;
+                            let _arr = Object.keys(_obj);
+                            _arr = _arr.filter(key => /.js$/.test(key));
+                            console.log('========jsCompile==================', _arr.length);
+                        }
+                        callback();
+                    }();
 
                 });
 
@@ -145,10 +154,7 @@ let obj = {
             }))
             .pipe(gulpif(NODE_ENV !== 'production', sourcemaps.init()))
             .pipe(sass())
-<<<<<<< HEAD
             .pipe(autoprefixer())
-=======
->>>>>>> 67e034ba8e2183e39e736b2900ccda591586b36c
             .pipe(cssBase64({
                 baseDir: 'output/public/img',
                 maxWeightResource: 2000,
@@ -174,14 +180,24 @@ let obj = {
     // 编译所有的scss
     cssCompile(callback) {
         glob('./src/sites/**/!(_)*.scss', {}, (err, files) => {
-            let num = files.length;
+            let num = files.length,
+                _i = 0;
 
             files.forEach((file, index) => {
                 obj.buildCss(file, index, (_index) => {
+                    _i++;
 
-                    NODE_ENV !== 'development' && log(gutil.colors.green("SUCCESS: " + file + '  finished!'));
+                    // NODE_ENV !== 'development' && log(gutil.colors.green("SUCCESS: " + file + '  finished!'));
 
-                    _index + 1 === num && callback();
+                    _i === num && function () {
+                        if (NODE_ENV !== 'development') {
+                            let _obj = gulpReplacePath._manifest;
+                            let _arr = Object.keys(_obj);
+                            _arr = _arr.filter(key => /.css$/.test(key));
+                            console.log('========cssCompile==================', _arr.length);
+                        }
+                        callback();
+                    }();
                 });
 
             });
@@ -196,7 +212,14 @@ let obj = {
             .pipe(gulp.dest('./output/public/img/modules/'))
             .pipe(version.manifest())
             .pipe(gulpReplacePath.gatherManifest())
-            .on('finish', callback)
+            .on('finish', () => {
+                if (NODE_ENV !== 'development') {
+                    let _obj = gulpReplacePath._manifest;
+                    let _arr = Object.keys(_obj);
+                    console.log('========imgMin==================', _arr.length);
+                }
+                callback();
+            })
     },
     // 根据变动生成css与js
     buildCssAndJs(callback) {

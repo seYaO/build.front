@@ -53,7 +53,9 @@ function replaceHrefAndSrc(str, file, opts) {
     let links = []
     let content = str
     tagList.filter(function (tag) {
-        return tag.match(srcQuoteReg)
+        if(!/js.40017.cn/.test(tag)){
+            return tag.match(srcQuoteReg)
+        }        
     }).forEach(function (v) {
         v && (links = links.concat(v.match(srcQuoteReg)))
     })
