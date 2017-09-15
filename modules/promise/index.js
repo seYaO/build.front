@@ -85,6 +85,29 @@ P.prototype = {
         for (var i = 0; i < defferd.length; i++) {
             this.handle(defferd[i]);
         }
+    },
+    /**
+     * 储存then函数里面的事件
+     * 返回promise对象
+     * defferd函数当前promise对象里面
+     */
+    then: function (success, fail) {
+        var o = {
+            onfulfiled: success,
+            onrejected: fail
+        }
+
+        var status = this.status;
+        o.promise = new this.constructor(function () {
+            //
+        });
+
+        if (status == PENDING) {
+            this.defferd.push(o);
+        } else if (status == FULFILLED || status == REJECTED) {
+            this.handle(o);
+        }
+        return o.promise;
     }
 }
 
