@@ -1,0 +1,48 @@
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "title": "报名标题XXX",
+        "qty": 32,
+        "tag": 1,
+        "inputNames": [
+            "name",
+            "idCardNo",
+            "idCardPic",
+            "passportNo",
+            "passportPic",
+            "gender",
+            "birthday",
+            "phone"
+        ],
+        "JoinedCustomerDTOs": [{
+                "code": "1001",
+                "name": "张三"
+            },
+            {
+                "code": "1002",
+                "name": "李四"
+            },
+            {
+                "code": "1003",
+                "name": "李四"
+            },
+            {
+                "code": "1004",
+                "name": "李四"
+            },
+            {
+                "code": "1005",
+                "name": "李四"
+            },
+            {
+                "code": "1006",
+                "name": "李四"
+            },
+            {
+                "code": "1007",
+                "name": "李四"
+            }
+        ]
+    }
+}

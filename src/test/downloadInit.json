@@ -1,0 +1,8 @@
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "excelSize": "500K",
+        "picSize": "20.33M"
+    }
+}

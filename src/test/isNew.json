@@ -1,0 +1,87 @@
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "isNew": false,
+        "totalPage": 3,
+        "customerDTOS": [{
+                "code": "123520",
+                "createTime": 1505287613487,
+                "title": "报名标题报名标题报名标题报名标题报名标题报名标题",
+                "tag": 1,
+                "qty": 30
+            },
+
+            {
+                "code": "123520",
+                "createTime": 1493654400000,
+                "title": "报名标题XXXXXX",
+                "tag": 2,
+                "qty": 0
+            },
+            {
+                "code": "123520",
+                "createTime": 1505288509102,
+                "title": "报名标题XXXXXX",
+                "tag": 1,
+                "qty": 30
+            },
+            {
+                "code": "123520",
+                "createTime": 1462118400000,
+                "title": "报名标题XXXXXX",
+                "tag": 2,
+                "qty": 0
+            },
+            {
+                "code": "123520",
+                "createTime": 1462118400000,
+                "title": "报名标题XXXXXX",
+                "tag": 2,
+                "qty": 0
+            },
+            {
+                "code": "123520",
+                "createTime": 1462118400000,
+                "title": "报名标题XXXXXX",
+                "tag": 2,
+                "qty": 0
+            },
+            {
+                "code": "123520",
+                "createTime": 1462118400000,
+                "title": "报名标题XXXXXX",
+                "tag": 2,
+                "qty": 0
+            },
+            {
+                "code": "123520",
+                "createTime": 1462118400000,
+                "title": "报名标题XXXXXX",
+                "tag": 2,
+                "qty": 0
+            },
+            {
+                "code": "123520",
+                "createTime": 1462118400000,
+                "title": "报名标题XXXXXX",
+                "tag": 2,
+                "qty": 0
+            },
+            {
+                "code": "123520",
+                "createTime": 1495209600000,
+                "title": "报名标题XXXXXX",
+                "tag": 1,
+                "qty": 30
+            },
+            {
+                "code": "123520",
+                "createTime": 1495209600000,
+                "title": "报名标题XXXXXX",
+                "tag": 2,
+                "qty": 30
+            }
+        ]
+    }
+}

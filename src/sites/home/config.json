@@ -6,5 +6,89 @@
     "url": "/home",
     "versionsJs": "2017072902",
     "versionsCss": "2017072902",
-    "state": ""
+    "state": "",
+    "api": [{
+            "type": "get",
+            "route": "/test/test1",
+            "path": "./src/test/test.json"
+        },
+        {
+            "type": "get",
+            "route": "/open/grant/onLogin",
+            "path": "./src/test/onLogin.json"
+        },
+        {
+            "type": "get",
+            "route": "/private/yskorder/isNew",
+            "path": "./src/test/isNew.json"
+        },
+        {
+            "type": "post",
+            "route": "/private/yskorder/addCustomerCollector",
+            "path": "./src/test/addCustomerCollector.json"
+        },
+        {
+            "type": "get",
+            "route": "/private/yskorder/detailCustomerCollector",
+            "path": "./src/test/detailCustomerCollector.json"
+        },
+        {
+            "type": "post",
+            "route": "/private/yskorder/addJoinedCustomer",
+            "path": "./src/test/detailCustomerCollector.json"
+        },
+        {
+            "type": "get",
+            "route": "/private/yskorder/deleteCustomerCollector",
+            "path": "./src/test/deleteCustomerCollector.json"
+        },
+        {
+            "type": "post",
+            "route": "/private/yskorder/sendEmail",
+            "path": "./src/test/sendEmail.json"
+        },
+        {
+            "type": "post",
+            "route": "/private/yskorder/getJoinedCustomer",
+            "path": "./src/test/getJoinedCustomer.json"
+        },
+        {
+            "type": "post",
+            "route": "/private/yskorder/updateJoinedCustomer",
+            "path": "./src/test/sendEmail.json"
+        },
+        {
+            "type": "get",
+            "route": "/private/yskorder/updateJoinedCustomerInit",
+            "path": "./src/test/updateJoinedCustomerInit.json"
+        },
+        {
+            "type": "get",
+            "route": "/private/yskorder/downloadInit",
+            "path": "./src/test/downloadInit.json"
+        },
+        {
+            "type": "get",
+            "route": "/private/yskorder/download",
+            "path": "./src/test/download.json"
+        },
+        {
+            "type": "post",
+            "route": "/private/yskorder/upload",
+            "path": "./src/test/upload.json"
+        },
+        {
+            "type": "post",
+            "route": "/private/yskorder/ocr",
+            "path": "./src/test/ocr.json"
+        },
+
+
+
+        {
+            "type": "post",
+            "route": "/bank/delete",
+            "path": "./src/api/validateUserName.json"
+        }
+    ]
 }

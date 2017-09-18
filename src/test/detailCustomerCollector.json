@@ -1,0 +1,142 @@
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "title": "测试发起的报名表",
+        "qty": 32,
+        "totalPage": 3,
+        "inputNames": [
+            "name",
+            "idCardNo",
+            "idCardPic",
+            "passportNo",
+            "passportPic",
+            "gender",
+            "birthday",
+            "phone"
+        ],
+        "customerCollectorCode": "123515151",
+        "JoinedCustomerDTOs": [
+            {
+                "code": "1001",
+                "name": "张三",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            },
+            {
+                "code": "1002",
+                "name": "李四",
+                "idCardNo": "340822198812080214",
+                "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "passportNo": "123456",
+                "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+                "gender": "M",
+                "birthday": "1988-12-08",
+                "phone": "13913525219"
+            }
+        ]
+    }
+}

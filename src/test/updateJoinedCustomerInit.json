@@ -1,0 +1,27 @@
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "inputNames": [
+            "name",
+            "idCardNo",
+            "idCardPic",
+            "passportNo",
+            "passportPic",
+            "gender",
+            "birthday",
+            "phone"
+        ],
+        "title": "报名标题XXX",
+        "customerCollectorCode": "123520",
+        "name": "张三",
+        "idCardNo": "321284199012014026",
+        "idCardPicFirst": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+        "idCardPicSecond": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+        "passportNo": "P1234567",
+        "passportPic": "http://pic5.40017.cn/02/000/2b/aa/rBLkCVmvUvmAYybiAAAeXqWxtBw590.jpg",
+        "gender": "M",
+        "birthday": "1988-12-08",
+        "phone": "13913525219"
+    }
+}

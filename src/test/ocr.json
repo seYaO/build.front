@@ -1,0 +1,10 @@
+{
+    "code": "200",
+    "message": "成功",
+    "data": {
+        "name": "张三",
+        "credNo": "E19104862",
+        "gender": "男",
+        "birthday": "1991-06-23"
+    }
+}
