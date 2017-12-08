@@ -1,0 +1,23 @@
+{
+    "status" : "200",
+    "msg"  :  "",
+    "data" : 
+    {
+        "code":"0000",
+        "data":{
+            "orderPayInfo":{
+                "couponAmount":0,
+                "isActivity":0,
+                "orderCode":"I10001482",
+                "productName":"美亚“畅游神州”境内旅行险",
+                "redPackageDeductibleAmount":0,
+                "reduceAmount":6,
+                "safeguardTime":"2017-10-27至2017-10-27",
+                "totalFee":20
+            },
+            "companyName":"美亚保险",
+            "orderCode":"I10001482"
+        },
+        "message":"成功"
+    }
+}

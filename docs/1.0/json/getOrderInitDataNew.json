@@ -1,0 +1,121 @@
+{
+    "status" : "200",
+    "msg"  :  "",
+    "data" : 
+    {
+        "code":"0000",
+        "message":"操作成功",
+        "data":{
+            "flightCode":true,
+            "holderAddress":false,
+            "holderJob":false,
+            "holderZipCode":false,
+            "holderGender":false,
+            "job":false,
+            "address":false,
+            "zipCode":false,
+            "phone":false,
+            "email":false,
+            "payment":false,
+            "holderMarriage":false,
+            "insurantMarriage":false,
+            "holderCredType":"",
+            "type":"",
+            "parentId":"",
+            "tag":"A",
+            "bankList":null,
+            "beneficiary":null,
+            "restricNum":1,
+            "beneficiaryFlag":false,
+            "maxPeriod":"15",
+            "maxPeriodUnit":"D",
+            "minAge":"0",
+            "maxAge":"100",
+            "minAgeUnit":"D",
+            "maxAgeUnit":"A",
+            "productType":"0",
+            "insurantCredNoList":"DEFAULT|ID_CARD|PASSPORT|GANGAO_CARD|TAIBAO_CARD|JUNGUAN_CARD|OTHER",
+            "holderCredNoList":"DEFAULT|ID_CARD|PASSPORT|GANGAO_CARD|TAIBAO_CARD|JUNGUAN_CARD|OTHER",
+            "insurantReleationList":"DEFAULT|R_SELF|R_PARENT|R_CHILDREN|R_WIFE",
+            "gender":"DEFAULT|FEMALE|MALE",
+            "holderGenderList":"DEFAULT|FEMALE|MALE",
+            "title":"天安境外险",
+            "suitePeople":"出境旅行、出差人士",
+            "delayDays":1,
+            "sex":null,
+            "holderCredEndTime":false,
+            "credEndTime":false,
+            "insureCredEndTime":false,
+            "insuranceClause":"//file.40017.cn/bxkf/保险条款附件/旅游者人身意外伤害险条款4ca34631-3506-480f-9c5c-f2c6d38f243e.pdf",
+            "houseInfo":false,
+            "houseArealist":null,
+            "holderArealist":null,
+            "houseReleationList":null,
+            "insurantArealist":null,
+            "fixedBeginTimeLimit":"0",
+            "houseTypeList":null,
+            "safeguardLimit":null,
+            "paymentTime":null,
+            "endInsuranceTime":365,
+            "restricPersonNum":1,
+            "insurantCredList":null,
+            "holderCredList":null,
+            "insurantRelList":null,
+            "sexList":null,
+            "holderSexList":null,
+            "holderMarriageList":null,
+            "insurantMarriageList":null,
+            "needDelay":2,
+            "businessType":[
+                {
+                "id": null,
+                "paramType": "businessType",
+                "paramCode": "21",
+                "paramDesc": "统一社会信用代码证"
+                },
+                {
+                "id": null,
+                "paramType": "businessType",
+                "paramCode": "22",
+                "paramDesc": "税务登记证"
+                },
+                {
+                "id": null,
+                "paramType": "businessType",
+                "paramCode": "23",
+                "paramDesc": "营业执照"
+                },
+                {
+                "id": null,
+                "paramType": "businessType",
+                "paramCode": "24",
+                "paramDesc": "组织机构代码证"
+                },
+                {
+                "id": null,
+                "paramType": "businessType",
+                "paramCode": "99",
+                "paramDesc": "其他"
+                }
+                ],
+            "businessRelation": [
+                {
+                "id": null,
+                "paramType": "businessRelation",
+                "paramCode": "5",
+                "paramDesc": "其他"
+                }
+                ],
+            "policyPrintMode":false,
+            "policyPrintModeList":null,
+            "checkMember":false,
+            "maCode":null,
+            "maLabel":null,
+            "maType":null,
+            "ratio":null,
+            "waitingPeriod":null,
+            "showAirPort": 0,
+            "insuranceCompanyLogo":"//pic5.40017.cn/02/001/cd/b0/rBANDFmeo9WADqIGAAA5QD2FAis390.png"
+        }
+    }
+}

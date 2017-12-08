@@ -1,0 +1,26 @@
+{
+    "status" : "200",
+    "msg"  :  "",
+    "data" : 
+    {
+        "code":"0000",
+        "message":"成功",
+        "count":null,
+        "pageNum":null,
+        "data":{
+            "enterpriseName":"测试谢小飞（中国）",
+            "enterpriseCredType":21,
+            "enterpriseCredNo":"1234567",
+            "enterprisePhone":"18651104423",
+            "enterpriseEmail":"",
+            "businessRelations":[
+                {
+                    "name":"其他",
+                    "value":"5"
+                }
+            ]
+        },
+        "level":null,
+        "bytes":null
+    }
+}

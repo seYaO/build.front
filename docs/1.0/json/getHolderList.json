@@ -1,0 +1,36 @@
+{
+    "status" : "200",
+    "msg"  :  "",
+    "data" : {
+        "code":"0000",
+        "message":"操作成功",
+        "data":[
+            {
+                "id":22,
+                "memberId":"100770",
+                "holderName":"耿玉裴更",
+                "holderCredType":1,
+                "holderCredNo":"342222199108054423",
+                "holderGender":"F",
+                "holderBirthday":"1991-08-05",
+                "holderPhone":"17751104423",
+                "holderEmail":"770848406@qq.com",
+                "isDefault":1,
+                "isDel":0
+            },
+            {
+                "id":23,
+                "memberId":"100770",
+                "holderName":"护照",
+                "holderCredType":2,
+                "holderCredNo":"1234567",
+                "holderGender":"M",
+                "holderBirthday":"1994-08-09",
+                "holderPhone":"18651104423",
+                "holderEmail":"56876406@qq.com",
+                "isDefault":0,
+                "isDel":0
+            }
+        ]
+    }
+}

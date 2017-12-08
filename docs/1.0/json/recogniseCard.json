@@ -1,0 +1,46 @@
+{
+    "status" : "200",
+    "msg"  :  "",
+    "data" : 
+    {
+        "identify_result": "1",
+        "idnum": "xxxxxx19910602xxxx",
+        "name": "陈XX",
+        "address": "北京市海淀区XXXX",
+        "birthday": {
+            "day": "2",
+            "month": "6",
+            "year": "1991"
+        },
+        "gender": "男",
+        "race": "汉",
+        "side": "front",
+        "head_rect": {
+            "lt": {
+                "x": 0.619915,
+                "y": 0.19362
+            },
+            "rt": {
+                "x": 0.921812,
+                "y": 0.198438
+            },
+            "rb": {
+                "x": 0.927187,
+                "y": 0.737717
+            },
+            "lb": {
+                "x": 0.621641,
+                "y": 0.735261
+            }
+        },
+        "legality": {
+            "ID Photo": 0.855,
+            "Temporary ID Photo ": 0,
+            "Photocopy": 0.049,
+            "Screen": 0.096,
+            "Edited": 0
+        },
+        "identify_code": "0000",
+        "identify_msg": "解析成功"
+    }
+}

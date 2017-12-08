@@ -1,0 +1,46 @@
+{
+    "status": "200",
+    "msg": "",
+    "data": {
+    "code":"0000",
+    "message":"成功",
+    "data":[
+        {
+            "serialCode":"REPA59DD7B0520191A9U08",
+            "name":"金秋十月回馈",
+            "amount":50,
+            "dimension":null,
+            "remarks":null,
+            "smallAmount":1000,
+            "expiryTime":1508515199000,
+            "status":null,
+            "limitDays":6,
+            "validFlag":null
+        },
+        {
+            "serialCode":"REPA59DD7A2810191A7D7U",
+            "name":"金秋十月回馈",
+            "amount":25,
+            "dimension":null,
+            "remarks":null,
+            "smallAmount":600,
+            "expiryTime":1508515199000,
+            "status":null,
+            "limitDays":6,
+            "validFlag":null
+        },
+        {
+            "serialCode":"REPA59DD79D310191A7085",
+            "name":"金秋十月回馈",
+            "amount":15,
+            "dimension":null,
+            "remarks":null,
+            "smallAmount":400,
+            "expiryTime":1508515199000,
+            "status":null,
+            "limitDays":6,
+            "validFlag":null
+        }
+    ]
+}
+}
