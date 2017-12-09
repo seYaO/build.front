@@ -1,18 +1,15 @@
 /**
- * 其他信息
- * ----------
- * ocr识别
- * 机场信息
+ * 支付信息接口
  */
 const { Service } = require('egg');
 const mock = require('../../mock/');
 
-class OtherService extends Service {
+
+class TestService extends Service {
 	constructor(ctx) {
 		super(ctx);
 		this.serviceInfo = {
-			ocr: 'com.ly.fn.bx.rpc.service.AlbOcrService',
-			airport: 'com.ly.fn.bx.rpc.service.AlbCommonService'
+			safe: 'com.ly.fn.bx.rpc.service.AlbAcountSafeService'
 		}
 	}
 	async request(params, opts = {}) {
@@ -39,32 +36,14 @@ class OtherService extends Service {
 		}
 		return DATA;
 	}
-	/**
-	 * ocr识别
-	 * @return {[type]} [description]
-	 */
-	async ocr(params) {
+	async test() {
 		let datas = {
-			serviceName: this.serviceInfo['ocr'],
-			functionCode: 'recogniseCard',
-			clientInfo: params
-		};
-		const DATA = await this.request(datas);
-		return DATA;
-	}
-	/**
-	 * 获取机场信息
-	 * @return {[type]} [description]
-	 */
-	async airport(params) {
-		let datas = {
-			serviceName: this.serviceInfo['airport'],
-			functionCode: 'getAlbAirportInfo',
-			clientInfo: params
+			serviceName: this.serviceInfo['safe'],
+			functionCode: 'getImgCode'
 		};
 		const DATA = await this.request(datas);
 		return DATA;
 	}
 }
 
-module.exports = OtherService;
+module.exports = TestService;

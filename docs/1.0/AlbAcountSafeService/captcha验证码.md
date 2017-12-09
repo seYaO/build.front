@@ -1,8 +1,6 @@
 # 获取图片验证码
 
 ### 服务对应方法名
-##### serviceName
- `com.ly.fn.bx.rpc.service.AlbAcountSafeService`
 ##### functionCode
  `getImgCode`
 

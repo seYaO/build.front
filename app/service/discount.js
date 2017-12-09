@@ -2,6 +2,7 @@
  * 优惠信息接口
  */
 const { Service } = require('egg');
+const mock = require('../../mock/');
 
 class DiscountService extends Service {
 	constructor(ctx) {
@@ -20,9 +21,14 @@ class DiscountService extends Service {
 			data: params
 		};
 		Object.assign(_opts, opts);
-		const result = await this.ctx.curl(url, _opts);
-		console.log(params)
-		const { status, data } = result.data;
+		let result;
+		if(this.config.useMock){
+			result = mock(params['functionCode']);
+		}else{
+			result = await this.ctx.curl(url, _opts);
+			result = result.data;
+		}
+		const { status, data } = result;
 		let DATA = { status, ...data };
 		if(status !== '200') {
 			DATA = { status, message: 'node服务错误' };

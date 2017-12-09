@@ -10,6 +10,12 @@ class HomeController extends Controller {
     this.ctx.body = 'hi, egg';
   }
 
+  async test() {
+    const { service, query } = this.ctx;
+    const { name = '' } = query;
+    this.ctx.body = await service.test.test();
+  }
+
   async search() {
   	const { query } = this.ctx;
   	let { name = 'null' } = query;
