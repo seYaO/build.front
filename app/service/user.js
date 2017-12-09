@@ -6,10 +6,6 @@ class UserService extends Service {
 		super(ctx);
 	}
 
-	async test() {
-		return { a: 1 };
-	}
-
 	async request(params, opts = {}) {
 		let url = this.config.apiServer;
 		let _opts = {
