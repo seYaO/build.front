@@ -1,9 +1,17 @@
 
+/**
+ * 用户信息接口
+ */
 const { Service } = require('egg');
 
 class UserService extends Service {
 	constructor(ctx) {
 		super(ctx);
+		this.serviceInfo = {
+			token: 'com.ly.fn.bx.rpc.service.AlbTokenService',
+			login: 'com.ly.fn.bx.rpc.service.AlbLoginService',
+			safe: 'com.ly.fn.bx.rpc.service.AlbAcountSafeService'
+		};
 	}
 
 	async request(params, opts = {}) {
@@ -30,7 +38,7 @@ class UserService extends Service {
 	 */
 	async captcha() {
 		let datas = {
-			serviceName: 'com.ly.fn.bx.rpc.service.AlbAcountSafeService',
+			serviceName: this.serviceInfo['safe'],
 			functionCode: 'getImgCode'
 		};
 		const DATA = await this.request(datas);
@@ -41,30 +49,13 @@ class UserService extends Service {
 	 * @param  {[type]} token [description]
 	 * @return {[type]}       [description]
 	 */
-	async token(token) {
+	async userInfo(token) {
 		let datas = {
-			serviceName: 'com.ly.fn.bx.rpc.service.AlbTokenService',
+			serviceName: this.serviceInfo['token'],
 			functionCode: 'getValue',
 			clientInfo: { token }
 		};
 		const DATA = await this.request(datas);
-		return DATA;
-	}
-	/**
-	 * 用户信息
-	 * @return {[type]} [description]
-	 */
-	async userInfo(token) {
-		const DATA = await this.token(token);
-		return DATA;
-	}
-	/**
-	 * 
-	 * @param  {[type]} token [description]
-	 * @return {[type]}       [description]
-	 */
-	async expiration(token) {
-		const DATA = await this.token(token);
 		const { code } = DATA;
 		if(code === '1001'){
 			this.ctx.redirect('/login');
@@ -77,8 +68,8 @@ class UserService extends Service {
 	 */
 	async login(params) {
 		let datas = {
-			serviceName: 'com.ly.fn.bx.rpc.service.AlbTokenService',
-			functionCode: 'getValue',
+			serviceName: this.serviceInfo['login'],
+			functionCode: 'checkLogin',
 			clientInfo: params
 		};
 		const DATA = await this.request(datas);

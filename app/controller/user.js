@@ -1,4 +1,7 @@
 
+/**
+ * 用户信息类
+ */
 const { Controller } = require('egg');
 const svgCaptcha = require('svg-captcha');
 
