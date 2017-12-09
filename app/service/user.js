@@ -10,10 +10,11 @@ class UserService extends Service {
 		this.serviceInfo = {
 			token: 'com.ly.fn.bx.rpc.service.AlbTokenService',
 			login: 'com.ly.fn.bx.rpc.service.AlbLoginService',
-			safe: 'com.ly.fn.bx.rpc.service.AlbAcountSafeService'
+			safe: 'com.ly.fn.bx.rpc.service.AlbAcountSafeService',
+			holder: 'com.ly.fn.bx.rpc.service.AlbHolderService',
+			sms: 'com.ly.fn.bx.rpc.service.AlbSmsCodeService'
 		};
 	}
-
 	async request(params, opts = {}) {
 		let url = this.config.apiServer;
 		let _opts = {
@@ -70,6 +71,104 @@ class UserService extends Service {
 		let datas = {
 			serviceName: this.serviceInfo['login'],
 			functionCode: 'checkLogin',
+			clientInfo: params
+		};
+		const DATA = await this.request(datas);
+		return DATA;
+	}
+	/**
+	 * 常用投保人
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async holders(params) {
+		let datas = {
+			serviceName: this.serviceInfo['holder'],
+			functionCode: 'getHolderList',
+			clientInfo: params
+		};
+		const DATA = await this.request(datas);
+		return DATA;
+	}
+	/**
+	 * 获取短信验证码
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async holders(params) {
+		let datas = {
+			serviceName: this.serviceInfo['sms'],
+			functionCode: 'sendSmsCode',
+			clientInfo: params
+		};
+		const DATA = await this.request(datas);
+		return DATA;
+	}
+	/**
+	 * 验证账号
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async validate(params) {
+		let datas = {
+			serviceName: this.serviceInfo['safe'],
+			functionCode: 'validateAcount',
+			clientInfo: params
+		};
+		const DATA = await this.request(datas);
+		return DATA;
+	}
+	/**
+	 * 重置登录密码
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async resetLogin(params) {
+		let datas = {
+			serviceName: this.serviceInfo['safe'],
+			functionCode: 'resetLoginPassword',
+			clientInfo: params
+		};
+		const DATA = await this.request(datas);
+		return DATA;
+	}
+	/**
+	 * 获取会员是否设置交易密码
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async isSetPayPwd(params) {
+		let datas = {
+			serviceName: this.serviceInfo['safe'],
+			functionCode: 'qryPayPwd',
+			clientInfo: params
+		};
+		const DATA = await this.request(datas);
+		return DATA;
+	}
+	/**
+	 * 设置交易密码
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async setPayPwd(params) {
+		let datas = {
+			serviceName: this.serviceInfo['safe'],
+			functionCode: 'setPayPwd',
+			clientInfo: params
+		};
+		const DATA = await this.request(datas);
+		return DATA;
+	}
+	/**
+	 * 重置交易密码
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async resetPayPwd(params) {
+		let datas = {
+			serviceName: this.serviceInfo['safe'],
+			functionCode: 'resetPayPwd',
 			clientInfo: params
 		};
 		const DATA = await this.request(datas);
