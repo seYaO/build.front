@@ -8,6 +8,8 @@ module.exports = app => {
   router.get('/', controller.home.index);
   router.get('/login', 'home.index');
 
+  router.get('/test', 'user.test')
+
 
   require('./router/api')(app);
 };

@@ -3,6 +3,11 @@ const { Controller } = require('egg');
 const svgCaptcha = require('svg-captcha');
 
 class UserController extends Controller {
+	async test() {
+		const { service } = this.ctx;
+		console.log(this)
+		this.ctx.body = await service.user.test();
+	}
 	/**
 	 * 验证码
 	 * @return {[type]} [description]
