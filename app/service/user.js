@@ -7,35 +7,42 @@ const { Service } = require('egg');
 class UserService extends Service {
 	constructor(ctx) {
 		super(ctx);
-		this.serviceInfo = {
-			token: 'com.ly.fn.bx.rpc.service.AlbTokenService',
-			login: 'com.ly.fn.bx.rpc.service.AlbLoginService',
-			safe: 'com.ly.fn.bx.rpc.service.AlbAcountSafeService',
-			holder: 'com.ly.fn.bx.rpc.service.AlbHolderService',
-			sms: 'com.ly.fn.bx.rpc.service.AlbSmsCodeService'
-		};
 	}
-	async request(params, opts = {}) {
-		let url = this.config.apiServer;
-		let _opts = {
-			timeout: [ '30s', '30s' ],
-			dataType: 'json',
-			method: 'post',
-			contentType: 'json',
-			data: params
+	/**
+	 * 登录
+	 * @return {[type]} [description]
+	 */
+	async login(params) {
+		const { common } = this.ctx.service;
+		let datas = {
+			serviceName: common.serviceInfo['login'],
+			functionCode: 'checkLogin',
+			clientInfo: params
 		};
-		Object.assign(_opts, opts);
-		let result;
-		if(this.config.useMock){
-			result = mock(params['functionCode']);
-		}else{
-			result = await this.ctx.curl(url, _opts);
-			result = result.data;
+		const DATA = await common.request(datas);
+		return DATA;
+	}
+	/**
+	 * 用户信息
+	 * @param  {[type]} token [description]
+	 * @return {[type]}       [description]
+	 */
+	async userInfo() {
+		const { common } = this.ctx.service;
+		const token = this.ctx.cookies.get('token');
+		if(!token) {
+			this.ctx.redirect('/login');
+			return {};
 		}
-		const { status, data } = result;
-		let DATA = { status, ...data };
-		if(status !== '200') {
-			DATA = { status, message: 'node服务错误' };
+		let datas = {
+			serviceName: common.serviceInfo['token'],
+			functionCode: 'getValue',
+			clientInfo: { token }
+		};
+		const DATA = await common.request(datas);
+		const { code } = DATA;
+		if(code === '1001'){
+			this.ctx.redirect('/login');
 		}
 		return DATA;
 	}
@@ -44,70 +51,13 @@ class UserService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async captcha() {
+		const { common } = this.ctx.service;
+		console.log(this.ctx.cookies.get('token'))
 		let datas = {
-			serviceName: this.serviceInfo['safe'],
+			serviceName: common.serviceInfo['safe'],
 			functionCode: 'getImgCode'
 		};
-		const DATA = await this.request(datas);
-		return DATA;
-	}
-	/**
-	 * token
-	 * @param  {[type]} token [description]
-	 * @return {[type]}       [description]
-	 */
-	async userInfo(token) {
-		let datas = {
-			serviceName: this.serviceInfo['token'],
-			functionCode: 'getValue',
-			clientInfo: { token }
-		};
-		const DATA = await this.request(datas);
-		const { code } = DATA;
-		if(code === '1001'){
-			this.ctx.redirect('/login');
-		}
-		return DATA;
-	}
-	/**
-	 * 登录
-	 * @return {[type]} [description]
-	 */
-	async login(params) {
-		let datas = {
-			serviceName: this.serviceInfo['login'],
-			functionCode: 'checkLogin',
-			clientInfo: params
-		};
-		const DATA = await this.request(datas);
-		return DATA;
-	}
-	/**
-	 * 常用投保人
-	 * @param  {[type]} params [description]
-	 * @return {[type]}        [description]
-	 */
-	async holders(params) {
-		let datas = {
-			serviceName: this.serviceInfo['holder'],
-			functionCode: 'getHolderList',
-			clientInfo: params
-		};
-		const DATA = await this.request(datas);
-		return DATA;
-	}
-	/**
-	 * 获取短信验证码
-	 * @param  {[type]} params [description]
-	 * @return {[type]}        [description]
-	 */
-	async holders(params) {
-		let datas = {
-			serviceName: this.serviceInfo['sms'],
-			functionCode: 'sendSmsCode',
-			clientInfo: params
-		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -116,12 +66,13 @@ class UserService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async validate(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['safe'],
+			serviceName: common.serviceInfo['safe'],
 			functionCode: 'validateAcount',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -130,12 +81,13 @@ class UserService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async resetLogin(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['safe'],
+			serviceName: common.serviceInfo['safe'],
 			functionCode: 'resetLoginPassword',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -144,12 +96,13 @@ class UserService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async isSetPayPwd(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['safe'],
+			serviceName: common.serviceInfo['safe'],
 			functionCode: 'qryPayPwd',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -158,12 +111,13 @@ class UserService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async setPayPwd(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['safe'],
+			serviceName: common.serviceInfo['safe'],
 			functionCode: 'setPayPwd',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -172,12 +126,58 @@ class UserService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async resetPayPwd(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['safe'],
+			serviceName: common.serviceInfo['safe'],
 			functionCode: 'resetPayPwd',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
+		return DATA;
+	}
+	/**
+	 * 获取短信验证码
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async smsCode(params) {
+		const { common } = this.ctx.service;
+		let datas = {
+			serviceName: common.serviceInfo['sms'],
+			functionCode: 'sendSmsCode',
+			clientInfo: params
+		};
+		const DATA = await common.request(datas);
+		return DATA;
+	}
+	/**
+	 * 异步验证短信验证码
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async validateSmsCode(params) {
+		const { common } = this.ctx.service;
+		let datas = {
+			serviceName: common.serviceInfo['sms'],
+			functionCode: 'validateSmsCode',
+			clientInfo: params
+		};
+		const DATA = await common.request(datas);
+		return DATA;
+	}
+	/**
+	 * 常用投保人
+	 * @param  {[type]} params [description]
+	 * @return {[type]}        [description]
+	 */
+	async holders(params) {
+		const { common } = this.ctx.service;
+		let datas = {
+			serviceName: common.serviceInfo['holder'],
+			functionCode: 'getHolderList',
+			clientInfo: params
+		};
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 }

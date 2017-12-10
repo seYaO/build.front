@@ -7,45 +7,19 @@ const mock = require('../../mock/');
 class PayService extends Service {
 	constructor(ctx) {
 		super(ctx);
-		this.serviceInfo = {
-			pay: 'com.ly.fn.bx.rpc.service.AlbPayEncapsulateService'
-		}
-	}
-	async request(params, opts = {}) {
-		let url = this.config.apiServer;
-		let _opts = {
-			timeout: [ '30s', '30s' ],
-			dataType: 'json',
-			method: 'post',
-			contentType: 'json',
-			data: params
-		};
-		Object.assign(_opts, opts);
-		let result;
-		if(this.config.useMock){
-			result = mock(params['functionCode']);
-		}else{
-			result = await this.ctx.curl(url, _opts);
-			result = result.data;
-		}
-		const { status, data } = result;
-		let DATA = { status, ...data };
-		if(status !== '200') {
-			DATA = { status, message: 'node服务错误' };
-		}
-		return DATA;
 	}
 	/**
 	 * 支付初始化
 	 * @return {[type]} [description]
 	 */
 	async init(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['pay'],
+			serviceName: common.serviceInfo['pay'],
 			functionCode: 'toInitPay',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -53,12 +27,13 @@ class PayService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async url(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['pay'],
+			serviceName: common.serviceInfo['pay'],
 			functionCode: 'getMobilePayUrl',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -66,12 +41,13 @@ class PayService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async balance(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['pay'],
+			serviceName: common.serviceInfo['pay'],
 			functionCode: 'balancePay',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -79,12 +55,13 @@ class PayService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async credit(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['pay'],
+			serviceName: common.serviceInfo['pay'],
 			functionCode: 'creditPay',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -92,12 +69,13 @@ class PayService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async success(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['pay'],
+			serviceName: common.serviceInfo['pay'],
 			functionCode: 'paySucceed',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 }

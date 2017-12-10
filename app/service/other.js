@@ -10,10 +10,6 @@ const mock = require('../../mock/');
 class OtherService extends Service {
 	constructor(ctx) {
 		super(ctx);
-		this.serviceInfo = {
-			ocr: 'com.ly.fn.bx.rpc.service.AlbOcrService',
-			airport: 'com.ly.fn.bx.rpc.service.AlbCommonService'
-		}
 	}
 	async request(params, opts = {}) {
 		let url = this.config.apiServer;
@@ -44,12 +40,13 @@ class OtherService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async ocr(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['ocr'],
+			serviceName: common.serviceInfo['ocr'],
 			functionCode: 'recogniseCard',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -57,12 +54,13 @@ class OtherService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async airport(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['airport'],
+			serviceName: common.serviceInfo['airport'],
 			functionCode: 'getAlbAirportInfo',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 }

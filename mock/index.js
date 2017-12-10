@@ -1,31 +1,35 @@
-const { userInfo, captcha } = require('./users');
+const { login, userInfo, captcha, validate, resetLogin, isSetPayPwd, setPayPwd, resetPayPwd, smsCode, validateSmsCode, holders } = require('./users');
+const { productClassify, productList, productDetail } = require('./product');
+const { initPay, payUrl, payBalance, payCredit, paySuccess } = require('./pay');
+const { airport } = require('./other');
 
 const mock = {
 	/**
 	 * 用户信息
 	 */
 	// com.ly.fn.bx.rpc.service.AlbLoginService
-	checkLogin: captcha, // 登录
+	checkLogin: login, // 登录
 	// com.ly.fn.bx.rpc.service.AlbTokenService
 	getValue: userInfo, // token获取会员信息
 	// com.ly.fn.bx.rpc.service.AlbAcountSafeService
 	getImgCode: captcha, // 获取图片验证码
-	validateAcount: captcha, // 验证账号
-	resetLoginPassword: captcha, // 重置登录密码
-	qryPayPwd: captcha, // 获取会员是否设置交易密码
-	setPayPwd: captcha, // 设置交易密码
-	resetPayPwd: captcha, // 重置交易密码
+	validateAcount: validate, // 验证账号
+	resetLoginPassword: resetLogin, // 重置登录密码
+	qryPayPwd: isSetPayPwd, // 获取会员是否设置交易密码
+	setPayPwd: setPayPwd, // 设置交易密码
+	resetPayPwd: resetPayPwd, // 重置交易密码
 	// com.ly.fn.bx.rpc.service.AlbSmsCodeService
-	sendSmsCode: captcha, // 获取短信验证码
+	sendSmsCode: smsCode, // 获取短信验证码
+	validateSmsCode: validateSmsCode, // 异步验证短信验证码
 	// com.ly.fn.bx.rpc.service.AlbHolderService
-	getHolderList: captcha, // 常用投保人
+	getHolderList: holders, // 常用投保人
 	/**
 	 * 产品信息
 	 */
 	// com.ly.fn.bx.rpc.service.AlbProductEncapsulateService
-	getAlbInsuranceTypeList: captcha, // 产品分类
-	getProductList: captcha, // 产品列表
-	getAlbProductDetail: captcha, // 产品详情
+	getAlbInsuranceTypeList: productClassify, // 产品分类
+	getProductList: productList, // 产品列表
+	getAlbProductDetail: productDetail, // 产品详情
 	/**
 	 * 优惠信息
 	 */
@@ -49,18 +53,18 @@ const mock = {
 	 * 支付信息
 	 */
 	// com.ly.fn.bx.rpc.service.AlbPayEncapsulateService
-	toInitPay: captcha, // 支付初始化
-	getMobilePayUrl: captcha, // 获取支付连接
-	balancePay: captcha, // 现金账户支付
-	creditPay: captcha, // 授权账户支付
-	paySucceed: captcha, // 支付成功
+	toInitPay: initPay, // 支付初始化
+	getMobilePayUrl: payUrl, // 获取支付连接
+	balancePay: payBalance, // 现金账户支付
+	creditPay: payCredit, // 授权账户支付
+	paySucceed: paySuccess, // 支付成功
 	/**
 	 * 其他信息
 	 */
 	// com.ly.fn.bx.rpc.service.AlbOcrService
 	recogniseCard: captcha, // ocr识别
 	// com.ly.fn.bx.rpc.service.AlbCommonService
-	getAlbAirportInfo: captcha, // 获取机场信息
+	getAlbAirportInfo: airport, // 获取机场信息
 }
 
 module.exports = (type) => {

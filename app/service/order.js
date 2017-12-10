@@ -7,33 +7,6 @@ const mock = require('../../mock/');
 class OrderService extends Service {
 	constructor(ctx) {
 		super(ctx);
-		this.serviceInfo = {
-			order: 'com.ly.fn.bx.rpc.service.AlbOrderEncapsulateService'
-		}
-	}
-	async request(params, opts = {}) {
-		let url = this.config.apiServer;
-		let _opts = {
-			timeout: [ '30s', '30s' ],
-			dataType: 'json',
-			method: 'post',
-			contentType: 'json',
-			data: params
-		};
-		Object.assign(_opts, opts);
-		let result;
-		if(this.config.useMock){
-			result = mock(params['functionCode']);
-		}else{
-			result = await this.ctx.curl(url, _opts);
-			result = result.data;
-		}
-		const { status, data } = result;
-		let DATA = { status, ...data };
-		if(status !== '200') {
-			DATA = { status, message: 'node服务错误' };
-		}
-		return DATA;
 	}
 	/**
 	 * 订单初始化
@@ -41,12 +14,13 @@ class OrderService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async init(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'getOrderInitDataNew',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -55,12 +29,13 @@ class OrderService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async add(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'addOrderNew',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -69,12 +44,13 @@ class OrderService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async list(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'orderList',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -83,12 +59,13 @@ class OrderService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async detail(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'orderDetail',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -96,13 +73,14 @@ class OrderService extends Service {
 	 * @param  {[type]} params [description]
 	 * @return {[type]}        [description]
 	 */
-	async init(params) {
+	async sssss(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'getEnterpriseInfo',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -111,12 +89,13 @@ class OrderService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async cancel(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'cancelOrder',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -125,12 +104,13 @@ class OrderService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async refund(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'refundOrder',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -139,12 +119,13 @@ class OrderService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async refundPopup(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'refundOrderPre',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -153,12 +134,13 @@ class OrderService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async afresh(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'reDeliver',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 }

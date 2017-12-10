@@ -7,9 +7,6 @@ const mock = require('../../mock/');
 class DiscountService extends Service {
 	constructor(ctx) {
 		super(ctx);
-		this.serviceInfo = {
-			readPacket: 'com.ly.fn.bx.rpc.service.AlbRedPacketService'
-		};
 	}
 	async request(params, opts = {}) {
 		let url = this.config.apiServer;
@@ -40,12 +37,13 @@ class DiscountService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async getReadPacket(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['readPacket'],
+			serviceName: common.serviceInfo['readPacket'],
 			functionCode: 'getUsableRedPacket',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -53,12 +51,13 @@ class DiscountService extends Service {
 	 * @return {[type]} [description]
 	 */
 	async bindReadPacket(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['readPacket'],
+			serviceName: common.serviceInfo['readPacket'],
 			functionCode: 'bindRedPacket',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 }

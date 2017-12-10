@@ -7,33 +7,6 @@ const mock = require('../../mock/');
 class ProductService extends Service {
 	constructor(ctx) {
 		super(ctx);
-		this.serviceInfo = {
-			product: 'com.ly.fn.bx.rpc.service.AlbProductEncapsulateService'
-		}
-	}
-	async request(params, opts = {}) {
-		let url = this.config.apiServer;
-		let _opts = {
-			timeout: [ '30s', '30s' ],
-			dataType: 'json',
-			method: 'post',
-			contentType: 'json',
-			data: params
-		};
-		Object.assign(_opts, opts);
-		let result;
-		if(this.config.useMock){
-			result = mock(params['functionCode']);
-		}else{
-			result = await this.ctx.curl(url, _opts);
-			result = result.data;
-		}
-		const { status, data } = result;
-		let DATA = { status, ...data };
-		if(status !== '200') {
-			DATA = { status, message: 'node服务错误' };
-		}
-		return DATA;
 	}
 	/**
 	 * 产品分类
@@ -41,12 +14,13 @@ class ProductService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async classify(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'getAlbInsuranceTypeList',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -55,12 +29,13 @@ class ProductService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async list(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'getProductList',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 	/**
@@ -69,12 +44,13 @@ class ProductService extends Service {
 	 * @return {[type]}        [description]
 	 */
 	async detail(params) {
+		const { common } = this.ctx.service;
 		let datas = {
-			serviceName: this.serviceInfo['order'],
+			serviceName: common.serviceInfo['order'],
 			functionCode: 'getAlbProductDetail',
 			clientInfo: params
 		};
-		const DATA = await this.request(datas);
+		const DATA = await common.request(datas);
 		return DATA;
 	}
 }

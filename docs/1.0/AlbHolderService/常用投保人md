@@ -1,0 +1,61 @@
+# 常用投保人
+
+### 服务对应方法名
+##### functionCode
+ `validateSmsCode`
+
+##### 接口请求返回示例
+返回示例：
+```json
+{
+    "code": "0000",
+    "message": "操作成功",
+    "data": [
+        {
+            "id": 22,
+            "memberId": "100770",
+            "holderName": "耿玉裴更",
+            "holderCredType": 1,
+            "holderCredNo": "342222199108054423",
+            "holderGender": "F",
+            "holderBirthday": "1991-08-05",
+            "holderPhone": "17751104423",
+            "holderEmail": "770848406@qq.com",
+            "isDefault": 1,
+            "isDel": 0
+        },
+        {
+            "id": 23,
+            "memberId": "100770",
+            "holderName": "护照",
+            "holderCredType": 2,
+            "holderCredNo": "1234567",
+            "holderGender": "M",
+            "holderBirthday": "1994-08-09",
+            "holderPhone": "18651104423",
+            "holderEmail": "56876406@qq.com",
+            "isDefault": 0,
+            "isDel": 0
+        }
+    ]
+}
+```
+##### 请求参数说明
+节点 | 节点描述 | 取值说明
+---|---|---
+memberId | 会员Id | node端获取
+
+##### 返回参数说明
+节点 | 父节点 | 节点描述 | 取值说明
+---|---|---|---
+id | data | -- | 
+memberId | data | 会员Id | 
+holderName | data | 证件类型名称 | 
+holderCredType | data | 证件类型 | 
+holderCredNo | data | 证件号码 | 
+holderGender | data | 性别 | 
+holderBirthday | data | 出生日期 | 
+holderPhone | data | 手机号 | 
+holderEmail | data | 邮箱 | 
+isDefault | data | -- | 
+isDel | data | -- | 
