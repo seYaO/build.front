@@ -8,6 +8,11 @@ module.exports = appInfo => {
 	// use for cookie sign key, should change to your own and keep security
 	config.keys = appInfo.name + '_1512037306429_9479';
 
+	config.api = {
+		APIV1: '/api/v1',
+		APIV2: '/api/v2'
+	}
+
 	// 设置文件
 	config.siteFile = {
 		'/favicon.ico': fs.readFileSync(path.join(__dirname, 'favicon.ico')),
