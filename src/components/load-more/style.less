@@ -1,0 +1,66 @@
+.yo-scroll {
+    position: absolute;
+    top: 88px;
+    right: 0;
+    bottom: 94px;
+    left: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    background-color: #edf0f5;
+    .inner {
+        position: absolute;
+        top: -40px;
+        width: 100%;
+        transition-duration: 300ms;
+    }
+    .pull-refresh {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 40px;
+        line-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.5;
+    }
+    &.touch .inner {
+        transition-duration: 0ms;
+    }
+    &.down .down-tip {
+        display: block;
+    }
+    &.up .up-tip {
+        display: block;
+    }
+    &.refresh .refresh-tip {
+        display: block;
+        i,
+        em {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        i {
+            margin-right: 10px;
+            width: 30px;
+            height: 30px;
+            background: url('../../images/loading.gif') 0 0 no-repeat;
+            background-size: 100%;
+        }
+    }
+    .down-tip,
+    .refresh-tip,
+    .up-tip {
+        display: none;
+    }
+    .load-more {
+        height: 80px;
+        line-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0.5;
+        margin-bottom: 36px;
+    }
+}

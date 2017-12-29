@@ -1,0 +1,290 @@
+.order {
+    .v-indexlist-navitem{
+      font-size:24px;
+    }
+    padding-bottom: 100px;
+    .top {
+        padding: 20px 30px;
+        background-color: #fff;
+        .tit {
+            font-size: 30px;
+            color: #333;
+        }
+        .txt {
+            margin-top: 10px;
+            font-size: 24px;
+            color: #999;
+        }
+    }
+    section {
+        margin-top: 20px;
+        background-color: #fff;
+    }
+    .picker- {
+        &time {
+            i,
+            span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            i {
+                margin-right: 20px;
+                width: 35px;
+                height: 35px;
+                background: url(../../../images/time-icon.png) 0 center no-repeat;
+                background-size: 100%;
+            }
+            &-tip {
+                font-size: 24px;
+                color: #999;
+                margin-bottom: 20px;
+            }
+        }
+        &order {
+            .picker- {
+                &name {
+                    color: #666;
+                }
+                &val {
+                    padding-right: 0;
+                    text-align: left;
+                }
+            }
+        }
+        &title {
+            i,
+            span {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            i {
+                margin-right: 20px;
+                height: 100%;
+                background-position: 0 center;
+                background-repeat: no-repeat;
+            }
+            .holder-icon {
+                width: 40px;
+                height: 41px;
+                background-image: url(../../../images/policy-holder-icon.png);
+                background-size: 100% 100%;
+            }
+            .insured-off,
+            .insured-on {
+                width: 45px;
+                height: 40px;
+            }
+            .insured-off {
+                background-image: url(../../../images/insured-off-icon.png);
+                background-size: 100% 100%;
+            }
+            .insured-on {
+                background-image: url(../../../images/insured-on-icon.png);
+                background-size: 100% 100%;
+            }
+            .photo-icon {
+                width: 58px;
+                height: 47px;
+                width: 62px;
+                background-image: url(../../../images/photo-icon.png);
+                background-size: 58px 47px;
+            }
+            .beneficiary-icon {
+                width: 36px;
+                height: 38px;
+                background-image: url(../../../images/beneficiary-icon.png);
+                background-size: 100% 100%;
+            }
+            .policy {
+                span {
+                    margin-right: 10px;
+                    display: inline-block;
+                    height: 42px;
+                    line-height: 42px;
+                    font-size: 24px;
+                    padding: 0 10px;
+                    background-color: #d9f2fd;
+                    max-width: 5em;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    &.curr {
+                        color: #00a5f0;
+                    }
+                }
+            }
+            .picker- {
+                &name {
+                    font-size: 30px;
+                }
+                &val {
+                    // padding-right: 0;
+                    text-align: left;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    .txt {
+                        width: 10em;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                    }
+                }
+            }
+            &.show {
+                .picker- {
+                    &name {
+                        width: auto;
+                        margin-right: 50px;
+                    }
+                    &val {
+                        // padding-right: 0;
+                        // text-align: left;
+                    }
+                }
+            }
+        }
+        &info {
+            background-color: #f6f8fb;
+            .picker- {
+                &name {
+                    color: #666;
+                }
+                &val {
+                    padding-right: 0;
+                    text-align: left;
+                }
+            }
+            input {
+                background-color: transparent;
+            }
+        }
+    }
+    .errMsg {
+        padding: 0;
+        padding-bottom: 20px;
+        color: #f63;
+        span{
+            font-size: 28px;;
+        }
+    }
+    .nothing {
+        padding-top: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .img {
+            width: 150px;
+            height: 155px;
+            background: url(../../../images/nothing.png) 0 0 no-repeat;
+            background-size: 150px 155px;
+        }
+        .tip {
+            margin-top: 30px;
+            font-size: 28px;
+            color: #999;
+            text-align: center;
+        }
+    }
+    .agreement {
+        display: flex;
+        padding: 22px 30px;
+        .check {
+            width: 54px;
+            i {
+                display: block;
+                width: 28px;
+                height: 28px;
+                border: 1PX solid #00a5f0;
+                border-radius: 3px;
+                background-color: #fff;
+                &.curr {
+                    border: 1PX solid #00a5f0;
+                    background: #00a5f0 url(../../../images/checked.png) 0 center no-repeat;
+                    background-size: 100%;
+                }
+            }
+        }
+        .info {
+            font-size: 28px;
+            color: #666;
+            padding-left: 20px;
+        }
+        .link {
+            color: #00a5f0
+        }
+        .gra {
+            color: #999;
+        }
+    }
+}
+
+.picker-val {
+    color: #333;
+}
+
+.picker-choose {
+    color: #bbb;
+}
+
+.v-picker-item span {
+    font-size: 24px;
+}
+
+.v-popup-right.v-full {
+    // background-color: #efeff4;
+}
+
+.sure {
+    .v-cell {
+        margin-left: 20px;
+    }
+    .v-popup-inner {
+        background-color: #edf0f5;
+    }
+    .content {
+        padding-bottom: 100px;
+    }
+    dl {
+        margin-top: 20px;
+        font-size: 30px;
+        line-height: 1.4;
+        background-color: #fff;
+        color: #333;
+    }
+    dt {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 0 30px 0 22px;
+        border-left: 8px solid #00a5f0;
+        height: 88px;
+        &.yellow {
+            border-left: 8px solid #ff9600;
+        }
+    }
+    .tit {
+        justify-content: space-between;
+    }
+    dd {
+        font-size: 28px;
+        padding: 20px 30px;
+        border-top: 1PX dashed #dedede;
+        .list {
+            display: flex;
+            align-items: flex-start;
+            padding: 6px 0;
+        }
+        .name {
+            width: 250px;
+            color: #666;
+            + div{
+                width: 14em;
+                overflow: hidden;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+            }
+        }
+    }
+}

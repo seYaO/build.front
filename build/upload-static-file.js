@@ -19,6 +19,7 @@ const config = require('../config/upload.config')
  * @param {*} callback 
  */
 function uploadFile(file, callback) {
+    console.log(file)
     let reg = /(.*?)[0-9a-zA-Z-\.]*?\.(css|js|jpg|jpeg|png|bmp|webp|gif|map)$/
     let url = config.uploadfileAddress;
     let subpath = path.relative('dist', file).replace(/\\/g, '/');

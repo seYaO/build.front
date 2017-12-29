@@ -1,0 +1,71 @@
+@import '../../styles/variable.less';
+@import '../../styles/mixins.less';
+.v- {
+    &search {
+        position: relative;
+        background: #ddd;
+        padding: 1PX;
+        .v-input-wrapper {
+            height: 70px;
+            margin: 20px;
+            border-radius: 1rem;
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+        .v-input-clear-button {
+            width: 80px;
+            .v-iconfont {
+                font-size: 28px;
+            }
+        }
+        input {
+            padding-left: 60px;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input::-webkit-search-cancel-button {
+            display: none;
+        }
+        input::search-cancel-button {
+            display: none;
+        }
+        &-cancel {
+            .button();
+            .v-iconfont {
+                font-size: 20px;
+                position: relative;
+                top: 2px;
+            }
+            color:#fff;
+        }
+    }
+    &search-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: #fff;
+        width: 100%;
+        flex-direction: column;
+        z-index: 100;
+        .v-search {
+            background: @primary-color;
+        }
+    }
+    &search-container {
+        .keywords {
+            padding: 30px;
+            .keyword {
+                display: inline-block;
+                border: 1PX solid #eee;
+                border-radius: 60px;
+                vertical-align: middle;
+                padding: 12px 30px;
+                margin: 10px;
+                .active();
+            }
+        }
+    }
+}

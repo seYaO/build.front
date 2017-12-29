@@ -1,0 +1,37 @@
+@import '../../styles/variable.less';
+@import '../../styles/mixins.less';
+.v- {
+    &popup-picker {
+        display: flex;
+        &-wrapper {
+            background: #fff;
+        }
+        &-item {
+            flex: 1;
+            min-width: 0;
+        }
+        &-header {
+            display: flex;
+        }
+        &-placeholder {
+            flex: 1;
+            line-height: 1rem;
+            color: #999;
+            min-width: 0;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            .button();
+        }
+        &-cancel,
+        &-confirm {
+            .button();
+            height: 1rem;
+            width: 2rem;
+            color: @sub-color;
+        }
+        &-confirm {
+            color: @primary-color;
+        }
+    }
+}

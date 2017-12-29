@@ -1,0 +1,31 @@
+@import '../../styles/variable.less';
+@import '../../styles/mixins.less';
+.v- {
+    &cell {
+        padding: 26px 30px;
+        height: 30px;
+        position: relative;
+        &-bd {
+            text-align: left;
+        }
+        &-ft {
+            position: relative;
+        }
+        &:after {
+            .divider();
+        }
+        &:last-child:after {
+            height: 0;
+        }
+    }
+    &cell-access {
+        .active();
+        .v-cell-ft {
+            padding-right: 25px;
+            color: @sub-color;
+            &:after {
+                .arrow();
+            }
+        }
+    }
+}

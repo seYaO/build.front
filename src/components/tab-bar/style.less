@@ -1,0 +1,49 @@
+.tab-bar {
+    display: flex;
+    align-items: stretch;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 94px;
+    background-color: #fff;
+    box-shadow: 0 0 20px #ddd;
+    >div {
+        flex-grow: 1;
+        flex-shrink: 0;
+        font-size: 30px;
+        color: #777;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .curr {
+        background-color: #00a5f0;
+        color: #fff;
+    }
+    i,
+    span {
+        display: block;
+    }
+    i {
+        width: 36px;
+        height: 34px;
+        margin-right: 20px;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+    }
+    .products {
+        background-image: url(../../images/tab-icon-1.png);
+        background-size: 36px 33px;
+    }
+    .orders {
+        background-image: url(../../images/tab-icon-2.png);
+        background-size: 30px 34px;
+    }
+    .curr .products {
+        background-image: url(../../images/tab-icon-curr-1.png);
+    }
+    .curr .orders {
+        background-image: url(../../images/tab-icon-curr-2.png);
+    }
+}

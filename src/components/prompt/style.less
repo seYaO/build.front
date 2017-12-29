@@ -1,0 +1,21 @@
+.v- {
+    &prompt {
+        input {
+            text-align: left;
+            padding-left: 0;
+        }
+        &-title {
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .v-confirm-body {
+            padding: 0.7rem 0.6rem;
+        }
+        &-disabled {
+            .v-confirm-footer button:last-child {
+                opacity: 0.5;
+                pointer-events: none;
+            }
+        }
+    }
+}

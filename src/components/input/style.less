@@ -1,0 +1,77 @@
+@import '../../styles/variable.less';
+@import '../../styles/mixins.less';
+.v- {
+    &input-wrapper {
+        position: relative;
+        display: block;
+        height: 0.9rem;
+        background: #fff;
+        .v-iconfont {
+            color: @sub-color;
+        }
+        >.v-iconfont:first-child {
+            line-height: 100%;
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            margin: -16px 0;
+        }
+        >.v-iconfont:first-child+input {
+            padding-left: 60px;
+        }
+        input {
+            border: 0;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+            outline: none;
+            text-align: inherit;
+            font-size: inherit;
+            text-align: left;
+            padding-left: 0.4rem;
+            vertical-align: middle;
+            background: transparent;
+            .disabled();
+        }
+        &:before {
+            .divider();
+            z-index: 1;
+        }
+        &:after {
+            .divider(@primary-color);
+            width: 0;
+            transition: width 0.4s @ease-in-out;
+            z-index: 2;
+        }
+    }
+    &input-focus:after {
+        width: 100%;
+    }
+    &input-clear-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        .button();
+        width: 80px;
+        height: 100%;
+        display: none;
+    }
+    &input-clear {
+        .v-input-clear-button {
+            display: block;
+        }
+        input {
+            padding-right: 80px;
+        }
+    }
+}
+
+.input-clear-fade-enter-active,
+.input-clear-fade-leave-active {
+    transition: opacity @transition-time;
+}
+
+.input-clear-fade-enter,
+.confirm-fade-leave-active {
+    opacity: 0
+}

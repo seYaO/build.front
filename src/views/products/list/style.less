@@ -1,0 +1,153 @@
+.navbar {
+    width: 100%;
+    height: 88px;
+    overflow: hidden;
+    border-bottom: 1px solid #e4e4e4;
+    background-color: #fff;
+    ul {
+        height: 90px;
+        // padding: 0 30px;
+        overflow: scroll;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    li {
+        // margin: 0 22px;
+        padding: 0 50px;
+        display: inline-block;
+        font-size: 28px;
+        height: 86px;
+        line-height: 86px;
+        text-align: center;
+        &.curr {
+            color: #00a5f0;
+            border-bottom: 2PX solid #00a5f0;
+        }
+    }
+}
+
+.product {
+    .list {}
+    .item {
+        margin-top: 20px;
+        background-color: #fff;
+        .intro {
+            position: relative;
+            padding: 20px 30px;
+            &-img {
+                position: absolute;
+                left: 30px;
+                margin-right: 20px;
+                width: 140px;
+                height: 140px;
+                flex-shrink: 0;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    border-radius: 3px;
+                }
+                .txt {
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    font-size: 20px;
+                    line-height: 1.5;
+                    text-align: center;
+                    color: #fff;
+                    border-bottom-left-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                    background-color: rgba(0, 165, 240, .7);
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+            &-info {
+                position: relative;
+                margin-left: 160px;
+                height: 140px;
+                .title {
+                    width: 100%;
+                    font-size: 30px;
+                    color: #333;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+                .tags {
+                    margin-top: 15px;
+                    height: 38px;
+                    overflow: hidden;
+                    span {
+                        display: inline-block;
+                        vertical-align: middle;
+                        margin: 0 10px 10px 0;
+                        padding: 0 8px;
+                        font-size: 20px;
+                        line-height: 1.4;
+                        color: #0ab4f0;
+                        border: 1PX solid #84d9f7;
+                        border-radius: 3px;
+                    }
+                }
+                .data {
+                    position: absolute;
+                    bottom: -4px;
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .total {
+                    font-size: 20px;
+                    color: #999;
+                }
+                .price {
+                    font-size: 24px;
+                    color: #999;
+                    span {
+                        color: #ff6633;
+                        em {
+                            font-size: 32px;
+                            font-weight: bold;
+                            margin: 0 5px;
+                        }
+                    }
+                }
+            }
+        }
+        .labels {
+            padding: 15px 30px;
+            border-top: 1PX dashed #dedede;
+            span {
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 10px;
+                color: #ff7800;
+                border: 1PX solid #ff7800;
+                border-radius: 3px;
+            }
+            .label {
+                padding: 0 10px;
+                line-height: 1.4;
+            }
+            .disc {
+                i,
+                em {
+                    display: inline-block;
+                    vertical-align: middle;
+                    line-height: 1.4;
+                }
+                i {
+                    padding: 0 5px;
+                    line-height: 1.4;
+                    background-color: #ff7800;
+                    color: #fff;
+                }
+                em {
+                    padding: 0 10px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,116 @@
+.navbar {
+    width: 100%;
+    height: 88px;
+    overflow: hidden;
+    border-bottom: 1px solid #e4e4e4;
+    background-color: #fff;
+    ul {
+        height: 90px;
+        padding: 0 30px;
+        overflow: scroll;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    li {
+        margin: 0 22px;
+        padding: 0 24px;
+        display: inline-block;
+        font-size: 28px;
+        height: 86px;
+        line-height: 86px;
+        text-align: center;
+        &.curr {
+            color: #00a5f0;
+            border-bottom: 2px solid #00a5f0;
+        }
+    }
+}
+
+.order {
+    .item {
+        margin: 20px 15px 0 15px;
+        background-color: #fff;
+        border-radius: 3px;
+        .intro {
+            position: relative;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            .label {
+                position: absolute;
+                bottom: 5px;
+                right: 80px;
+                width: 140px;
+                height: 140px;
+                background-position: 0 0;
+                background-repeat: no-repeat;
+                background-size: 100%;
+                &.effect {
+                    background-image: url(../../../images/effect.png);
+                }
+                &.overdue {
+                    background-image: url(../../../images/overdue.png);
+                }
+                &.undue {
+                    background-image: url(../../../images/undue.png);
+                }
+            }
+            &-info {
+                .title {
+                    font-size: 28px;
+                    line-height: 1.4;
+                    color: #333;
+                    margin-bottom: 20px;
+                }
+                .people,
+                .time {
+                    font-size: 24px;
+                    line-height: 1.4;
+                    color: #999;
+                    width:500px;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                }
+            }
+            &-data {
+                position: relative;
+                width: 200px;
+                text-align: right;
+                z-index: 1;
+                .p {
+                    font-size: 32px;
+                    color: #ff485e;
+                }
+                .status {
+                    font-size: 24px;
+                    color: #333;
+                }
+            }
+        }
+        .btns {
+            padding: 0 30px 30px 30px;
+            display: flex;
+            justify-content: flex-end;
+            .btn {
+                margin-left: 10px;
+                border: 1PX solid #ddd;
+                width: 156px;
+                font-size: 28px;
+                line-height: 2;
+                text-align: center;
+                border-radius: 5px;
+                &.blue {
+                    color: #fff;
+                    background-color: #00a5f0;
+                    border: 1PX solid #00a5f0;
+                }
+                &.red {
+                    color: #fff;
+                    background-color: #ff485e;
+                    border: 1PX solid #ff485e;
+                }
+            }
+        }
+    }
+}

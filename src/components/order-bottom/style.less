@@ -1,0 +1,40 @@
+.order-bottom {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #fff;
+    box-shadow: 0 0 20px #ddd;
+    z-index: 99;
+    >div {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .price {
+        margin-left: 30px;
+        font-size: 32px;
+        .red {
+            margin-right: 30px;
+            color: #ff5346;
+            em {
+                font-size: 40px;
+            }
+        }
+        .under {
+            color: #999;
+            text-decoration: line-through;
+        }
+    }
+    .btn {
+        width: 240px;
+        font-size: 36px;
+        text-align: center;
+        color: #fff;
+        background-color: #00a5f0;
+    }
+}

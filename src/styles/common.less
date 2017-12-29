@@ -1,0 +1,237 @@
+address,
+cite,
+dfn,
+em,
+var,
+i {
+    font-style: normal
+}
+html{
+    background-color: #edf0f5;
+}
+body {
+    background-color: #edf0f5;
+    max-width: 750px;
+    color: #666;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+input {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 0;
+    color: #666;
+}
+
+input::-webkit-input-placeholder {
+    color: #ccc;
+}
+
+input::-moz-placeholder {
+    color: #ccc;
+}
+
+input::-ms-input-placeholder {
+    color: #ccc;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+
+/* 高清线 */
+
+.rowLine {
+    z-index: 1;
+    background: transparent;
+    border-width: 0;
+    border-image: none;
+    position: relative;
+    &:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1PX;
+        border-top: 1PX solid #ddd;
+        color: #dcdcdc;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+}
+.rowLine-dash {
+    z-index: 1;
+    background: transparent;
+    border-width: 0;
+    border-image: none;
+    position: relative;
+    &:before {
+        content: " ";
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        height: 1PX;
+        border-top: 1PX dashed #ddd;
+        color: #dcdcdc;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+}
+
+// 错误提示
+.errMsg {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    color: #ff7800;
+    &.hidden {
+        display: none;
+    }
+    .warn {
+        display: block;
+        font-size: 24px;
+        width: 28px;
+        height: 28px;
+        border-radius: 14px;
+        color: #fff;
+        background: #ff7800;
+        text-align: center;
+        margin-right: 20px;
+    }
+    span {
+        font-size: 30px;
+    }
+}
+
+// ------------
+.arrow {
+    display: block;
+    position: absolute;
+    content: '';
+    right: -15px;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+    margin-top: -16px;
+    border-width: 1PX 0 0 1PX;
+    border-style: solid;
+    color: #bbb;
+    margin-right: 0.4375rem;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(135deg);
+    &-hide {
+        margin-top: 0;
+        top: 25px;
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(-135deg);
+    }
+    &-show {
+        margin-top: 0;
+        top: 38px;
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(45deg);
+    }
+    &-right {
+        margin-top: 0;
+        top: 30px;
+        -webkit-transform: rotate(-135deg);
+        transform: rotate(135deg);
+    }
+}
+
+.picker- {
+    &line {
+        font-size: 28px;
+        padding: 0 30px;
+        &:last-child {
+            border-bottom: 0px;
+        }
+    }
+    &row {
+        display: -webkit-flex;
+        position: relative;
+        flex-direction: row;
+        height: 80px;
+        line-height: 80px;
+    }
+    &name {
+        // flex: 2;
+        width: 256px;
+        color: #333;
+        font-size: 28px;
+    }
+    &val {
+        flex: 1;
+        padding-right: 60px;
+        text-align: right;
+        color: #666;
+        font-size: 26px;
+    }
+    &left{
+        text-align: left;
+    }
+    &choose {
+        color: #bbb;
+    }
+    &operation {
+        width: 100%;
+        text-align: center;
+        color: #999;
+        font-size: 28px;
+        i,
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        i{
+            margin-right: 20px;
+            height: 100%;
+            background-position: 0 center;
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+        .delete-icon {
+            width: 38px;
+            height: 37px;
+            background-image: url(../images/delete-icon.png);
+        }
+        .add-icon {
+            width: 36px;
+            height: 37px;
+            background-image: url(../images/add-icon.png);
+            &+span {
+                color: #333;
+            }
+        }
+        .add-gray-icon{
+            width: 36px;
+            height: 37px;
+            background-image: url(../images/add-gray-icon.png);
+            &+span {
+                color: #999;
+            }
+        }
+    }
+}

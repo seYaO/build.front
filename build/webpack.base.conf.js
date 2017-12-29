@@ -18,20 +18,7 @@ function resolve(dir) {
     return path.join(__dirname, '..', dir)
 }
 
-const createLintingRule = () => ({
-    test: /\.(js|vue)$/,
-    loader: 'eslint-loader',
-    enforce: 'pre',
-    include: [resolve('src'), resolve('test')],
-    options: {
-        formatter: require('eslint-friendly-formatter'),
-        emitWarning: !config.dev.showEslintErrorsInOverlay
-    }
-})
-
 const webpackConfig = {
-    context: path.resolve(__dirname, '../'),
-
     // 配置 webpack 编译入口
     entry: {
         app: './src/main.js'
@@ -58,6 +45,7 @@ const webpackConfig = {
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
+            'static': path.resolve(__dirname, '../static'),
         }
     },
 
@@ -75,11 +63,6 @@ const webpackConfig = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 include: [resolve('src'), resolve('test')]
-            },
-            // 对所有 .less 文件使用 style-loader css-loader less-loader
-            {
-                test: /\.less$/,
-                loader: 'style-loader!css-loader!less-loader'
             },
             // 对图片资源文件使用 url-loader, query.name 指明了输出的命名规则
             {
@@ -99,6 +82,11 @@ const webpackConfig = {
                     name: utils.assetsPath('media/[name].[hash:7].[ext]')
                 }
             },
+            // 对所有 .less 文件使用 style-loader css-loader less-loader
+            {
+                test: /\.less$/,
+                loader: 'style-loader!css-loader!less-loader'
+            },
             // 对文字资源文件使用 url-loader, query.name 指明了输出的命名规则
             {
                 test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -109,21 +97,10 @@ const webpackConfig = {
                 }
             }
         ]
-    },
-    node: {
-        // prevent webpack from injecting useless setImmediate polyfill because Vue
-        // source contains it (although only uses it if it's native).
-        setImmediate: false,
-        // prevent webpack from injecting mocks to Node native modules
-        // that does not make sense for the client
-        dgram: 'empty',
-        fs: 'empty',
-        net: 'empty',
-        tls: 'empty',
-        child_process: 'empty'
     }
 }
 
+// 配置 vux-ui | duplicate-style 去除重复css代码
 module.exports = vuxLoader.merge(webpackConfig, {
     plugins: ['vux-ui', 'duplicate-style']
 })

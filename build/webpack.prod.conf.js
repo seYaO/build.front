@@ -6,6 +6,7 @@
  * 5. gzip 模式下的 webpack 插件配置
  * 6. webpack-bundle 分析
  */
+
 'use strict'
 const path = require('path')
 const utils = require('./utils')
@@ -20,20 +21,19 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 // 可以抽取出 css, js 文件将其与 webpack 输出的 bundle 分离
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const version = require('../version')
 
-const env = require('../config/prod.env')
+const env = config.build.env
 
 // 合并基础的 webpack 配置
 const webpackConfig = merge(baseWebpackConfig, {
     module: {
         rules: utils.styleLoaders({
             sourceMap: config.build.productionSourceMap,
-            extract: true,
-            usePostCSS: true
+            extract: true
         })
     },
-    devtool: config.build.productionSourceMap ? config.build.devtool : false,
+    devtool: config.build.productionSourceMap ? '#source-map' : false,
     // 配置 webpack 的输出
     output: {
         // 编译输出目录
@@ -41,39 +41,37 @@ const webpackConfig = merge(baseWebpackConfig, {
         // 编译输出文件名格式
         filename: utils.assetsPath('js/[name].js'),
         // 没有指定输出名的文件输出的文件名格式
-        chunkFilename: utils.assetsPath('js/[name].[chunkhash].js')
+        chunkFilename: utils.assetsPath('js/[name].chunk.[chunkhash:16].js')
     },
+
     // 配置 webpack 插件
     plugins: [
         // http://vuejs.github.io/vue-loader/en/workflow/production.html
         new webpack.DefinePlugin({
             'process.env': env
         }),
+        // https://doc.webpack-china.org/plugins/context-replacement-plugin/
+        // 处理 monent 插件的语言格式
+        new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /zh-cn/),
+        // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
         // 处理压缩代码
-        new UglifyJsPlugin({
-            uglifyOptions: {
-                compress: {
-                    warnings: false
-                }
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
             },
-            sourceMap: config.build.productionSourceMap,
-            parallel: true
+            sourceMap: true
         }),
         // extract css into its own file
         // 抽离 css 文件
         new ExtractTextPlugin({
-            filename: utils.assetsPath('css/[name].css'),
-            // set the following option to `true` if you want to extract CSS from
-            // codesplit chunks into this main css file as well.
-            // This will result in *all* of your app's CSS being loaded upfront.
-            allChunks: false,
+            filename: utils.assetsPath('css/[name].css')
         }),
         // Compress extracted CSS. We are using this plugin so that possible
         // duplicated CSS from different components can be deduped.
         new OptimizeCSSPlugin({
-            cssProcessorOptions: config.build.productionSourceMap
-                ? { safe: true, map: { inline: false } }
-                : { safe: true }
+            cssProcessorOptions: {
+                safe: true
+            }
         }),
         // generate dist index.html with correct asset hash for caching.
         // you can customize output by editing /index.html
@@ -94,12 +92,10 @@ const webpackConfig = merge(baseWebpackConfig, {
         }),
         // keep module.id stable when vender modules does not change
         new webpack.HashedModuleIdsPlugin(),
-        // enable scope hoisting
-        new webpack.optimize.ModuleConcatenationPlugin(),
         // split vendor js into its own file
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',
-            minChunks(module) {
+            minChunks: function (module) {
                 // any required modules inside node_modules are extracted to vendor
                 return (
                     module.resource &&
@@ -114,18 +110,8 @@ const webpackConfig = merge(baseWebpackConfig, {
         // prevent vendor hash from being updated whenever app bundle is updated
         new webpack.optimize.CommonsChunkPlugin({
             name: 'manifest',
-            minChunks: Infinity
+            chunks: ['vendor']
         }),
-        // This instance extracts shared chunks from code splitted chunks and bundles them
-        // in a separate chunk, similar to the vendor chunk
-        // see: https://webpack.js.org/plugins/commons-chunk-plugin/#extra-async-commons-chunk
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'app',
-            async: 'vendor-async',
-            children: true,
-            minChunks: 3
-        }),
-
         // copy custom static assets
         new CopyWebpackPlugin([
             {

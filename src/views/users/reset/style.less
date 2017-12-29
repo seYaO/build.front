@@ -1,0 +1,98 @@
+html,
+body {
+    height:100%;
+}
+#app{
+  height: 100%;
+  background: #fff;
+}
+.reset-{
+    &content{
+        padding: 40px 50px;
+        .row{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 30px;
+            line-height: 70px;
+            height: 70px;
+            margin-bottom: 14px;
+            border-bottom: 1PX solid #ddd;
+            > input{
+                flex-grow: 1;
+            }
+        }
+        .text{
+            height: 70px;
+            line-height: 70px;
+            font-size: 30px;
+            margin-bottom: 14px;
+        }
+        .clear{
+            width: 44px;
+            height: 44px;
+            background: url(../../../images/close.png) center center no-repeat;
+            background-size: 22px 22px;
+        }
+        .eye-{
+            &close{
+                width: 34px;
+                height: 17px;
+                background: url(../../../images/eye-close.png) center center no-repeat;
+                background-size: 34px 17px;
+            }
+            &open{
+                width: 38px;
+                height: 25px;
+                background: url(../../../images/eye-open.png) center center no-repeat;
+                background-size: 38px 26px;
+            }
+        }
+        .captcha{
+            >div{
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 24px;
+                color: #00a5f0;
+            }
+            .img{
+                width: 120px;
+                height: 46px;
+                background: #dedede;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+        .sms{
+            padding: 0 18px;
+            height: 46px;
+            font-size: 26px;
+            line-height: 46px;
+            color: #fff;
+            background-color: #0ab4f0;
+            border-radius: 24px;
+            &.noclick{
+                background-color: #ccc;
+            }
+        }
+        .submit{
+            margin-top: 50px;
+            font-size: 36px;
+            line-height: 2;
+            text-align: center;
+            background: #0ab4f0;
+            border-radius: 40px;
+            color: #fff;
+            box-shadow: 0 4px 10px #7cd4fb;
+        }
+        .tip{
+            padding: 40px 0;
+            text-align: center;
+            font-size: 28px;
+            a{
+                color: #00a5f0;
+            }
+        }
+    }
+}

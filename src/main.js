@@ -4,14 +4,17 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import 'lib-flexible'
+import Mint from 'mint-ui'
+import 'mint-ui/lib/style.css';
+// import 'lib-flexible'
 
+// 将此值设置为 false ,会关闭 Vue 启动时的提示信息，推荐
 Vue.config.productionTip = false
 
-if(process.env.NODE_ENV === 'development') {
-    const VConsole = require('vconsole');
-    let vConsole = new VConsole();
-}
+Vue.use(Mint)
+
+// const VConsole = require('vconsole');
+// let vConsole = new VConsole();
 
 /* eslint-disable no-new */
 new Vue({

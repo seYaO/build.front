@@ -1,0 +1,33 @@
+@import '../../styles/variable.less';
+@import '../../styles/mixins.less';
+.v- {
+    &datetime-picker {
+        &-wrapper {
+            background: #fff;
+        }
+        &-item {
+            flex: 1;
+            min-width: 0;
+        }
+        &-header {
+            display: flex;
+        }
+        &-today {
+            line-height: 0.9rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+        &-cancel,
+        &-confirm,
+        &-today {
+            .button();
+            height: 0.9rem;
+            width: 1.5rem;
+            color: @sub-color
+        }
+        &-confirm {
+            color: @primary-color;
+        }
+    }
+}

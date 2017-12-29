@@ -30,10 +30,10 @@ function getBranchInfo() {
 
 module.exports = () => {
     const branchInfo = getBranchInfo();
-    let isBranchTrue = gitDetect.pushArr.indexOf(branchInfo.name) != -1;
+    let isBranchTrue = branchArr.indexOf(branchInfo.name) != -1;
 
     if(!isBranchTrue){
-        console.log(`请切换到${gitDetect.pushArr.join('、')}分支`);
+        console.log(`请切换到${branchArr.join('、')}分支`);
         exit();
     }
 
