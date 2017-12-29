@@ -1,4 +1,4 @@
-const { login, userInfo, captcha, validate, resetLogin, isSetPayPwd, setPayPwd, resetPayPwd, smsCode, validateSmsCode, holders } = require('./users');
+const { login, userInfo, isShowCaptcha, captcha, validate, resetLogin, isSetPayPwd, setPayPwd, resetPayPwd, smsCode, validateSmsCode, holders } = require('./users');
 const { productClassify, productList, productDetail } = require('./product');
 const { initPay, payUrl, payBalance, payCredit, paySuccess } = require('./pay');
 const { airport } = require('./other');
@@ -9,6 +9,7 @@ const mock = {
 	 */
 	// com.ly.fn.bx.rpc.service.AlbLoginService
 	checkLogin: login, // 登录
+	isShowImg: isShowCaptcha, // 是否显示图片验证码（普通登录）
 	// com.ly.fn.bx.rpc.service.AlbTokenService
 	getValue: userInfo, // token获取会员信息
 	// com.ly.fn.bx.rpc.service.AlbAcountSafeService

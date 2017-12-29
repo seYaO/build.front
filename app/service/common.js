@@ -20,7 +20,10 @@ class CommonService extends Service {
 			readPacket: 'com.ly.fn.bx.rpc.service.AlbRedPacketService',
 			pay: 'com.ly.fn.bx.rpc.service.AlbPayEncapsulateService',
 			ocr: 'com.ly.fn.bx.rpc.service.AlbOcrService',
-			airport: 'com.ly.fn.bx.rpc.service.AlbCommonService'
+			airport: 'com.ly.fn.bx.rpc.service.AlbCommonService',
+			email: 'com.ly.fn.bx.rpc.service.AlbEmailService',
+			register: 'com.ly.fn.bx.rpc.service.AlbRegisterService',
+			user: 'com.ly.fn.bx.rpc.service.AlbUserService'
 		};
 	}
 	/**
@@ -47,7 +50,13 @@ class CommonService extends Service {
 			result = result.data;
 		}
 		const { status, data } = result;
-		let DATA = { status, ...data };
+
+		let DATA = { status };
+		if(params['functionCode'] === 'getProvinceAndCity'){
+			Object.assign(DATA, { data })
+		}else{
+			Object.assign(DATA, { ...data })
+		}
 		if(status !== '200') {
 			DATA = { status, message: 'node服务错误' };
 		}
@@ -61,20 +70,6 @@ class CommonService extends Service {
 	async version(params) {
 		const versionPath = path.resolve('version.txt');
 		const { v } = params;
-		// fs.writeFile(versionPath, v, (err) => {
-		// 	if(err) {
-		// 		return {
-		// 			code: '1000',
-		// 			message: '写入失败',
-		// 			version: v
-		// 		}
-		// 	}
-		// 	return {
-		// 		code: '0000',
-		// 		message: '写入成功',
-		// 		version: v
-		// 	}
-		// })
 		fs.writeFileSync(versionPath, v, 'utf8');
 		return v;
 	}
@@ -84,9 +79,23 @@ class CommonService extends Service {
 	 */
 	async downLoad(params) {
 		const { url } = params;
-		let result = await this.ctx.curl(url)
+		let result = await this.ctx.curl(url, { timeout: [ '30s', '30s' ] })
+		// console.log('result-----------',result)
 		return result.data;
 	}
+	async getPrice(price) {
+		price = price.toFixed(2);
+	    price = price.replace(/(\d*)(\.)(\d*)/, (a, b, c, d) => {
+	        if (d === '00') {
+	            return b;
+	        } else {
+	            if (/\d0/.test(d)) {
+	                d = d[0];
+	            }
+	            return `${b}.${d}`;
+	        }
+	    })
+	    return Number(price);
+	}
 }
-
 module.exports = CommonService;

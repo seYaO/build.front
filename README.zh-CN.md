@@ -1,4 +1,4 @@
-# demo
+# 爱购保 Node项目
 
 
 
@@ -21,6 +21,16 @@ $ open http://localhost:7001/
 ```bash
 $ npm start
 $ npm stop
+```
+```bash
+// 生产环境启动
+$ EGG_SERVER_ENV=prod egg-scripts start --port=6545
+
+// 预发环境启动
+$ EGG_SERVER_ENV=stage egg-scripts start --port=6545
+
+// 测试环境启动
+$ EGG_SERVER_ENV=qa egg-scripts start --port=6545
 ```
 
 ### 单元测试

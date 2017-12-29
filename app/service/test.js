@@ -22,19 +22,8 @@ class TestService extends Service {
 			data: params
 		};
 		Object.assign(_opts, opts);
-		let result;
-		if(this.config.useMock){
-			result = mock(params['functionCode']);
-		}else{
-			result = await this.ctx.curl(url, _opts);
-			result = result.data;
-		}
-		const { status, data } = result;
-		let DATA = { status, ...data };
-		if(status !== '200') {
-			DATA = { status, message: 'node服务错误' };
-		}
-		return DATA;
+		let result = await this.ctx.curl(url, _opts);
+		return result.data;
 	}
 	async test() {
 		let datas = {
@@ -42,7 +31,8 @@ class TestService extends Service {
 			functionCode: 'getImgCode'
 		};
 		const DATA = await this.request(datas);
-		return DATA;
+		const DATA2 = await this.request(datas);
+		return {DATA,DATA2};
 	}
 }
 

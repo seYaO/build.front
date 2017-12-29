@@ -19,6 +19,15 @@ const userInfo = {
     }
 }
 
+// 是否显示图片验证码（普通登录）
+const isShowCaptcha = {
+    "code": "0000",
+    "message": "成功",
+    "data": {
+        "result": false
+    }
+}
+
 // 获取图片验证码
 const captcha = {
     "code": "0000",
@@ -115,9 +124,18 @@ const holders = {
     ]
 }
 
+// 注册
+const register = {
+    "code":"0000",
+    "message":"操作成功",
+    "data":{
+        "token": "kjahsdf8732hkjsdf8",
+    }
+}
 module.exports = {
     login,
     userInfo,
+    isShowCaptcha,
 	captcha,
     validate,
     resetLogin,
@@ -127,4 +145,5 @@ module.exports = {
     smsCode,
     validateSmsCode,
     holders,
+    register
 }

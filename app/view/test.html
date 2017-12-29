@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+
+<body>
+    选择图片：
+    <input type="file" id="img">
+    <br/>
+    <button id="start">开始转换</button>
+    <div>
+        预览：<img id="imgShow" src="" alt="">
+    </div>
+    <b>Base64数据：</b>
+    <textarea rows=15 cols=60 id="conte"></textarea>
+    <button id='cpData'>复制</button><span id="succ"></span>
+    <div id="len">数据长度：</div>
+    <script>
+    var img = document.getElementById('img'),
+        imgShow = document.getElementById('imgShow'),
+        conte = document.getElementById('conte'),
+        len = document.getElementById('len'),
+        start = document.getElementById('start'),
+        cpData = document.getElementById('cpData');
+
+    cpData.addEventListener('click', cpDataF);
+    start.addEventListener('click', startt);
+
+    /*转换函数*/
+    function startt() {
+        let fileType = img.files[0].type
+        var imgFile = new FileReader();
+        imgFile.readAsDataURL(img.files[0]);
+        imgFile.onload = function() {
+            // var imgData = this.result; //base64数据  
+            // imgShow.setAttribute('src', imgData);
+            // conte.value = imgData;
+            // len.innerHTML += imgData.length;
+
+            var result = this.result; //返回的dataURL  
+            imgShow.setAttribute('src', result);
+            var image = new Image();
+            image.src = result;
+            image.onload = function() { //创建一个image对象，给canvas绘制使用  
+                var cvs = document.createElement('canvas');
+                var scale = 1;
+                if (this.width > 1000 || this.height > 1000) { //1000只是示例，可以根据具体的要求去设定
+                    if (this.width > this.height) {
+                        scale = 1000 / this.width;
+                    } else {
+                        scale = 1000 / this.height;
+                    }
+                }
+                cvs.width = this.width * scale;
+                cvs.height = this.height * scale; //计算等比缩小后图片宽高  
+                var ctx = cvs.getContext('2d');
+                ctx.drawImage(this, 0, 0, cvs.width, cvs.height);
+                var newImageData = cvs.toDataURL(fileType, 0.7); //重新生成图片，fileType为用户选择的图片类型</span>  
+                // var sendData = newImageData.replace("data:" + fileType + ";base64,", '');
+                conte.value = newImageData;
+                len.innerHTML += newImageData.length;
+
+            }
+        }
+    }
+
+    /*复制数据*/
+    function cpDataF() {
+        conte.select(); // 选择对象  
+        var cpd = document.execCommand("Copy"); // 执行浏览器复制命令  
+        cpd ? document.getElementById('succ').innerHTML = '复制成功' : 　console.warn('复制失败');
+        window.setTimeout(function() {
+            document.getElementById('succ').innerHTML = '';
+        }, 1000)
+    }
+    </script>
+</body>
+
+</html>

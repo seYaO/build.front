@@ -8,10 +8,30 @@ module.exports = appInfo => {
 	// use for cookie sign key, should change to your own and keep security
 	config.keys = appInfo.name + '_1512037306429_9479';
 
-	config.api = {
-		APIV1: '/api/v1',
-		APIV2: '/api/v2'
+	config.security = {
+		csrf: {
+			enable: false
+		}
 	}
+
+	config.bodyParser = {
+		enable: true,
+	    encoding: 'utf8',
+	    formLimit: '100kb',
+	    jsonLimit: '100mb',
+	    strict: true,
+	    // @see https://github.com/hapijs/qs/blob/master/lib/parse.js#L8 for more options
+	    queryString: {
+	      arrayLimit: 100,
+	      depth: 5,
+	      parameterLimit: 1000,
+	    },
+	}
+
+	// 允许跨域携带cookie
+	// config.cors = {
+	// 	credentials: true
+	// }
 
 	// 设置文件
 	config.siteFile = {

@@ -6,12 +6,33 @@ const Controller = require('egg').Controller;
 const versionPath = path.resolve('version.txt');
 
 class ClientController extends Controller {
-	async index() {
-		const { cookies } = this.ctx;
+	async register() {
+		const { service } = this.ctx;
 		const versionTxt = fs.readFileSync(versionPath, 'utf8');
-		// this.ctx.cookies.set('token', '45b2bee9-ed85-46fc-bc46-cfd1c6c09f9e')
-		// this.ctx.body = await this.ctx.renderView('index.html')
 		await this.ctx.render('index.html', { random: versionTxt })
+	}
+	/**
+	 * 登录
+	 * @return {[type]} [description]
+	 */
+	async login() {
+		const { service } = this.ctx;
+		const { code, data = {} } = await service.v1.user.token();
+		if(code === '0000'){
+			this.ctx.redirect('/');
+		}
+		const versionTxt = fs.readFileSync(versionPath, 'utf8');
+		await this.ctx.render('index.html', { random: versionTxt })
+	}
+	async index() {
+		// console.log(this.ctx.params.id)
+		const { service } = this.ctx;
+		const { code, data } = await service.v1.user.userInfo();
+		const versionTxt = fs.readFileSync(versionPath, 'utf8');
+		await this.ctx.render('index.html', { random: versionTxt })
+	}
+	async reset() {
+		this.ctx.redirect('/login');
 	}
 	async version() {
 		const { service, query } = this.ctx;

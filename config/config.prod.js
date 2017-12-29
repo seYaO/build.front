@@ -5,6 +5,6 @@ module.exports = appInfo => {
 
 	// errorHandler 错误提示
 	config.middleware = ['errorHandler'];
-
+	console.log('prod')
 	return config;
 };
