@@ -6,8 +6,8 @@
 
 <style lang="less">
 @import './styles/common.less';
-@import './styles/mint.less';
 @import './styles/components.less';
+@import './styles/mint.less';
 </style>
 
 

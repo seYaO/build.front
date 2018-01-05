@@ -106,6 +106,8 @@ export default {
                 }else{
                     this.loadingText = '没有更多了~'
                 }
+            }else if(code === '1001'){
+                location.href = '/login';
             }
             if(done) done();
         },
@@ -115,6 +117,7 @@ export default {
             navType = code;
             current = 1;
             this.list = [];
+            this.tabIndex = index.toString();
             this.doneProductCurr(index)
             this.getData(null, true);
             this.loadingText = '加载中...';

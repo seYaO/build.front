@@ -157,32 +157,32 @@ export default {
             return /\d{4}(\-|\/|.)\d{1,2}\1\d{1,2}/.test(str);
         },
         updateYear(value) {
-            return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[0] : value.getFullYear();
+            return this.isDateString(value) ? Number(value.split(' ')[0].split(/-|\/|\./)[0]) : value.getFullYear();
         },
         updateMonth(value) {
-            return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[1] : value.getMonth() + 1;
+            return this.isDateString(value) ? Number(value.split(' ')[0].split(/-|\/|\./)[1]) : value.getMonth() + 1;
         },
         updateDate(value) {
-            return this.isDateString(value) ? value.split(' ')[0].split(/-|\/|\./)[2] : value.getDate();
+            return this.isDateString(value) ? Number(value.split(' ')[0].split(/-|\/|\./)[2]) : value.getDate();
         },
         updateHour(value) {
             if (this.isDateString(value)) {
                 const str = value.split(' ')[1] || '00:00:00';
-                return str.split(':')[0];
+                return Number(str.split(':')[0]);
             }
             return value.getHours();
         },
         updateMinute(value) {
             if (this.isDateString(value)) {
                 const str = value.split(' ')[1] || '00:00:00';
-                return str.split(':')[1];
+                return Number(str.split(':')[1]);
             }
             return value.getMinutes();
         },
         updateSecond(value) {
             if (this.isDateString(value)) {
                 const str = value.split(' ')[1] || '00:00:00';
-                return str.split(':')[2];
+                return Number(str.split(':')[2]);
             }
             return value.getSeconds();
         },
@@ -308,6 +308,7 @@ export default {
         open (value) {
             if(value){
                 this.currentValue = this.currentValue || this.value;
+                this.initial()
             }
         },
         currentValue(value) {

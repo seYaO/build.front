@@ -154,7 +154,7 @@ const routes = [
     },
     // 支付/收银台
     {
-        path: '/pay/:id',
+        path: '/orderPay/:id',
         name: 'Pay',
         component(r) {
             require.ensure([], () => {

@@ -227,13 +227,15 @@ export default {
             this.alertShow = true;
             if(code === '0000'){
                 this.alertText = '邮箱发送成功，请注意查收~';
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 this.alertText = '邮箱发送失败，请重新发送~';
             }
         },
         insureBtnClick() {
             const { id = '' } = this.$route.params;
-            location.href = `/pay/${id}`
+            location.href = `/orderPay/${id}`
             // this.$router.push({ path: `/pay/${id}` });
         },
 

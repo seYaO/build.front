@@ -1,5 +1,5 @@
 <template>
-<div class="order">
+<div class="orderlist">
     <div class="navbar">
         <ul>
             <li v-for="(item, index) in navs" :key="index" :class="{ curr: item.curr }" @click="changeTab(index, item['code'])">{{item['name']}}</li>
@@ -113,6 +113,7 @@ export default {
             navType = code;
             current = 1;
             this.list = [];
+            this.tabIndex = index.toString();
             this.doneOrderCurr(index);
             this.getData(null, true);
             this.loadingText = '加载中...';
@@ -155,7 +156,7 @@ export default {
 
         // 立即支付
         goPay(orderCode) {
-            location.href = `/pay/${orderCode}`
+            location.href = `/orderPay/${orderCode}`
             // this.$router.push({ path: `/pay/${orderCode}` });
         },
 
@@ -166,8 +167,12 @@ export default {
                 const res = await order.cancel({ orderCode: this.confirmOrderCode });
                 const { code, data, message } = res;
                 if(code === '0000') {
+                    this.alertShow = true;
+                    this.alertText = '取消订单成功';
                     current = 1;
                     this.getData(null, true);
+                }else if(code === '1001'){
+                    location.href = '/login';
                 }else{
                     this.alertShow = true;
                     this.alertText = message;
@@ -176,8 +181,12 @@ export default {
                 const res = await order.refund({ orderCode: this.confirmOrderCode });
                 const { code, data, message } = res;
                 if(code === '0000') {
+                    this.alertShow = true;
+                    this.alertText = '退保成功';
                     current = 1;
                     this.getData(null, true);
+                }else if(code === '1001'){
+                    location.href = '/login';
                 }else{
                     this.alertShow = true;
                     this.alertText = message;

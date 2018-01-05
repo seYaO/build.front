@@ -181,39 +181,41 @@ export default {
     methods: {
         // 获取数据
         async getData() {
-        const { id = "" } = this.$route.params;
-        const res = await product.detail({ productCode: id });
-        const { code, data } = res;
-        if (code === "0000") {
-            const {
-                insuranceClause = null,
-                insuranceGuide = null,
-                reserveNotice = null,
-                plans,
-                productPic,
-                productName,
-                salePoints
-            } = data;
-            wxsharecnt({
-                shareImg:productPic,
-                shareTitle:`【爱购保】${productName}`,
-                shareUrl : '',
-                shareDesc : salePoints
-            });
-            this.data = data;
-            setSessionStore("explainData", {
-                insuranceClause,
-                insuranceGuide,
-                reserveNotice
-            });
-            let afreshData = await this.initAfresh();
-            let pCode = '';
-            if(afreshData){
-                const { planCode } = afreshData;
-                pCode = planCode;
+            const { id = "" } = this.$route.params;
+            const res = await product.detail({ productCode: id });
+            const { code, data } = res;
+            if (code === "0000") {
+                const {
+                    insuranceClause = null,
+                    insuranceGuide = null,
+                    reserveNotice = null,
+                    plans,
+                    productPic,
+                    productName,
+                    salePoints
+                } = data;
+                wxsharecnt({
+                    shareImg:productPic,
+                    shareTitle:`【爱购保】${productName}`,
+                    shareUrl : '',
+                    shareDesc : salePoints
+                });
+                this.data = data;
+                setSessionStore("explainData", {
+                    insuranceClause,
+                    insuranceGuide,
+                    reserveNotice
+                });
+                let afreshData = await this.initAfresh();
+                let pCode = '';
+                if(afreshData){
+                    const { planCode } = afreshData;
+                    pCode = planCode;
+                }
+                this.getFactorsData(data, pCode);
+            }else if(code === '1001'){
+                location.href = '/login';
             }
-            this.getFactorsData(data, pCode);
-        }
         },
 
         // 重投
@@ -225,6 +227,8 @@ export default {
             if(code === '0000'){
                 this.isAgreement = true;
                 return data;
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 return null;
             }
@@ -248,6 +252,8 @@ export default {
                     data[i].isShowRedRule = false;
                 }
                 this.redPopupData = data;
+            }else if(code === '1001'){
+                location.href = '/login';
             }
         },
         // 计价因子
@@ -442,23 +448,23 @@ export default {
                 }
 
                 factorArr.map((item, index) => {
-                item["value"] = index.toString();
-                item["label"] = item["enumName"];
-                return item;
+                    item["value"] = index.toString();
+                    item["label"] = item["enumName"];
+                    return item;
                 });
                 let pickers = [{ value: "0", options: factorArr }];
 
                 let factorItem = {
-                factorName, // 计价因子的名字
-                factorIndex: currentFactorIndex, // 第几个计价因子
-                factorType: item["factorCode"],
-                factorArr, // 计价因子的所有数组
-                showArr: factorArr, // 计价因子展示的数组
-                pickers,
-                activeIndex, // 选中的index
-                factorDesc, // 在页面展示的计价因子选中的说明
-                isShowArrow, // 是否显示箭头
-                isShowPicker // 是否显示弹框
+                    factorName, // 计价因子的名字
+                    factorIndex: currentFactorIndex, // 第几个计价因子
+                    factorType: item["factorCode"],
+                    factorArr, // 计价因子的所有数组
+                    showArr: factorArr, // 计价因子展示的数组
+                    pickers,
+                    activeIndex, // 选中的index
+                    factorDesc, // 在页面展示的计价因子选中的说明
+                    isShowArrow, // 是否显示箭头
+                    isShowPicker // 是否显示弹框
                 };
 
                 factorList.push(factorItem);
@@ -480,30 +486,30 @@ export default {
             if (factorIndex === 0) {
                 // 选择的是第一个计价因子
                 if (factorList.length === 1) {
-                this.updateFinish();
+                    this.updateFinish();
                 } else {
-                let value = factorList[factorIndex].showArr[itemIndex].enumCode;
+                    let value = factorList[factorIndex].showArr[itemIndex].enumCode;
 
-                //过滤出来的所有可用的计价因子
-                let filterPirces = priceModeList.filter(elem => {
-                    return elem.name.indexOf(value) != -1;
-                });
-                let temps = [];
-                filterPirces.map(elem => {
-                    temps.push(elem.name.split("|")[factorIndex + 1]);
-                });
-                // factorList[factorIndex + 1].filterShowArr(temps);
+                    //过滤出来的所有可用的计价因子
+                    let filterPirces = priceModeList.filter(elem => {
+                        return elem.name.indexOf(value) != -1;
+                    });
+                    let temps = [];
+                    filterPirces.map(elem => {
+                        temps.push(elem.name.split("|")[factorIndex + 1]);
+                    });
+                    // factorList[factorIndex + 1].filterShowArr(temps);
 
-                //下一个计价因子选中的index，默认为0，
-                //如果缓存数组中cacheFactor中有选择的，就选择缓存的code
-                let nextActiveIndex = 0;
-                factorList[factorIndex + 1].showArr.map((elem, index) => {
-                    if (elem.enumCode == cacheFactor[factorIndex + 1]) {
-                    nextActiveIndex = index;
-                    }
-                });
+                    //下一个计价因子选中的index，默认为0，
+                    //如果缓存数组中cacheFactor中有选择的，就选择缓存的code
+                    let nextActiveIndex = 0;
+                    factorList[factorIndex + 1].showArr.map((elem, index) => {
+                        if (elem.enumCode == cacheFactor[factorIndex + 1]) {
+                        nextActiveIndex = index;
+                        }
+                    });
 
-                this.updateChoose(factorIndex + 1, nextActiveIndex);
+                    this.updateChoose(factorIndex + 1, nextActiveIndex);
                 }
             } else if (factorIndex === factorList.length - 1) {
                 // 选择的是最后一个计价因子
@@ -514,21 +520,21 @@ export default {
                 //先找到该计价因子之前所有的计价因子的code
                 let tempPrice = [];
                 for (let i = 0; i <= factorIndex; i++) {
-                let beforeFactor = factorList[i];
-                tempPrice.push(
-                    beforeFactor.showArr[beforeFactor.activeIndex].enumCode
-                );
+                    let beforeFactor = factorList[i];
+                    tempPrice.push(
+                        beforeFactor.showArr[beforeFactor.activeIndex].enumCode
+                    );
                 }
 
                 //根据之前找到的code拼接，过滤出来的所有可用的计价因子
                 let filterPirces = priceModeList.filter(elem => {
-                return elem.name.indexOf(tempPrice.join("|")) != -1;
+                    return elem.name.indexOf(tempPrice.join("|")) != -1;
                 });
 
                 //根据过滤出来的数组找到下一个计价因子所有需要展示的字段
                 let tempArrs = [];
                 filterPirces.map(elem => {
-                tempArrs.push(elem.name.split("|")[factorIndex + 1]);
+                    tempArrs.push(elem.name.split("|")[factorIndex + 1]);
                 });
                 // factorList[factorIndex + 1].filterShowArr(tempArrs);
 
@@ -536,9 +542,9 @@ export default {
                 //如果缓存数组中cacheFactor中有选择的，就选择缓存的code
                 let nextActiveIndex = 0;
                 factorList[factorIndex + 1].showArr.map((elem, index) => {
-                if (elem.enumCode == cacheFactor[factorIndex + 1]) {
-                    nextActiveIndex = index;
-                }
+                    if (elem.enumCode == cacheFactor[factorIndex + 1]) {
+                        nextActiveIndex = index;
+                    }
                 });
 
                 this.updateChoose(factorIndex + 1, nextActiveIndex);
@@ -576,20 +582,20 @@ export default {
                 priceFactors.push(currentItem);
                 currentItem.factorCode = item.factorType;
                 if (!!currentItem.safeguardLimit) {
-                safeguardLimit = currentItem.safeguardLimit;
+                    safeguardLimit = currentItem.safeguardLimit;
                 }
                 if (!!currentItem.paymentTime) {
-                paymentTime = currentItem.paymentTime;
+                    paymentTime = currentItem.paymentTime;
                 }
 
                 if (item.factorType == "applyPeriod") {
-                if (currentItem.enumTemplateType == 1) {
-                    maxPeriod = currentItem.fixedValue;
-                    maxPeriodUnit = currentItem.fixedValueUnit;
-                } else if (currentItem.enumTemplateType == 2) {
-                    maxPeriod = currentItem.upperLimitValue;
-                    maxPeriodUnit = currentItem.upperLimitValueUnit;
-                }
+                    if (currentItem.enumTemplateType == 1) {
+                        maxPeriod = currentItem.fixedValue;
+                        maxPeriodUnit = currentItem.fixedValueUnit;
+                    } else if (currentItem.enumTemplateType == 2) {
+                        maxPeriod = currentItem.upperLimitValue;
+                        maxPeriodUnit = currentItem.upperLimitValueUnit;
+                    }
                 }
 
                 if (item.factorType == "insuredBirthday") {
@@ -597,22 +603,22 @@ export default {
                 const list = item.showArr;
                 list.map((_item, _index) => {
                     if (_index === 0) {
-                    if (_item.enumTemplateType == 1) {
-                        minAge = _item.fixedValue;
-                        minUnit = _item.fixedValueUnit;
-                    } else {
-                        minAge = _item.lowerLimitValue;
-                        minUnit = _item.lowerLimitValueUnit;
-                    }
+                        if (_item.enumTemplateType == 1) {
+                            minAge = _item.fixedValue;
+                            minUnit = _item.fixedValueUnit;
+                        } else {
+                            minAge = _item.lowerLimitValue;
+                            minUnit = _item.lowerLimitValueUnit;
+                        }
                     }
                     if (_index === list.length - 1) {
-                    if (_item.enumTemplateType == 1) {
-                        maxAge = _item.fixedValue;
-                        maxUnit = _item.fixedValueUnit;
-                    } else {
-                        maxAge = _item.upperLimitValue;
-                        maxUnit = _item.upperLimitValueUnit;
-                    }
+                        if (_item.enumTemplateType == 1) {
+                            maxAge = _item.fixedValue;
+                            maxUnit = _item.fixedValueUnit;
+                        } else {
+                            maxAge = _item.upperLimitValue;
+                            maxUnit = _item.upperLimitValueUnit;
+                        }
                     }
                 });
                 }

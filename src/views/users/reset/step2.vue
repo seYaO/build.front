@@ -4,7 +4,7 @@
        请输入新的密码
     </div>
     <div class="row">
-        <input v-model="pwd" @focus="errMsg = ''" @blur="getInputVal('pwd')" ref="pwd" type="password" placeholder="6-18位字母数字或符号的组合">
+        <input v-model="pwd" @focus="errMsg = ''" @blur="getInputVal('pwd')" ref="pwd" type="password" placeholder="6-20位字母数字或符号的组合">
         <div :class="{ 'eye-close': !eyeShow, 'eye-open': eyeShow }" @click="eyeShow = !eyeShow"></div>
     </div>
     <div class="row">
@@ -61,7 +61,7 @@ export default {
             }
 
             if(!passwordValidate(this.pwd)){
-                this.errMsg = '您的密码安全等级太弱，请设置6-18位字母数字或符号的组合';
+                this.errMsg = '请设置6-20位字母数字或符号的组合';
                 return false;
             }
 
@@ -81,7 +81,7 @@ export default {
                     if(!value){
                         this.errMsg = '请填写密码';
                     }else if(!passwordValidate(value)){
-                        this.errMsg = '您的密码安全等级太弱，请设置6-18位字母数字或符号的组合';
+                        this.errMsg = '请设置6-20位字母数字或符号的组合';
                     }
                     break;
                 case 'password':

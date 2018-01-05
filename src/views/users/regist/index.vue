@@ -106,7 +106,7 @@ import { mapState, mapMutations, mapActions } from 'vuex'
 import { Toast, PopupPicker, Alert } from '@/components';
 import * as registService from '@/services/regist';
 
-import { phoneValidate,passwordValidate } from '@/utils/validate';
+import { phoneValidate,passwordValidate20 } from '@/utils/validate';
 
  export default {
     components:{
@@ -384,8 +384,8 @@ import { phoneValidate,passwordValidate } from '@/utils/validate';
                 this.showToast('请输入您的登录密码')
                 return;
             }
-            if(!passwordValidate(this.loginPwd)){
-                this.showToast('密码长度6-18位，至少包含英文，数字和符号的两种')
+            if(!passwordValidate20(this.loginPwd)){
+                this.showToast('密码长度6-20位，至少包含英文，数字和符号的两种')
                 return;
             }
             if(!this.confirmPwd){

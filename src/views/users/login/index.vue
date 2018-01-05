@@ -49,7 +49,9 @@
         </div>
         <div class="info">
             <div class="remember" v-if="false" :class="{ curr: rememberShow }" @click="rememberShow = !rememberShow"><i></i><span>记住账号密码</span></div>
-            <div class="errMsg" :class="{ hidden: !errMsg }" style="float:left; padding:0;"><i class="warn">!</i><span>{{errMsg}}</span></div>
+            <div>
+                <div class="errMsg" :class="{ hidden: !errMsg }"><i class="warn">!</i><span>{{errMsg}}</span></div>
+            </div>
             <div class="forget" @click="getForget">忘记密码</div>
         </div>
 
@@ -226,6 +228,8 @@ export default {
             const { code, message } = res;
             if(code === '0000'){
                 this.smsCountDown();
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 this.errMsg = message;
                 this.getCaptcha();
@@ -286,6 +290,9 @@ export default {
                 this.getCaptcha();
             }else if(code === '7000'){
                 this.errMsg = `短信验证码错误，您还可以输入${data.count}次`;
+                this.getCaptcha();
+            }else if(code === '3014'){
+                this.errMsg = `密码输错超过限定次数，请60分钟后重试，或重置密码后登录`;
                 this.getCaptcha();
             }else{
                 this.errMsg = message;

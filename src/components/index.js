@@ -10,6 +10,7 @@ import Confirm from './confirm'
 import Alert from './alert'
 import Prompt from './prompt'
 import Toast from './toast'
+import Icon from './icon'
 
 import IndexList from './index-list'
 import IndexSection from './index-section'
@@ -32,6 +33,7 @@ export {
     Alert,
     Prompt,
     Toast,
+    Icon,
 
     IndexList,
     IndexSection,

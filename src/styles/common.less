@@ -103,13 +103,14 @@ input::-ms-input-placeholder {
 // 错误提示
 .errMsg {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     padding: 10px 0;
     color: #ff7800;
     &.hidden {
         display: none;
     }
     .warn {
+        flex-shrink: 0;
         display: block;
         font-size: 24px;
         width: 28px;
@@ -119,9 +120,11 @@ input::-ms-input-placeholder {
         background: #ff7800;
         text-align: center;
         margin-right: 20px;
+        margin-top: 2px;
     }
     span {
-        font-size: 30px;
+        font-size: 26px;
+        line-height: 1.4;
     }
 }
 

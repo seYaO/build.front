@@ -3,6 +3,7 @@
     <div @click="$refs.startTime.open()">点击</div>
     <div @click="checked = true">点击2</div>
     <div @click="checked2 = true">点击3</div>
+    <input type="file" accept="image/*" multiple="multiple">
     <mt-datetime-picker
         ref="startTime"
         v-model="pickerVisible"

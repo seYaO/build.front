@@ -168,7 +168,7 @@ import { passwordValidate } from '@/utils/validate'
                     const { code, message } = res
                     if(code == '0000'){
                         this.showToast('恭喜您，交易密码设置成功');
-                        this.$router.push({ path: `/pay/${orderCode}` });
+                        this.$router.push({ path: `/orderPay/${orderCode}` });
                     } else {
                         this.showToast(message);
                     }
@@ -179,7 +179,7 @@ import { passwordValidate } from '@/utils/validate'
 
                     if(code == '0000'){
                         this.showToast('恭喜您，交易密码修改成功');
-                        this.$router.push({ path: `/pay/${orderCode}` });
+                        this.$router.push({ path: `/orderPay/${orderCode}` });
                     } else {
                         this.showToast(message);
                     }

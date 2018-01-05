@@ -95,10 +95,9 @@ input {
             }
         }
         .info {
-            // display: flex;
-            // justify-content: space-between;
-            // align-items: center;
-            height: 56px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
             color: #999;
             .remember {
                 i,
@@ -125,7 +124,9 @@ input {
                 }
             }
             .forget {
-                float: right;
+                margin-left: 5px;
+                margin-top: 10px;
+                flex-shrink: 0;
                 font-size: 26px;
                 color: #00a5f0;
             }

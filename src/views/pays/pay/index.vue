@@ -24,7 +24,7 @@
         </cell>
     </section>
     <section>
-        <div class="pay-line">
+        <div :class="['pay-line',isShare?'none':'']">
             <div class="pay-row" @click="payType = isCashEnough ? 1 : payType">
                 <div class="pay-name"><i class="cash-icon"></i><span>现金账户</span></div>
                 <div class="pay-val" v-if="data.userAmount">可用余额<span class="red">&yen;{{data.userAmount.cashMoney}}</span></div>
@@ -39,7 +39,7 @@
                 <div class="check" :class="{ 'check-show': payType === 2, 'check-hide': payType !== 2 }"></div>
             </div>
         </div>
-        <div class="pay-line" v-if="!isShowWeChart">
+        <div class="pay-line">
             <div class="rowLine"></div>
             <div class="pay-row" @click="payType = 3">
                 <div class="pay-name"><i class="aliPay-icon"></i><span>支付宝支付</span></div>
@@ -89,6 +89,10 @@
         <div class="rule-list">
             <div class="rule-row" v-for="(rule,index) in redPacketList[choseIndex].remarkArr" :key="index">{{rule}}</div>
         </div>
+    </div>
+    
+    <div :class="['alipay-hint',isShowHint?'':'none']" @click="toggleAlipayHint">
+        <img class="hint-bg" src="../../../images/pay-alipay-hint.png" alt="">
     </div>
 </div>
 </template>
@@ -157,7 +161,9 @@ export default {
             originFee:0, //不使用红包时候的价格
             couponNo:'', //红包批次号
             ifCanGoToRedPage:true, //是否可以去红包页面
-            isShowWeChart: isWeChart()
+            isShowWeChart: isWeChart(),
+            isShowHint: false,//是否显示支付宝提示
+            isShare: false,//是否是分享出去的页面
         }
     },
     beforeMount() {
@@ -189,14 +195,27 @@ export default {
         async initData() {
             const { id = '' } = this.$route.params;
             const res = await pay.init({ orderCode: id });
-            const { code,  data } = res;
+            const { code,  data, isShare } = res;
+            this.isShare = isShare;
             if(code === '0000') {
                 this.data = data;
                 this.countDown(data.countDown);
-                this.getRedPacket(data.productCode);
+                if(isShare){
+                    //是分享
+                    this.setRedPacket(data.usableRedPacket);
+                } else {
+                    //不是分享
+                    this.getRedPacket(data.productCode);
+                }
                 const { reduceAmount = 0, totalFee = 0 ,isActivity} = data.orderPayInfo || {};
                 if(isActivity == 5){
-                    this.bindReadPacket(); //查看该支付是否有绑定的红包
+                    if(isShare){
+                    //是分享
+                        this.bindRedPacketData(data.bindRedPacket);
+                    } else {
+                        //不是分享
+                        this.bindReadPacket(); //查看该支付是否有绑定的红包
+                    }
                 }
                 const { cashMoney = 0 } = data.userAmount || {};
                 this.originFee = totalFee - reduceAmount;
@@ -206,6 +225,8 @@ export default {
                 }else{
                     this.payType = 1;
                 }
+            }else if(code === '1001'){
+                location.href = '/login';
             }
         },
 
@@ -215,20 +236,26 @@ export default {
             const res = await discount.getReadPacket({ orderCode: id, productCode });
             const { code,  data } = res;
             if(code === '0000'){
-                for(let i=0;i<data.length;i++){
-                    data[i].expiryTime = new Date(data[i].expiryTime).format('yyyy.MM.dd');
-                    data[i].isShowRedRule = false;
-                    data[i].isChoose = false;
-                    let item = data[i].remarks.split('||');
-                    let temp = [];
-                    for(let j=0;j<item.length;j++){
-                        temp.push(item[j])
-                    }
-                    data[i].remarkArr = temp;
-                }
-                this.redPacketList = data;
-                this.selectedPacketStr = `${data.length}个可用`;
+                this.setRedPacket(data)
+            }else if(code === '1001'){
+                location.href = '/login';
             }
+        },
+        //设置红包列表
+        setRedPacket(redPacketList){
+            for(let i=0;i<redPacketList.length;i++){
+                redPacketList[i].expiryTime = new Date(redPacketList[i].expiryTime).format('yyyy.MM.dd');
+                redPacketList[i].isShowRedRule = false;
+                redPacketList[i].isChoose = false;
+                let item = redPacketList[i].remarks.split('||');
+                let temp = [];
+                for(let j=0;j<item.length;j++){
+                    temp.push(item[j])
+                }
+                redPacketList[i].remarkArr = temp;
+            }
+            this.redPacketList = redPacketList;
+            this.selectedPacketStr = `${redPacketList.length}个可用`;
         },
 
         //是否可以去红包页面
@@ -275,17 +302,23 @@ export default {
             const res = await discount.bindReadPacket({ orderCode: id });
             const { code,  data } = res;
             if(code === '0000'){
-                this.selectedPacketStr = `￥${data.amount}`;
-                let tempFee = this.originFee - data.amount;
-                if(tempFee < 0){
-                    tempFee = 0;
-                }
-                this.actualPayFee = getPrice(tempFee) ;
-                this.couponNo = data.serialCode;
-                this.ifCanGoToRedPage = false;
+                this.bindRedPacketData(data)
+            }else if(code === '1001'){
+                location.href = '/login';
             }
         },
-
+        //已绑定红包数据
+        bindRedPacketData(bindData){
+            this.selectedPacketStr = `￥${bindData.amount}`;
+            let tempFee = this.originFee - bindData.amount;
+            if(tempFee < 0){
+                tempFee = 0;
+            }
+            this.actualPayFee = getPrice(tempFee);
+            this.couponNo = bindData.serialCode;
+            this.ifCanGoToRedPage = false;
+        },
+        
         // 倒计时
         countDown(time) {
             time = Number(time);
@@ -349,7 +382,7 @@ export default {
                 this.alertText = '请选择支付方式';
                 return false;
             }
-            let payProduct = 0; // 支付编号 支付宝支付：1006, 微信支付：1111, jsApi:  1008
+            let payProduct = 0; // 支付编号 支付宝支付：1006, 微信支付：1111, jsApi: 1008
 
             switch(this.payType){
                 case 1:
@@ -368,9 +401,15 @@ export default {
                     return false;
                     break;
                 case 2:
+                    //微信
                     payProduct = 1111;
                     break;
                 case 3:
+                    //支付宝
+                    if(!!this.isShowWeChart){
+                        this.toggleAlipayHint();
+                        return false;
+                    }
                     payProduct = 1006;
                     break;
             }
@@ -381,12 +420,14 @@ export default {
         async cashPay() {
             const { id = '' } = this.$route.params;
             let dealPassword = this.promptValue;
-            const res = await pay.balance({ orderCode: id, dealPassword, couponNo:this.couponNo });
+            const res = await pay.balance({ orderCode: id, dealPassword, couponNo: this.couponNo });
             const { code,  data } = res;
             if(code === '0000') {
                 this.$router.push({ path: `/pay/success/${id}` });
             }else if(code === '1000'){
                 this.promptErrMsg = '余额不足';
+            }else if(code === '1001'){
+                location.href = '/login';
             }else if(code === '1004'){
                 //不需要支付
                 this.$router.push({ path: `/pay/success/${id}` });
@@ -443,20 +484,19 @@ export default {
                         // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
                         if(res.err_msg == "get_brand_wcpay_request:ok" ) {
                             //订单金额为0，无需支付，直接跳转成功页
-                            _this.$router.push({ path: `/pay/success/${id}` });
-                            // _this.$router.push({
-                            //     name: 'paySuccess',
-                            //     params: {
-                            //         orderCode: _this.$route.params.orderCode
-                            //     }
-                            // })
+                            location.href = `/pay/success/${id}`
                         }
                     }
                 );
+            }else if(code === '1001'){
+                location.href = '/login';
             }else if(code === '1004'){
                 // 订单金额为0，无需支付，直接跳转成功页
                 _this.$router.push({ path: `/pay/success/${id}` });
             }
+        },
+        toggleAlipayHint(){
+            this.isShowHint = !this.isShowHint;
         }
     }
 }

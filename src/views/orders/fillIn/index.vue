@@ -135,7 +135,6 @@
                     <div v-if="!holder.isShow && !holder.enterprise.name">请完善信息</div>
                     <div v-if="!holder.isShow && holder.enterprise.name" class="txt">{{holder.enterprise.name}}</div>
                     <div></div>
-                    <i class="photo-icon"></i>
                 </div>
                 <div class="arrow" :class="{ 'arrow-hide': !holder['isShow'], 'arrow-show': holder['isShow'] }"></div>
             </div>
@@ -209,7 +208,7 @@
                     <div v-if="!holder.isShow && holder.person.name" class="txt">{{holder.person.name}}</div>
                     <div></div>
                     <i class="photo-icon" @click="getOCR(-1)"></i>
-                    <input style="display: none;" ref="ocrImg" @change="getFile(-1)" type="file" accept="image/*" />
+                    <input style="display: none;" ref="ocrHolderImg" @change="getFile(-1)" type="file" accept="image/*" />
                 </div>
                 <div class="arrow" :class="{ 'arrow-hide': !holder['isShow'], 'arrow-show': holder['isShow'] }"></div>
             </div>
@@ -311,8 +310,47 @@
             </div>
         </template>
     </section>
-    <!-- 上传多张图片 -->
-    <input style="display: none;" type="file" accept="image/*" multiple="multiple" />
+    <section class="ocr" v-if="ocrShow && insurantNum > 1">
+        <div class="picker-line">
+            <div class="picker-row">
+                <div class="picker-name">智能识别被保人</div>
+                <div class="picker-val">
+                    <span @click="getOCRs('idCard')">批量识别身份证</span>
+                    <span @click="getOCRs('passport')">批量识别护照</span>
+                </div>
+                <input style="display: none;" ref="ocrIdCard" @change="getFiles('idCard')" type="file" accept="image/*" multiple="multiple" />
+                <input style="display: none;" ref="ocrPassport" @change="getFiles('passport')" type="file" accept="image/*" multiple="multiple" />
+            </div>
+        </div>
+        <div class="rowLine"></div>
+        <div class="picker-info">
+            <div class="picker-line" @click="isShowOcr = true">
+                <div class="picker-row txt">
+                    一次最多识别5张照片，<span>如何提高效率？</span>
+                </div>
+            </div>
+        </div>
+        <popup direction="top" :full="true" :open="isShowOcr" @on-close="isShowOcr = false">
+            <div class="ocr-popup">
+                <div class="title">示例图片</div>
+                <div class="txt">
+                    <p>1、拍照要清晰，避免模糊图且覆盖信息页（去背景、无遮挡、无反光、无水印）</p>
+                    <p>2、尽量保证文字横向排列</p>
+                    <p>3、图像文字尽量在同一水平线上</p>
+                    <p>4、临时身份证无法识别出用户信息</p>
+                </div>
+                <div class="tit">身份证识别案例</div>
+                <div class="txt">
+                    <img src="../../../images/documents/ocr1.png" alt="">
+                </div>
+                <div class="tit">护照识别案例</div>
+                <div class="txt">
+                    <img src="../../../images/documents/ocr2.png" alt="">
+                </div>
+                <div class="icon" @click="isShowOcr = false"><icon>&#xe641;</icon></div>
+            </div>
+        </popup>
+    </section>
     <!-- 被保人 -->
     <section v-if="insurants && insurants[0]" v-for="(item, index) in insurants" :key="index">
         <div class="picker-line">
@@ -490,7 +528,7 @@
     <!--  -->
     <order-bottom :content="'立即投保'" :showOrderBottom="true" :totalFee="totalFee" :actualPayFee="actualPayFee" @on-insure="insureHandler"></order-bottom>
     <!-- alert -->
-    <alert :open="alertShow" @on-confirm="alertShow = false">{{alertText}}</alert>
+    <alert :open="alertShow" :confirmText="'知道了'" @on-confirm="alertShow = false">{{alertText}}</alert>
     <!-- confirm -->
     <confirm :open="confirmShow" @on-close="confirmShow = false" @on-confirm="confirmHandler">{{confirmText}}</confirm>
     <!-- 确认页 -->
@@ -665,14 +703,15 @@
 </template>
 
 <style lang="less">
+@import '../../../styles/mint-common.less';
 @import './style.less';
 </style>
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-import { Alert, Confirm, Popup, PopupPicker, DatetimePicker, Search, OrderBottom, IndexList, IndexSection, Cell } from '@/components'
+import { Alert, Confirm, Popup, PopupPicker, DatetimePicker, Search, OrderBottom, IndexList, IndexSection, Cell, Icon } from '@/components'
 import { clone, dateRange, idCardInfo, timeTypes, getPrice, setSessionStore, getSessionStore, getLocalStore, getImg } from '@/utils'
-import { identityCardValidate, userNameValidate, enterpriseNameValidate, phoneValidate, emailValidate, flightValidate } from '@/utils/validate'
+import { identityCardValidate, userNameValidate, enterpriseNameValidate, phoneValidate, emailValidate, flightValidate, isAndroid } from '@/utils/validate'
 import { platid, refId } from '@/utils/config'
 import * as order from '@/services/order'
 import * as other from '@/services/other'
@@ -690,6 +729,7 @@ export default {
         IndexList,
         IndexSection,
         Cell,
+        Icon
     },
     data() {
         return {
@@ -834,6 +874,8 @@ export default {
                     emailErrMsg: '',
                 }
             },
+            isShowOcr: false,
+            ocrShow: !isAndroid(),
             // 被保人信息
             insurants: [],
             insurantNum: 0, // 被保人总数
@@ -883,6 +925,8 @@ export default {
                 this.insurantMin = data.restricPersonNum ? 1 : 0;
                 this.afreshData = await this.initAfresh();
                 this.initStartTime();
+            }else if(code === '1001'){
+                location.href = '/login';
             }
             this.initShowFields({ isEnterprise, isSingle, isMass });
         },
@@ -896,6 +940,8 @@ export default {
             if(code === '0000'){
                 this.isAgreement = true;
                 return data;
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 return null;
             }
@@ -1113,6 +1159,8 @@ export default {
             const { code, data } = res;
             if(code === '0000'){
                 this.airports = data;
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 this.airports = [];
             }
@@ -1125,6 +1173,8 @@ export default {
             const { code, data } = res;
             if(code === '0000'){
                 return data;
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 return null;
             }
@@ -1138,6 +1188,8 @@ export default {
             const { code, data } = res;
             if(code === '0000'){
                 return data;
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 return null;
             }
@@ -1255,13 +1307,22 @@ export default {
         },
 
         // ocr 识别证件信息
-        async getOCR(index) {
-            this.$refs.ocrImg[index].click();
+        getOCR(index) {
+            if(index === -1){
+                this.$refs.ocrHolderImg.click();
+            }else{
+                this.$refs.ocrImg[index].click();
+            }
         },
 
         async getFile(index) {
             this.$indicator.open('识别中...');
-            let file = this.$refs.ocrImg[index];
+            let file;
+            if(index === -1){
+                file = this.$refs.ocrHolderImg;
+            }else{
+                file = this.$refs.ocrImg[index];
+            }
             let imgList = await getImg(file);
             if(!imgList || !imgList[0]) return false;
             const res = await other.ocr({ photoContent: imgList[0] });
@@ -1270,10 +1331,120 @@ export default {
             if(code === '0000'){
                 this.getOcrInfo(index, data);
                 this.updateChoose();
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 this.$toast('识别失败，请重新上传身份证或护照')
             }
-            this.$refs.ocrImg[index].value = '';
+            if(index === -1){
+                this.$refs.ocrHolderImg.value = '';
+            }else{
+                this.$refs.ocrImg[index].value = '';
+            }
+        },
+
+        getOCRs(type) {
+            if(type === 'idCard'){
+                this.$refs.ocrIdCard.click();
+            }else if(type === 'passport'){
+                this.$refs.ocrPassport.click();
+            }
+        },
+
+        async getFiles(type) {
+            this.$indicator.open('识别中...');
+            let file;
+            if(type === 'idCard'){
+                file = this.$refs.ocrIdCard;
+            }else if(type === 'passport'){
+                file = this.$refs.ocrPassport;
+            }
+            let imgList = await getImg(file, true);
+            if(!imgList || !imgList[0]) return false;
+            if(type === 'idCard'){
+                this.$refs.ocrIdCard.value = '';
+            }else if(type === 'passport'){
+                this.$refs.ocrPassport.value = '';
+            }
+            if(imgList.length > 5){
+                this.$indicator.close();
+                this.$toast('一次最多识别5张照片');
+                // this.$toast({ message: '一次最多识别5张照片', duration: 1000000 });
+                return false;
+            }
+            const { initIns, flag } = this.getOcrValidate();
+            if(!flag){
+                this.$indicator.close();
+                this.alertShow = true;
+                this.alertText = `被保人人数已经满了，不可再添加了`;
+                return false;
+            }
+            let res;
+            if(type === 'idCard'){
+                res = await other.ocrIdCard({ photos: imgList });
+            }else if(type === 'passport'){
+                res = await other.ocrPassport({ photos: imgList });
+            }
+            this.$indicator.close();
+            this.getOcrInfos(res, initIns);
+        },
+
+        getOcrValidate() {
+            const insurants = this.insurants;
+            let initIns = -1, flag = true;
+            for(let i = 0; i < insurants.length; i++){
+                const { name, cardNo, birthday } = insurants[i];
+                if(!(name || cardNo || birthday)){
+                    if(i < this.insurantMin){
+                        initIns = i;
+                    }else{
+                        insurants.splice(i, 1);
+                    }
+                }
+            }
+            if(insurants.length >= this.insurantNum){
+                flag = false;
+            }
+            if(initIns === -1){
+                initIns = insurants.length;
+            }
+            return { initIns, flag };
+        },
+
+        getOcrInfos(data, initIns) {
+            const { insurant } = this.DATA;
+            let list = [], sNum = 0, fNum = 0, addNum = initIns >= this.insurants.length ? this.insurantNum - this.insurants.length : this.insurantNum - initIns;
+            data = data || [];
+            data.map((item, index) => {
+                if(item['falg']){
+                    sNum++;
+                    list.push(item);
+                }else{
+                    fNum++;
+                }
+            })
+            if(list.length > addNum){
+                this.alertShow = true;
+                this.alertText = `本产品被保人只支持${this.insurantNum}人，识别出的人数超过了被保人人数，只能添加 ${addNum}个`;
+            }else{
+                if(sNum === data.length){
+                    this.$toast('识别成功');
+                }else{
+                    this.alertShow = true;
+                    this.alertText = `${sNum}张识别成功，${fNum}张识别失败,请重新上传清晰的身份证/护照照片`;
+                }
+            }
+            
+            list.map((item, index) => {
+                if(index < addNum){
+                    if(initIns > this.insurantMin - 1){
+                        this.insurants.push(clone(insurant));
+                    }
+                    this.getOcrInfo(initIns, item);
+                    initIns++;
+                }
+            })
+            this.updateChoose();
         },
 
         // 处理数据
@@ -1305,9 +1476,11 @@ export default {
                     name,
                     cardNo,
                     birthday,
-                    defaultBirthday: birthday,
                     genderType: gender,
                 })
+                if(birthday){
+                    Object.assign(person, {defaultBirthday: birthday})
+                }
             }else{
                 const insurant = this.insurants[index];
                 if(cardType && insurant.cardTypeShow && insurant.cardType){
@@ -1334,8 +1507,10 @@ export default {
                     name,
                     cardNo,
                     birthday,
-                    defaultBirthday: birthday,
                 })
+                if(birthday){
+                    Object.assign(this.insurants[index], {defaultBirthday: birthday})
+                }
             }
         },
 
@@ -1356,11 +1531,21 @@ export default {
                 selectDate = new Date().add('days', delayDays).format('yyyy-MM-dd')
             }
             const detailData = getSessionStore('detailData');
-            const { maxPeriod, maxPeriodUnit } = detailData;
+            const { maxPeriod, maxPeriodUnit, minAge, minAgeUnit, maxAge, maxAgeUnit } = detailData;
             let startStr, endStr, startTemp, endTemp, selectTime;
             selectTime = new Date(selectDate.replace(/-/g, '/'));
             startStr = selectTime.format('yyyy年MM月dd日');
             startTemp = selectTime.format('yyyy-MM-dd');
+
+            const { birthday } = this.DATA;
+            const { startDate, endDate } = dateRange(minAgeUnit, minAge, maxAgeUnit, maxAge, selectDate);
+            birthday.start = startDate;
+            birthday.startTime = new Date(startDate.replace(/-/g, '/'));
+            birthday.end = endDate;
+            birthday.endTime = new Date(endDate.replace(/-/g, '/'));
+            let def = birthday.default || endDate;
+            def = new Date(def.replace(/-/g, '/')).getTime() < new Date(endDate.replace(/-/g, '/')).getTime() ? def : endDate;
+            birthday.default = def;
 
             if(maxPeriodUnit == 'O'){
                 endStr = '终身保障';
@@ -1482,6 +1667,9 @@ export default {
                 person.gender['code'] = gender['code'];
                 person.gender['dec'] = gender['dec'];
                 person.gender.pickers[0].value = gender.pickers[0].value;
+            }
+            if(genderShow && gender){
+                Object.assign(this.holder.person, { genderType: gender['code'] })
             }
             Object.assign(this.holder.person, {
                 name: insurant.name,
@@ -1632,41 +1820,6 @@ export default {
             return insurant;
         },
 
-        mtDateTimeConfirm(value) {
-            let index = this.mtDateIndex;
-            let date = value.format('yyyy-MM-dd');
-            console.log(date, value)
-            // 起保时间
-            if(index === -1){
-                this.startTimeChange(date);
-                if(value.isBetween(this.startTime['start'], this.startTime['end'])){
-                    this.startTimeChange(date);
-                }else{
-                    this.startTime['value'] = date;
-                    this.startTime['errMsg'] = '起保时间不在承保范围内，请重新选择';
-                }
-                return;
-            }
-            if(index === -3){
-                this.holder.person.birthday = date;
-                if(value.age() < 18){
-                    this.holder.person.birthdayErrMsg = '投保人年龄不满18周岁不符合投保要求';
-                }
-                return;
-            }
-            // 被保人
-            {
-                this.insurants[index].birthday = date;
-                this.insurants[index].defaultBirthday = value;
-                const { start, end } = this.DATA.birthday;
-                if(!value.isBetween(start, end)){
-                    this.insurants[index].birthdayErrMsg = '被保人年龄不符合投保要求';
-                }else{
-                    this.updateChoose();
-                }
-            }
-        },
-
         // picker 取消
         cancelPickerHandler(index, type) {
             if(type === 'insure'){
@@ -1802,6 +1955,27 @@ export default {
                     cardType.code = arr[value].paramCode;
                     cardType.activeIndex = Number(value)
                     cardType.isShowPicker = false;
+                    if(cardType.dec === '身份证'){
+                        const { person } = this.holder.person;
+                        if(identityCardValidate(person.cardNo)){
+                            let { birthday, gender } = idCardInfo(person.cardNo);
+                            person.birthday = birthday;
+                            person.defaultBirthday = birthday;
+                            person.genderType = gender;
+                            if(person.genderShow && person.gender){
+                                person.gender.arr.map((item, index) => {
+                                    if(item['paramCode'] == gender){
+                                        person.gender.activeIndex = index;
+                                        person.gender.code = item['paramCode'];
+                                        person.gender.dec = item['paramDesc'];
+                                        person.gender.pickers[0].value = index.toString();
+                                    }
+                                })
+                            }
+                            person.birthdayErrMsg = ''
+                            person.genderErrMsg = ''
+                        }
+                    }
                     return false;
                 }
                 if(type === 'gender'){
@@ -1853,6 +2027,27 @@ export default {
                     cardType.code = arr[value].paramCode;
                     cardType.activeIndex = Number(value)
                     cardType.isShowPicker = false;
+                    if(cardType.dec === '身份证'){
+                        let insurant = this.insurants[index];
+                        if(identityCardValidate(insurant.cardNo)){
+                            let { birthday, gender } = idCardInfo(insurant.cardNo);
+                            insurant.birthday = birthday;
+                            insurant.defaultBirthday = birthday;
+                            insurant.genderType = gender;
+                            if(insurant.genderShow && insurant.gender){
+                                insurant.gender.arr.map((item, index) => {
+                                    if(item['paramCode'] == gender){
+                                        insurant.gender.activeIndex = index;
+                                        insurant.gender.code = item['paramCode'];
+                                        insurant.gender.dec = item['paramDesc'];
+                                        insurant.gender.pickers[0].value = index.toString();
+                                    }
+                                })
+                            }
+                            insurant.birthdayErrMsg = ''
+                            insurant.genderErrMsg = ''
+                        }
+                    }
                     return false;
                 }
                 if(type === 'gender'){
@@ -1879,10 +2074,6 @@ export default {
                     return false;
                 }
             }
-
-
-
-            // this.updateChoose(index, parseInt(value));
         },
 
         // 关闭弹框
@@ -1982,6 +2173,7 @@ export default {
                             let { birthday, gender } = idCardInfo(person.cardNo);
                             person.birthday = birthday;
                             person.defaultBirthday = birthday;
+                            person.genderType = gender;
                             if(person.genderShow && person.gender){
                                 person.gender.arr.map((item, index) => {
                                     if(item['paramCode'] == gender){
@@ -2228,6 +2420,7 @@ export default {
         // 验证被保人信息
         getInsurantValidate(index) {
             let flag = true;
+            let number = this.insurants.length;
             const { relation, name, cardType, cardNo, birthday, gender } = this.insurants[index];
             const { relationShow, cardTypeShow, genderShow } = this.insurants[index];
             const { start, end } = this.DATA.birthday;
@@ -2274,9 +2467,12 @@ export default {
                 this.insurants[index].birthdayErrMsg = '被保人年龄不符合投保要求';
                 if(this.holder.type === 'appoint' && relation.dec === '本人'){
                     this.alertShow = true;
-                    this.alertText = `被保人${index + 1}年龄不符合投保要求`;
-                    flag = false;
+                    this.alertText = `被保人${number > 1 ? index + 1 : ''}年龄不符合投保要求`;
+                }else if(cardType.dec === '身份证'){
+                    this.alertShow = true;
+                    this.alertText = `被保人${number > 1 ? index + 1 : ''}年龄不符合投保要求`;
                 }
+                flag = false;
             }
             if(genderShow && gender){
                 const { dec } = gender;
@@ -2639,10 +2835,13 @@ export default {
             // console.log(JSON.stringify(submitDATA))
             const res = await order.add(submitDATA);
             const { code, data, message } = res;
+            console.log(code)
             if(code === '0000'){
                 const { orderCode } = data;
-                location.href = `/pay/${orderCode}`
+                location.href = `/orderPay/${orderCode}`
                 // this.$router.push({ path: `/pay/${orderCode}` });
+            }else if(code === '1001'){
+                location.href = '/login';
             }else{
                 this.alertShow = true;
                 this.alertText = message;

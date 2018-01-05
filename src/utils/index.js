@@ -441,8 +441,11 @@ export const getBase64 = (file) => {
 export const getImg = async function(file, multiple) {
     let imgList = [];
     if(multiple){
-        let img = await getBase64(file.files[0]);
-        // debugger
+        let files = file.files;
+        for(let i = 0; i < files.length; i++){
+            let img = await getBase64(files[i]);
+            imgList.push(img);
+        }
     }else{
         let img = await getBase64(file.files[0]);
         imgList.push(img);

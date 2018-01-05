@@ -36,3 +36,27 @@ export const ocr = (params) => {
         data: params
     })
 }
+
+/**
+ * ocr批量识别身份证
+ * @param {*} params 
+ */
+export const ocrIdCard = (params) => {
+    return request({
+        url: `${APIV1}/ocrIdCard`,
+        method: 'post',
+        data: params
+    })
+}
+
+/**
+ * ocr批量识别护照
+ * @param {*} params 
+ */
+export const ocrPassport = (params) => {
+    return request({
+        url: `${APIV1}/ocrPassport`,
+        method: 'post',
+        data: params
+    })
+}
