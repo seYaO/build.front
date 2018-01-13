@@ -13,8 +13,13 @@
 </template>
 
 <style lang="less">
-@import './style.less';
+// @import './style.less';
 </style>
+
+<style lang="scss">
+@import './style.scss';
+</style>
+
 
 <script>
 import { cssPrefix } from '@/utils/variable'
@@ -38,6 +43,9 @@ export default {
         cellType: {
             type: String,
             default: ''
+        },
+        index: {
+            type: [Number, Object]
         }
     },
     data() {
@@ -55,7 +63,7 @@ export default {
             if (this.href) {
                 location.href = this.href
             }
-            this.$emit('click', e, this.title, this.cellType)
+            this.$emit('click', e, this.title, this.cellType, this.index)
         }
     }
 }

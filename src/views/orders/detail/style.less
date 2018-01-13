@@ -55,6 +55,12 @@
         .name {
             width: 220px;
             color: #999;
+            flex-shrink: 0;
+            +div{
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
         }
         .content {
             flex-grow: 1;

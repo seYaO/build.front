@@ -1,6 +1,6 @@
 .order {
-    .v-indexlist-navitem{
-      font-size:24px;
+    .v-indexlist-navitem {
+        font-size: 24px;
     }
     padding-bottom: 100px;
     .top {
@@ -46,8 +46,11 @@
                     color: #666;
                 }
                 &val {
-                    padding-right: 0;
+                    // padding-right: 0;
                     text-align: left;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
                 }
             }
         }
@@ -160,10 +163,10 @@
             }
         }
     }
-    .ocr{
-        .picker-val{
+    .ocr {
+        .picker-val {
             padding-right: 0;
-            span{
+            span {
                 display: inline-block;
                 vertical-align: middle;
                 padding: 0 10px;
@@ -176,16 +179,16 @@
                 border-radius: 5px;
             }
         }
-        .txt{
+        .txt {
             font-size: 28px;
             justify-content: center;
-            span{
+            span {
                 color: #00a5f0;
                 text-decoration: underline;
             }
         }
-        &-popup{
-            .title{
+        &-popup {
+            .title {
                 margin: 0 30px;
                 padding: 30px 0;
                 font-size: 38px;
@@ -193,7 +196,7 @@
                 text-align: center;
                 border-bottom: 1PX dashed #ddd;
             }
-            .tit{
+            .tit {
                 margin-top: 30px;
                 display: inline-block;
                 font-size: 30px;
@@ -203,19 +206,19 @@
                 border-bottom-right-radius: 30px;
                 background-color: #00a5f0;
             }
-            .txt{
+            .txt {
                 padding: 0 30px;
                 margin-top: 30px;
-                p{
+                p {
                     font-size: 26px;
                     margin-bottom: 20px;
                 }
-                img{
+                img {
                     display: block;
                     width: 100%;
                 }
             }
-            .icon{
+            .icon {
                 margin: 28px auto;
                 width: 70px;
                 height: 70px;
@@ -223,7 +226,7 @@
                 text-align: center;
                 background-color: #efefef;
                 border-radius: 70px;
-                .v-iconfont{
+                .v-iconfont {
                     font-size: 32px;
                     color: #999;
                 }
@@ -234,8 +237,9 @@
         padding: 0;
         padding-bottom: 20px;
         color: #f63;
-        span{
-            font-size: 28px;;
+        span {
+            font-size: 28px;
+            ;
         }
     }
     .nothing {
@@ -286,6 +290,67 @@
         }
         .gra {
             color: #999;
+        }
+    }
+    .v-cell {
+        padding-left: 0;
+        margin-left: 30px;
+    }
+    .v-cell-bd {
+        margin-right: 20px;
+        .checked {
+            color: #00a5f0;
+        }
+    }
+    .v-cell-ft {
+        margin-right: 30px;
+    }
+    .v-indexlist-wrapper {
+        margin-bottom: 130px;
+        .v-iconfont {
+            color: #00a5f0;
+        }
+    }
+    .des {
+        width: 100%;
+        height: 90px;
+        overflow: hidden;
+        &-navbar {
+            padding: 20px 30px;
+            overflow: scroll;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+        }
+        span {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 0 20px;
+            margin-right: 10px;
+            height: 50px;
+            line-height: 50px;
+            font-size: 26px;
+            color: #00a5f0;
+            border: 1PX solid #00a5f0;
+            &::after {
+                margin-left: 5px;
+                font-family: "v-iconfont" !important;
+                content: '\e641';
+                font-size: 26px;
+            }
+        }
+        &-btn {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            padding: 20px 40px;
+            width: 100%;
+            font-size: 38px;
+            background-color: #fff;
+            box-sizing: border-box; // border-top: 1PX solid #ddd;
+            box-shadow: 0 0 20px #ddd;
+            button {
+                border-radius: 50px;
+            }
         }
     }
 }
@@ -349,7 +414,7 @@
         .name {
             width: 250px;
             color: #666;
-            + div{
+            +div {
                 width: 14em;
                 overflow: hidden;
                 white-space: nowrap;

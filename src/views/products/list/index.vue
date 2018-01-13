@@ -119,7 +119,7 @@ export default {
             this.list = [];
             this.tabIndex = index.toString();
             this.doneProductCurr(index)
-            this.getData(null, true);
+            // this.getData(null, true);
             this.loadingText = '加载中...';
         },
 

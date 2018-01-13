@@ -1,0 +1,56 @@
+@import '~styles/variable.scss';
+@import '~styles/mixins.scss';
+.#{$css-prefix} {
+    &indexlist {
+        &-wrapper {
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+        &-content {
+            margin: 0;
+            padding: 0;
+            overflow: auto;
+        }
+        &-nav {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            margin: 0;
+            text-align: center;
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        &-navlist {
+            padding: 0;
+            margin: 0;
+            list-style: none;
+            max-height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        &-navitem {
+            padding: 2PX 6PX;
+            font-size: 12PX;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+        &-indicator {
+            position: absolute;
+            width: 50PX;
+            height: 50PX;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            line-height: 50PX;
+            background-color: rgba(0, 0, 0, .7);
+            border-radius: 5PX;
+            color: #fff;
+            font-size: 22PX;
+        }
+    }
+}

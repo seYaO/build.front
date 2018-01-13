@@ -7,7 +7,7 @@ const routes = [
         name: 'Test',
         component(r) {
             require.ensure([], () => {
-                r(require('@/views/test'))
+                r(require('@/views/test/index'))
             }, 'test')
         }
     },
@@ -60,6 +60,16 @@ const routes = [
             require.ensure([], () => {
                 r(require('@/views/products/detail/index'))
             }, 'productDetail')
+        }
+    },
+    // c端--产品详情
+    {
+        path: '/product/cdetail/:id',
+        name: 'ProductCDetail',
+        component(r) {
+            require.ensure([], () => {
+                r(require('@/views/products/cdetail/index'))
+            }, 'ProductCDetail')
         }
     },
     // 保险须知

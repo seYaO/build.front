@@ -1,40 +1,37 @@
-.none{
+.none {
     display: none;
 }
 
-.registWrap{
+.registWrap {
     background: #fff;
-    .regist-cont{
+    .regist-cont {
         padding-bottom: 100px;
     }
-    .topImg{
+    .topImg {
         display: block;
         width: 100%;
     }
-
-    .infos{
+    .infos {
         padding: 60px 30px 0;
-
-        &.person{
-            .company-only{
+        &.person {
+            .company-only {
                 display: none;
             }
         }
-
-        .info-line{
+        .info-line {
             position: relative;
             margin-bottom: 25px;
         }
-        .label{
+        .label {
             width: 150px;
             float: left;
             font-size: 30px;
             color: #999;
             height: 68px;
-           line-height: 68px;
-           padding-right: 15px;
+            line-height: 68px;
+            padding-right: 15px;
         }
-        .inputBox{
+        .inputBox {
             float: left;
             width: 490px;
             height: 66px;
@@ -42,27 +39,27 @@
             line-height: 66px;
             border-radius: 8px;
             font-size: 30px;
-            border:1PX solid #ddd;
+            border: 1PX solid #ddd;
             position: relative;
-            &.small{
+            &.small {
                 width: 280px;
             }
         }
-        .fixInviteCode{
+        .fixInviteCode {
             float: left;
             width: 490px;
             height: 68px;
             line-height: 68px;
             font-size: 30px;
         }
-        .regist-check-box{
+        .regist-check-box {
             padding-left: 50px;
             height: 68px;
             line-height: 68px;
             float: left;
             position: relative;
             margin-right: 40px;
-            &::before{
+            &::before {
                 content: '';
                 display: block;
                 position: absolute;
@@ -73,19 +70,19 @@
                 left: 0;
                 top: 18px;
             }
-            &.regist-selected::before{
+            &.regist-selected::before {
                 background: url(../../../images/regist-checkbox-select.png) no-repeat;
                 background-size: 100%;
             }
         }
-        .graphCode{
+        .graphCode {
             display: block;
             width: 190px;
             height: 68px;
             margin-left: 15px;
             float: left;
         }
-        .getAuthCode{
+        .getAuthCode {
             display: block;
             width: 190px;
             height: 66px;
@@ -98,13 +95,13 @@
             font-size: 24px;
             text-align: center;
             border-radius: 8px;
-            &.resend{
+            &.resend {
                 background: #fff;
                 color: #666;
                 border: 1PX solid #e2e2e2;
             }
         }
-        .district-arrow{
+        .district-arrow {
             display: block;
             position: absolute;
             width: 48px;
@@ -115,44 +112,25 @@
             background-size: 100% 100%;
         }
     }
-
-    .submitBtn{
+    .submitBtn {
         width: 565px;
         height: 108px;
         background: url(../../../images/regist-submit.png) no-repeat;
         background-size: 100% 100%;
         margin: 0 auto 0 auto;
     }
-
-    .toast-wrap{
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        background: #000;
-        opacity: .5;
-    }
-
-    .v-toast-content{
-        width: 60%;
-    }
-    .v-confirm-body{
-        .tit{
+    .v-confirm-body {
+        .tit {
             font-size: 34px;
             margin-bottom: 10px;
         }
     }
-
-
-    .confirm-box{
+    .confirm-box {
         position: fixed;
         top: 50%;
         left: 50%;
-        -webkit-transform: translate3d(-50%,-50%,0);
-        transform: translate3d(-50%,-50%,0);
+        -webkit-transform: translate3d(-50%, -50%, 0);
+        transform: translate3d(-50%, -50%, 0);
         background-color: #fff;
         width: 70%;
         border-radius: 3px;
@@ -165,7 +143,7 @@
         transition: .2s;
         z-index: 1;
     }
-    .confirm-mask{
+    .confirm-mask {
         position: fixed;
         left: 0;
         top: 0;
@@ -174,22 +152,22 @@
         opacity: .5;
         background: #000;
     }
-    .confirm-head{
+    .confirm-head {
         padding: 25px 0 0;
         text-align: center;
         font-size: 32px;
         font-weight: 700;
         color: #333;
     }
-    .confirm-msg{
+    .confirm-msg {
         color: #999;
         text-align: center;
         line-height: 36px;
         font-size: 28px;
-        padding: 30px 0; 
+        padding: 30px 0;
         border-bottom: 1PX solid #ddd;
     }
-    .confirm-btn{
+    .confirm-btn {
         line-height: 70px;
         font-size: 28px;
         text-align: center;

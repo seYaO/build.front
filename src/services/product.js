@@ -36,3 +36,15 @@ export const detail = (params) => {
         data: params
     })
 }
+
+/**
+ * c端--详情
+ * @param {*} params 
+ */
+export const cdetail = (params) => {
+    return request({
+        url: `${APIV1}/productCdetail`,
+        method: 'get',
+        data: params
+    })
+}

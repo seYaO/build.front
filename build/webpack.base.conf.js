@@ -11,7 +11,7 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 // vux插件配置
-const vuxLoader = require('vux-loader')
+// const vuxLoader = require('vux-loader')
 
 // 给出正确的绝对路径
 function resolve(dir) {
@@ -40,12 +40,17 @@ const webpackConfig = {
     resolve: {
         // 自动 resolve 的扩展名
         extensions: ['.js', '.vue', '.json'],
+        modules: [
+            resolve('src'),
+            resolve('node_modules')
+        ],
         // 创建路径别名，有了别名之后引用模块更方便
         // 例如：import Vue from 'vue/dist/vue.esm.js'  可以写成  import Vue from 'vue'
         alias: {
             'vue$': 'vue/dist/vue.esm.js',
             '@': resolve('src'),
             'static': path.resolve(__dirname, '../static'),
+            'styles': resolve('src/styles'),
         }
     },
 
@@ -100,7 +105,9 @@ const webpackConfig = {
     }
 }
 
+module.exports = webpackConfig
+
 // 配置 vux-ui | duplicate-style 去除重复css代码
-module.exports = vuxLoader.merge(webpackConfig, {
-    plugins: ['vux-ui', 'duplicate-style']
-})
+// module.exports = vuxLoader.merge(webpackConfig, {
+//     plugins: ['vux-ui', 'duplicate-style']
+// })

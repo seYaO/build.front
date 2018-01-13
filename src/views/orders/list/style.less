@@ -27,6 +27,42 @@
 }
 
 .orderlist {
+    .top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 30px;
+        height: 200px;
+        width: 100%;
+        background: url(../../../images/order-top.jpg) 0 0 no-repeat;
+        box-sizing: border-box;
+        .info{
+            padding-top: 20px;
+            display: flex;
+            align-items: center;
+            font-size: 28px;
+            color: #fff;
+            >div{
+                margin-left: 30px;
+            }
+        }
+        .logo{
+            margin-left: 20px;
+            display: block;
+            width: 101px;
+            height: 101px;
+        }
+        .quit{
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            font-size: 24px;
+            color: #fff;
+            background-color: #0095da;
+            border-radius: 40px;
+        }
+    }
     .item {
         margin: 20px 15px 0 15px;
         background-color: #fff;
@@ -67,7 +103,7 @@
                     font-size: 24px;
                     line-height: 1.4;
                     color: #999;
-                    width:500px;
+                    width: 500px;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
@@ -112,5 +148,14 @@
                 }
             }
         }
+    }
+    .yo-scroll {
+        top: 288px;
+    }
+    .v-popup{
+        text-align: center;
+    }
+    .v-actionsheet-inner{
+        font-size: 36px;
     }
 }

@@ -34,6 +34,10 @@
                     <div class="name">到达机场</div>
                     <div>{{data['arriveAirportName']}}</div>
                 </div>
+                <div class="list" v-if="data['destinationView']">
+                    <div class="name">出行目的地</div>
+                    <div>{{data['destinationView']}}</div>
+                </div>
                 <div class="list" v-if="data['tourGroupCode']">
                     <div class="name">旅行团号</div>
                     <div>{{data['tourGroupCode']}}</div>

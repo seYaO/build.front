@@ -4,14 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import store from './store'
-import Mint from 'mint-ui'
-import 'mint-ui/lib/style.css';
-// import 'lib-flexible'
+// import Mint from 'mint-ui'
+import { install as UI } from './components/index'
 
 // 将此值设置为 false ,会关闭 Vue 启动时的提示信息，推荐
 Vue.config.productionTip = false
 
-Vue.use(Mint)
+// Vue.use(Mint)
+Vue.use(UI)
 
 // const VConsole = require('vconsole');
 // let vConsole = new VConsole();

@@ -1,9 +1,9 @@
 <template>
 <div :class="classes">
-    <ul :class="cssPrefix + 'indexlist-content'" ref="content" :style="{ 'height': currentHeight + 'px', 'margin-right': navWidth + 'px'}">
+    <ul :class="cssPrefix + 'indexlist-content'" ref="content" :style="{ 'height': currentHeight + 'px', 'margin-right': '0px'}">
         <slot></slot>
     </ul>
-    <div :class="cssPrefix + 'indexlist-nav'" @touchstart="handleTouchStart" ref="nav">
+    <div :class="cssPrefix + 'indexlist-nav'" @touchstart="handleTouchStart" ref="nav" :style="{ 'height': currentHeight - buttonHeight + 'px'}">
         <ul :class="cssPrefix + 'indexlist-navlist'">
             <li :class="cssPrefix + 'indexlist-navitem'" v-for="(item, index) in sections" :key="index">{{item.index}}</li>
         </ul>
@@ -13,8 +13,13 @@
 </template>
 
 <style lang="less">
-@import './style.less';
+// @import './style.less';
 </style>
+
+<style lang="scss">
+@import './style.scss';
+</style>
+
 
 <script>
 import { cssPrefix } from '@/utils/variable'
@@ -29,6 +34,10 @@ export default {
         showIndicator: {
             type: Boolean,
             default: true
+        },
+        buttonHeight: {
+            type: Number,
+            default: 0
         }
     },
     data() {

@@ -75,7 +75,7 @@
         <template v-if="startAirport['isShow']">
             <div class="rowLine"></div>
             <div class="picker-line">
-                <div class="picker-row picker-order" @click="startAirport['showPopup'] = true; startAirport['errMsg'] = ''">
+                <div class="picker-row picker-order" @click="startAirport['showPopup'] = true; startAirport['errMsg'] = '';">
                     <div class="picker-name">出发机场</div>
                     <div class="picker-val" v-if="startAirport['value']">{{startAirport['value']}}</div>
                     <div class="picker-val picker-choose" v-else>请选择出发机场</div>
@@ -86,8 +86,9 @@
                     <search :value="searchValue" :showHeader="false" placeholder="请输入（如上海虹桥机场）" @input="inputSearchHandler" @on-change="inputSearchHandler"></search>
                     <index-list v-if="airports && airports.length > 0">
                         <index-section v-for="(item, index) in airports" :key="index" :index="item.initial">
-                            <cell v-for="(_item, _index) in item.cells" :key="_index" :title="_item" :cellType="'startAirport'" :arrow="false" @click="clickHandler">
-                                <div slot="title">{{_item['name']}}</div>
+                            <cell v-for="(_item, _index) in item.cells" :key="_index" :title="_item" :_index="_index" :cellType="'startAirport'" :arrow="false" @click="clickHandler">
+                                <div slot="title" :class="{ checked: _item['code'] === startAirport['code'] }">{{_item['name']}}</div>
+                                <div slot="value" v-if="_item['code'] === startAirport['code']"><icon>&#xe632;</icon></div>
                             </cell>
                         </index-section>
                     </index-list>
@@ -102,7 +103,7 @@
         <template v-if="arriveAirport['isShow']">
             <div class="rowLine"></div>
             <div class="picker-line">
-                <div class="picker-row picker-order" @click="arriveAirport['showPopup'] = true; arriveAirport['errMsg'] = ''">
+                <div class="picker-row picker-order" @click="arriveAirport['showPopup'] = true; arriveAirport['errMsg'] = '';">
                     <div class="picker-name">到达机场</div>
                     <div class="picker-val" v-if="arriveAirport['value']">{{arriveAirport['value']}}</div>
                     <div class="picker-val picker-choose" v-else>请选择到达机场</div>
@@ -114,13 +115,55 @@
                     <index-list v-if="airports && airports.length > 0">
                         <index-section v-for="(item, index) in airports" :key="index" :index="item.initial">
                             <cell v-for="(_item, _index) in item.cells" :key="_index" :title="_item" :cellType="'arriveAirport'" :arrow="false" @click="clickHandler">
-                                <div slot="title">{{_item['name']}}</div>
+                                <div slot="title" :class="{ checked: _item['code'] === arriveAirport['code'] }">{{_item['name']}}</div>
+                                <div slot="value" v-if="_item['code'] === arriveAirport['code']"><icon>&#xe632;</icon></div>
                             </cell>
                         </index-section>
                     </index-list>
                     <div class="nothing" v-else>
                         <div class="img"></div>
                         <div class="tip">非常抱歉！没有符合查询条件的机场~</div>
+                    </div>
+                </popup>
+            </div>
+        </template>
+        <!-- 出行目的地 -->
+        <template v-if="destination['isShow']">
+            <div class="rowLine"></div>
+            <div class="picker-line">
+                <div class="picker-row picker-order" @click="selectDesHandler">
+                    <div class="picker-name">出行目的地</div>
+                    <div class="picker-val" v-if="destination['value']">{{destination['value']}}</div>
+                    <div class="picker-val picker-choose" v-else>请选择出行目的地</div>
+                    <div class="arrow arrow-right"></div>
+                </div>
+                <div class="errMsg" :class="{ hidden: !destination['errMsg'] }"><i class="warn">!</i><span>{{destination['errMsg']}}</span></div>
+                <popup direction="right" :full="true" :open="destination['showPopup']" @on-close="cancelPopupHandler('destination')">
+                    <search :value="desSearchValue" :showHeader="false" placeholder="请输入出行目的地" @input="inputDesSearchHandler" @on-change="inputDesSearchHandler"></search>
+                    <template v-if="destinations && destinations.length > 0">
+                        <index-list :buttonHeight="120">
+                            <li class="v-indexsection" v-if="destinationSelect && destinationSelect.length > 0">
+                                <p class="v-indexsection-index">我的选择</p>
+                                <div class="des">
+                                    <div class="des-navbar">
+                                        <span v-for="(_item, _index) in destinationSelect" :key="_index" @click="cancelSelect(_index)">{{_item['name']}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                            <index-section v-for="(item, index) in destinations" :key="index" :index="item.initial">
+                                <cell v-for="(_item, _index) in item.cells" :key="_index" :title="_item" :index="{index, _index}" :cellType="'destination'" :arrow="false" @click="clickHandler">
+                                    <div slot="title" :class="{ checked: _item['checked'] }">{{_item['name'] + _item['code']}}</div>
+                                    <div slot="value" v-if="_item['checked']"><icon>&#xe632;</icon></div>
+                                </cell>
+                            </index-section>
+                        </index-list>
+                        <div class="des-btn">
+                            <x-button type="primary" @on-click="desBtnClick">确定</x-button>
+                        </div>
+                    </template>
+                    <div class="nothing" v-else>
+                        <div class="img"></div>
+                        <div class="tip">非常抱歉！没有找到符合条件的国家或地区~</div>
                     </div>
                 </popup>
             </div>
@@ -521,10 +564,7 @@
         </div>
     </section>
     <!-- 客户告知书 -->
-    <div class="agreement">
-        <div class="check"><i :class="{ curr: isAgreement }" @click="changeAgreement"></i></div>
-        <div class="info">已阅读并了解<span class="link" @click="linkHandler('clause')">保险条款</span>、<span class="link" @click="linkHandler('instruction')">保险须知</span>、<span class="link" @click="linkHandler('inform')">客户告知书</span>。<span class="gra">此产品销售服务方为：天圆地方（北京）保险代理有限公司</span></div>
-    </div>
+    <order-agreement :isAgreement="isAgreement" @on-agreement="changeAgreement"></order-agreement>
     <!--  -->
     <order-bottom :content="'立即投保'" :showOrderBottom="true" :totalFee="totalFee" :actualPayFee="actualPayFee" @on-insure="insureHandler"></order-bottom>
     <!-- alert -->
@@ -533,170 +573,7 @@
     <confirm :open="confirmShow" @on-close="confirmShow = false" @on-confirm="confirmHandler">{{confirmText}}</confirm>
     <!-- 确认页 -->
     <popup class="sure" direction="right" :full="true" :open="isShowSure" @on-close="cancelSureHandler">
-        <div class="content" v-if="submitDATA">
-            <div class="top">
-                <div class="tit">{{initData.title}}</div>
-                <div class="txt">{{initData.dec}}</div>
-            </div>
-            <dl v-if="submitDATA.base">
-                <dt class="tit">
-                    <div>基本信息</div>
-                </dt>
-                <dd>
-                    <div class="list">
-                        <div class="name">保障期限：</div>
-                        <div>{{submitDATA.base.startTimeStr}}</div>
-                    </div>
-                    <div class="list" v-if="submitDATA.base.tourGroup">
-                        <div class="name">旅行团号：</div>
-                        <div>{{submitDATA.base.tourGroup}}</div>
-                    </div>
-                    <div class="list" v-if="submitDATA.base.flight">
-                        <div class="name">航班号：</div>
-                        <div>{{submitDATA.base.flight}}</div>
-                    </div>
-                    <div class="list" v-if="submitDATA.base.startAirport">
-                        <div class="name">出发机场：</div>
-                        <div>{{submitDATA.base.startAirportName}}</div>
-                    </div>
-                    <div class="list" v-if="submitDATA.base.arriveAirport">
-                        <div class="name">到达机场：</div>
-                        <div>{{submitDATA.base.arriveAirportName}}</div>
-                    </div>
-                    <div class="list">
-                        <div class="name">投保份数：</div>
-                        <div>{{submitDATA.base.qty}}</div>
-                    </div>
-                    <div class="list">
-                        <div class="name">总保费：</div>
-                        <div>&yen;{{submitDATA.base.totalFee}}</div>
-                    </div>
-                    <div class="list" v-if="submitDATA.base.discountPrice">
-                        <div class="name">优惠金额：</div>
-                        <div>-&yen;{{submitDATA.base.discountPrice}}</div>
-                    </div>
-                </dd>
-            </dl>
-            <template v-if="submitDATA.holder">
-                <dl v-if="submitDATA.holder.type === 'enterprise'">
-                    <dt class="tit yellow">
-                        <div>企业投保人信息</div>
-                    </dt>
-                    <dd v-if="submitDATA.holder.enterprise">
-                        <div class="list">
-                            <div class="name">企业投保人姓名：</div>
-                            <div>{{submitDATA.holder.enterprise.name}}</div>
-                        </div>
-                        <div class="list">
-                            <div class="name">企业证件类型：</div>
-                            <div>{{submitDATA.holder.enterprise.cardTypeDec}}</div>
-                        </div>
-                        <div class="list">
-                            <div class="name">企业证件号：</div>
-                            <div>{{submitDATA.holder.enterprise.cardNo}}</div>
-                        </div>
-                        <div class="list">
-                            <div class="name">企业手机号码：</div>
-                            <div>{{submitDATA.holder.enterprise.phone}}</div>
-                        </div>
-                        <div class="list">
-                            <div class="name">企业电子邮箱：</div>
-                            <div>{{submitDATA.holder.enterprise.email}}</div>
-                        </div>
-                    </dd>
-                </dl>
-                <dl v-else>
-                    <dt class="tit yellow">
-                        <div>投保人信息</div>
-                    </dt>
-                    <dd v-if="submitDATA.holder.person">
-                        <div class="list">
-                            <div class="name">投保人姓名：</div>
-                            <div>{{submitDATA.holder.person.name}}</div>
-                        </div>
-                        <div class="list" v-if="submitDATA.holder.person.cardTypeDec">
-                            <div class="name">证件类型：</div>
-                            <div>{{submitDATA.holder.person.cardTypeDec}}</div>
-                        </div>
-                        <div class="list">
-                            <div class="name">证件号：</div>
-                            <div>{{submitDATA.holder.person.cardNo}}</div>
-                        </div>
-                        <template v-if="submitDATA.holder.person.cardTypeDec !== '身份证'">
-                            <div class="list">
-                                <div class="name">出生日期：</div>
-                                <div>{{submitDATA.holder.person.birthday}}</div>
-                            </div>
-                            <div class="list" v-if="submitDATA.holder.person.genderDec">
-                                <div class="name">性别：</div>
-                                <div>{{submitDATA.holder.person.genderDec}}</div>
-                            </div>
-                        </template>
-                        <div class="list">
-                            <div class="name">手机号码：</div>
-                            <div>{{submitDATA.holder.person.phone}}</div>
-                        </div>
-                        <div class="list" v-if="submitDATA.holder.person.email">
-                            <div class="name">电子邮箱：</div>
-                            <div>{{submitDATA.holder.person.email}}</div>
-                        </div>
-                    </dd>
-                </dl>
-            </template>
-            <dl v-if="submitDATA.insurants" v-for="(item, index) in submitDATA.insurants" :key="index">
-                <dt class="tit">
-                    <div>被保人信息{{submitDATA.insurants.length > 1 ? index + 1 : ''}}</div>
-                </dt>
-                <dd>
-                    <div class="list" v-if="item['relationDec']">
-                        <div class="name">您是被保人的谁：</div>
-                        <div>{{item['relationDec']}}</div>
-                    </div>
-                    <div class="list">
-                        <div class="name">被保人姓名：</div>
-                        <div>{{item['name']}}</div>
-                    </div>
-                    <div class="list" v-if="item['cardTypeDec']">
-                        <div class="name">证件类型：</div>
-                        <div>{{item['cardTypeDec']}}</div>
-                    </div>
-                    <div class="list">
-                        <div class="name">证件号：</div>
-                        <div>{{item['cardNo']}}</div>
-                    </div>
-                    <template v-if="item['cardTypeDec'] !== '身份证'">
-                        <div class="list">
-                            <div class="name">出生日期：</div>
-                            <div>{{item['birthday']}}</div>
-                        </div>
-                        <div class="list" v-if="item['genderDec']">
-                            <div class="name">性别：</div>
-                            <div>{{item['genderDec']}}</div>
-                        </div>
-                    </template>
-                    <div class="list">
-                        <div class="name">保费：</div>
-                        <div>&yen;{{item['price']}}</div>
-                    </div>
-                </dd>
-            </dl>
-            <dl>
-                <dt class="tit yellow">
-                    <div>受益人信息</div>
-                </dt>
-                <dd>
-                    <div class="list">
-                        <div class="name">受益人类型</div>
-                        <div>法定受益人</div>
-                    </div>
-                </dd>
-            </dl>
-            <!-- 客户告知书 -->
-            <div class="agreement">
-                <div class="check"><i :class="{ curr: true }"></i></div>
-                <div class="info">已阅读并了解<span class="link" @click="linkHandler('clause')">保险条款</span>、<span class="link" @click="linkHandler('instruction')">保险须知</span>、<span class="link" @click="linkHandler('inform')">客户告知书</span>。<span class="gra">此产品销售服务方为：天圆地方（北京）保险代理有限公司</span></div>
-            </div>
-        </div>
+        <order-sure :init="initData" :data="submitDATA"></order-sure>
         <order-bottom :content="'提交订单'" :showOrderBottom="true" :totalFee="totalFee" :actualPayFee="actualPayFee" @on-insure="submitHandler"></order-bottom>
     </popup>
 </div>
@@ -709,7 +586,9 @@
 
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-import { Alert, Confirm, Popup, PopupPicker, DatetimePicker, Search, OrderBottom, IndexList, IndexSection, Cell, Icon } from '@/components'
+import { XButton, Alert, Confirm, Popup, PopupPicker, DatetimePicker, Search, OrderBottom, IndexList, IndexSection, Cell, Icon } from '@/components'
+import OrderAgreement from './order-agreement'
+import OrderSure from './order-sure'
 import { clone, dateRange, idCardInfo, timeTypes, getPrice, setSessionStore, getSessionStore, getLocalStore, getImg } from '@/utils'
 import { identityCardValidate, userNameValidate, enterpriseNameValidate, phoneValidate, emailValidate, flightValidate, isAndroid } from '@/utils/validate'
 import { platid, refId } from '@/utils/config'
@@ -719,7 +598,10 @@ import * as user from '@/services/user'
 
 export default {
     components: {
+        OrderAgreement,
+        OrderSure,
         OrderBottom,
+        XButton,
         Alert,
         Confirm,
         Popup,
@@ -752,6 +634,7 @@ export default {
             startTime: {
                 isShow: true, // 是否可以筛选
                 value: '',
+                valueEnd: '',
                 default: '',
                 showPicker: false,
                 str: '',
@@ -790,8 +673,23 @@ export default {
                 errMsg: '',
                 isShow: false,
             },
+            airportCache: {},
             airports: [],
             searchValue: '',
+            // 出行目的地
+            destination: {
+                showPopup: false,
+                value: '',
+                view: '',
+                tags: [],
+                code: '',
+                errMsg: '',
+                isShow: false,
+            },
+            destinationCache: {},
+            destinations: [],
+            destinationSelect: [],
+            desSearchValue: '',
             // ----------------------------------------------
             DATA: {
                 businessType: null,
@@ -949,13 +847,16 @@ export default {
 
         // 初始化显示字段
         async initShowFields({ isEnterprise, isSingle, isMass }) {
-            const { flightCode = false, showAirPort = false } = this.initData;
+            const { flightCode = false, showAirPort = false, showDestination = false } = this.initData;
             // 航班号
             this.flight['isShow'] = flightCode;
             // 机场
             this.startAirport['isShow'] = !!showAirPort;
             this.arriveAirport['isShow'] = !!showAirPort;
             !!showAirPort && this.getAirport();
+            // 出行目的地
+            this.destination['isShow'] = !!showDestination;
+            !!showDestination && await this.getDestination();
 
             // ----------------------------------
             // 初始化选择list
@@ -1108,7 +1009,7 @@ export default {
         // 重投信息加载
         async initAfreshFields({ isEnterprise, isSingle, isMass }) {
             if(this.afreshData){
-                const { holderDefault, isGroup, flightCode, tourGroupCode, startAirport, startAirportName, arriveAirport, arriveAirportName } = this.afreshData;
+                const { holderDefault, isGroup, flightCode, tourGroupCode, startAirport, startAirportName, arriveAirport, arriveAirportName, destinationView, destination } = this.afreshData;
                 this.insure = { type: holderDefault, method: isGroup };
                 this.tourGroup.value = tourGroupCode;
                 this.flight.value = flightCode;
@@ -1116,6 +1017,21 @@ export default {
                 this.startAirport.code = startAirport;
                 this.arriveAirport.value = arriveAirportName;
                 this.arriveAirport.code = arriveAirport;
+                this.destination.value = destinationView;
+                this.destination.view = destination;
+                let desTags = destination.split('、');
+                this.destinationSelect = [];
+                for(let i = 0; i < desTags.length; i++){
+                    this.destinations.map((item, index) => {
+                        item['cells'].map((_item, _index) => {
+                            if(_item['country'] === desTags[i]){
+                                _item['checked'] = true;
+                                let obj = { code: _item['code'], name: _item['name'], country: _item['country'] };
+                                this.destinationSelect.push(obj)
+                            }
+                        })
+                    })
+                }
 
                 const { holderName, holderCredType, holderCredNo, holderBirthday, holderPhone, holderEmail } = this.afreshData;
                 let obj = {
@@ -1154,16 +1070,59 @@ export default {
         },
 
         // 获取机场信息
-        async getAirport(name = '') {
-            const res = await other.airport({ name });
-            const { code, data } = res;
-            if(code === '0000'){
-                this.airports = data;
-            }else if(code === '1001'){
-                location.href = '/login';
+        async getAirport(name = '', type) {
+            name = name.trim();
+            if(this.airportCache[name]){
+                this.airports = clone(this.airportCache[name]);
             }else{
-                this.airports = [];
+                const res = await other.airport({ name });
+                const { code, data = [] } = res;
+                this.airportCache[name] = data;
+                if(code === '0000'){
+                    this.airports = data;
+                }else{
+                    this.airports = [];
+                }
             }
+        },
+
+        // 获取出行目的地
+        async getDestination(name = '') {
+            name = name.trim();
+            if(this.destinationCache[name]){
+                this.destinations = clone(this.destinationCache[name]);
+            }else{
+                const res = await other.destination({ name });
+                const { code, data = [] } = res;
+                this.destinationCache[name] = data;
+                if(code === '0000'){
+                    this.destinations = data;
+                }else{
+                    this.destinations = [];
+                }
+            }
+            let desTags = this.destinationSelect;
+            for(let i = 0; i < desTags.length; i++){
+                this.destinations.map((item, index) => {
+                    item['cells'].map((_item, _index) => {
+                        if(_item['country'] === desTags[i]['country']){
+                            _item['checked'] = true;
+                        }
+                    })
+                })
+            }
+        },
+
+        // 确定选择目的地
+        desBtnClick() {
+            let value = '', view = '';
+            this.destinationSelect.map((item, index) => {
+                value += `${item['name']}、` ;
+                view += `${item['country']}、` ;
+            })
+            this.destination['value'] = value.slice(0,-1);
+            this.destination['view'] = view.slice(0,-1);
+            this.destination['showPopup'] = false;
         },
 
         // 获取常用投保人信息
@@ -1563,6 +1522,7 @@ export default {
             this.startTime['temp'] = `${startTemp}~${endTemp}`;
             this.startTime['value'] = selectDate;
             this.startTime['default'] = selectDate;
+            this.startTime['valueEnd'] = endTemp;
             this.updateChoose();
         },
 
@@ -2090,6 +2050,12 @@ export default {
                     this.arriveAirport['errMsg'] = '请选择到达机场';
                 }
             }
+
+            if(type === 'destination'){
+                if(!this.destination['value']){
+                    this.destination['errMsg'] = '请选择出行目的地';
+                }
+            }
         },
 
         // 机场搜索
@@ -2098,11 +2064,75 @@ export default {
             this.getAirport(value)
         },
 
-        // 点击机场元素
-        clickHandler(e, title, type) {
-            this[type]['value'] = title.name;
-            this[type]['code'] = title.code;
-            this[type]['showPopup'] = !this[type]['showPopup'];
+        selectDesHandler() {
+            this.destination['showPopup'] = true;
+            this.destination['errMsg'] = '';
+            let desTags = this.destination['view'].split('、');
+            this.destinationSelect = [];
+            this.destinations.map((item, index) => {
+                item['cells'].map((_item, _index) => {
+                    _item['checked'] = false;
+                })
+            })
+            for(let i = 0; i < desTags.length; i++){
+                this.destinations.map((item, index) => {
+                    item['cells'].map((_item, _index) => {
+                        if(_item['country'] === desTags[i]){
+                            _item['checked'] = true;
+                            let obj = { code: _item['code'], name: _item['name'], country: _item['country'] };
+                            this.destinationSelect.push(obj)
+                        }
+                    })
+                })
+            }
+        },
+
+        // 目的地搜索
+        inputDesSearchHandler(value) {
+            this.desSearchValue = value
+            this.getDestination(value)
+        },
+
+        // 点击机场/目的地元素
+        clickHandler(e, title, type, indexs) {
+            if(type === 'destination'){
+                const { index, _index } = indexs;
+                let destination = this[type];
+                let obj = { code: title.code, name: title.name, country: title.country };
+                
+                if(!title['checked']){
+                    if(this.destinationSelect.length >= 5){
+                        this.$toast('您最多可以选择五个国家或地区')
+                        return false;
+                    }
+                    this.destinationSelect.push(obj);
+                    this.destinations[index]['cells'][_index]['checked'] = true;
+                }else{
+                    this.destinations[index]['cells'][_index]['checked'] = false;
+                }
+                
+                this.destinationSelect.map((item, index) => {
+                    if(item['country'] === title['country'] && !title['checked']){
+                        this.destinationSelect.splice(index, 1)
+                    }
+                })
+            }else{
+                this[type]['value'] = title.name;
+                this[type]['code'] = title.code;
+                this[type]['showPopup'] = !this[type]['showPopup'];
+            }
+        },
+
+        // 删除选择
+        cancelSelect(index){
+            this.destinations.map((item, i) => {
+                item['cells'].map((_item, _i) => {
+                    if(this.destinationSelect[index]['country'] === _item['country']){
+                        _item['checked'] = false;
+                    }
+                })
+            })
+            this.destinationSelect.splice(index, 1)
         },
 
         // 收集input框的数据
@@ -2289,23 +2319,6 @@ export default {
             this.isAgreement = !this.isAgreement;
         },
 
-        // 资料
-        linkHandler(type) {
-            if(type === 'instruction'){
-                location.href = '/product/instruction';
-            }else if(type === 'clause'){
-                const explainData = getSessionStore('explainData');
-                const { insuranceClause } = explainData;
-                if(insuranceClause && insuranceClause.length == 1){
-                location.href = insuranceClause[0].clauseFileAddress;
-                }else{
-                location.href = "/product/clause";       
-                }
-            }else if(type === 'inform'){
-                location.href = '/product/inform';
-            }
-        },
-
         // ------------------
         // 选择信息 end
         // ------------------
@@ -2373,10 +2386,12 @@ export default {
             birthdayList.map((item, index) => {
                 let { lowerLimitValue: minAge, lowerLimitValueUnit: minUnit, upperLimitValue: maxAge, upperLimitValueUnit: maxUnit } = item;
                 const { startDate, endDate } = dateRange(minUnit, minAge, maxUnit, maxAge, this.startTime.value);
-                if(new Date(birthday.replace(/-/g, '/')).isBetween(startDate, endDate)){
-                    birthdayCode = item.enumCode;
-                    item['factorCode'] = 'insuredBirthday';
-                    priceFactorArr.push(item);
+                if(startDate && endDate){
+                    if(new Date(birthday.replace(/-/g, '/')).isBetween(startDate, endDate)){
+                        birthdayCode = item.enumCode;
+                        item['factorCode'] = 'insuredBirthday';
+                        priceFactorArr.push(item);
+                    }
                 }
             });
             priceFactors.map((item, index) => {
@@ -2385,7 +2400,7 @@ export default {
                 }else{
                     currentPriceMode.push(item.enumCode);
                 }
-            })
+            });
 
             let priceEnumIds = currentPriceMode.join('|');
             let currentPrice = priceModes[priceEnumIds] || 0;
@@ -2530,7 +2545,6 @@ export default {
                 }
             }
 
-
             // 出发机场/到达机场
             if(this.startAirport['isShow']){
                 if(!this.startAirport['value']){
@@ -2545,6 +2559,14 @@ export default {
                 if(this.startAirport['value'] && this.startAirport['value'] == this.arriveAirport['value']){
                     this.alertShow = true;
                     this.alertText = '出发机场和到达机场不能相同';
+                    flag = false;
+                }
+            }
+
+            // 出行目的地
+            if(this.destination['isShow']){
+                if(!this.destination['value']){
+                    this.destination['errMsg'] = '请选择出行目的地';
                     flag = false;
                 }
             }
@@ -2716,6 +2738,7 @@ export default {
             const flight = this.flight;
             const startAirport = this.startAirport;
             const arriveAirport = this.arriveAirport;
+            const destination = this.destination;
             const { type, person, enterprise } = this.holder;
             const insurants = this.insurants;
             const totalFee = this.totalFee;
@@ -2732,12 +2755,15 @@ export default {
                     refId,
                     startTimeStr: startTime['temp'],
                     startTime: startTime['value'],
+                    startTimeEnd: startTime['valueEnd'],
                     tourGroup: tourGroup['value'].alltrim(),
                     flight: flight['value'].alltrim(),
                     startAirport: startAirport['code'],
                     startAirportName: startAirport['value'],
                     arriveAirport: arriveAirport['code'],
                     arriveAirportName: arriveAirport['value'],
+                    destination: destination['view'],
+                    destinationView: destination['value'],
                     qty: insurants.length,
                     totalFee,
                     actualPayFee,
@@ -2835,7 +2861,6 @@ export default {
             // console.log(JSON.stringify(submitDATA))
             const res = await order.add(submitDATA);
             const { code, data, message } = res;
-            console.log(code)
             if(code === '0000'){
                 const { orderCode } = data;
                 location.href = `/orderPay/${orderCode}`

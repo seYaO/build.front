@@ -1,0 +1,31 @@
+@import '~styles/variable.scss';
+@import '~styles/mixins.scss';
+.#{$css-prefix} {
+    &cell {
+        padding: 26px 30px;
+        min-height: 30px;
+        position: relative;
+        &-bd {
+            text-align: left;
+        }
+        &-ft {
+            position: relative;
+        }
+        &:after {
+            @include divider;
+        }
+        &:last-child:after {
+            height: 0;
+        }
+    }
+    &cell-access {
+        @include active;
+        .#{$css-prefix}cell-ft {
+            padding-right: 25px;
+            color: $sub-color;
+            &:after {
+                @include arrow;
+            }
+        }
+    }
+}

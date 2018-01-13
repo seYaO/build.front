@@ -8,8 +8,13 @@
 </template>
 
 <style lang="less">
-@import './style.less';
+// @import './style.less';
 </style>
+
+<style lang="scss">
+@import './style.scss';
+</style>
+
 
 <script>
 import { cssPrefix } from '@/utils/variable'

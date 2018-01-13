@@ -1,0 +1,71 @@
+@import '~styles/variable.scss';
+@import '~styles/mixins.scss';
+.#{$css-prefix} {
+    &search {
+        position: relative;
+        background: #ddd;
+        padding: 1PX;
+        .#{$css-prefix}input-wrapper {
+            height: 70px;
+            margin: 20px;
+            border-radius: 1rem;
+            &:before,
+            &:after {
+                display: none;
+            }
+        }
+        .#{$css-prefix}input-clear-button {
+            width: 40PX;
+            .#{$css-prefix}iconfont {
+                font-size: 14PX;
+            }
+        }
+        input {
+            padding-left: 30PX;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        input::-webkit-search-cancel-button {
+            display: none;
+        }
+        input::search-cancel-button {
+            display: none;
+        }
+        &-cancel {
+            @include button;
+            .#{$css-prefix}iconfont {
+                font-size: 20PX;
+                position: relative;
+                top: 2PX;
+            }
+            color:#fff;
+        }
+    }
+    &search-fixed {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background: #fff;
+        width: 100%;
+        flex-direction: column;
+        z-index: 100;
+        .#{$css-prefix}search {
+            background: $primary-color;
+        }
+    }
+    &search-container {
+        .keywords {
+            padding: 15PX;
+            .keyword {
+                display: inline-block;
+                border: 1PX solid #eee;
+                border-radius: 30PX;
+                vertical-align: middle;
+                padding: 6PX 15PX;
+                margin: 5PX;
+                @include active;
+            }
+        }
+    }
+}

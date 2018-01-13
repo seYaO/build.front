@@ -1,0 +1,18 @@
+@import '~styles/variable.scss';
+@import '~styles/mixins.scss';
+.#{$css-prefix} {
+    &indexsection {
+        padding: 0;
+        margin: 0;
+        &-index {
+            margin: 0;
+            font-size: 12PX;
+            padding: 6PX 10PX;
+            text-align: left;
+            background-color: #efeff4;
+            &+ul {
+                padding: 0;
+            }
+        }
+    }
+}

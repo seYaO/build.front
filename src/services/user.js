@@ -50,6 +50,18 @@ export const login = (params) => {
 }
 
 /**
+ * 退出
+ * @param {*} params 
+ */
+export const quit = (params) => {
+    return request({
+        url: `${APIV1}/quit`,
+        method: 'post',
+        data: params
+    })
+}
+
+/**
  * 验证账号
  * @param {*} params 
  */

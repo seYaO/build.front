@@ -35,5 +35,9 @@ export default {
 </script>
 
 <style lang="less">
-@import './style.less';
+// @import './style.less';
+</style>
+
+<style lang="scss">
+@import './style.scss';
 </style>

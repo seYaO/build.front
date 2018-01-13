@@ -80,14 +80,6 @@
 
             <div class="submitBtn" @click="submitNow"></div>
         </div>
-        <div :class="['toast-wrap',toast.isShow?'':'none']" @touchmove.prevent></div>
-        <Toast
-        :duration="1000"
-        align="center"
-        :open="toast.isShow"
-        @on-close="toggleToastShow"
-        @touchmove.prevent
-        >{{toast.txt}}</Toast>
         <popup-picker
             :open="areaShow"
             :pickers="areaList"
@@ -103,14 +95,13 @@
 </template>
 <script>
 import { mapState, mapMutations, mapActions } from 'vuex'
-import { Toast, PopupPicker, Alert } from '@/components';
+import { PopupPicker, Alert } from '@/components';
 import * as registService from '@/services/regist';
 
 import { phoneValidate,passwordValidate20 } from '@/utils/validate';
-
+import { wxsharecnt } from '@/utils/sharecnt';
  export default {
     components:{
-        Toast,
         PopupPicker,
         Alert
     },
@@ -167,6 +158,13 @@ import { phoneValidate,passwordValidate20 } from '@/utils/validate';
         })
     },
     mounted(){
+
+        wxsharecnt({
+            shareImg:'',
+            shareTitle:'',
+            shareUrl : '',
+            shareDesc : ''
+        });
         const { inviteCode } = this.$route.query;
         this.getCaptcha();
 
@@ -270,18 +268,9 @@ import { phoneValidate,passwordValidate20 } from '@/utils/validate';
 
             const { code } = res;
             if(!!code && code != '0000'){
-                this.showToast('该邀请码无效')
+                this.$toast('该邀请码无效')
             }
 
-        },
-
-        //显示提示框
-        showToast(toastStr = ''){
-            this.toast.txt = toastStr;
-            this.toggleToastShow();
-        },
-        toggleToastShow(){
-            this.toast.isShow = !this.toast.isShow;
         },
         //获取短信验证码
         async getSmsCode(){
@@ -289,15 +278,15 @@ import { phoneValidate,passwordValidate20 } from '@/utils/validate';
             if(!this.smsTimer){
 
                 if(!this.accountName){
-                    this.showToast('请输入您的账户名称');
+                    this.$toast('请输入您的账户名称')
                     return;
                 }
                 if(!phoneValidate(this.accountName)){
-                    this.showToast('您的账户名称编辑错误');
+                    this.$toast('您的账户名称编辑错误')
                     return;
                 }
                 if(!this.graphCode){
-                    this.showToast('请输入图形验证码');
+                    this.$toast('请输入图形验证码')
                     return;
                 }
 
@@ -327,12 +316,12 @@ import { phoneValidate,passwordValidate20 } from '@/utils/validate';
                             }
                         }, 1000)
                     } else {
-                        this.showToast(smsRes.message)
+                        this.$toast(smsRes.message)
                         this.getCaptcha();
                     }
 
                 // } else {
-                //     this.showToast(message)
+                //     this.$toast(message)
                 // }
 
             }
@@ -359,57 +348,57 @@ import { phoneValidate,passwordValidate20 } from '@/utils/validate';
             }
 
             if(!this.inviteCode){
-                this.showToast('请输入您的邀请码')
+                this.$toast('请输入您的邀请码')
                 return;
             }
 
 
             if(!this.accountName){
-                this.showToast('请输入您的账户名称')
+                this.$toast('请输入您的账户名称')
                 return;
             }
             if(!phoneValidate(this.accountName)){
-                this.showToast('请输入正确的账户名称')
+                this.$toast('请输入正确的账户名称')
                 return;
             }
 
 
             if(!this.authCode){
-                this.showToast('请输入您的短信验证码')
+                this.$toast('请输入您的短信验证码')
                 return;
             }
 
 
             if(!this.loginPwd){
-                this.showToast('请输入您的登录密码')
+                this.$toast('请输入您的登录密码')
                 return;
             }
             if(!passwordValidate20(this.loginPwd)){
-                this.showToast('密码长度6-20位，至少包含英文，数字和符号的两种')
+                this.$toast('密码长度6-20位，至少包含英文，数字和符号的两种')
                 return;
             }
             if(!this.confirmPwd){
-                this.showToast('请输入您的确认密码')
+                this.$toast('请输入您的确认密码')
                 return;
             }
             if(this.loginPwd != this.confirmPwd){
-                this.showToast('两次输入的密码不一致')
+                this.$toast('两次输入的密码不一致')
                 return;
             }
 
 
             if(!this.companyName && this.accountType == 0){
-                this.showToast('请输入您的公司名称')
+                this.$toast('请输入您的公司名称')
                 return;
             }
 
             if(!this.linkMan){
-                this.showToast('请输入您的联系人姓名')
+                this.$toast('请输入您的联系人姓名')
                 return;
             }
 
             if(this.proIndex == -1 || this.cityIndex == -1){
-                this.showToast('请选择所在区域')
+                this.$toast('请选择所在区域')
                 return;
             }
 
@@ -440,15 +429,15 @@ import { phoneValidate,passwordValidate20 } from '@/utils/validate';
                 if(code == '0000'){
                     this.alertShow = true;
                 } else if(code == '7000'){
-                    this.showToast(`验证码错误，剩余${data.count}次`)
+                    this.$toast(`验证码错误，剩余${data.count}次`)
                 } else if(code == '7001'){
-                    this.showToast('验证码输入次数超过限制')
+                    this.$toast('验证码输入次数超过限制')
                 } else {
                     this.changeGraphCode();
-                    this.showToast(message)
+                    this.$toast(message)
                 }
             } else {
-                this.showToast('网络有点问题，请稍后再试')
+                this.$toast('网络有点问题，请稍后再试')
             }
 
         },

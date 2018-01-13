@@ -141,7 +141,7 @@ import { PopupPicker, OrderBottom, Popup } from "@/components";
 import * as product from "@/services/product";
 import * as discount from "@/services/discount";
 import * as order from '@/services/order'
-import { clone, getPrice, setSessionStore,getSessionStore } from "@/utils";
+import { clone, getPrice, setSessionStore, getSessionStore } from "@/utils";
 import { wxsharecnt } from '@/utils/sharecnt';
 
 export default {
@@ -152,22 +152,22 @@ export default {
     },
     data() {
         return {
-        data: null,
-        isShowPopup: false,
-        redPopupData:null,
-        planSelectIndex: 0,
-        plans: null,
-        factorList: null,
-        priceModes: null,
-        priceModeList: null,
-        cacheFactor: null,
-        factorExact: null,
-        birthdayList: null,
-        showRights: null,
-        isShowMoreRights: false, // 是否展示更多保障权益
-        totalFee: 0, // 总价
-        actualPayFee: 0, // 折后价
-        priceEnumIds: ""
+            data: null,
+            isShowPopup: false,
+            redPopupData:null,
+            planSelectIndex: 0,
+            plans: null,
+            factorList: null,
+            priceModes: null,
+            priceModeList: null,
+            cacheFactor: null,
+            factorExact: null,
+            birthdayList: null,
+            showRights: null,
+            isShowMoreRights: false, // 是否展示更多保障权益
+            totalFee: 0, // 总价
+            actualPayFee: 0, // 折后价
+            priceEnumIds: ""
         };
     },
     beforeMount() {
@@ -376,16 +376,17 @@ export default {
         cancelHandler(index, type) {
             let factorList = this.factorList;
             factorList[index].isShowPicker = false;
-            },
+        },
 
-            // picker 确定
-            confirmHandler(values, index, type) {
+        // picker 确定
+        confirmHandler(values, index, type) {
             const { value = "0" } = values && values[0];
             let factorList = this.factorList;
             const { pickers, factorArr } = factorList[index];
             pickers[0]["value"] = value;
             factorList[index].factorDesc = factorArr[value].enumName;
             factorList[index].isShowPicker = false;
+            factorList[index].activeIndex = parseInt(value);
             this.updateChoose(index, parseInt(value));
         },
 
@@ -480,8 +481,6 @@ export default {
             let priceModeList = this.priceModeList || [];
             let cacheFactor = this.cacheFactor || [];
             let factorExact = this.factorExact || [];
-
-            factorList[factorIndex].activeIndex = itemIndex;
 
             if (factorIndex === 0) {
                 // 选择的是第一个计价因子

@@ -1,5 +1,15 @@
 <template>
 <div class="orderlist">
+    <div class="top">
+        <div class="info">
+            <img class="logo" src="../../../images/name-img.png" alt="">
+            <div>
+                <p>账户名：{{acount}}</p>
+                <p>姓名：{{contact}}</p>
+            </div>
+        </div>
+        <div class="quit" @click="actionsheetShow = true">退出</div>
+    </div>
     <div class="navbar">
         <ul>
             <li v-for="(item, index) in navs" :key="index" :class="{ curr: item.curr }" @click="changeTab(index, item['code'])">{{item['name']}}</li>
@@ -35,6 +45,10 @@
     <alert :open="alertShow" @on-confirm="alertShow = false">{{alertText}}</alert>
     <!-- confirm -->
     <confirm :open="confirmShow" @on-close="confirmShow = false" @on-confirm="confirmHandler">{{confirmText}}</confirm>
+    <!-- actionsheet -->
+    <actionsheet :open="actionsheetShow" :cancel="true" @on-click="clickHandler" @on-close="actionsheetShow = false">
+        <actionsheet-item value="quit">退出登录</actionsheet-item>
+    </actionsheet>
 </div>
 </template>
 
@@ -45,7 +59,8 @@
 <script>
 import { mapState, mapGetters, mapMutations, mapActions } from 'vuex'
 import * as order from '@/services/order'
-import { LoadMore, TabBar, Confirm, Alert } from '@/components'
+import * as user from '@/services/user'
+import { LoadMore, TabBar, Confirm, Alert, Actionsheet, ActionsheetItem } from '@/components'
 import { wxsharecnt } from '@/utils/sharecnt';
 
 let current = 1; // 分页页码
@@ -57,7 +72,9 @@ export default {
         LoadMore,
         TabBar,
         Confirm,
-        Alert
+        Alert,
+        Actionsheet,
+        ActionsheetItem,
     },
     data() {
         return {
@@ -67,8 +84,11 @@ export default {
             confirmOrderCode: '',
             confirmType: '',
             confirmText: '',
+            actionsheetShow: false,
             tabIndex: "0",
             loadingText: '加载中...',
+            acount: '',
+            contact: '',
             list: []
         }
     },
@@ -94,8 +114,10 @@ export default {
     methods: {
         // 获取数据
         async getData(done, refresh) {
-            const res = await order.list({ type: navType, page: current });
-            const { code, totalPage, data } = res;
+            const res = await order.list({ type: navType, page: current, pageSize: 5 });
+            const { code, totalPage, data, acount = '', contact = '' } = res;
+            this.acount = acount;
+            this.contact = contact;
             if(code === '0000') {
                 pageCount = totalPage;
                 this.list = refresh ? [...data] : this.list.concat([...data]);
@@ -104,6 +126,8 @@ export default {
                 }else{
                     this.loadingText = '没有更多了~'
                 }
+            }else if(code === '1001'){
+                location.href = '/login'
             }
             if(done) done();
         },
@@ -115,7 +139,7 @@ export default {
             this.list = [];
             this.tabIndex = index.toString();
             this.doneOrderCurr(index);
-            this.getData(null, true);
+            // this.getData(null, true);
             this.loadingText = '加载中...';
         },
 
@@ -191,6 +215,13 @@ export default {
                     this.alertShow = true;
                     this.alertText = message;
                 }
+            }
+        },
+
+        async clickHandler(value) {
+            if(value === 'quit'){
+                const res = await user.quit({});
+                location.href = '/login'
             }
         },
 

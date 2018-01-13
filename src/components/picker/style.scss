@@ -1,0 +1,47 @@
+@import '~styles/variable.scss';
+@import '~styles/mixins.scss';
+.#{$css-prefix} {
+    &picker {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        overflow-scrolling: touch;
+        height: 294PX;
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        &-wrapper {
+            position: relative;
+            background: #fff;
+            text-align: center;
+            overflow: hidden;
+        }
+        &-scroller {
+            padding: 126PX 0;
+        }
+        &-item {
+            line-height: 42PX;
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0PX 0.15rem;
+            height: 42PX;
+        }
+        &-active {
+            // color:$primary-color;
+        }
+        &-indicator {
+            &:before {
+                @include divider;
+                top: 125PX;
+                box-shadow: 0PX -63PX 0PX 63PX rgba(255, 255, 255, 0.4), 0PX -64PX 0PX 21PX rgba(255, 255, 255, 0.3), 0PX -106PX 0PX 21PX rgba(255, 255, 255, 0.45);
+            }
+            &:after {
+                @include divider;
+                top: 166PX;
+                box-shadow: 0PX 63PX 0PX 63PX rgba(255, 255, 255, 0.4), 0PX 64PX 0PX 21PX rgba(255, 255, 255, 0.3), 0PX 106PX 0PX 21PX rgba(255, 255, 255, 0.45);
+            }
+        }
+        &-placeholder {
+            opacity: 0.8;
+        }
+    }
+}

@@ -391,7 +391,7 @@ export const getSessionStore = name => {
  */
 export const removeSessionStore = name => {
     if (!name) return;
-	window.sessionStorage.removeItem(name);
+    window.sessionStorage.removeItem(name);
 }
 
 const loadImage = (file) => {
@@ -416,10 +416,10 @@ export const getBase64 = (file) => {
     return loadImage(file).then(image => {
         let canvas = document.createElement('canvas');
         let scale = 1;
-        if(image.width > 1000 || image.height > 1000){
-            if(image.width > image.height){
+        if (image.width > 1000 || image.height > 1000) {
+            if (image.width > image.height) {
                 scale = 1000 / image.width;
-            }else{
+            } else {
                 scale = 1000 / image.height;
             }
         }
@@ -438,17 +438,48 @@ export const getBase64 = (file) => {
  * @param {*} file
  * @param {*} multiple
  */
-export const getImg = async function(file, multiple) {
+export const getImg = async function (file, multiple) {
     let imgList = [];
-    if(multiple){
+    if (multiple) {
         let files = file.files;
-        for(let i = 0; i < files.length; i++){
+        for (let i = 0; i < files.length; i++) {
             let img = await getBase64(files[i]);
             imgList.push(img);
         }
-    }else{
+    } else {
         let img = await getBase64(file.files[0]);
         imgList.push(img);
     }
     return imgList;
+}
+
+/**
+ * jsonp
+ * @param {*} params 
+ */
+export const ajaxJSONP = function (params) {    
+    return new Promise((resolve, reject) => {
+        params = params || {};
+        params.data = params.data || {};
+        let callbackName = params.jsonp;
+        let head = document.getElementsByTagName('head')[0];
+        params.data['callback'] = callbackName;
+        let data = formateParams(params.data);
+        let script = document.createElement('script');
+        head.appendChild(script);
+        window[callbackName] = function (json) {
+            head.removeChild(script);
+            clearTimeout(script.timer);
+            window[callbackName] = null;
+            resolve(json);
+        };
+        script.src = params.url + '?' + data;
+        if (params.time) {
+            script.timer = setTimeout(function () {
+                window[callbackName] = null;
+                head.removeChild(script);
+                reject({ message: '超时' });
+            }, time)
+        }
+    });
 }

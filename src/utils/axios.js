@@ -16,7 +16,7 @@ const fetch = options => {
 
     // lodash 是一款 js 工具库，作用是进行深度克隆，最多克隆四层
     const cloneData = lodash.cloneDeep(data)
-    
+
     switch (method) {
         case 'get':
             return axios.get(url, { params: cloneData });
@@ -36,19 +36,19 @@ const fetch = options => {
 /**
  * 主要功能：封装 fetch 函数
  */
-export default async(options) => {
+export default async (options) => {
     return fetch(options).then(res => {
         return res.data;
     }).catch(err => {
         console.log(err)
         const { response } = err;
         let status, msg, otherData = {};
-        if(response){
+        if (response) {
             const { data, statusText } = response;
             otherData = data;
             status = response.status;
             msg = data.message || statusText;
-        }else{
+        } else {
             status = 600;
             msg = 'Network Error';
         }
