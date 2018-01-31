@@ -1,0 +1,66 @@
+@import '~styles/variable.scss';
+@import '~styles/mixins.scss';
+.#{$css-prefix} {
+    &popup {
+        &__inner {
+            position: fixed;
+            background-color: #FFF;
+            z-index: $zindex-base * 1500 + 1;
+            transition: transform .2s;
+            pointer-events: none;
+            display: flex;
+            flex-direction: column;
+        }
+        &__container {
+            flex: 1;
+            position: relative;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        &--left {
+            transform: translate(-100%, 0);
+            left: 0;
+            top: 0;
+            height: 100%;
+        }
+        &--right {
+            transform: translate(100%, 0);
+            right: 0;
+            top: 0;
+            height: 100%;
+        }
+        &--bottom {
+            transform: translate(0, 100%);
+            right: 0;
+            bottom: 0;
+        }
+        &--show {
+            pointer-events: auto;
+            transform: translate(0, 0);
+        }
+        &--center {
+            background-color: #FFF;
+            z-index: $zindex-base * 1500 + 2;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            opacity: 0;
+            transform: translate(-50%, -50%) scale(.95);
+            transform-origin: 50% 50%;
+            transition: transform .1s;
+            border-radius: 2px;
+            pointer-events: none;
+            * {
+                pointer-events: none;
+            }
+            &.#{$css-prefix}popup--show {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(1);
+                pointer-events: auto;
+                * {
+                    pointer-events: auto;
+                }
+            }
+        }
+    }
+}
