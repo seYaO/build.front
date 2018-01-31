@@ -6,9 +6,9 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-document.addEventListener('DOMContentLoaded', function () {
-    typeof FastClick === 'function' && FastClick.attach(document.body);
-}, false);
+// document.addEventListener('DOMContentLoaded', function () {
+//     typeof FastClick === 'function' && FastClick.attach(document.body);
+// }, false);
 
 /* eslint-disable no-new */
 new Vue({
