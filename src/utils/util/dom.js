@@ -12,17 +12,29 @@
 //     }
 // } 
 
-/*检测类名*/
+/**
+ * 检测类名
+ * @param {*} ele 
+ * @param {*} name 
+ */
 export const hasClass = (ele, name) => {
     return ele.className.match(new RegExp('(\\s|^)' + name + '(\\s|$)'));
 }
 
-/*添加类名*/
+/**
+ * 添加类名
+ * @param {*} ele 
+ * @param {*} name 
+ */
 export const addClass = (ele, name) => {
     if (!this.hasClass(ele, name)) ele.className += " " + name;
 }
 
-/*删除类名*/
+/**
+ * 删除类名
+ * @param {*} ele 
+ * @param {*} name 
+ */
 export const removeClass = (ele, name) => {
     if (this.hasClass(ele, name)) {
         var reg = new RegExp('(\\s|^)' + name + '(\\s|$)');
@@ -30,13 +42,21 @@ export const removeClass = (ele, name) => {
     }
 }
 
-/*替换类名*/
+/**
+ * 替换类名
+ * @param {*} ele 
+ * @param {*} newName 
+ * @param {*} oldName 
+ */
 export const replaceClass = (ele, newName, oldName) => {
     this.removeClass(ele, oldName);
     this.addClass(ele, newName);
 }
 
-/*获取兄弟节点*/
+/**
+ * 获取兄弟节点
+ * @param {*} ele 
+ */
 export const siblings = (ele) => {
     console.log(ele.parentNode)
     var chid = ele.parentNode.children, eleMatch = [];
@@ -48,7 +68,11 @@ export const siblings = (ele) => {
     return eleMatch;
 }
 
-/*获取行间样式属性*/
+/**
+ * 获取行间样式属性
+ * @param {*} obj 
+ * @param {*} name 
+ */
 export const getByStyle = (obj, name) => {
     if (obj.currentStyle) {
         return obj.currentStyle[name];

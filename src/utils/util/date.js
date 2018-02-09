@@ -162,7 +162,10 @@ export const formatHMS = (s) => {
     return str
 }
 
-/*获取某月有多少天*/
+/**
+ * 获取某月有多少天
+ * @param {*} time 
+ */
 export const getMonthOfDay = (time) => {
     var date = new Date(time)
     var year = date.getFullYear()
@@ -182,7 +185,10 @@ export const getMonthOfDay = (time) => {
     return days
 }
 
-/*获取某年有多少天*/
+/**
+ * 获取某年有多少天
+ * @param {*} time 
+ */
 export const getYearOfDay = (time) => {
     var firstDayYear = this.getFirstDayOfYear(time);
     var lastDayYear = this.getLastDayOfYear(time);
@@ -190,13 +196,19 @@ export const getYearOfDay = (time) => {
     return Math.ceil(numSecond / (24 * 3600));
 }
 
-/*获取某年的第一天*/
+/**
+ * 获取某年的第一天
+ * @param {*} time 
+ */
 export const getFirstDayOfYear = (time) => {
     var year = new Date(time).getFullYear();
     return year + "-01-01 00:00:00";
 }
 
-/*获取某年最后一天*/
+/**
+ * 获取某年最后一天
+ * @param {*} time 
+ */
 export const getLastDayOfYear = (time) => {
     var year = new Date(time).getFullYear();
     var dateString = year + "-12-01 00:00:00";
@@ -204,14 +216,20 @@ export const getLastDayOfYear = (time) => {
     return year + "-12-" + endDay + " 23:59:59";
 }
 
-/*获取某个日期是当年中的第几天*/
+/**
+ * 获取某个日期是当年中的第几天
+ * @param {*} time 
+ */
 export const getDayOfYear = (time) => {
     var firstDayYear = this.getFirstDayOfYear(time);
     var numSecond = (new Date(time).getTime() - new Date(firstDayYear).getTime()) / 1000;
     return Math.ceil(numSecond / (24 * 3600));
 }
 
-/*获取某个日期在这一年的第几周*/
+/**
+ * 获取某个日期在这一年的第几周
+ * @param {*} time 
+ */
 export const getDayOfYearWeek = (time) => {
     var numdays = this.getDayOfYear(time);
     return Math.ceil(numdays / 7);

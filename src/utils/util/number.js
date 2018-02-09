@@ -1,4 +1,8 @@
-/*随机数范围*/
+/**
+ * 随机数范围
+ * @param {*} min 
+ * @param {*} max 
+ */
 export const random = (min, max) => {
     if (arguments.length === 2) {
         return Math.floor(min + Math.random() * ((max + 1) - min))
@@ -8,7 +12,10 @@ export const random = (min, max) => {
 
 }
 
-/*将阿拉伯数字翻译成中文的大写数字*/
+/**
+ * 将阿拉伯数字翻译成中文的大写数字
+ * @param {*} num 
+ */
 export const numberToChinese = (num) => {
     var AA = new Array("零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十");
     var BB = new Array("", "十", "百", "仟", "萬", "億", "点", "");
@@ -51,7 +58,10 @@ export const numberToChinese = (num) => {
     return re;
 }
 
-/*将数字转换为大写金额*/
+/**
+ * 将数字转换为大写金额
+ * @param {*} Num 
+ */
 export const changeToChinese = (Num) => {
     //判断如果传递进来的不是字符的话转换为字符
     if (typeof Num == "number") {

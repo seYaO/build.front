@@ -1,11 +1,18 @@
-/*获取网址参数*/
+/**
+ * 获取网址参数
+ * @param {*} name 
+ */
 export const getURL = (name) => {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
     var r = decodeURI(window.location.search).substr(1).match(reg);
     if (r != null) return r[2]; return null;
 }
 
-/*获取全部url参数,并转换成json对象*/
+
+/**
+ * 获取全部url参数,并转换成json对象
+ * @param {*} url 
+ */
 export const getUrlAllParams = (url) => {
     var url = url ? url : window.location.href;
     var _pa = url.substring(url.indexOf('?') + 1),
@@ -23,7 +30,12 @@ export const getUrlAllParams = (url) => {
     return _rs;
 }
 
-/*删除url指定参数，返回url*/
+
+/**
+ * 删除url指定参数，返回url
+ * @param {*} url 
+ * @param {*} name 
+ */
 export const delParamsUrl = (url, name) => {
     var baseUrl = url.split('?')[0] + '?';
     var query = url.split('?')[1];
@@ -42,14 +54,21 @@ export const delParamsUrl = (url, name) => {
     }
 }
 
-/*获取十六进制随机颜色*/
+
+/**
+ * 获取十六进制随机颜色
+ */
 export const getRandomColor = () => {
     return '#' + (function (h) {
         return new Array(7 - h.length).join("0") + h;
     })((Math.random() * 0x1000000 << 0).toString(16));
 }
 
-/*图片加载*/
+/**
+ * 图片加载
+ * @param {*} arr 
+ * @param {*} callback 
+ */
 export const imgLoadAll = (arr, callback) => {
     var arrImg = [];
     for (var i = 0; i < arr.length; i++) {
@@ -64,21 +83,31 @@ export const imgLoadAll = (arr, callback) => {
     }
 }
 
-/*音频加载*/
+/**
+ * 音频加载
+ * @param {*} src 
+ * @param {*} callback 
+ */
 export const loadAudio = (src, callback) => {
     var audio = new Audio(src);
     audio.onloadedmetadata = callback;
     audio.src = src;
 }
 
-/*DOM转字符串*/
+/**
+ * DOM转字符串
+ * @param {*} htmlDOM 
+ */
 export const domToStirng = (htmlDOM) => {
     var div = document.createElement("div");
     div.appendChild(htmlDOM);
     return div.innerHTML
 }
 
-/*字符串转DOM*/
+/**
+ * 字符串转DOM
+ * @param {*} htmlString 
+ */
 export const stringToDom = (htmlString) => {
     var div = document.createElement("div");
     div.innerHTML = htmlString;
@@ -104,7 +133,11 @@ export const setCursorPosition = (dom, val, posLen) => {
     dom.setSelectionRange(dom.value.length, cursorPosition + (posLen || val.length));
 }
 
-/*光标所在位置插入字符*/
+/**
+ * 光标所在位置插入字符
+ * @param {*} dom 
+ * @param {*} val 
+ */
 export const insertAtCursor = (dom, val) => {
     if (document.selection) {
         dom.focus();

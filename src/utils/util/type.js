@@ -1,36 +1,45 @@
-export const isString = (o) => { //是否字符串
+// 是否字符串
+export const isString = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'String'
 }
 
-export const isNumber = (o) => { //是否数字
+// 是否数字
+export const isNumber = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Number'
 }
 
-export const isObj = (o) => { //是否对象
+// 是否对象
+export const isObj = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Object'
 }
 
-export const isArray = (o) => { //是否数组
+// 是否数组
+export const isArray = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Array'
 }
 
-export const isDate = (o) => { //是否时间
+// 是否时间
+export const isDate = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Date'
 }
 
-export const isBoolean = (o) => { //是否boolean
+// 是否boolean
+export const isBoolean = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Boolean'
 }
 
-export const isFunction = (o) => { //是否函数
+// 是否函数
+export const isFunction = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Function'
 }
 
-export const isNull = (o) => { //是否为null
+// 是否为null
+export const isNull = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Null'
 }
 
-export const isUndefined = (o) => { //是否undefined
+// 是否undefined
+export const isUndefined = (o) => {
     return Object.prototype.toString.call(o).slice(8, -1) === 'Undefined'
 }
 

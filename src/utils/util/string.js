@@ -1,8 +1,7 @@
 /**
  * 去除空格
  * @param  {str}
- * @param  {type} 
- *       type:  1-所有空格  2-前后空格  3-前空格 4-后空格
+ * @param  {type} 1-所有空格  2-前后空格  3-前空格 4-后空格
  * @return {String}
  */
 export const trim = (str, type) => {
@@ -23,8 +22,7 @@ export const trim = (str, type) => {
 
 /**
  * @param  {str} 
- * @param  {type}
- *       type:  1:首字母大写  2：首页母小写  3：大小写转换  4：全部大写  5：全部小写
+ * @param  {type} 1:首字母大写  2：首页母小写  3：大小写转换  4：全部大写  5：全部小写
  * @return {String}
  */
 export const changeCase = (str, type) => {
@@ -57,9 +55,10 @@ export const changeCase = (str, type) => {
 }
 
 
-/*
-    检测密码强度
-*/
+/**
+ * 检测密码强度
+ * @param {*} str 
+ */
 export const checkPwd = (str) => {
     var Lv = 0;
     if (str.length < 6) {
@@ -80,7 +79,10 @@ export const checkPwd = (str) => {
     return Lv;
 }
 
-/*过滤html代码(把<>转换)*/
+/**
+ * 过滤html代码(把<>转换)
+ * @param {*} str 
+ */
 export const filterTag = (str) => {
     str = str.replace(/&/ig, "&amp;");
     str = str.replace(/</ig, "&lt;");
