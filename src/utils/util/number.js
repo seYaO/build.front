@@ -63,25 +63,25 @@ export const numberToChinese = (num) => {
  * @param {*} Num 
  */
 export const changeToChinese = (Num) => {
-    //判断如果传递进来的不是字符的话转换为字符
+    // 判断如果传递进来的不是字符的话转换为字符
     if (typeof Num == "number") {
         Num = new String(Num);
     };
-    Num = Num.replace(/,/g, "") //替换tomoney()中的“,”
-    Num = Num.replace(/ /g, "") //替换tomoney()中的空格
-    Num = Num.replace(/￥/g, "") //替换掉可能出现的￥字符
-    if (isNaN(Num)) { //验证输入的字符是否为数字
-        //alert("请检查小写金额是否正确");
+    Num = Num.replace(/,/g, "") // 替换tomoney()中的“,”
+    Num = Num.replace(/ /g, "") // 替换tomoney()中的空格
+    Num = Num.replace(/￥/g, "") // 替换掉可能出现的￥字符
+    if (isNaN(Num)) { // 验证输入的字符是否为数字
+        // alert("请检查小写金额是否正确");
         return "";
     };
-    //字符处理完毕后开始转换，采用前后两部分分别转换
+    // 字符处理完毕后开始转换，采用前后两部分分别转换
     var part = String(Num).split(".");
     var newchar = "";
-    //小数点前进行转化
+    // 小数点前进行转化
     for (var i = part[0].length - 1; i >= 0; i--) {
         if (part[0].length > 10) {
             return "";
-            //若数量超过拾亿单位，提示
+            // 若数量超过拾亿单位，提示
         }
         var tmpnewchar = ""
         var perchar = part[0].charAt(i);
@@ -151,7 +151,7 @@ export const changeToChinese = (Num) => {
         }
         var newchar = tmpnewchar + newchar;
     }
-    //小数点之后进行转化
+    // 小数点之后进行转化
     if (Num.indexOf(".") != -1) {
         if (part[1].length > 2) {
             // alert("小数点之后只能保留两位,系统将自动截断");
@@ -197,7 +197,7 @@ export const changeToChinese = (Num) => {
             newchar = newchar + tmpnewchar;
         }
     }
-    //替换所有无用汉字
+    // 替换所有无用汉字
     while (newchar.search("零零") != -1)
         newchar = newchar.replace("零零", "零");
     newchar = newchar.replace("零亿", "亿");

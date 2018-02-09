@@ -1,5 +1,6 @@
 /**
  * 判断一个元素是否在数组中
+ * 
  * @param {*} arr 
  * @param {*} val 
  */
@@ -63,6 +64,7 @@ export const sort = (arr, type = 1) => {
 
 /**
  * 去重
+ * 
  * @param {*} arr 
  */
 export const unique = (arr) => {
@@ -103,6 +105,7 @@ export const unique = (arr) => {
 
 /**
  * 求两个集合的并集
+ * 
  * @param {*} a 
  * @param {*} b 
  */
@@ -113,6 +116,7 @@ export const union = (a, b) => {
 
 /**
  * 求两个集合的交集
+ * 
  * @param {*} a 
  * @param {*} b 
  */
@@ -126,6 +130,7 @@ export const intersect = (a, b) => {
 
 /**
  * 删除其中一个元素
+ * 
  * @param {*} arr 
  * @param {*} ele 
  */
@@ -139,6 +144,7 @@ export const remove = (arr, ele) => {
 
 /**
  * 将类数组转换为数组的方法
+ * 
  * @param {*} ary 
  */
 export const formArray = (ary) => {
@@ -153,6 +159,7 @@ export const formArray = (ary) => {
 
 /**
  * 最大值
+ * 
  * @param {*} arr 
  */
 export const max = (arr) => {
@@ -161,6 +168,7 @@ export const max = (arr) => {
 
 /**
  * 最小值
+ * 
  * @param {*} arr 
  */
 export const min = (arr) => {
@@ -169,6 +177,7 @@ export const min = (arr) => {
 
 /**
  * 求和
+ * 
  * @param {*} arr 
  */
 export const sum = (arr) => {
@@ -179,6 +188,7 @@ export const sum = (arr) => {
 
 /**
  * 平均值
+ * 
  * @param {*} arr 
  */
 export const average = (arr) => {

@@ -2,9 +2,9 @@
  * @param  {setting}
  */
 export const ajax = (setting) => {
-    //设置参数的初始值
+    // 设置参数的初始值
     var opts = {
-        method: (setting.method || "GET").toUpperCase(), //请求方式
+        method: (setting.method || "GET").toUpperCase(), // 请求方式
         url: setting.url || "", // 请求地址
         async: setting.async || true, // 是否异步
         dataType: setting.dataType || "json", // 解析方式

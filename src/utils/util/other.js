@@ -1,5 +1,6 @@
 /**
  * 获取网址参数
+ * 
  * @param {*} name 
  */
 export const getURL = (name) => {
@@ -11,6 +12,7 @@ export const getURL = (name) => {
 
 /**
  * 获取全部url参数,并转换成json对象
+ * 
  * @param {*} url 
  */
 export const getUrlAllParams = (url) => {
@@ -33,6 +35,7 @@ export const getUrlAllParams = (url) => {
 
 /**
  * 删除url指定参数，返回url
+ * 
  * @param {*} url 
  * @param {*} name 
  */
@@ -66,6 +69,7 @@ export const getRandomColor = () => {
 
 /**
  * 图片加载
+ * 
  * @param {*} arr 
  * @param {*} callback 
  */
@@ -85,6 +89,7 @@ export const imgLoadAll = (arr, callback) => {
 
 /**
  * 音频加载
+ * 
  * @param {*} src 
  * @param {*} callback 
  */
@@ -96,6 +101,7 @@ export const loadAudio = (src, callback) => {
 
 /**
  * DOM转字符串
+ * 
  * @param {*} htmlDOM 
  */
 export const domToStirng = (htmlDOM) => {
@@ -106,6 +112,7 @@ export const domToStirng = (htmlDOM) => {
 
 /**
  * 字符串转DOM
+ * 
  * @param {*} htmlString 
  */
 export const stringToDom = (htmlString) => {
@@ -135,6 +142,7 @@ export const setCursorPosition = (dom, val, posLen) => {
 
 /**
  * 光标所在位置插入字符
+ * 
  * @param {*} dom 
  * @param {*} val 
  */

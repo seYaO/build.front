@@ -14,6 +14,7 @@
 
 /**
  * 检测类名
+ * 
  * @param {*} ele 
  * @param {*} name 
  */
@@ -23,6 +24,7 @@ export const hasClass = (ele, name) => {
 
 /**
  * 添加类名
+ * 
  * @param {*} ele 
  * @param {*} name 
  */
@@ -32,6 +34,7 @@ export const addClass = (ele, name) => {
 
 /**
  * 删除类名
+ * 
  * @param {*} ele 
  * @param {*} name 
  */
@@ -44,6 +47,7 @@ export const removeClass = (ele, name) => {
 
 /**
  * 替换类名
+ * 
  * @param {*} ele 
  * @param {*} newName 
  * @param {*} oldName 
@@ -55,6 +59,7 @@ export const replaceClass = (ele, newName, oldName) => {
 
 /**
  * 获取兄弟节点
+ * 
  * @param {*} ele 
  */
 export const siblings = (ele) => {
@@ -70,6 +75,7 @@ export const siblings = (ele) => {
 
 /**
  * 获取行间样式属性
+ * 
  * @param {*} obj 
  * @param {*} name 
  */

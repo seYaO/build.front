@@ -5,7 +5,7 @@ class StorageFn {
     }
 
     /*-----------------cookie---------------------*/
-    /*设置cookie*/
+    // 设置cookie
     setCookie(name, value, day) {
         var setting = arguments[0];
         if (Object.prototype.toString.call(setting).slice(8, -1) === 'Object') {
@@ -22,7 +22,7 @@ class StorageFn {
 
     }
 
-    /*获取cookie*/
+    // 获取cookie
     getCookie(name) {
         var arr = document.cookie.split('; ');
         for (var i = 0; i < arr.length; i++) {
@@ -34,14 +34,14 @@ class StorageFn {
         return '';
     }
 
-    /*删除cookie*/
+    // 删除cookie
     removeCookie(name) {
         this.setCookie(name, 1, -1);
     }
 
 
     /*-----------------localStorage---------------------*/
-    /*设置localStorage*/
+    // 设置localStorage
     setLocal(key, val) {
         var setting = arguments[0];
         if (Object.prototype.toString.call(setting).slice(8, -1) === 'Object') {
@@ -54,26 +54,26 @@ class StorageFn {
 
     }
 
-    /*获取localStorage*/
+    // 获取localStorage
     getLocal(key) {
         if (key) return JSON.parse(this.ls.getItem(key))
         return null;
 
     }
 
-    /*移除localStorage*/
+    // 移除localStorage
     removeLocal(key) {
         this.ls.removeItem(key)
     }
 
-    /*移除所有localStorage*/
+    // 移除所有localStorage
     clearLocal() {
         this.ls.clear()
     }
 
 
     /*-----------------sessionStorage---------------------*/
-    /*设置sessionStorage*/
+    // 设置sessionStorage
     setSession(key, val) {
         var setting = arguments[0];
         if (Object.prototype.toString.call(setting).slice(8, -1) === 'Object') {
@@ -86,19 +86,19 @@ class StorageFn {
 
     }
 
-    /*获取sessionStorage*/
+    // 获取sessionStorage
     getSession(key) {
         if (key) return JSON.parse(this.ss.getItem(key))
         return null;
 
     }
 
-    /*移除sessionStorage*/
+    // 移除sessionStorage
     removeSession(key) {
         this.ss.removeItem(key)
     }
 
-    /*移除所有sessionStorage*/
+    // 移除所有sessionStorage
     clearSession() {
         this.ss.clear()
     }

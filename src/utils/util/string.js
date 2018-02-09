@@ -1,5 +1,6 @@
 /**
  * 去除空格
+ * 
  * @param  {str}
  * @param  {type} 1-所有空格  2-前后空格  3-前空格 4-后空格
  * @return {String}
@@ -57,6 +58,7 @@ export const changeCase = (str, type) => {
 
 /**
  * 检测密码强度
+ * 
  * @param {*} str 
  */
 export const checkPwd = (str) => {
@@ -81,6 +83,7 @@ export const checkPwd = (str) => {
 
 /**
  * 过滤html代码(把<>转换)
+ * 
  * @param {*} str 
  */
 export const filterTag = (str) => {
