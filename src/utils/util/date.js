@@ -29,6 +29,7 @@ export const formatTime = (time, cFormat) => {
         s: date.getSeconds(),
         a: date.getDay()
     }
+
     var time_str = format.replace(/{(y|m|d|h|i|s|a)+}/g, (result, key) => {
         var value = formatObj[key]
         if (key === 'a') return ['一', '二', '三', '四', '五', '六', '日'][value - 1]
