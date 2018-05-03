@@ -1,5 +1,6 @@
 import React from 'react';
-import { Router, Route, Switch } from 'dva/router';
+import { BrowserRouter, Switch, Route, Redirect, routerRedux } from 'dva/router'
+import dynamic from 'dva/dynamic'
 import IndexPage from './routes/IndexPage';
 
 function RouterConfig({ history }) {
