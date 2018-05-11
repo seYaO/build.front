@@ -17,7 +17,7 @@ export default {
         services: `${__dirname}/src/services`,
         models: `${__dirname}/src/models`,
         routes: `${__dirname}/src/routes`,
-        themes: `${__dirname}/src/themes`,
+        styles: `${__dirname}/src/styles`,
     },
     // 接口代理示例
     proxy: {
