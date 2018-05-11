@@ -1,14 +1,25 @@
-import dva from 'dva';
-import './index.css';
+import dva from 'dva'
+import { message } from 'antd'
+import createLoading from 'dva-loading'
+import createHistory from 'history/createBrowserHistory'
+import 'babel-polyfill'
 
 // 1. Initialize
-const app = dva();
+const app = dva({
+    ...createLoading({
+        effects: true,
+    }),
+    history: createHistory(),
+    onError(error) {
+        message.error(error.message)
+    }
+});
 
 // 2. Plugins
 // app.use({});
 
 // 3. Model
-// app.model(require('./models/example').default);
+app.model(require('./models/app'));
 
 // 4. Router
 app.router(require('./router'));
