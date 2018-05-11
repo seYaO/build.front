@@ -23,10 +23,13 @@
         "mockjs": "^1.0.1-beta3",
         "moment": "^2.22.1",
         "node-fetch": "^2.1.2",
+        "path-to-regexp": "^2.2.1",
+        "prop-types": "^15.6.1",
         "qs": "^6.5.2",
         "query-string": "^6.1.0",
         "react": "^16.2.0",
-        "react-dom": "^16.2.0"
+        "react-dom": "^16.2.0",
+        "react-router-dom": "^4.2.2"
     },
     "devDependencies": {
         "babel-plugin-dva-hmr": "^0.3.2",

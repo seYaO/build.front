@@ -36,6 +36,7 @@ const selectOpts = {
 
 module.exports = {
     name: '保险结算系统',
+    prefix: '/settlement',
     footerText: 'Ant Design Admin  © 2017 zuiidea',
     logo: 'http://file.40017.cn/baoxian/settlement/icon-01.png',
     CORS: [],
