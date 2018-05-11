@@ -27,12 +27,13 @@ function RouterConfig({ history, app }) {
             models: () => [import(/* webpackChunkName: "dashboard" */'./models/dashboard')],
             component: () => import(/* webpackChunkName: "dashboard" */'./routes/dashboard/'),
         },
-        {
-            path: '/test',
-            models: () => [import(/* webpackChunkName: "dashboard" */'./models/example')],
-            component: () => import(/* webpackChunkName: "dashboard" */'./routes/IndexPage'),
-        },
+        // {
+        //     path: '/test',
+        //     models: () => [import(/* webpackChunkName: "dashboard" */'./models/example')],
+        //     component: () => import(/* webpackChunkName: "dashboard" */'./routes/IndexPage'),
+        // },
     ];
+
     return (
         <ConnectedRouter history={history}>
             <BrowserRouter>
