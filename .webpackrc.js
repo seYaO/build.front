@@ -1,14 +1,13 @@
-const path = require('path')
 const { version } = require('./package.json')
 
-export default {
+const webpackrcConfig = {
     entry: 'src/index.js',
-    theme: './theme.config.js',
+    publicPath: '/',
+    outputPath: `./dist/${version}`,
+    // 配置 html-webpack-plugin 插件
     html: {
         template: './src/entry.ejs',
     },
-    publicPath: `//file.40017.cn/baoxian/settlement/${version}/`,
-    outputPath: `./dist/${version}`,
     alias: {
         components: `${__dirname}/src/components`,
         utils: `${__dirname}/src/utils`,
@@ -19,31 +18,32 @@ export default {
         routes: `${__dirname}/src/routes`,
         styles: `${__dirname}/src/styles`,
     },
-    // 接口代理示例
-    proxy: {
-        "/api/v1/weather": {
-            "target": "https://api.seniverse.com/",
+    "proxy": {
+        "/api": {
+            "target": "http://jsonplaceholder.typicode.com/",
             "changeOrigin": true,
             "pathRewrite": {
-                "^/api/v1/weather": "/v3/weather"
+                "^/api": ""
             }
-        },
+        }
     },
     extraBabelPlugins: [
-        'transform-decorators-legacy', [
-            'import', {
-                libraryName: 'antd',
-                libraryDirectory: 'es',
-                style: true
-            }
-        ],
+        'transform-decorators-legacy',
+        ['import', { libraryName: 'antd', libraryDirectory: 'es', style: true }],
     ],
     env: {
         development: {
             extraBabelPlugins: ['dva-hmr'],
         },
     },
-    ignoreMomentLocale: true,
-    disableDynamicImport: true,
-    hash: true,
+    ignoreMomentLocale: true, // 忽略moment的locale文件，用于减少尺寸
+    disableDynamicImport: false, // 禁用import()按需加载，全部打包在一个文件里，通过 babel-plugin-dynamic-import-node-sync 实现
+    hash: true, // 配置让构建产物文件名带 hash，通常会和 manifest 配合使用
 }
+
+if(process.env.NODE_ENV === 'production'){
+    Object.assign(webpackrcConfig, {
+        publicPath: `//file.40017.cn/baoxian/ant-design/${version}`,
+    })
+}
+export default webpackrcConfig

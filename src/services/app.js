@@ -18,6 +18,14 @@ export async function logout(params) {
     })
 }
 
+export async function menus(params) {
+    return request({
+        url: `${apiPrefix}/menus`,
+        method: 'get',
+        data: params,
+    })
+}
+
 export async function query(params) {
     return request({
         url: `${apiPrefix}/account/getUserAuth`,
