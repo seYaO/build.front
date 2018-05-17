@@ -26,5 +26,5 @@ app.router(require('./router').default);
 
 // 5. Start
 app.start('#root');
-
+console.log(app)
 export default app._store; // eslint-disable-line
