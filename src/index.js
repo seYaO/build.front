@@ -1,15 +1,15 @@
-import '@babel/polyfill';
-import 'url-polyfill';
-import dva from 'dva';
-
-// import createHistory from 'history/createHashHistory';
+import '@babel/polyfill'
+import 'url-polyfill'
+import dva from 'dva'
+// user HashHistory
+// import createHistory from 'history/createHashHistory'
 // user BrowserHistory
-import createHistory from 'history/createBrowserHistory';
-import createLoading from 'dva-loading';
-import 'moment/locale/zh-cn';
-import './rollbar';
+import createHistory from 'history/createBrowserHistory'
+import createLoading from 'dva-loading'
+import 'moment/locale/zh-cn'
+import './rollbar'
+import './index.less'
 
-import './index.less';
 // 1. Initialize
 const app = dva({
     history: createHistory(),
@@ -26,5 +26,5 @@ app.router(require('./router').default);
 
 // 5. Start
 app.start('#root');
-console.log(app)
+
 export default app._store; // eslint-disable-line
