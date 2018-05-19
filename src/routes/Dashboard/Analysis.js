@@ -24,12 +24,14 @@ const Yuan = ({ children }) => (
     <span dangerouslySetInnerHTML={{ __html: yuan(children) }} /> /* eslint-disable-line react/no-danger */
 );
 
-@connect(({ chart, loading }) => ({
-    chart,
-    loading: loading.effects['chart/fetch'],
-}))
+function mapStateToProps({ chart, loading }) {
+    return {
+        chart,
+        loading: loading.effects['chart/fetch'],
+    };
+}
 
-export default class Analysis extends Component {
+class Analysis extends Component {
     state = {
         salesType: 'all',
         currentTabKey: '',
@@ -422,3 +424,5 @@ export default class Analysis extends Component {
         );
     }
 }
+
+export default connect(mapStateToProps)(Analysis);

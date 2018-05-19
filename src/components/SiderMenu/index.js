@@ -3,8 +3,9 @@ import React from 'react';
 import DrawerMenu from 'rc-drawer-menu';
 import SiderMenu from './SiderMenu';
 
-const SiderMenuWrapper = props =>
-    props.isMobile
+const SiderMenuWrapper = props => {
+    console.log(props)
+    return props.isMobile
         ?
         (
             <DrawerMenu
@@ -22,5 +23,7 @@ const SiderMenuWrapper = props =>
         )
         :
         (<SiderMenu {...props} />);
+}
+
 
 export default SiderMenuWrapper;

@@ -70,6 +70,7 @@ export function getPlainNode(nodeList, parentPath = '') {
     return arr;
 }
 
+// 大写数字
 export function digitUppercase(n) {
     const fraction = ['角', '分'];
     const digit = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];

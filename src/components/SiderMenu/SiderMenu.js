@@ -41,8 +41,9 @@ export const getFlatMenuKeys = menu =>
  * @param  flatMenuKeys: [/abc, /abc/:id, /abc/:id/info]
  * @param  paths: [/abc, /abc/11, /abc/11/info]
  */
-export const getMeunMatchKeys = (flatMenuKeys, paths) =>
-    paths.reduce((matchKeys, path) => (matchKeys.concat(flatMenuKeys.filter(item => pathToRegexp(item).test(path)))), []);
+export const getMeunMatchKeys = (flatMenuKeys, paths) => {
+    return paths.reduce((matchKeys, path) => (matchKeys.concat(flatMenuKeys.filter(item => pathToRegexp(item).test(path)))), []);
+}
 
 export default class SiderMenu extends PureComponent {
     constructor(props) {
@@ -78,6 +79,7 @@ export default class SiderMenu extends PureComponent {
      * @memberof SiderMenu
      */
     getMenuItemPath = item => {
+        const { isMobile, location, onCollapse } = this.props;
         const itemPath = this.conversionPath(item.path);
         const icon = getIcon(item.icon);
         const { target, name } = item;
@@ -91,20 +93,7 @@ export default class SiderMenu extends PureComponent {
             );
         }
         return (
-            <Link
-                to={itemPath}
-                target={target}
-                replace={itemPath === this.props.location.pathname}
-                onClick={
-                    this.props.isMobile
-                        ?
-                        () => {
-                            this.props.onCollapse(true);
-                        }
-                        :
-                        undefined
-                }
-            >
+            <Link to={itemPath} target={target} replace={itemPath === location.pathname} onClick={isMobile ? () => onCollapse(true) : undefined}>
                 {icon}
                 <span>{name}</span>
             </Link>
@@ -119,21 +108,7 @@ export default class SiderMenu extends PureComponent {
             // 当无子菜单时就不展示菜单
             if (childrenItems && childrenItems.length > 0) {
                 return (
-                    <SubMenu
-                        title={
-                            item.icon
-                                ?
-                                (
-                                    <span>
-                                        {getIcon(item.icon)}
-                                        <span>{item.name}</span>
-                                    </span>
-                                )
-                                :
-                                (item.name)
-                        }
-                        key={item.path}
-                    >
+                    <SubMenu title={item.icon ? <span>{getIcon(item.icon)}<span>{item.name}</span></span> : item.name} key={item.path}>
                         {childrenItems}
                     </SubMenu>
                 );
@@ -210,30 +185,14 @@ export default class SiderMenu extends PureComponent {
             selectedKeys = [openKeys[openKeys.length - 1]];
         }
         return (
-            <Sider
-                trigger={null}
-                collapsible
-                collapsed={collapsed}
-                breakpoint="lg"
-                onCollapse={onCollapse}
-                width={256}
-                className={styles.sider}
-            >
+            <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg" onCollapse={onCollapse} width={256} className={styles.sider}>
                 <div className={styles.logo} key="logo">
                     <Link to="/">
                         <img src={logo} alt="logo" />
                         <h1>Ant Design Pro</h1>
                     </Link>
                 </div>
-                <Menu
-                    key="Menu"
-                    theme="dark"
-                    mode="inline"
-                    {...menuProps}
-                    onOpenChange={this.handleOpenChange}
-                    selectedKeys={selectedKeys}
-                    style={{ padding: '16px 0', width: '100%' }}
-                >
+                <Menu {...menuProps} key="Menu" theme="dark" mode="inline" onOpenChange={this.handleOpenChange} selectedKeys={selectedKeys} style={{ padding: '16px 0', width: '100%' }} >
                     {this.getNavMenuItems(this.menus)}
                 </Menu>
             </Sider>
