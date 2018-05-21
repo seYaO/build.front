@@ -1,7 +1,7 @@
-import React from 'react';
-import { Avatar, List } from 'antd';
-import classNames from 'classnames';
-import styles from './NoticeList.less';
+import React from 'react'
+import { Avatar, List } from 'antd'
+import classNames from 'classnames'
+import styles from './NoticeList.less'
 
 export default function NoticeList({ data = [], onClick, onClear, title, locale, emptyText, emptyImage, }) {
     if (data.length === 0) {
@@ -12,14 +12,13 @@ export default function NoticeList({ data = [], onClick, onClear, title, locale,
             </div>
         );
     }
+
     return (
         <div>
             <List className={styles.list}>
                 {
                     data.map((item, i) => {
-                        const itemCls = classNames(styles.item, {
-                            [styles.read]: item.read,
-                        });
+                        const itemCls = classNames(styles.item, { [styles.read]: item.read, });
                         return (
                             <List.Item className={itemCls} key={item.key || i} onClick={() => onClick(item)}>
                                 <List.Item.Meta

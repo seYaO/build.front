@@ -14,7 +14,6 @@ import NotFound from 'routes/Exception/404'
 import { getRoutes } from 'utils/utils'
 import Authorized from 'utils/Authorized'
 import { getMenuData } from 'common/menu'
-import logo from 'assets/logo.svg'
 import { FooterLinks, FooterCopyright, query } from './enums'
 
 const { Content, Header, Footer } = Layout;
@@ -111,14 +110,14 @@ class BasicLayout extends React.PureComponent {
             return authorizedPath;
         }
         return redirect;
-    };
+    }
 
     handleMenuCollapse = collapsed => {
         this.props.dispatch({
             type: 'global/changeLayoutCollapsed',
             payload: collapsed,
         });
-    };
+    }
 
     handleNoticeClear = type => {
         message.success(`清空了${type}`);
@@ -126,7 +125,7 @@ class BasicLayout extends React.PureComponent {
             type: 'global/clearNotices',
             payload: type,
         });
-    };
+    }
 
     handleMenuClick = ({ key }) => {
         if (key === 'triggerError') {
@@ -138,7 +137,7 @@ class BasicLayout extends React.PureComponent {
                 type: 'login/logout',
             });
         }
-    };
+    }
 
     handleNoticeVisibleChange = visible => {
         if (visible) {
@@ -154,7 +153,6 @@ class BasicLayout extends React.PureComponent {
         return (
             <Layout>
                 <SiderMenu
-                    logo={logo}
                     // 不带Authorized参数的情况下如果没有权限,会强制跳到403界面
                     // If you do not have the Authorized parameter
                     // you will be forced to jump to the 403 interface without permission
@@ -168,7 +166,6 @@ class BasicLayout extends React.PureComponent {
                 <Layout>
                     <Header style={{ padding: 0 }}>
                         <GlobalHeader
-                            logo={logo}
                             currentUser={currentUser}
                             fetchingNotices={fetchingNotices}
                             notices={notices}

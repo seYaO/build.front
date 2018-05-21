@@ -3,10 +3,7 @@ import { Button, Spin, Card } from 'antd';
 import { connect } from 'dva';
 import styles from './style.less';
 
-@connect(state => ({
-    isloading: state.error.isloading,
-}))
-export default class TriggerException extends PureComponent {
+class TriggerException extends PureComponent {
     state = {
         isloading: false,
     }
@@ -36,3 +33,11 @@ export default class TriggerException extends PureComponent {
         );
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        isloading: state.error.isloading,
+    };
+}
+
+export default connect(mapStateToProps)(TriggerException);

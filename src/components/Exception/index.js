@@ -16,7 +16,8 @@ const Exception = ({ className, linkElement = 'a', type, title, desc, img, actio
                 <h1>{title || config[pageType].title}</h1>
                 <div className={styles.desc}>{desc || config[pageType].desc}</div>
                 <div className={styles.actions}>
-                    {actions ||
+                    {
+                        actions ||
                         createElement(
                             linkElement,
                             {
@@ -24,7 +25,8 @@ const Exception = ({ className, linkElement = 'a', type, title, desc, img, actio
                                 href: '/',
                             },
                             <Button type="primary">返回首页</Button>
-                        )}
+                        )
+                    }
                 </div>
             </div>
         </div>

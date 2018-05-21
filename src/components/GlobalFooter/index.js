@@ -7,7 +7,9 @@ const GlobalFooter = ({ className, links, copyright }) => {
     return (
         <div className={clsString}>
             {
-                links && (
+                links
+                &&
+                (
                     <div className={styles.links}>
                         {
                             links.map(link => (

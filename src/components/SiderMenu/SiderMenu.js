@@ -1,9 +1,10 @@
-import React, { PureComponent } from 'react';
-import { Layout, Menu, Icon } from 'antd';
-import pathToRegexp from 'path-to-regexp';
-import { Link } from 'dva/router';
-import styles from './index.less';
-import { urlToList } from '../_utils/pathTools';
+import React, { PureComponent } from 'react'
+import { Layout, Menu, Icon } from 'antd'
+import pathToRegexp from 'path-to-regexp'
+import { Link } from 'dva/router'
+import styles from './index.less'
+import { urlToList } from '../_utils/pathTools'
+import config from 'utils/config'
 
 const { Sider } = Layout;
 const { SubMenu } = Menu;
@@ -105,6 +106,7 @@ export default class SiderMenu extends PureComponent {
     getSubMenuOrItem = item => {
         if (item.children && item.children.some(child => child.name)) {
             const childrenItems = this.getNavMenuItems(item.children);
+            
             // 当无子菜单时就不展示菜单
             if (childrenItems && childrenItems.length > 0) {
                 return (
@@ -175,7 +177,7 @@ export default class SiderMenu extends PureComponent {
     }
 
     render() {
-        const { logo, collapsed, onCollapse } = this.props;
+        const { collapsed, onCollapse } = this.props;
         const { openKeys } = this.state;
         // Don't show popup menu when it is been collapsed
         const menuProps = collapsed ? {} : { openKeys, };
@@ -188,8 +190,8 @@ export default class SiderMenu extends PureComponent {
             <Sider trigger={null} collapsible collapsed={collapsed} breakpoint="lg" onCollapse={onCollapse} width={256} className={styles.sider}>
                 <div className={styles.logo} key="logo">
                     <Link to="/">
-                        <img src={logo} alt="logo" />
-                        <h1>Ant Design Pro</h1>
+                        <img src={config.logo} alt="logo" />
+                        <h1>{config.name}</h1>
                     </Link>
                 </div>
                 <Menu {...menuProps} key="Menu" theme="dark" mode="inline" onOpenChange={this.handleOpenChange} selectedKeys={selectedKeys} style={{ padding: '16px 0', width: '100%' }} >
