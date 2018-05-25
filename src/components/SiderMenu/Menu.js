@@ -9,7 +9,7 @@ import pathToRegexp from 'path-to-regexp'
 //   icon: 'setting',
 //   icon: 'http://demo.com/icon.png',
 //   icon: <Icon type="setting" />,
-const getIcon = icon => {
+const getIcon = (icon = '') => {
     if (typeof icon === 'string' && icon.indexOf('http') === 0) {
         return <img src={icon} alt="icon" className={`${styles.icon} sider-menu-item-img`} />;
     }
@@ -18,6 +18,7 @@ const getIcon = icon => {
     }
     return icon;
 };
+
 // conversion Path
 // 转化路径
 const conversionPath = path => {
@@ -31,6 +32,33 @@ const conversionPath = path => {
 class Menus extends PureComponent {
     constructor(props) {
         super(props);
+        this.state = {
+            openKeys: this.getDefaultCollapsedSubMenus(props),
+        };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.location.pathname !== this.props.location.pathname) {
+            this.setState({
+                openKeys: this.getDefaultCollapsedSubMenus(nextProps),
+            });
+        }
+    }
+
+    /**
+     * Convert pathname to openKeys
+     * /list/search/articles = > ['list','/list/search']
+     * @param  props
+     */
+    getDefaultCollapsedSubMenus(props) {
+        const { location: { pathname } } = props || this.props;
+        return pathname;
+    }
+
+    // Get the currently selected menu
+    getSelectedMenuKeys = () => {
+        const { location: { pathname } } = this.props;
+        return pathname;
     }
 
     /**
@@ -42,23 +70,27 @@ class Menus extends PureComponent {
         const { isMobile, location, onCollapse } = this.props;
         const itemPath = conversionPath(item.route);
         const icon = getIcon(item.icon);
-        const { target, name } = item;
         // Is it a http link
         if (/^https?:\/\//.test(itemPath)) {
             return (
-                <a href={itemPath} target={target}>
+                <a href={itemPath} target={item.target}>
                     {icon}
                     <span>{name}</span>
                 </a>
             );
         }
         return (
-            <Link to={itemPath} target={target} replace={itemPath === location.pathname} onClick={isMobile ? () => onCollapse(true) : undefined}>
+            <Link
+                to={itemPath}
+                target={item.target}
+                replace={itemPath === location.pathname}
+                onClick={isMobile ? () => onCollapse(true) : undefined}
+            >
                 {icon}
-                <span>{name}</span>
+                <span>{item.name}</span>
             </Link>
         );
-    };
+    }
 
     /**
      * 递归生成菜单
@@ -70,27 +102,12 @@ class Menus extends PureComponent {
                     levelMap[item.id] = item.mpid
                 }
                 return (
-                    <Menu.SubMenu
-                        key={item.id}
-                        title={
-                            <span>
-                                {getIcon(item.icon)}
-                                {(!siderFoldN || !menuTree.includes(item)) && item.name}
-                            </span>
-                        }
-                    >
+                    <Menu.SubMenu key={item.id} title={<span>{getIcon(item.icon)}{item.name}</span>}>
                         {this.getMenus(item.children, siderFoldN)}
                     </Menu.SubMenu>
                 )
             }
-            return (
-                <Menu.Item key={item.id}>
-                    <Link to={item.route || '#'} style={siderFoldN ? { width: 10 } : {}}>
-                        {getIcon(item.icon)}
-                        {item.name}
-                    </Link>
-                </Menu.Item>
-            )
+            return <Menu.Item key={item.id}>{this.getMenuItemPath(item)}</Menu.Item>
         })
     }
 
@@ -174,6 +191,7 @@ class Menus extends PureComponent {
                 mode="inline"
                 theme="dark"
                 selectedKeys={defaultSelectedKeys}
+                style={{ padding: '16px 0', width: '100%' }}
             >
                 {menuItems}
             </Menu>

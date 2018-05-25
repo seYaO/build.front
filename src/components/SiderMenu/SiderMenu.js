@@ -28,14 +28,16 @@ const getIcon = icon => {
  * [{path:string},{path:string}] => {path,path2}
  * @param  menu
  */
-export const getFlatMenuKeys = menu =>
-    menu.reduce((keys, item) => {
+export const getFlatMenuKeys = menu => {
+    return menu.reduce((keys, item) => {
         keys.push(item.path);
         if (item.children) {
             return keys.concat(getFlatMenuKeys(item.children));
         }
         return keys;
     }, []);
+}
+
 
 /**
  * Find all matched menu keys based on paths
@@ -43,6 +45,7 @@ export const getFlatMenuKeys = menu =>
  * @param  paths: [/abc, /abc/11, /abc/11/info]
  */
 export const getMeunMatchKeys = (flatMenuKeys, paths) => {
+    console.log(paths)
     return paths.reduce((matchKeys, path) => (matchKeys.concat(flatMenuKeys.filter(item => pathToRegexp(item).test(path)))), []);
 }
 
@@ -106,7 +109,7 @@ export default class SiderMenu extends PureComponent {
     getSubMenuOrItem = item => {
         if (item.children && item.children.some(child => child.name)) {
             const childrenItems = this.getNavMenuItems(item.children);
-            
+
             // 当无子菜单时就不展示菜单
             if (childrenItems && childrenItems.length > 0) {
                 return (
