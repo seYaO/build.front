@@ -180,16 +180,16 @@ class BasicLayout extends React.PureComponent {
                     <Content style={{ margin: '24px 24px 0', height: '100%' }}>
                         <Switch>
                             {
-                                // getRoutes(match.path, routerData).map(item => (
-                                //     <AuthorizedRoute
-                                //         key={item.key}
-                                //         path={item.path}
-                                //         component={item.component}
-                                //         exact={item.exact}
-                                //         authority={item.authority}
-                                //         redirectPath="/exception/403"
-                                //     />
-                                // ))
+                                getRoutes(match.path, routerData).map(item => (
+                                    <AuthorizedRoute
+                                        key={item.key}
+                                        path={item.path}
+                                        component={item.component}
+                                        exact={item.exact}
+                                        authority={item.authority}
+                                        redirectPath="/exception/403"
+                                    />
+                                ))
                             }
                             <Redirect exact from="/" to={bashRedirect} />
                             <Route render={NotFound} />
