@@ -1,0 +1,8 @@
+<template name="v-toast">
+    <view class="v-toast" wx:if="{{ vToast.show }}" bindtap="clearVToast">
+        <view class="v-toast-box">
+            <view class="v-toast-content">{{ vToast.title }}</view>
+        </view>
+    </view>
+</template>
+      

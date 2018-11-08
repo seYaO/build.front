@@ -1,0 +1,48 @@
+page {
+    background: #fff;
+}
+
+.container {
+    background: #F9F9F9;
+    overflow: hidden;
+    min-height: 100vh;
+    box-sizing: border-box;
+    padding: 15px 0;
+}
+
+.container::before {
+    position: fixed;
+    top: 0;
+    left: 0;
+    content: ' ';
+    width: 100%;
+    height: 1px;
+    background-color: #e2e2e2;
+    z-index: 5;
+}
+
+
+/* 高清线 */
+
+.rowLine {
+    z-index: 1;
+    background: transparent;
+    border-width: 0;
+    border-image: none;
+    position: relative;
+}
+
+.rowLine:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    height: 1px;
+    border-top: 1px solid #dcdcdc;
+    color: #dcdcdc;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+}

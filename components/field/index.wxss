@@ -1,0 +1,50 @@
+.v-field {
+    padding: 7px 15px;
+    color: #333
+}
+
+.v-field--wrapped {
+    margin: 0 15px;
+    background-color: #fff
+}
+
+.v-field--wrapped::after {
+    left: 0;
+    border-width: 1px;
+    border-radius: 4px
+}
+
+.v-field--wrapped+.v-field--wrapped {
+    margin-top: 10px
+}
+
+.v-field--error {
+    color: #f40
+}
+
+.v-field--wrapped.v-field--error::after {
+    border-color: #f40
+}
+
+.v-field__title {
+    color: #333;
+    min-width: 65px;
+    padding-right: 10px
+}
+
+.v-field__input {
+    flex: 1;
+    line-height: 1.6;
+    padding: 4px 0;
+    min-height: 22px;
+    height: auto;
+    font-size: 14px
+}
+
+.v-field__placeholder {
+    font-size: 14px
+}
+
+.v-field__input--right {
+    text-align: right
+}

@@ -1,0 +1,29 @@
+<template name="v-field">
+<view class="v-cell v-field {{ error ? 'v-field--error' : '' }} {{ mode === 'wrapped' ? 'v-field--wrapped' : '' }}">
+    <view wx:if="{{ title }}" class="v-cell__hd v-field__title">{{ title }}</view>
+    <textarea
+        wx:if="{{ type === 'textarea' }}"
+        auto-height
+        name="{{ name || componentId || '' }}"
+        value="{{ value }}"
+        placeholder="{{ placeholder }}"
+        class="v-field__input v-cell__bd {{ right ? 'v-field__input--right' : '' }}"
+        placeholder-class="v-field__placeholder"
+        bindinput="_handleVFieldChange"
+        bindfocus="_handleVFieldFocus"
+        bindblur="_handleVFieldBlur"
+        data-component-id="{{ componentId || '' }}"></textarea>
+    <input
+        wx:else
+        type="{{ inputType || 'text' }}"
+        name="{{ name || componentId || '' }}"
+        value="{{ value }}"
+        placeholder="{{ placeholder }}"
+        class="v-field__input v-cell__bd {{ right ? 'v-field__input--right' : '' }}"
+        placeholder-class="v-field__placeholder"
+        bindinput="_handleVFieldChange"
+        bindfocus="_handleVFieldFocus"
+        bindblur="_handleVFieldBlur"
+        data-component-id="{{ componentId || '' }}"/>
+</view>
+</template>

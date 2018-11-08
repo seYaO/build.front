@@ -1,0 +1,18 @@
+<template name="v-dialog">
+    <view class="v-dialog {{ vDialog.show ? 'v-dialog--show' : '' }}">
+        <view class="v-dialog--mask"></view>
+        <view class="v-dialog--container">
+            <view wx:if="{{ vDialog.title }}" class="v-dialog__header">{{ vDialog.title }}</view>
+            <view class="v-dialog__content {{ vDialog.title ? 'v-dialog__content--title' : '' }}">{{ vDialog.content }}</view>
+            <view class="v-dialog__footer {{ vDialog.buttonsShowVertical ? 'v-dialog__footer--vertical' : 'v-dialog__footer--horizon' }}">
+                <block wx:for="{{ vDialog.buttons }}" wx:key="{{ item.text }}-{{ item.type }}">
+                    <button
+                    class="v-dialog__button v-btn"
+                    data-type="{{ item.type }}"
+                    catchtap="_handleVDialogButtonClick"
+                    style="color: {{ item.color || '#333' }}">{{ item.text }}</button>
+                </block>
+            </view>
+        </view>
+    </view>
+</template>

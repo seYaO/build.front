@@ -1,0 +1,54 @@
+.v-card {
+    margin-left: 0;
+    width: auto;
+    padding: 5px 15px;
+    overflow: hidden;
+    position: relative;
+    font-size: 14px
+}
+
+.v-card__thumb {
+    width: 60px;
+    float: left;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    background-size: cover
+}
+
+.v-card__img {
+    font-size: 60px;
+    line-height: 1;
+    color: #88d7fb;
+}
+
+.v-card__detail {
+    margin-left: 70px;
+    width: auto;
+    position: relative
+}
+
+.v-card__detail-row {
+    overflow: hidden;
+    line-height: 20px;
+    min-height: 20px;
+    margin-bottom: 3px
+}
+.v-card__detail-row .v-card__title{
+    font-size: 16px;
+    color: #333;
+}
+.v-card__detail-row view{
+    font-size: 12px;
+    color: #999;
+    line-height: 24px;
+}
+
+.v-card__right-col {
+    float: right
+}
+
+.v-card__left-col {
+    margin-right: 80px
+}

@@ -1,0 +1,3 @@
+<template  name="v-toptips">
+    <view class="v-toptips {{ vTopTips.show ? 'v-toptips--show' : '' }}">{{ vTopTips.content }}</view>
+</template>

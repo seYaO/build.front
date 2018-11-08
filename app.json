@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/detail/detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff5346",
+    "navigationBarTextStyle": "white",
+    "navigationBarTitleText": "seYa"
+  }
+}
