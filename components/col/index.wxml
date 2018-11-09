@@ -1,6 +1,3 @@
-<view
-  class="{{ classes }}"
-  style="{{ style }}"
->
-  <slot />
+<view class="{{ classes }}" style="{{ style }}">
+    <slot />
 </view>

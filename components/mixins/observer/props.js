@@ -1,32 +1,32 @@
 export function observeProps(props) {
-  if (!props) {
-    return;
-  }
-
-  Object.keys(props).forEach(function (key) {
-    var prop = props[key];
-
-    if (prop === null || !('type' in prop)) {
-      prop = {
-        type: prop
-      };
+    if (!props) {
+        return;
     }
 
-    var _prop = prop,
-        observer = _prop.observer;
+    Object.keys(props).forEach(function (key) {
+        var prop = props[key];
 
-    prop.observer = function () {
-      if (observer) {
-        if (typeof observer === 'string') {
-          observer = this[observer];
+        if (prop === null || !('type' in prop)) {
+            prop = {
+                type: prop
+            };
         }
 
-        observer.apply(this, arguments);
-      }
+        var _prop = prop,
+            observer = _prop.observer;
 
-      this.setData();
-    };
+        prop.observer = function () {
+            if (observer) {
+                if (typeof observer === 'string') {
+                    observer = this[observer];
+                }
 
-    props[key] = prop;
-  });
+                observer.apply(this, arguments);
+            }
+
+            this.setData();
+        };
+
+        props[key] = prop;
+    });
 }
