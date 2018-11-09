@@ -1,3 +1,4 @@
+/* 引入内置样式 */
 @import './components/common/index.wxss';
 
 
