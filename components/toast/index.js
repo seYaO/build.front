@@ -1,33 +1,34 @@
-module.exports = {
-    showVToast(title, timeout) {
-        var vToast = this.data.vToast || {};
-        clearTimeout(vToast.timer);
-
-        // 弹层设置~
-        vToast = {
-            show: true,
-            title
-        };
-        this.setData({
-            vToast
-        });
-
-        var timer = setTimeout(() => {
-            this.clearVToast();
-        }, timeout || 3000);
-
-        this.setData({
-            'vToast.timer': timer
-        });
+import { VantComponent } from '../common/component';
+VantComponent({
+  props: {
+    show: Boolean,
+    mask: Boolean,
+    message: String,
+    forbidClick: Boolean,
+    zIndex: {
+      type: Number,
+      value: 1000
     },
-
-    clearVToast() {
-        var vToast = this.data.vToast || {};
-        clearTimeout(vToast.timer);
-
-        this.setData({
-            'vToast.show': false
-        });
+    type: {
+      type: String,
+      value: 'text'
+    },
+    loadingType: {
+      type: String,
+      value: 'circular'
+    },
+    position: {
+      type: String,
+      value: 'middle'
     }
-};
-  
+  },
+  methods: {
+    clear: function clear() {
+      this.setData({
+        show: false
+      });
+    },
+    // for prevent touchmove
+    noop: function noop() {}
+  }
+});
