@@ -1,21 +1,36 @@
 
+// es6
+const es6tutorial = ['', 'intro', 'let', 'destructuring', 'string', 'regex', 'number', 'function', 'array', 'object', 'symbol', 'set-map', 'proxy', 'reflect', 'promise', 'iterator', 'generator', 'generator-async', 'async', 'class', 'class-extends', 'decorator', 'module', 'module-loader', 'style', 'spec', 'arraybuffer', 'proposals', 'reference']
+
+
 module.exports = {
     dest: 'dist',
-    title: 'Chen\'s blog',
+    lang: 'zh-CN',
+    title: 'seYa\'s blog',
     description: '我的个人网站',
-    head: [ // 注入到当前页面的 HTML <head> 中的标签
-        ['link', { rel: 'icon', href: '/logo.jpg' }], // 增加一个自定义的 favicon(网页标签的图标)
+    // 注入到当前页面的 HTML <head> 中的标签
+    head: [
+        ['link', { rel: 'icon', href: `/logo.png` }], // 增加一个自定义的 favicon(网页标签的图标)
+        ['link', { rel: 'manifest', href: '/manifest.json' }],
+        ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+        ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+        ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
+        ['link', { rel: 'apple-touch-icon', href: `/icons/apple-touch-icon-152x152.png` }],
+        ['link', { rel: 'mask-icon', href: '/icons/safari-pinned-tab.svg', color: '#3eaf7c' }],
+        ['meta', { name: 'msapplication-TileImage', content: '/icons/msapplication-icon-144x144.png' }],
+        ['meta', { name: 'msapplication-TileColor', content: '#000000' }]
     ],
-    base: '/', // 这是部署到github相关的配置
+    // 这是部署到github相关的配置
+    base: '/',
     markdown: {
-        lineNumbers: false // 代码块显示行号
+        lineNumbers: false, // 代码块显示行号
     },
     themeConfig: {
         // 假定 GitHub。也可以是一个完整的 GitLab URL。
-        repo: 'seYaO/vuepress',
+        repo: 'seYaO/build.front',
         // 自定义项目仓库链接文字
         // 默认根据 `themeConfig.repo` 中的 URL 来自动匹配是 "GitHub"/"GitLab"/"Bitbucket" 中的哪个，如果不设置时是 "Source"。
-        repoLabel: '贡献代码！',
+        // repoLabel: '贡献代码！',
 
         // 以下为可选的 "Edit this page" 链接选项
 
@@ -24,39 +39,36 @@ module.exports = {
         // 如果你的文档不在仓库的根目录下：
         docsDir: 'docs',
         // 如果你的文档在某个特定的分支（默认是 'master' 分支）：
-        docsBranch: 'master',
+        docsBranch: 'myBlog',
         // 默认为 false，设置为 true 来启用
         editLinks: true,
         // 自定义编辑链接的文本。默认是 "Edit this page"
-        editLinkText: '帮助我们改进页面内容！',
+        editLinkText: '编辑此页',
+        lastUpdated: '上次更新',
 
         nav: [ // 导航栏配置
             { text: '前端基础', link: '/accumulate/' },
             { text: '算法题库', link: '/algorithm/' },
-            { text: '微博', link: 'https://baidu.com' }
+            { text: 'es6', link: '/es6tutorial/' },
+            // { text: '微博', link: 'https://baidu.com' }
         ],
-        sidebar: 'auto', // 侧边栏配置
-        sidebarDepth: 2, // 侧边栏显示2级
+        // 侧边栏配置
+        sidebar: {
+            '/es6tutorial/': genSidebarConfig('es6', es6tutorial)
+        },
+        // 侧边栏显示2级
+        // sidebarDepth: 2,
     }
 };
 
+
 // 侧边栏配置
-function genSidebarConfig(title) {
+function genSidebarConfig(title, children = ['']) {
     return [
         {
             title,
             collapsable: false,
-            children: [
-                '',
-                'getting-started',
-                'basic-config',
-                'assets',
-                'markdown',
-                'using-vue',
-                'custom-themes',
-                'i18n',
-                'deploy'
-            ]
+            children
         }
     ]
 }
