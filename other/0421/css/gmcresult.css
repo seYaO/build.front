@@ -1,0 +1,160 @@
+/**
+ *
+ * @Name: 赞礼号女神专题活动
+ * @Author: wl
+ * @CreateTime: 2016-04-07
+ * @Update: 
+ * 
+ overflow: hidden;text-overflow: ellipsis;white-space: nowrap;
+ display: box;display: -webkit-box;box-orient: horizontal;box-orient: horizontal;box-align: center;-webkit-box-align: center;////box-flex: 1;-webkit-box-flex: 1;
+ */
+@charset "UTF-8";
+* {
+  margin: 0;
+  padding: 0;
+}
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+th,
+var {
+  font-style: normal;
+}
+ul {
+  list-style: none;
+}
+table {
+  border-collapse: collapse;
+}
+body {
+  overflow-x: hidden;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #333;
+  font-family: arial, sans-serif;
+}
+.clearfix:after,
+.clearfix:before {
+  display: table;
+  content: "";
+}
+.clearfix:after {
+  clear: both;
+}
+a {
+  text-decoration: none;
+  color: #333333;
+}
+body {
+  background: #f2f4f7;
+  width: 10rem;
+  margin: 0 auto;
+  font-family: "Helvetica Neue", Helvetica, STHeiTi, sans-serif;
+}
+a,
+img {
+  -webkit-touch-callout: none;
+  border: 0;
+}
+img {
+  display: block;
+}
+a:hover {
+  text-decoration: none;
+}
+body,
+html {
+  -webkit-user-select: none;
+  user-select: none;
+  background: #f2f4f7;
+}
+/*  */
+.gm_img {
+  width: 100%;
+}
+.content {
+  background: #fbb818;
+}
+.content .gm_title {
+  margin-top: 0.32rem;
+  font-size: 0.53333333rem;
+  line-height: 0.77333333rem;
+  font-weight: bold;
+  color: #a66507;
+  font-style: italic;
+  text-align: center;
+}
+.content .gm_lin {
+  position: relative;
+  display: block;
+  margin: 0 auto;
+  margin-top: 0.26666667rem;
+  width: 4.6rem;
+  height: 0.93333333rem;
+  background: #de7814;
+  border-radius: 0.93333333rem;
+  box-shadow: 0.05333333rem 0.06666667rem 0 #b65a00;
+  font-size: 0.42666667rem;
+  line-height: 0.93333333rem;
+  color: #fff;
+  text-indent: 1.17333333rem;
+}
+.content .gm_lin:before {
+  content: "";
+  position: absolute;
+  left: 0.58666667rem;
+  top: 0.34666667rem;
+  width: 0.36rem;
+  height: 0.26666667rem;
+  background: url(../img/arrow.png) no-repeat;
+  background-size: 100% 100%;
+}
+.content .h_title {
+  margin-top: 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.54666667rem;
+  font-weight: bold;
+  color: #181e60;
+  text-align: center;
+}
+.content .gm_ns {
+  width: 4.65333333rem;
+  margin: 0 auto;
+}
+.content .gm_ns_img {
+  width: 4.98666667rem;
+  margin: 0 auto;
+  margin-top: 0.37333333rem;
+}
+.content .gm_gz {
+  width: 8.22666667rem;
+  margin: 0 auto;
+  margin-top: 0.90666667rem;
+}
+.content .gm_gz p {
+  margin-top: 0.33333333rem;
+  font-size: 0.37333333rem;
+  line-height: 0.56rem;
+  color: #a66507;
+}
+.content .public {
+  width: 2.90666667rem;
+  margin: 0 auto;
+  margin-top: 0.77333333rem;
+}
+.content .public_txt {
+  margin-top: 0.29333333rem;
+  font-size: 0.37333333rem;
+  line-height: 0.58666667rem;
+  color: #a66507;
+  text-align: center;
+}
+.content .footer {
+  padding: 1.06666667rem 0;
+  font-size: 0.26666667rem;
+  color: #905500;
+  text-align: center;
+}

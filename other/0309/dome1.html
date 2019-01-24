@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <style type="text/css">
+    	#content-main{
+    		margin-left:50px;
+    		float:left;
+    		width:220px;
+    		border:1px solid #ccc;
+    		height:120px;
+    		color:#ff3300;
+    	}
+    	#list{
+    		float:left;
+    		list-style:none;
+    	}
+    </style>
+</head>
+<body>
+ <div>
+ <h1>bbSPA测试页面</h1>
+ </div>
+ <hr>
+ <ul id="list">
+	 <li><a href="#beijing">北京</a></li>
+	 <li><a href="#shanghai">上海</a></li>
+	 <li><a href="#shenzhen">深圳</a></li>
+	 <li><a href="#guangzhou">广州</a></li>
+	 <li><a href="#tianjin">天津</a></li>
+ </ul>
+ <div id="content-main" >
+ </div>
+<script type="text/javascript">
+	$(function(){
+	 	_init() ;
+	}) ;
+	var _history = [] ; // 记录hash的活动数据容器
+	function _init(){
+		var root = $("#list") ;
+	 	var defaultHash = root.find("li a").eq(1).attr("href") ;
+	 	var currentHash = window.location.hash ;
+	 	_addToHistory(defaultHash,true) ;
+		 if(currentHash && currentHash != defaultHash){
+		 	_showContent((currentHash.split("#")[1])) ;
+		 }
+		 else{
+		 	_showContent((defaultHash.split("#")[1])) ;
+		 }
+		 $("#list").on("click","a",function(e){
+			 var action = ($(this).attr("href").split("#")[1]) ;
+			 _showContent(action) ;
+			 e.preventDefault() ;
+		 }) ;
+		 window.addEventListener("popstate",function(e){
+			 if(e.state && e.state.hash){
+			 	var hash = e.state.hash ;
+				 if(_history[1] && hash === _history[1].hash){//存在历史记录，证明是后退事件
+				 	_showContent(hash.split("#")[1].toLowerCase()) ;
+				 }else{ // 其它认为是非法后退或者前进
+			 		return ;
+				 }
+			 }
+			 else{
+			 	return ;
+			 }
+		 },false) ;
+	};
+	function _showContent(action){
+		var samePage = _history[0]["hash"] == "#" + action ;
+		if(samePage){ // 同页面,则不重新加载
+		 	return ;
+		}
+		_loadContent(action + ".json").done(function(data){
+			 _renderContent(data["content"]) ;
+			 _addToHistory("#" + action,samePage) ;
+		}).fail(function(){
+			 throw new Error("load content error !") ;
+		}) ; 
+	};
+	function _loadContent(url){
+		 return $.ajax({
+			 url : url ,
+			 dataType : "json"
+		 }) ;
+	} ;
+	function _renderContent(text){
+	 	$("#content-main").text(text) ;
+	} ;
+	function _addToHistory(hash,noState){
+		 var obj = {
+		 	hash : hash
+		 } ;
+		 if(noState){
+			 _history.shift(obj) ;
+			 window.history.replaceState(obj,"",hash);
+		 }
+		 else{
+		 	window.history.pushState(obj,"",hash);
+		 }
+		 _history.unshift(obj);
+	} ;
+</script>
+</body>
+</html>

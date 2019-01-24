@@ -1,0 +1,55 @@
+﻿====webSQL==============
+
+Chrome6以上版本、Opera10以上版本、Safari5版本的浏览器对SQLLite数据库。
+
+//使用openDatabase方法创建一个访问数据库的对象，该方法返回创建后的数据库访问对象，如果该数据库不存在，则创建该数据库
+//参数一：数据库名
+//参数二：版本号
+//参数三：数据库的描述
+//参数四：数据库的大小
+var db = openDatabase('mydb', '1.0', 'Test DB', 2*1024*1024);
+
+//在实际访问数据库时，还需要调用transaction方法，用来执行事务处理。使用事务处理，可以防止在对数据库进行访问及执行有关操作时受到外界的干扰。因为在web上，同时会有许多人都在对页面进行访问。如果在访问数据库的过程中，正在操作的数据被其他用户修改掉，会引起很多意想不到的后果。因此，可以使用事务来达到在操作完成之前，阻止其他用户访问数据库的目的。
+//transaction方法的使用
+db.transaction(function(tx){
+	tx.executeSql('create table if not exists logs (id unique, log)');
+});
+//executeSql方法定义
+//参数一：需要执行的SQL语句
+//参数二：SQL语句中所有使用到的参数的数组。（在executeSql方法中，将SQL语句中所要使用到的参数先用"?"代替，然后依次将这些参数组成数组放在第二个参数中）
+//参数三：成功执行SQL语句时调用的回调函数
+//参数四：执行SQL语句出错时调用的回调函数。
+transaction.executeSql(sqlquery, [], dataHandler, errorHandler);
+
+//参数一：transacton对象
+//参数二：执行查询操作时返回的查询到的结果数据集对象
+function dataHandler(transaction, results){//执行SQL语句成功时的处理
+}
+
+//参数一：transacton对象
+//参数二：执行发生错误时的错误信息文字
+function errorHandler(transaction, errmsg){//执行SQL语句出错时的处理	
+}
+
+
+
+
+/////////////////////
+1增
+insert [into] <表名> (列名) values (列值)
+例：insert into Strdents (姓名,性别,出生日期) values ('开心朋朋','男','1980/6/15')
+
+2删
+delete from <表名> [where <删除条件>]
+例：delete from a where name='开心朋朋'（删除表a中列值为开心朋朋的行）
+
+3改
+update <表名> set <列名=更新值> [where <更新条件>]
+例：update tongxunlu set 年龄=18 where 姓名='蓝色小名'
+
+4查
+select <列名> from <表名> [where <查询条件表达试>] [order by <排序的列名>[asc或desc]]
+
+【查询所有数据行和列】
+例：select * from a
+说明：查询a表中所有行和列

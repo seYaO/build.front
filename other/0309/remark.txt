@@ -1,0 +1,38 @@
+﻿1.History API的基本概念，了解HTML5中新增的方法和事件
+2.学会如何在javascript脚本代码中使用History API在浏览器的历史记录中添加记录，学会如何保存当前页面的各种状态，如何控制浏览器地址栏中URL地址的显示。
+
+概述：
+当页面A与页面B只有局部区域中显示的页眉不同，而大部分区域中显示的界面相同时。
+之前，需要在浏览器中会触发一个页面刷新的过程。
+History API执行处理：
+1.通过ajax请求向服务器端请求页面B中与页面A中不同的局部区域及该区域中的信息。
+2.在页面A中通过脚本语言装载该区域及其中的信息。
+3.通过History API在不刷新页面的前提下在浏览器的地址栏中从页面A的URL地址切换到页面B的URL地址。
+
+说明：
+在不刷新页面的前提下将浏览器中的页面切换到另一个页面的功能。
+
+支持版本：
+ie10 firefox4以上 chrome8以上 safari5 opera11以上 
+
+pushState和replaceState
+
+1.history.pushState(data,title[,url]):
+往历史记录堆栈顶部添加一条记录；
+data会在onpopstate事件触发时作为参数传递过去；
+title为页面标题，当前所有浏览器都会忽略此参数；
+url为页面地址，可选，缺省为当前页地址
+2.history.replaceState(data,title[,url]):
+更改当前的历史记录，参数同上
+3.history.state:
+用于存储以上方法的data数据，不同浏览器的读写权限不一样
+4.popstate事件：
+当用户单击浏览器的后退或前进按钮时触发该事件。在事件处理函数中读取触发事件的事件对象的state属性值，该属性值即为执行pushSate方法时所使用的第一个参数值，其中保存了在向浏览器历史记录中添加记录同步保存的对象
+
+注：不同之处在于replaceState不会在window.history里新增历史记录点
+
+
+
+https://segmentfault.com/a/1190000002447556#articleHeader7
+http://www.jb51.net/html5/292058.html
+http://blog.gmw.cn/blog-129241-384716.html

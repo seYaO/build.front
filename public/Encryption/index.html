@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="md5.js"></script>
+</head>
+
+<body>
+    <ul>
+        <li><input id="md5Text" type="text" name="" value="">&nbsp;<input id="md5Btn" type="button" value="sure"></li>
+        <li><label id="md5Label"></label></li>
+    </ul>
+    <script>
+        var md5Text = document.getElementById("md5Text");
+        var md5Btn = document.getElementById("md5Btn");
+        var md5Label = document.getElementById("md5Label");
+        md5Btn.onclick = function() {
+            md5Label.innerHTML = hex_md5(md5Text.value);
+            // console.log(hex_md5(md5Text.value))
+        }
+    </script>
+</body>
+
+</html>

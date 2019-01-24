@@ -1,0 +1,18 @@
+#content-main{
+	margin-left:50px;
+	float:left;
+	width:220px;
+	border:1px solid #ccc;
+	height:120px;
+	color:#ff3300;
+}
+#list{
+	float:left;
+	list-style:none;
+}
+#list li{
+    cursor: pointer;
+}
+#list li:hover{
+    color: #f60;
+}
