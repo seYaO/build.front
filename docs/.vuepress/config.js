@@ -5,22 +5,24 @@ const es6tutorial = ['', 'intro', 'let', 'destructuring', 'string', 'regex', 'nu
 const jstutorial = {
     introduction: ['', 'history'],
     grammar: ['', 'types', 'number', 'string', 'object', 'array', 'function', 'operator', 'conversion', 'error', 'style'],
-    stdlib: ['object', 'array', 'wrapper', 'number', 'string', 'math', 'date', 'regexp', 'json', 'arraybuffer', 'console', 'attributes'],
+    stdlib: ['object', 'array', 'wrapper', 'number', 'string', 'math', 'date', 'regexp', 'json', 'arraybuffer', 'attributes'],
     oop: ['', 'this', 'prototype', 'object', 'pattern'],
     advanced: ['single-thread', 'timer', 'promise', 'strict', 'fsm', 'interpreter', 'backbonejs', 'ecmascript6'],
     dom: ['', 'document', 'element', 'attribute', 'text', 'event', 'event-type', 'css', 'mutationobserver', 'image'],
     bom: ['', 'window', 'history', 'cookie', 'webstorage', 'same-origin', 'ajax', 'cors', 'mobile', 'performance', 'notification', 'indexeddb'],
-    // grammar: ['', 'types', 'number', 'string', 'object', 'array', 'function', 'operator', 'conversion', 'error', 'style'],
-    // grammar: ['', 'types', 'number', 'string', 'object', 'array', 'function', 'operator', 'conversion', 'error', 'style'],
+    htmlapi: ['', 'eventsource', 'file', 'form', 'fullscreen', 'pagevisibility', 'requestanimationframe', 'svg', 'webcomponents', 'webspeech', 'webworker', 'websocket', 'webrtc'],
+    jquery: ['', 'deferred', 'jquery-free', 'plugin', 'utility'],
+    library: ['d3', 'datejs', 'designpattern', 'modernizr', 'sorting', 'underscore'],
+    nodejs: ['', 'npm', 'packagejson', 'util', 'version', 'timer', 'path', 'fs', 'http', 'url', 'module', 'events', 'os', 'querystring', 'stream', 'assert', 'buffer', 'process', 'child-process', 'cluster', 'develop', 'cluster', 'error', 'repl', 'express', 'koa', 'mongodb', 'net', 'dns'],
+    tool: ['bower', 'browserify', 'console', 'grunt', 'gulp', 'lint', 'phantomjs', 'requirejs', 'sourcemap', 'testing'],
+    webapp: ['cache', 'progressive', 'serviceworker'],
+    appendix: ['api', 'plugins'],
 }
 // README.md
 
-// htmlapi: Web API
-// jquery: jQuery
 // library: 草稿一：函数库
 // nodejs: 草稿二：Node.js
 // tool: 开发工具
-// advanced: 语法专题
 // appendix: 附录
 
 module.exports = {
@@ -67,8 +69,8 @@ module.exports = {
         lastUpdated: '上次更新',
 
         nav: [ // 导航栏配置
-            { text: '前端基础', link: '/accumulate/' },
-            { text: '算法题库', link: '/algorithm/' },
+            // { text: '前端基础', link: '/accumulate/' },
+            // { text: '算法题库', link: '/algorithm/' },
             {
                 text: 'javascript',
                 items: [
@@ -83,39 +85,45 @@ module.exports = {
                             { text: '语法专题', link: '/jstutorial/advanced/single-thread.html' },
                             { text: 'DOM 模型', link: '/jstutorial/dom/' },
                             { text: '浏览器环境', link: '/jstutorial/bom/' },
-                            // { text: '语法', link: '/jstutorial/grammar/' },
+                            { text: 'Web API', link: '/jstutorial/htmlapi/' },
+                            { text: 'jQuery', link: '/jstutorial/jquery/' },
+                            { text: '函数库', link: '/jstutorial/library/d3.html' },
+                            { text: 'Node.js', link: '/jstutorial/nodejs/' },
+                            { text: '开发工具', link: '/jstutorial/tool/bower.html' },
+                            { text: 'webapp', link: '/jstutorial/webapp/cache.html' },
+                            { text: '附录', link: '/jstutorial/appendix/api.html' },
                         ]
                     }
                 ]
             },
             // 分组2
-            {
-                text: 'Languages',
-                items: [
-                    { text: 'Chinese', link: '/language/chinese' },
-                    { text: 'Japanese', link: '/language/japanese' }
-                ]
-            },
+            // {
+            //     text: 'Languages',
+            //     items: [
+            //         { text: 'Chinese', link: '/language/chinese' },
+            //         { text: 'Japanese', link: '/language/japanese' }
+            //     ]
+            // },
             // 分组2
-            {
-                text: 'Languages',
-                items: [
-                    {
-                        text: 'Group1',
-                        items: [
-                            { text: 'Chinese', link: '/language/chinese' },
-                            { text: 'Japanese', link: '/language/japanese' }
-                        ]
-                    },
-                    {
-                        text: 'Group2',
-                        items: [
-                            { text: 'Chinese', link: '/language/chinese' },
-                            { text: 'Japanese', link: '/language/japanese' }
-                        ]
-                    }
-                ]
-            }
+            // {
+            //     text: 'Languages',
+            //     items: [
+            //         {
+            //             text: 'Group1',
+            //             items: [
+            //                 { text: 'Chinese', link: '/language/chinese' },
+            //                 { text: 'Japanese', link: '/language/japanese' }
+            //             ]
+            //         },
+            //         {
+            //             text: 'Group2',
+            //             items: [
+            //                 { text: 'Chinese', link: '/language/chinese' },
+            //                 { text: 'Japanese', link: '/language/japanese' }
+            //             ]
+            //         }
+            //     ]
+            // }
             // { text: '微博', link: 'https://baidu.com' }
         ],
         // 侧边栏配置
@@ -128,8 +136,13 @@ module.exports = {
             '/jstutorial/advanced/': genSidebarConfig('语法专题', jstutorial.advanced),
             '/jstutorial/dom/': genSidebarConfig('DOM 模型', jstutorial.dom),
             '/jstutorial/bom/': genSidebarConfig('浏览器环境', jstutorial.bom),
-            // '/jstutorial/grammar/': genSidebarConfig('语法', jstutorial.grammar),
-            // '/jstutorial/grammar/': genSidebarConfig('语法', jstutorial.grammar),
+            '/jstutorial/htmlapi/': genSidebarConfig('Web API', jstutorial.htmlapi),
+            '/jstutorial/jquery/': genSidebarConfig('jQuery', jstutorial.jquery),
+            '/jstutorial/library/': genSidebarConfig('函数库', jstutorial.library),
+            '/jstutorial/nodejs/': genSidebarConfig('Node.js', jstutorial.nodejs),
+            '/jstutorial/tool/': genSidebarConfig('开发工具', jstutorial.tool),
+            '/jstutorial/webapp/': genSidebarConfig('webapp', jstutorial.webapp),
+            '/jstutorial/appendix/': genSidebarConfig('附录', jstutorial.appendix),
         },
         // 侧边栏显示2级
         // sidebarDepth: 2,
