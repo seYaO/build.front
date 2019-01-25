@@ -50,6 +50,34 @@ module.exports = {
             { text: '前端基础', link: '/accumulate/' },
             { text: '算法题库', link: '/algorithm/' },
             { text: 'es6', link: '/es6tutorial/' },
+            // 分组2
+            {
+                text: 'Languages',
+                items: [
+                    { text: 'Chinese', link: '/language/chinese' },
+                    { text: 'Japanese', link: '/language/japanese' }
+                ]
+            },
+            // 分组2
+            {
+                text: 'Languages',
+                items: [
+                    {
+                        text: 'Group1',
+                        items: [
+                            { text: 'Chinese', link: '/language/chinese' },
+                            { text: 'Japanese', link: '/language/japanese' }
+                        ]
+                    },
+                    {
+                        text: 'Group2',
+                        items: [
+                            { text: 'Chinese', link: '/language/chinese' },
+                            { text: 'Japanese', link: '/language/japanese' }
+                        ]
+                    }
+                ]
+            }
             // { text: '微博', link: 'https://baidu.com' }
         ],
         // 侧边栏配置
