@@ -2,6 +2,26 @@
 // es6
 const es6tutorial = ['', 'intro', 'let', 'destructuring', 'string', 'regex', 'number', 'function', 'array', 'object', 'symbol', 'set-map', 'proxy', 'reflect', 'promise', 'iterator', 'generator', 'generator-async', 'async', 'class', 'class-extends', 'decorator', 'module', 'module-loader', 'style', 'spec', 'arraybuffer', 'proposals', 'reference']
 
+const jstutorial = {
+    introduction: ['', 'history'],
+    grammar: ['', 'types', 'number', 'string', 'object', 'array', 'function', 'operator', 'conversion', 'error', 'style'],
+    stdlib: ['object', 'array', 'wrapper', 'number', 'string', 'math', 'date', 'regexp', 'json', 'arraybuffer', 'console', 'attributes'],
+    oop: ['', 'this', 'prototype', 'object', 'pattern'],
+    advanced: ['single-thread', 'timer', 'promise', 'strict', 'fsm', 'interpreter', 'backbonejs', 'ecmascript6'],
+    dom: ['', 'document', 'element', 'attribute', 'text', 'event', 'event-type', 'css', 'mutationobserver', 'image'],
+    bom: ['', 'window', 'history', 'cookie', 'webstorage', 'same-origin', 'ajax', 'cors', 'mobile', 'performance', 'notification', 'indexeddb'],
+    // grammar: ['', 'types', 'number', 'string', 'object', 'array', 'function', 'operator', 'conversion', 'error', 'style'],
+    // grammar: ['', 'types', 'number', 'string', 'object', 'array', 'function', 'operator', 'conversion', 'error', 'style'],
+}
+// README.md
+
+// htmlapi: Web API
+// jquery: jQuery
+// library: 草稿一：函数库
+// nodejs: 草稿二：Node.js
+// tool: 开发工具
+// advanced: 语法专题
+// appendix: 附录
 
 module.exports = {
     dest: 'dist',
@@ -49,7 +69,25 @@ module.exports = {
         nav: [ // 导航栏配置
             { text: '前端基础', link: '/accumulate/' },
             { text: '算法题库', link: '/algorithm/' },
-            { text: 'es6', link: '/es6tutorial/' },
+            {
+                text: 'javascript',
+                items: [
+                    { text: 'es6', link: '/es6tutorial/' },
+                    {
+                        text: 'js',
+                        items: [
+                            { text: '导论', link: '/jstutorial/introduction/' },
+                            { text: '语法', link: '/jstutorial/grammar/' },
+                            { text: '标准库', link: '/jstutorial/stdlib/object.html' },
+                            { text: '面向对象编程', link: '/jstutorial/oop/' },
+                            { text: '语法专题', link: '/jstutorial/advanced/single-thread.html' },
+                            { text: 'DOM 模型', link: '/jstutorial/dom/' },
+                            { text: '浏览器环境', link: '/jstutorial/bom/' },
+                            // { text: '语法', link: '/jstutorial/grammar/' },
+                        ]
+                    }
+                ]
+            },
             // 分组2
             {
                 text: 'Languages',
@@ -82,7 +120,16 @@ module.exports = {
         ],
         // 侧边栏配置
         sidebar: {
-            '/es6tutorial/': genSidebarConfig('es6', es6tutorial)
+            '/es6tutorial/': genSidebarConfig('es6', es6tutorial),
+            '/jstutorial/introduction/': genSidebarConfig('导论', jstutorial.introduction),
+            '/jstutorial/grammar/': genSidebarConfig('语法', jstutorial.grammar),
+            '/jstutorial/stdlib/': genSidebarConfig('标准库', jstutorial.stdlib),
+            '/jstutorial/oop/': genSidebarConfig('面向对象编程', jstutorial.oop),
+            '/jstutorial/advanced/': genSidebarConfig('语法专题', jstutorial.advanced),
+            '/jstutorial/dom/': genSidebarConfig('DOM 模型', jstutorial.dom),
+            '/jstutorial/bom/': genSidebarConfig('浏览器环境', jstutorial.bom),
+            // '/jstutorial/grammar/': genSidebarConfig('语法', jstutorial.grammar),
+            // '/jstutorial/grammar/': genSidebarConfig('语法', jstutorial.grammar),
         },
         // 侧边栏显示2级
         // sidebarDepth: 2,
