@@ -8,7 +8,7 @@ JavaScript 语言的设计是单一继承，即子类只能继承一个父类，
 
 JavaScript 语言没有采用 Interface 的方案，而是通过代理（delegation）实现了从其他类引入方法。
 
-```javascript
+```js
 var Enumerable_first = function () {
   this.first = function () {
     return this[0];
@@ -34,7 +34,7 @@ Mixin 就是一个正常的类，不仅定义了接口，还定义了接口的�
 
 很多库提供了 Mixin 功能。下面以 Lodash 为例。
 
-```javascript
+```js
 function vowels(string) {
   return /[aeiou]/i.test(this.value);
 }
@@ -48,7 +48,7 @@ obj.vowels() // true
 
 Underscore 的类似方法是`_.extend`。
 
-```javascript
+```js
 var Person = function (fName, lName) {
   this.firstName = fName;
   this.lastName = lName;
@@ -75,7 +75,7 @@ sam.fullName() // "Samwise Gamgee"
 
 `extend`方法的实现非常简单。
 
-```javascript
+```js
 function extend(destination, source) {
   for (var k in source) {
     if (source.hasOwnProperty(k)) {

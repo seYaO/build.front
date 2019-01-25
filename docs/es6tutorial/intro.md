@@ -98,7 +98,7 @@ Your runtime supports 57% of ECMAScript 6
 
 [Babel](https://babeljs.io/) 是一个广泛使用的 ES6 转码器，可以将 ES6 代码转为 ES5 代码，从而在现有环境执行。这意味着，你可以用 ES6 的方式编写程序，又不用担心现有环境是否支持。下面是一个例子。
 
-```javascript
+```js
 // 转码前
 input.map(item => item + 1);
 
@@ -116,7 +116,7 @@ Babel 的配置文件是`.babelrc`，存放在项目的根目录下。使用 Bab
 
 该文件用来设置转码规则和插件，基本格式如下。
 
-```javascript
+```js
 {
   "presets": [],
   "plugins": []
@@ -141,7 +141,7 @@ $ npm install --save-dev babel-preset-stage-3
 
 然后，将这些规则加入`.babelrc`。
 
-```javascript
+```js
   {
     "presets": [
       "latest",
@@ -197,7 +197,7 @@ $ npm install --save-dev babel-cli
 
 然后，改写`package.json`。
 
-```javascript
+```js
 {
   // ...
   "devDependencies": {
@@ -211,7 +211,7 @@ $ npm install --save-dev babel-cli
 
 转码的时候，就执行下面的命令。
 
-```javascript
+```js
 $ npm run build
 ```
 
@@ -242,7 +242,7 @@ $ npm install --save-dev babel-cli
 
 然后，改写`package.json`。
 
-```javascript
+```js
 {
   "scripts": {
     "script-name": "babel-node script.js"
@@ -283,7 +283,7 @@ $ npm install babel-core --save
 
 然后，在项目中就可以调用`babel-core`。
 
-```javascript
+```js
 var babel = require('babel-core');
 
 // 字符串转码
@@ -308,7 +308,7 @@ babel.transformFromAst(ast, code, options);
 
 下面是一个例子。
 
-```javascript
+```js
 var es6Code = 'let x = n => n + 1';
 var es5Code = require('babel-core')
   .transform(es6Code, {
@@ -334,7 +334,7 @@ $ npm install --save babel-polyfill
 
 然后，在脚本头部，加入如下一行代码。
 
-```javascript
+```js
 import 'babel-polyfill';
 // 或者
 require('babel-polyfill');
@@ -372,7 +372,7 @@ $  browserify script.js -o bundle.js \
 
 在`package.json`设置下面的代码，就不用每次命令行都输入参数了。
 
-```javascript
+```js
 {
   "browserify": {
     "transform": [["babelify", { "presets": ["latest"] }]]
@@ -396,7 +396,7 @@ $ npm install --save-dev eslint babel-eslint
 
 然后，在项目根目录下，新建一个配置文件`.eslintrc`，在其中加入`parser`字段。
 
-```javascript
+```js
 {
   "parser": "babel-eslint",
   "rules": {
@@ -407,7 +407,7 @@ $ npm install --save-dev eslint babel-eslint
 
 再在`package.json`之中，加入相应的`scripts`脚本。
 
-```javascript
+```js
   {
     "name": "my-module",
     "scripts": {
@@ -422,7 +422,7 @@ $ npm install --save-dev eslint babel-eslint
 
 Mocha 则是一个测试框架，如果需要执行使用 ES6 语法的测试脚本，可以修改`package.json`的`scripts.test`。
 
-```javascript
+```js
 "scripts": {
   "test": "mocha --ui qunit --compilers js:babel-core/register"
 }
@@ -453,7 +453,7 @@ Traceur 允许将 ES6 代码直接插入网页。首先，必须在网页头部�
 
 除了引用外部 ES6 脚本，也可以直接在网页中放置 ES6 代码。
 
-```javascript
+```js
 <script type="module">
   class Calc {
     constructor() {
@@ -473,7 +473,7 @@ Traceur 允许将 ES6 代码直接插入网页。首先，必须在网页头部�
 
 如果想对 Traceur 的行为有精确控制，可以采用下面参数配置的写法。
 
-```javascript
+```js
 <script>
   // Create the System object
   window.System = new traceur.runtime.BrowserTraceurLoader();
@@ -505,7 +505,7 @@ Traceur 也提供一个[在线编译器](http://google.github.io/traceur-compile
 
 上面的例子转为 ES5 代码运行，就是下面这个样子。
 
-```javascript
+```js
 <script src="https://google.github.io/traceur-compiler/bin/traceur.js"></script>
 <script src="https://google.github.io/traceur-compiler/bin/BrowserSystem.js"></script>
 <script src="https://google.github.io/traceur-compiler/src/bootstrap.js"></script>
@@ -566,7 +566,7 @@ $ traceur --script calc.es6.js --out calc.es5.js --experimental
 
 Traceur 的 Node 用法如下（假定已安装`traceur`模块）。
 
-```javascript
+```js
 var traceur = require('traceur');
 var fs = require('fs');
 

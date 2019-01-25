@@ -47,7 +47,7 @@ IndexedDB 数据库有版本的概念。同一个时刻，只能有一个版本�
 
 对象仓库保存的是数据记录。每条记录类似于关系型数据库的行，但是只有主键和数据体两部分。主键用来建立默认的索引，必须是不同的，否则会报错。主键可以是数据记录里面的一个属性，也可以指定为一个递增的整数编号。
 
-```javascript
+```js
 { id: 1, text: 'foo' }
 ```
 
@@ -71,7 +71,7 @@ IndexedDB 数据库的各种操作，一般是按照下面的流程进行的。
 
 使用 IndexedDB 的第一步是打开数据库，使用`indexedDB.open()`方法。
 
-```javascript
+```js
 var request = window.indexedDB.open(databaseName, version);
 ```
 
@@ -83,7 +83,7 @@ var request = window.indexedDB.open(databaseName, version);
 
 `error`事件表示打开数据库失败。
 
-```javascript
+```js
 request.onerror = function (event) {
   console.log('数据库打开报错');
 };
@@ -93,7 +93,7 @@ request.onerror = function (event) {
 
 `success`事件表示成功打开数据库。
 
-```javascript
+```js
 var db;
 
 request.onsuccess = function (event) {
@@ -108,7 +108,7 @@ request.onsuccess = function (event) {
 
 如果指定的版本号，大于数据库的实际版本号，就会发生数据库升级事件`upgradeneeded`。
 
-```javascript
+```js
 var db;
 
 request.onupgradeneeded = function (event) {
@@ -124,7 +124,7 @@ request.onupgradeneeded = function (event) {
 
 通常，新建数据库以后，第一件事是新建对象仓库（即新建表）。
 
-```javascript
+```js
 request.onupgradeneeded = function(event) {
   db = event.target.result;
   var objectStore = db.createObjectStore('person', { keyPath: 'id' });
@@ -135,7 +135,7 @@ request.onupgradeneeded = function(event) {
 
 更好的写法是先判断一下，这张表格是否存在，如果不存在再新建。
 
-```javascript
+```js
 request.onupgradeneeded = function (event) {
   db = event.target.result;
   var objectStore;
@@ -149,7 +149,7 @@ request.onupgradeneeded = function (event) {
 
 如果数据记录里面没有合适作为主键的属性，那么可以让 IndexedDB 自动生成主键。
 
-```javascript
+```js
 var objectStore = db.createObjectStore(
   'person',
   { autoIncrement: true }
@@ -160,7 +160,7 @@ var objectStore = db.createObjectStore(
 
 新建对象仓库以后，下一步可以新建索引。
 
-```javascript
+```js
 request.onupgradeneeded = function(event) {
   db = event.target.result;
   var objectStore = db.createObjectStore('person', { keyPath: 'id' });
@@ -175,7 +175,7 @@ request.onupgradeneeded = function(event) {
 
 新增数据指的是向对象仓库写入数据记录。这需要通过事务完成。
 
-```javascript
+```js
 function add() {
   var request = db.transaction(['person'], 'readwrite')
     .objectStore('person')
@@ -201,7 +201,7 @@ add();
 
 读取数据也是通过事务完成。
 
-```javascript
+```js
 function read() {
    var transaction = db.transaction(['person']);
    var objectStore = transaction.objectStore('person');
@@ -231,7 +231,7 @@ read();
 
 遍历数据表格的所有记录，要使用指针对象 IDBCursor。
 
-```javascript
+```js
 function readAll() {
   var objectStore = db.transaction('person').objectStore('person');
 
@@ -259,7 +259,7 @@ readAll();
 
 更新数据要使用`IDBObject.put()`方法。
 
-```javascript
+```js
 function update() {
   var request = db.transaction(['person'], 'readwrite')
     .objectStore('person')
@@ -283,7 +283,7 @@ update();
 
 `IDBObjectStore.delete()`方法用于删除记录。
 
-```javascript
+```js
 function remove() {
   var request = db.transaction(['person'], 'readwrite')
     .objectStore('person')
@@ -303,13 +303,13 @@ remove();
 
 假定新建表格的时候，对`name`字段建立了索引。
 
-```javascript
+```js
 objectStore.createIndex('name', 'name', { unique: false });
 ```
 
 现在，就可以从`name`找到对应的数据记录了。
 
-```javascript
+```js
 var transaction = db.transaction(['person'], 'readonly');
 var store = transaction.objectStore('person');
 var index = store.index('name');
@@ -333,7 +333,7 @@ request.onsuccess = function (e) {
 
 `indexedDB.open()`方法用于打开数据库。这是一个异步操作，但是会立刻返回一个 IDBOpenDBRequest 对象。
 
-```javascript
+```js
 var openRequest = window.indexedDB.open('test', 1);
 ```
 
@@ -352,7 +352,7 @@ var openRequest = window.indexedDB.open('test', 1);
 
 根据不同的需要，对上面4种事件监听函数。
 
-```javascript
+```js
 var openRequest = indexedDB.open('test', 1);
 var db;
 
@@ -380,7 +380,7 @@ openRequest.onerror = function (e) {
 - `success`：删除成功
 - `error`：删除报错
 
-```javascript
+```js
 var DBDeleteRequest = window.indexedDB.deleteDatabase('demo');
 
 DBDeleteRequest.onerror = function (event) {
@@ -400,13 +400,13 @@ DBDeleteRequest.onsuccess = function (event) {
 
 `indexedDB.cmp()`方法比较两个值是否为 indexedDB 的相同的主键。它返回一个整数，表示比较的结果：`0`表示相同，`1`表示第一个主键大于第二个主键，`-1`表示第一个主键小于第二个主键。
 
-```javascript
+```js
 window.indexedDB.cmp(1, 2) // -1
 ```
 
 注意，这个方法不能用来比较任意的 JavaScript 值。如果参数是布尔值或对象，它会报错。
 
-```javascript
+```js
 window.indexedDB.cmp(1, true) // 报错
 window.indexedDB.cmp({}, {}) // 报错
 ```
@@ -438,7 +438,7 @@ IDBOpenDBRequest 对象继承了 IDBRequest 对象，提供了两个额外的事
 
 打开数据成功以后，可以从`IDBOpenDBRequest`对象的`result`属性上面，拿到一个`IDBDatabase`对象，它表示连接的数据库。后面对数据库的操作，都通过这个对象完成。
 
-```javascript
+```js
 var db;
 var DBOpenRequest = window.indexedDB.open('demo', 1);
 
@@ -466,7 +466,7 @@ IDBDatabase 对象有以下属性。
 
 下面是`objectStoreNames`属性的例子。该属性返回一个DOMStringList 对象，包含了当前数据库所有对象仓库的名称（即表名），可以使用 DOMStringList 对象的`contains`方法，检查数据库是否包含某个对象仓库。
 
-```javascript
+```js
 if (!db.objectStoreNames.contains('firstOS')) {
   db.createObjectStore('firstOS');
 }
@@ -485,7 +485,7 @@ IDBDatabase 对象有以下方法。
 
 下面是`createObjectStore()`方法的例子。
 
-```javascript
+```js
 var request = window.indexedDB.open('demo', 2);
 
 request.onupgradeneeded = function (event) {
@@ -505,7 +505,7 @@ request.onupgradeneeded = function (event) {
 
 `createObjectStore()`方法还可以接受第二个对象参数，用来设置对象仓库的属性。
 
-```javascript
+```js
 db.createObjectStore('test', { keyPath: 'email' });
 db.createObjectStore('test2', { autoIncrement: true });
 ```
@@ -514,7 +514,7 @@ db.createObjectStore('test2', { autoIncrement: true });
 
 下面是`deleteObjectStore()`方法的例子。
 
-```javascript
+```js
 var dbName = 'sampleDB';
 var dbVersion = 2;
 var request = indexedDB.open(dbName, dbVersion);
@@ -536,7 +536,7 @@ request.onupgradeneeded = function(e) {
 
 下面是`transaction()`方法的例子，该方法用于创建一个数据库事务，返回一个 IDBTransaction 对象。向数据库添加数据之前，必须先创建数据库事务。
 
-```javascript
+```js
 var t = db.transaction(['items'], 'readwrite');
 ```
 
@@ -548,7 +548,7 @@ IDBObjectStore 对象对应一个对象仓库（object store）。`IDBDatabase.c
 
 IDBDatabase 对象的`transaction()`返回一个事务对象，该对象的`objectStore()`方法返回 IDBObjectStore 对象，因此可以采用下面的链式写法。
 
-```javascript
+```js
 db.transaction(['test'], 'readonly')
   .objectStore('test')
   .get(X)
@@ -573,7 +573,7 @@ IDBObjectStore 对象有以下方法。
 
 `IDBObjectStore.add()`用于向对象仓库添加数据，返回一个 IDBRequest 对象。该方法只用于添加数据，如果主键相同会报错，因此更新数据必须使用`put()`方法。
 
-```javascript
+```js
 objectStore.add(value, key)
 ```
 
@@ -581,7 +581,7 @@ objectStore.add(value, key)
 
 创建事务以后，就可以获取对象仓库，然后使用`add()`方法往里面添加数据了。
 
-```javascript
+```js
 var db;
 var DBOpenRequest = window.indexedDB.open('demo', 1);
 
@@ -611,7 +611,7 @@ DBOpenRequest.onsuccess = function (event) {
 
 `IDBObjectStore.put()`方法用于更新某个主键对应的数据记录，如果对应的键值不存在，则插入一条新的记录。该方法返回一个 IDBRequest 对象。
 
-```javascript
+```js
 objectStore.put(item, key)
 ```
 
@@ -621,7 +621,7 @@ objectStore.put(item, key)
 
 `IDBObjectStore.clear()`删除当前对象仓库的所有记录。该方法返回一个 IDBRequest 对象。
 
-```javascript
+```js
 objectStore.clear()
 ```
 
@@ -631,7 +631,7 @@ objectStore.clear()
 
 `IDBObjectStore.delete()`方法用于删除指定主键的记录。该方法返回一个 IDBRequest 对象。
 
-```javascript
+```js
 objectStore.delete(Key)
 ```
 
@@ -641,7 +641,7 @@ objectStore.delete(Key)
 
 `IDBObjectStore.count()`方法用于计算记录的数量。该方法返回一个 IDBRequest 对象。
 
-```javascript
+```js
 IDBObjectStore.count(key)
 ```
 
@@ -651,7 +651,7 @@ IDBObjectStore.count(key)
 
 `IDBObjectStore.getKey()`用于获取主键。该方法返回一个 IDBRequest 对象。
 
-```javascript
+```js
 objectStore.getKey(key)
 ```
 
@@ -661,7 +661,7 @@ objectStore.getKey(key)
 
 `IDBObjectStore.get()`用于获取主键对应的数据记录。该方法返回一个 IDBRequest 对象。
 
-```javascript
+```js
 objectStore.get(key)
 ```
 
@@ -669,7 +669,7 @@ objectStore.get(key)
 
 `DBObjectStore.getAll()`用于获取对象仓库的记录。该方法返回一个 IDBRequest 对象。
 
-```javascript
+```js
 // 获取所有记录
 objectStore.getAll()
 
@@ -684,7 +684,7 @@ objectStore.getAll(query, count)
 
 `IDBObjectStore.getAllKeys()`用于获取所有符合条件的主键。该方法返回一个 IDBRequest 对象。
 
-```javascript
+```js
 // 获取所有记录的主键
 objectStore.getAllKeys()
 
@@ -699,13 +699,13 @@ objectStore.getAllKeys(query, count)
 
 `IDBObjectStore.index()`方法返回指定名称的索引对象 IDBIndex。
 
-```javascript
+```js
 objectStore.index(name)
 ```
 
 有了索引以后，就可以针对索引所在的属性读取数据。
 
-```javascript
+```js
 var t = db.transaction(['people'], 'readonly');
 var store = t.objectStore('people');
 var index = store.index('name');
@@ -719,7 +719,7 @@ var request = index.get('foo');
 
 `IDBObjectStore.createIndex()`方法用于新建当前数据库的一个索引。该方法只能在`VersionChange`监听函数里面调用。
 
-```javascript
+```js
 objectStore.createIndex(indexName, keyPath, objectParameters)
 ```
 
@@ -736,7 +736,7 @@ objectStore.createIndex(indexName, keyPath, objectParameters)
 
 假定对象仓库中的数据记录都是如下的`person`类型。
 
-```javascript
+```js
 var person = {
   name: name,
   email: email,
@@ -746,7 +746,7 @@ var person = {
 
 可以指定这个对象的某个属性来建立索引。
 
-```javascript
+```js
 var store = db.createObjectStore('people', { autoIncrement: true });
 
 store.createIndex('name', 'name', { unique: false });
@@ -759,7 +759,7 @@ store.createIndex('email', 'email', { unique: true });
 
 `IDBObjectStore.deleteIndex()`方法用于删除指定的索引。该方法只能在`VersionChange`监听函数里面调用。
 
-```javascript
+```js
 objectStore.deleteIndex(indexName)
 ```
 
@@ -767,13 +767,13 @@ objectStore.deleteIndex(indexName)
 
 `IDBObjectStore.openCursor()`用于获取一个指针对象。
 
-```javascript
+```js
 IDBObjectStore.openCursor()
 ```
 
 指针对象可以用来遍历数据。该对象也是异步的，有自己的`success`和`error`事件，可以对它们指定监听函数。
 
-```javascript
+```js
 var t = db.transaction(['test'], 'readonly');
 var store = t.objectStore('test');
 
@@ -797,7 +797,7 @@ cursor.onsuccess = function (event) {
 
 `IDBObjectStore.openKeyCursor()`用于获取一个主键指针对象。
 
-```javascript
+```js
 IDBObjectStore.openKeyCursor()
 ```
 
@@ -807,7 +807,7 @@ IDBTransaction 对象用来异步操作数据库事务，所有的读写操作�
 
 `IDBDatabase.transaction()`方法返回的就是一个 IDBTransaction 对象。
 
-```javascript
+```js
 var db;
 var DBOpenRequest = window.indexedDB.open('demo', 1);
 
@@ -835,7 +835,7 @@ DBOpenRequest.onsuccess = function(event) {
 
 事务的执行顺序是按照创建的顺序，而不是发出请求的顺序。
 
-```javascript
+```js
 var trans1 = db.transaction('foo', 'readwrite');
 var trans2 = db.transaction('foo', 'readwrite');
 var objectStore2 = trans2.objectStore('foo')
@@ -871,7 +871,7 @@ IDBIndex 是持久性的键值对存储。只要插入、更新或删除数据�
 
 `IDBObjectStore.index()`方法可以获取 IDBIndex 对象。
 
-```javascript
+```js
 var transaction = db.transaction(['contactsList'], 'readonly');
 var objectStore = transaction.objectStore('contactsList');
 var myIndex = objectStore.index('lName');
@@ -921,7 +921,7 @@ IDBCursor 对象代表指针对象，用来遍历数据仓库（IDBObjectStroe�
 
 IDBCursor 对象一般通过`IDBObjectStore.openCursor()`方法获得。
 
-```javascript
+```js
 var transaction = db.transaction(['rushAlbumList'], 'readonly');
 var objectStore = transaction.objectStore('rushAlbumList');
 
@@ -970,7 +970,7 @@ IDBKeyRange 可以只包含一个值，也可以指定上限和下限。它有�
 
 下面是一些代码实例。
 
-```javascript
+```js
 // All keys ≤ x
 var r1 = IDBKeyRange.upperBound(x);
 
@@ -1010,7 +1010,7 @@ var r9 = IDBKeyRange.only(z);
 
 IDBKeyRange 实例对象生成以后，将它作为参数输入 IDBObjectStore 或 IDBIndex 对象的`openCursor()`方法，就可以在所设定的范围内读取数据。
 
-```javascript
+```js
 var t = db.transaction(['people'], 'readonly');
 var store = t.objectStore('people');
 var index = store.index('name');
@@ -1032,7 +1032,7 @@ index.openCursor(range).onsuccess = function (e) {
 
 IDBKeyRange 有一个实例方法`includes(key)`，返回一个布尔值，表示某个主键是否包含在当前这个主键组之内。
 
-```javascript
+```js
 var keyRangeValue = IDBKeyRange.bound('A', 'K', false, false);
 
 keyRangeValue.includes('F') // true

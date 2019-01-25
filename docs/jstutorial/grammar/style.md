@@ -22,7 +22,7 @@ Tab 键可以节省击键次数，但不同的文本编辑器对 Tab 的显示�
 
 如果循环和判断的代码体只有一行，JavaScript 允许该区块（block）省略大括号。
 
-```javascript
+```js
 if (a)
   b();
   c();
@@ -30,7 +30,7 @@ if (a)
 
 上面代码的原意可能是下面这样。
 
-```javascript
+```js
 if (a) {
   b();
   c();
@@ -39,7 +39,7 @@ if (a) {
 
 但是，实际效果却是下面这样。
 
-```javascript
+```js
 if (a) {
   b();
 }
@@ -50,7 +50,7 @@ if (a) {
 
 另外，区块起首的大括号的位置，有许多不同的写法。最流行的有两种，一种是起首的大括号另起一行。
 
-```javascript
+```js
 block
 {
   // ...
@@ -59,7 +59,7 @@ block
 
 另一种是起首的大括号跟在关键字的后面。
 
-```javascript
+```js
 block {
   // ...
 }
@@ -67,7 +67,7 @@ block {
 
 一般来说，这两种写法都可以接受。但是，JavaScript 要使用后一种，因为 JavaScript 会自动添加句末的分号，导致一些难以察觉的错误。
 
-```javascript
+```js
 return
 {
   key: value
@@ -82,7 +82,7 @@ return;
 
 上面的代码的原意，是要返回一个对象，但实际上返回的是`undefined`，因为 JavaScript 自动在`return`语句后面添加了分号。为了避免这一类错误，需要写成下面这样。
 
-```javascript
+```js
 return {
   key : value
 };
@@ -94,7 +94,7 @@ return {
 
 圆括号（parentheses）在 JavaScript 中有两种作用，一种表示函数的调用，另一种表示表达式的组合（grouping）。
 
-```javascript
+```js
 // 圆括号表示函数的调用
 console.log('abc');
 
@@ -112,7 +112,7 @@ console.log('abc');
 
 按照上面的规则，下面的写法都是不规范的。
 
-```javascript
+```js
 foo (bar)
 return(a+b);
 if(a === 0) {...}
@@ -132,7 +132,7 @@ function(x) {...}
 
 **（1）for 和 while 循环**
 
-```javascript
+```js
 for ( ; ; ) {
 } // 没有分号
 
@@ -142,7 +142,7 @@ while (true) {
 
 注意，`do...while`循环是有分号的。
 
-```javascript
+```js
 do {
   a--;
 } while(a > 0); // 分号不能省略
@@ -150,7 +150,7 @@ do {
 
 **（2）分支语句：if，switch，try**
 
-```javascript
+```js
 if (true) {
 } // 没有分号
 
@@ -164,14 +164,14 @@ try {
 
 **（3）函数的声明语句**
 
-```javascript
+```js
 function f() {
 } // 没有分号
 ```
 
 注意，函数表达式仍然要使用分号。
 
-```javascript
+```js
 var f = function f() {
 };
 ```
@@ -182,7 +182,7 @@ var f = function f() {
 
 除了上一节的三种情况，所有语句都应该使用分号。但是，如果没有使用分号，大多数情况下，JavaScript 会自动添加。
 
-```javascript
+```js
 var a = 1
 // 等同于
 var a = 1;
@@ -192,7 +192,7 @@ var a = 1;
 
 因此，有人提倡省略句尾的分号。麻烦的是，如果下一行的开始可以与本行的结尾连在一起解释，JavaScript 就不会自动添加分号。
 
-```javascript
+```js
 // 等同于 var a = 3
 var
 a
@@ -219,7 +219,7 @@ arg2);
 
 上面代码都会多行放在一起解释，不会每一行自动添加分号。这些例子还是比较容易看出来的，但是下面这个例子就不那么容易看出来了。
 
-```javascript
+```js
 x = y
 (function () {
   // ...
@@ -231,7 +231,7 @@ x = y(function () {...})();
 
 下面是更多不会自动添加分号的例子。
 
-```javascript
+```js
 // 引擎解释为 c(d+e)
 var a = b + c
 (d+e).toString();
@@ -257,7 +257,7 @@ var f = function (x) { return x }
 
 只有下一行的开始与本行的结尾，无法放在一起解释，JavaScript 引擎才会自动添加分号。
 
-```javascript
+```js
 if (a < 0) a = 0
 console.log(a)
 
@@ -269,7 +269,7 @@ console.log(a)
 
 另外，如果一行的起首是“自增”（`++`）或“自减”（`--`）运算符，则它们的前面会自动添加分号。
 
-```javascript
+```js
 a = b = c = 1
 
 a
@@ -284,7 +284,7 @@ console.log(a, b, c)
 
 上面代码之所以会得到`1 2 0`的结果，原因是自增和自减运算符前，自动加上了分号。上面的代码实际上等同于下面的形式。
 
-```javascript
+```js
 a = b = c = 1;
 a;
 ++b;
@@ -293,7 +293,7 @@ a;
 
 如果`continue`、`break`、`return`和`throw`这四个语句后面，直接跟换行符，则会自动添加分号。这意味着，如果`return`语句返回的是一个对象的字面量，起首的大括号一定要写在同一行，否则得不到预期结果。
 
-```javascript
+```js
 return
 { first: 'Jane' };
 
@@ -308,7 +308,7 @@ return;
 
 另外，不写结尾的分号，可能会导致脚本合并出错。所以，有的代码库在第一行语句开始前，会加上一个分号。
 
-```javascript
+```js
 ;var a = 1;
 // ...
 ```
@@ -325,7 +325,7 @@ JavaScript 最大的语法缺点，可能就是全局变量对于任何一个代
 
 JavaScript 会自动将变量声明”提升“（hoist）到代码块（block）的头部。
 
-```javascript
+```js
 if (!x) {
   var x = {};
 }
@@ -339,7 +339,7 @@ if (!x) {
 
 这意味着，变量`x`是`if`代码块之前就存在了。为了避免可能出现的问题，最好把变量声明都放在代码块的头部。
 
-```javascript
+```js
 for (var i = 0; i < 10; i++) {
   // ...
 }
@@ -359,7 +359,7 @@ for (i = 0; i < 10; i++) {
 
 `with`可以减少代码的书写，但是会造成混淆。
 
-```javascript
+```js
 with (o) {
 　foo = bar;
 }
@@ -367,7 +367,7 @@ with (o) {
 
 上面的代码，可以有四种运行结果：
 
-```javascript
+```js
 o.foo = bar;
 o.foo = o.bar;
 foo = bar;
@@ -382,7 +382,7 @@ JavaScript 有两个表示相等的运算符：”相等“（`==`）和”严�
 
 相等运算符会自动转换变量类型，造成很多意想不到的情况。
 
-```javascript
+```js
 0 == ''// true
 1 == true // true
 2 == true // false
@@ -398,7 +398,7 @@ false == '0' // true
 
 有些程序员追求简洁，喜欢合并不同目的的语句。比如，原来的语句是
 
-```javascript
+```js
 a = b;
 if (a) {
   // ...
@@ -407,7 +407,7 @@ if (a) {
 
 他喜欢写成下面这样。
 
-```javascript
+```js
 if (a = b) {
   // ...
 }
@@ -415,7 +415,7 @@ if (a = b) {
 
 虽然语句少了一行，但是可读性大打折扣，而且会造成误读，让别人误解这行代码的意思是下面这样。
 
-```javascript
+```js
 if （a === b）{
   // ...
 }
@@ -427,7 +427,7 @@ if （a === b）{
 
 自增（`++`）和自减（`--`）运算符，放在变量的前面或后面，返回的值不一样，很容易发生错误。事实上，所有的`++`运算符都可以用`+= 1`代替。
 
-```javascript
+```js
 ++x
 // 等同于
 x += 1;
@@ -443,7 +443,7 @@ x += 1;
 
 而且，`switch...case`不使用大括号，不利于代码形式的统一。此外，这种结构类似于`goto`语句，容易造成程序流程的混乱，使得代码结构混乱不堪，不符合面向对象编程的原则。
 
-```javascript
+```js
 function doAction(action) {
   switch (action) {
     case 'hack':
@@ -463,7 +463,7 @@ function doAction(action) {
 
 上面的代码建议改写成对象结构。
 
-```javascript
+```js
 function doAction(action) {
   var actions = {
     'hack': function () {

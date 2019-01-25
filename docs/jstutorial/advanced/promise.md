@@ -8,7 +8,7 @@ Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供
 
 首先，Promise 是一个对象，也是一个构造函数。
 
-```javascript
+```js
 function f1(resolve, reject) {
   // 异步代码...
 }
@@ -20,7 +20,7 @@ var p1 = new Promise(f1);
 
 Promise 的设计思想是，所有异步任务都返回一个 Promise 实例。Promise 实例有一个`then`方法，用来指定下一步的回调函数。
 
-```javascript
+```js
 var p1 = new Promise(f1);
 p1.then(f2);
 ```
@@ -29,7 +29,7 @@ p1.then(f2);
 
 传统的写法可能需要把`f2`作为回调函数传入`f1`，比如写成`f1(f2)`，异步操作完成后，在`f1`内部调用`f2`。Promise 使得`f1`和`f2`变成了链式写法。不仅改善了可读性，而且对于多层嵌套的回调函数尤其方便。
 
-```javascript
+```js
 // 传统写法
 step1(function (value1) {
   step2(value1, function(value2) {
@@ -80,7 +80,7 @@ Promise 对象通过自身的状态，来控制异步操作。Promise 实例具�
 
 JavaScript 提供原生的`Promise`构造函数，用来生成 Promise 实例。
 
-```javascript
+```js
 var promise = new Promise(function (resolve, reject) {
   // ...
 
@@ -98,7 +98,7 @@ var promise = new Promise(function (resolve, reject) {
 
 下面是一个例子。
 
-```javascript
+```js
 function timeout(ms) {
   return new Promise((resolve, reject) => {
     setTimeout(resolve, ms, 'done');
@@ -116,7 +116,7 @@ Promise 实例的`then`方法，用来添加回调函数。
 
 `then`方法可以接受两个回调函数，第一个是异步操作成功时（变为`fulfilled`状态）时的回调函数，第二个是异步操作失败（变为`rejected`）时的回调函数（该参数可以省略）。一旦状态改变，就调用相应的回调函数。
 
-```javascript
+```js
 var p1 = new Promise(function (resolve, reject) {
   resolve('成功');
 });
@@ -134,7 +134,7 @@ p2.then(console.log, console.error);
 
 `then`方法可以链式使用。
 
-```javascript
+```js
 p1
   .then(step1)
   .then(step2)
@@ -153,7 +153,7 @@ p1
 
 Promise 的用法，简单说就是一句话：使用`then`方法添加回调函数。但是，不同的写法有一些细微的差别，请看下面四种写法，它们的差别在哪里？
 
-```javascript
+```js
 // 写法一
 f1().then(function () {
   return f2();
@@ -173,7 +173,7 @@ f1().then(f2);
 
 为了便于讲解，下面这四种写法都再用`then`方法接一个回调函数`f3`。写法一的`f3`回调函数的参数，是`f2`函数的运行结果。
 
-```javascript
+```js
 f1().then(function () {
   return f2();
 }).then(f3);
@@ -181,7 +181,7 @@ f1().then(function () {
 
 写法二的`f3`回调函数的参数是`undefined`。
 
-```javascript
+```js
 f1().then(function () {
   f2();
   return;
@@ -190,14 +190,14 @@ f1().then(function () {
 
 写法三的`f3`回调函数的参数，是`f2`函数返回的函数的运行结果。
 
-```javascript
+```js
 f1().then(f2())
   .then(f3);
 ```
 
 写法四与写法一只有一个差别，那就是`f2`会接收到`f1()`返回的结果。
 
-```javascript
+```js
 f1().then(f2)
   .then(f3);
 ```
@@ -208,7 +208,7 @@ f1().then(f2)
 
 我们可以把图片的加载写成一个`Promise`对象。
 
-```javascript
+```js
 var preloadImage = function (path) {
   return new Promise(function (resolve, reject) {
     var image = new Image();
@@ -223,7 +223,7 @@ var preloadImage = function (path) {
 
 Ajax 操作是典型的异步操作，传统上往往写成下面这样。
 
-```javascript
+```js
 function search(term, onload, onerror) {
   var xhr, results, url;
   url = 'http://example.com/search?q=' + term;
@@ -249,7 +249,7 @@ search('Hello World', console.log, console.error);
 
 如果使用 Promise 对象，就可以写成下面这样。
 
-```javascript
+```js
 function search(term) {
   var url = 'http://example.com/search?q=' + term;
   var xhr = new XMLHttpRequest();
@@ -277,7 +277,7 @@ search('Hello World').then(console.log, console.error);
 
 加载图片的例子，也可以用 Ajax 操作完成。
 
-```javascript
+```js
 function imgLoad(url) {
   return new Promise(function (resolve, reject) {
     var request = new XMLHttpRequest();
@@ -310,7 +310,7 @@ Promise 的缺点是，编写的难度比传统写法高，而且阅读代码也
 
 Promise 的回调函数属于异步任务，会在同步任务之后执行。
 
-```javascript
+```js
 new Promise(function (resolve, reject) {
   resolve(1);
 }).then(console.log);
@@ -324,7 +324,7 @@ console.log(2);
 
 但是，Promise 的回调函数不是正常的异步任务，而是微任务（microtask）。它们的区别在于，正常任务追加到下一轮事件循环，微任务追加到本轮事件循环。这意味着，微任务的执行时间一定早于正常任务。
 
-```javascript
+```js
 setTimeout(function() {
   console.log(1);
 }, 0);

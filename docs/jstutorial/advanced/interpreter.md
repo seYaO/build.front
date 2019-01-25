@@ -13,7 +13,7 @@ JavaScript解释器的作用，是执行JavaScript源码。它通常可以包含
 
 首先，词法分析器会扫描（scanning）代码，提取词义单位；然后，会进行评估（evaluating），判断词义单位属于哪一类的值。
 
-```javascript
+```js
 var sum = 30;
 
 // 词法分析后的结果
@@ -32,7 +32,7 @@ var sum = 30;
 
 句法解析器的作用，是将上一步生成的数组，根据语法规则，转为抽象语法树（Abstract Syntax Tree，简称AST）。如果源码符合语法规则，这一步就会顺利完成，生成一个抽象语法树；如果源码存在语法错误，这一步就会终止，抛出一个“语法错误”。
 
-```javascript
+```js
 {
   operation: "=",
   left: {

@@ -82,7 +82,7 @@ TDD接口提供以下四个方法。
 
 下面代码是测试计数器是否加1。
 
-```javascript
+```js
 suite('Counter', function() {
   test('tick increases count to 1', function() {
     var counter = new Counter();
@@ -109,7 +109,7 @@ BDD接口提供以下六个方法。
 
 下面是测试计数器是否加1的BDD写法。
 
-```javascript
+```js
 describe('Counter', function() {
   it('should increase count by 1 after calling tick', function() {
     var counter = new Counter();
@@ -122,7 +122,7 @@ describe('Counter', function() {
 
 下面是一个BDD开发的示例。现在，需要开发一个`Foo`类，该类的实例有一个`sayHi`方法，会对类参数说“Hi”。这就是`Foo`类的规格，根据这个规格，我们可以写出测试用例文件`foo.spec.js`。
 
-```javascript
+```js
 describe('Simple object', function() {
   var foo;
 
@@ -138,7 +138,7 @@ describe('Simple object', function() {
 
 有了测试用例以后，我们再写出实际的脚本文件`foo.js`。
 
-```javascript
+```js
 function Foo(name) {
   this.name = name;
 }
@@ -158,7 +158,7 @@ Foo.prototype.sayHi = function() {
 
 测试套件由一个`describe`函数构成，它接受两个参数：第一个参数是字符串，表示测试套件的名字或标题，表示将要测试什么；第二个参数是函数，用来实现这个测试套件。
 
-```javascript
+```js
 describe("A suite", function() {
   // ...
 });
@@ -168,7 +168,7 @@ describe("A suite", function() {
 
 测试用例（test case）指的是，针对软件一个功能点的测试，是软件测试的最基本单位。一组相关的测试用例，构成一个测试套件。测试用例由`it`函数构成，它与`describe`函数一样，接受两个参数：第一个参数是字符串，表示测试用例的标题；第二个参数是函数，用来实现这个测试用例。
 
-```javascript
+```js
 describe("A suite", function() {
   it("contains spec with an expectation", function() {
     // ...
@@ -182,7 +182,7 @@ describe("A suite", function() {
 
 断言会返回一个布尔值，表示代码行为是否符合预期。测试用例之中，只要有一个断言为false，这个测试用例就会失败，只有所有断言都为`true`，测试用例才会通过。
 
-```javascript
+```js
 describe("A suite", function() {
   it("contains spec with an expectation", function() {
     expect(true).toBe(true);
@@ -196,7 +196,7 @@ describe("A suite", function() {
 
 断言有assert、expect、should三种风格，或者称为三种写法。
 
-```javascript
+```js
 // assert风格
 assert.equal(event.detail.item, '(item)‘);
 
@@ -211,7 +211,7 @@ Chai.js是一个很流行的断言库，同时支持上面三种风格。
 
 （1） assert风格
 
-```javascript
+```js
 var assert = require('chai').assert;
 var foo = 'bar';
 var beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };
@@ -226,7 +226,7 @@ assert.lengthOf(beverages.tea, 3, 'beverages has 3 types of tea');
 
 （2）expect风格
 
-```javascript
+```js
 var expect = require('chai').expect;
 var foo = 'bar';
 var beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };
@@ -239,7 +239,7 @@ expect(beverages).to.have.property('tea').with.length(3);
 
 （3）should风格
 
-```javascript
+```js
 var should = require('chai').should();
 var foo = 'bar';
 var beverages = { tea: [ 'chai', 'matcha', 'oolong' ] };
@@ -314,7 +314,7 @@ $ mocha init <path>
 
 各个文件的内容如下。
 
-```javascript
+```js
 // app.js
 function add(x, y){
   return x + y;
@@ -336,7 +336,7 @@ Mocha除了在浏览器运行，还可以在命令行运行。
 
 还是使用上面的文件，作为例子，但是要改成CommonJS格式。
 
-```javascript
+```js
 // app.js
 function add(x, y){
   return x + y;
@@ -373,7 +373,7 @@ $ mocha test --reporter spec --recursive --growl
 
 下面是一个典型的配置文件。
 
-```javascript
+```js
 --reporter spec
 --recursive
 --growl
@@ -418,7 +418,7 @@ $ mocha test -R markdown > spec.md --recursive
 
 只要提供测试脚本的路径，Mocha就可以运行这个测试脚本。
 
-```javascript
+```js
 $ mocha -w src/index.test.js
 ```
 
@@ -479,7 +479,7 @@ $ mocha --compilers js:babel/register --recursive
 
 `--require`参数指定测试脚本默认包含的文件。下面是一个`test_helper.js`文件。
 
-```javascript
+```js
 // test/test_helper.js
 import chai from 'chai';
 ```
@@ -494,7 +494,7 @@ $ mocha --compilers js:babel/register --require ./test/test_helper.js  --recursi
 
 测试脚本中，describe方法和it方法都允许调用only方法，表示只运行某个测试套件或测试用例。
 
-```javascript
+```js
 // 例一
 describe('Array', function(){
   describe.only('#indexOf()', function(){
@@ -518,7 +518,7 @@ describe("using only", function() {
 
 describe方法和it方法还可以调用skip方法，表示跳过指定的测试套件或测试用例。
 
-```javascript
+```js
 // 例一
 describe.skip('Article', function() {
   // ...
@@ -540,7 +540,7 @@ describe("using only", function() {
 
 如果测试用例包含异步操作，可以done方法显式指定测试用例的运行结束时间。
 
-```javascript
+```js
 it('logs a', function(done) {
   var f = function(){
     console.log('logs a');
@@ -556,7 +556,7 @@ it('logs a', function(done) {
 
 对于异步的测试，测试用例之中，通常必须调用`done`方法，显式表明异步操作的结束。
 
-```javascript
+```js
 var expect = require('chai').expect;
 
 it('should do something with promises', function(done) {
@@ -574,7 +574,7 @@ it('should do something with promises', function(done) {
 
 上面代码之中，Promise对象的`then`方法之中，必须指定`reject`时的回调函数，并且使用`assert.fail`方法抛出错误，否则这个错误就不会被外界感知。
 
-```javascript
+```js
 result.then(function(data) {
   expect(data).to.equal(blah);
   done();
@@ -585,7 +585,7 @@ result.then(function(data) {
 
 Mocha内置了对Promise的支持。
 
-```javascript
+```js
 it('should fail the test', function() {
   var p = Promise.reject('Promise被reject');
 
@@ -597,7 +597,7 @@ it('should fail the test', function() {
 
 因此，使用Mocha时，Promise的测试可以简化成下面的写法。
 
-```javascript
+```js
 var expect = require('chai').expect;
 
 it('should do something with promises', function() {
@@ -630,7 +630,7 @@ $ npm i -D istanbul
 
 然后，在package.json设置运行覆盖率检查的命令。
 
-```javascript
+```js
 "scripts": {
   "test:cover": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js",
   "check-coverage": "istanbul check-coverage --statements 100 --branches 100 --functions 100 --lines 100"
@@ -651,7 +651,7 @@ $ npm i -D ghooks
 
 在package.json之中，配置`pre-commit`钩子。
 
-```javascript
+```js
 "config": {
   "ghooks": {
     "pre-commit": "npm run test:cover && npm run check-coverage"
@@ -669,7 +669,7 @@ script:
 
 如果测试脚本使用ES6，`scripts`字段还需要加入Babel转码。
 
-```javascript
+```js
 "scripts": {
   "test": "mocha src/index.test.js -w --compilers js:babel/register",
   "test:cover": "istanbul cover -x *.test.js _mocha -- -R spec src/index.test.js --compilers js:babel/register"
@@ -684,7 +684,7 @@ $ npm i -D codecov.io
 
 然后在package.json增加一个字段。
 
-```javascript
+```js
 "scripts": {
   "report-coverage": "cat ./coverage/lcov.info | codecov"
 }
@@ -718,31 +718,31 @@ WebDriver提供以下方法操作浏览器。
 
 close()：退出或关闭当前浏览器窗口。
 
-```javascript
+```js
 driver.close();
 ```
 
 quit()：关闭所有浏览器窗口，中止当前浏览器driver和session。
 
-```javascript
+```js
 driver.quit();
 ```
 
 getTitle()：返回当前网页的标题。
 
-```javascript
+```js
 driver.getTitle();
 ```
 
 getCurrentUrl()：返回当前网页的网址。
 
-```javascript
+```js
 driver.getCurrentUrl();
 ```
 
 getPageSource()：返回当前网页的源码。
 
-```javascript
+```js
 // 断言是否含有指定文本
 assert(driver.getPageSource().contains("Hello World"),
   "预期含有文本Hello World");
@@ -750,7 +750,7 @@ assert(driver.getPageSource().contains("Hello World"),
 
 click()：模拟鼠标点击。
 
-```javascript
+```js
 // 例一
 driver.findElement(By.locatorType("path"))
   .click();
@@ -765,7 +765,7 @@ driver.findElement(By.id("sblsbb"))
 
 clear()：清空文本输入框。
 
-```javascript
+```js
 // 例一
 driver.findElement(By.locatorType("path")).clear();
 
@@ -781,14 +781,14 @@ driver.findElement(By.name("q"))
 
 sendKeys()：在文本输入框输入文本。
 
-```javascript
+```js
 driver.findElement(By.locatorType("path"))
   .sendKeys("your text");
 ```
 
 submit()：提交表单，或者用来模拟按下回车键。
 
-```javascript
+```js
 // 例一
 driver.findElement(By.locatorType("path"))
   .submit();
@@ -802,14 +802,14 @@ element.submit();
 
 findElement()：返回选中的第一个元素。
 
-```javascript
+```js
 driver.get("https://www.google.com");
 driver.findElement(By.id("lst-ib"));
 ```
 
 findElements()：返回选中的所有元素（0个或多个）。
 
-```javascript
+```js
 // 例一
 driver.findElement(By.id("searchbox"))
   .sendKeys("webdriver");
@@ -864,7 +864,7 @@ WebDriver提供8种定位器，用于定位网页元素。
 
 下面是一个使用id定位器，选中网页元素的例子。
 
-```javascript
+```js
 driver.findElement(By.id("sblsbb")).click();
 ```
 
@@ -874,7 +874,7 @@ driver.findElement(By.id("sblsbb")).click();
 
 getAttribute()：返回网页元素指定属性的值。
 
-```javascript
+```js
 driver.get("https://www.google.com");
 driver.findElement(By.xpath("//div[@id='lst-ib']"))
   .getAttribute("class");
@@ -882,13 +882,13 @@ driver.findElement(By.xpath("//div[@id='lst-ib']"))
 
 getText()：返回网页元素的内部文本。
 
-```javascript
+```js
 driver.findElement(By.locatorType("path")).getText();
 ```
 
 getTagName()：返回指定元素的标签名。
 
-```javascript
+```js
 driver.get("https://www.google.com");
 driver.findElement(By.xpath("//div[@class='sbib_b']"))
   .getTagName();
@@ -896,7 +896,7 @@ driver.findElement(By.xpath("//div[@class='sbib_b']"))
 
 isDisplayed()：返回一个布尔值，表示元素是否可见。
 
-```javascript
+```js
 driver.get("https://www.google.com");
 assert(driver.findElement(By.name("q"))
   .isDisplayed(),
@@ -905,7 +905,7 @@ assert(driver.findElement(By.name("q"))
 
 isEnabled()：返回一个布尔值，表示文本框是否可编辑。
 
-```javascript
+```js
 driver.get("https://www.google.com");
 var Element = driver.findElement(By.name("q"));
 if (Element.isEnabled()) {
@@ -918,14 +918,14 @@ if (Element.isEnabled()) {
 
 isSelected()：返回一个布尔值，表示一个元素是否可选择。
 
-```javascript
+```js
 driver.findElement(By.xpath("//select[@name='jump']/option[1]"))
   .isSelected()
 ```
 
 getSize()：返回一个网页元素的宽度和高度。
 
-```javascript
+```js
 var dimensions=driver.findElement(By.locatorType("path"))
   .getSize(); 
 dimensions.width;
@@ -934,7 +934,7 @@ dimensions.height;
 
 getLocation()：返回网页元素左上角的x坐标和y坐标。
 
-```javascript
+```js
 var point = driver.findElement(By.locatorType("path")).getLocation();
 point.x; // 等同于 point.getX();
 point.y; // 等同于 point.getY();
@@ -942,7 +942,7 @@ point.y; // 等同于 point.getY();
 
 getCssValue()：返回网页元素指定的CSS属性的值。
 
-```javascript
+```js
 driver.get("https://www.google.com");
 var element = driver.findElement(By.xpath("//div[@id='hplogo']"));
 console.log(element.getCssValue("font-size"));
@@ -957,31 +957,31 @@ console.log(element.getCssValue("background-size"));
 
 get()：要求浏览器跳到某个网址。
 
-```javascript
+```js
 driver.get("URL");
 ```
 
 navigate().back()：浏览器回退。
 
-```javascript
+```js
 driver.navigate().back();
 ```
 
 navigate().forward()：浏览器前进。
 
-```javascript
+```js
 driver.navigate().forward();
 ```
 
 navigate().to()：跳转到浏览器历史中的某个页面。
 
-```javascript
+```js
 driver.navigate().to("URL");
 ```
 
 navigate().refresh()：刷新当前页面。
 
-```javascript
+```js
 driver.navigate().refresh();
 // 等同于
 driver.navigate()
@@ -995,28 +995,28 @@ driver.findElement(By.locatorType("path"))
 
 getCookies()：获取cookie
 
-```javascript
+```js
 driver.get("https://www.google.com");
 driver.manage().getCookies();
 ```
 
 getCookieNamed() ：返回指定名称的cookie。
 
-```javascript
+```js
 driver.get("https://www.google.com");
 console.log(driver.manage().getCookieNamed("NID"));
 ```
 
 addCookie()：将cookie加入当前页面。
 
-```javascript
+```js
 driver.get("https://www.google.com");
 driver.manage().addCookie(cookie0);
 ```
 
 deleteCookie()：删除指定的cookie。
 
-```javascript
+```js
 driver.get("https://www.google.co.in");
 driver.manage().deleteCookieNamed("NID");
 ```
@@ -1025,20 +1025,20 @@ driver.manage().deleteCookieNamed("NID");
 
 maximize()：最大化浏览器窗口。
 
-```javascript
+```js
 var driver = new FirefoxDriver();
 driver.manage().window().maximize();
 ```
 
 getSize()：返回浏览器窗口、图像、网页元素的宽和高。
 
-```javascript
+```js
 driver.manage().window().getSize();
 ```
 
 getPosition()：返回浏览器窗口左上角的x坐标和y坐标。
 
-```javascript
+```js
 console.log("Position X: " + driver.manage().window().getPosition().x);
 console.log("Position Y: " + driver.manage().window().getPosition().y);
 console.log("Position X: " + driver.manage().window().getPosition().getX());
@@ -1047,7 +1047,7 @@ console.log("Position Y: " + driver.manage().window().getPosition().getY());
 
 setSize()：定制浏览器窗口的大小。
 
-```javascript
+```js
 var d = new Dimension(320, 480);
 driver.manage().window().setSize(d);
 driver.manage().window().setSize(new Dimension(320, 480));
@@ -1055,7 +1055,7 @@ driver.manage().window().setSize(new Dimension(320, 480));
 
 setPosition()：移动浏览器左上角到指定位置。
 
-```javascript
+```js
 var p = new Point(200, 200);
 driver.manage().window().setPosition(p);
 driver.manage().window().setPosition(new Point(300, 150));
@@ -1063,21 +1063,21 @@ driver.manage().window().setPosition(new Point(300, 150));
 
 getWindowHandle()：返回当前浏览器窗口。
 
-```javascript
+```js
 var parentwindow = driver.getWindowHandle();
 driver.switchTo().window(parentwindow);
 ```
 
 getWindowHandles()：返回所有浏览器窗口。
 
-```javascript
+```js
 var childwindows =  driver.getWindowHandles();
 driver.switchTo().window(childwindow);
 ```
 
 switchTo.window()：在浏览器窗口之间切换。
 
-```javascript
+```js
 driver.SwitchTo().Window(childwindow);
 driver.close();
 driver.SwitchTo().Window(parentWindow);
@@ -1089,35 +1089,35 @@ driver.SwitchTo().Window(parentWindow);
 
 dismiss() ：关闭弹出窗口。
 
-```javascript
+```js
 var alert = driver.switchTo().alert();
 alert.dismiss();
 ```
 
 accept()：接受弹出窗口，相当于按下接受OK按钮。
 
-```javascript
+```js
 var alert = driver.switchTo().alert();
 alert.accept();
 ```
 
 getText()：返回弹出窗口的文本值。
 
-```javascript
+```js
 var alert = driver.switchTo().alert();
 alert.getText();
 ```
 
 sendKeys()：向弹出窗口发送文本字符串。
 
-```javascript
+```js
 var alert = driver.switchTo().alert();
 alert.sendKeys("Text to be passed");
 ```
 
 authenticateUsing()：处理HTTP认证。
 
-```javascript
+```js
 var user = new UserAndPassword("USERNAME", "PASSWORD");
 alert.authenticateUsing(user);
 ```

@@ -57,7 +57,7 @@ IE 7则是这样：
 
 除了提供新增的CSS class，Modernizr还提供JavaScript方法，用来侦测浏览器是否支持某个功能。
 
-```javascript
+```js
 
 Modernizr.cssgradients; //True in Chrome, False in IE7
 
@@ -83,7 +83,7 @@ if (Modernizr.touch){
 
 Modernizr允许根据Javascript侦测的不同结果，加载不同的脚本文件。
 
-```javascript
+```js
 
 Modernizr.load({
   test :        Modernizr.localstorage,
@@ -103,7 +103,7 @@ Modernizr.load方法用来加载脚本。它的属性如下：
 
 可以指定在支持某个功能的情况，所要加载的JavaScript脚本和CSS样式。
 
-```javascript
+```js
 
 Modernizr.load({
   test : Modernizr.touch,

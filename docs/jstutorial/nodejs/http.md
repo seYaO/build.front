@@ -4,7 +4,7 @@
 
 `http.STATUS_CODES`是一个对象，属性名都是状态码，属性值则是该状态码的简短解释。
 
-```javascript
+```js
 require('http').STATUS_CODES['301']
 // "Moved Permanently"
 ```
@@ -15,7 +15,7 @@ require('http').STATUS_CODES['301']
 
 `http`模块主要用于搭建HTTP服务。使用Node搭建HTTP服务器非常简单。
 
-```javascript
+```js
 var http = require('http');
 
 http.createServer(function (request, response){
@@ -50,7 +50,7 @@ $ node app.js
 
 上面的例子是收到请求后生成网页，也可以事前写好网页，存在文件中，然后利用`fs`模块读取网页文件，将其返回。
 
-```javascript
+```js
 var http = require('http');
 var fs = require('fs');
 
@@ -70,7 +70,7 @@ console.log('Server running on port 8080.');
 
 下面的修改则是根据不同网址的请求，显示不同的内容，已经相当于做出一个网站的雏形了。
 
-```javascript
+```js
 var http = require('http');
 
 http.createServer(function(req, res) {
@@ -106,20 +106,20 @@ http.createServer(function(req, res) {
 
 下面的例子是获取请求的路径名。
 
-```javascript
+```js
 var url = require('url');
 var pathname = url.parse(request.url).pathname;
 ```
 
 `setEncoding()`方法用于设置请求的编码。
 
-```javascript
+```js
 request.setEncoding("utf8");
 ```
 
 `addListener()`方法用于为请求添加监听事件的回调函数。
 
-```javascript
+```js
 var querystring = require('querystring');
 var postData = '';
 
@@ -138,7 +138,7 @@ request.addListener('end', function () {
 
 遇到异步操作时，会先处理后面的请求，等到当前请求有了结果以后，再返回结果。
 
-```javascript
+```js
 var exec = require("child_process").exec;
 
 exec('ls -lah', function (error, stdout, stderr) {
@@ -152,7 +152,7 @@ exec('ls -lah', function (error, stdout, stderr) {
 
 当客户端采用POST方法发送数据时，服务器端可以对data和end两个事件，设立监听函数。
 
-```javascript
+```js
 
 var http = require('http');
 
@@ -177,7 +177,7 @@ data事件会在数据接收过程中，每收到一段数据就触发一次，�
 
 对上面代码稍加修改，就可以做出文件上传的功能。
 
-```javascript
+```js
 
 "use strict";
 
@@ -213,7 +213,7 @@ http.createServer(function (request, response) {
 
 get方法用于发出get请求。
 
-```javascript
+```js
 function getTestPersonaLoginCredentials(callback) {
   return http.get({
     host: 'personatestuser.org',
@@ -240,7 +240,7 @@ function getTestPersonaLoginCredentials(callback) {
 
 request方法用于发出HTTP请求，它的使用格式如下。
 
-```javascript
+```js
 http.request(options[, callback])
 ```
 
@@ -270,7 +270,7 @@ request方法的callback参数是可选的，在response事件发生时触发，
 
 下面是发送POST请求的一个例子。
 
-```javascript
+```js
 var postData = querystring.stringify({
   'msg' : 'Hello World!'
 });
@@ -312,7 +312,7 @@ req.end();
 
 `Server`方法用于新建一个服务器实例。
 
-```javascript
+```js
 var http = require('http');
 var fs = require('fs');
 
@@ -366,7 +366,7 @@ server.on('request', function (request, response) {
 
 `listen`方法用于启动服务器，它可以接受多种参数。
 
-```javascript
+```js
 var server = new http.Server();
 
 // 端口
@@ -401,7 +401,7 @@ $ rm csr.pem
 
 Node内置Https支持。
 
-```javascript
+```js
 var server = https.createServer({
   key: privateKey,
   cert: certificate,
@@ -411,7 +411,7 @@ var server = https.createServer({
 
 Node.js提供一个https模块，专门用于处理加密访问。
 
-```javascript
+```js
 var https = require('https');
 var fs = require('fs');
 

@@ -44,7 +44,7 @@ $ bower init
 
 通过回答几个问题，就会自动生成bower.json文件。这是项目的配置文件，下面是一个例子。
 
-```javascript
+```js
 {
   "name": "app-name",
   "version": "0.1.0",
@@ -188,7 +188,7 @@ Bower ls
 
 项目根目录下（也可以放在用户的主目录下）的.bowerrc文件是Bower的配置文件，它大概像下面这样。
 
-```javascript
+```js
 
 {
   "directory" : "components",

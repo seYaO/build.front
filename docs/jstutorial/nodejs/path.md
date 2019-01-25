@@ -18,7 +18,7 @@ path.join(mydir, "foo");
 
 它可以接受多个参数，依次表示所要进入的路径，直到将最后一个参数转为绝对路径。如果根据参数无法得到绝对路径，就以当前所在路径作为基准。除了根目录，该方法的返回值都不带尾部的斜杠。
 
-```javascript
+```js
 
 // 格式
 path.resolve([from ...], to)
@@ -42,7 +42,7 @@ $ pwd
 
 更多例子。
 
-```javascript
+```js
 path.resolve('/foo/bar', './baz')
 // '/foo/bar/baz'
 
@@ -62,7 +62,7 @@ path.resolve('wwwroot', 'static_files/png/', '../gif/image.gif')
 
 下面的代码可以用于判断一个目录是否存在。
 
-```javascript
+```js
 function exists(pth, mode) {
   try {
     fs.accessSync(pth, mode);
@@ -77,7 +77,7 @@ function exists(pth, mode) {
 
 `path.relative`方法接受两个参数，这两个参数都应该是绝对路径。该方法返回第二个路径相对于第一个路径的那个相对路径。
 
-```javascript
+```js
 path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb')
 // '../../impl/bbb'
 ```
@@ -90,7 +90,7 @@ path.relative('/data/orandea/test/aaa', '/data/orandea/impl/bbb')
 
 `path.parse()`方法可以返回路径各部分的信息。
 
-```javascript
+```js
 var myFilePath = '/someDir/someFile.json';
 path.parse(myFilePath).base
 // "someFile.json"

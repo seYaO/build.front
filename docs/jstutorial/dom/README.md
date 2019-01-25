@@ -32,7 +32,7 @@ DOM 的最小组成单位叫做节点（node）。文档的树形结构（DOM �
 
 浏览器原生提供`document`节点，代表整个文档。
 
-```javascript
+```js
 document
 // 整个文档树
 ```
@@ -55,7 +55,7 @@ DOM 提供操作接口，用来获取这三种关系的节点。比如，子节�
 
 `nodeType`属性返回一个整数值，表示节点的类型。
 
-```javascript
+```js
 document.nodeType // 9
 ```
 
@@ -63,7 +63,7 @@ document.nodeType // 9
 
 Node 对象定义了几个常量，对应这些类型值。
 
-```javascript
+```js
 document.nodeType === Node.DOCUMENT_NODE // true
 ```
 
@@ -81,7 +81,7 @@ document.nodeType === Node.DOCUMENT_NODE // true
 
 确定节点类型时，使用`nodeType`属性是常用方法。
 
-```javascript
+```js
 var node = document.documentElement.firstChild;
 if (node.nodeType === Node.ELEMENT_NODE) {
   console.log('该节点是元素节点');
@@ -92,7 +92,7 @@ if (node.nodeType === Node.ELEMENT_NODE) {
 
 `nodeName`属性返回节点的名称。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="d1">hello world</div>
 var div = document.getElementById('d1');
@@ -117,7 +117,7 @@ div.nodeName // "DIV"
 
 只有文本节点（text）和注释节点（comment）有文本值，因此这两类节点的`nodeValue`可以返回结果，其他类型的节点一律返回`null`。同样的，也只有这两类节点可以设置`nodeValue`属性的值，其他类型的节点设置无效。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="d1">hello world</div>
 var div = document.getElementById('d1');
@@ -131,7 +131,7 @@ div.firstChild.nodeValue // "hello world"
 
 `textContent`属性返回当前节点和它的所有后代节点的文本内容。
 
-```javascript
+```js
 // HTML 代码为
 // <div id="divA">This is <span>some</span> text</div>
 
@@ -143,7 +143,7 @@ document.getElementById('divA').textContent
 
 该属性是可读写的，设置该属性的值，会用一个新的文本节点，替换所有原来的子节点。它还有一个好处，就是自动对 HTML 标签转义。这很适合用于用户提供的内容。
 
-```javascript
+```js
 document.getElementById('foo').textContent = '<p>GoodBye!</p>';
 ```
 
@@ -157,7 +157,7 @@ document.getElementById('foo').textContent = '<p>GoodBye!</p>';
 
 `baseURI`属性返回一个字符串，表示当前网页的绝对路径。浏览器根据这个属性，计算网页上的相对路径的 URL。该属性为只读。
 
-```javascript
+```js
 // 当前网页的网址为
 // http://www.example.com/index.html
 document.baseURI
@@ -178,7 +178,7 @@ document.baseURI
 
 `Node.ownerDocument`属性返回当前节点所在的顶层文档对象，即`document`对象。
 
-```javascript
+```js
 var d = p.ownerDocument;
 d === document // true
 ```
@@ -189,7 +189,7 @@ d === document // true
 
 `Node.nextSibling`属性返回紧跟在当前节点后面的第一个同级节点。如果当前节点后面没有同级节点，则返回`null`。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="d1">hello</div><div id="d2">world</div>
 var div1 = document.getElementById('d1');
@@ -204,7 +204,7 @@ d1.nextSibling === d2 // true
 
 `nextSibling`属性可以用来遍历所有子节点。
 
-```javascript
+```js
 var el = document.getElementById('div1').firstChild;
 
 while (el !== null) {
@@ -219,7 +219,7 @@ while (el !== null) {
 
 `previousSibling`属性返回当前节点前面的、距离最近的一个同级节点。如果当前节点前面没有同级节点，则返回`null`。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="d1">hello</div><div id="d2">world</div>
 var div1 = document.getElementById('d1');
@@ -236,7 +236,7 @@ d2.previousSibling === d1 // true
 
 `parentNode`属性返回当前节点的父节点。对于一个节点来说，它的父节点只可能是三种类型：元素节点（element）、文档节点（document）和文档片段节点（documentfragment）。
 
-```javascript
+```js
 if (node.parentNode) {
   node.parentNode.removeChild(node);
 }
@@ -250,7 +250,7 @@ if (node.parentNode) {
 
 `parentElement`属性返回当前节点的父元素节点。如果当前节点没有父节点，或者父节点类型不是元素节点，则返回`null`。
 
-```javascript
+```js
 if (node.parentElement) {
   node.parentElement.style.color = 'red';
 }
@@ -264,7 +264,7 @@ if (node.parentElement) {
 
 `firstChild`属性返回当前节点的第一个子节点，如果当前节点没有子节点，则返回`null`。
 
-```javascript
+```js
 // HTML 代码如下
 // <p id="p1"><span>First span</span></p>
 var p1 = document.getElementById('p1');
@@ -275,7 +275,7 @@ p1.firstChild.nodeName // "SPAN"
 
 注意，`firstChild`返回的除了元素节点，还可能是文本节点或注释节点。
 
-```javascript
+```js
 // HTML 代码如下
 // <p id="p1">
 //   <span>First span</span>
@@ -292,7 +292,7 @@ p1.firstChild.nodeName // "#text"
 
 `childNodes`属性返回一个类似数组的对象（`NodeList`集合），成员包括当前节点的所有子节点。
 
-```javascript
+```js
 var children = document.querySelector('ul').childNodes;
 ```
 
@@ -300,7 +300,7 @@ var children = document.querySelector('ul').childNodes;
 
 使用该属性，可以遍历某个节点的所有子节点。
 
-```javascript
+```js
 var div = document.getElementById('div1');
 var children = div.childNodes;
 
@@ -311,7 +311,7 @@ for (var i = 0; i < children.length; i++) {
 
 文档节点（document）就有两个子节点：文档类型节点（docType）和 HTML 根元素节点。
 
-```javascript
+```js
 var children = document.childNodes;
 for (var i = 0; i < children.length; i++) {
   console.log(children[i].nodeType);
@@ -328,7 +328,7 @@ for (var i = 0; i < children.length; i++) {
 
 `isConnected`属性返回一个布尔值，表示当前节点是否在文档之中。
 
-```javascript
+```js
 var test = document.createElement('p');
 test.isConnected // false
 
@@ -344,7 +344,7 @@ test.isConnected // true
 
 `appendChild`方法接受一个节点对象作为参数，将其作为最后一个子节点，插入当前节点。该方法的返回值就是插入文档的子节点。
 
-```javascript
+```js
 var p = document.createElement('p');
 document.body.appendChild(p);
 ```
@@ -353,7 +353,7 @@ document.body.appendChild(p);
 
 如果参数节点是 DOM 已经存在的节点，`appendChild`方法会将其从原来的位置，移动到新位置。
 
-```javascript
+```js
 var element = document
   .createElement('div')
   .appendChild(document.createElement('b'));
@@ -367,7 +367,7 @@ var element = document
 
 `hasChildNodes`方法返回一个布尔值，表示当前节点是否有子节点。
 
-```javascript
+```js
 var foo = document.getElementById('foo');
 
 if (foo.hasChildNodes()) {
@@ -387,7 +387,7 @@ if (foo.hasChildNodes()) {
 
 `hasChildNodes`方法结合`firstChild`属性和`nextSibling`属性，可以遍历当前节点的所有后代节点。
 
-```javascript
+```js
 function DOMComb(parent, callback) {
   if (parent.hasChildNodes()) {
     for (var node = parent.firstChild; node; node = node.nextSibling) {
@@ -407,7 +407,7 @@ DOMComb(document.body, console.log)
 
 `cloneNode`方法用于克隆一个节点。它接受一个布尔值作为参数，表示是否同时克隆子节点。它的返回值是一个克隆出来的新节点。
 
-```javascript
+```js
 var cloneUL = document.querySelector('ul').cloneNode(true);
 ```
 
@@ -423,13 +423,13 @@ var cloneUL = document.querySelector('ul').cloneNode(true);
 
 `insertBefore`方法用于将某个节点插入父节点内部的指定位置。
 
-```javascript
+```js
 var insertedNode = parentNode.insertBefore(newNode, referenceNode);
 ```
 
 `insertBefore`方法接受两个参数，第一个参数是所要插入的节点`newNode`，第二个参数是父节点`parentNode`内部的一个子节点`referenceNode`。`newNode`将插在`referenceNode`这个子节点的前面。返回值是插入的新节点`newNode`。
 
-```javascript
+```js
 var p = document.createElement('p');
 document.body.insertBefore(p, document.body.firstChild);
 ```
@@ -438,7 +438,7 @@ document.body.insertBefore(p, document.body.firstChild);
 
 如果`insertBefore`方法的第二个参数为`null`，则新节点将插在当前节点内部的最后位置，即变成最后一个子节点。
 
-```javascript
+```js
 var p = document.createElement('p');
 document.body.insertBefore(p, null);
 ```
@@ -449,7 +449,7 @@ document.body.insertBefore(p, null);
 
 由于不存在`insertAfter`方法，如果新节点要插在父节点的某个子节点后面，可以用`insertBefore`方法结合`nextSibling`属性模拟。
 
-```javascript
+```js
 parent.insertBefore(s1, s2.nextSibling);
 ```
 
@@ -461,7 +461,7 @@ parent.insertBefore(s1, s2.nextSibling);
 
 `removeChild`方法接受一个子节点作为参数，用于从当前节点移除该子节点。返回值是移除的子节点。
 
-```javascript
+```js
 var divA = document.getElementById('A');
 divA.parentNode.removeChild(divA);
 ```
@@ -470,7 +470,7 @@ divA.parentNode.removeChild(divA);
 
 下面是如何移除当前节点的所有子节点。
 
-```javascript
+```js
 var element = document.getElementById('top');
 while (element.firstChild) {
   element.removeChild(element.firstChild);
@@ -485,13 +485,13 @@ while (element.firstChild) {
 
 `replaceChild`方法用于将一个新的节点，替换当前节点的某一个子节点。
 
-```javascript
+```js
 var replacedNode = parentNode.replaceChild(newChild, oldChild);
 ```
 
 上面代码中，`replaceChild`方法接受两个参数，第一个参数`newChild`是用来替换的新节点，第二个参数`oldChild`是将要替换走的子节点。返回值是替换走的那个节点`oldChild`。
 
-```javascript
+```js
 var divA = document.getElementById('divA');
 var newSpan = document.createElement('span');
 newSpan.textContent = 'Hello World!';
@@ -508,7 +508,7 @@ divA.parentNode.replaceChild(newSpan, divA);
 - 参数节点为当前节点的子节点。
 - 参数节点为当前节点的后代节点。
 
-```javascript
+```js
 document.body.contains(node)
 ```
 
@@ -516,7 +516,7 @@ document.body.contains(node)
 
 注意，当前节点传入`contains`方法，返回`true`。
 
-```javascript
+```js
 nodeA.contains(nodeA) // true
 ```
 
@@ -534,7 +534,7 @@ nodeA.contains(nodeA) // true
 010000 | 16 | 当前节点包含参数节点
 100000 | 32 | 浏览器内部使用
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="mydiv">
 //   <form><input id="test" /></form>
@@ -551,7 +551,7 @@ input.compareDocumentPosition(div) // 10
 
 由于`compareDocumentPosition`返回值的含义，定义在每一个比特位上，所以如果要检查某一种特定的含义，就需要使用比特位运算符。
 
-```javascript
+```js
 var head = document.head;
 var body = document.body;
 if (head.compareDocumentPosition(body) & 4) {
@@ -567,7 +567,7 @@ if (head.compareDocumentPosition(body) & 4) {
 
 `isEqualNode`方法返回一个布尔值，用于检查两个节点是否相等。所谓相等的节点，指的是两个节点的类型相同、属性相同、子节点相同。
 
-```javascript
+```js
 var p1 = document.createElement('p');
 var p2 = document.createElement('p');
 
@@ -576,7 +576,7 @@ p1.isEqualNode(p2) // true
 
 `isSameNode`方法返回一个布尔值，表示两个节点是否为同一个节点。
 
-```javascript
+```js
 var p1 = document.createElement('p');
 var p2 = document.createElement('p');
 
@@ -588,7 +588,7 @@ p1.isSameNode(p1) // true
 
 `normailize`方法用于清理当前节点内部的所有文本节点（text）。它会去除空的文本节点，并且将毗邻的文本节点合并成一个，也就是说不存在空的文本节点，以及毗邻的文本节点。
 
-```javascript
+```js
 var wrapper = document.createElement('div');
 
 wrapper.appendChild(document.createTextNode('Part 1 '));
@@ -607,7 +607,7 @@ wrapper.childNodes.length // 1
 
 `getRootNode`方法返回当前节点所在文档的根节点。
 
-```javascript
+```js
 document.body.firstChild.getRootNode() === document // true
 ```
 
@@ -624,13 +624,13 @@ document.body.firstChild.getRootNode() === document // true
 - `Node.childNodes`
 - `document.querySelectorAll()`、`document.getElementsByTagName()`等节点搜索方法
 
-```javascript
+```js
 document.body.childNodes instanceof NodeList // true
 ```
 
 `NodeList`实例很像数组，可以使用`length`属性和`forEach`方法。但是，它不是数组，不能使用`pop`或`push`之类数组特有的方法。
 
-```javascript
+```js
 var children = document.body.childNodes;
 
 Array.isArray(children) // false
@@ -643,14 +643,14 @@ children.forEach(console.log)
 
 如果`NodeList`实例要使用数组方法，可以将其转为真正的数组。
 
-```javascript
+```js
 var children = document.body.childNodes;
 var nodeArr = Array.prototype.slice.call(children);
 ```
 
 除了使用`forEach`方法遍历 NodeList 实例，还可以使用`for`循环。
 
-```javascript
+```js
 var children = document.body.childNodes;
 
 for (var i = 0; i < children.length; i++) {
@@ -660,7 +660,7 @@ for (var i = 0; i < children.length; i++) {
 
 注意，NodeList 实例可能是动态集合，也可能是静态集合。所谓动态集合就是一个活的集合，DOM 删除或新增一个相关节点，都会立刻反映在 NodeList 实例。目前，只有`Node.childNodes`返回的是一个动态集合，其他的 NodeList 都是静态集合。
 
-```javascript
+```js
 var children = document.body.childNodes;
 children.length // 18
 document.body.appendChild(document.createElement('p'));
@@ -673,7 +673,7 @@ children.length // 19
 
 `length`属性返回 NodeList 实例包含的节点数量。
 
-```javascript
+```js
 document.getElementsByTagName('xxx').length
 // 0
 ```
@@ -684,7 +684,7 @@ document.getElementsByTagName('xxx').length
 
 `forEach`方法用于遍历 NodeList 的所有成员。它接受一个回调函数作为参数，每一轮遍历就执行一次这个回调函数，用法与数组实例的`forEach`方法完全一致。
 
-```javascript
+```js
 var children = document.body.childNodes;
 children.forEach(function f(item, i, list) {
   // ...
@@ -697,7 +697,7 @@ children.forEach(function f(item, i, list) {
 
 `item`方法接受一个整数值作为参数，表示成员的位置，返回该位置上的成员。
 
-```javascript
+```js
 document.body.childNodes.item(0)
 ```
 
@@ -707,7 +707,7 @@ document.body.childNodes.item(0)
 
 所有类似数组的对象，都可以使用方括号运算符取出成员。一般情况下，都是使用方括号运算符，而不使用`item`方法。
 
-```javascript
+```js
 document.body.childNodes[0]
 ```
 
@@ -715,7 +715,7 @@ document.body.childNodes[0]
 
 这三个方法都返回一个 ES6 的遍历器对象，可以通过`for...of`循环遍历获取每一个成员的信息。区别在于，`keys()`返回键名的遍历器，`values()`返回键值的遍历器，`entries()`返回的遍历器同时包含键名和键值的信息。
 
-```javascript
+```js
 var children = document.body.childNodes;
 
 for (var key of children.keys()) {
@@ -749,7 +749,7 @@ for (var entry of children.entries()) {
 
 返回`HTMLCollection`实例的，主要是一些`Document`对象的集合属性，比如`document.links`、`docuement.forms`、`document.images`等。
 
-```javascript
+```js
 document.links instanceof HTMLCollection // true
 ```
 
@@ -757,7 +757,7 @@ document.links instanceof HTMLCollection // true
 
 如果元素节点有`id`或`name`属性，那么`HTMLCollection`实例上面，可以使用`id`属性或`name`属性引用该节点元素。如果没有对应的节点，则返回`null`。
 
-```javascript
+```js
 // HTML 代码如下
 // <img id="pic" src="http://example.com/foo.jpg">
 
@@ -771,7 +771,7 @@ document.images.pic === pic // true
 
 `length`属性返回`HTMLCollection`实例包含的成员数量。
 
-```javascript
+```js
 document.links.length // 18
 ```
 
@@ -779,7 +779,7 @@ document.links.length // 18
 
 `item`方法接受一个整数值作为参数，表示成员的位置，返回该位置上的成员。
 
-```javascript
+```js
 var c = document.images;
 var img0 = c.item(0);
 ```
@@ -792,7 +792,7 @@ var img0 = c.item(0);
 
 `namedItem`方法的参数是一个字符串，表示`id`属性或`name`属性的值，返回对应的元素节点。如果没有对应的节点，则返回`null`。
 
-```javascript
+```js
 // HTML 代码如下
 // <img id="pic" src="http://example.com/foo.jpg">
 
@@ -812,7 +812,7 @@ document.images.namedItem('pic') === pic // true
 
 下面是遍历某个节点的所有元素子节点的示例。
 
-```javascript
+```js
 for (var i = 0; i < el.children.length; i++) {
   // ...
 }
@@ -826,7 +826,7 @@ for (var i = 0; i < el.children.length; i++) {
 
 `firstElementChild`属性返回当前节点的第一个元素子节点。如果没有任何元素子节点，则返回`null`。
 
-```javascript
+```js
 document.firstElementChild.nodeName
 // "HTML"
 ```
@@ -837,7 +837,7 @@ document.firstElementChild.nodeName
 
 `lastElementChild`属性返回当前节点的最后一个元素子节点，如果不存在任何元素子节点，则返回`null`。
 
-```javascript
+```js
 document.lastElementChild.nodeName
 // "HTML"
 ```
@@ -848,7 +848,7 @@ document.lastElementChild.nodeName
 
 `childElementCount`属性返回一个整数，表示当前节点的所有元素子节点的数目。如果不包含任何元素子节点，则返回`0`。
 
-```javascript
+```js
 document.body.childElementCount // 13
 ```
 
@@ -858,7 +858,7 @@ document.body.childElementCount // 13
 
 该方法不仅可以添加元素子节点，还可以添加文本子节点。
 
-```javascript
+```js
 var parent = document.body;
 
 // 添加元素子节点
@@ -890,7 +890,7 @@ parent.append('Hello', p);
 
 `remove`方法用于从父节点移除当前节点。
 
-```javascript
+```js
 el.remove()
 ```
 
@@ -902,7 +902,7 @@ el.remove()
 
 注意，该方法不仅可以插入元素节点，还可以插入文本节点。
 
-```javascript
+```js
 var p = document.createElement('p');
 var p1 = document.createElement('p');
 
@@ -925,7 +925,7 @@ el.before(p, 'Hello');
 
 `replaceWith`方法使用参数节点，替换当前节点。参数可以是元素节点，也可以是文本节点。
 
-```javascript
+```js
 var span = document.createElement('span');
 el.replaceWith(span);
 ```

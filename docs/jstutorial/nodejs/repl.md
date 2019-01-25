@@ -44,7 +44,7 @@ $
 
 `repl`模块用于在程序内提供REPL在线环境。
 
-```javascript
+```js
 var repl = require('repl');
 function a(i) {
   var context = repl.start('repl> ').context;

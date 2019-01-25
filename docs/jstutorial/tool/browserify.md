@@ -14,7 +14,7 @@ $ npm install -g browserify
 
 先看一个例子。假定有一个很简单的CommonJS模块文件foo.js。
 
-```javascript
+```js
 
 // foo.js
 
@@ -26,7 +26,7 @@ module.exports = function(x) {
 
 然后，还有一个main.js文件，用来加载foo模块。
 
-```javascript
+```js
 
 // main.js
 
@@ -71,7 +71,7 @@ npm install backbone jquery
 
 然后，新建一个main.js文件。
 
-```javascript
+```js
 
 // main.js
 
@@ -113,7 +113,7 @@ Browserify的主要作用是将CommonJS模块转为浏览器可以调用的格�
 
 首先，新建一个项目目录，添加package.json文件。
 
-```javascript
+```js
 {
   "name": "demo",
   "version": "1.0.0"
@@ -141,13 +141,13 @@ Browserify的主要作用是将CommonJS模块转为浏览器可以调用的格�
 
 然后，安装jquery和它的插件。
 
-```javascript
+```js
 $ npm install --save jquery tipso
 ```
 
 接着，新建一个文件entry.js。
 
-```javascript
+```js
 global.jQuery = require('jquery');
 require('tipso');
 
@@ -176,7 +176,7 @@ $ npm install -g parcelify
 
 然后，在package.json中写入规则，声明CSS文件的位置。
 
-```javascript
+```js
 "style": [
   "./node_modules/tipso/src/tipso.css"
 ]
@@ -225,7 +225,7 @@ Browserify还可以实时生成脚本文件。
 
 下面是一个服务器端脚本，启动Web服务器之后，外部用户每次访问这个脚本，它的内容是实时生成的。
 
-```javascript
+```js
 
 var browserify = require('browserify');
 var http = require('http');
@@ -258,7 +258,7 @@ http.createServer(function (req, res) {
 
 你可以在服务器端静态生成一个app.js文件，也可以让它动态生成。这就需要用browserify-middleware模块，服务器端脚本要像下面这样写。
 
-```javascript
+```js
 
 var browserify = require('browserify-middleware');
 var express = require('express');

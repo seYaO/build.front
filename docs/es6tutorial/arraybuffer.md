@@ -48,7 +48,7 @@
 
 `ArrayBuffer`也是一个构造函数，可以分配一段可以存放数据的连续内存区域。
 
-```javascript
+```js
 const buf = new ArrayBuffer(32);
 ```
 
@@ -56,7 +56,7 @@ const buf = new ArrayBuffer(32);
 
 为了读写这段内容，需要为它指定视图。`DataView`视图的创建，需要提供`ArrayBuffer`对象实例作为参数。
 
-```javascript
+```js
 const buf = new ArrayBuffer(32);
 const dataView = new DataView(buf);
 dataView.getUint8(0) // 0
@@ -66,7 +66,7 @@ dataView.getUint8(0) // 0
 
 另一种`TypedArray`视图，与`DataView`视图的一个区别是，它不是一个构造函数，而是一组构造函数，代表不同的数据格式。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(12);
 
 const x1 = new Int32Array(buffer);
@@ -81,7 +81,7 @@ x1[0] // 2
 
 `TypedArray`视图的构造函数，除了接受`ArrayBuffer`实例作为参数，还可以接受普通数组作为参数，直接分配内存生成底层的`ArrayBuffer`实例，并同时完成对这段内存的赋值。
 
-```javascript
+```js
 const typedArray = new Uint8Array([0,1,2]);
 typedArray.length // 3
 
@@ -95,7 +95,7 @@ typedArray // [5, 1, 2]
 
 `ArrayBuffer`实例的`byteLength`属性，返回所分配的内存区域的字节长度。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(32);
 buffer.byteLength
 // 32
@@ -103,7 +103,7 @@ buffer.byteLength
 
 如果要分配的内存区域很大，有可能分配失败（因为没有那么多的连续空余内存），所以有必要检查是否分配成功。
 
-```javascript
+```js
 if (buffer.byteLength === n) {
   // 成功
 } else {
@@ -115,7 +115,7 @@ if (buffer.byteLength === n) {
 
 `ArrayBuffer`实例有一个`slice`方法，允许将内存区域的一部分，拷贝生成一个新的`ArrayBuffer`对象。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(8);
 const newBuffer = buffer.slice(0, 3);
 ```
@@ -130,7 +130,7 @@ const newBuffer = buffer.slice(0, 3);
 
 `ArrayBuffer`有一个静态方法`isView`，返回一个布尔值，表示参数是否为`ArrayBuffer`的视图实例。这个方法大致相当于判断参数，是否为`TypedArray`实例或`DataView`实例。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(8);
 ArrayBuffer.isView(buffer) // false
 
@@ -173,7 +173,7 @@ TypedArray 数组提供 9 种构造函数，用来生成相应类型的数组实
 
 同一个`ArrayBuffer`对象之上，可以根据不同的数据类型，建立多个视图。
 
-```javascript
+```js
 // 创建一个8字节的ArrayBuffer
 const b = new ArrayBuffer(8);
 
@@ -199,7 +199,7 @@ const v3 = new Int16Array(b, 2, 2);
 
 注意，`byteOffset`必须与所要建立的数据类型一致，否则会报错。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(8);
 const i16 = new Int16Array(buffer, 1);
 // Uncaught RangeError: start offset of Int16Array should be a multiple of 2
@@ -213,7 +213,7 @@ const i16 = new Int16Array(buffer, 1);
 
 视图还可以不通过`ArrayBuffer`对象，直接分配内存而生成。
 
-```javascript
+```js
 const f64a = new Float64Array(8);
 f64a[0] = 10;
 f64a[1] = 20;
@@ -226,7 +226,7 @@ f64a[2] = f64a[0] + f64a[1];
 
 TypedArray 数组的构造函数，可以接受另一个`TypedArray`实例作为参数。
 
-```javascript
+```js
 const typedArray = new Int8Array(new Uint8Array(4));
 ```
 
@@ -234,7 +234,7 @@ const typedArray = new Int8Array(new Uint8Array(4));
 
 注意，此时生成的新数组，只是复制了参数数组的值，对应的底层内存是不一样的。新数组会开辟一段新的内存储存数据，不会在原数组的内存之上建立视图。
 
-```javascript
+```js
 const x = new Int8Array([1, 1]);
 const y = new Int8Array(x);
 x[0] // 1
@@ -248,7 +248,7 @@ y[0] // 1
 
 如果想基于同一段内存，构造不同的视图，可以采用下面的写法。
 
-```javascript
+```js
 const x = new Int8Array([1, 1]);
 const y = new Int8Array(x.buffer);
 x[0] // 1
@@ -262,7 +262,7 @@ y[0] // 2
 
 构造函数的参数也可以是一个普通数组，然后直接生成`TypedArray`实例。
 
-```javascript
+```js
 const typedArray = new Uint8Array([1, 2, 3, 4]);
 ```
 
@@ -272,7 +272,7 @@ const typedArray = new Uint8Array([1, 2, 3, 4]);
 
 TypedArray 数组也可以转换回普通数组。
 
-```javascript
+```js
 const normalArray = [...typedArray];
 // or
 const normalArray = Array.from(typedArray);
@@ -311,7 +311,7 @@ const normalArray = Array.prototype.slice.call(typedArray);
 
 注意，TypedArray 数组没有`concat`方法。如果想要合并多个 TypedArray 数组，可以用下面这个函数。
 
-```javascript
+```js
 function concatenate(resultConstructor, ...arrays) {
   let totalLength = 0;
   for (let arr of arrays) {
@@ -332,7 +332,7 @@ concatenate(Uint8Array, Uint8Array.of(1, 2), Uint8Array.of(3, 4))
 
 另外，TypedArray 数组与普通数组一样，部署了 Iterator 接口，所以可以被遍历。
 
-```javascript
+```js
 let ui8 = Uint8Array.of(0, 1, 2);
 for (let byte of ui8) {
   console.log(byte);
@@ -346,7 +346,7 @@ for (let byte of ui8) {
 
 字节序指的是数值在内存中的表示方式。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(16);
 const int32View = new Int32Array(buffer);
 
@@ -359,7 +359,7 @@ for (let i = 0; i < int32View.length; i++) {
 
 如果在这段数据上接着建立一个 16 位整数的视图，则可以读出完全不一样的结果。
 
-```javascript
+```js
 const int16View = new Int16Array(buffer);
 
 for (let i = 0; i < int16View.length; i++) {
@@ -383,7 +383,7 @@ for (let i = 0; i < int16View.length; i++) {
 
 下面是另一个例子。
 
-```javascript
+```js
 // 假定某段buffer包含如下字节 [0x02, 0x01, 0x03, 0x07]
 const buffer = new ArrayBuffer(4);
 const v1 = new Uint8Array(buffer);
@@ -408,7 +408,7 @@ uInt16View[1] = 0x0210; // 字节变为[0x05, 0xFF, 0x10, 0x02]
 
 下面的函数可以用来判断，当前视图是小端字节序，还是大端字节序。
 
-```javascript
+```js
 const BIG_ENDIAN = Symbol('BIG_ENDIAN');
 const LITTLE_ENDIAN = Symbol('LITTLE_ENDIAN');
 
@@ -432,7 +432,7 @@ function getPlatformEndianness() {
 
 每一种视图的构造函数，都有一个`BYTES_PER_ELEMENT`属性，表示这种数据类型占据的字节数。
 
-```javascript
+```js
 Int8Array.BYTES_PER_ELEMENT // 1
 Uint8Array.BYTES_PER_ELEMENT // 1
 Uint8ClampedArray.BYTES_PER_ELEMENT // 1
@@ -450,7 +450,7 @@ Float64Array.BYTES_PER_ELEMENT // 8
 
 `ArrayBuffer`转为字符串，或者字符串转为`ArrayBuffer`，有一个前提，即字符串的编码方法是确定的。假定字符串采用 UTF-16 编码（JavaScript 的内部编码方式），可以自己编写转换函数。
 
-```javascript
+```js
 // ArrayBuffer 转为字符串，参数为 ArrayBuffer 对象
 function ab2str(buf) {
   // 注意，如果是大型二进制数组，为了避免溢出，
@@ -485,7 +485,7 @@ function str2ab(str) {
 
 TypedArray 数组的溢出处理规则，简单来说，就是抛弃溢出的位，然后按照视图类型进行解释。
 
-```javascript
+```js
 const uint8 = new Uint8Array(1);
 
 uint8[0] = 256;
@@ -506,7 +506,7 @@ uint8[0] // 255
 
 上面的“余值”就是模运算的结果，即 JavaScript 里面的`%`运算符的结果。
 
-```javascript
+```js
 12 % 4 // 0
 12 % 5 // 2
 ```
@@ -515,7 +515,7 @@ uint8[0] // 255
 
 请看下面的例子。
 
-```javascript
+```js
 const int8 = new Int8Array(1);
 
 int8[0] = 128;
@@ -529,7 +529,7 @@ int8[0] // 127
 
 `Uint8ClampedArray`视图的溢出规则，与上面的规则不同。它规定，凡是发生正向溢出，该值一律等于当前数据类型的最大值，即 255；如果发生负向溢出，该值一律等于当前数据类型的最小值，即 0。
 
-```javascript
+```js
 const uint8c = new Uint8ClampedArray(1);
 
 uint8c[0] = 256;
@@ -545,7 +545,7 @@ uint8c[0] // 0
 
 `TypedArray`实例的`buffer`属性，返回整段内存区域对应的`ArrayBuffer`对象。该属性为只读属性。
 
-```javascript
+```js
 const a = new Float32Array(64);
 const b = new Uint8Array(a.buffer);
 ```
@@ -556,7 +556,7 @@ const b = new Uint8Array(a.buffer);
 
 `byteLength`属性返回 TypedArray 数组占据的内存长度，单位为字节。`byteOffset`属性返回 TypedArray 数组从底层`ArrayBuffer`对象的哪个字节开始。这两个属性都是只读属性。
 
-```javascript
+```js
 const b = new ArrayBuffer(8);
 
 const v1 = new Int32Array(b);
@@ -576,7 +576,7 @@ v3.byteOffset // 2
 
 `length`属性表示 TypedArray 数组含有多少个成员。注意将`byteLength`属性和`length`属性区分，前者是字节长度，后者是成员长度。
 
-```javascript
+```js
 const a = new Int16Array(8);
 
 a.length // 8
@@ -587,7 +587,7 @@ a.byteLength // 16
 
 TypedArray 数组的`set`方法用于复制数组（普通数组或 TypedArray 数组），也就是将一段内容完全复制到另一段内存。
 
-```javascript
+```js
 const a = new Uint8Array(8);
 const b = new Uint8Array(8);
 
@@ -598,7 +598,7 @@ b.set(a);
 
 `set`方法还可以接受第二个参数，表示从`b`对象的哪一个成员开始复制`a`对象。
 
-```javascript
+```js
 const a = new Uint16Array(8);
 const b = new Uint16Array(10);
 
@@ -611,7 +611,7 @@ b.set(a, 2)
 
 `subarray`方法是对于 TypedArray 数组的一部分，再建立一个新的视图。
 
-```javascript
+```js
 const a = new Uint16Array(8);
 const b = a.subarray(2,3);
 
@@ -625,7 +625,7 @@ b.byteLength // 2
 
 TypeArray 实例的`slice`方法，可以返回一个指定位置的新的`TypedArray`实例。
 
-```javascript
+```js
 let ui8 = Uint8Array.of(0, 1, 2);
 ui8.slice(-1)
 // Uint8Array [ 2 ]
@@ -639,14 +639,14 @@ ui8.slice(-1)
 
 TypedArray 数组的所有构造函数，都有一个静态方法`of`，用于将参数转为一个`TypedArray`实例。
 
-```javascript
+```js
 Float32Array.of(0.151, -8, 3.7)
 // Float32Array [ 0.151, -8, 3.7 ]
 ```
 
 下面三种方法都会生成同样一个 TypedArray 数组。
 
-```javascript
+```js
 // 方法一
 let tarr = new Uint8Array([1,2,3]);
 
@@ -664,21 +664,21 @@ tarr[2] = 3;
 
 静态方法`from`接受一个可遍历的数据结构（比如数组）作为参数，返回一个基于这个结构的`TypedArray`实例。
 
-```javascript
+```js
 Uint16Array.from([0, 1, 2])
 // Uint16Array [ 0, 1, 2 ]
 ```
 
 这个方法还可以将一种`TypedArray`实例，转为另一种。
 
-```javascript
+```js
 const ui16 = Uint16Array.from(Uint8Array.of(0, 1, 2));
 ui16 instanceof Uint16Array // true
 ```
 
 `from`方法还可以接受一个函数，作为第二个参数，用来对每个元素进行遍历，功能类似`map`方法。
 
-```javascript
+```js
 Int8Array.of(127, 126, 125).map(x => 2 * x)
 // Int8Array [ -2, -4, -6 ]
 
@@ -692,7 +692,7 @@ Int16Array.from(Int8Array.of(127, 126, 125), x => 2 * x)
 
 由于视图的构造函数可以指定起始位置和长度，所以在同一段内存之中，可以依次存放不同类型的数据，这叫做“复合视图”。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(24);
 
 const idView = new Uint32Array(buffer, 0, 1);
@@ -724,13 +724,13 @@ struct someStruct {
 
 `DataView`视图本身也是构造函数，接受一个`ArrayBuffer`对象作为参数，生成视图。
 
-```javascript
+```js
 DataView(ArrayBuffer buffer [, 字节起始位置 [, 长度]]);
 ```
 
 下面是一个例子。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(24);
 const dv = new DataView(buffer);
 ```
@@ -754,7 +754,7 @@ const dv = new DataView(buffer);
 
 这一系列`get`方法的参数都是一个字节序号（不能是负数，否则会报错），表示从哪个字节开始读取。
 
-```javascript
+```js
 const buffer = new ArrayBuffer(24);
 const dv = new DataView(buffer);
 
@@ -772,7 +772,7 @@ const v3 = dv.getUint16(3);
 
 如果一次读取两个或两个以上字节，就必须明确数据的存储方式，到底是小端字节序还是大端字节序。默认情况下，`DataView`的`get`方法使用大端字节序解读数据，如果需要使用小端字节序解读，必须在`get`方法的第二个参数指定`true`。
 
-```javascript
+```js
 // 小端字节序
 const v1 = dv.getUint16(1, true);
 
@@ -796,7 +796,7 @@ DataView 视图提供 8 个方法写入内存。
 
 这一系列`set`方法，接受两个参数，第一个参数是字节序号，表示从哪个字节开始写入，第二个参数为写入的数据。对于那些写入两个或两个以上字节的方法，需要指定第三个参数，`false`或者`undefined`表示使用大端字节序写入，`true`表示使用小端字节序写入。
 
-```javascript
+```js
 // 在第1个字节，以大端字节序写入值为25的32位整数
 dv.setInt32(0, 25, false);
 
@@ -809,7 +809,7 @@ dv.setFloat32(8, 2.5, true);
 
 如果不确定正在使用的计算机的字节序，可以采用下面的判断方式。
 
-```javascript
+```js
 const littleEndian = (function() {
   const buffer = new ArrayBuffer(2);
   new DataView(buffer).setInt16(0, 256, true);
@@ -827,7 +827,7 @@ const littleEndian = (function() {
 
 传统上，服务器通过 AJAX 操作只能返回文本数据，即`responseType`属性默认为`text`。`XMLHttpRequest`第二版`XHR2`允许服务器返回二进制数据，这时分成两种情况。如果明确知道返回的二进制数据类型，可以把返回类型（`responseType`）设为`arraybuffer`；如果不知道，就设为`blob`。
 
-```javascript
+```js
 let xhr = new XMLHttpRequest();
 xhr.open('GET', someUrl);
 xhr.responseType = 'arraybuffer';
@@ -842,7 +842,7 @@ xhr.send();
 
 如果知道传回来的是 32 位整数，可以像下面这样处理。
 
-```javascript
+```js
 xhr.onreadystatechange = function () {
   if (req.readyState === 4 ) {
     const arrayResponse = xhr.response;
@@ -859,7 +859,7 @@ xhr.onreadystatechange = function () {
 
 网页`Canvas`元素输出的二进制像素数据，就是 TypedArray 数组。
 
-```javascript
+```js
 const canvas = document.getElementById('myCanvas');
 const ctx = canvas.getContext('2d');
 
@@ -871,13 +871,13 @@ const uint8ClampedArray = imageData.data;
 
 举例来说，如果把像素的颜色值设为`Uint8Array`类型，那么乘以一个 gamma 值的时候，就必须这样计算：
 
-```javascript
+```js
 u8[i] = Math.min(255, Math.max(0, u8[i] * gamma));
 ```
 
 因为`Uint8Array`类型对于大于 255 的运算结果（比如`0xFF+1`），会自动变为`0x00`，所以图像处理必须要像上面这样算。这样做很麻烦，而且影响性能。如果将颜色值设为`Uint8ClampedArray`类型，计算就简化许多。
 
-```javascript
+```js
 pixels[i] *= gamma;
 ```
 
@@ -887,7 +887,7 @@ pixels[i] *= gamma;
 
 `WebSocket`可以通过`ArrayBuffer`，发送或接收二进制数据。
 
-```javascript
+```js
 let socket = new WebSocket('ws://127.0.0.1:8081');
 socket.binaryType = 'arraybuffer';
 
@@ -909,7 +909,7 @@ socket.addEventListener('message', function (event) {
 
 Fetch API 取回的数据，就是`ArrayBuffer`对象。
 
-```javascript
+```js
 fetch(url)
 .then(function(response){
   return response.arrayBuffer()
@@ -923,7 +923,7 @@ fetch(url)
 
 如果知道一个文件的二进制数据类型，也可以将这个文件读取为`ArrayBuffer`对象。
 
-```javascript
+```js
 const fileInput = document.getElementById('fileInput');
 const file = fileInput.files[0];
 const reader = new FileReader();
@@ -936,7 +936,7 @@ reader.onload = function () {
 
 下面以处理 bmp 文件为例。假定`file`变量是一个指向 bmp 文件的文件对象，首先读取文件。
 
-```javascript
+```js
 const reader = new FileReader();
 reader.addEventListener("load", processimage, false);
 reader.readAsArrayBuffer(file);
@@ -944,7 +944,7 @@ reader.readAsArrayBuffer(file);
 
 然后，定义处理图像的回调函数：先在二进制数据之上建立一个`DataView`视图，再建立一个`bitmap`对象，用于存放处理后的数据，最后将图像展示在`Canvas`元素之中。
 
-```javascript
+```js
 function processimage(e) {
   const buffer = e.target.result;
   const datav = new DataView(buffer);
@@ -955,7 +955,7 @@ function processimage(e) {
 
 具体处理图像数据时，先处理 bmp 的文件头。具体每个文件头的格式和定义，请参阅有关资料。
 
-```javascript
+```js
 bitmap.fileheader = {};
 bitmap.fileheader.bfType = datav.getUint16(0, true);
 bitmap.fileheader.bfSize = datav.getUint32(2, true);
@@ -966,7 +966,7 @@ bitmap.fileheader.bfOffBits = datav.getUint32(10, true);
 
 接着处理图像元信息部分。
 
-```javascript
+```js
 bitmap.infoheader = {};
 bitmap.infoheader.biSize = datav.getUint32(14, true);
 bitmap.infoheader.biWidth = datav.getUint32(18, true);
@@ -983,7 +983,7 @@ bitmap.infoheader.biClrImportant = datav.getUint32(50, true);
 
 最后处理图像本身的像素信息。
 
-```javascript
+```js
 const start = bitmap.fileheader.bfOffBits;
 bitmap.pixels = new Uint8Array(buffer, start);
 ```
@@ -994,14 +994,14 @@ bitmap.pixels = new Uint8Array(buffer, start);
 
 JavaScript 是单线程的，Web worker 引入了多线程：主线程用来与用户互动，Worker 线程用来承担计算任务。每个线程的数据都是隔离的，通过`postMessage()`通信。下面是一个例子。
 
-```javascript
+```js
 // 主线程
 const w = new Worker('myworker.js');
 ```
 
 上面代码中，主线程新建了一个 Worker 线程。该线程与主线程之间会有一个通信渠道，主线程通过`w.postMessage`向 Worker 线程发消息，同时通过`message`事件监听 Worker 线程的回应。
 
-```javascript
+```js
 // 主线程
 w.postMessage('hi');
 w.onmessage = function (ev) {
@@ -1013,7 +1013,7 @@ w.onmessage = function (ev) {
 
 Worker 线程也是通过监听`message`事件，来获取主线程发来的消息，并作出反应。
 
-```javascript
+```js
 // Worker 线程
 onmessage = function (ev) {
   console.log(ev.data);
@@ -1025,7 +1025,7 @@ onmessage = function (ev) {
 
 ES2017 引入[`SharedArrayBuffer`](https://github.com/tc39/ecmascript_sharedmem/blob/master/TUTORIAL.md)，允许 Worker 线程与主线程共享同一块内存。`SharedArrayBuffer`的 API 与`ArrayBuffer`一模一样，唯一的区别是后者无法共享数据。
 
-```javascript
+```js
 // 主线程
 
 // 新建 1KB 共享内存
@@ -1042,7 +1042,7 @@ const sharedArray = new Int32Array(sharedBuffer);
 
 Worker 线程从事件的`data`属性上面取到数据。
 
-```javascript
+```js
 // Worker 线程
 onmessage = function (ev) {
   // 主线程共享的数据，就是 1KB 的共享内存
@@ -1059,7 +1059,7 @@ onmessage = function (ev) {
 
 `SharedArrayBuffer`与`ArrayBuffer`一样，本身是无法读写的，必须在上面建立视图，然后通过视图读写。
 
-```javascript
+```js
 // 分配 10 万个 32 位整数占据的内存空间
 const sab = new SharedArrayBuffer(Int32Array.BYTES_PER_ELEMENT * 100000);
 
@@ -1079,7 +1079,7 @@ w.postMessage(ia);
 
 Worker 线程收到数据后的处理如下。
 
-```javascript
+```js
 // Worker 线程
 let ia;
 onmessage = function (ev) {
@@ -1095,7 +1095,7 @@ onmessage = function (ev) {
 
 什么叫“原子性操作”呢？现代编程语言中，一条普通的命令被编译器处理以后，会变成多条机器指令。如果是单线程运行，这是没有问题的；多线程环境并且共享内存时，就会出问题，因为这一组机器指令的运行期间，可能会插入其他线程的指令，从而导致运行结果出错。请看下面的例子。
 
-```javascript
+```js
 // 主线程
 ia[42] = 314159;  // 原先的值 191
 ia[37] = 123456;  // 原先的值 163
@@ -1112,7 +1112,7 @@ console.log(ia[42]);
 
 下面是另一个例子。
 
-```javascript
+```js
 // 主线程
 const sab = new SharedArrayBuffer(Int32Array.BYTES_PER_ELEMENT * 100000);
 const ia = new Int32Array(sab);
@@ -1138,14 +1138,14 @@ Atomics.add(ia, 112, 1); // 正确
 
 此外，它们还用来解决一个问题：多个线程使用共享内存的某个位置作为开关（flag），一旦该位置的值变了，就执行特定操作。这时，必须保证该位置的赋值操作，一定是在它前面的所有可能会改写内存的操作结束后执行；而该位置的取值操作，一定是在它后面所有可能会读取该位置的操作开始之前执行。`store`方法和`load`方法就能做到这一点，编译器不会为了优化，而打乱机器指令的执行顺序。
 
-```javascript
+```js
 Atomics.load(array, index)
 Atomics.store(array, index, value)
 ```
 
 `store`方法接受三个参数：SharedBuffer 的视图、位置索引和值，返回`sharedArray[index]`的值。`load`方法只接受两个参数：SharedBuffer 的视图和位置索引，也是返回`sharedArray[index]`的值。
 
-```javascript
+```js
 // 主线程 main.js
 ia[42] = 314159;  // 原先的值 191
 Atomics.store(ia, 37, 123456);  // 原先的值是 163
@@ -1160,7 +1160,7 @@ console.log(ia[42]);  // 314159
 
 下面是另一个例子。
 
-```javascript
+```js
 // 主线程
 const worker = new Worker('worker.js');
 const length = 10;
@@ -1177,7 +1177,7 @@ worker.postMessage(sharedBuffer);
 
 上面代码中，主线程用`Atomics.store()`方法写入数据。下面是 Worker 线程用`Atomics.load()`方法读取数据。
 
-```javascript
+```js
 // worker.js
 self.addEventListener('message', (event) => {
   const sharedArray = new Int32Array(event.data);
@@ -1192,7 +1192,7 @@ self.addEventListener('message', (event) => {
 
 Worker 线程如果要写入数据，可以使用上面的`Atomics.store()`方法，也可以使用`Atomics.exchange()`方法。它们的区别是，`Atomics.store()`返回写入的值，而`Atomics.exchange()`返回被替换的值。
 
-```javascript
+```js
 // Worker 线程
 self.addEventListener('message', (event) => {
   const sharedArray = new Int32Array(event.data);
@@ -1214,7 +1214,7 @@ self.addEventListener('message', (event) => {
 
 使用`while`循环等待主线程的通知，不是很高效，如果用在主线程，就会造成卡顿，`Atomics`对象提供了`wait()`和`wake()`两个方法用于等待通知。这两个方法相当于锁内存，即在一个线程进行操作时，让其他线程休眠（建立锁），等到操作结束，再唤醒那些休眠的线程（解除锁）。
 
-```javascript
+```js
 // Worker 线程
 self.addEventListener('message', (event) => {
   const sharedArray = new Int32Array(event.data);
@@ -1229,7 +1229,7 @@ self.addEventListener('message', (event) => {
 
 主线程一旦更改了指定位置的值，就可以唤醒 Worker 线程。
 
-```javascript
+```js
 // 主线程
 const newArrayValue = 100;
 Atomics.store(sharedArray, 0, newArrayValue);
@@ -1242,7 +1242,7 @@ Atomics.wake(sharedArray, arrayIndex, queuePos);
 
 `Atomics.wait()`方法的使用格式如下。
 
-```javascript
+```js
 Atomics.wait(sharedArray, index, value, timeout)
 ```
 
@@ -1257,7 +1257,7 @@ Atomics.wait(sharedArray, index, value, timeout)
 
 `Atomics.wake()`方法的使用格式如下。
 
-```javascript
+```js
 Atomics.wake(sharedArray, index, count)
 ```
 
@@ -1271,7 +1271,7 @@ Atomics.wake(sharedArray, index, count)
 
 请看一个例子。
 
-```javascript
+```js
 // 主线程
 console.log(ia[37]);  // 163
 Atomics.store(ia, 37, 123456);
@@ -1292,31 +1292,31 @@ console.log(ia[37]);  // 123456
 
 共享内存上面的某些运算是不能被打断的，即不能在运算过程中，让其他线程改写内存上面的值。Atomics 对象提供了一些运算方法，防止数据被改写。
 
-```javascript
+```js
 Atomics.add(sharedArray, index, value)
 ```
 
 `Atomics.add`用于将`value`加到`sharedArray[index]`，返回`sharedArray[index]`旧的值。
 
-```javascript
+```js
 Atomics.sub(sharedArray, index, value)
 ```
 
 `Atomics.sub`用于将`value`从`sharedArray[index]`减去，返回`sharedArray[index]`旧的值。
 
-```javascript
+```js
 Atomics.and(sharedArray, index, value)
 ```
 
 `Atomics.and`用于将`value`与`sharedArray[index]`进行位运算`and`，放入`sharedArray[index]`，并返回旧的值。
 
-```javascript
+```js
 Atomics.or(sharedArray, index, value)
 ```
 
 `Atomics.or`用于将`value`与`sharedArray[index]`进行位运算`or`，放入`sharedArray[index]`，并返回旧的值。
 
-```javascript
+```js
 Atomics.xor(sharedArray, index, value)
 ```
 

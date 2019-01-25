@@ -23,7 +23,7 @@
 
 这个API部署在SpeechRecognition对象之上。
 
-```javascript
+```js
 
 var SpeechRecognition = window.SpeechRecognition || 
                         window.webkitSpeechRecognition || 
@@ -37,7 +37,7 @@ var SpeechRecognition = window.SpeechRecognition ||
 
 确定浏览器支持以后，新建一个SpeechRecognition的实例对象。
 
-```javascript
+```js
 
 if (SpeechRecognition) {		
   var recognition = new SpeechRecognition();
@@ -52,7 +52,7 @@ maxAlternatives属性等于5，表示最多返回5个语音匹配结果。
 
 目前，该API部署了11个事件。下面对其中的3个定义回调函数（假定speak是语音输入框）。
 
-```javascript
+```js
 
 var speak = $('#speak');
 
@@ -74,7 +74,7 @@ recognition.onerror = function() {
 
 如果得到与语音匹配的值，则会触发result事件。
 
-```javascript
+```js
 
 recognition.onresult = function(event) { 
 

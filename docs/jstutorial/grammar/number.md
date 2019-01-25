@@ -6,7 +6,7 @@
 
 JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整数也是如此。所以，`1`与`1.0`是相同的，是同一个数。
 
-```javascript
+```js
 1 === 1.0 // true
 ```
 
@@ -14,7 +14,7 @@ JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整�
 
 由于浮点数不是精确的值，所以涉及小数的比较和运算要特别小心。
 
-```javascript
+```js
 0.1 + 0.2 === 0.3
 // false
 
@@ -45,7 +45,7 @@ JavaScript 内部，所有数字都是以64位浮点数形式储存，即使整�
 
 精度最多只能到53个二进制位，这意味着，绝对值小于等于2的53次方的整数，即-2<sup>53</sup>到2<sup>53</sup>，都可以精确表示。
 
-```javascript
+```js
 Math.pow(2, 53)
 // 9007199254740992
  
@@ -64,7 +64,7 @@ Math.pow(2, 53) + 4
 
 上面代码中，大于2的53次方以后，整数运算的结果开始出现错误。所以，大于2的53次方的数值，都无法保持精度。由于2的53次方是一个16位的十进制数值，所以简单的法则就是，JavaScript 对15位的十进制数都可以精确处理。
 
-```javascript
+```js
 Math.pow(2, 53)
 // 9007199254740992
 
@@ -81,19 +81,19 @@ Math.pow(2, 53)
 
 如果一个数大于等于2的1024次方，那么就会发生“正向溢出”，即 JavaScript 无法表示这么大的数，这时就会返回`Infinity`。
 
-```javascript
+```js
 Math.pow(2, 1024) // Infinity
 ```
 
 如果一个数小于等于2的-1075次方（指数部分最小值-1023，再加上小数部分的52位），那么就会发生为“负向溢出”，即 JavaScript 无法表示这么小的数，这时会直接返回0。
 
-```javascript
+```js
 Math.pow(2, -1075) // 0
 ```
 
 下面是一个实际的例子。
 
-```javascript
+```js
 var x = 0.5;
 
 for(var i = 0; i < 25; i++) {
@@ -107,7 +107,7 @@ x // 0
 
 JavaScript 提供`Number`对象的`MAX_VALUE`和`MIN_VALUE`属性，返回可以表示的具体的最大值和最小值。
 
-```javascript
+```js
 Number.MAX_VALUE // 1.7976931348623157e+308
 Number.MIN_VALUE // 5e-324
 ```
@@ -118,7 +118,7 @@ JavaScript 的数值有多种表示方法，可以用字面形式直接表示，
 
 数值也可以采用科学计数法表示，下面是几个科学计数法的例子。
 
-```javascript
+```js
 123e3 // 123000
 123e-3 // 0.123
 -3.1E+12
@@ -131,7 +131,7 @@ JavaScript 的数值有多种表示方法，可以用字面形式直接表示，
 
 **（1）小数点前的数字多于21位。**
 
-```javascript
+```js
 1234567890123456789012
 // 1.2345678901234568e+21
 
@@ -141,7 +141,7 @@ JavaScript 的数值有多种表示方法，可以用字面形式直接表示，
 
 **（2）小数点后的零多于5个。**
 
-```javascript
+```js
 // 小数点后紧跟5个以上的零，
 // 就自动转为科学计数法
 0.0000003 // 3e-7
@@ -161,7 +161,7 @@ JavaScript 的数值有多种表示方法，可以用字面形式直接表示，
 
 默认情况下，JavaScript 内部会自动将八进制、十六进制、二进制转为十进制。下面是一些例子。
 
-```javascript
+```js
 0xff // 255
 0o377 // 255
 0b11 // 3
@@ -169,7 +169,7 @@ JavaScript 的数值有多种表示方法，可以用字面形式直接表示，
 
 如果八进制、十六进制、二进制的数值里面，出现不属于该进制的数字，就会报错。
 
-```javascript
+```js
 0xzz // 报错
 0o88 // 报错
 0b22 // 报错
@@ -179,7 +179,7 @@ JavaScript 的数值有多种表示方法，可以用字面形式直接表示，
 
 通常来说，有前导0的数值会被视为八进制，但是如果前导0后面有数字`8`和`9`，则该数值被视为十进制。
 
-```javascript
+```js
 0888 // 888
 0777 // 511
 ```
@@ -196,7 +196,7 @@ JavaScript 提供了几个特殊的数值。
 
 JavaScript 内部实际上存在2个`0`：一个是`+0`，一个是`-0`，区别就是64位浮点数表示法的符号位不同。它们是等价的。
 
-```javascript
+```js
 -0 === +0 // true
 0 === -0 // true
 0 === +0 // true
@@ -204,7 +204,7 @@ JavaScript 内部实际上存在2个`0`：一个是`+0`，一个是`-0`，区别
 
 几乎所有场合，正零和负零都会被当作正常的`0`。
 
-```javascript
+```js
 +0 // 0
 -0 // 0
 (-0).toString() // '0'
@@ -213,7 +213,7 @@ JavaScript 内部实际上存在2个`0`：一个是`+0`，一个是`-0`，区别
 
 唯一有区别的场合是，`+0`或`-0`当作分母，返回的值是不相等的。
 
-```javascript
+```js
 (1 / +0) === (1 / -0) // false
 ```
 
@@ -225,7 +225,7 @@ JavaScript 内部实际上存在2个`0`：一个是`+0`，一个是`-0`，区别
 
 `NaN`是 JavaScript 的特殊值，表示“非数字”（Not a Number），主要出现在将字符串解析成数字出错的场合。
 
-```javascript
+```js
 5 - 'x' // NaN
 ```
 
@@ -233,7 +233,7 @@ JavaScript 内部实际上存在2个`0`：一个是`+0`，一个是`-0`，区别
 
 另外，一些数学函数的运算结果会出现`NaN`。
 
-```javascript
+```js
 Math.acos(2) // NaN
 Math.log(-1) // NaN
 Math.sqrt(-1) // NaN
@@ -241,13 +241,13 @@ Math.sqrt(-1) // NaN
 
 `0`除以`0`也会得到`NaN`。
 
-```javascript
+```js
 0 / 0 // NaN
 ```
 
 需要注意的是，`NaN`不是独立的数据类型，而是一个特殊数值，它的数据类型依然属于`Number`，使用`typeof`运算符可以看得很清楚。
 
-```javascript
+```js
 typeof NaN // 'number'
 ```
 
@@ -255,25 +255,25 @@ typeof NaN // 'number'
 
 `NaN`不等于任何值，包括它本身。
 
-```javascript
+```js
 NaN === NaN // false
 ```
 
 数组的`indexOf`方法内部使用的是严格相等运算符，所以该方法对`NaN`不成立。
 
-```javascript
+```js
 [NaN].indexOf(NaN) // -1
 ```
 
 `NaN`在布尔运算时被当作`false`。
 
-```javascript
+```js
 Boolean(NaN) // false
 ```
 
 `NaN`与任何数（包括它自己）的运算，得到的都是`NaN`。
 
-```javascript
+```js
 NaN + 32 // NaN
 NaN - 32 // NaN
 NaN * 32 // NaN
@@ -286,7 +286,7 @@ NaN / 32 // NaN
 
 `Infinity`表示“无穷”，用来表示两种场景。一种是一个正的数值太大，或一个负的数值太小，无法表示；另一种是非0数值除以0，得到`Infinity`。
 
-```javascript
+```js
 // 场景一
 Math.pow(2, 1024)
 // Infinity
@@ -300,7 +300,7 @@ Math.pow(2, 1024)
 
 `Infinity`有正负之分，`Infinity`表示正的无穷，`-Infinity`表示负的无穷。
 
-```javascript
+```js
 Infinity === -Infinity // false
 
 1 / -0 // -Infinity
@@ -313,14 +313,14 @@ Infinity === -Infinity // false
 
 `Infinity`大于一切数值（除了`NaN`），`-Infinity`小于一切数值（除了`NaN`）。
 
-```javascript
+```js
 Infinity > 1000 // true
 -Infinity < -1000 // true
 ```
 
 `Infinity`与`NaN`比较，总是返回`false`。
 
-```javascript
+```js
 Infinity > NaN // false
 -Infinity > NaN // false
 
@@ -332,7 +332,7 @@ Infinity < NaN // false
 
 `Infinity`的四则运算，符合无穷的数学计算规则。
 
-```javascript
+```js
 5 * Infinity // Infinity
 5 - Infinity // -Infinity
 Infinity / 5 // Infinity
@@ -341,7 +341,7 @@ Infinity / 5 // Infinity
 
 0乘以`Infinity`，返回`NaN`；0除以`Infinity`，返回`0`；`Infinity`除以0，返回`Infinity`。
 
-```javascript
+```js
 0 * Infinity // NaN
 0 / Infinity // 0
 Infinity / 0 // Infinity
@@ -349,21 +349,21 @@ Infinity / 0 // Infinity
 
 `Infinity`加上或乘以`Infinity`，返回的还是`Infinity`。
 
-```javascript
+```js
 Infinity + Infinity // Infinity
 Infinity * Infinity // Infinity
 ```
 
 `Infinity`减去或除以`Infinity`，得到`NaN`。
 
-```javascript
+```js
 Infinity - Infinity // NaN
 Infinity / Infinity // NaN
 ```
 
 `Infinity`与`null`计算时，`null`会转成0，等同于与`0`的计算。
 
-```javascript
+```js
 null * Infinity // NaN
 null / Infinity // 0
 Infinity / null // Infinity
@@ -371,7 +371,7 @@ Infinity / null // Infinity
 
 `Infinity`与`undefined`计算，返回的都是`NaN`。
 
-```javascript
+```js
 undefined + Infinity // NaN
 undefined - Infinity // NaN
 undefined * Infinity // NaN
@@ -387,19 +387,19 @@ Infinity / undefined // NaN
 
 `parseInt`方法用于将字符串转为整数。
 
-```javascript
+```js
 parseInt('123') // 123
 ```
 
 如果字符串头部有空格，空格会被自动去除。
 
-```javascript
+```js
 parseInt('   81') // 81
 ```
 
 如果`parseInt`的参数不是字符串，则会先转为字符串再转换。
 
-```javascript
+```js
 parseInt(1.23) // 1
 // 等同于
 parseInt('1.23') // 1
@@ -407,7 +407,7 @@ parseInt('1.23') // 1
 
 字符串转为整数的时候，是一个个字符依次转换，如果遇到不能转为数字的字符，就不再进行下去，返回已经转好的部分。
 
-```javascript
+```js
 parseInt('8a') // 8
 parseInt('12**') // 12
 parseInt('12.34') // 12
@@ -419,7 +419,7 @@ parseInt('15px') // 15
 
 如果字符串的第一个字符不能转化为数字（后面跟着数字的正负号除外），返回`NaN`。
 
-```javascript
+```js
 parseInt('abc') // NaN
 parseInt('.3') // NaN
 parseInt('') // NaN
@@ -431,19 +431,19 @@ parseInt('+1') // 1
 
 如果字符串以`0x`或`0X`开头，`parseInt`会将其按照十六进制数解析。
 
-```javascript
+```js
 parseInt('0x10') // 16
 ```
 
 如果字符串以`0`开头，将其按照10进制解析。
 
-```javascript
+```js
 parseInt('011') // 11
 ```
 
 对于那些会自动转为科学计数法的数字，`parseInt`会将科学计数法的表示方法视为字符串，因此导致一些奇怪的结果。
 
-```javascript
+```js
 parseInt(1000000000000000000000.5) // 1
 // 等同于
 parseInt('1e+21') // 1
@@ -457,7 +457,7 @@ parseInt('8e-7') // 8
 
 `parseInt`方法还可以接受第二个参数（2到36之间），表示被解析的值的进制，返回该值对应的十进制数。默认情况下，`parseInt`的第二个参数为10，即默认是十进制转十进制。
 
-```javascript
+```js
 parseInt('1000') // 1000
 // 等同于
 parseInt('1000', 10) // 1000
@@ -465,7 +465,7 @@ parseInt('1000', 10) // 1000
 
 下面是转换指定进制的数的例子。
 
-```javascript
+```js
 parseInt('1000', 2) // 8
 parseInt('1000', 6) // 216
 parseInt('1000', 8) // 512
@@ -475,7 +475,7 @@ parseInt('1000', 8) // 512
 
 如果第二个参数不是数值，会被自动转为一个整数。这个整数只有在2到36之间，才能得到有意义的结果，超出这个范围，则返回`NaN`。如果第二个参数是`0`、`undefined`和`null`，则直接忽略。
 
-```javascript
+```js
 parseInt('10', 37) // NaN
 parseInt('10', 1) // NaN
 parseInt('10', 0) // 10
@@ -485,7 +485,7 @@ parseInt('10', undefined) // 10
 
 如果字符串包含对于指定进制无意义的字符，则从最高位开始，只返回可以转换的数值。如果最高位无法转换，则直接返回`NaN`。
 
-```javascript
+```js
 parseInt('1546', 2) // 1
 parseInt('546', 2) // NaN
 ```
@@ -494,7 +494,7 @@ parseInt('546', 2) // NaN
 
 前面说过，如果`parseInt`的第一个参数不是字符串，会被先转为字符串。这会导致一些令人意外的结果。
 
-```javascript
+```js
 parseInt(0x11, 36) // 43
 parseInt(0x11, 2) // 1
 
@@ -511,7 +511,7 @@ parseInt('17', 2)
 
 这种处理方式，对于八进制的前缀0，尤其需要注意。
 
-```javascript
+```js
 parseInt(011, 2) // NaN
 
 // 等同于
@@ -529,32 +529,32 @@ JavaScript 不再允许将带有前缀0的数字视为八进制数，而是要�
 
 `parseFloat`方法用于将一个字符串转为浮点数。
 
-```javascript
+```js
 parseFloat('3.14') // 3.14
 ```
 
 如果字符串符合科学计数法，则会进行相应的转换。
 
-```javascript
+```js
 parseFloat('314e-2') // 3.14
 parseFloat('0.0314E+2') // 3.14
 ```
 
 如果字符串包含不能转为浮点数的字符，则不再进行往后转换，返回已经转好的部分。
 
-```javascript
+```js
 parseFloat('3.14more non-digit characters') // 3.14
 ```
 
 `parseFloat`方法会自动过滤字符串前导的空格。
 
-```javascript
+```js
 parseFloat('\t\v\r12.34\n ') // 12.34
 ```
 
 如果参数不是字符串，或者字符串的第一个字符不能转化为浮点数，则返回`NaN`。
 
-```javascript
+```js
 parseFloat([]) // NaN
 parseFloat('FF2') // NaN
 parseFloat('') // NaN
@@ -564,7 +564,7 @@ parseFloat('') // NaN
 
 这些特点使得`parseFloat`的转换结果不同于`Number`函数。
 
-```javascript
+```js
 parseFloat(true)  // NaN
 Number(true) // 1
 
@@ -582,14 +582,14 @@ Number('123.45#') // NaN
 
 `isNaN`方法可以用来判断一个值是否为`NaN`。
 
-```javascript
+```js
 isNaN(NaN) // true
 isNaN(123) // false
 ```
 
 但是，`isNaN`只对数值有效，如果传入其他值，会被先转成数值。比如，传入字符串的时候，字符串会被先转成`NaN`，所以最后返回`true`，这一点要特别引起注意。也就是说，`isNaN`为`true`的值，有可能不是`NaN`，而是一个字符串。
 
-```javascript
+```js
 isNaN('Hello') // true
 // 相当于
 isNaN(Number('Hello')) // true
@@ -597,7 +597,7 @@ isNaN(Number('Hello')) // true
 
 出于同样的原因，对于对象和数组，`isNaN`也返回`true`。
 
-```javascript
+```js
 isNaN({}) // true
 // 等同于
 isNaN(Number({})) // true
@@ -609,7 +609,7 @@ isNaN(Number(['xzy'])) // true
 
 但是，对于空数组和只有一个数值成员的数组，`isNaN`返回`false`。
 
-```javascript
+```js
 isNaN([]) // false
 isNaN([123]) // false
 isNaN(['123']) // false
@@ -619,7 +619,7 @@ isNaN(['123']) // false
 
 因此，使用`isNaN`之前，最好判断一下数据类型。
 
-```javascript
+```js
 function myIsNaN(value) {
   return typeof value === 'number' && isNaN(value);
 }
@@ -627,7 +627,7 @@ function myIsNaN(value) {
 
 判断`NaN`更可靠的方法是，利用`NaN`为唯一不等于自身的值的这个特点，进行判断。
 
-```javascript
+```js
 function myIsNaN(value) {
   return value !== value;
 }
@@ -637,7 +637,7 @@ function myIsNaN(value) {
 
 `isFinite`方法返回一个布尔值，表示某个值是否为正常的数值。
 
-```javascript
+```js
 isFinite(Infinity) // false
 isFinite(-Infinity) // false
 isFinite(NaN) // false

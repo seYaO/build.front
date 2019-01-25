@@ -24,7 +24,7 @@ $ npm i -g eslint
 
 其次，在项目根目录下面新建一个`.eslintrc`文件，里面定义了你的语法规则。
 
-```javascript
+```js
 {
   "rules": {
     "indent": 2,
@@ -39,7 +39,7 @@ $ npm i -g eslint
 
 上面的`.eslintrc`文件是JSON格式，里面首先定义，这些规则只适用于浏览器环境。如果要定义，同时适用于浏览器环境和Node环境，可以写成下面这样。
 
-```javascript
+```js
 {
   "env": {
     "browser": true,
@@ -56,7 +56,7 @@ $ npm i -g eslint
 
 接下来，新建一个`index.js`文件。
 
-```javascript
+```js
 var unusued = 'I have no purpose!';
 
 function greet() {
@@ -99,7 +99,7 @@ $ npm i -g babel-eslint eslint-config-airbnb
 
 你也可以用自己的规则，覆盖预设的语法规则。
 
-```javascript
+```js
 {
   "extends": "eslint-config-airbnb",
   "rules": {
@@ -115,7 +115,7 @@ $ npm i -g babel-eslint eslint-config-airbnb
 
 indent规则设定行首的缩进，默认是四个空格。下面的几种写法，可以改变这个设置。
 
-```javascript
+```js
 // 缩进为4个空格（默认值）
 "indent": 2
 
@@ -134,7 +134,7 @@ indent规则设定行首的缩进，默认是四个空格。下面的几种写�
 
 不允许声明了变量，却不使用。
 
-```javascript
+```js
 "no-unused-vars": [2, {"vars": "local", "args": "after-used"}]
 ```
 

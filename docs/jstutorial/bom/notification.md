@@ -8,7 +8,7 @@ Notification API 是浏览器的通知接口，用于在用户的桌面（而不
 
 下面的代码用于检查浏览器是否支持这个 API。
 
-```javascript
+```js
 if (window.Notification) {
   // 支持
 } else {
@@ -18,7 +18,7 @@ if (window.Notification) {
 
 目前，Chrome和Firefox在桌面端部署了这个API，Firefox和Blackberry在手机端部署了这个API。
 
-```javascript
+```js
 
 if(window.Notification && Notification.permission !== "denied") {
 	Notification.requestPermission(function(status) {
@@ -44,7 +44,7 @@ Notification.permission属性，用于读取用户给予的权限，它是一个
 
 Notification.requestPermission方法用于让用户做出选择，到底是否接收通知。它的参数是一个回调函数，该函数可以接收用户授权状态作为参数。
 
-```javascript
+```js
 
 Notification.requestPermission(function (status) {
   if (status === "granted") {
@@ -64,7 +64,7 @@ Notification.requestPermission(function (status) {
 
 Notification对象作为构造函数使用时，用来生成一条通知。
 
-```javascript
+```js
 
 var notification = new Notification(title, options);
 
@@ -82,7 +82,7 @@ Notification构造函数的title属性是必须的，用来指定通知的标题
 
 下面是一个生成Notification实例对象的例子。
 
-```javascript
+```js
 var notification = new Notification('收到新邮件', {
   body: '您总共有3封未读邮件。'
 });
@@ -102,7 +102,7 @@ Notification 实例会触发以下事件。
 
 这些事件有对应的onshow、onclick、onclose、onerror方法，用来指定相应的回调函数。addEventListener方法也可以用来为这些事件指定回调函数。
 
-```javascript
+```js
 
 notification.onshow = function() {
   console.log('Notification shown');
@@ -114,7 +114,7 @@ notification.onshow = function() {
 
 Notification实例的close方法用于关闭通知。
 
-```javascript
+```js
 
 var n = new Notification("Hi!");
 

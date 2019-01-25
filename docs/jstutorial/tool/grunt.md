@@ -20,7 +20,7 @@ Grunt使用模块结构，除了安装命令行界面以外，还要根据需要
 
 首先，在项目的根目录下，创建一个文本文件package.json，指定当前项目所需的模块。下面就是一个例子。
 
-```javascript
+```js
 
 {
   "name": "my-project-name",
@@ -79,7 +79,7 @@ npm install grunt-contrib-watch --save-dev
 
 模块安装完以后，下一步在项目的根目录下，新建脚本文件Gruntfile.js。它是grunt的配置文件，就好像package.json是npm的配置文件一样。Gruntfile.js就是一般的Node.js模块的写法。
 
-```javascript
+```js
 
 module.exports = function(grunt) {
 
@@ -151,7 +151,7 @@ npm install grunt-contrib-cssmin --save-dev
 
 然后，新建文件Gruntfile.js。
 
-```javascript
+```js
 
 module.exports = function(grunt) {
 
@@ -186,7 +186,7 @@ module.exports = function(grunt) {
 
 grunt.loadNpmTasks方法载入模块文件。
 
-```javascript
+```js
 
   grunt.loadNpmTasks('grunt-contrib-cssmin');
 
@@ -196,7 +196,7 @@ grunt.loadNpmTasks方法载入模块文件。
 
 如果加载模块很多，这部分会非常冗长。而且，还存在一个问题，就是凡是在这里加载的模块，也同时出现在package.json文件中。如果使用npm命令卸载模块以后，模块会自动从package.json文件中消失，但是必须手动从Gruntfile.js文件中清除，这样很不方便，一旦忘记，还会出现运行错误。这里有一个解决办法，就是安装load-grunt-tasks模块，然后在Gruntfile.js文件中，用下面的语句替代所有的grunt.loadNpmTasks语句。
 
-```javascript
+```js
 
 require('load-grunt-tasks')(grunt);
 
@@ -242,7 +242,7 @@ cssmin（属性）指向一个对象，该对象又包含多个成员。除了�
 
 使用通配符设置src属性的更多例子：
 
-```javascript
+```js
 
 {src: 'foo/th*.js'}grunt-contrib-uglify
 
@@ -256,7 +256,7 @@ cssmin（属性）指向一个对象，该对象又包含多个成员。除了�
 
 files参数的格式可以是一个对象，也可以是一个数组。
 
-```javascript
+```js
 
 files: {
         'dest/b.js': ['src/bb.js', 'src/bbb.js'],
@@ -274,7 +274,7 @@ files: [
 
 如果minify目标和combine目标的属性设置有重合的部分，可以另行定义一个与minify和combine平行的options属性。
 
-```javascript
+```js
 
  grunt.initConfig({
     cssmin: {
@@ -330,7 +330,7 @@ grunt的[模块](http://gruntjs.com/plugins)已经超过了2000个，且还在�
 
 jshint用来检查语法错误，比如分号的使用是否正确、有没有忘记写括号等等。它在grunt.initConfig方法里面的配置代码如下。
 
-```javascript
+```js
 
 jshint: {
 	options: {
@@ -348,7 +348,7 @@ jshint: {
 
 concat用来合并同类文件，它不仅可以合并JavaScript文件，还可以合并CSS文件。
 
-```javascript
+```js
 
 concat: {
   js: {
@@ -369,7 +369,7 @@ js目标用于合并JavaScript文件，css目标用语合并CSS文件。两者�
 
 uglify模块用来压缩代码，减小文件体积。
 
-```javascript
+```js
 
 uglify: {
   options: {
@@ -394,7 +394,7 @@ uglify: {
 
 [copy模块](https://github.com/gruntjs/grunt-contrib-copy)用于复制文件与目录。
 
-```javascript
+```js
 
 copy: {
   main: {
@@ -407,7 +407,7 @@ copy: {
 
 上面代码将src子目录（只包含它下面的第一层文件和子目录），拷贝到dest子目录下面（即dest/src目录）。如果要更准确控制拷贝行为，比如只拷贝文件、不拷贝目录、不保持目录结构，可以写成下面这样：
 
-```javascript
+```js
 
 copy: {
   main: {
@@ -426,7 +426,7 @@ copy: {
 
 [watch模块](https://github.com/gruntjs/grunt-contrib-watch)用来在后台运行，监听指定事件，然后自动运行指定的任务。
 
-```javascript
+```js
 
 watch: {
    scripts: {
@@ -459,7 +459,7 @@ watch: {
 
 该模块用于删除文件或目录。
 
-```javascript
+```js
 
 clean: {
   build: {
@@ -473,7 +473,7 @@ clean: {
 
 该模块用于为CSS语句加上浏览器前缀。
 
-```javascript
+```js
 
 autoprefixer: {
   build: {
@@ -490,7 +490,7 @@ autoprefixer: {
 
 该模块用于在本机运行一个Web Server。
 
-```javascript
+```js
 
 connect: {
   server: {
@@ -510,7 +510,7 @@ connect模块会随着grunt运行结束而结束，为了使它一直处于运�
 
 该模块用于检查HTML语法。
 
-```javascript
+```js
 
 htmlhint: {
     build: {
@@ -535,7 +535,7 @@ htmlhint: {
 
 该模块用于将SASS文件转为CSS文件。
 
-```javascript
+```js
 
 sass: {
     build: {
@@ -556,7 +556,7 @@ sass: {
 
 该模块用于将markdown文档转为HTML文档。
 
-```javascript
+```js
 
 markdown: {
     all: {

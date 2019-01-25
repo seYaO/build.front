@@ -6,7 +6,7 @@ Node的异步操作的特性，使得抛出（`throw`）错误不可行，因为
 
 Express的错误中间件。
 
-```javascript
+```js
 app.use(function(err, req, res, next) {
   console.error(err.stack);
 
@@ -23,7 +23,7 @@ app.use(function(err, req, res, next) {
 
 可以用下面的方法，自定义自己的错误对象。
 
-```javascript
+```js
 var assert = require('assert');
 var util = require('util');
 
@@ -53,7 +53,7 @@ ECMAScript规格只规定，Error对象的实例必须有`message`属性，但�
 
 V8默认将调用堆栈限制在10条记录，但是可以在运行时，通过改变`Error.stackTraceLimit`属性调整这个值。
 
-```javascript
+```js
 Error.stackTraceLimit = 0; // 不显示任何堆栈
 Error.stackTraceLimit = Infinity; // 堆栈数目不存在任何限制
 ```
@@ -62,7 +62,7 @@ Error.stackTraceLimit = Infinity; // 堆栈数目不存在任何限制
 
 `Error.captureStackTrace`方法用来在指定对象上，为`stack`属性设立一个取值器（getter），返回`Error.captureStackTrace`方法运行时的堆栈。
 
-```javascript
+```js
 const myObject = {};
 Error.captureStackTrace(myObject);
 myObject.stack // 返回代码调用堆栈
@@ -72,7 +72,7 @@ myObject.stack // 返回代码调用堆栈
 
 `Error.captureStackTrace`还可以接受第二个参数，是一个处在调用堆栈上的函数。它的作用是将堆栈上，这个函数及其以上的调用记录都隐藏起来不显示。
 
-```javascript
+```js
 function createError(msg, status){
   var err = new Error(msg);
   err.status = status;
@@ -92,7 +92,7 @@ throw err;
 
 上面代码中，堆栈信息最上面一行会显示`createError`，表示这个错误是在执行`createError`函数时产生的。现在，为`Error.captureStackTrace`方法加入第二个参数`createError`，就可以把这一行隐藏。
 
-```javascript
+```js
 function createError(msg, status) {
   var err = new Error(msg);
   err.status = status;
@@ -111,7 +111,7 @@ throw err;
 
 这个错误通常用于自定义错误。
 
-```javascript
+```js
 function NotFound(message) {
   Error.call(this);
   Error.captureStackTrace(this, NotFound);
@@ -126,7 +126,7 @@ function NotFound(message) {
 
 `Error.prepareStackTrace`方法的作用是，定制`err.stack`的返回值。
 
-```javascript
+```js
 Error.prepareStackTrace = function () {
   return 'MyStackObject';
 }
@@ -143,7 +143,7 @@ try {
 
 `Error.prepareStackTrace`方法可以接受两个参数，第一个是错误对象实例，第二个是表示堆栈的数组，它的每个成员都是一个堆栈记录对象，有一些方法可以在这个对象上调用。
 
-```javascript
+```js
 function a () {
   b();
 }

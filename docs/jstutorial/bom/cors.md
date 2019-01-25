@@ -86,7 +86,7 @@ Access-Control-Allow-Credentials: true
 
 另一方面，开发者必须在 AJAX 请求中打开`withCredentials`属性。
 
-```javascript
+```js
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 ```
@@ -95,7 +95,7 @@ xhr.withCredentials = true;
 
 但是，如果省略`withCredentials`设置，有的浏览器还是会一起发送 Cookie。这时，可以显式关闭`withCredentials`。
 
-```javascript
+```js
 xhr.withCredentials = false;
 ```
 
@@ -111,7 +111,7 @@ xhr.withCredentials = false;
 
 下面是一段浏览器的 JavaScript 脚本。
 
-```javascript
+```js
 var url = 'http://api.alice.com/cors';
 var xhr = new XMLHttpRequest();
 xhr.open('PUT', url, true);

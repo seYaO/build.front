@@ -82,7 +82,7 @@ ES6 模块也允许内嵌在网页中，语法行为与加载外部脚本完全�
 
 下面是一个示例模块。
 
-```javascript
+```js
 import utils from 'https://example.com/js/utils.js';
 
 const x = 1;
@@ -93,7 +93,7 @@ console.log(this === undefined); // true
 
 利用顶层的`this`等于`undefined`这个语法点，可以侦测当前代码是否在 ES6 模块之中。
 
-```javascript
+```js
 const isNotModuleScript = this !== undefined;
 ```
 
@@ -112,7 +112,7 @@ const isNotModuleScript = this !== undefined;
 
 CommonJS 模块输出的是值的拷贝，也就是说，一旦输出一个值，模块内部的变化就影响不到这个值。请看下面这个模块文件`lib.js`的例子。
 
-```javascript
+```js
 // lib.js
 var counter = 3;
 function incCounter() {
@@ -126,7 +126,7 @@ module.exports = {
 
 上面代码输出内部变量`counter`和改写这个变量的内部方法`incCounter`。然后，在`main.js`里面加载这个模块。
 
-```javascript
+```js
 // main.js
 var mod = require('./lib');
 
@@ -137,7 +137,7 @@ console.log(mod.counter); // 3
 
 上面代码说明，`lib.js`模块加载以后，它的内部变化就影响不到输出的`mod.counter`了。这是因为`mod.counter`是一个原始类型的值，会被缓存。除非写成一个函数，才能得到内部变动后的值。
 
-```javascript
+```js
 // lib.js
 var counter = 3;
 function incCounter() {
@@ -163,7 +163,7 @@ ES6 模块的运行机制与 CommonJS 不一样。JS 引擎对脚本静态分析
 
 还是举上面的例子。
 
-```javascript
+```js
 // lib.js
 export let counter = 3;
 export function incCounter() {
@@ -181,7 +181,7 @@ console.log(counter); // 4
 
 再举一个出现在`export`一节中的例子。
 
-```javascript
+```js
 // m1.js
 export var foo = 'bar';
 setTimeout(() => foo = 'baz', 500);
@@ -207,7 +207,7 @@ baz
 
 由于 ES6 输入的模块变量，只是一个“符号连接”，所以这个变量是只读的，对它进行重新赋值会报错。
 
-```javascript
+```js
 // lib.js
 export let obj = {};
 
@@ -222,7 +222,7 @@ obj = {}; // TypeError
 
 最后，`export`通过接口，输出的是同一个值。不同的脚本加载这个接口，得到的都是同样的实例。
 
-```javascript
+```js
 // mod.js
 function C() {
   this.sum = 0;
@@ -239,7 +239,7 @@ export let c = new C();
 
 上面的脚本`mod.js`，输出的是一个`C`的实例。不同的脚本加载这个模块，得到的都是同一个实例。
 
-```javascript
+```js
 // x.js
 import {c} from './mod';
 c.add();
@@ -278,7 +278,7 @@ $ node --experimental-modules my-app.mjs
 
 为了与浏览器的`import`加载规则相同，Node 的`.mjs`文件支持 URL 路径。
 
-```javascript
+```js
 import './foo?query=1'; // 加载 ./foo 传入参数 ?query=1
 ```
 
@@ -288,14 +288,14 @@ import './foo?query=1'; // 加载 ./foo 传入参数 ?query=1
 
 如果模块名不含路径，那么`import`命令会去`node_modules`目录寻找这个模块。
 
-```javascript
+```js
 import 'baz';
 import 'abc/123';
 ```
 
 如果模块名包含路径，那么`import`命令会按照路径去寻找这个名字的脚本文件。
 
-```javascript
+```js
 import 'file:///etc/config/app.json';
 import './foo';
 import './foo?search';
@@ -324,7 +324,7 @@ ES6 模块应该是通用的，同一个模块不用修改，就可以用在浏�
 
 如果你一定要使用这些变量，有一个变通方法，就是写一个 CommonJS 模块输出这些变量，然后再用 ES6 模块加载这个 CommonJS 模块。但是这样一来，该 ES6 模块就不能直接用于浏览器环境了，所以不推荐这样做。
 
-```javascript
+```js
 // expose.js
 module.exports = {__dirname};
 
@@ -341,7 +341,7 @@ CommonJS 模块的输出都定义在`module.exports`这个属性上面。Node �
 
 下面是一个 CommonJS 模块。
 
-```javascript
+```js
 // a.js
 module.exports = {
   foo: 'hello',
@@ -359,7 +359,7 @@ export default {
 
 所以，一共有三种写法，可以拿到 CommonJS 模块的`module.exports`。
 
-```javascript
+```js
 // 写法一
 import baz from './a';
 // baz = {foo: 'hello', bar: 'world'};
@@ -381,7 +381,7 @@ import * as baz from './a';
 
 下面是一些例子。
 
-```javascript
+```js
 // b.js
 module.exports = null;
 
@@ -395,7 +395,7 @@ import * as bar from './b';
 
 上面代码中，`es.js`采用第二种写法时，要通过`bar.default`这样的写法，才能拿到`module.exports`。
 
-```javascript
+```js
 // c.js
 module.exports = function two() {
   return 2;
@@ -414,7 +414,7 @@ bar(); // throws, bar is not a function
 
 CommonJS 模块的输出缓存机制，在 ES6 加载方式下依然有效。
 
-```javascript
+```js
 // foo.js
 module.exports = 123;
 setTimeout(_ => module.exports = null);
@@ -424,14 +424,14 @@ setTimeout(_ => module.exports = null);
 
 由于 ES6 模块是编译时确定输出接口，CommonJS 模块是运行时确定输出接口，所以采用`import`命令加载 CommonJS 模块时，不允许采用下面的写法。
 
-```javascript
+```js
 // 不正确
 import { readFile } from 'fs';
 ```
 
 上面的写法不正确，因为`fs`是 CommonJS 格式，只有在运行时才能确定`readFile`接口，而`import`命令要求编译时就确定这个接口。解决方法就是改为整体输入。
 
-```javascript
+```js
 // 正确的写法一
 import * as express from 'express';
 const app = express.default();
@@ -445,7 +445,7 @@ const app = express();
 
 CommonJS 模块加载 ES6 模块，不能使用`require`命令，而要使用`import()`函数。ES6 模块的所有输出接口，会成为输入对象的属性。
 
-```javascript
+```js
 // es.mjs
 let foo = { bar: 'my-default' };
 export default foo;
@@ -465,7 +465,7 @@ console.log(es_namespace.default);
 
 下面是另一个例子。
 
-```javascript
+```js
 // es.js
 export let foo = { bar:'my-default' };
 export { foo as bar };
@@ -486,7 +486,7 @@ const es_namespace = await import('./es');
 
 “循环加载”（circular dependency）指的是，`a`脚本的执行依赖`b`脚本，而`b`脚本的执行又依赖`a`脚本。
 
-```javascript
+```js
 // a.js
 var b = require('b');
 
@@ -506,7 +506,7 @@ var a = require('a');
 
 CommonJS 的一个模块，就是一个脚本文件。`require`命令第一次加载该脚本，就会执行整个脚本，然后在内存生成一个对象。
 
-```javascript
+```js
 {
   id: '...',
   exports: { ... },
@@ -525,7 +525,7 @@ CommonJS 模块的重要特性是加载时执行，即脚本代码在`require`�
 
 让我们来看，Node [官方文档](https://nodejs.org/api/modules.html#modules_cycles)里面的例子。脚本文件`a.js`代码如下。
 
-```javascript
+```js
 exports.done = false;
 var b = require('./b.js');
 console.log('在 a.js 之中，b.done = %j', b.done);
@@ -537,7 +537,7 @@ console.log('a.js 执行完毕');
 
 再看`b.js`的代码。
 
-```javascript
+```js
 exports.done = false;
 var a = require('./a.js');
 console.log('在 b.js 之中，a.done = %j', a.done);
@@ -549,7 +549,7 @@ console.log('b.js 执行完毕');
 
 `a.js`已经执行的部分，只有一行。
 
-```javascript
+```js
 exports.done = false;
 ```
 
@@ -557,7 +557,7 @@ exports.done = false;
 
 然后，`b.js`接着往下执行，等到全部执行完毕，再把执行权交还给`a.js`。于是，`a.js`接着往下执行，直到执行完毕。我们写一个脚本`main.js`，验证这个过程。
 
-```javascript
+```js
 var a = require('./a.js');
 var b = require('./b.js');
 console.log('在 main.js 之中, a.done=%j, b.done=%j', a.done, b.done);
@@ -577,7 +577,7 @@ a.js 执行完毕
 
 上面的代码证明了两件事。一是，在`b.js`之中，`a.js`没有执行完毕，只执行了第一行。二是，`main.js`执行到第二行时，不会再次执行`b.js`，而是输出缓存的`b.js`的执行结果，即它的第四行。
 
-```javascript
+```js
 exports.done = true;
 ```
 
@@ -585,7 +585,7 @@ exports.done = true;
 
 另外，由于 CommonJS 模块遇到循环加载时，返回的是当前已经执行的部分的值，而不是代码全部执行后的值，两者可能会有差异。所以，输入变量的时候，必须非常小心。
 
-```javascript
+```js
 var a = require('a'); // 安全的写法
 var foo = require('a').foo; // 危险的写法
 
@@ -606,7 +606,7 @@ ES6 处理“循环加载”与 CommonJS 有本质的不同。ES6 模块是动�
 
 请看下面这个例子。
 
-```javascript
+```js
 // a.mjs
 import {bar} from './b';
 console.log('a.mjs');
@@ -634,7 +634,7 @@ ReferenceError: foo is not defined
 
 解决这个问题的方法，就是让`b.mjs`运行的时候，`foo`已经有定义了。这可以通过将`foo`写成函数来解决。
 
-```javascript
+```js
 // a.mjs
 import {bar} from './b';
 console.log('a.mjs');
@@ -662,7 +662,7 @@ bar
 
 这是因为函数具有提升作用，在执行`import {bar} from './b'`时，函数`foo`就已经有定义了，所以`b.mjs`加载的时候不会报错。这也意味着，如果把函数`foo`改写成函数表达式，也会报错。
 
-```javascript
+```js
 // a.mjs
 import {bar} from './b';
 console.log('a.mjs');
@@ -675,7 +675,7 @@ export {foo};
 
 我们再来看 ES6 模块加载器[SystemJS](https://github.com/ModuleLoader/es6-module-loader/blob/master/docs/circular-references-bindings.md)给出的一个例子。
 
-```javascript
+```js
 // even.js
 import { odd } from './odd'
 export var counter = 0;
@@ -695,7 +695,7 @@ export function odd(n) {
 
 运行上面这段代码，结果如下。
 
-```javascript
+```js
 $ babel-node
 > import * as m from './even.js';
 > m.even(10);
@@ -712,7 +712,7 @@ true
 
 这个例子要是改写成 CommonJS，就根本无法执行，会报错。
 
-```javascript
+```js
 // even.js
 var odd = require('./odd');
 var counter = 0;
@@ -786,7 +786,7 @@ $ compile-modules convert -o out.js file1.js
 
 需要注意的是，`System.import`使用异步加载，返回一个 Promise 对象，可以针对这个对象编程。下面是一个模块文件。
 
-```javascript
+```js
 // app/es6-file.js:
 
 export class q {

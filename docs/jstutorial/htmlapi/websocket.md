@@ -75,7 +75,7 @@ WebSocket 的用法相当简单。
 
 下面是一个网页脚本的例子，基本上一眼就能明白。
 
-```javascript
+```js
 var ws = new WebSocket('wss://echo.websocket.org');
 
 ws.onopen = function(evt) {
@@ -105,7 +105,7 @@ ws.onclose = function(evt) {
 
 `WebSocket`对象作为一个构造函数，用于新建`WebSocket`实例。
 
-```javascript
+```js
 var ws = new WebSocket('ws://localhost:8080');
 ```
 
@@ -122,7 +122,7 @@ var ws = new WebSocket('ws://localhost:8080');
 
 下面是一个示例。
 
-```javascript
+```js
 switch (ws.readyState) {
   case WebSocket.CONNECTING:
     // do something
@@ -146,7 +146,7 @@ switch (ws.readyState) {
 
 实例对象的`onopen`属性，用于指定连接成功后的回调函数。
 
-```javascript
+```js
 ws.onopen = function () {
   ws.send('Hello Server!');
 }
@@ -154,7 +154,7 @@ ws.onopen = function () {
 
 如果要指定多个回调函数，可以使用`addEventListener`方法。
 
-```javascript
+```js
 ws.addEventListener('open', function (event) {
   ws.send('Hello Server!');
 });
@@ -164,7 +164,7 @@ ws.addEventListener('open', function (event) {
 
 实例对象的`onclose`属性，用于指定连接关闭后的回调函数。
 
-```javascript
+```js
 ws.onclose = function(event) {
   var code = event.code;
   var reason = event.reason;
@@ -184,7 +184,7 @@ ws.addEventListener("close", function(event) {
 
 实例对象的`onmessage`属性，用于指定收到服务器数据后的回调函数。
 
-```javascript
+```js
 ws.onmessage = function(event) {
   var data = event.data;
   // 处理数据
@@ -198,7 +198,7 @@ ws.addEventListener("message", function(event) {
 
 注意，服务器数据可能是文本，也可能是二进制数据（`blob`对象或`Arraybuffer`对象）。
 
-```javascript
+```js
 ws.onmessage = function(event){
   if(typeOf event.data === String) {
     console.log("Received data string");
@@ -213,7 +213,7 @@ ws.onmessage = function(event){
 
 除了动态判断收到的数据类型，也可以使用`binaryType`属性，显式指定收到的二进制数据类型。
 
-```javascript
+```js
 // 收到的是 blob 数据
 ws.binaryType = "blob";
 ws.onmessage = function(e) {
@@ -233,13 +233,13 @@ ws.onmessage = function(e) {
 
 发送文本的例子。
 
-```javascript
+```js
 ws.send('your message');
 ```
 
 发送 Blob 对象的例子。
 
-```javascript
+```js
 var file = document
   .querySelector('input[type="file"]')
   .files[0];
@@ -248,7 +248,7 @@ ws.send(file);
 
 发送 ArrayBuffer 对象的例子。
 
-```javascript
+```js
 // Sending canvas ImageData as ArrayBuffer
 var img = canvas_context.getImageData(0, 0, 400, 320);
 var binary = new Uint8Array(img.data.length);
@@ -262,7 +262,7 @@ ws.send(binary.buffer);
 
 实例对象的`bufferedAmount`属性，表示还有多少字节的二进制数据没有发送出去。它可以用来判断发送是否结束。
 
-```javascript
+```js
 var data = new ArrayBuffer(10000000);
 socket.send(data);
 
@@ -277,7 +277,7 @@ if (socket.bufferedAmount === 0) {
 
 实例对象的`onerror`属性，用于指定报错时的回调函数。
 
-```javascript
+```js
 socket.onerror = function(event) {
   // handle error event
 };

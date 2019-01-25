@@ -66,7 +66,7 @@ Cookie 是服务器写入浏览器的一小段信息，只有同源的网页才�
 
 举例来说，A 网页的网址是`http://w1.example.com/a.html`，B 网页的网址是`http://w2.example.com/b.html`，那么只要设置相同的`document.domain`，两个网页就可以共享 Cookie。因为浏览器通过`document.domain`属性来检查是否同源。
 
-```javascript
+```js
 // 两个网页都需要设置
 document.domain = 'example.com';
 ```
@@ -75,13 +75,13 @@ document.domain = 'example.com';
 
 现在，A 网页通过脚本设置一个 Cookie。
 
-```javascript
+```js
 document.cookie = "test1=hello";
 ```
 
 B 网页就可以读到这个 Cookie。
 
-```javascript
+```js
 var allCookie = document.cookie;
 ```
 
@@ -101,7 +101,7 @@ Set-Cookie: key=value; domain=.example.com; path=/
 
 比如，父窗口运行下面的命令，如果`iframe`窗口不是同源，就会报错。
 
-```javascript
+```js
 document
 .getElementById("myIFrame")
 .contentWindow
@@ -113,7 +113,7 @@ document
 
 反之亦然，子窗口获取主窗口的 DOM 也会报错。
 
-```javascript
+```js
 window.parent.document.body
 // 报错
 ```
@@ -133,7 +133,7 @@ window.parent.document.body
 
 父窗口可以把信息，写入子窗口的片段标识符。
 
-```javascript
+```js
 var src = originURL + '#' + data;
 document.getElementById('myIFrame').src = src;
 ```
@@ -142,7 +142,7 @@ document.getElementById('myIFrame').src = src;
 
 子窗口通过监听`hashchange`事件得到通知。
 
-```javascript
+```js
 window.onhashchange = checkMessage;
 
 function checkMessage() {
@@ -153,7 +153,7 @@ function checkMessage() {
 
 同样的，子窗口也可以改变父窗口的片段标识符。
 
-```javascript
+```js
 parent.location.href = target + '#' + hash;
 ```
 
@@ -163,7 +163,7 @@ parent.location.href = target + '#' + hash;
 
 这个 API 为`window`对象新增了一个`window.postMessage`方法，允许跨窗口通信，不论这两个窗口是否同源。举例来说，父窗口`aaa.com`向子窗口`bbb.com`发消息，调用`postMessage`方法就可以了。
 
-```javascript
+```js
 // 父窗口打开一个子窗口
 var popup = window.open('http://bbb.com', 'title');
 // 父窗口向子窗口发消息
@@ -174,14 +174,14 @@ popup.postMessage('Hello World!', 'http://bbb.com');
 
 子窗口向父窗口发送消息的写法类似。
 
-```javascript
+```js
 // 子窗口向父窗口发消息
 window.opener.postMessage('Nice to see you', 'http://aaa.com');
 ```
 
 父窗口和子窗口都可以通过`message`事件，监听对方的消息。
 
-```javascript
+```js
 // 父窗口和子窗口都可以用下面的代码，
 // 监听 message 消息
 window.addEventListener('message', function (e) {
@@ -197,7 +197,7 @@ window.addEventListener('message', function (e) {
 
 下面的例子是，子窗口通过`event.source`属性引用父窗口，然后发送消息。
 
-```javascript
+```js
 window.addEventListener('message', receiveMessage);
 function receiveMessage(event) {
   event.source.postMessage('Nice to see you!', '*');
@@ -208,7 +208,7 @@ function receiveMessage(event) {
 
 `event.origin`属性可以过滤不是发给本窗口的消息。
 
-```javascript
+```js
 window.addEventListener('message', receiveMessage);
 function receiveMessage(event) {
   if (event.origin !== 'http://aaa.com') return;
@@ -226,7 +226,7 @@ function receiveMessage(event) {
 
 下面是一个例子，主窗口写入 iframe 子窗口的`localStorage`。
 
-```javascript
+```js
 window.onmessage = function(e) {
   if (e.origin !== 'http://bbb.com') {
     return;
@@ -240,7 +240,7 @@ window.onmessage = function(e) {
 
 父窗口发送消息的代码如下。
 
-```javascript
+```js
 var win = document.getElementsByTagName('iframe')[0].contentWindow;
 var obj = { name: 'Jack' };
 win.postMessage(
@@ -251,7 +251,7 @@ win.postMessage(
 
 加强版的子窗口接收消息的代码如下。
 
-```javascript
+```js
 window.onmessage = function(e) {
   if (e.origin !== 'http://bbb.com') return;
   var payload = JSON.parse(e.data);
@@ -273,7 +273,7 @@ window.onmessage = function(e) {
 
 加强版的父窗口发送消息代码如下。
 
-```javascript
+```js
 var win = document.getElementsByTagName('iframe')[0].contentWindow;
 var obj = { name: 'Jack' };
 // 存入对象
@@ -310,7 +310,7 @@ JSONP 是服务器与客户端跨源通信的常用方法。最大特点就是�
 
 首先，网页动态插入`<script>`元素，由它向跨源网址发出请求。
 
-```javascript
+```js
 function addScriptTag(src) {
   var script = document.createElement('script');
   script.setAttribute("type","text/javascript");
@@ -331,7 +331,7 @@ function foo(data) {
 
 服务器收到这个请求以后，会将数据放在回调函数的参数位置返回。
 
-```javascript
+```js
 foo({
   "ip": "8.8.8.8"
 });

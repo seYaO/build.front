@@ -24,7 +24,7 @@ $ npm install --save-dev gulp-uglify
 
 项目根目录中的gulpfile.js，是Gulp的配置文件。下面就是一个典型的gulpfile.js文件。
 
-```javascript
+```js
 
 var gulp = require('gulp');
 var uglify = require('gulp-uglify');
@@ -51,7 +51,7 @@ $ gulp minify
 
 下面是另一个数据流的例子。
 
-```javascript
+```js
 
 gulp.task('js', function () {
   return gulp.src('js/*.js')
@@ -79,7 +79,7 @@ gulp模块的src方法，用于产生数据流。它的参数表示所要处理�
 
 src方法的参数还可以是一个数组，用来指定多个成员。
 
-```javascript
+```js
 
 gulp.src(['js/**/*.js', '!js/**/*.min.js'])
 
@@ -89,7 +89,7 @@ gulp.src(['js/**/*.js', '!js/**/*.min.js'])
 
 dest方法将管道的输出写入文件，同时将这些输出继续输出，所以可以依次调用多次dest方法，将输出写入多个目录。如果有目录不存在，将会被新建。
 
-```javascript
+```js
 gulp.src('./client/templates/*.jade')
   .pipe(jade())
   .pipe(gulp.dest('./build/templates'))
@@ -99,7 +99,7 @@ gulp.src('./client/templates/*.jade')
 
 dest方法还可以接受第二个参数，表示配置对象。
 
-```javascript
+```js
 gulp.dest('build', {
   cwd: './app',
   mode: '0644'
@@ -112,7 +112,7 @@ gulp.dest('build', {
 
 task方法用于定义具体的任务。它的第一个参数是任务名，第二个参数是任务函数。下面是一个非常简单的任务函数。
 
-```javascript
+```js
 
 gulp.task('greet', function () {
    console.log('Hello world!');
@@ -122,7 +122,7 @@ gulp.task('greet', function () {
 
 task方法还可以指定按顺序运行的一组任务。
 
-```javascript
+```js
 
 gulp.task('build', ['css', 'js', 'imgs']);
 
@@ -132,7 +132,7 @@ gulp.task('build', ['css', 'js', 'imgs']);
 
 如果希望各个任务严格按次序运行，可以把前一个任务写成后一个任务的依赖模块。
 
-```javascript
+```js
 
 gulp.task('css', ['greet'], function () {
    // Deal with CSS here
@@ -144,7 +144,7 @@ gulp.task('css', ['greet'], function () {
 
 task方法的回调函数，还可以接受一个函数作为参数，这对执行异步任务非常有用。
 
-```javascript
+```js
 // 执行shell命令
 var exec = require('child_process').exec;
 gulp.task('jekyll', function(cb) {
@@ -158,7 +158,7 @@ gulp.task('jekyll', function(cb) {
 
 如果一个任务的名字为default，就表明它是“默认任务”，在命令行直接输入gulp命令，就会运行该任务。
 
-```javascript
+```js
 
 gulp.task('default', function () {
   // Your default task
@@ -176,7 +176,7 @@ gulp.task('default', ['styles', 'jshint', 'watch']);
 
 watch方法用于指定需要监视的文件。一旦这些文件发生变动，就运行指定任务。
 
-```javascript
+```js
 
 gulp.task('watch', function () {
    gulp.watch('templates/*.tmpl.html', ['build']);
@@ -188,7 +188,7 @@ gulp.task('watch', function () {
 
 watch方法也可以用回调函数，代替指定的任务。
 
-```javascript
+```js
 
 gulp.watch('templates/*.tmpl.html', function (event) {
    console.log('Event type: ' + event.type);
@@ -199,7 +199,7 @@ gulp.watch('templates/*.tmpl.html', function (event) {
 
 另一种写法是watch方法所监控的文件发生变化时（修改、增加、删除文件），会触发change事件。可以对change事件指定回调函数。
 
-```javascript
+```js
 
 var watcher = gulp.watch('templates/*.tmpl.html', ['build']);
 
@@ -228,7 +228,7 @@ watcher对象还包含其他一些方法。
 
 一般情况下，gulpfile.js中的模块需要一个个加载。
 
-```javascript
+```js
 
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
@@ -250,7 +250,7 @@ gulp.task('js', function () {
 
 这种一一加载的写法，比较麻烦。使用gulp-load-plugins模块，可以加载package.json文件中所有的gulp模块。上面的代码用gulp-load-plugins模块改写，就是下面这样。
 
-```javascript
+```js
 
 var gulp = require('gulp'),
     gulpLoadPlugins = require('gulp-load-plugins'),
@@ -269,7 +269,7 @@ gulp.task('js', function () {
 
 上面代码假设package.json文件包含以下内容。
 
-```javascript
+```js
 
 {
    "devDependencies": {
@@ -286,7 +286,7 @@ gulp.task('js', function () {
 
 gulp-livereload模块用于自动刷新浏览器，反映出源码的最新变化。它除了模块以外，还需要在浏览器中安装插件，用来配合源码变化。
 
-```javascript
+```js
 
 var gulp = require('gulp'),
     less = require('gulp-less'),

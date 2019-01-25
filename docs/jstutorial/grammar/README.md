@@ -6,7 +6,7 @@ JavaScript 程序的执行单位为行（line），也就是一行一行地执�
 
 语句（statement）是为了完成某种任务而进行的操作，比如下面就是一行赋值语句。
 
-```javascript
+```js
 var a = 1 + 3;
 ```
 
@@ -16,13 +16,13 @@ var a = 1 + 3;
 
 语句以分号结尾，一个分号就表示一个语句结束。多个语句可以写在一行内。
 
-```javascript
+```js
 var a = 1 + 3 ; var b = 'abc';
 ```
 
 分号前面可以没有任何内容，JavaScript引擎将其视为空语句。
 
-```javascript
+```js
 ;;;
 ```
 
@@ -30,7 +30,7 @@ var a = 1 + 3 ; var b = 'abc';
 
 表达式不需要分号结尾。一旦在表达式后面添加分号，则 JavaScript 引擎就将表达式视为语句，这样会产生一些没有任何意义的语句。
 
-```javascript
+```js
 1 + 3;
 'abc';
 ```
@@ -43,7 +43,7 @@ var a = 1 + 3 ; var b = 'abc';
 
 变量是对“值”的具名引用。变量就是为“值”起名，然后引用这个名字，就等同于引用这个值。变量的名字就是变量名。
 
-```javascript
+```js
 var a = 1;
 ```
 
@@ -53,21 +53,21 @@ var a = 1;
 
 变量的声明和赋值，是分开的两个步骤，上面的代码将它们合在了一起，实际的步骤是下面这样。
 
-```javascript
+```js
 var a;
 a = 1;
 ```
 
 如果只是声明变量而没有赋值，则该变量的值是`undefined`。`undefined`是一个 JavaScript 关键字，表示“无定义”。
 
-```javascript
+```js
 var a;
 a // undefined
 ```
 
 如果变量赋值的时候，忘了写`var`命令，这条语句也是有效的。
 
-```javascript
+```js
 var a = 1;
 // 基本等同
 a = 1;
@@ -77,7 +77,7 @@ a = 1;
 
 如果一个变量没有声明就直接使用，JavaScript 会报错，告诉你变量未定义。
 
-```javascript
+```js
 x
 // ReferenceError: x is not defined
 ```
@@ -86,13 +86,13 @@ x
 
 可以在同一条`var`命令中声明多个变量。
 
-```javascript
+```js
 var a, b;
 ```
 
 JavaScript 是一种动态类型语言，也就是说，变量的类型没有限制，变量可以随时更改类型。
 
-```javascript
+```js
 var a = 1;
 a = 'hello';
 ```
@@ -101,7 +101,7 @@ a = 'hello';
 
 如果使用`var`重新声明一个已经存在的变量，是无效的。
 
-```javascript
+```js
 var x = 1;
 var x;
 x // 1
@@ -111,7 +111,7 @@ x // 1
 
 但是，如果第二次声明的时候还进行了赋值，则会覆盖掉前面的值。
 
-```javascript
+```js
 var x = 1;
 var x = 2;
 
@@ -126,14 +126,14 @@ x = 2;
 
 JavaScript 引擎的工作方式是，先解析代码，获取所有被声明的变量，然后再一行一行地运行。这造成的结果，就是所有的变量的声明语句，都会被提升到代码的头部，这就叫做变量提升（hoisting）。
 
-```javascript
+```js
 console.log(a);
 var a = 1;
 ```
 
 上面代码首先使用`console.log`方法，在控制台（console）显示变量`a`的值。这时变量`a`还没有声明和赋值，所以这是一种错误的做法，但是实际上不会报错。因为存在变量提升，真正运行的是下面的代码。
 
-```javascript
+```js
 var a;
 console.log(a);
 a = 1;
@@ -154,7 +154,7 @@ a = 1;
 
 下面这些都是合法的标识符。
 
-```javascript
+```js
 arg0
 _tmp
 $elem
@@ -163,7 +163,7 @@ $elem
 
 下面这些则是不合法的标识符。
 
-```javascript
+```js
 1a  // 第一个字符不能是数字
 23  // 同上
 ***  // 标识符不能包含星号
@@ -173,7 +173,7 @@ a+b  // 标识符不能包含加号
 
 中文是合法的标识符，可以用作变量名。
 
-```javascript
+```js
 var 临时变量 = 1;
 ```
 
@@ -183,7 +183,7 @@ var 临时变量 = 1;
 
 源码中被 JavaScript 引擎忽略的部分就叫做注释，它的作用是对代码进行解释。Javascript 提供两种注释的写法：一种是单行注释，用`//`起头；另一种是多行注释，放在`/*`和`*/`之间。
 
-```javascript
+```js
 // 这是单行注释
 
 /*
@@ -195,7 +195,7 @@ var 临时变量 = 1;
 
 此外，由于历史上 JavaScript 可以兼容 HTML 代码的注释，所以`<!--`和`-->`也被视为合法的单行注释。
 
-```javascript
+```js
 x = 1; <!-- x = 2;
 --> x = 3;
 ```
@@ -204,7 +204,7 @@ x = 1; <!-- x = 2;
 
 需要注意的是，`-->`只有在行首，才会被当成单行注释，否则会当作正常的运算。
 
-```javascript
+```js
 function countdown(n) {
   while (n --> 0) console.log(n);
 }
@@ -222,7 +222,7 @@ JavaScript 使用大括号，将多个相关的语句组合在一起，称为“
 
 对于`var`命令来说，JavaScript 的区块不构成单独的作用域（scope）。
 
-```javascript
+```js
 {
   var a = 1;
 }
@@ -240,7 +240,7 @@ JavaScript 提供`if`结构和`switch`结构，完成条件判断，即只有满
 
 `if`结构先判断一个表达式的布尔值，然后根据布尔值的真伪，执行不同的语句。所谓布尔值，指的是 JavaScript 的两个特殊值，`true`表示真，`false`表示`伪`。
 
-```javascript
+```js
 if (布尔值)
   语句;
 
@@ -250,7 +250,7 @@ if (布尔值) 语句;
 
 上面是`if`结构的基本形式。需要注意的是，“布尔值”往往由一个条件表达式产生的，必须放在圆括号中，表示对表达式求值。如果表达式的求值结果为`true`，就执行紧跟在后面的语句；如果结果为`false`，则跳过紧跟在后面的语句。
 
-```javascript
+```js
 if (m === 3)
   m = m + 1;
 ```
@@ -259,7 +259,7 @@ if (m === 3)
 
 这种写法要求条件表达式后面只能有一个语句。如果想执行多个语句，必须在`if`的条件判断之后，加上大括号，表示代码块（多个语句合并成一个语句）。
 
-```javascript
+```js
 if (m === 3) {
   m += 1;
 }
@@ -269,7 +269,7 @@ if (m === 3) {
 
 注意，`if`后面的表达式之中，不要混淆赋值表达式（`=`）、严格相等运算符（`===`）和相等运算符（`==`）。尤其是赋值表达式不具有比较作用。
 
-```javascript
+```js
 var x = 1;
 var y = 2;
 if (x = y) {
@@ -282,7 +282,7 @@ if (x = y) {
 
 这种错误可以正常生成一个布尔值，因而不会报错。为了避免这种情况，有些开发者习惯将常量写在运算符的左边，这样的话，一旦不小心将相等运算符写成赋值运算符，就会报错，因为常量不能被赋值。
 
-```javascript
+```js
 if (x = 2) { // 不报错
 if (2 = x) { // 报错
 ```
@@ -293,7 +293,7 @@ if (2 = x) { // 报错
 
 `if`代码块后面，还可以跟一个`else`代码块，表示不满足条件时，所要执行的代码。
 
-```javascript
+```js
 if (m === 3) {
   // 满足条件时，执行的语句
 } else {
@@ -305,7 +305,7 @@ if (m === 3) {
 
 对同一个变量进行多次判断时，多个`if...else`语句可以连写在一起。
 
-```javascript
+```js
 if (m === 0) {
   // ...
 } else if (m === 1) {
@@ -319,7 +319,7 @@ if (m === 0) {
 
 `else`代码块总是与离自己最近的那个`if`语句配对。
 
-```javascript
+```js
 var m = 1;
 var n = 2;
 
@@ -330,7 +330,7 @@ else console.log('world');
 
 上面代码不会有任何输出，`else`代码块不会得到执行，因为它跟着的是最近的那个`if`语句，相当于下面这样。
 
-```javascript
+```js
 if (m !== 1) {
   if (n === 2) {
     console.log('hello');	
@@ -342,7 +342,7 @@ if (m !== 1) {
 
 如果想让`else`代码块跟随最上面的那个`if`语句，就要改变大括号的位置。
 
-```javascript
+```js
 if (m !== 1) {
   if (n === 2) {
     console.log('hello');	
@@ -357,7 +357,7 @@ if (m !== 1) {
 
 多个`if...else`连在一起使用的时候，可以转为使用更方便的`switch`结构。
 
-```javascript
+```js
 switch (fruit) {
   case "banana":
     // ...
@@ -372,7 +372,7 @@ switch (fruit) {
 
 上面代码根据变量`fruit`的值，选择执行相应的`case`。如果所有`case`都不符合，则执行最后的`default`部分。需要注意的是，每个`case`代码块内部的`break`语句不能少，否则会接下去执行下一个`case`代码块，而不是跳出`switch`结构。
 
-```javascript
+```js
 var x = 1;
 
 switch (x) {
@@ -390,7 +390,7 @@ switch (x) {
 
 上面代码中，`case`代码块之中没有`break`语句，导致不会跳出`switch`结构，而会一直执行下去。正确的写法是像下面这样。
 
-```javascript
+```js
 switch (x) {
   case 1:
     console.log('x 等于1');
@@ -405,7 +405,7 @@ switch (x) {
 
 `switch`语句部分和`case`语句部分，都可以使用表达式。
 
-```javascript
+```js
 switch(1 + 3) {
   case 2 + 2:
     f();
@@ -419,7 +419,7 @@ switch(1 + 3) {
 
 需要注意的是，`switch`语句后面的表达式，与`case`语句后面的表示式比较运行结果时，采用的是严格相等运算符（`===`），而不是相等运算符（`==`），这意味着比较时不会发生类型转换。
 
-```javascript
+```js
 var x = 1;
 
 switch (x) {
@@ -437,19 +437,19 @@ switch (x) {
 
 JavaScript还有一个三元运算符（即该运算符需要三个运算子）`?:`，也可以用于逻辑判断。
 
-```javascript
+```js
 (条件) ? 表达式1 : 表达式2
 ```
 
 上面代码中，如果“条件”为`true`，则返回“表达式1”的值，否则返回“表达式2”的值。
 
-```javascript
+```js
 var even = (n % 2 === 0) ? true : false;
 ```
 
 上面代码中，如果`n`可以被2整除，则`even`等于`true`，否则等于`false`。它等同于下面的形式。
 
-```javascript
+```js
 var even;
 if (n % 2 === 0) {
   even = true;
@@ -460,7 +460,7 @@ if (n % 2 === 0) {
 
 这个三元运算符可以被视为`if...else...`的简写形式，因此可以用于多种场合。
 
-```javascript
+```js
 var myVar;
 console.log(
   myVar ?
@@ -472,7 +472,7 @@ console.log(
 
 上面代码利用三元运算符，输出相应的提示。
 
-```javascript
+```js
 var msg = '数字' + n + '是' + (n % 2 === 0 ? '偶数' : '奇数');
 ```
 
@@ -486,7 +486,7 @@ var msg = '数字' + n + '是' + (n % 2 === 0 ? '偶数' : '奇数');
 
 `While`语句包括一个循环条件和一段代码块，只要条件为真，就不断循环执行代码块。
 
-```javascript
+```js
 while (条件)
   语句;
 
@@ -496,7 +496,7 @@ while (条件) 语句;
 
 `while`语句的循环条件是一个表达式，必须放在圆括号中。代码块部分，如果只有一条语句，可以省略大括号，否则就必须加上大括号。
 
-```javascript
+```js
 while (条件) {
   语句;
 }
@@ -504,7 +504,7 @@ while (条件) {
 
 下面是`while`语句的一个例子。
 
-```javascript
+```js
 var i = 0;
 
 while (i < 100) {
@@ -517,7 +517,7 @@ while (i < 100) {
 
 下面的例子是一个无限循环，因为循环条件总是为真。
 
-```javascript
+```js
 while (true) {
   console.log('Hello, world');
 }
@@ -527,7 +527,7 @@ while (true) {
 
 `for`语句是循环命令的另一种形式，可以指定循环的起点、终点和终止条件。它的格式如下。
 
-```javascript
+```js
 for (初始化表达式; 条件; 递增表达式)
   语句
 
@@ -546,7 +546,7 @@ for (初始化表达式; 条件; 递增表达式) {
 
 下面是一个例子。
 
-```javascript
+```js
 var x = 3;
 for (var i = 0; i < x; i++) {
   console.log(i);
@@ -560,7 +560,7 @@ for (var i = 0; i < x; i++) {
 
 所有`for`循环，都可以改写成`while`循环。上面的例子改为`while`循环，代码如下。
 
-```javascript
+```js
 var x = 3;
 var i = 0;
 
@@ -572,7 +572,7 @@ while (i < x) {
 
 `for`语句的三个部分（initialize、test、increment），可以省略任何一个，也可以全部省略。
 
-```javascript
+```js
 for ( ; ; ){
   console.log('Hello World');
 }
@@ -584,7 +584,7 @@ for ( ; ; ){
 
 `do...while`循环与`while`循环类似，唯一的区别就是先运行一次循环体，然后判断循环条件。
 
-```javascript
+```js
 do
   语句
 while (条件);
@@ -599,7 +599,7 @@ do {
 
 下面是一个例子。
 
-```javascript
+```js
 var x = 3;
 var i = 0;
 
@@ -615,7 +615,7 @@ do {
 
 `break`语句用于跳出代码块或循环。
 
-```javascript
+```js
 var i = 0;
 
 while(i < 100) {
@@ -629,7 +629,7 @@ while(i < 100) {
 
 `for`循环也可以使用`break`语句跳出循环。
 
-```javascript
+```js
 for (var i = 0; i < 5; i++) {
   console.log(i);
   if (i === 3)
@@ -645,7 +645,7 @@ for (var i = 0; i < 5; i++) {
 
 `continue`语句用于立即终止本轮循环，返回循环结构的头部，开始下一轮循环。
 
-```javascript
+```js
 var i = 0;
 
 while (i < 100){
@@ -663,7 +663,7 @@ while (i < 100){
 
 JavaScript 语言允许，语句的前面有标签（label），相当于定位符，用于跳转到程序的任意位置，标签的格式如下。
 
-```javascript
+```js
 label:
   语句
 ```
@@ -672,7 +672,7 @@ label:
 
 标签通常与`break`语句和`continue`语句配合使用，跳出特定的循环。
 
-```javascript
+```js
 top:
   for (var i = 0; i < 3; i++){
     for (var j = 0; j < 3; j++){
@@ -690,7 +690,7 @@ top:
 
 `continue`语句也可以与标签配合使用。
 
-```javascript
+```js
 top:
   for (var i = 0; i < 3; i++){
     for (var j = 0; j < 3; j++){

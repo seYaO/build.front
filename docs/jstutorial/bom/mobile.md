@@ -8,7 +8,7 @@
 
 Permissions API就是用来查询某个接口的许可情况。
 
-```javascript
+```js
 // 查询地理位置接口的许可情况
 navigator.permissions.query({ name: 'geolocation' })
 .then(function(result) {
@@ -61,7 +61,7 @@ Geolocation接口用于获取用户的地理位置。它使用的方法基于GPS
 
 下面的方法，可以检查浏览器是否支持这个接口。
 
-```javascript
+```js
 
 if(navigator.geolocation) { 
    // 支持
@@ -77,7 +77,7 @@ if(navigator.geolocation) {
 
 getCurrentPosition方法，用来获取用户的地理位置。使用它需要得到用户的授权，浏览器会跳出一个对话框，询问用户是否许可当前页面获取他的地理位置。必须考虑两种情况的回调函数：一种是同意授权，另一种是拒绝授权。如果用户拒绝授权，会抛出一个错误。
 
-```javascript
+```js
 
 navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
 
@@ -89,7 +89,7 @@ navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
 
 如果用户同意授权，就会调用geoSuccess。
 
-```javascript
+```js
 
 function geoSuccess(event) {
    console.log(event.coords.latitude + ', ' + event.coords.longitude);
@@ -113,7 +113,7 @@ geoSuccess的参数是一个event对象。event有两个属性：timestamp和coo
 
 如果用户拒绝授权，就会调用getCurrentPosition方法指定的第二个回调函数geoError。
 
-```javascript
+```js
 
 function geoError(event) { 
    console.log("Error code " + event.code + ". " + event.message);
@@ -132,7 +132,7 @@ geoError的参数也是一个event对象。event.code属性表示错误类型，
 
 getCurrentPosition方法还可以接受一个对象作为第三个参数，用来设置定位行为。
 
-```javascript
+```js
 
 var option = {
             enableHighAccuracy : true,
@@ -156,7 +156,7 @@ navigator.geolocation.getCurrentPosition(geoSuccess, geoError, option);
 
 watchPosition方法可以用来监听用户位置的持续改变，使用方法与getCurrentPosition方法一样。
 
-```javascript
+```js
 
 var watchID = navigator.geolocation.watchPosition(geoSuccess,geoError, option);
 
@@ -166,7 +166,7 @@ var watchID = navigator.geolocation.watchPosition(geoSuccess,geoError, option);
 
 watchPosition和getCurrentPosition方法的不同之处在于，前者返回一个表示符，后者什么都不返回。watchPosition方法返回的标识符，用于供clearWatch方法取消监听。
 
-```javascript
+```js
 
 navigator.geolocation.clearWatch(watchID);
 
@@ -178,7 +178,7 @@ Vibration接口用于在浏览器中发出命令，使得设备振动。显然�
 
 使用下面的代码检查该接口是否可用。目前，只有Chrome和Firefox的Android平台最新版本支持它。
 
-```javascript
+```js
 navigator.vibrate = navigator.vibrate
   || navigator.webkitVibrate
   || navigator.mozVibrate
@@ -191,7 +191,7 @@ if (navigator.vibrate) {
 
 vibrate方法可以使得设备振动，它的参数就是振动持续的毫秒数。
 
-```javascript
+```js
 navigator.vibrate(1000);
 ```
 
@@ -199,7 +199,7 @@ navigator.vibrate(1000);
 
 vibrate方法还可以接受一个数组作为参数，表示振动的模式。偶数位置的数组成员表示振动的毫秒数，奇数位置的数组成员表示等待的毫秒数。
 
-```javascript
+```js
 navigator.vibrate([500, 300, 100]);
 ```
 
@@ -207,14 +207,14 @@ navigator.vibrate([500, 300, 100]);
 
 vibrate是一个非阻塞式的操作，即手机振动的同时，JavaScript代码继续向下运行。要停止振动，只有将0毫秒或者一个空数组传入vibrate方法。
 
-```javascript
+```js
 navigator.vibrate(0);
 navigator.vibrate([]);
 ```
 
 如果要让振动一直持续，可以使用setInterval不断调用vibrate。
 
-```javascript
+```js
 var vibrateInterval;
 
 function startVibrate(duration) {
@@ -237,7 +237,7 @@ function startPeristentVibrate(duration, interval) {
 
 Luminosity API用于屏幕亮度调节，当移动设备的亮度传感器感知外部亮度发生显著变化时，会触发devicelight事件。目前，只有Firefox部署了这个API。
 
-```javascript
+```js
 
 window.addEventListener('devicelight', function(event) {
   console.log(event.value + 'lux');
@@ -249,7 +249,7 @@ window.addEventListener('devicelight', function(event) {
 
 这个API的一种应用是，如果亮度变强，网页可以显示黑底白字，如果亮度变弱，网页可以显示白底黑字。
 
-```javascript
+```js
 
 window.addEventListener('devicelight', function(e) {
   var lux = e.value;
@@ -291,7 +291,7 @@ Orientation API用于检测手机的摆放方向（竖放或横放）。
 
 使用下面的代码检测浏览器是否支持该API。
 
-```javascript
+```js
 
 if (window.DeviceOrientationEvent) {
   // 支持
@@ -303,7 +303,7 @@ if (window.DeviceOrientationEvent) {
 
 一旦设备的方向发生变化，会触发deviceorientation事件，可以对该事件指定回调函数。
 
-```javascript
+```js
 
 window.addEventListener("deviceorientation", callback);
 
@@ -311,7 +311,7 @@ window.addEventListener("deviceorientation", callback);
 
 回调函数接受一个event对象作为参数。
 
-```javascript
+```js
 
 function callback(event){
 	console.log(event.alpha);

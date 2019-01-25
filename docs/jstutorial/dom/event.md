@@ -16,7 +16,7 @@ DOM 的事件操作（监听和触发），都定义在`EventTarget`接口。所
 
 `EventTarget.addEventListener()`用于在当前节点或对象上，定义一个特定事件的监听函数。一旦这个事件发生，就会执行监听函数。该方法没有返回值。
 
-```javascript
+```js
 target.addEventListener(type, listener[, useCapture]);
 ```
 
@@ -28,7 +28,7 @@ target.addEventListener(type, listener[, useCapture]);
 
 下面是一个例子。
 
-```javascript
+```js
 function hello() {
   console.log('Hello world');
 }
@@ -43,7 +43,7 @@ button.addEventListener('click', hello, false);
 
 首先，第二个参数除了监听函数，还可以是一个具有`handleEvent`方法的对象。
 
-```javascript
+```js
 buttonElement.addEventListener('click', {
   handleEvent: function (event) {
     console.log('click');
@@ -61,7 +61,7 @@ buttonElement.addEventListener('click', {
 
 `addEventListener`方法可以为针对当前对象的同一个事件，添加多个不同的监听函数。这些函数按照添加顺序触发，即先添加先触发。如果为同一个事件多次添加同一个监听函数，该函数只会执行一次，多余的添加将自动被去除（不必使用`removeEventListener`方法手动去除）。
 
-```javascript
+```js
 function hello() {
   console.log('Hello world');
 }
@@ -74,7 +74,7 @@ document.addEventListener('click', hello, false);
 
 如果希望向监听函数传递参数，可以用匿名函数包装一下监听函数。
 
-```javascript
+```js
 function print(x) {
   console.log(x);
 }
@@ -87,7 +87,7 @@ el.addEventListener('click', function () { print('Hello'); }, false);
 
 监听函数内部的`this`，指向当前事件所在的那个对象。
 
-```javascript
+```js
 // HTML 代码如下
 // <p id="para">Hello</p>
 var para = document.getElementById('para');
@@ -102,7 +102,7 @@ para.addEventListener('click', function (e) {
 
 `EventTarget.removeEventListener`方法用来移除`addEventListener`方法添加的事件监听函数。该方法没有返回值。
 
-```javascript
+```js
 div.addEventListener('click', listener, false);
 div.removeEventListener('click', listener, false);
 ```
@@ -111,14 +111,14 @@ div.removeEventListener('click', listener, false);
 
 注意，`removeEventListener`方法移除的监听函数，必须是`addEventListener`方法添加的那个监听函数，而且必须在同一个元素节点，否则无效。
 
-```javascript
+```js
 div.addEventListener('click', function (e) {}, false);
 div.removeEventListener('click', function (e) {}, false);
 ```
 
 上面代码中，`removeEventListener`方法无效，因为监听函数不是同一个匿名函数。
 
-```javascript
+```js
 element.addEventListener('mousedown', handleMouseDown, true);
 element.removeEventListener("mousedown", handleMouseDown, false);
 ```
@@ -129,13 +129,13 @@ element.removeEventListener("mousedown", handleMouseDown, false);
 
 `EventTarget.dispatchEvent`方法在当前节点上触发指定事件，从而触发监听函数的执行。该方法返回一个布尔值，只要有一个监听函数调用了`Event.preventDefault()`，则返回值为`false`，否则为`true`。
 
-```javascript
+```js
 target.dispatchEvent(event)
 ```
 
 `dispatchEvent`方法的参数是一个`Event`对象的实例（详见《Event 对象》章节）。
 
-```javascript
+```js
 para.addEventListener('click', hello, false);
 var event = new Event('click');
 para.dispatchEvent(event);
@@ -147,7 +147,7 @@ para.dispatchEvent(event);
 
 下面代码根据`dispatchEvent`方法的返回值，判断事件是否被取消了。
 
-```javascript
+```js
 var canceled = !cb.dispatchEvent(event);
 if (canceled) {
   console.log('事件取消');
@@ -199,7 +199,7 @@ HTML 语言允许在元素的属性中，直接定义某些事件的监听代码
 
 直接设置`on-`属性，与通过元素节点的`setAttribute`方法设置`on-`属性，效果是一样的。
 
-```javascript
+```js
 el.setAttribute('onclick', 'doSomething()');
 // 等同于
 // <Element onclick="doSomething()">
@@ -209,7 +209,7 @@ el.setAttribute('onclick', 'doSomething()');
 
 元素节点对象的事件属性，同样可以指定监听函数。
 
-```javascript
+```js
 window.onload = doSomething;
 
 div.onclick = function (event) {
@@ -225,7 +225,7 @@ div.onclick = function (event) {
 
 所有 DOM 节点实例都有`addEventListener`方法，用来为该节点定义事件的监听函数。
 
-```javascript
+```js
 window.addEventListener('load', doSomething, false);
 ```
 
@@ -255,7 +255,7 @@ window.addEventListener('load', doSomething, false);
 
 其他两种监听函数的写法，`this`的指向也是如此。
 
-```javascript
+```js
 // HTML 代码如下
 // <button id="btn">点击</button>
 var btn = document.getElementById('btn');
@@ -297,7 +297,7 @@ btn.addEventListener(
 
 如果对这两个节点，都设置`click`事件的监听函数（每个节点的捕获阶段和监听阶段，各设置一个监听函数），共计设置四个监听函数。然后，对`<p>`点击，`click`事件会触发四次。
 
-```javascript
+```js
 var phases = {
   1: 'capture',
   2: 'target',
@@ -341,7 +341,7 @@ function callback(event) {
 
 由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数定义在父节点上，由父节点的监听函数统一处理多个子元素的事件。这种方法叫做事件的代理（delegation）。
 
-```javascript
+```js
 var ul = document.querySelector('ul');
 
 ul.addEventListener('click', function (event) {
@@ -355,7 +355,7 @@ ul.addEventListener('click', function (event) {
 
 如果希望事件到某个节点为止，不再传播，可以使用事件对象的`stopPropagation`方法。
 
-```javascript
+```js
 // 事件传播到 p 元素后，就不再向下传播了
 p.addEventListener('click', function (event) {
   event.stopPropagation();
@@ -371,7 +371,7 @@ p.addEventListener('click', function (event) {
 
 但是，`stopPropagation`方法只会阻止事件的传播，不会阻止该事件触发`<p>`节点的其他`click`事件的监听函数。也就是说，不是彻底取消`click`事件。
 
-```javascript
+```js
 p.addEventListener('click', function (event) {
   event.stopPropagation();
   console.log(1);
@@ -387,7 +387,7 @@ p.addEventListener('click', function(event) {
 
 如果想要彻底阻止这个事件的传播，不再触发后面所有`click`的监听函数，可以使用`stopImmediatePropagation`方法。
 
-```javascript
+```js
 p.addEventListener('click', function (event) {
   event.stopImmediatePropagation();
   console.log(1);
@@ -407,7 +407,7 @@ p.addEventListener('click', function(event) {
 
 `Event`对象本身就是一个构造函数，可以用来生成新的实例。
 
-```javascript
+```js
 event = new Event(type, options);
 ```
 
@@ -416,7 +416,7 @@ event = new Event(type, options);
 - `bubbles`：布尔值，可选，默认为`false`，表示事件对象是否冒泡。
 - `cancelable`：布尔值，可选，默认为`false`，表示事件是否可以被取消，即能否用`Event.preventDefault()`取消这个事件。一旦事件被取消，就好像从来没有发生过，不会触发浏览器对该事件的默认行为。
 
-```javascript
+```js
 var ev = new Event(
   'look',
   {
@@ -431,7 +431,7 @@ document.dispatchEvent(ev);
 
 注意，如果不是显式指定`bubbles`属性为`true`，生成的事件就只能在“捕获阶段”触发监听函数。
 
-```javascript
+```js
 // HTML 代码为
 // <div><p>Hello</p></div>
 var div = document.querySelector('div');
@@ -452,7 +452,7 @@ p.dispatchEvent(click);
 
 另一方面，如果这个事件在`div`元素上触发。
 
-```javascript
+```js
 div.dispatchEvent(click);
 ```
 
@@ -466,7 +466,7 @@ div.dispatchEvent(click);
 
 `Event.eventPhase`属性返回一个整数常量，表示事件目前所处的阶段。该属性只读。
 
-```javascript
+```js
 var phase = event.eventPhase;
 ```
 
@@ -483,7 +483,7 @@ var phase = event.eventPhase;
 
 大多数浏览器的原生事件是可以取消的。比如，取消`click`事件，点击链接将无效。但是除非显式声明，`Event`构造函数生成的事件，默认是不可以取消的。
 
-```javascript
+```js
 var evt = new Event('foo');
 evt.cancelable  // false
 ```
@@ -492,7 +492,7 @@ evt.cancelable  // false
 
 如果事件不能取消，调用`Event.preventDefault()`会没有任何效果。所以使用这个方法之前，最好用`Event.cancelable`属性判断一下是否可以取消。
 
-```javascript
+```js
 function preventEvent(event) {
   if (event.cancelable) {
     event.preventDefault();
@@ -507,7 +507,7 @@ function preventEvent(event) {
 
 `Event.defaultPrevented`属性返回一个布尔值，表示该事件是否调用过`Event.preventDefault`方法。该属性只读。
 
-```javascript
+```js
 if (event.defaultPrevented) {
   console.log('该事件已经取消了');
 }
@@ -519,7 +519,7 @@ if (event.defaultPrevented) {
 
 `Event.target`属性返回原始触发事件的那个节点，即事件最初发生的节点。事件传播过程中，不同节点的监听函数内部的`Event.target`与`Event.currentTarget`属性的值是不一样的，前者总是不变的，后者则是指向监听函数所在的那个节点对象。
 
-```javascript
+```js
 // HTML代码为
 // <p id="para">Hello <em>World</em></p>
 function hide(e) {
@@ -537,7 +537,7 @@ para.addEventListener('click', hide, false);
 
 `Event.type`属性返回一个字符串，表示事件类型。事件的类型是在生成事件的时候。该属性只读。
 
-```javascript
+```js
 var evt = new Event('foo');
 evt.type // "foo"
 ```
@@ -546,7 +546,7 @@ evt.type // "foo"
 
 `Event.timeStamp`属性返回一个毫秒时间戳，表示事件发生的时间。它是相对于网页加载成功开始计算的。
 
-```javascript
+```js
 var evt = new Event('foo');
 evt.timeStamp // 3683.6999999995896
 ```
@@ -555,7 +555,7 @@ evt.timeStamp // 3683.6999999995896
 
 下面是一个计算鼠标移动速度的例子，显示每秒移动的像素数量。
 
-```javascript
+```js
 var previousX;
 var previousY;
 var previousT;
@@ -584,7 +584,7 @@ window.addEventListener('mousemove', function(event) {
 
 `Event.isTrusted`属性返回一个布尔值，表示该事件是否由真实的用户行为产生。比如，用户点击链接会产生一个`click`事件，该事件是用户产生的；`Event`构造函数生成的事件，则是脚本产生的。
 
-```javascript
+```js
 var evt = new Event('foo');
 evt.isTrusted // false
 ```
@@ -595,7 +595,7 @@ evt.isTrusted // false
 
 `Event.detail`属性只有浏览器的 UI （用户界面）事件才具有。该属性返回一个数值，表示事件的某种信息。具体含义与事件类型相关。比如，对于`click`和`dbclick`事件，`Event.detail`是鼠标按下的次数（`1`表示单击，`2`表示双击，`3`表示三击）；对于鼠标滚轮事件，`Event.detail`是滚轮正向滚动的距离，负值就是负向滚动的距离，返回值总是3的倍数。
 
-```javascript
+```js
 // HTML 代码如下
 // <p>Hello</p>
 function giveDetails(e) {
@@ -613,7 +613,7 @@ document.querySelector('p').onclick = giveDetails;
 
 注意，该方法只是取消事件对当前元素的默认影响，不会阻止事件的传播。如果要阻止传播，可以使用`stopPropagation()`或`stopImmediatePropagation()`方法。
 
-```javascript
+```js
 // HTML 代码为
 // <input type="checkbox" id="my-checkbox" />
 var cb = document.getElementById('my-checkbox');
@@ -629,7 +629,7 @@ cb.addEventListener(
 
 利用这个方法，可以为文本输入框设置校验条件。如果用户的输入不符合条件，就无法将字符输入文本框。
 
-```javascript
+```js
 // HTML 代码为
 // <input type="text" id="my-input" />
 var input = document.getElementById('my-input');
@@ -648,7 +648,7 @@ function checkName(e) {
 
 `stopPropagation`方法阻止事件在 DOM 中继续传播，防止再触发定义在别的节点上的监听函数，但是不包括在当前节点上其他的事件监听函数。
 
-```javascript
+```js
 function stopEvent(e) {
   e.stopPropagation();
 }
@@ -664,7 +664,7 @@ el.addEventListener('click', stopEvent, false);
 
 如果同一个节点对于同一个事件指定了多个监听函数，这些函数会根据添加的顺序依次调用。只要其中有一个监听函数调用了`Event.stopImmediatePropagation`方法，其他的监听函数就不会再执行了。
 
-```javascript
+```js
 function l1(e){
   e.stopImmediatePropagation();
 }
@@ -683,7 +683,7 @@ el.addEventListener('click', l2, false);
 
 `Event.composedPath()`返回一个数组，成员是事件的最底层节点和依次冒泡经过的所有上层节点。
 
-```javascript
+```js
 // HTML 代码如下
 // <div>
 //   <p>Hello</p>
@@ -705,7 +705,7 @@ CustomEvent 接口用于生成自定义的事件实例。那些浏览器预定�
 
 浏览器原生提供`CustomEvent()`构造函数，用来生成 CustomEvent 事件实例。
 
-```javascript
+```js
 new CustomEvent(type, options)
 ```
 
@@ -715,7 +715,7 @@ new CustomEvent(type, options)
 
 下面是一个例子。
 
-```javascript
+```js
 var event = new CustomEvent('build', { 'detail': 'hello' });
 
 function eventHandler(e) {
@@ -733,7 +733,7 @@ document.body.dispatchEvent(event);
 
 下面是另一个例子。
 
-```javascript
+```js
 var myEvent = new CustomEvent('myevent', {
   detail: {
     foo: 'bar'

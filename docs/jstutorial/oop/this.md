@@ -8,7 +8,7 @@
 
 简单说，`this`就是属性或方法“当前”所在的对象。
 
-```javascript
+```js
 this.property
 ```
 
@@ -16,7 +16,7 @@ this.property
 
 下面是一个实际的例子。
 
-```javascript
+```js
 var person = {
   name: '张三',
   describe: function () {
@@ -32,7 +32,7 @@ person.describe()
 
 由于对象的属性可以赋给另一个对象，所以属性所在的当前对象是可变的，即`this`的指向是可变的。
 
-```javascript
+```js
 var A = {
   name: '张三',
   describe: function () {
@@ -53,7 +53,7 @@ B.describe()
 
 稍稍重构这个例子，`this`的动态指向就能看得更清楚。
 
-```javascript
+```js
 function f() {
   return '姓名：'+ this.name;
 }
@@ -76,7 +76,7 @@ B.describe() // "姓名：李四"
 
 只要函数被赋给另一个变量，`this`的指向就会变。
 
-```javascript
+```js
 var A = {
   name: '张三',
   describe: function () {
@@ -116,7 +116,7 @@ function validate(obj, lowval, hival){
 
 全局环境使用`this`，它指的就是顶层对象`window`。
 
-```javascript
+```js
 this === window // true
 
 function f() {
@@ -131,7 +131,7 @@ f() // true
 
 构造函数中的`this`，指的是实例对象。
 
-```javascript
+```js
 var Obj = function (p) {
   this.p = p;
 };
@@ -139,7 +139,7 @@ var Obj = function (p) {
 
 上面代码定义了一个构造函数`Obj`。由于`this`指向实例对象，所以在构造函数内部定义`this.p`，就相当于定义实例对象有一个`p`属性。
 
-```javascript
+```js
 var o = new Obj('Hello World!');
 o.p // "Hello World!"
 ```
@@ -150,7 +150,7 @@ o.p // "Hello World!"
 
 但是，这条规则很不容易把握。请看下面的代码。
 
-```javascript
+```js
 var obj ={
   foo: function () {
     console.log(this);
@@ -164,7 +164,7 @@ obj.foo() // obj
 
 但是，下面这几种用法，都会改变`this`的指向。
 
-```javascript
+```js
 // 情况一
 (obj.foo = obj.foo)() // window
 // 情况二
@@ -177,7 +177,7 @@ obj.foo() // obj
 
 可以这样理解，JavaScript 引擎内部，`obj`和`obj.foo`储存在两个内存地址，称为地址一和地址二。`obj.foo()`这样调用时，是从地址一调用地址二，因此地址二的运行环境是地址一，`this`指向`obj`。但是，上面三种情况，都是直接取出地址二进行调用，这样的话，运行环境就是全局环境，因此`this`指向全局环境。上面三种情况等同于下面的代码。
 
-```javascript
+```js
 // 情况一
 (obj.foo = function () {
   console.log(this);
@@ -200,7 +200,7 @@ obj.foo() // obj
 
 如果`this`所在的方法不在对象的第一层，这时`this`只是指向当前一层的对象，而不会继承更上面的层。
 
-```javascript
+```js
 var a = {
   p: 'Hello',
   b: {
@@ -215,7 +215,7 @@ a.b.m() // undefined
 
 上面代码中，`a.b.m`方法在`a`对象的第二层，该方法内部的`this`不是指向`a`，而是指向`a.b`，因为实际执行的是下面的代码。
 
-```javascript
+```js
 var b = {
   m: function() {
    console.log(this.p);
@@ -232,7 +232,7 @@ var a = {
 
 如果要达到预期效果，只有写成下面这样。
 
-```javascript
+```js
 var a = {
   b: {
     m: function() {
@@ -245,7 +245,7 @@ var a = {
 
 如果这时将嵌套对象内部的方法赋值给一个变量，`this`依然会指向全局对象。
 
-```javascript
+```js
 var a = {
   b: {
     m: function() {
@@ -261,7 +261,7 @@ hello() // undefined
 
 上面代码中，`m`是多层对象内部的一个方法。为求简便，将其赋值给`hello`变量，结果调用时，`this`指向了顶层对象。为了避免这个问题，可以只将`m`所在的对象赋值给`hello`，这样调用时，`this`的指向就不会变。
 
-```javascript
+```js
 var hello = a.b;
 hello.m() // Hello
 ```
@@ -272,7 +272,7 @@ hello.m() // Hello
 
 由于`this`的指向是不确定的，所以切勿在函数中包含多层的`this`。
 
-```javascript
+```js
 var o = {
   f1: function () {
     console.log(this);
@@ -289,7 +289,7 @@ o.f1()
 
 上面代码包含两层`this`，结果运行后，第一层指向对象`o`，第二层指向全局对象，因为实际执行的是下面的代码。
 
-```javascript
+```js
 var temp = function () {
   console.log(this);
 };
@@ -304,7 +304,7 @@ var o = {
 
 一个解决方法是在第二层改用一个指向外层`this`的变量。
 
-```javascript
+```js
 var o = {
   f1: function() {
     console.log(this);
@@ -326,7 +326,7 @@ o.f1()
 
 JavaScript 提供了严格模式，也可以硬性避免这种问题。严格模式下，如果函数内部的`this`指向顶层对象，就会报错。
 
-```javascript
+```js
 var counter = {
   count: 0
 };
@@ -345,7 +345,7 @@ f()
 
 数组的`map`和`foreach`方法，允许提供一个函数作为参数。这个函数内部不应该使用`this`。
 
-```javascript
+```js
 var o = {
   v: 'hello',
   p: [ 'a1', 'a2' ],
@@ -365,7 +365,7 @@ o.f()
 
 解决这个问题的一种方法，就是前面提到的，使用中间变量固定`this`。
 
-```javascript
+```js
 var o = {
   v: 'hello',
   p: [ 'a1', 'a2' ],
@@ -384,7 +384,7 @@ o.f()
 
 另一种方法是将`this`当作`foreach`方法的第二个参数，固定它的运行环境。
 
-```javascript
+```js
 var o = {
   v: 'hello',
   p: [ 'a1', 'a2' ],
@@ -404,7 +404,7 @@ o.f()
 
 回调函数中的`this`往往会改变指向，最好避免使用。
 
-```javascript
+```js
 var o = new Object();
 o.f = function () {
   console.log(this === o);
@@ -426,7 +426,7 @@ $('#button').on('click', o.f);
 
 函数实例的`call`方法，可以指定函数内部`this`的指向（即函数执行时所在的作用域），然后在所指定的作用域中，调用该函数。
 
-```javascript
+```js
 var obj = {};
 
 var f = function () {
@@ -441,7 +441,7 @@ f.call(obj) === obj // true
 
 `call`方法的参数，应该是一个对象。如果参数为空、`null`和`undefined`，则默认传入全局对象。
 
-```javascript
+```js
 var n = 123;
 var obj = { n: 456 };
 
@@ -460,7 +460,7 @@ a.call(obj) // 456
 
 如果`call`方法的参数是一个原始值，那么这个原始值会自动转成对应的包装对象，然后传入`call`方法。
 
-```javascript
+```js
 var f = function () {
   return this;
 };
@@ -473,13 +473,13 @@ f.call(5)
 
 `call`方法还可以接受多个参数。
 
-```javascript
+```js
 func.call(thisValue, arg1, arg2, ...)
 ```
 
 `call`的第一个参数就是`this`所要指向的那个对象，后面的参数则是函数调用时所需的参数。
 
-```javascript
+```js
 function add(a, b) {
   return a + b;
 }
@@ -491,7 +491,7 @@ add.call(this, 1, 2) // 3
 
 `call`方法的一个应用是调用对象的原生方法。
 
-```javascript
+```js
 var obj = {};
 obj.hasOwnProperty('toString') // false
 
@@ -510,13 +510,13 @@ Object.prototype.hasOwnProperty.call(obj, 'toString') // false
 
 `apply`方法的作用与`call`方法类似，也是改变`this`指向，然后再调用该函数。唯一的区别就是，它接收一个数组作为函数执行时的参数，使用格式如下。
 
-```javascript
+```js
 func.apply(thisValue, [arg1, arg2, ...])
 ```
 
 `apply`方法的第一个参数也是`this`所要指向的那个对象，如果设为`null`或`undefined`，则等同于指定全局对象。第二个参数则是一个数组，该数组的所有成员依次作为参数，传入原函数。原函数的参数，在`call`方法中必须一个个添加，但是在`apply`方法中，必须以数组形式添加。
 
-```javascript
+```js
 function f(x, y){
   console.log(x + y);
 }
@@ -533,7 +533,7 @@ f.apply(null, [1, 1]) // 2
 
 JavaScript 不提供找出数组最大元素的函数。结合使用`apply`方法和`Math.max`方法，就可以返回数组的最大元素。
 
-```javascript
+```js
 var a = [10, 2, 4, 15, 9];
 Math.max.apply(null, a) // 15
 ```
@@ -542,14 +542,14 @@ Math.max.apply(null, a) // 15
 
 通过`apply`方法，利用`Array`构造函数将数组的空元素变成`undefined`。
 
-```javascript
+```js
 Array.apply(null, ['a', ,'b'])
 // [ 'a', undefined, 'b' ]
 ```
 
 空元素与`undefined`的差别在于，数组的`forEach`方法会跳过空元素，但是不会跳过`undefined`。因此，遍历内部元素的时候，会得到不同的结果。
 
-```javascript
+```js
 var a = ['a', , 'b'];
 
 function print(i) {
@@ -570,7 +570,7 @@ Array.apply(null, a).forEach(print)
 
 另外，利用数组对象的`slice`方法，可以将一个类似数组的对象（比如`arguments`对象）转为真正的数组。
 
-```javascript
+```js
 Array.prototype.slice.apply({0: 1, length: 1}) // [1]
 Array.prototype.slice.apply({0: 1}) // []
 Array.prototype.slice.apply({0: 1, length: 2}) // [1, undefined]
@@ -583,7 +583,7 @@ Array.prototype.slice.apply({length: 1}) // [undefined]
 
 前面的按钮点击事件的例子，可以改写如下。
 
-```javascript
+```js
 var o = new Object();
 
 o.f = function () {
@@ -605,7 +605,7 @@ $('#button').on('click', f);
 
 `bind`方法用于将函数体内的`this`绑定到某个对象，然后返回一个新函数。
 
-```javascript
+```js
 var d = new Date();
 d.getTime() // 1481869925657
 
@@ -617,7 +617,7 @@ print() // Uncaught TypeError: this is not a Date object.
 
 `bind`方法可以解决这个问题。
 
-```javascript
+```js
 var print = d.getTime.bind(d);
 print() // 1481869925657
 ```
@@ -626,7 +626,7 @@ print() // 1481869925657
 
 `bind`方法的参数就是所要绑定`this`的对象，下面是一个更清晰的例子。
 
-```javascript
+```js
 var counter = {
   count: 0,
   inc: function () {
@@ -643,7 +643,7 @@ counter.count // 1
 
 `this`绑定到其他对象也是可以的。
 
-```javascript
+```js
 var counter = {
   count: 0,
   inc: function () {
@@ -663,7 +663,7 @@ obj.count // 101
 
 `bind`还可以接受更多的参数，将这些参数绑定原函数的参数。
 
-```javascript
+```js
 var add = function (x, y) {
   return x * this.m + y * this.n;
 }
@@ -681,7 +681,7 @@ newAdd(5) // 20
 
 如果`bind`方法的第一个参数是`null`或`undefined`，等于将`this`绑定到全局对象，函数运行时`this`指向顶层对象（浏览器为`window`）。
 
-```javascript
+```js
 function add(x, y) {
   return x + y;
 }
@@ -698,19 +698,19 @@ plus5(10) // 15
 
 `bind`方法每运行一次，就返回一个新函数，这会产生一些问题。比如，监听事件的时候，不能写成下面这样。
 
-```javascript
+```js
 element.addEventListener('click', o.m.bind(o));
 ```
 
 上面代码中，`click`事件绑定`bind`方法生成的一个匿名函数。这样会导致无法取消绑定，所以，下面的代码是无效的。
 
-```javascript
+```js
 element.removeEventListener('click', o.m.bind(o));
 ```
 
 正确的方法是写成下面这样：
 
-```javascript
+```js
 var listener = o.m.bind(o);
 element.addEventListener('click', listener);
 //  ...
@@ -721,7 +721,7 @@ element.removeEventListener('click', listener);
 
 回调函数是 JavaScript 最常用的模式之一，但是一个常见的错误是，将包含`this`的方法直接当作回调函数。解决方法就是使用`bind`方法，将`counter.inc`绑定`counter`。
 
-```javascript
+```js
 var counter = {
   count: 0,
   inc: function () {
@@ -742,7 +742,7 @@ counter.count // 1
 
 还有一种情况比较隐蔽，就是某些数组方法可以接受一个函数当作参数。这些函数内部的`this`指向，很可能也会出错。
 
-```javascript
+```js
 var obj = {
   name: '张三',
   times: [1, 2, 3],
@@ -759,7 +759,7 @@ obj.print()
 
 上面代码中，`obj.print`内部`this.times`的`this`是指向`obj`的，这个没有问题。但是，`forEach`方法的回调函数内部的`this.name`却是指向全局对象，导致没有办法取到值。稍微改动一下，就可以看得更清楚。
 
-```javascript
+```js
 obj.print = function () {
   this.times.forEach(function (n) {
     console.log(this === window);
@@ -774,7 +774,7 @@ obj.print()
 
 解决这个问题，也是通过`bind`方法绑定`this`。
 
-```javascript
+```js
 obj.print = function () {
   this.times.forEach(function (n) {
     console.log(this.name);
@@ -791,7 +791,7 @@ obj.print()
 
 利用`bind`方法，可以改写一些 JavaScript 原生方法的使用形式，以数组的`slice`方法为例。
 
-```javascript
+```js
 [1, 2, 3].slice(0, 1) // [1]
 // 等同于
 Array.prototype.slice.call([1, 2, 3], 0, 1) // [1]
@@ -801,14 +801,14 @@ Array.prototype.slice.call([1, 2, 3], 0, 1) // [1]
 
 `call`方法实质上是调用`Function.prototype.call`方法，因此上面的表达式可以用`bind`方法改写。
 
-```javascript
+```js
 var slice = Function.prototype.call.bind(Array.prototype.slice);
 slice([1, 2, 3], 0, 1) // [1]
 ```
 
 上面代码的含义就是，将`Array.prototype.slice`变成`Function.prototype.call`方法所在的对象，调用时就变成了`Array.prototype.slice.call`。类似的写法还可以用于其他数组方法。
 
-```javascript
+```js
 var push = Function.prototype.call.bind(Array.prototype.push);
 var pop = Function.prototype.call.bind(Array.prototype.pop);
 
@@ -822,7 +822,7 @@ a // [1, 2, 3]
 
 如果再进一步，将`Function.prototype.call`方法绑定到`Function.prototype.bind`对象，就意味着`bind`的调用形式也可以被改写。
 
-```javascript
+```js
 function f() {
   console.log(this.v);
 }

@@ -6,7 +6,7 @@ child_process模块用于新建子进程。子进程的运行结果储存在系�
 
 `exec`方法用于执行bash命令，它的参数是一个命令字符串。
 
-```javascript
+```js
 var exec = require('child_process').exec;
 
 var ls = exec('ls -l', function (error, stdout, stderr) {
@@ -24,7 +24,7 @@ var ls = exec('ls -l', function (error, stdout, stderr) {
 
 由于标准输出和标准错误都是流对象（stream），可以监听data事件，因此上面的代码也可以写成下面这样。
 
-```javascript
+```js
 var exec = require('child_process').exec;
 var child = exec('ls -l');
 
@@ -45,7 +45,7 @@ child.on('close', function(code) {
 
 下面是另一个例子，假定有一个child.js文件。
 
-```javascript
+```js
 // child.js
 
 var exec = require('child_process').exec;
@@ -70,7 +70,7 @@ stderr:
 
 exec方法会直接调用bash（`/bin/sh`程序）来解释命令，所以如果有用户输入的参数，exec方法是不安全的。
 
-```javascript
+```js
 var path = ";user input";
 child_process.exec('ls -l ' + path, function (err, data) {
   console.log(data);
@@ -85,7 +85,7 @@ child_process.exec('ls -l ' + path, function (err, data) {
 
 它可以接受两个参数，第一个参数是所要执行的命令，第二个参数用来配置执行环境。
 
-```javascript
+```js
 var execSync = require("child_process").execSync;
 
 var SEPARATOR = process.platform === 'win32' ? ';' : ':';
@@ -111,7 +111,7 @@ myExecSync('eslint .');
 
 execFile方法直接执行特定的程序，参数作为数组传入，不会被bash解释，因此具有较高的安全性。
 
-```javascript
+```js
 var child_process = require('child_process');
 
 var path = ".";
@@ -126,7 +126,7 @@ child_process.execFile('/bin/ls', ['-l', path], function (err, result) {
 
 spawn方法创建一个子进程来执行特定命令，用法与execFile方法类似，但是没有回调函数，只能通过监听事件，来获取运行结果。它属于异步执行，适用于子进程长时间运行的情况。
 
-```javascript
+```js
 var child_process = require('child_process');
 
 var path = '.';
@@ -150,7 +150,7 @@ spawn对象返回一个对象，代表子进程。该对象部署了EventEmitter
 
 spawn方法与exec方法非常类似，只是使用格式略有区别。
 
-```javascript
+```js
 child_process.exec(command, [options], callback)
 child_process.spawn(command, [args], [options])
 ```
@@ -159,7 +159,7 @@ child_process.spawn(command, [args], [options])
 
 fork方法直接创建一个子进程，执行Node脚本，`fork('./child.js')` 相当于 `spawn('node', ['./child.js'])` 。与spawn方法不同的是，fork会在父进程与子进程之间，建立一个通信管道，用于进程之间的通信。
 
-```javascript
+```js
 
 var n = child_process.fork('./child.js');
 n.on('message', function(m) {
@@ -173,7 +173,7 @@ n.send({ hello: 'world' });
 
 child.js脚本的内容如下。
 
-```javascript
+```js
 
 process.on('message', function(m) {
   console.log('CHILD got message:', m);
@@ -190,7 +190,7 @@ process.send({ foo: 'bar' });
 
 下面的例子是主进程的代码。
 
-```javascript
+```js
 var cp = require('child_process');
 
 var n = cp.fork(__dirname + '/sub.js');
@@ -204,7 +204,7 @@ n.send({ hello: 'world' });
 
 下面是子进程sub.js代码。
 
-```javascript
+```js
 process.on('message', function(m) {
   console.log('CHILD got message:', m);
 });

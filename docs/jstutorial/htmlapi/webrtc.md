@@ -26,7 +26,7 @@ navigator.getUserMedia方法目前主要用于，在浏览器中获取音频（�
 
 下面的代码用于检查浏览器是否支持getUserMedia方法。
 
-```javascript
+```js
 
 navigator.getUserMedia  = navigator.getUserMedia ||
                           navigator.webkitGetUserMedia ||
@@ -45,7 +45,7 @@ Chrome 21, Opera 18和Firefox 17，支持该方法。目前，IE还不支持，�
 
 getUserMedia方法接受三个参数。
 
-```javascript
+```js
 
 navigator.getUserMedia({
     video: true, 
@@ -58,7 +58,7 @@ getUserMedia的第一个参数是一个对象，表示要获取哪些多媒体�
 
 下面是一个例子。
 
-```javascript
+```js
 
 var constraints = {video: true};
 
@@ -99,7 +99,7 @@ onError回调函数接受一个Error对象作为参数。Error对象的code属�
 
 然后，用代码获取这个元素。
 
-```javascript
+```js
 
 function onSuccess(stream) {
     var video = document.getElementById('webcam');
@@ -109,7 +109,7 @@ function onSuccess(stream) {
 
 接着，将这个元素的src属性绑定数据流，摄影头拍摄的图像就可以显示了。
 
-```javascript
+```js
 
 function onSuccess(stream) {
     var video = document.getElementById('webcam');
@@ -170,7 +170,7 @@ if (navigator.getUserMedia) {
 
 通过浏览器捕获声音，需要借助Web Audio API。
 
-```javascript
+```js
 
 window.AudioContext = window.AudioContext ||
                       window.webkitAudioContext;
@@ -190,7 +190,7 @@ navigator.getUserMedia({audio:true}, onSuccess);
 
 getUserMedia方法的第一个参数，除了指定捕获对象之外，还可以指定一些限制条件，比如限定只能录制高清（或者VGA标准）的视频。
 
-```javascript
+```js
 
 var hdConstraints = {
   video: {
@@ -220,7 +220,7 @@ navigator.getUserMedia(vgaConstraints, onSuccess, onError);
 
 如果本机有多个摄像头/麦克风，这时就需要使用MediaStreamTrack.getSources方法指定，到底使用哪一个摄像头/麦克风。
 
-```javascript
+```js
 
 MediaStreamTrack.getSources(function(sourceInfos) {
   var audioSource = null;
@@ -276,7 +276,7 @@ WebRTC协议没有规定与服务器的通信方式，因此可以采用各种�
 
 下面是一个示例。
 
-```javascript
+```js
 
 var signalingChannel = createSignalingChannel();
 var pc;
@@ -334,7 +334,7 @@ RTCDataChannel的作用是在点对点之间，传播任意数据。它的API与
 
 下面是一个示例。
 
-```javascript
+```js
 
 var pc = new webkitRTCPeerConnection(servers,
   {optional: [{RtpDataChannels: true}]});
@@ -363,7 +363,7 @@ Chrome 25、Opera 18和Firefox 22支持RTCDataChannel。
 
 下面是SimpleWebRTC的示例。
 
-```javascript
+```js
 
 var webrtc = new WebRTC({
   localVideoEl: 'localVideo',
@@ -379,7 +379,7 @@ webrtc.on('readyToCall', function () {
 
 下面是PeerJS的示例。
 
-```javascript
+```js
 
 var peer = new Peer('someid', {key: 'apikey'});
 peer.on('connection', function(conn) {

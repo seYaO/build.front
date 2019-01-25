@@ -18,7 +18,7 @@ HTML 元素包括标签名和若干个键值对，这个键值对就称为“属
 
 单个属性可以通过序号引用，也可以通过属性名引用。
 
-```javascript
+```js
 // HTML 代码如下
 // <body bgcolor="yellow" onload="">
 document.body.attributes[0]
@@ -30,7 +30,7 @@ document.body.attributes['ONLOAD']
 
 属性节点对象有`name`和`value`属性，对应该属性的属性名和属性值，等同于`nodeName`属性和`nodeValue`属性。
 
-```javascript
+```js
 // HTML代码为
 // <div id="mydiv">
 var n = document.getElementById('mydiv');
@@ -44,7 +44,7 @@ n.attributes[0].nodeValue // "mydiv"
 
 下面代码可以遍历一个元素节点的所有属性。
 
-```javascript
+```js
 var para = document.getElementsByTagName('p')[0];
 var result = document.getElementById('result');
 
@@ -64,7 +64,7 @@ if (para.hasAttributes()) {
 
 HTML 元素的标准属性（即在标准中定义的属性），会自动成为元素节点对象的属性。
 
-```javascript
+```js
 var a = document.getElementById('test');
 a.id // "test"
 a.href // "http://www.example.com/"
@@ -74,7 +74,7 @@ a.href // "http://www.example.com/"
 
 这些属性都是可写的。
 
-```javascript
+```js
 var img = document.getElementById('myImage');
 img.src = 'http://www.example.com/image.jpg';
 ```
@@ -83,7 +83,7 @@ img.src = 'http://www.example.com/image.jpg';
 
 这种修改属性的方法，常常用于添加表单的属性。
 
-```javascript
+```js
 var f = document.forms[0];
 f.action = 'submit.php';
 f.method = 'POST';
@@ -127,7 +127,7 @@ HTML 元素的属性名是大小写不敏感的，但是 JavaScript 对象的属
 
 这些方法只接受属性的标准名称，不用改写保留字，比如`for`和`class`都可以直接使用。另外，这些方法对于属性名是大小写不敏感的。
 
-```javascript
+```js
 var image = document.images[0];
 image.setAttribute('class', 'myImage');
 ```
@@ -138,7 +138,7 @@ image.setAttribute('class', 'myImage');
 
 `Element.getAttribute`方法返回当前元素节点的指定属性。如果指定属性不存在，则返回`null`。
 
-```javascript
+```js
 // HTML代码为
 // <div id="div1" align="left">
 var div = document.getElementById('div1');
@@ -149,14 +149,14 @@ div.getAttribute('align') // "left"
 
 `Element.setAttribute`方法用于为当前元素节点新增属性。如果同名属性已存在，则相当于编辑已存在的属性。
 
-```javascript
+```js
 var d = document.getElementById('d1');
 d.setAttribute('align', 'center');
 ```
 
 下面是对`img`元素的`src`属性赋值的例子。
 
-```javascript
+```js
 var myImage = document.querySelector('img');
 myImage.setAttribute('src', 'path/to/example.png');
 ```
@@ -165,7 +165,7 @@ myImage.setAttribute('src', 'path/to/example.png');
 
 `Element.hasAttribute`方法返回一个布尔值，表示当前元素节点是否包含指定属性。
 
-```javascript
+```js
 var d = document.getElementById('div1');
 
 if (d.hasAttribute('align')) {
@@ -179,7 +179,7 @@ if (d.hasAttribute('align')) {
 
 `Element.removeAttribute`方法用于从当前元素节点移除属性。
 
-```javascript
+```js
 // HTML 代码为
 // <div id="div1" align="left" width="200px">
 document.getElementById('div1').removeAttribute('align');
@@ -197,7 +197,7 @@ document.getElementById('div1').removeAttribute('align');
 
 上面代码为`div`元素自定义了`foo`属性，然后可以用`getAttribute()`和`setAttribute()`读写这个属性。
 
-```javascript
+```js
 var n = document.getElementById('mydiv');
 n.getAttribute('foo') // bar
 n.setAttribute('foo', 'baz')
@@ -213,7 +213,7 @@ n.setAttribute('foo', 'baz')
 
 然后，使用元素节点对象的`dataset`属性，它指向一个对象，可以用来操作 HTML 元素标签的`data-*`属性。
 
-```javascript
+```js
 var n = document.getElementById('mydiv');
 n.dataset.foo // bar
 n.dataset.foo = 'baz'
@@ -223,7 +223,7 @@ n.dataset.foo = 'baz'
 
 删除一个`data-*`属性，可以直接使用`delete`命令。
 
-```javascript
+```js
 delete document.getElementById('myDiv').dataset.foo;
 ```
 

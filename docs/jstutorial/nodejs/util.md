@@ -8,7 +8,7 @@ Node 8 提供了`util.promisify`方法，用于将那些接受回调函数的函
 
 举例来说，`fs.readFile()`是一个接受回调函数的方法，用法如下。
 
-```javascript
+```js
 fs.readFile('path/to/file', 'utf8', (err, data) => {
   // ...
 });
@@ -18,7 +18,7 @@ fs.readFile('path/to/file', 'utf8', (err, data) => {
 
 `util.promisify`可以将这个方法转为 Promise。转化后的参数就是`fs.readFile`的前两个参数。一旦 Promise 成功，就会传回`data`，否则传回`err`。
 
-```javascript
+```js
 const {promisify} = require('util');
 const fs = require('fs');
 const readFileAsync = promisify(fs.readFile);
@@ -47,7 +47,7 @@ ERROR: { Error: ENOENT: no such file or directory, ··· }
 
 由于`util.promisify`返回的函数，执行后会返回 Promise，所以可以用于`async...await`语法。
 
-```javascript
+```js
 async function main() {
   try {
     const text = await readFileAsync(filePath, {encoding: 'utf8'});
@@ -62,7 +62,7 @@ main();
 
 有些异步方法会向回调函数提供多于一个的参数，比如`dns.lookup()`。
 
-```javascript
+```js
 dns.lookup('nodejs.org', function (err, address, family) {
   // ...
 });
@@ -72,7 +72,7 @@ dns.lookup('nodejs.org', function (err, address, family) {
 
 `util.promisify`转变`dns.lookup`后，Promise 只会接收一个对象，`address`和`family`都会变成这个对象的参数。
 
-```javascript
+```js
 const util = require('util');
 const dns = require('dns');
 const lookupAsync = util.promisify(dns.lookup);
@@ -84,7 +84,7 @@ lookupAsync('nodejs.org')
 
 如果一个函数具有`util.promisify.custom`属性，那么`util.promisify`会返回该属性指向的函数。
 
-```javascript
+```js
 const util = require('util');
 
 function foo() {
@@ -109,14 +109,14 @@ util.promisify(foo) === fooAsync // true
 
 之所以是这两个函数，因为它们的回调函数位置是不规则的，都是参数列表的第一位。
 
-```javascript
+```js
 setImmediate(callback, ...args);
 setTimeout(callback, delay, ...args);
 ```
 
 `util.promisify`封装它们的例子如下。
 
-```javascript
+```js
 const {promisify} = require('util');
 const delay = promisify(setTimeout);
 delay(3000).then(() => console.log('done'));

@@ -8,7 +8,7 @@ os模块提供与操作系统相关的方法。
 
 `os.EOL`属性是一个常量，返回当前操作系统的换行符（Windows系统是`\r\n`，其他系统是`\n`）。
 
-```javascript
+```js
 const fs = require(`fs`);
 
 // bad
@@ -31,7 +31,7 @@ fs.readFile('./myFile.txt', 'utf8', (err, data) => {
 
 `os.arch`方法返回当前计算机的架构。
 
-```javascript
+```js
 require(`os`).arch()
 // "x64"
 ```
@@ -44,7 +44,7 @@ require(`os`).arch()
 
 下面例子列出当前系列的所有IP地址。
 
-```javascript
+```js
 
 var os = require('os');
 var interfaces = os.networkInterfaces();

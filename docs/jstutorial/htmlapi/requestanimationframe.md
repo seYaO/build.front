@@ -12,7 +12,7 @@ requestAnimationFrame的优势，在于充分利用显示器的刷新机制，�
 
 requestAnimationFrame使用一个回调函数作为参数。这个回调函数会在浏览器重绘之前调用。
 
-```javascript
+```js
 
 requestID = window.requestAnimationFrame(callback); 
 
@@ -20,7 +20,7 @@ requestID = window.requestAnimationFrame(callback);
 
 目前，主要浏览器Firefox 23 / IE 10 / Chrome / Safari）都支持这个方法。可以用下面的方法，检查浏览器是否支持这个API。如果不支持，则自行模拟部署该方法。
 
-```javascript
+```js
 
  window.requestAnimFrame = (function(){
       return  window.requestAnimationFrame       || 
@@ -39,7 +39,7 @@ requestID = window.requestAnimationFrame(callback);
 
 使用requestAnimationFrame的时候，只需反复调用它即可。
 
-```javascript
+```js
 
 function repeatOften() {
   // Do whatever
@@ -54,7 +54,7 @@ requestAnimationFrame(repeatOften);
 
 cancelAnimationFrame方法用于取消重绘。
 
-```javascript
+```js
 
 window.cancelAnimationFrame(requestID);
 
@@ -62,7 +62,7 @@ window.cancelAnimationFrame(requestID);
 
 它的参数是requestAnimationFrame返回的一个代表任务ID的整数值。
 
-```javascript
+```js
 
 var globalID;
 
@@ -97,7 +97,7 @@ $("#stop").on("click", function() {
 
 然后，定义动画效果。
 
-```javascript
+```js
 
 var elem = document.getElementById("anim");
 
@@ -117,7 +117,7 @@ function render(time) {
 
 最后，定义click事件。
 
-```javascript
+```js
 
 elem.onclick = function() {
 

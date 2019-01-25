@@ -8,7 +8,7 @@
 
 Element节点的requestFullscreen方法，可以使得这个节点全屏。
 
-```javascript
+```js
 function launchFullscreen(element) {
   if(element.requestFullscreen) {
     element.requestFullscreen();
@@ -38,7 +38,7 @@ launchFullscreen(document.getElementById("videoElement"));
 
 document对象的exitFullscreen方法用于取消全屏。该方法也带有浏览器前缀。
 
-```javascript
+```js
 function exitFullscreen() {
   if (document.exitFullscreen) {
     document.exitFullscreen();
@@ -62,7 +62,7 @@ exitFullscreen();
 
 fullscreenElement属性返回正处于全屏状态的Element节点，如果当前没有节点处于全屏状态，则返回null。
 
-```javascript
+```js
 var fullscreenElement =
   document.fullscreenElement ||
   document.mozFullScreenElement ||
@@ -73,7 +73,7 @@ var fullscreenElement =
 
 fullscreenEnabled属性返回一个布尔值，表示当前文档是否可以切换到全屏状态。
 
-```javascript
+```js
 var fullscreenEnabled =
   document.fullscreenEnabled ||
   document.mozFullScreenEnabled ||
@@ -95,7 +95,7 @@ if (fullscreenEnabled) {
 
 - fullscreenerror事件：浏览器无法进入全屏时触发，可能是技术原因，也可能是用户拒绝。
 
-```javascript
+```js
 document.addEventListener("fullscreenchange", function( event ) {
   if (document.fullscreenElement) {
     console.log('进入全屏');

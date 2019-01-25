@@ -18,13 +18,13 @@ Mutation Observer 有以下特点。
 
 使用时，首先使用`MutationObserver`构造函数，新建一个观察器实例，同时指定这个实例的回调函数。
 
-```javascript
+```js
 var observer = new MutationObserver(callback);
 ```
 
 上面代码中的回调函数，会在每次 DOM 变动后调用。该回调函数接受两个参数，第一个是变动数组，第二个是观察器实例，下面是一个例子。
 
-```javascript
+```js
 var observer = new MutationObserver(function (mutations, observer) {
   mutations.forEach(function(mutation) {
     console.log(mutation);
@@ -41,7 +41,7 @@ var observer = new MutationObserver(function (mutations, observer) {
 - 第一个参数：所要观察的 DOM 节点
 - 第二个参数：一个配置对象，指定所要观察的特定变动
 
-```javascript
+```js
 var article = document.querySelector('article');
 
 var  options = {
@@ -69,7 +69,7 @@ observer.observe(article, options);
 - `characterDataOldValue`：布尔值，表示观察`characterData`变动时，是否需要记录变动前的值。
 - `attributeFilter`：数组，表示需要观察的特定属性（比如`['class','src']`）。
 
-```javascript
+```js
 // 开始监听文档根节点（即<html>标签）的变动
 mutationObserver.observe(document.documentElement, {
   attributes: true,
@@ -85,7 +85,7 @@ mutationObserver.observe(document.documentElement, {
 
 下面的例子是观察新增的子节点。
 
-```javascript
+```js
 var insertedNodes = [];
 var observer = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
@@ -101,19 +101,19 @@ console.log(insertedNodes);
 
 `disconnect`方法用来停止观察。调用该方法后，DOM 再发生变动，也不会触发观察器。
 
-```javascript
+```js
 observer.disconnect();
 ```
 
 `takeRecords`方法用来清除变动记录，即不再处理未处理的变动。该方法返回变动记录的数组。
 
-```javascript
+```js
 observer.takeRecords();
 ```
 
 下面是一个例子。
 
-```javascript
+```js
 // 保存所有没有被观察器处理的变动
 var changes = mutationObserver.takeRecords();
 
@@ -142,7 +142,7 @@ DOM 每次发生变化，就会生成一条变动记录（MutationRecord 实例�
 
 下面的例子说明如何读取变动记录。
 
-```javascript
+```js
 var callback = function (records){
   records.map(function(record){
     console.log('Mutation type: ' + record.type);
@@ -166,7 +166,7 @@ mo.observe(document.body, option);
 
 下面的例子说明如何追踪属性的变动。
 
-```javascript
+```js
 var callback = function (records) {
   records.map(function (record) {
     console.log('Previous attribute value: ' + record.oldValue);
@@ -191,7 +191,7 @@ mo.observe(element, options);
 
 网页加载的时候，DOM 节点的生成会产生变动记录，因此只要观察 DOM 的变动，就能在第一时间触发相关事件，因此也就没有必要使用`DOMContentLoaded`事件。
 
-```javascript
+```js
 var observer = new MutationObserver(callback);
 observer.observe(document.documentElement, {
   childList: true,
@@ -203,7 +203,7 @@ observer.observe(document.documentElement, {
 
 下面的代码，使用`MutationObserver`对象封装一个监听 DOM 生成的函数。
 
-```javascript
+```js
 (function(win){
   'use strict';
 

@@ -6,7 +6,7 @@ MongoDB的一条记录叫做文档（document），它是一个包含多个字�
 
 下面是文档的一个例子。
 
-```javascript
+```js
 {
    "_id" : ObjectId("54c955492b7c8eb21818bd09"),
    "address" : {
@@ -69,7 +69,7 @@ MongoClient.connect(url, function(err, db) {
 
 ### 插入数据
 
-```javascript
+```js
 var insertDocument = function(db, callback) {
    db.collection('restaurants').insertOne( {
       "address" : {
@@ -104,7 +104,7 @@ var insertDocument = function(db, callback) {
 
 执行这个操作。
 
-```javascript
+```js
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   insertDocument(db, function() {
@@ -117,7 +117,7 @@ MongoClient.connect(url, function(err, db) {
 
 取出一个collection里面的所有文档。
 
-```javascript
+```js
 var findRestaurants = function(db, callback) {
    var cursor =db.collection('restaurants').find( );
    cursor.each(function(err, doc) {
@@ -133,7 +133,7 @@ var findRestaurants = function(db, callback) {
 
 执行上面的函数。
 
-```javascript
+```js
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   findRestaurants(db, function() {
@@ -150,7 +150,7 @@ MongoClient.connect(url, function(err, db) {
 
 下面是一个指定查询条件的例子。
 
-```javascript
+```js
 var findRestaurants = function(db, callback) {
    var cursor =db.collection('restaurants').find( { "borough": "Manhattan" } );
    cursor.each(function(err, doc) {
@@ -166,7 +166,7 @@ var findRestaurants = function(db, callback) {
 
 执行上面的函数。
 
-```javascript
+```js
 MongoClient.connect(url, function(err, db) {
   assert.equal(null, err);
   findRestaurants(db, function() {
@@ -177,19 +177,19 @@ MongoClient.connect(url, function(err, db) {
 
 查询的时候，可以指定嵌套属性。
 
-```javascript
+```js
 var cursor =db.collection('restaurants').find( { "address.zipcode": "10075" } );
 ```
 
 查询条件还可以指定数组的一个值。
 
-```javascript
+```js
 var cursor =db.collection('restaurants').find( { "grades.grade": "B" } );
 ```
 
 查询条件可以指定运算符。
 
-```javascript
+```js
 // 大于
 var cursor =db.collection('restaurants').find( { "grades.score": { $gt: 30 } } );
 
@@ -199,7 +199,7 @@ var cursor =db.collection('restaurants').find( { "grades.score": { $lt: 10 } } )
 
 查询条件可以指定逻辑运算符。
 
-```javascript
+```js
 // AND 运算
 var cursor =db.collection('restaurants').find(
   { "cuisine": "Italian", "address.zipcode": "10075" }
@@ -213,7 +213,7 @@ var cursor =db.collection('restaurants').find(
 
 `sort`方法用于排序，1代表升序，-1代表降序。
 
-```javascript
+```js
 var cursor =db.collection('restaurants').find().sort( { "borough": 1, "address.zipcode": 1 } );
 ```
 
@@ -221,7 +221,7 @@ var cursor =db.collection('restaurants').find().sort( { "borough": 1, "address.z
 
 更新指定文档。`updateOne`方法返回更新的文档的数目。
 
-```javascript
+```js
 var updateRestaurants = function(db, callback) {
    db.collection('restaurants').updateOne(
       { "name" : "Juni" },
@@ -245,7 +245,7 @@ MongoClient.connect(url, function(err, db) {
 
 更新嵌入的字段。
 
-```javascript
+```js
 db.collection('restaurants').updateOne(
   { "restaurant_id" : "41156888" },
   { $set: { "address.street": "East 31st Street" } },
@@ -258,7 +258,7 @@ db.collection('restaurants').updateOne(
 
 更新多个字段。
 
-```javascript
+```js
    db.collection('restaurants').updateMany(
       { "address.zipcode": "10016", cuisine: "Other" },
       {
@@ -274,7 +274,7 @@ db.collection('restaurants').updateOne(
 
 替换整个文档，除了`_id`字段。
 
-```javascript
+```js
 db.collection('restaurants').replaceOne(
       { "restaurant_id" : "41704620" },
       {
@@ -298,7 +298,7 @@ db.collection('restaurants').replaceOne(
 
 删除符合条件的所有文档。
 
-```javascript
+```js
 var removeRestaurants = function(db, callback) {
    db.collection('restaurants').deleteMany(
       { "borough": "Manhattan" },
@@ -320,7 +320,7 @@ MongoClient.connect(url, function(err, db) {
 
 删除单一文档。
 
-```javascript
+```js
 db.collection('restaurants').deleteOne(
       { "borough": "Queens" },
       function(err, results) {
@@ -332,7 +332,7 @@ db.collection('restaurants').deleteOne(
 
 删除所有文档。
 
-```javascript
+```js
 db.collection('restaurants').deleteMany( {}, function(err, results) {
       console.log(results);
       callback();
@@ -341,7 +341,7 @@ db.collection('restaurants').deleteMany( {}, function(err, results) {
 
 删除整个集合。
 
-```javascript
+```js
 db.collection('restaurants').drop( function(err, response) {
       console.log(response)
       callback();
@@ -350,7 +350,7 @@ db.collection('restaurants').drop( function(err, response) {
 
 ### 聚合操作
 
-```javascript
+```js
 var aggregateRestaurants = function(db, callback) {
    db.collection('restaurants').aggregate(
      [
@@ -372,7 +372,7 @@ MongoClient.connect(url, function(err, db) {
 
 上面的代码产生下面的结果。
 
-```javascript
+```js
 [ { _id: 'Missing', count: 51 },
   { _id: 'Staten Island', count: 969 },
   { _id: 'Manhattan', count: 10259 },
@@ -383,7 +383,7 @@ MongoClient.connect(url, function(err, db) {
 
 带有过滤条件的聚合。
 
-```javascript
+```js
 db.collection('restaurants').aggregate(
      [
        { $match: { "borough": "Queens", "cuisine": "Brazilian" } },
@@ -399,7 +399,7 @@ db.collection('restaurants').aggregate(
 
 生成一个单字段的索引，`1`表示升序，`-1`表示降序。
 
-```javascript
+```js
 var indexRestaurants = function(db, callback) {
    db.collection('restaurants').createIndex(
       { "cuisine": 1 },
@@ -421,7 +421,7 @@ MongoClient.connect(url, function(err, db) {
 
 生成多个字段的索引。
 
-```javascript
+```js
 db.collection('restaurants').createIndex(
       { "cuisine": 1, "address.zipcode": -1 },
       null,
@@ -454,7 +454,7 @@ npm install mongoose --save
 
 然后，就可以在node.js脚本中连接MongoDB数据库了。
 
-```javascript
+```js
 
 var mongoose = require('mongoose');
 
@@ -467,7 +467,7 @@ mongoose.connect('mongodb://localhost/mydatabase');
 
 数据库连接后，可以对open和error事件指定监听函数。
 
-```javascript
+```js
 
 var db = mongoose.connection;
 
@@ -483,7 +483,7 @@ db.once('open', function callback () {
 
 mongoose.Schema方法用来定义数据集的格式（schema），mongoose.model方法将格式分配给指定的数据集。
 
-```javascript
+```js
 
 var Schema = mongoose.Schema;
 var userSchema = new Schema({

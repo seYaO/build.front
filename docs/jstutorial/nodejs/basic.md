@@ -168,7 +168,7 @@ Node采用V8引擎处理JavaScript脚本，最大特点就是单线程运行，�
 
 由于这种特性，某一个任务的后续操作，往往采用回调函数（callback）的形式进行定义。
 
-```javascript
+```js
 
 var isTrue = function(value, callback) {
   if (value === true) {
@@ -185,7 +185,7 @@ var isTrue = function(value, callback) {
 
 Node约定，如果某个函数需要回调函数作为参数，则回调函数是最后一个参数。另外，回调函数本身的第一个参数，约定为上一步传入的错误对象。
 
-```javascript
+```js
 
 var callback = function (error, value) {
   if (error) {
@@ -198,7 +198,7 @@ var callback = function (error, value) {
 
 上面代码中，callback的第一个参数是Error对象，第二个参数才是真正的数据参数。这是因为回调函数主要用于异步操作，当回调函数运行时，前期的操作早结束了，错误的执行栈早就不存在了，传统的错误捕捉机制try...catch对于异步操作行不通，所以只能把错误交给回调函数处理。
 
-```javascript
+```js
 try {
   db.User.get(userId, function(err, user) {
     if(err) {
@@ -215,7 +215,7 @@ try {
 
 如果没有发生错误，回调函数的第一个参数就传入null。这种写法有一个很大的好处，就是说只要判断回调函数的第一个参数，就知道有没有出错，如果不是null，就肯定出错了。另外，这样还可以层层传递错误。
 
-```javascript
+```js
 if(err) {
   // 除了放过No Permission错误意外，其他错误传给下一个回调函数
   if(!err.noPermission) {
@@ -258,7 +258,7 @@ Node.js采用模块化结构，按照[CommonJS规范](http://wiki.commonjs.org/w
 
 require命令用于指定加载模块，加载时可以省略脚本文件的后缀名。
 
-```javascript
+```js
 
 var circle = require('./circle.js');
 // 或者
@@ -268,7 +268,7 @@ var circle = require('./circle');
 
 require方法的参数是模块文件的名字。它分成两种情况，第一种情况是参数中含有文件路径（比如上例），这时路径是相对于当前脚本所在的目录，第二种情况是参数中不含有文件路径，这时Node到模块的安装目录，去寻找已安装的模块（比如下例）。
 
-```javascript
+```js
 
 var bar = require('bar');
 
@@ -276,7 +276,7 @@ var bar = require('bar');
 
 有时候，一个模块本身就是一个目录，目录中包含多个文件。这时候，Node在package.json文件中，寻找main属性所指明的模块入口文件。
 
-```javascript
+```js
 
 {
   "name" : "bar",
@@ -287,7 +287,7 @@ var bar = require('bar');
 
 上面代码中，模块的启动文件为lib子目录下的bar.js。当使用`require('bar')`命令加载该模块时，实际上加载的是`./node_modules/bar/lib/bar.js`文件。下面写法会起到同样效果。
 
-```javascript
+```js
 
 var bar = require('bar/lib/bar.js')
 
@@ -320,7 +320,7 @@ Node模块采用CommonJS规范。只要符合这个规范，就可以自定义�
 
 下面是一个最简单的模块，假定新建一个foo.js文件，写入以下内容。
 
-```javascript
+```js
 
 // foo.js
 
@@ -334,7 +334,7 @@ module.exports = function(x) {
 
 这个模块的使用方法如下。
 
-```javascript
+```js
 
 // index.js
 
@@ -355,7 +355,7 @@ $ node index
 
 module变量是整个模块文件的顶层变量，它的exports属性就是模块向外输出的接口。如果直接输出一个函数（就像上面的foo.js），那么调用模块就是调用一个函数。但是，模块也可以输出一个对象。下面对foo.js进行改写。
 
-```javascript
+```js
 
 // foo.js
 
@@ -373,7 +373,7 @@ module.exports = out;
 
 上面的代码表示模块输出out对象，该对象有一个print属性，指向一个函数。下面是这个模块的使用方法。
 
-```javascript
+```js
 
 // index.js
 
@@ -399,7 +399,7 @@ Node是单线程运行环境，一旦抛出的异常没有被捕获，就会引�
 
 最常用的捕获异常的方式，就是使用try...catch结构。但是，这个结构无法捕获异步运行的代码抛出的异常。
 
-```javascript
+```js
 try {
   process.nextTick(function () {
     throw new Error("error");
@@ -423,7 +423,7 @@ try {
 
 一种解决方法是将错误捕获代码，也放到异步执行。
 
-```javascript
+```js
 function async(cb, err) {
   setTimeout(function() {
     try {
@@ -453,7 +453,7 @@ async(function(res) {
 
 Node采用的方法，是将错误对象作为第一个参数，传入回调函数。这样就避免了捕获代码与发生错误的代码不在同一个时间段的问题。
 
-```javascript
+```js
 fs.readFile('/foo.txt', function(err, data) {
   if (err !== null) throw err;
   console.log(data);
@@ -464,7 +464,7 @@ fs.readFile('/foo.txt', function(err, data) {
 
 下面是一个完整的例子。
 
-```javascript
+```js
 function async2(continuation) {
   setTimeout(function() {
     try {
@@ -494,7 +494,7 @@ async2(function(err, res) {
 
 发生错误的时候，也可以用EventEmitter接口抛出error事件。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 var emitter = new EventEmitter();
 
@@ -503,7 +503,7 @@ emitter.emit('error', new Error('something bad happened'));
 
 使用上面的代码必须小心，因为如果没有对error事件部署监听函数，会导致整个应用程序崩溃。所以，一般总是必须同时部署下面的代码。
 
-```javascript
+```js
 emitter.on('error', function(err) {
   console.error('出错：' + err.message);
 });
@@ -513,7 +513,7 @@ emitter.on('error', function(err) {
 
 当一个异常未被捕获，就会触发uncaughtException事件，可以对这个事件注册回调函数，从而捕获异常。
 
-```javascript
+```js
 var logger = require('tracer').console();
 process.on('uncaughtException', function(err) {
   console.error('Error caught in uncaughtException event:', err);
@@ -531,7 +531,7 @@ try {
 
 只要给uncaughtException配置了回调，Node进程不会异常退出，但异常发生的上下文已经丢失，无法给出异常发生的详细信息。而且，异常可能导致Node不能正常进行内存回收，出现内存泄露。所以，当uncaughtException触发后，最好记录错误日志，然后结束Node进程。
 
-```javascript
+```js
 process.on('uncaughtException', function(err) {
   logger.log(err);
   process.exit(1);
@@ -542,7 +542,7 @@ process.on('uncaughtException', function(err) {
 
 iojs有一个unhandledRejection事件，用来监听没有捕获的Promise对象的rejected状态。
 
-```javascript
+```js
 var promise = new Promise(function(resolve, reject) {
   reject(new Error("Broken."));
 });
@@ -556,7 +556,7 @@ promise.then(function(result) {
 
 只要监听unhandledRejection事件，就能解决这个问题。
 
-```javascript
+```js
 process.on('unhandledRejection', function (err, p) {
   console.error(err.stack);
 })
@@ -564,7 +564,7 @@ process.on('unhandledRejection', function (err, p) {
 
 需要注意的是，unhandledRejection事件的监听函数有两个参数，第一个是错误对象，第二个是产生错误的promise对象。这可以提供很多有用的信息。
 
-```javascript
+```js
 var http = require('http');
 
 http.createServer(function (req, res) {
@@ -585,7 +585,7 @@ process.on('unhandledRejection', function (err, p) {
 
 上面代码会在出错时，输出用户请求的网址。
 
-```javascript
+```js
 Error in URL /testurl
 Error: Broken.
   at /Users/mikeal/tmp/test.js:9:14

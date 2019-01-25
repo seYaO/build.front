@@ -17,14 +17,14 @@ Blob（Binary Large Object）对象代表了一段二进制数据，提供了一
 
 （1）Blob构造函数，接受两个参数。第一个参数是一个包含实际数据的数组，第二个参数是数据的类型，这两个参数都不是必需的。
 
-```javascript
+```js
 var htmlParts = ["<a id=\"a\"><b id=\"b\">hey!<\/b><\/a>"];
 var myBlob = new Blob(htmlParts, { "type" : "text\/xml" });
 ```
 
 下面是一个利用Blob对象，生成可下载文件的例子。
 
-```javascript
+```js
 var blob = new Blob(["Hello World"]);
 
 var a = document.createElement("a");
@@ -39,13 +39,13 @@ body.appendChild(a);
 
 （2）Blob对象的slice方法，将二进制数据按照字节分块，返回一个新的Blob对象。
 
-```javascript
+```js
 var newBlob = oldBlob.slice(startingByte, endindByte);
 ```
 
 下面是一个使用XMLHttpRequest对象，将大文件分割上传的例子。
 
-```javascript
+```js
 function upload(blobOrFile) {
   var xhr = new XMLHttpRequest();
   xhr.open('POST', '/server', true);
@@ -90,13 +90,13 @@ FileList对象针对表单的file控件。当用户通过file控件选取文件�
 
 当用户选取文件后，就可以读取该文件。
 
-```javascript
+```js
 var selected_file = document.getElementById('input').files[0];
 ```
 
 采用拖放方式，也可以得到FileList对象。
 
-```javascript
+```js
 var dropZone = document.getElementById('drop_zone');
 dropZone.addEventListener('drop', handleFileSelect, false);
 
@@ -116,7 +116,7 @@ function handleFileSelect(evt) {
 
 File API提供`File`对象，它是`FileList`对象的成员，包含了文件的一些元信息，比如文件名、上次改动时间、文件大小和文件类型。
 
-```javascript
+```js
 var selected_file = document.getElementById('input').files[0];
 
 var fileName = selected_file.name;
@@ -132,7 +132,7 @@ var fileType = selected_file.type;
 - `lastModified`：文件的上次修改时间，格式为时间戳。
 - `lastModifiedDate`：文件的上次修改时间，格式为`Date`对象实例。
 
-```javascript
+```js
 $('#upload-file')[0].files[0]
 // {
 //   lastModified: 1449370355682,
@@ -156,7 +156,7 @@ FileReader API用于读取文件，即把文件内容读入内存。它的参数
 
 `readAsText`方法用于读取文本文件，它的第一个参数是`File`或`Blob`对象，第二个参数是前一个参数的编码方法，如果省略就默认为`UTF-8`编码。该方法是异步方法，一般监听`onload`件，用来确定文件是否加载结束，方法是判断`FileReader`实例的`result`属性是否有值。其他三种读取方法，用法与`readAsText`方法类似。
 
-```javascript
+```js
 var reader = new FileReader();
 reader.onload = function(e) {
   var text = reader.result;
@@ -167,7 +167,7 @@ reader.readAsText(file, encoding);
 
 `readAsDataURL`方法返回一个data URL，它的作用基本上是将文件数据进行Base64编码。你可以将返回值设为图像的`src`属性。
 
-```javascript
+```js
 var file = document.getElementById('destination').files[0];
 if(file.type.indexOf('image') !== -1) {
   var reader = new FileReader();
@@ -180,7 +180,7 @@ if(file.type.indexOf('image') !== -1) {
 
 `readAsBinaryString`方法可以读取任意类型的文件，而不仅仅是文本文件，返回文件的原始的二进制内容。这个方法与XMLHttpRequest.sendAsBinary方法结合使用，就可以使用JavaScript上传任意文件到服务器。
 
-```javascript
+```js
 var reader = new FileReader();
 reader.onload = function(e) {
   var rawData = reader.result;
@@ -190,7 +190,7 @@ reader.readAsBinaryString(file);
 
 `readAsArrayBuffer`方法读取文件，返回一个类型化数组（ArrayBuffer），即固定长度的二进制缓存数据。在文件操作时（比如将JPEG图像转为PNG图像），这个方法非常方便。
 
-```javascript
+```js
 var reader = new FileReader();
 reader.onload = function(e) {
   var arrayBuffer = reader.result;
@@ -201,7 +201,7 @@ reader.readAsArrayBuffer(file);
 
 除了以上四种不同的读取文件方法，FileReader API还有一个`abort`方法，用于中止文件上传。
 
-```javascript
+```js
 var reader = new FileReader();
 reader.abort();
 ```
@@ -217,7 +217,7 @@ FileReader对象采用异步方式读取文件，可以为一系列事件指定�
 
 下面的代码是如何展示文本文件的内容。
 
-```javascript
+```js
 var reader = new FileReader();
 reader.onload = function(e) {
   console.log(e.target.result);
@@ -229,7 +229,7 @@ reader.readAsText(blob);
 
 下面是一个使用`readAsDataURL`方法，为`img`元素添加`src`属性的例子。
 
-```javascript
+```js
 var reader = new FileReader();
 reader.onload = function(e) {
   document.createElement('img').src = e.target.result;
@@ -239,7 +239,7 @@ reader.readAsDataURL(f);
 
 下面是一个`onerror`事件回调函数的例子。
 
-```javascript
+```js
 var reader = new FileReader();
 reader.onerror = errorHandler;
 
@@ -261,7 +261,7 @@ function errorHandler(evt) {
 
 下面是一个`onprogress`事件回调函数的例子，主要用来显示读取进度。
 
-```javascript
+```js
 var reader = new FileReader();
 reader.onprogress = updateProgress;
 
@@ -291,7 +291,7 @@ function updateProgress(evt) {
 
 一旦用户选中图片，将其显示在canvas的函数可以这样写：
 
-```javascript
+```js
 
 document.querySelector('input[name=picture]').onchange = function(e){
      readFile(e.target.files[0]);
@@ -312,7 +312,7 @@ function readFile(file){
 
 还可以在canvas上面定义拖放事件，允许用户直接拖放图片到上面。
 
-```javascript
+```js
 
 // stop FireFox from replacing the whole page with the file.
 canvas.ondragover = function () { return false; };
@@ -334,7 +334,7 @@ canvas.ondrop = function (e) {
 
 还可以让canvas显示剪贴板中的图片。
 
-```javascript
+```js
 
 document.onpaste = function(e){
   e.preventDefault();
@@ -356,7 +356,7 @@ document.onpaste = function(e){
 
 URL对象用于生成指向File对象或Blob对象的URL。
 
-```javascript
+```js
 
 var objecturl =  window.URL.createObjectURL(blob);
 
@@ -366,7 +366,7 @@ var objecturl =  window.URL.createObjectURL(blob);
 
 这个URL的存在时间，等同于网页的存在时间，一旦网页刷新或卸载，这个URL就失效。除此之外，也可以手动调用URL.revokeObjectURL方法，使URL失效。
 
-```javascript
+```js
 
 window.URL.revokeObjectURL(objectURL);
 
@@ -374,7 +374,7 @@ window.URL.revokeObjectURL(objectURL);
 
 下面是一个利用URL对象，在网页插入图片的例子。
 
-```javascript
+```js
 
 var img = document.createElement("img");
 
@@ -398,7 +398,7 @@ document.querySelector('body').appendChild(info);
 
 还有一个本机视频预览的例子。
 
-```javascript
+```js
 
 var video = document.getElementById('video');
 var obj_url = window.URL.createObjectURL(blob);

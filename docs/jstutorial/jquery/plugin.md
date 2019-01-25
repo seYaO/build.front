@@ -8,7 +8,7 @@
 
 本质上，jQuery插件是定义在jQuery构造函数的prototype对象上面的一个方法，这样做就能使得所有jQuery对象的实例都能共享这个方法。因为jQuery构造函数的prototype对象被简写成jQuery.fn对象，所以插件采用下面的方法定义。
 
-```javascript
+```js
 
 jQuery.fn.myPlugin = function() {
   // Do your awesome plugin stuff here
@@ -18,7 +18,7 @@ jQuery.fn.myPlugin = function() {
 
 更好的做法是采用下面的写法，这样就能在函数体内自由使用美元符号（$）。
 
-```javascript
+```js
 
 ;(function ($){
   $.fn.myPlugin = function (){
@@ -32,7 +32,7 @@ jQuery.fn.myPlugin = function() {
 
 有时，还可以把顶层对象（window）作为参数输入，这样可以加快代码的执行速度和执行更有效的最小化操作。
 
-```javascript
+```js
 
 ;(function ($, window) {
   $.fn.myPlugin = function() {
@@ -44,7 +44,7 @@ jQuery.fn.myPlugin = function() {
 
 需要注意的是，在插件内部，this关键字指的是jQuery对象的实例。而在一般的jQuery回调函数之中，this关键字指的是DOM对象。
 
-```javascript
+```js
 
 (function ($){
   $.fn.maxHeight = function (){
@@ -64,7 +64,7 @@ jQuery.fn.myPlugin = function() {
 
 大多数情况下，插件应该返回jQuery对象，这样可以保持链式操作。
 
-```javascript
+```js
 
 (function ($){
   $.fn.greenify = function (){
@@ -81,7 +81,7 @@ $("a").greenify().addClass("greenified");
 
 对于包含多个jQuery对象的结果集，可以采用each方法，进行处理。
 
-```javascript
+```js
 
 $.fn.myNewPlugin = function() {
     return this.each(function() {
@@ -93,7 +93,7 @@ $.fn.myNewPlugin = function() {
 
 插件可以接受一个属性对象参数。
 
-```javascript
+```js
 
 (function ($){
   $.fn.tooltip = function (options){
@@ -115,7 +115,7 @@ $.fn.myNewPlugin = function() {
 
 jQuery逐渐从浏览器环境，变为也可以用于服务器环境。所以，定义插件的时候，最好首先侦测一下运行环境。
 
-```javascript
+```js
 if (typeof module === "object" && typeof module.exports === "object") {
   // CommonJS版本
 } else {
@@ -127,7 +127,7 @@ if (typeof module === "object" && typeof module.exports === "object") {
 
 下面是一个将a元素的href属性添加到网页的插件。
 
-```javascript
+```js
 
 (function($){
 	$.fn.showLinkLocation = function() {
@@ -150,7 +150,7 @@ $('a').showLinkLocation();
 
 首先，编写一个插件的信息文件yourPluginName.jquery.json。文件名中的yourPluginName表示你的插件名。
 
-```javascript
+```js
 
 {
   "name": "plugin_name",
@@ -191,7 +191,7 @@ $('a').showLinkLocation();
 
 最后，为代码加上版本，push到github，你的插件就会加入jQuery官方插件库。
 
-```javascript
+```js
 
 git tag 0.1.0
 git push origin --tags

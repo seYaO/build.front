@@ -4,7 +4,7 @@
 
 JavaScript 解析或运行时，一旦发生错误，引擎就会抛出一个错误对象。JavaScript 原生提供`Error`构造函数，所有抛出的错误都是这个构造函数的实例。
 
-```javascript
+```js
 var err = new Error('出错了');
 err.message // "出错了"
 ```
@@ -19,7 +19,7 @@ JavaScript 语言标准只提到，`Error`实例对象必须有`message`属性�
 
 使用`name`和`message`这两个属性，可以对发生什么错误有一个大概的了解。
 
-```javascript
+```js
 if (error.name) {
   console.log(error.name + ': ' + error.message);
 }
@@ -27,7 +27,7 @@ if (error.name) {
 
 `stack`属性用来查看错误发生时的堆栈。
 
-```javascript
+```js
 function throwit() {
   throw new Error('');
 }
@@ -57,7 +57,7 @@ catchit()
 
 `SyntaxError`对象是解析代码时发生的语法错误。
 
-```javascript
+```js
 // 变量名错误
 var 1a;
 // Uncaught SyntaxError: Invalid or unexpected token
@@ -73,7 +73,7 @@ console.log 'hello');
 
 `ReferenceError`对象是引用一个不存在的变量时发生的错误。
 
-```javascript
+```js
 // 使用一个不存在的变量
 unknownVariable
 // Uncaught ReferenceError: unknownVariable is not defined
@@ -81,7 +81,7 @@ unknownVariable
 
 另一种触发场景是，将一个值分配给无法分配的对象，比如对函数的运行结果或者`this`赋值。
 
-```javascript
+```js
 // 等号左侧不是变量
 console.log() = 1
 // Uncaught ReferenceError: Invalid left-hand side in assignment
@@ -97,7 +97,7 @@ this = 1
 
 `RangeError`对象是一个值超出有效范围时发生的错误。主要有几种情况，一是数组长度为负数，二是`Number`对象的方法参数超出范围，以及函数堆栈超过最大值。
 
-```javascript
+```js
 // 数组长度不得为负数
 new Array(-1)
 // Uncaught RangeError: Invalid array length
@@ -107,7 +107,7 @@ new Array(-1)
 
 `TypeError`对象是变量或参数不是预期类型时发生的错误。比如，对字符串、布尔值、数值等原始类型的值使用`new`命令，就会抛出这种错误，因为`new`命令的参数应该是一个构造函数。
 
-```javascript
+```js
 new 123
 // Uncaught TypeError: number is not a func
 
@@ -122,7 +122,7 @@ obj.unknownMethod()
 
 `URIError`对象是 URI 相关函数的参数不正确时抛出的错误，主要涉及`encodeURI()`、`decodeURI()`、`encodeURIComponent()`、`decodeURIComponent()`、`escape()`和`unescape()`这六个函数。
 
-```javascript
+```js
 decodeURI('%2')
 // URIError: URI malformed
 ```
@@ -135,7 +135,7 @@ decodeURI('%2')
 
 以上这6种派生错误，连同原始的`Error`对象，都是构造函数。开发者可以使用它们，手动生成错误对象的实例。这些构造函数都接受一个函数，代表错误提示信息（message）。
 
-```javascript
+```js
 var err1 = new Error('出错了！');
 var err2 = new RangeError('出错了，变量超出有效范围！');
 var err3 = new TypeError('出错了，变量类型无效！');
@@ -149,7 +149,7 @@ err3.message // "出错了，变量类型无效！"
 
 除了 JavaScript 原生提供的七种错误对象，还可以定义自己的错误对象。
 
-```javascript
+```js
 function UserError(message) {
   this.message = message || '默认信息';
   this.name = 'UserError';
@@ -161,7 +161,7 @@ UserError.prototype.constructor = UserError;
 
 上面代码自定义一个错误对象`UserError`，让它继承`Error`对象。然后，就可以生成这种自定义类型的错误了。
 
-```javascript
+```js
 new UserError('这是自定义的错误！');
 ```
 
@@ -169,7 +169,7 @@ new UserError('这是自定义的错误！');
 
 `throw`语句的作用是手动中断程序执行，抛出一个错误。
 
-```javascript
+```js
 if (x < 0) {
   throw new Error('x 必须为正数');
 }
@@ -180,7 +180,7 @@ if (x < 0) {
 
 `throw`也可以抛出自定义错误。
 
-```javascript
+```js
 function UserError(message) {
   this.message = message || '默认信息';
   this.name = 'UserError';
@@ -194,7 +194,7 @@ throw new UserError('出错了！');
 
 实际上，`throw`可以抛出任何类型的值。也就是说，它的参数可以是任何值。
 
-```javascript
+```js
 // 抛出一个字符串
 throw 'Error！';
 // Uncaught Error！
@@ -222,7 +222,7 @@ throw {
 
 一旦发生错误，程序就中止执行了。JavaScript 提供了`try...catch`结构，允许对错误进行处理，选择是否往下执行。
 
-```javascript
+```js
 try {
   throw new Error('出错了!');
 } catch (e) {
@@ -238,7 +238,7 @@ try {
 
 如果你不确定某些代码是否会报错，就可以把它们放在`try...catch`代码块之中，便于进一步对错误进行处理。
 
-```javascript
+```js
 try {
   f();
 } catch(e) {
@@ -250,7 +250,7 @@ try {
 
 `catch`代码块捕获错误之后，程序不会中断，会按照正常流程继续执行下去。
 
-```javascript
+```js
 try {
   throw "出错了";
 } catch (e) {
@@ -265,7 +265,7 @@ console.log(222);
 
 `catch`代码块之中，还可以再抛出错误，甚至使用嵌套的`try...catch`结构。
 
-```javascript
+```js
 var n = 100;
 
 try {
@@ -284,7 +284,7 @@ try {
 
 为了捕捉不同类型的错误，`catch`代码块之中可以加入判断语句。
 
-```javascript
+```js
 try {
   foo.bar();
 } catch (e) {
@@ -303,7 +303,7 @@ try {
 
 `try...catch`结构允许在最后添加一个`finally`代码块，表示不管是否出现错误，都必需在最后运行的语句。
 
-```javascript
+```js
 function cleansUp() {
   try {
     throw new Error('出错了……');
@@ -320,7 +320,7 @@ cleansUp()
 
 上面代码中，由于没有`catch`语句块，所以错误没有捕获。执行`finally`代码块以后，程序就中断在错误抛出的地方。
 
-```javascript
+```js
 function idle(x) {
   try {
     console.log(x);
@@ -340,7 +340,7 @@ idle('hello')
 
 下面的例子说明，`return`语句的执行是排在`finally`代码之前，只是等`finally`代码执行完毕后才返回。
 
-```javascript
+```js
 var count = 0;
 function countUp() {
   try {
@@ -360,7 +360,7 @@ count
 
 下面是`finally`代码块用法的典型场景。
 
-```javascript
+```js
 openFile();
 
 try {
@@ -376,7 +376,7 @@ try {
 
 下面的例子充分反映了`try...catch...finally`这三者之间的执行顺序。
 
-```javascript
+```js
 function f() {
   try {
     console.log(0);
@@ -407,7 +407,7 @@ result
 
 `catch`代码块之中，触发转入`finally`代码块的标志，不仅有`return`语句，还有`throw`语句。
 
-```javascript
+```js
 function f() {
   try {
     throw '出错了！';

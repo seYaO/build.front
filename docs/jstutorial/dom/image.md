@@ -6,7 +6,7 @@
 
 浏览器提供一个原生构造函数`Image`，用于生成`HTMLImageElement`实例。
 
-```javascript
+```js
 var img = new Image();
 img instanceof Image // true
 img instanceof HTMLImageElement // true
@@ -14,7 +14,7 @@ img instanceof HTMLImageElement // true
 
 `Image`构造函数可以接受两个整数作为参数，分别表示`<img>`元素的宽度和长度。
 
-```javascript
+```js
 // 语法
 Image(width, height)
 
@@ -24,14 +24,14 @@ var myImage = new Image(100, 200);
 
 `<img>`实例的`src`属性可以定义图像的网址。
 
-```javascript
+```js
 var img = new Image();
 img.src = 'picture.jpg';
 ```
 
 新生成的`<img>`实例并不属于文档的一部分。如果想让它显示在文档中，必须手动插入文档。
 
-```javascript
+```js
 var img = new Image();
 img.src = 'image1.png';
 document.body.appendChild(img);
@@ -43,7 +43,7 @@ document.body.appendChild(img);
 - 节点选取方法（比如`document.getElementById`）得到的`<img>`节点
 - `document.createElement('img')`生成的`<img>`节点
 
-```javascript
+```js
 document.images[0] instanceof HTMLImageElement
 // true
 
@@ -64,7 +64,7 @@ img instanceof HTMLImageElement
 
 `HTMLImageElement.src`属性返回图像的完整网址。
 
-```javascript
+```js
 // HTML 代码如下
 // <img width="300" height="400" id="myImg" src="http://example.com/pic.jpg">
 var img = document.getElementById('img');
@@ -89,7 +89,7 @@ img.src // http://example.com/pic.jpg
 
 `HTMLImageElement.srcset`属性和`HTMLImageElement.sizes`属性，分别用于读写`<img>`元素的`srcset`属性和`sizes`属性。它们用于`<img>`元素的响应式加载。`srcset`属性可以单独使用，但是`sizes`属性必须与`srcset`属性同时使用。
 
-```javascript
+```js
 // HTML 代码如下
 // <img srcset="example-320w.jpg 320w,
 //              example-480w.jpg 480w,
@@ -117,7 +117,7 @@ img.sizes
 
 `width`属性表示`<img>`的 HTML 宽度，`height`属性表示高度。这两个属性返回的都是整数。
 
-```javascript
+```js
 // HTML 代码如下
 // <img width="300" height="400" id="myImg" src="pic.jpg">
 var img = document.getElementById('img');
@@ -135,7 +135,7 @@ img.height // 400
 
 如果图像还没有指定或不可得，这两个属性都等于`0`。
 
-```javascript
+```js
 var img = document.getElementById('img');
 if (img.naturalHeight > img.naturalWidth) {
   img.classList.add('portrait');
@@ -157,7 +157,7 @@ if (img.naturalHeight > img.naturalWidth) {
 - `anonymous`：跨域请求不要求用户身份（credentials），这是默认值。
 - `use-credentials`：跨域请求要求用户身份。
 
-```javascript
+```js
 // HTML 代码如下
 // <img crossorigin="anonymous" id="myImg" src="pic.jpg">
 var img = document.getElementById('img');
@@ -184,7 +184,7 @@ img.crossOrigin // "anonymous"
 
 图像加载完成，会触发`onload`属性指定的回调函数。
 
-```javascript
+```js
 // HTML 代码为 <img src="example.jpg" onload="loadImage()">
 function loadImage() {
   console.log('Image is loaded');
@@ -193,7 +193,7 @@ function loadImage() {
 
 图像加载完成，会触发`onerror`属性指定的回调函数。
 
-```javascript
+```js
 // HTML 代码为 <img src="image.gif" onerror="myFunction()">
 function myFunction() {
   console.log('There is something wrong');

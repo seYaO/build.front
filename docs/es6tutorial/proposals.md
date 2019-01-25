@@ -6,7 +6,7 @@
 
 本质上，块级作用域是一个语句，将多个操作封装在一起，没有返回值。
 
-```javascript
+```js
 {
   let t = f();
   t = t * t + 1;
@@ -17,7 +17,7 @@
 
 现在有一个[提案](https://github.com/tc39/proposal-do-expressions)，使得块级作用域可以变为表达式，也就是说可以返回值，办法就是在块级作用域之前加上`do`，使它变为`do`表达式，然后就会返回内部最后执行的表达式的值。
 
-```javascript
+```js
 let x = do {
   let t = f();
   t * t + 1;
@@ -28,7 +28,7 @@ let x = do {
 
 `do`表达式的逻辑非常简单：封装的是什么，就会返回什么。
 
-```javascript
+```js
 // 等同于 <表达式>
 do { <表达式>; }
 
@@ -38,7 +38,7 @@ do { <语句> }
 
 `do`表达式的好处是可以封装多个语句，让程序更加模块化，就像乐高积木那样一块块拼装起来。
 
-```javascript
+```js
 let x = do {
   if (foo()) { f() }
   else if (bar()) { g() }
@@ -50,7 +50,7 @@ let x = do {
 
 值得一提的是，`do`表达式在 JSX 语法中非常好用。
 
-```javascript
+```js
 return (
   <nav>
     <Home />
@@ -73,7 +73,7 @@ return (
 
 JavaScript 语法规定`throw`是一个命令，用来抛出错误，不能用于表达式之中。
 
-```javascript
+```js
 // 报错
 console.log(throw new Error());
 ```
@@ -82,7 +82,7 @@ console.log(throw new Error());
 
 现在有一个[提案](https://github.com/tc39/proposal-throw-expressions)，允许`throw`用于表达式。
 
-```javascript
+```js
 // 参数的默认值
 function save(filename = throw new TypeError("Argument required")) {
 }
@@ -122,7 +122,7 @@ class Product {
 
 编程实务中，如果读取对象内部的某个属性，往往需要判断一下该对象是否存在。比如，要读取`message.body.user.firstName`，安全的写法是写成下面这样。
 
-```javascript
+```js
 const firstName = (message
   && message.body
   && message.body.user
@@ -131,7 +131,7 @@ const firstName = (message
 
 这样的层层判断非常麻烦，因此现在有一个[提案](https://github.com/tc39/proposal-optional-chaining)，引入了“链判断运算符”（optional chaining operator）`?.`，简化上面的写法。
 
-```javascript
+```js
 const firstName = message?.body?.user?.firstName || 'default';
 ```
 
@@ -145,7 +145,7 @@ const firstName = message?.body?.user?.firstName || 'default';
 
 下面是判断函数是否存在的例子。
 
-```javascript
+```js
 iterator.return?.()
 ```
 
@@ -153,7 +153,7 @@ iterator.return?.()
 
 下面是更多的例子。
 
-```javascript
+```js
 a?.b
 // 等同于
 a == null ? undefined : a.b
@@ -175,7 +175,7 @@ a == null ? undefined : a()
 
 （1）短路机制
 
-```javascript
+```js
 a?.[++x]
 // 等同于
 a == null ? undefined : a[++x]
@@ -185,7 +185,7 @@ a == null ? undefined : a[++x]
 
 （2）delete 运算符
 
-```javascript
+```js
 delete a?.b
 // 等同于
 a == null ? undefined : delete a.b
@@ -197,7 +197,7 @@ a == null ? undefined : delete a.b
 
 以下写法是禁止，会报错。
 
-```javascript
+```js
 // 构造函数判断
 new a?.()
 
@@ -220,7 +220,7 @@ a?.b = c
 
 JavaScript 字符串允许直接输入字符，以及输入字符的转义形式。举例来说，“中”的 Unicode 码点是 U+4e2d，你可以直接在字符串里面输入这个汉字，也可以输入它的转义形式`\u4e2d`，两者是等价的。
 
-```javascript
+```js
 '中' === '\u4e2d' // true
 ```
 
@@ -238,7 +238,7 @@ JavaScript 字符串允许直接输入字符，以及输入字符的转义形式
 
 JSON 格式已经冻结（RFC 7159），没法修改了。为了消除这个报错，现在有一个[提案](https://github.com/tc39/proposal-json-superset)，允许 JavaScript 字符串直接输入 U+2028（行分隔符）和 U+2029（段分隔符）。
 
-```javascript
+```js
 const PS = eval("'\u2029'");
 ```
 
@@ -252,14 +252,14 @@ const PS = eval("'\u2029'");
 
 多参数的函数有时需要绑定其中的一个或多个参数，然后返回一个新函数。
 
-```javascript
+```js
 function add(x, y) { return x + y; }
 function add7(x) { return x + 7; }
 ```
 
 上面代码中，`add7`函数其实是`add`函数的一个特殊版本，通过将一个参数绑定为`7`，就可以从`add`得到`add7`。
 
-```javascript
+```js
 // bind 方法
 const add7 = add.bind(null, 7);
 
@@ -271,7 +271,7 @@ const add7 = x => add(x, 7);
 
 现在有一个[提案](https://github.com/tc39/proposal-partial-application)，使得绑定参数并返回一个新函数更加容易。这叫做函数的部分执行（partial application）。
 
-```javascript
+```js
 const add = (x, y) => x + y;
 const addOne = add(1, ?);
 
@@ -280,7 +280,7 @@ const maxGreaterThanZero = Math.max(0, ...);
 
 根据新提案，`?`是单个参数的占位符，`...`是多个参数的占位符。以下的形式都属于函数的部分执行。
 
-```javascript
+```js
 f(x, ?)
 f(x, ...)
 f(?, x)
@@ -291,7 +291,7 @@ f(..., x, ...)
 
 `?`和`...`只能出现在函数的调用之中，并且会返回一个新函数。
 
-```javascript
+```js
 const g = f(?, 1, ...);
 // 等同于
 const g = (x, ...y) => f(x, 1, ...y);
@@ -299,7 +299,7 @@ const g = (x, ...y) => f(x, 1, ...y);
 
 函数的部分执行，也可以用于对象的方法。
 
-```javascript
+```js
 let obj = {
   f(x, y) { return x + y; },
 };
@@ -314,7 +314,7 @@ g(1) // 4
 
 （1）函数的部分执行是基于原函数的。如果原函数发生变化，部分执行生成的新函数也会立即反映这种变化。
 
-```javascript
+```js
 let f = (x, y) => x + y;
 
 const g = f(?, 3);
@@ -330,7 +330,7 @@ g(1); // 3
 
 （2）如果预先提供的那个值是一个表达式，那么这个表达式并不会在定义时求值，而是在每次调用时求值。
 
-```javascript
+```js
 let a = 3;
 const f = (x, y) => x + y;
 
@@ -346,7 +346,7 @@ g(1); // 11
 
 （3）如果新函数的参数多于占位符的数量，那么多余的参数将被忽略。
 
-```javascript
+```js
 const f = (x, ...y) => [x, ...y];
 const g = f(?, 1);
 g(2, 3, 4); // [2, 1]
@@ -356,7 +356,7 @@ g(2, 3, 4); // [2, 1]
 
 写成下面这样，多余的参数就没有问题。
 
-```javascript
+```js
 const f = (x, ...y) => [x, ...y];
 const g = f(?, 1, ...);
 g(2, 3, 4); // [2, 1, 3, 4];
@@ -364,7 +364,7 @@ g(2, 3, 4); // [2, 1, 3, 4];
 
 （4）`...`只会被采集一次，如果函数的部分执行使用了多个`...`，那么每个`...`的值都将相同。
 
-```javascript
+```js
 const f = (...x) => x;
 const g = f(..., 9, ...);
 g(1, 2, 3); // [1, 2, 3, 9, 1, 2, 3]
@@ -378,7 +378,7 @@ Unix 操作系统有一个管道机制（pipeline），可以把前一个操作�
 
 JavaScript 的管道是一个运算符，写作`|>`。它的左边是一个表达式，右边是一个函数。管道运算符把左边表达式的值，传入右边的函数进行求值。
 
-```javascript
+```js
 x |> f
 // 等同于
 f(x)
@@ -386,7 +386,7 @@ f(x)
 
 管道运算符最大的好处，就是可以把嵌套的函数，写成从左到右的链式表达式。
 
-```javascript
+```js
 function doubleSay (str) {
   return str + ", " + str;
 }
@@ -402,7 +402,7 @@ function exclaim (str) {
 
 上面是三个简单的函数。如果要嵌套执行，传统的写法和管道的写法分别如下。
 
-```javascript
+```js
 // 传统的写法
 exclaim(capitalize(doubleSay('hello')))
 // "Hello, hello!"
@@ -417,7 +417,7 @@ exclaim(capitalize(doubleSay('hello')))
 
 管道运算符只能传递一个值，这意味着它右边的函数必须是一个单参数函数。如果是多参数函数，就必须进行柯里化，改成单参数的版本。
 
-```javascript
+```js
 function double (x) { return x + x; }
 function add (x, y) { return x + y; }
 
@@ -432,7 +432,7 @@ person.score
 
 管道运算符对于`await`函数也适用。
 
-```javascript
+```js
 x |> await f
 // 等同于
 await f(x)
@@ -448,14 +448,14 @@ const userAge = getAgeFromUser(await fetchUserById(userId));
 
 现在有一个[提案](https://github.com/tc39/proposal-numeric-separator)，允许 JavaScript 的数值使用下划线（`_`）作为分隔符。
 
-```javascript
+```js
 let budget = 1_000_000_000_000;
 budget === 10 ** 12 // true
 ```
 
 JavaScript 的数值分隔符没有指定间隔的位数，也就是说，可以每三位添加一个分隔符，也可以每一位、每两位、每四位添加一个。
 
-```javascript
+```js
 123_00 === 12_300 // true
 
 12345_00 === 123_4500 // true
@@ -464,7 +464,7 @@ JavaScript 的数值分隔符没有指定间隔的位数，也就是说，可以
 
 小数和科学计数法也可以使用数值分隔符。
 
-```javascript
+```js
 // 小数
 0.000_001
 // 科学计数法
@@ -480,7 +480,7 @@ JavaScript 的数值分隔符没有指定间隔的位数，也就是说，可以
 
 下面的写法都会报错。
 
-```javascript
+```js
 // 全部报错
 3_.141
 3._141
@@ -493,7 +493,7 @@ _1464301
 
 除了十进制，其他进制的数值也可以使用分隔符。
 
-```javascript
+```js
 // 二进制
 0b1010_0001_1000_0101
 // 十六进制
@@ -502,7 +502,7 @@ _1464301
 
 注意，分隔符不能紧跟着进制的前缀`0b`、`0B`、`0o`、`0O`、`0x`、`0X`。
 
-```javascript
+```js
 // 报错
 0_b111111000
 0b_111111000
@@ -514,7 +514,7 @@ _1464301
 - parseInt()
 - parseFloat()
 
-```javascript
+```js
 Number('123_456') // NaN
 parseInt('123_456') // 123
 ```
@@ -525,7 +525,7 @@ parseInt('123_456') // 123
 
 JavaScript 所有数字都保存成 64 位浮点数，这给数值的表示带来了两大限制。一是数值的精度只能到 53 个二进制位（相当于 16 个十进制位），大于这个范围的整数，JavaScript 是无法精确表示的，这使得 JavaScript 不适合进行科学和金融方面的精确计算。二是大于或等于2的1024次方的数值，JavaScript 无法表示，会返回`Infinity`。
 
-```javascript
+```js
 // 超过 53 个二进制位的数值，无法保持精度
 Math.pow(2, 53) === Math.pow(2, 53) + 1 // true
 
@@ -535,7 +535,7 @@ Math.pow(2, 1024) // Infinity
 
 现在有一个[提案](https://github.com/tc39/proposal-bigint)，引入了一种新的数据类型 BigInt（大整数），来解决这个问题。BigInt 只用来表示整数，没有位数的限制，任何位数的整数都可以精确表示。
 
-```javascript
+```js
 const a = 2172141653n;
 const b = 15346349309n;
 
@@ -548,7 +548,7 @@ Number(a) * Number(b) // 33334444555566670000
 
 为了与 Number 类型区别，BigInt 类型的数据必须添加后缀`n`。
 
-```javascript
+```js
 1234 // 普通整数
 1234n // BigInt
 
@@ -558,7 +558,7 @@ Number(a) * Number(b) // 33334444555566670000
 
 BigInt 同样可以使用各种进制表示，都要加上后缀`n`。
 
-```javascript
+```js
 0b1101n // 二进制
 0o777n // 八进制
 0xFFn // 十六进制
@@ -566,19 +566,19 @@ BigInt 同样可以使用各种进制表示，都要加上后缀`n`。
 
 BigInt 与普通整数是两种值，它们之间并不相等。
 
-```javascript
+```js
 42n === 42 // false
 ```
 
 `typeof`运算符对于 BigInt 类型的数据返回`bigint`。
 
-```javascript
+```js
 typeof 123n // 'bigint'
 ```
 
 BigInt 可以使用负号（`-`），但是不能使用正号（`+`），因为会与 asm.js 冲突。
 
-```javascript
+```js
 -42n // 正确
 +42n // 报错
 ```
@@ -587,7 +587,7 @@ BigInt 可以使用负号（`-`），但是不能使用正号（`+`），因为�
 
 JavaScript 原生提供`BigInt`对象，可以用作构造函数生成 BigInt 类型的数值。转换规则基本与`Number()`一致，将其他类型的值转为 BigInt。
 
-```javascript
+```js
 BigInt(123) // 123n
 BigInt('123') // 123n
 BigInt(false) // 0n
@@ -596,7 +596,7 @@ BigInt(true) // 1n
 
 `BigInt()`构造函数必须有参数，而且参数必须可以正常转为数值，下面的用法都会报错。
 
-```javascript
+```js
 new BigInt() // TypeError
 BigInt(undefined) //TypeError
 BigInt(null) // TypeError
@@ -608,7 +608,7 @@ BigInt('abc') // SyntaxError
 
 参数如果是小数，也会报错。
 
-```javascript
+```js
 BigInt(1.5) // RangeError
 BigInt('1.5') // SyntaxError
 ```
@@ -625,7 +625,7 @@ BigInt 对象继承了 Object 提供的实例方法。
 - `BigInt.asIntN(width, BigInt)`：给定的 BigInt 转为 -2<sup>width - 1</sup> 到 2<sup>width - 1</sup> - 1 之间对应的值。
 - `BigInt.parseInt(string[, radix])`：近似于`Number.parseInt()`，将一个字符串转换成指定进制的 BigInt。
 
-```javascript
+```js
 const max = 2n ** (64n - 1n) - 1n;
 
 BigInt.asIntN(64, max)
@@ -640,7 +640,7 @@ BigInt.asUintN(64, max + 1n)
 
 如果`BigInt.asIntN()`和`BigInt.asUintN()`指定的位数，小于数值本身的位数，那么头部的位将被舍弃。
 
-```javascript
+```js
 const max = 2n ** (64n - 1n) - 1n;
 
 BigInt.asIntN(32, max) // -1n
@@ -651,7 +651,7 @@ BigInt.asUintN(32, max) // 4294967295n
 
 下面是`BigInt.parseInt()`的例子。
 
-```javascript
+```js
 // Number.parseInt() 与 BigInt.parseInt() 的对比
 Number.parseInt('9007199254740993', 10)
 // 9007199254740992
@@ -667,7 +667,7 @@ BigInt.parseInt('9007199254740993', 10)
 
 可以使用`Boolean()`、`Number()`和`String()`这三个方法，将 BigInt 可以转为布尔值、数值和字符串类型。
 
-```javascript
+```js
 Boolean(0n) // false
 Boolean(1n) // true
 Number(1n)  // 1
@@ -678,7 +678,7 @@ String(1n)  // "1"
 
 另外，取反运算符（`!`）也可以将 BigInt 转为布尔值。
 
-```javascript
+```js
 !0n // true
 !1n // false
 ```
@@ -687,7 +687,7 @@ String(1n)  // "1"
 
 数学运算方面，BigInt 类型的`+`、`-`、`*`和`**`这四个二元运算符，与 Number 类型的行为一致。除法运算`/`会舍去小数部分，返回一个整数。
 
-```javascript
+```js
 9n / 5n
 // 1n
 ```
@@ -701,7 +701,7 @@ String(1n)  // "1"
 
 BigInt 不能与普通数值进行混合运算。
 
-```javascript
+```js
 1n + 1.3 // 报错
 ```
 
@@ -709,7 +709,7 @@ BigInt 不能与普通数值进行混合运算。
 
 同样的原因，如果一个标准库函数的参数预期是 Number 类型，但是得到的是一个 BigInt，就会报错。
 
-```javascript
+```js
 // 错误的写法
 Math.sqrt(4n) // 报错
 
@@ -721,7 +721,7 @@ Math.sqrt(Number(4n)) // 2
 
 asm.js 里面，`|0`跟在一个数值的后面会返回一个32位整数。根据不能与 Number 类型混合运算的规则，BigInt 如果与`|0`进行运算会报错。
 
-```javascript
+```js
 1n | 0 // 报错
 ```
 
@@ -729,7 +729,7 @@ asm.js 里面，`|0`跟在一个数值的后面会返回一个32位整数。根�
 
 BigInt 对应的布尔值，与 Number 类型一致，即`0n`会转为`false`，其他值转为`true`。
 
-```javascript
+```js
 if (0n) {
   console.log('if');
 } else {
@@ -742,7 +742,7 @@ if (0n) {
 
 比较运算符（比如`>`）和相等运算符（`==`）允许 BigInt 与其他类型的值混合计算，因为这样做不会损失精度。
 
-```javascript
+```js
 0n < 1 // true
 0n < true // true
 0n == 0 // true
@@ -752,7 +752,7 @@ if (0n) {
 
 BigInt 与字符串混合运算时，会先转为字符串，再进行运算。
 
-```javascript
+```js
 '' + 123n // "123"
 ```
 
@@ -760,19 +760,19 @@ BigInt 与字符串混合运算时，会先转为字符串，再进行运算。
 
 `Math.sign()`用来判断一个值的正负，但是如果参数是`-0`，它会返回`-0`。
 
-```javascript
+```js
 Math.sign(-0) // -0
 ```
 
 这导致对于判断符号位的正负，`Math.sign()`不是很有用。JavaScript 内部使用 64 位浮点数（国际标准 IEEE 754）表示数值，IEEE 754 规定第一位是符号位，`0`表示正数，`1`表示负数。所以会有两种零，`+0`是符号位为`0`时的零值，`-0`是符号位为`1`时的零值。实际编程中，判断一个值是`+0`还是`-0`非常麻烦，因为它们是相等的。
 
-```javascript
+```js
 +0 === -0 // true
 ```
 
 目前，有一个[提案](http://jfbastien.github.io/papers/Math.signbit.html)，引入了`Math.signbit()`方法判断一个数的符号位是否设置了。
 
-```javascript
+```js
 Math.signbit(2) //false
 Math.signbit(-2) //true
 Math.signbit(0) //false

@@ -10,7 +10,7 @@
 
 JavaScript 通过构造函数生成新对象，因此构造函数可以视为对象的模板。实例对象的属性和方法，可以定义在构造函数内部。
 
-```javascript
+```js
 function Cat (name, color) {
   this.name = name;
   this.color = color;
@@ -26,7 +26,7 @@ cat1.color // '白色'
 
 通过构造函数为实例对象定义属性，虽然很方便，但是有一个缺点。同一个构造函数的多个实例之间，无法共享属性，从而造成对系统资源的浪费。
 
-```javascript
+```js
 function Cat(name, color) {
   this.name = name;
   this.color = color;
@@ -52,7 +52,7 @@ JavaScript 继承机制的设计思想就是，原型对象的所有属性和方
 
 下面，先看怎么为对象指定原型。JavaScript 规定，每个函数都有一个`prototype`属性，指向一个对象。
 
-```javascript
+```js
 function f() {}
 typeof f.prototype // "object"
 ```
@@ -61,7 +61,7 @@ typeof f.prototype // "object"
 
 对于普通函数来说，该属性基本无用。但是，对于构造函数来说，生成实例的时候，该属性会自动成为实例对象的原型。
 
-```javascript
+```js
 function Animal(name) {
   this.name = name;
 }
@@ -78,7 +78,7 @@ cat2.color // 'white'
 
 原型对象的属性不是实例对象自身的属性。只要修改原型对象，变动就立刻会体现在**所有**实例对象上。
 
-```javascript
+```js
 Animal.prototype.color = 'yellow';
 
 cat1.color // "yellow"
@@ -89,7 +89,7 @@ cat2.color // "yellow"
 
 如果实例对象自身就有某个属性或方法，它就不会再去原型对象寻找这个属性或方法。
 
-```javascript
+```js
 cat1.color = 'black';
 
 cat1.color // 'black'
@@ -101,7 +101,7 @@ Animal.prototype.color // 'yellow';
 
 总结一下，原型对象的作用，就是定义所有实例对象共享的属性和方法。这也是它被称为原型对象的原因，而实例对象可以视作从原型对象衍生出来的子对象。
 
-```javascript
+```js
 Animal.prototype.walk = function () {
   console.log(this.name + ' is walking');
 };
@@ -117,7 +117,7 @@ JavaScript 规定，所有对象都有自己的原型对象（prototype）。一
 
 那么，`Object.prototype`对象有没有它的原型呢？回答是`Object.prototype`的原型是`null`。`null`没有任何属性和方法，也没有自己的原型。因此，原型链的尽头就是`null`。
 
-```javascript
+```js
 Object.getPrototypeOf(Object.prototype)
 // null
 ```
@@ -130,7 +130,7 @@ Object.getPrototypeOf(Object.prototype)
 
 举例来说，如果让构造函数的`prototype`属性指向一个数组，就意味着实例对象可以调用数组方法。
 
-```javascript
+```js
 var MyArray = function () {};
 
 MyArray.prototype = new Array();
@@ -150,14 +150,14 @@ mine instanceof Array // true
 
 `prototype`对象有一个`constructor`属性，默认指向`prototype`对象所在的构造函数。
 
-```javascript
+```js
 function P() {}
 P.prototype.constructor === P // true
 ```
 
 由于`constructor`属性定义在`prototype`对象上面，意味着可以被所有实例对象继承。
 
-```javascript
+```js
 function P() {}
 var p = new P();
 
@@ -170,7 +170,7 @@ p.hasOwnProperty('constructor') // false
 
 `constructor`属性的作用是，可以得知某个实例对象，到底是哪一个构造函数产生的。
 
-```javascript
+```js
 function F() {};
 var f = new F();
 
@@ -182,7 +182,7 @@ f.constructor === RegExp // false
 
 另一方面，有了`constructor`属性，就可以从一个实例对象新建另一个实例。
 
-```javascript
+```js
 function Constr() {}
 var x = new Constr();
 
@@ -192,7 +192,7 @@ y instanceof Constr // true
 
 上面代码中，`x`是构造函数`Constr`的实例，可以从`x.constructor`间接调用构造函数。这使得在实例方法中，调用自身的构造函数成为可能。
 
-```javascript
+```js
 Constr.prototype.createCopy = function () {
   return new this.constructor();
 };
@@ -202,7 +202,7 @@ Constr.prototype.createCopy = function () {
 
 `constructor`属性表示原型对象与构造函数之间的关联关系，如果修改了原型对象，一般会同时修改`constructor`属性，防止引用的时候出错。
 
-```javascript
+```js
 function Person(name) {
   this.name = name;
 }
@@ -221,7 +221,7 @@ Person.prototype.constructor === Object // true
 
 所以，修改原型对象时，一般要同时修改`constructor`属性的指向。
 
-```javascript
+```js
 // 坏的写法
 C.prototype = {
   method1: function (...) { ... },
@@ -243,7 +243,7 @@ C.prototype.method1 = function (...) { ... };
 
 如果不能确定`constructor`属性是什么函数，还有一个办法：通过`name`属性，从实例得到构造函数的名称。
 
-```javascript
+```js
 function Foo() {}
 var f = new Foo();
 f.constructor.name // "Foo"
@@ -253,7 +253,7 @@ f.constructor.name // "Foo"
 
 `instanceof`运算符返回一个布尔值，表示对象是否为某个构造函数的实例。
 
-```javascript
+```js
 var v = new Vehicle();
 v instanceof Vehicle // true
 ```
@@ -262,7 +262,7 @@ v instanceof Vehicle // true
 
 `instanceof`运算符的左边是实例对象，右边是构造函数。它会检查右边构建函数的原型对象（prototype），是否在左边对象的原型链上。因此，下面两种写法是等价的。
 
-```javascript
+```js
 v instanceof Vehicle
 // 等同于
 Vehicle.prototype.isPrototypeOf(v)
@@ -272,7 +272,7 @@ Vehicle.prototype.isPrototypeOf(v)
 
 由于`instanceof`检查整个原型链，因此同一个实例对象，可能会对多个构造函数都返回`true`。
 
-```javascript
+```js
 var d = new Date();
 d instanceof Date // true
 d instanceof Object // true
@@ -282,7 +282,7 @@ d instanceof Object // true
 
 `instanceof`的原理是检查右边构造函数的`prototype`属性，是否在左边对象的原型链上。有一种特殊情况，就是左边对象的原型链上，只有`null`对象。这时，`instanceof`判断会失真。
 
-```javascript
+```js
 var obj = Object.create(null);
 typeof obj // "object"
 Object.create(null) instanceof Object // false
@@ -292,7 +292,7 @@ Object.create(null) instanceof Object // false
 
 `instanceof`运算符的一个用处，是判断值的类型。
 
-```javascript
+```js
 var x = [1, 2, 3];
 var y = {};
 x instanceof Array // true
@@ -303,7 +303,7 @@ y instanceof Object // true
 
 注意，`instanceof`运算符只能用于对象，不适用原始类型的值。
 
-```javascript
+```js
 var s = 'hello';
 s instanceof String // false
 ```
@@ -312,14 +312,14 @@ s instanceof String // false
 
 此外，对于`undefined`和`null`，`instanceOf`运算符总是返回`false`。
 
-```javascript
+```js
 undefined instanceof Object // false
 null instanceof Object // false
 ```
 
 利用`instanceof`运算符，还可以巧妙地解决，调用构造函数时，忘了加`new`命令的问题。
 
-```javascript
+```js
 function Fubar (foo, bar) {
   if (this instanceof Fubar) {
     this._foo = foo;

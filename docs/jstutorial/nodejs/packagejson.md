@@ -6,7 +6,7 @@
 
 下面是一个最简单的package.json文件，只定义两项元数据：项目名称和项目版本。
 
-```javascript
+```js
 {
   "name" : "xxx",
   "version" : "0.0.0",
@@ -17,7 +17,7 @@
 
 下面是一个更完整的package.json文件。
 
-```javascript
+```js
 {
 	"name": "Hello World",
 	"version": "0.0.1",
@@ -63,7 +63,7 @@
 
 下面的设置指定了`npm run preinstall`、`npm run postinstall`、`npm run start`、`npm run test`时，所要执行的命令。
 
-```javascript
+```js
 "scripts": {
     "preinstall": "echo here it comes!",
     "postinstall": "echo there it goes!",
@@ -78,7 +78,7 @@
 
 它们都指向一个对象。该对象的各个成员，分别由模块名和对应的版本要求组成，表示依赖的模块及其版本范围。
 
-```javascript
+```js
 {
   "devDependencies": {
     "browserify": "~13.0.0",
@@ -127,7 +127,7 @@ $ npm install express --save-dev
 
 `peerDependencies`字段，就是用来供插件指定其所需要的主工具的版本。
 
-```javascript
+```js
 {
   "name": "chai-as-promised",
   "peerDependencies": {
@@ -144,7 +144,7 @@ $ npm install express --save-dev
 
 bin项用来指定各个内部命令对应的可执行文件的位置。
 
-```javascript
+```js
 "bin": {
   "someTool": "./bin/someTool.js"
 }
@@ -154,7 +154,7 @@ bin项用来指定各个内部命令对应的可执行文件的位置。
 
 因此，像下面这样的写法可以采用简写。
 
-```javascript
+```js
 
 scripts: {  
   start: './node_modules/someTool/someTool.js build'
@@ -180,7 +180,7 @@ scripts: {
 
 下面是一个`package.json`文件。
 
-```javascript
+```js
 {
   "name" : "foo",
   "config" : { "port" : "8080" },
@@ -190,7 +190,7 @@ scripts: {
 
 然后，在`server.js`脚本就可以引用`config`字段的值。
 
-```javascript
+```js
 http
   .createServer(...)
   .listen(process.env.npm_package_config_port)
@@ -214,7 +214,7 @@ $ npm config set foo:port 80
 
 browser指定该模板供浏览器使用的版本。Browserify这样的浏览器打包工具，通过它就知道该打包那个文件。
 
-```javascript
+```js
 "browser": {
   "tipso": "./node_modules/tipso/src/tipso.js"
 },
@@ -224,13 +224,13 @@ browser指定该模板供浏览器使用的版本。Browserify这样的浏览器
 
 `engines`字段指明了该模块运行的平台，比如 Node 的某个版本或者浏览器。
 
-```javascript
+```js
 { "engines" : { "node" : ">=0.10.3 <0.12" } }
 ```
 
 该字段也可以指定适用的`npm`版本。
 
-```javascript
+```js
 { "engines" : { "npm" : "~1.0.20" } }
 ```
 
@@ -238,7 +238,7 @@ browser指定该模板供浏览器使用的版本。Browserify这样的浏览器
 
 man用来指定当前模块的man文档的位置。
 
-```javascript
+```js
 "man" :[ "./doc/calc.1" ]
 ```
 
@@ -250,7 +250,7 @@ preferGlobal的值是布尔值，表示当用户不将该模块安装为全局�
 
 style指定供浏览器使用时，样式文件所在的位置。样式文件打包工具parcelify，通过它知道样式文件的打包位置。
 
-```javascript
+```js
 "style": [
   "./node_modules/tipso/src/tipso.css"
 ]

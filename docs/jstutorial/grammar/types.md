@@ -35,7 +35,7 @@ JavaScript 有三种方法，可以确定一个值到底是什么类型。
 
 数值、字符串、布尔值分别返回`number`、`string`、`boolean`。
 
-```javascript
+```js
 typeof 123 // "number"
 typeof '123' // "string"
 typeof false // "boolean"
@@ -43,7 +43,7 @@ typeof false // "boolean"
 
 函数返回`function`。
 
-```javascript
+```js
 function f() {}
 typeof f
 // "function"
@@ -51,14 +51,14 @@ typeof f
 
 `undefined`返回`undefined`。
 
-```javascript
+```js
 typeof undefined
 // "undefined"
 ```
 
 利用这一点，`typeof`可以用来检查一个没有声明的变量，而不报错。
 
-```javascript
+```js
 v
 // ReferenceError: v is not defined
 
@@ -70,7 +70,7 @@ typeof v
 
 实际编程中，这个特点通常用在判断语句。
 
-```javascript
+```js
 // 错误的写法
 if (v) {
   // ...
@@ -85,7 +85,7 @@ if (typeof v === "undefined") {
 
 对象返回`object`。
 
-```javascript
+```js
 typeof window // "object"
 typeof {} // "object"
 typeof [] // "object"
@@ -93,7 +93,7 @@ typeof [] // "object"
 
 上面代码中，空数组（`[]`）的类型也是`object`，这表示在 JavaScript 内部，数组本质上只是一种特殊的对象。这里顺便提一下，`instanceof`运算符可以区分数组和对象。`instanceof`运算符的详细解释，请见《面向对象编程》一章。
 
-```javascript
+```js
 var o = {};
 var a = [];
 
@@ -103,7 +103,7 @@ a instanceof Array // true
 
 `null`返回`object`。
 
-```javascript
+```js
 typeof null // "object"
 ```
 
@@ -115,7 +115,7 @@ typeof null // "object"
 
 `null`与`undefined`都可以表示“没有”，含义非常相似。将一个变量赋值为`undefined`或`null`，老实说，语法效果几乎没区别。
 
-```javascript
+```js
 var a = undefined;
 // 或者
 var a = null;
@@ -125,7 +125,7 @@ var a = null;
 
 在`if`语句中，它们都会被自动转为`false`，相等运算符（`==`）甚至直接报告两者相等。
 
-```javascript
+```js
 if (!undefined) {
   console.log('undefined is false');
 }
@@ -146,7 +146,7 @@ undefined == null
 
 1995年 JavaScript 诞生时，最初像 Java 一样，只设置了`null`表示"无"。根据 C 语言的传统，`null`可以自动转为`0`。
 
-```javascript
+```js
 Number(null) // 0
 5 + null // 5
 ```
@@ -157,7 +157,7 @@ Number(null) // 0
 
 因此，他又设计了一个`undefined`。区别是这样的：`null`是一个表示“空”的对象，转为数值时为`0`；`undefined`是一个表示"此处无定义"的原始值，转为数值时为`NaN`。
 
-```javascript
+```js
 Number(undefined) // NaN
 5 + undefined // NaN
 ```
@@ -170,7 +170,7 @@ Number(undefined) // NaN
 
 `undefined`表示“未定义”，下面是返回`undefined`的典型场景。
 
-```javascript
+```js
 // 变量声明了，但没有赋值
 var i;
 i // undefined
@@ -212,7 +212,7 @@ f() // undefined
 
 布尔值往往用于程序流程的控制，请看一个例子。
 
-```javascript
+```js
 if ('') {
   console.log('true');
 }
@@ -223,7 +223,7 @@ if ('') {
 
 注意，空数组（`[]`）和空对象（`{}`）对应的布尔值，都是`true`。
 
-```javascript
+```js
 if ([]) {
   console.log('true');
 }

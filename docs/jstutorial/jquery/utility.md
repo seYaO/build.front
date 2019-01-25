@@ -10,7 +10,7 @@ jQuery函数库提供了一个jQuery对象（简写为$），这个对象本身�
 
 $.trim方法用于移除字符串头部和尾部多余的空格。
 
-```javascript
+```js
 
 $.trim('   Hello   ') // Hello
 
@@ -21,7 +21,7 @@ $.trim('   Hello   ') // Hello
 
 $.contains方法返回一个布尔值，表示某个DOM元素（第二个参数）是否为另一个DOM元素（第一个参数）的下级元素。
 
-```javascript
+```js
 
 $.contains(document.documentElement, document.body); 
 // true
@@ -35,7 +35,7 @@ $.contains(document.body, document.documentElement);
 
 $.each方法用于遍历数组和对象，然后返回原始对象。它接受两个参数，分别是数据集合和回调函数。
 
-```javascript
+```js
 
 $.each([ 52, 97 ], function( index, value ) {
   console.log( index + ": " + value );
@@ -59,7 +59,7 @@ $.each( obj, function( key, value ) {
 
 $.map方法也是用来遍历数组和对象，但是会返回一个新对象。
 
-```javascript
+```js
 
 var a = ["a", "b", "c", "d", "e"];
 a = $.map(a, function (n, i){
@@ -73,7 +73,7 @@ a = $.map(a, function (n, i){
 
 $.inArray方法返回一个值在数组中的位置（从0开始）。如果该值不在数组中，则返回-1。
 
-```javascript
+```js
 
 var a = [1,2,3,4];
 $.inArray(4,a) // 3
@@ -84,7 +84,7 @@ $.inArray(4,a) // 3
 
 $.extend方法用于将多个对象合并进第一个对象。
 
-```javascript
+```js
 
 var o1 = {p1:'a',p2:'b'};
 var o2 = {p1:'c'};
@@ -96,7 +96,7 @@ o1.p1 // "c"
 
 $.extend的另一种用法是生成一个新对象，用来继承原有对象。这时，它的第一个参数应该是一个空对象。
 
-```javascript
+```js
 
 var o1 = {p1:'a',p2:'b'};
 var o2 = {p1:'c'};
@@ -109,7 +109,7 @@ o
 
 默认情况下，extend方法生成的对象是“浅拷贝”，也就是说，如果某个属性是对象或数组，那么只会生成指向这个对象或数组的指针，而不会复制值。如果想要“深拷贝”，可以在extend方法的第一个参数传入布尔值true。
 
-```javascript
+```js
 
 var o1 = {p1:['a','b']};
 
@@ -131,7 +131,7 @@ $.proxy方法类似于ECMAScript 5的bind方法，可以绑定函数的上下文
 
 jQuery.proxy()的主要用处是为回调函数绑定上下文对象。
 
-```javascript
+```js
 
 var o = {
 	type: "object",
@@ -150,7 +150,7 @@ $("#button")
 
 这个例子的另一种等价的写法是：
 
-```javascript
+```js
 
 $("#button").on( "click", $.proxy(o, test)) 
 
@@ -160,7 +160,7 @@ $("#button").on( "click", $.proxy(o, test))
 
 这个例子表明，proxy方法的写法主要有两种。
 
-```javascript
+```js
 
 jQuery.proxy(function, context)
 
@@ -174,7 +174,7 @@ jQuery.proxy(context, name)
 
 再看一个例子。正常情况下，下面代码中的this对象指向发生click事件的DOM对象。
 
-```javascript
+```js
 
 $('#myElement').click(function() {
     $(this).addClass('aNewClass');
@@ -184,7 +184,7 @@ $('#myElement').click(function() {
 
 如果我们想让回调函数延迟运行，使用setTimeout方法，代码就会出错，因为setTimeout使得回调函数在全局环境运行，this将指向全局对象。
 
-```javascript
+```js
 
 $('#myElement').click(function() {
     setTimeout(function() {
@@ -198,7 +198,7 @@ $('#myElement').click(function() {
 
 这时，就可以用proxy方法，将this对象绑定到myElement对象。
 
-```javascript
+```js
 
 $('#myElement').click(function() {
     setTimeout($.proxy(function() {
@@ -212,7 +212,7 @@ $('#myElement').click(function() {
 
 $.data方法可以用来在DOM节点上储存数据。
 
-```javascript
+```js
 
 // 存入数据
 $.data(document.body, "foo", 52 );
@@ -229,7 +229,7 @@ $.data(document.body);
 
 $.removeData方法用于移除$.data方法所储存的数据。
 
-```javascript
+```js
 
 $.data(div, "test1", "VALUE-1");
 $.removeData(div, "test1");
@@ -244,7 +244,7 @@ $.parseJSON方法用于将JSON字符串解析为JavaScript对象，作用与原�
 
 $.parseXML方法用于将字符串解析为XML对象。
 
-```javascript
+```js
 
 var html = $.parseHTML("hello, <b>my name is</b> jQuery.");
 var obj = $.parseJSON('{"name": "John"}');
@@ -258,7 +258,7 @@ var xmlDoc = $.parseXML(xml);
 
 $.makeArray方法将一个类似数组的对象，转化为真正的数组。
 
-```javascript
+```js
 
 var a = $.makeArray(document.getElementsByTagName("div"));
 
@@ -268,7 +268,7 @@ var a = $.makeArray(document.getElementsByTagName("div"));
 
 $.merge方法用于将一个数组（第二个参数）合并到另一个数组（第一个参数）之中。
 
-```javascript
+```js
 
 var a1 = [0,1,2];
 var a2 = [2,3,4];
@@ -283,7 +283,7 @@ a1
 
 $.now方法返回当前时间距离1970年1月1日00:00:00 UTC对应的毫秒数，等同于(new Date).getTime()。
 
-```javascript
+```js
 
 $.now()
 // 1388212221489
@@ -304,7 +304,7 @@ jQuery提供一系列工具方法，用来判断数据类型，以弥补JavaScri
 
 下面是一些例子。
 
-```javascript
+```js
 
 $.isEmptyObject({}) // true
 $.isPlainObject(document.location) // false
@@ -315,7 +315,7 @@ $.isXMLDoc(document.body) // false
 
 除了上面这些方法以外，还有一个$.type方法，可以返回一个变量的数据类型。它的实质是用Object.prototype.toString方法读取对象内部的[[Class]]属性（参见《标准库》的Object对象一节）。
 
-```javascript
+```js
 
 $.type(/test/) // "regexp"
 
@@ -329,7 +329,7 @@ jQuery对象上面还定义了Ajax方法（$.ajax()），用来处理Ajax操作�
 
 $.ajax()的用法主要有两种。
 
-```javascript
+```js
 
 $.ajax(url[, options])
 $.ajax([options])
@@ -338,7 +338,7 @@ $.ajax([options])
 
 上面代码中的url，指的是服务器网址，options则是一个对象参数，设置Ajax请求的具体参数。
 
-```javascript
+```js
 
 $.ajax({
   async: true,
@@ -399,7 +399,7 @@ function completeCallback(xhr, status){
 
 这些参数之中，url可以独立出来，作为ajax方法的第一个参数。也就是说，上面代码还可以写成下面这样。
 
-```javascript
+```js
 
 $.ajax('/url/to/json',{
   type: 'GET',
@@ -412,7 +412,7 @@ $.ajax('/url/to/json',{
 
 作为向服务器发送的数据，data属性也可以写成一个对象。
 
-```javascript
+```js
 
 $.ajax({
   url: '/remote/url',
@@ -446,7 +446,7 @@ ajax方法还有一些简便写法。
 
 这两个方法分别对应HTTP的GET方法和POST方法。
 
-```javascript
+```js
 
 $.get('/data/people.html', function(html){
   $('#target').html(html);
@@ -462,7 +462,7 @@ get方法和post方法的参数相同，第一个参数是服务器网址，该�
 
 上面的post方法对应的ajax写法如下。
 
-```javascript
+```js
 
 $.ajax({
     type: 'POST',
@@ -480,7 +480,7 @@ $.ajax({
 
 ajax方法的另一个简便写法是getJSON方法。当服务器端返回JSON格式的数据，可以用这个方法代替$.ajax方法。
 
-```javascript
+```js
 
 $.getJSON('url/to/json', {'a': 1}, function(data){
 	console.log(data);
@@ -490,7 +490,7 @@ $.getJSON('url/to/json', {'a': 1}, function(data){
 
 上面的代码等同于下面的写法。
 
-```javascript
+```js
 
 $.ajax({
   dataType: "json",
@@ -507,7 +507,7 @@ $.ajax({
 
 $.getScript方法用于从服务器端加载一个脚本文件。
 
-```javascript
+```js
 
 $.getScript('/static/js/myScript.js', function() {
 	functionFromMyScript();
@@ -519,7 +519,7 @@ $.getScript('/static/js/myScript.js', function() {
 
 getScript的回调函数接受三个参数，分别是脚本文件的内容，HTTP响应的状态信息和ajax对象实例。
 
-```javascript
+```js
 
 $.getScript( "ajax/test.js", function (data, textStatus, jqxhr){
   console.log( data ); // test.js的内容
@@ -531,7 +531,7 @@ $.getScript( "ajax/test.js", function (data, textStatus, jqxhr){
 
 getScript是ajax方法的简便写法，因此返回的是一个deferred对象，可以使用deferred接口。
 
-```javascript
+```js
 
 jQuery.getScript("/path/to/myscript.js")
 	.done(function() {
@@ -547,7 +547,7 @@ jQuery.getScript("/path/to/myscript.js")
 
 $.fn.load不是jQuery的工具方法，而是定义在jQuery对象实例上的方法，用于获取服务器端的HTML文件，将其放入当前元素。由于该方法也属于ajax操作，所以放在这里一起讲。
 
-```javascript
+```js
 
 $('#newContent').load('/foo.html');
 
@@ -555,7 +555,7 @@ $('#newContent').load('/foo.html');
 
 $.fn.load方法还可以指定一个选择器，将远程文件中匹配选择器的部分，放入当前元素，并指定操作完成时的回调函数。
 
-```javascript
+```js
 
 $('#newContent').load('/foo.html #myDiv h1:first',
 	function(html) {
@@ -566,7 +566,7 @@ $('#newContent').load('/foo.html #myDiv h1:first',
 
 上面代码只加载foo.html中匹配“#myDiv h1:first”的部分，加载完成后会运行指定的回调函数。
 
-```javascript
+```js
 
 $('#main-menu a').click(function(event) {
    event.preventDefault();
@@ -580,7 +580,7 @@ $('#main-menu a').click(function(event) {
 
 load方法可以附加一个字符串或对象作为参数，一起向服务器提交。如果是字符串，则采用GET方法提交；如果是对象，则采用POST方法提交。
 
-```javascript
+```js
 
 $( "#feeds" ).load( "feeds.php", { limit: 25 }, function() {
   console.log( "已经载入" );
@@ -592,7 +592,7 @@ $( "#feeds" ).load( "feeds.php", { limit: 25 }, function() {
 
 load方法的回调函数，可以用来向用户提示操作已经完成。
 
-```javascript
+```js
 
 $('#main-menu a').click(function(event) {
    event.preventDefault();
@@ -621,7 +621,7 @@ jQuery提供以下一些方法，用于指定特定的AJAX事件的回调函数�
 
 下面是示例。
 
-```javascript
+```js
 $('#loading_indicator')
 .ajaxStart(function (){$(this).show();})
 .ajaxStop(function (){$(this).hide();});
@@ -629,7 +629,7 @@ $('#loading_indicator')
 
 下面是处理Ajax请求出错（返回404或500错误）的例子。
 
-```javascript
+```js
 $(document).ajaxError(function (e, xhr, settings, error) {
   console.log(error);
 });
@@ -639,7 +639,7 @@ $(document).ajaxError(function (e, xhr, settings, error) {
 
 ajax方法返回的是一个deferred对象，可以用then方法为该对象指定回调函数（详细解释参见《deferred对象》一节）。
 
-```javascript
+```js
 
 $.ajax({
   url: '/data/people.json',
@@ -656,7 +656,7 @@ $.ajax({
 
 ajax方法可以发出JSONP请求，方法是在对象参数中指定dataType为JSONP。
 
-```javascript
+```js
 
 $.ajax({
   url: '/data/search.jsonp',
@@ -671,7 +671,7 @@ $.ajax({
 
 JSONP的通常做法是，在所要请求的URL后面加在回调函数的名称。ajax方法规定，如果所请求的网址以类似“callback=?”的形式结尾，则自动采用JSONP形式。所以，上面的代码还可以写成下面这样。
 
-```javascript
+```js
 
 $.getJSON('/data/search.jsonp?q=a&callback=?',
   function(resp) {
@@ -693,7 +693,7 @@ $.getJSON('/data/search.jsonp?q=a&callback=?',
 
 下面就是如何使用Ajax上传文件。
 
-```javascript
+```js
 
 var file = $('#test-input')[0].files[0];
 var formData = new FormData();
@@ -711,7 +711,7 @@ $.ajax('myserver/uploads', {
 
 上面代码是将文件作为表单数据发送。除此之外，也可以直接发送文件。
 
-```javascript
+```js
 
 var file = $('#test-input')[0].files[0];
 

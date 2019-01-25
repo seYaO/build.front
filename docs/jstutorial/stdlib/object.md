@@ -12,7 +12,7 @@ JavaScript 的所有其他对象都继承自`Object`对象，即那些对象都�
 
 所谓”本身的方法“就是直接定义在`Object`对象的方法。
 
-```javascript
+```js
 Object.print = function (o) { console.log(o) };
 ```
 
@@ -22,7 +22,7 @@ Object.print = function (o) { console.log(o) };
 
 所谓实例方法就是定义在`Object`原型对象`Object.prototype`上的方法。它可以被`Object`实例直接使用。
 
-```javascript
+```js
 Object.prototype.print = function () {
   console.log(this);
 };
@@ -43,7 +43,7 @@ obj.print() // Object
 
 如果参数为空（或者为`undefined`和`null`），`Object()`返回一个空对象。
 
-```javascript
+```js
 var obj = Object();
 // 等同于
 var obj = Object(undefined);
@@ -58,7 +58,7 @@ obj instanceof Object // true
 
 如果参数是原始类型的值，`Object`方法将其转为对应的包装对象的实例（参见《原始类型的包装对象》一章）。
 
-```javascript
+```js
 var obj = Object(1);
 obj instanceof Object // true
 obj instanceof Number // true
@@ -76,7 +76,7 @@ obj instanceof Boolean // true
 
 如果`Object`方法的参数是一个对象，它总是返回该对象，即不用转换。
 
-```javascript
+```js
 var arr = [];
 var obj = Object(arr); // 返回原数组
 obj === arr // true
@@ -92,7 +92,7 @@ obj === fn // true
 
 利用这一点，可以写一个判断变量是否为对象的函数。
 
-```javascript
+```js
 function isObject(value) {
   return value === Object(value);
 }
@@ -107,7 +107,7 @@ isObject(true) // false
 
 `Object`构造函数的首要用途，是直接通过它来生成新对象。
 
-```javascript
+```js
 var obj = new Object();
 ```
 
@@ -115,7 +115,7 @@ var obj = new Object();
 
 `Object`构造函数的用法与工具方法很相似，几乎一模一样。使用时，可以接受一个参数，如果该参数是一个对象，则直接返回这个对象；如果是一个原始类型的值，则返回该值对应的包装对象（详见《包装对象》一章）。
 
-```javascript
+```js
 var o1 = {a: 1};
 var o2 = new Object(o1);
 o1 === o2 // true
@@ -136,7 +136,7 @@ obj instanceof Number // true
 
 `Object.keys`方法的参数是一个对象，返回一个数组。该数组的成员都是该对象自身的（而不是继承的）所有属性名。
 
-```javascript
+```js
 var obj = {
   p1: 123,
   p2: 456
@@ -147,7 +147,7 @@ Object.keys(obj) // ["p1", "p2"]
 
 `Object.getOwnPropertyNames`方法与`Object.keys`类似，也是接受一个对象作为参数，返回一个数组，包含了该对象自身的所有属性名。
 
-```javascript
+```js
 var obj = {
   p1: 123,
   p2: 456
@@ -158,7 +158,7 @@ Object.getOwnPropertyNames(obj) // ["p1", "p2"]
 
 对于一般的对象来说，`Object.keys()`和`Object.getOwnPropertyNames()`返回的结果是一样的。只有涉及不可枚举属性时，才会有不一样的结果。`Object.keys`方法只返回可枚举的属性（详见《对象属性的描述对象》一章），`Object.getOwnPropertyNames`方法还返回不可枚举的属性名。
 
-```javascript
+```js
 var a = ['Hello', 'World'];
 
 Object.keys(a) // ["0", "1"]
@@ -169,7 +169,7 @@ Object.getOwnPropertyNames(a) // ["0", "1", "length"]
 
 由于 JavaScript 没有提供计算对象属性个数的方法，所以可以用这两个方法代替。
 
-```javascript
+```js
 var obj = {
   p1: 123,
   p2: 456
@@ -224,7 +224,7 @@ Object.getOwnPropertyNames(obj).length // 2
 
 `valueOf`方法的作用是返回一个对象的“值”，默认情况下返回对象本身。
 
-```javascript
+```js
 var obj = new Object();
 obj.valueOf() === obj // true
 ```
@@ -233,14 +233,14 @@ obj.valueOf() === obj // true
 
 `valueOf`方法的主要用途是，JavaScript 自动类型转换时会默认调用这个方法（详见《数据类型转换》一章）。
 
-```javascript
+```js
 var obj = new Object();
 1 + obj // "1[object Object]"
 ```
 
 上面代码将对象`obj`与数字`1`相加，这时 JavaScript 就会默认调用`valueOf()`方法，求出`obj`的值再与`1`相加。所以，如果自定义`valueOf`方法，就可以得到想要的结果。
 
-```javascript
+```js
 var obj = new Object();
 obj.valueOf = function () {
   return 2;
@@ -255,7 +255,7 @@ obj.valueOf = function () {
 
 `toString`方法的作用是返回一个对象的字符串形式，默认情况下返回类型字符串。
 
-```javascript
+```js
 var o1 = new Object();
 o1.toString() // "[object Object]"
 
@@ -267,7 +267,7 @@ o2.toString() // "[object Object]"
 
 字符串`[object Object]`本身没有太大的用处，但是通过自定义`toString`方法，可以让对象在自动类型转换时，得到想要的字符串形式。
 
-```javascript
+```js
 var obj = new Object();
 
 obj.toString = function () {
@@ -281,7 +281,7 @@ obj + ' ' + 'world' // "hello world"
 
 数组、字符串、函数、Date 对象都分别部署了自定义的`toString`方法，覆盖了`Object.prototype.toString`方法。
 
-```javascript
+```js
 [1, 2, 3].toString() // "1,2,3"
 
 '123'.toString() // "123"
@@ -303,7 +303,7 @@ obj + ' ' + 'world' // "hello world"
 
 `Object.prototype.toString`方法返回对象的类型字符串，因此可以用来判断一个值的类型。
 
-```javascript
+```js
 var obj = {};
 obj.toString() // "[object Object]"
 ```
@@ -312,7 +312,7 @@ obj.toString() // "[object Object]"
 
 由于实例对象可能会自定义`toString`方法，覆盖掉`Object.prototype.toString`方法，所以为了得到类型字符串，最好直接使用`Object.prototype.toString`方法。通过函数的`call`方法，可以在任意值上调用这个方法，帮助我们判断这个值的类型。
 
-```javascript
+```js
 Object.prototype.toString.call(value)
 ```
 
@@ -335,7 +335,7 @@ Object.prototype.toString.call(value)
 
 这就是说，`Object.prototype.toString`可以看出一个值到底是什么类型。
 
-```javascript
+```js
 Object.prototype.toString.call(2) // "[object Number]"
 Object.prototype.toString.call('') // "[object String]"
 Object.prototype.toString.call(true) // "[object Boolean]"
@@ -348,7 +348,7 @@ Object.prototype.toString.call([]) // "[object Array]"
 
 利用这个特性，可以写出一个比`typeof`运算符更准确的类型判断函数。
 
-```javascript
+```js
 var type = function (o){
   var s = Object.prototype.toString.call(o);
   return s.match(/\[object (.*?)\]/)[1].toLowerCase();
@@ -365,7 +365,7 @@ type(new Date()); // "date"
 
 在上面这个`type`函数的基础上，还可以加上专门判断某种类型数据的方法。
 
-```javascript
+```js
 var type = function (o){
   var s = Object.prototype.toString.call(o);
   return s.match(/\[object (.*?)\]/)[1].toLowerCase();
@@ -395,7 +395,7 @@ type.isRegExp(/abc/) // true
 
 `Object.prototype.toLocaleString`方法与`toString`的返回结果相同，也是返回一个值的字符串形式。
 
-```javascript
+```js
 var obj = {};
 obj.toString(obj) // "[object Object]"
 obj.toLocaleString(obj) // "[object Object]"
@@ -409,7 +409,7 @@ obj.toLocaleString(obj) // "[object Object]"
 
 举例来说，日期的实例对象的`toString`和`toLocaleString`返回值就不一样，而且`toLocaleString`的返回值跟用户设定的所在地域相关。
 
-```javascript
+```js
 var date = new Date();
 date.toString() // "Tue Jan 01 2018 12:01:33 GMT+0800 (CST)"
 date.toLocaleString() // "1/01/2018, 12:01:33 PM"
@@ -419,7 +419,7 @@ date.toLocaleString() // "1/01/2018, 12:01:33 PM"
 
 `Object.prototype.hasOwnProperty`方法接受一个字符串作为参数，返回一个布尔值，表示该实例对象自身是否具有该属性。
 
-```javascript
+```js
 var obj = {
   p: 123
 };

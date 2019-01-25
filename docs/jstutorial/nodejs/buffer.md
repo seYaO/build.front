@@ -6,7 +6,7 @@
 
 JavaScript比较擅长处理字符串，对于处理二进制数据（比如TCP数据流），就不太擅长。`Buffer`对象就是为了解决这个问题而设计的。它是一个构造函数，生成的实例代表了V8引擎分配的一段内存，是一个类似数组的对象，成员都为0到255的整数值，即一个8位的字节。
 
-```javascript
+```js
 // 生成一个256字节的Buffer实例
 var bytes = new Buffer(256);
 
@@ -28,7 +28,7 @@ end[0] // 0
 
 除了直接赋值，`Buffer`实例还可以拷贝生成。
 
-```javascript
+```js
 var bytes = new Buffer(8);
 
 for (var i = 0; i < bytes.length; i++) {
@@ -61,7 +61,7 @@ more[0] // 4
 
 `Buffer`作为构造函数，可以用`new`命令生成一个实例，它可以接受多种形式的参数。
 
-```javascript
+```js
 // 参数是整数，指定分配多少个字节内存
 var hello = new Buffer(5);
 
@@ -84,7 +84,7 @@ var hello2 = new Buffer(hello1);
 
 下面是读取用户命令行输入的例子。
 
-```javascript
+```js
 var fs = require('fs');
 var buffer = new Buffer(1024);
 
@@ -108,7 +108,7 @@ INPUT: foo
 
 Buffer.isEncoding方法返回一个布尔值，表示Buffer实例是否为指定编码。
 
-```javascript
+```js
 Buffer.isEncoding('utf8')
 // true
 ```
@@ -117,7 +117,7 @@ Buffer.isEncoding('utf8')
 
 Buffer.isBuffer方法接受一个对象作为参数，返回一个布尔值，表示该对象是否为Buffer实例。
 
-```javascript
+```js
 Buffer.isBuffer(Date) // false
 ```
 
@@ -125,7 +125,7 @@ Buffer.isBuffer(Date) // false
 
 Buffer.byteLength方法返回字符串实际占据的字节长度，默认编码方式为utf8。
 
-```javascript
+```js
 Buffer.byteLength('Hello', 'utf8') // 5
 ```
 
@@ -133,7 +133,7 @@ Buffer.byteLength('Hello', 'utf8') // 5
 
 Buffer.concat方法将一组Buffer对象合并为一个Buffer对象。
 
-```javascript
+```js
 var i1 = new Buffer('Hello');
 var i2 = new Buffer(' ');
 var i3 = new Buffer('World');
@@ -145,7 +145,7 @@ Buffer.concat([i1, i2, i3]).toString()
 
 Buffer.concat方法还可以接受第二个参数，指定合并后Buffer对象的总长度。
 
-```javascript
+```js
 var i1 = new Buffer('Hello');
 var i2 = new Buffer(' ');
 var i3 = new Buffer('World');
@@ -161,7 +161,7 @@ Buffer.concat([i1, i2, i3], 10).toString()
 
 length属性返回Buffer对象所占据的内存长度。注意，这个值与Buffer对象的内容无关。
 
-```javascript
+```js
 buf = new Buffer(1234);
 buf.length // 1234
 
@@ -179,7 +179,7 @@ length属性是可写的，但是这会导致未定义的行为，不建议使�
 
 `write`方法可以向指定的Buffer对象写入数据。它的第一个参数是所写入的内容，第二个参数（可省略）是所写入的起始位置（默认从0开始），第三个参数（可省略）是编码方式，默认为`utf8`。
 
-```javascript
+```js
 var buf = new Buffer(5);
 buf.write('He');
 buf.write('l', 2);
@@ -192,7 +192,7 @@ console.log(buf.toString());
 
 slice方法返回一个按照指定位置、从原对象切割出来的Buffer实例。它的两个参数分别为切割的起始位置和终止位置。
 
-```javascript
+```js
 var buf = new Buffer('just some data');
 var chunk = buf.slice(5, 9);
 chunk.toString()
@@ -203,7 +203,7 @@ chunk.toString()
 
 `toString`方法将Buffer实例，按照指定编码（默认为`utf8`）转为字符串。
 
-```javascript
+```js
 var hello = new Buffer('Hello');
 hello // <Buffer 48 65 6c 6c 6f>
 hello.toString() // "Hello"
@@ -211,7 +211,7 @@ hello.toString() // "Hello"
 
 `toString`方法可以只返回指定位置内存的内容，它的第二个参数表示起始位置，第三个参数表示终止位置，两者都是从0开始计算。
 
-```javascript
+```js
 var buf = new Buffer('just some data');
 console.log(buf.toString('ascii', 5, 9));
 // "some"
@@ -221,7 +221,7 @@ console.log(buf.toString('ascii', 5, 9));
 
 toJSON方法将Buffer实例转为JSON对象。如果JSON.stringify方法调用Buffer实例，默认会先调用toJSON方法。
 
-```javascript
+```js
 var buf = new Buffer('test');
 var json = JSON.stringify(buf);
 json // '[116,101,115,116]'

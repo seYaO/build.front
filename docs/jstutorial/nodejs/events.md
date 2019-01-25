@@ -8,7 +8,7 @@
 
 Event Emitter 是一个接口，可以在任何对象上部署。这个接口由`events`模块提供。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 var emitter = new EventEmitter();
 ```
@@ -17,7 +17,7 @@ var emitter = new EventEmitter();
 
 然后，事件发生器的实例方法`on`用来监听事件，实例方法`emit`用来发出事件。
 
-```javascript
+```js
 emitter.on('someEvent', function () {
   console.log('event has occured');
 });
@@ -42,7 +42,7 @@ f()
 
 Event Emitter 接口可以部署在任意对象上，使得这些对象也能订阅和发布消息。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 
 function Dog(name) {
@@ -68,7 +68,7 @@ setInterval(function () {
 
 Node 内置模块`util`的`inherits`方法，提供了另一种继承 Event Emitter 接口的方法。
 
-```javascript
+```js
 var util = require('util');
 var EventEmitter = require('events').EventEmitter;
 
@@ -93,7 +93,7 @@ module.exports = Radio;
 
 上面代码中，`Radio`是一个构造函数，它的实例继承了EventEmitter接口。下面是使用这个模块的例子。
 
-```javascript
+```js
 var Radio = require('./radio.js');
 
 var station = {
@@ -128,7 +128,7 @@ Event Emitter 的实例方法如下。
 
 `EventEmitter`实例对象的`emit`方法，用来触发事件。它的第一个参数是事件名称，其余参数都会依次传入回调函数。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 var myEmitter = new EventEmitter();
 
@@ -145,7 +145,7 @@ myEmitter.emit('connection', 6);
 
 该方法类似于`on`方法，但是回调函数只触发一次。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 var myEmitter = new EventEmitter;
 
@@ -162,7 +162,7 @@ myEmitter.emit('message', 'welcome to nodejs');
 
 下面代码指定，一旦服务器连通，只调用一次的回调函数。
 
-```javascript
+```js
 
 server.once('connection', function (stream) {
   console.log('Ah, we have our first user!');
@@ -176,7 +176,7 @@ server.once('connection', function (stream) {
 
 该方法用于移除回调函数。它接受两个参数，第一个是事件名称，第二个是回调函数名称。这就是说，不能用于移除匿名函数。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 var emitter = new EventEmitter;
 
@@ -195,7 +195,7 @@ setTimeout(function(){
 
 另一个例子是使用removeListener方法模拟once方法。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 var emitter = new EventEmitter;
 
@@ -211,7 +211,7 @@ emitter.on("firstConnection", onlyOnce);
 
 Node默认允许同一个事件最多可以指定10个回调函数。
 
-```javascript
+```js
 emitter.on('someEvent', function () { console.log('event 1'); });
 emitter.on('someEvent', function () { console.log('event 2'); });
 emitter.on('someEvent', function () { console.log('event 3'); });
@@ -219,7 +219,7 @@ emitter.on('someEvent', function () { console.log('event 3'); });
 
 超过10个回调函数，会发出一个警告。这个门槛值可以通过`setMaxListeners`方法改变。
 
-```javascript
+```js
 emitter.setMaxListeners(20);
 ```
 
@@ -227,7 +227,7 @@ emitter.setMaxListeners(20);
 
 该方法用于移除某个事件的所有回调函数。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 var emitter = new EventEmitter;
 
@@ -238,7 +238,7 @@ emitter.removeAllListeners("firstConnection");
 
 如果不带参数，则表示移除所有事件的所有回调函数。
 
-```javascript
+```js
 
 emitter.removeAllListeners();
 
@@ -248,7 +248,7 @@ emitter.removeAllListeners();
 
 `listeners`方法接受一个事件名称作为参数，返回该事件所有回调函数组成的数组。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 
 var ee = new EventEmitter;
@@ -273,7 +273,7 @@ ee.emit("firstConnection");
 
 事件处理过程中抛出的错误，可以使用`try...catch`捕获。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 var emitter = new EventEmitter();
 
@@ -313,7 +313,7 @@ after emit
 
 如果不使用`try...catch`，可以让进程监听`uncaughtException`事件。
 
-```javascript
+```js
 process.on('uncaughtException', function (err) {
   console.error('uncaught exception:', err.stack || err);
   // 关闭资源
@@ -333,7 +333,7 @@ Events模块默认支持两个事件。
 - `newListener`事件：添加新的回调函数时触发。
 - `removeListener`事件：移除回调时触发。
 
-```javascript
+```js
 ee.on("newListener", function (evtName) {
   console.log("New Listener: " + evtName);
 });

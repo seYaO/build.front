@@ -6,7 +6,7 @@ JavaScript 提供了一个内部数据结构，用来描述对象的属性，控
 
 下面是属性描述对象的一个例子。
 
-```javascript
+```js
 {
   value: 123,
   writable: false,
@@ -47,7 +47,7 @@ JavaScript 提供了一个内部数据结构，用来描述对象的属性，控
 
 `Object.getOwnPropertyDescriptor`方法可以获取属性描述对象。它的第一个参数是一个对象，第二个参数是一个字符串，对应该对象的某个属性名。
 
-```javascript
+```js
 var obj = { p: 'a' };
 
 Object.getOwnPropertyDescriptor(obj, 'p')
@@ -62,7 +62,7 @@ Object.getOwnPropertyDescriptor(obj, 'p')
 
 注意，`Object.getOwnPropertyDescriptor`方法只能用于对象自身的属性，不能用于继承的属性。
 
-```javascript
+```js
 var obj = { p: 'a' };
 
 Object.getOwnPropertyDescriptor(obj, 'toString')
@@ -75,7 +75,7 @@ Object.getOwnPropertyDescriptor(obj, 'toString')
 
 `Object.getOwnPropertyNames`方法返回一个数组，成员是参数对象自身的全部属性的属性名，不管该属性是否可遍历。
 
-```javascript
+```js
 var obj = Object.defineProperties({}, {
   p1: { value: 1, enumerable: true },
   p2: { value: 2, enumerable: false }
@@ -89,7 +89,7 @@ Object.getOwnPropertyNames(obj)
 
 这跟`Object.keys`的行为不同，`Object.keys`只返回对象自身的可遍历属性的全部属性名。
 
-```javascript
+```js
 Object.keys([]) // []
 Object.getOwnPropertyNames([]) // [ 'length' ]
 
@@ -110,7 +110,7 @@ Object.getOwnPropertyNames(Object.prototype)
 
 `Object.defineProperty`方法允许通过属性描述对象，定义或修改一个属性，然后返回修改后的对象，它的用法如下。
 
-```javascript
+```js
 Object.defineProperty(object, propertyName, attributesObject)
 ```
 
@@ -122,7 +122,7 @@ Object.defineProperty(object, propertyName, attributesObject)
 
 举例来说，定义`obj.p`可以写成下面这样。
 
-```javascript
+```js
 var obj = Object.defineProperty({}, 'p', {
   value: 123,
   writable: false,
@@ -142,7 +142,7 @@ obj.p // 123
 
 如果一次性定义或修改多个属性，可以使用`Object.defineProperties`方法。
 
-```javascript
+```js
 var obj = Object.defineProperties({}, {
   p1: { value: 123, enumerable: true },
   p2: { value: 'abc', enumerable: true },
@@ -161,7 +161,7 @@ obj.p3 // "123abc"
 
 注意，一旦定义了取值函数`get`（或存值函数`set`），就不能将`writable`属性设为`true`，或者同时定义`value`属性，否则会报错。
 
-```javascript
+```js
 var obj = {};
 
 Object.defineProperty(obj, 'p', {
@@ -183,7 +183,7 @@ Object.defineProperty(obj, 'p', {
 
 `Object.defineProperty()`和`Object.defineProperties()`的第三个参数，是一个属性对象。它的`writable`、`configurable`、`enumerable`这三个属性的默认值都为`false`。
 
-```javascript
+```js
 var obj = {};
 Object.defineProperty(obj, 'foo', {});
 Object.getOwnPropertyDescriptor(obj, 'foo')
@@ -201,7 +201,7 @@ Object.getOwnPropertyDescriptor(obj, 'foo')
 
 实例对象的`propertyIsEnumerable`方法返回一个布尔值，用来判断某个属性是否可遍历。
 
-```javascript
+```js
 var obj = {};
 obj.p = 123;
 
@@ -219,7 +219,7 @@ obj.propertyIsEnumerable('toString') // false
 
 `value`属性是目标属性的值。
 
-```javascript
+```js
 var obj = {};
 obj.p = 123;
 
@@ -236,7 +236,7 @@ obj.p // 246
 
 `writable`属性是一个布尔值，决定了目标属性的值（value）是否可以被改变。
 
-```javascript
+```js
 var obj = {};
 
 Object.defineProperty(obj, 'a', {
@@ -253,7 +253,7 @@ obj.a // 37
 
 注意，正常模式下，对`writable`为`false`的属性赋值不会报错，只会默默失败。但是，严格模式下会报错，即使对`a`属性重新赋予一个同样的值。
 
-```javascript
+```js
 'use strict';
 var obj = {};
 
@@ -270,7 +270,7 @@ obj.a = 37;
 
 如果原型对象的某个属性的`writable`为`false`，那么子对象将无法自定义这个属性。
 
-```javascript
+```js
 var proto = Object.defineProperty({}, 'foo', {
   value: 'a',
   writable: false
@@ -286,7 +286,7 @@ obj.foo // 'a'
 
 但是，有一个规避方法，就是通过覆盖属性描述对象，绕过这个限制。原因是这种情况下，原型链会被完全忽视。
 
-```javascript
+```js
 var proto = Object.defineProperty({}, 'foo', {
   value: 'a',
   writable: false
@@ -306,7 +306,7 @@ obj.foo // "b"
 
 JavaScript 的早期版本，`for...in`循环是基于`in`运算符的。我们知道，`in`运算符不管某个属性是对象自身的还是继承的，都会返回`true`。
 
-```javascript
+```js
 var obj = {};
 'toString' in obj // true
 ```
@@ -323,7 +323,7 @@ var obj = {};
 
 因此，`enumerable`可以用来设置“秘密”属性。
 
-```javascript
+```js
 var obj = {};
 
 Object.defineProperty(obj, 'x', {
@@ -352,7 +352,7 @@ JSON.stringify(obj) // "{}"
 
 `configurable`(可配置性）返回一个布尔值，决定了是否可以修改属性描述对象。也就是说，`configurable`为`false`时，`value`、`writable`、`enumerable`和`configurable`都不能被修改了。
 
-```javascript
+```js
 var obj = Object.defineProperty({}, 'p', {
   value: 1,
   writable: false,
@@ -377,7 +377,7 @@ Object.defineProperty(obj, 'p', {configurable: true})
 
 注意，`writable`只有在`false`改为`true`会报错，`true`改为`false`是允许的。
 
-```javascript
+```js
 var obj = Object.defineProperty({}, 'p', {
   writable: true,
   configurable: false
@@ -389,7 +389,7 @@ Object.defineProperty(obj, 'p', {writable: false})
 
 至于`value`，只要`writable`和`configurable`有一个为`true`，就允许改动。
 
-```javascript
+```js
 var o1 = Object.defineProperty({}, 'p', {
   value: 1,
   writable: true,
@@ -411,7 +411,7 @@ Object.defineProperty(o2, 'p', {value: 2})
 
 另外，`configurable`为`false`时，直接目标属性赋值，不报错，但不会成功。
 
-```javascript
+```js
 var obj = Object.defineProperty({}, 'p', {
   value: 1,
   configurable: false
@@ -425,7 +425,7 @@ obj.p // 1
 
 可配置性决定了目标属性是否可以被删除（delete）。
 
-```javascript
+```js
 var obj = Object.defineProperties({}, {
   p1: { value: 1, configurable: true },
   p2: { value: 2, configurable: false }
@@ -446,7 +446,7 @@ obj.p2 // 2
 
 一旦对目标属性定义了存取器，那么存取的时候，都将执行对应的函数。利用这个功能，可以实现许多高级特性，比如某个属性禁止赋值。
 
-```javascript
+```js
 var obj = Object.defineProperty({}, 'p', {
   get: function () {
     return 'getter';
@@ -464,7 +464,7 @@ obj.p = 123 // "setter: 123"
 
 JavaScript 还提供了存取器的另一种写法。
 
-```javascript
+```js
 var obj = {
   get p() {
     return 'getter';
@@ -481,7 +481,7 @@ var obj = {
 
 存取器往往用于，属性的值依赖对象内部数据的场合。
 
-```javascript
+```js
 var obj ={
   $n : 5,
   get next() { return this.$n++ },
@@ -506,7 +506,7 @@ obj.next = 5;
 
 有时，我们需要将一个对象的所有属性，拷贝到另一个对象，可以用下面的方法实现。
 
-```javascript
+```js
 var extend = function (to, from) {
   for (var property in from) {
     to[property] = from[property];
@@ -523,7 +523,7 @@ extend({}, {
 
 上面这个方法的问题在于，如果遇到存取器定义的属性，会只拷贝值。
 
-```javascript
+```js
 extend({}, {
   get a() { return 1 }
 })
@@ -532,7 +532,7 @@ extend({}, {
 
 为了解决这个问题，我们可以通过`Object.defineProperty`方法来拷贝属性。
 
-```javascript
+```js
 var extend = function (to, from) {
   for (var property in from) {
     if (!from.hasOwnProperty(property)) continue;
@@ -560,7 +560,7 @@ extend({}, { get a(){ return 1 } })
 
 `Object.preventExtensions`方法可以使得一个对象无法再添加新的属性。
 
-```javascript
+```js
 var obj = new Object();
 Object.preventExtensions(obj);
 
@@ -579,7 +579,7 @@ obj.p // undefined
 
 `Object.isExtensible`方法用于检查一个对象是否使用了`Object.preventExtensions`方法。也就是说，检查是否可以为一个对象添加属性。
 
-```javascript
+```js
 var obj = new Object();
 
 Object.isExtensible(obj) // true
@@ -593,7 +593,7 @@ Object.isExtensible(obj) // false
 
 `Object.seal`方法使得一个对象既无法添加新属性，也无法删除旧属性。
 
-```javascript
+```js
 var obj = { p: 'hello' };
 Object.seal(obj);
 
@@ -608,7 +608,7 @@ obj.x // undefined
 
 `Object.seal`实质是把属性描述对象的`configurable`属性设为`false`，因此属性描述对象不再能改变了。
 
-```javascript
+```js
 var obj = {
   p: 'a'
 };
@@ -643,7 +643,7 @@ Object.defineProperty(o, 'p', {
 
 `Object.seal`只是禁止新增或删除属性，并不影响修改某个属性的值。
 
-```javascript
+```js
 var obj = { p: 'a' };
 Object.seal(obj);
 obj.p = 'b';
@@ -656,7 +656,7 @@ obj.p // 'b'
 
 `Object.isSealed`方法用于检查一个对象是否使用了`Object.seal`方法。
 
-```javascript
+```js
 var obj = { p: 'a' };
 
 Object.seal(obj);
@@ -665,7 +665,7 @@ Object.isSealed(obj) // true
 
 这时，`Object.isExtensible`方法也返回`false`。
 
-```javascript
+```js
 var obj = { p: 'a' };
 
 Object.seal(obj);
@@ -676,7 +676,7 @@ Object.isExtensible(obj) // false
 
 `Object.freeze`方法可以使得一个对象无法添加新属性、无法删除旧属性、也无法改变属性的值，使得这个对象实际上变成了常量。
 
-```javascript
+```js
 var obj = {
   p: 'hello'
 };
@@ -699,7 +699,7 @@ obj.p // "hello"
 
 `Object.isFrozen`方法用于检查一个对象是否使用了`Object.freeze`方法。
 
-```javascript
+```js
 var obj = {
   p: 'hello'
 };
@@ -710,7 +710,7 @@ Object.isFrozen(obj) // true
 
 使用`Object.freeze`方法以后，`Object.isSealed`将会返回`true`，`Object.isExtensible`返回`false`。
 
-```javascript
+```js
 var obj = {
   p: 'hello'
 };
@@ -723,7 +723,7 @@ Object.isExtensible(obj) // false
 
 `Object.isFrozen`的一个用途是，确认某个对象没有被冻结后，再对它的属性赋值。
 
-```javascript
+```js
 var obj = {
   p: 'hello'
 };
@@ -741,7 +741,7 @@ if (!Object.isFrozen(obj)) {
 
 上面的三个方法锁定对象的可写性有一个漏洞：可以通过改变原型对象，来为对象增加属性。
 
-```javascript
+```js
 var obj = new Object();
 Object.preventExtensions(obj);
 
@@ -755,7 +755,7 @@ obj.t
 
 一种解决方案是，把`obj`的原型也冻结住。
 
-```javascript
+```js
 var obj = new Object();
 Object.preventExtensions(obj);
 
@@ -768,7 +768,7 @@ obj.t // undefined
 
 另外一个局限是，如果属性值是对象，上面这些方法只能冻结属性指向的对象，而不能冻结对象本身的内容。
 
-```javascript
+```js
 var obj = {
   foo: 1,
   bar: ['a', 'b']

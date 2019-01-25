@@ -6,7 +6,7 @@ Node 应用由模块组成，采用 CommonJS 模块规范。
 
 每个文件就是一个模块，有自己的作用域。在一个文件里面定义的变量、函数、类，都是私有的，对其他文件不可见。
 
-```javascript
+```js
 // example.js
 var x = 5;
 var addX = function (value) {
@@ -18,7 +18,7 @@ var addX = function (value) {
 
 如果想在多个文件分享变量，必须定义为`global`对象的属性。
 
-```javascript
+```js
 global.warning = true;
 ```
 
@@ -26,7 +26,7 @@ global.warning = true;
 
 CommonJS规范规定，每个模块内部，`module`变量代表当前模块。这个变量是一个对象，它的`exports`属性（即`module.exports`）是对外的接口。加载某个模块，其实是加载该模块的`module.exports`属性。
 
-```javascript
+```js
 var x = 5;
 var addX = function (value) {
   return value + x;
@@ -39,7 +39,7 @@ module.exports.addX = addX;
 
 `require`方法用于加载模块。
 
-```javascript
+```js
 var example = require('./example.js');
 
 console.log(example.x); // 5
@@ -58,7 +58,7 @@ CommonJS模块的特点如下。
 
 Node内部提供一个`Module`构建函数。所有模块都是`Module`的实例。
 
-```javascript
+```js
 function Module(id, parent) {
   this.id = id;
   this.exports = {};
@@ -77,7 +77,7 @@ function Module(id, parent) {
 
 下面是一个示例文件，最后一行输出module变量。
 
-```javascript
+```js
 // example.js
 var jquery = require('jquery');
 exports.$ = jquery;
@@ -86,7 +86,7 @@ console.log(module);
 
 执行这个文件，命令行会输出如下信息。
 
-```javascript
+```js
 { id: '.',
   exports: { '$': [Function] },
   parent: null,
@@ -110,7 +110,7 @@ console.log(module);
 
 如果在命令行下调用某个模块，比如`node something.js`，那么`module.parent`就是`null`。如果是在脚本之中调用，比如`require('./something.js')`，那么`module.parent`就是调用它的模块。利用这一点，可以判断当前模块是否为入口脚本。
 
-```javascript
+```js
 if (!module.parent) {
     // ran with `node something.js`
     app.listen(8088, function() {
@@ -126,7 +126,7 @@ if (!module.parent) {
 
 `module.exports`属性表示当前模块对外输出的接口，其他文件加载该模块，实际上就是读取`module.exports`变量。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 module.exports = new EventEmitter();
 
@@ -137,7 +137,7 @@ setTimeout(function() {
 
 上面模块会在加载后1秒后，发出ready事件。其他文件监听该事件，可以写成下面这样。
 
-```javascript
+```js
 var a = require('./a');
 a.on('ready', function() {
   console.log('module a is ready');
@@ -148,13 +148,13 @@ a.on('ready', function() {
 
 为了方便，Node为每个模块提供一个exports变量，指向module.exports。这等同在每个模块头部，有一行这样的命令。
 
-```javascript
+```js
 var exports = module.exports;
 ```
 
 造成的结果是，在对外输出模块接口时，可以向exports对象添加方法。
 
-```javascript
+```js
 exports.area = function (r) {
   return Math.PI * r * r;
 };
@@ -166,7 +166,7 @@ exports.circumference = function (r) {
 
 注意，不能直接将exports变量指向一个值，因为这样等于切断了`exports`与`module.exports`的联系。
 
-```javascript
+```js
 exports = function(x) {console.log(x)};
 ```
 
@@ -174,7 +174,7 @@ exports = function(x) {console.log(x)};
 
 下面的写法也是无效的。
 
-```javascript
+```js
 exports.hello = function() {
   return 'hello';
 };
@@ -186,7 +186,7 @@ module.exports = 'Hello world';
 
 这意味着，如果一个模块的对外接口，就是一个单一的值，不能使用`exports`输出，只能使用`module.exports`输出。
 
-```javascript
+```js
 module.exports = function (x){ console.log(x);};
 ```
 
@@ -198,7 +198,7 @@ CommonJS规范加载模块是同步的，也就是说，只有加载完成，才
 
 AMD规范使用define方法定义模块，下面就是一个例子：
 
-```javascript
+```js
 define(['package/lib'], function(lib){
   function foo(){
     lib.log('hello world!');
@@ -212,7 +212,7 @@ define(['package/lib'], function(lib){
 
 AMD规范允许输出的模块兼容CommonJS规范，这时`define`方法需要写成下面这样：
 
-```javascript
+```js
 define(function (require, exports, module){
   var someModule = require("someModule");
   var anotherModule = require("anotherModule");
@@ -235,7 +235,7 @@ Node使用CommonJS模块规范，内置的`require`命令用于加载模块文�
 
 `require`命令的基本功能是，读入并执行一个JavaScript文件，然后返回该模块的exports对象。如果没有发现指定模块，会报错。
 
-```javascript
+```js
 // example.js
 var invisible = function () {
   console.log("invisible");
@@ -250,7 +250,7 @@ exports.say = function () {
 
 运行下面的命令，可以输出exports对象。
 
-```javascript
+```js
 var example = require('./example.js');
 example
 // {
@@ -261,7 +261,7 @@ example
 
 如果模块输出的是一个函数，那就不能定义在exports对象上面，而要定义在`module.exports`变量上面。
 
-```javascript
+```js
 module.exports = function () {
   console.log("hello world")
 }
@@ -275,7 +275,7 @@ require('./example2.js')()
 
 `require`命令用于加载文件，后缀名默认为`.js`。
 
-```javascript
+```js
 var foo = require('foo');
 //  等同于
 var foo = require('foo.js');
@@ -311,7 +311,7 @@ var foo = require('foo.js');
 
 在目录中放置一个`package.json`文件，并且将入口文件写入`main`字段。下面是一个例子。
 
-```javascript
+```js
 // package.json
 { "name" : "some-library",
   "main" : "./lib/some-library.js" }
@@ -323,7 +323,7 @@ var foo = require('foo.js');
 
 第一次加载某个模块时，Node会缓存该模块。以后再加载该模块，就直接从缓存取出该模块的`module.exports`属性。
 
-```javascript
+```js
 require('./example.js');
 require('./example.js').message = "hello";
 require('./example.js').message
@@ -336,7 +336,7 @@ require('./example.js').message
 
 所有缓存的模块保存在`require.cache`之中，如果想删除模块的缓存，可以像下面这样写。
 
-```javascript
+```js
 // 删除指定模块的缓存
 delete require.cache[moduleName];
 
@@ -354,19 +354,19 @@ Node执行一个脚本时，会先查看环境变量`NODE_PATH`。它是一组�
 
 可以将NODE_PATH添加到`.bashrc`。
 
-```javascript
+```js
 export NODE_PATH="/usr/local/lib/node"
 ```
 
 所以，如果遇到复杂的相对路径，比如下面这样。
 
-```javascript
+```js
 var myModule = require('../../../../lib/myModule');
 ```
 
 有两种解决方法，一是将该文件加入`node_modules`目录，二是修改`NODE_PATH`环境变量，`package.json`文件可以采用下面的写法。
 
-```javascript
+```js
 {
   "name": "node_path",
   "version": "1.0.0",
@@ -386,7 +386,7 @@ var myModule = require('../../../../lib/myModule');
 
 如果发生模块的循环加载，即A加载B，B又加载A，则B将加载A的不完整版本。
 
-```javascript
+```js
 // a.js
 exports.x = 'a1';
 console.log('a.js ', require('./b.js').x);
@@ -414,7 +414,7 @@ main.js  b2
 
 修改main.js，再次加载a.js和b.js。
 
-```javascript
+```js
 // main.js
 console.log('main.js ', require('./a.js').x);
 console.log('main.js ', require('./b.js').x);
@@ -442,7 +442,7 @@ main.js  b2
 
 直接执行的时候（`node module.js`），`require.main`属性指向模块本身。
 
-```javascript
+```js
 require.main === module
 // true
 ```
@@ -455,7 +455,7 @@ CommonJS模块的加载机制是，输入的是被输出的值的拷贝。也就
 
 下面是一个模块文件`lib.js`。
 
-```javascript
+```js
 // lib.js
 var counter = 3;
 function incCounter() {
@@ -471,7 +471,7 @@ module.exports = {
 
 然后，加载上面的模块。
 
-```javascript
+```js
 // main.js
 var counter = require('./lib').counter;
 var incCounter = require('./lib').incCounter;
@@ -487,7 +487,7 @@ console.log(counter); // 3
 
 `require`命令是CommonJS规范之中，用来加载其他模块的命令。它其实不是一个全局命令，而是指向当前模块的`module.require`命令，而后者又调用Node的内部命令`Module._load`。
 
-```javascript
+```js
 Module._load = function(request, parent, isMain) {
   // 1. 检查 Module._cache，是否缓存之中有指定模块
   // 2. 如果缓存之中没有，就创建一个新的Module实例
@@ -501,7 +501,7 @@ Module._load = function(request, parent, isMain) {
 
 上面的第4步，采用`module.compile()`执行指定模块的脚本，逻辑如下。
 
-```javascript
+```js
 Module.prototype._compile = function(content, filename) {
   // 1. 生成一个require函数，指向module.require
   // 2. 加载其他辅助方法到require
@@ -520,7 +520,7 @@ Module.prototype._compile = function(content, filename) {
 
 一旦`require`函数准备完毕，整个所要加载的脚本内容，就被放到一个新的函数之中，这样可以避免污染全局环境。该函数的参数包括`require`、`module`、`exports`，以及其他一些参数。
 
-```javascript
+```js
 (function (exports, require, module, __filename, __dirname) {
   // YOUR CODE INJECTED HERE!
 });

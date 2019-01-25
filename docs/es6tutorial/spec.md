@@ -46,7 +46,7 @@ ES6 规格大量使用`[[Notation]]`这种书写法，比如`[[Value]]`、`[[Wri
 
 所有的 JavaScript 函数都有一个内部属性`[[Call]]`，用来运行该函数。
 
-```javascript
+```js
 F.[[Call]](V, argumentsList)
 ```
 
@@ -107,7 +107,7 @@ ES6 规格将这个标准流程，使用简写的方式表达。
 
 请看下面这个表达式，请问它的值是多少。
 
-```javascript
+```js
 0 == null
 ```
 
@@ -156,7 +156,7 @@ ES6 规格将这个标准流程，使用简写的方式表达。
 
 由于`0`的类型是数值，`null`的类型是 Null（这是规格[4.3.13 小节](http://www.ecma-international.org/ecma-262/6.0/#sec-terms-and-definitions-null-type)的规定，是内部 Type 运算的结果，跟`typeof`运算符无关）。因此上面的前 11 步都得不到结果，要到第 12 步才能得到`false`。
 
-```javascript
+```js
 0 == null // false
 ```
 
@@ -164,7 +164,7 @@ ES6 规格将这个标准流程，使用简写的方式表达。
 
 下面再看另一个例子。
 
-```javascript
+```js
 const a1 = [undefined, undefined, undefined];
 const a2 = [, , ,];
 
@@ -181,7 +181,7 @@ a1[0] === a2[0] // true
 
 但是，它们实际上存在重大差异。
 
-```javascript
+```js
 0 in a1 // true
 0 in a2 // false
 
@@ -269,7 +269,7 @@ a2.map(n => 1) // [, , ,]
 
 仔细查看上面的算法，可以发现，当处理一个全是空位的数组时，前面步骤都没有问题。进入第 10 步中第 2 步时，`kPresent`会报错，因为空位对应的属性名，对于数组来说是不存在的，因此就会返回，不会进行后面的步骤。
 
-```javascript
+```js
 const arr = [, , ,];
 arr.map(n => {
   console.log(n);
@@ -281,7 +281,7 @@ arr.map(n => {
 
 V8 引擎对`map`方法的[实现](https://github.com/v8/v8/blob/44c44521ae11859478b42004f57ea93df52526ee/src/js/array.js#L1347)如下，可以看到跟规格的算法描述完全一致。
 
-```javascript
+```js
 function ArrayMap(f, receiver) {
   CHECK_OBJECT_COERCIBLE(this, "Array.prototype.map");
 

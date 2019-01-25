@@ -12,7 +12,7 @@ $ mkdir hello-world
 
 进入该目录，新建一个package.json文件，内容如下。
 
-```javascript
+```js
 {
   "name": "hello-world",
   "description": "hello world test app",
@@ -34,7 +34,7 @@ $ npm install
 
 执行上面的命令以后，在项目根目录下，新建一个启动文件，假定叫做index.js。
 
-```javascript
+```js
 var express = require('express');
 var app = express();
 
@@ -53,7 +53,7 @@ $ node index
 
 你也可以在index.js之中，生成动态网页。
 
-```javascript
+```js
 // index.js
 
 var express = require('express');
@@ -74,7 +74,7 @@ $ node index
 
 启动脚本index.js的`app.get`方法，用于指定不同的访问路径所对应的回调函数，这叫做“路由”（routing）。上面代码只指定了根目录的回调函数，因此只有一个路由记录。实际应用中，可能有多个路由记录。
 
-```javascript
+```js
 // index.js
 
 var express = require('express');
@@ -95,7 +95,7 @@ app.listen(3000);
 
 这时，最好就把路由放到一个单独的文件中，比如新建一个routes子目录。
 
-```javascript
+```js
 // routes/index.js
 
 module.exports = function (app) {
@@ -113,7 +113,7 @@ module.exports = function (app) {
 
 然后，原来的index.js就变成下面这样。
 
-```javascript
+```js
 // index.js
 var express = require('express');
 var app = express();
@@ -127,7 +127,7 @@ app.listen(3000);
 
 Express框架建立在node.js内置的http模块上。http模块生成服务器的原始代码如下。
 
-```javascript
+```js
 var http = require("http");
 
 var app = http.createServer(function(request, response) {
@@ -142,7 +142,7 @@ app.listen(3000, "localhost");
 
 Express框架的核心是对http模块的再包装。上面的代码用Express改写如下。
 
-```javascript
+```js
 var express = require('express');
 var app = express();
 
@@ -163,7 +163,7 @@ app.listen(3000);
 
 一个不进行任何操作、只传递request对象的中间件，就是下面这样。
 
-```javascript
+```js
 function uselessMiddleware(req, res, next) {
   next();
 }
@@ -171,7 +171,7 @@ function uselessMiddleware(req, res, next) {
 
 上面代码的next就是下一个中间件。如果它带有参数，则代表抛出一个错误，参数为错误文本。
 
-```javascript
+```js
 function uselessMiddleware(req, res, next) {
   next('出错了！');
 }
@@ -183,7 +183,7 @@ function uselessMiddleware(req, res, next) {
 
 use是express注册中间件的方法，它返回一个函数。下面是一个连续调用两个中间件的例子。
 
-```javascript
+```js
 var express = require("express");
 var http = require("http");
 
@@ -206,7 +206,7 @@ http.createServer(app).listen(1337);
 
 `use`方法内部可以对访问路径进行判断，据此就能实现简单的路由，根据不同的请求网址，返回不同的网页内容。
 
-```javascript
+```js
 var express = require("express");
 var http = require("http");
 
@@ -241,7 +241,7 @@ http.createServer(app).listen(1337);
 
 除了在回调函数内部判断请求的网址，use方法也允许将请求网址写在第一个参数。这代表，只有请求路径匹配这个参数，后面的中间件才会生效。无疑，这样写更加清晰和方便。
 
-```javascript
+```js
 app.use('/path', someMiddleware);
 ```
 
@@ -249,7 +249,7 @@ app.use('/path', someMiddleware);
 
 因此，上面的代码可以写成下面的样子。
 
-```javascript
+```js
 var express = require("express");
 var http = require("http");
 
@@ -279,7 +279,7 @@ http.createServer(app).listen(1337);
 
 针对不同的请求，Express提供了use方法的一些别名。比如，上面代码也可以用别名的形式来写。
 
-```javascript
+```js
 
 var express = require("express");
 var http = require("http");
@@ -312,7 +312,7 @@ http.createServer(app).listen(1337);
 
 这些方法的第一个参数，都是请求的路径。除了绝对匹配以外，Express允许模式匹配。
 
-```javascript
+```js
 
 app.get("/hello/:who", function(req, res) {
   res.end("Hello, " + req.params.who + ".");
@@ -324,7 +324,7 @@ app.get("/hello/:who", function(req, res) {
 
 如果在模式参数后面加上问号，表示该参数可选。
 
-```javascript
+```js
 
 app.get('/hello/:who?',function(req,res) {
 	if(req.params.id) {
@@ -339,7 +339,7 @@ app.get('/hello/:who?',function(req,res) {
 
 下面是一些更复杂的模式匹配的例子。
 
-```javascript
+```js
 
 app.get('/forum/:fid/thread/:tid', middleware)
 
@@ -357,7 +357,7 @@ app.get(/^\/commits\/(\w+)(?:\.\.(\w+))?$/, function(req, res){
 
 set方法用于指定变量的值。
 
-```javascript
+```js
 
 app.set("views", __dirname + "/views");
 
@@ -373,7 +373,7 @@ app.set("view engine", "jade");
 
 response.redirect方法允许网址的重定向。
 
-```javascript
+```js
 
 response.redirect("/hello/anime");
 response.redirect("http://www.example.com");
@@ -385,7 +385,7 @@ response.redirect(301, "http://www.example.com");
 
 response.sendFile方法用于发送文件。
 
-```javascript
+```js
 
 response.sendFile("/path/to/anime.mp4");
 
@@ -395,7 +395,7 @@ response.sendFile("/path/to/anime.mp4");
 
 response.render方法用于渲染网页模板。
 
-```javascript
+```js
 
 app.get("/", function(request, response) {
   response.render("index", { message: "Hello World" });
@@ -419,7 +419,7 @@ request.files用于获取上传的文件。
 
 使用Express搭建HTTPs加密服务器，也很简单。
 
-```javascript
+```js
 var fs = require('fs');
 var options = {
   key: fs.readFileSync('E:/ssl/myserver.key'),
@@ -448,7 +448,7 @@ console.log('Server is running on port 8084');
 
 先建立一个项目目录（假定这个目录叫做demo）。进入该目录，新建一个package.json文件，写入项目的配置信息。
 
-```javascript
+```js
 
 {
    "name": "demo",
@@ -463,7 +463,7 @@ console.log('Server is running on port 8084');
 
 在项目目录中，新建文件app.js。项目的代码就放在这个文件里面。
 
-```javascript
+```js
 
 var express = require('express');
 var app = express();
@@ -474,7 +474,7 @@ var app = express();
 
 接着，设定express实例的参数。
 
-```javascript
+```js
 
 // 设定port变量，意为访问端口
 app.set('port', process.env.PORT || 3000);
@@ -502,7 +502,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 最后，调用实例方法listen，让其监听事先设定的端口（3000）。
 
-```javascript
+```js
 
 app.listen(app.get('port'));
 
@@ -526,7 +526,7 @@ node app.js
 
 在app.js之中，先指定根路径的处理方法。
 
-```javascript
+```js
 
 app.get('/', function(req, res) {
    res.send('Hello World');
@@ -548,7 +548,7 @@ node app.js
 
 如果需要指定HTTP头信息，回调函数就必须换一种写法，要使用setHeader方法与end方法。
 
-```javascript
+```js
 
 app.get('/', function(req, res){
   var body = 'Hello World';
@@ -563,7 +563,7 @@ app.get('/', function(req, res){
 
 上面是处理根目录的情况，下面再举一个例子。假定用户访问/api路径，希望返回一个JSON字符串。这时，get可以这样写。
 
-```javascript
+```js
 
 app.get('/api', function(request, response) {
    response.send({name:"张三",age:40});
@@ -573,7 +573,7 @@ app.get('/api', function(request, response) {
 
 上面代码表示，除了发送字符串，send方法还可以直接发送对象。重新启动node以后，再访问路径/api，浏览器就会显示一个JSON对象。
 
-```javascript
+```js
 
 {
   "name": "张三",
@@ -584,7 +584,7 @@ app.get('/api', function(request, response) {
 
 我们也可以把app.get的回调函数，封装成模块。先在routes目录下面建立一个api.js文件。
 
-```javascript
+```js
 
 // routes/api.js
 
@@ -596,7 +596,7 @@ exports.index = function (req, res){
 
 然后，在app.js中加载这个模块。
 
-```javascript
+```js
 
 // app.js
 
@@ -615,7 +615,7 @@ app.get('/api', api.index);
 
 假定这个项目有三个路径：根路径（/）、自我介绍（/about）和文章（/article）。那么，app.js可以这样写：
 
-```javascript
+```js
 
 var express = require('express');
 var app = express();
@@ -681,7 +681,7 @@ npm install hbs --save-dev
 
 上面代码将hbs模块，安装在项目目录的子目录node_modules之中。save-dev参数表示，将依赖关系写入package.json文件。安装以后的package.json文件变成下面这样：
 
-```javascript
+```js
 
 // package.json文件
 
@@ -701,7 +701,7 @@ npm install hbs --save-dev
 
 安装模板引擎之后，就要改写app.js。
 
-```javascript
+```js
 
 // app.js文件
 
@@ -739,7 +739,7 @@ app.get('/article', function(req, res) {
 
 在项目目录中，新建一个文件blog.js，用于存放数据。blog.js的写法符合CommonJS规范，使得它可以被require语句加载。
 
-```javascript
+```js
 
 // blog.js文件
 
@@ -841,7 +841,7 @@ Published: {{"{{"}}blog.published}}
 
 最后，改写app.js文件。
 
-```javascript
+```js
 
 // app.js文件
 
@@ -890,7 +890,7 @@ node app.js
 
 模板文件默认存放在views子目录。这时，如果要在网页中加载静态文件（比如样式表、图片等），就需要另外指定一个存放静态文件的目录。
 
-```javascript
+```js
 
 app.use(express.static('public'));
 
@@ -898,7 +898,7 @@ app.use(express.static('public'));
 
 上面代码在文件app.js之中，指定静态文件存放的目录是public。于是，当浏览器发出非HTML文件请求时，服务器端就到public目录寻找这个文件。比如，浏览器发出如下的样式表请求：
 
-```javascript
+```js
 
 <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
 
@@ -914,7 +914,7 @@ app.use(express.static('public'));
 
 首先，`Express.Router`是一个构造函数，调用后返回一个路由器实例。然后，使用该实例的HTTP动词方法，为不同的访问路径，指定回调函数；最后，挂载到某个路径。
 
-```javascript
+```js
 var router = express.Router();
 
 router.get('/', function(req, res) {
@@ -936,7 +936,7 @@ app.use('/', router);
 
 router实例对象的route方法，可以接受访问路径作为参数。
 
-```javascript
+```js
 
 var router = express.Router();
 
@@ -959,7 +959,7 @@ app.use('/', router);
 
 use方法为router对象指定中间件，即在数据正式发给用户之前，对数据进行处理。下面就是一个中间件的例子。
 
-```javascript
+```js
 
 router.use(function(req, res, next) {
 	console.log(req.method, req.url);
@@ -976,7 +976,7 @@ router.use(function(req, res, next) {
 
 router对象的param方法用于路径参数的处理，可以
 
-```javascript
+```js
 
 router.param('name', function(req, res, next, name) {
 	// 对name进行验证或其他处理……
@@ -997,7 +997,7 @@ router.get('/hello/:name', function(req, res) {
 
 假定app是Express的实例对象，Express 4.0为该对象提供了一个route属性。app.route实际上是express.Router()的缩写形式，除了直接挂载到根路径。因此，对同一个路径指定get和post方法的回调函数，可以写成链式形式。
 
-```javascript
+```js
 
 app.route('/login')
 	.get(function(req, res) {
@@ -1026,7 +1026,7 @@ app.route('/login')
 
 然后，服务器脚本建立指向`/upload`目录的路由。这时可以安装multer模块，它提供了上传文件的许多功能。
 
-```javascript
+```js
 var express = require('express');
 var router = express.Router();
 var multer = require('multer');
@@ -1071,7 +1071,7 @@ $ npm install aws-sdk --save
 
 下面是服务器脚本。
 
-```javascript
+```js
 var express = require('express');
 var router = express.Router();
 var aws = require('aws-sdk');
@@ -1113,7 +1113,7 @@ module.exports = router
 
 浏览器代码如下。
 
-```javascript
+```js
 // HTML代码为
 // <br>Please select an image
 // <input type="file" id="image">

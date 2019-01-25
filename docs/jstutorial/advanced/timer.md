@@ -6,13 +6,13 @@ JavaScript 提供定时执行代码的功能，叫做定时器（timer），主�
 
 `setTimeout`函数用来指定某个函数或某段代码，在多少毫秒之后执行。它返回一个整数，表示定时器的编号，以后可以用来取消这个定时器。
 
-```javascript
+```js
 var timerId = setTimeout(func|code, delay);
 ```
 
 上面代码中，`setTimeout`函数接受两个参数，第一个参数`func|code`是将要推迟执行的函数名或者一段代码，第二个参数`delay`是推迟执行的毫秒数。
 
-```javascript
+```js
 console.log(1);
 setTimeout('console.log(2)',1000);
 console.log(3);
@@ -25,7 +25,7 @@ console.log(3);
 
 如果推迟执行的是函数，就直接将函数名，作为`setTimeout`的参数。
 
-```javascript
+```js
 function f() {
   console.log(2);
 }
@@ -35,7 +35,7 @@ setTimeout(f, 1000);
 
 `setTimeout`的第二个参数如果省略，则默认为0。
 
-```javascript
+```js
 setTimeout(f)
 // 等同于
 setTimeout(f, 0)
@@ -43,7 +43,7 @@ setTimeout(f, 0)
 
 除了前两个参数，`setTimeout`还允许更多的参数。它们将依次传入推迟执行的函数（回调函数）。
 
-```javascript
+```js
 setTimeout(function (a,b) {
   console.log(a + b);
 }, 1000, 1, 1);
@@ -53,7 +53,7 @@ setTimeout(function (a,b) {
 
 还有一个需要注意的地方，如果回调函数是对象的方法，那么`setTimeout`使得方法内部的`this`关键字指向全局环境，而不是定义时所在的那个对象。
 
-```javascript
+```js
 var x = 1;
 
 var obj = {
@@ -70,7 +70,7 @@ setTimeout(obj.y, 1000) // 1
 
 为了防止出现这个问题，一种解决方法是将`obj.y`放入一个函数。
 
-```javascript
+```js
 var x = 1;
 
 var obj = {
@@ -90,7 +90,7 @@ setTimeout(function () {
 
 另一种解决方法是，使用`bind`方法，将`obj.y`这个方法绑定在`obj`上面。
 
-```javascript
+```js
 var x = 1;
 
 var obj = {
@@ -108,7 +108,7 @@ setTimeout(obj.y.bind(obj), 1000)
 
 `setInterval`函数的用法与`setTimeout`完全一致，区别仅仅在于`setInterval`指定某个任务每隔一段时间就执行一次，也就是无限次的定时执行。
 
-```javascript
+```js
 var i = 1
 var timer = setInterval(function() {
   console.log(2);
@@ -121,7 +121,7 @@ var timer = setInterval(function() {
 
 下面是一个通过`setInterval`方法实现网页动画的例子。
 
-```javascript
+```js
 var div = document.getElementById('someDiv');
 var opacity = 1;
 var fader = setInterval(function() {
@@ -138,7 +138,7 @@ var fader = setInterval(function() {
 
 `setInterval`的一个常见用途是实现轮询。下面是一个轮询 URL 的 Hash 值是否发生变化的例子。
 
-```javascript
+```js
 var hash = window.location.hash;
 var hashWatcher = setInterval(function() {
   if (window.location.hash != hash) {
@@ -151,7 +151,7 @@ var hashWatcher = setInterval(function() {
 
 为了确保两次执行之间有固定的间隔，可以不用`setInterval`，而是每次执行结束后，使用`setTimeout`指定下一次执行的具体时间。
 
-```javascript
+```js
 var i = 1;
 var timer = setTimeout(function f() {
   // ...
@@ -165,7 +165,7 @@ var timer = setTimeout(function f() {
 
 `setTimeout`和`setInterval`函数，都返回一个整数值，表示计数器编号。将该整数传入`clearTimeout`和`clearInterval`函数，就可以取消对应的定时器。
 
-```javascript
+```js
 var id1 = setTimeout(f, 1000);
 var id2 = setInterval(f, 1000);
 
@@ -177,7 +177,7 @@ clearInterval(id2);
 
 `setTimeout`和`setInterval`返回的整数值是连续的，也就是说，第二个`setTimeout`方法返回的整数值，将比第一个的整数值大1。
 
-```javascript
+```js
 function f() {}
 setTimeout(f, 1000) // 10
 setTimeout(f, 1000) // 11
@@ -188,7 +188,7 @@ setTimeout(f, 1000) // 12
 
 利用这一点，可以写一个函数，取消当前所有的`setTimeout`定时器。
 
-```javascript
+```js
 (function() {
   var gid = setInterval(clearAllTimeouts, 0);
 
@@ -210,7 +210,7 @@ setTimeout(f, 1000) // 12
 
 有时，我们不希望回调函数被频繁调用。比如，用户填入网页输入框的内容，希望通过 Ajax 方法传回服务器，jQuery 的写法如下。
 
-```javascript
+```js
 $('textarea').on('keydown', ajaxAction);
 ```
 
@@ -218,7 +218,7 @@ $('textarea').on('keydown', ajaxAction);
 
 这种做法叫做 debounce（防抖动）。假定两次 Ajax 通信的间隔不得小于2500毫秒，上面的代码可以改写成下面这样。
 
-```javascript
+```js
 $('textarea').on('keydown', debounce(ajaxAction, 2500));
 
 function debounce(fn, delay){
@@ -242,7 +242,7 @@ function debounce(fn, delay){
 
 这意味着，`setTimeout`和`setInterval`指定的回调函数，必须等到本轮事件循环的所有同步任务都执行完，才会开始执行。由于前面的任务到底需要多少时间执行完，是不确定的，所以没有办法保证，`setTimeout`和`setInterval`指定的任务，一定会按照预定时间执行。
 
-```javascript
+```js
 setTimeout(someTask, 100);
 veryLongTask();
 ```
@@ -251,7 +251,7 @@ veryLongTask();
 
 再看一个`setInterval`的例子。
 
-```javascript
+```js
 setInterval(function () {
   console.log(2);
 }, 1000);
@@ -269,7 +269,7 @@ sleep(3000);
 
 答案是不会。因为上一节说过，必须要等到当前脚本的同步任务，全部处理完以后，才会执行`setTimeout`指定的回调函数`f`。也就是说，`setTimeout(f, 0)`会在下一轮事件循环一开始就执行。
 
-```javascript
+```js
 setTimeout(function () {
   console.log(1);
 }, 0);
@@ -286,7 +286,7 @@ console.log(2);
 
 `setTimeout(f, 0)`有几个非常重要的用途。它的一大应用是，可以调整事件的发生顺序。比如，网页开发中，某个事件先发生在子元素，然后冒泡到父元素，即子元素的事件回调函数，会早于父元素的事件回调函数触发。如果，想让父元素的事件回调函数先发生，就要用到`setTimeout(f, 0)`。
 
-```javascript
+```js
 // HTML 代码如下
 // <input type="button" id="myButton" value="click">
 
@@ -307,7 +307,7 @@ document.body.onclick = function C() {
 
 另一个应用是，用户自定义的回调函数，通常在浏览器的默认动作之前触发。比如，用户在输入框输入文本，`keypress`事件会在浏览器接收文本之前触发。因此，下面的回调函数是达不到目的的。
 
-```javascript
+```js
 // HTML 代码如下
 // <input type="text" id="input-box">
 
@@ -318,7 +318,7 @@ document.getElementById('input-box').onkeypress = function (event) {
 
 上面代码想在用户每次输入文本后，立即将字符转为大写。但是实际上，它只能将本次输入前的字符转为大写，因为浏览器此时还没接收到新的文本，所以`this.value`取不到最新输入的那个字符。只有用`setTimeout`改写，上面的代码才能发挥作用。
 
-```javascript
+```js
 document.getElementById('input-box').onkeypress = function() {
   var self = this;
   setTimeout(function() {
@@ -331,7 +331,7 @@ document.getElementById('input-box').onkeypress = function() {
 
 由于`setTimeout(f, 0)`实际上意味着，将任务放到浏览器最早可得的空闲时段执行，所以那些计算量大、耗时长的任务，常常会被放到几个小部分，分别放到`setTimeout(f, 0)`里面执行。
 
-```javascript
+```js
 var div = document.getElementsByTagName('div')[0];
 
 // 写法一

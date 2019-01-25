@@ -4,7 +4,7 @@
 
 元素节点的`nodeType`属性都是`1`。
 
-```javascript
+```js
 var p = document.querySelector('p');
 p.nodeName // "P"
 p.nodeType // 1
@@ -20,7 +20,7 @@ p.nodeType // 1
 
 `Element.id`属性返回指定元素的`id`属性，该属性可读写。
 
-```javascript
+```js
 // HTML 代码为 <p id="foo">
 var p = document.querySelector('p');
 p.id // "foo"
@@ -32,7 +32,7 @@ p.id // "foo"
 
 `Element.tagName`属性返回指定元素的大写标签名，与`nodeName`属性的值相等。
 
-```javascript
+```js
 // HTML代码为
 // <span id="myspan">Hello</span>
 var span = document.getElementById('myspan');
@@ -48,7 +48,7 @@ span.tagName // "SPAN"
 
 `Element.accessKey`属性用于读写分配给当前元素的快捷键。
 
-```javascript
+```js
 // HTML 代码如下
 // <button accesskey="h" id="btn">点击</button>
 var btn = document.getElementById('btn');
@@ -65,7 +65,7 @@ btn.accessKey // "h"
 
 `Element.lang`属性返回当前元素的语言设置。该属性可读写。
 
-```javascript
+```js
 // HTML 代码如下
 // <html lang="en">
 document.documentElement.lang // "en"
@@ -87,7 +87,7 @@ document.documentElement.lang // "en"
 
 `Element.hidden`属性返回一个布尔值，表示当前元素的`hidden`属性，用来控制当前元素是否可见。该属性可读写。
 
-```javascript
+```js
 var btn = document.getElementById('btn');
 var mydiv = document.getElementById('mydiv');
 
@@ -122,7 +122,7 @@ HTML 元素可以设置`contentEditable`属性，使得元素的内容可以编�
 
 `Element.attributes`属性返回一个类似数组的对象，成员是当前元素节点的所有属性节点，详见《Attr 对象》一章。
 
-```javascript
+```js
 var p = document.querySelector('p');
 var attrs = p.attributes;
 
@@ -139,7 +139,7 @@ for (var i = attrs.length - 1; i >= 0; i--) {
 
 `classList`属性返回一个类似数组的对象，当前元素节点的每个`class`就是这个对象的一个成员。
 
-```javascript
+```js
 // HTML 代码 <div class="one two three" id="myDiv"></div>
 var div = document.getElementById('myDiv');
 
@@ -166,7 +166,7 @@ div.classList
 - `item()`：返回指定索引位置的 class。
 - `toString()`：将 class 的列表转为字符串。
 
-```javascript
+```js
 var div = document.getElementById('myDiv');
 
 div.classList.add('myCssClass');
@@ -180,7 +180,7 @@ div.classList.toString();
 
 下面比较一下，`className`和`classList`在添加和删除某个 class 时的写法。
 
-```javascript
+```js
 var foo = document.getElementById('foo');
 
 // 添加class
@@ -194,7 +194,7 @@ foo.className = foo.className.replace(/^bold$/, '');
 
 `toggle`方法可以接受一个布尔值，作为第二个参数。如果为`true`，则添加该属性；如果为`false`，则去除该属性。
 
-```javascript
+```js
 el.classList.toggle('abc', boolValue);
 
 // 等同于
@@ -217,7 +217,7 @@ if (boolValue) {
 
 `Element.dataset`属性返回一个对象，可以从这个对象读写`data-`属性。
 
-```javascript
+```js
 // <article
 //   id="foo"
 //   data-columns="3"
@@ -243,7 +243,7 @@ HTML 代码中，`data-`属性的属性名，只能包含英文字母、数字�
 
 除了使用`dataset`读写`data-`属性，也可以使用`Element.getAttribute()`和`Element.setAttribute()`，通过完整的属性名读写这些属性。
 
-```javascript
+```js
 var mydiv = document.getElementById('mydiv');
 
 mydiv.dataset.foo = 'bar';
@@ -256,7 +256,7 @@ mydiv.getAttribute('data-foo') // "bar"
 
 如果将`innerHTML`属性设为空，等于删除所有它包含的所有节点。
 
-```javascript
+```js
 el.innerHTML = '';
 ```
 
@@ -264,7 +264,7 @@ el.innerHTML = '';
 
 注意，读取属性值的时候，如果文本节点包含`&`、小于号（`<`）和大于号（`>`），`innerHTML`属性会将它们转为实体形式`&amp;`、`&lt;`、`&gt;`。如果想得到原文，建议使用`element.textContent`属性。
 
-```javascript
+```js
 // HTML代码如下 <p id="para"> 5 > 3 </p>
 document.getElementById('para').innerHTML
 // 5 &gt; 3
@@ -272,14 +272,14 @@ document.getElementById('para').innerHTML
 
 写入的时候，如果插入的文本包含 HTML 标签，会被解析成为节点对象插入 DOM。注意，如果文本之中含有`<script>`标签，虽然可以生成`script`节点，但是插入的代码不会执行。
 
-```javascript
+```js
 var name = "<script>alert('haha')</script>";
 el.innerHTML = name;
 ```
 
 上面代码将脚本插入内容，脚本并不会执行。但是，`innerHTML`还是有安全风险的。
 
-```javascript
+```js
 var name = "<img src=x onerror=alert(1)>";
 el.innerHTML = name;
 ```
@@ -290,7 +290,7 @@ el.innerHTML = name;
 
 `Element.outerHTML`属性返回一个字符串，表示当前元素节点的所有 HTML 代码，包括该元素本身和所有子元素。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="d"><p>Hello</p></div>
 var d = document.getElementById('d');
@@ -300,7 +300,7 @@ d.outerHTML
 
 `outerHTML`属性是可读写的，对它进行赋值，等于替换掉当前元素。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="container"><div id="d">Hello</div></div>
 var container = document.getElementById('container');
@@ -317,7 +317,7 @@ d.nodeName // "DIV"
 
 注意，如果一个节点没有父节点，设置`outerHTML`属性会报错。
 
-```javascript
+```js
 var div = document.createElement('div');
 div.outerHTML = '<p>test</p>';
 // DOMException: This element has no parent node.
@@ -335,7 +335,7 @@ div.outerHTML = '<p>test</p>';
 
 `document.documentElement`的`clientHeight`属性，返回当前视口的高度（即浏览器窗口的高度），等同于`window.innerHeight`属性减去水平滚动条的高度（如果有的话）。`document.body`的高度则是网页的实际高度。一般来说，`document.body.clientHeight`大于`document.documentElement.clientHeight`。
 
-```javascript
+```js
 // 视口高度
 document.documentElement.clientHeight
 
@@ -357,7 +357,7 @@ document.body.clientHeight
 
 整张网页的总高度可以从`document.documentElement`或`document.body`上读取。
 
-```javascript
+```js
 // 返回网页的总高度
 document.documentElement.scrollHeight
 document.body.scrollHeight
@@ -365,7 +365,7 @@ document.body.scrollHeight
 
 注意，如果元素节点的内容出现溢出，即使溢出的内容是隐藏的，`scrollHeight`属性仍然返回元素的总高度。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="myDiv" style="height: 200px; overflow: hidden;">...<div>
 document.getElementById('myDiv').scrollHeight // 356
@@ -379,7 +379,7 @@ document.getElementById('myDiv').scrollHeight // 356
 
 如果要查看整张网页的水平的和垂直的滚动距离，要从`document.documentElement`元素上读取。
 
-```javascript
+```js
 document.documentElement.scrollLeft
 document.documentElement.scrollTop
 ```
@@ -430,7 +430,7 @@ document.documentElement.scrollTop
 
 下面的代码可以算出元素左上角相对于整张网页的坐标。
 
-```javascript
+```js
 function getElementPosition(e) {
   var x = 0;
   var y = 0;
@@ -451,7 +451,7 @@ function getElementPosition(e) {
 
 `Element.children`属性返回一个类似数组的对象（`HTMLCollection`实例），包括当前元素节点的所有子元素。如果当前元素没有子元素，则返回的对象包含零个成员。
 
-```javascript
+```js
 if (para.children.length) {
   var children = para.children;
     for (var i = 0; i < children.length; i++) {
@@ -476,7 +476,7 @@ if (para.children.length) {
 
 `Element.nextElementSibling`属性返回当前元素节点的后一个同级元素节点，如果没有则返回`null`。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="div-01">Here is div-01</div>
 // <div id="div-02">Here is div-02</div>
@@ -497,7 +497,7 @@ el.nextElementSibling
 
 `Element.getAttribute`方法接受一个字符串作为参数，返回同名属性的值。如果没有该属性，则返回`null`。
 
-```javascript
+```js
 var mydiv = document.getElementById('mydiv');
 var id = mydiv.getAttribute('id');
 ```
@@ -508,7 +508,7 @@ var id = mydiv.getAttribute('id');
 
 `Element.getAttributeNames()`返回一个数组，成员是当前元素的所有属性的名字。如果当前元素没有任何属性，则返回一个空数组。使用`Element.attributes`属性，也可以拿到同样的结果，唯一的区别是它返回的是类似数组的对象。
 
-```javascript
+```js
 var mydiv = document.getElementById('mydiv');
 
 mydiv.getAttributeNames().forEach(function (key) {
@@ -523,7 +523,7 @@ mydiv.getAttributeNames().forEach(function (key) {
 
 `Element.setAttribute`方法用于为当前节点设置属性。如果属性已经存在，将更新属性值，否则将添加该属性。该方法没有返回值。
 
-```javascript
+```js
 // HTML 代码为
 // <button>Hello World</button>
 var b = document.querySelector('button');
@@ -539,7 +539,7 @@ b.setAttribute('disabled', true);
 
 `Element.hasAttribute`方法返回一个布尔值，表示当前元素节点是否有指定的属性。
 
-```javascript
+```js
 var foo = document.getElementById('foo');
 foo.hasAttribute('bar') // false
 ```
@@ -548,7 +548,7 @@ foo.hasAttribute('bar') // false
 
 `Element.hasAttributes`方法返回一个布尔值，表示当前元素是否有属性，如果没有任何属性，就返回`false`，否则返回`true`。
 
-```javascript
+```js
 var foo = document.getElementById('foo');
 foo.hasAttributes() // true
 ```
@@ -557,7 +557,7 @@ foo.hasAttributes() // true
 
 `Element.removeAttribute`方法移除指定属性。该方法没有返回值。
 
-```javascript
+```js
 document.getElementById('div1').removeAttribute('id')
 ```
 
@@ -565,7 +565,7 @@ document.getElementById('div1').removeAttribute('id')
 
 `Element.querySelector`方法接受 CSS 选择器作为参数，返回父元素的第一个匹配的子元素。如果没有找到匹配的子元素，就返回`null`。
 
-```javascript
+```js
 var content = document.getElementById('content');
 var el = content.querySelector('p');
 ```
@@ -574,7 +574,7 @@ var el = content.querySelector('p');
 
 `Element.querySelector`方法可以接受任何复杂的 CSS 选择器。
 
-```javascript
+```js
 document.body.querySelector("style[type='text/css'], style:not([type])");
 ```
 
@@ -582,7 +582,7 @@ document.body.querySelector("style[type='text/css'], style:not([type])");
 
 它可以接受多个选择器，它们之间使用逗号分隔。
 
-```javascript
+```js
 element.querySelector('div, p')
 ```
 
@@ -603,7 +603,7 @@ element.querySelector('div, p')
 
 那么，像下面这样查询的话，实际上返回的是第一个`p`元素，而不是第二个。
 
-```javascript
+```js
 var outer = document.getElementById('outer');
 outer.querySelector('div p')
 // <p>Hello</p>
@@ -613,7 +613,7 @@ outer.querySelector('div p')
 
 `Element.querySelectorAll`方法接受 CSS 选择器作为参数，返回一个`NodeList`实例，包含所有匹配的子元素。
 
-```javascript
+```js
 var el = document.querySelector('#test');
 var matches = el.querySelectorAll('div.highlighted > p');
 ```
@@ -626,7 +626,7 @@ var matches = el.querySelectorAll('div.highlighted > p');
 
 `Element.getElementsByClassName`方法返回一个`HTMLCollection`实例，成员是当前元素节点的所有具有指定 class 的子元素节点。该方法与`document.getElementsByClassName`方法的用法类似，只是搜索范围不是整个文档，而是当前元素节点。
 
-```javascript
+```js
 element.getElementsByClassName('red test');
 ```
 
@@ -634,7 +634,7 @@ element.getElementsByClassName('red test');
 
 由于`HTMLCollection`实例是一个活的集合，`document`对象的任何变化会立刻反应到实例，下面的代码不会生效。
 
-```javascript
+```js
 // HTML 代码如下
 // <div id="example">
 //   <p class="foo"></p>
@@ -660,7 +660,7 @@ for (var i = 0; i< matches.length; i++) {
 
 `Element.getElementsByTagName`方法返回一个`HTMLCollection`实例，成员是当前节点的所有匹配指定标签名的子元素节点。该方法与`document.getElementsByClassName`方法的用法类似，只是搜索范围不是整个文档，而是当前元素节点。
 
-```javascript
+```js
 var table = document.getElementById('forecast-table');
 var cells = table.getElementsByTagName('td');
 ```
@@ -671,7 +671,7 @@ var cells = table.getElementsByTagName('td');
 
 `Element.closest`方法接受一个 CSS 选择器作为参数，返回匹配该选择器的、最接近当前节点的一个祖先节点（包括当前节点本身）。如果没有任何节点匹配 CSS 选择器，则返回`null`。
 
-```javascript
+```js
 // HTML 代码如下
 // <article>
 //   <div id="div-01">Here is div-01
@@ -696,7 +696,7 @@ div03.closest(":not(div)") // article
 
 `Element.matches`方法返回一个布尔值，表示当前元素是否匹配给定的 CSS 选择器。
 
-```javascript
+```js
 if (el.matches('.someClass')) {
   console.log('Match!');
 }
@@ -710,7 +710,7 @@ if (el.matches('.someClass')) {
 - `Element.removeEventListener()`：移除事件监听函数
 - `Element.dispatchEvent()`：触发事件
 
-```javascript
+```js
 element.addEventListener('click', listener, false);
 element.removeEventListener('click', listener, false);
 
@@ -722,7 +722,7 @@ element.dispatchEvent(event);
 
 `Element.scrollIntoView`方法滚动当前元素，进入浏览器的可见区域，类似于设置`window.location.hash`的效果。
 
-```javascript
+```js
 el.scrollIntoView(); // 等同于el.scrollIntoView(true)
 el.scrollIntoView(false);
 ```
@@ -733,7 +733,7 @@ el.scrollIntoView(false);
 
 `Element.getBoundingClientRect`方法返回一个对象，提供当前元素节点的大小、位置等信息，基本上就是 CSS 盒状模型的所有信息。
 
-```javascript
+```js
 var rect = obj.getBoundingClientRect();
 ```
 
@@ -754,7 +754,7 @@ var rect = obj.getBoundingClientRect();
 
 另外，上面的这些属性，都是继承自原型的属性，`Object.keys`会返回一个空数组，这一点也需要注意。
 
-```javascript
+```js
 var rect = document.body.getBoundingClientRect();
 Object.keys(rect) // []
 ```
@@ -773,7 +773,7 @@ Object.keys(rect) // []
 
 上面代码是一个行内元素`<span>`，如果它在页面上占据三行，`getClientRects`方法返回的对象就有三个成员，如果它在页面上占据一行，`getClientRects`方法返回的对象就只有一个成员。
 
-```javascript
+```js
 var el = document.getElementById('inline');
 el.getClientRects().length // 3
 el.getClientRects()[0].left // 8
@@ -801,7 +801,7 @@ el.getClientRects()[0].width // 105.908203125
 
 `Element.insertAdjacentElement`方法在相对于当前元素的指定位置，插入一个新的节点。该方法返回被插入的节点，如果插入失败，返回`null`。
 
-```javascript
+```js
 element.insertAdjacentElement(position, element);
 ```
 
@@ -814,7 +814,7 @@ element.insertAdjacentElement(position, element);
 
 注意，`beforebegin`和`afterend`这两个值，只在当前节点有父节点时才会生效。如果当前节点是由脚本创建的，没有父节点，那么插入会失败。
 
-```javascript
+```js
 var p1 = document.createElement('p')
 var p2 = document.createElement('p')
 p1.insertAdjacentElement('afterend', p2) // null
@@ -828,7 +828,7 @@ p1.insertAdjacentElement('afterend', p2) // null
 
 `Element.insertAdjacentHTML`方法用于将一个 HTML 字符串，解析生成 DOM 结构，插入相对于当前节点的指定位置。
 
-```javascript
+```js
 element.insertAdjacentHTML(position, text);
 ```
 
@@ -839,7 +839,7 @@ element.insertAdjacentHTML(position, text);
 - `beforeend`：当前元素内部的最后一个子节点后面
 - `afterend`：当前元素之后
 
-```javascript
+```js
 // HTML 代码：<div id="one">one</div>
 var d1 = document.getElementById('one');
 d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
@@ -853,7 +853,7 @@ d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
 
 `Element.insertAdjacentText`方法在相对于当前节点的指定位置，插入一个文本节点，用法与`Element.insertAdjacentHTML`方法完全一致。
 
-```javascript
+```js
 // HTML 代码：<div id="one">one</div>
 var d1 = document.getElementById('one');
 d1.insertAdjacentText('afterend', 'two');
@@ -865,7 +865,7 @@ d1.insertAdjacentText('afterend', 'two');
 
 `Element.remove`方法继承自 ChildNode 接口，用于将当前元素节点从它的父节点移除。
 
-```javascript
+```js
 var el = document.getElementById('mydiv');
 el.remove();
 ```
@@ -876,13 +876,13 @@ el.remove();
 
 `Element.focus`方法用于将当前页面的焦点，转移到指定元素上。
 
-```javascript
+```js
 document.getElementById('my-span').focus();
 ```
 
 该方法可以接受一个对象作为参数。参数对象的`preventScroll`属性是一个布尔值，指定是否将当前元素停留在原始位置，而不是滚动到可见区域。
 
-```javascript
+```js
 function getFocus() {
   document.getElementById('btn').focus({preventScroll:false});
 }

@@ -6,13 +6,13 @@
 
 History 对象保存了当前窗口访问过的所有页面网址。下面代码表示当前窗口一共访问过3个网址。
 
-```javascript
+```js
 window.history.length // 3
 ```
 
 由于安全原因，浏览器不允许脚本读取这些地址，但是允许在地址之间导航。
 
-```javascript
+```js
 // 后退到前一个网址
 history.back()
 
@@ -39,7 +39,7 @@ History 对象主要有两个属性。
 - `History.forward()`：移动到下一个网址，等同于点击浏览器的前进键。对于最后一个访问的网址，该方法无效果。
 - `History.go()`：接受一个整数作为参数，以当前网址为基准，移动到参数指定的网址，比如`go(1)`相当于`forward()`，`go(-1)`相当于`back()`。如果参数超过实际存在的网址范围，该方法无效果；如果不指定参数，默认参数为`0`，相当于刷新当前页面。
 
-```javascript
+```js
 history.back();
 history.forward();
 history.go(-2);
@@ -47,7 +47,7 @@ history.go(-2);
 
 `history.go(0)`相当于刷新当前页面。
 
-```javascript
+```js
 history.go(0);记录
 ```
 
@@ -57,7 +57,7 @@ history.go(0);记录
 
 `History.pushState()`方法用于在历史中添加一条记录。
 
-```javascript
+```js
 window.history.pushState(state, title, url)
 ```
 
@@ -69,7 +69,7 @@ window.history.pushState(state, title, url)
 
 假定当前网址是`example.com/1.html`，使用`pushState()`方法在浏览记录（History 对象）中添加一个新记录。
 
-```javascript
+```js
 var stateObj = { foo: 'bar' };
 history.pushState(stateObj, 'page 2', '2.html');
 ```
@@ -80,7 +80,7 @@ history.pushState(stateObj, 'page 2', '2.html');
 
 使用该方法之后，就可以用`History.state`属性读出状态对象。
 
-```javascript
+```js
 var stateObj = { foo: 'bar' };
 history.pushState(stateObj, 'page 2', '2.html');
 history.state // {foo: "bar"}
@@ -90,7 +90,7 @@ history.state // {foo: "bar"}
 
 如果`pushState()`方法设置了一个跨域网址，则会报错。
 
-```javascript
+```js
 // 报错
 // 当前网址为 http://example.com
 history.pushState(null, '', 'https://twitter.com/hello');
@@ -104,7 +104,7 @@ history.pushState(null, '', 'https://twitter.com/hello');
 
 假定当前网页是`example.com/example.html`。
 
-```javascript
+```js
 history.pushState({page: 1}, 'title 1', '?page=1')
 // URL 显示为 http://example.com/example.html?page=1
 
@@ -132,7 +132,7 @@ history.go(2)
 
 使用的时候，可以为`popstate`事件指定回调函数。
 
-```javascript
+```js
 window.onpopstate = function (event) {
   console.log('location: ' + document.location);
   console.log('state: ' + JSON.stringify(event.state));
@@ -149,7 +149,7 @@ window.addEventListener('popstate', function(event) {
 
 这个`state`对象也可以直接通过`history`对象读取。
 
-```javascript
+```js
 var currentState = history.state;
 ```
 
@@ -159,7 +159,7 @@ var currentState = history.state;
 
 URLSearchParams API 用于处理 URL 之中的查询字符串，即问号之后的部分。没有部署这个API的浏览器，可以用[url-search-params](https://github.com/WebReflection/url-search-params)这个垫片库。
 
-```javascript
+```js
 var paramsString = 'q=URLUtils.searchParams&topic=api';
 var searchParams = new URLSearchParams(paramsString);
 ```
@@ -174,7 +174,7 @@ URLSearchParams有以下方法，用来操作某个参数。
 - `append()`：在查询字符串之中，追加一个键值对
 - `toString()`：返回整个查询字符串
 
-```javascript
+```js
 var paramsString = 'q=URLUtils.searchParams&topic=api';
 var searchParams = new URLSearchParams(paramsString);
 
@@ -204,7 +204,7 @@ URLSearchParams还有三个方法，用来遍历所有参数。
 
 上面三个方法返回的都是`Iterator`对象。
 
-```javascript
+```js
 var searchParams = new URLSearchParams('key1=value1&key2=value2');
 
 for (var key of searchParams.keys()) {
@@ -228,7 +228,7 @@ for (var pair of searchParams.entries()) {
 
 在Chrome浏览器之中，`URLSearchParams`实例本身就是`Iterator`对象，与`entries`方法返回值相同。所以，可以写成下面的样子。
 
-```javascript
+```js
 for (var p of searchParams) {
   console.log(p);
 }
@@ -236,7 +236,7 @@ for (var p of searchParams) {
 
 下面是一个替换当前URL的例子。
 
-```javascript
+```js
 // URL: https://example.com?version=1.0
 var params = new URLSearchParams(location.search.slice(1));
 params.set('version', 2.0);
@@ -247,7 +247,7 @@ window.history.replaceState({}, '', `${location.pathname}?${params}`);
 
 `URLSearchParams`实例可以当作 POST 数据发送，所有数据都会 URL 编码。
 
-```javascript
+```js
 let params = new URLSearchParams();
 params.append('api_key', '1234567890');
 
@@ -259,7 +259,7 @@ fetch('https://example.com/api', {
 
 DOM的`a`元素节点的`searchParams`属性，就是一个`URLSearchParams`实例。
 
-```javascript
+```js
 var a = document.createElement('a');
 a.href = 'https://example.com?filter=api';
 a.searchParams.get('filter') // "api"
@@ -267,7 +267,7 @@ a.searchParams.get('filter') // "api"
 
 `URLSearchParams`还可以与`URL`接口结合使用。
 
-```javascript
+```js
 var url = new URL(location);
 var foo = url.searchParams.get('foo') || 'somedefault';
 ```

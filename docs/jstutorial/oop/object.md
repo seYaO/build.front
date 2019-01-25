@@ -6,7 +6,7 @@ JavaScript 在`Object`对象上面，提供了很多相关方法，处理面向�
 
 `Object.getPrototypeOf`方法返回参数对象的原型。这是获取原型对象的标准方法。
 
-```javascript
+```js
 var F = function () {};
 var f = new F();
 Object.getPrototypeOf(f) === F.prototype // true
@@ -16,7 +16,7 @@ Object.getPrototypeOf(f) === F.prototype // true
 
 下面是几种特殊对象的原型。
 
-```javascript
+```js
 // 空对象的原型是 Object.prototype
 Object.getPrototypeOf({}) === Object.prototype // true
 
@@ -32,7 +32,7 @@ Object.getPrototypeOf(f) === Function.prototype // true
 
 `Object.setPrototypeOf`方法为参数对象设置原型，返回该参数对象。它接受两个参数，第一个是现有对象，第二个是原型对象。
 
-```javascript
+```js
 var a = {};
 var b = {x: 1};
 Object.setPrototypeOf(a, b);
@@ -45,7 +45,7 @@ a.x // 1
 
 `new`命令可以使用`Object.setPrototypeOf`方法模拟。
 
-```javascript
+```js
 var F = function () {
   this.foo = 'bar';
 };
@@ -64,7 +64,7 @@ F.call(f);
 
 JavaScript 提供了`Object.create`方法，用来满足这种需求。该方法接受一个对象作为参数，然后以它为原型，返回一个实例对象。该实例完全继承原型对象的属性。
 
-```javascript
+```js
 // 原型对象
 var A = {
   print: function () {
@@ -84,7 +84,7 @@ B.print === A.print // true
 
 实际上，`Object.create`方法可以用下面的代码代替。
 
-```javascript
+```js
 if (typeof Object.create !== 'function') {
   Object.create = function (obj) {
     function F() {}
@@ -98,7 +98,7 @@ if (typeof Object.create !== 'function') {
 
 下面三种方式生成的新对象是等价的。
 
-```javascript
+```js
 var obj1 = Object.create({});
 var obj2 = Object.create(Object.prototype);
 var obj3 = new Object();
@@ -106,7 +106,7 @@ var obj3 = new Object();
 
 如果想要生成一个不继承任何属性（比如没有`toString`和`valueOf`方法）的对象，可以将`Object.create`的参数设为`null`。
 
-```javascript
+```js
 var obj = Object.create(null);
 
 obj.valueOf()
@@ -117,7 +117,7 @@ obj.valueOf()
 
 使用`Object.create`方法的时候，必须提供对象原型，即参数不能为空，或者不是对象，否则会报错。
 
-```javascript
+```js
 Object.create()
 // TypeError: Object prototype may only be an Object or null
 Object.create(123)
@@ -126,7 +126,7 @@ Object.create(123)
 
 `Object.create`方法生成的新对象，动态继承了原型。在原型上添加或修改任何方法，会立刻反映在新对象之上。
 
-```javascript
+```js
 var obj1 = { p: 1 };
 var obj2 = Object.create(obj1);
 
@@ -138,7 +138,7 @@ obj2.p // 2
 
 除了对象的原型，`Object.create`方法还可以接受第二个参数。该参数是一个属性描述对象，它所描述的对象属性，会添加到实例对象，作为该对象自身的属性。
 
-```javascript
+```js
 var obj = Object.create({}, {
   p1: {
     value: 123,
@@ -162,7 +162,7 @@ obj.p2 = 'abc';
 
 `Object.create`方法生成的对象，继承了它的原型对象的构造函数。
 
-```javascript
+```js
 function A() {}
 var a = new A();
 var b = Object.create(a);
@@ -177,7 +177,7 @@ b instanceof A // true
 
 实例对象的`isPrototypeOf`方法，用来判断该对象是否为参数对象的原型。
 
-```javascript
+```js
 var o1 = {};
 var o2 = Object.create(o1);
 var o3 = Object.create(o2);
@@ -188,7 +188,7 @@ o1.isPrototypeOf(o3) // true
 
 上面代码中，`o1`和`o2`都是`o3`的原型。这表明只要实例对象处在参数对象的原型链上，`isPrototypeOf`方法都返回`true`。
 
-```javascript
+```js
 Object.prototype.isPrototypeOf({}) // true
 Object.prototype.isPrototypeOf([]) // true
 Object.prototype.isPrototypeOf(/xyz/) // true
@@ -201,7 +201,7 @@ Object.prototype.isPrototypeOf(Object.create(null)) // false
 
 实例对象的`__proto__`属性（前后各两个下划线），返回该对象的原型。该属性可读写。
 
-```javascript
+```js
 var obj = {};
 var p = {};
 
@@ -215,7 +215,7 @@ Object.getPrototypeOf(obj) === p // true
 
 原型链可以用`__proto__`很直观地表示。
 
-```javascript
+```js
 var A = {
   name: '张三'
 };
@@ -246,7 +246,7 @@ B.print === proto.print // true
 
 如前所述，`__proto__`属性指向当前对象的原型对象，即构造函数的`prototype`属性。
 
-```javascript
+```js
 var obj = new Object();
 
 obj.__proto__ === Object.prototype
@@ -265,7 +265,7 @@ obj.__proto__ === obj.constructor.prototype
 
 上面三种方法之中，前两种都不是很可靠。`__proto__`属性只有浏览器才需要部署，其他环境可以不部署。而`obj.constructor.prototype`在手动改变原型对象时，可能会失效。
 
-```javascript
+```js
 var P = function () {};
 var p = new P();
 
@@ -278,7 +278,7 @@ c.constructor.prototype === p // false
 
 上面代码中，构造函数`C`的原型对象被改成了`p`，但是实例对象的`c.constructor.prototype`却没有指向`p`。所以，在改变原型对象时，一般要同时设置`constructor`属性。
 
-```javascript
+```js
 C.prototype = p;
 C.prototype.constructor = C;
 
@@ -292,7 +292,7 @@ c.constructor.prototype === p // true
 
 `Object.getOwnPropertyNames`方法返回一个数组，成员是参数对象本身的所有属性的键名，不包含继承的属性键名。
 
-```javascript
+```js
 Object.getOwnPropertyNames(Date)
 // ["parse", "arguments", "UTC", "caller", "name", "prototype", "now", "length"]
 ```
@@ -301,7 +301,7 @@ Object.getOwnPropertyNames(Date)
 
 对象本身的属性之中，有的是可以遍历的（enumerable），有的是不可以遍历的。`Object.getOwnPropertyNames`方法返回所有键名，不管是否可以遍历。只获取那些可以遍历的属性，使用`Object.keys`方法。
 
-```javascript
+```js
 Object.keys(Date) // []
 ```
 
@@ -311,7 +311,7 @@ Object.keys(Date) // []
 
 对象实例的`hasOwnProperty`方法返回一个布尔值，用于判断某个属性定义在对象自身，还是定义在原型链上。
 
-```javascript
+```js
 Date.hasOwnProperty('length') // true
 Date.hasOwnProperty('toString') // false
 ```
@@ -324,7 +324,7 @@ Date.hasOwnProperty('toString') // false
 
 `in`运算符返回一个布尔值，表示一个对象是否具有某个属性。它不区分该属性是对象自身的属性，还是继承的属性。
 
-```javascript
+```js
 'length' in Date // true
 'toString' in Date // true
 ```
@@ -333,7 +333,7 @@ Date.hasOwnProperty('toString') // false
 
 获得对象的所有可遍历属性（不管是自身的还是继承的），可以使用`for...in`循环。
 
-```javascript
+```js
 var o1 = { p1: 123 };
 
 var o2 = Object.create(o1, {
@@ -351,7 +351,7 @@ for (p in o2) {
 
 为了在`for...in`循环中获得对象自身的属性，可以采用`hasOwnProperty`方法判断一下。
 
-```javascript
+```js
 for ( var name in object ) {
   if ( object.hasOwnProperty(name) ) {
     /* loop code */
@@ -361,7 +361,7 @@ for ( var name in object ) {
 
 获得对象的所有属性（不管是自身的还是继承的，也不管是否可枚举），可以使用下面的函数。
 
-```javascript
+```js
 function inheritedPropertyNames(obj) {
   var props = {};
   while(obj) {
@@ -378,7 +378,7 @@ function inheritedPropertyNames(obj) {
 
 下面是一个例子，列出`Date`对象的所有属性。
 
-```javascript
+```js
 inheritedPropertyNames(Date)
 // [
 //  "caller",
@@ -398,7 +398,7 @@ inheritedPropertyNames(Date)
 
 下面就是根据上面两点，实现的对象拷贝函数。
 
-```javascript
+```js
 function copyObject(orig) {
   var copy = Object.create(Object.getPrototypeOf(orig));
   copyOwnPropertiesFrom(copy, orig);
@@ -418,7 +418,7 @@ function copyOwnPropertiesFrom(target, source) {
 
 另一种更简单的写法，是利用 ES2017 才引入标准的`Object.getOwnPropertyDescriptors`方法。
 
-```javascript
+```js
 function copyObject(orig) {
   return Object.create(
     Object.getPrototypeOf(orig),

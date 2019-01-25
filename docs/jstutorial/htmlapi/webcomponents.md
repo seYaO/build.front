@@ -33,7 +33,7 @@ template标签表示网页中某些重复出现的部分的代码模板。它存
 
 下面的代码用来检查，浏览器是否支持template标签。
 
-```javascript
+```js
 function supportsTemplate() {
   return 'content' in document.createElement('template');
 }
@@ -59,7 +59,7 @@ if (supportsTemplate()) {
 
 使用的时候，需要用JavaScript在模板中插入内容，然后将其插入DOM。
 
-```javascript
+```js
 var template = document.querySelector('#profileTemplate');
 template.content.querySelector('.profile__img').src = 'profile.jpg';
 template.content.querySelector('.profile__name').textContent = 'Barack Obama';
@@ -69,7 +69,7 @@ document.body.appendChild(template.content);
 
 上面的代码是将模板直接插入DOM，更好的做法是克隆template节点，然后将克隆的节点插入DOM。这样做可以多次使用模板。
 
-```javascript
+```js
 var clone = document.importNode(template.content, true);
 document.body.appendChild(clone);
 ```
@@ -93,7 +93,7 @@ document.body.appendChild(clone);
 
 document.importNode方法用于克隆外部文档的DOM节点。
 
-```javascript
+```js
 var iframe = document.getElementsByTagName("iframe")[0];
 var oldNode = iframe.contentWindow.document.getElementById("myNode");
 var newNode = document.importNode(oldNode, true);
@@ -118,7 +118,7 @@ HTML预定义的网页元素，有时并不符合我们的需要，这时可以�
 
 下面的代码用于测试浏览器是否支持自定义元素。
 
-```javascript
+```js
 if ('registerElement' in document) {
   // 支持
 } else {
@@ -130,7 +130,7 @@ if ('registerElement' in document) {
 
 使用自定义元素前，必须用document对象的registerElement方法登记该元素。该方法返回一个自定义元素的构造函数。
 
-```javascript
+```js
 var SuperButton = document.registerElement('super-button');
 document.body.appendChild(new SuperButton());
 ```
@@ -139,7 +139,7 @@ document.body.appendChild(new SuperButton());
 
 可以看到，document.registerElement方法的第一个参数是一个字符串，表示自定义的网页元素标签名。该方法还可以接受第二个参数，表示自定义网页元素的原型对象。
 
-```javascript
+```js
 
 var MyElement = document.registerElement('user-profile', {
   prototype: Object.create(HTMLElement.prototype)
@@ -151,7 +151,7 @@ var MyElement = document.registerElement('user-profile', {
 
 但是，如果写成上面这样，自定义网页元素就跟普通元素没有太大区别。自定义元素的真正优势在于，可以自定义它的API。
 
-```javascript
+```js
 var buttonProto = Object.create(HTMLElement.prototype);
 
 buttonProto.print = function() {
@@ -171,7 +171,7 @@ supperButton.print();
 
 如果想让自定义元素继承某种特定的网页元素，就要指定extends属性。比如，想让自定义元素继承h1元素，需要写成下面这样。
 
-```javascript
+```js
 var MyElement = document.registerElement('another-heading', {
   prototype: Object.create(HTMLElement.prototype),
   extends: 'h1'
@@ -180,7 +180,7 @@ var MyElement = document.registerElement('another-heading', {
 
 另一个是自定义按钮（button）元素的例子。
 
-```javascript
+```js
 var MyButton = document.registerElement('super-button', {
   prototype: Object.create(HTMLButtonElement.prototype),
   extends: 'button'
@@ -189,7 +189,7 @@ var MyButton = document.registerElement('super-button', {
 
 如果要继承一个自定义元素（比如`x-foo-extended`继承`x-foo`），也是采用extends属性。
 
-```javascript
+```js
 var XFooExtended = document.registerElement('x-foo-extended', {
   prototype: Object.create(HTMLElement.prototype),
   extends: 'x-foo'
@@ -212,14 +212,14 @@ var XFooExtended = document.registerElement('x-foo-extended', {
 
 自定义元素的强大之处，就是可以在它上面定义新的属性和方法。
 
-```javascript
+```js
 var XFooProto = Object.create(HTMLElement.prototype);
 var XFoo = document.registerElement('x-foo', {prototype: XFooProto});
 ```
 
 上面代码注册了一个x-foo标签，并且指明原型继承HTMLElement.prototype。现在，我们就可以在原型上面，添加新的属性和方法。
 
-```javascript
+```js
 
 // 添加属性
 Object.defineProperty(XFooProto, "bar", {value: 5});
@@ -256,7 +256,7 @@ var XFoo = document.registerElement('x-foo', {
 
 下面是一个例子。
 
-```javascript
+```js
 var proto = Object.create(HTMLElement.prototype);
 
 proto.createdCallback = function() {
@@ -273,7 +273,7 @@ var XFoo = document.registerElement('x-foo', {prototype: proto});
 
 利用回调函数，可以方便地在自定义元素中插入HTML语句。
 
-```javascript
+```js
 
 var XFooProto = Object.create(HTMLElement.prototype);
 
@@ -302,7 +302,7 @@ var XFoo = document.registerElement('x-foo-with-markup',
 
 Shadow DOM元素必须依存在一个现有的DOM元素之下，通过`createShadowRoot`方法创造，然后将其插入该元素。
 
-```javascript
+```js
 var shadowRoot = element.createShadowRoot();
 document.body.appendChild(shadowRoot);
 ```
@@ -324,7 +324,7 @@ document.body.appendChild(shadowRoot);
 
 通过innerHTML属性，可以为Shadow DOM指定内容。
 
-```javascript
+```js
 var shadow = document.querySelector('#hostElement').createShadowRoot();
 shadow.innerHTML = '<p>Here is some new text</p>';
 shadow.innerHTML += '<style>p { color: red };</style>';
@@ -355,7 +355,7 @@ shadow.innerHTML += '<style>p { color: red };</style>';
 
 上面代码是一个`div`元素和模板。接下来，就是要把模板应用到`div`元素上。
 
-```javascript
+```js
 var shadow = document.querySelector('#nameTag').createShadowRoot();
 var template = document.querySelector('#nameTagTemplate');
 shadow.appendChild(template.content.cloneNode(true));
@@ -371,7 +371,7 @@ shadow.appendChild(template.content.cloneNode(true));
 
 下面代码用于测试当前浏览器是否支持HTML Import。
 
-```javascript
+```js
 
 function supportsImports() {
   return 'import' in document.createElement('link');
@@ -408,7 +408,7 @@ HTML Import用于将外部的HTML文档加载进当前文档。我们可以将�
 
 除了用link标签，也可以用JavaScript调用link元素，完成HTML Import。
 
-```javascript
+```js
 
 var link = document.createElement('link');
 link.rel = 'import';
@@ -455,7 +455,7 @@ HTML Import是同步加载，会阻塞当前网页的渲染，这主要是为了
 
 外部网页的内容，并不会自动显示在当前网页中，它只是储存在浏览器中，等到被调用的时候才加载进入当前网页。为了加载网页网页，必须用DOM操作获取加载的内容。具体来说，就是使用link元素的import属性，来获取加载的内容。这一点与iframe完全不同。
 
-```javascript
+```js
 
 var content = document.querySelector('link[rel="import"]').import;
 
@@ -471,7 +471,7 @@ var content = document.querySelector('link[rel="import"]').import;
 
 下面代码用于从加载的外部网页选取id为template的元素，然后将其克隆后加入当前网页的DOM。
 
-```javascript
+```js
 
 var el = linkElement.import.querySelector('#template');
 
@@ -481,7 +481,7 @@ document.body.appendChild(el.cloneNode(true));
 
 当前网页可以获取外部网页，反过来也一样，外部网页中的脚本，不仅可以获取本身的DOM，还可以获取link元素所在的当前网页的DOM。
 
-```javascript
+```js
 
 // 以下代码位于被加载（import）的外部网页
 
@@ -636,7 +636,7 @@ bower install Polymer/polymer-ui-accordion
 
 这时，组件根目录下的bower.json，会指明该组件的依赖的模块，这些模块会被自动安装。
 
-```javascript
+```js
 
 {
   "name": "polymer-ui-accordion",

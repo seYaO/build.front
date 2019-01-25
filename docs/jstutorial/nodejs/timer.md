@@ -44,7 +44,7 @@ int uv_run(uv_loop_t* loop, uv_run_mode mode) {
 
 `process.nextTick`方法用于指定在本轮Event Loop即将结束、下轮Event Loop开始前执行的回调函数。因此，`process.nextTick`的回调函数会阻塞下一个Event Loop。所以，`process.nextTick`不能出现嵌套，否则会阻塞掉整个Event Loop，不过此时Node会报错。
 
-```javascript
+```js
 var http = require('http');
 
 function compute() {
@@ -65,7 +65,7 @@ compute();
 
 实际使用时，需要分清`process.nextTick`、`setImmediate`和`setTimeout(fn, 0)`的执行顺序。
 
-```javascript
+```js
 setImmediate(function () {console.log('setImmediate')});
 process.nextTick(function () {console.log('nextTick')});
 setTimeout(function () {console.log('setTimeout')}, 0);
@@ -78,7 +78,7 @@ setTimeout(function () {console.log('setTimeout')}, 0);
 
 `process.nextTick`的一个应用是，确保回调函数异步执行。
 
-```javascript
+```js
 function asyncReal(data, callback) {
   process.nextTick(function() {
     callback(data === 'foo');
@@ -90,7 +90,7 @@ function asyncReal(data, callback) {
 
 另一个用途是保证某些方法在初始化之后执行。下面是一个数据流的库文件。
 
-```javascript
+```js
 var EventEmitter = require('events').EventEmitter;
 
 function StreamLibrary(resourceName) {
@@ -103,7 +103,7 @@ StreamLibrary.prototype.__proto__ = EventEmitter.prototype;
 
 上面这样的写法，使用时根本不会监听到`start`事件。
 
-```javascript
+```js
 var stream = new StreamLibrary('fooResource');
 
 stream.on('start', function() {
@@ -117,7 +117,7 @@ stream.on('data', function(chunk) {
 
 上面代码中，`start`事件是监听不到的。因为`StreamLibrary`一初始化时，就会触发`start`事件，这时根本还没指定回调函数。这就需要使用`process.nextTick`改写`StreamLibrary`库。
 
-```javascript
+```js
 function StreamLibrary(resourceName) {
   var self = this;
 
@@ -136,7 +136,7 @@ function StreamLibrary(resourceName) {
 
 `setImmediate`方法用于指定在下一轮 Event Loop 执行的回调函数。
 
-```javascript
+```js
 setImmediate(callback[, arg][, ...])
 ```
 
@@ -146,7 +146,7 @@ setImmediate(callback[, arg][, ...])
 
 如果延迟时间为零，即`setImmediate`与`setTimeout(fn, 0)`哪个命令会先执行？答案是不确定。
 
-```javascript
+```js
 var x = function () {
   setTimeout(function() {
     console.log('Timeout 0')

@@ -6,7 +6,7 @@
 
 `querystring.parse()`方法用于将一个查询字符串解析为 JavaScript 对象。
 
-```javascript
+```js
 var str = 'foo=bar&abc=xyz&abc=123';
 
 querystring.parse(str)
@@ -15,7 +15,7 @@ querystring.parse(str)
 
 `parse`方法一共可以接受四个参数。
 
-```javascript
+```js
 querystring.parse(str[, sep[, eq[, options]]])
 ```
 
@@ -26,7 +26,7 @@ querystring.parse(str[, sep[, eq[, options]]])
 
 前面的例子省略了后面三个参数，完整的调用形式如下。
 
-```javascript
+```js
 querystring.parse(
   'w=%D6%D0%CE%C4&foo=bar',
   null,
@@ -37,7 +37,7 @@ querystring.parse(
 
 `parse`方法也可以用来解析一般的字符串。
 
-```javascript
+```js
 var str = 'name:Sophie;shape:fox;condition:new';
 
 querystring.parse(str, ';', ':')

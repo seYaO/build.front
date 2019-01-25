@@ -47,7 +47,7 @@ JavaScript 是浏览器的内置脚本语言。也就是说，浏览器内置了
 
 上面的代码，浏览器不会执行，也不会显示它的内容，因为不认识它的`type`属性。但是，这个`<script>`节点依然存在于 DOM 之中，可以使用`<script>`节点的`text`属性读出它的内容。
 
-```javascript
+```js
 document.getElementById('mydata').text
 //   console.log('Hello World');
 ```
@@ -116,7 +116,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 如果返回的不是字符串，那么浏览器不会新建文档，也不会跳转。
 
-```javascript
+```js
 <a href="javascript: console.log(new Date().toLocaleTimeString())">点击</a>
 ```
 
@@ -259,7 +259,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 `<script>`元素还可以动态生成，生成后再插入页面，从而实现脚本的动态加载。
 
-```javascript
+```js
 ['a.js', 'b.js'].forEach(function(src) {
   var script = document.createElement('script');
   script.src = src;
@@ -271,7 +271,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 如果想避免这个问题，可以设置async属性为`false`。
 
-```javascript
+```js
 ['a.js', 'b.js'].forEach(function(src) {
   var script = document.createElement('script');
   script.src = src;
@@ -284,7 +284,7 @@ URL 支持`javascript:`协议，即在 URL 的位置写入代码，使用这个 
 
 如果想为动态加载的脚本指定回调函数，可以使用下面的写法。
 
-```javascript
+```js
 function loadScript(src, done) {
   var js = document.createElement('script');
   js.src = src;
@@ -355,7 +355,7 @@ function loadScript(src, done) {
 
 作为开发者，应该尽量设法降低重绘的次数和成本。比如，尽量不要变动高层的 DOM 元素，而以底层 DOM 元素的变动代替；再比如，重绘`table`布局和`flex`布局，开销都会比较大。
 
-```javascript
+```js
 var foo = document.getElementById('foobar');
 
 foo.style.color = 'blue';
@@ -377,7 +377,7 @@ foo.style.marginTop = '30px';
 
 下面是一个`window.requestAnimationFrame()`对比效果的例子。
 
-```javascript
+```js
 // 重绘代价高
 function doubleHeight(element) {
   var currentHeight = element.clientHeight;

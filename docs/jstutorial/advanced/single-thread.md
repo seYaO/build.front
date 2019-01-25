@@ -46,7 +46,7 @@ JavaScript 引擎怎么知道异步任务有没有结果，能不能进入主线
 
 下面是两个函数`f1`和`f2`，编程的意图是`f2`必须等到`f1`执行完成，才能执行。
 
-```javascript
+```js
 function f1() {
   // ...
 }
@@ -63,7 +63,7 @@ f2();
 
 这时，可以考虑改写`f1`，把`f2`写成`f1`的回调函数。
 
-```javascript
+```js
 function f1(callback) {
   // ...
   callback();
@@ -84,13 +84,13 @@ f1(f2);
 
 还是以`f1`和`f2`为例。首先，为`f1`绑定一个事件（这里采用的 jQuery 的[写法](http://api.jquery.com/on/)）。
 
-```javascript
+```js
 f1.on('done', f2);
 ```
 
 上面这行代码的意思是，当`f1`发生`done`事件，就执行`f2`。然后，对`f1`进行改写：
 
-```javascript
+```js
 function f1() {
   setTimeout(function () {
     // ...
@@ -111,13 +111,13 @@ function f1() {
 
 首先，`f2`向信号中心`jQuery`订阅`done`信号。
 
-```javascript
+```js
 jQuery.subscribe('done', f2);
 ```
 
 然后，`f1`进行如下改写。
 
-```javascript
+```js
 function f1() {
   setTimeout(function () {
     // ...
@@ -130,7 +130,7 @@ function f1() {
 
 `f2`完成执行后，可以取消订阅（unsubscribe）。
 
-```javascript
+```js
 jQuery.unsubscribe('done', f2);
 ```
 
@@ -140,7 +140,7 @@ jQuery.unsubscribe('done', f2);
 
 如果有多个异步操作，就存在一个流程控制的问题：如何确定异步操作执行的顺序，以及如何保证遵守这种顺序。
 
-```javascript
+```js
 function async(arg, callback) {
   console.log('参数为 ' + arg +' , 1秒后返回结果');
   setTimeout(function () { callback(arg * 2); }, 1000);
@@ -151,7 +151,7 @@ function async(arg, callback) {
 
 如果有六个这样的异步任务，需要全部完成后，才能执行最后的`final`函数。请问应该如何安排操作流程？
 
-```javascript
+```js
 function final(value) {
   console.log('完成: ', value);
 }
@@ -175,7 +175,7 @@ async(1, function(value){
 
 我们可以编写一个流程控制函数，让它来控制异步任务，一个任务完成以后，再执行另一个。这就叫串行执行。
 
-```javascript
+```js
 var items = [ 1, 2, 3, 4, 5, 6 ];
 var results = [];
 
@@ -210,7 +210,7 @@ series(items.shift());
 
 流程控制函数也可以是并行执行，即所有异步任务同时执行，等到全部完成以后，才执行`final`函数。
 
-```javascript
+```js
 var items = [ 1, 2, 3, 4, 5, 6 ];
 var results = [];
 
@@ -241,7 +241,7 @@ items.forEach(function(item) {
 
 所谓并行与串行的结合，就是设置一个门槛，每次最多只能并行执行`n`个异步任务，这样就避免了过分占用系统资源。
 
-```javascript
+```js
 var items = [ 1, 2, 3, 4, 5, 6 ];
 var results = [];
 var running = 0;

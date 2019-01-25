@@ -6,7 +6,7 @@
 
 ES6 允许直接写入变量和函数，作为对象的属性和方法。这样的书写更加简洁。
 
-```javascript
+```js
 const foo = 'bar';
 const baz = {foo};
 baz // {foo: "bar"}
@@ -17,7 +17,7 @@ const baz = {foo: foo};
 
 上面代码表明，ES6 允许在对象之中，直接写变量。这时，属性名为变量名, 属性值为变量的值。下面是另一个例子。
 
-```javascript
+```js
 function f(x, y) {
   return {x, y};
 }
@@ -33,7 +33,7 @@ f(1, 2) // Object {x: 1, y: 2}
 
 除了属性简写，方法也可以简写。
 
-```javascript
+```js
 const o = {
   method() {
     return "Hello!";
@@ -51,7 +51,7 @@ const o = {
 
 下面是一个实际的例子。
 
-```javascript
+```js
 let birth = '2000/01/01';
 
 const Person = {
@@ -69,7 +69,7 @@ const Person = {
 
 这种写法用于函数的返回值，将会非常方便。
 
-```javascript
+```js
 function getPoint() {
   const x = 1;
   const y = 10;
@@ -82,7 +82,7 @@ getPoint()
 
 CommonJS 模块输出一组变量，就非常合适使用简洁写法。
 
-```javascript
+```js
 let ms = {};
 
 function getItem (key) {
@@ -108,7 +108,7 @@ module.exports = {
 
 属性的赋值器（setter）和取值器（getter），事实上也是采用这种写法。
 
-```javascript
+```js
 const cart = {
   _wheels: 4,
 
@@ -127,7 +127,7 @@ const cart = {
 
 注意，简洁写法的属性名总是字符串，这会导致一些看上去比较奇怪的结果。
 
-```javascript
+```js
 const obj = {
   class () {}
 };
@@ -143,7 +143,7 @@ var obj = {
 
 如果某个方法的值是一个 Generator 函数，前面需要加上星号。
 
-```javascript
+```js
 const obj = {
   * m() {
     yield 'hello world';
@@ -155,7 +155,7 @@ const obj = {
 
 JavaScript 定义对象的属性，有两种方法。
 
-```javascript
+```js
 // 方法一
 obj.foo = true;
 
@@ -167,7 +167,7 @@ obj['a' + 'bc'] = 123;
 
 但是，如果使用字面量方式定义对象（使用大括号），在 ES5 中只能使用方法一（标识符）定义属性。
 
-```javascript
+```js
 var obj = {
   foo: true,
   abc: 123
@@ -176,7 +176,7 @@ var obj = {
 
 ES6 允许字面量定义对象时，用方法二（表达式）作为对象的属性名，即把表达式放在方括号内。
 
-```javascript
+```js
 let propKey = 'foo';
 
 let obj = {
@@ -187,7 +187,7 @@ let obj = {
 
 下面是另一个例子。
 
-```javascript
+```js
 let lastWord = 'last word';
 
 const a = {
@@ -202,7 +202,7 @@ a['last word'] // "world"
 
 表达式还可以用于定义方法名。
 
-```javascript
+```js
 let obj = {
   ['h' + 'ello']() {
     return 'hi';
@@ -214,7 +214,7 @@ obj.hello() // hi
 
 注意，属性名表达式与简洁表示法，不能同时使用，会报错。
 
-```javascript
+```js
 // 报错
 const foo = 'bar';
 const bar = 'abc';
@@ -227,7 +227,7 @@ const baz = { [foo]: 'abc'};
 
 注意，属性名表达式如果是一个对象，默认情况下会自动将对象转为字符串`[object Object]`，这一点要特别小心。
 
-```javascript
+```js
 const keyA = {a: 1};
 const keyB = {b: 2};
 
@@ -245,7 +245,7 @@ myObject // Object {[object Object]: "valueB"}
 
 函数的`name`属性，返回函数名。对象方法也是函数，因此也有`name`属性。
 
-```javascript
+```js
 const person = {
   sayName() {
     console.log('hello!');
@@ -259,7 +259,7 @@ person.sayName.name   // "sayName"
 
 如果对象的方法使用了取值函数（`getter`）和存值函数（`setter`），则`name`属性不是在该方法上面，而是该方法的属性的描述对象的`get`和`set`属性上面，返回值是方法名前加上`get`和`set`。
 
-```javascript
+```js
 const obj = {
   get foo() {},
   set foo(x) {}
@@ -276,7 +276,7 @@ descriptor.set.name // "set foo"
 
 有两种特殊情况：`bind`方法创造的函数，`name`属性返回`bound`加上原函数的名字；`Function`构造函数创造的函数，`name`属性返回`anonymous`。
 
-```javascript
+```js
 (new Function()).name // "anonymous"
 
 var doSomething = function() {
@@ -287,7 +287,7 @@ doSomething.bind().name // "bound doSomething"
 
 如果对象的方法是一个 Symbol 值，那么`name`属性返回的是这个 Symbol 值的描述。
 
-```javascript
+```js
 const key1 = Symbol('description');
 const key2 = Symbol();
 let obj = {
@@ -306,7 +306,7 @@ obj[key2].name // ""
 
 对象的每个属性都有一个描述对象（Descriptor），用来控制该属性的行为。`Object.getOwnPropertyDescriptor`方法可以获取该属性的描述对象。
 
-```javascript
+```js
 let obj = { foo: 123 };
 Object.getOwnPropertyDescriptor(obj, 'foo')
 //  {
@@ -328,7 +328,7 @@ Object.getOwnPropertyDescriptor(obj, 'foo')
 
 这四个操作之中，前三个是 ES5 就有的，最后一个`Object.assign()`是 ES6 新增的。其中，只有`for...in`会返回继承的属性，其他三个方法都会忽略继承的属性，只处理对象自身的属性。实际上，引入“可枚举”（`enumerable`）这个概念的最初目的，就是让某些属性可以规避掉`for...in`操作，不然所有内部属性和方法都会被遍历到。比如，对象原型的`toString`方法，以及数组的`length`属性，就通过“可枚举性”，从而避免被`for...in`遍历到。
 
-```javascript
+```js
 Object.getOwnPropertyDescriptor(Object.prototype, 'toString').enumerable
 // false
 
@@ -340,7 +340,7 @@ Object.getOwnPropertyDescriptor([], 'length').enumerable
 
 另外，ES6 规定，所有 Class 的原型的方法都是不可枚举的。
 
-```javascript
+```js
 Object.getOwnPropertyDescriptor(class {foo() {}}.prototype, 'foo').enumerable
 // false
 ```
@@ -377,7 +377,7 @@ ES6 一共有 5 种方法可以遍历对象的属性。
 - 其次遍历所有字符串键，按照加入时间升序排列。
 - 最后遍历所有 Symbol 键，按照加入时间升序排列。
 
-```javascript
+```js
 Reflect.ownKeys({ [Symbol()]:0, b:0, 10:0, 2:0, a:0 })
 // ['2', '10', 'b', 'a', Symbol()]
 ```
@@ -388,7 +388,7 @@ Reflect.ownKeys({ [Symbol()]:0, b:0, 10:0, 2:0, a:0 })
 
 我们知道，`this`关键字总是指向函数所在的当前对象，ES6 又新增了另一个类似的关键字`super`，指向当前对象的原型对象。
 
-```javascript
+```js
 const proto = {
   foo: 'hello'
 };
@@ -408,7 +408,7 @@ obj.find() // "hello"
 
 注意，`super`关键字表示原型对象时，只能用在对象的方法之中，用在其他地方都会报错。
 
-```javascript
+```js
 // 报错
 const obj = {
   foo: super.foo
@@ -431,7 +431,7 @@ const obj = {
 
 JavaScript 引擎内部，`super.foo`等同于`Object.getPrototypeOf(this).foo`（属性）或`Object.getPrototypeOf(this).foo.call(this)`（方法）。
 
-```javascript
+```js
 const proto = {
   x: 'hello',
   foo() {
@@ -461,7 +461,7 @@ obj.foo() // "world"
 
 对象的解构赋值用于从一个对象取值，相当于将目标对象自身的所有可遍历的（enumerable）、但尚未被读取的属性，分配到指定的对象上面。所有的键和它们的值，都会拷贝到新对象上面。
 
-```javascript
+```js
 let { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
 x // 1
 y // 2
@@ -472,14 +472,14 @@ z // { a: 3, b: 4 }
 
 由于解构赋值要求等号右边是一个对象，所以如果等号右边是`undefined`或`null`，就会报错，因为它们无法转为对象。
 
-```javascript
+```js
 let { x, y, ...z } = null; // 运行时错误
 let { x, y, ...z } = undefined; // 运行时错误
 ```
 
 解构赋值必须是最后一个参数，否则会报错。
 
-```javascript
+```js
 let { ...x, y, z } = someObject; // 句法错误
 let { x, ...y, ...z } = someObject; // 句法错误
 ```
@@ -488,7 +488,7 @@ let { x, ...y, ...z } = someObject; // 句法错误
 
 注意，解构赋值的拷贝是浅拷贝，即如果一个键的值是复合类型的值（数组、对象、函数）、那么解构赋值拷贝的是这个值的引用，而不是这个值的副本。
 
-```javascript
+```js
 let obj = { a: { b: 1 } };
 let { ...x } = obj;
 obj.a.b = 2;
@@ -499,7 +499,7 @@ x.a.b // 2
 
 另外，扩展运算符的解构赋值，不能复制继承自原型对象的属性。
 
-```javascript
+```js
 let o1 = { a: 1 };
 let o2 = { b: 2 };
 o2.__proto__ = o1;
@@ -512,7 +512,7 @@ o3.a // undefined
 
 下面是另一个例子。
 
-```javascript
+```js
 const o = Object.create({ x: 1, y: 2 });
 o.z = 3;
 
@@ -525,14 +525,14 @@ z // 3
 
 上面代码中，变量`x`是单纯的解构赋值，所以可以读取对象`o`继承的属性；变量`y`和`z`是扩展运算符的解构赋值，只能读取对象`o`自身的属性，所以变量`z`可以赋值成功，变量`y`取不到值。ES6 规定，变量声明语句之中，如果使用解构赋值，扩展运算符后面必须是一个变量名，而不能是一个解构赋值表达式，所以上面代码引入了中间变量`newObj`，如果写成下面这样会报错。
 
-```javascript
+```js
 let { x, ...{ y, z } } = o;
 // SyntaxError: ... must be followed by an identifier in declaration contexts
 ```
 
 解构赋值的一个用处，是扩展某个函数的参数，引入其他操作。
 
-```javascript
+```js
 function baseFunction({ a, b }) {
   // ...
 }
@@ -549,7 +549,7 @@ function wrapperFunction({ x, y, ...restConfig }) {
 
 对象的扩展运算符（`...`）用于取出参数对象的所有可遍历属性，拷贝到当前对象之中。
 
-```javascript
+```js
 let z = { a: 3, b: 4 };
 let n = { ...z };
 n // { a: 3, b: 4 }
@@ -557,7 +557,7 @@ n // { a: 3, b: 4 }
 
 由于数组是特殊的对象，所以对象的扩展运算符也可以用于数组。
 
-```javascript
+```js
 let foo = { ...['a', 'b', 'c'] };
 foo
 // {0: "a", 1: "b", 2: "c"}
@@ -565,14 +565,14 @@ foo
 
 如果扩展运算符后面是一个空对象，则没有任何效果。
 
-```javascript
+```js
 {...{}, a: 1}
 // { a: 1 }
 ```
 
 如果扩展运算符后面不是对象，则会自动将其转为对象。
 
-```javascript
+```js
 // 等同于 {...Object(1)}
 {...1} // {}
 ```
@@ -581,7 +581,7 @@ foo
 
 下面的例子都是类似的道理。
 
-```javascript
+```js
 // 等同于 {...Object(true)}
 {...true} // {}
 
@@ -594,14 +594,14 @@ foo
 
 但是，如果扩展运算符后面是字符串，它会自动转成一个类似数组的对象，因此返回的不是空对象。
 
-```javascript
+```js
 {...'hello'}
 // {0: "h", 1: "e", 2: "l", 3: "l", 4: "o"}
 ```
 
 对象的扩展运算符等同于使用`Object.assign()`方法。
 
-```javascript
+```js
 let aClone = { ...a };
 // 等同于
 let aClone = Object.assign({}, a);
@@ -609,7 +609,7 @@ let aClone = Object.assign({}, a);
 
 上面的例子只是拷贝了对象实例的属性，如果想完整克隆一个对象，还拷贝对象原型的属性，可以采用下面的写法。
 
-```javascript
+```js
 // 写法一
 const clone1 = {
   __proto__: Object.getPrototypeOf(obj),
@@ -633,7 +633,7 @@ const clone3 = Object.create(
 
 扩展运算符可以用于合并两个对象。
 
-```javascript
+```js
 let ab = { ...a, ...b };
 // 等同于
 let ab = Object.assign({}, a, b);
@@ -641,7 +641,7 @@ let ab = Object.assign({}, a, b);
 
 如果用户自定义的属性，放在扩展运算符后面，则扩展运算符内部的同名属性会被覆盖掉。
 
-```javascript
+```js
 let aWithOverrides = { ...a, x: 1, y: 2 };
 // 等同于
 let aWithOverrides = { ...a, ...{ x: 1, y: 2 } };
@@ -655,7 +655,7 @@ let aWithOverrides = Object.assign({}, a, { x: 1, y: 2 });
 
 这用来修改现有对象部分的属性就很方便了。
 
-```javascript
+```js
 let newVersion = {
   ...previousVersion,
   name: 'New Name' // Override the name property
@@ -666,7 +666,7 @@ let newVersion = {
 
 如果把自定义属性放在扩展运算符前面，就变成了设置新对象的默认属性值。
 
-```javascript
+```js
 let aWithDefaults = { x: 1, y: 2, ...a };
 // 等同于
 let aWithDefaults = Object.assign({}, { x: 1, y: 2 }, a);
@@ -676,7 +676,7 @@ let aWithDefaults = Object.assign({ x: 1, y: 2 }, a);
 
 与数组的扩展运算符一样，对象的扩展运算符后面可以跟表达式。
 
-```javascript
+```js
 const obj = {
   ...(x > 1 ? {a: 1} : {}),
   b: 2,
@@ -685,7 +685,7 @@ const obj = {
 
 扩展运算符的参数对象之中，如果有取值函数`get`，这个函数是会执行的。
 
-```javascript
+```js
 // 并不会抛出错误，因为 x 属性只是被定义，但没执行
 let aWithXGetter = {
   ...a,

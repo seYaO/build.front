@@ -16,7 +16,7 @@ Storage 接口只有一个属性。
 
 - `Storage.length`：返回保存的数据项个数。
 
-```javascript
+```js
 window.localStorage.setItem('foo', 'a');
 window.localStorage.setItem('bar', 'b');
 window.localStorage.setItem('baz', 'c');
@@ -30,14 +30,14 @@ window.localStorage.length // 3
 
 `Storage.setItem()`方法用于存入数据。它接受两个参数，第一个是键名，第二个是保存的数据。如果键名已经存在，该方法会更新已有的键值。该方法没有返回值。
 
-```javascript
+```js
 window.sessionStorage.setItem('key', 'value');
 window.localStorage.setItem('key', 'value');
 ```
 
 注意，`Storage.setItem()`两个参数都是字符串。如果不是字符串，会自动转成字符串，再存入浏览器。
 
-```javascript
+```js
 window.sessionStorage.setItem(3, { foo: 1 });
 window.sessionStorage.getItem('3') // "[object Object]"
 ```
@@ -48,7 +48,7 @@ window.sessionStorage.getItem('3') // "[object Object]"
 
 写入不一定要用这个方法，直接赋值也是可以的。
 
-```javascript
+```js
 // 下面三种写法等价
 window.localStorage.foo = '123';
 window.localStorage['foo'] = '123';
@@ -59,7 +59,7 @@ window.localStorage.setItem('foo', '123');
 
 `Storage.getItem()`方法用于读取数据。它只有一个参数，就是键名。如果键名不存在，该方法返回`null`。
 
-```javascript
+```js
 window.sessionStorage.getItem('key')
 window.localStorage.getItem('key')
 ```
@@ -70,7 +70,7 @@ window.localStorage.getItem('key')
 
 `Storage.removeItem()`方法用于清除某个键名对应的键值。它接受键名作为参数，如果键名不存在，该方法不会做任何事情。
 
-```javascript
+```js
 sessionStorage.removeItem('key');
 localStorage.removeItem('key');
 ```
@@ -79,7 +79,7 @@ localStorage.removeItem('key');
 
 `Storage.clear()`方法用于清除所有保存的数据。该方法的返回值是`undefined`。
 
-```javascript
+```js
 window.sessionStorage.clear()
 window.localStorage.clear()
 ```
@@ -88,14 +88,14 @@ window.localStorage.clear()
 
 `Storage.key()`接受一个整数作为参数（从零开始），返回该位置对应的键值。
 
-```javascript
+```js
 window.sessionStorage.setItem('key', 'value');
 window.sessionStorage.key(0) // "key"
 ```
 
 结合使用`Storage.length`属性和`Storage.key()`方法，可以遍历所有的键。
 
-```javascript
+```js
 for (var i = 0; i < window.localStorage.length; i++) {
   console.log(localStorage.key(i));
 }
@@ -105,7 +105,7 @@ for (var i = 0; i < window.localStorage.length; i++) {
 
 Storage 接口储存的数据发生变化时，会触发 storage 事件，可以指定这个事件的监听函数。
 
-```javascript
+```js
 window.addEventListener('storage', onStorageChange);
 ```
 
@@ -120,7 +120,7 @@ window.addEventListener('storage', onStorageChange);
 
 下面是`StorageEvent.key`属性的例子。
 
-```javascript
+```js
 function onStorageChange(e) {
   console.log(e.key);
 }

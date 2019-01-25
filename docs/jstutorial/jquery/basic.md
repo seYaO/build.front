@@ -40,7 +40,7 @@ jQuery最重要的概念，就是`jQuery`对象。它是一个全局对象，可
 
 在网页中加载jQuery函数库以后，就可以使用jQuery对象了。jQuery的全部方法，都定义在这个对象上面。
 
-```javascript
+```js
 var listItems = jQuery('li');
 // or
 var listItems = $('li');
@@ -52,7 +52,7 @@ var listItems = $('li');
 
 `jQuery`对象本质上是一个构造函数，主要作用是返回`jQuery`对象的实例。比如，上面代码表面上是选中`li`元素，实际上是返回对应于`li`元素的`jQuery`实例。因为只有这样，才能在DOM对象上使用jQuery提供的各种方法。
 
-```javascript
+```js
 $('body').nodeType
 // undefined
 
@@ -68,7 +68,7 @@ jQuery构造函数可以多种参数，返回不同的值。
 
 jQuery构造函数的参数，主要是CSS选择器，就像上面的那个例子。下面是另外一些CSS选择器的例子。
 
-```javascript
+```js
 $("*")
 $("#lastname")
 $(".intro")
@@ -87,7 +87,7 @@ $("[title^='Tom']")
 
 除了CSS选择器，jQuery还定义了一些自有的选择器，比如`contains`选择器用来选择包含特定文本的元素。下面是一个例子。
 
-```javascript
+```js
 var search = $('#search').val();
 $('div:not(:contains("' + search + '"))').hide();
 ```
@@ -98,7 +98,7 @@ $('div:not(:contains("' + search + '"))').hide();
 
 jQuery构造函数的参数，还可以是DOM对象。它也会被转为jQuery对象的实例。
 
-```javascript
+```js
 $(document.body) instanceof jQuery
 // true
 ```
@@ -107,7 +107,7 @@ $(document.body) instanceof jQuery
 
 如果有多个DOM元素要转为jQuery对象的实例，可以把DOM元素放在一个数组里，输入jQuery构造函数。
 
-```javascript
+```js
 $([document.body, document.head])
 ```
 
@@ -115,7 +115,7 @@ $([document.body, document.head])
 
 如果直接在jQuery构造函数中输入HTML字符串，返回的也是jQuery实例。
 
-```javascript
+```js
 $('<li class="greet">test</li>')
 ```
 
@@ -123,7 +123,7 @@ $('<li class="greet">test</li>')
 
 上面代码也可以写成下面这样。
 
-```javascript
+```js
 $( '<li>', {
   html: 'test',
   'class': 'greet'
@@ -134,7 +134,7 @@ $( '<li>', {
 
 通常来说，上面第二种写法是更好的写法。
 
-```javascript
+```js
 $('<input class="form-control" type="hidden" name="foo" value="bar" />')
 
 // 相当于
@@ -155,7 +155,7 @@ $('<input/>')
 
 由于新增的DOM节点不属于当前文档，所以可以用这种写法预加载图片。
 
-```javascript
+```js
 $.preloadImages = function () {
   for (var i = 0; i < arguments.length; i++) {
     $('<img>').attr('src', arguments[i]);
@@ -169,7 +169,7 @@ $.preloadImages('img/hover-on.png', 'img/hover-off.png');
 
 默认情况下，jQuery将文档的根元素（`html`）作为寻找匹配对象的起点。如果要指定某个网页元素（比如某个`div`元素）作为寻找的起点，可以将它放在jQuery函数的第二个参数。
 
-```javascript
+```js
 $('li', someElement);
 ```
 
@@ -183,7 +183,7 @@ jQuery的核心思想是“先选中某些网页元素，然后对其进行某�
 
 jQuery对象返回的结果集是一个类似数组的对象，包含了所有被选中的网页元素。查看该对象的length属性，可以知道到底选中了多少个结果。
 
-```javascript
+```js
 
 if ( $('li').length === 0 ) {
 	console.log('不含li元素');
@@ -195,7 +195,7 @@ if ( $('li').length === 0 ) {
 
 所以，如果想知道jQuery有没有选中相应的元素，不能写成下面这样。
 
-```javascript
+```js
 
 if ($('div.foo')) { ... }
 
@@ -203,7 +203,7 @@ if ($('div.foo')) { ... }
 
 因为不管有没有选中，jQuery构造函数总是返回一个实例对象，而对象的布尔值永远是true。使用length属性才是判断有没有选中的正确方法。
 
-```javascript
+```js
 
 if ($('div.foo').length) { ... }
 
@@ -213,7 +213,7 @@ if ($('div.foo').length) { ... }
 
 jQuery选择器返回的是一个类似数组的对象。但是，使用下标运算符取出的单个对象，并不是jQuery对象的实例，而是一个DOM对象。
 
-```javascript
+```js
 
 $('li')[0] instanceof jQuery // false
 $('li')[0] instanceof Element // true
@@ -226,7 +226,7 @@ $('li')[0] instanceof Element // true
 
 is方法返回一个布尔值，表示选中的结果是否符合某个条件。这个用来验证的条件，可以是CSS选择器，也可以是一个函数，或者DOM元素和jQuery实例。
 
-```javascript
+```js
 
 $('li').is('li') // true
 
@@ -244,7 +244,7 @@ $('li').is(function() {
 
 jQuery实例的get方法是下标运算符的另一种写法。
 
-```javascript
+```js
 
 $('li').get(0) instanceof Element // true
 
@@ -254,7 +254,7 @@ $('li').get(0) instanceof Element // true
 
 如果想要在结果集取出一个jQuery对象的实例，不需要取出DOM对象，则使用eq方法，它的参数是实例在结果集中的位置（从0开始）。
 
-```javascript
+```js
 
 $('li').eq(0) instanceof jQuery // true
 
@@ -268,7 +268,7 @@ $('li').eq(0) instanceof jQuery // true
 
 each方法接受一个函数作为参数，依次处理集合中的每一个元素。
 
-```javascript
+```js
 
 $('li').each(function( index, element) {
   $(element).prepend( '<em>' + index + ': </em>' );
@@ -286,7 +286,7 @@ $('li').each(function( index, element) {
 
 map方法的用法与each方法完全一样，区别在于each方法没有返回值，只是对每一个元素执行某种操作，而map方法返回一个新的jQuery对象。
 
-```javascript
+```js
 
 $("input").map(function (index, element){
     return $(this).val();
@@ -302,7 +302,7 @@ $("input").map(function (index, element){
 
 jQuery默认对当前结果集进行循环处理，所以如果直接使用jQuery内置的某种方法，each和map方法是不必要的。
 
-```javascript
+```js
 
 $(".class").addClass("highlight");
 
@@ -310,7 +310,7 @@ $(".class").addClass("highlight");
 
 上面代码会执行一个内部循环，对每一个选中的元素进行addClass操作。由于这个原因，对上面操作加上each方法是不必要的。
 
-```javascript
+```js
 
 $(".class").each(function(index,element){
 	 $(element).addClass("highlight");
@@ -328,7 +328,7 @@ $(".class").each(function(){
 
 由于内置循环的存在，从性能考虑，应该尽量减少不必要的操作步骤。
 
-```javascript
+```js
 
 $(".class").css("color", "green").css("font-size", "16px");
 
@@ -345,7 +345,7 @@ $(".class").css({
 
 jQuery最方便的一点就是，它的大部分方法返回的都是jQuery对象，因此可以链式操作。也就是说，后一个方法可以紧跟着写在前一个方法后面。
 
-```javascript
+```js
 
 $('li').click(function (){
     $(this).addClass('clicked');
@@ -359,7 +359,7 @@ $('li').click(function (){
 
 $(document).ready方法接受一个函数作为参数，将该参数作为document对象的DOMContentLoaded事件的回调函数。也就是说，当页面解析完成（即下载完&lt;/html&gt;标签）以后，在所有外部资源（图片、脚本等）完成加载之前，该函数就会立刻运行。
 
-```javascript
+```js
 
 $( document ).ready(function() {
   console.log( 'ready!' );
@@ -371,7 +371,7 @@ $( document ).ready(function() {
 
 该方法通常作为网页初始化手段使用，jQuery提供了一种简写法，就是直接把回调函数放在jQuery对象中。
 
-```javascript
+```js
 
 $(function() {
   console.log( 'ready!' );
@@ -409,7 +409,7 @@ jQuery使用美元符号（$）指代jQuery对象。某些情况下，其他函�
 
 first方法返回结果集的第一个成员，last方法返回结果集的最后一个成员。
 
-```javascript
+```js
 
 $("li").first()
 
@@ -421,7 +421,7 @@ $("li").last()
 
 next方法返回紧邻的下一个同级元素，prev方法返回紧邻的上一个同级元素。
 
-```javascript
+```js
 $("li").first().next()
 $("li").last().prev()
 
@@ -435,7 +435,7 @@ $("li").last().prev('.item')
 
 parent方法返回当前元素的父元素，parents方法返回当前元素的所有上级元素（直到html元素）。
 
-```javascript
+```js
 $("p").parent()
 $("p").parent(".selected")
 
@@ -445,7 +445,7 @@ $("p").parents("div")
 
 children方法返回选中元素的所有子元素。
 
-```javascript
+```js
 $("div").children()
 $("div").children(".selected")
 
@@ -461,14 +461,14 @@ $('div > .selected')
 
 siblings方法返回当前元素的所有同级元素。
 
-```javascript
+```js
 $('li').first().siblings()
 $('li').first().siblings('.item')
 ```
 
 nextAll方法返回当前元素其后的所有同级元素，prevAll方法返回当前元素前面的所有同级元素。
 
-```javascript
+```js
 $('li').first().nextAll()
 $('li').last().prevAll()
 ```
@@ -477,7 +477,7 @@ $('li').last().prevAll()
 
 closest方法返回当前元素，以及当前元素的所有上级元素之中，第一个符合条件的元素。find方法返回当前元素的所有符合条件的下级元素。
 
-```javascript
+```js
 $('li').closest('div')
 $('div').find('li')
 ```
@@ -488,7 +488,7 @@ $('div').find('li')
 
 add方法用于为结果集添加元素。
 
-```javascript
+```js
 
 $('li').add('p')
 
@@ -496,7 +496,7 @@ $('li').add('p')
 
 addBack方法将当前元素加回原始的结果集。
 
-```javascript
+```js
 
 $('li').parent().addBack()
 
@@ -504,7 +504,7 @@ $('li').parent().addBack()
 
 end方法用于返回原始的结果集。
 
-```javascript
+```js
 
 $('li').first().end()
 
@@ -514,7 +514,7 @@ $('li').first().end()
 
 filter方法用于过滤结果集，它可以接受多种类型的参数，只返回与参数一致的结果。
 
-```javascript
+```js
 // 返回符合CSS选择器的结果
 $('li').filter('.item')
 
@@ -532,13 +532,13 @@ $("li").filter($("#unique"))
 
 `not`方法的用法与`filter`方法完全一致，但是返回相反的结果，即过滤掉匹配项。
 
-```javascript
+```js
 $('li').not('.item')
 ```
 
 has方法与filter方法作用相同，但是只过滤出子元素符合条件的元素。
 
-```javascript
+```js
 $("li").has("ul")
 ```
 
@@ -562,7 +562,7 @@ html方法返回该元素包含的HTML代码，text方法返回该元素包含�
 
 html方法和text方法的返回结果分别如下。
 
-```javascript
+```js
 
 $('p').html()
 // <em>Hello World!</em> 
@@ -576,7 +576,7 @@ jQuery的许多方法都是取值器（getter）与赋值器（setter）的合�
 
 上面代码的html方法和text方法都没有参数，就会当作取值器使用，取回结果集的第一个元素所包含的内容。如果对这两个方法提供参数，就是当作赋值器使用，修改结果集所有成员的内容，并返回原来的结果集，以便进行链式操作。
 
-```javascript
+```js
 
 $('p').html('<strong>你好</strong>')
 // 网页代码变为<p><strong>你好</strong></p> 
@@ -590,7 +590,7 @@ $('p').text('你好')
 
 html方法和text方法还可以接受一个函数作为参数，函数的返回值就是网页元素所要包含的新的代码和文本。这个函数接受两个参数，第一个是网页元素在集合中的位置，第二个参数是网页元素原来的代码或文本。
 
-```javascript
+```js
 
 $('li').html(function (i, v){
 	return (i + ': ' + v);		
@@ -608,7 +608,7 @@ $('li').html(function (i, v){
 
 addClass方法用于添加一个类，removeClass方法用于移除一个类，toggleClass方法用于折叠一个类（如果无就添加，如果有就移除）。
 
-```javascript
+```js
 
 $('li').addClass('special')
 $('li').removeClass('special')
@@ -622,7 +622,7 @@ css方法用于改变CSS设置。
 
 该方法可以作为取值器使用。
 
-```javascript
+```js
 
 $('h1').css('fontSize');
 
@@ -632,7 +632,7 @@ css方法的参数是css属性名。这里需要注意，CSS属性名的CSS写�
 
 css方法也可以作为赋值器使用。
 
-```javascript
+```js
 
 $('li').css('padding-left', '20px')
 // 或者
@@ -648,7 +648,7 @@ $('li').css({
 
 val方法返回结果集第一个元素的值，或者设置当前结果集所有元素的值。
 
-```javascript
+```js
 $('input[type="text"]').val()
 $('input[type="text"]').val('new value')
 ```
@@ -659,7 +659,7 @@ $('input[type="text"]').val('new value')
 
 一种是网页元素的属性，比如`a`元素的`href`属性、`img`元素的`src`属性。这要使用`attr`方法读写。
 
-```javascript
+```js
 // 读取属性值
 $('textarea').attr(name)
 
@@ -669,7 +669,7 @@ $('textarea').attr(name, val)
 
 下面是通过设置`a`元素的`target`属性，使得网页上的外部链接在新窗口打开的例子。
 
-```javascript
+```js
 $('a[href^="http"]').attr('target', '_blank');
 $('a[href^="//"]').attr('target', '_blank');
 $('a[href^="' + window.location.origin + '"]').attr('target', '_self');
@@ -677,7 +677,7 @@ $('a[href^="' + window.location.origin + '"]').attr('target', '_self');
 
 另一种是DOM元素的属性，比如`tagName`、`nodeName`、`nodeType`等等。这要使用`prop`方法读写。
 
-```javascript
+```js
 // 读取属性值
 $('textarea').prop(name)
 
@@ -695,7 +695,7 @@ $('textarea').prop(name, val)
 
 对于checked属性，attr方法读到的是checked，prop方法读到的是true。
 
-```javascript
+```js
 
 $(input[type=checkbox]).attr("checked") // "checked"
 
@@ -705,7 +705,7 @@ $(input[type=checkbox]).prop("checked") // true
 
 可以看到，attr方法读取的是网页上该属性的值，而prop方法读取的是DOM元素的该属性的值，根据规范，element.checked应该返回一个布尔值。所以，判断单选框是否选中，要使用prop方法。事实上，不管这个单选框是否选中，attr("checked")的返回值都是checked。
 
-```javascript
+```js
 
 if ($(elem).prop("checked")) { /*... */ };
 
@@ -720,7 +720,7 @@ if ( $(elem).is(":checked") ) { /*...*/ };
 
 removeProp方法移除某个DOM属性，removeAttr方法移除某个HTML属性。
 
-```javascript
+```js
 
 $("a").prop("oldValue",1234).removeProp('oldValue')
 $('a').removeAttr("title")
@@ -731,7 +731,7 @@ $('a').removeAttr("title")
 
 data方法用于在一个DOM对象上储存数据。
 
-```javascript
+```js
 
 // 储存数据
 $("body").data("foo", 52);
@@ -751,7 +751,7 @@ jQuery方法提供一系列方法，可以改变元素在文档中的位置。
 
 append方法将参数中的元素插入当前元素的尾部。
 
-```javascript
+```js
 
 $("div").append("<p>World</p>")
 
@@ -763,7 +763,7 @@ $("div").append("<p>World</p>")
 
 appendTo方法将当前元素插入参数中的元素尾部。
 
-```javascript
+```js
 
 $("<p>World</p>").appendTo("div")
 
@@ -775,7 +775,7 @@ $("<p>World</p>").appendTo("div")
 
 prepend方法将参数中的元素，变为当前元素的第一个子元素。
 
-```javascript
+```js
 
 $("p").prepend("Hello ")
 
@@ -787,7 +787,7 @@ $("p").prepend("Hello ")
 
 如果prepend方法的参数不是新生成的元素，而是当前页面已存在的元素，则会产生移动元素的效果。
 
-```javascript
+```js
 
 $("p").prepend("strong")
 
@@ -801,7 +801,7 @@ $("p").prepend("strong")
 
 prependTo方法将当前元素变为参数中的元素的第一个子元素。
 
-```javascript
+```js
 
 $("<p></p>").prependTo("div")
 
@@ -815,7 +815,7 @@ $("<p></p>").prependTo("div")
 
 after方法将参数中的元素插在当前元素后面。
 
-```javascript
+```js
 
 $("div").after("<p></p>")
 
@@ -827,7 +827,7 @@ $("div").after("<p></p>")
 
 insertAfter方法将当前元素插在参数中的元素后面。
 
-```javascript
+```js
 
 $("<p></p>").insertAfter("div")
 
@@ -839,7 +839,7 @@ $("<p></p>").insertAfter("div")
 
 before方法将参数中的元素插在当前元素的前面。
 
-```javascript
+```js
 
 $("div").before("<p></p>")
 
@@ -851,7 +851,7 @@ $("div").before("<p></p>")
 
 insertBefore方法将当前元素插在参数中的元素的前面。
 
-```javascript
+```js
 
 $("<p></p>").insertBefore("div")
 
@@ -863,7 +863,7 @@ $("<p></p>").insertBefore("div")
 
 wrap方法将参数中的元素变成当前元素的父元素。
 
-```javascript
+```js
 
 $("p").wrap("<div></div>")
 
@@ -875,7 +875,7 @@ $("p").wrap("<div></div>")
 
 wrap方法的参数还可以是一个函数。
 
-```javascript
+```js
 
 $("p").wrap(function() {
   return "<div></div>";
@@ -887,7 +887,7 @@ $("p").wrap(function() {
 
 wrapAll方法为结果集的所有元素，添加一个共同的父元素。
 
-```javascript
+```js
 
 $("p").wrapAll("<div></div>")
 
@@ -899,7 +899,7 @@ $("p").wrapAll("<div></div>")
 
 unwrap方法移除当前元素的父元素。
 
-```javascript
+```js
 
 $("p").unwrap()
 
@@ -911,7 +911,7 @@ $("p").unwrap()
 
 wrapInner方法为当前元素的所有子元素，添加一个父元素。
 
-```javascript
+```js
 
 $("p").wrapInner('<strong></strong>')
 
@@ -925,7 +925,7 @@ $("p").wrapInner('<strong></strong>')
 
 clone方法克隆当前元素。
 
-```javascript
+```js
 
 var clones = $('li').clone();
 
@@ -937,7 +937,7 @@ var clones = $('li').clone();
 
 remove方法移除并返回一个元素，取消该元素上所有事件的绑定。detach方法也是移除并返回一个元素，但是不取消该元素上所有事件的绑定。
 
-```javascript
+```js
 
 $('p').remove()
 $('p').detach()
@@ -946,7 +946,7 @@ $('p').detach()
 
 replaceWith方法用参数中的元素，替换并返回当前元素，取消当前元素的所有事件的绑定。
 
-```javascript
+```js
 
 $('p').replaceWith('<div></div>')
 
@@ -974,7 +974,7 @@ jQuery提供以下一些动画效果方法。
 
 上面这些方法可以不带参数调用，也可以接受毫秒或预定义的关键字作为参数。
 
-```javascript
+```js
 $('.hidden').show();
 $('.hidden').show(300);
 $('.hidden').show('slow');
@@ -984,7 +984,7 @@ $('.hidden').show('slow');
 
 jQuery预定义的关键字是在`jQuery.fx.speeds`对象上面，可以自行改动这些值，或者创造新的值。
 
-```javascript
+```js
 jQuery.fx.speeds.fast = 50;
 jQuery.fx.speeds.slow = 3000;
 jQuery.fx.speeds.normal = 1000;
@@ -994,7 +994,7 @@ jQuery.fx.speeds.normal = 1000;
 
 你还可以定义自己的关键字。
 
-```javascript
+```js
 jQuery.fx.speeds.blazing = 30;
 
 // 调用
@@ -1003,7 +1003,7 @@ $('.hidden').show('blazing');
 
 这些方法还可以接受一个函数，作为第二个参数，表示动画结束后的回调函数。
 
-```javascript
+```js
 $('p').fadeOut(300, function() {
   $(this).remove();
 });
@@ -1013,7 +1013,7 @@ $('p').fadeOut(300, function() {
 
 使用按钮控制某个元素折叠显示的代码如下。
 
-```javascript
+```js
 // Fade
 $('.btn').click(function () {
   $('.element').fadeToggle('slow');
@@ -1029,7 +1029,7 @@ $('.btn').click(function () {
 
 上面这些动画效果方法，实际上都是animate方法的简便写法。在幕后，jQuery都是统一使用animate方法生成各种动画效果。
 
-```javascript
+```js
 $('a.top').click(function (e) {
   e.preventDefault();
   $('html, body').animate({scrollTop: 0}, 800);
@@ -1040,7 +1040,7 @@ $('a.top').click(function (e) {
 
 animate方法还可以接受第三个参数，表示动画结束时的回调函数。
 
-```javascript
+```js
 $('div').animate({
     left: '+=50', // 增加50
     opacity: 0.25,
@@ -1059,7 +1059,7 @@ $('div').animate({
 
 stop方法表示立即停止执行当前的动画。
 
-```javascript
+```js
 
 $("#stop").click(function() {
   $(".block").stop();
@@ -1071,7 +1071,7 @@ $("#stop").click(function() {
 
 delay方法接受一个时间参数，表示暂停多少毫秒后继续执行。
 
-```javascript
+```js
 
 $("#foo").slideUp(300).delay(800).fadeIn(400)
 
@@ -1085,7 +1085,7 @@ jQuery还提供一些供特定元素使用的方法。
 
 serialize方法用于将表单元素的值，转为url使用的查询字符串。
 
-```javascript
+```js
 
 $( "form" ).on( "submit", function( event ) {
   event.preventDefault();
@@ -1097,7 +1097,7 @@ $( "form" ).on( "submit", function( event ) {
 
 serializeArray方法用于将表单元素的值转为数组。
 
-```javascript
+```js
 $("form").submit(function (event){
   console.log($(this).serializeArray());
   event.preventDefault();
@@ -1114,7 +1114,7 @@ $("form").submit(function (event){
 
 jQuery提供一系列方法，允许直接为常见事件绑定回调函数。比如，click方法可以为一个元素绑定click事件的回调函数。
 
-```javascript
+```js
 
 $('li').click(function (e){
   console.log($(this).text());
@@ -1142,7 +1142,7 @@ $('li').click(function (e){
 
 如果不带参数调用这些方法，就是触发相应的事件，从而引发回调函数的运行。
 
-```javascript
+```js
 
 $('li').click()
 
@@ -1154,7 +1154,7 @@ $('li').click()
 
 下面是一个捕捉用户按下escape键的函数。
 
-```javascript
+```js
 
 $(document).keyup(function(e) {
   if (e.keyCode == 27) {
@@ -1169,7 +1169,7 @@ $(document).keyup(function(e) {
 
 `hover`方法需要特别说明。它接受两个回调函数作为参数，分别代表`mouseenter`和`mouseleave`事件的回调函数。
 
-```javascript
+```js
 $(selector).hover(handlerIn, handlerOut)
 // 等同于
 $(selector).mouseenter(handlerIn).mouseleave(handlerOut)
@@ -1177,7 +1177,7 @@ $(selector).mouseenter(handlerIn).mouseleave(handlerOut)
 
 下面是一个例子，当按钮发生`hover`事件，添加一个class样式，当`hover`事件结束时，再取消这个class。
 
-```javascript
+```js
 $('.btn').hover(function () {
   $(this).addClass('hover');
 }, function () {
@@ -1187,7 +1187,7 @@ $('.btn').hover(function () {
 
 使用`toggleClass`可以简化上面的代码。
 
-```javascript
+```js
 $('.btn').hover(function () {
   $(this).toggleClass('hover');
 });
@@ -1203,7 +1203,7 @@ $('.btn').hover(function () {
 
 `on`方法接受两个参数，第一个是事件名称，第二个是回调函数。
 
-```javascript
+```js
 $('li').on('click', function (e){
   console.log($(this).text());
 });
@@ -1215,7 +1215,7 @@ $('li').on('click', function (e){
 
 `on`方法允许一次为多个事件指定同样的回调函数。
 
-```javascript
+```js
 $('input[type="text"]').on('focus blur', function (){
   console.log('focus or blur');
 });
@@ -1225,7 +1225,7 @@ $('input[type="text"]').on('focus blur', function (){
 
 下面是一个例子，当图片加载失败，使用`error`事件，替换另一张图片。
 
-```javascript
+```js
 $('img').on('error', function () {
   if(!$(this).hasClass('broken-image')) {
     $(this).prop('src', 'img/broken.png').addClass('broken-image');
@@ -1235,7 +1235,7 @@ $('img').on('error', function () {
 
 下面是检查用户是否切换浏览器tab的例子。
 
-```javascript
+```js
 $(document).on('visibilitychange', function (e) {
   if (e.target.visibilityState === "visible") {
     console.log('Tab is now in view!');
@@ -1247,7 +1247,7 @@ $(document).on('visibilitychange', function (e) {
 
 `on`方法还可以为当前元素的某一个子元素，添加回调函数。
 
-```javascript
+```js
 $('ul').on('click', 'li', function (e){
   console.log(this);
 });
@@ -1259,7 +1259,7 @@ $('ul').on('click', 'li', function (e){
 
 on方法还允许向回调函数传入数据。
 
-```javascript
+```js
 $("ul" ).on("click", {name: "张三"}, function (event){
 	console.log(event.data.name);
 });
@@ -1271,7 +1271,7 @@ $("ul" ).on("click", {name: "张三"}, function (event){
 
 trigger方法用于触发回调函数，它的参数就是事件的名称。
 
-```javascript
+```js
 
 $('li').trigger('click')
 
@@ -1283,7 +1283,7 @@ $('li').trigger('click')
 
 off方法用于移除事件的回调函数。
 
-```javascript
+```js
 
 $('li').off('click')
 
@@ -1295,7 +1295,7 @@ $('li').off('click')
 
 同一个事件有时绑定了多个回调函数，这时如果想移除其中的一个回调函数，可以采用“名称空间”的方式，即为每一个回调函数指定一个二级事件名，然后再用off方法移除这个二级事件的回调函数。
 
-```javascript
+```js
 
 $('li').on('click.logging', function (){
   console.log('click.logging callback removed');
@@ -1309,7 +1309,7 @@ $('li').off('click.logging');
 
 trigger方法也适用带名称空间的事件。
 
-```javascript
+```js
 
 $('li').trigger('click.logging')
 
@@ -1319,7 +1319,7 @@ $('li').trigger('click.logging')
 
 当回调函数被触发后，它们的参数通常是一个事件对象event。
 
-```javascript
+```js
 
 $(document).on('click', function (e){
 	// ...
@@ -1347,7 +1347,7 @@ event对象有以下方法：
 
 one方法指定一次性的回调函数，即这个函数只能运行一次。这对提交表单很有用。
 
-```javascript
+```js
 
 $("#button").one( "click", function() { return false; } );
 
@@ -1355,7 +1355,7 @@ $("#button").one( "click", function() { return false; } );
 
 one方法本质上是回调函数运行一次，即解除对事件的监听。
 
-```javascript
+```js
 
 document.getElementById("#button").addEventListener("click", handler);
 

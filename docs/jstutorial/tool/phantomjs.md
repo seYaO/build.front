@@ -41,7 +41,7 @@ phantomjs> add(1,2)
 
 下面，我们把上面的add()函数写成一个文件add.js文件。
 
-```javascript
+```js
 // add.js
 
 function add(a,b){ return a+b; }
@@ -63,7 +63,7 @@ $ phantomjs add.js
 
 下面是更多的例子。
 
-```javascript
+```js
 phantomjs> phantom.version
 {
   "major": 1,
@@ -88,7 +88,7 @@ phantomjs> window.navigator
 
 webpage模块是PhantomJS的核心模块，用于网页操作。
 
-```javascript
+```js
 var webPage = require('webpage');
 var page = webPage.create();
 ```
@@ -101,7 +101,7 @@ var page = webPage.create();
 
 open方法用于打开具体的网页。
 
-```javascript
+```js
 var page = require('webpage').create();
 
 page.open('http://slashdot.org', function (s) {
@@ -116,7 +116,7 @@ page.open('http://slashdot.org', function (s) {
 
 open方法默认使用GET方法，与服务器通信，但是也可以使用其他方法。
 
-```javascript
+```js
 var webPage = require('webpage');
 var page = webPage.create();
 var postBody = 'user=username&password=password';
@@ -131,7 +131,7 @@ page.open('http://www.google.com/', 'POST', postBody, function(status) {
 
 open方法还允许提供配置对象，对HTTP请求进行更详细的配置。
 
-```javascript
+```js
 var webPage = require('webpage');
 var page = webPage.create();
 var settings = {
@@ -156,7 +156,7 @@ page.open('http://your.custom.api', settings, function(status) {
 
 evaluate方法用于打开网页以后，在页面中执行JavaScript代码。
 
-```javascript
+```js
 
 var page = require('webpage').create();
 
@@ -172,7 +172,7 @@ page.open(url, function(status) {
 
 网页内部的console语句，以及evaluate方法内部的console语句，默认不会显示在命令行。这时可以采用onConsoleMessage回调函数，上面的例子可以改写如下。
 
-```javascript
+```js
 
 var page = require('webpage').create();
 
@@ -195,7 +195,7 @@ page.open(url, function(status) {
 
 includeJs方法用于页面加载外部脚本，加载结束后就调用指定的回调函数。
 
-```javascript
+```js
 var page = require('webpage').create();
 page.open('http://www.sample.com', function() {
   page.includeJs("http://path/to/jquery.min.js", function() {
@@ -213,7 +213,7 @@ page.open('http://www.sample.com', function() {
 
 render方法用于将网页保存成图片，参数就是指定的文件名。该方法根据后缀名，将网页保存成不同的格式，目前支持PNG、GIF、JPEG和PDF。
 
-```javascript
+```js
 var webPage = require('webpage');
 var page = webPage.create();
 
@@ -230,7 +230,7 @@ page.open("http://www.google.com", function start(status) {
 
 viewportSize属性指定浏览器视口的大小，即网页加载的初始浏览器窗口大小。
 
-```javascript
+```js
 var webPage = require('webpage');
 var page = webPage.create();
 
@@ -244,7 +244,7 @@ viewportSize的Height字段必须指定，不可省略。
 
 zoomFactor属性用来指定渲染时（render方法和renderBase64方法）页面的放大系数，默认是1（即100%）。
 
-```javascript
+```js
 var webPage = require('webpage');
 var page = webPage.create();
 
@@ -270,7 +270,7 @@ HTTP请求包括以下字段。
 - changeUrl(newUrl)：改变当前网络请求的URL。
 - setHeader(key, value)：设置HTTP头信息。
 
-```javascript
+```js
 var webPage = require('webpage');
 var page = webPage.create();
 
@@ -296,7 +296,7 @@ r- time：包含HTTP回应时间的Date对象
 
 如果HTTP回应非常大，分成多个数据块发送，onResourceReceived会在收到每个数据块时触发回调函数。
 
-```javascript
+```js
 var webPage = require('webpage');
 var page = webPage.create();
 
@@ -309,7 +309,7 @@ page.onResourceReceived = function(response) {
 
 system模块可以加载操作系统变量，system.args就是参数数组。
 
-```javascript
+```js
 
 var page = require('webpage').create(),
     system = require('system'),
@@ -349,7 +349,7 @@ Phantomjs可以实现多种应用。
 
 处理页面的时候，有时不希望加载某些特定资源。这时，可以对URL进行匹配，一旦符合规则，就中断对资源的连接。
 
-```javascript
+```js
 
 page.onResourceRequested = function(requestData, request) {
   if ((/http:\/\/.+?\.css$/gi).test(requestData['url'])) {
@@ -366,7 +366,7 @@ page.onResourceRequested = function(requestData, request) {
 
 最简单的生成网页截图的方法如下。
 
-```javascript
+```js
 
 var page = require('webpage').create();
 page.open('http://google.com', function () {
@@ -380,7 +380,7 @@ page对象代表一个网页实例；open方法表示打开某个网址，它的
 
 除了简单截图以外，还可以设置各种截图参数。
 
-```javascript
+```js
 
 var page = require('webpage').create();
 page.open('http://google.com', function () {
@@ -395,7 +395,7 @@ zoomFactor表示将截图缩小至原图的25%大小；renderBase64方法则是�
 
 下面的例子则是使用了更多参数。
 
-```javascript
+```js
 
 // page.js
 
@@ -439,7 +439,7 @@ page.open('http://slashdot.org', function (status) {
 
 使用官方网站提供的[rasterize.js](https://github.com/ariya/phantomjs/blob/master/examples/rasterize.js)，可以抓取网络上的图片，将其保存在本地。
 
-```javascript
+```js
 
 phantomjs rasterize.js http://ariya.github.com/svg/tiger.svg tiger.png
 
@@ -447,7 +447,7 @@ phantomjs rasterize.js http://ariya.github.com/svg/tiger.svg tiger.png
 
 使用[rasterize.js](https://github.com/ariya/phantomjs/blob/master/examples/rasterize.js)，还可以将网页保存为pdf文件。
 
-```javascript
+```js
 
 phantomjs rasterize.js 'http://en.wikipedia.org/w/index.php?title=Jakarta&printable=yes' jakarta.pdf
 
@@ -457,7 +457,7 @@ phantomjs rasterize.js 'http://en.wikipedia.org/w/index.php?title=Jakarta&printa
 
 phantomjs可以生成网页，使用content方法指定网页的HTML代码。
 
-```javascript
+```js
 
 var page = require('webpage').create();
 page.viewportSize = { width: 400, height : 400 };

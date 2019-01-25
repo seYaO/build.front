@@ -364,7 +364,7 @@ circle:hover {
 
 然后，可以用 JavaScript 代码操作 SVG。
 
-```javascript
+```js
 var mycircle = document.getElementById('mycircle');
 
 mycircle.addEventListener('click', function(e) {
@@ -379,7 +379,7 @@ mycircle.addEventListener('click', function(e) {
 
 使用`<object>`、`<iframe>`、`<embed>`标签插入 SVG 文件，可以获取 SVG DOM。
 
-```javascript
+```js
 var svgObject = document.getElementById('object').contentDocument;
 var svgIframe = document.getElementById('iframe').contentDocument;
 var svgEmbed = document.getElementById('embed').getSVGDocument();
@@ -405,7 +405,7 @@ var svgEmbed = document.getElementById('embed').getSVGDocument();
 
 使用`XMLSerializer`实例的`serializeToString()`方法，获取 SVG 元素的代码。
 
-```javascript
+```js
 var svgString = new XMLSerializer()
   .serializeToString(document.querySelector('svg'));
 ```
@@ -414,7 +414,7 @@ var svgString = new XMLSerializer()
 
 首先，需要新建一个`Image`对象，将 SVG 图像指定到该`Image`对象的`src`属性。
 
-```javascript
+```js
 var img = new Image();
 var svg = new Blob([svgString], {type: "image/svg+xml;charset=utf-8"});
 
@@ -426,7 +426,7 @@ img.src = url;
 
 然后，当图像加载完成后，再将它绘制到`<canvas>`元素。
 
-```javascript
+```js
 img.onload = function () {
   var canvas = document.getElementById('canvas');
   var ctx = canvas.getContext('2d');

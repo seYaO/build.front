@@ -30,7 +30,7 @@ SSE 与 WebSocket 作用相似，都是建立浏览器与服务器之间的通�
 
 SSE 的客户端 API 部署在`EventSource`对象上。下面的代码可以检测浏览器是否支持 SSE。
 
-```javascript
+```js
 if ('EventSource' in window) {
   // ...
 }
@@ -38,13 +38,13 @@ if ('EventSource' in window) {
 
 使用 SSE 时，浏览器首先生成一个`EventSource`实例，向服务器发起连接。
 
-```javascript
+```js
 var source = new EventSource(url);
 ```
 
 上面的`url`可以与当前网址同域，也可以跨域。跨域时，可以指定第二个参数，打开`withCredentials`属性，表示是否一起发送 Cookie。
 
-```javascript
+```js
 var source = new EventSource(url, { withCredentials: true });
 ```
 
@@ -56,7 +56,7 @@ var source = new EventSource(url, { withCredentials: true });
 - 1：相当于常量`EventSource.OPEN`，表示连接已经建立，可以接受数据。
 - 2：相当于常量`EventSource.CLOSED`，表示连接已断，且不会重连。
 
-```javascript
+```js
 var source = new EventSource(url);
 console.log(source.readyState);
 ```
@@ -73,7 +73,7 @@ console.log(source.readyState);
 
 连接一旦建立，就会触发`open`事件，可以在`onopen`属性定义回调函数。
 
-```javascript
+```js
 source.onopen = function (event) {
   // ...
 };
@@ -88,7 +88,7 @@ source.addEventListener('open', function (event) {
 
 客户端收到服务器发来的数据，就会触发`message`事件，可以在`onmessage`属性定义回调函数。
 
-```javascript
+```js
 source.onmessage = function (event) {
   var data = event.data;
   var origin = event.origin;
@@ -115,7 +115,7 @@ source.addEventListener('message', function (event) {
 
 如果发生通信错误（比如连接中断），就会触发`error`事件，可以在`onerror`属性定义回调函数。
 
-```javascript
+```js
 source.onerror = function (event) {
   // handle error event
 };
@@ -130,7 +130,7 @@ source.addEventListener('error', function (event) {
 
 默认情况下，服务器发来的数据，总是触发浏览器`EventSource`实例的`message`事件。开发者还可以自定义 SSE 事件，这种情况下，发送回来的数据不会触发`message`事件。
 
-```javascript
+```js
 source.addEventListener('foo', function (event) {
   var data = event.data;
   var origin = event.origin;
@@ -145,7 +145,7 @@ source.addEventListener('foo', function (event) {
 
 `close`方法用于关闭 SSE 连接。
 
-```javascript
+```js
 source.close();
 ```
 
@@ -276,7 +276,7 @@ SSE 要求服务器与浏览器保持连接。对于不同的服务器软件来�
 
 下面是 Node 的 SSE 服务器[实例](http://cjihrig.com/blog/server-sent-events-in-node-js/)。
 
-```javascript
+```js
 var http = require("http");
 
 http.createServer(function (req, res) {

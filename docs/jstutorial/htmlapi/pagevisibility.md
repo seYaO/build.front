@@ -60,7 +60,7 @@
 
 只要`document.visibilityState`属性发生变化，就会触发`visibilitychange`事件。因此，可以通过监听这个事件（通过`document.addEventListener()`方法或`document.onvisibilitychange`属性），跟踪页面可见性的变化。
 
-```javascript
+```js
 document.addEventListener('visibilitychange', function () {
   // 用户离开了当前页面
   if (document.visibilityState === 'hidden') {
@@ -78,7 +78,7 @@ document.addEventListener('visibilitychange', function () {
 
 下面是另一个例子，一旦页面不可见，就暂停视频播放。
 
-```javascript
+```js
 var vidElem = document.getElementById('video-demo');
 document.addEventListener('visibilitychange', startStopVideo);
 

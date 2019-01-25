@@ -1,6 +1,6 @@
 # dns 模块
 
-```javascript
+```js
 dns.lookup(`www.myApi.com`, 4, (err, address) => {
   cacheThisForLater(address);
 });

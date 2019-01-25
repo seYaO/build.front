@@ -4,7 +4,7 @@
 
 下面是一段简单的监听2000端口的代码。
 
-```javascript
+```js
 var net = require('net');
 var server = net.createServer();
 server.listen(2000, function () { console.log('Listening on port 2000'); });
@@ -19,7 +19,7 @@ server.on('connection', function (stream) {
 
 `isIP`方法用于判断某个字符串是否为IP地址。
 
-```javascript
+```js
 require('net').isIP('10.0.0.1') // 4
 require('net').isIP('cats') // 0
 ```
@@ -28,7 +28,7 @@ require('net').isIP('cats') // 0
 
 来看一个简单的Telnet服务的[例子](https://gist.github.com/atdt/4037228)。
 
-```javascript
+```js
 var net = require('net');
 var port = 1081;
 var logo = fs.readFileSync('logo.txt');
@@ -49,7 +49,7 @@ $ telnet localhost 1081
 
 一旦telnet连入以后，就会显示提示符`>>>`，输入命令以后，就会调用回调函数`recv`。
 
-```javascript
+```js
 function recv( socket, data ) {
   if ( data === 'quit' ) {
     socket.end( 'Bye!\n' );
@@ -72,7 +72,7 @@ function recv( socket, data ) {
 
 下面代码是另一个例子，用到了更多的接口。
 
-```javascript
+```js
 var serverPort = 9099;
 var net = require('net');
 var server = net.createServer(function(client) {
@@ -111,7 +111,7 @@ server.listen(serverPort, function() {
 
 客户端Socket接口用来向服务器发送数据。
 
-```javascript
+```js
 var serverPort = 9099;
 var server = 'localhost';
 var net = require('net');
@@ -145,7 +145,7 @@ client.on('end', function() {
 
 DNS模块用于解析域名。resolve4方法用于IPv4环境，resolve6方法用于IPv6环境，lookup方法在以上两种环境都可以使用，返回IP地址（address）和当前环境（IPv4或IPv6）。
 
-```javascript
+```js
 var dns = require('dns');
 
 dns.resolve4('www.pecollege.net', function (err, addresses) {

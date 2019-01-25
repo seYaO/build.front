@@ -244,7 +244,7 @@ $ NODE_ENV=production npm install
 
 一旦安装了某个模块，就可以在代码中用`require`命令加载这个模块。
 
-```javascript
+```js
 var backbone = require('backbone')
 console.log(backbone.VERSION)
 ```
@@ -289,7 +289,7 @@ $ npm update -global [package name]
 
 使用`-S`或`--save`参数，可以在安装的时候更新`package.json`里面模块的版本号。
 
-```javascript
+```js
 // 更新之前的package.json
 dependencies: {
   dep1: "^1.1.1"
@@ -320,7 +320,7 @@ $ npm uninstall [package name] -global
 
 `npm`不仅可以用于模块管理，还可以用于执行脚本。`package.json`文件有一个`scripts`字段，可以用于指定脚本命令，供`npm`直接调用。
 
-```javascript
+```js
 {
   "name": "myproject",
   "devDependencies": {
@@ -355,7 +355,7 @@ $ npm i eslint --save-dev
 
 然后，你就可以在`package.json`的`script`属性里面，不带路径的引用`eslint`这个脚本。
 
-```javascript
+```js
 {
   "name": "Test Project",
   "devDependencies": {
@@ -382,7 +382,7 @@ Available scripts in the user-service package:
 
 下面是另一个`package.json`文件的例子。
 
-```javascript
+```js
 "scripts": {
   "watch": "watchify client/main.js -o public/app.js -v",
   "build": "browserify client/main.js -o public/app.js",
@@ -409,13 +409,13 @@ $ npm test
 
 如果希望一个操作的输出，是另一个操作的输入，可以借用Linux系统的管道命令，将两个操作连在一起。
 
-```javascript
+```js
 "build-js": "browserify browser/main.js | uglifyjs -mc > static/bundle.js"
 ```
 
 但是，更方便的写法是引用其他`npm run`命令。
 
-```javascript
+```js
 "build": "npm run build-js && npm run build-css"
 ```
 
@@ -423,7 +423,7 @@ $ npm test
 
 下面是一个流操作的例子。
 
-```javascript
+```js
 "devDependencies": {
   "autoprefixer": "latest",
   "cssmin": "latest"
@@ -436,7 +436,7 @@ $ npm test
 
 写在`scripts`属性中的命令，也可以在`node_modules/.bin`目录中直接写成bash脚本。下面是一个bash脚本。
 
-```javascript
+```js
 #!/bin/bash
 
 cd site/main
@@ -445,7 +445,7 @@ browserify browser/main.js | uglifyjs -mc > static/bundle.js
 
 假定上面的脚本文件名为build.sh，并且权限为可执行，就可以在scripts属性中引用该文件。
 
-```javascript
+```js
 "build-js": "bin/build.sh"
 ```
 
@@ -453,7 +453,7 @@ browserify browser/main.js | uglifyjs -mc > static/bundle.js
 
 `npm run`命令还可以添加参数。
 
-```javascript
+```js
 "scripts": {
   "test": "mocha test/"
 }
@@ -514,7 +514,7 @@ $ npm-run-all --parallel watch:*
 
 `start`脚本命令，用于启动应用程序。
 
-```javascript
+```js
 "start": "npm-run-all --parallel dev serve"
 ```
 
@@ -534,25 +534,25 @@ $ node server.js
 
 `dev`脚本命令，规定开发阶段所要做的处理，比如构建网页资源。
 
-```javascript
+```js
 "dev": "npm-run-all dev:*"
 ```
 
 上面命令用于继发执行所有`dev`的子命令。
 
-```javascript
+```js
 "predev:sass": "node-sass --source-map src/css/hoodie.css.map --output-style nested src/sass/base.scss src/css/hoodie.css"
 ```
 
 上面命令将sass文件编译为css文件，并生成source map文件。
 
-```javascript
+```js
 "dev:sass": "node-sass --source-map src/css/hoodie.css.map --watch --output-style nested src/sass/base.scss src/css/hoodie.css"
 ```
 
 上面命令会监视sass文件的变动，只要有变动，就自动将其编译为css文件。
 
-```javascript
+```js
 "dev:autoprefix": "postcss --use autoprefixer --autoprefixer.browsers \"> 5%\" --output src/css/hoodie.css src/css/hoodie.css"
 ```
 
@@ -562,7 +562,7 @@ $ node server.js
 
 `serve`脚本命令用于启动服务。
 
-```javascript
+```js
 "serve": "live-server dist/ --port=9090"
 ```
 
@@ -580,7 +580,7 @@ $ node server.js
 
 `test`脚本命令用于执行测试。
 
-```javascript
+```js
 "test": "npm-run-all test:*",
 "test:lint": "sass-lint --verbose --config .sass-lint.yml src/sass/*"
 ```
@@ -591,7 +591,7 @@ $ node server.js
 
 `prod`脚本命令，规定进入生产环境时需要做的处理。
 
-```javascript
+```js
 "prod": "npm-run-all prod:*",
 "prod:sass": "node-sass --output-style compressed src/sass/base.scss src/css/prod/hoodie.min.css",
 "prod:autoprefix": "postcss --use autoprefixer --autoprefixer.browsers "> 5%" --output src/css/prod/hoodie.min.css src/css/prod/hoodie.min.css"
@@ -603,7 +603,7 @@ $ node server.js
 
 `help`脚本命令用于展示帮助信息。
 
-```javascript
+```js
 "help": "markdown-chalk --input DEVELOPMENT.md"
 ```
 
@@ -613,7 +613,7 @@ $ node server.js
 
 `docs`脚本命令用于生成文档。
 
-```javascript
+```js
 "docs": "kss-node --source src/sass --homepage ../../styleguide.md"
 ```
 
@@ -623,7 +623,7 @@ $ node server.js
 
 `npm run`为每条命令提供了`pre-`和`post-`两个钩子（hook）。以`npm run lint`为例，执行这条命令之前，npm会先查看有没有定义prelint和postlint两个钩子，如果有的话，就会先执行`npm run prelint`，然后执行`npm run lint`，最后执行`npm run postlint`。
 
-```javascript
+```js
 {
   "name": "myproject",
   "devDependencies": {
@@ -649,7 +649,7 @@ $ node server.js
 
 下面是一个例子。
 
-```javascript
+```js
 {
   "test": "karma start",
   "test:lint": "eslint . --ext .js --ext .jsx",
@@ -690,7 +690,7 @@ $ npm run prepublish
 
 下面是`post install`的例子。
 
-```javascript
+```js
 {
   "postinstall": "node lib/post_install.js"
 }
@@ -700,7 +700,7 @@ $ npm run prepublish
 
 下面是`publish`钩子的一个例子。
 
-```javascript
+```js
 {
   "dist:modules": "babel ./src --out-dir ./dist-modules",
   "gh-pages": "webpack",
@@ -720,7 +720,7 @@ $ npm install husky --save-dev
 
 安装以后，就能在`package.json`添加`precommit`、`prepush`等钩子。
 
-```javascript
+```js
 {
     "scripts": {
         "lint": "eslint yourJsFiles.js",
@@ -739,7 +739,7 @@ scripts字段可以使用一些内部变量，主要是package.json的各种字�
 
 比如，package.json的内容是`{"name":"foo", "version":"1.2.5"}`，那么变量`npm_package_name`的值是foo，变量`npm_package_version`的值是1.2.5。
 
-```javascript
+```js
 {
   "scripts":{
     "bundle": "mkdir -p build/$npm_package_version/"
@@ -751,7 +751,7 @@ scripts字段可以使用一些内部变量，主要是package.json的各种字�
 
 `config`字段也可以用于设置内部字段。
 
-```javascript
+```js
   "name": "fooproject",
   "config": {
     "reporter": "xunit"
@@ -811,7 +811,7 @@ src/myProject/node_modules/myModule -> /path/to/global/node_modules/myModule
 
 然后，就可以在你的项目中，加载该模块了。
 
-```javascript
+```js
 var myModule = require('myModule');
 ```
 
@@ -878,13 +878,13 @@ $ npm init --scope=<yourscope>
 
 如果你的模块是用ES6写的，那么发布的时候，最好转成ES5。首先，需要安装Babel。
 
-```javascript
+```js
 $ npm install --save-dev babel-cli@6 babel-preset-es2015@6
 ```
 
 然后，在`package.json`里面写入`build`脚本。
 
-```javascript
+```js
 "scripts": {
   "build": "babel source --presets babel-preset-es2015 --out-dir distribution",
   "prepublish": "npm run build"

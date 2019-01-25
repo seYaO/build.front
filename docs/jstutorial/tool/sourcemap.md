@@ -49,7 +49,7 @@ java -jar compiler.jar \
 
 启用Source map的方法很简单，只要在转换后的代码头部或尾部，加上一行就可以了。
 
-```javascript
+```js
 
 //# sourceMappingURL=/path/to/file.js.map
 
@@ -57,7 +57,7 @@ java -jar compiler.jar \
 
 或者
 
-```javascript
+```js
 
 /*# sourceMappingURL=/path/to/file.js.map */
 
@@ -69,7 +69,7 @@ map文件可以放在网络上，也可以放在本地文件系统。
 
 打开Source map文件，它大概是这个样子：
 
-```javascript
+```js
 
 　　{
 　　　　version : 3,
@@ -103,7 +103,7 @@ map文件可以放在网络上，也可以放在本地文件系统。
 
 举例来说，假定mappings属性的内容如下：
 
-```javascript
+```js
 
 mappings:"AAAAA,BBBBB;CCCCC"
 

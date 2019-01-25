@@ -22,7 +22,7 @@ JSON 对值的类型和格式有严格的规定。
 
 以下都是合法的 JSON。
 
-```javascript
+```js
 ["one", "two", "three"]
 
 { "one": 1, "two": 2, "three": 3 }
@@ -34,7 +34,7 @@ JSON 对值的类型和格式有严格的规定。
 
 以下都是不合法的 JSON。
 
-```javascript
+```js
 { name: "张三", 'age': 32 }  // 属性名必须使用双引号
 
 [32, 64, 128, 0xFFF] // 不能使用十六进制值
@@ -61,7 +61,7 @@ JSON 对值的类型和格式有严格的规定。
 
 `JSON.stringify`方法用于将一个值转为 JSON 字符串。该字符串符合 JSON 格式，并且可以被`JSON.parse`方法还原。
 
-```javascript
+```js
 JSON.stringify('abc') // ""abc""
 JSON.stringify(1) // "1"
 JSON.stringify(false) // "false"
@@ -79,14 +79,14 @@ JSON.stringify({ name: "张三" })
 
 注意，对于原始类型的字符串，转换结果会带双引号。
 
-```javascript
+```js
 JSON.stringify('foo') === "foo" // false
 JSON.stringify('foo') === "\"foo\"" // true
 ```
 
 上面代码中，字符串`foo`，被转成了`"\"foo"\"`。这是因为将来还原的时候，内层双引号可以让 JavaScript 引擎知道，这是一个字符串，而不是其他类型的值。
 
-```javascript
+```js
 JSON.stringify(false) // "false"
 JSON.stringify('false') // "\"false\""
 ```
@@ -95,7 +95,7 @@ JSON.stringify('false') // "\"false\""
 
 如果对象的属性是`undefined`、函数或 XML 对象，该属性会被`JSON.stringify`过滤。
 
-```javascript
+```js
 var obj = {
   a: undefined,
   b: function () {}
@@ -108,7 +108,7 @@ JSON.stringify(obj) // "{}"
 
 如果数组的成员是`undefined`、函数或 XML 对象，则这些值被转成`null`。
 
-```javascript
+```js
 var arr = [undefined, function () {}];
 JSON.stringify(arr) // "[null,null]"
 ```
@@ -117,13 +117,13 @@ JSON.stringify(arr) // "[null,null]"
 
 正则对象会被转成空对象。
 
-```javascript
+```js
 JSON.stringify(/foo/) // "{}"
 ```
 
 `JSON.stringify`方法会忽略对象的不可遍历属性。
 
-```javascript
+```js
 var obj = {};
 Object.defineProperties(obj, {
   'foo': {
@@ -145,7 +145,7 @@ JSON.stringify(obj); // "{"foo":1}"
 
 `JSON.stringify`方法还可以接受一个数组，作为第二个参数，指定需要转成字符串的属性。
 
-```javascript
+```js
 var obj = {
   'prop1': 'value1',
   'prop2': 'value2',
@@ -162,7 +162,7 @@ JSON.stringify(obj, selectedProperties)
 
 这个类似白名单的数组，只对对象的属性有效，对数组无效。
 
-```javascript
+```js
 JSON.stringify(['a', 'b'], ['0'])
 // "["a","b"]"
 
@@ -174,7 +174,7 @@ JSON.stringify({0: 'a', 1: 'b'}, ['0'])
 
 第二个参数还可以是一个函数，用来更改`JSON.stringify`的返回值。
 
-```javascript
+```js
 function f(key, value) {
   if (typeof value === "number") {
     value = 2 * value;
@@ -190,7 +190,7 @@ JSON.stringify({ a: 1, b: 2 }, f)
 
 注意，这个处理函数是递归处理所有的键。
 
-```javascript
+```js
 var o = {a: {b: 1}};
 
 function f(key, value) {
@@ -209,7 +209,7 @@ JSON.stringify(o, f)
 
 递归处理中，每一次处理的对象，都是前一次返回的值。
 
-```javascript
+```js
 var o = {a: 1};
 
 function f(key, value) {
@@ -227,7 +227,7 @@ JSON.stringify(o, f)
 
 如果处理函数返回`undefined`或没有返回值，则该属性会被忽略。
 
-```javascript
+```js
 function f(key, value) {
   if (typeof(value) === "string") {
     return undefined;
@@ -245,7 +245,7 @@ JSON.stringify({ a: "abc", b: 123 }, f)
 
 `JSON.stringify`还可以接受第三个参数，用于增加返回的 JSON 字符串的可读性。如果是数字，表示每个属性前面添加的空格（最多不超过10个）；如果是字符串（不超过10个字符），则该字符串会添加在每行前面。
 
-```javascript
+```js
 JSON.stringify({ p1: 1, p2: 2 }, null, 2);
 /*
 "{
@@ -269,7 +269,7 @@ JSON.stringify({ p1:1, p2:2 }, null, '|-');
 
 下面是一个普通的对象。
 
-```javascript
+```js
 var user = {
   firstName: '三',
   lastName: '张',
@@ -285,7 +285,7 @@ JSON.stringify(user)
 
 现在，为这个对象加上`toJSON`方法。
 
-```javascript
+```js
 var user = {
   firstName: '三',
   lastName: '张',
@@ -309,7 +309,7 @@ JSON.stringify(user)
 
 `Date`对象就有一个自己的`toJSON`方法。
 
-```javascript
+```js
 var date = new Date('2015-01-01');
 date.toJSON() // "2015-01-01T00:00:00.000Z"
 JSON.stringify(date) // ""2015-01-01T00:00:00.000Z""
@@ -319,7 +319,7 @@ JSON.stringify(date) // ""2015-01-01T00:00:00.000Z""
 
 `toJSON`方法的一个应用是，将正则对象自动转为字符串。因为`JSON.stringify`默认不能转换正则对象，但是设置了`toJSON`方法以后，就可以转换正则对象了。
 
-```javascript
+```js
 var obj = {
   reg: /foo/
 };
@@ -338,7 +338,7 @@ JSON.stringify(/foo/) // ""/foo/""
 
 `JSON.parse`方法用于将 JSON 字符串转换成对应的值。
 
-```javascript
+```js
 JSON.parse('{}') // {}
 JSON.parse('true') // true
 JSON.parse('"foo"') // "foo"
@@ -351,7 +351,7 @@ o.name // 张三
 
 如果传入的字符串不是有效的 JSON 格式，`JSON.parse`方法将报错。
 
-```javascript
+```js
 JSON.parse("'String'") // illegal single quotes
 // SyntaxError: Unexpected token ILLEGAL
 ```
@@ -360,7 +360,7 @@ JSON.parse("'String'") // illegal single quotes
 
 为了处理解析错误，可以将`JSON.parse`方法放在`try...catch`代码块中。
 
-```javascript
+```js
 try {
   JSON.parse("'String'");
 } catch(e) {
@@ -370,7 +370,7 @@ try {
 
 `JSON.parse`方法可以接受一个处理函数，作为第二个参数，用法与`JSON.stringify`方法类似。
 
-```javascript
+```js
 function f(key, value) {
   if (key === 'a') {
     return value + 10;

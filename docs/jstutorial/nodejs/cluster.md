@@ -8,7 +8,7 @@ Node.js默认单进程运行，对于32位系统最高可以使用512MB内存，
 
 cluster模块允许设立一个主进程和若干个worker进程，由主进程监控和协调worker进程的运行。worker之间采用进程间通信交换消息，cluster模块内置一个负载均衡器，采用Round-robin算法协调各个worker进程之间的负载。运行时，所有新建立的链接都由主进程完成，然后主进程再把TCP连接分配给指定的worker进程。
 
-```javascript
+```js
 var cluster = require('cluster');
 var os = require('os');
 
@@ -28,7 +28,7 @@ if (cluster.isMaster){
 
 上面这段代码有一个缺点，就是一旦work进程挂了，主进程无法知道。为了解决这个问题，可以在主进程部署online事件和exit事件的监听函数。
 
-```javascript
+```js
 var cluster = require('cluster');
 
 if(cluster.isMaster) {
@@ -71,7 +71,7 @@ worker.id返回当前worker的独一无二的进程编号。这个编号也是cl
 
 该方法用于在主进程中，向子进程发送信息。
 
-```javascript
+```js
 if (cluster.isMaster) {
   var worker = cluster.fork();
   worker.send('hi there');
@@ -86,7 +86,7 @@ if (cluster.isMaster) {
 
 在worker进程中，要向主进程发送消息，使用`process.send(message)`；要监听主进程发出的消息，使用下面的代码。
 
-```javascript
+```js
 process.on('message', function(message) {
   console.log(message);
 });
@@ -94,7 +94,7 @@ process.on('message', function(message) {
 
 发出的消息可以字符串，也可以是JSON对象。下面是一个发送JSON对象的例子。
 
-```javascript
+```js
 worker.send({
   type: 'task 1',
   from: 'master',
@@ -108,7 +108,7 @@ worker.send({
 
 该对象只有主进程才有，包含了所有worker进程。每个成员的键值就是一个worker进程对象，键名就是该worker进程的worker.id属性。
 
-```javascript
+```js
 function eachWorker(callback) {
   for (var id in cluster.workers) {
     callback(cluster.workers[id]);
@@ -123,7 +123,7 @@ eachWorker(function(worker) {
 
 当前socket的data事件，也可以用id属性识别worker进程。
 
-```javascript
+```js
 socket.on('data', function(id) {
   var worker = cluster.workers[id];
 });
@@ -157,7 +157,7 @@ worker进程调用listening方法以后，“listening”事件就传向该进�
 
 该事件的回调函数接受两个参数，一个是当前worker对象，另一个是地址对象，包含网址、端口、地址类型（IPv4、IPv6、Unix socket、UDP）等信息。这对于那些服务多个网址的Node应用程序非常有用。
 
-```javascript
+```js
 cluster.on('listening', function (worker, address) {
   console.log("A worker is now connected to " + address.address + ":" + address.port);
 });
@@ -171,13 +171,13 @@ cluster.on('listening', function (worker, address) {
 
 首先，主进程向worker进程发出重启信号。
 
-```javascript
+```js
 workers[wid].send({type: 'shutdown', from: 'master'});
 ```
 
 worker进程监听message事件，一旦发现内容是shutdown，就退出。
 
-```javascript
+```js
 process.on('message', function(message) {
   if(message.type === 'shutdown') {
     process.exit(0);
@@ -187,7 +187,7 @@ process.on('message', function(message) {
 
 下面是一个关闭所有worker进程的函数。
 
-```javascript
+```js
 function restartWorkers() {
   var wid, workerIds = [];
   for(wid in cluster.workers) {
@@ -212,7 +212,7 @@ function restartWorkers() {
 
 下面是一个完整的实例，先是主进程的代码master.js。
 
-```javascript
+```js
 var cluster = require('cluster');
 
 console.log('started master with ' + process.pid);
@@ -237,7 +237,7 @@ process.on('SIGHUP', function () {
 
 下面是worker进程的代码server.js。
 
-```javascript
+```js
 var cluster = require('cluster');
 
 if (cluster.isMaster) {
@@ -292,7 +292,7 @@ $ kill 10538
 
 PM2模块是cluster模块的一个包装层。它的作用是尽量将cluster模块抽象掉，让用户像使用单进程一样，部署多进程Node应用。
 
-```javascript
+```js
 // app.js
 var http = require('http');
 
@@ -304,7 +304,7 @@ http.createServer(function(req, res) {
 
 上面代码是标准的Node架设Web服务器的方式，然后用PM2从命令行启动这段代码。
 
-```javascript
+```js
 $ pm2 start app.js -i 4
 ```
 
@@ -331,7 +331,7 @@ $ pm2 reload <脚本文件名>
 
 关闭worker进程的时候，可以部署下面的代码，让worker进程监听shutdown消息。一旦收到这个消息，进行完毕收尾清理工作再关闭。
 
-```javascript
+```js
 process.on('message', function(msg) {
   if (msg === 'shutdown') {
     close_all_connections();

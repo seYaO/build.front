@@ -32,7 +32,7 @@
 
 先定义一个交换函数，作用是交换两个位置的值。
 
-```javascript
+```js
 function swap(myArray, p1, p2){
   var temp = myArray[p1];
   myArray[p1] = myArray[p2];
@@ -42,7 +42,7 @@ function swap(myArray, p1, p2){
 
 然后定义主函数。
 
-```javascript
+```js
 function bubbleSort(myArray){
   var len = myArray.length;
   var i;
@@ -87,7 +87,7 @@ function bubbleSort(myArray){
 
 先定义一个交换函数。
 
-```javascript
+```js
 
 function swap(myArray, p1, p2){
     var temp = myArray[p1];
@@ -99,7 +99,7 @@ function swap(myArray, p1, p2){
 
 然后定义主函数。
 
-```javascript
+```js
 
 function selectionSort(myArray){
 
@@ -151,7 +151,7 @@ function selectionSort(myArray){
 
 算法的实现如下：
 
-```javascript
+```js
 
 function insertionSort(myArray) {
 
@@ -207,7 +207,7 @@ function insertionSort(myArray) {
 
 这里的关键是如何合并两个已经排序的数组。具体实现请看下面的函数。
 
-```javascript
+```js
 
 function merge(left, right){
     var result  = [],
@@ -231,7 +231,7 @@ function merge(left, right){
 
 有了merge函数，就可以对任意数组排序了。基本方法是将数组不断地拆成两半，直到每一半只包含零个元素或一个元素为止，然后就用merge函数，将拆成两半的数组不断合并，直到合并成一整个排序完成的数组。
 
-```javascript
+```js
 
 function mergeSort(myArray){
 
@@ -250,7 +250,7 @@ function mergeSort(myArray){
 
 上面的代码有一个问题，就是返回的是一个全新的数组，会多占用空间。因此，修改上面的函数，使之在原地排序，不多占用空间。
 
-```javascript
+```js
 
 function mergeSort(myArray){
 
@@ -322,7 +322,7 @@ function mergeSort(myArray){
 
 首先部署一个swap函数，用于互换两个位置的值。
 
-```javascript
+```js
 
 function swap(myArray, firstIndex, secondIndex){
     var temp = myArray[firstIndex];
@@ -334,7 +334,7 @@ function swap(myArray, firstIndex, secondIndex){
 
 然后，部署一个partition函数，用于完成一轮排序。
 
-```javascript
+```js
 
 function partition(myArray, left, right) {
 
@@ -367,7 +367,7 @@ function partition(myArray, left, right) {
 
 接下来，就是递归上面的过程，完成整个排序。
 
-```javascript
+```js
 
 function quickSort(myArray, left, right) {
 
