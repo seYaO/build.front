@@ -21,7 +21,7 @@ yarn deploy # 或 npm run deploy
 - [搭建步骤](https://segmentfault.com/a/1190000017207205)
 - [VuePress中文网](https://vuepress.docschina.org/)
 - [Markdown 语法整理大集合](https://www.jianshu.com/p/b03a8d7b1719)
-- [Emoji 大全](https://www.webpagefx.com/tools/emoji-cheat-sheet/) 
+- [Emoji 大全](https://github.com/markdown-it/markdown-it-emoji/blob/master/lib/data/full.json) 
 
 ### 自定义容器
 
