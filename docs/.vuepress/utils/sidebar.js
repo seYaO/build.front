@@ -1,4 +1,4 @@
-const { genSidebarConfig } = require('./index')
+const guide = ['', 'git', 'linux', 'mac']
 
 // es6
 const es6tutorial = ['', 'intro', 'let', 'destructuring', 'string', 'regex', 'number', 'function', 'array', 'object', 'symbol', 'set-map', 'proxy', 'reflect', 'promise', 'iterator', 'generator', 'generator-async', 'async', 'class', 'class-extends', 'decorator', 'module', 'module-loader', 'style', 'spec', 'arraybuffer', 'proposals', 'reference']
@@ -21,19 +21,7 @@ const jstutorial = {
 }
 
 module.exports = {
-    '/es6tutorial/': genSidebarConfig('es6', es6tutorial),
-    '/jstutorial/introduction/': genSidebarConfig('导论', jstutorial.introduction),
-    '/jstutorial/grammar/': genSidebarConfig('语法', jstutorial.grammar),
-    '/jstutorial/stdlib/': genSidebarConfig('标准库', jstutorial.stdlib),
-    '/jstutorial/oop/': genSidebarConfig('面向对象编程', jstutorial.oop),
-    '/jstutorial/advanced/': genSidebarConfig('语法专题', jstutorial.advanced),
-    '/jstutorial/dom/': genSidebarConfig('DOM 模型', jstutorial.dom),
-    '/jstutorial/bom/': genSidebarConfig('浏览器环境', jstutorial.bom),
-    '/jstutorial/htmlapi/': genSidebarConfig('Web API', jstutorial.htmlapi),
-    '/jstutorial/jquery/': genSidebarConfig('jQuery', jstutorial.jquery),
-    '/jstutorial/library/': genSidebarConfig('函数库', jstutorial.library),
-    '/jstutorial/nodejs/': genSidebarConfig('Node.js', jstutorial.nodejs),
-    '/jstutorial/tool/': genSidebarConfig('开发工具', jstutorial.tool),
-    '/jstutorial/webapp/': genSidebarConfig('webapp', jstutorial.webapp),
-    '/jstutorial/appendix/': genSidebarConfig('附录', jstutorial.appendix),
+    guide,
+    es6tutorial,
+    jstutorial
 }
