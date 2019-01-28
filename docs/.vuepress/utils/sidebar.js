@@ -1,3 +1,4 @@
+const { genSidebarConfig } = require('./index')
 const guide = ['', 'git', 'linux', 'mac']
 
 // es6
@@ -20,8 +21,35 @@ const jstutorial = {
     appendix: ['api', 'plugins'],
 }
 
+function jstutorialData() {
+    function fn(key) {
+        let arr = [];
+        jstutorial[key].map(item => {
+            arr.push(`${key}/${item}`);
+        })
+        return arr
+    }
+
+    return [
+        { title: '导论', collapsable: false, children: fn('introduction') },
+        { title: '语法', collapsable: false, children: fn('grammar') },
+        { title: '标准库', collapsable: false, children: fn('stdlib') },
+        { title: '面向对象编程', collapsable: false, children: fn('oop') },
+        { title: '语法专题', collapsable: false, children: fn('advanced') },
+        { title: 'DOM 模型', collapsable: false, children: fn('dom') },
+        { title: '浏览器环境', collapsable: false, children: fn('bom') },
+        { title: 'Web API', collapsable: false, children: fn('htmlapi') },
+        { title: 'jQuery', collapsable: false, children: fn('jquery') },
+        { title: '函数库', collapsable: false, children: fn('library') },
+        { title: 'Node.js', collapsable: false, children: fn('nodejs') },
+        { title: '开发工具', collapsable: false, children: fn('tool') },
+        { title: 'webapp', collapsable: false, children: fn('webapp') },
+        { title: '附录', collapsable: false, children: fn('appendix') },
+    ]
+}
+
 module.exports = {
-    guide,
-    es6tutorial,
-    jstutorial
+    '/guide/': genSidebarConfig([{ title: '博客', children: guide }]),
+    '/es6tutorial/': genSidebarConfig([{ title: 'es6', children: es6tutorial }]),
+    '/jstutorial/': genSidebarConfig(jstutorialData(), true),
 }

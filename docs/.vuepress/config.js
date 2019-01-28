@@ -1,5 +1,4 @@
-const { genSidebarConfig } = require('./utils')
-const { guide, es6tutorial, jstutorial } = require('./utils/sidebar')
+const sidebar = require('./utils/sidebar')
 
 module.exports = {
     dest: 'dist',
@@ -51,48 +50,32 @@ module.exports = {
                 text: 'javascript',
                 items: [
                     { text: 'es6', link: '/es6tutorial/' },
-                    {
-                        text: 'js',
-                        items: [
-                            { text: '导论', link: '/jstutorial/introduction/' },
-                            { text: '语法', link: '/jstutorial/grammar/' },
-                            { text: '标准库', link: '/jstutorial/stdlib/object.html' },
-                            { text: '面向对象编程', link: '/jstutorial/oop/' },
-                            { text: '语法专题', link: '/jstutorial/advanced/single-thread.html' },
-                            { text: 'DOM 模型', link: '/jstutorial/dom/' },
-                            { text: '浏览器环境', link: '/jstutorial/bom/' },
-                            { text: 'Web API', link: '/jstutorial/htmlapi/' },
-                            { text: 'jQuery', link: '/jstutorial/jquery/' },
-                            { text: '函数库', link: '/jstutorial/library/d3.html' },
-                            { text: 'Node.js', link: '/jstutorial/nodejs/' },
-                            { text: '开发工具', link: '/jstutorial/tool/bower.html' },
-                            { text: 'webapp', link: '/jstutorial/webapp/cache.html' },
-                            { text: '附录', link: '/jstutorial/appendix/api.html' },
-                        ]
-                    }
+                    { text: 'js', link: '/jstutorial/introduction/' },
+                    // {
+                    //     text: 'js',
+                    //     items: [
+                    //         { text: '导论', link: '/jstutorial/introduction/' },
+                    //         { text: '语法', link: '/jstutorial/grammar/' },
+                    //         { text: '标准库', link: '/jstutorial/stdlib/object.html' },
+                    //         { text: '面向对象编程', link: '/jstutorial/oop/' },
+                    //         { text: '语法专题', link: '/jstutorial/advanced/single-thread.html' },
+                    //         { text: 'DOM 模型', link: '/jstutorial/dom/' },
+                    //         { text: '浏览器环境', link: '/jstutorial/bom/' },
+                    //         { text: 'Web API', link: '/jstutorial/htmlapi/' },
+                    //         { text: 'jQuery', link: '/jstutorial/jquery/' },
+                    //         { text: '函数库', link: '/jstutorial/library/d3.html' },
+                    //         { text: 'Node.js', link: '/jstutorial/nodejs/' },
+                    //         { text: '开发工具', link: '/jstutorial/tool/bower.html' },
+                    //         { text: 'webapp', link: '/jstutorial/webapp/cache.html' },
+                    //         { text: '附录', link: '/jstutorial/appendix/api.html' },
+                    //     ]
+                    // }
                 ]
             },
             // { text: '微博', link: 'https://baidu.com' }
         ],
         // 侧边栏配置
-        sidebar: {
-            '/guide/': genSidebarConfig('博客', guide),
-            '/es6tutorial/': genSidebarConfig('es6', es6tutorial),
-            '/jstutorial/introduction/': genSidebarConfig('导论', jstutorial.introduction),
-            '/jstutorial/grammar/': genSidebarConfig('语法', jstutorial.grammar),
-            '/jstutorial/stdlib/': genSidebarConfig('标准库', jstutorial.stdlib),
-            '/jstutorial/oop/': genSidebarConfig('面向对象编程', jstutorial.oop),
-            '/jstutorial/advanced/': genSidebarConfig('语法专题', jstutorial.advanced),
-            '/jstutorial/dom/': genSidebarConfig('DOM 模型', jstutorial.dom),
-            '/jstutorial/bom/': genSidebarConfig('浏览器环境', jstutorial.bom),
-            '/jstutorial/htmlapi/': genSidebarConfig('Web API', jstutorial.htmlapi),
-            '/jstutorial/jquery/': genSidebarConfig('jQuery', jstutorial.jquery),
-            '/jstutorial/library/': genSidebarConfig('函数库', jstutorial.library),
-            '/jstutorial/nodejs/': genSidebarConfig('Node.js', jstutorial.nodejs),
-            '/jstutorial/tool/': genSidebarConfig('开发工具', jstutorial.tool),
-            '/jstutorial/webapp/': genSidebarConfig('webapp', jstutorial.webapp),
-            '/jstutorial/appendix/': genSidebarConfig('附录', jstutorial.appendix),
-        },
+        sidebar,
         // 侧边栏显示2级
         // sidebarDepth: 2,
     }
