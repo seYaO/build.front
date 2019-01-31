@@ -4,7 +4,8 @@ module.exports = {
     dest: 'dist',
     lang: 'zh-CN',
     title: 'seYa\'s blog',
-    description: '我的个人网站',
+    description: '路的好坏不在于崎岖多少，只在于谁能最终达到目标。',
+    port: 4000,
     // 注入到当前页面的 HTML <head> 中的标签
     head: [
         ['link', { rel: 'icon', href: `/logo.png` }], // 增加一个自定义的 favicon(网页标签的图标)
