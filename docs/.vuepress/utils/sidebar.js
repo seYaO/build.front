@@ -1,5 +1,16 @@
 const { genSidebarConfig } = require('./index')
-const guide = ['', 'git', 'linux', 'mac']
+const guide = [
+    {
+        title: '博客',
+        collapsable: false,
+        children: ['', 'git', 'linux', 'mac']
+    },
+    {
+        title: 'css3',
+        collapsable: false,
+        children: ['css3/flex']
+    }
+]
 
 // es6
 const es6tutorial = ['', 'intro', 'let', 'destructuring', 'string', 'regex', 'number', 'function', 'array', 'object', 'symbol', 'set-map', 'proxy', 'reflect', 'promise', 'iterator', 'generator', 'generator-async', 'async', 'class', 'class-extends', 'decorator', 'module', 'module-loader', 'style', 'spec', 'arraybuffer', 'proposals', 'reference']
@@ -49,7 +60,7 @@ function jstutorialData() {
 }
 
 module.exports = {
-    '/guide/': genSidebarConfig([{ title: '博客', children: guide }]),
+    '/guide/': genSidebarConfig(guide),
     '/es6tutorial/': genSidebarConfig([{ title: 'es6', children: es6tutorial }]),
     '/jstutorial/': genSidebarConfig(jstutorialData(), true),
 }
