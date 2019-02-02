@@ -7,8 +7,8 @@ const guide = [
     },
     {
         title: 'css3',
-        collapsable: false,
-        children: ['css3/flex']
+        collapsable: true,
+        children: ['css3/flex', 'css3/use']
     }
 ]
 
