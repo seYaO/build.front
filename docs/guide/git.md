@@ -15,7 +15,6 @@ $ git remote add origin git@github.com:seYaO/XXX.git
 # 5. 提交本地库中的文件到远程git库中:  
 $ git push -u origin master
 ```
-
 ### 配置Git
 ```bash
 # 1. 本地创建ssh key
@@ -27,7 +26,6 @@ $ ssh -T git@github.com
 $ git config --global user.name "your name"
 $ git config --global user.email "your email"
 ```
-
 ### 创建项目的过程
 ```bash
 $ makdir ~/demo    # 创建一个项目demo
