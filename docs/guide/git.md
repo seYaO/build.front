@@ -1,8 +1,9 @@
 # git
 
 ## git常用
+
+### 初始化
 ```bash
-## 初始化
 # 1. 创建git配置:  
 $ git init
 # 2. 把当前所有文件加入到本地git库:  
@@ -13,8 +14,10 @@ $ git commit -m '写一些注释'
 $ git remote add origin git@github.com:seYaO/XXX.git
 # 5. 提交本地库中的文件到远程git库中:  
 $ git push -u origin master
+```
 
-## 配置Git
+### 配置Git
+```bash
 # 1. 本地创建ssh key
 $ ssh-keygen -t rsa -C "email"
 # 目录下生成.ssh文件夹，打开id_rsa.pub，复制key，github中设置SSH Keys
@@ -23,8 +26,10 @@ $ ssh -T git@github.com
 # 3. 设置username 和 email
 $ git config --global user.name "your name"
 $ git config --global user.email "your email"
+```
 
-## 创建项目的过程
+### 创建项目的过程
+```bash
 $ makdir ~/demo    # 创建一个项目demo
 $ cd ~/demo    # 打开这个项目
 $ git init    # 初始化
@@ -103,17 +108,20 @@ $ git push origin --delete tag <branchName>
 - Repository：仓库区（或本地仓库）
 - Remote：远程仓库
 :::
+
+### 一、新建代码库
 ```bash
-## 一、新建代码库
 # 在当前目录新建一个Git代码库
 $ git init
 # 新建一个目录，将其初始化为Git代码库
 $ git init [project-name]
 # 下载一个项目和它的整个代码历史
 $ git clone [url]
+```
 
-## 二、配置
-### Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
+### 二、配置
+Git的设置文件为.gitconfig，它可以在用户主目录下（全局配置），也可以在项目目录下（项目配置）。
+```bash
 # 显示当前的Git配置
 $ git config --list
 # 编辑Git配置文件
@@ -121,8 +129,9 @@ $ git config -e [--global]
 # 设置提交代码时的用户信息
 $ git config [--global] user.name "[name]"
 $ git config [--global] user.email "[email address]"
-
-## 三、增加/删除文件
+```
+### 三、增加/删除文件
+```bash
 # 添加指定文件到暂存区
 $ git add [file1] [file2] ...
 # 添加指定目录到暂存区，包括子目录
@@ -138,8 +147,9 @@ $ git rm [file1] [file2] ...
 $ git rm --cached [file]
 # 改名文件，并且将这个改名放入暂存区
 $ git mv [file-original] [file-renamed]
-
-## 四、代码提交
+```
+### 四、代码提交
+```bash
 # 提交暂存区到仓库区
 $ git commit -m [message]
 # 提交暂存区的指定文件到仓库区
@@ -153,8 +163,9 @@ $ git commit -v
 $ git commit --amend -m [message]
 # 重做上一次commit，并包括指定文件的新变化
 $ git commit --amend [file1] [file2] ...
-
-## 五、分支
+```
+### 五、分支
+```bash
 # 列出所有本地分支
 $ git branch
 # 列出所有远程分支
@@ -184,8 +195,9 @@ $ git branch -d [branch-name]
 # 删除远程分支
 $ git push origin --delete [branch-name]
 $ git branch -dr [remote/branch]
-
-## 六、标签
+```
+### 六、标签
+```bash
 # 列出所有tag
 $ git tag
 # 新建一个tag在当前commit
@@ -204,8 +216,9 @@ $ git push [remote] [tag]
 $ git push [remote] --tags
 # 新建一个分支，指向某个tag
 $ git checkout -b [branch] [tag]
-
-## 七、查看信息
+```
+### 七、查看信息
+```bash
 # 显示有变更的文件
 $ git status
 # 显示当前分支的版本历史
@@ -247,8 +260,9 @@ $ git show --name-only [commit]
 $ git show [commit]:[filename]
 # 显示当前分支的最近几次提交
 $ git reflog
-
-## 八、远程同步
+```
+### 八、远程同步
+```bash
 # 下载远程仓库的所有变动
 $ git fetch [remote]
 # 显示所有远程仓库
@@ -265,8 +279,9 @@ $ git push [remote] [branch]
 $ git push [remote] --force
 # 推送所有分支到远程仓库
 $ git push [remote] --all
-
-## 九、撤销
+```
+### 九、撤销
+```bash
 # 恢复暂存区的指定文件到工作区
 $ git checkout [file]
 # 恢复某个commit的指定文件到暂存区和工作区
@@ -289,12 +304,12 @@ $ git revert [commit]
 # 暂时将未提交的变化移除，稍后再移入
 $ git stash
 $ git stash pop
-
-## 十、其他
+```
+### 十、其他
+```bash
 # 生成一个可供发布的压缩包
 $ git archive
 ```
-
 
 
 ## .gitignore
@@ -361,11 +376,9 @@ key 用 Git GUI 的 ssh 工具生成，这样生成的时候 key 就直接保存
 ```
 
 ## 参考链接
+- [Git 使用规范流程](http://www.ruanyifeng.com/blog/2015/08/git-use-process.html)
+- [Git远程操作详解](http://www.ruanyifeng.com/blog/2014/06/git_remote.html)
+- [Git 工作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
 - [本地项目上传到github](http://blog.csdn.net/henryrao1221/article/details/41554371)
 - [Git Community Book 中文版](http://gitbook.liuhui998.com/index.html)
 - [github 导入 gitbook](http://www.jianshu.com/p/fa38ef97431d)
-
-
-
-
-
