@@ -77,6 +77,30 @@ $ git remote add origin git@github.com:seYaO/XXX.git (在本地目录下关联�
 $ git remote remove origin (取消本地目录下关联的远程库)
 ```
 
+## 撤销远端的commit
+
+在使用git时，push到远端后发现commit了多余的文件，或者希望能够回退到以前的版本。
+
+先在本地回退到相应的版本：
+```bash
+$ git reset --hard <版本号>
+# // 注意使用 --hard 参数会抛弃当前工作区的修改
+# // 使用 --soft 参数的话会回退到之前的版本，但是保留当前工作区的修改，可以重新提交
+```
+
+如果此时使用命令：
+```bash
+$ git push origin <分支名>
+```
+
+会提示本地的版本落后于远端的版本；
+![cover](./img/20160713201707723.png)
+
+为了覆盖掉远端的版本信息，使远端的仓库也回退到相应的版本，需要加上参数`--force`
+```bash
+$ git push origin <分支名> --force
+```
+
 ## git tag命令
 ```bash
 # 查看所有的tag
