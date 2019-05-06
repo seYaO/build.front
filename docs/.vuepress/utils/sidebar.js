@@ -12,6 +12,8 @@ const guide = [
     }
 ]
 
+const frontend = ['00', '01', '02', '03', '04', '05', '06', '07', '08_0', '08_1', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41_0', '41_1', '41_2']
+
 // es6
 const es6tutorial = ['', 'intro', 'let', 'destructuring', 'string', 'regex', 'number', 'function', 'array', 'object', 'symbol', 'set-map', 'proxy', 'reflect', 'promise', 'iterator', 'generator', 'generator-async', 'async', 'class', 'class-extends', 'decorator', 'module', 'module-loader', 'style', 'spec', 'arraybuffer', 'proposals', 'reference']
 
@@ -61,6 +63,7 @@ function jstutorialData() {
 
 module.exports = {
     '/guide/': genSidebarConfig(guide),
+    '/relearnFrontEnd/': genSidebarConfig([{ title: '重学前端', children: frontend }]),
     '/es6tutorial/': genSidebarConfig([{ title: 'es6', children: es6tutorial }]),
     '/jstutorial/': genSidebarConfig(jstutorialData(), true),
 }
