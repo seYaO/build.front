@@ -587,6 +587,78 @@
             "chapter_id": "0",
             "score": 1557158400289,
             "article_ctime": 1557158400
+        },
+        {
+            "article_subtitle": "无",
+            "id": 94156,
+            "had_viewed": false,
+            "article_title": "43 | 性能：前端的性能到底对业务数据有多大的影响？",
+            "article_cover": "https://static001.geekbang.org/resource/image/37/e4/37fbe168a471e8ee1267fd741d096fe4.jpg",
+            "article_could_preview": false,
+            "article_summary": "性能应该是基于业务和实际用户体验需求的一种工程实施，不是纯粹的技术游戏。",
+            "chapter_id": "0",
+            "score": 1557331200046,
+            "article_ctime": 1557331200
+        },
+        {
+            "article_subtitle": "无",
+            "id": 94644,
+            "had_viewed": false,
+            "article_title": "44 | 工具链：什么样的工具链才能提升团队效率？",
+            "article_cover": "https://static001.geekbang.org/resource/image/15/b0/153c6456a919c059ab916e885d4d4db0.jpg",
+            "article_could_preview": false,
+            "article_summary": "假如一个团队每人发明几个小工具，后果将会是灾难性的：同一个团队无法配合写代码，一旦有人离职，可能某个项目永远无法跑起来。",
+            "chapter_id": "0",
+            "score": 1557504000472,
+            "article_ctime": 1557504000
+        },
+        {
+            "article_subtitle": "无",
+            "id": 94979,
+            "had_viewed": false,
+            "article_title": "45 | 持续集成：几十个前端一起工作，如何保证工作质量？",
+            "article_cover": "https://static001.geekbang.org/resource/image/35/54/35cb65d74b24e70501967b672702ba54.jpg",
+            "article_could_preview": false,
+            "article_summary": "持续集成的概念最早来自桌面客户端软件开发，应用到前端领域有了变化。我提出了一个预览环境+规则校验的前端持续集成体系。",
+            "chapter_id": "0",
+            "score": 1557763200019,
+            "article_ctime": 1557763200
+        },
+        {
+            "article_subtitle": "无",
+            "id": 95469,
+            "had_viewed": false,
+            "article_title": "46 | 搭建系统：大量的低价值需求应该如何应对？",
+            "article_cover": "https://static001.geekbang.org/resource/image/52/f8/52fa86035eba686f92a4b637ef8115f8.jpg",
+            "article_could_preview": false,
+            "article_summary": "所谓工程师，就是为了解决这些问题而存在的岗位，我们从工程的视角来看，“大量紧急不重要的页面”，才是真正的需求。",
+            "chapter_id": "0",
+            "score": 1557936000404,
+            "article_ctime": 1557936000
+        },
+        {
+            "article_subtitle": "无",
+            "id": 95833,
+            "had_viewed": false,
+            "article_title": "47 | 前端架构：前端架构有哪些核心问题？",
+            "article_cover": "https://static001.geekbang.org/resource/image/af/97/afdf7bc134cb557f527db57a3d450397.jpg",
+            "article_could_preview": false,
+            "article_summary": "前端不存在分工问题，但是在多人协同时，仍然要解决质量和效率的问题，这就需要从架构的角度去解决问题。",
+            "chapter_id": "0",
+            "score": 1558108800637,
+            "article_ctime": 1558108800
+        },
+        {
+            "article_subtitle": "无",
+            "id": 96269,
+            "had_viewed": false,
+            "article_title": "期末答疑（一）：前端代码单元测试怎么做？",
+            "article_cover": "https://static001.geekbang.org/resource/image/e8/b9/e8546468ca45f5ce8f504f163edbabb9.jpg",
+            "article_could_preview": false,
+            "article_summary": "我们专栏课程的知识部分已经告一段落了。今天，我来集中解决一下大家在学习中遇到的问题。",
+            "chapter_id": "0",
+            "score": 1558368000934,
+            "article_ctime": 1558368000
         }
     ]
 }
