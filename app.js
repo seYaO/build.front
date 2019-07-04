@@ -4,7 +4,7 @@ App({
      * 授权登录获取userInfo、token
      */
     getlogin: function (cb) {
-        
+
     },
     onShow() {
     },

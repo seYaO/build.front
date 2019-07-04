@@ -4,20 +4,23 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.2",
-	"appid": "wx17ba8a29cdac9932",
-	"projectname": "seYa",
+	"libVersion": "2.6.4",
+	"appid": "wx13a65f73c5ca6435",
+	"projectname": "%E4%B8%80%E6%9C%A8%E6%A3%AE%E5%B0%8F%E7%AA%9D",
 	"debugOptions": {
 		"hidedInDevtools": []
 	},
 	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
 	"condition": {
 		"search": {
 			"current": -1,
