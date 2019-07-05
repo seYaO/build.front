@@ -1,23 +1,20 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var basic_1 = require("../mixins/basic");
-var index_1 = require("../mixins/observer/index");
+
 function mapKeys(source, target, map) {
-    // console.log('----vantOptions----')
-    // console.log('source--', source)
-    // console.log('target--', target)
-    // console.log('map--', map)
+    console.log('----vantOptions----')
+    console.log('source--', source)
+    console.log('target--', target)
+    console.log('map--', map)
     Object.keys(map).forEach(function (key) {
         if (source[key]) {
             target[map[key]] = source[key];
         }
     });
 }
+
 function VantComponent(vantOptions) {
-    // console.log('vantOptions--', vantOptions)
-    var _a;
-    if (vantOptions === void 0) { vantOptions = {}; }
-    var options = {};
+    let _a
+    if (vantOptions === void 0) { vantOptions = {} }
+    let options = {}
     mapKeys(vantOptions, options, {
         data: 'data',
         props: 'properties',
@@ -30,7 +27,7 @@ function VantComponent(vantOptions) {
         destroyed: 'detached',
         classes: 'externalClasses'
     });
-    var relation = vantOptions.relation;
+    let relations = vantOptions.relations
     if (relation) {
         // options.relations = Object.assign(options.relations || {}, (_a = {}, _a["../" + relation.name + "/index"] = relation, _a));
         options.relations = { ...options.relations, ...(_a = {}, _a["../" + relation.name + "/index"] = relation, _a) }
@@ -41,7 +38,7 @@ function VantComponent(vantOptions) {
     options.externalClasses.push('custom-class');
     // add default behaviors
     options.behaviors = options.behaviors || [];
-    options.behaviors.push(basic_1.basic);
+    // options.behaviors.push(basic_1.basic);
     // map field to form-field behavior
     if (vantOptions.field) {
         options.behaviors.push('wx://form-field');
@@ -51,7 +48,7 @@ function VantComponent(vantOptions) {
         multipleSlots: true,
         addGlobalClass: true
     };
-    index_1.observe(vantOptions, options);
+    // index_1.observe(vantOptions, options);
     Component(options);
+
 }
-exports.VantComponent = VantComponent;

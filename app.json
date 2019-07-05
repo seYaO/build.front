@@ -1,13 +1,18 @@
 {
-  "pages": [
-    "pages/home/home",
-    "pages/detail/detail"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#ff5346",
-    "navigationBarTextStyle": "white",
-    "navigationBarTitleText": "seYa"
-  },
-  "sitemapLocation": "sitemap.json"
+    "pages": [
+        "pages/home/home",
+        "pages/detail/detail"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#ff5346",
+        "navigationBarTextStyle": "white",
+        "navigationBarTitleText": "seYa",
+        "backgroundColor": "#f8f8f8"
+    },
+    "usingComponents": {
+        "van-cell": "./lib/cell/index",
+        "van-cell-group": "./lib/cell-group/index"
+    },
+    "sitemapLocation": "sitemap.json"
 }
