@@ -1,0 +1,10 @@
+<view>
+    <button>新增类型</button>
+    <button>新增作者</button>
+    <button>新增播音员</button>
+    <button bindtap="createBaidu">新增书</button>
+    <button>sdf</button>
+    <button>sdf</button>
+    <button>sdf</button>
+    <button>sdf</button>
+</view>
