@@ -3,7 +3,7 @@
         <view class="header">
             <view class="thumb">
                 <view class="image">
-                    <image class="image_img" src="{{imgUrl}}"></image>
+                    <image class="image_img" src="{{item.headerImg || imgUrl}}"></image>
                 </view>
             </view>
             <view class="content">
