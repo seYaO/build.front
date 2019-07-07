@@ -9,10 +9,12 @@
             <view class="content">
                 <view class="title">{{item.title}}</view>
                 <view class="desc ellipsis" wx:if="{{item.introduction}}">{{item.introduction}}</view>
-                <view wx:if="{{false}}">
-                    <view class="tag tag--plain hairline--surround">标签</view>
-                    <view class="tag tag--plain hairline--surround">标签</view>
+                <view wx:if="{{item.typeList && item.typeList.length}}" class="aTag">
+                    <block wx:for="{{item.typeList}}" wx:for-item="_item" wx:for-index="_index" wx:key="_index">
+                        <view class="tag tag--plain hairline--surround">{{_item.name}}</view>
+                    </block>
                 </view>
+                <view class="announcer" wx:if="{{item.announcerValue}}">播音: {{item.announcerValue}}{{item.announcerList.length > 3 ? '等' : ''}}</view>
             </view>
         </view>
         <view class="footer">

@@ -1,19 +1,27 @@
+.sList .sCard .aTag {
+    margin-bottom: 5px;
+}
+
+.sList .sCard .announcer {
+    color: #666;
+}
+
 .sList .sCard .btn {
     position: absolute;
     bottom: -5px;
-    right: -15px;
-    width: 120rpx;
-    height: 120rpx;
+    right: -10px;
+    width: 95rpx;
+    height: 95rpx;
     color: #fff;
     background: #ff5346;
-    border-top-left-radius: 120rpx;
-    border-bottom-right-radius: 5rpx;
+    border-top-left-radius: 95rpx;
+    border-bottom-right-radius: 10rpx;
 }
 
 .sList .sCard .btn>text {
     position: absolute;
-    bottom: 18rpx;
-    right: 18rpx;
-    font-size: 46rpx;
+    bottom: 16rpx;
+    right: 16rpx;
+    font-size: 40rpx;
     font-weight: bold;
 }

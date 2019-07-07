@@ -11,9 +11,184 @@ Page({
 
     init() { },
 
+    // 类型
+    createType() {
+        const MyTableObject = new wx.BaaS.TableObject('listenType')
+        const data = ['言情', '多人播', '青春']
+
+        return false
+
+        search((res) => {
+            res.map(item => {
+                let idx = data.indexOf(item.name)
+                if (idx > -1) {
+                    data.splice(idx, 1);
+                }
+            })
+
+            let list = []
+            data.map(item => {
+                list.push({ name: item })
+            })
+            // console.log(data)
+
+            if (list.length > 0)
+                create(list)
+        })
+
+        function search(cb) {
+            const query = new wx.BaaS.Query()
+            MyTableObject.setQuery(query).limit(1000).offset(0).find().then(res => {
+                const { meta, objects } = res.data
+                // console.log(objects)
+                typeof cb === 'function' && cb(objects);
+            })
+        }
+
+        function create(values) {
+            MyTableObject.createMany(values).then(res => {
+                console.log(res.data.succeed)
+            })
+        }
+    },
+
+    // 作者
+    createAuthor() {
+        const MyTableObject = new wx.BaaS.TableObject('author')
+        let data = ['侧侧轻寒']
+
+        // return false
+
+        search((res) => {
+            res.map(item => {
+                let idx = data.indexOf(item.name)
+                if (idx > -1) {
+                    data.splice(idx, 1);
+                }
+            })
+
+            let list = []
+            data.map(item => {
+                list.push({ name: item })
+            })
+            // console.log(data)
+
+            if (list.length > 0)
+                create(list)
+        })
+
+        function search(cb) {
+            const query = new wx.BaaS.Query()
+            MyTableObject.setQuery(query).limit(1000).offset(0).find().then(res => {
+                const { meta, objects } = res.data
+                // console.log(objects)
+                typeof cb === 'function' && cb(objects);
+            })
+        }
+
+        function create(values) {
+            MyTableObject.createMany(values).then(res => {
+                console.log(res.data.succeed)
+            })
+        }
+    },
+
+    // 播音员
+    createAnnouncer() {
+        const MyTableObject = new wx.BaaS.TableObject('announcer')
+        const data = ['清灵', '阑珊梦', '南割式', '红樱桃', '法朵', '鲛绡', '猫镇豆子', '生死朗读', '訫念', '张笑', '南瓜楠少', '百里屠屠', '大树', '小编C', '糖葫芦', '暮玖', '甘璐', '辰羽', '朝阳', '六苏']
+
+        return false
+
+        search((res) => {
+            res.map(item => {
+                let idx = data.indexOf(item.nickName)
+                if (idx > -1) {
+                    data.splice(idx, 1);
+                }
+            })
+
+            let list = []
+            data.map(item => {
+                list.push({ nickName: item })
+            })
+
+            if (list.length > 0)
+                create(list)
+        })
+
+        function search(cb) {
+            const query = new wx.BaaS.Query()
+            MyTableObject.setQuery(query).limit(1000).offset(0).find().then(res => {
+                const { meta, objects } = res.data
+                // console.log(objects)
+                typeof cb === 'function' && cb(objects);
+            })
+        }
+
+        function create(values) {
+            MyTableObject.createMany(values).then(res => {
+                console.log(res.data.succeed)
+            })
+        }
+    },
+
+    // 更新部分字段
+    updateBaidu() {
+        const data = ['多人播', '言情', '青春']
+        const value = ''
+        // const data = ['清灵', '阑珊梦', '南割式', '红樱桃', '法朵', '鲛绡', '猫镇豆子', '生死朗读', '訫念', '张笑', '南瓜楠少', '百里屠屠', '大树', '小编C']
+        let tableObj = {}
+        tableObj = { name: 'listenType', tit: 'name', value: 'types' }
+        // tableObj = { name: 'author', tit: 'name', value:'authorId' }
+        // tableObj = { name: 'announcer', tit: 'nickName', value:'announcers' }
+
+        // return false
+
+        search((res) => {
+            let _arr = [], _value = '', _obj = {}
+            res.map(item => {
+                if (tableObj.name == 'author') {
+                    //
+                } else {
+                    let idx = data.indexOf(item[tableObj.tit])
+                    if (idx > -1) {
+                        arr.push(item.id)
+                    }
+                }
+            })
+            // console.log(arr)
+
+            if (tableObj.name == 'author') {
+                _obj = { [tableObj.value]: _value }
+            } else {
+                o_objbj = { [tableObj.value]: _arr }
+            }
+            update('5d2076fd2be66d1154bc365f', obj)
+        })
+
+
+        function search(cb) {
+            const MyTableObject = new wx.BaaS.TableObject(tableObj.name)
+            const query = new wx.BaaS.Query()
+            MyTableObject.setQuery(query).limit(1000).offset(0).find().then(res => {
+                const { meta, objects } = res.data
+                typeof cb === 'function' && cb(objects);
+            })
+        }
+
+        function update(recordId = '5d2076fd2be66d1154bc365f', values) {
+            const MyTableObject = new wx.BaaS.TableObject('listenBook')
+            const product = MyTableObject.getWithoutData(recordId)
+            product.set(values).update().then(res => {
+                console.log(res.data)
+            })
+        }
+    },
+
     // 听书数据批量新建
     createBaidu() {
-        let MyTableObject = new wx.BaaS.TableObject('listenBook')
+        const MyTableObject = new wx.BaaS.TableObject('listenBook')
         const data = baiduData.data.list
         let list = [], reg = /[^\/]*$/g
         data.map((item, index) => {
@@ -30,6 +205,8 @@ Page({
             })
         })
         // console.log(list)
+
+        return false
 
         MyTableObject.createMany(list).then(res => {
             console.log(res.data.succeed)

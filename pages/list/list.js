@@ -22,10 +22,61 @@ Page({
         MyTableObject.setQuery(query).limit(limit).offset(offset).find().then(res => {
             const { meta, objects } = res.data
             page = Math.floor(meta.total_count / limit)
-            this.setData({ list: refresh ? [...objects] : list.concat([...objects]), })
+            objects.map(item => {
+                item.typeList = []
+                item.announcerList = []
+                item.announcerValue = ''
+                item.authorObj = {}
+                return item;
+            })
+            this.setData({ list: refresh ? [...objects] : list.concat([...objects]), }, () => {
+                this.updateList()
+            })
             if (refresh) {
                 wx.stopPullDownRefresh()
             }
+            wx.hideLoading()
+        })
+    },
+
+    updateList() {
+        // let { list } = this.data
+        this.data.list.map((item, index) => {
+            const { types = [], announcers = [], authorId = '' } = item;
+            // let typeList = [], announcerList = [], authorObj = {}
+
+            types.map(_item => {
+                let { list } = this.data
+                this.getData('listenType', _item, (res) => {
+                    list[index].typeList.push({ id: res.id, name: res.name });
+                    this.setData({ list })
+                })
+            })
+            // console.log(typeList)
+
+            announcers.map((_item, _index) => {
+                let { list } = this.data, isMore = announcers.length > 2
+                this.getData('announcer', _item, (res) => {
+                    if (_index < 3) {
+                        let _value = ` `
+                        list[index].announcerValue += res.nickName + _value
+                    }
+
+                    list[index].announcerList.push({ id: res.id, nickName: res.nickName });
+                    this.setData({ list })
+                })
+
+            })
+
+            // this.getData('author', authorId)
+        })
+    },
+
+    getData(tableName, recordId, cb) {
+        const Product = new wx.BaaS.TableObject(tableName)
+
+        Product.get(recordId).then(res => {
+            typeof cb === 'function' && cb(res.data);
         })
     },
 
@@ -45,6 +96,7 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        wx.showLoading({ title: '加载中', })
         this.getList({ refresh: true })
     },
 

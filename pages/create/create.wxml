@@ -1,9 +1,9 @@
 <view>
-    <button>新增类型</button>
-    <button>新增作者</button>
-    <button>新增播音员</button>
+    <button bindtap="createType">新增类型</button>
+    <button bindtap="createAuthor">新增作者</button>
+    <button bindtap="createAnnouncer">新增播音员</button>
     <button bindtap="createBaidu">新增书</button>
-    <button>sdf</button>
+    <button bindtap="updateBaidu">更新书</button>
     <button>sdf</button>
     <button>sdf</button>
     <button>sdf</button>

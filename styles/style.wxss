@@ -69,10 +69,13 @@
 .sCard {
     position: relative;
     box-sizing: border-box;
-    padding: 5px 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 5px 10px;
     color: #323233;
     font-size: 12px;
     background-color: #fafafa;
+    border-radius: 10rpx;
 }
 
 .sCard:not(:first-child) {
@@ -118,9 +121,10 @@
 }
 
 .sCard .title {
-    max-height: 32px;
+    margin-bottom: 5px;
+    max-height: 36px;
     font-weight: 500;
-    line-height: 16px;
+    line-height: 18px;
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -129,6 +133,7 @@
 }
 
 .sCard .desc {
+    margin-bottom: 5px;
     max-height: 20px;
     color: #7d7e80;
     line-height: 20px;
