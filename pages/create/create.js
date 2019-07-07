@@ -55,7 +55,7 @@ Page({
     // 作者
     createAuthor() {
         const MyTableObject = new wx.BaaS.TableObject('author')
-        let data = ['侧侧轻寒']
+        let data = ['']
 
         // return false
 
@@ -96,7 +96,7 @@ Page({
     // 播音员
     createAnnouncer() {
         const MyTableObject = new wx.BaaS.TableObject('announcer')
-        const data = ['清灵', '阑珊梦', '南割式', '红樱桃', '法朵', '鲛绡', '猫镇豆子', '生死朗读', '訫念', '张笑', '南瓜楠少', '百里屠屠', '大树', '小编C', '糖葫芦', '暮玖', '甘璐', '辰羽', '朝阳', '六苏']
+        const data = []
 
         return false
 
@@ -136,8 +136,8 @@ Page({
     // 更新部分字段
     updateBaidu() {
         const data = ['多人播', '言情', '青春']
-        const value = '侧侧轻寒'
-        // const data = ['清灵', '阑珊梦', '南割式', '红樱桃', '法朵', '鲛绡', '猫镇豆子', '生死朗读', '訫念', '张笑', '南瓜楠少', '百里屠屠', '大树', '小编C']
+        const value = ''
+        // const data = []
         let tableObj = {}
         // tableObj = { name: 'listenType', tit: 'name', value: 'types' }
         tableObj = { name: 'author', tit: 'name', value: 'authorId' }
@@ -188,7 +188,7 @@ Page({
         }
     },
 
-    // 听书数据批量新建
+    // 数据批量新建
     createBaidu() {
         const MyTableObject = new wx.BaaS.TableObject('listenBook')
         const data = baiduData.data.list
