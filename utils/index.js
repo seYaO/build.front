@@ -135,6 +135,26 @@ function parseDate(date) {
     return new Date(Date.parse(date.replace(/-/g, "/")));
 }
 
+/**
+ * 小数位数处理
+ * @param {*} price 
+ */
+const getDecimal = (value, number) => {
+    value = Number(value)
+    value = value.toFixed(number);
+    value = value.replace(/(\d*)(\.)(\d*)/, (a, b, c, d) => {
+        if (d === '00') {
+            return b;
+        } else {
+            if (/\d0/.test(d)) {
+                d = d[0];
+            }
+            return `${b}.${d}`;
+        }
+    })
+    return Number(value);
+}
+
 
 module.exports = {
     extend,
@@ -146,4 +166,5 @@ module.exports = {
     isFunction,
     isObject,
     isArray,
+    getDecimal,
 }

@@ -14,7 +14,8 @@
     },
     "usingComponents": {
         "van-cell": "./lib/cell/index",
-        "van-cell-group": "./lib/cell-group/index"
+        "van-cell-group": "./lib/cell-group/index",
+        "van-toast": "./lib/toast/index"
     },
     "sitemapLocation": "sitemap.json"
 }

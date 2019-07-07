@@ -1,1 +1,19 @@
-/* pages/list/list.wxss */
+.sList .sCard .btn {
+    position: absolute;
+    bottom: -5px;
+    right: -15px;
+    width: 120rpx;
+    height: 120rpx;
+    color: #fff;
+    background: #ff5346;
+    border-top-left-radius: 120rpx;
+    border-bottom-right-radius: 5rpx;
+}
+
+.sList .sCard .btn>text {
+    position: absolute;
+    bottom: 18rpx;
+    right: 18rpx;
+    font-size: 46rpx;
+    font-weight: bold;
+}

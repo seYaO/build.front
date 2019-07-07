@@ -1,15 +1,2 @@
-/* 引入内置样式 */
-/* @import './components/common/index.wxss'; */
-
-page {
-    color: #333;
-    font-size: 16px;
-    background: #f2f3f5;
-    min-height: 100vh;
-    box-sizing: border-box;
-    /* padding: 0 0 100rpx; */
-    -webkit-font-smoothing: antialiased;
-    font-family: 'PingFang SC', Helvetica, 'STHeiti STXihei', 'Microsoft YaHei', Tohoma, Arial, sans-serif;
-  }
-
-
+@import './styles/index.wxss';
+@import './styles/style.wxss';
