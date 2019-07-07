@@ -30,7 +30,7 @@ Page({
                 return item;
             })
             this.setData({ list: refresh ? [...objects] : list.concat([...objects]), }, () => {
-                this.updateList()
+                this.updateList(limit, offset)
             })
             if (refresh) {
                 wx.stopPullDownRefresh()
@@ -39,8 +39,39 @@ Page({
         })
     },
 
-    updateList() {
-        // let { list } = this.data
+    updateList(limit, offset) {
+        let datas = this.data.list
+
+        for (let i = offset * limit; i < limit * (offset + 1); i++) {
+            const { types = [], announcers = [], authorId = '' } = datas[i];
+
+            types.map(_item => {
+                let { list } = this.data
+                this.getData('listenType', _item, (res) => {
+                    list[i].typeList.push({ id: res.id, name: res.name });
+                    this.setData({ list })
+                })
+            })
+            // console.log(typeList)
+
+            announcers.map((_item, _index) => {
+                let { list } = this.data, isMore = announcers.length > 2
+                this.getData('announcer', _item, (res) => {
+                    if (_index < 3) {
+                        let _value = ` `
+                        list[i].announcerValue += res.nickName + _value
+                    }
+
+                    list[i].announcerList.push({ id: res.id, nickName: res.nickName });
+                    this.setData({ list })
+                })
+
+            })
+
+            // this.getData('author', authorId)
+        }
+
+        return false
         this.data.list.map((item, index) => {
             const { types = [], announcers = [], authorId = '' } = item;
             // let typeList = [], announcerList = [], authorObj = {}

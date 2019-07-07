@@ -136,20 +136,22 @@ Page({
     // 更新部分字段
     updateBaidu() {
         const data = ['多人播', '言情', '青春']
-        const value = ''
+        const value = '侧侧轻寒'
         // const data = ['清灵', '阑珊梦', '南割式', '红樱桃', '法朵', '鲛绡', '猫镇豆子', '生死朗读', '訫念', '张笑', '南瓜楠少', '百里屠屠', '大树', '小编C']
         let tableObj = {}
-        tableObj = { name: 'listenType', tit: 'name', value: 'types' }
-        // tableObj = { name: 'author', tit: 'name', value:'authorId' }
+        // tableObj = { name: 'listenType', tit: 'name', value: 'types' }
+        tableObj = { name: 'author', tit: 'name', value: 'authorId' }
         // tableObj = { name: 'announcer', tit: 'nickName', value:'announcers' }
 
-        // return false
+        return false
 
         search((res) => {
             let _arr = [], _value = '', _obj = {}
             res.map(item => {
                 if (tableObj.name == 'author') {
-                    //
+                    if (item.name == value) {
+                        _value = item.id
+                    }
                 } else {
                     let idx = data.indexOf(item[tableObj.tit])
                     if (idx > -1) {
@@ -162,9 +164,9 @@ Page({
             if (tableObj.name == 'author') {
                 _obj = { [tableObj.value]: _value }
             } else {
-                o_objbj = { [tableObj.value]: _arr }
+                _obj = { [tableObj.value]: _arr }
             }
-            update('5d2076fd2be66d1154bc365f', obj)
+            update('5d2076fd2be66d1154bc365f', _obj)
         })
 
 
