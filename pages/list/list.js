@@ -19,7 +19,7 @@ Page({
         let { list } = this.data
         const MyTableObject = new wx.BaaS.TableObject('listenBook')
         const query = new wx.BaaS.Query()
-        MyTableObject.setQuery(query).limit(limit).offset(offset).find().then(res => {
+        MyTableObject.setQuery(query).limit(limit).offset(offset * limit).find().then(res => {
             const { meta, objects } = res.data
             page = Math.floor(meta.total_count / limit)
             objects.map(item => {
