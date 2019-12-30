@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html>
+<%ctx.url="https://www.ly.com"%>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="桂林攻略，桂林旅游，同程旅游周边游" />
+    <meta name="description" content="桂林旅游节" />
+    <title>桂林山水甲天下</title>
+    <!-- pc公共样式 -->
+    <% includeId = cnztjscss %>
+    <link rel="stylesheet" ver="20170719" href="//file.40017.cn/tcweb/pc/public/css/zhuanti/zhuanticommon.0.0.7.css?v=2018011101" />
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=etBRsREU2D0Zj6enHl69ZsbhS8Tqqeae&s=1"></script>
+    <link rel="stylesheet" type="text/css" href="//file.40017.cn/fed/pc/jquery/css/slider/0.0.5/slider.css" />
+    <link rel="stylesheet" href="//file.40017.cn/fed/pc/jquery/css/slider2/0.0.1/slider2.css" />
+    <link rel="stylesheet" href="//css.40017.cn/cn/min/??/cn/s/2019/zt/pc/190816/190816.css?v=2019081507" />
+</head>
+
+<body>
+    <% includeId = cnzthead %>
+    
+    <% 
+        ctx.zhuantiFn = (channelid,pagesize) => {
+            return new Promise((resolve, reject) => {
+                ctx.request({
+                    url: `http://www.ly.com/scenery/zt/ZhuanTiAjax/ZhuanTiJsp.aspx?action=GETSPMSCENERYJSP&channelid=${channelid}&PageSize=${pagesize || 100}`,
+                    headers: {
+                        'user-agent': ctx.reqHeader['user-agent']
+                    },
+                }, (error, response, body) => {
+                    if (!error) {
+                        if (response.statusCode == 200) {
+                            let data = {
+                                List: []
+                            };
+                            try {
+                                data = JSON.parse(body);
+                            } catch (ex) {
+
+                            }
+                            return resolve(data);
+                        } else if (response.statusCode == 302 || response.statusCode == 301) {
+                            const redirectUrl = response.headers['location'];
+                            ctx.redirect(redirectUrl);
+                        }
+                    } else {
+                        ctx.error = error
+                    }
+                    return resolve(null);
+                });
+            })
+        }
+    %>
+    <% 
+        ctx.weatherFn = (cityid) => {
+            return new Promise((resolve, reject) => {
+                ctx.request({
+                    url: `https://www.ly.com/scenery/AjaxHelper/ZhuanTiHelp/ZTAjaxCall.aspx?action=GETSCENERYWEATHER&cityId=${cityid}`,
+                    headers: {
+                        'user-agent': ctx.reqHeader['user-agent']
+                    },
+                }, (error, response, body) => {
+                    if (!error) {
+                        if (response.statusCode == 200) {
+                                let data = [];
+                            try {
+                                data = JSON.parse(body);
+                            } catch (ex) {
+
+                            }
+                            return resolve(data);
+                        } else if (response.statusCode == 302 || response.statusCode == 301) {
+                            const redirectUrl = response.headers['location'];
+                            ctx.redirect(redirectUrl);
+                        }
+                    } else {
+                        ctx.error = error
+                    }
+                    return resolve(null);
+                });
+            })
+        }
+    %>
+    <%
+        ctx.imgformat =  (img, wid, hei) => {
+            if (img.match(/.gif$/)) {
+                return img
+            }
+            var regHttp = /^(http:|https:)/;
+            var reg = /\/\/((pic3\.40017\.cn\/)|(pic4\.40017\.cn\/)|(pic5\.40017\.cn\/))(?!.*(_00.))(.*)/;
+            var img = img && regHttp.test(img) ? img.replace(/(http:|https:)/, 'https:') : 'https:' + img;
+            var alreadySize = /_([0-9]{2,})x([0-9]{2,})_00/;
+            img = img.match(alreadySize) && img.match(alreadySize).length > 0 ? img.replace(alreadySize, '') : img;
+            return reg.test(img) && wid && hei ? (img.replace(/(.png|.jpg)/i, "_" + wid + "x" + hei + "_00" + /(.png|.jpg)/i.exec(img)[0])) : img;
+
+        }
+    %>
+<div class="both">
+    <div class="top">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/top_bg_1.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/top_bg_2.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/top_bg_3.jpg">
+    </div>
+    <!-- 初识桂林 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section1_bg_1.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section1_bg_2.jpg">
+        <div class="bg1">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section_bg_1.png">
+        </div>
+        <div class="section1">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190816/tit1.png" /></div>
+            <div class="sectionCon section1Con clearfix">
+                <%?
+                    ctx.weatherFn(102).then((data) =>{
+                        ctx.data = {
+                            WDay:'',
+                            Temperature:''
+                        } 
+                        if(data && data.length){
+                            let days = data[0].WDay.split('-')
+                            ctx.data = {
+                                WDay: `${days[1]}月${days[2]}日`,
+                                Temperature: data[0].Temperature
+                            } 
+                        }
+                        aries();
+                    });
+                %>
+                <div class="sdubTit">旅游资讯<span class="desc"><%=ctx.data.WDay%>  <%=ctx.data.Temperature%></span></div>
+                <div class="left">
+                    <a class="link" target="_blank" href="http://www.guilin.com.cn/"></a>
+                    <video src="https://video.40017.cn/uploadtool/dazhoubian/20190813/190813103105977258128224.MP4" controls="controls">您的浏览器暂不支持视频播放~</video>
+                </div>
+                <div class="right">
+                    <div class="infos">
+                        <%?
+                            ctx.zhuantiFn(42617).then((data) =>{
+                                ctx.data = data;
+                                aries();
+                            });
+                        %>
+                        <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                            <%ctx.data.List.slice(0, 4).forEach(function(v,k){ %>
+                                <a href="<%=v.Address ? v.Address : '' + v.Purl%>" target="_blank" class="info clearfix">
+                                    <div class="index">0<%=k+1%></div>
+                                    <div class="con"><%=v.SceneryName%></div>
+                                </a>
+                            <%}
+                        )} %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 品牌桂林 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section2_bg_1.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section2_bg_2.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section2_bg_3.jpg">
+        <div class="bg2">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section_bg_2.png">
+        </div>
+        <div class="section2">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190816/tit2.png" /></div>
+            <div class="sectionCon section2Con clearfix">
+                <div class="tabs">
+                    <div class="tab active">
+                        <span>景点</span>
+                    </div>
+                    <div class="tab">
+                        <span>酒店</span>
+                    </div>
+                    <div class="tab">
+                        <span>美食</span>
+                    </div>
+                </div>
+                <div class="sourceCon">
+                    <div class="source0 sourceBlock">
+                        <div class="clearfix">
+                            <%?
+                                ctx.zhuantiFn(42624).then((data) =>{
+                                    ctx.data = data;
+                                    aries();
+                                });
+                            %>
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="title ellipsis"><%=v.SceneryName%></div>
+                                            <div class="desc ellipsis"><%=v.Summary%></div>
+                                            <div class="bottom clearfix">
+                                                <div class="left">
+                                                        <span>¥<em><%=v.AmountAdvance%></em></span>起
+                                                </div>
+                                                <div class="right">
+                                                    <div class="btn">立即预订</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <div class="more">
+                            <a class="link" target="_blank" href="https://so.ly.com/scenery?q=%E6%A1%82%E6%9E%97">查看更多></a>
+                        </div>
+                    </div>
+                    <div class="source1 sourceBlock none">
+                        <div class="clearfix">
+                            <%?
+                                ctx.zhuantiFn(42625).then((data) =>{
+                                    ctx.data = data;
+                                    aries();
+                                });
+                            %>
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="tit2 ellipsis"><%=v.SceneryName%></div>
+                                            <div class="bottom clearfix">
+                                                <div class="">
+                                                    <div class="btn">立即预订</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <div class="more">
+                            <a class="link" target="_blank" href="https://www.ly.com/searchlist.html?cityid=102&sectionid=0&comedate=">查看更多></a>
+                        </div>
+                    </div>
+                    <div class="source2 sourceBlock none">
+                        <div class="clearfix">
+                            <%?
+                                ctx.zhuantiFn(42626).then((data) =>{
+                                    ctx.data = data;
+                                    aries();
+                                });
+                            %>
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="tit2"><%=v.SceneryName%></div>
+                                            <div class="txt2 multi-ellipsis--l2"><%=v.Summary%></div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <div class="more">
+                            <a class="link" target="_blank" href="https://www.ly.com/go/area/102.html">查看更多></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 玩转桂林 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section3_bg_1.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section3_bg_2.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section3_bg_3.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section3_bg_4.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section3_bg_5.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section3_bg_6.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section3_bg_7.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section3_bg_8.jpg">
+
+        <div class="section3">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190816/tit3.png" /></div>
+            <div class="sectionCon section3Con">
+                <div class="tabs clearfix">
+                    <div class="tab active">
+                        <span>自由行</span>
+                    </div>
+                    <div class="tab">
+                        <span>跟团游</span>
+                    </div>
+                </div>
+                <div class="sourceCon">
+                    <div class="source0 sourceBlock">
+                        <div class="clearfix">
+                            <%?
+                                ctx.zhuantiFn(42751).then((data) =>{
+                                    ctx.data = data;
+                                    aries();
+                                });
+                            %>
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="title multi-ellipsis--l2"><%=v.Summary%></div>
+                                            <div class="bottom clearfix">
+                                                <div class="">
+                                                    <div class="btn">立即预订</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <div class="more">
+                            <a class="link" href="https://so.ly.com/gny-zizhu?q=%E6%A1%82%E6%9E%97&sopage=sogny&prop=3&f=hot">查看更多产品>></a>
+                        </div>
+                    </div>
+                    <div class="source1 sourceBlock none">
+                        <div class="clearfix">
+                            <%?
+                                ctx.zhuantiFn(42747).then((data) =>{
+                                    ctx.data = data;
+                                    aries();
+                                });
+                            %>
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="title multi-ellipsis--l2"><%=v.Summary%></div>
+                                            <div class="bottom clearfix">
+                                                <div class="">
+                                                    <div class="btn">立即预订</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <div class="more">
+                            <a class="link" target="_blank" href="https://so.ly.com/gny-gentuan?q=%E6%A1%82%E6%9E%97&sopage=sogny&prop=1">查看更多产品>></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="titsub"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190816/tit3_sub.png" /></div>
+            <div class="sectionCon section3subCon">
+                <div class="tabs clearfix">
+                    <div class="tab active">1日游</div>
+                    <div class="tab">2日游</div>
+                    <div class="tab">3日游</div>
+                </div>
+                <div class="sourceCon">
+                    <div class="source0 sourceBlock">
+                        <div class="clearfix">
+                                <%?
+                                    ctx.zhuantiFn(42748).then((data) =>{
+                                        ctx.data = data;
+                                        aries();
+                                    });
+                                %>
+                                <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                    <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                        <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                            <div class="source">
+                                                <div class="img">
+                                                    <img src="<%=v.SceneryImg%>" />
+                                                </div>
+                                                <div class="title multi-ellipsis--l2"><%=v.Summary%></div>
+                                                <div class="bottom clearfix">
+                                                    <div class="">
+                                                        <div class="btn">立即预订</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    <%}
+                                )} %>
+                        </div>
+                        <div class="more">
+                            <a class="link" target="_blank" href="https://so.ly.com/zby-gentuan?q=%E6%A1%82%E6%9E%97&days=1&c=102">查看更多产品>></a>
+                        </div>
+                    </div>
+                    <div class="source1 sourceBlock none">
+                        <div class="clearfix">
+                            <%?
+                                ctx.zhuantiFn(42749).then((data) =>{
+                                    ctx.data = data;
+                                    aries();
+                                });
+                            %>
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="title multi-ellipsis--l2"><%=v.Summary%></div>
+                                            <div class="bottom clearfix">
+                                                <div class="">
+                                                    <div class="btn">立即预订</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <div class="more">
+                            <a class="link" target="_blank" href="https://gny.ly.com/list?dest=%E6%A1%82%E6%9E%97&prop=5&days=2">查看更多产品>></a>
+                        </div>
+                    </div>
+                    <div class="source2 sourceBlock none">
+                        <div class="clearfix">
+                            <%?
+                                ctx.zhuantiFn(42750).then((data) =>{
+                                    ctx.data = data;
+                                    aries();
+                                });
+                            %>
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="title multi-ellipsis--l2"><%=v.Summary%></div>
+                                            <div class="bottom clearfix">
+                                                <div class="">
+                                                    <div class="btn">立即预订</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <div class="more">
+                            <a class="link" target="_blank" href="https://gny.ly.com/list?dest=%E6%A1%82%E6%9E%97&prop=5&days=3">查看更多产品>></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- 桂林攻略推荐 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section4_bg_1.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section4_bg_2.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section4_bg_3.jpg">
+        <div class="section4">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190816/tit4.png" /></div>
+            <div class="sectionCon section4Con">
+                <div class="sourceCon">
+                    <div class="sourceTabs clearfix">
+                        <%?
+                            ctx.zhuantiFn(42632).then((data) =>{
+                                ctx.data = data;
+                                aries();
+                            });
+                        %>
+                        <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                            <%ctx.data.List.slice(0, 4).forEach(function(v,k){ %>
+                                <div class="sourceTab">
+                                    <div class="intro">
+                                        <img class="img" src="<%=v.SceneryImg%>" />
+                                        <img class="box" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/box<%=k+1%>.png" />
+                                        <div class="mask"></div>
+                                        <div class="maskValue">
+                                            <div class="text multi-ellipsis--l11"><%=v.Summary%></div>
+                                            <div class="more">
+                                                <a class="link" target="_blank" href="<%=v.Purl%>">查看详情>></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="value"><%=v.SceneryName%></div>
+                                </div>
+                            <%}
+                        )} %>
+                    </div>
+                    <div class="more">
+                        <a class="link" target="_blank" href="https://www.ly.com/travels/travel/searchResult?k=%25E6%25A1%2582%25E6%259E%2597&rt=2">查看更多攻略>></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- 天下山水情 寻梦桂林心 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section5_bg_1.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section5_bg_2.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section5_bg_3.jpg">
+
+        <div class="section5">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190816/tit5.png" /></div>
+            <div class="sectionCon section5Con">
+                <div class="sourceCon">
+                    <div class="cy sourceBlock">
+                        <div class="slider">
+                            <div class="source clearfix mSlider_con">
+                                <div class="slider_ul">
+                                    <%?
+                                        ctx.zhuantiFn(42634).then((data) =>{
+                                            ctx.data = data;
+                                            aries();
+                                        });
+                                    %>
+                                    <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                        <%ctx.data.List.forEach(function(v,k){ %>
+                                            <li class="clearfix">
+                                                <div class="left">
+                                                    <img class="img" src="<%=v.SceneryImg%>" />
+                                                    <img class="box" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/box5.png" />
+                                                </div>
+                                                <div class="right">
+                                                    <div class="tit multi-ellipsis--l5"><%=v.SceneryName%></div>
+                                                    <div class="text">
+                                                        <%=v.Summary%>
+                                                    </div>
+                                                    <div class="more">
+                                                        <a class="link" target="_blank" href="<%=v.Purl%>">查看详情>></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        <%}
+                                    )} %>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- 节庆宣传 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section6_bg_1.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section6_bg_2.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section6_bg_3.jpg">
+        <div class="bg3">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section_bg_3.png">
+        </div>
+        <div class="section6">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190816/tit6.png" /></div>
+            <div class="sectionCon section6Con">
+                <%?
+                    ctx.zhuantiFn(42633).then((data) =>{
+                        ctx.data = data;
+                        aries();
+                    });
+                %>
+                <div class="left">
+                    <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                        <%ctx.data.List.slice(0, 4).forEach(function(v,k){ %>
+                            <img class="img <%=k == 0 ? '' : 'none'%>" src="<%=v.SceneryImg%>" />
+                        <%}
+                    )} %>
+                    <img class="box" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/box6.png" />
+                </div>
+                <div class="right">
+                    <div class="tabs clearfix">
+                        <div class="tab active">
+                            <span>春</span>
+                        </div>
+                        <div class="tab">
+                            <span>夏</span>
+                        </div>
+                        <div class="tab">
+                            <span>秋</span>
+                        </div>
+                        <div class="tab">
+                            <span>冬</span>
+                        </div>
+                    </div>
+                    <div class="sourceCon">
+                        
+                        <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                            <%ctx.data.List.slice(0, 4).forEach(function(v,k){ %>
+                                <div class="source<%=k%> sourceBlock <%=k == 0 ? '' : 'none'%>">
+                                    <div class="text multi-ellipsis--l4">
+                                        <%=v.Summary%>
+                                    </div>
+                                    <div class="more">
+                                        <a class="link" target="_blank" href="<%=v.Purl%>">查看详情>></a>
+                                    </div>
+                                </div>
+                            <%}
+                        )} %>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- 互动平台 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section7_bg_1.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section7_bg_2.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section7_bg_3.jpg">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/section7_bg_4.jpg">
+        <div class="section7">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190816/tit7.png" /></div>
+            <div class="sectionCon section7Con">
+                <div class="phone ">
+                    <div class="ewmbox clearfix">
+                        <div class="ewmCon wb">
+                            <img class="ewm" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/wb_ewm.jpg" />
+                            <div class="line1">扫码关注</div>
+                            <div class="line1">旅游局官方微博</div>
+                        </div>
+                        <div class="ewmCon wx">
+                            <img class="ewm" src="//img1.40017.cn/cn/s/2019/zt/pc/190816/wx_ewm.jpg" />
+                            <div class="line1">扫码关注</div>
+                            <div class="line1">旅游局官方微信</div>
+                        </div>
+                    </div>
+                    <a class="link" target="_blank" href="http://www.guilin.com.cn/">桂林市文化广电和旅游局>></a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+    <% includeId = cnztfoot %>
+
+    <!--脚本-->
+    <script src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js?v=2016122001"></script>
+    <script type="text/javascript" src="//file.40017.cn/combo/fed/??pc/jquery/js/jquery.min.js,pc/jquery/js/util/0.0.1/util.js,pc/jquery/js/slider/0.0.5/slider.js"></script>
+    <script src="//file.40017.cn/fed/pc/jquery/js/slider2/0.0.1/slider2.js"></script>
+    <script src="//js.40017.cn/cn/min/??/cn/s/2019/zt/pc/190816/190816.js?v=2019081505"></script>
+</body>
+
+</html>

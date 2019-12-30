@@ -1,0 +1,634 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font: 12px/1.5 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #eb2d33;
+}
+
+body {
+    min-width: 1200px;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    vertical-align: top;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+.both {
+    width: 100%;
+    overflow: hidden;
+    font: 14px '微软雅黑', 'microsoft yahei ui', sans-serif;
+    position: relative;
+    background: #eb2d33;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: '';
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.multi-ellipsis--l2,
+.multi-ellipsis--l3,
+.multi-ellipsis--l4,
+.multi-ellipsis--l5,
+.multi-ellipsis--l11 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
+}
+
+.multi-ellipsis--l2 {
+    -webkit-line-clamp: 2
+}
+
+.multi-ellipsis--l3 {
+    -webkit-line-clamp: 3
+}
+
+.multi-ellipsis--l4 {
+    -webkit-line-clamp: 4
+}
+
+.multi-ellipsis--l5 {
+    -webkit-line-clamp: 5
+}
+
+.multi-ellipsis--l11 {
+    -webkit-line-clamp: 11
+}
+
+.noData {
+    text-align: center;
+    font-size: 28px;
+    width: 380px;
+    margin: 0 auto;
+    margin-top: 60px;
+    line-height: 46px;
+}
+
+.loader img {
+    width: 50px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.loadImg {
+    text-align: center;
+}
+
+.loadImg img {
+    display: block;
+    width: 100px;
+    margin: 100px auto 0;
+}
+
+.none {
+    display: none;
+}
+
+.imgbg {
+    position: relative;
+    left: 50%;
+    top: 0;
+    margin-left: -960px;
+    display: block;
+}
+
+.top {
+    position: relative;
+}
+
+.section {
+    position: relative;
+}
+
+/* 
+ * -------------------------------------------------
+ * common
+ * -------------------------------------------------
+ *
+ */
+
+
+.section1,
+.section2,
+.section3,
+.section4,
+.section5,
+.section6,
+.section7 {
+    top: 0;
+    height: 100%;
+}
+
+.tit,
+.titsub {
+    position: relative;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+.tit img {
+    width: 100%;
+}
+
+.sectionCon {
+    position: relative;
+    width: 1200px;
+    margin: 0 auto;
+    /* overflow: hidden; */
+}
+
+.sectionCon .bg {
+    position: absolute;
+}
+
+/* 
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * 页面样式
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ *
+ */
+
+/* 初识桂林 start */
+.section1 .tit {
+    width: 718px
+}
+
+.section1Con {
+    height: 450px;
+}
+
+.section1Con .bg {
+    left: 33px;
+    top: -48px;
+}
+
+.section1Con .name {
+    font-size: 36px;
+    color: #f9ca86;
+}
+
+.section1Con .desc {
+    font-size: 18px;
+    line-height: 34px;
+    color: #ffdfb1;
+}
+
+.section1Con .left {
+    margin-left: 146px;
+    position: relative;
+    float: left;
+    width: 500px;
+    height: 330px;
+}
+
+.section1Con .left video {
+    width: 100%;
+    height: 100%;
+}
+
+.section1Con .right {
+    position: relative;
+    float: right;
+    width: 364px;
+    margin-right: 166px;
+}
+
+.section1Con .btn {
+    margin-top: 10px;
+    float: right;
+    display: block;
+    width: 284px;
+    height: 78px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_1.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section1Con .btn:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_1_hover.png') no-repeat;
+}
+
+/* 初识桂林 end */
+
+/* 品牌桂林 start */
+.section2 .tit {
+    width: 949px
+}
+
+.section2 .titsub {
+    display: block;
+    width: 598px;
+    height: 110px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/titsub2.png') no-repeat;
+}
+
+.section2 .titsub .t {
+    padding-top: 10px;
+    font-size: 32px;
+    text-align: center;
+    color: #ffe199;
+}
+
+.section2 .titsub .btn {
+    display: block;
+    margin: 0 auto;
+    width: 216px;
+    height: 30px;
+    font-size: 22px;
+    text-align: center;
+    color: #ffe199;
+    border-radius: 30px;
+    background: #14634e;
+}
+
+.section2 .titsub .btn:hover {
+    color: #b3170b;
+    background: #f8ca88;
+}
+
+.section2Con {
+    height: 420px;
+}
+
+.section2Con .bg {
+    left: 90px;
+    top: -1px;
+}
+
+.section2Con .intro {
+    position: relative;
+    margin-left: 205px;
+    padding-top: 36px;
+    width: 840px;
+}
+
+.section2Con .intro p {
+    position: relative;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #523a00;
+}
+
+.section2Con .intro i {
+    position: absolute;
+    top: -2px;
+    left: -44px;
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+    line-height: 32px;
+    color: #fff;
+    text-align: center;
+    border-radius: 32px;
+    background: #b36e02;
+}
+
+/* 品牌桂林 end */
+
+/* 玩转桂林 start */
+.section3 .tit {
+    width: 886px
+}
+
+.section3 .titsub {
+    position: relative;
+    margin-top: 30px;
+    width: 625px;
+    height: 176px;
+}
+
+.section3 .titsub img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.section3Con .sourceCon {
+    margin-left: 102px;
+    padding-bottom: 30px;
+}
+
+.section3Con .detail {
+    float: left;
+    margin-right: 12px;
+    margin-bottom: 1px;
+    padding: 12px 11px 22px;
+    width: 490px;
+    height: 464px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/border1.png') no-repeat;
+    box-sizing: border-box;
+}
+
+.section3Con .source {
+    position: relative;
+    height: 430px;
+    background: #fff;
+}
+
+.section3Con .source .angle {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 98px;
+    height: 65px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/angle.png') no-repeat;
+}
+
+.section3Con .source .img {
+    width: 470px;
+    height: 220px;
+}
+
+.section3Con .source .img img {
+    width: 100%;
+    height: 100%;
+}
+
+.section3Con .source .title {
+    padding: 10px 18px 0;
+    font-size: 24px;
+    color: #333;
+    overflow: hidden;
+}
+
+.section3Con .source .subtit {
+    padding: 2px 18px 0;
+    padding-left: 18px;
+    padding-right: 18px;
+    height: 50px;
+    font-size: 18px;
+    color: #666;
+    overflow: hidden;
+}
+
+.section3Con .source .bottom {
+    padding: 20px 18px 0;
+    text-align: center;
+}
+
+.section3Con .source .left {
+    float: left;
+    font-size: 20px;
+    color: #333;
+}
+
+.section3Con .source .left span {
+    color: #ff480f;
+    font-weight: bold;
+}
+
+.section3Con .source .left em {
+    font-size: 36px;
+}
+
+.section3Con .source .right {
+    float: right;
+}
+
+.section3Con .source .btn {
+    display: inline-block;
+    width: 248px;
+    height: 58px;
+    line-height: 47px;
+    text-align: center;
+    font-size: 24px;
+    color: #141005;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_3.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section3Con .source .btn:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_3_hover.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section3Con .more {
+    padding-top: 30px;
+    text-align: center;
+}
+
+.section3Con .link {
+    display: inline-block;
+    width: 597px;
+    height: 82px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_more.png') no-repeat;
+}
+
+.section3Con .link:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_more_hover.png') no-repeat;
+}
+
+/* 玩转桂林 end */
+
+/* 桂林攻略推荐 start */
+.section4 .tit {
+    width: 949px
+}
+
+.section4 .titsub {
+    position: relative;
+    margin-top: 30px;
+    width: 625px;
+    height: 176px;
+}
+
+.section4 .titsub img {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.section4Con .bg {
+    left: 100px;
+    top: -10px;
+}
+
+.section4Con .sourceCon {
+    position: relative;
+    margin-left: 126px;
+    padding-top: 16px;
+    padding-bottom: 40px;
+}
+
+.section4Con .detail {
+    float: left;
+    margin-right: 12px;
+    margin-bottom: 14px;
+}
+
+.section4Con .source {
+    width: 308px;
+    height: 335px;
+    background: #fff;
+}
+
+.section4Con .source .img {
+    width: 308px;
+    height: 160px;
+}
+
+.section4Con .source .img img {
+    width: 100%;
+    height: 100%;
+}
+
+.section4Con .source .title {
+    padding: 10px 14px 0;
+    height: 56px;
+    font-size: 20px;
+    color: #333;
+    overflow: hidden;
+}
+
+.section4Con .source .bottom {
+    padding: 20px 0 0;
+    text-align: center;
+}
+
+.section4Con .source .btn {
+    display: inline-block;
+    width: 248px;
+    height: 58px;
+    line-height: 47px;
+    text-align: center;
+    font-size: 24px;
+    color: #141005;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_3.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section4Con .source .btn:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_3_hover.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section4Con .more {
+    padding-top: 30px;
+    text-align: center;
+}
+
+.section4Con .link {
+    display: inline-block;
+    width: 597px;
+    height: 82px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_more.png') no-repeat;
+}
+
+.section4Con .link:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_more_hover.png') no-repeat;
+}
+
+/* 桂林攻略推荐 end */
+
+/* 天下山水情 寻梦桂林心 start */
+.section5 .tit {
+    width: 534px
+}
+
+.section5 .bg {
+    left: 2px;
+    top: -86px;
+}
+
+.section5Con {
+    height: 570px;
+}
+
+.section5Con .left {
+    position: relative;
+    margin-left: 110px;
+    padding: 36px 42px 42px 35px;
+    float: left;
+    width: 671px;
+    height: 465px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/border2.png') no-repeat;
+    box-sizing: border-box;
+}
+
+.section5Con .left .mymap {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border: 4px solid #eb2d33;
+}
+
+.section5Con .right {
+    position: relative;
+    padding-top: 38px;
+    float: right;
+    width: 390px;
+}
+
+.section5Con .right a {
+    margin-top: 30px;
+    padding-left: 30px;
+    display: block;
+    cursor: pointer;
+    width: 286px;
+    height: 76px;
+    line-height: 70px;
+    font-size: 30px;
+    color: #835007;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn.png') no-repeat;
+    box-sizing: border-box;
+}
+
+.section5Con .right a img {
+    display: inline;
+    width: 68px;
+    height: 76px;
+}
+
+.section5Con .right a:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_hover.png') no-repeat;
+}
+
+/* 天下山水情 寻梦桂林心 end */
+
+
+
+/* footer */
+.foot {
+    padding: 30px 0;
+    font-size: 18px;
+    color: #600003;
+}
