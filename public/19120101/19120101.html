@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>全民砍价1块钱游宁夏</title>
+    <meta charset="utf-8">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--控制状态栏显示样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <!--格式检测-->
+    <meta content="telephone=no" name="format-detection" />
+    <!--控制页面打开大小-->
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        name="viewport">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
+    <!--自定义样式-->
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2019/zt/touch/191201/19120101.css?v=20191201.2">
+</head>
+
+<body>
+        <div class="app" id="app" v-cloak >
+            <!-- 头图 42877-->
+            <div class="top">
+                <img src="//img1.40017.cn/cn/s/2019/zt/touch/191201/share_top.jpg?v=1">
+                <!-- <div class="leaf">该目的地还有        份1块钱出游机会！</div> -->
+            </div>
+            <div class="content">
+                <div class="bargain" v-if="hasPcRed">
+                    <div class="value" v-if="needFirendHelp > helpPeopleCount">
+                        <div>已砍价：{{helpPeopleCount}}次</div>
+                        <div>还需砍价{{needFirendHelp - helpPeopleCount}}次</div>
+                    </div>
+                    <div class="value" v-else>
+                        <div></div>
+                        <div>已砍价成功</div>
+                    </div>
+                    <div class="progress">
+                        <div class="inter">
+                            <div class="bg" style="width: 60%;" :style="{ width: (helpPeopleCount/needFirendHelp*100) + '%' }"></div>
+                            <div class="text">{{helpPeopleCount/needFirendHelp*100}}%</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bTxt" v-else>好可惜~该目的地{{pcPrice}}元专属红包<span class="hot">已被领完！</span><br/>送您5元安慰红包</div>
+    
+                <div class="section1">
+                    <ul v-if="sectionData1 && sectionData1.length>0" class="source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData1">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'600x300')">
+                            </div>
+                            <div class="right">
+                                <h2 class="tit ellipsis">{{item.BiaoTi}}</h2>
+                                <!-- <h3 class="subtit multi-ellipsis--l2">{{item.Summary}}</h3> -->
+                                <div class="priceInfo">
+                                    <div class="info">
+                                        <div class="price">
+                                            <i class="qi">砍价后</i>
+                                            <i class="yuan">￥</i>
+                                            <em class="money">{{item.AmountAdvance}}</em>
+                                        </div>
+                                    </div>
+                                    <div class="ddd">同程价：¥{{item.Amount}}起</div>
+                                </div>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+    
+                <template v-if="!isEnd">
+                    <!-- 自己 -->
+                    <template v-if="isSelf">
+                        <template v-if="isShare">
+                            <template v-if="hasPcRed">
+                                <div class="bTxt" v-if="needFirendHelp > helpPeopleCount">您已发起砍价<br/>再邀{{needFirendHelp - helpPeopleCount}}名好友砍价得该目的地1块钱出游哦！</div>
+                                <div class="bTxt" v-else>您已帮好友砍价，<br/>快去发起自己的砍价吧！</div>
+                            </template>
+                        </template>
+                    </template>
+                    <!-- 好友助力 -->
+                    <template v-else>
+                        <template v-if="needFirendHelp > helpPeopleCount">
+                            <div class="bTxt" v-if="ishasact">您已帮好友砍价，<br/>快去发起自己的砍价吧！</div>
+                            <div class="bTxt" v-else>您的好友已发起砍价，邀请您帮TA助力！</div>
+                        </template>
+                        <template v-else>
+                            <div class="bTxt">您的好友已经<span class="hot">砍价成功</span>，<br/>拿到了1块钱出游专属红包{{pcPrice}}元！</div>
+                        </template>
+                    </template>
+                </template>
+                
+    
+                <!-- 按钮 -->
+                <div class="buttons" v-if="!isEnd">
+                    <!-- 自己 -->
+                    <template v-if="isSelf">
+                        <div class="btn2" v-if="!isShare" @click="ObjIdfn">发起砍价</div>
+                        <template v-else>
+                            <template v-if="hasPcRed">
+                                <div class="btn2" v-if="needFirendHelp > helpPeopleCount" @click="shareAct">找好友帮忙砍价</div>
+                                <div class="btn2" v-else @click="checkLogin(pcId,0)">领取{{pcPrice}}元专属红包</div>
+                            </template>
+                            <template v-else>
+                                <div class="btn1" @click="checkLogin(comfortId,2)">
+                                    <div class="t">领取安慰礼包</div>
+                                </div>
+                                <div class="btn2">XX元特惠购买</div>
+                            </template>
+                        </template>
+                    </template>
+                    <!-- 好友助力 -->
+                    <template v-else>
+                        <div class="btn1" v-if="!!ishasact" @click="gotohelp">
+                            <div class="t">帮TA砍价</div>
+                            <div class="d">领助力红包</div>
+                        </div>
+                        <a class="btn2" href="https://www.ly.com/scenery/zhuanti/ningxiath">我也要参加</a>
+                    </template>
+                    
+                </div>
+    
+                <!-- 帮砍好友 -->
+                <div class="headlist" v-if="helpPeopleCount">
+                    <div class="tit">
+                        <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191201/share_tit.png">
+                    </div>
+                    <div class="subtit">共有{{helpPeopleCount}}位好友帮我砍价</div>
+                    <ul class="list" v-if="helpList.length>0">
+                        <li class="item" v-for="(item, index) in helpList" v-if="item && item.Code">
+                            <div class="left">
+                                <img class="img" :src="item.Code">
+                            </div>
+                            <div class="right">
+                                <div class="t">{{item.MemberName}}</div>
+                                <div class="d">{{item.Date}}</div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+    
+                <!-- 活动规则 -->
+                <div class="rules">
+                    <div class="tit">
+                        <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191201/read.png">
+                        <div class="txt">1块钱游宁夏活动规则</div>
+                    </div>
+                    <div class="tip">
+                        <p>1、活动时间：2019年12月12日-2020年1月2日</p>
+                        <p>2、活动参与对象：每个登录账户仅能参与发起一次砍价，同一用户名、手机号、设备号、同一支付银行卡均视为同一账户，按照第一个参与本活动的账号参与结果有效，其余账号参与结果均视为无效。</p>
+                        <p>3、参与玩法：用户在登录同程APP后，可以直接在活动页面发起砍价，再通过邀请好友助力砍价，在规定时间内达到规定的助力人数，可以获得该景点专属红包，下单时直接抵用，享受该景点1块钱出游。</p>
+                        <p>4、活动细则</p>
+                        <p>1）活动期间每个用户仅限参与一次；</p>
+                        <p>2）用户可以为其他多个好友助力砍价，但同一好友只能助力一次，成功替第一个好友助力后，您可获得5元的景点红包一个；</p>
+                        <p>3）专属红包数量有限，按照砍价成功时间的先后顺序发放；</p>
+                        <p>5、红包发放规则：景点专属红包会直接发放至用户的同程账户中，自收到之日起至2020年1月2日有效，具体请以红包限时期限为准。您可在同程APP”我的-红包优惠券”中查看您所获得的专属优惠。</p>
+                        <p>6、红包使用规则：</p>
+                        <p>1）一个订单只能使用一个景区红包，一次性使用、不拆分、不转赠、不提现、不找零；</p>
+                        <p>2）使用专属红包预订的订单，不可退改，专属红包不予退还；</p>
+                        <p>3）专属红包仅同程旅游APP专享，限同程旅游客户端V7.4.3及以上版本使用。</p>
+                        <p>*对于以不正当方式参与活动的用户，包括但不限于恶意套现、恶意下单、恶意注册，利用程序漏洞等，同程旅游有权在不事先通知的情况下取消其参与活动的资格并回收相应奖品。</p>
+                    </div>
+                </div>
+    
+            </div>
+            
+            <!-- 提示弹框 -->
+            <div class="showErrBox">
+                <div class="showErr"></div>
+            </div>
+            <template v-if="helpGet">
+                <div class="dialog" v-show="pcTpye == 0">
+                    <div class="dialog-cont">
+                        <div class="close" @click="helpGet=false"></div>
+                        <div class="tit">恭喜</div>
+                        <div class="text">领取成功！</div>
+                        <ul class="redlist">
+                            <li class="item">
+                            <li class="item">
+                                <div class="center">
+                                    <div class="t">{{stitle}}专属红包</div>
+                                    <div class="d">1月2前有效</div>
+                                </div>
+                                <div class="right">
+                                    <div class="price">
+                                        <i class="yuan">￥</i>
+                                        <em class="money">{{pcPrice}}</em>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        <div class="txt">红包已放入您的账户，<br>
+                            可至“同程旅游--我的-优惠-红包”中查看！</div>
+                        
+                        <div class="btns">
+                            <a class="button" href="https://www.ly.com/scenery/zhuanti/ningxiath/">立即去逛逛></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dialog" v-show="pcTpye == 2">
+                    <div class="dialog-cont">
+                        <div class="close" @click="helpGet=false"></div>
+                        <div class="tit">恭喜</div>
+                        <div class="text">领取成功！</div>
+                        <div class="txt">5元红包已放入您的账户，<br>
+                            可至“同程旅游--我的-优惠-红包”中查看！</div>
+                        <ul class="redlist">
+                            <li class="item">
+                                <div class="left">
+                                    <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191201/share_red_icon.png">
+                                </div>
+                                <div class="center">
+                                    <div class="t">宁夏景区红包</div>
+                                    <div class="d">1月2前有效</div>
+                                </div>
+                                <div class="right">
+                                    <img v-if="true" class="over" src="https://img1.40017.cn/cn/s/2019/zt/touch/191201/share_red_over.png">
+                                    <div class="price">
+                                        <i class="yuan">￥</i>
+                                        <em class="money">111</em>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="btns">
+                            <a class="button" href="https://www.ly.com/scenery/zhuanti/ningxiath/">立即去逛逛></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="dialog" v-show="pcTpye == 1">
+                    <div class="dialog-cont">
+                        <div class="close" @click="helpGet=false"></div>
+                        <div class="tit">恭喜您</div>
+                        <div class="text">帮TA砍价成功！</div>
+                        <div class="txt">送您<span class="red">5元</span>助力红包！</div>
+                        <ul class="redlist">
+                            <li class="item">
+                                <div class="left">
+                                    <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191201/share_red_icon.png">
+                                </div>
+                                <div class="center">
+                                    <div class="t">宁夏景区红包</div>
+                                    <div class="d">1月2前有效</div>
+                                </div>
+                                <div class="right">
+                                    <img v-if="true" class="over" src="https://img1.40017.cn/cn/s/2019/zt/touch/191201/share_red_over.png">
+                                    <div class="price">
+                                        <i class="yuan">￥</i>
+                                        <em class="money">5</em>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                        
+                        <div class="btns">
+                            <div class="button primary">立即使用</div>
+                            <a class="button default" href="https://www.ly.com/scenery/zhuanti/ningxiath/">我也要参加</a>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            
+            <!-- 引导分享 分享右指 -->
+            <div class="share_img" v-show="leadShare" @click="leadShare = !leadShare">
+                <img src="//img1.40017.cn/cn/s/2016/touch/zt/47370/share_img.png" alt="">
+            </div>
+            <!-- <div class="footer">@同程旅游2019</div> -->
+        </div>
+    </body>
+<script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
+<!-- rem -->
+<script type="text/javascript">
+    (function () {
+        $(document).on('page:resize', function (e) {
+            var _w = $(document.body).width();
+            $('html').css('font-size', ((_w > 640) ? 640 : _w) / 640 * 100 + 'px');
+        });
+        $(document).trigger('page:resize');
+        $(window).on('resize', function () {
+            $(document).trigger('page:resize');
+        })
+    })();
+</script>
+<!-- 脚本 -->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/getclientinfo.3.0.0.js?v=11"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/ztc/SetShareFun.4.4.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
+<script type="text/javascript" src="//file.40017.cn/fed/touch/js/modules/location/0.0.8/location.js"></script>
+<!-- 轮播js -->
+<script src="//file.40017.cn/js40017cnproduct/cn/s/2018/zt/common/swiper.min.js"></script>
+<script>
+    /* 分享 */
+    shareImg = "http://img1.40017.cn/cn/s/2019/zt/touch/191201/share.jpg";
+    shareTitle = "全民砍价1块钱游宁夏";
+    shareUrl = "https://www.ly.com/scenery/zhuanti/ningxiathshare";
+    shareDesc = "惊喜大放价，相约去宁夏，宁夏全民粉丝月12.12开启狂欢！";
+    setShareFun.Pageview = "/Touch站专题/全民砍价1块钱游宁夏";
+    setShareFun.changeShareInfo();
+</script>
+<!-- 自定义脚本 -->
+<script src="//js.40017.cn/cn/min/??/cn/s/2019/zt/touch/191201/19120101.js?v=20191201.22"></script>
+
+</html>

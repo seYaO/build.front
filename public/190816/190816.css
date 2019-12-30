@@ -1,0 +1,1069 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font: 12px/1.5 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #bbdde2;
+}
+
+body {
+    min-width: 1200px;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    vertical-align: top;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+.both {
+    width: 100%;
+    overflow: hidden;
+    font: 14px '微软雅黑', 'microsoft yahei ui', sans-serif;
+    position: relative;
+    background: #bbdde2;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: '';
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.multi-ellipsis--l2,
+.multi-ellipsis--l3,
+.multi-ellipsis--l4,
+.multi-ellipsis--l5,
+.multi-ellipsis--l11 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
+}
+
+.multi-ellipsis--l2 {
+    -webkit-line-clamp: 2
+}
+
+.multi-ellipsis--l3 {
+    -webkit-line-clamp: 3
+}
+
+.multi-ellipsis--l4 {
+    -webkit-line-clamp: 4
+}
+
+.multi-ellipsis--l5 {
+    -webkit-line-clamp: 5
+}
+
+.multi-ellipsis--l11 {
+    -webkit-line-clamp: 11
+}
+
+.noData {
+    text-align: center;
+    font-size: 28px;
+    width: 380px;
+    margin: 0 auto;
+    margin-top: 60px;
+    line-height: 46px;
+}
+
+.loader img {
+    width: 50px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.loadImg {
+    text-align: center;
+}
+
+.loadImg img {
+    display: block;
+    width: 100px;
+    margin: 100px auto 0;
+}
+
+.none {
+    display: none;
+}
+
+.imgbg {
+    position: relative;
+    left: 50%;
+    top: 0;
+    margin-left: -960px;
+    display: block;
+}
+
+.top {
+    position: relative;
+}
+
+.section {
+    position: relative;
+}
+
+.bg1,
+.bg2,
+.bg3,
+.section1,
+.section2,
+.section3,
+.section4,
+.section5,
+.section6,
+.section7 {
+    position: absolute;
+    left: 0;
+    width: 100%;
+}
+
+.bg1 {
+    top: 165px;
+}
+
+.bg2 {
+    top: 141px;
+}
+
+.bg3 {
+    top: 115px;
+    z-index: 1;
+}
+
+.bg1 .imgbg {
+    margin-left: -614px;
+}
+
+.bg2 .imgbg {
+    margin-left: -624px;
+}
+
+.bg3 .imgbg {
+    margin-left: -549px;
+}
+
+.section1,
+.section2,
+.section3,
+.section4,
+.section5,
+.section6,
+.section7 {
+    top: 0;
+    height: 100%;
+}
+
+.section6 {
+    z-index: 2;
+}
+
+.tit,
+.titsub {
+    margin: 0 auto;
+}
+
+.section1 .tit {
+    width: 636px
+}
+
+.section2 .tit {
+    width: 566px
+}
+
+.section3 .tit {
+    width: 548px
+}
+
+.section3 .titsub {
+    width: 524px
+}
+
+.section4 .tit {
+    width: 674px
+}
+
+.section5 .tit {
+    width: 834px
+}
+
+.section6 .tit {
+    width: 800px
+}
+
+.section7 .tit {
+    width: 578px
+}
+
+.tit img {
+    width: 100%;
+}
+
+.sectionCon {
+    width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+/* 初识桂林 */
+.section1Con .sdubTit {
+    padding-top: 44px;
+    margin-left: 93px;
+    font-size: 30px;
+    color: #54a6a0;
+    margin-bottom: 10px;
+}
+
+.section1Con .sdubTit .desc {
+    margin-left: 20px;
+    font-size: 20px;
+    color: #8ca192;
+}
+
+.section1Con .left {
+    margin-left: 93px;
+    position: relative;
+    float: left;
+    width: 459px;
+    height: 283px;
+}
+
+.section1Con .left .link {
+    position: absolute;
+    top: 82px;
+    left: -76px;
+    width: 58px;
+    height: 152px;
+}
+
+.section1Con .left video {
+    width: 100%;
+    height: 100%;
+}
+
+.section1Con .right {
+    position: relative;
+    float: right;
+    width: 337px;
+    margin-right: 96px;
+}
+
+.section1Con .right .infos {
+    height: 337px;
+    overflow: hidden;
+}
+
+.section1Con .right .info {
+    display: block;
+    width: 100%;
+    height: 68px;
+    line-height: 68px;
+    margin-bottom: 10px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn1.png')
+}
+
+.section1Con .right .info:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn1_hover.png')
+}
+
+.section1Con .right .info>div {
+    float: left;
+    color: #fff;
+    font-size: 18px;
+}
+
+.section1Con .right .info .index {
+    margin-left: 27px;
+    margin-right: 8px;
+    width: 28px;
+    height: 68px;
+    line-height: 68px;
+    text-align: center;
+    font-size: 16px;
+    color: #f8d58d;
+}
+
+.section1Con .right .info:hover .index {
+    color: #fff;
+}
+
+.section1Con .right .info .con {
+    width: 220px;
+    color: #a65d00;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.section1Con .right .info:hover .con {
+    color: #fff;
+}
+
+/* 品牌桂林 */
+.section2 .detail {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 12px;
+}
+
+.section2 .detail:nth-child(3n) {
+    margin-right: 0;
+}
+
+.section2 .source {
+    padding: 13px 12px;
+    width: 239px;
+    height: 237px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/box.png') no-repeat;
+    background-size: 100% 100%;
+    box-sizing: border-box;
+}
+
+.section2 .source .img {
+    width: 214px;
+    height: 120px;
+}
+
+.section2 .source .img img {
+    width: 100%;
+    height: 100%;
+}
+
+.section2 .source .title {
+    margin-top: 6px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+    overflow: hidden;
+}
+
+.section2 .source .desc {
+    font-size: 16px;
+    color: #333;
+}
+
+.section2 .source .bottom {
+    margin-top: 5px;
+    text-align: center;
+}
+
+.section2 .source .left {
+    float: left;
+    font-size: 16px;
+    color: #333;
+}
+
+.section2 .source .left span {
+    color: #ae8839;
+    font-weight: bold;
+}
+
+.section2 .source .left em {
+    font-size: 24px;
+}
+
+.section2 .source .right {
+    float: right;
+}
+
+.section2 .source .btn {
+    display: inline-block;
+    width: 104px;
+    height: 34px;
+    line-height: 34px;
+    text-align: center;
+    font-size: 18px;
+    color: #141005;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn2.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section2 .source .btn:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn2_hover.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section2 .source .tit2 {
+    margin-top: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    color: #333;
+}
+
+.section2 .source .txt2 {
+    font-size: 16px;
+    color: #333;
+}
+
+.section2 .sourceCon .more {
+    padding-top: 6px;
+    text-align: right;
+}
+
+.section2 .sourceCon .link {
+    font-size: 20px;
+    color: #366c78;
+}
+
+.section2Con .tabs {
+    margin-top: 112px;
+    margin-left: 57px;
+    width: 154px;
+    float: left;
+}
+
+.section2Con .tabs .tab {
+    margin-bottom: 36px;
+    width: 154px;
+    height: 56px;
+    font-size: 30px;
+    line-height: 56px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn4.png') no-repeat;
+}
+
+.section2Con .tabs .tab:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn4_hover.png') no-repeat center center;
+}
+
+.section2Con .tabs .active {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn4_hover.png') no-repeat center center;
+}
+
+.section2Con .sourceCon {
+    float: right;
+    margin-top: 56px;
+    margin-right: 26px;
+    width: 738px;
+    height: 636px;
+    overflow: hidden;
+}
+
+.section2Con .sourceBlock>.clearfix {
+    height: 500px;
+}
+
+/* 玩转桂林 */
+.section3 .detail {
+    float: left;
+    margin-right: 12px;
+    margin-bottom: 20px;
+}
+
+.section3 .detail:nth-child(3n) {
+    margin-right: 0;
+}
+
+.section3 .source {
+    padding: 18px 16px;
+    width: 325px;
+    height: 327px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/box.png') no-repeat;
+    box-sizing: border-box;
+}
+
+.section3 .source .img {
+    width: 292px;
+    height: 165px;
+}
+
+.section3 .source .img img {
+    width: 100%;
+    height: 100%;
+}
+
+.section3 .source .title {
+    margin-top: 10px;
+    height: 60px;
+    font-size: 22px;
+    color: #333;
+    overflow: hidden;
+}
+
+.section3 .source .bottom {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.section3 .source .left {
+    float: left;
+    font-size: 22px;
+    color: #333;
+}
+
+.section3 .source .left span {
+    color: #ae8839;
+    font-weight: bold;
+}
+
+.section3 .source .left em {
+    font-size: 32px;
+}
+
+.section3 .source .right {
+    float: right;
+}
+
+.section3 .source .btn {
+    display: inline-block;
+    width: 142px;
+    height: 47px;
+    line-height: 47px;
+    text-align: center;
+    font-size: 24px;
+    color: #141005;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn2.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section3 .source .btn:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn2_hover.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section3 .sourceCon .more {
+    padding-top: 10px;
+    text-align: center;
+}
+
+.section3 .sourceCon .link {
+    display: inline-block;
+    width: 298px;
+    height: 51px;
+    line-height: 51px;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn9.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section3 .sourceCon .link:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn9_hover.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section3Con {
+    padding-top: 40px;
+}
+
+.section3Con .tabs {
+    margin-left: 190px;
+}
+
+.section3Con .tab {
+    margin-right: 70px;
+    float: left;
+    width: 271px;
+    height: 90px;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn10.png') no-repeat;
+}
+
+.section3Con .tab:last-child {
+    margin-right: 0;
+}
+
+.section3Con .tab:hover,
+.section3Con .tab.active {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn10_hover.png') no-repeat;
+}
+
+.section3Con .tab span {
+    display: block;
+    width: 224px;
+    line-height: 74px;
+    font-size: 36px;
+    text-align: center;
+    color: #fff;
+}
+
+.section3Con .sourceCon {
+    margin-top: 20px;
+}
+
+.titsub {
+    margin-top: 50px;
+}
+
+.section3subCon {
+    margin-top: 48px;
+}
+
+.section3subCon .tabs {
+    margin-left: 86px;
+}
+
+.section3subCon .tab {
+    margin-right: 82px;
+    float: left;
+    width: 222px;
+    height: 75px;
+    line-height: 68px;
+    font-size: 36px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn3.png') no-repeat;
+}
+
+.section3subCon .tab:last-child {
+    margin-right: 0;
+}
+
+.section3subCon .tab:hover,
+.section3subCon .tab.active {
+    color: #5c2d00;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn3_hover.png') no-repeat;
+}
+
+.section3subCon .sourceCon {
+    margin-top: 28px;
+}
+
+/* 桂林攻略推荐 */
+.section4Con .sourceCon {
+    margin-top: 38px;
+}
+
+.section4Con .img {
+    width: 222px;
+    height: 460px;
+}
+
+.section4Con .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 222px;
+    height: 460px;
+    z-index: 1;
+}
+
+.section4Con .sourceTabs {
+    height: 560px;
+}
+
+.section4Con .sourceTab {
+    float: left;
+    margin-right: 35px;
+    width: 222px;
+}
+
+.section4Con .sourceTab:last-child {
+    margin-right: 0;
+}
+
+.section4Con .sourceTab .intro {
+    position: relative;
+    width: 222px;
+}
+
+.section4Con .sourceTab .intro .mask {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 222px;
+    height: 460px;
+    background: rgba(0, 0, 0, 0.5);
+
+}
+
+.maskValue {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 222px;
+    height: 460px;
+    padding: 40px 30px;
+    box-sizing: border-box;
+    z-index: 2;
+}
+
+.section4Con .sourceTab .intro .text {
+    height: 330px;
+    font-size: 18px;
+    color: #fff;
+    line-height: 30px;
+    overflow: hidden;
+}
+
+.section4Con .sourceTab .intro .more {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.section4Con .sourceTab .intro .link {
+    display: inline-block;
+    width: 154px;
+    height: 43px;
+    line-height: 43px;
+    font-size: 20px;
+    color: #482a00;
+    text-align: center;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn7.png') no-repeat;
+}
+
+.section4Con .sourceTab .intro .link:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn7_hover.png') no-repeat;
+}
+
+.section4Con .sourceTab .intro:hover .mask,
+.section4Con .sourceTab .intro:hover .maskValue {
+    display: block;
+}
+
+.section4Con .sourceTab .value {
+    padding: 10px 30px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #2c5c62;
+}
+
+.section4Con .sourceCon .more {
+    text-align: center;
+}
+
+.section4Con .sourceCon .link {
+    display: inline-block;
+    width: 298px;
+    height: 51px;
+    line-height: 51px;
+    font-size: 24px;
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn9.png') no-repeat;
+}
+
+.section4Con .sourceCon .link:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn9_hover.png') no-repeat;
+}
+
+
+/* 天下山水情 寻梦桂林心 */
+.section5Con .sourceCon {
+    padding-top: 28px;
+}
+
+.section5Con .sourceBlock {
+    position: relative;
+}
+
+.section5Con .sourceBlock .left {
+    float: left;
+}
+
+.section5Con .sourceBlock .right {
+    width: 473px;
+    float: right;
+}
+
+.section5Con .sourceBlock .img {
+    width: 508px;
+    height: 305px;
+}
+
+.section5Con .sourceBlock .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 508px;
+    height: 305px;
+    z-index: 1;
+}
+
+.section5Con .sourceBlock .tit {
+    margin-top: 20px;
+    font-size: 30px;
+    color: #1e555c;
+    font-weight: bold;
+}
+
+.section5Con .sourceBlock .text {
+    height: 184px;
+    font-size: 18px;
+    line-height: 36px;
+    color: #507d83;
+    overflow: hidden;
+}
+
+.section5Con .sourceBlock .more {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.section5Con .sourceBlock .link {
+    display: inline-block;
+    width: 154px;
+    height: 43px;
+    line-height: 43px;
+    font-size: 20px;
+    color: #482a00;
+    text-align: center;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn7.png') no-repeat;
+}
+
+.section5Con .sourceBlock .link:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn7_hover.png') no-repeat;
+}
+
+.section5Con .slider {
+    width: 1000px;
+    height: 366px;
+    margin: 0 auto;
+}
+
+.section5Con .slider .source {
+    width: 1000px;
+    height: 305px;
+    overflow: hidden;
+}
+
+.section5Con .slider .source .slider_ul li {
+    width: 1000px;
+    height: 305px;
+    overflow: hidden;
+}
+
+.mSlider_nav_circle {
+    background: none;
+    z-index: 200;
+}
+
+.mSlider_nav_circle:after,
+.mSlider_nav_circle:before {
+    background: none;
+}
+
+.mSlider_nav_circle li {
+    margin-left: 16px;
+    background: transparent;
+    width: 15px;
+    height: 15px;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 3px solid #799a93;
+}
+
+.mSlider_nav_circle li.current {
+    background: #799a93;
+}
+
+/* 节庆宣传 */
+.section6Con .left {
+    position: relative;
+    margin-top: 113px;
+    margin-left: 107px;
+    width: 379px;
+    height: 305px;
+    background: #fff;
+    float: left;
+}
+
+.section6Con .img {
+    width: 379px;
+    height: 305px;
+}
+
+.section6Con .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 379px;
+    height: 305px;
+    z-index: 1;
+}
+
+.section6Con .right {
+    margin-top: 99px;
+    margin-right: 110px;
+    width: 390px;
+    float: right;
+}
+
+.section6Con .tabs {
+    margin-left: 22px;
+}
+
+.section6Con .tab {
+    margin-right: 10px;
+    float: left;
+    width: 83px;
+    height: 82px;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn5.png') no-repeat;
+}
+
+.section6Con .tab:last-child {
+    margin-right: 0;
+}
+
+.section6Con .tab:hover,
+.section6Con .tab.active {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn5_hover.png') no-repeat;
+}
+
+.section6Con .tab span {
+    display: block;
+    width: 82px;
+    line-height: 76px;
+    font-size: 28px;
+    color: #fff;
+    text-align: center;
+}
+
+.section6Con .sourceCon {
+    margin-top: 10px;
+}
+
+.section6Con .sourceBlock {}
+
+.section6Con .sourceBlock .text {
+    height: 145px;
+    font-size: 20px;
+    line-height: 36px;
+    color: #7f9c96;
+    overflow: hidden;
+}
+
+.section6Con .sourceBlock .more {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.section6Con .sourceBlock .link {
+    display: inline-block;
+    width: 154px;
+    height: 43px;
+    line-height: 43px;
+    font-size: 20px;
+    color: #482a00;
+    text-align: center;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn7.png') no-repeat;
+}
+
+.section6Con .sourceBlock .link:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn7_hover.png') no-repeat;
+}
+
+/* 互动平台 */
+.section7Con .phone {
+    margin: 0 auto;
+    margin-top: 44px;
+    width: 386px;
+    height: 733px;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/phone.png?v=1') no-repeat;
+}
+
+.section7Con .wb {
+    margin-left: 28px;
+    float: left;
+}
+
+.section7Con .wx {
+    margin-right: 27px;
+    float: right;
+}
+
+.section7Con .ewmbox {
+    padding-top: 310px;
+}
+
+.section7Con .ewmCon {
+    width: 154px;
+    height: 230px;
+    background: #fff;
+    overflow: hidden;
+}
+
+.section7Con .ewmCon .ewm {
+    margin-bottom: 10px;
+    width: 154px;
+    height: 154px;
+
+}
+
+.section7Con .ewmCon.wb .ewm {
+    padding: 8px;
+    width: 138px;
+    height: 138px;
+}
+
+.section7Con .ewmCon .line1 {
+    font-size: 18px;
+    line-height: 28px;
+    color: #000;
+    text-align: center;
+    width: 100%;
+}
+
+.section7Con .link {
+    margin: 0 auto;
+    display: block;
+    width: 298px;
+    height: 51px;
+    line-height: 51px;
+    font-size: 20px;
+    color: #38393c;
+    text-align: center;
+    cursor: pointer;
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn8.png') no-repeat;
+}
+
+.section7Con .link:hover {
+    background: url('//img1.40017.cn/cn/s/2019/zt/pc/190816/btn8_hover.png') no-repeat;
+}
+
+.foot {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    line-height: 60px;
+    color: #fff;
+    font-size: 14px;
+    bottom: 140px;
+}

@@ -1,0 +1,248 @@
+@charset "UTF-8";
+
+html {
+    min-height: 100%;
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-size: 50px;
+    overflow-x: hidden
+}
+
+body {
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+    color: #333;
+    padding: 0;
+    font: normal 0.12em/1.4 'Microsoft YaHei', Verdana, sans-serif;
+    overflow-x: hidden;
+    font-size: 0.24rem;
+    background: #e5f4fd
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-style: normal
+}
+
+img,
+input,
+select {
+    border: 0;
+    vertical-align: middle
+}
+
+ul,
+ol {
+    list-style: none outside none
+}
+
+a,
+div,
+select {
+    -webkit-tap-highlight-color: transparent
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: ''
+}
+
+.clearfix:after {
+    clear: both
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none
+}
+
+a,
+a:link,
+a:visited,
+a:focus {
+    text-decoration: none;
+    color: #333
+}
+
+h2,
+h3,
+h3,
+h4,
+h5 {
+    font-weight: normal
+}
+
+[v-cloak] {
+    display: none
+}
+
+.top,
+.title,
+.intro {
+    position: relative;
+    width: 100%;
+    pointer-events: none
+}
+
+.subtit {
+    position: relative;
+    width: 100%;
+}
+
+.top img,
+.title img,
+.subtit img,
+.intro img,
+.imgbg {
+    display: block;
+    width: 100%;
+}
+
+.section {
+    position: relative;
+}
+
+.section .desc {
+    position: relative;
+    padding: .12rem .2rem .16rem;
+    font-size: .24rem;
+    z-index: 1;
+}
+
+.section .desc>div {
+    display: inline-block;
+    margin-top: .12rem;
+    padding: .1rem .28rem;
+    font-size: .24rem;
+    line-height: 1;
+    color: #fff;
+    border-radius: .34rem;
+}
+
+.section .desc .bold {
+    font-weight: bold;
+}
+
+.section .subtit {
+    position: relative;
+}
+
+.section .subtit .link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.section .subtit {
+    margin-bottom: .26rem;
+}
+
+.section .intro {
+    padding-bottom: .40rem;
+}
+
+.section1 {
+    padding-bottom: .4rem;
+    background: #fff;
+}
+
+.section1 .bg {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 10rem;
+    background: #f8faff;
+}
+
+.section1 .title {
+    margin-top: -.26rem
+}
+
+.section1 .desc>div {
+
+    background: #259bee;
+}
+
+.section2 {
+    padding-bottom: .5rem;
+    background: #fcfae7;
+}
+
+.section2 .title {
+    margin-top: -.65rem
+}
+
+.section2 .desc>div {
+    background: #efbc32;
+}
+
+.section3 {
+    background: #edfef7;
+}
+
+.section3 .title {
+    margin-top: -.51rem
+}
+
+.section3 .desc>div {
+    background: #04cca4;
+}
+
+.section4 {
+    padding-bottom: .6rem;
+    background: #e5f4fd;
+}
+
+.section4 .intro {
+    padding: 0 .3rem;
+}
+
+.section4 .values {
+    position: relative;
+    margin-top: .4rem;
+    padding: .18rem;
+    background: #259bee;
+}
+
+.section4 .key {
+    position: absolute;
+    top: -.13rem;
+    left: 50%;
+    margin-left: -1.12rem;
+    width: 2.25rem;
+    height: .4rem;
+    line-height: .4rem;
+    font-size: .24rem;
+    text-align: center;
+    color: #259bee;
+    background: #fff;
+    border: 1px solid #259bee;
+}
+
+.section4 .value {
+    padding: .3rem 0;
+    color: #fff;
+    border: 1px solid #fff;
+}
+
+.section4 .value p {
+    text-align: center;
+    font-size: .2rem;
+    line-height: 1.8;
+}
+
+.footer {
+    height: .6rem;
+    line-height: .6rem;
+    text-align: center;
+    color: #fff;
+    font-size: .24rem;
+    background: #259bee;
+}

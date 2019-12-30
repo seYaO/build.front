@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>11.11门票特卖会</title>
+    <meta charset="utf-8">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--控制状态栏显示样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <!--格式检测-->
+    <meta content="telephone=no" name="format-detection" />
+    <!--控制页面打开大小-->
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        name="viewport">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
+    <!--自定义样式-->
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2019/zt/touch/191101/191101.css?v=20191101.2">
+</head>
+
+<body>
+    <div class="app" id="app" v-cloak @click="showProvList = false">
+        <!-- loading蒙层 -->
+        <div class="loading" v-show="loading">
+            <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+        </div>
+        <!-- 头图 42877-->
+        <div class="top">
+            <img :src="isxcx ? Ixcx : Ih5">
+        </div>
+        <div class="box_red">
+            <img src="//img1.40017.cn/cn/s/2019/zt/touch/191101/box_red.jpg">
+            <div class="cakes">
+                <div class="cake" v-for="(item,index) in redlist">
+                    <div class="pirce">
+                        <i class="yuan">￥</i>
+                        <em class="money">{{item.red}}</em>
+                    </div>
+                    <div class="value">{{isxcx ? '景点卡券' : '景点红包'}}</div>
+                    <div class="txt">{{item.total}}</div>
+                    <div class="btn" :class="{disable: item.isGet}">{{item.isGet ? '已领取' : '点击领取'}}</div>
+                    <div class="overflow" @click="checkLogin(index)"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 省份选择 -->
+        <div id="provBox" class="show-fix-box" @click.stop>
+            <div class="top-fix" @click="showProvList = !showProvList">
+                <img src="//img1.40017.cn/cn/s/2019/zt/touch/191101/address.png" alt="">
+                {{onProvName}}
+            </div>
+            <div class="provBox" v-show="showProvList">
+                <div class="pro">
+                    <div :class="{on : onProvId == list.ProvinceId ? onProvName = list.ProvinceName : false}"
+                        :value="list.ProvinceId" v-for="list in provAjaxList"
+                        @click="clickChangeProv(list.ProvinceId,list.ProvinceName)">
+                        <span>{{list.ProvinceName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 11.11专区(44048) -->
+        <div class="section1" v-if="sectionData1">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191101/tit1.png">
+                <div class="txt">一降到底 去景区来场邂逅</div>
+            </div>
+            <div class="box_top"></div>
+            <div class="box_content">
+                <div class="sectionCon1">
+                    <div class="loader" v-show="sectionData1 && sectionData1.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData1">暂无资源~~</div>
+                    <ul v-if="sectionData1 && sectionData1.length>0" class="thList source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData1" @click="windowLocationHref('detail',item,index)">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'260x248')">
+                                <div class="label" v-if="parseFloat((item.Amount-item.AmountAdvance).toFixed(2))!=0">省{{parseFloat((item.Amount-item.AmountAdvance).toFixed(2))}}元</div>
+                                <div class="smask"></div>
+                                <div class="city">
+                                    <div class="value"><img src="//img1.40017.cn/cn/s/2019/zt/touch/191101/address.png" alt="">{{item.CityName}}</div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
+                                <h3 class="subtit multi-ellipsis--l2">{{item.BCTTicketName}}</h3>
+                                <div class="priceInfo">
+                                    <div class="info">
+                                        <div class="price">
+                                            <i class="qi">狂欢价</i>
+                                            <i class="yuan">￥</i>
+                                            <em class="money">{{item.AmountAdvance}}</em>
+                                            <i class="qi">起</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button">立即出发</div>
+                            </div>
+                        </a>
+                    </ul>
+                    <!-- <div class="more1" @click="moreFn1">立即领取免费特产>>></div> -->
+                </div>
+            </div>
+            <div class="box_bottom"></div>
+            
+        </div>
+        <!-- 买一送一专区(44049) -->
+        <div class="section2" v-if="sectionData2">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191101/tit2.png">
+                <div class="txt">票已备好 只为给你约TA的理由</div>
+            </div>
+            <div class="box_top"></div>
+            <div class="box_content">
+                <div class="sectionCon2">
+                    <div class="loader" v-show="sectionData2 && sectionData2.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData2">暂无资源~~</div>
+                    <ul v-if="sectionData2 && sectionData2.length>0" class="thList source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData2" @click="windowLocationHref('detail',item,index)">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'260x248')">
+                                <!-- <div class="label" v-if="parseFloat((item.Amount-item.AmountAdvance).toFixed(2))!=0">省{{parseFloat((item.Amount-item.AmountAdvance).toFixed(2))}}元</div> -->
+                                <div class="label">买一送一</div>
+                                <div class="smask"></div>
+                                <div class="city">
+                                    <div class="value"><img src="//img1.40017.cn/cn/s/2019/zt/touch/191101/address.png" alt="">{{item.CityName}}</div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
+                                <h3 class="subtit multi-ellipsis--l2">{{item.BCTTicketName}}</h3>
+                                <div class="priceInfo">
+                                    <div class="info">
+                                        <div class="price">
+                                            <i class="qi">狂欢价</i>
+                                            <i class="yuan">￥</i>
+                                            <em class="money">{{item.AmountAdvance}}</em>
+                                            <i class="qi">起</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button">立即出发</div>
+                            </div>
+                        </a>
+                    </ul>
+                    <!-- <div class="more2" @click="moreFn2" v-show="sectionData2">查看更多特惠门票>>></div> -->
+                </div>
+            </div>
+            <div class="box_bottom"></div>
+        </div>
+        <!-- 限时特惠专区(44050) -->
+        <div class="section3" v-if="sectionData3">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191101/tit3.png">
+                <div class="txt">门票特卖 不宅家出去浪</div>
+            </div>
+            <div class="box_top"></div>
+            <div class="box_content">
+                <div class="sectionCon3">
+                    <div class="loader" v-show="sectionData3 && sectionData3.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData3">暂无资源~~</div>
+                    <ul v-if="sectionData3 && sectionData3.length>0" class="thList source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData3" @click="windowLocationHref('detail',item,index)">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'260x248')">
+                                <div class="label" v-if="parseFloat((item.Amount-item.AmountAdvance).toFixed(2))!=0">省{{parseFloat((item.Amount-item.AmountAdvance).toFixed(2))}}元</div>
+                                <div class="smask"></div>
+                                <div class="city">
+                                    <div class="value"><img src="//img1.40017.cn/cn/s/2019/zt/touch/191101/address.png" alt="">{{item.CityName}}</div>
+                                </div>
+                            </div>
+                            <div class="right">
+                                <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
+                                <h3 class="subtit multi-ellipsis--l2">{{item.BCTTicketName}}</h3>
+                                <div class="priceInfo">
+                                    <div class="info">
+                                        <div class="price">
+                                            <i class="qi">狂欢价</i>
+                                            <i class="yuan">￥</i>
+                                            <em class="money">{{item.AmountAdvance}}</em>
+                                            <i class="qi">起</i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="button">立即出发</div>
+                            </div>
+                        </a>
+                    </ul>
+                    <!-- <div class="more2" @click="moreFn2" v-show="sectionData2">查看更多特惠门票>>></div> -->
+                </div>
+            </div>
+            <div class="box_bottom"></div>
+        </div>
+        <!-- 脱单秘籍专区(44051) -->
+        <div class="section4">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191101/tit4.png">
+            </div>
+            <div class="sectionCon4">
+                <div class="box_top"></div>
+                <div class="box_content">
+                    <div class="subtit">
+                        <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191101/ad_1.png">
+                    </div>
+                    <div class="loader" v-show="sectionDataS1 && sectionDataS1.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionDataS1">暂无资源~~</div>
+                    <ul class="jdList source" v-if="sectionDataS1&&sectionDataS1.length>0">
+                        <a class="sourceItem" v-for="(item,index) in sectionDataS1" @click="windowLocationHref('detail',item,index)">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'274x182')">
+                                <div class="label">{{item.CityName}}</div>
+                            </div>
+                            <div class="right">
+                                <h2 class="tit multi-ellipsis--l2">{{item.SceneryName}}</h2>
+                                <div class="priceInfo">
+                                    <div class="price">
+                                        <i class="yuan">￥</i>
+                                        <em class="money">{{item.AmountAdvance}}</em>
+                                        <i class="qi">起</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+            <div class="sectionCon4">
+                <div class="box_top"></div>
+                <div class="box_content">
+                    <div class="subtit">
+                        <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191101/ad_2.png">
+                    </div>
+                    <div class="loader" v-show="sectionDataS2 && sectionDataS2.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionDataS2">暂无资源~~</div>
+                    <ul class="jdList source" v-if="sectionDataS2&&sectionDataS2.length>0">
+                        <a class="sourceItem" v-for="(item,index) in sectionDataS2" @click="windowLocationHref('detail',item,index)">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'274x182')">
+                                <div class="label">{{item.CityName}}</div>
+                            </div>
+                            <div class="right">
+                                <h2 class="tit multi-ellipsis--l2">{{item.SceneryName}}</h2>
+                                <div class="priceInfo">
+                                    <div class="price">
+                                        <i class="yuan">￥</i>
+                                        <em class="money">{{item.AmountAdvance}}</em>
+                                        <i class="qi">起</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+            <div class="sectionCon4">
+                <div class="box_top"></div>
+                <div class="box_content">
+                    <div class="subtit">
+                        <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191101/ad_3.png">
+                    </div>
+                    <div class="loader" v-show="sectionDataS3 && sectionDataS3.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionDataS3">暂无资源~~</div>
+                    <ul class="jdList source" v-if="sectionDataS3&&sectionDataS3.length>0">
+                        <a class="sourceItem" v-for="(item,index) in sectionDataS3" @click="windowLocationHref('detail',item,index)">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'274x182')">
+                                <div class="label">{{item.CityName}}</div>
+                            </div>
+                            <div class="right">
+                                <h2 class="tit multi-ellipsis--l2">{{item.SceneryName}}</h2>
+                                <div class="priceInfo">
+                                    <div class="price">
+                                        <i class="yuan">￥</i>
+                                        <em class="money">{{item.AmountAdvance}}</em>
+                                        <i class="qi">起</i>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+        </div>
+        <!-- 提示弹框 -->
+        <div class="showErrBox">
+            <div class="showErr"></div>
+        </div>
+        
+        <div class="footer" v-if="isxcx"></div>
+        <div class="foot1" v-else>@同程旅游2019</div>
+    </div>
+</body>
+<script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
+<!-- rem -->
+<script type="text/javascript">
+    (function () {
+        $(document).on('page:resize', function (e) {
+            var _w = $(document.body).width();
+            $('html').css('font-size', ((_w > 640) ? 640 : _w) / 640 * 100 + 'px');
+        });
+        $(document).trigger('page:resize');
+        $(window).on('resize', function () {
+            $(document).trigger('page:resize');
+        })
+    })();
+</script>
+<!-- 脚本 -->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/ztc/SetShareFun.4.4.js,/cn/s/2019/common/getclientinfo.3.0.0.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703">
+</script>
+<script type="text/javascript" src="//file.40017.cn/fed/touch/js/modules/location/0.0.8/location.js"></script>
+<!-- 轮播js -->
+<script src="//file.40017.cn/js40017cnproduct/cn/s/2018/zt/common/swiper.min.js"></script>
+<script>
+    /* 分享 */
+    shareImg = "http://img1.40017.cn/cn/s/2019/zt/touch/191101/share.jpg";
+    shareTitle = "11.11门票特卖会";
+    shareUrl = "https://www.ly.com/scenery/zhuanti/2019shuangshiyi";
+    shareDesc = "门票特卖不玩套路，11.1元起景区脱单去！";
+    setShareFun.Pageview = "/Touch站专题/11.11门票特卖会";
+    setShareFun.changeShareInfo();
+</script>
+<!-- 自定义脚本 -->
+<script src="//js.40017.cn/cn/min/??/cn/s/2019/zt/touch/191101/191101.js?v=20191101.6"></script>
+
+</html>

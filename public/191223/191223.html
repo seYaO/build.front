@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>新疆是个好地方</title>
+    <meta charset="utf-8">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--控制状态栏显示样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <!--格式检测-->
+    <meta content="telephone=no" name="format-detection" />
+    <!--控制页面打开大小-->
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        name="viewport">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
+    <!--自定义样式-->
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2019/zt/touch/191223/191223.css?v=20191223.2">
+</head>
+
+<body>
+    <div class="app" id="app" v-cloak @click="showProvList = false">
+        <!-- loading蒙层 -->
+        <div class="loading" v-show="loading">
+            <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+        </div>
+        <!-- 头图 44764-->
+        <div class="top">
+            <img :src="isxcx ? Ixcx : Ih5">
+        </div>
+        <!-- 省份选择 -->
+        <div id="provBox" class="show-fix-box" @click.stop style="display: none;">
+            <div class="top-fix" @click="showProvList = !showProvList">
+                <img src="//img1.40017.cn/cn/s/2019/zt/touch/191101/address.png" alt="">
+                {{onProvName}}
+            </div>
+            <div class="provBox" v-show="showProvList">
+                <div class="pro">
+                    <div :class="{on : onProvId == list.ProvinceId ? onProvName = list.ProvinceName : false}"
+                        :value="list.ProvinceId" v-for="list in provAjaxList"
+                        @click="clickChangeProv(list.ProvinceId,list.ProvinceName)">
+                        <span>{{list.ProvinceName}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 印象新疆(44765) -->
+        <div class="section section1" v-if="sectionData1">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit1.png">
+            </div>
+            <div class="box_top"></div>
+            <div class="box_content">
+                <div class="sectionCon1">
+                    <div class="swsection" v-if="sectionData1&&sectionData1.length>0">
+                        <div class="swiper1 swiper-container" id="swiper1">
+                            <div class="swiper-wrapper">
+                                <a class="swiper-slide" v-for="(item,index) in sectionData1">
+                                    <img :src="setImageSize(item.SceneryImg,'600x325')">
+                                </a>
+                            </div>
+                            <div class="swiper-pagination swiper-pagination1"></div>
+                        </div>
+                    </div>
+                    <div class="data" v-if="sectionData1&&sectionData1.length>0">
+                        <div class="tit"><i></i><span>欢迎来到</span><em>新疆</em></div>
+                        <div class="p">
+                            {{sectionData1[0].Summary}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box_bottom"></div>
+            
+        </div>
+        <!-- 文化探索(44766) -->
+        <div class="section section2" v-if="sectionData2">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit2.png">
+            </div>
+            <div class="box_top"></div>
+            <div class="box_content">
+                <div class="sectionCon2">
+                    <div class="loader" v-show="sectionData2 && sectionData2.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData2">暂无资源~~</div>
+                    <ul v-if="sectionData2 && sectionData2.length>0" class="jdList source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData2">
+                            <div class="left">
+                                <img class="img" :src="item.SceneryImg">
+                            </div>
+                            <div class="right" @click="popText(item.Summary)">
+                                <h3 class="subtit multi-ellipsis--l6">{{item.Summary}}</h3>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+            </div>
+            <div class="box_bottom"></div>
+        </div>
+        <!-- 吃在新疆(44767) -->
+        <div class="section section3" v-if="sectionData3">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit3.png">
+            </div>
+            <div class="box_top"></div>
+            <div class="box_content">
+                <div class="sectionCon3">
+                    <div class="loader" v-show="sectionData3 && sectionData3.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData3">暂无资源~~</div>
+                    <ul class="jdList source" v-if="sectionData3&&sectionData3.length>0">
+                        <a class="sourceItem" v-for="(item,index) in sectionData3">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'283x289')">
+                                <div class="name">{{item.SceneryName}}</div>
+                            </div>
+                            <img class="bg" src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/boder_bg.png">
+                        </a>
+                    </ul>
+                    
+                    <!-- <div class="more3" @click="moreFn2">查看更多</div> -->
+                </div>
+            </div>
+            <div class="box_bottom"></div>
+        </div>
+        <!-- 玩在新疆(44768) -->
+        <div class="section section4" v-if="sectionData4">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit4.png">
+            </div>
+            <div class="sectionCon4">
+                <div class="box_top"></div>
+                <div class="box_content">
+                    <div class="loader" v-show="sectionData4 && sectionData4.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData4">暂无资源~~</div>
+                    <ul v-if="sectionData4 && sectionData4.length>0" class="jdList source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData4"  @click="windowLocationHref('detail',item,index)">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'290x168')">
+                            </div>
+                            <div class="right">
+                                <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
+                                <div class="priceInfo">
+                                    <div class="info">
+                                        <div class="price">
+                                            <i class="yuan">￥</i>
+                                            <em class="money">{{item.AmountAdvance}}</em>
+                                            <i class="qi">起</i>
+                                        </div>
+                                    </div>
+                                    <div class="btn" @click.stop="windowLocationHref('order',item,index)">立即预订</div>
+                                </div>
+                                <!-- <div class="button">立即预订</div> -->
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+        </div>
+        <!-- 住在新疆(44769) -->
+        <div class="section section5" v-if="sectionData5">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit5.png">
+            </div>
+            <div class="sectionCon4">
+                <div class="box_top"></div>
+                <div class="box_content">
+                    <div class="loader" v-show="sectionData5 && sectionData5.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData5">暂无资源~~</div>
+                    <ul v-if="sectionData5 && sectionData5.length>0" class="jdList source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData5" :href="item.Purl">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'290x168')">
+                            </div>
+                            <div class="right">
+                                <h3 class="subtit multi-ellipsis--l2">{{item.SceneryName}}</h3>
+                                <div class="button">立即预订</div>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+        </div>
+        <!-- 游记攻略(44770) -->
+        <div class="section section6" v-if="sectionData6">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit6.png">
+            </div>
+            <div class="sectionCon4">
+                <div class="box_top"></div>
+                <div class="box_content">
+                    <div class="loader" v-show="sectionData6 && sectionData6.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData6">暂无资源~~</div>
+                    <ul v-if="sectionData6 && sectionData6.length>0" class="thList source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData6" :href="item.Purl">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'223x234')">
+                            </div>
+                            <div class="right">
+                                <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
+                                <h3 class="subtit multi-ellipsis--l4">{{item.Summary}}</h3>
+                                <div class="button">查看更多>></div>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+        </div>
+        <!-- 线路推荐(44771) -->
+        <div class="section section7" v-if="sectionData7">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit7.png">
+            </div>
+            <div class="sectionCon4">
+                <div class="box_top"></div>
+                <div class="box_content">
+                    <div class="loader" v-show="sectionData7 && sectionData7.length == 0">
+                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    </div>
+                    <div class="noSource" v-show="!sectionData7">暂无资源~~</div>
+                    <ul v-if="sectionData7 && sectionData7.length>0" class="jdList source">
+                        <a class="sourceItem" v-for="(item,index) in sectionData7" :href="item.Purl">
+                            <div class="left">
+                                <img class="img" :src="setImageSize(item.SceneryImg,'290x168')">
+                            </div>
+                            <div class="right">
+                                <h3 class="subtit multi-ellipsis--l2">{{item.SceneryName}}</h3>
+                                <div class="button">立即预订</div>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                <div class="box_bottom"></div>
+            </div>
+        </div>
+        <!-- 提示弹框 -->
+        <div class="showErrBox">
+            <div class="showErr"></div>
+        </div>
+        <!-- ￥520 -->
+        <div class="dialog" v-show="showGift">
+            <div class="dialog-cont">
+                <div class="close" @click="showGift=false"></div>
+                <div class="txt">{{giftTxt}}</div>
+            </div>
+        </div>
+        <!-- 引导分享 分享右指 -->
+        <div class="share_img" v-show="leadShare" @click="leadShare = !leadShare">
+            <img src="//img1.40017.cn/cn/s/2016/touch/zt/47370/share_img.png" alt="">
+        </div>
+        
+        <div class="footer" v-if="isxcx"></div>
+        <div class="foot1" v-else>@同程旅游2019</div>
+    </div>
+</body>
+<script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
+<!-- rem -->
+<script type="text/javascript">
+    (function () {
+        $(document).on('page:resize', function (e) {
+            var _w = $(document.body).width();
+            $('html').css('font-size', ((_w > 640) ? 640 : _w) / 640 * 100 + 'px');
+        });
+        $(document).trigger('page:resize');
+        $(window).on('resize', function () {
+            $(document).trigger('page:resize');
+        })
+    })();
+</script>
+<!-- 脚本 -->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/getclientinfo.3.0.0.js?v=11"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/ztc/SetShareFun.4.4.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
+<script type="text/javascript" src="//file.40017.cn/fed/touch/js/modules/location/0.0.8/location.js"></script>
+<!-- 轮播js -->
+<script src="//file.40017.cn/js40017cnproduct/cn/s/2018/zt/common/swiper.min.js"></script>
+<script>
+    /* 分享 */
+    shareImg = "http://img1.40017.cn/cn/s/2019/zt/touch/191223/share.jpg";
+    shareTitle = "心灵四季，美丽中国，冬游新疆季！";
+    shareUrl = "https://www.ly.com/scenery/zhuanti/xinjiangt";
+    shareDesc = "心灵四季，美丽中国，冬游新疆季！";
+    setShareFun.Pageview = "/Touch站专题/新疆是个好地方";
+    setShareFun.changeShareInfo();
+</script>
+<!-- 自定义脚本 -->
+<script src="//js.40017.cn/cn/min/???/cn/s/2019/zt/touch/191223/191223.js?v=20191223.2"></script>
+
+</html>

@@ -1,0 +1,1311 @@
+@charset "UTF-8";
+
+html {
+    min-height: 100%;
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-size: 50px;
+    overflow-x: hidden;
+}
+
+body {
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+    color: #333;
+    padding: 0;
+    font: normal 0.12em/1.4 'Microsoft YaHei', Verdana, sans-serif;
+    /* overflow-x: hidden; */
+    font-size: 0.24rem;
+    background: #ff4200;
+    /* background: -webkit-linear-gradient(top, #ffd8cc, #fce1d6); */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-style: normal;
+}
+
+img,
+input,
+select {
+    border: 0;
+    vertical-align: middle;
+}
+
+ul,
+ol {
+    list-style: none outside none;
+}
+
+a,
+div,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: '';
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+a,
+a:link,
+a:visited,
+a:focus {
+    text-decoration: none;
+    color: #333;
+}
+
+h2,
+h3,
+h3,
+h4,
+h5 {
+    font-weight: normal;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+/* 
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * common
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ *
+ */
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.multi-ellipsis--l2,
+.multi-ellipsis--l3,
+.multi-ellipsis--l4 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
+}
+
+.multi-ellipsis--l2 {
+    -webkit-line-clamp: 2
+}
+
+.multi-ellipsis--l3 {
+    -webkit-line-clamp: 3
+}
+
+.multi-ellipsis--l4 {
+    -webkit-line-clamp: 4
+}
+
+/* 
+ * -------------------------------------------------
+ * loader
+ * -------------------------------------------------
+ *
+ */
+.loader {
+    overflow: hidden;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 0.1rem;
+    color: #fff;
+    display: block;
+}
+
+.loader img {
+    width: 50px !important;
+    height: 50px !important;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.loading img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/* 
+ * -------------------------------------------------
+ * dialog 
+ * -------------------------------------------------
+ *
+ */
+
+.dialog {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 11;
+}
+
+.dialog-cont {
+    padding: 0 .35rem .3rem;
+    width: 5.4rem;
+    position: relative;
+    background: #fff;
+    border-radius: .2rem;
+}
+
+.dialog-cont .close {
+    position: absolute;
+    right: .3rem;
+    top: -.76rem;
+    width: .44rem;
+    height: .77rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191201/close.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.dialog-cont .tit {
+    padding: .5rem 0 .1rem;
+    font-size: .48rem;
+    line-height: 1;
+    text-align: center;
+    font-weight: 600;
+}
+
+.dialog-cont .txt {
+    padding: .05rem 0;
+    font-size: .24rem;
+    text-align: center;
+}
+
+.dialog-cont .text {
+    text-align: center;
+    font-size: .32rem;
+}
+
+.dialog-cont .btns {
+    margin-top: .3rem;
+    display: flex;
+}
+
+.dialog-cont .button {
+    flex: 1;
+    margin: 0 .1rem;
+    height: .78rem;
+    line-height: .78rem;
+    font-size: .36rem;
+    color: #fff;
+    text-align: center;
+    background: #ff4c1c;
+    border-radius: .78rem;
+}
+
+.dialog-cont .button.primary {
+    font-size: .32rem;
+    background: #09bb07;
+    border: 1px solid #09bb07;
+}
+
+.dialog-cont .button.default {
+    font-size: .32rem;
+    color: #09bb07;
+    background: #fff;
+    border: 1px solid #09bb07;
+}
+
+.redlist {
+    /* padding: .1rem 0; */
+}
+
+.redlist .item {
+    margin-top: .1rem;
+    display: flex;
+    align-items: center;
+    background: #fff8dc;
+}
+
+.redlist .item .left {
+    width: 1.05rem;
+    flex-shrink: 0;
+}
+
+.redlist .item .left img {
+    display: block;
+    margin-left: .3rem;
+    width: .68rem;
+    height: .73rem;
+}
+
+.redlist .item .center {
+    padding-left: .3rem;
+    flex: auto;
+}
+
+.redlist .item .center .t {
+    font-weight: bold;
+    font-size: .28rem;
+    line-height: 1;
+    color: #975129;
+}
+
+.redlist .item .center .d {
+    margin-top: .15rem;
+    font-size: .24rem;
+    line-height: 1;
+    color: #975129;
+}
+
+.redlist .item .right {
+    position: relative;
+    width: 1.58rem;
+    height: 1.28rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191201/share_red_bg.png') no-repeat;
+    background-size: 100% 100%;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.redlist .item .right .over {
+    position: absolute;
+    top: -.05rem;
+    left: -.1rem;
+    width: 1.02rem;
+    height: .68rem;
+}
+
+.redlist .item .right .price {
+    font-size: 0;
+}
+
+.redlist .item .right .yuan {
+    font-size: .24rem;
+    color: #fff;
+}
+
+.redlist .item .right .money {
+    font-size: .48rem;
+    color: #fff;
+}
+
+/* 
+ * -------------------------------------------------
+ * source 数据
+ * -------------------------------------------------
+ *
+ */
+
+
+
+.priceInfo {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.priceInfo .sale {
+    padding: 0.02rem 0.1rem;
+    font-size: 0.2rem;
+    color: #fff;
+    background: #ff480f;
+    border-radius: .05rem;
+    margin-bottom: .1rem;
+}
+
+.priceInfo .price {
+    font-size: 0;
+    color: #ff480f;
+}
+
+.priceInfo .yuan {
+    font-size: .24rem;
+    color: #ff480f;
+}
+
+.priceInfo .money {
+    font-size: .4rem;
+    font-weight: 600;
+    line-height: .5rem;
+    height: .5rem;
+    color: #ff480f;
+}
+
+.priceInfo .qi {
+    font-size: .24rem;
+    color: #666;
+}
+
+.priceInfo .btn {
+    width: 1.7rem;
+    height: .6rem;
+    line-height: .6rem;
+    text-align: center;
+    color: #fff;
+    background: #ff480f;
+    border-radius: .6rem;
+    box-shadow: 0 .1rem .1rem -.05rem rgba(49, 69, 89, 0.2);
+}
+
+.priceInfo .btn.disable {
+    background: #898989;
+}
+
+.source .sourceItem {
+    background: #fff;
+    overflow: hidden;
+}
+
+.source .left img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.source .sourceItem .tit {
+    color: #333;
+    font-size: .3rem;
+    line-height: .3rem;
+    height: .3rem;
+    margin-bottom: .05rem;
+}
+
+.source .sourceItem .subtit {
+    color: #666;
+    font-size: .24rem;
+    margin-bottom: .06rem;
+    line-height: .3rem;
+    height: .6rem;
+}
+
+.source .sourceItem .tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.05rem 0.1rem;
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 0.24rem;
+    color: #fff;
+}
+
+.source .sourceItem .reduce>span .red {
+    color: #f21e2d;
+}
+
+.source .sourceItem .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: .2rem;
+    padding-right: .1rem;
+    height: .33rem;
+    line-height: .33rem;
+    text-align: center;
+    font-size: .2rem;
+    color: #fff;
+    background: rgba(0, 0, 0, .8);
+    box-sizing: border-box;
+}
+
+.source .sourceItem .label::after {
+    content: '';
+    position: absolute;
+    right: -.36rem;
+    top: 0;
+    width: .36rem;
+    height: .33rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/label_r.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+/* 左右结构 */
+.thList {
+    overflow: hidden;
+}
+
+.thList .sourceItem {
+    margin-bottom: .15rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thList .sourceItem:last-child {
+    margin-bottom: 0;
+}
+
+.thList .smask {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1rem;
+    background: -webkit-linear-gradient(bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, .3), rgba(0, 0, 0, 0));
+}
+
+.thList .city {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.thList .city .value {
+    font-size: .2rem;
+    color: #fff;
+    height: .5rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.thList .city img {
+    width: .2rem;
+    height: .22rem;
+    margin: 0 .04rem;
+}
+
+.thList .button {
+    margin-top: .1rem;
+    width: 100%;
+    height: .5rem;
+    line-height: .5rem;
+    text-align: center;
+    color: #fff;
+    font-size: .28rem;
+    background: #ff480f;
+    border-radius: .5rem;
+}
+
+.thList .sourceItem .left {
+    position: relative;
+    overflow: hidden;
+    width: 2.6rem;
+    height: 2.48rem;
+}
+
+.thList .sourceItem .right {
+    position: relative;
+    margin-right: .18rem;
+    width: 2.64rem;
+}
+
+/* 上下结构 */
+
+.jdList {
+    overflow: hidden;
+}
+
+.jdList.source {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.jdList .sourceItem {
+    position: relative;
+    margin-top: .12rem;
+    width: 2.85rem;
+    background: #f5f5f5;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+}
+
+.jdList .sourceItem .left {
+    position: relative;
+    overflow: hidden;
+    width: 2.85rem;
+    height: 1.42rem;
+}
+
+.jdList .sourceItem .right {
+    padding: .15rem .14rem
+}
+
+.jdList .sourceItem .tit {
+    font-size: .22rem;
+    line-height: .28rem;
+    height: .56rem;
+}
+
+.jdList .priceInfo .yuan {
+    font-size: .2rem;
+}
+
+.jdList .priceInfo .money {
+    font-size: .36rem;
+}
+
+.jdList .priceInfo .qi {
+    font-size: .2rem;
+}
+
+/* 
+ * -------------------------------------------------
+ * 弹框样式
+ * -------------------------------------------------
+ *
+ */
+
+.showErrBox {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: url("//img1.40017.cn/cn/s/ZhuanTi/2015/24580/rgba5.png");
+    display: none;
+}
+
+.showErrBox .showErr {
+    width: 5.4rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    -webkit-border-radius: 0.1rem;
+    border-radius: 0.1rem;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #333;
+    background: white;
+    padding: 0.2rem;
+    transform: translate(-50%, -50%);
+}
+
+
+.noSource {
+    width: 100%;
+    text-align: center;
+    font-size: 0.24rem;
+    padding: 0.4rem;
+}
+
+/* 
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * 页面样式
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ *
+ */
+
+.top,
+.title,
+.box_red {
+    position: relative;
+    width: 100%;
+}
+
+.top .leaf {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191201/ticket_btn.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 1;
+}
+
+.title {
+    padding-top: .4rem;
+    padding-bottom: .2rem;
+}
+
+.title .txt {
+    margin-top: .12rem;
+    font-size: .24rem;
+    text-align: center;
+    color: #fff;
+}
+
+.title .txt .num {
+    color: #ffe411;
+}
+
+.box_top {
+    position: relative;
+    /* height: .15rem; */
+}
+
+.box_top::after {
+    /* content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2.06rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_top.png) no-repeat;
+    background-size: 100% 100%; */
+}
+
+.box_content {
+    position: relative;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    /* min-height: 2rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_content.png) repeat-y;
+    background-size: 100% 100%; */
+
+}
+
+.box_bottom {
+    position: relative;
+    /* height: .38rem; */
+}
+
+.box_bottom::after {
+    /* content: '';
+    position: absolute;
+    top: -.02rem;
+    left: 0;
+    width: 100%;
+    height: .4rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_bottom.png) no-repeat;
+    background-size: 100% 100%; */
+}
+
+.title,
+.subtit {
+    pointer-events: none;
+}
+
+.top img,
+.box_red img,
+.title img,
+.subtit img {
+    display: block;
+    width: 100%;
+}
+
+.box_red .cakes {
+    position: absolute;
+    bottom: .4rem;
+    left: 50%;
+    margin-left: -2.56rem;
+    width: 5.12rem;
+    height: 2rem;
+    display: flex;
+}
+
+.box_red .cake {
+    position: relative;
+    margin: 0 .05rem;
+    width: 1.61rem;
+    height: 2.01rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/red.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.box_red .cake .pirce {
+    font-size: 0;
+    text-align: center;
+}
+
+.box_red .cake .yuan {
+    font-size: .22rem;
+    color: #fff1c9;
+}
+
+.box_red .cake .money {
+    font-size: .44rem;
+    font-weight: 600;
+    line-height: .6rem;
+    height: .6rem;
+    color: #fff1c9;
+}
+
+.box_red .cake .value {
+    margin-top: .3rem;
+    font-size: .26rem;
+    text-align: center;
+    color: #ffc221;
+}
+
+.box_red .cake .txt {
+    margin-bottom: .05rem;
+    font-size: .18rem;
+    text-align: center;
+    color: #fff9b3;
+}
+
+.box_red .cake .btn {
+    margin: 0 auto;
+    width: 1.26rem;
+    height: .3rem;
+    line-height: .3rem;
+    text-align: center;
+    font-size: .2rem;
+    color: #994105;
+    border-radius: .3rem;
+    background: -webkit-linear-gradient(100deg, #ffa611, #fee693);
+}
+
+.box_red .cake .btn.disable {
+    color: #333;
+    background: -webkit-linear-gradient(100deg, #929292, #cbcbcb);
+}
+
+.box_red .cake .overflow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+/*省份列表  start*/
+
+/* 省份选择 */
+.show-fix-box {
+    -webkit-border-radius: 0 .34rem .34rem 0;
+    border-radius: 0 .34rem .34rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 .35rem 0 .12rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 3;
+    background: -webkit-linear-gradient(left, #3f33cb, #30189f);
+}
+
+.fixed_tab {
+    position: fixed;
+    top: 0rem;
+    z-index: 3;
+}
+
+.show-fix-box .top-fix img {
+    width: .24rem;
+    height: .26rem;
+    margin: 0 .08rem;
+}
+
+.top-fix {
+    font-size: .24rem;
+    color: #fff;
+    height: .5rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.provBox {
+    width: 6.4rem;
+    position: absolute;
+    top: .5rem;
+    left: 0;
+    border-radius: .05rem;
+}
+
+.pro {
+    background: #3f23d7;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .3rem .25rem .5rem;
+}
+
+.pro div {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #6144fe;
+    margin: .12rem .05rem 0;
+    -webkit-border-radius: .1rem;
+    border-radius: .1rem;
+    font-size: .3rem;
+    color: #fff;
+    width: 1.37rem;
+    height: .66rem;
+    line-height: .66rem;
+    text-align: center;
+}
+
+
+.pro div.on {
+    color: #fff;
+    background: #de5231;
+}
+
+/*省份列表  end*/
+
+/* --- navs */
+.navs {
+    display: flex;
+    height: .72rem;
+    background: #ffbb0d;
+}
+
+.nav {
+    margin: 0 .2rem;
+    width: 1.16rem;
+    line-height: .7rem;
+    font-size: .28rem;
+    text-align: center;
+    color: #602b00;
+    border-bottom: .03rem solid #ffbb0d;
+}
+
+.nav.active {
+    color: #dd2900;
+    border-bottom: .03rem solid #ff4400;
+}
+
+/* 1块钱砍价(44435) start */
+
+.sectionCon1 .jdList .sourceItem {
+    width: 2.3rem;
+}
+
+.sectionCon1 .jdList .left {
+    width: 2.3rem;
+    height: 2.75rem;
+}
+
+.sectionCon1 .thList .sourceItem {
+    padding: .16rem .12rem;
+    align-items: stretch;
+    flex-direction: column
+}
+
+.sectionCon1 .thList .sourceItem .tit {
+    font-weight: bold;
+}
+
+.sectionCon1 .thList .sourceItem .subtit {
+    height: auto;
+}
+
+.sectionCon1 .thList .sourceItem .top {
+    padding: .05rem;
+}
+
+.sectionCon1 .thList .sourceItem .left {
+    width: 3.74rem;
+    height: 2.32rem;
+    border: 1px solid #ffc3c3;
+}
+
+.sectionCon1 .thList .sourceItem .right {
+    margin-right: 0;
+    width: 1.78rem;
+}
+
+.sectionCon1 .priceInfo {
+    justify-content: center;
+}
+
+.sectionCon1 .priceInfo .price {
+    text-align: center;
+}
+
+.sectionCon1 .priceInfo .ddd {
+    font-size: .18rem;
+    color: #999;
+}
+
+.sectionCon1 .thList .button {
+    height: .68rem;
+    line-height: .68rem;
+    font-size: .3rem;
+    font-weight: bold;
+}
+
+.sectionCon1 .thList .sourceItem .bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.more1 {
+    margin: 0 auto;
+    margin-bottom: .3rem;
+    width: 5.36rem;
+    height: .8rem;
+    line-height: .8rem;
+    text-align: center;
+    font-size: .32rem;
+    font-weight: 500;
+    color: #f55420;
+    background: #feef7d;
+    border-radius: .8rem;
+    box-shadow: 0 .1rem .1rem -.05rem rgba(49, 69, 89, 0.2);
+}
+
+/* 1块钱砍价(44435) end */
+
+/* 超值抢购(44390) start */
+.section2 .box_content {
+    padding: 0;
+}
+
+.section2 .tabs {
+    position: relative;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    z-index: 1;
+    background: #d23800;
+}
+
+.section2 .tab {
+    position: relative;
+    display: inline-block;
+    width: 1.6rem;
+    height: .72rem;
+    line-height: .72rem;
+    font-size: .26rem;
+    color: #fff;
+    text-align: center;
+}
+
+.section2 .tab.active {
+    background: #fec215;
+    color: #482700;
+}
+
+.section2 .tab.disable {
+    background: #898989;
+}
+
+.section2 .tab .l {
+    position: absolute;
+    top: .06rem;
+    right: 0;
+    width: .02rem;
+    height: .6rem;
+    background: #ef4000;
+}
+
+.section2 .tab.active .l {
+    background: #fec215;
+}
+
+.sectionCon2 {
+    padding: .3rem 0;
+    background: #fec215;
+}
+
+.sectionCon2 .time {
+    padding-bottom: .3rem;
+    font-size: .24rem;
+    color: #482700;
+    text-align: center;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.sectionCon2 .time span {
+    margin-left: .1rem;
+    margin-right: .1rem;
+    width: .36rem;
+    height: .36rem;
+    font-size: .24rem;
+    line-height: .36rem;
+    color: #fff;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/190917/bg_time.png) no-repeat;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+.sectionCon2 .source {
+    overflow: auto;
+    flex-wrap: nowrap;
+    display: flex;
+}
+
+.sectionCon2 .jdList .sourceItem:first-child {
+    margin-left: .2rem;
+}
+
+.sectionCon2 .jdList .sourceItem {
+    margin-right: .1rem;
+    width: 5.1rem;
+}
+
+.sectionCon2 .jdList .sourceItem .label2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding-top: .1rem;
+    padding-bottom: .2rem;
+    width: .7rem;
+    line-height: 1.2;
+    text-align: center;
+    font-size: .18rem;
+    color: #fff;
+    background: #ff4800;
+    border-bottom-left-radius: .7rem;
+    border-bottom-right-radius: .7rem;
+}
+
+.sectionCon2 .jdList .sourceItem .label2 span {
+    display: block;
+}
+
+.sectionCon2 .jdList .sourceItem .left {
+    width: 5.1rem;
+    height: 2.6rem;
+}
+
+.sectionCon2 .priceInfo .button {
+    height: .48rem;
+    width: 1.54rem;
+    line-height: .48rem;
+    background: #ff480f;
+    color: #fff;
+    text-align: center;
+    font-size: .24rem;
+    position: absolute;
+    right: .1rem;
+    bottom: .2rem;
+    border-radius: .48rem;
+}
+
+.sectionCon2 .priceInfo .button.gray {
+    background: #b1b1b1;
+}
+
+/* 超值抢购(44390) end */
+
+/* 门票(44391)/线路(44392) start */
+.section3 .tabs {
+    padding-bottom: .1rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.section3 .tabs .tab {
+    display: inline-block;
+    width: 2.4rem;
+    height: .94rem;
+    font-size: .36rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    line-height: .78rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191201/tab.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.section3 .tabs .tab.active {
+    color: #eb3f00;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191201/tab_hover.png) no-repeat center center;
+    background-size: 100% 100%;
+}
+
+.sectionCon3 .jdList {
+    padding: .1rem;
+    padding-top: .01rem;
+    background: #eb3f00;
+    border-radius: .1rem;
+}
+
+.sectionCon3 .jdList .sourceItem .subtit {
+    font-size: .22rem;
+}
+
+.sectionCon3 .jdList .sourceItem .button {
+    height: .55rem;
+    line-height: .55rem;
+    font-size: .3rem;
+    text-align: center;
+    color: #fff;
+    background: #d23800;
+    border-radius: .55rem;
+}
+
+.more3 {
+    margin: 0 auto;
+    margin-top: .2rem;
+    width: 2.95rem;
+    height: .78rem;
+    line-height: .78rem;
+    text-align: center;
+    font-size: .3rem;
+    font-weight: 500;
+    color: #d23800;
+    border-radius: .78rem;
+    background: -webkit-linear-gradient(top, #ffe008, #fec215);
+    box-shadow: 0 .1rem .1rem -.05rem rgba(49, 69, 89, 0.2);
+}
+
+/* 门票(44391)/线路(44392) end */
+
+/* 宁夏攻略(44393) start */
+
+.sectionCon4 {
+    padding-bottom: .2rem;
+}
+
+.sectionCon4 .thList {
+    padding: .2rem .18rem;
+    background: #fec215;
+    border-radius: .1rem;
+}
+
+.sectionCon4 .thList .sourceItem .subtit {
+    height: 1.2rem;
+}
+
+.sectionCon4 .thList .sourceItem .button {
+    height: .5rem;
+    line-height: .5rem;
+    font-size: .28rem;
+    text-align: center;
+    border-radius: .1rem;
+}
+
+.share_img {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 111
+}
+
+.share_img img {
+    width: 100%
+}
+
+/* 宁夏攻略(44393) end */
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* TOP结束 */
+.foot1 {
+    margin-top: .1rem;
+    margin-bottom: .7rem;
+    width: 100%;
+    height: 1.45rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191201/bottom.png');
+    background-size: 100% 100%;
+    /* padding-top: .2rem;
+    padding-bottom: .5rem;
+    text-align: center;
+    color: #fff;
+    font-size: 0.24rem; */
+
+}
+
+/* #052c29 深绿色 */
+/* .footer {
+    margin-top: .4rem;
+    height: 3.24rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/190904/bg_bottom.png');
+    background-size: 100% 100%;
+} */
+
+/* #3a1cb6 深蓝色 */
+.footer {
+    margin-top: .4rem;
+    height: 2.78rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191101/bg_bottom.png');
+    background-size: 100% 100%;
+}

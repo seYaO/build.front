@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+    font: 12px/1.5 'Microsoft YaHei', 'PingFang SC', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background: #e5f4fd;
+}
+
+body {
+    min-width: 1200px;
+    position: relative;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    display: block;
+    vertical-align: top;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+em,
+i {
+    font-style: normal;
+}
+
+.both {
+    width: 100%;
+    overflow: hidden;
+    font: 14px '微软雅黑', 'microsoft yahei ui', sans-serif;
+    position: relative;
+    background: #e5f4fd;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: '';
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.multi-ellipsis--l2,
+.multi-ellipsis--l3,
+.multi-ellipsis--l4,
+.multi-ellipsis--l5,
+.multi-ellipsis--l11 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
+}
+
+.multi-ellipsis--l2 {
+    -webkit-line-clamp: 2
+}
+
+.multi-ellipsis--l3 {
+    -webkit-line-clamp: 3
+}
+
+.multi-ellipsis--l4 {
+    -webkit-line-clamp: 4
+}
+
+.multi-ellipsis--l5 {
+    -webkit-line-clamp: 5
+}
+
+.multi-ellipsis--l11 {
+    -webkit-line-clamp: 11
+}
+
+.noData {
+    text-align: center;
+    font-size: 28px;
+    width: 380px;
+    margin: 0 auto;
+    margin-top: 60px;
+    line-height: 46px;
+}
+
+.loader img {
+    width: 50px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.loadImg {
+    text-align: center;
+}
+
+.loadImg img {
+    display: block;
+    width: 100px;
+    margin: 100px auto 0;
+}
+
+.none {
+    display: none;
+}
+
+.imgbg {
+    position: relative;
+    left: 50%;
+    top: 0;
+    margin-left: -960px;
+    display: block;
+}
+
+.top,
+.bg {
+    position: relative;
+}
+
+.bg {
+    padding-bottom: 1120px;
+}
+
+.content {
+    position: absolute;
+    top: -120px;
+    left: 0;
+    width: 100%;
+}
+
+.section {
+    width: 1100px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.section .tit {
+    width: 1100px
+}
+
+.section .desc {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.section .desc>div {
+    display: inline-block;
+    padding: 0 28px;
+    font-size: 24px;
+    line-height: 34px;
+    color: #fff;
+    border-radius: 34px;
+}
+
+.section .desc .bold {
+    font-weight: bold;
+}
+
+.section .subtit {
+    position: relative;
+    padding-top: 40px;
+    width: 779px;
+}
+
+.section .subtit .link {
+    position: absolute;
+    right: 0;
+    top: 40px;
+    width: 255px;
+    height: 160px;
+}
+
+.tit,
+.subtit {
+    margin: 0 auto;
+}
+
+.tit img,
+.subtit img {
+    width: 100%;
+}
+
+.section .intro {
+    padding-top: 30px;
+    padding-bottom: 12px;
+}
+
+.section1 .desc>div {
+    background: #259bee
+}
+
+.section2 {
+    padding-top: 70px;
+}
+
+.section2 .desc>div {
+    background: #efbc32
+}
+
+.section3 {
+    padding-top: 85px;
+}
+
+.section3 .desc>div {
+    background: #04cca4
+}
+
+.section4 {
+    padding-top: 50px;
+}
+
+.section4 .intro {
+    margin-top: 54px;
+}
+
+.foot {
+    padding: 35px 0;
+    /* font-size: 18px; */
+    color: #fff;
+    background: #259bee;
+}

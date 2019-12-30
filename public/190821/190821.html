@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<%ctx.url="https://www.ly.com"%>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>山水人文，来安徽玩点新的</title>
+    <!-- pc公共样式 -->
+    <% includeId = cnztjscss %>
+    <link rel="stylesheet" ver="20170719" href="//file.40017.cn/tcweb/pc/public/css/zhuanti/zhuanticommon.0.0.7.css?v=2018011101" />
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=etBRsREU2D0Zj6enHl69ZsbhS8Tqqeae&s=1"></script>
+    <link rel="stylesheet" type="text/css" href="//file.40017.cn/fed/pc/jquery/css/slider/0.0.5/slider.css" />
+    <link rel="stylesheet" href="//file.40017.cn/fed/pc/jquery/css/slider2/0.0.1/slider2.css" />
+    <link rel="stylesheet" href="//css.40017.cn/cn/min/??/cn/s/2019/zt/pc/190821/190821.css?v=2019082101" />
+</head>
+
+<body>
+    <% includeId = cnzthead %>
+    
+    <% 
+        ctx.zhuantiFn = (channelid,pagesize) => {
+            return new Promise((resolve, reject) => {
+                ctx.request({
+                    url: `http://www.ly.com/scenery/zt/ZhuanTiAjax/ZhuanTiJsp.aspx?action=GETSPMSCENERYJSP&channelid=${channelid}&PageSize=${pagesize || 100}`,
+                    headers: {
+                        'user-agent': ctx.reqHeader['user-agent']
+                    },
+                }, (error, response, body) => {
+                    if (!error) {
+                        if (response.statusCode == 200) {
+                            let data = {
+                                List: []
+                            };
+                            try {
+                                data = JSON.parse(body);
+                            } catch (ex) {
+
+                            }
+                            return resolve(data);
+                        } else if (response.statusCode == 302 || response.statusCode == 301) {
+                            const redirectUrl = response.headers['location'];
+                            ctx.redirect(redirectUrl);
+                        }
+                    } else {
+                        ctx.error = error
+                    }
+                    return resolve(null);
+                });
+            })
+        }
+    %>
+    <div class="both">
+        <div class="top">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_1.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_2.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_3.jpg">
+        </div>
+        <div class="bg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_4.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_5.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_6.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_8.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_7.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_9.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_10.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_12.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_11.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_13.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_14.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_15.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_16.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_17.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_18.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_19.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_20.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_21.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_22.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_23.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_24.jpg">
+            <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190821/top_bg_25.jpg">
+        
+            <div class="content">
+                <!-- 研学 -->
+                <div class="section section1">
+                    <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/tit1.png" /></div>
+                    <div class="desc">
+                        <div>目标人群: 中小学生、青少年游客</div>
+                        <div class="bold">推荐游玩天数: 2天</div>
+                    </div>
+                    <%?
+                        ctx.zhuantiFn(42722).then((data) =>{
+                            ctx.data = ''
+                            if(data && data.List && data.List.length){
+                                let url = data.List[0].Purl
+                                ctx.data = url
+                            }
+                            aries();
+                        });
+                    %>
+                    <div class="subtit">
+                        <img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/subtit1.png" />
+                        <a class="link" target="_blank" href="<%=ctx.data%>"></a>
+                    </div>
+                    <div class="intro"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/content1.png" /></div>
+                    <%?
+                        ctx.zhuantiFn(42723).then((data) =>{
+                            ctx.data = ''
+                            if(data && data.List && data.List.length){
+                                let url = data.List[0].Purl
+                                ctx.data = url
+                            }
+                            aries();
+                        });
+                    %>
+                    <div class="subtit">
+                        <img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/subtit2.png" />
+                        <a class="link" target="_blank" href="<%=ctx.data%>"></a>
+                    </div>
+                    <div class="intro"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/content2.png" /></div>
+    
+                </div>
+                <!-- 康养 -->
+                <div class="section section2">
+                    <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/tit2.png" /></div>
+                    <div class="desc">
+                        <div>目标人群: 注重养生、热衷文化的中老年游客</div>
+                        <div class="bold">推荐游玩天数: 2天</div>
+                    </div>
+                    <%?
+                        ctx.zhuantiFn(42724).then((data) =>{
+                            ctx.data = ''
+                            if(data && data.List && data.List.length){
+                                let url = data.List[0].Purl
+                                ctx.data = url
+                            }
+                            aries();
+                        });
+                    %>
+                    <div class="subtit">
+                        <img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/subtit3.png" />
+                        <a class="link" target="_blank" href="<%=ctx.data%>"></a>
+                    </div>
+                    <div class="intro"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/content3.png" /></div>
+                    <%?
+                        ctx.zhuantiFn(42725).then((data) =>{
+                            ctx.data = ''
+                            if(data && data.List && data.List.length){
+                                let url = data.List[0].Purl
+                                ctx.data = url
+                            }
+                            aries();
+                        });
+                    %>
+                    <div class="subtit">
+                        <img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/subtit4.png" />
+                        <a class="link" target="_blank" href="<%=ctx.data%>"></a>
+                    </div>
+                    <div class="intro"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/content4.png" /></div>
+                </div>
+                <!-- 避暑 -->
+                <div class="section section3">
+                    <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/tit3.png" /></div>
+                    <div class="desc">
+                        <div>目标人群: 80、90后的青年、亲子家庭游客</div>
+                        <div class="bold">推荐游玩天数: 2天</div>
+                    </div>
+                    <%?
+                        ctx.zhuantiFn(42726).then((data) =>{
+                            ctx.data = ''
+                            if(data && data.List && data.List.length){
+                                let url = data.List[0].Purl
+                                ctx.data = url
+                            }
+                            aries();
+                        });
+                    %>
+                    <div class="subtit">
+                        <img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/subtit5.png" />
+                        <a class="link" target="_blank" href="<%=ctx.data%>"></a>
+                    </div>
+                    <div class="intro"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/content5.png" /></div>
+                    <%?
+                        ctx.zhuantiFn(42727).then((data) =>{
+                            ctx.data = ''
+                            if(data && data.List && data.List.length){
+                                let url = data.List[0].Purl
+                                ctx.data = url
+                            }
+                            aries();
+                        });
+                    %>
+                    <div class="subtit">
+                        <img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/subtit6.png" />
+                        <a class="link" target="_blank" href="<%=ctx.data%>"></a>
+                    </div>
+                    <div class="intro"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/content6.png" /></div>
+                </div>
+                <!-- 列产品名单 -->
+                <div class="section section4">
+                    <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/tit4.png" /></div>
+                    <div class="intro"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190821/content7.png" /></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% includeId = cnztfoot %>
+
+    <!--脚本-->
+    <script src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js?v=2016122001"></script>
+    <script type="text/javascript" src="//file.40017.cn/combo/fed/??pc/jquery/js/jquery.min.js,pc/jquery/js/util/0.0.1/util.js,pc/jquery/js/slider/0.0.5/slider.js"></script>
+    <script src="//file.40017.cn/fed/pc/jquery/js/slider2/0.0.1/slider2.js"></script>
+    <script src="//js.40017.cn/cn/min/??/cn/s/2019/zt/pc/190821/190821.js?v=2019082101"></script>
+</body>
+
+</html>

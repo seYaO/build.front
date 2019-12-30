@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<%ctx.url="https://www.ly.com"%>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <title>非凡阿布扎比官方旅游旗舰店</title>
+    <!-- pc公共样式 -->
+    <% includeId = cnztjscss %>
+    <link rel="stylesheet" ver="20170719" href="//file.40017.cn/tcweb/pc/public/css/zhuanti/zhuanticommon.0.0.7.css?v=2018011101" />
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=etBRsREU2D0Zj6enHl69ZsbhS8Tqqeae&s=1"></script>
+    <link rel="stylesheet" type="text/css" href="//file.40017.cn/fed/pc/jquery/css/slider/0.0.5/slider.css" />
+    <link rel="stylesheet" href="//file.40017.cn/fed/pc/jquery/css/slider2/0.0.1/slider2.css" />
+    <link rel="stylesheet" href="//css.40017.cn/cn/min/??/cn/s/2019/zt/pc/190827/190827.css?v=2019082704" />
+</head>
+
+<body>
+    <% includeId = cnzthead %>
+    
+    <% 
+        ctx.zhuantiFn = (channelid,pagesize) => {
+            return new Promise((resolve, reject) => {
+                ctx.request({
+                    url: `http://www.ly.com/scenery/zt/ZhuanTiAjax/ZhuanTiJsp.aspx?action=GETSPMSCENERYJSP&channelid=${channelid}&PageSize=${pagesize || 100}`,
+                    headers: {
+                        'user-agent': ctx.reqHeader['user-agent']
+                    },
+                }, (error, response, body) => {
+                    if (!error) {
+                        if (response.statusCode == 200) {
+                            let data = {
+                                List: []
+                            };
+                            try {
+                                data = JSON.parse(body);
+                            } catch (ex) {
+
+                            }
+                            return resolve(data);
+                        } else if (response.statusCode == 302 || response.statusCode == 301) {
+                            const redirectUrl = response.headers['location'];
+                            ctx.redirect(redirectUrl);
+                        }
+                    } else {
+                        ctx.error = error
+                    }
+                    return resolve(null);
+                });
+            })
+        }
+    %>
+<div class="both">
+    <%?
+        ctx.zhuantiFn(42930).then((data) =>{
+            ctx.data = data;
+            aries();
+        });
+    %>
+    <div class="top">
+        <ul class="inside clearfix">
+            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                <%ctx.data.List.slice(0, 4).forEach(function(v,k){ %>
+                    <li>
+                        <img src="<%=v.SceneryImg%>" alt="">
+                    </li>
+                <%}
+            )} %>
+        </ul>
+    </div>
+    <!-- 导航 -->
+    <div class="float">
+        <ul>
+            <li class="first"><img src="//pic5.40017.cn/04/002/57/e2/rBTJUl1lAHyARqdWAAJ1aWb0hgo182_160x160_00.jpg"/></li>
+            <li class="last"><img src="//pic5.40017.cn/04/002/57/e6/rBTJUl1lAVGAAYfBAALDosJF4Vc810_160x160_00.png"/></li>
+        </ul>
+    </div>
+    <!-- 印象 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section1_bg_01.png">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section1_bg_02.png">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section1_bg_03.png">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section1_bg_04.png">
+        <div class="section1">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190827/tit1.png" /></div>
+            <div class="sectionCon section1Con ">
+                <div class="voide clearfix">
+                    <%?
+                        ctx.zhuantiFn(42931).then((data) =>{
+                            ctx.data = ''
+                            if(data && data.List && data.List.length){
+                                let url = data.List[0].Summary
+                                ctx.data = url
+                            }
+                            aries();
+                        });
+                    %>
+                    <div class="left">
+                        <video src="<%=ctx.data%>" controls="controls">您的浏览器暂不支持视频播放~</video>
+                    </div>
+                    <%?
+                        ctx.zhuantiFn(42932).then((data) =>{
+                            ctx.data = {}
+                            if(data && data.List && data.List.length){
+                                ctx.data = data.List[0]
+                            }
+                            aries();
+                        });
+                    %>
+                    <div class="right">
+                        <div class="title">
+                            <em></em><span>欢迎来到阿布扎比</span>
+                        </div>
+                        <div class="txt multi-ellipsis--l7"><%=ctx.data.Summary%></div>
+                        <div class="bottom"><a class="link" target="_blank" href="<%=ctx.data.Purl%>">前往阿布扎比文化与旅游部 >></a></div>
+                    </div>
+                </div>
+                <div class="sourceCon">
+                    <%?
+                        ctx.zhuantiFn(42933).then((data) =>{
+                            ctx.data = data;
+                            aries();
+                        });
+                    %>
+                    <div class="slider">
+                        <div class="source clearfix mSlider_con">
+                            <div class="slider_ul">
+                                <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                    <%ctx.data.List.slice(0, 5).forEach(function(v,k){ %>
+                                        <li class="clearfix">
+                                            <img class="img" src="<%=v.SceneryImg%>" />
+                                            <div class="intro">
+                                                <div class="title">
+                                                    <em><i></i></em><span><%=v.SceneryName%></span>
+                                                </div>
+                                                <div class="text">
+                                                    <%=v.Summary%>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    <%}
+                                )} %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 畅游 -->
+    <div class="section">
+        <div class="bg2"></div>
+        <div class="section2">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190827/tit2.png" /></div>
+            <div class="sectionCon section2Con clearfix">
+                <div class="tabs">
+                    <div class="tab active">
+                        <span>跟团</span>
+                    </div>
+                    <div class="tab">
+                        <span>自由行</span>
+                    </div>
+                    <div class="tab">
+                        <span>当地玩乐</span>
+                    </div>
+                </div>
+                <div class="sourceCon">
+                    <%?
+                        ctx.zhuantiFn(42934).then((data) =>{
+                            ctx.data = data;
+                            aries();
+                        });
+                    %>
+                    <div class="source0 sourceBlock">
+                        <div class="clearfix">
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="txt multi-ellipsis--l2"><%=v.SceneryName%></div>
+                                            <div class="bottom">
+                                                <div class="btn">立即预订</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <!-- <div class="more">
+                            <a class="link">查看更多></a>
+                        </div> -->
+                    </div>
+                    <%?
+                        ctx.zhuantiFn(42935).then((data) =>{
+                            ctx.data = data;
+                            aries();
+                        });
+                    %>
+                    <div class="source1 sourceBlock none">
+                        <div class="clearfix">
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="txt multi-ellipsis--l2"><%=v.SceneryName%></div>
+                                            <div class="bottom">
+                                                <div class="btn">立即预订</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <!-- <div class="more">
+                            <a class="link">查看更多></a>
+                        </div> -->
+                    </div>
+                    <%?
+                        ctx.zhuantiFn(42936).then((data) =>{
+                            ctx.data = data;
+                            aries();
+                        });
+                    %>
+                    <div class="source2 sourceBlock none">
+                        <div class="clearfix">
+                            <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                                <%ctx.data.List.slice(0, 6).forEach(function(v,k){ %>
+                                    <a class="detail" target="_blank" href="<%=v.Purl%>">
+                                        <div class="source">
+                                            <div class="img">
+                                                <img src="<%=v.SceneryImg%>" />
+                                            </div>
+                                            <div class="txt multi-ellipsis--l2"><%=v.SceneryName%></div>
+                                            <div class="bottom">
+                                                <div class="btn">立即预订</div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                <%}
+                            )} %>
+                        </div>
+                        <!-- <div class="more">
+                            <a class="link">查看更多></a>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 好梦 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section3_bg_01.png">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section3_bg_02.png">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section3_bg_03.png">
+
+        <div class="section3">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190827/tit3.png" /></div>
+            <div class="sectionCon section3Con">
+                <%?
+                    ctx.zhuantiFn(42937).then((data) =>{
+                        ctx.data = data;
+                        aries();
+                    });
+                %>
+                <div class="sourceCon">
+                    <%if(ctx.data && ctx.data.List && ctx.data.List.length){%>
+                        <%ctx.data.List.slice(0, 4).forEach(function(v,k){ %>
+                            <div class="source <%=k==0 || k==2 ? 'left' : 'right'%>">
+                                <div class="img <%=k==0 || k==1 ? 'left' : 'right'%>">
+                                    <img src="<%=v.SceneryImg%>" />
+                                    <a class="link" target="_blank" href="<%=v.Purl%>">
+                                        <div>立即</div>
+                                        <div>预定</div>
+                                    </a>
+                                </div>
+                                <div class="intro right">
+                                    <div class="title"><%=v.SceneryName%></div>
+                                    <div class="txt"><%=v.Summary%></div>
+                                </div>
+                            </div>
+                        <%}
+                    )} %>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <!-- 攻略 -->
+    <div class="section">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section4_bg_01.png">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section4_bg_02.png">
+        <img class="imgbg" src="//img1.40017.cn/cn/s/2019/zt/pc/190827/section4_bg_03.png">
+        <div class="section4">
+            <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/190827/tit4.png" /></div>
+            <div class="sectionCon section4Con">
+                <%?
+                    ctx.zhuantiFn(42938).then((data) =>{
+                        ctx.data = {}
+                        if(data && data.List && data.List.length){
+                            ctx.data.link0 = data.List[0] ? data.List[0] : {}
+                            ctx.data.link1 = data.List[1] ? data.List[1] : {}
+                            ctx.data.link2 = data.List[2] ? data.List[2] : {}
+                            ctx.data.link3 = data.List[3] ? data.List[3] : {}
+                        }
+                        aries();
+                    });
+                %>
+                <div class="sourceCon">
+                    <a class="left" target="_blank" href="<%=ctx.data.link0.Purl%>">
+                        <img src="<%=ctx.data.link0.SceneryImg%>"/>
+                    </a>
+                    <div class="middle">
+                        <a class="link" target="_blank" href="<%=ctx.data.link1.Purl%>">
+                            <img src="<%=ctx.data.link1.SceneryImg%>"/>
+                        </a>
+                        <a class="link" target="_blank" href="<%=ctx.data.link2.Purl%>">
+                            <img src="<%=ctx.data.link2.SceneryImg%>"/>
+                        </a>
+                    </div>
+                    <a class="right" target="_blank" href="<%=ctx.data.link3.Purl%>">
+                        <img src="<%=ctx.data.link3.SceneryImg%>"/>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+    <% includeId = cnztfoot %>
+
+    <!--脚本-->
+    <script src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js?v=2016122001"></script>
+    <script type="text/javascript" src="//file.40017.cn/combo/fed/??pc/jquery/js/jquery.min.js,pc/jquery/js/util/0.0.1/util.js,pc/jquery/js/slider/0.0.5/slider.js"></script>
+    <script src="//file.40017.cn/fed/pc/jquery/js/slider2/0.0.1/slider2.js"></script>
+    <script src="//js.40017.cn/cn/min/??/cn/s/2019/zt/pc/190827/190827.js?v=2019082701"></script>
+</body>
+
+</html>

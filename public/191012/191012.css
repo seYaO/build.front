@@ -1,0 +1,904 @@
+@charset "UTF-8";
+
+html {
+    min-height: 100%;
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-size: 50px;
+    overflow-x: hidden;
+}
+
+body {
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+    color: #333;
+    padding: 0;
+    font: normal 0.12em/1.4 'Microsoft YaHei', Verdana, sans-serif;
+    overflow-x: hidden;
+    font-size: 0.24rem;
+    background: #ff8a28;
+    /* background: -webkit-linear-gradient(top, #ffd8cc, #fce1d6); */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-style: normal;
+}
+
+img,
+input,
+select {
+    border: 0;
+    vertical-align: middle;
+}
+
+ul,
+ol {
+    list-style: none outside none;
+}
+
+a,
+div,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: '';
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+a,
+a:link,
+a:visited,
+a:focus {
+    text-decoration: none;
+    color: #333;
+}
+
+h2,
+h3,
+h3,
+h4,
+h5 {
+    font-weight: normal;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+/* 
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * common
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ *
+ */
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.multi-ellipsis--l2,
+.multi-ellipsis--l3 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
+}
+
+.multi-ellipsis--l2 {
+    -webkit-line-clamp: 2
+}
+
+.multi-ellipsis--l3 {
+    -webkit-line-clamp: 3
+}
+
+/* 
+ * -------------------------------------------------
+ * loader
+ * -------------------------------------------------
+ *
+ */
+.loader {
+    overflow: hidden;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 0.1rem;
+    color: #fff;
+    display: block;
+}
+
+.loader img {
+    width: 50px !important;
+    height: 50px !important;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.loading img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/* 
+ * -------------------------------------------------
+ * source 数据
+ * -------------------------------------------------
+ *
+ */
+
+.priceInfo {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.priceInfo .sale {
+    padding: 0.02rem 0.1rem;
+    font-size: 0.2rem;
+    color: #fff;
+    background: #fe4d42;
+    border-radius: .05rem;
+    margin-bottom: .1rem;
+}
+
+.priceInfo .price {
+    font-size: 0;
+    color: #fe4d42;
+}
+
+.priceInfo .yuan {
+    font-size: .24rem;
+    color: #fe4d42;
+}
+
+.priceInfo .price .money {
+    font-size: .52rem;
+    font-weight: 600;
+    line-height: .5rem;
+    height: .5rem;
+    color: #fe4d42;
+}
+
+.priceInfo .price .qi {
+    font-size: .24rem;
+    color: #666;
+}
+
+.priceInfo .btn {
+    width: 1.7rem;
+    height: .6rem;
+    line-height: .6rem;
+    text-align: center;
+    color: #fff;
+    background: #fe4d42;
+    border-radius: .6rem;
+    box-shadow: 0 .1rem .1rem -.05rem rgba(49, 69, 89, 0.2);
+}
+
+.priceInfo .btn.disable {
+    background: #898989;
+}
+
+.source .sourceItem {
+    background: #fff;
+    overflow: hidden;
+}
+
+.source .sourceItem .left img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.source .sourceItem .tit {
+    color: #333;
+    font-size: .3rem;
+    line-height: .45rem;
+    height: .45rem;
+    margin-bottom: .02rem;
+}
+
+.source .sourceItem .subtit {
+    color: #999;
+    font-size: .26rem;
+    margin-bottom: .06rem;
+    line-height: .36rem;
+    height: .72rem;
+}
+
+.source .sourceItem .tag {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0.05rem 0.1rem;
+    background: rgba(0, 0, 0, 0.4);
+    font-size: 0.24rem;
+    color: #fff;
+}
+
+.source .sourceItem .reduce>span .red {
+    color: #f21e2d;
+}
+
+/* 左右结构 */
+.thList {
+    overflow: hidden;
+}
+
+.thList .sourceItem {
+    margin-bottom: .1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thList .city {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 2.35rem;
+    height: .42rem;
+    line-height: .42rem;
+    text-align: center;
+    font-size: .24rem;
+    color: #fff;
+    background: rgba(0, 0, 0, .6);
+    box-sizing: border-box;
+}
+
+.thList .label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding-left: .15rem;
+    padding-right: .2rem;
+    height: .42rem;
+    line-height: .42rem;
+    text-align: center;
+    font-size: .24rem;
+    color: #fff;
+    background: #ff4800;
+    box-sizing: border-box;
+    border-bottom-right-radius: .3rem;
+}
+
+.thList .button {
+    margin-top: .12rem;
+    width: 100%;
+    height: .6rem;
+    line-height: .6rem;
+    text-align: center;
+    color: #fff;
+    font-size: .32rem;
+    background: -webkit-linear-gradient(top, #f66d2e, #f55420);
+    border-radius: .6rem;
+}
+
+.thList .sourceItem .left {
+    position: relative;
+    overflow: hidden;
+    width: 2.95rem;
+    height: 2.75rem;
+}
+
+.thList .sourceItem .right {
+    position: relative;
+    margin-right: .2rem;
+    width: 3.75rem;
+}
+
+/* 上下结构 */
+.jdList .city,
+.rwList .city {
+    position: absolute;
+    top: .1rem;
+    left: 0;
+    padding: 0 .2rem;
+    height: .33rem;
+    line-height: .33rem;
+    text-align: center;
+    font-size: .2rem;
+    color: #fff;
+    background: rgba(0, 0, 0, .7);
+    box-sizing: border-box;
+    border-top-right-radius: .33rem;
+    border-bottom-right-radius: .33rem;
+}
+
+.jdList {
+    padding-top: .2rem;
+    overflow: hidden;
+}
+
+.jdList.source {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding-bottom: .2rem;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.jdList .sourceItem,
+.rwList .sourceItem {
+    position: relative;
+    margin-bottom: .1rem;
+    width: 3.5rem;
+    background: #f5f5f5;
+    overflow: hidden;
+    position: relative;
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+}
+
+.jdList .sourceItem .left,
+.rwList .sourceItem .left {
+    position: relative;
+    overflow: hidden;
+    width: 3.5rem;
+    height: 2.1rem;
+}
+
+.jdList .sourceItem .right,
+.rwList .sourceItem .right {
+    padding: .15rem .14rem
+}
+
+.rwList {
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.rwList .sourceItem {
+    display: inline-block;
+    margin-right: .2rem;
+    width: 2.7rem;
+    white-space: normal;
+}
+
+.rwList .sourceItem .left {
+    position: relative;
+    overflow: hidden;
+    width: 2.7rem;
+    height: 2.1rem;
+}
+
+.rwList .sourceItem .right {
+    white-space: normal;
+}
+
+/* 
+ * -------------------------------------------------
+ * 弹框样式
+ * -------------------------------------------------
+ *
+ */
+
+.showErrBox {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: url("//img1.40017.cn/cn/s/ZhuanTi/2015/24580/rgba5.png");
+    display: none;
+}
+
+.showErrBox .showErr {
+    width: 5.4rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    -webkit-border-radius: 0.1rem;
+    border-radius: 0.1rem;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #333;
+    background: white;
+    padding: 0.2rem;
+    transform: translate(-50%, -50%);
+}
+
+
+.noSource {
+    width: 100%;
+    text-align: center;
+    font-size: 0.24rem;
+    padding: 0.4rem;
+}
+
+/* 
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * 页面样式
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ * --------------------------------------------------------------------------------------------------
+ *
+ */
+
+.top,
+.title {
+    position: relative;
+    width: 100%;
+}
+
+.top .leaf {
+    position: absolute;
+    right: 0;
+    bottom: -.7rem;
+    width: 1.16rem;
+    height: 1.2rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191012/top_leaf.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 1;
+}
+
+.box_h5 {
+    margin-top: .4rem;
+}
+
+.box_content {
+    position: relative;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    background-size: 100%;
+}
+
+.title,
+.subtit {
+    pointer-events: none;
+}
+
+.top img,
+.title img,
+.subtit img {
+    display: block;
+    width: 100%;
+}
+
+.top .cakes {
+    position: absolute;
+    bottom: 1.51rem;
+    left: 50%;
+    margin-left: -1.31rem;
+    width: 2.62rem;
+    height: 2.66rem;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.top .cake {
+    position: relative;
+    display: inline-block;
+    width: 2.62rem;
+    height: 2.66rem;
+}
+
+.top .cake .overflow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* background: rgba(0, 0, 0, 0.4); */
+    z-index: 1;
+}
+
+.top .cake img {
+    height: 100%;
+}
+
+.top .cake .not {
+    position: absolute;
+    top: .3rem;
+    left: .3rem;
+    width: 2.32rem;
+    height: 2.36rem;
+    white-space: normal;
+}
+
+.top .cake .not .txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -.15rem;
+    transform: translateY(-50%);
+    width: .3rem;
+    font-size: .24rem;
+    line-height: 1;
+    text-align: center;
+    color: #8d5500;
+}
+
+.top .cake .open {
+    position: absolute;
+    top: -.09rem;
+    left: -.28rem;
+    width: 3.48rem;
+    height: 3.13rem;
+    white-space: normal;
+}
+
+.top .cake .open .pirce {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -.29rem;
+    transform: translateX(-50%);
+    font-size: .24rem;
+    line-height: 1;
+    text-align: center;
+    color: #8d5500;
+}
+
+.top .cake .open .pirce .yuan {
+    font-size: .24rem;
+    color: #b34222;
+}
+
+.top .cake .open .pirce .money {
+    font-size: .48rem;
+    font-weight: 600;
+    line-height: .5rem;
+    height: .5rem;
+    color: #b34222;
+}
+
+.top .switch {
+    position: absolute;
+    bottom: 1.86rem;
+    left: 50%;
+    width: 1px;
+    height: 1px;
+    z-index: 1;
+}
+
+.top .switch .st {
+    position: absolute;
+    display: block;
+    top: -.12rem;
+    left: -.38rem;
+    width: .97rem;
+    height: .87rem;
+}
+
+.top .switch .values {
+    position: absolute;
+    display: block;
+    top: .7rem;
+    left: -.95rem;
+    width: 2.3rem;
+    height: .4rem;
+    line-height: .4rem;
+    text-align: center;
+    font-size: .2rem;
+    color: #877644;
+    background: #e4d9a2;
+    border-radius: .4rem;
+    border: 1px dashed #fff;
+}
+
+.top .layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+.top .bottom {
+    position: absolute;
+    bottom: -1.38rem;
+    left: 0;
+}
+
+/*省份列表  start*/
+
+/* 省份选择 */
+.show-fix-box {
+    background: rgba(0, 0, 0, .6);
+    -webkit-border-radius: 0 .34rem .34rem 0;
+    border-radius: 0 .34rem .34rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 .25rem 0 .08rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 3;
+}
+
+.fixed_tab {
+    position: fixed;
+    top: 0rem;
+    z-index: 3;
+}
+
+.show-fix-box .top-fix img {
+    width: .31rem;
+    height: .37rem;
+    margin: 0 .08rem;
+}
+
+.top-fix {
+    font-size: .30rem;
+    color: #fff;
+    height: .6rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.provBox {
+    width: 7.5rem;
+    position: absolute;
+    top: .6rem;
+    left: 0;
+    border-radius: .05rem;
+}
+
+.pro {
+    background: #ff5224;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .3rem 0.25rem .5rem;
+}
+
+.pro div {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #fff;
+    margin: .15rem .06rem 0;
+    -webkit-border-radius: .1rem;
+    border-radius: .1rem;
+    font-size: .3rem;
+    color: #ff5224;
+    width: 1.6rem;
+    height: 0.78rem;
+    line-height: 0.78rem;
+    text-align: center;
+}
+
+
+.pro div.on {
+    color: #fff;
+    background: #f8b551;
+}
+
+/*省份列表  end*/
+
+
+/* 秋收送福利 start */
+.section1 .box_content {
+    padding-top: .1rem;
+}
+
+.sectionCon1 .jdList .sourceItem {
+    width: 2.3rem;
+}
+
+.sectionCon1 .jdList .left {
+    width: 2.3rem;
+    height: 2.75rem;
+}
+
+.more1 {
+    margin: 0 auto;
+    margin-bottom: .3rem;
+    width: 5.36rem;
+    height: .8rem;
+    line-height: .8rem;
+    text-align: center;
+    font-size: .32rem;
+    font-weight: 500;
+    color: #f55420;
+    background: #feef7d;
+    border-radius: .8rem;
+    box-shadow: 0 .1rem .1rem -.05rem rgba(49, 69, 89, 0.2);
+}
+
+/* 秋收送福利 end */
+
+/* 错峰特惠 人少景美 start */
+.section2 {
+    background: #fde972;
+}
+
+.section2.sectiontop {
+    background: transparent;
+}
+
+.section2 .tabs {
+    margin-left: 0.06rem;
+    height: .83rem;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+
+.section2 .tabs .tab {
+    display: inline-block;
+    margin-right: .2rem;
+    width: 1.61rem;
+    height: .75rem;
+    line-height: .6rem;
+    font-size: .3rem;
+    color: #fde972;
+    text-align: center;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191012/tab.png) no-repeat;
+    background-size: 100% 100%;
+    overflow: hidden;
+}
+
+.section2 .tabs .tab.active {
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191012/tab_hover.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.section2 .box_content {
+    padding-top: .16rem;
+}
+
+.section2 .title {
+    margin-bottom: .2rem;
+}
+
+.sectionCon2 {
+    padding-bottom: .3rem;
+}
+
+.more2 {
+    margin: 0 auto;
+    margin-top: .2rem;
+    width: 5.36rem;
+    height: .8rem;
+    line-height: .8rem;
+    text-align: center;
+    font-size: .32rem;
+    font-weight: 500;
+    color: #fffcc6;
+    border-radius: .8rem;
+    background: -webkit-linear-gradient(top, #f66d2e, #f55420);
+    box-shadow: 0 .1rem .1rem -.05rem rgba(49, 69, 89, 0.2);
+}
+
+/* 错峰特惠 人少景美 end */
+
+/* 秋游推荐榜 start */
+.section3 .box_content {
+    padding-top: .3rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191012/bg_01.png') top no-repeat;
+    background-size: 100% 6.85rem;
+}
+
+.sectionCon3 .jdList {
+    padding-top: 0;
+    padding-bottom: .15rem;
+}
+
+.sectionCon3 .jdList .sourceItem {
+    background: transparent;
+}
+
+.sectionCon3 .sourceItem .right {
+    padding: 0;
+}
+
+.sectionCon3 .sourceItem .tit {
+    margin: 0;
+    padding: .15rem .16rem .05rem .16rem;
+    height: 1.05rem;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.sectionCon3 .sourceItem .border {
+    display: block;
+    margin: 0;
+    border: 0;
+    width: 100%;
+}
+
+.sectionCon3 .sourceItem .subtit {
+    margin: 0;
+    padding: 0 .16rem;
+    background: #fff;
+}
+
+.sectionCon3 .priceInfo {
+    padding: .14rem .16rem;
+    background: #fff;
+}
+
+
+/* 秋游推荐榜 end */
+
+
+/* TOP结束 */
+.foot1 {
+    padding-top: .4rem;
+    padding-bottom: .7rem;
+    text-align: center;
+    color: #ff4a00;
+    font-size: 0.24rem;
+}
+
+.footer {
+    margin-top: .4rem;
+    height: 3.24rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/190904/bg_bottom.png');
+    background-size: 100% 100%;
+}
