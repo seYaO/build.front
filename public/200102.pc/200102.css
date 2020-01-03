@@ -188,13 +188,18 @@ i {
  *
  */
 
-/* 初识桂林 start */
+/* 民风民俗介绍(44947) start */
+.section1 {
+    position: relative;
+    top: -152px;
+}
+
 .section1 .tit {
     width: 718px
 }
 
 .section1Con {
-    height: 450px;
+    height: 298px;
 }
 
 .section1Con .bg {
@@ -247,9 +252,9 @@ i {
     background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_1_hover.png') no-repeat;
 }
 
-/* 初识桂林 end */
+/* 民风民俗介绍(44947) end */
 
-/* 品牌桂林 start */
+/* XXX start */
 .section2 .tit {
     width: 949px
 }
@@ -322,9 +327,9 @@ i {
     background: #b36e02;
 }
 
-/* 品牌桂林 end */
+/* XXX end */
 
-/* 玩转桂林 start */
+/* 景点(44951) start */
 .section3 .tit {
     width: 886px
 }
@@ -457,9 +462,9 @@ i {
     background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_more_hover.png') no-repeat;
 }
 
-/* 玩转桂林 end */
+/* 景点(44951) end */
 
-/* 桂林攻略推荐 start */
+/* 线路(44952) start */
 .section4 .tit {
     width: 949px
 }
@@ -557,9 +562,9 @@ i {
     background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_more_hover.png') no-repeat;
 }
 
-/* 桂林攻略推荐 end */
+/* 线路(44952) end */
 
-/* 天下山水情 寻梦桂林心 start */
+/* XXX start */
 .section5 .tit {
     width: 534px
 }
@@ -622,7 +627,7 @@ i {
     background: url('//img1.40017.cn/cn/s/2019/zt/pc/200102/btn_hover.png') no-repeat;
 }
 
-/* 天下山水情 寻梦桂林心 end */
+/* XXX end */
 
 
 
