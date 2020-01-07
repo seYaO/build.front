@@ -231,6 +231,29 @@ i {
     height: 100%;
 }
 
+.section1Con .slider {
+    width: 500px;
+    height: 330px;
+    margin: 0 auto;
+}
+
+.section1Con .slider .source {
+    width: 500px;
+    height: 330px;
+    overflow: hidden;
+}
+
+.section1Con .slider .source li {
+    width: 500px;
+    height: 330px;
+    overflow: hidden;
+}
+
+.section1Con .slider .source img{
+    width: 500px;
+    height: 330px;
+}
+
 .section1Con .right {
     position: relative;
     float: right;
@@ -345,6 +368,55 @@ i {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.section .titsub .value {
+    position: absolute;
+    top: 0;
+    left: 16px;
+}
+
+.section .titsub .price {
+    float: left;
+    margin-top: 10px;
+    font-size: 24px;
+    color: #da2421;
+}
+
+.section .titsub .price em {
+    font-size: 90px;
+    font-weight: bold;
+    font-style: normal;
+    display: inline-block;
+    line-height: 125px;
+}
+
+.section .titsub .txt {
+    float: left;
+    margin-left: 10px;
+    margin-top: 30px;
+    color: #6d3c02;
+}
+
+.section .titsub .txt h1 {
+    font-size: 30px;
+    line-height: 36px;
+}
+
+.section .titsub .txt p {
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+.section .titsub .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 36px;
+    width: 50px;
+    font-size: 24px;
+    color: #ffd290;
+    cursor: pointer;
 }
 
 .section3Con .sourceCon {
@@ -547,7 +619,7 @@ i {
 }
 
 .section4Con .more {
-    padding-top: 30px;
+    padding-top: 50px;
     text-align: center;
 }
 
@@ -636,4 +708,131 @@ i {
     padding: 30px 0;
     font-size: 18px;
     color: #600003;
+}
+
+/* 弹框 */
+.mask {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 5;
+    background: rgba(0, 0, 0, .6);
+}
+
+.successHbPop,
+.failHbPop,
+.hasGetHbPop {
+    width: 590px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin: -265px 0 0 -295px;
+    z-index: 6;
+}
+
+.hbTop {
+    width: 100%;
+    height: 98px;
+}
+
+.hbCon {
+    background: #fff;
+    padding-bottom: 25px;
+    border-radius: 0 0 10px 10px;
+}
+
+.hbCon h2 {
+    font-size: 36px;
+    color: #333333;
+    text-align: center;
+    padding: 20px 0 10px;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+.hbCon p {
+    font-size: 28px;
+    color: #333333;
+    text-align: center;
+    line-height: 40px;
+}
+
+.hbPop {
+    width: 500px;
+    height: 148px;
+    background: url('https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/hb_pop_bg.png') no-repeat;
+    margin: 15px auto 20px;
+    overflow: hidden;
+}
+
+.hbPop .price {
+    font-size: 34px;
+    color: #fe4931;
+    width: 180px;
+    text-align: center;
+    float: left;
+}
+
+.hbPop .price em {
+    font-size: 100px;
+    font-weight: bold;
+    font-style: normal;
+    line-height: 150px;
+}
+
+.hbMessage {
+    width: 290px;
+    float: left;
+    margin-left: 30px;
+}
+
+.hbMessage h1 {
+    font-size: 30px;
+    color: #fe4931;
+    padding-top: 20px;
+    line-height: 32px;
+    font-weight: bold;
+}
+
+.hbMessage p {
+    font-size: 24px;
+    color: #be5d00;
+    text-align: left;
+}
+
+.hbCon p.hbTip {
+    font-size: 24px;
+    color: #333333;
+    padding: 0 40px;
+    text-align: left;
+}
+
+.closeBtn {
+    width: 52px;
+    height: 52px;
+    position: absolute;
+    top: 26px;
+    right: -14px;
+}
+
+.failIcon {
+    width: 273px;
+    height: 137px;
+    margin: 25px auto;
+}
+
+.hbPopBtn {
+    width: 345px;
+    height: 62px;
+    line-height: 62px;
+    background: #fe4b33;
+    -webkit-border-radius: 31px;
+    border-radius: 31px;
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 auto;
 }

@@ -15,11 +15,11 @@
     var loginState = window.loginState || {};  	
     var _hmt = _hmt || [];
 </script>
-<!--cnztjss.leonid.end-->
   <link rel="stylesheet" ver="20170719" href="//file.40017.cn/tcweb/pc/public/css/zhuanti/zhuanticommon.0.0.7.css?v=2018011101" />
-  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=etBRsREU2D0Zj6enHl69ZsbhS8Tqqeae&s=1"></script>
+  <!--cnztjss.leonid.end-->
   <link rel="stylesheet" type="text/css" href="//file.40017.cn/fed/pc/jquery/css/slider/0.0.5/slider.css" />
   <link rel="stylesheet" href="//file.40017.cn/fed/pc/jquery/css/slider2/0.0.1/slider2.css" />
+  <link rel="stylesheet" href="https://file.40017.cn/fed/pc/jquery/css/mLogin/0.0.3/mLogin.css?v=2019">
   <link rel="stylesheet" href="200102.pc/200102.css">
 </head>
 
@@ -145,7 +145,21 @@
                 </div>
                 
                 <div class="left">
-                    <video src="https://video.40017.cn/uploadtool/dazhoubian/20190813/190813103105977258128224.MP4" controls="controls">您的浏览器暂不支持视频播放~</video>
+                    <!-- <video src="https://video.40017.cn/uploadtool/dazhoubian/20190813/190813103105977258128224.MP4" controls="controls">您的浏览器暂不支持视频播放~</video> -->
+                    <div class="slider">
+                        <div class="source clearfix mSlider_con">
+                            <div class="slider_ul">
+                                <li class="clearfix">
+                                    <img class="img" src="//pic5.40017.cn/01/001/0a/d9/rBANC1kcBauAEIkxAAIAAHxpqog535.jpg" />
+                                </li>
+                                
+                                <li class="clearfix">
+                                    <img class="img" src="//pic5.40017.cn/01/001/0a/d9/rBANC1kcBauAEIkxAAIAAHxpqog535.jpg" />
+                                </li>
+                                
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="right">
                     <div class="name">宁夏年俗</div>
@@ -157,7 +171,7 @@
     </div>
 
     <!--  -->
-    <div class="section">
+    <!-- <div class="section">
         <div class="bg2">
         </div>
         <div class="section2">
@@ -182,12 +196,19 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- 景点(44951) -->
     <div class="section">
         <div class="section3">
             <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/200102/tit3.png" /></div>
-            <div class="titsub"><img src="//img1.40017.cn/cn/s/2019/zt/pc/200102/red10.png" /></div>
+            <div class="titsub">
+                <img src="//img1.40017.cn/cn/s/2019/zt/pc/200102/red.png" />
+                <div class="value">
+                    <div class="price">¥<em>10</em></div>
+                    <div class="txt"><h1>门票红包</h1><p>购买宁夏在线支付门票产品可用</p></div>
+                </div>
+                <div class="btn hbBtn1">立即领取</div>
+            </div>
             <div class="sectionCon section3Con">
                 <div class="sourceCon">
                     <div class="source0 sourceBlock">
@@ -315,7 +336,14 @@
     <div class="section">
         <div class="section4">
             <div class="tit"><img src="//img1.40017.cn/cn/s/2019/zt/pc/200102/tit4.png" /></div>
-            <div class="titsub"><img src="//img1.40017.cn/cn/s/2019/zt/pc/200102/red300.png" /></div>
+            <!-- <div class="titsub">
+                <img src="//img1.40017.cn/cn/s/2019/zt/pc/200102/red.png" />
+                <div class="value">
+                    <div class="price">¥<em>300</em></div>
+                    <div class="txt"><h1>线路红包</h1><p>购买宁夏线路产品可使用</p></div>
+                </div>
+                <div class="btn hbBtn2">立即领取</div>
+            </div> -->
             <div class="sectionCon section4Con">
                 <div class="bg">
                     <img src="//img1.40017.cn/cn/s/2019/zt/pc/200102/section4_bg.png">
@@ -505,11 +533,96 @@
 <script src="//jsb.40017.cn/cn/public/monitor/apm.1.0.0.js?v=2017042101"></script>
 <!--cnztfoot.leonid.end-->
 
+<!-- 弹框 -->
+<div class="mask none"></div>
+<!-- 领取成功 -->
+<div class="successHbPop hbPop1 none">
+    <div class="hbTop">
+        <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/hb_pop_top.png" alt="">
+    </div>
+    <div class="hbCon">
+        <h2>领取成功！</h2>
+        <p>宁夏文旅厅送您10元景点门票红包！<br>美丽新宁夏，理想度个假！</p>
+        <div class="hbPop">
+            <div class="price">
+                &yen;<em>10</em>
+            </div>
+            <div class="hbMessage">
+                <h1>宁夏景区门票专享红包</h1>
+                <p>购买宁夏在线支付门票产品可用</p>
+            </div>
+        </div>
+        <p class="hbTip">红包已放入您的同程账户，可至“同程APP-我的-红包优惠券-红包”中查看！</p>
+    </div>
+    <div class="closeBtn">
+        <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/close_btn.png" alt="">
+    </div>
+</div>
+<div class="successHbPop hbPop2 none">
+    <div class="hbTop">
+        <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/hb_pop_top.png" alt="">
+    </div>
+    <div class="hbCon">
+        <h2>领取成功！</h2>
+        <p>宁夏文旅厅送您300元景点门票红包！<br>美丽新宁夏，理想度个假！</p>
+        <div class="hbPop">
+            <div class="price">
+                &yen;<em>300</em>
+            </div>
+            <div class="hbMessage">
+                <h1>宁夏线路专享红包</h1>
+                <p>购买宁夏线路产品可使用</p>
+            </div>
+        </div>
+        <p class="hbTip">红包已放入您的同程账户，可至“同程APP-我的-红包优惠券-红包”中查看！</p>
+    </div>
+    <div class="closeBtn">
+        <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/close_btn.png" alt="">
+    </div>
+</div>
+<!-- 领取失败 -->
+<div class="failHbPop none">
+    <div class="hbTop">
+        <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/hb_pop_top.png" alt="">
+    </div>
+    <div class="hbCon">
+        <h2>啊哦~红包与您擦肩而过</h2>
+        <p>重新领取一次吧！</p>
+        <div class="failIcon">
+            <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/hb_pop_icon.png" alt="">
+        </div>
+        <div class="hbPopBtn">重新领取</div>
+    </div>
+    <div class="closeBtn">
+        <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/close_btn.png" alt="">
+    </div>
+</div>
+<!-- 已经领取过 -->
+<div class="hasGetHbPop none">
+    <div class="hbTop">
+        <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/hb_pop_top.png" alt="">
+    </div>
+    <div class="hbCon">
+        <h2>您已经领取过该红包了～</h2>
+        <p>去看看景点吧～</p>
+        <div class="failIcon">
+            <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/hb_pop_icon.png" alt="">
+        </div>
+        <div class="hbPopBtn">确定</div>
+    </div>
+    <div class="closeBtn">
+        <img src="https://file.40017.cn/img140017cnproduct/cn/s/2019/zt/pc/212302/close_btn.png" alt="">
+    </div>
+</div>
 
+<!-- 隐藏域 -->
+<input type="hidden" id="channelId" value="44945">
 <!--脚本-->
 <script src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js?v=2016122001"></script>
 <script type="text/javascript" src="//file.40017.cn/combo/fed/??pc/jquery/js/jquery.min.js,pc/jquery/js/util/0.0.1/util.js,pc/jquery/js/slider/0.0.5/slider.js"></script>
 <script src="//file.40017.cn/fed/pc/jquery/js/slider2/0.0.1/slider2.js"></script>
+<script type="text/javascript" src="https://file.40017.cn/fed/pc/jquery/js/mLogin/0.0.3/mLogin.js"></script>
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=etBRsREU2D0Zj6enHl69ZsbhS8Tqqeae&s=1"></script>
 <script src="200102.pc/200102.js"></script>
 </body>
 
