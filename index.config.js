@@ -14,5 +14,6 @@ module.exports = {
         '191223',
         // new
         '200102.pc', // https://www.ly.com/scenery/zhuanti/aodili/ningxianian
+        '200113.h5',
     ]
 }
