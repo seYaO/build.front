@@ -1,5 +1,19 @@
 @charset "UTF-8";
 
+/* 
+                                                                    
+                                                                    
+  _______   ______   ______ ____   ______ ____    ______   _______  
+ /       \ /      \ |      \    \ |      \    \  /      \ |       \ 
+|  $$$$$$$|  $$$$$$\| $$$$$$\$$$$\| $$$$$$\$$$$\|  $$$$$$\| $$$$$$$\
+| $$      | $$  | $$| $$ | $$ | $$| $$ | $$ | $$| $$  | $$| $$  | $$
+| $$_____ | $$__/ $$| $$ | $$ | $$| $$ | $$ | $$| $$__/ $$| $$  | $$
+ \$$     \ \$$    $$| $$ | $$ | $$| $$ | $$ | $$ \$$    $$| $$  | $$
+  \$$$$$$$  \$$$$$$  \$$  \$$  \$$ \$$  \$$  \$$  \$$$$$$  \$$   \$$
+                                                                    
+                                                                    
+                                                                    
+*/
 html {
     min-height: 100%;
     font-family: 'Microsoft YaHei', sans-serif;
@@ -11,13 +25,11 @@ body {
     min-width: 320px;
     max-width: 640px;
     margin: 0 auto;
-    color: #333;
+    color: #fff;
     padding: 0;
     font: normal 0.12em/1.4 'Microsoft YaHei', Verdana, sans-serif;
-    /* overflow-x: hidden; */
     font-size: 0.24rem;
     background: #80390f;
-    /* background: -webkit-linear-gradient(top, #ffd8cc, #fce1d6); */
 }
 
 * {
@@ -82,16 +94,35 @@ h5 {
     display: none;
 }
 
-/* 
- * --------------------------------------------------------------------------------------------------
- * --------------------------------------------------------------------------------------------------
- * --------------------------------------------------------------------------------------------------
- * common
- * --------------------------------------------------------------------------------------------------
- * --------------------------------------------------------------------------------------------------
- * --------------------------------------------------------------------------------------------------
- *
- */
+/*  */
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* 无数据 */
+.noSource {
+    width: 100%;
+    text-align: center;
+    font-size: 0.24rem;
+    padding: 0.4rem;
+}
+
+/*
+           __  __  __                      __           
+          |  \|  \|  \                    |  \          
+  ______  | $$| $$ \$$  ______    _______  \$$  _______ 
+ /      \ | $$| $$|  \ /      \  /       \|  \ /       \
+|  $$$$$$\| $$| $$| $$|  $$$$$$\|  $$$$$$$| $$|  $$$$$$$
+| $$    $$| $$| $$| $$| $$  | $$ \$$    \ | $$ \$$    \ 
+| $$$$$$$$| $$| $$| $$| $$__/ $$ _\$$$$$$\| $$ _\$$$$$$\
+ \$$     \| $$| $$| $$| $$    $$|       $$| $$|       $$
+  \$$$$$$$ \$$ \$$ \$$| $$$$$$$  \$$$$$$$  \$$ \$$$$$$$ 
+                      | $$                              
+                      | $$                              
+                       \$$                              
+*/
 .ellipsis {
     overflow: hidden;
     white-space: nowrap;
@@ -101,7 +132,11 @@ h5 {
 .multi-ellipsis--l2,
 .multi-ellipsis--l3,
 .multi-ellipsis--l4,
-.multi-ellipsis--l6 {
+.multi-ellipsis--l5,
+.multi-ellipsis--l6,
+.multi-ellipsis--l7,
+.multi-ellipsis--l8,
+.multi-ellipsis--l9 {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -120,9 +155,42 @@ h5 {
     -webkit-line-clamp: 4
 }
 
+.multi-ellipsis--l5 {
+    -webkit-line-clamp: 5
+}
+
 .multi-ellipsis--l6 {
     -webkit-line-clamp: 6
 }
+
+.multi-ellipsis--l7 {
+    -webkit-line-clamp: 7
+}
+
+.multi-ellipsis--l8 {
+    -webkit-line-clamp: 8
+}
+
+.multi-ellipsis--l9 {
+    -webkit-line-clamp: 9
+}
+
+
+
+/*
+ __                                 __  __                     
+|  \                               |  \|  \                    
+| $$       ______    ______    ____| $$ \$$ _______    ______  
+| $$      /      \  |      \  /      $$|  \|       \  /      \ 
+| $$     |  $$$$$$\  \$$$$$$\|  $$$$$$$| $$| $$$$$$$\|  $$$$$$\
+| $$     | $$  | $$ /      $$| $$  | $$| $$| $$  | $$| $$  | $$
+| $$_____| $$__/ $$|  $$$$$$$| $$__| $$| $$| $$  | $$| $$__| $$
+| $$     \\$$    $$ \$$    $$ \$$    $$| $$| $$  | $$ \$$    $$
+ \$$$$$$$$ \$$$$$$   \$$$$$$$  \$$$$$$$ \$$ \$$   \$$ _\$$$$$$$
+                                                     |  \__| $$
+                                                      \$$    $$
+                                                       \$$$$$$                                                    
+*/
 
 /* 
  * -------------------------------------------------
@@ -170,167 +238,69 @@ h5 {
     transform: translate(-50%, -50%);
 }
 
+/*
+ ________                                __     
+|        \                              |  \    
+ \$$$$$$$$______    ______    _______  _| $$_   
+   | $$  /      \  |      \  /       \|   $$ \  
+   | $$ |  $$$$$$\  \$$$$$$\|  $$$$$$$ \$$$$$$  
+   | $$ | $$  | $$ /      $$ \$$    \   | $$ __ 
+   | $$ | $$__/ $$|  $$$$$$$ _\$$$$$$\  | $$|  \
+   | $$  \$$    $$ \$$    $$|       $$   \$$  $$
+    \$$   \$$$$$$   \$$$$$$$ \$$$$$$$     \$$$$ 
+                                                
+                                                
+                                                
+*/
+
 /* 
  * -------------------------------------------------
- * dialog 
+ * 弹框样式
  * -------------------------------------------------
  *
  */
-
-.dialog {
-    position: fixed;
-    left: 0;
-    top: 0;
-    background: rgba(0, 0, 0, 0.6);
+.showErrBox {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 11;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: url("//img1.40017.cn/cn/s/ZhuanTi/2015/24580/rgba5.png");
+    display: none;
 }
 
-.dialog-cont {
-    padding: .2rem;
+.showErrBox .showErr {
     width: 5.4rem;
-    position: relative;
-    background: #fff;
-    border-radius: .2rem;
-}
-
-.dialog-cont .close {
-    position: absolute;
-    right: .3rem;
-    top: -.76rem;
-    width: .44rem;
-    height: .77rem;
-    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191201/close.png) no-repeat;
-    background-size: 100% 100%;
-}
-
-.dialog-cont .tit {
-    padding: .2rem;
-    font-size: .48rem;
-    line-height: 1;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    -webkit-border-radius: 0.1rem;
+    border-radius: 0.1rem;
     text-align: center;
-    font-weight: 600;
+    font-size: 0.24rem;
+    color: #333;
+    background: white;
+    padding: 0.2rem;
+    transform: translate(-50%, -50%);
 }
 
-.dialog-cont .txt {
-    padding: .05rem 0;
-    font-size: .24rem;
-}
 
-.dialog-cont .text {
-    text-align: center;
-    font-size: .32rem;
-}
-
-.dialog-cont .btns {
-    margin-top: .3rem;
-    display: flex;
-}
-
-.dialog-cont .button {
-    flex: 1;
-    margin: 0 .1rem;
-    height: .78rem;
-    line-height: .78rem;
-    font-size: .36rem;
-    color: #fff;
-    text-align: center;
-    background: #ff4c1c;
-    border-radius: .78rem;
-}
-
-.dialog-cont .button.primary {
-    font-size: .32rem;
-    background: #09bb07;
-    border: 1px solid #09bb07;
-}
-
-.dialog-cont .button.default {
-    font-size: .32rem;
-    color: #09bb07;
-    background: #fff;
-    border: 1px solid #09bb07;
-}
-
-.redlist {
-    /* padding: .1rem 0; */
-}
-
-.redlist .item {
-    margin-top: .1rem;
-    display: flex;
-    align-items: center;
-    background: #fff8dc;
-}
-
-.redlist .item .left {
-    width: 1.05rem;
-    flex-shrink: 0;
-}
-
-.redlist .item .left img {
-    display: block;
-    margin-left: .3rem;
-    width: .68rem;
-    height: .73rem;
-}
-
-.redlist .item .center {
-    padding-left: .3rem;
-    flex: auto;
-}
-
-.redlist .item .center .t {
-    font-weight: bold;
-    font-size: .28rem;
-    line-height: 1;
-    color: #975129;
-}
-
-.redlist .item .center .d {
-    margin-top: .15rem;
-    font-size: .24rem;
-    line-height: 1;
-    color: #975129;
-}
-
-.redlist .item .right {
-    position: relative;
-    width: 1.58rem;
-    height: 1.28rem;
-    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191201/share_red_bg.png') no-repeat;
-    background-size: 100% 100%;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.redlist .item .right .over {
-    position: absolute;
-    top: -.05rem;
-    left: -.1rem;
-    width: 1.02rem;
-    height: .68rem;
-}
-
-.redlist .item .right .price {
-    font-size: 0;
-}
-
-.redlist .item .right .yuan {
-    font-size: .24rem;
-    color: #fff;
-}
-
-.redlist .item .right .money {
-    font-size: .48rem;
-    color: #fff;
-}
+/*
+                                                            
+                                                            
+  _______   ______   __    __   ______    _______   ______  
+ /       \ /      \ |  \  |  \ /      \  /       \ /      \ 
+|  $$$$$$$|  $$$$$$\| $$  | $$|  $$$$$$\|  $$$$$$$|  $$$$$$\
+ \$$    \ | $$  | $$| $$  | $$| $$   \$$| $$      | $$    $$
+ _\$$$$$$\| $$__/ $$| $$__/ $$| $$      | $$_____ | $$$$$$$$
+|       $$ \$$    $$ \$$    $$| $$       \$$     \ \$$     \
+ \$$$$$$$   \$$$$$$   \$$$$$$  \$$        \$$$$$$$  \$$$$$$$
+                                                            
+                                                            
+                                                            
+*/
 
 /* 
  * -------------------------------------------------
@@ -627,118 +597,103 @@ h5 {
     border-radius: .55rem;
 }
 
+/*
+ ________                     __                         
+|        \                   |  \                        
+| $$$$$$$$______    ______  _| $$_     ______    ______  
+| $$__   /      \  /      \|   $$ \   /      \  /      \ 
+| $$  \ |  $$$$$$\|  $$$$$$\\$$$$$$  |  $$$$$$\|  $$$$$$\
+| $$$$$ | $$  | $$| $$  | $$ | $$ __ | $$    $$| $$   \$$
+| $$    | $$__/ $$| $$__/ $$ | $$|  \| $$$$$$$$| $$      
+| $$     \$$    $$ \$$    $$  \$$  $$ \$$     \| $$      
+ \$$      \$$$$$$   \$$$$$$    \$$$$   \$$$$$$$ \$$      
+                                                         
+                                                         
+                                                         
+*/
 
 /* 
  * -------------------------------------------------
- * 弹框样式
+ * 默认型
  * -------------------------------------------------
  *
  */
-
-.showErrBox {
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    background: url("//img1.40017.cn/cn/s/ZhuanTi/2015/24580/rgba5.png");
-    display: none;
-}
-
-.showErrBox .showErr {
-    width: 5.4rem;
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    z-index: 100;
-    -webkit-border-radius: 0.1rem;
-    border-radius: 0.1rem;
+/* h5 */
+.foot1 {
+    width: 6.4rem;
+    height: 1.06rem;
+    line-height: 1.06rem;
     text-align: center;
-    font-size: 0.24rem;
-    color: #333;
-    background: white;
-    padding: 0.2rem;
-    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: .24rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/200113/foot.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+/* 小程序 */
+.footer {
+    margin-top: .4rem;
+    height: 3.24rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/190904/bg_bottom.png');
+    /* #052c29 深绿色 */
+    background-size: 100% 100%;
+}
+
+.footer {
+    margin-top: .4rem;
+    height: 2.78rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191101/bg_bottom.png');
+    /* #3a1cb6 深蓝色 */
+    background-size: 100% 100%;
 }
 
 
-.noSource {
-    width: 100%;
-    text-align: center;
-    font-size: 0.24rem;
-    padding: 0.4rem;
-}
+/* 
+ _______                                       ______     __                __           
+|       \                                     /      \   |  \              |  \          
+| $$$$$$$\ ______    ______    ______        |  $$$$$$\ _| $$_    __    __ | $$  ______  
+| $$__/ $$|      \  /      \  /      \       | $$___\$$|   $$ \  |  \  |  \| $$ /      \ 
+| $$    $$ \$$$$$$\|  $$$$$$\|  $$$$$$\       \$$    \  \$$$$$$  | $$  | $$| $$|  $$$$$$\
+| $$$$$$$ /      $$| $$  | $$| $$    $$       _\$$$$$$\  | $$ __ | $$  | $$| $$| $$    $$
+| $$     |  $$$$$$$| $$__| $$| $$$$$$$$      |  \__| $$  | $$|  \| $$__/ $$| $$| $$$$$$$$
+| $$      \$$    $$ \$$    $$ \$$     \       \$$    $$   \$$  $$ \$$    $$| $$ \$$     \
+ \$$       \$$$$$$$ _\$$$$$$$  \$$$$$$$        \$$$$$$     \$$$$  _\$$$$$$$ \$$  \$$$$$$$
+                   |  \__| $$                                    |  \__| $$              
+                    \$$    $$                                     \$$    $$              
+                     \$$$$$$                                       \$$$$$$                        
+ */
 
 /* 
  * --------------------------------------------------------------------------------------------------
  * --------------------------------------------------------------------------------------------------
  * --------------------------------------------------------------------------------------------------
- * 页面样式
  * --------------------------------------------------------------------------------------------------
  * --------------------------------------------------------------------------------------------------
  * --------------------------------------------------------------------------------------------------
- *
+ * --------------------------------------------------------------------------------------------------
  */
+
+/*
+ _______                                                                                                         
+|       \                                                                                                        
+| $$$$$$$\ ______    ______    ______          _______   ______   ______ ____   ______ ____    ______   _______  
+| $$__/ $$|      \  /      \  /      \        /       \ /      \ |      \    \ |      \    \  /      \ |       \ 
+| $$    $$ \$$$$$$\|  $$$$$$\|  $$$$$$\      |  $$$$$$$|  $$$$$$\| $$$$$$\$$$$\| $$$$$$\$$$$\|  $$$$$$\| $$$$$$$\
+| $$$$$$$ /      $$| $$  | $$| $$    $$      | $$      | $$  | $$| $$ | $$ | $$| $$ | $$ | $$| $$  | $$| $$  | $$
+| $$     |  $$$$$$$| $$__| $$| $$$$$$$$      | $$_____ | $$__/ $$| $$ | $$ | $$| $$ | $$ | $$| $$__/ $$| $$  | $$
+| $$      \$$    $$ \$$    $$ \$$     \       \$$     \ \$$    $$| $$ | $$ | $$| $$ | $$ | $$ \$$    $$| $$  | $$
+ \$$       \$$$$$$$ _\$$$$$$$  \$$$$$$$        \$$$$$$$  \$$$$$$  \$$  \$$  \$$ \$$  \$$  \$$  \$$$$$$  \$$   \$$
+                   |  \__| $$                                                                                    
+                    \$$    $$                                                                                    
+                     \$$$$$$                                                                                     
+*/
+
 
 .top,
 .title,
 .box_red {
     position: relative;
     width: 100%;
-}
-
-.top .leaf {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2rem;
-    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191201/ticket_btn.png) no-repeat;
-    background-size: 100% 100%;
-    z-index: 1;
-}
-
-.box_top {
-    position: relative;
-    /* height: .15rem; */
-}
-
-.box_top::after {
-    /* content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 2.06rem;
-    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_top.png) no-repeat;
-    background-size: 100% 100%; */
-}
-
-.box_content {
-    position: relative;
-    padding-left: .2rem;
-    padding-right: .2rem;
-    /* min-height: 2rem;
-    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_content.png) repeat-y;
-    background-size: 100% 100%; */
-
-}
-
-.box_bottom {
-    position: relative;
-    /* height: .38rem; */
-}
-
-.box_bottom::after {
-    /* content: '';
-    position: absolute;
-    top: -.02rem;
-    left: 0;
-    width: 100%;
-    height: .4rem;
-    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_bottom.png) no-repeat;
-    background-size: 100% 100%; */
 }
 
 .title,
@@ -754,430 +709,195 @@ h5 {
     width: 100%;
 }
 
-.box_red .cakes {
-    position: absolute;
-    bottom: .4rem;
-    left: 50%;
-    margin-left: -2.56rem;
-    width: 5.12rem;
-    height: 2rem;
-    display: flex;
-}
-
-.box_red .cake {
+.box_content {
     position: relative;
-    margin: 0 .05rem;
-    width: 1.61rem;
-    height: 2.01rem;
-    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/red.png) no-repeat;
-    background-size: 100% 100%;
+    padding-left: .3rem;
+    padding-right: .3rem;
 }
 
-.box_red .cake .pirce {
-    font-size: 0;
-    text-align: center;
-}
 
-.box_red .cake .yuan {
+/*
+                                 __      __                     
+                                |  \    |  \                    
+  _______   ______    _______  _| $$_    \$$  ______   _______  
+ /       \ /      \  /       \|   $$ \  |  \ /      \ |       \ 
+|  $$$$$$$|  $$$$$$\|  $$$$$$$ \$$$$$$  | $$|  $$$$$$\| $$$$$$$\
+ \$$    \ | $$    $$| $$        | $$ __ | $$| $$  | $$| $$  | $$
+ _\$$$$$$\| $$$$$$$$| $$_____   | $$|  \| $$| $$__/ $$| $$  | $$
+|       $$ \$$     \ \$$     \   \$$  $$| $$ \$$    $$| $$  | $$
+ \$$$$$$$   \$$$$$$$  \$$$$$$$    \$$$$  \$$  \$$$$$$  \$$   \$$
+                                                                
+                                                                
+                                                                
+*/
+.section .intro {
+    position: relative;
+    padding: .2rem;
     font-size: .22rem;
-    color: #fff1c9;
+    line-height: .44rem;
+    background-color: #672f0e;
+    border-radius: .15rem;
 }
 
-.box_red .cake .money {
-    font-size: .44rem;
-    font-weight: 600;
-    line-height: .6rem;
-    height: .6rem;
-    color: #fff1c9;
+
+
+/* 1(44765) start */
+
+.section1 .intro1 {
+    margin-top: .4rem;
+    padding-top: 1.9rem;
+    padding-bottom: .4rem;
 }
 
-.box_red .cake .value {
-    margin-top: .3rem;
-    font-size: .26rem;
-    text-align: center;
-    color: #ffc221;
+.section1 .intro2 {
+    margin-top: .2rem;
+    padding-top: .9rem;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
-.box_red .cake .txt {
-    margin-bottom: .05rem;
-    font-size: .18rem;
-    text-align: center;
-    color: #fff9b3;
+.section1 .intro3 {
+    margin-bottom: .4rem;
+    border-top: 1px dashed #fff;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
 }
 
-.box_red .cake .btn {
-    margin: 0 auto;
-    width: 1.26rem;
-    height: .3rem;
-    line-height: .3rem;
-    text-align: center;
-    font-size: .2rem;
-    color: #994105;
-    border-radius: .3rem;
-    background: -webkit-linear-gradient(100deg, #ffa611, #fee693);
-}
-
-.box_red .cake .btn.disable {
-    color: #333;
-    background: -webkit-linear-gradient(100deg, #929292, #cbcbcb);
-}
-
-.box_red .cake .overflow {
+.section1 .img1 {
     position: absolute;
-    top: 0;
-    left: 0;
+    top: -.3rem;
     width: 100%;
-    height: 100%;
-    z-index: 1;
 }
 
-/*省份列表  start*/
-
-/* 省份选择 */
-.show-fix-box {
-    -webkit-border-radius: 0 .34rem .34rem 0;
-    border-radius: 0 .34rem .34rem 0;
+.section1 .img2 {
     position: absolute;
-    top: 0;
-    left: 0;
-    padding: 0 .35rem 0 .12rem;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    z-index: 3;
-    background: -webkit-linear-gradient(left, #3f33cb, #30189f);
+    top: -.5rem;
+    width: 100%;
 }
 
-.fixed_tab {
-    position: fixed;
-    top: 0rem;
-    z-index: 3;
+.section1 .img {
+    width: 100%;
 }
 
-.show-fix-box .top-fix img {
-    width: .24rem;
-    height: .26rem;
-    margin: 0 .08rem;
+
+
+/* 1(44765) end */
+
+/* 2(44766) start */
+.section2 .box_content {
+    background-color: #ede2cd;
 }
 
-.top-fix {
-    font-size: .24rem;
-    color: #fff;
-    height: .5rem;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
+.sectionCon2 {
+    padding-top: .3rem;
+    padding-bottom: .2rem;
+}
+
+.sectionCon2 .intro {
+    padding: .2rem;
+    padding-bottom: .9rem;
+    background-color: #d8c2a8;
+}
+
+.swiper-pagination2 {
+    bottom: -.5rem;
+    width: 100%;
+}
+
+.sectionCon2 .swiper-pagination-bullet {
+    background: #61605f;
+    opacity: 1;
+    margin-right: 0.12rem;
+}
+
+.sectionCon2 .swiper-pagination-bullet-active {
+    background: #80390f;
+}
+
+.video {
+    position: relative;
+}
+
+.video video {
+    width: 100%;
+    height: 3.72rem;
+}
+
+.video-tab {
+    width: 100%;
     display: flex;
-    -webkit-box-align: center;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
+    flex-direction: row;
+    padding: 0;
+    margin: 0;
 }
 
-.provBox {
-    width: 6.4rem;
-    position: absolute;
-    top: .5rem;
-    left: 0;
-    border-radius: .05rem;
+.video-tab li {
+    width: 1.38rem;
+    height: 1.02rem;
+    border: 0.01rem solid #674633;
+    margin-right: 0.1rem;
 }
 
-.pro {
-    background: #3f23d7;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-flex-wrap: wrap;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    padding: .3rem .25rem .5rem;
+.video-tab li img {
+    width: 1.38rem;
+    height: 1.02rem;
+    display: block;
 }
 
-.pro div {
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #6144fe;
-    margin: .12rem .05rem 0;
-    -webkit-border-radius: .1rem;
-    border-radius: .1rem;
-    font-size: .3rem;
-    color: #fff;
-    width: 1.37rem;
-    height: .66rem;
-    line-height: .66rem;
-    text-align: center;
+/* 2(44766) end */
+
+/* 3(44767) start */
+
+.sectionCon3 {
+    padding: .4rem 0;
 }
-
-
-.pro div.on {
-    color: #fff;
-    background: #de5231;
-}
-
-/*省份列表  end*/
-
-/* --- navs */
-.navs {
-    display: flex;
-    height: .72rem;
-    background: #ffbb0d;
-}
-
-.nav {
-    margin: 0 .2rem;
-    width: 1.16rem;
-    line-height: .7rem;
-    font-size: .28rem;
-    text-align: center;
-    color: #602b00;
-    border-bottom: .03rem solid #ffbb0d;
-}
-
-.nav.active {
-    color: #dd2900;
-    border-bottom: .03rem solid #ff4400;
-}
-
-/* 印象新疆(44765) start */
 
 .swsection {
     position: relative;
-    height: 3.25rem;
+    height: 4.5rem;
 }
 
 .swsection .swiper-container {
-    height: 3.25rem;
+    height: 4.14rem;
+    overflow: auto;
 }
 
 .swsection .swiper-slide {
     width: 100%;
-    height: 3.25rem;
+    height: 4.14rem;
     overflow: hidden;
 }
 
 .swsection .swiper-slide img {
     width: 100%;
-    height: 3.25rem;
+    height: 4.14rem;
 }
 
-.swsection .swiper-pagination {
-    bottom: 0 !important;
+.swiper-pagination3 {
+    bottom: -.1rem;
+    width: 100%;
 }
 
 .swsection .swiper-pagination-bullet {
+    margin-right: 0.12rem;
     background: #fff;
     opacity: 1;
 }
 
 .swsection .swiper-pagination-bullet-active {
-    background: #0489f9;
+    background: #fbfc4c;
 }
 
-.sectionCon1 .data {
+.sectionCon3 .data {
     margin-top: .2rem;
 }
 
-.sectionCon1 .tit {
-    display: flex;
-    align-items: center;
-}
 
-.sectionCon1 .tit i {
-    margin: 0 .13rem;
-    display: block;
-    width: .03rem;
-    height: .3rem;
-    background: #0869ab;
-}
+/* 3(44767) end */
 
-.sectionCon1 .tit span {
-    font-size: .36rem;
-    line-height: 1.5;
-    color: #fff;
-}
 
-.sectionCon1 .tit em {
-    font-size: .36rem;
-    line-height: 1.5;
-    color: #fff;
-}
-
-.sectionCon1 .p {
-    padding: .12rem .24rem;
-    font-size: .22rem;
-    line-height: 1.5;
-    text-indent: 2em;
-    color: #fff;
-}
-
-/* 印象新疆(44765) end */
-
-/* 文化探索(44766) start */
-.section2 .box_content {
-    padding: 0;
-}
-
-.sectionCon2 {
-    padding-top: .3rem;
-}
-
-.sectionCon2 .source {
-    overflow: auto;
-    flex-wrap: nowrap;
-    display: flex;
-}
-
-.sectionCon2 .jdList .sourceItem:first-child {
-    margin-left: .08rem;
-}
-
-.sectionCon2 .jdList .sourceItem {
-    margin-top: 0;
-    width: 5.18rem;
-    border: 0;
-
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-}
-
-.sectionCon2 .jdList .sourceItem .left {
-    width: 2.45rem;
-    height: 3.4rem;
-}
-
-.sectionCon2 .jdList .sourceItem .right {
-    margin-left: .08rem;
-    width: 2.83rem;
-    height: 2.86rem;
-    border: 1px solid #009fe7;
-    display: flex;
-    align-items: center;
-}
-
-.sectionCon2 .jdList .sourceItem .subtit {
-    margin: 0;
-    font-size: .22rem;
-    line-height: .4rem;
-    color: #666;
-    height: auto;
-    max-height: 2.4rem;
-}
-
-/* 文化探索(44766) end */
-
-/* 吃在新疆(44767) start */
-
-.sectionCon3 .jdList {
-    /* padding: .1rem; */
-    /* padding-top: .01rem; */
-    /* background: #eb3f00; */
-    /* border-radius: .1rem; */
-}
-
-.sectionCon3 .jdList .sourceItem {
-    margin-top: .4rem;
-    width: 2.83rem;
-    border: 0;
-}
-
-.sectionCon3 .jdList .sourceItem:first-child {
-    margin-top: 0;
-}
-
-.sectionCon3 .jdList .sourceItem:nth-child(2) {
-    margin-top: 0;
-}
-
-.sectionCon3 .jdList .sourceItem .left {
-    width: 2.83rem;
-    height: 2.89rem;
-}
-
-.sectionCon3 .jdList .sourceItem .name {
-    position: absolute;
-    left: 0;
-    bottom: .26rem;
-    width: 100%;
-    height: .5rem;
-    line-height: .5rem;
-    text-align: center;
-    font-size: .26rem;
-    color: #fff;
-    background: rgba(0, 0, 0, .8);
-}
-
-.sectionCon3 .jdList .sourceItem .bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 2.83rem;
-    height: 2.89rem;
-}
-
-.more3 {
-    margin: 0 auto;
-    margin-top: .2rem;
-    width: 2.95rem;
-    height: .78rem;
-    line-height: .78rem;
-    text-align: center;
-    font-size: .3rem;
-    font-weight: 500;
-    color: #d23800;
-    border-radius: .78rem;
-    background: -webkit-linear-gradient(top, #ffe008, #fec215);
-    box-shadow: 0 .1rem .1rem -.05rem rgba(49, 69, 89, 0.2);
-}
-
-/* 吃在新疆(44767) end */
-
-/* 玩在新疆(44768) start */
-
-.sectionCon4 {
-    padding-bottom: .2rem;
-}
-
-/* 玩在新疆(44768) end */
 .sticky {
     position: sticky;
     top: 0;
     z-index: 2;
 }
-
-/* TOP结束 */
-/* .foot1 {
-    margin-top: .1rem;
-    width: 100%;
-    padding: .2rem 0;
-    text-align: center;
-    color: #fff;
-    font-size: 0.24rem;
-    background: #009fe7;
-} */
-.foot1 {
-    width: 6.4rem;
-    height: 1.06rem;
-    line-height: 1.06rem;
-    text-align: center;
-    color: #fff;
-    font-size: .24rem;
-    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/200113/foot.jpg) no-repeat;
-    background-size: 100% 100%;
-}
-
-/* #052c29 深绿色 */
-.footer {
-    margin-top: .4rem;
-    height: 3.24rem;
-    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/190904/bg_bottom.png');
-    background-size: 100% 100%;
-}
-
-/* #3a1cb6 深蓝色 */
-/* .footer {
-    margin-top: .4rem;
-    height: 2.78rem;
-    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191101/bg_bottom.png');
-    background-size: 100% 100%;
-} */

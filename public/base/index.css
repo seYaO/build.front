@@ -199,7 +199,7 @@ h5 {
  * -------------------------------------------------
  *
  */
- .loader {
+.loader {
     overflow: hidden;
     text-align: center;
     padding: 10px 0;
@@ -261,7 +261,7 @@ h5 {
  *
  */
 
- .dialog {
+.dialog {
     position: fixed;
     left: 0;
     top: 0;
@@ -486,7 +486,7 @@ h5 {
  * -------------------------------------------------
  *
  */
- .priceInfo {
+.priceInfo {
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -806,20 +806,24 @@ h5 {
     font-size: 0.24rem;
     background: #009fe7;
 }
+
 /* 小程序 */
 .footer {
     margin-top: .4rem;
     height: 3.24rem;
-    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/190904/bg_bottom.png');/* #052c29 深绿色 */
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/190904/bg_bottom.png');
+    /* #052c29 深绿色 */
     background-size: 100% 100%;
 }
 
 .footer {
     margin-top: .4rem;
     height: 2.78rem;
-    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191101/bg_bottom.png');/* #3a1cb6 深蓝色 */
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191101/bg_bottom.png');
+    /* #3a1cb6 深蓝色 */
     background-size: 100% 100%;
 }
+
 /* 
  * -------------------------------------------------
  * 其他型
@@ -839,10 +843,301 @@ h5 {
 }
 
 
+/*
+ _______                                                                                                         
+|       \                                                                                                        
+| $$$$$$$\ ______    ______    ______          _______   ______   ______ ____   ______ ____    ______   _______  
+| $$__/ $$|      \  /      \  /      \        /       \ /      \ |      \    \ |      \    \  /      \ |       \ 
+| $$    $$ \$$$$$$\|  $$$$$$\|  $$$$$$\      |  $$$$$$$|  $$$$$$\| $$$$$$\$$$$\| $$$$$$\$$$$\|  $$$$$$\| $$$$$$$\
+| $$$$$$$ /      $$| $$  | $$| $$    $$      | $$      | $$  | $$| $$ | $$ | $$| $$ | $$ | $$| $$  | $$| $$  | $$
+| $$     |  $$$$$$$| $$__| $$| $$$$$$$$      | $$_____ | $$__/ $$| $$ | $$ | $$| $$ | $$ | $$| $$__/ $$| $$  | $$
+| $$      \$$    $$ \$$    $$ \$$     \       \$$     \ \$$    $$| $$ | $$ | $$| $$ | $$ | $$ \$$    $$| $$  | $$
+ \$$       \$$$$$$$ _\$$$$$$$  \$$$$$$$        \$$$$$$$  \$$$$$$  \$$  \$$  \$$ \$$  \$$  \$$  \$$$$$$  \$$   \$$
+                   |  \__| $$                                                                                    
+                    \$$    $$                                                                                    
+                     \$$$$$$                                                                                     
+*/
+
+.top,
+.title,
+.box_red {
+    position: relative;
+    width: 100%;
+}
+
+.title,
+.subtit {
+    pointer-events: none;
+}
+
+.top img,
+.box_red img,
+.title img,
+.subtit img {
+    display: block;
+    width: 100%;
+}
 
 
+.box_top {
+    position: relative;
+    /* height: .15rem; */
+}
+
+.box_top::after {
+    /* content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2.06rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_top.png) no-repeat;
+    background-size: 100% 100%; */
+}
+
+.box_content {
+    position: relative;
+    padding-left: .2rem;
+    padding-right: .2rem;
+    /* min-height: 2rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_content.png) repeat-y;
+    background-size: 100% 100%; */
+
+}
+
+.box_bottom {
+    position: relative;
+    /* height: .38rem; */
+}
+
+.box_bottom::after {
+    /* content: '';
+    position: absolute;
+    top: -.02rem;
+    left: 0;
+    width: 100%;
+    height: .4rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/box_bottom.png) no-repeat;
+    background-size: 100% 100%; */
+}
+
+/*
+ _______                                      _______                   __ 
+|       \                                    |       \                 |  \
+| $$$$$$$\ ______    ______    ______        | $$$$$$$\  ______    ____| $$
+| $$__/ $$|      \  /      \  /      \       | $$__| $$ /      \  /      $$
+| $$    $$ \$$$$$$\|  $$$$$$\|  $$$$$$\      | $$    $$|  $$$$$$\|  $$$$$$$
+| $$$$$$$ /      $$| $$  | $$| $$    $$      | $$$$$$$\| $$    $$| $$  | $$
+| $$     |  $$$$$$$| $$__| $$| $$$$$$$$      | $$  | $$| $$$$$$$$| $$__| $$
+| $$      \$$    $$ \$$    $$ \$$     \      | $$  | $$ \$$     \ \$$    $$
+ \$$       \$$$$$$$ _\$$$$$$$  \$$$$$$$       \$$   \$$  \$$$$$$$  \$$$$$$$
+                   |  \__| $$                                              
+                    \$$    $$                                              
+                     \$$$$$$                                               
+*/
+
+.box_red .cakes {
+    position: absolute;
+    bottom: .4rem;
+    left: 50%;
+    margin-left: -2.56rem;
+    width: 5.12rem;
+    height: 2rem;
+    display: flex;
+}
+
+.box_red .cake {
+    position: relative;
+    margin: 0 .05rem;
+    width: 1.61rem;
+    height: 2.01rem;
+    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/red.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.box_red .cake .pirce {
+    font-size: 0;
+    text-align: center;
+}
+
+.box_red .cake .yuan {
+    font-size: .22rem;
+    color: #fff1c9;
+}
+
+.box_red .cake .money {
+    font-size: .44rem;
+    font-weight: 600;
+    line-height: .6rem;
+    height: .6rem;
+    color: #fff1c9;
+}
+
+.box_red .cake .value {
+    margin-top: .3rem;
+    font-size: .26rem;
+    text-align: center;
+    color: #ffc221;
+}
+
+.box_red .cake .txt {
+    margin-bottom: .05rem;
+    font-size: .18rem;
+    text-align: center;
+    color: #fff9b3;
+}
+
+.box_red .cake .btn {
+    margin: 0 auto;
+    width: 1.26rem;
+    height: .3rem;
+    line-height: .3rem;
+    text-align: center;
+    font-size: .2rem;
+    color: #994105;
+    border-radius: .3rem;
+    background: -webkit-linear-gradient(100deg, #ffa611, #fee693);
+}
+
+.box_red .cake .btn.disable {
+    color: #333;
+    background: -webkit-linear-gradient(100deg, #929292, #cbcbcb);
+}
+
+.box_red .cake .overflow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
 
 
+/*
+  ______                                       __        __              __     
+ /      \                                     |  \      |  \            |  \    
+|  $$$$$$\  ______    ______    ______        | $$       \$$  _______  _| $$_   
+| $$__| $$ /      \  /      \  |      \       | $$      |  \ /       \|   $$ \  
+| $$    $$|  $$$$$$\|  $$$$$$\  \$$$$$$\      | $$      | $$|  $$$$$$$ \$$$$$$  
+| $$$$$$$$| $$   \$$| $$    $$ /      $$      | $$      | $$ \$$    \   | $$ __ 
+| $$  | $$| $$      | $$$$$$$$|  $$$$$$$      | $$_____ | $$ _\$$$$$$\  | $$|  \
+| $$  | $$| $$       \$$     \ \$$    $$      | $$     \| $$|       $$   \$$  $$
+ \$$   \$$ \$$        \$$$$$$$  \$$$$$$$       \$$$$$$$$ \$$ \$$$$$$$     \$$$$ 
+                                                                                
+                                                                                
+                                                                                
+*/
+
+/* 
+ * -------------------------------------------------
+ * 省份选择
+ * -------------------------------------------------
+ *
+ */
+.show-fix-box {
+    -webkit-border-radius: 0 .34rem .34rem 0;
+    border-radius: 0 .34rem .34rem 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 0 .35rem 0 .12rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 3;
+    background: -webkit-linear-gradient(left, #3f33cb, #30189f);
+}
+
+.fixed_tab {
+    position: fixed;
+    top: 0rem;
+    z-index: 3;
+}
+
+.show-fix-box .top-fix img {
+    width: .24rem;
+    height: .26rem;
+    margin: 0 .08rem;
+}
+
+.top-fix {
+    font-size: .24rem;
+    color: #fff;
+    height: .5rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.provBox {
+    width: 6.4rem;
+    position: absolute;
+    top: .5rem;
+    left: 0;
+    border-radius: .05rem;
+}
+
+.pro {
+    background: #3f23d7;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    padding: .3rem .25rem .5rem;
+}
+
+.pro div {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #6144fe;
+    margin: .12rem .05rem 0;
+    -webkit-border-radius: .1rem;
+    border-radius: .1rem;
+    font-size: .3rem;
+    color: #fff;
+    width: 1.37rem;
+    height: .66rem;
+    line-height: .66rem;
+    text-align: center;
+}
+
+
+.pro div.on {
+    color: #fff;
+    background: #de5231;
+}
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
+
+/*
+
+*/
 
 /*
 

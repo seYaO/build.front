@@ -231,7 +231,9 @@ var app = new Vue({
         leadShare: false, // 是否展示引导分享
         showRule: false,
         showGift: false,
-        giftTxt: ''
+        giftTxt: '',
+        videoUrl: '',
+        videoImg: '',
     },
     created: function () {
         this.init();
@@ -308,28 +310,9 @@ var app = new Vue({
         getPara: function (spm, refid) {
             this.refid = getQueryString('refid') ? getQueryString('refid') : refid
             this.spm = getQueryString('spm') ? getQueryString('spm') : this.spm
-            var wxparam = getQueryString('wxparam') ? decodeURIComponent(getQueryString("wxparam")) : ''
             // 定位
             this.loactionFn();
             this.linkListFixed();
-            // this.getTimeFn();
-            // if (wxparam) {
-            //     var URLArgues = JSON.parse(wxparam);
-            //     if (!URLArgues) {
-            //         // 微信头链接跳转
-            //         var link = encodeURIComponent('https://www.ly.com/scenery/zhuanti/ningxiath');
-            //         var shareLink = 'https://wx.17u.cn/wl/api/redirect?redirect_uri=' + link;
-            //         window.location.href = shareLink;
-            //     } else {
-            //         this.wxopenid = URLArgues.openid;
-            //         this.wxunionid = URLArgues.unionid;
-            //     }
-
-            // }
-            if (this.isxcx) {
-                // this.hasGetCard(); // 小程序券
-                this.setShare();
-            }
         },
         //省份定位
         loactionFn: function () {
@@ -432,21 +415,21 @@ var app = new Vue({
                 // this.bcTabIndex = 0;
                 // this.newBClist = [];
                 this.getData();
-                this.getClyIdData();
+                // this.getClyIdData();
             }
         },
         // 轮播
         getSwiper: function (index) {
             var that = this
             that['swiper' + index] = new Swiper('#swiper' + index, {
-                // effect: index == 1 ? 'fade' : '',
+                effect: '',
                 slidesPerView: 'auto',
-                spaceBetween: 20,
+                spaceBetween: 10,
                 pagination: {
                     el: '.swiper-pagination' + index,
                     clickable: true,
                 },
-                loop: true,
+                loop: index == 2 ? false : true,
                 autoplay: {
                     delay: 4000,
                     disableOnInteraction: false,
@@ -454,57 +437,19 @@ var app = new Vue({
             })
         },
 
-        //小程序分享
-        setShare: function () {
-            var spm = this.spm;
-            var refid = this.refid;
-            var url = encodeURIComponent(
-                "https://www.ly.com/scenery/zhuanti/xinjiangt?isxcx=1&spm=" + spm + "&refid=" + refid
-            );
-            var path = "https://wx.17u.cn/wl/api/redirect?redirect_uri=" + url;
-            wx.miniProgram.postMessage({
-                data: {
-                    shareInfo: {
-                        currentPath: location.host + location.pathname, //当前页面路径，不需要参数
-                        title: "心灵四季，美丽中国，冬游新疆季！",
-                        path: path, //默认当前页面路径
-                        imageUrl: "https://img1.40017.cn/cn/s/2019/zt/touch/191223/sharexcx.jpg" //支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
-                    }
-                }
-            });
-        },
-
         //数据初始化
         initData: function () {
 
-            // 印象新疆(44765)
-            this.allAjax('44702', 1, '', 1, 100);
+            // 3(44765)
+            this.allAjax('44702', 3, '', 1, 100);
             // 文化探索(44766)
-            this.allAjax('44703', 2, '', 1, 100);
+            this.allAjax('44055', 2, '', 1, 100);
             // 吃在新疆(44767)
-            this.allAjax('44767', 3, '', 1, 100);
-            // 玩在新疆(44768)
-            this.allAjax('44768', 4, '', 1, 100);
-            // 住在新疆(44769)
-            this.allAjax('44769', 5, '', 1, 100);
-            // 游记攻略(44770) 
-            this.allAjax('44770', 6, '', 1, 100);
-            // 线路推荐(44771)
-            this.allAjax('44771', 7, '', 1, 100);
+            // this.allAjax('44767', 3, '', 1, 100);
         },
         // 
         getData: function () {
             //
-        },
-        getClyIdData: function () {
-            var that = this;
-            if (that.clyIdList.length > 0) {
-                that.clyIdList.forEach(function (item, index) {
-                    var ClyId = item.Summary.replace(/\|/g, ',')
-                    that.searchAjax(ClyId, index + 1)
-                })
-            }
-
         },
         //图片裁剪
         setImageSize: function (url, size, type) {
@@ -585,18 +530,23 @@ var app = new Vue({
                 onProvId,
                 function (data) {
                     switch (index) {
-                        case 'Ih5':
-                            that.Ih5 = data.List[0].SceneryImg
+                        case 2:
+                            var list2 = data.List;
+                            that.videoUrl = 'https:' + list2[0].Purl;
+                            that.videoImg = list2[0].SceneryImg;
+                            that['sectionData' + index] = list2;
+                            if (list2.length > 1) {
+                                setTimeout(function () {
+                                    that.getSwiper(2);
+                                }, 300)
+                            }
                             break;
-                        case 'Ixcx':
-                            that.Ixcx = data.List[0].SceneryImg
-                            break;
-                        case 1:
-                            var list = data.List;
-                            that['sectionData' + index] = list;
-                            if (list.length > 1) {
+                        case 3:
+                            var list3 = data.List;
+                            that['sectionData' + index] = list3;
+                            if (list3.length > 1) {
                                 that.$nextTick(function () {
-                                    that.getSwiper(1);
+                                    that.getSwiper(3);
                                 })
                             }
                             break;
@@ -609,177 +559,11 @@ var app = new Vue({
                 pageIndex,
                 pageSize
             )
-            function resultsBK(datas) {
-                var list = ''
-                if (datas && datas.length > 0) {
-                    list = []
-                    datas.forEach(function (item, index) {
-                        if (index == 0) {
-                            that.newBKlist.push({
-                                "cityName": item.CityName,
-                                "list": [item]
-                            })
-                        } else {
-                            // 根据城市分组
-                            var hasCityName = false;
-                            if (that.newBKlist && that.newBKlist.length > 0) {
-                                for (var i = 0; i < that.newBKlist.length; i++) {
-                                    if (that.newBKlist[i].cityName == item.CityName) {
-                                        hasCityName = true;
-                                        that.newBKlist[i].list.push(item)
-                                    }
-                                }
-
-                                // 数组中没有就加入
-                                if (!hasCityName) {
-                                    that.newBKlist.push({
-                                        "cityName": item.CityName,
-                                        "list": [item]
-                                    })
-                                }
-                            }
-                        }
-                    })
-                    list = that.newBKlist[0].list;
-                    that['sectionData2'] = list;
-                    // console.log('newBKlist --- ',that.newBKlist)
-                }
-                return list
-            }
-            function resultsBC(datas) {
-                var list = ''
-                if (datas && datas.length > 0) {
-                    list = []
-                    datas.forEach(function (item, index) {
-                        that.newBClist.push({
-                            "cityId": item.SceneryId,
-                            "cityName": item.SceneryName,
-                            "cityDesc": item.Summary,
-                            "cityImg": item.SceneryImg,
-                            "list": []
-                        })
-                        if (index == 0) {
-                            that.allAjax(item.SceneryId, 'a' + index, '', 1, 100);
-                        }
-                    })
-                }
-                return list
-            }
         },
-        searchAjax: function (ClyId, idx) {
-            var that = this;
-            var reqData = {
-                "clientType": AppInfo.isAPP ? 7 : 1,
-                "PageIndex": 1,
-                "PageCount": 30,
-                "Search": {
-                    "ClyId": ClyId,
-                    "ProID": that.onProvId,
-                    "ExtensionProId": that.onProvId,
-                    "SortStr": "0",
-                    "ChId": 2,
-                    "PfId": 10,
-                    "KeyWord": ""
-                },
-            }
-            $.ajax({
-                url: WL_URL_TEST(window.location.protocol + '//' + window.location.host + '/wlfrontend/miniprogram/resourceFrontEnd/ResourceService/ScenerySearch', reqData),
-                data: reqData,
-                type: 'POST',
-                dataType: 'json',
-                success: function (data) {
-                    if (data && data.Body && data.Body.BookingModel && data.Body.BookingModel.length > 0) {
-                        var list = data.Body.BookingModel.slice(0, 10), _list = [], flag = false;
-                        list.forEach(function (item) {
-                            var obj = {
-                                "Murl": '//m.ly.com/scenery/scenerydetail_' + item.SID + '.html?wvc1=1&wvc2=1&spm=5.' + that.zId + '.44051.1',
-                                "Kurl": 'tctclient://scenery/detail?sceneryId=' + item.SID + '&wvc1=1&wvc2=1&tcwebtag=v300v5.' + that.zId + '.44051.1v',
-                                "Wurl": '//wx.17u.cn/scenery/scenerydetail_' + item.SID + '_0_0.html?spm=5.' + that.zId + '.44051.1',
-                                "SceneryId": item.SID,
-                                "SceneryName": item.SNAME,
-                                "SceneryImg": item.AbsoluteImgPath,
-                                "CityName": item.CityName,
-                                "Summary": item.Summary,
-                                "AmountAdvance": item.BCSLowestPrice,
-                            }
-                            _list.push(obj)
-
-                        })
-
-                        that['sectionDataS' + idx] = _list;
-                    } else {
-                        that['sectionDataS' + idx] = ''
-                    }
-                },
-                complete: function () { }
-            })
-        },
-
-        moreFn2: function () {
-            if (this.bkTabIndex == 0) {
-                window.location.href = 'https://so.ly.com/scenery?q=%E5%AE%81%E5%A4%8F'
-            } else {
-                window.location.href = 'https://so.ly.com/gny-gentuan?q=%e5%ae%81%e5%a4%8f&sopage=sogny&prop=1'
-            }
-
-        },
-
-        popText(txt){
-            this.showGift=true
-            this.giftTxt = txt
-        },
-
-        bargainLink: function (url) {
-            window.location.href = url
-        },
-
-        windowLocationHref: function (type, item, index) {
-            if (type == 'order') {
-                if (this.isxcx) {
-                    wx.miniProgram.navigateTo({
-                        url: this.goOrder(item.SceneryId, item.BCTTicketId, item.BCTTicketPriceId, index)
-                    });
-                } else {
-                    window.location.href = this.goOrder(item.SceneryId, item.BCTTicketId, item.BCTTicketPriceId, index)
-                }
-            } else if (type == 'detail') {
-                if (this.isxcx) {
-                    wx.miniProgram.navigateTo({
-                        url: this.getLink(item.SceneryId, item.Wurl, item.Murl, index)
-                    });
-                } else {
-                    window.location.href = this.getLink(item.SceneryId, item.Kurl, item.Wurl, item.Murl)
-                }
-
-            }
-
-        },
-        //链接跳转
-        getLink: function (sceneryId, kurl, wurl, murl) {
-            if (this.isTc) {
-                // return kurl + '&refid=508528687'
-                return 'tctclient://react/page?projectId=117001&page=Detail&sceneryId=' + sceneryId + '&spm=' + this.spm + '&refid=' + this.refid
-            } else if (this.isWx && this.isxcx) {
-                return "/page/top/pages/scenery/detail/detail?sid=" + sceneryId + "&wxspm=" + this.spm + "&wxrefid=" + this.refid
-            } else if (this.isWx) {
-                return wurl + this.addHtml
-            } else {
-                return murl + this.addHtml
-            }
-        },
-        goOrder: function (sceneryId, priceId, oldPriceId, index) {
-            var spm = this.spm.slice(0, -1) + (index + 1)
-            if (this.isTc) {
-                // return 'tctclient://scenery/detail?sceneryId=' + sceneryId + '&wvc1=1&wvc2=1&tcwebtag=v300v' + spm + 'v' + this.addHtml
-                return 'tctclient://react/page?projectId=117001&page=Order&sid=' + sceneryId + '&policyid=' + priceId + '&spm=' + this.spm + '&refid=' + this.refid
-
-            } else if (this.isWx && this.isxcx) {
-                return "/page/top/pages/scenery/order/order?sid=" + sceneryId + "&policyid=" + priceId + "&suppliertype=0&wxspm=" + spm + "&wxrefid=" + this.refid
-            } else if (this.isWx) {
-                return '//wx.17u.cn/scenery/booking/newbook1_' + sceneryId + '_' + oldPriceId + '.html?source=1&spm=' + spm + this.addHtml;
-            } else {
-                return '//m.ly.com/scenery/booking/newbook1.html?sceneryId=' + sceneryId + '&priceid=' + oldPriceId + '&spm=' + spm + this.addHtml;
-            }
+        clickVideo: function (index, img) {
+            this.videoUrl = 'https:' + index
+            this.videoImg = img
+            console.log(index, img)
         },
         swiperFn: function (item) { },
         //蒙层
