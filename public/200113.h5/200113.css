@@ -776,6 +776,7 @@ h5 {
 }
 
 .section1 .img {
+    display: block;
     width: 100%;
 }
 
