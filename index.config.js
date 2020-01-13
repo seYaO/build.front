@@ -13,7 +13,7 @@ module.exports = {
         '191201.01',
         '191223',
         // new
-        '200102.pc', // https://www.ly.com/scenery/zhuanti/aodili/ningxianian
-        '200113.h5',
+        '200102.pc', // https://www.ly.com/scenery/zhuanti/ningxianian
+        '200113.h5', // https://www.ly.com/scenery/zhuanti/ningxianianxunsilut/
     ]
 }

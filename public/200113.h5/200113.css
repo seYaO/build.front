@@ -783,7 +783,7 @@ h5 {
 
 /* 1(44765) end */
 
-/* 2(44766) start */
+/* 2(45142) start */
 .section2 .box_content {
     background-color: #ede2cd;
 }
@@ -832,21 +832,22 @@ h5 {
 }
 
 .video-tab li {
-    width: 1.38rem;
-    height: 1.02rem;
-    border: 0.01rem solid #674633;
+    width: 1.74rem;
+    height: 2.1rem;
+    border: 0.01rem solid #5e3a26;
     margin-right: 0.1rem;
+    overflow: hidden;
 }
 
 .video-tab li img {
-    width: 1.38rem;
-    height: 1.02rem;
+    width: 1.74rem;
+    height: 2.1rem;
     display: block;
 }
 
-/* 2(44766) end */
+/* 2(45142) end */
 
-/* 3(44767) start */
+/* 3(45143) start */
 
 .sectionCon3 {
     padding: .4rem 0;
@@ -893,7 +894,7 @@ h5 {
 }
 
 
-/* 3(44767) end */
+/* 3(45143) end */
 
 
 .sticky {
