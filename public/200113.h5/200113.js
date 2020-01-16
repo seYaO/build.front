@@ -439,13 +439,10 @@ var app = new Vue({
 
         //数据初始化
         initData: function () {
-
-            // 3(44765)
-            this.allAjax('44702', 3, '', 1, 100);
-            // 2(44766)
-            this.allAjax('44055', 2, '', 1, 100);
-            // 吃在新疆(44767)
-            // this.allAjax('44767', 3, '', 1, 100);
+            // 视频回顾(45142)
+            this.allAjax('45142', 2, '', 1, 100);
+            // 快闪show(45143)
+            this.allAjax('45143', 3, '', 1, 100);
         },
         // 
         getData: function () {

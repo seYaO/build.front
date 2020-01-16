@@ -3,7 +3,7 @@
 
 <head lang="en">
     <meta charset="UTF-8">
-    <title>新疆是个好地方</title>
+    <title>塞上江南 神奇宁夏</title>
     <meta charset="utf-8">
     <!--删除默认的苹果工具栏和菜单栏-->
     <meta content="yes" name="apple-mobile-web-app-capable" />
@@ -16,7 +16,7 @@
         name="viewport">
     <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
     <!--自定义样式-->
-    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2019/zt/touch/191223/191223.css?v=20191223.2">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2019/zt/touch/200113/200113.css?v=20200113.1">
 </head>
 
 <body>
@@ -45,221 +45,93 @@
                 </div>
             </div>
         </div>
-        <!-- 印象新疆(44765) -->
+        <!-- 1(44765) -->
         <div class="section section1" v-if="sectionData1">
             <div class="title">
-                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit1.png">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/tit1.jpg">
             </div>
             <div class="box_top"></div>
             <div class="box_content">
-                <div class="sectionCon1">
-                    <div class="swsection" v-if="sectionData1&&sectionData1.length>0">
-                        <div class="swiper1 swiper-container" id="swiper1">
-                            <div class="swiper-wrapper">
-                                <a class="swiper-slide" v-for="(item,index) in sectionData1">
-                                    <img :src="setImageSize(item.SceneryImg,'600x325')">
-                                </a>
-                            </div>
-                            <div class="swiper-pagination swiper-pagination1"></div>
-                        </div>
-                    </div>
-                    <div class="data" v-if="sectionData1&&sectionData1.length>0">
-                        <div class="tit"><i></i><span>欢迎来到</span><em>新疆</em></div>
-                        <div class="p">
-                            {{sectionData1[0].Summary}}
-                        </div>
-                    </div>
+                <div class="intro intro1">
+                    <img class="img1" src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/img1.png">
+                    <p>
+                        丝路驿站巡回秀系列活动为期30天，巡回走过了华东3省1市5城10地， 活动形式丰富多样，宁夏优质特惠的线路、精美赠送的礼品、互动抽取的大奖，每一位到场的朋友都收获满满。<br>
+                        本次活动共吸引了20000多位社区居民和学校师生到场，现场人头攒动，热闹非凡。宁夏丝路驿站巡回秀的整体节奏就是“让我们一起去宁夏，给心灵放个假”，现场推出的旅游线路不仅在品质上做到了最高，在价格上也做到了最优惠，目的就是让更多人享受旅游的乐趣，更多人有机会去宁夏给心灵放个假。
+                    </p>
+                </div>
+                <div class="intro intro2">
+                    <img class="img2" src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/img2.png">
+                    <a class="img" href="https://v.alltuu.com/album/1035553219/?from=appmessage">
+                        <img class="img" src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/img3.png">
+                    </a>
+                    <p>本次活动采用“宁夏特色风情秀”结合线路推介的形式对宁夏旅游进行推广，风情演绎秀与宁夏旅游产品融为了一体，在演绎场景中融入宁夏的特色风情和旅游线路，让游客在观看演出时领略到宁夏丰富的旅游资源和独特的人文环境。现场布置场景让与会嘉宾们全身心地沉浸在其中，放佛身临其境来到宁夏活动期间还有抓娃娃、10s游戏、扫码领好礼、红酒八宝茶品尝等环节，更有多轮宁夏特产抽奖活动，掀起了现场气氛的阵阵狂潮。</p>
+                </div>
+                <div class="intro intro3">
+                    <a class="img" href="https://v.alltuu.com/album/1035553219/?from=appmessage">
+                        <img class="img" src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/img4.png">
+                    </a>
+                    <p>车外的展示区，甚至在车内都处处充满宁夏元素，伴随现场各类宁夏元素的一一展示，与会嘉宾仿佛穿越到了千年前的西夏，感受到了贺兰山下金戈铁马的雄浑壮阔，戈壁大漠中长河落日的大漠苍茫，体会到六盘山上高峰，红旗漫卷西风，“不到长城非好汉”的豪情壮志……让与会嘉宾纷纷赞叹不已。</p>
                 </div>
             </div>
             <div class="box_bottom"></div>
             
         </div>
-        <!-- 文化探索(44766) -->
+        <!-- 视频回顾(45142) -->
         <div class="section section2" v-if="sectionData2">
             <div class="title">
-                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit2.png">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/tit2.jpg">
             </div>
             <div class="box_top"></div>
             <div class="box_content">
                 <div class="sectionCon2">
-                    <div class="loader" v-show="sectionData2 && sectionData2.length == 0">
-                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                    <div class="intro">
+                        <div class="video">
+                            <video controls="controls" :src="videoUrl" :poster="videoImg" v-if="videoUrl"></video>
+                            <div class="img-swiper" v-if="sectionData2 && sectionData2.length">
+                                <div class="swiper-container" id="swiper2">
+                                    <ul class="swiper-wrapper video-tab">
+                                        <li v-for="(item,index) in sectionData2" :key="index" :video="item.Purl" :poster="item.SceneryImg" @click="clickVideo(item.Purl,item.SceneryImg)" :class="['swiper-slide',videoUrl == item.Purl ? 'on':'']">
+                                            <img :src="item.SceneryImg" alt="">
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="swiper-pagination swiper-pagination2"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="noSource" v-show="!sectionData2">暂无资源~~</div>
-                    <ul v-if="sectionData2 && sectionData2.length>0" class="jdList source">
-                        <a class="sourceItem" v-for="(item,index) in sectionData2">
-                            <div class="left">
-                                <img class="img" :src="item.SceneryImg">
-                            </div>
-                            <div class="right" @click="popText(item.Summary)">
-                                <h3 class="subtit multi-ellipsis--l6">{{item.Summary}}</h3>
-                            </div>
-                        </a>
-                    </ul>
+                    
                 </div>
             </div>
             <div class="box_bottom"></div>
         </div>
-        <!-- 吃在新疆(44767) -->
+        <!-- 快闪show(45143) -->
         <div class="section section3" v-if="sectionData3">
             <div class="title">
-                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit3.png">
+                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/tit3.jpg">
             </div>
             <div class="box_top"></div>
             <div class="box_content">
                 <div class="sectionCon3">
-                    <div class="loader" v-show="sectionData3 && sectionData3.length == 0">
-                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
-                    </div>
-                    <div class="noSource" v-show="!sectionData3">暂无资源~~</div>
-                    <ul class="jdList source" v-if="sectionData3&&sectionData3.length>0">
-                        <a class="sourceItem" v-for="(item,index) in sectionData3">
-                            <div class="left">
-                                <img class="img" :src="setImageSize(item.SceneryImg,'283x289')">
-                                <div class="name">{{item.SceneryName}}</div>
+                    <div class="intro">
+                        <div class="swsection" v-if="sectionData3&&sectionData3.length>0">
+                            <div class="swiper-container" id="swiper3">
+                                <div class="swiper-wrapper">
+                                    <a class="swiper-slide" v-for="(item,index) in sectionData3">
+                                        <img :src="setImageSize(item.SceneryImg,'600x325')">
+                                    </a>
+                                </div>
                             </div>
-                            <img class="bg" src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/boder_bg.png">
-                        </a>
-                    </ul>
-                    
-                    <!-- <div class="more3" @click="moreFn2">查看更多</div> -->
+                            <div class="swiper-pagination swiper-pagination3"></div>
+                        </div>
+                        <div class="data">
+                            <div class="p">
+                                本次宁夏丝路驿站巡回秀的完美落幕，让我们感受到宁夏有太多太美的美景。浪漫美好的银川，古色古香的石嘴山，神秘魅力的青铜峡，诗与远方的沙坡头……也有数不尽的文脉故事，古老的黄河文明、神秘的西夏历史、苍茫的大漠传奇、沙水交融的大漠奇观、屹立千年的长城遗迹……华东秀系列活动正在为这片神秘热土打开一扇大门，让我们去宁夏，给心灵放个假！
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="box_bottom"></div>
-        </div>
-        <!-- 玩在新疆(44768) -->
-        <div class="section section4" v-if="sectionData4">
-            <div class="title">
-                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit4.png">
-            </div>
-            <div class="sectionCon4">
-                <div class="box_top"></div>
-                <div class="box_content">
-                    <div class="loader" v-show="sectionData4 && sectionData4.length == 0">
-                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
-                    </div>
-                    <div class="noSource" v-show="!sectionData4">暂无资源~~</div>
-                    <ul v-if="sectionData4 && sectionData4.length>0" class="jdList source">
-                        <a class="sourceItem" v-for="(item,index) in sectionData4"  @click="windowLocationHref('detail',item,index)">
-                            <div class="left">
-                                <img class="img" :src="setImageSize(item.SceneryImg,'290x168')">
-                            </div>
-                            <div class="right">
-                                <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
-                                <div class="priceInfo">
-                                    <div class="info">
-                                        <div class="price">
-                                            <i class="yuan">￥</i>
-                                            <em class="money">{{item.AmountAdvance}}</em>
-                                            <i class="qi">起</i>
-                                        </div>
-                                    </div>
-                                    <div class="btn" @click.stop="windowLocationHref('order',item,index)">立即预订</div>
-                                </div>
-                                <!-- <div class="button">立即预订</div> -->
-                            </div>
-                        </a>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-        </div>
-        <!-- 住在新疆(44769) -->
-        <div class="section section5" v-if="sectionData5">
-            <div class="title">
-                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit5.png">
-            </div>
-            <div class="sectionCon4">
-                <div class="box_top"></div>
-                <div class="box_content">
-                    <div class="loader" v-show="sectionData5 && sectionData5.length == 0">
-                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
-                    </div>
-                    <div class="noSource" v-show="!sectionData5">暂无资源~~</div>
-                    <ul v-if="sectionData5 && sectionData5.length>0" class="jdList source">
-                        <a class="sourceItem" v-for="(item,index) in sectionData5" :href="item.Purl">
-                            <div class="left">
-                                <img class="img" :src="setImageSize(item.SceneryImg,'290x168')">
-                            </div>
-                            <div class="right">
-                                <h3 class="subtit multi-ellipsis--l2">{{item.SceneryName}}</h3>
-                                <div class="button">立即预订</div>
-                            </div>
-                        </a>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-        </div>
-        <!-- 游记攻略(44770) -->
-        <div class="section section6" v-if="sectionData6">
-            <div class="title">
-                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit6.png">
-            </div>
-            <div class="sectionCon4">
-                <div class="box_top"></div>
-                <div class="box_content">
-                    <div class="loader" v-show="sectionData6 && sectionData6.length == 0">
-                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
-                    </div>
-                    <div class="noSource" v-show="!sectionData6">暂无资源~~</div>
-                    <ul v-if="sectionData6 && sectionData6.length>0" class="thList source">
-                        <a class="sourceItem" v-for="(item,index) in sectionData6" :href="item.Purl">
-                            <div class="left">
-                                <img class="img" :src="setImageSize(item.SceneryImg,'223x234')">
-                            </div>
-                            <div class="right">
-                                <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
-                                <h3 class="subtit multi-ellipsis--l4">{{item.Summary}}</h3>
-                                <div class="button">查看更多>></div>
-                            </div>
-                        </a>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-        </div>
-        <!-- 线路推荐(44771) -->
-        <div class="section section7" v-if="sectionData7">
-            <div class="title">
-                <img src="https://img1.40017.cn/cn/s/2019/zt/touch/191223/tit7.png">
-            </div>
-            <div class="sectionCon4">
-                <div class="box_top"></div>
-                <div class="box_content">
-                    <div class="loader" v-show="sectionData7 && sectionData7.length == 0">
-                        <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
-                    </div>
-                    <div class="noSource" v-show="!sectionData7">暂无资源~~</div>
-                    <ul v-if="sectionData7 && sectionData7.length>0" class="jdList source">
-                        <a class="sourceItem" v-for="(item,index) in sectionData7" :href="item.Purl">
-                            <div class="left">
-                                <img class="img" :src="setImageSize(item.SceneryImg,'290x168')">
-                            </div>
-                            <div class="right">
-                                <h3 class="subtit multi-ellipsis--l2">{{item.SceneryName}}</h3>
-                                <div class="button">立即预订</div>
-                            </div>
-                        </a>
-                    </ul>
-                </div>
-                <div class="box_bottom"></div>
-            </div>
-        </div>
-        <!-- 提示弹框 -->
-        <div class="showErrBox">
-            <div class="showErr"></div>
-        </div>
-        <!-- ￥520 -->
-        <div class="dialog" v-show="showGift">
-            <div class="dialog-cont">
-                <div class="close" @click="showGift=false"></div>
-                <div class="txt">{{giftTxt}}</div>
-            </div>
-        </div>
-        <!-- 引导分享 分享右指 -->
-        <div class="share_img" v-show="leadShare" @click="leadShare = !leadShare">
-            <img src="//img1.40017.cn/cn/s/2016/touch/zt/47370/share_img.png" alt="">
         </div>
         
         <div class="footer" v-if="isxcx"></div>
@@ -283,23 +155,24 @@
     })();
 </script>
 <!-- 脚本 -->
-<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 <script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/api/setsharefn.5.js"></script>
 <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/getclientinfo.3.0.0.js?v=11"></script>
-<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/ztc/SetShareFun.4.4.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
 <script type="text/javascript" src="//file.40017.cn/fed/touch/js/modules/location/0.0.8/location.js"></script>
 <!-- 轮播js -->
 <script src="//file.40017.cn/js40017cnproduct/cn/s/2018/zt/common/swiper.min.js"></script>
 <script>
     /* 分享 */
     shareImg = "http://img1.40017.cn/cn/s/2019/zt/touch/191223/share.jpg";
-    shareTitle = "心灵四季，美丽中国，冬游新疆季！";
-    shareUrl = "https://www.ly.com/scenery/zhuanti/xinjiangt";
-    shareDesc = "心灵四季，美丽中国，冬游新疆季！";
-    setShareFun.Pageview = "/Touch站专题/新疆是个好地方";
+    shareTitle = "塞上江南，神奇宁夏，丝路驿站巡回精彩回顾！";
+    shareUrl = "https://www.ly.com/scenery/zhuanti/ningxianianxunsilut";
+    shareDesc = "塞上江南，神奇宁夏，丝路驿站巡回精彩回顾！";
+    setShareFun.Pageview = "/Touch站专题/神奇宁夏";
     setShareFun.changeShareInfo();
 </script>
 <!-- 自定义脚本 -->
-<script src="//js.40017.cn/cn/min/???/cn/s/2019/zt/touch/191223/191223.js?v=20191223.2"></script>
+<script src="//js.40017.cn/cn/min/???/cn/s/2019/zt/touch/200113/200113.js?v=20200113.1"></script>
 
 </html>
