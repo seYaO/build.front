@@ -1,0 +1,735 @@
+/*from tccdn minify at 2016-7-14 9:47:12,file：/cn/s/2016/touch/zt/43800/43800game.css?v=2016062708*/
+@charset "utf-8";
+
+html {
+    height: 100%;
+    width: 100%;
+    font-size: 50px;
+}
+
+body {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+    background: #fff;
+    font-family: "微软雅黑";
+    display: block;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+input,
+button,
+textarea,
+p,
+blockquote,
+th,
+td,
+address {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+input {
+    outline: none;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+img,
+input,
+select {
+    border: 0;
+    vertical-align: middle;
+    -webkit-appearance: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+a:link {
+    color: #fff;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+a:active {
+    text-decoration: none;
+    color: #fff;
+}
+
+.none {
+    display: none;
+}
+
+a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-touch-callout: none;
+    -moz-user-select: none;
+    -o-tap-highlight-color: rgba(0, 0, 0, 0);
+    -o-touch-callout: none;
+    -o-user-select: none;
+    -ms-tap-highlight-color: rgba(0, 0, 0, 0);
+    -ms-touch-callout: none;
+    -ms-user-select: none;
+    tap-highlight-color: rgba(0, 0, 0, 0);
+    touch-callout: none;
+    user-select: none;
+}
+
+.page {
+    width: 100%;
+    height: 100%;
+    /*background: #ffe932 url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/game_bg.jpg") no-repeat center;*/
+    background-size: 100% 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.page img {
+    width: 100%;
+}
+
+.river {
+    width: 100%;
+    height: 63.2%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    /*background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/one.png") no-repeat center;*/
+    background-size: 100% 100%;
+    overflow: hidden;
+    transition: all ease .3s;
+}
+
+.two {
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/two.png") no-repeat center;
+    background-size: 100% 100%;
+}
+
+.three {
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/three.png") no-repeat center;
+    background-size: 100% 100%;
+}
+
+.time {
+    width: 2.19rem;
+    height: .91rem;
+    display: block;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/45596/time_bg.png") no-repeat center;
+    background-size: 100%;
+    font: .3rem/.91rem "hiragino sans gb w3";
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    position: absolute;
+    top: .32rem;
+    right: 10%;
+    z-index: 3;
+}
+
+.time span {
+    font: .24rem/.91rem "hiragino sans gb w3";
+    color: #fff;
+}
+
+.show_mile {
+    width: 2.19rem;
+    height: .88rem;
+    display: block;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/45596/score_bg.png") no-repeat center;
+    background-size: 100%;
+    font: .24rem/.88rem "hiragino sans gb w3";
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    top: .32rem;
+    left: 10%;
+    z-index: 3;
+}
+
+.show_mile span {
+    font: .3rem/.91rem "hiragino sans gb w3";
+}
+
+.btn_box {
+    width: 100%;
+    height: 1.51rem;
+    position: absolute;
+    bottom: .2rem;
+    display: -webkit-box;
+
+    text-align: center;
+    z-index: 3;
+}
+
+.btn_box div {
+    -webkit-box-flex: 1;
+}
+
+.btn_box div span {
+    width: 100%;
+    height: 1.58rem;
+    display: block;
+    margin: 0 auto;
+}
+
+.left span {
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/45596/left_btn.png") no-repeat center;
+    background-size: 1.51rem 1.58rem;
+}
+
+.left.on span {
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/btn_img.png") no-repeat;
+    background-size: 411px 680px;
+    background-position: -229px 0;
+}
+
+.right span {
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/45596/right_btn.png") no-repeat center;
+    background-size: 1.51rem 1.58rem;
+}
+
+.right.on span {
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/btn_img.png") no-repeat;
+    background-size: 411px 680px;
+    background-position: -229px -79px;
+}
+
+#canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.river_line {
+
+    height: 100%;
+    /*background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/river_line.png") no-repeat center;*/
+    background-size: 100%;
+    margin: 0 auto;
+}
+
+
+.ship {
+    width: 3.05rem;
+    height: 3.17rem;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/ship_center.png") no-repeat center;
+    background-size: 100%;
+    position: absolute;
+    bottom: -.5rem;
+    left: 50%;
+    margin-left: -26%;
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    z-index: 2;
+}
+
+.turn_left {
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    margin-left: -10%;
+    transform: rotate(10deg);
+    -webkit-transform: rotate(10deg);
+    -o-transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+}
+
+.turn_right {
+    position: absolute;
+    bottom: -.5rem;
+    left: 0;
+    margin-left: 65%;
+    transform: rotate(-10deg);
+    -webkit-transform: rotate(-10deg);
+    -o-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+}
+
+.thing {
+    width: .83rem;
+    height: .43rem;
+    z-index: 1;
+    transition: all 1s ease-in-out;
+}
+
+.start {
+    width: 5.4rem;
+    height: 5.55rem;
+    position: absolute;
+    top: 50%;
+    margin-top: -2.77rem;
+    left: 50%;
+    margin-left: -2.7rem;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/45596/dialog_box.png") no-repeat center;
+    background-size: 100%;
+    box-sizing: border-box;
+    padding: 1.7rem 0 0 0;
+}
+
+.start p {
+    width: 100%;
+    text-align: center;
+    font: .4rem/.6rem "microsoft yahei";
+    color: #fff;
+    font-weight: bold;
+}
+
+.start p span {
+    font-size: .6rem;
+}
+
+.left_start {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    /*top: 95%;*/
+    /*left: 10%;*/
+    /*animation: fallen_left 10s ease-in-out 2s;*/
+    /*-webkit-animation: fallen_left 10s ease-in-out 2s;*/
+}
+
+.center_start {
+    position: absolute;
+    top: 0;
+    left: 43%;
+    /*top: 95%;*/
+    /*left: 43%;*/
+    /*animation: fallen_center 10s ease-in-out 2s;*/
+    /*-webkit-animation: fallen_center 10s ease-in-out 2s;*/
+}
+
+.right_start {
+    position: absolute;
+    top: 0;
+    left: 58%;
+    /*top: 95%;*/
+    /*left: 89%;*/
+    /*animation: fallen_right 10s ease-in-out 2s;*/
+    /*-webkit-animation: fallen_right 10s ease-in-out 2s;*/
+}
+
+@keyframes fallen_right {
+    0% {
+        top: 0;
+        left: 58%;
+    }
+
+    100% {
+        top: 95%;
+        left: 89%;
+        display: none
+    }
+}
+
+@-webkit-keyframes fallen_right {
+    0% {
+        top: 0;
+        left: 58%;
+    }
+
+    100% {
+        top: 95%;
+        left: 89%;
+        display: none
+    }
+}
+
+
+@keyframes fallen_center {
+    0% {
+        top: 0;
+        left: 43%;
+    }
+
+    100% {
+        top: 95%;
+        left: 43%;
+        display: none
+    }
+}
+
+@-webkit-keyframes fallen_center {
+    0% {
+        top: 0;
+        left: 43%;
+    }
+
+    100% {
+        top: 95%;
+        left: 43%;
+        display: none
+    }
+}
+
+
+@keyframes fallen_left {
+    0% {
+        top: 0;
+        left: 30%;
+    }
+
+    100% {
+        top: 95%;
+        left: 10%;
+        display: none
+    }
+}
+
+@-webkit-keyframes fallen_left {
+    0% {
+        top: 0;
+        left: 30%;
+    }
+
+    100% {
+        top: 95%;
+        left: 10%;
+        display: none
+    }
+}
+
+.thing img {
+    width: .63rem;
+    position: absolute;
+    animation: boat-animation 5s infinite ease-in-out;
+    -webkit-animation: boat-animation 5s infinite ease-in-out;
+    -moz-animation: boat-animation 5s infinite ease-in-out;
+    -o-animation: boat-animation 5s infinite ease-in-out;
+}
+
+@keyframes boat-animation {
+    0% {
+        bottom: 0;
+        left: 0;
+    }
+
+    25% {
+        bottom: -2px;
+        left: -2px;
+    }
+
+    70% {
+        bottom: 2px;
+        left: -4px;
+    }
+
+    100% {
+        bottom: -1px;
+        left: 0;
+    }
+}
+
+@-o-keyframes boat-animation {
+    0% {
+        bottom: 0;
+        left: 0;
+    }
+
+    25% {
+        bottom: -2px;
+        left: -2px;
+    }
+
+    70% {
+        bottom: 2px;
+        left: -4px;
+    }
+
+    100% {
+        bottom: -1px;
+        left: 0;
+    }
+}
+
+@-moz-keyframes boat-animation {
+    0% {
+        bottom: 0;
+        left: 0;
+    }
+
+    25% {
+        bottom: -2px;
+        left: -2px;
+    }
+
+    70% {
+        bottom: 2px;
+        left: -4px;
+    }
+
+    100% {
+        bottom: -1px;
+        left: 0;
+    }
+}
+
+@-webkit-keyframes boat-animation {
+    0% {
+        bottom: 0;
+        left: 0;
+    }
+
+    25% {
+        bottom: -2px;
+        left: -2px;
+    }
+
+    70% {
+        bottom: 2px;
+        left: -4px;
+    }
+
+    100% {
+        bottom: -1px;
+        left: 0;
+    }
+}
+
+.intro {
+    width: 5.6rem;
+    padding: .1rem 0;
+    font: .2rem/.2rem "hiragino sans gb w3";
+    color: #ff5030;
+    background: #fffb89;
+    border: .03rem solid #ee9824;
+    text-align: center;
+    border-radius: .2rem;
+    position: absolute;
+    top: .3rem;
+    left: 50%;
+    margin-left: -2.8rem;
+    z-index: 4;
+}
+
+.music {
+    width: .7rem;
+    height: .7rem;
+    position: fixed;
+    top: .3rem;
+    right: .2rem;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/music_off.png") no-repeat center;
+    background-size: 100%;
+}
+
+
+/*#canvas{*/
+/*width: 100%;*/
+/*height: 100%;*/
+/*}*/
+
+
+.music.on {
+    width: .7rem;
+    height: .7rem;
+    position: fixed;
+    top: .3rem;
+    right: .2rem;
+    -webkit-animation-name: rotate;
+    -webkit-animation-duration: 3s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/music_on.png") no-repeat center;
+    background-size: 100%;
+}
+
+@-webkit-keyframes rotate {
+    from {
+        -webkit-transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(360deg)
+    }
+}
+
+
+
+.hb_box {
+    width: 5.4rem;
+    height: 5.55rem;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/45596/dialog_box.png") no-repeat center;
+    background-size: 100%;
+    padding: 1.05rem 0 0 0;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    margin-top: -2.7rem;
+    left: 50%;
+    margin-left: -2.77rem;
+}
+
+
+.input_con {
+    width: 4.3rem;
+    margin: 0 auto;
+}
+
+.tel {
+    width: 100%;
+    box-sizing: border-box;
+    padding: .12rem .24rem;
+    background: #17b3cd;
+    border-radius: .35rem;
+    margin-bottom: .2rem;
+    font: .32rem/.5rem "hiragino sans gb w3";
+    color: #fff;
+    font-weight: bold;
+}
+
+.checkCode {
+    width: 2.4rem;
+    box-sizing: border-box;
+    font: .32rem/.5rem "hiragino sans gb w3";
+    color: #fff;
+    float: left;
+    background: #17b3cd;
+}
+
+.err {
+    color: #f63;
+}
+
+.input_con img {
+    width: .96rem;
+    height: .5rem;
+    float: right;
+    overflow: hidden;
+}
+
+.check_box {
+    width: 100%;
+    height: .7rem;
+    padding: .12rem .24rem;
+    background: #17b3cd;
+    margin-bottom: .55rem;
+    box-sizing: border-box;
+    border-radius: .35rem;
+}
+
+.submit {
+    width: 2.8rem;
+    height: 1.04rem;
+    display: block;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/45596/green_btn.png") no-repeat center;
+    background-size: 2.8rem 1.04rem;
+    font: .55rem/1.04rem "hiragino sans gb w3";
+    -webkit-text-stroke: 1px #0073a9;
+    color: #fff;
+    text-align: center;
+    margin: 0 auto;
+}
+
+/*dialog end*/
+
+
+.line_river {
+    width: 1.8rem;
+    height: 7.4rem;
+    display: block;
+    position: absolute;
+    top: 31%;
+    left: 50%;
+}
+
+.line img,
+.line2 img {
+    width: 100%;
+}
+
+.line2 {
+    width: 1.8rem;
+    height: 7.4rem;
+    display: block;
+    position: absolute;
+    top: 31%;
+    left: 25%;
+    transform: rotate(23deg);
+    -ms-transform: rotate(23deg);
+    /* IE 9 */
+    -moz-transform: rotate(23deg);
+    /* Firefox */
+    -webkit-transform: rotate(23deg);
+    /* Safari 和 Chrome */
+    -o-transform: rotate(23deg);
+}
+
+.none {
+    display: none;
+}
+
+.mypri_game {
+    width: 3.9rem;
+    height: .7rem;
+    display: block;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/43800/check_pri.png") no-repeat center;
+    position: absolute;
+    top: .5rem;
+    left: 50%;
+    margin-left: -1.95rem;
+    background-size: 100%;
+}
+
+/*修改样式集合*/
+.btns .use_btn {
+    width: 4.2rem;
+    height: 1.04rem;
+    display: block;
+    background: url("http://img1.40017.cn/cn/s/2016/touch/zt/45596/big_green.png") no-repeat center;
+    background-size: 4.2rem 1.04rem;
+    font: .5rem/1.06rem "hiragino sans gb w3";
+    -webkit-text-stroke: 1px #0073a9;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.backBtn {
+    width: 100%;
+    height: .4rem;
+    display: block;
+    font: .34rem/.4rem "hiragino sans gb w3";
+    color: #fff;
+    text-align: center;
+    margin-top: .1rem;
+}

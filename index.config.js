@@ -15,5 +15,7 @@ module.exports = {
         // new
         '200102.pc', // https://www.ly.com/scenery/zhuanti/ningxianian
         '200113.h5', // https://www.ly.com/scenery/zhuanti/ningxianianxunsilut/
+        '200311',
+        '200316.temp', // 游戏temp
     ]
 }
