@@ -10,8 +10,26 @@ let balls = [],
     lastTime1 = new Date(),
     background_image = new Image();
 
-background_image.src = 'https://img1.40017.cn/cn/s/2020/zt/touch/lily_temp/img.jpg';
+background_image.src = 'https://img1.40017.cn/cn/s/2020/zt/touch/200320/canvas-bg.png';
 
+// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-miss.png 202x81
+// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-add.png 100x71
+
+// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-car.png 147x72
+// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-nurse.png 84x119
+// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people0.png 105x127
+// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people1.png 85x121
+// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people2.png 88x129
+// http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-plane.png 102x81
+// http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-police.png 73x128
+
+// http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-virus_like.png 88x130
+
+// http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-virus.png 112x104
+
+function rate(px) {
+    return px / (750.0 / window.screen.width) * 3
+}
 
 /**
  * 随机生成小球并放入
@@ -79,7 +97,7 @@ function checkCollision(ball0, ball1) {
             sin = Math.sin(angle),
             cos = Math.cos(angle),
             //rotate ball0's position
-            pos0 = {x: 0, y: 0}, //point
+            pos0 = { x: 0, y: 0 }, //point
             //rotate ball1's position
             pos1 = rotate(dx, dy, sin, cos, true),
             //rotate ball0's velocity
@@ -194,7 +212,7 @@ function windowToCanvas(x, y) {
     y -= bbox.top + parseFloat(myStyle.borderTopWidth) + parseFloat(myStyle.paddingTop);
     x *= canvas.width / (parseFloat(myStyle.width));
     y *= canvas.height / (parseFloat(myStyle.height));
-    return {x: x, y: y};
+    return { x: x, y: y };
 }
 
 // 检测是否点中小球并计分
@@ -227,10 +245,10 @@ function clickBall(ev) {
 // 根据窗口大小动态缩放canvas尺寸
 function resize() {
     const height = window.innerHeight;
-    const ratio = canvas.width/canvas.height;
+    const ratio = canvas.width / canvas.height;
     const width = height * ratio;
-    canvas.style.width = width+'px';
-    canvas.style.height = height+'px';
+    canvas.style.width = width + 'px';
+    canvas.style.height = height + 'px';
 }
 
 window.addEventListener('load', resize, false);
