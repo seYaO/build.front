@@ -1,77 +1,100 @@
-let canvas = document.getElementById('myCanvas'),
-    context = canvas.getContext('2d');
-const bgm = document.getElementById('bgm');
+var canvas = document.getElementById('myCanvas');
+var context = canvas.getContext('2d');
+var music = document.getElementById('bgm');
 
-let balls = [],
+var balls = [],
     snows = [], //数组存放每一片雪花
+    virus = [], // 病毒数组
     ui = new UI(),
     now,
     lastTime = new Date(),
-    lastTime1 = new Date(),
-    background_image = new Image();
+    lastTime1 = new Date();
+var background_image;
+var miss_image;
+var add_image;
+var virus_image;
+var virus_like_image;
+var people_image = [];
 
-background_image.src = 'https://img1.40017.cn/cn/s/2020/zt/touch/200320/canvas-bg.png';
+var imgDatas = [
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/canvas-bg.png', // 背景图
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-miss.png', // miss 202x81
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-add.png', // +1 100x71
+    'http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-virus.png', // 病毒 112x104
+    'http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-virus_like.png', // 类似病毒 88x130
 
-// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-miss.png 202x81
-// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-add.png 100x71
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-car.png', // 车 147x72
+    'http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-plane.png', // 飞机 102x81
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-nurse.png', // 84x119
+    'http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-police.png', // 73x128
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people0.png', // 105x127
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people1.png', // 85x121
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people2.png', // 88x129
+]
+var tempDatas = []
 
-// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-car.png 147x72
-// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-nurse.png 84x119
-// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people0.png 105x127
-// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people1.png 85x121
-// https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people2.png 88x129
-// http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-plane.png 102x81
-// http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-police.png 73x128
+// function rate(px) {
+//     return px / (750.0 / window.screen.width) * 3
+// }
 
-// http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-virus_like.png 88x130
-
-// http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-virus.png 112x104
-
-function rate(px) {
-    return px / (750.0 / window.screen.width) * 3
+/**
+ * 保存临时图片
+ * @param {*} imgUrl 
+ */
+function tempFilePaths(imgUrl) {
+    return new Promise((reslove, reject) => {
+        let imgData = new Image();
+        imgData.crossOrigin = "anonymous";
+        imgData.onload = () => {
+            reslove(imgData);
+        }
+        imgData.src = imgUrl;
+    });
 }
 
 /**
  * 随机生成小球并放入
  * @returns {boolean} 是否成功放入小球
  */
-function randomBall() {
-    const radius = Math.max(Math.random() * 50 + 50 - ui.difficulty * 4, 20);
-    let x, y;
-    let flag = true, i = 0;
+function randomBall(idx) {
+    var x, y;
+    var flag = true, i = 0;
     // 尝试寻找空余地方放入
     while (flag) {
         if (++i > 1000) return false;
+        // console.log(1)
         x = Math.random() * canvas.width;
         y = Math.random() * canvas.height;
         flag = false;
-        balls.forEach((ball) => {
-            let dist = Math.sqrt((x - ball.x) ** 2 + (y - ball.y) ** 2);
-            if (dist <= ball.radius + radius + 20)
-                flag = true;
-        });
+        // balls.forEach((ball) => {
+        //     // console.log(2)
+        //     let dist = Math.sqrt((x - ball.x) ** 2 + (y - ball.y) ** 2);
+        //     if (dist <= ball.width + 20)
+        //         flag = true;
+        // });
     }
+
     const vx = (Math.random() < 0.5 ? 1 : -1) * Math.random() * 2 + ui.difficulty / 2,
         vy = (Math.random() < 0.5 ? 1 : -1) * Math.random() * 2 + ui.difficulty / 2;
-    balls.push(new Ball(radius, x, y, vx, vy));
+    balls.push(new Ball(people_image[idx], x, y, vx, vy));
     return true;
 }
 
 // 墙面碰撞检测
 function checkWalls(ball) {
     let bounce = -0.95; // 碰撞墙面衰减系数
-    if (ball.x + ball.radius > canvas.width) {
-        ball.x = canvas.width - ball.radius;
+    if (ball.x + (ball.width / 2) > canvas.width) {
+        ball.x = canvas.width - (ball.width / 2);
         ball.vx *= bounce;
-    } else if (ball.x - ball.radius < 0) {
-        ball.x = ball.radius;
+    } else if (ball.x - (ball.width / 2) < 0) {
+        ball.x = (ball.width / 2);
         ball.vx *= bounce;
     }
-    if (ball.y + ball.radius > canvas.height) {
-        ball.y = canvas.height - ball.radius;
+    if (ball.y + (ball.height / 2) > canvas.height) {
+        ball.y = canvas.height - (ball.height / 2);
         ball.vy *= bounce;
-    } else if (ball.y - ball.radius < 0) {
-        ball.y = ball.radius;
+    } else if (ball.y - (ball.height / 2) < 0) {
+        ball.y = (ball.height / 2);
         ball.vy *= bounce;
     }
 }
@@ -141,14 +164,14 @@ function move(ball) {
 
 // 小球绘制与消除超时
 function drawBalls(ball, index) {
-    if (ball.radius > 20) {
-        ball.radius -= 0.01;
-        ball.createTime = now;
-    }
-    else if (now - ball.createTime > 20000) {
-        balls.splice(index, 1);
-        --ui.score;
-    }
+    // if (ball.radius > 20) {
+    //     ball.radius -= 0.01;
+    //     ball.createTime = now;
+    // }
+    // else if (now - ball.createTime > 20000) {
+    //     balls.splice(index, 1);
+    //     --ui.score;
+    // }
     ball.draw(context);
 }
 
@@ -189,15 +212,15 @@ function drawFrame() {
     context.clearRect(0, 0, canvas.width, canvas.height);
     // console.log(background_image)
     context.drawImage(background_image, 0, 0, canvas.width, canvas.height);
-    createThings();
-    snows.forEach(drawSnow);
+    // createThings();
+    // snows.forEach(drawSnow);
     balls.forEach(move);
     for (let i = 0, len = balls.length - 1; i < len; i++) {
         let ballA = balls[i];
         // n^2暴力枚举每个气泡之间是否发生碰撞
         for (let j = i + 1; j < balls.length; j++) {
             let ballB = balls[j];
-            checkCollision(ballA, ballB);
+            // checkCollision(ballA, ballB);
         }
     }
     balls.forEach(drawBalls);
@@ -217,13 +240,17 @@ function windowToCanvas(x, y) {
 
 // 检测是否点中小球并计分
 function clickBall(ev) {
-    let loc = windowToCanvas(ev.x, ev.y);
-    let flag = false;
+    var loc = windowToCanvas(ev.x, ev.y);
+    var flag = false;
+    console.log(loc)
     balls.forEach((ball, index) => {
         if (flag) return;
-        let dist = Math.sqrt((loc.x - ball.x) * (loc.x - ball.x) + (loc.y - ball.y) * (loc.y - ball.y));
-        if (dist <= ball.radius) {
-            let point = Math.round(Math.log(ball.radius + 10 * Math.abs(ball.vx) * Math.abs(ball.vy)));
+        var dist = { w: 0, h: 0 };
+        dist.w = Math.sqrt((loc.x - ball.x) * (loc.x - ball.x));
+        dist.h = Math.sqrt((loc.y - ball.y) * (loc.y - ball.y));
+        console.log(dist, '--', ball.width, ball.height)
+        if (dist.w <= ball.width && dist.h <= ball.height) {
+            var point = Math.round(Math.log(ball.width + 10 * Math.abs(ball.vx) * Math.abs(ball.vy)));
             ui.addShow(point, loc);
             balls.splice(index, 1);
             flag = true;
@@ -234,12 +261,35 @@ function clickBall(ev) {
 
 // 游戏开始
 (function init() {
-    let ballsNum = 20;
-    canvas.addEventListener('mousedown', clickBall);
-    for (let i = 0; i < ballsNum; i++) {
-        randomBall();
-    }
-    drawFrame();
+    imgDatas.forEach(function (item) {
+        tempDatas.push(tempFilePaths(item))
+    })
+    // console.log(tempDatas)
+    Promise.all(tempDatas).then(res => {
+        // 背景图
+        background_image = res[0]
+        miss_image = res[1]
+        add_image = res[2]
+        virus_image = res[3]
+        virus_like_image = res[4]
+        people_image = res.slice(-7)
+        // console.log(res.slice(-7))
+        // this.drawSavePic(res);
+
+
+        let ballsNum = 5;
+        canvas.addEventListener('mousedown', clickBall);
+
+        for (let i = 0; i < ballsNum; i++) {
+            randomBall(i);
+        }
+        drawFrame();
+
+
+    }).catch(e => { });
+
+
+
 }());
 
 // 根据窗口大小动态缩放canvas尺寸
