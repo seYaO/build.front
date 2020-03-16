@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>验客中国</title>
+    <meta charset="utf-8">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--控制状态栏显示样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <!--格式检测-->
+    <meta content="telephone=no" name="format-detection" />
+    <!--控制页面打开大小-->
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        name="viewport">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
+    <!--自定义样式-->
+    <link rel="stylesheet" type="text/css" href="200311/200311.css">
+</head>
+
+<body>
+    <div class="app" id="app" v-cloak @click="showProvList = false">
+        <!-- loading蒙层 -->
+        <div class="loading" v-show="loading">
+            <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+        </div>
+        <!-- 头图 44764-->
+        <div class="top">
+            <video controls="controls" :src="sceneryInfo.videoUrl" :poster="sceneryInfo.videoImg" v-if="sceneryInfo && sceneryInfo.videoUrl"></video>
+            <img :src="videoImg" v-else>
+            
+        </div>
+        <!-- 简介(45638) -->
+        <div class="section section1" v-if="sectionData1">
+            <div class="title" @click="windowLocationHref('detail',sceneryInfo,0)">
+                <div class="t">千岛湖</div>
+                <img class="icon" src="//img1.40017.cn/cn/s/2020/zt/touch/200311/01.png" />
+                <div class="tx1" v-if="sceneryInfo">{{sceneryInfo.ProvinceName}}·{{sceneryInfo.CityName}}</div>
+                <img class="arrow" src="//img1.40017.cn/cn/s/2020/zt/touch/200311/02.png" />
+            </div>
+            <div class="box_content">
+                
+                <template v-if="sceneryInfo">
+                    <div class="sectionCon1" @click="windowLocationHref('detail',sceneryInfo,0)">
+                        <img class="left" :src="setImageSize(sceneryInfo.imgUrl,'458x308')">
+                        <div class="right">
+                            <img :src="setImageSize(sceneryInfo.imgUrl,'220x148')">
+                            <img :src="setImageSize(sceneryInfo.imgUrl,'220x148')">
+                        </div>
+                    </div>
+                    <div class="sectionCon2">
+                        <span class="bold">必去理由：</span>{{sceneryInfo.Summary}}
+                    </div>
+                    
+                </template>
+                
+            </div>
+            <div class="sectionCon3">
+                <div class="loader" v-show="sectionData1 && sectionData1.length == 0">
+                    <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                </div>
+                <div class="noSource" v-show="!sectionData1">暂无资源~~</div>
+                <ul v-if="sectionData1 && sectionData1.length>0" class="jdList source">
+                    <a class="sourceItem" v-for="(item,index) in sectionData1" @click="windowLocationHref('order',item,index)">
+                        <h2 class="tit">{{item.BCTTicketName}}</h2>
+                        <div class="flex">
+                            <div></div>
+                            <div class="r">
+                                <div class="price">
+                                    <i class="yuan">￥</i>
+                                    <em class="money">{{item.AmountAdvance}}</em>
+                                    <i class="qi">起</i>
+                                </div>
+                                <img class="arrow" src="https://file.40017.cn/top/minapp/tickets/arrow_down1.png">
+                            </div>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+            
+        </div>
+        <!-- 验客体验官(45639) -->
+        <div class="section section2" v-if="sectionData2">
+            <div class="title">
+                <div class="t">验客体验官</div>
+                
+            </div>
+            <div class="sectionCon4">
+                <div class="loader" v-show="sectionData2 && sectionData2.length == 0">
+                    <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                </div>
+                <div class="noSource" v-show="!sectionData2">暂无资源~~</div>
+                <ul v-if="sectionData2 && sectionData2.length>0" class="jdList source">
+                    <a class="sourceItem" v-for="(item,index) in sectionData2">
+                        <div class="left">
+                            <img class="img" :src="item.SceneryImg">
+                        </div>
+                        <div class="right" @click="popText(item.Summary)">
+                            <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
+                            <h3 class="subtit multi-ellipsis--l3">{{item.Summary}}</h3>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <!-- 精选游记(45640) -->
+        <div class="section section3" v-if="sectionData3">
+            <div class="title">
+                <div class="t">精选游记</div>
+            </div>
+            <div class="box_content">
+                <div class="loader" v-show="sectionData3 && sectionData3.length == 0">
+                    <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                </div>
+                <div class="noSource" v-show="!sectionData3">暂无资源~~</div>
+                <ul v-if="sectionData3 && sectionData3.length>0" class="thList source">
+                    <a class="sourceItem" v-for="(item,index) in sectionData3" :href="item.Purl">
+                        <img class="img" :src="setImageSize(item.SceneryImg,'690x360')">
+                        <div class="mask"></div>
+                        <div class="tit">
+                            <span>{{item.SceneryName}}</span>
+                        </div>
+                        <div class="nice">{{item.BiaoTi}}</div>
+                    </a>
+                </ul>
+            </div>
+        </div>
+        <!-- 提示弹框 -->
+        <div class="showErrBox">
+            <div class="showErr"></div>
+        </div>
+        
+        <div class="footer" v-if="isxcx"></div>
+        <div class="foot1" v-else>@同程旅游2019</div>
+    </div>
+</body>
+<script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
+<!-- rem -->
+<script type="text/javascript">
+    (function () {
+        $(document).on('page:resize', function (e) {
+            var _w = $(document.body).width();
+            $('html').css('font-size', ((_w > 750) ? 750 : _w) / 750 * 100 + 'px');
+        });
+        $(document).trigger('page:resize');
+        $(window).on('resize', function () {
+            $(document).trigger('page:resize');
+        })
+    })();
+</script>
+<!--脚本-->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.3.2.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/getclientinfo.3.0.0.js?v=11"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/ztc/SetShareFun.4.4.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
+<script type="text/javascript" src="//file.40017.cn/fed/touch/js/modules/location/0.0.8/location.js"></script>
+<!--轮播js  -->
+<script src="//file.40017.cn/js40017cnproduct/cn/s/2018/zt/common/swiper.min.js"></script>
+<script>
+    /* 分享 */
+    shareImg = "http://img1.40017.cn/cn/s/2019/zt/touch/191223/share.jpg";
+    shareTitle = "春天终会如约而至，我在千岛湖（每个景区不一样）等你！";
+    shareUrl = "https://www.ly.com/scenery/zhuanti/tiyanguanqdh/";
+    shareDesc = "春天终会如约而至，我在千岛湖（每个景区不一样）等你！";
+    setShareFun.Pageview = "/Touch站专题/验客中国";
+    setShareFun.changeShareInfo();
+</script>
+<!--自定义脚本-->
+<script src="200311/200311.js"></script>
+
+</html>
