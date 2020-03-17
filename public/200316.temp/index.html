@@ -4,11 +4,27 @@
 <head>
     <meta charset='UTF-8'>
     <title>游戏</title>
+    <meta charset="utf-8">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--控制状态栏显示样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <!--格式检测-->
+    <meta content="telephone=no" name="format-detection" />
+    <!--控制页面打开大小-->
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
     <link href='200316.temp/test1.css' rel='stylesheet'>
 </head>
 
 <body>
-
+    <div class="app" id="app" v-cloak @click="showProvList = false">
+        <!-- {{memberId}} -->
+        <!-- <canvas id='myCanvas' width='750px' height='1080px'></canvas>
+        <output id='afterPlay'></output>
+        <audio id="bgm" controls="controls" hidden="hidden" loop="loop">
+            <source src="https://img1.40017.cn/cn/s/2020/zt/touch/lily_temp/bgm.mp3" type="audio/mpeg" />
+        </audio> -->
+    </div>
     <div class="box">
         <canvas id='myCanvas' width='750px' height='1080px'></canvas>
     </div>
@@ -19,12 +35,46 @@
 
     <audio id="bgm" controls="controls" hidden="hidden" loop="loop">
         <source src="https://img1.40017.cn/cn/s/2020/zt/touch/lily_temp/bgm.mp3" type="audio/mpeg" />
-    </audio>
-
-    <script src='200316.temp/scripts/utils.js'></script>
-    <script src='200316.temp/scripts/Ball.js'></script>
-    <script src='200316.temp/scripts/UI.js'></script>
-    <script src='200316.temp/scripts/script.js'></script>
+    </audio>  
 </body>
+
+<script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
+<!-- rem -->
+<script type="text/javascript">
+    (function () {
+        $(document).on('page:resize', function (e) {
+            var _w = $(document.body).width();
+            $('html').css('font-size', ((_w > 750) ? 750 : _w) / 750 * 100 + 'px');
+        });
+        $(document).trigger('page:resize');
+        $(window).on('resize', function () {
+            $(document).trigger('page:resize');
+        })
+    })();
+</script>
+<!--脚本-->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
+<script type="text/javascript" src="https://js.40017.cn/cn/min/???/cn/s/api/setsharefn.5.js"></script>
+<script>
+    /* 分享 */
+    shareImg = "http://img1.40017.cn/cn/s/2019/zt/touch/191223/share.jpg";
+    shareTitle = "“春暖潇湘”湖南文化旅游网络消费季邀您参加";
+    shareUrl = "https://www.ly.com/scenery/zhuanti/2020hunan/";
+    shareDesc = "湖南省文化和旅游厅主办，掌上游湖南！";
+    setShareFun.Pageview = "/Touch站专题/湖南文化旅游消费商城";
+    setShareFun.changeShareInfo();
+</script>
+
+<script src='200316.temp/scripts/utils.js'></script>
+<script src='200316.temp/scripts/md5.js'></script>
+<script src='200316.temp/scripts/countDown.js'></script>
+<script src='200316.temp/scripts/Ball.js'></script>
+<script src='200316.temp/scripts/UI.js'></script>
+<script src='200316.temp/scripts/game.js'></script>
+<script src='200316.temp/test1.js'></script>
 
 </html>

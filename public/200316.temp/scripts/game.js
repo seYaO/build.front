@@ -1,10 +1,13 @@
+// https://github.com/ZKingQ/PingPingPang
+
 var canvas = document.getElementById('myCanvas');
 var context = canvas.getContext('2d');
 var music = document.getElementById('bgm');
 
-var balls = [],
-    snows = [], //数组存放每一片雪花
-    virus = [], // 病毒数组
+let animation
+var ballsNum = 20,
+    count = 0,
+    balls = [],
     ui = new UI(),
     now,
     lastTime = new Date(),
@@ -14,6 +17,7 @@ var miss_image;
 var add_image;
 var virus_image;
 var virus_like_image;
+var nurse_image;
 var people_image = [];
 
 var imgDatas = [
@@ -23,42 +27,30 @@ var imgDatas = [
     'http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-virus.png', // 病毒 112x104
     'http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-virus_like.png', // 类似病毒 88x130
 
+    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-nurse.png', // 84x119
+
     'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-car.png', // 车 147x72
     'http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-plane.png', // 飞机 102x81
-    'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-nurse.png', // 84x119
     'http://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-police.png', // 73x128
     'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people0.png', // 105x127
     'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people1.png', // 85x121
     'https://img1.40017.cn/cn/s/2020/zt/touch/200320/icon-people2.png', // 88x129
 ]
 var tempDatas = []
-
-// function rate(px) {
-//     return px / (750.0 / window.screen.width) * 3
-// }
-
-/**
- * 保存临时图片
- * @param {*} imgUrl 
- */
-function tempFilePaths(imgUrl) {
-    return new Promise((reslove, reject) => {
-        let imgData = new Image();
-        imgData.crossOrigin = "anonymous";
-        imgData.onload = () => {
-            reslove(imgData);
-        }
-        imgData.src = imgUrl;
-    });
-}
+var scale = []
 
 /**
  * 随机生成小球并放入
  * @returns {boolean} 是否成功放入小球
+ * 1-3 1-10% 类似-20% 
+ * 4-6 1-8% 类似-30% 
+ * 7-9 1-5% 类似-40% 
+ * 10-12 1-1% 类似-50% 
  */
-function randomBall(idx) {
-    var x, y;
-    var flag = true, i = 0;
+function randomBall(val) {
+    // console.log(val)
+    var x, y, Image;
+    var flag = true, i = 0, isVirus = false;
     // 尝试寻找空余地方放入
     while (flag) {
         if (++i > 1000) return false;
@@ -74,9 +66,22 @@ function randomBall(idx) {
         // });
     }
 
+    if (val == 0) { // 病毒
+        Image = virus_image
+        isVirus = true
+    } else if (val == 1) { // 白色人物
+        Image = nurse_image
+    }
+    else if (val == 2) { // 类似人物
+        Image = virus_like_image
+    } else {
+        var idx = window.utils.randomNum(0, 5)
+        Image = people_image[idx]
+    }
+
     const vx = (Math.random() < 0.5 ? 1 : -1) * Math.random() * 2 + ui.difficulty / 2,
         vy = (Math.random() < 0.5 ? 1 : -1) * Math.random() * 2 + ui.difficulty / 2;
-    balls.push(new Ball(people_image[idx], x, y, vx, vy));
+    balls.push(new Ball(Image, x, y, vx, vy, isVirus));
     return true;
 }
 
@@ -175,54 +180,23 @@ function drawBalls(ball, index) {
     ball.draw(context);
 }
 
-// 根据时间创造新的雪花与小球
-function createThings() {
-    if (now - lastTime > snows.length - now.getMinutes() && snows.length < 1000) {
-        const radius = Math.random() * 5 + 2;
-        const x = Math.random() * canvas.width + 1;
-        let snow = new Ball(radius, x);
-        snow.vy = snow.radius / 3;
-        snow.color = '#ffffff';
-        snows.push(snow);
-        lastTime = now;
-    }
-    if (now - lastTime1 > balls.length * 30 + 300 && balls.length < 100) {
-        if (randomBall())
-            lastTime1 = now;
-    }
-}
-
-/**
- * 绘制雪花，模拟雪花移动
- * @param snow
- * @param index
- */
-function drawSnow(snow, index) {
-    snow.move();
-    if (snow.y > canvas.height)
-        snows.splice(index, 1);
-    else
-        snow.draw(context);
-}
-
 // 动画绘制
 function drawFrame() {
-    let animation = requestAnimationFrame(drawFrame);
+    cancelAnimationFrame(animation)
+    animation = requestAnimationFrame(drawFrame);
     now = new Date();
     context.clearRect(0, 0, canvas.width, canvas.height);
-    // console.log(background_image)
+    // 背景图
     context.drawImage(background_image, 0, 0, canvas.width, canvas.height);
-    // createThings();
-    // snows.forEach(drawSnow);
-    balls.forEach(move);
-    for (let i = 0, len = balls.length - 1; i < len; i++) {
-        let ballA = balls[i];
-        // n^2暴力枚举每个气泡之间是否发生碰撞
-        for (let j = i + 1; j < balls.length; j++) {
-            let ballB = balls[j];
-            // checkCollision(ballA, ballB);
-        }
-    }
+    // balls.forEach(move);
+    // for (let i = 0, len = balls.length - 1; i < len; i++) {
+    //     let ballA = balls[i];
+    //     // n^2暴力枚举每个气泡之间是否发生碰撞
+    //     for (let j = i + 1; j < balls.length; j++) {
+    //         let ballB = balls[j];
+    //         // checkCollision(ballA, ballB);
+    //     }
+    // }
     balls.forEach(drawBalls);
     ui.draw(context, animation);
 }
@@ -241,56 +215,161 @@ function windowToCanvas(x, y) {
 // 检测是否点中小球并计分
 function clickBall(ev) {
     var loc = windowToCanvas(ev.x, ev.y);
-    var flag = false;
-    console.log(loc)
+    var flag = false, virusBall;
+    var dist = { w: 0, h: 0 };
+    // console.log(loc)
     balls.forEach((ball, index) => {
-        if (flag) return;
-        var dist = { w: 0, h: 0 };
-        dist.w = Math.sqrt((loc.x - ball.x) * (loc.x - ball.x));
-        dist.h = Math.sqrt((loc.y - ball.y) * (loc.y - ball.y));
-        console.log(dist, '--', ball.width, ball.height)
-        if (dist.w <= ball.width && dist.h <= ball.height) {
-            var point = Math.round(Math.log(ball.width + 10 * Math.abs(ball.vx) * Math.abs(ball.vy)));
-            ui.addShow(point, loc);
-            balls.splice(index, 1);
-            flag = true;
+        if (ball.isVirus) {
+            virusBall = ball
         }
+        // if (flag) return;
+        // var dist = { w: 0, h: 0 };
+        // dist.w = Math.sqrt((loc.x - ball.x) * (loc.x - ball.x));
+        // dist.h = Math.sqrt((loc.y - ball.y) * (loc.y - ball.y));
+        // // console.log(dist, '--', ball.width, ball.height)
+        // if (dist.w <= ball.width && dist.h <= ball.height) {
+        //     var point = Math.round(Math.log(ball.width + 10 * Math.abs(ball.vx) * Math.abs(ball.vy)));
+        //     ui.addShow(point, loc, ball);
+        //     balls.splice(index, 1);
+        //     if (ball.isVirus) {
+        //         Start()
+        //     }
+
+        //     flag = true;
+        // }
     });
+
+    dist.w = Math.sqrt((loc.x - virusBall.x) * (loc.x - virusBall.x));
+    dist.h = Math.sqrt((loc.y - virusBall.y) * (loc.y - virusBall.y));
+    if (dist.w <= virusBall.width && dist.h <= virusBall.height) {
+        var point = Math.round(Math.log(virusBall.width + 10 * Math.abs(virusBall.vx) * Math.abs(virusBall.vy)));
+        ui.addShow(point, loc, virusBall);
+        // balls.splice(index, 1);
+        // if (ball.isVirus) {
+        //     Start()
+        // }
+
+        flag = true;
+        Start()
+    }
+
     if (!flag) ui.addShow(0, loc);
 }
 
-// 游戏开始
-(function init() {
-    imgDatas.forEach(function (item) {
-        tempDatas.push(tempFilePaths(item))
+// 网页可见区域宽： document.body.clientWidth
+// 网页可见区域高： document.body.clientHeight
+// 网页可见区域宽： document.body.offsetWidth (包括边线的宽)
+// 网页可见区域高： document.body.offsetHeight (包括边线的高)
+// 网页正文全文宽： document.body.scrollWidth
+// 网页正文全文高： document.body.scrollHeight
+// 网页被卷去的高： document.body.scrollTop
+// 网页被卷去的左： document.body.scrollLeft
+// 网页正文部分上： window.screenTop
+// 网页正文部分左： window.screenLeft
+// 屏幕分辨率的高： window.screen.height
+// 屏幕分辨率的宽： window.screen.width
+// 屏幕可用工作区高度： window.screen.availHeight
+// 屏幕可用工作区宽度： window.screen.availWidth
+
+
+/**
+ * 比例分配
+ * @param {*} scale 
+ * scale.nurse
+ * scale.likevirus
+ * 1-3 1-10% 类似-20% 
+ * 4-6 1-8% 类似-30% 
+ * 7-9 1-5% 类似-40% 
+ * 10-12 1-1% 类似-50% 
+ */
+function scaleFn() {
+    var arr = [], newArr = [0], nNum = 0, lNum = 0, nScale = 0, lScale = 0;
+    switch (count) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+            nScale = 0.1
+            lScale = 0.2
+            ballsNum = 20
+            break;
+        case 4:
+        case 5:
+        case 6:
+            nScale = 0.08
+            lScale = 0.3
+            ballsNum = 40
+            break;
+        case 7:
+        case 8:
+        case 9:
+            nScale = 0.05
+            lScale = 0.4
+            ballsNum = 60
+            break;
+        default:
+            nScale = 0.01
+            lScale = 0.5
+            ballsNum = 80
+            break;
+    }
+    nNum = Math.ceil(ballsNum * nScale)
+    lNum = Math.ceil(ballsNum * lScale)
+    for (var i = 0; i < nNum; i++) {
+        arr.push(1) // 白色人物
+    }
+    for (var i = 0; i < lNum; i++) {
+        arr.push(2) // 类似人物
+    }
+    for (var i = 0; i < ballsNum - nNum - lNum; i++) {
+        arr.push(3) // 其他
+    }
+    var len = arr.length
+    for (var i = 0; i < len; i++) {
+        var idx = window.utils.randomNum(0, arr.length - 1)
+        newArr.push(arr[idx])
+        arr.splice(idx, 1);
+    }
+    return newArr
+}
+
+function Start() {
+    count++
+    balls = []
+    var ballArr = scaleFn()
+    ballArr.forEach(function (val) {
+        randomBall(val);
     })
-    // console.log(tempDatas)
-    Promise.all(tempDatas).then(res => {
-        // 背景图
-        background_image = res[0]
-        miss_image = res[1]
-        add_image = res[2]
-        virus_image = res[3]
-        virus_like_image = res[4]
-        people_image = res.slice(-7)
-        // console.log(res.slice(-7))
-        // this.drawSavePic(res);
+
+    drawFrame();
+}
+
+// 游戏开始
+// (function init() {
+//     canvas.width = $(window).width()
+//     canvas.height = $(window).height()
+//     imgDatas.forEach(function (item) {
+//         tempDatas.push(window.utils.tempFilePaths(item))
+//     })
+//     // console.log(tempDatas)
+//     Promise.all(tempDatas).then(res => {
+//         // 背景图
+//         background_image = res[0]
+//         miss_image = res[1]
+//         add_image = res[2]
+//         virus_image = res[3]
+//         virus_like_image = res[4]
+//         nurse_image = res[5]
+//         people_image = res.slice(-6)
+
+//         canvas.addEventListener('mousedown', clickBall);
+//         Start() // 游戏开始
+//     }).catch(e => { });
 
 
-        let ballsNum = 5;
-        canvas.addEventListener('mousedown', clickBall);
-
-        for (let i = 0; i < ballsNum; i++) {
-            randomBall(i);
-        }
-        drawFrame();
-
-
-    }).catch(e => { });
-
-
-
-}());
+//     // var md5 = window.utils.md5('unionid=abcabc&memberid=123123&reqtime=20200317142645987&nickname=lily&score=10&avatar=' + encodeURIComponent('http://pic5.40017.cn/04/002/1f/f2/rBTJUl04JbeAaADiAABG6Gav1jw761.jpg'))
+//     // console.log(md5)
+// }());
 
 // 根据窗口大小动态缩放canvas尺寸
 function resize() {
