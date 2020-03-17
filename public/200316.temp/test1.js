@@ -25,6 +25,10 @@ var AppInfo = {
     cityID: null // 城市ID
 };
 
+
+var timeObject = new window.utils.countDown();
+
+
 var __topimg = '//img1.40017.cn/cn/s/2019/zt/touch/191223/top.jpg'
 var app = new Vue({
     el: '#app',
@@ -49,6 +53,7 @@ var app = new Vue({
         onProvName: localData.onProvName,
         onCid: localData.onProvName ? localData.onCid : '29934',
         onNid: localData.onNid || '30028',
+        seconds: '',
     },
     created: function () {
         this.init();
@@ -179,6 +184,7 @@ var app = new Vue({
         //数据初始化
         initData: function () {
             this.gameStart()
+            this.countDownFn()
         },
         // 公共异步
         publicAjax: function (mdId, index, onProvId, callBackFn, pageIndex, pageSize) {
@@ -243,6 +249,22 @@ var app = new Vue({
                 pageIndex,
                 pageSize
             )
+        },
+
+        countDownFn: function () {
+            var that = this;
+            timeObject.seconds = 10; // 30秒
+            timeObject.runFun = function (e) {
+                that.seconds = e
+                timer = e
+            }
+            timeObject.backFun = function (e) {
+                that.seconds = '0'
+                timer = 0
+                console.log('结束')
+            }
+            timeObject.mainFun();
+
         },
 
         // 判断是否需要登陆

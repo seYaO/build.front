@@ -36,18 +36,19 @@ class UI {
         context.font = '20px monaco';
         context.fillStyle = this.color;
         // 检查游戏进程
-        if (this.score < -5) {
-            cancelAnimationFrame(animation);
-            context.clearRect(0, 0, canvas.width, canvas.height);
-            context.fillStyle = 'black';
-            context.fillRect(0, 0, canvas.width, canvas.height);
-            context.fillStyle = 'white';
-            context.font = '100px monaco';
-            context.textAlign = 'center';
-            context.fillText('Game Over', canvas.width / 2, canvas.height / 2);
-        } else {
+        console.log(timer)
+        if (timer) {
             context.fillStyle = '#F56C6C';
             context.fillText('score:' + this.score, this.x, this.y);
+        } else {
+            cancelAnimationFrame(animation);
+            // context.clearRect(0, 0, canvas.width, canvas.height);
+            // context.fillStyle = 'black';
+            // context.fillRect(0, 0, canvas.width, canvas.height);
+            // context.fillStyle = 'white';
+            // context.font = rate(100) + 'px monaco';
+            // context.textAlign = 'center';
+            // context.fillText('Game Over', canvas.width / 2, canvas.height / 2);
         }
         if (now - this.playTime > 1000) {
             bgm.pause();
@@ -56,7 +57,7 @@ class UI {
     }
 
     addShow(point, loc, ball) {
-        console.log('addShow',ball)
+        console.log('addShow', ball)
         if (point !== 0) {
             if (ball.isVirus) {
                 this.score += 1;

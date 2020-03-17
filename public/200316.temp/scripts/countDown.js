@@ -1,4 +1,52 @@
 /**
+ * 普通倒计时
+ */
+window.utils.countDown = function () {
+    this.myTimer = null; // 内部参数，无需传值
+    this.seconds = 10; // 默认十秒
+    this.runFun = function () { }; // 倒计时开始回调函数
+    this.backFun = function () { }; // 倒计时结束回调函数
+    this.close = false;
+}
+window.utils.countDown.prototype = {
+    formatNum: function (num) {
+        num = num < 10 ? "0" + num : num;
+        return num;
+    },
+    // 计算
+    getNum: function (time) {
+        return Math.floor(time / 1000 % 60)
+        // return this.formatNum(Math.floor(time / 1000 % 60))
+    },
+    // 关闭
+    closeFun: function () {
+        clearTimeout(this.myTimer);
+        this.myTimer = null;
+    },
+    // 主入口
+    mainFun: function () {
+        var timeNums = this.seconds * 1000;
+
+        var that = this;
+        if (that.myTimer) {
+            that.closeFun();
+        }
+
+        (function () {
+            if (timeNums <= 0) {
+                that.closeFun();
+                that.backFun(that.getNum(timeNums));
+            } else {
+                that.runFun(that.getNum(timeNums));
+                timeNums -= 1000;
+
+                that.myTimer = setTimeout(arguments.callee, 1000);
+            }
+        })()
+    }
+}
+
+/**
  * 抢购倒计时
  */
 window.utils.countDown2 = function () {
@@ -7,7 +55,7 @@ window.utils.countDown2 = function () {
     this.overTime = null; // 抢购结束时间
     this.beforeTime = null; // 抢购开始时间 非必填
     this.runFun = function () { }; // 倒计时主函数
-    this.beforFun = function () { }; // 抢购开始回调函数
+    this.beforeFun = function () { }; // 抢购开始回调函数
     this.backFun = function () { }; // 抢购结束回调函数
     this.timeGo = 0; /*保存倒计时从开始到结束，一共执行了多少秒*/
     this.close = false;
@@ -60,8 +108,8 @@ window.utils.countDown2.prototype = {
                 }
                 //抢购前
                 else {
-                    //that.beforFun(that.getDayNum(beginNums));
-                    that.beforFun(that.getDayNum(nowNums));
+                    //that.beforeFun(that.getDayNum(beginNums));
+                    that.beforeFun(that.getDayNum(nowNums));
                     timeNums -= 1000;
                     nowNums -= 1000;
 

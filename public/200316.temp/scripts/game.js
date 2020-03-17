@@ -3,7 +3,7 @@
 var canvas = document.getElementById('myCanvas');
 var context = canvas.getContext('2d');
 var music = document.getElementById('bgm');
-
+var timer = 10;
 let animation
 var ballsNum = 20,
     count = 0,
@@ -38,6 +38,7 @@ var imgDatas = [
 ]
 var tempDatas = []
 var scale = []
+
 
 /**
  * 随机生成小球并放入
@@ -214,6 +215,8 @@ function windowToCanvas(x, y) {
 
 // 检测是否点中小球并计分
 function clickBall(ev) {
+    if (!timer) return
+
     var loc = windowToCanvas(ev.x, ev.y);
     var flag = false, virusBall;
     var dist = { w: 0, h: 0 };
