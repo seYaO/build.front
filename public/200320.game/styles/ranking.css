@@ -1,0 +1,138 @@
+/*
+ _______                                                                                                         
+|       \                                                                                                        
+| $$$$$$$\ ______    ______    ______          _______   ______   ______ ____   ______ ____    ______   _______  
+| $$__/ $$|      \  /      \  /      \        /       \ /      \ |      \    \ |      \    \  /      \ |       \ 
+| $$    $$ \$$$$$$\|  $$$$$$\|  $$$$$$\      |  $$$$$$$|  $$$$$$\| $$$$$$\$$$$\| $$$$$$\$$$$\|  $$$$$$\| $$$$$$$\
+| $$$$$$$ /      $$| $$  | $$| $$    $$      | $$      | $$  | $$| $$ | $$ | $$| $$ | $$ | $$| $$  | $$| $$  | $$
+| $$     |  $$$$$$$| $$__| $$| $$$$$$$$      | $$_____ | $$__/ $$| $$ | $$ | $$| $$ | $$ | $$| $$__/ $$| $$  | $$
+| $$      \$$    $$ \$$    $$ \$$     \       \$$     \ \$$    $$| $$ | $$ | $$| $$ | $$ | $$ \$$    $$| $$  | $$
+ \$$       \$$$$$$$ _\$$$$$$$  \$$$$$$$        \$$$$$$$  \$$$$$$  \$$  \$$  \$$ \$$  \$$  \$$  \$$$$$$  \$$   \$$
+                   |  \__| $$                                                                                    
+                    \$$    $$                                                                                    
+                     \$$$$$$                                                                                     
+*/
+body {
+    background: #1e6485;
+}
+
+.top {
+    position: relative;
+    width: 100%;
+}
+
+.top img {
+    display: block;
+    width: 100%;
+}
+
+.intro {
+    margin: 0 .2rem;
+    padding: .2rem 0;
+    /* height: 500px; */
+    background: #094662;
+    border: .02rem solid #000;
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+}
+
+.tableimg {
+    display: block;
+    width: 100%;
+}
+
+.list {
+    padding: 0 .2rem;
+}
+
+.list .rank {
+    position: relative;
+    margin-top: .1rem;
+    padding: .1rem .2rem;
+    height: 1.3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list .rank.me {
+    background-color: #043349;
+    border-radius: 1.4rem;
+    box-shadow: 0 0 .07rem .03rem rgba(255, 255, 255, .35);
+}
+
+.list .rank .bg {
+    flex: 1;
+    margin-left: .2rem;
+    height: .64rem;
+    background-color: #1e6485;
+    border-radius: .2rem;
+}
+
+.list .rank .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.list .rank .num {
+    margin-left: .2rem;
+    width: .7rem;
+    height: .7rem;
+}
+
+.list .rank .avatar {
+    margin-left: .15rem;
+    width: 1.08rem;
+    height: 1.08rem;
+    border-radius: 1.08rem;
+    border: .08rem solid #fff;
+}
+
+.list .rank .txt {
+    margin-left: .3rem;
+    width: 2.4rem;
+    font-size: .26rem;
+    color: #fff;
+}
+
+.list .rank .score {
+    margin-left: .36rem;
+    font-size: .26rem;
+    color: #ffd65f;
+}
+
+.placeholder {
+    /* height: 1.5rem; */
+    height: .5rem;
+}
+
+.bottom-btn-box {
+    position: relative;
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1.5rem;
+    background: #1e6485;
+    z-index: 10;
+}
+
+.bottom-btn-box .btns {
+    width: 100%;
+    height: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/ranking-btn.png') no-repeat;
+    background-size: 100% 1.2rem;
+}
+
+.bottom-btn-box a {
+    flex: 1;
+}

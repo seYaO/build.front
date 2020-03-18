@@ -1,0 +1,580 @@
+/* 
+                                                                    
+                                                                    
+  _______   ______   ______ ____   ______ ____    ______   _______  
+ /       \ /      \ |      \    \ |      \    \  /      \ |       \ 
+|  $$$$$$$|  $$$$$$\| $$$$$$\$$$$\| $$$$$$\$$$$\|  $$$$$$\| $$$$$$$\
+| $$      | $$  | $$| $$ | $$ | $$| $$ | $$ | $$| $$  | $$| $$  | $$
+| $$_____ | $$__/ $$| $$ | $$ | $$| $$ | $$ | $$| $$__/ $$| $$  | $$
+ \$$     \ \$$    $$| $$ | $$ | $$| $$ | $$ | $$ \$$    $$| $$  | $$
+  \$$$$$$$  \$$$$$$  \$$  \$$  \$$ \$$  \$$  \$$  \$$$$$$  \$$   \$$
+                                                                    
+                                                                    
+                                                                    
+*/
+html {
+    height: 100%;
+    width: 100%;
+    font-size: 50px;
+}
+
+body {
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    font-size: 14px;
+    background: #e9f9fd;
+    /* background: #094662; */
+    font-family: "微软雅黑";
+    display: block;
+    min-width: 320px;
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    -webkit-appearance: none;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-style: normal;
+}
+
+img,
+input,
+select {
+    border: 0;
+    vertical-align: middle;
+}
+
+ul,
+ol {
+    list-style: none outside none;
+}
+
+a,
+div,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: '';
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+a,
+a:link,
+a:visited,
+a:focus {
+    text-decoration: none;
+    color: #333;
+}
+
+h2,
+h3,
+h3,
+h4,
+h5 {
+    font-weight: normal;
+}
+
+[v-cloak] {
+    display: none;
+}
+
+input {
+    -webkit-appearance: none;
+    appearance: none;
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    color: #fff;
+}
+
+input::-webkit-input-placeholder {
+    color: #0486a4;
+}
+
+input::-moz-placeholder {
+    color: #0486a4;
+}
+
+input::-ms-input-placeholder {
+    color: #0486a4;
+}
+
+
+textarea::-webkit-input-placeholder {
+    color: #0486a4;
+}
+
+textarea::-moz-placeholder {
+    color: #0486a4;
+}
+
+textarea::-ms-input-placeholder {
+    color: #0486a4;
+}
+
+/*  */
+.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* 无数据 */
+.noSource {
+    width: 100%;
+    text-align: center;
+    font-size: 0.24rem;
+    padding: 0.4rem;
+}
+
+
+/*
+           __  __  __                      __           
+          |  \|  \|  \                    |  \          
+  ______  | $$| $$ \$$  ______    _______  \$$  _______ 
+ /      \ | $$| $$|  \ /      \  /       \|  \ /       \
+|  $$$$$$\| $$| $$| $$|  $$$$$$\|  $$$$$$$| $$|  $$$$$$$
+| $$    $$| $$| $$| $$| $$  | $$ \$$    \ | $$ \$$    \ 
+| $$$$$$$$| $$| $$| $$| $$__/ $$ _\$$$$$$\| $$ _\$$$$$$\
+ \$$     \| $$| $$| $$| $$    $$|       $$| $$|       $$
+  \$$$$$$$ \$$ \$$ \$$| $$$$$$$  \$$$$$$$  \$$ \$$$$$$$ 
+                      | $$                              
+                      | $$                              
+                       \$$                              
+*/
+.ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+
+.multi-ellipsis--l2,
+.multi-ellipsis--l3,
+.multi-ellipsis--l4,
+.multi-ellipsis--l5,
+.multi-ellipsis--l6,
+.multi-ellipsis--l7,
+.multi-ellipsis--l8,
+.multi-ellipsis--l9 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical
+}
+
+.multi-ellipsis--l2 {
+    -webkit-line-clamp: 2
+}
+
+.multi-ellipsis--l3 {
+    -webkit-line-clamp: 3
+}
+
+.multi-ellipsis--l4 {
+    -webkit-line-clamp: 4
+}
+
+.multi-ellipsis--l5 {
+    -webkit-line-clamp: 5
+}
+
+.multi-ellipsis--l6 {
+    -webkit-line-clamp: 6
+}
+
+.multi-ellipsis--l7 {
+    -webkit-line-clamp: 7
+}
+
+.multi-ellipsis--l8 {
+    -webkit-line-clamp: 8
+}
+
+.multi-ellipsis--l9 {
+    -webkit-line-clamp: 9
+}
+
+
+
+/*
+ __                                 __  __                     
+|  \                               |  \|  \                    
+| $$       ______    ______    ____| $$ \$$ _______    ______  
+| $$      /      \  |      \  /      $$|  \|       \  /      \ 
+| $$     |  $$$$$$\  \$$$$$$\|  $$$$$$$| $$| $$$$$$$\|  $$$$$$\
+| $$     | $$  | $$ /      $$| $$  | $$| $$| $$  | $$| $$  | $$
+| $$_____| $$__/ $$|  $$$$$$$| $$__| $$| $$| $$  | $$| $$__| $$
+| $$     \\$$    $$ \$$    $$ \$$    $$| $$| $$  | $$ \$$    $$
+ \$$$$$$$$ \$$$$$$   \$$$$$$$  \$$$$$$$ \$$ \$$   \$$ _\$$$$$$$
+                                                     |  \__| $$
+                                                      \$$    $$
+                                                       \$$$$$$                                                    
+*/
+
+/* 
+ * -------------------------------------------------
+ * loader
+ * -------------------------------------------------
+ *
+ */
+.loader {
+    overflow: hidden;
+    text-align: center;
+    padding: 10px 0;
+    margin: 0 0.1rem;
+    color: #fff;
+    display: block;
+}
+
+.loader img {
+    width: 50px !important;
+    height: 50px !important;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.loading {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.loading img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+/*
+ _______   __            __                     
+|       \ |  \          |  \                    
+| $$$$$$$\ \$$  ______  | $$  ______    ______  
+| $$  | $$|  \ |      \ | $$ /      \  /      \ 
+| $$  | $$| $$  \$$$$$$\| $$|  $$$$$$\|  $$$$$$\
+| $$  | $$| $$ /      $$| $$| $$  | $$| $$  | $$
+| $$__/ $$| $$|  $$$$$$$| $$| $$__/ $$| $$__| $$
+| $$    $$| $$ \$$    $$| $$ \$$    $$ \$$    $$
+ \$$$$$$$  \$$  \$$$$$$$ \$$  \$$$$$$  _\$$$$$$$
+                                      |  \__| $$
+                                       \$$    $$
+                                        \$$$$$$ 
+*/
+
+/* 
+ * -------------------------------------------------
+ * dialog 
+ * -------------------------------------------------
+ *
+ */
+
+.dialog {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    z-index: 11;
+}
+
+.dialog-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.dialog-cont-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 0;
+}
+
+.dialog-cont {
+    position: relative;
+    width: 5.4rem;
+}
+
+.dialog-cont .close {
+    position: absolute;
+    right: -.8rem;
+    top: -.2rem;
+    width: 1rem;
+    height: 1rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-close.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+/* 倒计时 */
+.dialog-timing {
+    /* margin-top: 1.8rem; */
+    width: 100%;
+}
+
+.dialog-timing .timing {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+}
+
+/* 得分 */
+.dialog-score {
+    margin-top: .5rem;
+    padding-top: 2.3rem;
+    width: 5.6rem;
+}
+
+.dialog-score .close {
+    right: -.4rem;
+    top: .6rem;
+}
+
+.score-intro {
+    position: relative;
+    padding: 0 .8rem;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.score-intro .tit{
+    font-weight: bold;
+    font-size: .4rem;
+    color: #055669;
+}
+.score-intro .num{
+    font-weight: bold;
+    font-size: 1.52rem;
+    line-height: 1;
+    color: #ffd55e;
+}
+
+.score-intro .btn {
+    margin-top: .18rem;
+    width: 3.25rem;
+    height: .85rem;
+    border-radius: .4rem;
+    box-shadow: 0 0 .7rem .3rem rgba(255, 255, 255, .35);
+}
+
+.score-intro .btn1 {
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-btn1.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.score-intro .btn2 {
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-btn2.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.score-intro .btn3 {
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-btn3.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+/* 邮寄 */
+.dialog-mail {
+    margin-top: 1.8rem;
+    padding-top: 2.9rem;
+    width: 5.56rem;
+}
+
+.dialog-mail .avatar {
+    position: absolute;
+    top: -.28rem;
+    left: 50%;
+    margin-left: -.66rem;
+    padding: .08rem;
+    background: #fff;
+    border-radius: 50%;
+    border: 1px solid #000;
+    box-shadow: 0 .1rem 0 0 #126490;
+}
+
+.dialog-mail .avatar img {
+    display: block;
+    width: 1.16rem;
+    height: 1.16rem;
+    border-radius: 50%;
+    border: 1px solid #000;
+}
+
+.mail-intro {
+    position: relative;
+    padding: 0 .8rem;
+    z-index: 1;
+}
+
+.mail-intro .aBox {
+    margin-bottom: .25rem;
+    display: flex;
+    justify-content: center;
+}
+
+.mail-intro .aInput {
+    flex: auto;
+    padding: .2rem .22rem;
+    background-color: #055669;
+    border-radius: .25rem;
+}
+
+.mail-intro .validate {
+    margin-left: .12rem;
+    padding: .1rem 0;
+    width: 1.6rem;
+    text-align: center;
+    font-size: .28rem;
+    color: #0486a4;
+    background-color: #d6feff;
+    border-radius: .25rem;
+    flex-shrink: 0;
+}
+
+.mail-intro .aInput input {
+    font-size: .28rem;
+    line-height: 1;
+    width: 100%;
+}
+
+.mail-intro .aBtn {
+    width: 3.25rem;
+    height: .85rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-btn.png') no-repeat;
+    background-size: 100% 100%;
+    border-radius: .4rem;
+    box-shadow: 0 0 .7rem .3rem rgba(255, 255, 255, .35);
+}
+
+
+/*
+ ________                                __     
+|        \                              |  \    
+ \$$$$$$$$______    ______    _______  _| $$_   
+   | $$  /      \  |      \  /       \|   $$ \  
+   | $$ |  $$$$$$\  \$$$$$$\|  $$$$$$$ \$$$$$$  
+   | $$ | $$  | $$ /      $$ \$$    \   | $$ __ 
+   | $$ | $$__/ $$|  $$$$$$$ _\$$$$$$\  | $$|  \
+   | $$  \$$    $$ \$$    $$|       $$   \$$  $$
+    \$$   \$$$$$$   \$$$$$$$ \$$$$$$$     \$$$$ 
+                                                
+                                                
+                                                
+*/
+
+/* 
+ * -------------------------------------------------
+ * 弹框样式
+ * -------------------------------------------------
+ *
+ */
+.showErrBox {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: url("//img1.40017.cn/cn/s/ZhuanTi/2015/24580/rgba5.png");
+    display: none;
+}
+
+.showErrBox .showErr {
+    width: 5.4rem;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    z-index: 100;
+    -webkit-border-radius: 0.1rem;
+    border-radius: 0.1rem;
+    text-align: center;
+    font-size: 0.24rem;
+    color: #333;
+    background: white;
+    padding: 0.2rem;
+    transform: translate(-50%, -50%);
+}
+
+/*
+ ________                     __                         
+|        \                   |  \                        
+| $$$$$$$$______    ______  _| $$_     ______    ______  
+| $$__   /      \  /      \|   $$ \   /      \  /      \ 
+| $$  \ |  $$$$$$\|  $$$$$$\\$$$$$$  |  $$$$$$\|  $$$$$$\
+| $$$$$ | $$  | $$| $$  | $$ | $$ __ | $$    $$| $$   \$$
+| $$    | $$__/ $$| $$__/ $$ | $$|  \| $$$$$$$$| $$      
+| $$     \$$    $$ \$$    $$  \$$  $$ \$$     \| $$      
+ \$$      \$$$$$$   \$$$$$$    \$$$$   \$$$$$$$ \$$      
+                                                         
+                                                         
+                                                         
+*/
+
+/* 
+ * -------------------------------------------------
+ * 默认型
+ * -------------------------------------------------
+ *
+ */
+/* h5 */
+.foot1 {
+    margin-top: .1rem;
+    width: 100%;
+    padding: .2rem 0;
+    text-align: center;
+    color: #fff;
+    font-size: 0.24rem;
+    background: #009fe7;
+}
+
+/* 小程序 */
+.footer {
+    margin-top: .4rem;
+    height: 3.24rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/190904/bg_bottom.png');
+    /* #052c29 深绿色 */
+    background-size: 100% 100%;
+}
+
+.footer {
+    margin-top: .4rem;
+    height: 2.78rem;
+    background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191101/bg_bottom.png');
+    /* #3a1cb6 深蓝色 */
+    background-size: 100% 100%;
+}

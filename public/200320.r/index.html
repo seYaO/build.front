@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>全民抗疫</title>
+    <meta charset="utf-8">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--控制状态栏显示样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <!--格式检测-->
+    <meta content="telephone=no" name="format-detection" />
+    <!--控制页面打开大小-->
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        name="viewport">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
+    <!--自定义样式-->
+    <link rel="stylesheet" type="text/css" href="200320.game/styles/common.css">
+    <link rel="stylesheet" type="text/css" href="200320.game/styles/ranking.css">
+</head>
+
+<body>
+    <div class="app" id="app" v-cloak @click="showProvList = false">
+        <!-- loading蒙层 -->
+        <div class="loading" v-show="loading">
+            <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+        </div>
+        <!-- 头图 44764-->
+        <div class="top">
+            <img :src="topImg">
+        </div>
+        <div class="intro">
+            <img class="tableimg" :src="tableImag">
+            <div class="loader" v-show="rankList && rankList.length == 0">
+                <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+            </div>
+            <ul class="list" v-if="rankList && rankList.length>0">
+                <li class="rank" :class="{me: item.Ranking == meData.Ranking}" v-for="(item,index) in rankList">
+                    <div class="bg"></div>
+                    <div class="box">
+                        <img class="num" :src="'//img1.40017.cn/cn/s/2020/zt/touch/200320/ranking-num'+item.Ranking+'.png'">
+                        <img class="avatar" :src="item.Avatar">
+                        <div class="txt ellipsis">{{item.NickName}}</div>
+                        <div class="score">{{item.Score}}</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="placeholder"></div>
+        <div class="bottom-btn-box">
+            <div class="btns">
+                <a href=""></a>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
+<!-- rem -->
+<script type="text/javascript">
+    (function () {
+        $(document).on('page:resize', function (e) {
+            var _w = $(document.body).width();
+            $('html').css('font-size', ((_w > 750) ? 750 : _w) / 750 * 100 + 'px');
+        });
+        $(document).trigger('page:resize');
+        $(window).on('resize', function () {
+            $(document).trigger('page:resize');
+        })
+    })();
+</script>
+<!--脚本-->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
+<script type="text/javascript" src="https://js.40017.cn/cn/min/???/cn/s/api/setsharefn.5.js"></script>
+<script>
+    /* 分享 */
+    shareImg = "http://img1.40017.cn/cn/s/2020/zt/touch/200320/share.jpg";
+    shareTitle = "“全民抗疫 抗疫必胜！5A仙都景区暖心特惠来袭，参与游戏更有机会赢取众多豪礼！";
+    shareUrl = "https://www.ly.com/scenery/zhuanti/2020antiviral/";
+    shareDesc = "全民抗疫 抗疫必胜！5A仙都景区暖心特惠来袭，参与游戏更有机会赢取众多豪礼！";
+    setShareFun.Pageview = "/Touch站专题/全民抗疫";
+    setShareFun.changeShareInfo();
+</script>
+<!--自定义脚本-->
+<script src='200320.game/scripts/config.js'></script>
+<script src='200320.game/scripts/utils.js'></script>
+<script src="200320.game/scripts/ranking.js"></script>
+
+</html>

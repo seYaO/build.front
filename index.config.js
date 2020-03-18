@@ -18,5 +18,8 @@ module.exports = {
         '200311',
         '200316.temp', // 游戏temp  http://www.ly.com/scenery/zhuanti/jqpiaoliu2
         '200320.game', // 小游戏
+        '200320.n', // 小游戏-规则
+        '200320.r', // 小游戏-排名
+        '200320.t', // 小游戏-邮寄
     ]
 }

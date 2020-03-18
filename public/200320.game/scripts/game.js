@@ -242,7 +242,7 @@ function clickBall(ev) {
         //     ui.addShow(point, loc, ball);
         //     balls.splice(index, 1);
         //     if (ball.isVirus) {
-        //         Start()
+        //         Continue()
         //     }
 
         //     flag = true;
@@ -256,11 +256,11 @@ function clickBall(ev) {
         ui.addShow(point, loc, virusBall);
         // balls.splice(index, 1);
         // if (ball.isVirus) {
-        //     Start()
+        //     Continue()
         // }
 
         flag = true;
-        Start()
+        Continue()
     }
 
     if (!flag) ui.addShow(0, loc);
@@ -343,15 +343,48 @@ function scaleFn() {
     return newArr
 }
 
-function Start() {
+function Continue() {
     count++
     balls = []
     var ballArr = scaleFn()
     ballArr.forEach(function (val) {
         randomBall(val);
     })
-
+// debugger
     drawFrame();
+}
+
+function Start() {
+    // debugger
+    canvas.width = $(window).width()
+    canvas.height = $(window).height()
+    imgDatas.forEach(function (item) {
+        tempDatas.push(window.utils.tempFilePaths(item))
+    })
+    // console.log(tempDatas)
+    Promise.all(tempDatas).then(res => {
+        // 背景图
+        background_image = res[0]
+        gamebox_image = res[1]
+        gamecount_image = res[2]
+        music_image = res[3]
+        play_image = res[4]
+        suspe_image = res[5]
+
+        add_image = res[6]
+        add2_image = res[7]
+        add3_image = res[8]
+        add5_image = res[9]
+        miss_image = res[10]
+        virus_image = res[11]
+        virus_like_image = res[12]
+        nurse_image = res[13]
+        people_image = res.slice(-6)
+
+        canvas.addEventListener('mousedown', clickBall);
+        console.log(people_image)
+        Continue() // 游戏开始
+    }).catch(e => { });
 }
 
 // 游戏开始
@@ -373,7 +406,7 @@ function Start() {
 //         people_image = res.slice(-6)
 
 //         canvas.addEventListener('mousedown', clickBall);
-//         Start() // 游戏开始
+//         Continue() // 游戏开始
 //     }).catch(e => { });
 
 

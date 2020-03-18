@@ -1,0 +1,174 @@
+/*
+ _______                                                                                                         
+|       \                                                                                                        
+| $$$$$$$\ ______    ______    ______          _______   ______   ______ ____   ______ ____    ______   _______  
+| $$__/ $$|      \  /      \  /      \        /       \ /      \ |      \    \ |      \    \  /      \ |       \ 
+| $$    $$ \$$$$$$\|  $$$$$$\|  $$$$$$\      |  $$$$$$$|  $$$$$$\| $$$$$$\$$$$\| $$$$$$\$$$$\|  $$$$$$\| $$$$$$$\
+| $$$$$$$ /      $$| $$  | $$| $$    $$      | $$      | $$  | $$| $$ | $$ | $$| $$ | $$ | $$| $$  | $$| $$  | $$
+| $$     |  $$$$$$$| $$__| $$| $$$$$$$$      | $$_____ | $$__/ $$| $$ | $$ | $$| $$ | $$ | $$| $$__/ $$| $$  | $$
+| $$      \$$    $$ \$$    $$ \$$     \       \$$     \ \$$    $$| $$ | $$ | $$| $$ | $$ | $$ \$$    $$| $$  | $$
+ \$$       \$$$$$$$ _\$$$$$$$  \$$$$$$$        \$$$$$$$  \$$$$$$  \$$  \$$  \$$ \$$  \$$  \$$  \$$$$$$  \$$   \$$
+                   |  \__| $$                                                                                    
+                    \$$    $$                                                                                    
+                     \$$$$$$                                                                                     
+*/
+body {
+    background: #1e6485;
+}
+
+.top {
+    position: relative;
+    width: 100%;
+}
+
+.top img {
+    display: block;
+    width: 100%;
+}
+
+.title {
+    padding: .15rem .3rem;
+}
+
+.title img {
+    width: 2.48rem;
+}
+
+.intro {
+    padding: 0 .3rem;
+}
+
+.intro p {
+    line-height: 1.4;
+    font-size: .22rem;
+    color: #fff;
+}
+
+.subtit {
+    position: relative;
+    padding: .4rem .3rem .2rem;
+    color: #fff;
+}
+
+.top1,
+.top2,
+.top3 {
+    padding-left: .9rem;
+}
+
+.top3 .txt {
+    position: absolute;
+    bottom: .1rem;
+    right: .5rem;
+}
+
+.subtit .bb {
+    position: relative;
+    height: .2rem;
+    background-color: #094662;
+    border-radius: .2rem;
+}
+
+.top1 .bb,
+.top2 .bb,
+.top3 .bb {
+    display: inline-block;
+    padding: 0 .2rem;
+}
+
+.top1 .bb::before,
+.top2 .bb::before,
+.top3 .bb::before {
+    content: '';
+    position: absolute;
+}
+
+.top1 .bb::before {
+    top: -.34rem;
+    left: -.5rem;
+    width: .63rem;
+    height: .69rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/rules-top1.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.top2 .bb::before {
+    top: -.38rem;
+    left: -.56rem;
+    width: .68rem;
+    height: .76rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/rules-top2.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.top3 .bb::before {
+    top: -.4rem;
+    left: -.58rem;
+    width: .73rem;
+    height: .8rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/rules-top3.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.subtit .h3 {
+    position: relative;
+    top: -.25rem;
+    font-size: .3rem;
+    text-align: center;
+}
+
+.subtit .txt {
+    font-size: .18rem;
+}
+
+.section {
+    padding: .1rem 0;
+}
+
+.section img {
+    display: block;
+    width: 100%;
+}
+
+.divider {
+    margin: 0 .3rem;
+    height: 1px;
+    border-bottom: 1px dashed #094662;
+}
+
+.placeholder {
+    height: 2rem;
+}
+
+.bottom-btn-box {
+    position: relative;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2rem;
+    background: #1e6485;
+    z-index: 10;
+}
+
+.bottom-btn-box .btns {
+    width: 100%;
+    height: 1.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/rules-btns.png') no-repeat;
+    background-size: 100% 1.2rem;
+}
+
+.bottom-btn-box .more {
+    padding: .2rem 0;
+    height: .5rem;
+    font-size: .16rem;
+    color: #fff;
+    text-align: center;
+}
+
+.bottom-btn-box a {
+    flex: 1;
+}
