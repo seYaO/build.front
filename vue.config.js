@@ -32,10 +32,14 @@ module.exports = {
                 // ws: true,//websocket支持
             },
             '/wlfrontend': {
-                target: 'https://www.ly.com',
+                // target: 'https://www.ly.com',
+                // target: 'http://www.t.ly.com',
+                target: 'http://10.102.140.72:7001',
                 changeOrigin: true,
                 // ws: true,//websocket支持
             },
         }
     },
 }
+
+// http://10.102.140.72:7001/wlfrontend/miniprogram/resourceFrontEnd/ResourceService/QueryMiniGameTopList

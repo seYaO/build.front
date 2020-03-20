@@ -28,7 +28,7 @@ class UI {
         this.display.forEach((val, key) => {
             context.font = val.font;
             context.fillStyle = val.color;
-            var Image = val.isMiss ? miss_image : add_image
+            var Image = val.addImg
             context.drawImage(Image, val.loc.x - rate(Image.width) / 2, val.loc.y - rate(Image.height), rate(Image.width), rate(Image.height));
             if (new Date() - val.time > 1000)
                 this.display.splice(key, 1);
@@ -36,52 +36,67 @@ class UI {
         context.font = '20px monaco';
         context.fillStyle = this.color;
         // 检查游戏进程
-        console.log(timer)
-        if (timer) {
-            context.drawImage(gamebox_image, 0, rate(-38), rate(gamebox_image.width), rate(gamebox_image.height));
-            context.fillStyle = '#aa5c00';
-            context.font = rate(20)+"px Helvetica";
-            context.textAlign = "center";
-            context.fillText('分数', rate(65), rate(45));
-            
-            context.fillStyle = '#5f2b01';
-            context.font = rate(64)+"px Helvetica";
-            context.textAlign = "center";
-            context.fillText(this.score, rate(65), rate(100));
+        // console.log(timer)
+        score = this.score
+        context.drawImage(gamebox_image, 0, rate(-38), rate(gamebox_image.width), rate(gamebox_image.height));
+        context.fillStyle = '#aa5c00';
+        context.font = rate(20) + "px Helvetica";
+        context.textAlign = "center";
+        context.fillText('分数', rate(65), rate(45));
 
-            context.drawImage(gamecount_image, rate(220), rate(15), rate(gamecount_image.width), rate(gamecount_image.height));
-            context.fillStyle = '#fff';
-            context.font = rate(60)+"px Helvetica";
-            context.textAlign = "center";
-            context.fillText('30s', rate(414), rate(75));
+        context.fillStyle = '#5f2b01';
+        context.font = rate(64) + "px Helvetica";
+        context.textAlign = "center";
+        context.fillText(this.score, rate(65), rate(100));
 
-            context.drawImage(music_image, rate(650), rate(15), rate(music_image.width), rate(music_image.height));
-            context.drawImage(play_image, rate(665), rate(22), rate(play_image.width), rate(play_image.height));
+        context.drawImage(gamecount_image, rate(220), rate(15), rate(gamecount_image.width), rate(gamecount_image.height));
+        context.fillStyle = '#fff';
+        context.font = rate(60) + "px Helvetica";
+        context.textAlign = "center";
+        context.fillText(timer + 's', rate(414), rate(75));
 
-        } else {
+        // context.drawImage(music_image, rate(650), rate(15), rate(music_image.width), rate(music_image.height));
+        // context.drawImage(play_image, rate(665), rate(22), rate(play_image.width), rate(play_image.height));
+        if (!timer) { // 游戏结束
             cancelAnimationFrame(animation);
-            // context.clearRect(0, 0, canvas.width, canvas.height);
-            // context.fillStyle = 'black';
-            // context.fillRect(0, 0, canvas.width, canvas.height);
-            // context.fillStyle = 'white';
-            // context.font = rate(100) + 'px monaco';
-            // context.textAlign = 'center';
-            // context.fillText('Game Over', canvas.width / 2, canvas.height / 2);
+            this.score = 0
+            count = 0
         }
-        if (now - this.playTime > 1000) {
-            bgm.pause();
-        }
+        // if (now - this.playTime > 1000) {
+        //     music.pause();
+        // }
         context.restore();
     }
 
     addShow(point, loc, ball) {
-        console.log('addShow', ball)
+        console.log('addShow', count, ball)
         if (point !== 0) {
             if (ball.isVirus) {
-                this.score += 1;
+                var addNum = 1, addImg;
+                if (count < 4) {
+                    addNum = 1;
+                    addImg = add_image
+                }
+                if (count > 3 && count < 7) {
+                    addNum = 2;
+                    addImg = add2_image
+                }
+                if (count > 6 && count < 10) {
+                    addNum = 3;
+                    addImg = add3_image
+                }
+                if (count > 9) {
+                    addNum = 5;
+                    addImg = add5_image
+                }
+                console.log(this.score + '+' + addNum, this.score + addNum)
+                console.log(addImg)
+                this.score += addNum;
                 this.display.push({
                     point: "+1",
                     isMiss: false,
+                    addNum: addNum,
+                    addImg: addImg,
                     loc: loc,
                     color: "#E6A23C",
                     font: "20px monaco",
@@ -91,6 +106,7 @@ class UI {
                 this.display.push({
                     point: "Miss",
                     isMiss: true,
+                    addNum: 0,
                     loc: loc,
                     color: "#E6A23C",
                     font: "20px monaco",

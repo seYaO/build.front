@@ -162,6 +162,18 @@ var app = new Vue({
         initData: function () {
             //
         },
+        // 跳转地址到邮寄信息
+        mainLink: function () {
+            var url = "https://www.ly.com/scenery/zhuanti/2020antiviral?spm=" + this.spm + "&refid=" + this.refid
+            if (this.isWx) {
+                if (this.isxcx) {
+                    url = url + "&isxcx=1";
+                }
+                window.location.href = "https://wx.17u.cn/wl/api/redirect?redirect_uri=" + encodeURIComponent(url);
+            } else {
+                window.location.href = url
+            }
+        }
 
     }
 })

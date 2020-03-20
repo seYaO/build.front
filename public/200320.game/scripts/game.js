@@ -2,11 +2,12 @@
 
 var canvas = document.getElementById('myCanvas');
 var context = canvas.getContext('2d');
-var music = document.getElementById('bgm');
+// var music = document.getElementById('music');
 var timer = 10;
 let animation
 var ballsNum = 20,
     count = 0,
+    score = 0,
     balls = [],
     ui = new UI(),
     now,
@@ -50,22 +51,24 @@ var scale = []
 /**
  * 随机生成小球并放入
  * @returns {boolean} 是否成功放入小球
- * 1-3 1-10% 类似-20% 
- * 4-6 1-8% 类似-30% 
- * 7-9 1-5% 类似-40% 
- * 10-12 1-1% 类似-50% 
  */
 function randomBall(val) {
     // console.log(val)
-    var x, y, Image;
+    var x, y, h, Image;
     var flag = true, i = 0, isVirus = false;
     // 尝试寻找空余地方放入
     while (flag) {
         if (++i > 1000) return false;
         // console.log(1)
+        h = rate(gamebox_image.height - 38 - 50)
         x = Math.random() * canvas.width;
         y = Math.random() * canvas.height;
+        // console.log(x, y, h)
         flag = false;
+        if (y < h) { // y低于h
+            flag = true
+        }
+
         // balls.forEach((ball) => {
         //     // console.log(2)
         //     let dist = Math.sqrt((x - ball.x) ** 2 + (y - ball.y) ** 2);
@@ -89,27 +92,30 @@ function randomBall(val) {
 
     const vx = (Math.random() < 0.5 ? 1 : -1) * Math.random() * 2 + ui.difficulty / 2,
         vy = (Math.random() < 0.5 ? 1 : -1) * Math.random() * 2 + ui.difficulty / 2;
+
     balls.push(new Ball(Image, x, y, vx, vy, isVirus));
     return true;
 }
 
 // 墙面碰撞检测
 function checkWalls(ball) {
-    let bounce = -0.95; // 碰撞墙面衰减系数
-    if (ball.x + (ball.width / 2) > canvas.width) {
-        ball.x = canvas.width - (ball.width / 2);
+    var bounce = -0.95; // 碰撞墙面衰减系数
+    var multiple = 2
+    if (ball.x + (ball.width / multiple) > canvas.width) {
+        ball.x = canvas.width - (ball.width / multiple);
         ball.vx *= bounce;
-    } else if (ball.x - (ball.width / 2) < 0) {
-        ball.x = (ball.width / 2);
+    } else if (ball.x - (ball.width / multiple) < 0) {
+        ball.x = (ball.width / multiple);
         ball.vx *= bounce;
     }
-    if (ball.y + (ball.height / 2) > canvas.height) {
-        ball.y = canvas.height - (ball.height / 2);
+    if (ball.y + (ball.height / multiple) > canvas.height) {
+        ball.y = canvas.height - (ball.height / multiple);
         ball.vy *= bounce;
-    } else if (ball.y - (ball.height / 2) < 0) {
-        ball.y = (ball.height / 2);
+    } else if (ball.y - (ball.height / multiple) < 0) {
+        ball.y = (ball.height / multiple);
         ball.vy *= bounce;
     }
+    // console.log(ball)
 }
 
 // 矢量偏移计算
@@ -323,6 +329,7 @@ function scaleFn() {
             ballsNum = 80
             break;
     }
+    // ballsNum = 1
     nNum = Math.ceil(ballsNum * nScale)
     lNum = Math.ceil(ballsNum * lScale)
     for (var i = 0; i < nNum; i++) {
@@ -350,14 +357,15 @@ function Continue() {
     ballArr.forEach(function (val) {
         randomBall(val);
     })
-// debugger
+    // debugger
     drawFrame();
 }
 
 function Start() {
-    // debugger
-    canvas.width = $(window).width()
-    canvas.height = $(window).height()
+    var w = $(window).width(), h = $(window).height()
+    $("#myCanvas").css({ "width": w + "px", "height": h + "px" })
+    canvas.width = w
+    canvas.height = h
     imgDatas.forEach(function (item) {
         tempDatas.push(window.utils.tempFilePaths(item))
     })
@@ -386,33 +394,6 @@ function Start() {
         Continue() // 游戏开始
     }).catch(e => { });
 }
-
-// 游戏开始
-// (function init() {
-//     canvas.width = $(window).width()
-//     canvas.height = $(window).height()
-//     imgDatas.forEach(function (item) {
-//         tempDatas.push(window.utils.tempFilePaths(item))
-//     })
-//     // console.log(tempDatas)
-//     Promise.all(tempDatas).then(res => {
-//         // 背景图
-//         background_image = res[0]
-//         miss_image = res[1]
-//         add_image = res[2]
-//         virus_image = res[3]
-//         virus_like_image = res[4]
-//         nurse_image = res[5]
-//         people_image = res.slice(-6)
-
-//         canvas.addEventListener('mousedown', clickBall);
-//         Continue() // 游戏开始
-//     }).catch(e => { });
-
-
-//     // var md5 = window.utils.md5('unionid=abcabc&memberid=123123&reqtime=20200317142645987&nickname=lily&score=10&avatar=' + encodeURIComponent('http://pic5.40017.cn/04/002/1f/f2/rBTJUl04JbeAaADiAABG6Gav1jw761.jpg'))
-//     // console.log(md5)
-// }());
 
 // 根据窗口大小动态缩放canvas尺寸
 function resize() {

@@ -16,8 +16,8 @@
         name="viewport">
     <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
     <!--自定义样式-->
-    <link rel="stylesheet" type="text/css" href="200320.game/styles/common.css">
-    <link rel="stylesheet" type="text/css" href="200320.game/styles/index.css">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/common.css?v=200320.1">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/index.css?v=200320.2">
 </head>
 
 <body>
@@ -120,7 +120,7 @@
 
         <div class="canvasMusic" v-if="showMusic" @click="gameMusic">
             <img class="bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-music.png">
-            <img class="play" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-play.png" v-if="isPlay">
+            <img class="play" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-play.png" v-if="!isPlay">
             <img class="suspe" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-suspe.png" v-else>
         </div>
 
@@ -129,9 +129,9 @@
     <div class="canvasBox" style="display: none;">
         <canvas id='myCanvas'></canvas>
     </div>
-    <audio id="music" controls="controls" hidden="hidden" loop="loop">
+    <!-- <audio id="music" controls="controls" hidden="hidden" loop="loop">
         <source src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/music.mp3" type="audio/mpeg" />
-    </audio> 
+    </audio>  -->
 </body>
 
 <script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
@@ -165,13 +165,13 @@
     setShareFun.changeShareInfo();
 </script>
 <!--自定义脚本-->
-<script src='200320.game/scripts/utils.js'></script>
-<script src='200320.game/scripts/md5.js'></script>
-<script src='200320.game/scripts/countdown.js'></script>
-<script src='200320.game/scripts/services.js'></script>
-<script src='200320.game/scripts/ball.js'></script>
-<script src='200320.game/scripts/ui.js'></script>
-<script src='200320.game/scripts/game.js'></script>
-<script src="200320.game/scripts/index.js"></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/utils.js?v=200113.1'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/md5.js?v=200113.1'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/countdown.js?v=200113.1'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/services.js?v=200113.1'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/ball.js?v=200113.1'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/ui.js?v=200113.10'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/game.js?v=200113.10'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/index.js?v=200113.11'></script>
 
 </html>

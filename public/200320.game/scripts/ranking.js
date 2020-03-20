@@ -40,6 +40,8 @@ var app = new Vue({
         memberId: '',
         wxopenid: '',
         wxunionid: '',
+        nickname: '',
+        avatarurl: 'https://img1.40017.cn/cn/s/2020/zt/touch/200320/default.png',
         addHtml: '',
         refid: '',
         spm: '5.44764.44764.1',
@@ -55,11 +57,11 @@ var app = new Vue({
         sceneryInfo: null,
         topImg: __topimg,
         tableImag: __tableimg,
-        rankList: __ly__data.rankList,
-        meData: __ly__data.meData,
+        rankList: null,
+        meInfo: null,
+        gameName: '全民抗疫', // 游戏名称
     },
     created: function () {
-        console.log(__ly__data)
         this.init();
     },
     mounted: function () {
@@ -104,9 +106,11 @@ var app = new Vue({
                 AppInfo.cityID = data.cid
                 if (AppInfo.isAPP) {
                     that.isTc = true;
-                    memberId = data.memberId
-                    if (memberId) {
-                        that.memberId = memberId
+                    if (data.memberId) {
+                        that.memberId = data.memberId
+                        that.wxunionid = data.unionId
+                        that.nickname = data.userName
+                        that.avatarurl = data.headImg
                     }
                 } else {
                     if ($.cookie('us')) {
@@ -115,21 +119,27 @@ var app = new Vue({
                         that.memberId = uId ? uId : ''
                     }
                 }
-                var ids = getQueryString('mdid').split('|')
-                allInit.init(ids[0]);
-                that.ids = ids
+                allInit.init(that.zId);
             });
         },
         // 获取链接参数
         getPara: function (spm, refid) {
             this.refid = getQueryString('refid') ? getQueryString('refid') : refid
             this.spm = getQueryString('spm') ? getQueryString('spm') : this.spm
-            var wxparam = getQueryString('wxparam') ? decodeURIComponent(getQueryString("wxparam")) : ''
 
-            this.initData();
             if (this.isxcx) {
                 this.setShare();
             }
+            if (getQueryString("wxparam")) {
+                var URLArgues = JSON.parse(
+                    decodeURIComponent(getQueryString("wxparam"))
+                );
+                this.wxopenid = URLArgues.openid;
+                this.wxunionid = URLArgues.unionid;
+                this.nickname = URLArgues.nickname;
+                this.avatarurl = URLArgues.headimgurl;
+            }
+            this.initData();
         },
 
         //小程序分享
@@ -151,75 +161,51 @@ var app = new Vue({
                 }
             });
         },
-
         //数据初始化
         initData: function () {
-            //
+            this.gameTopListFn()
         },
-        // 公共异步
-        publicAjax: function (mdId, index, onProvId, callBackFn, pageIndex, pageSize) {
-            var that = this
-            if (pageIndex) {
-                that.pageIndex = pageIndex
-                that.pageSize = pageSize
-            } else {
-                that.pageIndex = 1
-                that.pageSize = 20
+        // 小游戏排行榜信息
+        gameTopInfoFn() {
+            var reqTime = new Date().getTime()
+            var sign = 'unionid=' + this.wxunionid + '&memberid=' + this.memberId + '&reqtime=' + reqTime + '&gamename=' + this.gameName
+            var data = {
+                clientType: AppInfo.isAPP ? 7 : 1,
+                ReqTime: reqTime,
+                Sign: window.utils.md5(sign),
+                GameName: this.gameName,
+                TopCount: 8,
+                MemberId: this.memberId,
+                UnionId: this.wxunionid
             }
-            $.ajax({
-                url: '/scenery/zt/ZhuanTiAjax/ZhuanTiJsp.aspx',
-                data: 'action=GETSPMSCENERYJSP&PageIndex=' +
-                    that.pageIndex +
-                    '&PageSize=' +
-                    that.pageSize +
-                    '&px=5&ChannelID=' +
-                    mdId +
-                    '&ProvinceId=' +
-                    onProvId,
-                dataType: 'json',
-                success: function (data) {
-                    if (data && data.List && data.List.length > 0) {
-                        callBackFn && callBackFn(data)
-                    } else {
-                        that['sectionData' + index] = '';
-                    }
-                },
-                complete: function () { }
+
+            return data
+        },
+        // 小游戏排行榜list
+        gameTopListFn() {
+            var that = this
+            var result = this.gameTopInfoFn()
+
+            window.__services.QueryMiniGameTopList(result, function (data) {
+                console.log('小游戏排行榜查询', data)
+                if (data.StateCode == 200 && data.Body) {
+                    that.rankList = data.Body.ResultList
+                    that.meInfo = data.Body.OwnResult
+                }
             })
         },
-        // 资源异步
-        allAjax: function (id, index, onProvId, pageIndex, pageSize, fn) {
-            var that = this;
-            that.publicAjax(
-                id,
-                index,
-                onProvId,
-                function (data) {
-                    switch (index) {
-                        case 1:
-                            var list = data.List;
-                            that['sectionData' + index] = list;
-                            if (list && list.length) {
-                                that.sceneryInfo = {
-                                    ...list[0],
-                                    imgUrl: list[0].SceneryImg,
-                                    imgUrl2: list[0].SceneryImg,
-                                    imgUrl3: list[0].SceneryImg,
-                                    videoUrl: 'https:' + list[0].Qurl,
-                                    videoImg: '//pic5.40017.cn/03/000/3e/6c/rBANB1235IKAVc3EAALebsKLYpo089.jpg',
-                                }
-                            }
-                            break;
-                        default:
-                            that['sectionData' + index] = data.List;
-                            break;
-                    }
-
-                },
-                pageIndex,
-                pageSize
-            )
-        },
+        // 跳转地址到邮寄信息
+        mailLink: function () {
+            var url = "https://www.ly.com/scenery/zhuanti/2020antiviral?type=mail&spm=" + this.spm + "&refid=" + this.refid
+            if (this.isWx) {
+                if (this.isxcx) {
+                    url = url + "&isxcx=1";
+                }
+                window.location.href = "https://wx.17u.cn/wl/api/redirect?redirect_uri=" + encodeURIComponent(url);
+            } else {
+                window.location.href = url
+            }
+        }
 
     }
 })

@@ -19,6 +19,7 @@ class Ball {
         this.isVirus = isVirus; // 是否为病毒
         this.createTime = new Date();
         this.img = img
+        // console.log('Ball',this)
     }
 
     move() {

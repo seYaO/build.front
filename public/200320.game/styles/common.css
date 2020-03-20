@@ -355,7 +355,7 @@ textarea::-ms-input-placeholder {
 /* 得分 */
 .dialog-score {
     margin-top: .5rem;
-    padding-top: 2.3rem;
+    padding-top: 2.7rem;
     width: 5.6rem;
 }
 
@@ -373,20 +373,54 @@ textarea::-ms-input-placeholder {
     justify-content: center;
     align-items: center;
 }
-.score-intro .tit{
-    font-weight: bold;
-    font-size: .4rem;
+
+/* .score-intro .tit {
+    font-size: .36rem;
+    line-height: 1;
     color: #055669;
-}
-.score-intro .num{
+} */
+
+.score-intro .num {
     font-weight: bold;
     font-size: 1.52rem;
-    line-height: 1;
+    line-height: .9;
     color: #ffd55e;
 }
 
+.score-intro .info {
+    width: 3.78rem;
+    height: 1.71rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-rank-s.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.score-intro .info .txt {
+    padding-top: .73rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-intro .info .tx1,
+.score-intro .info .tx2 {
+    margin: 0 .05rem;
+    width: 1.1rem;
+    line-height: 1;
+    font-size: .38rem;
+    text-align: center;
+    /* background-color: #009fe7; */
+}
+
+.score-intro .info .tx1 {
+    color: #cef7f9;
+}
+
+.score-intro .info .tx2 {
+    color: #fff373;
+}
+
 .score-intro .btn {
-    margin-top: .18rem;
+    margin-bottom: .18rem;
     width: 3.25rem;
     height: .85rem;
     border-radius: .4rem;
