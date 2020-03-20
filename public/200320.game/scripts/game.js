@@ -54,18 +54,29 @@ var scale = []
  */
 function randomBall(val) {
     // console.log(val)
-    var x, y, h, Image;
+    var x, y, h, pw, ph, Image;
     var flag = true, i = 0, isVirus = false;
     // 尝试寻找空余地方放入
     while (flag) {
         if (++i > 1000) return false;
         // console.log(1)
         h = rate(gamebox_image.height - 38 - 50)
+        pw = rate(virus_image.width) / 2
+        ph = rate(virus_image.height) / 2
         x = Math.random() * canvas.width;
         y = Math.random() * canvas.height;
         // console.log(x, y, h)
         flag = false;
         if (y < h) { // y低于h
+            flag = true
+        }
+        if (y > canvas.height - ph) {
+            flag = true
+        }
+        if (x < -pw) {
+            flag = true
+        }
+        if (x > canvas.width - pw) {
             flag = true
         }
 
@@ -299,7 +310,7 @@ function clickBall(ev) {
  * 10-12 1-1% 类似-50% 
  */
 function scaleFn() {
-    var arr = [], newArr = [0], nNum = 0, lNum = 0, nScale = 0, lScale = 0;
+    var arr = [], newArr = [], nNum = 0, lNum = 0, nScale = 0, lScale = 0;
     switch (count) {
         case 0:
         case 1:
@@ -307,26 +318,26 @@ function scaleFn() {
         case 3:
             nScale = 0.1
             lScale = 0.2
-            ballsNum = 20
+            ballsNum = 60
             break;
         case 4:
         case 5:
         case 6:
             nScale = 0.08
             lScale = 0.3
-            ballsNum = 40
+            ballsNum = 60
             break;
         case 7:
         case 8:
         case 9:
             nScale = 0.05
             lScale = 0.4
-            ballsNum = 60
+            ballsNum = 90
             break;
         default:
             nScale = 0.01
             lScale = 0.5
-            ballsNum = 80
+            ballsNum = 90
             break;
     }
     // ballsNum = 1
@@ -347,6 +358,7 @@ function scaleFn() {
         newArr.push(arr[idx])
         arr.splice(idx, 1);
     }
+    newArr.push(0)
     return newArr
 }
 
