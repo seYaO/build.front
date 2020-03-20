@@ -14,15 +14,15 @@
 
 .rules {
     position: absolute;
-    right: 0;
-    bottom: 3rem;
-    width: 1.4rem;
-    height: 2.74rem;
-    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/rules.png') no-repeat;
+    left: 0;
+    bottom: 1.8rem;
+    width: 7.5rem;
+    height: 1.2rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/rules.png?v=1') no-repeat;
     background-size: 100% 100%;
 
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
 }
 
 .rules a {
@@ -32,7 +32,7 @@
 .start {
     position: absolute;
     left: 0;
-    bottom: .52rem;
+    bottom: .2rem;
     width: 100%;
 
     display: flex;
@@ -42,7 +42,7 @@
 .start .btn {
     width: 4.96rem;
     height: 1.37rem;
-    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/start-btn.png') no-repeat;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/start-btn.png?v=1') no-repeat;
     background-size: 100% 100%;
     border-radius: .6rem;
     box-shadow: 0 0 .7rem .3rem rgba(255, 255, 255, .35);

@@ -182,7 +182,7 @@ var app = new Vue({
                 data: {
                     shareInfo: {
                         currentPath: location.host + location.pathname, //当前页面路径，不需要参数
-                        title: "春天终会如约而至，我在千岛湖（每个景区不一样）等你！",
+                        title: "5A仙都景区特惠来袭，玩游戏赢豪礼！",
                         path: path, //默认当前页面路径
                         imageUrl: "https://img1.40017.cn/cn/s/2020/zt/touch/200320/sharexcx.jpg" //支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
                     }
