@@ -56,7 +56,7 @@ var app = new Vue({
         onProvName: localData.onProvName,
         onCid: localData.onProvName ? localData.onCid : '29934',
         onNid: localData.onNid || '30028',
-        gameName: '全民抗疫', // 游戏名称
+        gameName: window.utils.__gameName__, // 游戏名称
         type: '', // 当前状态
 
         // 游戏

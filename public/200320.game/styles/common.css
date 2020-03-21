@@ -141,6 +141,7 @@ textarea::-ms-input-placeholder {
     text-align: center;
     font-size: 0.24rem;
     padding: 0.4rem;
+    color: #fff;
 }
 
 
@@ -445,7 +446,7 @@ textarea::-ms-input-placeholder {
 /* 邮寄 */
 .dialog-mail {
     margin-top: 1.8rem;
-    padding-top: 2.9rem;
+    padding-top: 2.7rem;
     width: 5.56rem;
 }
 
@@ -476,7 +477,7 @@ textarea::-ms-input-placeholder {
 }
 
 .mail-intro .aBox {
-    margin-bottom: .25rem;
+    margin-bottom: .16rem;
     display: flex;
     justify-content: center;
 }
@@ -507,12 +508,20 @@ textarea::-ms-input-placeholder {
 }
 
 .mail-intro .aBtn {
+    margin-top: .1rem;
     width: 3.25rem;
     height: .85rem;
     background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-btn.png') no-repeat;
     background-size: 100% 100%;
     border-radius: .4rem;
     box-shadow: 0 0 .7rem .3rem rgba(255, 255, 255, .35);
+}
+
+.mail-intro .tip{
+    padding: 0 .1rem;
+    font-size: .2rem;
+    text-align: center;
+    color: #055669;
 }
 
 

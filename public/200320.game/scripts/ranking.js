@@ -57,9 +57,9 @@ var app = new Vue({
         sceneryInfo: null,
         topImg: __topimg,
         tableImag: __tableimg,
-        rankList: null,
+        rankList: [],
         meInfo: null,
-        gameName: '全民抗疫', // 游戏名称
+        gameName: window.utils.__gameName__, // 游戏名称
     },
     created: function () {
         this.init();
@@ -174,7 +174,7 @@ var app = new Vue({
                 ReqTime: reqTime,
                 Sign: window.utils.md5(sign),
                 GameName: this.gameName,
-                TopCount: 8,
+                TopCount: 10,
                 MemberId: this.memberId,
                 UnionId: this.wxunionid
             }
@@ -189,8 +189,13 @@ var app = new Vue({
             window.__services.QueryMiniGameTopList(result, function (data) {
                 console.log('小游戏排行榜查询', data)
                 if (data.StateCode == 200 && data.Body) {
-                    that.rankList = data.Body.ResultList
+                    
                     that.meInfo = data.Body.OwnResult
+                    if(data.Body.ResultList.length){
+                        that.rankList = data.Body.ResultList
+                    }else{
+                        that.rankList = ''
+                    }
                 }
             })
         },

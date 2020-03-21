@@ -313,3 +313,5 @@ window.utils.validate = {
         return reg.test(value);
     }
 }
+
+window.utils.__gameName__ = '全民抗疫20200321'

@@ -16,7 +16,7 @@
         name="viewport">
     <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
     <!--自定义样式-->
-    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/common.css?v=200320.1">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/common.css?v=<%=ctx.version%>">
     <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/index.css?v=<%=ctx.version%>">
 </head>
 
@@ -109,6 +109,9 @@
                     <div class="aBox">
                         <div class="aBtn" @click="mailSubmit"></div>
                     </div>
+                    <div class="aBox">
+                        <div class="tip">感谢参与！请及时关注排名公布结果，如有中奖会及时与您联系。</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -165,10 +168,10 @@
     setShareFun.changeShareInfo();
 </script>
 <!--自定义脚本-->
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/utils.js?v=200113.1'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/md5.js?v=200113.1'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/countdown.js?v=200113.1'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/services.js?v=200113.1'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/utils.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/md5.js'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/countdown.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/services.js?v=<%=ctx.version%>'></script>
 <script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/ball.js?v=<%=ctx.version%>'></script>
 <script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/ui.js?v=<%=ctx.version%>'></script>
 <script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/game.js?v=<%=ctx.version%>'></script>
