@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<% ctx.version = new Date().getTime() %>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>全民抗疫</title>
+    <meta charset="utf-8">
+    <!--删除默认的苹果工具栏和菜单栏-->
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <!--控制状态栏显示样式-->
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <!--格式检测-->
+    <meta content="telephone=no" name="format-detection" />
+    <!--控制页面打开大小-->
+    <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+        name="viewport">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
+    <!--自定义样式-->
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/common.css?v=<%=ctx.version%>">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/index.css?v=<%=ctx.version%>">
+</head>
+
+<body>
+    <div class="app" id="app" v-cloak @click="showProvList = false">
+        <img class="bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/bg2.png?v=1">
+        <div class="rules">
+            <a @click="rulesLink"></a>
+            <a @click="rankLink"></a>
+        </div>
+        <div class="start">
+            <div class="btn" :class="{'btn--animation': !showTiming}" @click="timingFn"></div>
+        </div>
+
+        <!-- <div class="dialog" v-show="true">
+            <div class="dialog-cont dialog-game">
+                <img class="dialog-cont-bg" :class="{'timing--animation': true}" :src="timingUrl" >
+                <div class="close" @click="showTiming=false"></div>
+                <img class="timing" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-countdown-virus.png">
+                
+            </div>
+        </div> -->
+
+        <!-- <div class="box">
+            <canvas id='myCanvas' width='750px' height='1080px'></canvas>
+        </div> -->
+        <div>
+            <output id='afterPlay'></output>
+        </div>
+    
+        <!-- 得分 -->
+        <div class="dialog" v-show="showScore">
+            <img class="dialog-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-bg1.png">
+            <div class="dialog-cont dialog-score">
+                <img class="dialog-cont-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-rank2.png?v=2" v-if="meInfo">
+                <img class="dialog-cont-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-rank1.png?v=2" v-else>
+                <div class="close" @click="showScore=false"></div>
+                <div class="score-intro">
+                    <!-- <div class="tit">本次得分</div> -->
+                    <div class="num">{{score}}</div>
+                    <div class="info" v-if="meInfo">
+                        <div class="txt">
+                            <span class="tx1">{{meInfo.Score}}分</span>
+                            <span class="tx2">{{meInfo.Ranking}}</span>
+                        </div>
+                    </div>
+                    <!-- 再来一次 -->
+                    <div class="btn btn3" @click="gameAgainFn"></div>
+                    <!-- 排行榜 -->
+                    <div class="btn btn2" @click="rankLink"></div>
+                    <!-- 填写领奖信息 -->
+                    <div class="btn btn1" @click="gameMailFn"></div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- 倒计时 -->
+        <div class="dialog" v-show="showTiming">
+            <img class="dialog-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-countdown-bg.png">
+            <div class="dialog-cont dialog-timing">
+                <img class="dialog-cont-bg" :class="{'timing--animation': true}" :src="timingUrl" >
+                <img class="timing" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-countdown-virus.png">
+            </div>
+        </div>
+
+        <!-- 邮寄 -->
+        <div class="dialog" v-show="showMail">
+            <img class="dialog-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-bg2.png">
+            <div class="dialog-cont dialog-mail">
+                <img class="dialog-cont-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-mail.png">
+                <div class="close" @click="showMail=false"></div>
+                <div class="avatar"><img :src="avatarurl"></div>
+                <div class="mail-intro">
+                    <div class="aBox">
+                        <div class="aInput">
+                            <input :value="mailName" data-param="mailName" @input="changeInput" @focus="inputFocus" @blur="inputBlur" placeholder="输入姓名" placeholder-class="phcolor" class="input" type="text" name="" id="" />
+                        </div>
+                    </div>
+                    <div class="aBox">
+                        <div class="aInput">
+                            <input :value="mailPhone" data-param="mailPhone" @input="changeInput" @focus="inputFocus" @blur="inputBlur" placeholder="输入手机号" placeholder-class="phcolor" class="input" type="text" name="" id="" />
+                        </div>
+                    </div>
+                    <div class="aBox">
+                        <div class="aInput">
+                            <input :value="mailAddress" data-param="mailAddress" @input="changeInput" @focus="inputFocus" @blur="inputBlur" placeholder="邮寄地址" placeholder-class="phcolor" class="input" type="text" name="" id="" />
+                        </div>
+                    </div>
+                    <div class="aBox">
+                        <div class="aBtn" @click="mailSubmit"></div>
+                    </div>
+                    <div class="aBox">
+                        <div class="tip">感谢参与！请及时关注排名公布结果，如有中奖会及时与您联系。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提示弹框 -->
+        <div class="showErrBox">
+            <div class="showErr"></div>
+        </div>
+
+        <div class="canvasMusic" v-if="showMusic" @click="gameMusic">
+            <img class="bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-music.png">
+            <img class="play" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-play.png" v-if="!isPlay">
+            <img class="suspe" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-suspe.png" v-else>
+        </div>
+
+        <audio ref="audio" loop="loop"><source :src="myAudioUrl" type="audio/mp3" /></audio>
+    </div>
+    <div class="canvasBox" style="display: none;">
+        <canvas id='myCanvas'></canvas>
+    </div>
+    <!-- <audio id="music" controls="controls" hidden="hidden" loop="loop">
+        <source src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/music.mp3" type="audio/mpeg" />
+    </audio>  -->
+</body>
+
+<script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
+<!-- rem -->
+<script type="text/javascript">
+    (function () {
+        $(document).on('page:resize', function (e) {
+            var _w = $(document.body).width();
+            $('html').css('font-size', ((_w > 750) ? 750 : _w) / 750 * 100 + 'px');
+        });
+        $(document).trigger('page:resize');
+        $(window).on('resize', function () {
+            $(document).trigger('page:resize');
+        })
+    })();
+</script>
+<!--脚本-->
+<script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
+<script type="text/javascript" src="https://js.40017.cn/cn/min/???/cn/s/api/setsharefn.5.js"></script>
+<script>
+    /* 分享 */
+    shareImg = "http://img1.40017.cn/cn/s/2020/zt/touch/200320/share.jpg";
+    shareTitle = "“5A仙都景区特惠来袭，玩游戏赢豪礼！";
+    shareUrl = "https://www.ly.com/scenery/zhuanti/2020antiviral/";
+    shareDesc = "全民抗疫 抗疫必胜！速抢仙都景区特惠门票，参与游戏赢取众多豪礼！";
+    setShareFun.Pageview = "/Touch站专题/全民抗疫";
+    setShareFun.changeShareInfo();
+</script>
+<!--自定义脚本-->
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/utils.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/md5.js'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/countdown.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/services.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/ball.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/ui.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/game.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/index.js?v=<%=ctx.version%>'></script>
+
+</html>
