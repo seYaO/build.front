@@ -13,6 +13,10 @@ function clone(obj) {
     return JSON.parse(JSON.stringify(obj));
 }
 
+function toHttps(img) {
+    return img.indexOf('tmp/') > -1 ? img : img.replace('http://', 'https://')
+}
+
 // 缓存
 var Activity = {
     getLocalData: function () {
@@ -45,7 +49,7 @@ var app = new Vue({
     data: {
         isTc: /tctravel/i.test(navigator.userAgent),
         isWx: /MicroMessenger/i.test(navigator.userAgent),
-        isxcx: false,
+        isxcx: getQueryString('isxcx') ? true : false,
         // userid=37421349&nickName=seYao_O&level=1
         // memberId: '37421349',
         memberId: '',
@@ -130,7 +134,7 @@ var app = new Vue({
                         var uId = uMemberIDRight.split('&')[0]
                         that.memberId = uId ? uId : ''
                     }
-                    that.getWechat()
+                    // that.getWechat()
                 }
                 var ids = getQueryString('mdid').split('|')
                 allInit.init(ids[0]);
@@ -148,7 +152,6 @@ var app = new Vue({
         getPara: function (spm, refid) {
             this.refid = getQueryString('refid') ? getQueryString('refid') : refid
             this.spm = getQueryString('spm') ? getQueryString('spm') : this.spm
-            var wxparam = getQueryString('wxparam') ? decodeURIComponent(getQueryString("wxparam")) : ''
 
             this.initData();
             if (this.isxcx) {
@@ -282,13 +285,15 @@ var app = new Vue({
                             var list = data.List;
                             that['sectionData' + index] = list;
                             if (list && list.length) {
+                                var summarys = list[0].Summary.split('|')
                                 that.sceneryInfo = {
                                     ...list[0],
-                                    imgUrl: list[0].SceneryImg,
-                                    imgUrl2: list[0].SceneryImg,
-                                    imgUrl3: list[0].SceneryImg,
+                                    imgUrl: toHttps(list[0].SceneryImg),
+                                    imgUrl2: toHttps(list[0].Address),
+                                    imgUrl3: toHttps(summarys[0]),
                                     videoUrl: 'https:' + list[0].Qurl,
                                     videoImg: '//pic5.40017.cn/03/000/3e/6c/rBANB1235IKAVc3EAALebsKLYpo089.jpg',
+                                    summary: summarys[1],
                                 }
                             }
                             break;

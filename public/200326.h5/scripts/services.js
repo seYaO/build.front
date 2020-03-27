@@ -94,3 +94,69 @@ window.__services.searchAjax = function (datas, callbackFn) {
         }
     })
 }
+
+
+/**
+ * 验证卡券是否领取
+ */
+window.__services.hasWechatcardAjax = function (datas, callbackFn) {
+    var reqData = {
+        "OpenId": datas.wxopenid,
+        "CardId": datas.cardId,
+    };
+    window.__services.request({
+        url: WL_URL_TEST(window.location.protocol + '//' + window.location.host + '/wl/api/labrador/resourceservice/getwechatcardreceiverecord/', reqData),
+        params: reqData,
+        method: 'POST',
+    }, function (data) {
+        typeof callbackFn === 'function' && callbackFn(data);
+    })
+}
+
+/**
+ * 领取卡券
+ */
+window.__services.getWechatcardAjax = function (datas, callbackFn) {
+    var reqData = {
+        "OpenId": datas.wxopenid,
+        "CardId": datas.cardId,
+        "unionId": datas.wxunionid
+    };
+    window.__services.request({
+        url: WL_URL_TEST(window.location.protocol + '//' + window.location.host + '/wl/api/labrador/resourceservice/wechatcardreceive/', reqData),
+        params: reqData,
+        method: 'POST',
+    }, function (data) {
+        typeof callbackFn === 'function' && callbackFn(data);
+    })
+}
+
+/**
+ * 判断之前有没有领过红包
+ */
+window.__services.hasRedpackageAjax = function (datas, callbackFn) {
+    var batchS = []
+    //红包批次号;
+    datas.redlist.forEach(function (item, index) {
+        batchS.push(item.pcId)
+    })
+
+    window.__services.request({
+        url: '/scenery/AjaxHelper/ZhuanTiHelp/ThematicIntegration.aspx',
+        params: 'action=GETHONGBAOBOOL&BatchNo=' + batchS.join() + '&memberid=' + datas.memberId,
+    }, function (data) {
+        typeof callbackFn === 'function' && callbackFn(data);
+    })
+}
+
+/**
+ * 领取红包
+ */
+window.__services.getRedpackageAjax = function (datas, callbackFn) {
+    window.__services.request({
+        url: '/scenery/zt/ZhuanTiAjax/SpmAjaxCall.aspx',
+        params: 'action=GETSPMHONGBAO&New=1&ChannelID=' + datas.id + '&MemberId=' + datas.memberId,
+    }, function (data) {
+        typeof callbackFn === 'function' && callbackFn(data);
+    })
+}

@@ -3,7 +3,7 @@
 <% ctx.version = new Date().getTime() %>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>全民抗疫</title>
+    <title>首届福州文旅产品网络消费季</title>
     <meta charset="utf-8">
     <!--删除默认的苹果工具栏和菜单栏-->
     <meta content="yes" name="apple-mobile-web-app-capable" />
@@ -16,103 +16,117 @@
         name="viewport">
     <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/s/2016/pc/zt/30819/swiper.min.css" />
     <!--自定义样式-->
-    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/common.css?v=<%=ctx.version%>">
-    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200320/index.css?v=<%=ctx.version%>">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200326/common.css?v=<%=ctx.version%>">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/s/2020/zt/touch/200326/index.css?v=<%=ctx.version%>">
 </head>
 
 <body>
     <div class="app" id="app" v-cloak @click="showProvList = false">
-        <img class="bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/bg2.png?v=1">
-        <div class="rules">
-            <a @click="rulesLink"></a>
-            <a @click="rankLink"></a>
+        <!-- loading蒙层 -->
+        <div class="loading" v-show="loading">
+            <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
         </div>
-        <div class="start">
-            <div class="btn" :class="{'btn--animation': !showTiming}" @click="timingFn"></div>
+        <!-- 头图 44764-->
+        <div class="top">
+            <img :src="topImagUrl">
         </div>
 
-        <!-- <div class="dialog" v-show="true">
-            <div class="dialog-cont dialog-game">
-                <img class="dialog-cont-bg" :class="{'timing--animation': true}" :src="timingUrl" >
-                <div class="close" @click="showTiming=false"></div>
-                <img class="timing" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-countdown-virus.png">
-                
+        <!-- 千万红包大派送(46126|46127) -->
+        <div class="section section1">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2020/zt/touch/200326/tit1.png">
+                <div class="subtit">购买福州市在线支付可用</div>
             </div>
-        </div> -->
-
-        <!-- <div class="box">
-            <canvas id='myCanvas' width='750px' height='1080px'></canvas>
-        </div> -->
-        <div>
-            <output id='afterPlay'></output>
-        </div>
-    
-        <!-- 得分 -->
-        <div class="dialog" v-show="showScore">
-            <img class="dialog-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-bg1.png">
-            <div class="dialog-cont dialog-score">
-                <img class="dialog-cont-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-rank2.png?v=2" v-if="meInfo">
-                <img class="dialog-cont-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-rank1.png?v=2" v-else>
-                <div class="close" @click="showScore=false"></div>
-                <div class="score-intro">
-                    <!-- <div class="tit">本次得分</div> -->
-                    <div class="num">{{score}}</div>
-                    <div class="info" v-if="meInfo">
-                        <div class="txt">
-                            <span class="tx1">{{meInfo.Score}}分</span>
-                            <span class="tx2">{{meInfo.Ranking}}</span>
+            <div class="box_content">
+                <ul class="readcards">
+                    <li class="readcard" v-for="(item,index) in redlist">
+                        <div class="package">
+                            <div class="pirce">
+                                <i class="yuan">￥</i>
+                                <em class="money">{{item.red}}</em>
+                            </div>
+                            <div class="value">{{isWx ? '门票卡券' : '门票红包'}}</div>
+                            <div class="txt">福州景点专享红包</div>
+                            <div class="btn" :class="{disable: item.isGet}">{{item.isGet ? '已领取' : '立即领取'}}</div>
+                            <div class="overflow" @click="checkLogin(index)"></div>
                         </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 约惠春天景点门票(46128) -->
+        <div class="section section2" v-if="sectionData2">
+            <div class="title">
+                <img src="https://img1.40017.cn/cn/s/2020/zt/touch/200326/tit2.png">
+            </div>
+            <div class="box_content">
+                <div class="loader" v-show="sectionData2 && sectionData2.length == 0">
+                    <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
+                </div>
+                <div class="noSource" v-show="!sectionData2">暂无资源~~</div>
+                <ul v-if="sectionData2 && sectionData2.length>0" class="jdList source">
+                    <a class="sourceItem" v-for="(item,index) in sectionData2" @click="windowLocationHref('detail',item,index)">
+                        <div class="left">
+                            <img class="img" :src="setImageSize(item.SceneryImg,'280x140')">
+                        </div>
+                        <div class="right">
+                            <h2 class="tit multi-ellipsis--l2">{{item.SceneryName}}</h2>
+                            <!-- <h2 class="tit multi-ellipsis--l2">{{item.BCTTicketName}}</h2> -->
+                            <div class="priceInfo">
+                                <div class="price">
+                                    <i class="yuan">￥</i>
+                                    <em class="money">{{item.AmountAdvance}}</em>
+                                    <i class="qi">起</i>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <div class="btn" @click.stop="windowLocationHref('order',item,index)">立即抢购</div>
+                            </div>
+                        </div>
+                    </a>
+                </ul>
+            </div>
+            
+        </div>
+
+        <!-- 成功 -->
+        <div class="dialog" v-show="showSuccess">
+            <div class="dialog-cont dialog-success">
+                <img class="dialog-cont-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200326/dialog-bg.png">
+                <div class="close" @click="showSuccess=false"></div>
+                <div class="success-intro" v-if="dialogInfo">
+                    <div class="tit">领取成功！</div>
+                    <div class="tx1">福州市文化和旅游局送您{{dialogInfo.red}}元门票红包！</div>
+                    <div class="tx2">有福之州，幸福之城，带您畅游福州！</div>
+                    <div class="card">
+                        <div class="pirce">
+                            <i class="yuan">￥</i>
+                            <em class="money">{{dialogInfo.red}}</em>
+                        </div>
+                        <ul class="tips">
+                            <li>湖州景点专享红包</li>
+                            <li>{{dialogInfo.total}}</li>
+                            <li>领取后15天内有效</li>
+                        </ul>
                     </div>
-                    <!-- 再来一次 -->
-                    <div class="btn btn3" @click="gameAgainFn"></div>
-                    <!-- 排行榜 -->
-                    <div class="btn btn2" @click="rankLink"></div>
-                    <!-- 填写领奖信息 -->
-                    <div class="btn btn1" @click="gameMailFn"></div>
+                    <div class="desc">{{isWx ? redpackage.wechatDesc : redpackage.appDesc}}</div>
                 </div>
                 
             </div>
         </div>
 
-        <!-- 倒计时 -->
-        <div class="dialog" v-show="showTiming">
-            <img class="dialog-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-countdown-bg.png">
-            <div class="dialog-cont dialog-timing">
-                <img class="dialog-cont-bg" :class="{'timing--animation': true}" :src="timingUrl" >
-                <img class="timing" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-countdown-virus.png">
-            </div>
-        </div>
-
-        <!-- 邮寄 -->
-        <div class="dialog" v-show="showMail">
-            <img class="dialog-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-bg2.png">
-            <div class="dialog-cont dialog-mail">
-                <img class="dialog-cont-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-mail.png">
-                <div class="close" @click="showMail=false"></div>
-                <div class="avatar"><img :src="avatarurl"></div>
-                <div class="mail-intro">
-                    <div class="aBox">
-                        <div class="aInput">
-                            <input :value="mailName" data-param="mailName" @input="changeInput" @focus="inputFocus" @blur="inputBlur" placeholder="输入姓名" placeholder-class="phcolor" class="input" type="text" name="" id="" />
-                        </div>
-                    </div>
-                    <div class="aBox">
-                        <div class="aInput">
-                            <input :value="mailPhone" data-param="mailPhone" @input="changeInput" @focus="inputFocus" @blur="inputBlur" placeholder="输入手机号" placeholder-class="phcolor" class="input" type="text" name="" id="" />
-                        </div>
-                    </div>
-                    <div class="aBox">
-                        <div class="aInput">
-                            <input :value="mailAddress" data-param="mailAddress" @input="changeInput" @focus="inputFocus" @blur="inputBlur" placeholder="邮寄地址" placeholder-class="phcolor" class="input" type="text" name="" id="" />
-                        </div>
-                    </div>
-                    <div class="aBox">
-                        <div class="aBtn" @click="mailSubmit"></div>
-                    </div>
-                    <div class="aBox">
-                        <div class="tip">感谢参与！请及时关注排名公布结果，如有中奖会及时与您联系。</div>
-                    </div>
-                </div>
+        <!-- 失败 -->
+        <div class="dialog" v-show="showFailure">
+            <div class="dialog-cont dialog-failure">
+                <div class="close" @click="showFailure=false"></div>
+                <div class="failure-intro">
+                    <div class="tit">啊哦~</div>
+                    <div class="txt">红包与您擦肩而过</div>
+                    <div class="txt">重新领取一次吧！</div>
+                    <img class="icon" src="http://img1.40017.cn/cn/s/2020/zt/touch/200326/dialog-txt.png">
+                    <div class="btn" @click="checkLogin(selectIdx)">重新领取</div>
+                </div>  
             </div>
         </div>
 
@@ -121,31 +135,21 @@
             <div class="showErr"></div>
         </div>
 
-        <div class="canvasMusic" v-if="showMusic" @click="gameMusic">
-            <img class="bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-music.png">
-            <img class="play" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-play.png" v-if="!isPlay">
-            <img class="suspe" src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/game-suspe.png" v-else>
-        </div>
-
-        <audio ref="audio" loop="loop"><source :src="myAudioUrl" type="audio/mp3" /></audio>
-    </div>
-    <div class="canvasBox" style="display: none;">
-        <canvas id='myCanvas'></canvas>
-    </div>
-    <!-- <audio id="music" controls="controls" hidden="hidden" loop="loop">
-        <source src="http://img1.40017.cn/cn/s/2020/zt/touch/200320/music.mp3" type="audio/mpeg" />
-    </audio>  -->
+        <div class="footer" v-if="isxcx"></div>
+        <div class="foot1" v-else>@同程旅游2019</div>
+    </div> 
 </body>
 
 <script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2017/touch/common/vue.js"></script>
 <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
 <!-- rem -->
 <script type="text/javascript">
     (function () {
+        var size = 640 // 设计稿宽度
         $(document).on('page:resize', function (e) {
             var _w = $(document.body).width();
-            $('html').css('font-size', ((_w > 750) ? 750 : _w) / 750 * 100 + 'px');
+            $('html').css('font-size', ((_w > size) ? size : _w) / size * 100 + 'px');
         });
         $(document).trigger('page:resize');
         $(window).on('resize', function () {
@@ -157,24 +161,21 @@
 <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 <script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
 <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
-<script type="text/javascript" src="https://js.40017.cn/cn/min/???/cn/s/api/setsharefn.5.js"></script>
+<script type="text/javascript" src="https://js.40017.cn/cn/min/??/cn/s/api/setsharefn.5.js"></script>
+
+<script src='//js.40017.cn/cn/min/??/cn/s/2020/zt/touch/200326/config.js?v=<%=ctx.version%>'></script>
+<!-- 分享 -->
 <script>
-    /* 分享 */
-    shareImg = "http://img1.40017.cn/cn/s/2020/zt/touch/200320/share.jpg";
-    shareTitle = "“5A仙都景区特惠来袭，玩游戏赢豪礼！";
-    shareUrl = "https://www.ly.com/scenery/zhuanti/2020antiviral/";
-    shareDesc = "全民抗疫 抗疫必胜！速抢仙都景区特惠门票，参与游戏赢取众多豪礼！";
-    setShareFun.Pageview = "/Touch站专题/全民抗疫";
+    shareImg = window.__configs.shareInfo.shareImg;
+    shareTitle = window.__configs.shareInfo.shareTitle;
+    shareUrl = window.__configs.shareInfo.shareUrl;
+    shareDesc = window.__configs.shareInfo.shareDesc;
+    setShareFun.Pageview = "/Touch站专题/" + window.__configs.shareInfo.ztName;
     setShareFun.changeShareInfo();
 </script>
 <!--自定义脚本-->
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/utils.js?v=<%=ctx.version%>'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/md5.js'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/countdown.js?v=<%=ctx.version%>'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/services.js?v=<%=ctx.version%>'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/ball.js?v=<%=ctx.version%>'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/ui.js?v=<%=ctx.version%>'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/game.js?v=<%=ctx.version%>'></script>
-<script src='//js.40017.cn/cn/min/???/cn/s/2020/zt/touch/200320/index.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/??/cn/s/2020/zt/touch/200326/utils.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/??/cn/s/2020/zt/touch/200326/services.js?v=<%=ctx.version%>'></script>
+<script src='//js.40017.cn/cn/min/??/cn/s/2020/zt/touch/200326/index.js?v=<%=ctx.version%>'></script>
 
 </html>

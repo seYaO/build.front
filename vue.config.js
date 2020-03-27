@@ -38,6 +38,13 @@ module.exports = {
                 changeOrigin: true,
                 // ws: true,//websocket支持
             },
+            '/wl/api/labrador': {
+                target: 'https://www.ly.com',
+                // target: 'http://www.t.ly.com',
+                // target: 'http://10.102.140.72:7001',
+                changeOrigin: true,
+                // ws: true,//websocket支持
+            },
         }
     },
 }

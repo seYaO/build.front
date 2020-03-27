@@ -35,14 +35,14 @@ var app = new Vue({
         isxcx: getQueryString('isxcx') ? true : false,
         // userid=37421349&nickName=seYao_O&level=1
         // memberId: '37421349',
-        memberId: '',
+        // memberId: '',
         wxopenid: '',
         wxunionid: '',
         nickname: '',
         avatarurl: 'https://img1.40017.cn/cn/s/2020/zt/touch/200320/default.png',
         addHtml: '',
         refid: '',
-        spm: '', // 5.44764.44764.1
+        spm: '5.46104.46128.1', // 5.44764.44764.1
         zId: '44764', // 专题ID 44764
         cId: '', // 省市ID 44050
         provAjaxList: '',
@@ -55,8 +55,14 @@ var app = new Vue({
 
         // 页面数据
         topImagUrl: window.__configs.topImagUrl, // 头图
+        redpackage: window.__configs.redpackage,
+        redlist: window.__configs.redlist, // 红包配置信息
         sectionData1: [],
         sectionData2: [],
+        showFailure: false,
+        showSuccess: false,
+        dialogInfo: null,
+        selectIdx: 0,
     },
     created: function () {
         this.init();
@@ -65,6 +71,19 @@ var app = new Vue({
         // this.scroll();
     },
     methods: {
+        // 图片裁剪
+        setImageSize: window.utils.setImageSize,
+        // 跳转页面
+        windowLocationHref: window.utils.windowLocationHref,
+        // 判断之前有没有领过红包
+        isGetHB: window.utils.isGetRedpackage,
+        // 领取红包
+        getHB: window.utils.getRedpackage,
+        // 验证卡券是否领取
+        hasGetCard: window.utils.hasGetWechatcard,
+        // 领取卡券
+        getCard: window.utils.getWechatcard,
+
         init: function () {
             var that = this
             var AppNewSpm = getQueryString('tcwebtag')
@@ -117,6 +136,11 @@ var app = new Vue({
                     }
                 }
                 allInit.init(that.zId);
+
+                // 页面进来，先判断是否登陆，如果登陆了，看之前有没有领取过红包
+                if (that.memberId && !that.isxcx) {
+                    that.isGetHB()
+                }
             });
         },
         // 获取链接参数
@@ -127,6 +151,7 @@ var app = new Vue({
             if (this.isxcx) { // 小程序分享
                 window.utils.setMiniappShare({ spm: this.spm, refid: this.refid })
             }
+            
             if (getQueryString("wxparam")) {
                 var URLArgues = JSON.parse(
                     decodeURIComponent(getQueryString("wxparam"))
@@ -138,63 +163,77 @@ var app = new Vue({
                 // console.log(URLArgues)
             }
 
+            if (this.isWx) {
+                this.hasGetCard(); // 小程序券
+            }
+
 
             // 判断是否需要登陆
-            // var opts = { isWx: this.isWx, isxcx: this.isxcx, isTc: this.wxunionid, wxopenid: this.wxunionid, wxunionid: this.wxunionid, memberId: this.memberId, spm: this.spm, refid: this.refid }
-            // window.utils.checkLogin(opts)
+            // window.utils.checkLogin(this)
             this.initData();
+
+
         },
 
         //数据初始化
         initData: function () {
-            // this.gameStart()
-            // 视频回顾(45142)
-            this.allAjax('45142', 1, '', 1, 100);
-            // 快闪show(45143)
-            this.allAjax('45143', 2, '', 1, 100);
+            // 约惠春天景点门票(46128)
+            this.allAjax('46128', 2, '', 1, 100);
         },
 
         // 资源异步
-        allAjax: function (mdId, index, onProvId, pageIndex, pageSize, fn) {
+        allAjax: function (mdId, index, onProvId, pageIndex, pageSize) {
             var that = this;
-            window.__services.publicAjax(
-                {
-                    pageIndex,
-                    pageSize,
-                    mdId,
-                    onProvId,
-                },
-                function (data) {
-                    switch (index) {
-                        // case 2:
-                        //     var list2 = data.List;
-                        //     that.videoUrl = 'https:' + list2[0].Purl;
-                        //     that.videoImg = list2[0].SceneryImg;
-                        //     that['sectionData' + index] = list2;
-                        //     if (list2.length > 1) {
-                        //         setTimeout(function () {
-                        //             that.getSwiper(2);
-                        //         }, 300)
-                        //     }
-                        //     break;
-                        // case 3:
-                        //     var list3 = data.List;
-                        //     that['sectionData' + index] = list3;
-                        //     if (list3.length > 1) {
-                        //         that.$nextTick(function () {
-                        //             that.getSwiper(3);
-                        //         })
-                        //     }
-                        //     break;
-                        default:
-                            that['sectionData' + index] = data.List;
-                            break;
-                    }
-
-                },
+            var opts = {
                 pageIndex,
-                pageSize
-            )
+                pageSize,
+                mdId,
+                onProvId,
+            }
+            window.__services.publicAjax(opts, function (data) {
+                if (!data) return that['sectionData' + index] = '';
+
+                switch (index) {
+                    // case 2:
+                    //     var list2 = data.List;
+                    //     that.videoUrl = 'https:' + list2[0].Purl;
+                    //     that.videoImg = list2[0].SceneryImg;
+                    //     that['sectionData' + index] = list2;
+                    //     if (list2.length > 1) {
+                    //         setTimeout(function () {
+                    //             that.getSwiper(2);
+                    //         }, 300)
+                    //     }
+                    //     break;
+                    // case 3:
+                    //     var list3 = data.List;
+                    //     that['sectionData' + index] = list3;
+                    //     if (list3.length > 1) {
+                    //         that.$nextTick(function () {
+                    //             that.getSwiper(3);
+                    //         })
+                    //     }
+                    //     break;
+                    default:
+                        that['sectionData' + index] = data.List;
+                        break;
+                }
+
+            })
+        },
+
+        // 判断是否需要登陆
+        checkLogin: function (idx) {
+            var that = this
+            this.showFailure = false;
+            this.showSuccess = false;
+            window.utils.checkLogin(this, function (isWx) {
+                if (isWx) {
+                    that.getCard(idx)
+                } else {
+                    that.getHB(idx)
+                }
+            })
         },
 
     }

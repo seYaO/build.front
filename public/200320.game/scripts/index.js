@@ -217,8 +217,15 @@ var app = new Vue({
         },
         // 倒计时开始游戏
         timingFn: function () {
-            // this.gameSubmit()
-            // return
+            var overTime = new Date('2020/04/09 23:59:59').getTime(), nowTime = new Date().getTime()
+            if (nowTime > overTime) {
+                this.popFn('活动已结束 谢谢参与')
+                return
+            }
+            if (!(this.isTc || this.isWx)) {
+                this.popFn('该游戏只支持微信和同程旅游APP扫码打开')
+                return
+            }
 
             var that = this, count = 3;
             this.showTiming = true
@@ -309,6 +316,12 @@ var app = new Vue({
         },
         // 排行榜地址
         rankLink: function () {
+            var overTime = new Date('2020/04/09 23:59:59').getTime(), nowTime = new Date().getTime()
+            if (nowTime > overTime) {
+                this.popFn('排行榜数据统计中，最晚4月10号18:00前公布')
+                return
+            }
+
             var url = "https://www.ly.com/scenery/zhuanti/2020antiviralrank?spm=" + this.spm + "&refid=" + this.refid
             if (this.isWx) {
                 if (this.isxcx) {

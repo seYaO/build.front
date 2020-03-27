@@ -864,6 +864,7 @@ h5 {
     overflow: auto;
     flex-wrap: nowrap;
     display: flex;
+    justify-content: flex-start;
 }
 
 .sectionCon4 .jdList .sourceItem:first-child {
@@ -871,6 +872,7 @@ h5 {
 }
 
 .sectionCon4 .jdList .sourceItem {
+    margin-right: .2rem;
     margin-top: 0;
     width: 2.68rem;
     border: 0;
@@ -891,6 +893,7 @@ h5 {
 }
 
 .sectionCon4 .jdList .sourceItem .subtit {
+    height: .56rem;
     font-size: .26rem;
     color: #666;
 }

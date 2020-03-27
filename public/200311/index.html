@@ -34,7 +34,7 @@
         <!-- 简介(45638) -->
         <div class="section section1" v-if="sectionData1">
             <div class="title" @click="windowLocationHref('detail',sceneryInfo,0)">
-                <div class="t">千岛湖</div>
+                <div class="t" v-if="sceneryInfo">{{sceneryInfo.SceneryName}}</div>
                 <img class="icon" src="//img1.40017.cn/cn/s/2020/zt/touch/200311/01.png" />
                 <div class="tx1" v-if="sceneryInfo">{{sceneryInfo.ProvinceName}}·{{sceneryInfo.CityName}}</div>
                 <img class="arrow" src="//img1.40017.cn/cn/s/2020/zt/touch/200311/02.png" />
@@ -45,12 +45,12 @@
                     <div class="sectionCon1" @click="windowLocationHref('detail',sceneryInfo,0)">
                         <img class="left" :src="setImageSize(sceneryInfo.imgUrl,'458x308')">
                         <div class="right">
-                            <img :src="setImageSize(sceneryInfo.imgUrl,'220x148')">
-                            <img :src="setImageSize(sceneryInfo.imgUrl,'220x148')">
+                            <img :src="setImageSize(sceneryInfo.imgUrl2,'220x148')">
+                            <img :src="setImageSize(sceneryInfo.imgUrl3,'220x148')">
                         </div>
                     </div>
                     <div class="sectionCon2">
-                        <span class="bold">必去理由：</span>{{sceneryInfo.Summary}}
+                        <span class="bold">必去理由：</span>{{sceneryInfo.summary}}
                     </div>
                     
                 </template>

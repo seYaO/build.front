@@ -3,7 +3,7 @@
 
 <head lang="en">
     <meta charset="UTF-8">
-    <title>全民抗疫</title>
+    <title>首届福州文旅产品网络消费季</title>
     <meta charset="utf-8">
     <!--删除默认的苹果工具栏和菜单栏-->
     <meta content="yes" name="apple-mobile-web-app-capable" />
@@ -31,54 +31,117 @@
             <img :src="topImagUrl">
         </div>
 
-        <!-- 千万红包大派送(44765) -->
-        <div class="section section1" v-if="sectionData1">
+        <!-- 千万红包大派送(46126|46127) -->
+        <div class="section section1">
             <div class="title">
                 <img src="https://img1.40017.cn/cn/s/2020/zt/touch/200326/tit1.png">
+                <!-- <div class="subtit">购买福州市在线支付可用</div> -->
+            </div>
+            <div class="box_content">
+                <ul class="readcards">
+                    <li class="readcard" v-for="(item,index) in redlist">
+                        <div class="package">
+                            <div class="pirce">
+                                <i class="yuan">￥</i>
+                                <em class="money">{{item.red}}</em>
+                            </div>
+                            <div class="value">{{isWx ? '门票卡券' : '门票红包'}}</div>
+                            <div class="txt">福州景点专享红包</div>
+                            <div class="btn" :class="{disable: item.isGet}">{{item.isGet ? '已领取' : '立即领取'}}</div>
+                            <div class="overflow" @click="checkLogin(index)"></div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
 
-        <!-- 约惠春天景点门票(44765) -->
-        <div class="section section1" v-if="sectionData1">
+        <!-- 约惠春天景点门票(46128) -->
+        <div class="section section2" v-if="sectionData2">
             <div class="title">
                 <img src="https://img1.40017.cn/cn/s/2020/zt/touch/200326/tit2.png">
             </div>
-            <div class="box_top"></div>
             <div class="box_content">
-                <div class="intro intro1">
-                    <img class="img1" src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/img1.png">
-                    <p>
-                        丝路驿站巡回秀系列活动为期30天，巡回走过了华东3省1市5城10地， 活动形式丰富多样，宁夏优质特惠的线路、精美赠送的礼品、互动抽取的大奖，每一位到场的朋友都收获满满。<br>
-                        本次活动共吸引了20000多位社区居民和学校师生到场，现场人头攒动，热闹非凡。宁夏丝路驿站巡回秀的整体节奏就是“让我们一起去宁夏，给心灵放个假”，现场推出的旅游线路不仅在品质上做到了最高，在价格上也做到了最优惠，目的就是让更多人享受旅游的乐趣，更多人有机会去宁夏给心灵放个假。
-                    </p>
+                <div class="loader" v-show="sectionData2 && sectionData2.length == 0">
+                    <img src="//img1.40017.cn/cn/s/c/2016/loading.gif">&nbsp;&nbsp;&nbsp;正在加载中...
                 </div>
-                <div class="intro intro2">
-                    <img class="img2" src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/img2.png">
-                    <a class="img" href="https://v.alltuu.com/album/1035553219/?from=appmessage">
-                        <img class="img" src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/img3.png">
+                <div class="noSource" v-show="!sectionData2">暂无资源~~</div>
+                <ul v-if="sectionData2 && sectionData2.length>0" class="jdList source">
+                    <a class="sourceItem" v-for="(item,index) in sectionData2" @click="windowLocationHref('detail',item,index)">
+                        <div class="left">
+                            <img class="img" :src="setImageSize(item.SceneryImg,'280x140')">
+                        </div>
+                        <div class="right">
+                            <h2 class="tit multi-ellipsis--l2">{{item.SceneryName}}</h2>
+                            <!-- <h2 class="tit multi-ellipsis--l2">{{item.BCTTicketName}}</h2> -->
+                            <div class="priceInfo">
+                                <div class="price">
+                                    <i class="yuan">￥</i>
+                                    <em class="money">{{item.AmountAdvance}}</em>
+                                    <i class="qi">起</i>
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <div class="btn" @click.stop="windowLocationHref('order',item,index)">立即抢购</div>
+                            </div>
+                        </div>
                     </a>
-                    <p>本次活动采用“宁夏特色风情秀”结合线路推介的形式对宁夏旅游进行推广，风情演绎秀与宁夏旅游产品融为了一体，在演绎场景中融入宁夏的特色风情和旅游线路，让游客在观看演出时领略到宁夏丰富的旅游资源和独特的人文环境。现场布置场景让与会嘉宾们全身心地沉浸在其中，放佛身临其境来到宁夏活动期间还有抓娃娃、10s游戏、扫码领好礼、红酒八宝茶品尝等环节，更有多轮宁夏特产抽奖活动，掀起了现场气氛的阵阵狂潮。</p>
-                </div>
-                <div class="intro intro3">
-                    <a class="img" href="https://v.alltuu.com/album/1035553219/?from=appmessage">
-                        <img class="img" src="https://img1.40017.cn/cn/s/2019/zt/touch/200113/img4.png">
-                    </a>
-                    <p>车外的展示区，甚至在车内都处处充满宁夏元素，伴随现场各类宁夏元素的一一展示，与会嘉宾仿佛穿越到了千年前的西夏，感受到了贺兰山下金戈铁马的雄浑壮阔，戈壁大漠中长河落日的大漠苍茫，体会到六盘山上高峰，红旗漫卷西风，“不到长城非好汉”的豪情壮志……让与会嘉宾纷纷赞叹不已。</p>
-                </div>
+                </ul>
             </div>
-            <div class="box_bottom"></div>
             
+        </div>
+
+        <!-- 成功 -->
+        <div class="dialog" v-show="showSuccess">
+            <div class="dialog-cont dialog-success">
+                <img class="dialog-cont-bg" src="http://img1.40017.cn/cn/s/2020/zt/touch/200326/dialog-bg.png">
+                <div class="close" @click="showSuccess=false"></div>
+                <div class="success-intro" v-if="dialogInfo">
+                    <div class="tit">领取成功！</div>
+                    <div class="tx1">福州市文化和旅游局送您{{dialogInfo.red}}元门票红包！</div>
+                    <div class="tx2">有福之州，幸福之城，带您畅游福州！</div>
+                    <div class="card">
+                        <div class="pirce">
+                            <i class="yuan">￥</i>
+                            <em class="money">{{dialogInfo.red}}</em>
+                        </div>
+                        <ul class="tips">
+                            <li>福州景点专享红包</li>
+                            <li>{{dialogInfo.total}}</li>
+                            <li>领取后15天内有效</li>
+                        </ul>
+                    </div>
+                    <div class="desc">{{isWx ? redpackage.wechatDesc : redpackage.appDesc}}</div>
+                </div>
+                
+            </div>
+        </div>
+
+        <!-- 失败 -->
+        <div class="dialog" v-show="showFailure">
+            <div class="dialog-cont dialog-failure">
+                <div class="close" @click="showFailure=false"></div>
+                <div class="failure-intro">
+                    <div class="tit">啊哦~</div>
+                    <div class="txt">红包与您擦肩而过</div>
+                    <div class="txt">重新领取一次吧！</div>
+                    <img class="icon" src="http://img1.40017.cn/cn/s/2020/zt/touch/200326/dialog-txt.png">
+                    <div class="btn" @click="checkLogin(selectIdx)">重新领取</div>
+                </div>  
+            </div>
         </div>
 
         <!-- 提示弹框 -->
         <div class="showErrBox">
             <div class="showErr"></div>
         </div>
+
+        <div class="footer" v-if="isxcx"></div>
+        <div class="foot1" v-else>@同程旅游2019</div>
     </div> 
 </body>
 
 <script type="text/javascript" src="//js.40017.cn/touch/cn/public/jquery-1.8.3.min.js"></script>
-<script type="text/javascript" src="//js.40017.cn/cn/min/???/cn/s/2017/touch/common/vue.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2017/touch/common/vue.js"></script>
 <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2019/common/wlurl.js?v=20100112"></script>
 <!-- rem -->
 <script type="text/javascript">
@@ -98,7 +161,7 @@
 <script type="text/javascript" src="https://res.wx.qq.com/open/js/jweixin-1.6.0.js"></script>
 <script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.2.1.4.js?v=2016053"></script>
 <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/s/2016/touch/zt/ztc/resetRefID.3.5.js,/cn/s/2016/touch/zt/c/sztcom.js?v=2016012703"></script>
-<script type="text/javascript" src="https://js.40017.cn/cn/min/???/cn/s/api/setsharefn.5.js"></script>
+<script type="text/javascript" src="https://js.40017.cn/cn/min/??/cn/s/api/setsharefn.5.js"></script>
 
 <script src='200326.h5/scripts/config.js'></script>
 <script>

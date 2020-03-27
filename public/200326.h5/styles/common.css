@@ -1,4 +1,9 @@
 /* 
+ 根据文字生成字符画 
+ http://patorjk.com/software/taag  [Big Money-se] 
+*/
+
+/* 
                                                                     
                                                                     
   _______   ______   ______ ____   ______ ____    ______   _______  
@@ -330,12 +335,12 @@ textarea::-ms-input-placeholder {
 
 .dialog-cont .close {
     position: absolute;
-    right: -.8rem;
+    /* right: -.8rem;
     top: -.2rem;
     width: 1rem;
     height: 1rem;
     background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200320/dialog-close.png') no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100%; */
 }
 
 
@@ -420,19 +425,19 @@ textarea::-ms-input-placeholder {
 }
 
 /* 小程序 */
+/* #052c29 深绿色 */
 .footer {
     margin-top: .4rem;
     height: 3.24rem;
     background: url('https://img1.40017.cn/cn/s/2019/zt/touch/190904/bg_bottom.png');
-    /* #052c29 深绿色 */
     background-size: 100% 100%;
 }
 
+/* #3a1cb6 深蓝色 */
 .footer {
     margin-top: .4rem;
     height: 2.78rem;
     background: url('https://img1.40017.cn/cn/s/2019/zt/touch/191101/bg_bottom.png');
-    /* #3a1cb6 深蓝色 */
     background-size: 100% 100%;
 }
 
@@ -457,6 +462,7 @@ textarea::-ms-input-placeholder {
  * -------------------------------------------------
  *
  */
+/* 价格 */
 .priceInfo {
     display: -webkit-box;
     display: -webkit-flex;
@@ -483,7 +489,6 @@ textarea::-ms-input-placeholder {
 
 .priceInfo .price {
     font-size: 0;
-    color: #009fe7;
 }
 
 .priceInfo .yuan {
@@ -520,6 +525,7 @@ textarea::-ms-input-placeholder {
     background: #898989;
 }
 
+/* 数据 */
 .source .sourceItem {
     background: #fff;
     overflow: hidden;
@@ -535,7 +541,7 @@ textarea::-ms-input-placeholder {
     color: #333;
     font-size: .24rem;
     line-height: .32rem;
-    height: .32rem;
+    /* height: .32rem; */
     margin-bottom: .05rem;
 }
 
@@ -585,6 +591,31 @@ textarea::-ms-input-placeholder {
     height: .33rem;
     background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/label_r.png) no-repeat;
     background-size: 100% 100%;
+}
+
+.source .sourceItem .buttons {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.source .sourceItem .btn {
+    height: .55rem;
+    line-height: .55rem;
+    font-size: .3rem;
+    text-align: center;
+    color: #fff;
+    background: #009fe7;
+    border-radius: .55rem;
 }
 
 /* 左右结构 */
@@ -696,9 +727,9 @@ textarea::-ms-input-placeholder {
 .jdList .sourceItem {
     position: relative;
     margin-top: .12rem;
-    width: 2.9rem;
+    /* width: 2.9rem; */
     background: #fff;
-    border: 1px solid #009fe7;
+    /* border: 1px solid #009fe7; */
     overflow: hidden;
     -webkit-box-flex: 0;
     -webkit-flex: none;
@@ -717,8 +748,8 @@ textarea::-ms-input-placeholder {
 .jdList .sourceItem .left {
     position: relative;
     overflow: hidden;
-    width: 2.9rem;
-    height: 1.68rem;
+    /* width: 2.9rem; */
+    /* height: 1.68rem; */
 }
 
 .jdList .sourceItem .right {
@@ -726,8 +757,8 @@ textarea::-ms-input-placeholder {
 }
 
 .jdList .sourceItem .tit {
-    font-size: .24rem;
-    line-height: .3rem;
+    /* font-size: .24rem; */
+    /* line-height: .3rem; */
 }
 
 .jdList .sourceItem .subtit {
@@ -736,83 +767,65 @@ textarea::-ms-input-placeholder {
     height: .6rem;
 }
 
-.jdList .sourceItem .button {
-    height: .55rem;
-    line-height: .55rem;
-    font-size: .3rem;
-    text-align: center;
-    color: #fff;
-    background: #009fe7;
-    border-radius: .55rem;
-}
-
 /*
- _______                                      _______                   __ 
-|       \                                    |       \                 |  \
-| $$$$$$$\ ______    ______    ______        | $$$$$$$\  ______    ____| $$
-| $$__/ $$|      \  /      \  /      \       | $$__| $$ /      \  /      $$
-| $$    $$ \$$$$$$\|  $$$$$$\|  $$$$$$\      | $$    $$|  $$$$$$\|  $$$$$$$
-| $$$$$$$ /      $$| $$  | $$| $$    $$      | $$$$$$$\| $$    $$| $$  | $$
-| $$     |  $$$$$$$| $$__| $$| $$$$$$$$      | $$  | $$| $$$$$$$$| $$__| $$
-| $$      \$$    $$ \$$    $$ \$$     \      | $$  | $$ \$$     \ \$$    $$
- \$$       \$$$$$$$ _\$$$$$$$  \$$$$$$$       \$$   \$$  \$$$$$$$  \$$$$$$$
-                   |  \__| $$                                              
-                    \$$    $$                                              
-                     \$$$$$$                                               
+ _______                                      _______                   __        __   ______                             __ 
+|       \                                    |       \                 |  \      /  \ /      \                           |  \
+| $$$$$$$\ ______    ______    ______        | $$$$$$$\  ______    ____| $$     /  $$|  $$$$$$\  ______    ______    ____| $$
+| $$__/ $$|      \  /      \  /      \       | $$__| $$ /      \  /      $$    /  $$ | $$   \$$ |      \  /      \  /      $$
+| $$    $$ \$$$$$$\|  $$$$$$\|  $$$$$$\      | $$    $$|  $$$$$$\|  $$$$$$$   /  $$  | $$        \$$$$$$\|  $$$$$$\|  $$$$$$$
+| $$$$$$$ /      $$| $$  | $$| $$    $$      | $$$$$$$\| $$    $$| $$  | $$  /  $$   | $$   __  /      $$| $$   \$$| $$  | $$
+| $$     |  $$$$$$$| $$__| $$| $$$$$$$$      | $$  | $$| $$$$$$$$| $$__| $$ /  $$    | $$__/  \|  $$$$$$$| $$      | $$__| $$
+| $$      \$$    $$ \$$    $$ \$$     \      | $$  | $$ \$$     \ \$$    $$|  $$      \$$    $$ \$$    $$| $$       \$$    $$
+ \$$       \$$$$$$$ _\$$$$$$$  \$$$$$$$       \$$   \$$  \$$$$$$$  \$$$$$$$ \$$        \$$$$$$   \$$$$$$$ \$$        \$$$$$$$
+                   |  \__| $$                                                                                                
+                    \$$    $$                                                                                                
+                     \$$$$$$                                                                                                                                               
 */
 
-.box_red .cakes {
-    position: absolute;
-    bottom: .4rem;
-    left: 50%;
-    margin-left: -2.56rem;
-    width: 5.12rem;
-    height: 2rem;
+.readcards {
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
 }
 
-.box_red .cake {
+.readcards .readcard {
     position: relative;
-    margin: 0 .05rem;
-    width: 1.61rem;
-    height: 2.01rem;
-    background: url(https://img1.40017.cn/cn/s/2019/zt/touch/191101/red.png) no-repeat;
-    background-size: 100% 100%;
 }
 
-.box_red .cake .pirce {
+.readcards .pirce {
     font-size: 0;
     text-align: center;
 }
 
-.box_red .cake .yuan {
+.readcards .yuan {
     font-size: .22rem;
     color: #fff1c9;
 }
 
-.box_red .cake .money {
+.readcards .money {
+    line-height: 1;
     font-size: .44rem;
     font-weight: 600;
-    line-height: .6rem;
-    height: .6rem;
     color: #fff1c9;
 }
 
-.box_red .cake .value {
-    margin-top: .3rem;
+.readcards .value {
     font-size: .26rem;
     text-align: center;
     color: #ffc221;
 }
 
-.box_red .cake .txt {
+.readcards .txt {
     margin-bottom: .05rem;
     font-size: .18rem;
     text-align: center;
     color: #fff9b3;
 }
 
-.box_red .cake .btn {
+.readcards .btn {
     margin: 0 auto;
     width: 1.26rem;
     height: .3rem;
@@ -824,18 +837,64 @@ textarea::-ms-input-placeholder {
     background: -webkit-linear-gradient(100deg, #ffa611, #fee693);
 }
 
-.box_red .cake .btn.disable {
+.readcards .btn.disable {
     color: #333;
     background: -webkit-linear-gradient(100deg, #929292, #cbcbcb);
 }
 
-.box_red .cake .overflow {
+.readcards .overflow {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: 1;
+}
+
+/* 变动的数据 */
+.readcards .readcard {
+    position: relative;
+    margin-left: .24rem;
+    padding-right: .22rem;
+}
+
+.readcards .package {
+    width: 2.36rem;
+    height: 2.5rem;
+    background: url('https://img1.40017.cn/cn/s/2020/zt/touch/200326/red.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.readcards .pirce {
+    padding-top: .14rem;
+}
+
+.readcards .yuan {
+    font-size: .24rem;
+    color: #ffd52d;
+}
+
+.readcards .money {
+    font-size: .6rem;
+    color: #ffd52d;
+}
+
+.readcards .value {
+    margin-top: .46rem;
+    font-size: .26rem;
+    color: #ffd52d;
+}
+
+.readcards .txt {
+    font-size: .22rem;
+    color: #fff;
+}
+
+.readcards .btn {
+    width: 1.4rem;
+    height: .38rem;
+    line-height: .38rem;
+    font-size: .22rem;
 }
 
 

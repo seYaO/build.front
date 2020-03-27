@@ -2,6 +2,10 @@ body {
     background: #09b3e9;
 }
 
+.foot1 {
+    background: #09b3e9;
+}
+
 /* 头图 */
 .top {
     position: relative;
@@ -22,9 +26,272 @@ body {
     pointer-events: none;
 }
 
-.title img,
-.subtit img {
+.title img {
     display: block;
     width: 100%;
-    background-color: violet;
+}
+
+.subtit {
+    font-size: .24rem;
+    text-align: center;
+    color: #fff;
+}
+
+/* section */
+.section {
+    position: relative;
+}
+
+.box_content {
+    margin: .3rem .2rem .2rem .2rem;
+    padding: .2rem .15rem;
+    background-color: #84d9f4;
+    border-radius: .15rem;
+}
+
+.section1 .readcards {
+    width: 100%;
+}
+
+.section1 .readcards .readcard {
+    position: relative;
+    margin-left: .24rem;
+    padding-right: .22rem;
+}
+
+.section1 .readcards .package {
+    width: 2.36rem;
+    height: 2.5rem;
+    background: url('https://img1.40017.cn/cn/s/2020/zt/touch/200326/red.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.section1 .readcards .pirce {
+    padding-top: .14rem;
+}
+
+.section1 .readcards .yuan {
+    font-size: .24rem;
+    color: #ffd52d;
+}
+
+.section1 .readcards .money {
+    font-size: .6rem;
+    color: #ffd52d;
+}
+
+.section1 .readcards .value {
+    margin-top: .46rem;
+    font-size: .26rem;
+    color: #ffd52d;
+}
+
+.section1 .readcards .txt {
+    font-size: .22rem;
+    color: #fff;
+}
+
+.section1 .readcards .btn {
+    width: 1.4rem;
+    height: .38rem;
+    line-height: .38rem;
+    font-size: .22rem;
+}
+
+/*  */
+.section2 .sourceItem {
+    width: 2.8rem;
+}
+
+.section2 .sourceItem .left {
+    width: 2.8rem;
+    height: 1.4rem;
+}
+
+.section2 .sourceItem .tit {
+    font-size: .22rem;
+    height: .6rem;
+}
+
+.section2 .sourceItem .priceInfo {
+    justify-content: center
+}
+
+.section2 .sourceItem .priceInfo .yuan {
+    font-size: .2rem;
+    color: #fa5825;
+}
+
+.section2 .sourceItem .priceInfo .money {
+    font-size: .36rem;
+    color: #fa5825;
+}
+
+.section2 .sourceItem .priceInfo .qi {
+    font-size: .2rem;
+    color: #999;
+}
+
+.section2 .sourceItem .buttons {
+    padding: .12rem 0;
+    justify-content: center
+}
+
+.section2 .sourceItem .btn {
+    width: 1.7rem;
+    height: .4rem;
+    line-height: .4rem;
+    font-size: .3rem;
+    background-color: #f15248;
+    border-radius: .1rem;
+}
+
+/*
+ _______   __            __                     
+|       \ |  \          |  \                    
+| $$$$$$$\ \$$  ______  | $$  ______    ______  
+| $$  | $$|  \ |      \ | $$ /      \  /      \ 
+| $$  | $$| $$  \$$$$$$\| $$|  $$$$$$\|  $$$$$$\
+| $$  | $$| $$ /      $$| $$| $$  | $$| $$  | $$
+| $$__/ $$| $$|  $$$$$$$| $$| $$__/ $$| $$__| $$
+| $$    $$| $$ \$$    $$| $$ \$$    $$ \$$    $$
+ \$$$$$$$  \$$  \$$$$$$$ \$$  \$$$$$$  _\$$$$$$$
+                                      |  \__| $$
+                                       \$$    $$
+                                        \$$$$$$ 
+*/
+.dialog {
+    align-items: center;
+}
+
+.dialog-cont .close {
+    left: 50%;
+    bottom: -.94rem;
+    margin-left: -.42rem;
+    width: .84rem;
+    height: .94rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200326/dialog-close.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.dialog-failure {
+    width: 5.4rem;
+    height: 5.2rem;
+    background-color: #fff;
+    border-radius: .2rem;
+}
+
+.failure-intro {
+    padding: .35rem .42rem;
+}
+
+.failure-intro .tit {
+    font-size: .6rem;
+    text-align: center;
+}
+
+.failure-intro .txt {
+    font-size: .36rem;
+    text-align: center;
+    color: #333;
+}
+
+.failure-intro .icon {
+    margin: .16rem 0;
+    display: block;
+    width: 100%;
+}
+
+.failure-intro .btn {
+    height: .78rem;
+    line-height: .78rem;
+    text-align: center;
+    font-size: .36rem;
+    color: #fff;
+    background-color: #ff4c1c;
+    border-radius: .78rem;
+}
+
+.dialog-success {
+    width: 5.4rem;
+    height: 6.3rem;
+}
+
+.success-intro {
+    position: relative;
+    padding: 2.26rem .36rem 0;
+}
+
+.success-intro .tit {
+    text-align: center;
+    font-size: .36rem;
+    color: #fff6e0;
+}
+
+.success-intro .tx1 {
+    font-size: .24rem;
+    text-align: center;
+    color: #ffe07e;
+}
+
+.success-intro .tx2 {
+    font-size: .24rem;
+    text-align: center;
+    color: #fff;
+}
+
+.success-intro .card {
+    position: relative;
+    margin: .16rem 0;
+    height: 1.47rem;
+    background: url('http://img1.40017.cn/cn/s/2020/zt/touch/200326/dialog-card.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+.success-intro .desc {
+    font-size: .24rem;
+    color: #fff;
+}
+
+.success-intro .pirce {
+    position: absolute;
+    top: .2rem;
+    left: .2rem;
+    font-size: 0;
+}
+
+.success-intro .pirce .yuan {
+    font-size: .32rem;
+    color: #fa5633;
+}
+
+.success-intro .pirce .money {
+    font-size: 1rem;
+    line-height: 1rem;
+    font-weight: bold;
+    color: #fa5633;
+}
+
+.success-intro .tips {
+    position: absolute;
+    top: .25rem;
+    left: 2.4rem;
+}
+
+.success-intro .tips li {
+    position: relative;
+    font-size: .24rem;
+    line-height: .34rem;
+    color: #883802;
+}
+
+.success-intro .tips li::before {
+    content: '';
+    position: absolute;
+    top: .12rem;
+    left: -.22rem;
+    width: .12rem;
+    height: .12rem;
+    border-radius: 50%;
+    background-color: #883802;
 }

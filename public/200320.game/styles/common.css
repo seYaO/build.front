@@ -558,7 +558,8 @@ textarea::-ms-input-placeholder {
 }
 
 .showErrBox .showErr {
-    width: 5.4rem;
+    /* width: 5.4rem; */
+    max-width: 100%;
     position: fixed;
     left: 50%;
     top: 50%;

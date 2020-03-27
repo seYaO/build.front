@@ -350,13 +350,13 @@ window.utils.setMiniappShare = function (options) {
  * 判断是否需要登陆
  * options = {isWx,isxcx,isTc,wxopenid,wxunionid,memberId,spm,refid}
  */
-window.utils.checkLogin = function (options, callbackFn) {
-    if (options.isWx) {
-        if (options.wxopenid && options.wxunionid) {
-            typeof callbackFn === 'function' && callbackFn();
+window.utils.checkLogin = function (event, callbackFn) {
+    if (event.isWx) {
+        if (event.wxopenid && event.wxunionid) {
+            typeof callbackFn === 'function' && callbackFn(true);
         } else {
-            var url = window.__configs.shareInfo.shareUrl + "?spm=" + options.spm + "&refid=" + options.refid
-            if (options.isxcx) { // 判断小程序
+            var url = window.__configs.shareInfo.shareUrl + "?spm=" + event.spm + "&refid=" + event.refid
+            if (event.isxcx) { // 判断小程序
                 url += '&isxcx=1'
             }
             //走套头
@@ -364,15 +364,231 @@ window.utils.checkLogin = function (options, callbackFn) {
             window.location.href = path;
         }
     } else {
-        if (options.memberId) {
-            typeof callbackFn === 'function' && callbackFn();
+        if (event.memberId) {
+            typeof callbackFn === 'function' && callbackFn(false);
         } else {
             // 登录
-            if (options.isTc) {
+            if (event.isTc) {
                 window.location.href = "tctclient://web/loginrefresh";
             } else {
                 window.location.href = '//passport.ly.com/m/login.html?returnUrl=' + encodeURIComponent(window.location.href)
             }
         }
     }
+}
+
+/**
+ * 获取详情页链接地址
+ */
+window.utils.getDetailLink = function (opts) {
+    var spm = opts.spm.slice(0, -1) + (opts.index + 1)
+    if (opts.isTc) {
+        return 'tctclient://react/page?projectId=117001&page=Detail&sceneryId=' + opts.sceneryId + '&spm=' + spm + '&refid=' + opts.refid
+    } else if (opts.isWx && opts.isxcx) {
+        return "/page/top/pages/scenery/detail/detail?sid=" + opts.sceneryId + "&wxspm=" + spm + "&wxrefid=" + opts.refid
+    } else if (opts.isWx) {
+        return opts.wurl + opts.addHtml
+    } else {
+        return opts.murl + opts.addHtml
+        // https://m.ly.com/scenery_1/detail?sceneryId=216168&spm=34.44968.44971.0&refid=1
+    }
+}
+
+/**
+ * 获取下单页链接地址
+ */
+window.utils.getOrderLink = function (opts) {
+    var spm = opts.spm.slice(0, -1) + (opts.index + 1)
+    if (opts.isTc) {
+        return 'tctclient://react/page?projectId=117001&page=Order&sid=' + opts.sceneryId + '&policyid=' + opts.priceId + '&spm=' + spm + '&refid=' + opts.refid
+    } else if (opts.isWx && opts.isxcx) {
+        return "/page/top/pages/scenery/order/order?sid=" + opts.sceneryId + "&policyid=" + opts.priceId + "&suppliertype=0&wxspm=" + spm + "&wxrefid=" + opts.refid
+    } else if (opts.isWx) {
+        return '//wx.17u.cn/scenery/booking/newbook1_' + opts.sceneryId + '_' + opts.oldPriceId + '.html?source=1&spm=' + spm + opts.addHtml;
+    } else {
+        return '//m.ly.com/scenery/booking/newbook1.html?sceneryId=' + opts.sceneryId + '&priceid=' + opts.oldPriceId + '&spm=' + spm + opts.addHtml;
+        // return '//m.ly.com/scenery_1/order?resourceId=' + opts.sceneryId + '&policyId=' + opts.oldPriceId + '&spm=' + spm + opts.addHtml;
+        // https://m.ly.com/scenery_1/order?resourceId=216168&policyId=235185&spm=34.44968.44971.0&refid=1
+    }
+}
+
+/**
+ * 跳转页面
+ */
+window.utils.windowLocationHref = function (type, item, index) {
+    var opts = {
+        isTc: this.isTc,
+        isWx: this.isWx,
+        isxcx: this.isxcx,
+        addHtml: this.addHtml,
+        spm: this.spm,
+        refid: this.refid,
+        index: index,
+        sceneryId: item.SceneryId,
+        priceId: item.BCTTicketId,
+        oldPriceId: item.BCTTicketPriceId,
+        kurl: item.Kurl,
+        wurl: item.Wurl,
+        murl: item.Murl
+    }
+    var detailHref = window.utils.getDetailLink(opts), orderHref = window.utils.getOrderLink(opts)
+    if (type == 'order') {
+        if (this.isxcx) {
+            wx.miniProgram.navigateTo({
+                url: orderHref
+            });
+        } else {
+            window.location.href = orderHref
+        }
+    } else if (type == 'detail') {
+        if (this.isxcx) {
+            wx.miniProgram.navigateTo({
+                url: detailHref
+            });
+        } else {
+            window.location.href = detailHref
+        }
+
+    }
+}
+
+/**
+ * 判断之前有没有领过红包
+ */
+window.utils.isGetRedpackage = function () {
+    var that = this, batchS = []
+    that.loading = true
+
+    //红包批次号;
+    that.redlist.forEach(function (item, index) {
+        batchS.push(item.pcId)
+    })
+
+    var opts = {
+        redlist: this.redlist,
+        memberId: this.memberId,
+    }
+    window.__services.hasRedpackageAjax(opts, function (data) {
+        // 未找到相关信息
+        if (data && data.length) {
+            // 已领过红包
+            for (var i = 0; i < data.length; i++) {
+                for (var j = 0; j < batchS.length; j++) {
+                    if (data[i].BatchNo == batchS[j]) {
+                        that.redlist[j].isGet = true
+                    }
+                }
+            }
+        }
+        that.loading = false
+    })
+}
+
+/**
+ * 领取红包
+ */
+window.utils.getRedpackage = function (idx) {
+    var that = this;
+    if (that.redlist[idx].isGet) return
+    that.loading = true;
+
+    var opts = {
+        id: this.redlist[idx].id,
+        memberId: this.memberId,
+    }
+    window.__services.getRedpackageAjax(opts, function (data) {
+        // 发送成功
+        if (data && data.State == 6) {
+            // 领取成功
+            that.redlist[idx].isGet = true;
+            that.dialogInfo = that.redlist[idx]
+            that.showSuccess = true
+            // window.utils.popFn('领取成功')
+        } else if (data && data.State == 4) {
+            // 发送过了
+            that.redlist[idx].isGet = true;
+            // that.redObj = that.redlist[idx];
+            window.utils.popFn('已经领取过红包了哦')
+        } else {
+            that.showFailure = true
+            that.selectIdx = idx
+            // window.utils.popFn(data.Magess)
+        }
+        that.loading = false;
+    })
+}
+
+/**
+ * 验证卡券是否领取
+ */
+window.utils.hasGetWechatcard = function () {
+    var that = this;
+    for (var i = 0; i < that.redlist.length; i++) {
+        (function (j) {
+            var opts = {
+                wxopenid: that.wxopenid,
+                cardId: that.redlist[j].cardId,
+            };
+            window.__services.hasWechatcardAjax(opts, function (data) {
+                // 已领取
+                if (data.StateCode == 200 && data.Body && data.Body.length) {
+                    that.redlist[j].isGet = true;
+                }
+            })
+        })(i);
+    }
+}
+
+/**
+ * 领取卡券
+ */
+window.utils.getWechatcard = function (idx) {
+    var that = this;
+    if (that.redlist[idx].isGet) return
+    that.loading = true;
+    var opts = {
+        wxopenid: that.wxopenid,
+        cardId: that.redlist[idx].cardId,
+        wxunionid: that.wxunionid
+    }
+    window.__services.getWechatcardAjax(opts, function (data) {
+        if (data) {
+            if (data.StateCode == 200 && data.Body.Cards && data.Body.Cards.length) {
+                // 领取成功
+                // that.redObj = JSON.parse(JSON.stringify(that.redlist[idx]));
+                that.redlist[idx].isGet = true;
+                that.dialogInfo = that.redlist[idx]
+                that.showSuccess = true
+                // window.utils.popFn('领取成功')
+            } else {
+                //失败
+                that.redlist[idx].isGet = false;
+                that.showFailure = true
+                that.selectIdx = idx
+                // window.utils.popFn(data.ResultMsg);
+            }
+        }
+        that.loading = false;
+    })
+}
+
+/**
+ * 轮播
+ */
+window.utils.getSwiper = function (index) {
+    var that = this
+    that['swiper' + index] = new Swiper('#swiper' + index, {
+        // effect: index == 1 ? 'fade' : '',
+        slidesPerView: 'auto',
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination' + index,
+            clickable: true,
+        },
+        loop: true,
+        autoplay: {
+            delay: 4000,
+            disableOnInteraction: false,
+        },
+    })
 }
