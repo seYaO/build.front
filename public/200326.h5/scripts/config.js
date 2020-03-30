@@ -7,15 +7,15 @@ window.__configs.shareInfo = {
     shareTitle: '春暖花开，福州氧你，福州旅游网络促销季！',
     shareDesc: '春暖花开，福州氧你，福州旅游网络促销季！',
     shareUrl: 'https://www.ly.com/scenery/zhuanti/fuzhout/',
-    shareImg: 'http://img1.40017.cn/cn/s/2020/zt/touch/200326/share.png',
+    shareImg: 'http://img1.40017.cn/cn/s/2020/zt/touch/200326/share.png?v=2',
 
     // 小程序分享
     miniappTitle: '春暖花开，福州氧你，福州旅游网络促销季！',
-    miniappImageUrl: 'https://img1.40017.cn/cn/s/2020/zt/touch/200326/sharexcx.png', // 支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
+    miniappImageUrl: 'https://img1.40017.cn/cn/s/2020/zt/touch/200326/sharexcx.jpg?v=2', // 支持PNG及JPG，不传入 imageUrl 则使用默认截图。显示图片长宽比是 5:4
 }
 
 // 头图
-window.__configs.topImagUrl = '//img1.40017.cn/cn/s/2020/zt/touch/200326/top.jpg?v=1'
+window.__configs.topImagUrl = '//img1.40017.cn/cn/s/2020/zt/touch/200326/top.jpg?v=2'
 
 // 红包配置信息
 window.__configs.redpackage = {
