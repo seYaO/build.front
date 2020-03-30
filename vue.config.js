@@ -12,9 +12,10 @@ indexs.map(item => {
         entry: 'src/main.js',
         template: `public/${item}/index.html`,
         filename: `${item}.html`,
-        chunks: ['chunk-vendors', 'chunk-common', `${item}`]
+        // chunks: ['chunk-vendors', 'chunk-common', `${item}`]
     }
 })
+
 
 module.exports = {
     pages,
