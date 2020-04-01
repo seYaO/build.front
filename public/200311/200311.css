@@ -672,7 +672,7 @@ h5 {
 
 .title,
 .subtit {
-    pointer-events: none;
+    /* pointer-events: none; */
 }
 
 .top img,
@@ -803,6 +803,19 @@ h5 {
     align-items: center;
 }
 
+.sectionCon3 .sourceItem .tit{
+    position: relative;
+    line-height: 1.4;
+}
+
+.sectionCon3 .sourceItem .tit em{
+    margin-right: .1rem;
+    padding: 0 .05rem;
+    background: #38c879;
+    color: #fff;
+    font-size: .18rem;
+}
+
 .sectionCon3 .sourceItem .flex .r {
     display: -webkit-box;
     display: -webkit-flex;
@@ -881,6 +894,8 @@ h5 {
 .sectionCon4 .jdList .sourceItem .left {
     width: 2.68rem;
     height: 1.9rem;
+    border-radius: .1rem;
+    overflow: hidden;
 }
 
 .sectionCon4 .jdList .sourceItem .right {

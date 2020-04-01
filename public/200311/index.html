@@ -33,7 +33,7 @@
         </div>
         <!-- 简介(45638) -->
         <div class="section section1" v-if="sectionData1">
-            <div class="title" @click="windowLocationHref('detail',sceneryInfo,0)">
+            <div class="title" v-if="sceneryInfo" @click="windowLocationHref('detail',sceneryInfo,0)">
                 <div class="t" v-if="sceneryInfo">{{sceneryInfo.SceneryName}}</div>
                 <img class="icon" src="//img1.40017.cn/cn/s/2020/zt/touch/200311/01.png" />
                 <div class="tx1" v-if="sceneryInfo">{{sceneryInfo.ProvinceName}}·{{sceneryInfo.CityName}}</div>
@@ -63,7 +63,7 @@
                 <div class="noSource" v-show="!sectionData1">暂无资源~~</div>
                 <ul v-if="sectionData1 && sectionData1.length>0" class="jdList source">
                     <a class="sourceItem" v-for="(item,index) in sectionData1" @click="windowLocationHref('order',item,index)">
-                        <h2 class="tit">{{item.BCTTicketName}}</h2>
+                        <h2 class="tit"><em>景点</em>{{item.BCTTicketName}}</h2>
                         <div class="flex">
                             <div></div>
                             <div class="r">
@@ -83,8 +83,7 @@
         <!-- 验客体验官(45639) -->
         <div class="section section2" v-if="sectionData2">
             <div class="title">
-                <div class="t">验客体验官</div>
-                
+                <div class="t">验客体验官</div> 
             </div>
             <div class="sectionCon4">
                 <div class="loader" v-show="sectionData2 && sectionData2.length == 0">
@@ -94,7 +93,7 @@
                 <ul v-if="sectionData2 && sectionData2.length>0" class="jdList source">
                     <a class="sourceItem" v-for="(item,index) in sectionData2">
                         <div class="left">
-                            <img class="img" :src="item.SceneryImg">
+                            <img class="img" :src="setImageSize(item.SceneryImg,'268x190')">
                         </div>
                         <div class="right" @click="popText(item.Summary)">
                             <h2 class="tit ellipsis">{{item.SceneryName}}</h2>
@@ -121,7 +120,7 @@
                         <div class="tit">
                             <span>{{item.SceneryName}}</span>
                         </div>
-                        <div class="nice">{{item.BiaoTi}}</div>
+                        <div class="nice" v-if="item.BiaoTi">by {{item.BiaoTi}}</div>
                     </a>
                 </ul>
             </div>
