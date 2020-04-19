@@ -1,0 +1,29 @@
+{{?travelData.funFood && travelData.funFood.length>0}}
+<div class="route-part none">
+    <ul class="food clearfix">
+        {{~travelData.funFood:funFood}}
+            <li class="food-list">
+                <h4 class="title">{{=funFood.DiningRoomName}}</h4>
+                {{?funFood.DiningRoomAddress}}
+                    <div class="font-route">
+                        <span class="every-item">地址：</span>
+                        <span class="every-item-info">{{=funFood.DiningRoomAddress}}</span>
+                    </div>
+                {{?}}
+                <div class="font-route">{{=funFood.DiningRoomDescript}}</div>
+                <div>
+                    {{?funFood.DiningRoomImage && funFood.DiningRoomImage.length}}
+                        {{~funFood.DiningRoomImage:imgs}}
+                            {{?imgs}}
+                            <div class="food-img hoverBig">
+                                <img data-img='{{=imgs.replace("http:","")}}' alt="">
+                            </div>
+                            {{?}}
+                        {{~}}
+                    {{?}}
+                </div>
+            </li>
+        {{~}}
+    </ul>
+</div>
+{{?}}

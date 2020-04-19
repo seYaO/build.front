@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js"></script>
+<script src="index.js"></script>
+<script>
+    AddPhone.init({
+        tel : 15250470380,
+        tmpl_cont : function(){
+            var out = '<div class="J_TelWarp tel-warp"><div class="tel-mask"></div><div class="tel-box"><a href="tel:'+ this.tel +'" class="tel-client">咨询客服 '+ this.tel +'</a><span class="tel-close"></span></div></div>';return out;
+        },
+        callback : function(){
+            /*初始回调事件，当更换模板时，用于绑定事件*/
+            alert("1");
+        }
+    });
+</script>
+</body>
+</html>

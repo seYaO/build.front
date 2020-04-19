@@ -1,0 +1,15 @@
+<div id="ImgUrl" class="none">
+{{?silderbar && silderbar.length > 0}}
+    {{~silderbar:slider:index}}
+        {{?index == 0}}
+        <em>
+            <a target="_blank" href="{{=slider.Url.replace('http:','')}}"><img src="{{=slider.Image.replace('http:','')}}"></a>
+        </em>
+        {{??index == 1}}
+        <span>
+            <a target="_blank" href="{{=slider.Url.replace('http:','')}}"><img src="{{=slider.Image.replace('http:','')}}" width="234px" height="145px"></a>
+        </span>
+        {{?}}
+    {{~}}
+{{?}}
+</div>

@@ -1,0 +1,262 @@
+@media only screen and (max-width:300px) {
+    html {
+        font-size: 62.5%
+    }
+    .viewport {
+        max-width: 300px
+    }
+}
+@media only screen and (max-width:310px) and (min-width:300px) {
+    html {
+        font-size: 62.5%
+    }
+    .viewport {
+        max-width: 310px
+    }
+}
+@media only screen and (max-width:320px) and (min-width:310px) {
+    html {
+        font-size: 62.5%
+    }
+    .viewport {
+        max-width: 320px
+    }
+}
+@media only screen and (max-width:350px) and (min-width:320px) {
+    html {
+        font-size: 75%
+    }
+    .viewport {
+        max-width: 350px
+    }
+}
+@media only screen and (max-width:360px) and (min-width:350px) {
+    html {
+        font-size: 75%
+    }
+    .viewport {
+        max-width: 360px
+    }
+}
+@media only screen and (max-width:400px) and (min-width:360px) {
+    html {
+        font-size: 75%
+    }
+    .viewport {
+        max-width: 400px
+    }
+}
+@media only screen and (max-width:470px) and (min-width:400px) {
+    html {
+        font-size: 87.5%
+    }
+    .viewport {
+        max-width: 470px
+    }
+}
+@media only screen and (max-width:480px) and (min-width:470px) {
+    html {
+        font-size: 93.75%
+    }
+    .viewport {
+        max-width: 480px
+    }
+}
+@media only screen and (max-width:540px) and (min-width:480px) {
+    html {
+        font-size: 100%
+    }
+    .viewport {
+        max-width: 540px
+    }
+}
+@media only screen and (max-width:560px) and (min-width:540px) {
+    html {
+        font-size: 112.5%
+    }
+    .viewport {
+        max-width: 560px
+    }
+}
+@media only screen and (max-width:570px) and (min-width:560px) {
+    html {
+        font-size: 112.5%
+    }
+    .viewport {
+        max-width: 570px
+    }
+}
+@media only screen and (max-width:630px) and (min-width:570px) {
+    html {
+        font-size: 125%
+    }
+    .viewport {
+        max-width: 630px
+    }
+}
+@media only screen and (max-width:640px) and (min-width:630px) {
+    html {
+        font-size: 125%
+    }
+    .viewport {
+        max-width: 640px
+    }
+}
+@media only screen and (max-width:710px) and (min-width:640px) {
+    html {
+        font-size: 150%
+    }
+    .viewport {
+        max-width: 710px
+    }
+}
+@media only screen and (max-width:720px) and (min-width:710px) {
+    html {
+        font-size: 150%
+    }
+    .viewport {
+        max-width: 720px
+    }
+}
+@media only screen and (min-width:720px) {
+    html {
+        font-size: 150%
+    }
+    .viewport {
+        width: 720px
+    }
+}
+@rem: 24rem;
+em,
+i {
+    font-style: normal
+}
+* {
+    box-sizing: border-box
+}
+body,
+html {
+    background: #edf0f5;
+}
+.clearfix:after,
+.clearfix:before {
+    display: table;
+    content: ""
+}
+ul {
+    list-style: none
+}
+.none {
+    display: none
+}
+.content {
+    width: 100%;
+    max-width: 640px; /*是否为全屏宽度*/
+    margin: 0 auto;
+    height: auto;
+    overflow: hidden;
+    position: relative;
+    .part {
+        .part-body {
+            padding: 0 10/@rem;
+            .part-list {
+                .part-order {
+                    margin-top: 20/@rem;
+                    background: #fff;
+                    border-radius: 5px;
+                    padding: 30/@rem;
+                    h5 {
+                        font-size: 30/@rem;
+                        line-height: 37/@rem;
+                        color: #333;
+                        margin-bottom: 15/@rem;
+                        i {
+                            width: 33/@rem;
+                            height: 37/@rem;
+                            margin-right: 20/@rem;
+                            display: inline-block;
+                            vertical-align: sub;
+                            background: url("images/icon_tree.png") no-repeat center;
+                            background-size: contain;
+                        }
+                        .part-price {
+                            color: #ff5346;
+                            float: right;
+                        }
+                    }
+                    .sdate {
+                        font-size: 26/@rem;
+                        line-height: 48/@rem;
+                        color: #999;
+                        padding-left: 53/@rem;
+                    }
+                    .comment-btn {
+                        float: right;
+                        width: 160/@rem;
+                        text-align: center;
+                        background: #ff5346;
+                        border-radius: 5px;
+                        a {
+                            color: #fff;
+                            line-height: 60/@rem;
+                            font-size: 28/@rem;
+                        }
+                    }
+                }
+            }
+            .searchResult {
+                text-align: center;
+                margin-top: 35%;
+                color: #c0c5d0;
+                .img-noresult {
+                    width: 160/@rem;
+                    height: 144/@rem;
+                    display: inline-block;
+                    background: url(images/icon_result.png) no-repeat center;
+                    background-size: contain;
+                }
+                p {
+                    font-size: 36/@rem;
+                    line-height: 76/@rem;
+                    color: #c0c5d0;
+                    margin: 20/@rem auto;
+                }
+                .home-btn {
+                    line-height: 70/@rem;
+                    font-size: 28/@rem;
+                    color: #fff;
+                    border-radius: 5px;
+                    background: #23beae;
+                    width: 190/@rem;
+                    margin: 0 auto;
+                    display: block;
+                }
+            }
+        }
+    }
+}
+.loading, .data-loader {
+    background: #fff;
+    position: relative;
+}
+.data-loader {
+    height: 80/@rem;
+    line-height: 80/@rem;
+    text-align: center;
+    margin: 20/@rem 10/@rem;
+    border-radius: 5px;
+}
+.loading {
+    padding-left: 30/@rem;
+    margin: 20/@rem 10/@rem;
+    i {
+        background: url(//img1.40017.cn/touch/cn/holiday/tchoutput/img/po-loading_87a33b1.gif?t=20169291021) no-repeat;
+        display: inline-block;
+        width: 70/@rem;
+        height: 70/@rem;
+        background-size: 70/@rem 70/@rem;
+        position: absolute;
+        top: 0;
+        left: 170/@rem;
+    }
+}

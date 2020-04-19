@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>亚斯岛 过新年</title>
+    <meta name="description" content="同程旅游出境游频道为您提供特惠出境游！更多中东非出境游路线，更低中东非出境游价格尽在同程出境旅游。">
+    <meta name="keywords" content="同程出境旅游，同程中东非旅游，阿布扎比旅游">
+    <% includeId = cnztjscss %>
+    <link rel="stylesheet" href="//css.40017.cn/cn/c/zt/2015/common/common.0.0.5.css?v=2015121102"/>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/fish.1.4.7.js,/cn/public/fc.1.1.7.js?v=2015021101"></script>
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.07044.css" rel="stylesheet" />
+</head>
+<body>
+<!-- 公共头部-->
+<% includeId = cnzthead %>
+<!-- 公共头部END-->
+
+<div class="container">
+    <div class="top">
+        <div class="top1"></div>
+        <div class="top2"></div>
+        <div class="top3"></div>
+    </div>
+
+    <div class="sider J_NavBox" id="part1">
+        <div class="carousel">
+            <ul>
+                <li><img src="img/dest/silder1_01.jpg"></li>
+                <li><img src="img/dest/silder1_02.jpg"></li>
+            </ul>
+            <div class="btn">
+                <button class="left active">left</button>
+                <button class="right">right</button>
+            </div>
+            <ul class="carousel-nav"></ul>
+        </div>
+    </div>
+
+    <div class="part1 J_NavBox" id="part2">
+      <div class="main J_ProList J_con1" data-filter="CycleId=4641" data-tmpl="#tmpl01"></div>
+    </div>
+
+    <div class="intro">
+        <div class="title"></div>
+        <div class="main">
+            <div class="J_NavBox" id="part3">
+                <div class="qzs J_intro">
+                    <div class="detail">
+                        <h3>玩在亚斯 YAS ISLAND</h3>
+                        <p>亚斯林克斯高尔夫球场、亚斯沙滩、亚斯码头、正宗意大利美食、国际全日自助餐厅...</p>
+                    </div>
+                </div>
+                <div class="yas">
+                    <div class="eat">
+                        <div class="tit"></div>
+                        <div class="p1"></div>
+                        <div class="p2">
+                            <div class="p3"></div>
+                            <div class="p4"></div>
+                        </div>
+                    </div>
+                    <div class="stay">
+                        <div class="tit"></div>
+                        <div class="p2">
+                            <div class="p3"></div>
+                            <div class="p4"></div>
+                        </div>
+                        <div class="p1"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="prolist main J_ProList J_con5  J_NavBox"  id="part4" data-filter="CycleId=4642" data-tmpl="#tmpl03"></div>
+        </div>
+    </div>
+    <div class="part3">
+        <div class="foot"> <p> Copyright © 2002-2017 同程网络科技股份有限公司 版权所有 </p> </div>
+    </div>
+</div>
+
+<div class="sidetab" style="display: none">
+    <ul>
+        <li class="active"><a class="aa" href="#part1">官方主推</a></li>
+        <li><a class="aa" href="#part2">同程主推</a></li>
+        <li><a class="aa" href="#part3">亚斯岛全攻略</a></li>
+        <li><a class="aa" href="#part4">阿布扎比热卖</a></li>
+    </ul>
+    <div class="gotop"><a href="javascript:void(0);">返回顶部</a></div>
+</div>
+
+<input type="hidden" id="RefUrl" value="" />
+<input type="hidden" id="AjaxRequestPath" value="//www.ly.com/AjaxHelper/TopLoginHandler.aspx?channel=ChuJingTravel">
+
+<script id="tmpl01" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+            }}
+            <div class="bg1 bor-transparent">
+                <div class="icon"></div>
+                <div class="pro1">
+                    <a {{=Activity.tmplProAttr(value)}}>
+                        <div class="maintit">{{=value.MainTitle}}</div>
+                        <span class="chufa">{{=value.DepartCity}}出发/{{=LineType}}</span>
+
+                        <div class="exp">
+                            {{var _rep=decodeURIComponent("%23%23");}}
+                            {{if(value.Explosion){}}
+                            {{var Expl = value.Explosion.split(_rep);}}
+                            <ul>
+                                <li>★ {{=Expl&&Expl[0]?Expl[0]:''}}</li>
+                                <li>★ {{=Expl&&Expl[1]?Expl[1]:''}}</li>
+                                <li>★ {{=Expl&&Expl[2]?Expl[2]:''}}</li>
+                            </ul>
+                            {{}}}
+                            <div class="icon1"></div>
+                        </div>
+                        <div class="price"><p>{{=value.Preferential}}</p></div>
+                        <div class="order"></div>
+                    </a>
+                </div>
+            </div>
+
+        {{~}}
+</script>
+
+<script id="tmpl03" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+                var SubTitle = value.SubTitle;
+                if(SubTitle.length>26){
+                    SubTitle = SubTitle.substring(0,26)+"...";
+                }
+            }}
+            {{
+            if(value.StartDateList){
+                var StartDateList = value.StartDateList;
+            }
+            var startDate = StartDateList[0];
+            if(StartDateList.length == 1){
+                var endDate = startDate;
+            }else{
+                var endDate=StartDateList[StartDateList.length-1];
+            }
+            startDate = startDate.replace(/\\//g, '-');
+            endDate = endDate.replace(/\\//g, '-');
+            startDate1 = startDate.split("-",2);
+            endDate1 = endDate.split("-",2);
+            }}
+            <div class="pro3">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <div class="img-box">
+                        <img data-img="{{=sImgUrl.replace('http:','')}}">
+                        <div class="pro-con">
+                            <div class="maintit">{{=value.MainTitle}}</div>
+                            <div class="subtit">{{=SubTitle}}</div>
+                            <div class="price"><p>{{=value.Preferential}}</p></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        {{~}}
+</script>
+<script src="//js.40017.cn/cn/min/???/cn/public/fish.1.4.5.js,/cn/v/2015/jqmodules/jquery.js,/cn/v/2015/jqmodules/monitor/0.3.0/index.js,/cn/v/2015/jqmodules/statistics/0.3.0/statistics.js,/cn/v/2015/jqmodules/dot.js,/cn/v/2015/jqmodules/lazyload/0.2.1/index.js"></script><!--ignore-->
+<script data-loader="true" src="/modules/sea.js"></script>
+
+<!-- 专题配置 -->
+<script>
+    var Index = seajs.require("./index");
+    Activity.init({
+            param: [{
+                "2238": [4641,4642]
+            }],
+            IsSellOut: 1,
+            querytype: 0,
+            filter: true,
+            el: ".J_ProList",
+            beforeRender: function(data) {
+                return data;
+            },
+            afterRender: function (data) {
+                Index.init();
+            }
+    });
+
+    (function() {
+        var pageview = stat.formatPageview('/出境/pc活动页/阿布扎比');
+        stat.init({
+            "baidu": {
+                "parameter": "pc" 
+            },
+            "pvConfig": {
+                "PublicPlatId": "1",
+                "PageId": "51275",
+                "LineId": "0",
+                "ActivityId": "2238",
+                "ActivityPeriodId": "4641",
+                "ModuleId": "0",
+                "PVSource": "1",
+                "ak": "",
+                "url": "//www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+            },
+            "vst": [ 
+                ['_serialid', '0'],
+                ['_vrcode', '10002-2006-0'],
+                ['_refId', stat.getRefid()],
+                ['_userId', stat.getMemberId()],
+                ['_openTime', stat.timeDiff],
+                ['_trackPageview', pageview]
+            ]
+        });
+    })();
+</script>
+</body>
+</html>

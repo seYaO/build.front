@@ -1,0 +1,178 @@
+.arrow-rotate(@deg: 45deg) {
+    -webkit-transform: rotate(@deg);
+    -o-transform: rotate(@deg);
+    -ms-transform: rotate(@deg);
+    -moz-transform: rotate(@deg);
+    transform: rotate(@deg);
+}
+
+.radius(@con:1px) {
+    -webkit-border-radius: @con;
+    -moz-border-radius: @con;
+    -ms-border-radius: @con;
+    -o-border-radius: @con;
+    border-radius: @con;
+}
+
+.citybox {
+    float: left;
+    position: relative;
+    z-index: 9999;
+    width: auto;
+    max-width: 118px;
+    margin-left: 5px;
+    line-height: 58px;
+    margin-top: -12px;
+    &:hover {
+        cursor: pointer;
+    }
+    #city_select.city_b {
+        position: relative;
+        z-index: 3;
+        font-size: 14px;
+        line-height: 58px;
+        color: #999;
+        padding: 0 10px;
+        float: left;
+        width: auto;
+        border: 1px solid transparent;
+        box-shadow: 0 0 2px 0 rgba(0,0,0,0);
+        height: 58px;
+        .radius(3px);
+        background: none;
+        &.city_b_enter {
+            background: #fff;
+            border: 1px solid #ddd;
+            box-shadow: 0 0 2px 0 #ccc;
+            border-bottom: none;
+            &:after {
+                content: '';
+                position: absolute;
+                top: 46px;
+                left: 0;
+                height: 13px;
+                width: 103%;
+                background: #fff;
+                z-index: 10003;
+            }
+            i {
+                background: url(//img1.40017.cn/cn/c/home/common/top_bg.png) no-repeat;
+                background-position: -29px -10px;
+            }
+        }
+        strong {
+            width: auto;
+            max-width: 80px;
+            font-size: 20px;
+            color: #333;
+            padding: 0;
+            font-weight: normal;
+            height: 58px;
+            display: inline-block;
+            overflow: hidden;
+        }
+        i {
+            background: url(//img1.40017.cn/cn/c/home/common/top_bg.png) no-repeat;
+            display: inline-block;
+            margin: -3px 0 0 4px;
+            overflow: hidden;
+            background-position: -15px -10px;
+            width: 11px;
+            height: 6px;
+            vertical-align: 24px;
+        }
+    }
+    #popleave {
+        position: absolute;
+        z-index: 2;
+        top: 15px;
+        .leavecity {
+            width: 352px;
+            background: #fff;
+            box-shadow: 1px 1px 2px #f0f0f0;
+            top: -1px;
+            position: absolute;
+            margin-top: 33px;
+            z-index: 2;
+            border: 1px solid #ddd;
+            &.leavecity-enter {
+                background: #fff;
+                border: 1px solid #ddd;
+                box-shadow: 0 0 8px 0 #ccc;
+                border-top: none;
+            }
+            .sub-scity-tips {
+                padding: 25px 15px 10px 20px;
+                font-size: 12px;
+                color: #666;
+                .scity-tips-main:nth-child(2) {
+                    padding-left: 10px;
+                }
+                ul {
+                    border-bottom: #ddd 1px solid;
+                    padding-left: 0;
+                    li {
+                        float: left;
+                        padding: 0 10px;
+                        line-height: 25px;
+                        cursor: pointer;
+                        background: #fff;
+                        border: #fff 1px solid;
+                    }
+                    li.cur {
+                        border-bottom: #50b400 2px solid;
+                        color: #50b400;
+                        position: relative;
+                        top: 1px;
+                        font-weight: 700;
+                    }
+                }
+
+                dl {
+                    margin-top: 8px;
+                    width: 332px;
+                    dt {
+                        float: left;
+                        width: 16px;
+                        height: 16px;
+                        text-align: center;
+                        background: #ffa63c;
+                        color: #fff;
+                        line-height: 16px;
+                        margin-top: 2px;
+                        margin-right: 16px;
+                    }
+                    dd {
+                        float: left;
+                        width: 300px;
+                        .mbot5 {
+                            margin-bottom: 5px;
+                        }
+                        a {
+                            margin-right: 10px;
+                            float: left;
+                            line-height: 18px;
+                            height: 18px;
+                            color: #333;
+                            text-align: left;
+                            border: #fff 1px solid;
+                            white-space: nowrap;
+                            width: 48px;
+                            width: 45px \9;
+                            overflow: hidden;
+                            &:hover {
+                                text-align: left;
+                                color: #ff7800;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.w990 .citybox {
+    margin-left: -15px;
+}
+

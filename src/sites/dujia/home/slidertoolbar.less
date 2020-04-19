@@ -1,0 +1,294 @@
+#module-slider {
+    position: fixed;
+    width: 40px;
+    background: #333333;
+    right: 0;
+    height: 100%;
+    top: 0;
+    z-index: 99999;
+    min-height: 650px;
+    font-size: 12px;
+    a {
+        color: #fff;
+    }
+    .module-slider-header {
+        width: 100%;
+        height: auto;
+    }
+    .module-slider-top {
+        width: 100%;
+        height: auto;
+    }
+    .module-slider-bottom {
+        width: 100%;
+        height: auto;
+        position: absolute;
+        bottom: 50px;
+    }
+    .module-slider-totop {
+        width: 100%;
+        height: 46px;
+        position: absolute;
+        bottom: 0;
+        &:hover {
+            background-color: #f60;
+            .ico.c-t {
+                background-position: 0px -47px;
+            }
+        }
+    }
+    .content {
+        width: 40px;
+        margin: 0 auto 10px;
+    }
+    .topimg-show {
+        height: 145px;
+        position: relative;
+    }
+    .ico {
+        width: 40px;
+        height: 46px;
+        cursor: pointer;
+        background-image: url('//img1.40017.cn/cn/v/2015/index2016/chujing-silder2.png');
+        float: left;
+        /*vertical-align: top;*/
+    }
+    .ico.c-p {
+        background-position: -120px -50px;
+    }
+    .ico.c-t {
+        background-position: -80px -1px;
+    }
+    .ico.c-1 {
+        background-position: -120px -47px;
+    }
+    .ico.c-2 {
+        background-position: -280px -239px;
+    }
+    .ico.c-3 {
+        background-position: -80px 100px;
+    }
+    .ico.c-4 {
+        background-position: -80px 146px;
+    }
+    .ico.c-5 {
+        background-position: -80px -48px;
+    }
+    .ico.c-6 {
+        background-position: -120px 100px;
+    }
+    .ico.c-7 {
+        background-position: -82px 54px;
+    }
+    .ico.c-8 {
+        background-position: -120px -94px;
+    }    
+    &.skin2 {
+        ul {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            li {
+                list-style: none;
+                display: list-item;
+                position: relative;
+                height: 46px;
+                &:hover {
+                    background-color: #ff6600;
+                    .c-t {
+                        background-position: 0 -46px;
+                    }
+                    .c-1-1 {
+                        background-position: -160px -240px;
+                    }
+                    .c-1 {
+                        background-position: -40px 146px;
+                    }
+                    .c-2 {
+                        background-position: -40px -47px;
+                    }
+                    .c-3 {
+                        background-position: -40px 241px;
+                    }
+                    .c-4 {
+                        background-position: 0 -141px;
+                    }
+                    .c-5 {
+                        background-position: 0 -95px;
+                    }
+                    .c-6 {
+                        background-position: 0 55px;
+                    }
+                    .c-7 {
+                        background-position: -39px 54px;
+                    }
+                    .c-8 {
+                        background-position: -40px 99px;
+                    }
+                }
+                .tooltip_gp {
+                    width: auto;
+                    position: absolute;
+                    height: 46px;
+                    line-height: 46px;
+                    text-align: center;
+                    background: #636363;
+                    font-size: 14px;
+                    color: #fff;
+                    padding: 0 15px;
+                    display: block;
+                    visibility: hidden;
+                    opacity: 0;
+                    -webkit-transition: all 0.3s ease-in-out;
+                    -moz-transition: all 0.3s ease-in-out;
+                    -o-transition: all 0.3s ease-in-out;
+                    transition: all 0.3s ease-in-out;
+                    white-space: nowrap;
+                    right: 65px;
+                    top: 0;
+                    i {
+                        position: absolute;
+                        width: 0;
+                        height: 0;
+                        border-top: 5px solid transparent;
+                        border-left: 5px solid #636363;
+                        border-bottom: 5px solid transparent;
+                        top: 25px;
+                        right: -5px;
+                        margin-top: -5px;
+                    }
+                }
+                .chujing-code {
+                    padding: 0;
+                    i {
+                        border-left: 5px solid #e51e23;
+                    }
+                }
+                .app-code {
+                    padding: 0;
+                    top: -194px;
+                    background: transparent;
+                    i {
+                        top: 217px;
+                        border-left: 5px solid #fa382d;
+                    }
+                }
+                &.avtive {
+                    .tooltip_gp {
+                        right: 40px;
+                        opacity: 1;
+                        visibility: visible;
+                        cursor: pointer;
+                    }
+                    .tooltip_gp.arrow {
+                        right: 45px;
+                    }
+                }
+            }
+        }   
+        .module-slider-header {
+            li {
+                width: 100%;
+                height: 145px;
+                .content {
+                    height: 145px;
+                    right: 0;
+                    width: 40px;
+                    .tooltip_gp {
+                        position: absolute;
+                        width: auto;
+                        right: 25px;
+                        background: none;
+                        display: none;
+                    }
+                }
+                &:hover .tooltip_gp {
+                    display: block;
+                }
+            }
+        }
+    }
+    &.default {
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        ul {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            li {
+                list-style: none;
+                display: list-item;
+                position: relative;
+                height: 46px;
+                white-space: nowrap;
+                margin-bottom: 10px;
+                .content {
+                    width: 140px;
+                    position: absolute;
+                    height: 46px;
+                    text-align: center;
+                    font-size: 12px;
+                    color: #fff;
+                    padding: 0;
+                    line-height: 23px;
+                    visibility: visible;
+                    right: -100px;
+                    top: 0;
+                    vertical-align: top;
+                    white-space: nowrap;
+                    background-color: #333333;
+                    -moz-transition: right 0.3s ease-in-out;
+                    -o-transition: right 0.3s ease-in-out;
+                    -webkit-transition: right 0.3s ease-in-out;
+                    transition: right 0.3s ease-in-out;
+                    img {
+                        float: left;
+                    }
+                    .tooltip_gp {
+                        background-color: #ff6600;
+                        width: 100px;
+                        height: 46px;
+                        line-height: 23px;
+                        text-align: center;
+                        font-size: 12px;
+                        color: #fff;
+                        float: left;
+                    }
+                }
+            }
+        }
+        .module-slider-top {
+            li:hover {
+                background-color: #ff6600;
+                .c-t {
+                    background-position: 0 -50px;
+                }
+                .content {
+                    right: 0;
+                }
+            }
+        }
+        .module-slider-header {
+            li {
+                width: 100%;
+                height: 146px;
+                .content {
+                    height: 146px;
+                    right: 0;
+                    width: 40px;
+                    .tooltip_gp {
+                        position: absolute;
+                        width: auto;
+                        right: 40px;
+                        display: none;
+                    }
+                }
+                &:hover .tooltip_gp {
+                    display: block;
+                }
+            }
+        }
+    }
+}

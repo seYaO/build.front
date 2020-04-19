@@ -1,0 +1,21 @@
+<div class="borBox clearfix J_NavBox" id="part10" data-type="supportdetail">
+    <div class="tab_head">
+        <h4>辅助资料<em>（为了保证处理进度，请务必核实如下信息）</em></h4>
+        <span class="save_btn J_saveBtn">保存资料</span>
+    </div>            
+    <div class="is_show J_choose J_AddOrDelete" data-index="1" data-special="supportdetail_userInfo">
+        <div class="sub_title"  verify validate="required"  vali-msg-required="请完善信息" FCControlId="supportdetail_isRegistered">
+            <p><i></i>您是否在2013年3月16日之后办理过美国签证或者在美国CGI官网有过注册?</p>
+            <span class="radio" data-type="1" value="Y"><i></i>是</span>
+            <span class="radio" data-type="0" value="N"><i></i>否</span>
+        </div>
+        <div class="form_ul none mar10_l" type="form" >
+            <div class="sub_title" verify-type="required" vali-msg-required="请完善信息" value="1" FCControlId="supportdetail_userinfo">
+                <em class="lf">您是否记得在美国CGI官网的注册邮箱和密码?</em>
+                <span class="radio" value="Y" data-dot="1" data-dotname="userinfo"><i></i>是</span>
+                <span class="radio" value="N" data-dot="1"><i></i>否</span>
+            </div> 
+            <div class="J_renderDot speDiv"></div>
+        </div>
+    </div>
+</div>

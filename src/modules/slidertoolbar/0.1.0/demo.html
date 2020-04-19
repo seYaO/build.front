@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="index.css" rel="stylesheet" />
+    <script src="../../jquery.js"></script>
+    <script src="../../sea.js" type="text/javascript"></script>
+    <script>
+
+    </script>
+    <style>
+        html,body,div{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <div style="width:50px;height:2000px;display:block;background-color:#0094ff;">擎天柱</div>
+    <div style="width:200px;height:50px;position:absolute;top:0;left:300px;">
+        <div class="content"><div class="ico c-p"></div>  <div class="tooltip_gp "> 看看有啥效果  </div> </div>
+    </div>
+
+    <button id="btnadd" type="button">测试</button>
+    <script>
+        seajs.config({
+            base: "../../"
+            //alias: {
+            //    "dialog": "dialog/0.2.0/dialog",
+            //    "jquery":'jquery'
+            //}
+        });
+
+        seajs.use(["slidertoolbar/0.1.0/index", "common/0.1.0/index"], function (slidertoolbar, Common) {
+            //var Common = require("common/0.1.0/index");
+
+            var slider = new slidertoolbar({
+                header: {
+                    icon: '<img src="http://pic4.40017.cn/index/slide/2016/04/07/18/YitxlZ.jpg">',
+                    tooltips: '<img src="http://pic4.40017.cn/index/slide/2016/04/07/18/uqTE9m.jpg">'
+                },
+                topMenu: [
+                          { icon: '<div class="ico c-p"></div>', tooltips: '<a href="#">在线客服</a>', arrow: false },
+                          { icon: '<div class="ico c-p"></div>', tooltips: '<a href="#">在线订单<br />在线订单</a>', arrow: false }
+                ],
+                //bottomMenu: [{ icon: '<div class="ico c-p"></div>', tooltips: "dadasdadsas", arrow: false }],
+                toTop: true
+            });
+
+            $("#btnadd").click(function () {
+                slider.addMenu({ icon: '<div class="ico c-p"></div>', tooltips: "111", arrow: false }, 'top', 0);
+            });
+
+            var userid = Common.getUser();
+            if (!userid) {
+                slider.resetMenu({ icon: '<div class="ico c-t"></div>', tooltips: '<a href="#">在线客服</a>', arrow: false }, 'top', 0);
+            }
+        });
+    </script>
+</body>
+
+</html>

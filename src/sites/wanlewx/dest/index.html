@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{{var it = IT.Data;}}
+<html>
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn" />
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _hmt = _hmt || [];
+        var _tcHotmapx = { pid: 212, sp: 100 };
+    </script>
+    <title>目的地选择</title>
+    <!-- 公共样式表 -->
+    <link href="http://css.40017.cn/touch/public/common/0.2.2/common.css?v=07121702" rel="stylesheet"  data-loader="true"/>
+    <script src="/modules-lite/mod.js" data-loader="true"></script>
+    <!-- 页面样式表 -->
+</head>
+
+<body onselectstart="return false;">
+    <!-- 页面内容块 -->
+    <input type="hidden" id="source" value="0">
+
+    <div class="page-body">
+        <div class="page-box" id="J_pageBox">
+
+            <div id="showCityPage" class="page current" style="display: block;">
+                <div class="dest-page J_DestPage">
+                    <div class="search">
+                        <input placeholder="请输入目的地或关键字" maxlength="50"/>
+                        <span class="search-icon"></span>
+                        <span class="clear"><i>×</i></span>
+                        <span class="onsearch">搜索</span>
+                    </div>
+                    <div class="J_include_history"></div>
+                    {{#def.dest}}
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- 公共页脚 -->
+
+    <script type="text/javascript" charset="utf-8" src="//wx.40017.cn/touch/min/??/touch/weixin/public/js/comQdid.js"></script>
+    <script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '10003-2027-0']);
+        _tcq.push(['_refId', 107075804]);
+        _tcq.push(['_userId', "{{=it.UserId}}"]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '{{=it.OpenId}}||微信/玩乐/海外玩乐']);
+    </script>
+
+    <script>
+        var dest = require("./index");
+        dest.init({
+            el: ".J_include_history",
+            itemClick: function(el){
+
+            }
+        })
+    </script>
+
+    <script type='text/javascript' src="http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+</body>
+
+</html>

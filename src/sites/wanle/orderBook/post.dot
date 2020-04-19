@@ -1,0 +1,8 @@
+<!--<div class="select_address">
+    <label class="piaocheckedTwo">
+        <input class="ui-radio" type="radio" id="postmanradio_${AddressId}"
+            name="postchk" province="${ProvinceName}" provinceId="${ProvinceId}" city="${CityName}" cityId="${CityId}" region="${RegionName}"
+            regionId="${RegionId}" address="${StreetAddress}" mobile=" ${Mobile}" receivename="${Name}" />
+    </label>
+    <label for="postmanradio_${AddressId}">${ProvinceName}${CityName}${RegionName}${StreetAddress}   ［收件人: ${Name}   手机号: ${Mobile}］ </label>
+</div>-->

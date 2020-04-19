@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阿布扎比特惠旅游_出境旅游线路价格_同程出境游</title>
+    <meta name="keywords" content="阿布扎比特惠旅游，出境旅游线路，出境旅游价格">
+    <meta name="description" content="同程旅游出境游为您提供阿布扎比品质旅游，精选旅游线路，宫廷般享受，蜜月旅游，享法拉利主题公园，更多优质出境旅游产品尽在同程出境游。">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="img/dest/abzb_01.jpg" data-img-loaded="true">
+        <div class="choice">
+            <img src="img/dest/top_02.jpg" data-img-loaded="true">
+            <div class="area none">
+                <div class="area-now J_area">华东出发</div>
+                <ul class="area-nav none">
+                    <li>华北出发</li>
+                </ul>
+                <div class="area-icon"></div>
+            </div>
+        </div>
+        <img src="img/dest/top_03.jpg" data-img-loaded="true">
+        <img src="img/dest/top_04.jpg" data-img-loaded="true">
+        <img src="img/dest/top_05.jpg" data-img-loaded="true">
+        <img src="img/dest/top_06.jpg" data-img-loaded="true">
+    </div>
+
+    <div class="part1 J_NavBox" id="part1">
+        <div class="title"><img src="img/dest/abzb_03.jpg" data-img-loaded="true"></div>
+        <div class="prolist J_prolist J_con1" data-filter="CycleId=4090&DedicatLine=爆款" data-tmpl="#tmpl01"></div>
+    </div>
+
+    <div class="part2 J_NavBox" id="part2">
+        <div class="title">
+            <img src="img/dest/title_02.jpg" data-img-loaded="true">
+            <img src="img/dest/abzb_05.jpg" data-img-loaded="true">
+        </div>
+        <div class="J_prolist J_con3" data-filter="CycleId=4090&DedicatLine=加一元升级" data-tmpl="#tmpl02"></div>
+
+        <div class="prolist J_prolist J_con5" data-filter="CycleId=4090&DedicatLine=常规产品" data-tmpl="#tmpl03"></div>
+    </div>
+
+    <div class="part2 J_NavBox" id="part3">
+        <img src="img/dest/top_10.jpg" data-img-loaded="true">
+        <img src="img/dest/top_11.jpg" data-img-loaded="true">
+    </div>
+
+</div>
+
+<!-- 导航 -->
+<div class="switch">
+    <ul class="switch-cfd">
+        <li class="switch-li"><a class="active" href="#part1">爆款推荐</a></li>
+        <li class="switch-li"><a href="#part2">产品升级</a></li>
+        <li class="switch-li"><a href="#part3">旅行小贴士</a></li>
+    </ul>
+</div>
+
+<div id="wxShare" style="display: none;">
+    <input type="hidden" name="tcshareurl" value="https://m.ly.com/dujia/zhuanti/abzbt.html">
+    <input type="hidden" name="tcshareimg" value="img/dest/share.jpg">
+    <input type="hidden" name="tcsharetext" value="秋冬将至，风情尽在阿布扎比，超值爆款赠法拉利公园门票，八星皇宫下午茶，畅游神奇国度！https://m.ly.com/dujia/zhuanti/abzbt.html">
+    <input type="hidden" name="tcDesc" value="秋冬将至，风情尽在阿布扎比，超值爆款赠法拉利公园门票，八星皇宫下午茶，畅游神奇国度！">
+</div>
+
+
+<script id="tmpl01" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+            }}
+            <div class="pro1">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <div class="img-box">
+                        <img data-img="{{=sImgUrl.replace('http:','')}}">
+                        <div class="chufa">{{=value.DepartCity}}出发</div>
+                        <div class="exp">
+                        {{var _rep=decodeURIComponent("%23%23");}}
+                        {{if(value.Explosion){}}
+                        {{var Expl = value.Explosion.split(_rep);}}
+                            {{=Expl&&Expl[0]?Expl[0]:''}}&nbsp★&nbsp{{=Expl&&Expl[1]?Expl[1]:''}}&nbsp★&nbsp{{=Expl&&Expl[2]?Expl[2]:''}}
+                        {{}}}
+                        </div>
+                    </div>
+                    <div class="maintit">{{=value.MainTitle}}</div>
+                    <div class="price"><p>{{=value.Preferential}}<b>/人</b></p></div>
+                    <div class="order"><b>立即出发</b> &gt;</div>
+                </a>
+            </div>
+        {{~}}
+</script>
+<script id="tmpl02" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+                var SubTitle = value.SubTitle;
+                    if(SubTitle.length >30){
+                        SubTitle = SubTitle.substring(0, 29) + "...";
+                    }
+            }}
+            {{?index==1}}
+                <div class="title1"><img src="img/dest/abzb_07.jpg" data-img-loaded="true"></div>
+            {{?}}
+            <div class="pro2">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <div class="img-box">
+                        <img data-img="{{=sImgUrl.replace('http:','')}}">
+                        <div class="pro-con">
+                            <span class="chufa">{{=value.DepartCity}}出发 | {{=LineType}}</span>
+                            <div class="maintit">{{=value.MainTitle}}</div>
+                            <div class="subtit">{{=SubTitle}}</div>
+                            <div class="price"><p>{{=value.Preferential}}<b>/人</b></p></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        {{~}}
+</script>
+<script id="tmpl03" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+            }}
+            {{
+            if(value.StartDateList){
+                var StartDateList = value.StartDateList;
+            }
+            var startDate = StartDateList[0];
+            if(StartDateList.length == 1){
+                var endDate = startDate;
+            }else{
+                var endDate=StartDateList[StartDateList.length-1];
+            }
+            startDate = startDate.replace(/\\//g, '-');
+            endDate = endDate.replace(/\\//g, '-');
+            startDate1 = startDate.split("-",2);
+            endDate1 = endDate.split("-",2);
+        }}
+            <div class="pro1">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <div class="img-box">
+                        <img data-img="{{=sImgUrl.replace('http:','')}}">
+                        {{?startDate1[0]==endDate1[0]}}
+                        <div class="chufa">团期：{{=startDate1[1]}}月-{{=endDate1[1]}}月</div>
+                        {{??}}
+                        <div class="chufa">团期：{{=startDate1[0]}}.{{=startDate1[1]}}-{{=endDate1[0]}}.{{=endDate1[1]}}</div>
+                        {{?}}
+                        <div class="exp">
+                        {{var _rep=decodeURIComponent("%23%23");}}
+                        {{if(value.Explosion){}}
+                        {{var Expl = value.Explosion.split(_rep);}}
+                            {{=Expl&&Expl[0]?Expl[0]:''}}&nbsp★&nbsp{{=Expl&&Expl[1]?Expl[1]:''}}&nbsp★&nbsp{{=Expl&&Expl[2]?Expl[2]:''}}
+                        {{}}}
+                        </div>
+                    </div>
+                    <div class="maintit">{{=value.MainTitle}}</div>
+                    <div class="price"><p>{{=value.Preferential}}<b>/人</b></p></div>
+                    <div class="order"><b>立即出发</b> &gt;</div>
+                </a>
+            </div>
+        {{~}}
+</script>
+
+<script data-loader="true" src="/modules/sea.js"></script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js,/touch/app/pub/public/share.js?v=20160113,/cn/v/2015/jqmodules/dot.js,/cn/v/2015/jqmodules/monitor/0.2.1/index.js?v=20160113,/cn/v/2015/jqmodules/statistics/0.2.0/statistics.js,/cn/v/2015/jqmodules/lazyload/0.2.1/touch.js?v=20160113"></script><!--ignore-->
+
+<script type="text/javascript">
+    (function () {
+        Zepto(document).on('page:resize', function (e) {
+            var _w = Zepto(document.body).width();
+            Zepto('html').css('font-size', ((_w > 640) ? 640 : _w) / 640 * 24 + 'px');
+        });
+        Zepto(document).trigger('page:resize');
+        Zepto(window).on('resize', function () {
+            Zepto(document).trigger('page:resize');
+        })
+    })();
+</script>
+<script>
+    var noLaunchApp = window.location.search.indexOf('noLaunchApp') > 0 ? false : true;
+    seajs.require("./index").init({
+        param: [
+            {"1996": [4090]}
+        ],
+        host: "//www.ly.com",
+        filter: true,
+        querytype: 0,
+        IsSellOut: 1,
+        needJumpWX: true,
+        goTop:false,
+        needLaunchApp: noLaunchApp,
+        beforeRender:function(data){
+            return data;
+        }
+    });
+</script>
+<!--统计代码开始-->
+<script type="text/javascript">
+    (function() {
+        var pageview = stat.formatPageview('/出境/touch活动页/暑期韩国');
+        stat.init({
+            "baidu": {
+                "parameter": "touch"
+            },
+            "pvConfig": {
+                "PublicPlatId": "1",
+                "PageId": "42206",
+                "LineId": "0",
+                "ActivityId": "1996",
+                "ActivityPeriodId": "4090",
+                "ModuleId": "0",
+                "PVSource": "1",
+                "ak": "",
+                "url": "//www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+            },
+            "vst": [
+                ['_serialid', '0'],
+                ['_vrcode', stat.getVrcode()],
+                ['_refId', stat.getRefid()],
+                ['_userId', stat.getMemberId()],
+                ['_openTime', stat.timeDiff],
+                ['_trackPageview', pageview]
+            ]
+        });
+    })();
+</script>
+</body>
+</html>

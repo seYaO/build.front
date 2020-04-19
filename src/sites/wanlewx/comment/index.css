@@ -1,0 +1,551 @@
+.comment-header > li > p span:after,
+.comment-item h4 .nickname i,
+.comment-item .expanded > span:before,
+.no-data i {
+    background: url("./images/comment_new.png") scroll no-repeat 0 0 transparent;
+    background-size: 87px 79px;
+}
+
+body {
+    background: #e9ecf1;
+}
+.page-header {
+    height: 44px;
+}
+
+#pageLoading {
+    z-index: 1000;
+}
+
+.data-loader {
+    background: #fff;
+}
+
+.top-wrapper {
+    /*position: fixed;
+    width: 100%;
+    top: 45px;*/
+   z-index: 10;
+   width: 100%;
+   background: #f3f4f8;
+}
+.top-wrapper-new{
+     
+}
+.top-wrapper ul{
+    /*width: 100%;*/
+    padding: 12px 12px 7px 12px;
+    overflow: hidden;
+}
+.top-wrapper ul li{
+    padding: 8px 15px;
+    border: 1px solid #dcdcdc;
+    background: #fff;
+    color:#666666;
+    display: inline-block;
+    font-size: 12px;
+    margin: 0 5px 5px 0; 
+}
+#mainPage .content {
+    /*margin-top: 86px;*/
+}
+
+.comment-header {
+    position: relative;
+    border-bottom: 1px solid #dcdcdc;
+    background: #fff;
+}
+
+.comment-header > li {
+    float: left;
+    width: 50%;
+}
+
+.comment-header > li > p {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    position: relative;
+}
+
+.comment-header > li > p:before {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 18px;
+    left: 0;
+    top: 11px;
+    background: #dcdcdc;
+}
+
+.comment-header > li:first-child > p:before {
+    display: none;
+}
+
+.comment-header > li > p span:after {
+    content: '';
+    display: inline-block;
+    width: 9px;
+    height: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+    -webkit-transition: all .3s linear;
+}
+
+.comment-header > .open > p span:after {
+    -webkit-transform: rotate(180deg);
+}
+
+.comment-header > li > ul {
+    padding-left: 15px;
+    position: absolute;
+    left: 0;
+    top: 41px;
+    width: 100%;
+    border-bottom: none;
+    background: #fff;
+    z-index: 11;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 0;
+    -webkit-transition: height .3s linear;
+}
+
+.comment-header > .up > ul {
+    z-index: 12;
+}
+
+.comment-header > .open p i {
+    position: absolute;
+    width: 18px;
+    height: 6px;
+    bottom: -2px;
+    left: 50%;
+    margin-left: -9px;
+    z-index: 13;
+    background: #fff;
+}
+
+.comment-header > .open p i:before,
+.comment-header > .open p i:after {
+    content: '';
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    background-color: #dcdcdc;
+    top: -3px;
+}
+
+.comment-header > .open p i:before {
+    -webkit-transform: rotate(63.608645deg);
+    left: 4px;
+}
+
+.comment-header > .open p i:after {
+    -webkit-transform: rotate(-63.608645deg);
+    right: 4px;
+}
+
+.comment-header > .open > ul {
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.comment-header > .open > ul:before {
+    position: absolute;
+}
+
+.comment-header > .comment-category.open > ul {
+    height: 225px;
+}
+
+.comment-header > .comment-sort.open > ul {
+    height: 135px;
+}
+
+.comment-header > li li {
+    line-height: 44px;
+    height: 44px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.comment-header > li li:last-child {
+    border-bottom: none;
+}
+
+.comment-header > li > i {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 86px;
+    bottom: -100px;
+    background: rgba(0, 0, 0, 0.6);
+    display: none;
+}
+
+.comment-header > .open > i {
+    display: block;
+}
+
+.comment-header > li .current {
+    color: #3eb74a;
+}
+
+.comment-header > li .current:after {
+    content: '';
+    float: right;
+    display: block;
+    width: 8px;
+    height: 14px;
+    border-right: 2px solid #50b400;
+    border-bottom: 2px solid #50b400;
+    margin: 14px 17px 0 0;
+    -webkit-transform: rotate(45deg);
+}
+
+.comm-detail{
+        height: auto;
+        overflow: hidden;
+}
+ .comm-detail h4{
+            font-size: 12px;
+            color: #666;
+            /*padding-top: 10px;*/
+            padding-bottom: 10px;
+            display: flex;
+ }
+.comm-detail h4 img{
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            margin-right: 10px;
+            float: left;
+            margin-top: 8px;
+        }
+  .comm-detail h4 .tel{
+        display: -webkit-box;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        -webkit-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-flex: 1;
+        -webkit-flex: 1;
+        -ms-flex: 1;
+        -webkit-justify-content: space-around;
+        -ms-flex-pack: distribute; 
+    }
+        
+ .comm-detail h4 .tel span{
+            line-height: 24px;
+        }
+ .comm-detail h4 .tel .time{
+            float: right;
+            padding-right: 4.91803279%;
+        }
+
+
+
+.no-data {
+    padding-top: 96px;
+}
+
+.no-data > i {
+    display: block;
+    margin: 0 auto;
+    width: 72px;
+    height: 79px;
+    background-position: -15px 0;
+}
+
+.no-data > p {
+    margin-top: 18px;
+    color: #c0c5d0;
+    text-align: center;
+}
+
+.comment-list {
+    /*padding-left: 15px;*/
+    background: #fff;
+}
+
+.comment-item {
+    padding: 15px;
+    background-image: -webkit-linear-gradient(bottom,transparent 50%,#dcdcdc 50%);
+    background-image: linear-gradient(to bottom,transparent 50%,#dcdcdc 50%);
+    background-size: 100% 1px;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    border-bottom: 1px solid #dcdcdc; 
+}
+
+/*.comment-item h4 {
+    color: #999;
+    font-size: 14px;
+    font-weight: normal;
+    padding-right: 5px;
+    line-height: 2;
+}*/
+
+/*.comment-item h4 .nickname i {
+    display: inline-block;
+    width: 12px;
+    height: 13px;
+    margin-left: 3px;
+    vertical-align: middle;
+    margin-top: -4px;
+}*/
+
+/*.comment-item h4 .nickname .level0 {
+    background-position: 0 -13px;
+}*/
+
+/*.comment-item h4 .nickname .level1 {
+    background-position: 0 -13px;
+}*/
+
+/*.comment-item h4 .nickname .level2 {
+    background-position: 0 -26px;
+}*/
+
+/*.comment-item h4 .nickname .level3 {
+    background-position: 0 -39px;
+}*/
+
+/*.comment-item h4 .nickname .level4 {
+    background-position: 0 -52px;
+}*/
+
+/*.comment-item h4 .nickname .level5 {
+    background-position: 0 -52px;
+}*/
+
+/*.comment-item h4 .time {
+    font-size: 12px;
+    float: right;
+}*/
+
+/*.comment-item > div > p > span {
+    font-size: 14px;
+}*/
+
+.comment-item > ul {
+    margin: 4px 5px 0 0;
+}
+
+.comment-item ul li {
+    width: 23.5%;
+    float: left;
+    box-sizing: border-box;
+    margin-right: 2%;
+    padding-bottom: 23.5%;
+    height: 0;
+    position: relative;
+}
+.comment-item ul li:last-child {
+    margin-right: 0;
+}
+
+.comment-item li img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.comment-item .image-amount p {
+    background: #ccc;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+}
+
+.comment-item .image-amount p span {
+    color: #fff;
+    display: block;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    font-size: 12px;
+    line-height: 1.5;
+    margin-top: -9px;
+    text-align: center;
+}
+
+/*.comment-item > p {
+    padding-right: 5px;
+    text-align: right;
+    font-size: 12px;
+    line-height: 18px;
+    color: #999;
+    margin-top: 5px;
+    height: 18px;
+}*/
+
+.comment-item > p > a {
+    display: inline-block;
+    float: right;
+    color: #999;
+}
+
+.comment-item .expanded > p {
+    overflow: hidden;
+    -webkit-transition: height .3s linear;
+}
+
+.comment-item .expanded > span {
+    display: block;
+    text-align: center;
+    line-height: 27px;
+}
+
+.comment-item .expanded > span:before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 7px;
+    background-position: 0 -5px;
+    -webkit-transition: height .3s linear;
+}
+
+.comment-item .expanded.open > span:before {
+    -webkit-transform: rotate(180deg);
+}
+
+.comment-item dl {
+    margin: 12px 5px 0 0;
+    padding: 6px 6px 7px;
+    background: #f5f5f5;
+    font-size: 12px;
+}
+
+.comment-item dd {
+    margin-top: 4px;
+    color: #666;
+}
+
+.comment-item .thumb-up em {
+    background: url("./images/pointer.png") no-repeat center;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+    vertical-align: top;
+    background-size: cover;
+}
+
+#imageListPage {
+    z-index: 15;
+}
+
+#imageListPage .content {
+    padding: 10px;
+}
+
+#imageListPage .image-line {
+    margin-bottom: 2%;
+}
+
+#imageListPage .image-line li {
+    width: 32%;
+    height: 0;
+    padding-bottom: 32%;
+    margin-left: 2%;
+    float: left;
+    background: url(http://img1.40017.cn/touch/c/public/comment/comment-fish.png) scroll no-repeat center center #d6dce3;
+    background-size: 59px 50px;
+    position: relative;
+}
+
+#imageListPage .image-line li:first-child {
+    margin-left: 0;
+}
+
+#imageListPage .image-line li img {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/* 查看图片子页 */
+
+#imageViewPage {
+    background: #000;
+    z-index: 16;
+}
+
+#imageViewPage,
+#imageView,
+#imageView ul,
+#imageView li {
+    height: 100%;
+}
+
+#imageView .indicator {
+    display: none;
+}
+
+#imageView li {
+    display: table;
+}
+
+#imageView li div {
+    height: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+#imageView img {
+    max-width: 100%;
+}
+
+.image-view-nav {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 50px;
+    color: #fff;
+    font-size: 16px;
+    line-height: 44px;
+    text-align: center;
+}
+
+.image-view-nav a {
+    width: 44px;
+    height: 44px;
+    text-align: center;
+}
+
+.image-view-nav a:after {
+    display: inline-block;
+    content: '';
+    width: 12px;
+    height: 12px;
+    -webkit-transform: rotate(45deg);
+}
+
+.image-view-nav a:first-child {
+    margin-left: 42px;
+    float: left;
+}
+
+.image-view-nav a:first-child:after {
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.image-view-nav a:last-child {
+    margin-right: 42px;
+    float: right;
+}
+
+.image-view-nav a:last-child:after {
+    border-right: 2px solid #fff;
+    border-top: 2px solid #fff;
+}
+
+.image-view-nav a.disabled:after {
+    border-color: #666;
+}
+
+

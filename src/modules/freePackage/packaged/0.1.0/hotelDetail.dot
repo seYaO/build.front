@@ -1,0 +1,281 @@
+{{?it.Data}}
+<div class="ui-title-hotel"><span>酒店详情</span><i data-dialog-hide></i></div>
+<div class="ui-hotelMain">
+    <div class="ui-hotel-row">
+        <div class="ui-hotelname">
+            <h3>
+                {{=it.Data.EnglishName}} {{=it.Data.Name}}
+                {{?it.Data.Score == "0.0"}}
+                {{??}}
+                    <em>{{=it.Data.Score}}分</em>
+                {{?}}
+                <span class="hotel-zhuan">
+                    {{?it.Data.Drill}}
+                    {{var Drill = parseInt(it.Data.Drill);}}
+                    {{for(var i=0;i<Math.floor(Drill);i++){}}
+                    {{if(i < Math.floor(Drill)){}}
+                        <i class="icon-select"></i>
+                        {{}else{}}
+                        <i></i>
+                        {{}}}
+                    {{}}}
+                    {{?}}
+                </span>
+            </h3>
+        </div>
+        <div class="ui-addAndTel">
+            <ul class="clearfix">
+                {{?it.Data.Address}}
+                    <li class="hotelAdd">
+                        <i></i>
+                        <span>{{=it.Data.Address}}</span>
+                    </li>
+                {{?}}
+                {{?it.Data.Tel}}
+                    <li class="hotelTel">
+                        <i></i>
+                        <span>{{=it.Data.Tel}}</span>
+                    </li>
+                {{?}}
+            </ul>
+        </div>
+        {{?it.Data.HotelPictures && it.Data.HotelPictures.length && it.Data.HotelPictures[0].indexOf('newdetails/load-picbig') < 0}}
+            <div class="ui-hotelInfo">
+                <div class="outer">
+                    <div class="inner clearfix" data-index='0'>
+                        {{
+                            var len;
+                            if(it.Data.HotelPictures.length < 7){
+                                len = 1;
+                            }else{
+                                len = Math.floor(it.Data.HotelPictures.length/7);
+                            }
+                            var newArr = it.Data.HotelPictures;
+                            var arrSplit = [];
+                            for(var i=0; i<newArr.length; i++){
+                                if(newArr[i].indexOf('pic4.40017.cn') != -1 || newArr[i].indexOf('pic3.40017.cn') != -1){
+                                    if(newArr[i].indexOf(".jpg") != -1){
+                                        arrSplit.push(newArr[i].split(".jpg")[0] + '_400x300_00.jpg');
+                                    }
+                                }else{
+                                    arrSplit.push(newArr[i]);
+                                }
+                            }
+                        }}
+                        {{for(var i=0; i< len; i++){}}
+                            <li>
+                                <div class="imgWrapper">
+                                    <div class="col-left"><img src="{{=arrSplit[7*i].replace('http:','')}}"></div>
+                                    <div class="col-right">
+                                        <div class="col-rTop">
+                                            <div class="col col-1"><img src="{{?it.Data.HotelPictures[7*i + 1]}}{{=arrSplit[7*i + 1].replace('http:','')}}{{??}}//file.40017.cn/dujia/images/sites/dujia/package/detail/no-pic.png{{?}}"></div>
+                                            <div class="col col-2"><img src="{{?it.Data.HotelPictures[7*i + 2]}}{{=arrSplit[7*i + 2].replace('http:','')}}{{??}}//file.40017.cn/dujia/images/sites/dujia/package/detail/no-pic.png{{?}}"></div>
+                                            <div class="col col-3"><img src="{{?it.Data.HotelPictures[7*i + 3]}}{{=arrSplit[7*i + 3].replace('http:','')}}{{??}}//file.40017.cn/dujia/images/sites/dujia/package/detail/no-pic.png{{?}}"></div>
+                                        </di>
+                                        <div class="col-rBot">
+                                            <div class="col col-4"><img src="{{?it.Data.HotelPictures[7*i + 4]}}{{=arrSplit[7*i + 4].replace('http:','')}}{{??}}//file.40017.cn/dujia/images/sites/dujia/package/detail/no-pic.png{{?}}"></div>
+                                            <div class="col col-5"><img src="{{?it.Data.HotelPictures[7*i + 5]}}{{=arrSplit[7*i + 5].replace('http:','')}}{{??}}//file.40017.cn/dujia/images/sites/dujia/package/detail/no-pic.png{{?}}"></div>
+                                            <div class="col col-6"><img src="{{?it.Data.HotelPictures[7*i + 6]}}{{=arrSplit[7*i + 6].replace('http:','')}}{{??}}//file.40017.cn/dujia/images/sites/dujia/package/detail/no-pic.png{{?}}"></div>
+                                        </div>
+                                      </div>
+                                </div>
+                            </li>
+                        {{}}}
+                    </div>
+                </div>
+                <div class="prev"><i class=""></i></div>
+                <div class="next"><i class="active"></i></div>
+            </div>
+            <p class="noBility1"><em>*</em>酒店或业主有义务更新照片。同程旅游对照片的准确性不承担任何责任。</p>
+        {{?}}
+    </div>
+    <div class="ui-hotel-row">
+        {{?it.Data.Facilities&&it.Data.Facilities.length}}
+            <div class="hotelDetailHead clearfix">
+                <i></i><label>酒店简介</label>
+            </div>
+            <div class="ui-row-content">
+                <p>
+                    {{=it.Data.HotelIntroduction}}
+                </p>
+            </div>
+        {{?}}
+    </div>
+    <div class="ui-hotel-row Polocy">
+        {{?it.Data.Polocies && it.Data.Polocies.length}}
+            <div class="hotelDetailHead clearfix">
+                <i></i><label>酒店政策</label>
+            </div>
+            <div class="ui-row-area">
+                <div class="ui-hotel-rule">
+                    <ul>
+                        {{~it.Data.Polocies:poItems:index}}
+                            {{?poItems.Type == "childbed"}}
+                            <li>
+                                <p class="ui-rule-head"><i class="icon-rule5"></i>儿童和加床</p>
+                                <p class="ui-rule-text"> {{=poItems.Content}}</p>
+                            </li>
+                            {{?}}
+                            {{?poItems.Type == "unsubscribe"}}
+                            <li>
+                                <p class="ui-rule-head"><i class="icon-rule2"></i>退订政策</p>
+                                <p class="ui-rule-text"> {{=poItems.Content}}</p>
+                            </li>
+                            {{?}}
+                            {{?poItems.Type == "pet"}}
+                            <li>
+                                <p class="ui-rule-head"><i class="icon-rule3"></i>宠物</p>
+                                <p class="ui-rule-text"> {{=poItems.Content}}</p>
+                            </li>
+                            {{?}}
+                            {{?poItems.Type == "pay"}}
+                            <li>
+                                <p class="ui-rule-head"><i class="icon-rule4"></i>付款方式</p>
+                                <p class="ui-rule-text"> {{=poItems.Content}}</p>
+                            </li>
+                            {{?}}
+                        {{~}}
+                    </ul>
+                </div>
+            </div>
+        {{?}}
+    </div>
+    <div class="ui-hotel-row">
+        <div class="hotelDetailHead clearfix">
+            <i></i><label>酒店点评</label>
+            <div class="ui-hotelc-bottom"><em>*</em>以下评论均来自猫途鹰<i></i></div>
+        </div>
+        <div class="ui-row-area">
+        {{?it.Data.Comments&&it.Data.Comments.length}}
+        <div class="ui-comment-content">
+        {{~it.Data.Comments:comIts:index}}
+        <div class="single-hotel-comment clearfix">
+            <div class="hotel-comment-img">
+                <span></span>
+                <div>
+                    {{?comIts.NickName}}
+                        {{=comIts.NickName}}
+                    {{??}}
+                        TripAdvisor会员
+                    {{?}}
+                </div>
+            </div>
+            <div class="ui-hotel-dp">
+                <p class="clearfix"><span class="comment-date">{{=comIts.Date}}</span></p>
+                <div class="ui-dp-text">
+                    {{=comIts.Content}}
+                </div>
+            </div>
+        </div>
+        {{~}}
+        </div>
+        {{??}}
+        <div class="ui-hotel-nodp">
+                <p>暂无点评</p>
+        </div>
+        {{?}}
+        </div>
+    </div>
+    <div class="ui-hotel-row hotelFacility">
+        <div class="hotelDetailHead clearfix">
+            <i></i><label>酒店设施</label>
+        </div>
+        <div class="hotelFacilities">
+            {{
+                var wifiFacility = ['免费WIFI','有线网络','无线上网'];
+                var hotelFacility = ['室外泳池','室内泳池','酒吧','咖啡','健身中心','电梯','餐厅','烧烤设备','复印传真','花园','水上乐园','购物店','网球场','康体俱乐部','高尔夫','会议室','儿童泳池','儿童俱乐部','停车场','滑水道','便利店','桑拿','海滩','酒庄','桌球或台球','ATM','图书馆','小吃吧','按摩','土耳其浴','洗衣'];
+                var roomFacility = ['空调','浴缸'];
+                var hotelServer = ['中文服务','SPA','礼宾服务','旅游和票务','报纸','代客泊车','免费机场接送','沙滩毛巾','免费早餐','外币兑换','租车','唤醒','送餐','24小时接待','商务服务','机场送机','行李寄存','儿童看护','宠物','多语言服务','火车站接站','机场接机','快速入住、退房','机场接送','早餐'];
+                var wifiItems = [];
+                var hotelFacilityItems = [];
+                var roomFacilityItems = [];
+                var hotelServerItems = [];
+                for(var i=0; i<it.Data.Facilities.length; i++){
+                    if(wifiFacility.indexOf(it.Data.Facilities[i].Name.trim("")) != -1){
+                        wifiItems.push(it.Data.Facilities[i]);
+                    }
+                    if(hotelFacility.indexOf(it.Data.Facilities[i].Name.trim("")) != -1){
+                        hotelFacilityItems.push(it.Data.Facilities[i]);
+                    }
+                    if(roomFacility.indexOf(it.Data.Facilities[i].Name.trim("")) != -1){
+                        roomFacilityItems.push(it.Data.Facilities[i]);
+                    }
+                    if(hotelServer.indexOf(it.Data.Facilities[i].Name.trim("")) != -1){
+                        hotelServerItems.push(it.Data.Facilities[i]);
+                    }
+                }
+            }}
+            {{?wifiItems && wifiItems.length}}
+                <div class="facilities">
+                    <ul class="clearfix">
+                        <li class="facilitiesTitle">
+                            WIFI通讯
+                        </li>
+                        <li class="facilitiesContent">
+                            {{~wifiItems:wifiItem}}
+                                <span class="clearfix" title="{{=wifiItem.Name}}">
+                                    <img src="{{=wifiItem.Icon.replace('http:','')}}">
+                                    {{=wifiItem.Name}}
+                                </span>
+                            {{~}}
+                        </li>
+                    </ul>
+                </div>
+            {{?}}
+            {{?hotelFacilityItems && hotelFacilityItems.length}}
+                <div class="facilities">
+                    <ul class="clearfix">
+                        <li class="facilitiesTitle">
+                            酒店设施
+                        </li>
+                        <li class="facilitiesContent">
+                            {{~hotelFacilityItems:hotelFacilityItem}}
+                                <span class="clearfix" title="{{=hotelFacilityItem.Name}}">
+                                    <img src="{{=hotelFacilityItem.Icon.replace('http:','')}}">
+                                    {{=hotelFacilityItem.Name}}
+                                </span>
+                            {{~}}
+                        </li>
+                    </ul>
+                </div>
+            {{?}}
+            {{?roomFacilityItems && roomFacilityItems.length}}
+                <div class="facilities">
+                    <ul class="clearfix">
+                        <li class="facilitiesTitle">
+                            房间设施
+                        </li>
+                        <li class="facilitiesContent">
+                            {{~roomFacilityItems:roomFacilityItem}}
+                                <span class="clearfix" title="{{=roomFacilityItem.Name}}">
+                                    <img src="{{=roomFacilityItem.Icon.replace('http:','')}}">
+                                    {{=roomFacilityItem.Name}}
+                                </span>
+                            {{~}}
+                        </li>
+                    </ul>
+                </div>
+            {{?}}
+            {{?hotelServerItems && hotelServerItems.length}}
+                <div class="facilities">
+                    <ul class="clearfix">
+                        <li class="facilitiesTitle">
+                            酒店服务
+                        </li>
+                        <li class="facilitiesContent">
+                            {{~hotelServerItems:hotelServerItem}}
+                                <span class="clearfix" title="{{=hotelServerItem.Name}}">
+                                    <img src="{{=hotelServerItem.Icon.replace('http:','')}}">
+                                    {{=hotelServerItem.Name}}
+                                </span>
+                            {{~}}
+                        </li>
+                    </ul>
+                </div>
+            {{?}}
+        </div>
+    </div>
+</div>
+{{??}}
+<div class="temai-noresult"><img src="//img1.40017.cn/cn/v/2015/yushou/no-result.png" alt=""><p>亲，暂无酒店介绍。</p></div>
+{{?}}

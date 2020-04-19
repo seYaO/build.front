@@ -1,0 +1,135 @@
+{{?it.Data&&it.Code==4000}}
+{{~it.Data.Hotels:hotelItems:index}}
+{{var hotelParam = encodeURIComponent(JSON.stringify(hotelItems));}}
+<div class="fp-item" data-hotelparam="{{=hotelParam}}" data-cityid="{{=hotelItems.CityId}}" data-IsDirect="{{=hotelItems.IsDirect}}" data-HotelId="{{=hotelItems.HotelId}}" data-StartDate="{{=hotelItems.CheckInTime}}" data-Nights="{{=hotelItems.Nights}}">
+    <div class="box-hotel">
+        <div class="box-top-hotel clearfix">
+            <div class="hotel-small-img"><img src="{{=hotelItems.CoverImg.replace('http:','')}}" alt="{{=hotelItems.Name}}"></div>
+            <div class="hotel-info">
+                <div class="hotel-title J_trace"  trace="hotelDetail" data-trace="{{=hotelItems.Name}}_{{=it.lineId}}"  data-stDate="{{=hotelItems.CheckInTime}}" data-nights="{{=hotelItems.Nights}}" data-IsDirect="{{=hotelItems.IsDirect}}" data-hotelId="{{=hotelItems.HotelId}}">
+                    <span class="hotelIndex">{{=index+1}}</span>
+                    <em title="{{=hotelItems.EnglishName}}{{?hotelItems.Name}} ({{=hotelItems.Name}}){{?}}">{{=hotelItems.EnglishName}}{{?hotelItems.Name}} ({{=hotelItems.Name}}){{?}}</em>
+                    {{?parseFloat(hotelItems.Score)>0}}
+                        <span> {{=hotelItems.Score}}分</span>
+                    {{?}}
+                        <span class="hotel-zhuan">
+                                {{?hotelItems.Drill}}
+                                {{var Drill = parseInt(hotelItems.Drill);}}
+                                {{for(var i=0;i<Math.floor(Drill);i++){}}
+                                {{if(i < Math.floor(Drill)){}}
+                                 <i class="icon-select"></i>
+                                 {{}else{}}
+                                 <i></i>
+                                 {{}}}
+                                {{}}}
+                                {{?}}
+                        </span>
+                </div>
+                <div class="clearfix">
+                <div class="hotel-adress">{{?it.hotelPosition && hotelItems.Distance != 0 && hotelItems.Distance != "0"}}<span class="distance">距{{=it.hotelPosition}}约<em>{{=hotelItems.Distance}}</em>公里</span>{{??}}{{?hotelItems.BusinessCircle}}{{=hotelItems.BusinessCircle}}附近{{?}}{{?}}</div>
+                {{?hotelItems.Latitude != 0 || hotelItems.Longitude != 0}}
+                    <div class="hotel-mapInfo J_hotel-mapInfo" data-name="{{=hotelItems.EnglishName||""}} ({{=hotelItems.Name||""}})" data-lat="{{=hotelItems.Latitude||""}}" data-lng="{{=hotelItems.Longitude||""}}">
+                        <i class="icons-point"></i>
+                        查看地图
+                    </div>
+                {{?}}
+                </div>
+                <div class="hotel-Facility">
+                {{?hotelItems.Facility&&hotelItems.Facility.length}}
+                {{~hotelItems.Facility:facItems:findex}}
+                {{?findex<8}}
+                <img src="{{=facItems.Icon.replace('http:','')}}" title="{{=facItems.Name}}"/>
+                {{?}}
+                {{~}}
+                {{?}}
+                </div>
+            </div>
+        </div>
+        {{?hotelItems.IsSelected==1}}
+        <div class="showRoom unfold J_fmore J_trace" trace="moreHotel" data-trace="{{=hotelItems.Name}}_{{=it.lineId}}">查看房型<b></b></div>
+        <div class="t-hotel"><span class="ty-hotel1">房型</span><span class="ty-hotel2">床型</span><span class="ty-hotel7">人数上限</span><span class="ty-hotel3">早餐</span><span class="ty-hotel4">政策</span><span class="ty-hotel5">间数</span><span class="ty-hotel6">差价</span>
+        </div>
+        <div class="roomType-box">
+            <div class="hotelbox1">
+            <ul>
+            {{var roomParam = encodeURIComponent(JSON.stringify(hotelItems.Rooms[0]));}}
+                <li class="hotel-has-select roomLi {{?hotelItems.Rooms[0].Rates[0].CancleType && hotelItems.Rooms[0].Rates[0].TargetCustomer && hotelItems.Rooms[0].Rates[0].TargetCustomer.length}}hasFitPeopleLi{{?}}"  data-roomParam='{{=roomParam}}' data-HotelId="{{=hotelItems.HotelId}}" data-RoomId="{{=hotelItems.Rooms[0].Rates[0].RoomId}}"  data-RateCode="{{=hotelItems.Rooms[0].Rates[0].RateCode}}" data-SupplierId="{{=hotelItems.Rooms[0].Rates[0].SupplierId}}" data-roomCount="{{=hotelItems.Rooms[0].Rates[0].RoomCount}}">
+                    <table class="hotelTable">
+                        <tbody>
+                            <tr>
+                                <td width="245" class="name-room hasName-room" data-name="{{=hotelItems.Rooms[0].Name}}|{{=hotelItems.Rooms[0].Rates[0].Name}}" align="left" title="{{=hotelItems.Rooms[0].Name}}|{{=hotelItems.Rooms[0].Rates[0].Name}}"> <span class="hotelName">{{=hotelItems.Rooms[0].Name}}|{{=hotelItems.Rooms[0].Rates[0].Name}}</span> {{?hotelItems.Rooms[0].Rates[0].IsInstantConfirm==1}}<span class="hotel-isconfirm">立即确认</span>{{?}}</td>
+                                <td width="130" align="left" class="bedType" title="{{=hotelItems.Rooms[0].Rates[0].BedType}}"><span>{{?hotelItems.Rooms[0].Rates[0].BedType}}{{=hotelItems.Rooms[0].Rates[0].BedType}}{{??}}--{{?}}</span></td>
+                                <td width="60" align="left" title="{{=hotelItems.Rooms[0].Rates[0].MaxUserDescription}}">{{?hotelItems.Rooms[0].Rates[0].MaxUser}}{{=hotelItems.Rooms[0].Rates[0].MaxUser}}人{{?}}</td>
+                                <td width="75" align="left">
+                                    {{?hotelItems.Rooms[0].Rates[0].IsIncludeBreakfast==1}}
+                                        <span data-content='{{?hotelItems.Rooms[0].Rates[0].BreakfastExplain}}{{=hotelItems.Rooms[0].Rates[0].BreakfastExplain}}{{?}}' class="J_breakfast">含早</span>
+                                    {{??}}
+                                        <span data-content='{{?hotelItems.Rooms[0].Rates[0].BreakfastExplain}}{{=hotelItems.Rooms[0].Rates[0].BreakfastExplain}}{{?}}' class="J_breakfast">不含早</span>
+                                    {{?}}
+                                </td>
+                                <td width="75" align="left"> 
+                                    {{?hotelItems.Rooms[0].Rates[0].CancleType || hotelItems.Rooms[0].Rates[0].TargetCustomer}}
+                                    {{
+                                        var items = hotelItems.Rooms[0].Rates[0];
+                                        if(items.TargetCustomer && items.TargetCustomer.length){
+                                            var TCLenth = items.TargetCustomer.length;
+                                            var shtml = '';
+                                            if(TCLenth <= 1){
+                                                shtml = '<div><p>{{=items.TargetCustomer[0]}}</p><div>';
+                                            }else{
+                                                for(var i =0; i <TCLenth; i ++){
+                                                    shtml += '<div><p>{{=i+1}}.{{=items.TargetCustomer[i]}}</p><div>';
+                                                }
+                                            }
+
+                                        }
+                                    }}
+                                    {{?items.CancleType && items.TargetCustomer && items.TargetCustomer.length}}
+                                        <span class="cancel-hotel" data-content="{{=items.CanclePolicy}}">{{=items.CancleType}}</span>
+                                        <p class="fitPeople" data-content="{{=shtml}}">适用人群</p>
+                                    {{??items.CancleType && (!items.TargetCustomer || !items.TargetCustomer.length)}}
+                                        <span class="cancel-hotel" data-content="{{=items.CanclePolicy}}">{{=items.CancleType}}</span>
+                                    {{??items.TargetCustomer && items.TargetCustomer.length && !items.CancleType}}
+                                        <p class="fitPeople" data-content="{{=shtml}}">适用人群</p>
+                                    {{?}}
+                                {{?}}
+                                </td>
+                                <td width="70" align="left" class="hotelSum"><span>{{=hotelItems.Rooms[0].Rates[0].RoomCount}} 间</span></td>
+                                {{?hotelItems.Rooms[0].Rates[0].DifferencePrice>0}}
+                                    <td width="65" align="left" class="hotel-diffPri"><span class="fp-fee-add overzero"> +{{=hotelItems.Rooms[0].Rates[0].DifferencePrice}}</span></td>
+                                {{??hotelItems.Rooms[0].Rates[0].DifferencePrice==0}}
+                                    <td width="65" align="left" class="hotel-diffPri"><span class="fp-fee-add equirezero"> --</span></td>
+                                {{??}}
+                                    <td width="65" align="left" class="hotel-diffPri"><span class="fp-fee-add downzero"> {{=hotelItems.Rooms[0].Rates[0].DifferencePrice}}</span></td>
+                                {{?}}
+                                <td width="48" align="center">
+                                {{?hotelItems.Rooms[0].Rates[0].LeftCount&&hotelItems.Rooms[0].Rates[0].LeftCount<10}}
+                                <span class="left-count">仅剩{{=hotelItems.Rooms[0].Rates[0].LeftCount}}间</span>
+                                {{?}}
+                                </td>
+                                <td width="70" align="center"><span class="btn-choice-flight has-choice-hotel" data-ratecode="{{=hotelItems.Rooms[0].Rates[0].RateCode}}" data-roomid="{{=hotelItems.Rooms[0].Rates[0].RoomId}}" data-price="{{=hotelItems.Rooms[0].Rates[0].Price}}" data-hotelid="{{=hotelItems.HotelId}}">已 选<i></i></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+            </div>
+            <div class="hotelbox2"></div>
+        </div>
+        </div>
+        {{??}}
+        <div class="showRoom unfold J_more J_trace" trace="moreHotel" data-trace="{{=hotelItems.Name}}_{{=it.lineId}}">查看房型<b></b></div>
+            <div class="roomType-box">
+                <div class="hotelbox2"></div>
+            </div>
+        {{?}}
+    </div>
+</div>
+{{~}}
+{{??}}
+<div class="temai-noresult"><img src="//img1.40017.cn/cn/v/2015/yushou/no-result.png" alt=""><p>很抱歉，搜索无结果，请更换关键词搜索</p></div>
+<div class="back-page">返回套餐<i></i></div>
+{{?}}
+
+
+

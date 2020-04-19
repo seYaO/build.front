@@ -1,0 +1,8 @@
+{
+    "dataUri":  "/intervacation/api/VisaInfo/GetVisaIndex",
+    "query": {
+        "siteType":0,
+        "continentIds":3106
+    },
+    "desc": "签证首页"
+}

@@ -1,0 +1,7 @@
+{{?it}}
+<div class="cost-line">
+    <span class="price-left">{{=it.Name}}</span>
+    <span class="price-right J_Vcost" vtype="{{=it.vType}}">
+    <em>{{=it.Price}}</em><b>{{=it.Num}}</b><i>{{=it.Cost}}</i></span>
+</div>
+{{?}}

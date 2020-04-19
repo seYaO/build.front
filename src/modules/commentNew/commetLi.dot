@@ -1,0 +1,83 @@
+{{~it:value}}
+<li class="commli clearfix"  fx="{{=value.ImageList.length}}">
+    <div class="comm-user">
+        <img src="{{?value.UserImage}}{{=value.UserImage.replace('http:','')}}{{??}}https://security.40017.cn/touch/img/mytouch/dllogo.png{{?}}" />
+        <p class="user-tel">{{?value.Creator.length > 9}}{{=value.Creator.substring(0,9)}}...{{??}}{{=value.Creator}}{{?}}</p>
+        <div class="pro_level i_level_{{=value.UserLeavel}}"></div>
+    </div>
+    <div class="comm-con">
+        {{?it.hasWide}}
+        <div class="comm-txt"  data-shou="{{?value.Content.length > 190}}{{=value.Content.substring(0,190)}}......{{?}}" data-zhan="{{=value.Content}}">
+             <span>{{?value.Content.length > 190}}{{=value.Content.substring(0,190)}}......{{??}}{{=value.Content}}{{?}}</span>
+            {{?value.Content.length > 190}}<a href="javascript:void(0);" class="J_tan zhan">展开全部<i></i></a>{{?}}
+        </div>
+        {{??}}
+        <div class="comm-txt"  data-shou="{{?value.Content.length > 150}}{{=value.Content.substring(0,150)}}......{{?}}" data-zhan="{{=value.Content}}">
+                     <span>{{?value.Content.length > 150}}{{=value.Content.substring(0,150)}}......{{??}}{{=value.Content}}{{?}}</span>
+                    {{?value.Content.length > 150}}<a href="javascript:void(0);" class="J_tan zhan">展开全部<i></i></a>{{?}}
+                </div>
+        {{?}}
+        <div class="comm-img clearfix">
+            {{?value.ImageList && value.ImageList.length>0}}
+                            {{~value.ImageList:imgs:index}}
+                               {{?index<5}}
+                               <img src="{{=imgs.replace('http:','')}}"/>
+                               {{??}}
+                               <span>查看更多</span>
+                               {{break;}}
+                               {{?}}
+                           {{~}}
+                        {{?}}
+        </div>
+        {{?value.ImageList && value.ImageList.length>0}}
+          <div class="mslide-panel none">
+              <h3><span></span><a href="javascript:void(0)" class="J_close"></a></h3>
+              <div class="mp-content">
+                  <div class="photo-detail">
+                      <div class="photo">
+                      {{?value.ImageList[0] && value.ImageList[0].length>0}}
+                        <img id="focusPic" src="{{=value.ImageList[0].replace('http:','')}}"/>
+                      {{??}}
+                        <img id="focusPic" alt="" src="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png"/>
+                      {{?}}
+                      <a class="mslide-num" href="javascript:void(0)"></a>
+                      </div>
+                      <div class="detail">
+                          <p class="date">{{=value.Creator}}<br />上传于{{=value.DPTime}}</p>
+                          <p class="detail-content">
+                           {{?value.Content}}
+                              {{=value.Content}}
+                           {{?}}
+                           </p>
+                      </div>
+                  </div>
+                  <div class="photo-mslide">
+                      <a href="javascript:void(0)" class="prev"><span class="btn-prev"></span></a>
+                      <div class="list">
+                          <ul>
+                              {{~value.ImageList:currentImg}}
+                              <li><a href="javascript:void(0);"><img src="{{=currentImg.replace('http:','')}}"/></a></li>
+                              {{~}}
+                                          </ul>
+                      </div>
+                      <a href="javascript:void(0)" class="next"><span class="btn-next"></span></a>
+                  </div>
+              </div>
+          </div>
+        {{?}}
+        <div class="comm-useful clearfix">
+            <p class="useful-left">
+                <span class="travel-kind">{{=value.Purpose}}</span><span class="traver-time">{{=value.DPTime}}&nbsp;&nbsp;{{?value.FromSite}}来自于{{=value.FromSite}}{{?}}</span>
+            </p>
+            <a class="btn-comet comet_useful" data-cometid="{{=value.Id}}" href="javascript:;"><em></em><b>{{=value.PraiseCount}}</b>有用</a>
+        </div>
+        {{?value.Reply}}
+        <div class="comm-recall clearfix">
+            <span class="recall-name">同程回复:</span>
+            <span class="recall-txt">{{=value.Reply}}</span>
+
+        </div>
+        {{?}}
+    </div>
+</li>
+{{~}}

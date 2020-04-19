@@ -1,0 +1,65 @@
+<div class="dj-calendar {{=it.skin}}">
+    <div class="panel">
+        <div class="month-nav">
+            <a href="javascript:;" hidefocus="true" class="ico previous-month" data-btn-premonth></a>
+            <a href="javascript:;" hidefocus="true" class="ico next-month" data-btn-nextmonth></a>
+            <span class="title">{{=it.title}}</span>
+        </div>
+        <div class="container">
+            <table class="month-panel">
+                <thead>
+                    <tr class="header">
+                        <th  class="sunday">日</th>
+                        <th>一</th>
+                        <th>二</th>
+                        <th>三</th>
+                        <th>四</th>
+                        <th>五</th>
+                        <th class="saturday">六</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{~it.weeklist:week:index}}
+                    <tr>
+                        {{~week:day:weekday}}
+                        {{var tdclass='';if(weekday==0) tdclass='sunday'; if(weekday==6) tdclass='saturday';}}
+                        {{
+                        var residual='-1';
+                        if(!day.hasdata)
+                        {
+                        tdclass+=' invalid-day';
+                        }
+                        else{
+                            residual=day.data.Residual;
+                            if(day.data.Residual<0)
+                            {
+                             tdclass+=' invalid-day';
+                            }
+                            else if(day.data.ResidualDesc.startWith("余位")||day.data.ResidualDesc.startWith("充足")){
+                            tdclass+=' over';
+                            }
+                            else{
+                              tdclass+=' enough';
+                            }
+                        }
+                        if(day.issel)tdclass+=' select';if(day.festival)tdclass+=' festival';
+}}
+                        <td class="{{=tdclass}}" data-date="{{=day.date}}" data-value="{{=day.value}}" data-day="{{=day.day}}" data-residual="{{=residual}}">
+                            <div class="td_panel">
+                                <span class="day_value">{{=day.value}}</span>
+                                {{?day.data&&day.data.ResidualDesc}}
+                                <span class="data_prace">{{=day.data.ResidualDesc}}</span>
+                                {{?}}
+                                {{?day.data&&day.data.Price}}
+                                <span class="data_price">{{=day.data.Price}}元</span>
+                                {{?}}
+                            </div>
+                        </td>
+                        {{~}}
+                    </tr>
+                    {{~}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

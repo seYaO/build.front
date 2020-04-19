@@ -1,0 +1,85 @@
+
+<div class="procedureBox procedurBottom cj_favorable" attr-card="false">
+    {{?it.length !== 0}}
+    <h4>
+        <span class="cj_tit cj_tit_up">出境宝</span>
+        <div class="cj_tips">
+        <span class="cj_tit_tips"></span>
+        <div class="cj_tips_box none">
+        <div class="cj_tips_list">
+        <b class="arrico_left"></b>
+        <dl>
+            <dt>什么是出境宝？</dt>
+            <dd>出境宝是同程旅游推出的出境旅游礼品卡，全国通用，可用于支付同程旅游上所有的</dd>
+            <dd>出境游产品订单（礼品卡、签证、邮轮除外），使用简单便捷。</dd>
+            <dt>出境宝如何获得？</dt>
+            <dd>出境宝可以通过同程官网以及同程体验店以上官方渠道购买。</dd>
+            <dt>为什么使用出境宝要设置支付密码？该怎样设置？</dt>
+            <dd>支付密码是保障同程用户使用出境宝、账户余额等支付安全的一种工具。请用户自行</dd>
+            <dd>设定支付密码，并妥善保管。</dd>
+            <dd>具体请详见<a target="_blank" href="//www.ly.com/newhelp/questionlist/6-15.html">出境宝使用常见问题</a></dd>
+        </dl>
+        </div>
+        </div>
+        </div>
+    </h4>
+    {{??}}
+    <h4>
+        <span class="cj_tit_no">出境宝</span>
+        <p class="cj_tit_load">您需要 登录才能使用出境宝，请点击页面右上方进行登录后操作</p>
+    </h4>
+    {{?}}
+    {{?it.length !== 0}}
+    {{~it:value:index}}
+    <div class="cjbox none">
+        <div class="cj_top">
+            <div class="showCj">
+                <div class="newcard" attr-url="/intervacation/api/Chujingbao/CJBaoCardBand">
+                    <label>出境宝卡号：
+                        <input class="Cj_nub" type="text" value="请输入卡号" attr-value="请输入卡号">
+                    </label>
+                    <label>出境宝密码：
+                        <input class="Cj_pw" type="text" value="请输入密码" attr-value="请输入密码">
+                    </label><a href="javascript:void(0);" class="addbtn">绑定出境宝</a>
+                </div><span class="errorspan none"> <em> </em>请输入正确的卡号及密码</span>
+            </div>
+            <div class="verifybox none" error_nub="0">
+                <label>验证码：
+                    <input type="text" class="Vcode" id="verificatcode" value="请输入验证码" attr-value="请输入验证码">
+                </label>
+                <div class="verifycode" attr-url="/intervacation/api/Chujingbao/CheckVerifyCode">
+                    <img title="点击刷新验证码" alt="验证码" src="" id="imgVCode" attr-imgvcode="false">
+                </div><span class="errorspan"> <em> </em>请输入正确的验证码</span>
+            </div>
+        </div>
+        <div class="cj_bottom" price="0" cardnub="0"><span class="usetit">可用的出境宝</span>
+            <ul class="cj_list">
+                <li class="table_title">
+                    <span class="car_th">卡号</span>
+                    <span class="nub_th">面值</span>
+                    <span class="use_th">本次使用</span>
+                    <span class="remaining_th">余额</span>
+                    <span class="time_th">有效期</span>
+                </li>
+                <li>
+                    <span class="car_th">
+                    <label><input attr-id="{{=value.CardNumber}}" attr-price="{{=value.Balance}}" attr-select="false" type="checkbox">{{=value.CardNumber}}</label>
+                    </span>
+                    <span class="nub_th">{{=value.Balance}}</span>
+                    <span class="use_th">0</span>
+                    <span class="remaining_th">{{=value.HasBalance}}</span>
+                    <span class="time_th">{{=value.EndDate.split('T')[0]}}</span>
+                </li>
+            </ul>
+            <div class="totle_card">共使用了<em class="card_nub">0</em>张出境宝，共<em class="card_price">0</em>元</div>
+            <div class="tradersbox" attr-verify="false" attr-url="/intervacation/api/Chujingbao/VerifyPassword">
+                <label>交易密码：
+                    <input type="password" class="dealcode" value="" attr-value="">
+                </label><a href="http://member.ly.com/TravelCard/TravelCardAccount.aspx#reset" target="_blank" title="忘记密码">忘记密码</a><span class="errorspan none"> <em> </em>请输入正确的交易密码</span>
+            </div>
+        </div>
+    </div>
+    {{~}}
+    {{?}}
+</div>
+

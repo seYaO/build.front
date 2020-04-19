@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="同程旅游" /><meta name="copyright" content="同程旅游络科技股份有限公司" />
+<title>门店签约状态</title>
+<meta name="apple-itunes-app" content="app-id=475966832" />
+<link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/c/c/pay/base.0.0.2.css?v=2013102303" media="screen" />
+<% includeId = cnwidescreenjscss %>
+<style>
+    a:hover{
+        text-decoration: none;
+    }
+    #footer_lite {
+    margin: 20px auto 0;
+    border-top: none;
+}
+</style>
+</head>
+<body>
+<!--头部start-->
+<div>
+    <div class="login_bg_bag"></div>
+    <span id="bulletin"></span>
+    <div id="header_lite">
+        <div class="logo clearfix">
+            <h1><a href="javascript:void(0);" title="同程旅游"><img src="//img1.40017.cn/cn/c/c/2015/2015129100342.png" alt="同程旅游"></a></h1>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+    <div class="contract_con">
+        {{?IT.Result&&IT.Result==true}}
+        <div class="suc_fail">您已签约成功</div>
+        {{??}}
+        <div class="tip_fail">{{?IT.Message&&IT.Message!=""}}{{=IT.Message}}{{??}}抱歉，签约失败，请联系技术人员施永刚13053~{{?}}</div>
+        {{?}}
+    </div>
+</div>
+<!--底部-->
+<span id="ucFooter">
+    <div id="footer_lite"> Copyright&nbsp;©&nbsp;
+        <span class="cr_time" type="Holiday">2002-2017</span>&nbsp;版权所有&nbsp;
+        <span class="corp_name">同程网络科技股份有限公司</span>&nbsp;
+        <a class="icp_num" href="//img1.40017.cn/cn/new_ui/public/images/20141103174615.jpg" target="_blank">苏ICP证B2-20100204</a>
+    </div>
+</span>
+<!-- 底部脚本放置区 -->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js"></script>
+<script data-loader="true" src="//modules/sea.js"></script>
+<script>
+    seajs.require("./index").init();
+</script>
+</body>
+</html>

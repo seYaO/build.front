@@ -1,0 +1,186 @@
+@charset "UTF-8";
+a,
+a:hover {
+  text-decoration: none;
+}
+.content {
+  width: 1200px;
+  margin: 10px auto 0;
+  font-family: "microsoft yahei", "WenQuanYi Micro Hei", sans-serif !important;
+}
+.content .tit {
+  font-size: 24px;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  position: absolute;
+  top: 40px;
+  margin: 0 auto;
+  width: 1200px;
+}
+.contract_con {
+  margin-top: 12px;
+}
+.contract_con img {
+  max-width: 1200px;
+}
+.contract_con .line {
+  border-bottom: solid 1px #b1b1b1;
+}
+.contract_con .contract_doc {
+  border: solid 1px #d2d2d2;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 410px;
+}
+.contract_con .contract_doc img {
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+}
+.contract_con .contract_doc div {
+  color: #666;
+  font-size: 14px;
+  padding: 20px 0 0 20px;
+  line-height: 28px;
+}
+.contract_con .other_doc {
+  height: 70px;
+  line-height: 70px;
+  position: relative;
+  display: inline;
+}
+.contract_con .other_doc a {
+  display: inline-block;
+  margin-right: 15px;
+}
+.contract_con .con_bg {
+  padding: 8px 30px 0 30px;
+  /*position: fixed;
+  bottom: 30px;
+  height: 70px;*/
+  width: 1140px;
+  position: relative;
+}
+.contract_con .con_bg .appoint_btu {
+  display: block;
+  width: 130px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  background: #ff7800;
+  font-size: 16px;
+  color: #fff;
+  border-radius: 3px;
+  float: right;
+  margin-top: 18px;
+  margin-left: 20px;
+  cursor: pointer;
+}
+.contract_con .con_bg .appoint_btu.disabled {
+  background: #ddd;
+}
+.loading_p {
+  display: inline-block;
+  background: url(//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif) no-repeat;
+  padding-left: 86px;
+  height: 70px;
+  margin: 0 auto;
+  line-height: 70px;
+  font-size: 16px;
+  margin-top: 20px;
+}
+.com_bg {
+  font-family: "Microsoft Yahei";
+  padding: 54px 60px 0 54px;
+}
+.com_bg h4 {
+  font-size: 14px;
+  color: #666;
+}
+.com_bg h4 em {
+  color: #333;
+  font-size: 16px;
+}
+.com_bg label {
+  color: #999;
+  display: block;
+}
+.com_bg .btu_ctrl {
+  position: absolute;
+  right: 0;
+  display: block;
+  width: 36px;
+  height: 30px;
+  z-index: 1111;
+}
+.com_bg .btu_ctrl i {
+  background: url(img/dest/appoint.png) no-repeat;
+  background-position: -63px 4px;
+  width: 36px;
+  height: 30px;
+  display: block;
+}
+.fail_t {
+  font-family: "Microsoft Yahei";
+  padding: 95px 0 0 50px;
+  font-size: 16px;
+  color: #333;
+}
+.fail_t p {
+  position: relative;
+  padding: 0 50px 0 56px;
+  height: 66px;
+}
+.fail_t p em {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  background: url(img/dest/order_pop.png) no-repeat;
+  background-position: 0px -18px;
+  height: 70px;
+  width: 54px;
+}
+.fail_t p span {
+  display: inline-block;
+  padding-top: 20px;
+}
+.close_b {
+  font-family: "Microsoft Yahei";
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 42px;
+  height: 42px;
+  display: block;
+}
+.close_b i {
+  background: url(img/dest/appoint.png) no-repeat;
+  background-position: -1px -1px;
+  height: 20px;
+  width: 20px;
+  display: block;
+  margin: 16px 0 0 6px;
+}
+.default .dialog_modal_title {
+  height: 0;
+}
+.other_doc .loading_c {
+  background: url(//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif) no-repeat;
+  background-size: 72px 72px;
+  color: #333;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 70px;
+  line-height: 70px;
+  font-size: 16px;
+  z-index: 1200;
+  width: 160px;
+  padding-left: 80px;
+  font-size: 14px;
+}
+#footer_lite {
+  margin: 20px auto 0;
+  border-top: none;
+}

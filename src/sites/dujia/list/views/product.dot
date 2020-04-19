@@ -1,0 +1,318 @@
+{{?it.lineList && it.lineList.length && it.lineList[0].line && it.lineList[0].line.length}}
+    <div class="mod-pager">
+        <ul class="prolist">
+            {{~it.lineList[0].line:pro}}
+            {{var linkUrl = "",
+                property = "",
+                proClass = "";}}
+            {{?pro.prop == 3}}
+                {{?pro.isTpackage == '0'}}
+                    {{linkUrl = "/dujia/tours/" + pro.id + "/";}}
+                    {{property = "自由行";}}
+                    {{proClass = "free";}}
+                {{??}}
+                    {{linkUrl = "/dujia/tours/p" + pro.id + "/";}}
+                    {{property = "机酒任选";}}
+                    {{proClass = "package";}}
+                {{?}}
+            {{??}}
+                {{linkUrl = "/dujia/tours/" + pro.id + ".html";}}
+                {{?pro.prop == 1}}
+                    {{property = "跟团游";}}
+                    {{proClass = "pack";}}
+                {{??}}
+                    {{property = "目的地参团";}}
+                    {{proClass = "local";}}
+                {{?}}
+            {{?}}
+            <li class="pro-line">
+                <div class="pro-redu">
+                    <div class="pro-img">
+                        <a href="{{=linkUrl.replace('http:','')}}" target="_blank" data-paramed="true">
+                            <img data-img="{{=pro.absImgURL.replace('http:','')}}" onerror="Monitor.log(this.src,'image')">
+                        </a>
+                        <span class="mark {{=proClass}}">{{=property}}</span>
+                        {{?pro.recommendReason}}<span class="mark-recommand {{=proClass}}" title="{{=pro.recommendReason}}">{{=(pro.recommendReason.length < 7) ? pro.recommendReason : pro.recommendReason.substring(0,6)}}</span>{{?}}
+                        <div class="pro-compare" style="display: none;">
+                            <span data-content="收藏后您可进入我的同程-我的收藏进行查看。" attr-id="{{=pro.id}}" class="J_Store store J_Tips"><i></i>收藏</span>
+                            |
+                            <span attr-tit="{{=pro.title}}" attr-price="{{=pro.tcPrice}}" attr-id="{{=pro.id}}" class="compare"><i></i>加入对比</span>
+                        </div>
+                    </div>
+                    {{var iconClass = "";}}
+                    {{?pro.isTCSpecialLine == 1}}
+                        {{iconClass = "tc_ico";}}
+                    {{?}}
+                    <div class="pro-info {{=iconClass}}">
+                        <p class="pro-title">
+                            {{var clractTitle = "";}}
+                            {{?pro.clractTitleName}}
+                                {{clractTitle = "<b>【" + pro.clractTitleName + "】</b>";}}
+                            {{?}}
+                            {{var seasonTitle = pro.clractTitleName ? ("【" + pro.clractTitleName + "】") : "";}}
+                            {{var proTitle = clractTitle + "<em>" + pro.title + "</em>&nbsp;" + pro.subTitle;}}
+                            {{var mainTitle = seasonTitle + pro.title + pro.subTitle;}}
+                            {{var titleLen = 0;}}
+                            {{?mainTitle && mainTitle.length > 45}}
+                                {{titleLen = 45 - seasonTitle.length;}}
+                                {{?titleLen > 0}}
+                                    {{?(titleLen - pro.title.length) > 0}}
+                                        {{proTitle = clractTitle + "<em>" + pro.title + "</em>&nbsp;" + pro.subTitle.substring(0, (titleLen - pro.title.length-1)) + "...";}}
+                                    {{??}}
+                                        {{proTitle = clractTitle + "<em>" + pro.title.substring(0,titleLen) + "</em>...";}}
+                                    {{?}}
+                                {{??}}
+                                    {{proTitle = "<b>【" + pro.clractTitleName.substring(0,45) + "】</b>...";}}
+                                {{?}}
+                            {{?}}
+                            <a title='{{=seasonTitle}}{{=pro.title}}{{=pro.subTitle}}' href="{{=linkUrl.replace('http:','')}}" target="_blank" data-paramed="true">
+                                {{=proTitle}}
+                            </a>
+                            {{?pro.lineQualityName}}
+                                <span data-content="{{=pro.lineNotes}}" class="stars J_Tips">
+                                    <span class="stars-txt">{{=pro.lineQualityName}}</span>
+                                    <span class="icon-star">{{for(var i=0;i<pro.lineStarName.length;i++){}}<i></i>{{}}}</span>
+                                </span>
+                            {{?}}
+                            {{var marketList = pro.marketingTagList;}}
+                            {{?marketList && marketList.length && marketList[0].marketingTag && marketList[0].marketingTag.length}}
+                                <img src="{{=marketList[0].marketingTag[0].tagUrl}}" title="{{=marketList[0].marketingTag[0].tagName}}" class="icon-fes" />
+                            {{?}}
+                            {{?pro.isTCSpecialLine != 0 && it.isTCSpecialLineList && it.isTCSpecialLineList.length && it.isTCSpecialLineList[0].isTCSpecialLine && it.isTCSpecialLineList[0].isTCSpecialLine.length}}
+                                <span data-content="{{=it.isTCSpecialLineList[0].isTCSpecialLine[0].notes}}" class="icon-tczx J_Tips"></span>
+                            {{?}}
+                            {{?pro.isExtraordinary != 0 && it.isExtraordinaryList && it.isExtraordinaryList.length && it.isExtraordinaryList[0].isExtraordinary && it.isExtraordinaryList[0].isExtraordinary.length}}
+                                <span data-content="{{=it.isExtraordinaryList[0].isExtraordinary[0].notes}}" class="icon-ffxl J_Tips"></span>
+                            {{?}}
+                            {{?pro.serviceCharName}}
+                                {{?pro.serviceCharName.indexOf('旅博会专享')!=-1}}
+                                 <span class="icon-lbh J_Tips"></span>
+                                {{?}}
+                            {{?}}
+                        </p>
+                        <p class="pro-pre">
+                            {{?pro.isBlh != 0 && pro.blhContent}}
+                                {{var blhTips = "",
+                                      blhContent = pro.blhContent.split(/\d+\./g);}}
+                                {{var blhCount = 0;}}
+                                {{~blhContent:blh}}
+                                    {{?blh}}
+                                        {{blhCount++;}}
+                                        {{blhTips += blhCount + "." + blh + "<br />";}}
+                                    {{?}}
+                                {{~}}
+                                <span data-content='<div><strong>积分抵扣</strong><hr />{{=blhTips}}</div>' class="J_Tips" style='border:solid 1px #ff6d4f; color:#ff6d4f;'>积分抵扣</span>
+                            {{?}}
+
+                            {{?pro.isSuper != 0 && pro.superContent}}
+                                {{var superCTips = "",
+                                      superCContent = pro.superContent.split(/\d+\./g);}}
+                                {{var superCCount = 0;}}
+                                {{~superCContent:superC}}
+                                    {{?superC}}
+                                        {{superCCount++;}}
+                                        {{superCTips += superCCount + "." + superC + "<br />";}}
+                                    {{?}}
+                                {{~}}
+                                <span data-content='<div><strong>vip超值购</strong><hr />{{=superCTips}}</div>' class="J_Tips" style='border:solid 1px #ff6d4f; color:#ff6d4f;'>vip超值购</span>
+                            {{?}}
+
+                            {{?pro.isStrict != 0 && pro.strictContent}}
+                                {{var strictTips = "",
+                                      strictContent = pro.strictContent.split(/\d+\./g);}}
+                                {{var strictCount = 0;}}
+                                {{~strictContent:strict}}
+                                    {{?strict}}
+                                        {{strictCount++;}}
+                                        {{strictTips += strictCount + "." + strict + "<br />";}}
+                                    {{?}}
+                                {{~}}
+                                <span data-content='<div><strong>同程严选</strong><hr />{{=strictTips}}</div>' class="J_Tips" style='border:solid 1px #ff6d4f; color:#ff6d4f;'>同程严选</span>
+                            {{?}}
+
+                            
+                            {{?pro.disList && pro.disList.length && pro.disList[0].discount && pro.disList[0].discount.length}}
+                            {{~pro.disList[0].discount:preferList}}
+                                {{var flag = false;}}
+                                {{?preferList.realIconId != "58" && preferList.realIconId != "63" && preferList.realIconId != "62"}}
+                                    {{var name = "";}}
+                                    {{var iconContent = "";}}
+
+                                    {{?preferList.name.Length > 4}}
+                                        {{name = preferList.name.Substring(0, 4);}}
+                                    {{??}}
+                                        {{name = preferList.name;}}
+                                    {{?}}
+
+                                    {{if(name == "第二人半"){name = "第二人半价";}}}
+                                    {{?preferList.longContent}}
+                                        {{var tips = preferList.longContent.split(/\d+\./g);}}
+                                        {{var tipCount = 0;}}
+                                        {{~tips:iconTip}}
+                                            {{?iconTip}}
+                                                {{tipCount++;}}
+                                                {{iconContent += tipCount + "." + iconTip + "<br />";}}
+                                            {{?}}
+                                        {{~}}
+                                    {{?}}
+
+                                    {{var content = "<div><strong>" + preferList.name + "</strong><hr />" + iconContent + "</div>";}}
+                                    {{var iconStyle = "border:solid 1px " + preferList.iconColor + "; color:" + preferList.iconColor + ";";}}
+                                    {{?name}}
+                                        <span data-content='{{=content}}' class="J_Tips" style='{{=iconStyle}}'>{{=name}}</span>
+                                    {{?}}
+                                {{?}}
+                            {{~}}
+                            {{?}}
+                            {{?pro.whiteBarFlag != 0}}
+                                <span data-content="{{=pro.whiteBarValue}}" class="J_Tips">分期付款</span>
+                            {{?}}
+                            {{?pro.isExtraordinary == 0}}
+                                <span data-content='<div>
+                                        1.点评成功后，您将获得25-50元不等的点评奖金,审核通过后返还至您的奖金账户。<br /><span style="color: #ff7800">
+                                        2.如果您的点评足够细致、有特色，将有机会被评为精华点评，被评为精华点评，奖金是原点评奖金的2倍哦！</span><br /><span style="color: #ff7800">
+                                        3.若是点评上传图片，图片实拍，成像清晰美丽，被评为精华点评机会更大哦！</span></div>' 
+                                    class="J_Tips">点评返现</span>
+                            {{??}}
+                                <span data-content='<div>
+                                        1.点评提交，通过审核后您将可以获得<span style="color: #ff7800">100元/人</span>的立返奖金，返现人数即参与点评人数（奖金统一返至预定人立返奖金账户）。<br />
+                                        2.出游前一天会有短信通知，出游后即可点击短信中的链接参与非凡点评。<br />
+                                        3.非凡点评需满足100字以上的文字+4张以上的图片，每个出游人的点评内容不可完全一致哦。<br />
+                                        4.在回团后15天内点评有效。</div>' 
+                                class="J_Tips">非凡立返</span>
+                            {{?}}
+                        </p>
+                        <div class="branch_style">
+                            <p class="pro-tip">
+                                {{?pro.portCity && (pro.prop != 10)}}<span class="pro-dep"><i></i>{{=pro.portCity}}出发</span>{{?}}
+                                {{?pro.serviceCharName}}
+                                    <span class="pro-light">{{=pro.serviceCharName}}</span>
+                                {{?}}
+                                {{?pro.rcImgTitle}}
+                                    {{var rcTitle = pro.rcImgTitle.split(",");}}
+                                    {{~rcTitle:rcImg}}
+                                        <span class="pro-light">{{=rcImg}}</span>
+                                    {{~}}
+                                {{?}}
+                            </p>
+                            {{?pro.isTpackage == 0}}
+                                <p class="pro-scen">
+                                    {{?pro.prop == 1 || pro.prop == 10}}
+                                        {{var scenery = "";}}
+                                        {{?pro.sceneryName}}
+                                        <span class="pro-text">行程景点：{{=pro.sceneryName.replace(/;/g, "、")}}</span>
+                                        {{?}}
+                                    {{??}}
+                                        {{?pro.hotelDiamonds && pro.hotelDiamonds > 0}}
+                                            <span class="pro-text hotelName">酒店等级：</span>
+                                            <span class='level J_Tips marlef'  data-content="<div class='assess assess-tip'>行业网站评定为：<span>{{=pro.hotelDiamonds}}钻</span></div>"  data-name='{{=pro.hotelDiamonds}}'>
+                                                {{for (var i = 0; i < Math.ceil(pro.hotelDiamonds); i++) {}}
+                                                    {{?i < Math.floor(pro.hotelDiamonds)}}
+                                                        <em class="diamond"></em>
+                                                    {{??}}
+                                                        <em></em>
+                                                    {{?}}
+                                                {{}}}
+                                            </span>
+                                        {{?}}
+                                        {{?pro.flightTypeId != 0}}
+                                            {{var flightType = "";}}
+                                            {{?pro.flightTypeId == 1}}
+                                                {{flightType = "直飞";}}
+                                            {{??pro.flightTypeId == 2}}
+                                                {{flightType = "中转";}}
+                                            {{??pro.flightTypeId == 3}}
+                                                {{flightType = "多程";}}
+                                            {{?}}
+                                            <span class="pro-text">航班信息：</span>{{=flightType}}&nbsp;&nbsp;
+                                            {{?pro.goDepartureTime && pro.backDepartureTime}}
+                                                {{=pro.goDepartureTime.substring(0,2)}}:{{=pro.goDepartureTime.substring(2)}}出发/{{=pro.backDepartureTime.substring(0,2)}}:{{=pro.backDepartureTime.substring(2)}}返回
+                                            {{??}}
+                                                暂无
+                                            {{?}}
+                                        {{?}}
+                                    {{?}}
+                                </p>
+                                <p class="pro-date">
+                                    <span class="pro-text">出发日期：</span>
+                                    {{var lineDate = "", gdDate = pro.gdDate.split(";"); gdDate.pop(); var len = gdDate.length;}}
+                                    {{for(var i = 0; i < len; i++) {
+                                        if (len > 7) {
+                                            if (i < 6) {
+                                                lineDate += gdDate[i].substring(4,6) + "-" + gdDate[i].substring(6) + " | ";
+                                            } else {
+                                                lineDate += "... | ";
+                                                break;
+                                            }
+                                        } else if (len > 1 && len < 7) {
+                                            if (i < len - 1) {
+                                                lineDate += gdDate[i].substring(4,6) + "-" + gdDate[i].substring(6) + " | ";
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            break;
+                                        }
+                                    } }}
+                                    {{lineDate  +=  gdDate[len-1].substring(0,4) + "-" + gdDate[len-1].substring(4,6) + "-" + gdDate[len-1].substring(6);}}
+                                    <span class="date-list">{{=lineDate}}</span>
+                                    <span firstdate='{{=gdDate[0].substring(0,4) + "-" + gdDate[0].substring(4,6) + "-" + gdDate[0].substring(6)}}' attr-lineid="{{=pro.id}}" class="J_fond fond">更多<i></i></span>
+                                </p>
+                            {{??}}
+                                <p class="pro-date">
+                                    <span class="pro-text">出发日期：</span>
+                                    <span class="date-list">天天发团</span>
+                                </p>
+                            {{?}}
+                        </div>
+                    </div>
+                    <div class="pro-detail">
+                        {{?pro.tcPrice != 0}}
+                            <p class="pro-price"><em>¥</em>{{=pro.tcPrice}}<i>起</i></p>
+                        {{??}}
+                            <p class="pro-price"><em class="time-price">实时计价</em></p>
+                        {{?}}
+
+                        {{?pro.isBlh=="1" && pro.isSuper=="0" && pro.isStrict=="0"}}
+                            <div>
+                                <span class="J_Tips J_Tips_async allTravel" data-content='此优惠适用于{{=pro.minAmtDate.substring(0,4) + "-" + pro.minAmtDate.substring(4,6) + "-" + pro.minAmtDate.substring(6)}}出游，其余日期的优惠规则详见价格日历'>
+                                <span class="allTravel-name">积分抵扣</span>
+                                <span class="allTravel-price">抵<strong>{{=pro.blhAmount||""}}</strong>元/人</span>
+                                </span>
+                            </div>
+                        {{?}}
+                        {{?pro.isSuper=="1" && pro.isStrict=="0"}}
+                            <div>
+                                <span class="J_Tips J_Tips_async allTravel" data-content='此优惠适用于{{=pro.minAmtDate.substring(0,4) + "-" + pro.minAmtDate.substring(4,6) + "-" + pro.minAmtDate.substring(6)}}出游，其余日期的优惠规则详见价格日历'>
+                                <span class="allTravel-name">VIP超值购</span>
+                                <span class="allTravel-price">抵<strong>{{=pro.superAmount||""}}</strong>元/人</span>
+                                </span>
+                            </div>
+                        {{?}}
+                        {{?pro.isStrict=="1"}}
+                            <div>
+                                <span class="J_Tips J_Tips_async allTravel" data-content='此优惠适用于{{=pro.minAmtDate.substring(0,4) + "-" + pro.minAmtDate.substring(4,6) + "-" + pro.minAmtDate.substring(6)}}出游，其余日期的优惠规则详见价格日历'>
+                                <span class="allTravel-name">严选</span>
+                                <span class="allTravel-price">抵<strong>{{=pro.strictAmount||""}}</strong>元/人 返3%</span>
+                                </span>
+                            </div>
+                        {{?}}
+
+                        <a target="_blank" href="{{=linkUrl.replace('http:','')}}" class="pro-btn" data-paramed="true">查看详情</a>
+                        {{?pro.satDeg == "0.0"}}
+                            <p class="newpro">新产品</p>
+                        {{??}}
+                        <a target="_blank" onclick="_tcTraObj._tcTrackEvent('bq_chanpin', 'scj_dianping', '点评', ' ');" href="{{=linkUrl.replace('http:','')}}#CommentContent">
+                            <p class="pro-comm">
+                                <em>{{=pro.satDeg}}%</em>满意度&nbsp;&nbsp;<em>{{=pro.cmtCount}}</em>条点评
+                            </p>
+                        </a>
+                        {{?}}
+                    </div>
+                </div>
+                <div class="pro-cal none"></div>
+            </li>
+            {{~}}
+        </ul>
+    </div>
+{{?}}

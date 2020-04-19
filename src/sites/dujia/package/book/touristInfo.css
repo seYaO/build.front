@@ -1,0 +1,738 @@
+@charset "UTF-8";
+.passenger-info .passenger-info-content:after,
+.ui-input-span:after {
+    content: "";
+    visibility: hidden;
+    clear: both
+}
+.list {
+    margin-bottom: 10px;
+    line-height: 24px;
+    position: relative;
+    font-size: 14px
+}
+.btn_look,
+.btn_reserve,
+.icon-date,
+.icon-succeed,
+.passenger-info .passenger-info-table .help,
+.passenger-info .passenger-info-type .img em,
+.ui-select i {
+    background: url(//img1.40017.cn/cn/v/2015/orderList/departures.png) no-repeat
+}
+.link-listD {
+    margin: 10px auto 40px;
+    width: 130px
+}
+.link-ordSty {
+    height: 32px;
+    text-align: center;
+    font: 20px/32px "microsoft yahei";
+    color: #fff;
+    display: block;
+    background: #ff7800;
+    border-radius: 5px
+}
+.link-ordSty:hover {
+    color: #fff;
+    text-decoration: initial
+}
+.drop-down,
+.more {
+    color: #006dae
+}
+.favorite-contacts {
+    background-color: #f6f6f6;
+    width: 714px;
+    font: 12px/40px "宋体";
+    margin: 10px auto 0;
+    padding: 6px 20px 6px 100px;
+    height: 40px;
+    overflow: hidden
+}
+.favorite-contacts dl {
+    zoom: 1
+}
+.favorite-contacts dt {
+    float: left;
+    margin-left: -85px
+}
+.favorite-contacts dd {
+    display: inline-block;
+    margin: 0 0 0 40px;
+    width: 86px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.J_normal_tour .icon-arrow-down,
+.icon-arrow-down {
+    width: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    display: inline-block
+}
+.drop-down {
+    float: right;
+    font-size: 14px
+}
+.icon-arrow-down {
+    height: 0;
+    border-top: 5px solid #006dae;
+    margin-left: 5px
+}
+.favorite-contacts.active {
+    height: auto
+}
+.J_normal_tour .icon-arrow-down {
+    height: 0;
+    border-bottom: 5px solid #006dae;
+    border-top: none
+}
+.add-passenger {
+    width: 834px
+}
+.visitor-info {
+    width: 834px;
+    margin: 0 auto;
+    border-bottom: 1px dashed #ddd
+}
+.visitor-info:last-child {
+    border-bottom: none
+}
+.passenger-info {
+    width: 853px;
+    margin: 32px auto 20px 177px;
+    padding: 15px 0 30px;
+    background: #f0f2f5;
+    border: 1px solid #ccc;
+    position: relative
+}
+#passengerInfo0 {
+    margin-top: 30px
+}
+.passenger-info:last-child {
+    margin-bottom: 0
+}
+.icon-trash {
+    display: inline-block;
+    vertical-align: middle;
+    width: 13px;
+    height: 13px;
+    background: url(//img1.40017.cn/cn/v/package/2016/book/icon_delete.png) no-repeat
+}
+.passenger-info .passenger-info-content {
+    zoom: 1;
+    position: relative
+}
+.passenger-info .passenger-info-content .label-margin {
+    margin-left: 19px;
+    font-size: 14px
+}
+.passenger-info .passenger-info-content:after {
+    display: table;
+    line-height: 0
+}
+.passenger-info .passenger-info-type {
+    display: inline-block;
+    float: left;
+    margin: 2px 40px 0 0;
+    position: absolute;
+    left: -130px;
+    top: 0;
+    font-size: 14px
+}
+.passenger-info .passenger-info-icon {
+    position: absolute;
+    top: 48px;
+    left: -13px;
+    width: 13px;
+    height: 17px;
+    background: url(//img1.40017.cn/cn/v/package/2016/book/passenger-icon_03.png) no-repeat;
+    z-index: 1
+}
+.passenger-info .type-man .img em {
+    background: url(//img1.40017.cn/cn/v/package/2016/book/tourism.png) no-repeat;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin-bottom: -2px
+}
+.passenger-info .type-woman .img em {
+    background: url(//img1.40017.cn/cn/v/package/2016/book/tourism.png) 0 -421px no-repeat;
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin-bottom: -2px
+}
+.passenger-info .passenger-info-type .tag {
+    margin-top: 10px;
+    display: block;
+    height: 17px;
+    line-height: 17px;
+    width: 100px;
+    text-align: center;
+    color: #666
+}
+.passenger-info .passenger-info-table {
+    display: inline-block;
+    height: 252px
+}
+.passenger-info .passenger-info-table .help,
+.valid_symbol {
+    height: 14px;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: middle
+}
+.passenger-info .passenger-info-table .ui-select {
+    z-index: 1
+}
+.passenger-info .passenger-info-table .list {
+    margin-bottom: 15px;
+    line-height: 24px;
+    position: relative
+}
+.passenger-info .passenger-info-table .J_ageJudge {
+    margin-top: -20px
+}
+.smallC .passenger-info .passenger-info-table .J_ageJudge {
+    margin-top: 0
+}
+.passenger-info .passenger-info-table .help {
+    width: 24px;
+    line-height: 14px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    padding-left: 10px;
+    background: url(//img1.40017.cn/cn/v/package/2016/book/icon-w.png) center no-repeat
+}
+.valid_symbol {
+    width: 14px;
+    background: url(//img1.40017.cn/cn/v/2015/orderList/departures.png) -10px -245px no-repeat;
+    margin-left: 5px
+}
+.order-fn-btns {
+    position: absolute;
+    top: -40px;
+    right: -4px;
+    font-size: 14px
+}
+.smallC .order-fn-btns {
+    right: -7px
+}
+.mr30 {
+    margin-right: 30px
+}
+.save {
+    margin-right: 20px;
+    padding: 2px 4px;
+    color: #0185c6
+}
+.passenger-info .reset,
+.passenger-info .reset label,
+.save,
+.save label {
+    cursor: pointer
+}
+.passenger-info .reset {
+    padding: 2px 4px;
+    color: #8d97a1
+}
+.passenger-info .reset .icon-trash,
+.passenger-info .reset input,
+.passenger-info .save .icon-trash,
+.passenger-info .save input {
+    margin-right: 4px
+}
+.required {
+    color: #FF8400;
+    font-family: serif;
+    margin-right: 2px
+}
+.ui-input {
+    height: 21px;
+    width: 339px;
+    line-height: 21px;
+    padding-left: 6px;
+    color: #333;
+    outline: 0;
+    border-radius: 2px;
+    font-size: 14px;
+    border: 1px solid #ccc
+}
+.ui-input:focus,
+.ui-select.hover .select-certificate {
+    border: 1px solid #8ab923
+}
+.ui-input-nameZh-first,
+.ui-input-nameZh-last {
+    width: 157px
+}
+.ui-input-nameZh-first {
+    margin-right: 6px
+}
+.ui-input-nameZh-last {
+    margin-left: 7px
+}
+.ui-select-certificate-id {
+    margin-left: 17px;
+    width: 245px
+}
+.placeholder {
+    color: #ccc
+}
+.ui-label {
+    width: 100px;
+    display: inline-block;
+    text-align: right
+}
+.ui-radio {
+    margin-right: 5px
+}
+.ui-select {
+    display: inline-block;
+    width: 165px;
+    height: 22px;
+    line-height: 22px;
+    vertical-align: middle;
+    position: relative;
+    z-index: 1;
+    background: url(about:blank) #fff
+}
+.ui-select.hover i {
+    background-position: -10px -568px
+}
+.ui-select.hover .ui-select_dl {
+    height: auto
+}
+.up-down {
+    border-left: #ddd 1px solid;
+    float: right;
+    height: 100%
+}
+.ui-select .ui-select_dl {
+    position: absolute;
+    left: 0;
+    top: -1px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #ddd;
+    cursor: default
+}
+.ui-select .ui-select_dl dd,
+.ui-select .ui-select_dl dt {
+    height: 100%;
+    border-right: #ddd 1px solid;
+    border-left: #ddd 1px solid
+}
+.ui-select .ui-select_dl dt {
+    padding-left: 5px;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-radius: 2px
+}
+.ui-select .ui-select_dl dd {
+    background: #fff;
+    padding-left: 5px;
+    z-index: 10
+}
+.ui-select .ui-select_dl dd:hover {
+    background: #8ab923;
+    color: #fff;
+    cursor: default
+}
+.ui-input-first-name {
+    margin-right: 6px
+}
+.ui-input-first-name,
+.ui-input-last-name {
+    width: 157px
+}
+.ui-input-last-name {
+    margin-left: 7px
+}
+.ui-input-date {
+    width: 156px;
+    position: relative;
+    display: inline-block;
+    background: url(//img1.40017.cn/cn/comm/images/book/dujia/1226/icon-date.png) 140px center no-repeat #fff
+}
+.ui-input-date .icon-date {
+    position: absolute;
+    top: 6px;
+    left: 104px
+}
+.ui-input-country {
+    width: 118px
+}
+.ui-input-mobile {
+    width: 156px
+}
+.prompt_message {
+    margin-left: 15px
+}
+.ui-input-span {
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    border: 1px solid #ddd;
+    width: 124px;
+    zoom: 1
+}
+.ui-input-span:after {
+    display: table;
+    line-height: 0
+}
+.ui-input-span .icon-date {
+    position: absolute;
+    right: 4px;
+    top: 4px
+}
+.ui-input-span .ui-input {
+    float: left;
+    width: 74%;
+    border: 0;
+    border-right: 1px solid #ddd
+}
+input.input_error {
+    border: 1px solid #f60
+}
+.order-tips {
+    padding-left: 18px
+}
+.order-tips em {
+    float: left;
+    margin-left: -18px
+}
+.tooltip-bubble {
+    position: absolute;
+    border: 5px solid #ddd;
+    width: 376px;
+    line-height: 17px;
+    background-color: #fff;
+    z-index: 10
+}
+.tooltip-bubble-content {
+    border: 1px solid #999;
+    padding: 10px
+}
+.tooltip-bubble-arrow {
+    position: absolute;
+    top: 20px
+}
+.tooltip-bubble-arrow-right {
+    right: 1px
+}
+.tooltip-bubble-arrow-left {
+    left: -8px
+}
+.tooltip-bubble-arrow-top {
+    left: 20px;
+    top: 1px
+}
+.tooltip-bubble-arrow-bottom {
+    left: 20px;
+    bottom: 1px
+}
+.tooltip-bubble-arrow-right .tooltip-bubble-arrow-before {
+    display: block;
+    position: absolute;
+    height: 0;
+    top: -9px;
+    border: 9px solid;
+    border-color: transparent #999;
+    border-right-width: 0
+}
+.tooltip-bubble-arrow-right .tooltip-bubble-arrow-after {
+    display: block;
+    position: absolute;
+    height: 0;
+    top: -8px;
+    border: 8px solid;
+    border-color: transparent #fff;
+    border-right-width: 0
+}
+.tooltip-bubble-arrow-left .tooltip-bubble-arrow-before {
+    display: block;
+    position: absolute;
+    height: 0;
+    top: -9px;
+    border: 9px solid;
+    border-color: transparent #999;
+    border-left-width: 0
+}
+.tooltip-bubble-arrow-left .tooltip-bubble-arrow-after {
+    display: block;
+    position: absolute;
+    height: 0;
+    top: -8px;
+    border: 8px solid;
+    border-color: transparent #fff;
+    border-left-width: 0;
+    left: 1px
+}
+.tooltip-bubble-arrow-top .tooltip-bubble-arrow-before {
+    display: block;
+    position: absolute;
+    height: 0;
+    top: -9px;
+    border: 9px solid;
+    border-color: #999 transparent;
+    border-top-width: 0
+}
+.tooltip-bubble-arrow-top .tooltip-bubble-arrow-after {
+    display: block;
+    position: absolute;
+    height: 0;
+    top: -8px;
+    border: 8px solid;
+    border-color: #fff transparent;
+    border-top-width: 0;
+    left: 1px
+}
+.tooltip-bubble-arrow-bottom .tooltip-bubble-arrow-before {
+    display: block;
+    position: absolute;
+    height: 0;
+    top: -9px;
+    border: 9px solid;
+    border-color: #999 transparent;
+    border-bottom-width: 0
+}
+.tooltip-bubble-arrow-bottom .tooltip-bubble-arrow-after {
+    display: block;
+    position: absolute;
+    height: 0;
+    top: -8px;
+    border: 8px solid;
+    border-color: #fff transparent;
+    border-bottom-width: 0;
+    left: 1px
+}
+.mpop {
+    width: 400px
+}
+.mpop .pop-content {
+    padding: 20px 20px 25px 120px
+}
+.mpop img {
+    float: left;
+    margin-left: -90px;
+    margin-top: 10px
+}
+p.mt15 {
+    text-align: center;
+    margin-top: 10px
+}
+.mpop .topBag {
+    border-color: transparent;
+    background-color: #F0F0F0
+}
+.mpop .topBag .closeImg {
+    margin-top: 4px
+}
+.mpop .button {
+    margin-right: 4px
+}
+.mpop .button,
+.order-passenger .button {
+    display: inline-block;
+    width: 71px;
+    height: 26px;
+    line-height: 26px;
+    text-align: center;
+    color: #64a10a;
+    background: url(//img1.40017.cn/cn/comm/images/book/dujia/1226/spt-order.png) -75px -47px no-repeat
+}
+.mpop .button:hover,
+.order-passenger .button:hover {
+    background: url(//img1.40017.cn/cn/comm/images/book/dujia/1226/spt-order.png) -153px -47px no-repeat;
+    color: #fff;
+    text-decoration: none
+}
+span.signal-language {
+    color: #999;
+    margin-left: 5px
+}
+.smallC .add-passenger,
+.smallC .passenger-info,
+.smallC .visitor-info {
+    width: 664px
+}
+.smallC .favorite-contacts {
+    width: 544px
+}
+.date-validate.active {
+    display: inline-block;
+    position: relative;
+    top: 9px;
+    z-index: 1
+}
+.date-validate {
+    width: auto;
+    height: auto;
+    border: 1px solid #ff6a00;
+    background-color: #f7c29c;
+    margin-left: 5px;
+    display: none
+}
+.date-validate .error_gp {
+    width: auto;
+    height: 26px;
+    line-height: 20px;
+    color: #fff;
+    padding: 2px 10px
+}
+.smallC .date-validate.active {
+    top: -8px
+}
+.smallC .date-validate.active,
+.smallC .dj-validate.active {
+    position: absolute
+}
+.someinfo .formError .formErrorContent {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    -o-box-shadow: none;
+    font: 12px/12px arial, SimSun;
+    background: #fff4d9;
+    border: 1px solid #FFD5A1;
+    padding: 5px;
+    margin-left: 5px
+}
+.someinfo .date-validate,
+.someinfo .dj-validate {
+    width: auto;
+    padding: 1px;
+    color: #333;
+    font: 12px/12px arial, SimSun;
+    background: #fff4d9;
+    border: 1px solid #FFD5A1;
+    min-width: 140px
+}
+.someinfo .date-validate .error_gp,
+.someinfo .dj-validate .error_gp {
+    color: #333;
+    position: relative
+}
+.error_gp::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 11px;
+    position: absolute;
+    top: 3px;
+    left: -7px;
+    background: url(//img1.40017.cn/cn/v/package/2016/book/verify_img.png) 0 -112px no-repeat
+}
+.date-validate .error_gp::before {
+    top: 12px
+}
+.p-childAge {
+    display: block;
+    height: 17px;
+    line-height: 17px;
+    width: 100px;
+    text-align: center;
+    color: #999;
+    margin-top: 3px
+}
+.surname_select {
+    zoom: 1;
+    border: 1px solid #CCC;
+    background: #fff;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, .2);
+    display: inline-block;
+    position: absolute;
+    top: 24px;
+    left: 104px;
+    z-index: 100
+}
+.surname_item {
+    zoom: 1;
+    padding: 0 5px
+}
+.surname_item .tags_name {
+    display: inline-block;
+    padding: 5px 0;
+    margin: 0 5px
+}
+.surname_item .input_radio {
+    display: inline-block;
+    vertical-align: top;
+    white-space: nowrap;
+    word-wrap: normal;
+    padding: 5px 10px;
+    border-width: 0;
+    background: #fff;
+    cursor: pointer
+}
+.surname_item .input_radio input {
+    vertical-align: -3px;
+    margin-right: 3px
+}
+.surname_acions .btn_link,
+.surname_acions .tips_txt {
+    vertical-align: middle;
+    display: inline-block
+}
+.surname_acions {
+    zoom: 1;
+    margin: 0 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #999;
+    border-top: 1px dashed #e4e4e4
+}
+.surname_acions .btn_link {
+    width: 50px;
+    height: 21px;
+    line-height: 21px;
+    color: #333;
+    text-align: center;
+    margin-right: 4px;
+    margin-left: 0;
+    border: 1px solid #BBB;
+    background: #f8f9f8;
+    border-radius: 2px
+}
+.surname_acions .high {
+    color: #f63
+}
+.tips_txt .ico {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(//img1.40017.cn/cn/v/package/2016/book/hotel-info.png) center no-repeat;
+    background-size: cover;
+    vertical-align: -3px;
+    margin-right: 6px
+}
+.signStantart {
+    color: #0185c6;
+    border-bottom: 1px dashed #0185c6;
+    cursor: pointer
+}
+.dialog_tooltip_text .passInfo ul {
+    border-bottom: 1px solid #ccc;
+    padding: 0;
+    height: 26px
+}
+.passInfo ul li {
+    float: left;
+    padding: 0 5px 5px;
+    font-size: 14px;
+    margin-left: 5px;
+    cursor: pointer
+}
+.passInfo ul li.current {
+    border-bottom: 2px solid #0185c6;
+    color: #0185c6
+}
+.passInfo p em {
+    color: #f60
+}

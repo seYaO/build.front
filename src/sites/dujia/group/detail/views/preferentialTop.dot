@@ -1,0 +1,49 @@
+<span class="f-left">可享优惠：</span>
+{{ var _cfg = page_cfg;}}
+{{?_cfg.StyleId&& _cfg.StyleId>0}}
+<div class="preferential" style="margin-bottom: 13px;">
+                <span class="J_Tips J_Tips_async allTravel" tracktype="hover" trackspot='{{=_cfg.IcoContent||""}}' data-content='<div><strong>{{=_cfg.Title}}</strong><a class="prompt-join" href="//www.ly.com/blh/?Refid=278396305" target="_blank">立即加入&gt;</a><hr />{{=_cfg.Remarks.replace(/\n/g,"<br/>")}}<br /></div>'>
+                {{?_cfg.StyleId==63}}
+                    <span class="allTravel-name">VIP超值购</span>
+                    <span class="allTravel-price">抵<strong>{{=_cfg.PreAmount||""}}</strong>元/人</span>
+                {{??_cfg.StyleId==62}}
+                    <span class="allTravel-name">严选</span>
+                    <span class="allTravel-price">抵<strong>{{=_cfg.PreAmount||""}}</strong>元/人 返3%</span>
+                {{??_cfg.StyleId==58}}
+                    <span class="allTravel-name">积分抵扣</span>
+                    <span class="allTravel-price">抵<strong>{{=_cfg.PreAmount||""}}</strong>元/人</span>
+                {{?}}
+            </div>
+        {{?_cfg.LineDate}}<div class="blh-tips">*以上优惠适用于{{=_cfg.LineDate}}出游，其余日期的优惠规则详见价格日历</div>{{?}}    
+{{?}}
+
+
+{{?it && it.length !=0}}
+    {{~it:item}}
+    {{?item.IconId != 58 && item.IconId != 62 && item.IconId != 63}}
+    <div class="preferential">
+        <span class="icon J_Tips J_Tips_async" tracktype="hover" trackspot="{{=item.IconContent}}"
+            data-content='<div>
+                <strong>{{=item.IconContent}}</strong><hr />
+                {{?item.conHoverContent}}
+                {{=item.conHoverContent}}<br />
+                {{?}}
+
+                {{?item.preferentialDetailList && item.preferentialDetailList.length!=0}}
+                {{  var tipLen = item.preferentialDetailList.length;
+                    var Remark = item.preferentialDetailList;
+                    var num = "";
+                    for(var i=0;i<tipLen;i++){
+                        if(tipLen > 1){
+                            num = i+1+".";
+                        }
+                }}
+                {{=num}}{{=Remark[i].Remark}}<br />
+                {{ } }}
+                {{?}}
+
+            </div>' data-skin="icontips">{{=item.IconContent}}</span>
+    </div>
+    {{?}}
+    {{~}}
+{{?}}

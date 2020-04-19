@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="../../jquery.js" type="text/javascript"></script>
+    <script src="../../sea.js" type="text/javascript"></script>
+</head>
+<body>
+    <textarea id="tbx1">        
+    </textarea>
+    <label id="lb1"></label>
+    <button type="button" id="btn1">保存</button>
+    <button type="button" id="btn2">查看数据</button>
+    <button type="button" id="btn3">查看数据</button>
+    <script>
+        seajs.config({
+            base: "../../"           
+        });
+        seajs.use("jsondb/0.1.0/dbstorage", function (DBStorage) {
+            var db = new DBStorage({
+                dbName: "demo",
+                datedtime:5
+            });           
+            var linid = 12345;
+            $('#btn1').click(function () {              
+                db.save(linid+'', { name: '111', value: linid });
+                //linid++;
+            });
+
+            $('#btn2').click(function () {
+                var str = db.read({
+                    count: 5,
+                    sort: "time desc"
+                });
+                $("#tbx1").text(JSON.stringify(str));
+            });
+            $('#btn3').click(function () {
+                $("#tbx1").text(JSON.stringify(db.getItem(12345)));
+            });
+        });
+
+        
+    </script>
+</body>
+</html>

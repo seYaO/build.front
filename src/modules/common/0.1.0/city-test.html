@@ -1,0 +1,52 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <span class="province">请选择省</span>
+    <div class="province-box J_Province" data-tmpl="#provinceDot"></div>
+    <div class="province-box J_City" data-tmpl="#cityDot"></div>
+</body>
+<script src="../../jquery.js"></script>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/dot/1.0.3/dot.js?v=20150413" charset="utf-8"></script>
+<script type="text/x-dot-template" id="provinceDot">
+    <ul>
+        {{~it:value}}
+        <li>{{=value}}</li>
+        {{~}}
+    </ul>
+</script>
+<script type="text/x-dot-template" id="cityDot">
+    <ul>
+        {{~it:value}}
+        <li>{{=value}}</li>
+        {{~}}
+    </ul>
+</script>
+<script type="text/javascript" src="city.js"></script>
+<script>
+    $(".province").click(function(){
+        var data = window.CityModule.getProvinces();
+        renderHTML(data,$(".J_Province"));
+    });
+    $(".J_Province").on("click","li",function(){
+        var key = $(this).text();
+        var data = window.CityModule.getCitys(key);
+        renderHTML(data,$(".J_City"));
+    });
+    function renderHTML(data,context,tmplStr){
+        if(!tmplStr){
+            tmplStr = context.attr("data-tmpl");
+        }
+        if(!tmplStr){
+            alert("没有配置data-tmpl");
+            return;
+        }
+        var tmpl = $(tmplStr).html();
+        var tpl = window.doT.template(tmpl);
+        var html = tpl(data);
+        context.empty().append(html);
+    }
+</script>
+</html>

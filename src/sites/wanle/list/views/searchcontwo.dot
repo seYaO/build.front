@@ -1,0 +1,106 @@
+{{var themeList = proAll[0].ThemeList;}}
+{{var timeList = proAll[0].PmList;}}
+{{var portList = proAll[0].PortList;}}
+{{var typeList = proAll[0].ReceiveTypeList;}}
+{{var categoryList = proAll[0].SingleCategoryList;}}
+{{var getCity = data.PublicProductSearchResponseDic.SelfGetCitys;}}
+<div class="searchConBox">
+    <div class="searchConBox_each searchConBox_each_2" data-conboxeachindex="2">
+        <div class="searchConList">
+	        {{? portList!="" && portList.length > 0}}
+            <dl class="search_dl" data-key="lpCity" data-flag="0" data-way="receiveType">
+                <dt class="search_dt">领取方式</dt>
+                <dd class="search_dd MultiSelect">
+                    <a data-id="0" class="search_all on" trace="nolimit_rececity">不限</a>
+                    {{var expressageL = 0;}}
+                    {{? portList!="" && portList.length > 0}}
+                        <ul class="search_ul dest_ul">  
+                            {{?portList && portList != ""}}
+                                {{~portList:city}}                       
+                                    <li><a data-id="{{=city.Id}}" trace="city_{{=city.Id}}" data-wayid="1,2"><i></i>{{=city.Name}}自取</a></li>
+                                {{~}}
+                            {{?}}
+
+                            {{var post="";}}
+                            {{?typeList &&　typeList.length}}
+                                {{~typeList:type}}
+                                    {{?type.Id != 1 && type.Id != 2 && type.Id != 4 && type.Id != 10}}
+                                        {{?type.Id != 3 && type.Id != 6}}
+                                            <li><a data-id="" data-wayid="{{=type.Id}}" trace="type_{{=type.Id}}"><i></i>{{=type.Name}}</a></li>                                        
+                                        {{??}}
+                                            {{post = "快递派送";}}
+                                            {{expressageL = 1;}}                                        
+                                        {{?}}
+                                    {{?}}
+                                {{~}}
+                                {{?post != ""}}
+                                    <li><a data-id="" data-wayid="3,6" trace=""><i></i>{{=post}}</a></li>
+                                {{?}}
+                            {{?}}
+                        </ul>
+                    {{?}}
+                    {{? portList!="" && (portList.length + expressageL) > 7}}
+                    <div class="open_all">
+                        <span href="javascript:void(0);" class="more_even current J_trace" trace="city_shouqi">
+                            <em>收起</em><i></i>
+                        </span>
+                    </div>
+                    {{??}}
+                    <div class="open_all none">
+                        <span href="javascript:void(0);" class="more_even current J_trace" trace="city_shouqi">
+                            <em>收起</em><i></i>
+                        </span>
+                    </div>
+                    {{?}}
+                </dd>
+            </dl>
+			{{?}}                      
+
+            {{?categoryList != "" && categoryList.length > 0}}
+            <dl class="search_dl" data-key="singleCategory">
+                <dt class="search_dt">WIFI通讯</dt>
+                <dd class="search_dd MultiSelect">
+                    <a data-id="0" class="search_all on" trace="nolimit_time">不限</a>
+                    <ul class="search_ul">
+                        {{~categoryList:category}}
+                        <li><a data-id="{{=category.Id}}" trace="category_{{=category.Id}}"><i></i>{{=category.Name}}</a></li>
+                        {{~}}
+                    </ul>
+                </dd>
+            </dl> 
+            {{?}} 
+
+        </div>
+        <div class="searchTotalBox clearfix">
+            <span class="total">为您找到了<em class="pro_total">{{=totalCount}}</em>份产品</span>
+            <div class="crumbox">
+                <span class="removeall none">清除</span>
+            </div>
+        </div>
+
+        <div class="searchSortBox">
+            <div class="SortBox_left">
+                <a class="searchSortBox_a active" data-role="recommend" trace="tc_sort_recommend">
+                    <em>同程推荐</em>
+                </a>
+                <a class="searchSortBox_a" data-role="price" data-sort="1" trace="tc_sort_price">
+                    <em>价格<i></i></em>
+                </a>
+                <a class="searchSortBox_a other_a" data-role="hot" data-sort="1" trace="tc_sort_use">
+                    <em>销量<i></i></em>
+                </a>
+                <a class="searchSortBox_a other_a" data-role="rate" data-sort="1" trace="tc_sort_satis">
+                    <em style="border-right: none">满意度<i></i></em>
+                </a>
+            </div>
+            <div class="SortBox_right">
+                <div class="sortKey" data-key="reserve">
+                    <a class="SortBox_add" data-id="1" trace="tc_sort_today"><span><i></i>可订今日</span></a>
+                </div>
+                <div class="sortKey" data-key="dischannel">
+                    <a class="SortBox_add" data-id="1" trace="tc_sort_coupon"><span><i></i>可享优惠</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,94 @@
+<!-- 单品信息 start-->
+{{?it.data && it.data.length > 0}}
+<div class="travel-flight-title"> <div> <span class="label"><h3>单品信息</h3></span> </div></div>
+{{~it.data:singleInfo}}
+    <div class="traffic-single clearfix">
+        <img class="single-img" src="{{=singleInfo.CoverImage.replace('http:','')}}">
+        <div class="single-info">
+            <p class="single-title">
+                <a class="J_singleTitle singleName">{{=singleInfo.Name}}</a>
+            </p>
+            {{?singleInfo.Reason && singleInfo.Reason.length > 0}}
+            <div class="single-intro">
+                <span class="intro-label"><h4>推荐理由</h4></span>
+            </div>
+            <div class="single-message">
+                {{for( var i=0; i< singleInfo.Reason.length; i++){}}
+                <p>{{=singleInfo.Reason[i]}}</p>
+                {{}}}
+            </div>
+            {{?}}
+        </div>
+    </div>
+    <div class="pop popSingle">
+        <div class="content">
+            <div class="single-detail">
+                <div class="img-text">
+                    <div class="mSlider mSlider-pop img">
+                        <div class="mSlider_img">
+                            <img id="focusPic" alt="" data-img="{{=singleInfo.CoverImage.replace('http:','')}}">
+                        </div>
+                        <div class="pro_msli_pop clearfix">
+                            <a href="javascript:void(0);" rel="nofollow" class="group_left disabled" id="">
+                                <span class="button-prev"></span>
+                            </a>
+                            <div class="pro_msli_bd">
+                                <div class="carousel-ul-wrap" >
+                                    <div class="carousel-ul-wrap" >
+                                        <ul class="clearfix" >
+                                        {{for( var i=0; i< singleInfo.Image.length; i++){}}
+                                            <li class="">
+                                                <a class="linka mleft" _bsrc="{{=singleInfo.Image[i].replace('http:','')}}" href="javascript:void(0);" title="" nsrc="{{=singleInfo.Image[i]}}" >
+                                                    <img data-img="{{=singleInfo.Image[i].replace('http:','')}}" hover-img="{{=singleInfo.Image[i].replace('http:','')}}" alt="">
+                                                </a>
+                                            </li>
+                                        {{}}}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <a rel="nofollow" href="javascript:void(0);" class="group_right">
+                                <span class="button-next"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="text">
+                        <h4 class="singleName">{{=singleInfo.Name}}</h4></span>
+                        {{?singleInfo.Reason && singleInfo.Reason.length > 0}}
+                        <div class="single-intro">
+                            <span class="intro-label"><h4>推荐理由</h4></span>
+                        </div>
+                        <div class="single-message">
+                        {{for(var i=0; i< singleInfo.Reason.length; i++){}}
+                            <p>{{=singleInfo.Reason[i]}}</p>
+                        {{}}}
+                        </div>
+                        {{?}}
+                        {{?singleInfo.Introduce && singleInfo.Introduce.length > 0}}
+                        <div class="single-intro">
+                            <span class="intro-label"><h4>单品介绍</h4></span>
+                        </div>
+                        <div class="single-message J_singLe">
+                        {{for(var i=0; i< singleInfo.Introduce.length; i++){}}
+                            <p>{{=singleInfo.Introduce[i]}}</p>
+                        {{}}}
+                        </div>
+                        <i class="btn-fold packUp">展开</i>
+                        {{?}}
+                        {{?singleInfo.BackRule && singleInfo.BackRule.length > 0}}
+                        <div class="single-intro">
+                            <span class="intro-label"><h4>退改规则</h4></span>
+                        </div>
+                        <div class="single-message J_singLe">
+                            <p>{{=singleInfo.BackRule}}</p>
+                        </div>
+                        <i class="btn-fold packUp">展开</i>
+                        {{?}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{{~}}
+{{?}}
+<!-- 单品信息 end-->

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>阿布扎比特惠旅游_出境旅游线路价格_同程出境游</title>
+    <meta name="description" content="同程旅游出境游为您提供阿布扎比品质旅游，精选旅游线路，宫廷般享受，蜜月旅游，享法拉利主题公园，更多优质出境旅游产品尽在同程出境游。">
+    <meta name="keywords" content="阿布扎比特惠旅游，出境旅游线路，出境旅游价格">
+    <% includeId = cnztjscss %>
+    <link rel="stylesheet" href="//css.40017.cn/cn/c/zt/2015/common/common.0.0.5.css?v=2015121102"/>
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.07044.css" rel="stylesheet" />
+</head>
+<body>
+<!-- 公共头部 start-->
+<% includeId = cnzthead %>
+<!-- 公共头部 end-->
+
+<div class="container">
+    <div class="top">
+        <div class="top1"></div>
+        <div class="top2">
+            <div class="main">
+                <div class="area none">
+                    <div class="area-now" id="J_area">华东出发</div>
+                    <ul class="area-nav none" id="J_nav">
+                        <li>华北出发</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="top3"></div>
+    </div>
+
+    <div class="intro">
+        <div class="main">
+            <div class="qzs J_intro">
+                <div class="detail" style="display: none">
+                    <h3>温馨提示：需持身份证入内</h3>
+                    <p>这座清真寺仅黄金就用去了46吨，汉白玉砖墙更是不计其数。寺中的巨型地毯和水晶镀金吊灯均为世界著名<br/>
+                        廊柱的柱头上，点缀着镀金的椰枣树叶造型的装饰，它们像蔓藤一样向上延伸，充满生命的活力。刻有古兰经<br/>
+                        的墙面上也镀了一层金，显得异常神圣。
+                    </p>
+                </div>
+            </div>
+            <div class="qzjd J_intro">
+                <div class="detail" style="display: none">
+                    <h3>皇宫式服务：海景天堂</h3>
+                    <p>酒店与阿联酋总统府仅一街之隔，拥有1300多米长的黄金<br/>
+                        海岸线。从酒店内还可以远眺对面的阿提哈德大厦等繁华<br/>
+                        胜景。其内部更是金碧辉煌，据说耗尽22吨纯金打造，更<br/>
+                        有上千盏施华洛世奇水晶吊灯、海量的大理石，甚至还用<br/>
+                        几万朵的新鲜玫瑰作为装饰。
+                    </p>
+                </div>
+            </div>
+            <div class="fll J_intro">
+                <div class="detail" style="display: none">
+                    <h3>激流勇进：奇妙4D之旅</h3>
+                    <p>场馆内，除了法拉利各个时期的跑车、赛车，就连F1车房<br/>
+                        驾驶模拟器都有“复制品”。全球著名的过山车则让游客<br/>
+                        惊叫连连。游客可以尽情的在法拉利赛车展示馆饱览众多<br/>
+                        经典款及当代法拉利赛车系列。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="part1 J_NavBox" id="part1">
+        <div class="title"></div>
+        <div class="main J_ProList J_con1" data-filter="CycleId=4090&DedicatLine=爆款" data-tmpl="#tmpl01"></div>
+    </div>
+
+    <div class="part2 J_NavBox" id="part2">
+        <div class="title"></div>
+        <div class="prolist J_ProList J_con3" data-filter="CycleId=4090&DedicatLine=加一元升级" data-tmpl="#tmpl02"></div>
+
+        <!--常规产品-->
+        <div class="prolist main J_ProList J_con5" data-filter="CycleId=4090&DedicatLine=常规产品" data-tmpl="#tmpl03"></div>
+
+    </div>
+
+    <div class="part3 J_NavBox" id="part3"></div>
+
+</div>
+
+<div class="sidetab" style="display: none">
+    <ul>
+        <li class="active"><a class="aa" href="#part1">爆款推荐</a></li>
+        <li><a class="aa" href="#part2">产品升级</a></li>
+        <li><a class="aa" href="#part3">旅行小贴士</a></li>
+    </ul>
+    <div class="gotop"><a href="javascript:void(0);">返回顶部</a></div>
+</div>
+
+<input type="hidden" id="RefUrl" value="" />
+<input type="hidden" id="AjaxRequestPath" value="//www.ly.com/AjaxHelper/TopLoginHandler.aspx?channel=ChuJingTravel">
+
+<script id="tmpl01" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+            }}
+            <div class="bg1 bor-transparent">
+                <div class="icon"></div>
+                <div class="pro1">
+                    <a {{=Activity.tmplProAttr(value)}}>
+                        <div class="maintit">{{=value.MainTitle}}</div>
+                        <span class="chufa">{{=value.DepartCity}}出发</span>
+
+                        <div class="exp">
+                            {{var _rep=decodeURIComponent("%23%23");}}
+                            {{if(value.Explosion){}}
+                            {{var Expl = value.Explosion.split(_rep);}}
+                            <ul>
+                                <li>★ {{=Expl&&Expl[0]?Expl[0]:''}}</li>
+                                <li>★ {{=Expl&&Expl[1]?Expl[1]:''}}</li>
+                                <li>★ {{=Expl&&Expl[2]?Expl[2]:''}}</li>
+                            </ul>
+                            {{}}}
+                            <div class="icon1"></div>
+                        </div>
+                        <div class="price"><p>{{=value.Preferential}}<b>/人</b></p></div>
+                        <div class="order"></div>
+                    </a>
+                </div>
+            </div>
+
+        {{~}}
+</script>
+
+<script id="tmpl02" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+                var SubTitle = value.SubTitle;
+                if(SubTitle.length>40){
+                    SubTitle = SubTitle.substring(0,39)+"...";
+                }
+            }}
+
+            <div class="bg">
+                <div class="jyy"></div>
+                <div class="pro2">
+                    <a {{=Activity.tmplProAttr(value)}}>
+                        <div class="img-box">
+                            <img data-img="{{=sImgUrl.replace('http:','')}}">
+                            <div class="pro-con">
+                            <span class="chufa">{{=value.DepartCity}}出发 • {{=LineType}}</span>
+                                <div class="maintit">{{=value.MainTitle}}</div>
+                                <div class="subtit">{{=SubTitle}}</div>
+
+                                <div class="price"><p>{{=value.Preferential}}<b>/人</b></p></div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="circle"></div>
+            </div>
+        {{~}}
+</script>
+
+<script id="tmpl03" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+                var SubTitle = value.SubTitle;
+                if(SubTitle.length>32){
+                    SubTitle = SubTitle.substring(0,31)+"...";
+                }
+            }}
+            {{
+            if(value.StartDateList){
+                var StartDateList = value.StartDateList;
+            }
+            var startDate = StartDateList[0];
+            if(StartDateList.length == 1){
+                var endDate = startDate;
+            }else{
+                var endDate=StartDateList[StartDateList.length-1];
+            }
+            startDate = startDate.replace(/\\//g, '-');
+            endDate = endDate.replace(/\\//g, '-');
+            startDate1 = startDate.split("-",2);
+            endDate1 = endDate.split("-",2);
+            }}
+            <div class="pro3 bor-transparent">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <div class="img-box">
+                        <img data-img="{{=sImgUrl.replace('http:','')}}">
+                        <span class="chufa">{{=value.DepartCity}}出发 • {{=LineType}}</span>
+                        <div class="pro-con">
+                            <div class="maintit">{{=value.MainTitle}}</div>
+                            <div class="subtit">{{=SubTitle}}</div>
+                            {{?startDate1[0]==endDate1[0]}}
+                            <div class="date">团期：{{=startDate1[1]}}月-{{=endDate1[1]}}月</div>
+                            {{??}}
+                            <div class="date">团期：{{=startDate1[0]}}.{{=startDate1[1]}}-{{=endDate1[0]}}.{{=endDate1[1]}}</div>
+                            {{?}}
+                            <div class="price"><p>{{=value.Preferential}}<b>/人</b></p></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        {{~}}
+</script>
+
+<script src="//js.40017.cn/cn/min/???/cn/public/fish.1.4.5.js,/cn/v/2015/jqmodules/jquery.js,/cn/v/2015/jqmodules/monitor/0.3.0/index.js,/cn/v/2015/jqmodules/statistics/0.3.0/statistics.js?v=20170119,/cn/v/2015/jqmodules/dot.js,/cn/v/2015/jqmodules/lazyload/0.2.1/index.js"></script><!--ignore-->
+
+<script data-loader="true" src="/modules/sea.js"></script>
+<!-- 专题配置 -->
+<script>
+  var Index = seajs.require("./index");
+  Activity.init({
+    param: [{
+      "1996": [4090]
+    }],
+    IsSellOut: 1,
+    querytype: 0,
+    filter: true,
+    el: ".J_ProList",
+    beforeRender: function(data) {
+      return data;
+    },
+    afterRender: function (data) {
+      Index.init();
+    }
+  });
+</script>
+
+<script>
+    (function() {
+        var pageview = stat.formatPageview('/出境/pc活动页/暑期韩国');
+        stat.init({
+            "baidu": {
+                "parameter": "pc"
+            },
+            "pvConfig": {
+                "PublicPlatId": "1",
+                "PageId": "42206",
+                "LineId": "0",
+                "ActivityId": "1996",
+                "ActivityPeriodId": "4090",
+                "ModuleId": "0",
+                "PVSource": "1",
+                "ak": "",
+                "url": "//www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+            },
+            "vst": [
+                ['_serialid', '0'],
+                ['_vrcode', '10002-2006-0'],
+                ['_refId', stat.getRefid()],
+                ['_userId', stat.getMemberId()],
+                ['_openTime', stat.timeDiff],
+                ['_trackPageview', pageview]
+            ]
+        });
+    })();
+</script>
+</body>
+</html>

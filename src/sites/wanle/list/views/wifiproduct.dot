@@ -1,0 +1,151 @@
+    {{? proList !="" && proList.length > 0 && totalCount > 0}}
+    	<div id="J_pro_list" class="pro_list">
+    	    {{~ proList:product:index}}
+               <div class="pro_li">
+                   <div class="pro_main">
+                      <a class="pro_pic" href="/dujia/wanle/{{=product.Id}}.html" target="_blank"
+                         onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/menpiao/list', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">
+                          {{var imgUrl = product.ImgUrl.replace('.jpg','_430x270_00.jpg').replace('http:','');}}
+                          <img src="{{=imgUrl}}" title="{{=product.Title}}" alt="{{=product.Title}}">
+                      </a>
+
+                      {{? product.RecdTagName && product.RecdTagName != ""}}
+                        <div class="tags"><i></i>{{=product.RecdTagName}}<em></em></div>
+                      {{?}}
+
+                      {{? product.TigNamesList != ""  && product.TigNamesList.length > 0}}
+                         <div class="tag_name">
+                            {{~ product.TigNamesList:tagName:tagIndex}}
+                                {{? tagIndex < 2}}
+                                <span>{{=tagName}}</span>
+                                {{?}}
+                            {{~}}
+                         </div>
+                      {{?}}
+
+                        <div class="pro_info">
+                         {{? product.Title.length > 48}}
+                        	{{ product.Title=product.Title.substring(0,48)+"...";}}
+                        	{{??}}
+                        	{{ product.Title = product.Title;}}
+                        	{{?}}
+                        	<a class="main_title" href="/dujia/wanle/{{=product.Id}}.html" title="{{=product.Title}}" target="_blank"
+                            onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/wifi/list', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">{{=product.Title}}</a>
+
+
+                            {{?product.SingleCategory == 92}}
+                            <div class="wifi_label">
+                                {{?product.WNetSpeed}}
+                                <span class="label_01">网速：{{=product.WNetSpeed}}G</span>
+                                {{?}}
+
+                                {{?product.WStandByTime}}
+                                <span class="label_02">{{=product.WStandByTime}}</span>
+                                {{?}}
+
+                                {{?product.MinAdvanceDay == 0}}
+                                    {{?product.MinAdvanceTime == "00:00:00" && product.MinAdvanceDayStr == "今天"}}
+                                        <span class="label_03">最早可订明天</span>
+                                    {{??}}
+                                        {{var hour = product.MinAdvanceTime.split(":")[0];}}
+                                        {{var minute = product.MinAdvanceTime.split(":")[1];}}
+                                        <span class="label_03">{{=hour}}:{{=minute}}点前可订今日</span>
+                                    {{?}}
+                                {{??}}
+                                    <span class="label_03">最早可订{{=product.MinAdvanceDayStr}}</span>
+                                {{?}}
+
+                                {{?product.ReceiveTypeAndCountList && product.ReceiveTypeAndCountList.length > 0}}
+
+                                    {{var receiveType = product.ReceiveTypeAndCountList;}}
+
+                                    {{?receiveType}}
+                                        {{?product.ReceiveTypeAndCountList.length  == 1}}
+                                            {{?receiveType[0].Id == 1}}
+                                                <span class="tag_04">机场{{=receiveType[0].Count}}个取机点</span>
+                                            {{??receiveType[0].Id == 2}}
+                                                <span class="tag_04">市区{{=receiveType[0].Count}}个取机点</span>
+                                            {{?}}
+                                        {{??}}
+                                            {{var allCount = product.ReceiveTypeAndCountList[0].Count+product.ReceiveTypeAndCountList[1].Count;}}
+                                            <span class="tag_04">机场、市区{{=allCount}}个取机点</span>
+                                        {{?}}
+                                    {{?}}
+
+                                {{?}}
+
+
+                            </div>
+                            {{??}}
+                            <div class="wifi_label">
+                                <span class="tag_01">{{?product.SingleCategory == 91}}电话卡，支持上网和通话{{??}}上网卡，仅能上网{{?}}</span>
+
+                                {{?product.Flow && product.Flow.length}}<span class="tag_02">流量：{{=product.Flow}}</span>{{?}}
+
+                                {{?product.TalkTime && product.TalkTime.length}}<span class="tag_03">通话时长：{{=product.TalkTime}}</span>{{?}}
+
+                                {{?product.ReceiveTypeAndCountList && product.ReceiveTypeAndCountList.length > 0}}
+
+                                    {{var receiveType = product.ReceiveTypeAndCountList;}}
+
+                                    {{?receiveType}}
+                                        {{?product.ReceiveTypeAndCountList.length  == 1}}
+                                            {{?receiveType[0].Id == 1}}
+                                                <span class="tag_04">机场{{=receiveType[0].Count}}个取机点</span>
+                                            {{??receiveType[0].Id == 2}}
+                                                <span class="tag_04">市区{{=receiveType[0].Count}}个取机点</span>
+                                            {{?}}
+                                        {{??}}
+                                            {{var allCount = product.ReceiveTypeAndCountList[0].Count+product.ReceiveTypeAndCountList[1].Count;}}
+                                            <span class="tag_04">机场、市区{{=allCount}}个取机点</span>
+                                        {{?}}
+                                    {{?}}
+
+                                {{??product.PReceiveType == 1}}
+                                    <span class="tag_04">快递送达:{{=product.PReceiveDesc}}</span>
+                                {{?}}
+                            </div>
+                            {{?}}
+
+
+                            <ul class="pro_tips">
+
+                                {{?product.SatDeg == 0}}
+                                <li class="pro_csi none"><em><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;暂无点评</i></em></li>
+                                {{??}}
+                                <li class="pro_csi">满意度：<em><i>{{=product.SatDeg}}%</i>好评</em></li>
+                                {{?}}
+
+                                {{? product.OrdCount == 0}}
+                                <li class="pro_sales"><em>新品上线</em></li>
+                                {{??}}
+                                <li class="pro_sales">月销量：<em>{{=product.OrdCount}}</em></li>
+                                {{?}}
+
+                                {{? product.CsBrandName != "" && product.CsBrandName.length != 38}}
+                                <li class="brand_name">品牌名称：<em>{{=product.CsBrandName}}</em></li>
+                                {{?}}
+                            </ul>
+                        </div>
+
+                         <div class="pro_opera">
+                            <p class="mk_price">市场价：¥{{=product.MinMarketPrice}}起</p>
+                            <p class="tc_price">同程价：<em>¥<i>{{=product.MinTcPrice}}</i>起</em></p>
+                            <a class="pro_btn" href="/dujia/wanle/{{=product.Id}}.html" target="_blank"
+                               onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/menpiao/list', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">查看详情</a>
+                        </div>
+                   </div>
+               </div>
+           {{~}}
+        </div>
+    {{??}}
+        <div id="j_flip_no_main" class="flip_no_main">
+            <i></i><span>亲，筛选无结果啦，重新筛选吧！</span>
+            <a class="flip_no_btn">重新筛选</a>
+        </div>
+    {{?}}
+<div id="j_flip_no_main" class="flip_no_main none">
+    <i></i><span>亲，筛选无结果啦，重新筛选吧！</span>
+    <a class="flip_no_btn">重新筛选</a>
+</div>
+<div id="aysnPager" class="paging aysnPager"></div>

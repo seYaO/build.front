@@ -1,0 +1,13 @@
+<div class="ly_topSlider">
+    <ul id="bannerUl" class="banner_ul clearfix">
+        {{~headBanner.HotProductList:list:i}}
+        <li>
+            <a href="{{=list.Url.replace('http:','')}}" title="{{=list.MainTitle}}" target="_blank"  rel="nofollow" trace="huandeng_{{=i}}">
+                <span></span>
+                <img src="{{=list.Image.replace('http:','')}}" alt="{{=list.MainTitle}}">
+            </a>
+        </li>
+        <span></span>
+        {{~}}
+    </ul>
+</div>

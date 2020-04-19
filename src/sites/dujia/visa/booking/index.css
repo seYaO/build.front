@@ -1,0 +1,2116 @@
+body {
+    width: 100%;
+    height: 100%;
+    min-width: 1200px;
+    font-family: "Microsoft Yahei";
+}
+
+#header_lite {
+    width: 1200px;
+    margin: 0 auto 0
+}
+
+.flow_charts {
+    background: url(//img1.40017.cn/cn/v/book/2014/cjSpirit.png) no-repeat 0 0;
+}
+
+.flow_charts {
+    background-position: 0 -97px;
+    width: 1199px;
+    height: 25px;
+    margin-bottom: 20px;
+}
+
+.flow_charts li {
+    text-align: center;
+    width: 239px;
+    font-size: 14px;
+    font-weight: bolder;
+    font-family: 'microsoft yahei';
+    color: #333;
+    float: left;
+    line-height: 25px
+}
+
+li.on {
+    color: #fff;
+}
+
+li.firstStyle {
+    color: #8ab923;
+}
+
+.visa-content {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.visa-content input:focus {
+    border: 1px solid #8ab923;
+}
+
+.h2-title {
+    font-family: 'microsoft yahei';
+    font-size: 24px;
+    margin: 15px 13px;
+}
+
+.visa-left {
+    float: left;
+    width: 870px;
+}
+
+.visa-header {
+    border: 3px solid #50b400;
+    padding: 20px 20px 15px;
+    position: relative;
+}
+
+.visa-header h1 {
+    font-size: 24px;
+    color: #000;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.visa-header-details ul,
+.visa-header-simple ul {
+    display: inline-block;
+    width: 100%;
+    margin-top: 10px;
+    position: relative;
+}
+
+.visa-header-details ul li,
+.visa-header-simple ul li {
+    display: inline-block;
+    float: left;
+    width: 33.3%;
+    line-height: 30px;
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.visa-header-details ul li:last-child,
+.visa-header-simple ul li:last-child {
+    overflow: visible;
+    white-space: normal;
+}
+
+.visa-header-outdate {
+    height: 45px;
+    line-height: 45px;
+    position: relative;
+}
+
+.J_DateTips {
+    display: inline-block;
+    background: url(//img1.40017.cn/cn/v/2015/book/icon-info.png) no-repeat 100% 50%;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    position: relative;
+}
+
+.visa-header-tips {
+    position: relative;
+    display: inline-block;
+}
+
+.visa-header-tips div {
+    display: none;
+    width: 326px;
+    padding: 14px;
+    position: absolute;
+    top: 17px;
+    left: -40px;
+    z-index: 100;
+    background-color: #fff;
+    -webkit-box-shadow: 0px 0px 20px #ccc;
+    box-shadow: 0px 0px 20px #ccc;
+}
+
+.visa-header-tips em {
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 0 8px 8px;
+    border-style: solid;
+    border-color: transparent transparent #fff;
+    position: absolute;
+    top: -8px;
+    left: 17px;
+}
+
+.visa-header-tips span {
+    display: inline-block;
+    color: #666;
+    height: 45px;
+    line-height: 20px;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.visa-header-tips i {
+    display: inline-block;
+    background-color: #80bc2b;
+    color: #fff;
+    height: 16px;
+    line-height: 16px;
+    border-radius: 4px;
+    padding: 0 2px;
+}
+
+.icon-datetime {
+    background-image: url("images/visa-date.png");
+    background-repeat: no-repeat;
+    width: 13px;
+    height: 13px;
+    left: 150px;
+    top: 17px;
+    position: absolute;
+}
+
+.visa-header-outdate span,
+.visa-people-ch i {
+    color: #999;
+}
+
+#J_outCal {
+    width: 98px;
+    height: 29px;
+    padding-left: 9px;
+    line-height: 29px;
+    color: #333;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    font-family: "microsoft yahei";
+}
+
+.out_cal {
+    cursor: pointer;
+}
+
+.visa-header-people {
+    height: 37px;
+    line-height: 37px;
+    position: relative;
+}
+
+.people-box {
+    display: inline-block;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    width: 101px;
+    height: 29px;
+    text-align: center;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.visa-people-ad,
+.visa-people-ch {
+    margin-right: 10px;
+    display: inline-block;
+}
+
+.people-box .J_BtnDown {
+    background-position: -46px -226px;
+}
+
+.people-box .J_BtnUp {
+    background-position: -19px -226px;
+}
+
+.people-box a {
+    border: none;
+    color: #333;
+    width: 33px;
+    height: 29px;
+    float: left;
+    overflow: hidden;
+    text-align: center;
+    background: url(//img1.40017.cn/cn/v/2015/visadetails/icon-visa.png) no-repeat;
+}
+
+.people-box input {
+    border: none;
+    color: #333;
+    width: 33px;
+    height: 29px;
+    line-height: 29px;
+    float: left;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    overflow: hidden;
+    text-align: center;
+}
+
+.visa-header-warning {
+    background-image: url("images/icon-bell.png");
+    background-repeat: no-repeat;
+    text-indent: 25px;
+    height: 15px;
+    line-height: 15px;
+    margin: 10px 0;
+    color: #999;
+}
+
+.visa-header-btn {
+    position: absolute;
+    background: #50b400;
+    cursor: pointer;
+    display: inline-block;
+    padding: 0 5px;
+    height: 20px;
+    line-height: 20px;
+    width: 55px;
+    color: #fff;
+    bottom: 0;
+    right: 0;
+}
+
+.hide:after {
+    content: " ";
+    border: 3px solid transparent;
+    border-bottom-color: #fff;
+    border-top-width: 0;
+    position: absolute;
+    bottom: 7px;
+    right: 2px;
+}
+
+.show:after {
+    content: " ";
+    border: 3px solid transparent;
+    border-top-color: #fff;
+    border-bottom-width: 0;
+    position: absolute;
+    bottom: 7px;
+    right: 2px;
+}
+
+.visa-box {
+    border-top: 1px solid #8ab923;
+    width: 870px;
+    background-color: #f5f5f5;
+    margin-bottom: 20px;
+}
+
+.h3-title {
+    height: 39px;
+    line-height: 39px;
+    padding-left: 15px;
+    font-size: 14px;
+    color: #333;
+    background: #f5f5f5;
+}
+
+.h3-title em {
+    font-size: 12px;
+    display: inline-block;
+    margin-left: 30px;
+    color: #666;
+}
+
+.h3-title span {
+    font-size: 12px;
+    color: #666;
+    padding-left: 14px;
+}
+
+.h3-title i {
+    float: right;
+    margin-right: 30px;
+    color: #006dae;
+    cursor: pointer;
+}
+
+.visa-listbox {
+    background-color: #fff;
+    margin: 0 auto;
+    border: 3px solid #f5f5f5;
+}
+
+.visa-linkman {
+    margin-left: 100px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+}
+
+.visa-linkman li,
+.visa-playInfo li,
+.visa-sendInfo li {
+    padding-bottom: 10px;
+}
+
+.visa-sendInfo li {
+    position: relative;
+}
+
+.content-name,
+.phone-num,
+.content-email,
+.player-name,
+.player-type,
+.player-date,
+.send-name,
+.send-area,
+.send-address,
+.send-mail,
+.send-phoneNum {
+    color: #666;
+    width: 80px;
+    text-align: right;
+    display: inline-block;
+    height: 23px;
+    line-height: 23px;
+    font-size: 12px;
+}
+
+.visa-linkman em,
+.visa-playInfo em,
+.visa-sendInfo em {
+    color: #f60;
+    vertical-align: sub;
+}
+
+.visa-linkman input,
+.visa-playInfo input,
+.visa-sendInfo input {
+    border: 1px solid #ddd;
+    width: 160px;
+    height: 25px;
+    line-height: 25px;
+    text-indent: 2px;
+    color: #333;
+    box-sizing: border-box;
+    padding-left: 5px;
+    margin-left: 7px;
+    border-radius: 2px;
+    font-family: "Microsoft Yahei";
+}
+
+.visa-playInfo .J_BirthDate {
+    cursor: pointer;
+}
+
+.visa-playInfo label {
+    position: relative;
+    display: inline-block;
+}
+
+.visa-playInfo .title {
+    color: #666;
+    width: 80px;
+    text-align: right;
+    height: 23px;
+    line-height: 23px;
+    font-size: 12px;
+    float: left;
+}
+
+.visa-playInfo .icon-date {
+    position: absolute;
+    background-image: url("images/visa-date.png");
+    background-repeat: no-repeat;
+    cursor: pointer;
+    width: 13px;
+    height: 13px;
+    right: 7px;
+    top: 7px;
+}
+
+.visa-playInfo .del {
+    position: absolute;
+    border-radius: 50%;
+    opacity: .3;
+    cursor: pointer;
+    filter: alpha(opacity=30);
+    text-align: center;
+    background-color: #000;
+    z-index: 99;
+    color: #fff;
+    font-size: 14px;
+    width: 13px;
+    height: 13px;
+    line-height: 13px;
+    right: 30px;
+    top: 7px;
+}
+
+.J_BirthDate + .valid_symbol {
+    position: absolute;
+    top: 6px;
+    right: -20px;
+    margin: 0;
+}
+
+.visa-playInfo select {
+    border: 1px solid #ddd;
+    width: 160px;
+    height: 22px;
+}
+
+select option:hover {
+    background-color: #f0f0f0 !important;
+}
+
+.visa-playbox {
+    position: relative;
+    background-color: #fff;
+    padding: 15px 23px 5px;
+    margin: 0 auto;
+    border: 3px solid #f5f5f5;
+    border-bottom: 1px dashed #ccc;
+}
+
+.visa-playbox h6 {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 12px;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    color: #666;
+    vertical-align: top;
+}
+
+.visa-playbox .list {
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    overflow: hidden;
+    width: 660px;
+}
+
+.visa-playbox .list label {
+    display: inline-block;
+    position: relative;
+    padding-left: 17px;
+    cursor: pointer;
+    width: 110px;
+    height: 16px;
+    line-height: 16px;
+    margin: 2px 5px 8px 0;
+    float: left;
+    background: url("images/icon-ticket.png") 0 -172px no-repeat;
+}
+
+.visa-playbox .list label.checked {
+    background-position: 0 -133px;
+}
+
+.visa-playbox .list span {
+    display: inline-block;
+    max-width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.visa-playbox .list i {
+    position: relative;
+    margin-left: 7px;
+    vertical-align: top;
+    display: inline-block;
+    padding: 0 2px;
+    width: 25px;
+    color: #fff;
+    background-color: #50b400;
+}
+
+.visa-playbox .list i:before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: -4px;
+    background-color: #fff;
+    border: 4px solid transparent;
+    border-right-color: #50b400;
+    border-left-width: 0;
+}
+
+.visa-playbox .J_disPlayer {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.visa-playbox .visa-play-pop {
+    background: #fff7dc;
+    border: 1px solid #f4e09f;
+    padding: 5px 15px;
+    margin-left: 100px;
+    color: #926f24;
+}
+
+.visa-playlists {
+    background-color: #fff;
+    margin: 0 auto;
+    border: 3px solid #f5f5f5;
+    border-top: 0;
+}
+
+.visa-playlist {
+    padding: 20px 23px 5px;
+    margin: 0 auto;
+    border-top: 1px dashed #ccc;
+}
+
+.visa-playlist:first-child {
+    border-top: 0;
+}
+
+.visa-playL {
+    width: 60px;
+    display: inline-block;
+}
+
+.visa-playR {
+    width: 699px;
+    margin-left: 10px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.visa-playL-name {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 18px;
+    text-align: center;
+}
+
+.visa-playL-type {
+    position: relative;
+    font-size: 12px;
+    color: #64a10a;
+    width: 55px;
+    height: 20px;
+    background-color: #eaf9c9;
+    text-align: center;
+    line-height: 20px;
+    border-radius: 5px;
+}
+
+.visa-playL-type i {
+    content: "";
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    position: absolute;
+    top: 4px;
+    right: -20px;
+    background: url("images/icon-warning.png") no-repeat 100% 50%;
+}
+
+.visa-playInfo li {
+    position: relative;
+}
+
+.visa-playInfo .icon-save {
+    display: inline-block;
+    position: relative;
+    padding-left: 17px;
+    cursor: pointer;
+    height: 16px;
+    line-height: 16px;
+    margin: 0 25px;
+    color: #50b400;
+    background: url("images/icon-ticket.png") 0 -172px no-repeat;
+}
+
+.visa-playInfo .icon-save:hover,
+.visa-playInfo .icon-clear:hover {
+    background-color: #eaf9c9;
+}
+
+.visa-playInfo .icon-save.checked {
+    background-position: 0 -133px;
+}
+
+.visa-playInfo .icon-clear {
+    display: inline-block;
+    padding-left: 17px;
+    cursor: pointer;
+    height: 16px;
+    line-height: 13px;
+    color: #8d97a1;
+    background: url("images/icon-clear.png") no-repeat;
+}
+
+.pType-ul {
+    position: absolute;
+    border: 1px solid #cccccc;
+    border-top: 0;
+    background-color: #f6f6f6;
+    z-index: 999;
+    left: 87px;
+    top: 25px;
+}
+
+.pType-li span {
+    position: relative;
+    display: inline-block;
+    border: 1px solid #ddd;
+    width: 160px;
+    height: 25px;
+    line-height: 25px;
+    text-indent: 2px;
+    color: #333;
+    box-sizing: border-box;
+    padding-left: 7px;
+    cursor: pointer;
+    vertical-align: top;
+    border-radius: 2px;
+    margin-left: 7px;
+}
+
+.pType-li span:after {
+    content: " ";
+    border: 5px solid transparent;
+    border-top-color: #999;
+    border-bottom-width: 0;
+    position: absolute;
+    top: 10px;
+    right: 7px;
+}
+
+.pType-ul li {
+    width: 148px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #333;
+    padding-bottom: 0;
+    cursor: pointer;
+    background-color: #fff;
+    padding-left: 10px;
+}
+
+.pType-ul li:hover {
+    background-color: #f0f0f0;
+}
+
+.visa-insurance,
+.visa-coupon,
+.visa-other {
+    padding: 20px 20px 1px;
+}
+
+.visa-insurances,
+.visa-coupon,
+.visa-others {
+    background-color: #fff;
+    margin: 0 auto;
+    border: 3px solid #f5f5f5;
+}
+
+.visa-coupon {
+    min-height: 120px;
+}
+
+.visa-insuranceL {
+    /* float: left; */
+    width: 65px;
+    border-left: 2px solid #8ab923;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+}
+
+.visa-insuranceR,
+.visa-otherR {
+    /* float: right; */
+    width: 825px;
+    display: inline-block;
+}
+
+.insurance-table,
+.other-table,
+.disc-table {
+    width: 825px;
+    max-height: 100px;
+    margin-bottom: 10px;
+}
+
+.insurance-table tr,
+.other-table tr,
+.disc-table tr {
+    height: 35px;
+}
+
+.insurance-table td,
+.other-table td,
+.disc-table td {
+    font-size: 12px;
+    color: #333;
+    position: relative;
+}
+
+a.J_btnMore,
+a.J_otherMore,
+a.J_discMore,
+a.J_disPlayer {
+    width: 50px;
+    display: inline-block;
+    text-decoration: none;
+}
+
+a.close:after,
+a.close:after {
+    border-bottom-color: #005bb5;
+    border-top-width: 0;
+    border-bottom-width: 5px;
+    border-top-color: #fff;
+}
+
+.J_btnMore:after,
+.J_otherMore:after,
+.J_discMore:after,
+.J_disPlayer:after {
+    content: " ";
+    border: 5px solid transparent;
+    border-top-color: #005bb5;
+    border-bottom-width: 0;
+    position: absolute;
+    top: 15px;
+    left: 30px;
+}
+
+.J_disPlayer:after {
+    top: 8px;
+}
+
+.none {
+    display: none;
+}
+
+.block {
+    display: table-row;
+}
+
+.insurance-warning {
+    display: none;
+    position: relative;
+    text-indent: 30px;
+    height: 85px !important;
+}
+
+.icon-warning {
+    width: 38px;
+    height: 38px;
+    position: absolute;
+    top: 8px;
+    left: 40px;
+    display: inline-block;
+    background-image: url("images/visa-warning.png");
+    background-repeat: no-repeat;
+}
+
+.insu-warn {
+    position: absolute;
+    width: 820px;
+    background: #fff7dc;
+    border: 1px solid #f4e09f;
+    height: 55px;
+    top: 10px;
+    left: 0;
+}
+
+.warning-info {
+    margin-left: 70px;
+    margin-top: 7px;
+    color: #926f24;
+}
+
+.insurance-table em,
+.other-table em,
+.disc-table em {
+    font-size: 12px;
+    color: #ff6633;
+    font-style: normal;
+}
+
+.insutype-th,
+.othertype-th,
+.disctype-th {
+    border-left: 2px solid #50b400;
+    text-indent: 20px;
+}
+
+.insudate-th,
+.otherdate-th,
+.discdate-th {
+    text-align: center;
+    position: relative
+}
+
+.insutype-td,
+.othertype-td,
+.disctype-td {
+    width: 130px;
+    text-indent: 22px
+}
+
+.insuname-td,
+.othername-td,
+.discname-td {
+    padding-right: 10px;
+    width: 300px;
+}
+
+.coupon_tips em {
+    top: -9px;
+    left: 12px;
+    display: block;
+    width: 0;
+    height: 0;
+    border-width: 0 9px 9px;
+    border-style: solid;
+    border-color: transparent transparent #fff;
+    position: absolute;
+}
+
+.coupon_tips {
+    display: none;
+    font-size: 12px;
+    position: absolute;
+    top: 34px;
+    left: 0;
+    padding: 5px 10px;
+    z-index: 100;
+    background-color: #fff;
+    border: 1px solid #f5f5f5;
+    -webkit-box-shadow: 0 0 10px #999;
+    box-shadow: 0 0 10px #999;
+    border: 1px solid #eceff2;
+    z-index: 2000;
+    width: 330px;
+    text-align: left;
+}
+
+.insucost-td,
+.othercost-td,
+.couponcost-td,
+.discost-td {
+    width: 90px;
+}
+
+.othernum-td {
+    width: 200px;
+}
+
+.insucost-td em:before,
+.othercost-td em:before,
+.discost-td em:before {
+    content: "¥";
+}
+
+.insucost-td em:after,
+.othercost-td em:after,
+.discost-td em:after {
+    content: "/份";
+    color: #333;
+}
+
+.insunum-td span:after,
+.othernum-td span:after,
+.discnum-td span:after {
+    content: "份";
+}
+
+.insudate-td,
+.otherdate-td,
+.discdate-td {
+    text-align: center;
+    width: 150px;
+}
+
+.J_Tips {
+    background: url("images/icon-question.png") no-repeat 100% 50%;
+}
+
+.J_Warn {
+    background: url("images/icon-warning.png") no-repeat 100% 50%;
+}
+
+.J_Tips,
+.J_Warn {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    vertical-align: middle;
+    position: relative;
+    margin: 0 5px;
+}
+
+.J_Time {
+    display: inline-block;
+    background: url(//img1.40017.cn/cn/v/2015/book/icon-info.png) no-repeat 100% 50%;
+    width: 20px;
+    height: 20px;
+    vertical-align: top;
+    padding-left: 5px;
+}
+
+.insurance-table .insurance-title,
+.other-table .other-title,
+.disc-table .disc-title {
+    width: 100%;
+    height: 30px;
+    background-color: #f5f5f5;
+    color: #666;
+}
+
+.visa-send {
+    background-color: #fff;
+    margin: 0 auto;
+    border: 3px solid #f5f5f5;
+}
+
+.visa-sendL {
+    float: left;
+    width: 100px;
+}
+
+.visa-sendR {
+    margin-top: 20px;
+    margin-left: 15px;
+    margin-bottom: 5px;
+}
+
+.visa-sendInfo p {
+    display: inline-block;
+    font-size: 14px;
+    color: #333;
+}
+
+.visa-sendInfo p span {
+    color: #666;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+.visa-sendInfo p span em {
+    font-style: normal;
+    color: #ff6633;
+    font-size: 14px;
+    vertical-align: baseline;
+}
+
+.visa-sendInfo select {
+    width: 120px;
+    margin-right: 7px;
+}
+
+.visa-right {
+    position: relative;
+    float: right;
+    width: 310px;
+}
+
+.visa-right-content {
+    width: 310px;
+    border: 1px solid #ffd8a7;
+    background-color: #fff0e1;
+}
+
+.visa-rightT {
+    width: 100%;
+    height: 304px;
+    border: 1px solid #ddd;
+    background-color: #f5f5f5;
+    margin-bottom: 18px;
+}
+
+.visa-rightT-cont {
+    width: 288px;
+    height: 252px;
+    background-color: #fff;
+    margin-left: 10px;
+}
+
+.visa-rightT-conts {
+    width: 265px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.visa-rightT-title {
+    width: 265px;
+    height: 60px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed #666;
+    font-size: 14px;
+    color: #333;
+    line-height: 30px;
+    overflow: hidden;
+}
+
+.visa-rightT-ul {
+    margin-top: 15px;
+}
+
+.visa-rightT-ul li {
+    font-size: 12px;
+    color: #666;
+    line-height: 23px;
+}
+
+.visa-rightT-ul li em {
+    font-style: normal;
+    color: #333;
+}
+
+.visa-rightB-head {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    margin: 15px;
+}
+
+.visa-rightB-cont {
+    height: 60px;
+    line-height: 60px;
+    background: #ffe3c8;
+}
+
+.visa-priceT {
+    margin: 20px 20px 10px 20px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed #666;
+}
+
+.visa-price-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+}
+
+.price-left {
+    font-size: 12px;
+    color: #666666;
+    display: block;
+}
+
+.price-right {
+    display: block;
+    font-size: 12px;
+    color: #333;
+}
+
+.price-right em,
+.price-right em:before {
+    font-style: normal;
+    color: #ff6633;
+}
+
+.price-right em:before,
+.price-right i:before {
+    content: "¥";
+}
+
+.price-right[vtype='disc'] em:before,
+.price-right[vtype='disc'] i:before {
+    content: "-¥";
+}
+
+.price-right i {
+    font-style: normal;
+    float: right;
+    color: #ff6633;
+}
+
+.price-right b:before {
+    content: "x";
+}
+
+.child-price {
+    margin-bottom: 6px;
+}
+
+.visa-priceB {
+    margin: 0 20px 10px;
+}
+
+.price-total {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    position: relative;
+    display: block;
+    margin: 0 20px;
+}
+
+.price-total i {
+    font-weight: normal;
+    display: inline-block;
+    color: #ff6600;
+    font-size: 26px;
+    float: right;
+}
+
+.price-total i:after {
+    content: "元"
+}
+
+.visa-order-submit {
+    display: block;
+    width: 194px;
+    height: 53px;
+    background-color: #ff7800;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 53px;
+    border-radius: 5px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.visa-order-submit:hover {
+    background-color: #ff6633;
+    color: #fff;
+    text-decoration: none;
+}
+
+.visa-order-info {
+    width: 100%;
+    height: 263px;
+    margin-top: 50px;
+    /*margin-bottom: 305px;*/
+}
+
+.visa-order-info p {
+    height: 35px;
+    line-height: 35px;
+    padding-left: 20px;
+    color: #333;
+    font-size: 14px;
+    background-color: #f2f2f2;
+}
+
+.order-info {
+    border: 1px solid #ddd;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding: 15px 10px 0 15px;
+    height: 210px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.order-info ul {
+    padding-bottom: 10px;
+    color: #666;
+    font-size: 14px;
+}
+
+.order-info li {
+    padding-bottom: 10px;
+}
+
+.radio-style {
+    position: relative;
+    left: 40px;
+}
+
+.cost-line {
+    overflow: hidden;
+    clear: both;
+}
+
+.none {
+    display: none !important;
+}
+
+.ui-dialog-time {
+    width: 190px;
+    height: 170px;
+    background-color: #fff;
+    box-shadow: 0 0 16px 2px rgba(0, 0, 0, .3);
+    z-index: 1000;
+    position: absolute;
+    top: 243px;
+    left: 85px;
+    display: none;
+}
+
+.ui-dialog-time ul {
+    padding: 15px;
+}
+
+.ui-dialog-time li {
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 7px;
+}
+
+.ui-dialog-time:after,
+.ui-dialog-effect:after {
+    content: " ";
+    border: 5px solid transparent;
+    border-bottom-color: #fff;
+    border-top-width: 0;
+    position: absolute;
+    top: -5px;
+    left: 70px;
+}
+
+.safe-title {
+    font-weight: bolder;
+    color: #000;
+    font-size: 16px;
+}
+
+.ui-dialog-safe:after {
+    content: " ";
+    border: 5px solid transparent;
+    border-right-color: #fff;
+    border-left-width: 0;
+    position: absolute;
+    top: 248px;
+    left: -5px;
+    z-index: 1000;
+}
+
+.ui-dialog-arrow {
+    display: none;
+    border: 7px solid transparent;
+    border-right-color: #fff;
+    border-left-width: 0;
+    position: absolute;
+    top: 0px;
+    left: 22px;
+    z-index: 10000;
+}
+
+.tip-info,
+.warn-info {
+    display: inline-block;
+    position: relative;
+    text-indent: 0;
+}
+
+.ui-dialog-warn {
+    display: none;
+}
+
+.ui-dialog-time .tab-bg {
+    width: 53px;
+    height: 16px;
+    background-color: #50b400;
+    text-align: center;
+    line-height: 16px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.ui-dialog-safe {
+    width: 525px;
+    background-color: #fff;
+    box-shadow: 0 0 16px 2px rgba(0, 0, 0, .3);
+    z-index: 1000;
+    position: absolute;
+    top: -106px;
+    left: 29px;
+    overflow-x: hidden;
+    overflow: auto;
+    max-height: 500px;
+    display: none;
+    padding: 10px;
+}
+
+.send-area {
+    vertical-align: top;
+}
+
+.send-pro-ul,
+.send-city-ul,
+.send-region-ul {
+    width: 128px;
+    height: 200px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    color: #000;
+    cursor: pointer;
+    position: absolute;
+    top: 29px;
+    z-index: 100;
+    background-color: #fff;
+    left: 91px;
+    overflow: hidden;
+    overflow-y: scroll;
+}
+
+.send-city-ul {
+    left: 228px;
+}
+
+.send-region-ul {
+    left: 365px;
+}
+
+.send-pro-ul li,
+.send-city-ul li,
+.send-region-ul li {
+    padding-left: 10px;
+    padding-bottom: 5px;
+    height: 19px;
+    padding-top: 5px;
+    overflow: hidden;
+}
+
+.send-pro-ul li:hover,
+.send-city-ul li:hover,
+.send-region-ul li:hover {
+    background-color: #f0f0f0;
+}
+
+.invalid_message_right span {
+    border: 0;
+}
+
+.visa-sendInfo .send-pro {
+    margin-left: 11px;
+}
+
+.submit-click {
+    background-color: #dcdcdc;
+    color: #fff;
+}
+
+.submit-click:hover {
+    background-color: #dcdcdc;
+}
+
+.sub-tips {
+    font-size: 12px;
+    color: #999;
+    padding-left: 10px;
+    position: absolute;
+    top: 36px;
+    left: 540px;
+}
+
+.order-btn {
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.insur-drop {
+    width: 160px;
+    height: 22px;
+    border: 1px solid #ddd;
+    font-family: "Microsoft Yahei";
+}
+
+.J_timeTips {
+    display: inline-block;
+    background: url(//img1.40017.cn/cn/v/2015/book/icon-info.png) no-repeat 100% 50%;
+    width: 20px;
+    height: 20px;
+    vertical-align: bottom;
+}
+
+.buy-close {
+    background-color: #ccc;
+}
+
+.buy-close:hover {
+    background-color: #ccc;
+}
+
+.ui-dialog-effect {
+    width: 197px;
+    height: 32px;
+    background-color: #fff;
+    box-shadow: 0 0 16px 2px rgba(0, 0, 0, .3);
+    z-index: 1000;
+    position: absolute;
+    top: 40px;
+    left: 22px;
+    display: none;
+    line-height: 32px;
+}
+
+.outform {
+    display: none !important;
+}
+
+.nav-fixed {
+    top: 10px;
+    position: fixed;
+    width: 310px;
+}
+
+body .calendar-panel.white:after {
+    display: none;
+}
+
+.calendar-panel.white a.previous-month,
+.calendar-panel.white a.next-month {
+    background: url(//js.40017.cn/cn/public/module/Calendar/0.3/calendar_arrow_white.png?v=2) 0 0 no-repeat;
+}
+
+.calendar-panel.white a.previous-month-disabled,
+.calendar-panel.white a.previous-month-disabled:hover {
+    background-position: -100px -43px;
+}
+
+.calendar-panel.white a.next-month {
+    background-position: -49px 0;
+}
+
+.calendar-panel.white a.previous-month:hover {}
+
+.calendar-panel.white a.previous-month {
+    background-position: -8px 0;
+}
+
+.calendar-panel.white .calendar-wrapper td.to-day:hover span {
+    color: #fff
+}
+
+.calendar-panel.white .calendar-wrapper td.festival:hover span {
+    color: #b54800
+}
+
+.people-is-zero {
+    width: 224px;
+    height: 20px;
+    border: 1px solid #ffD5a1;
+    background-color: #fff4d9;
+    font-size: 12px;
+    line-height: 20px;
+    display: inline-block;
+    /*position:absolute;*/
+    /*right:-5px;*/
+    /*bottom:30px;*/
+}
+
+.people-is-zero i {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    background: url(//img1.40017.cn/cn/v/2015/book/order_pop.png) no-repeat;
+    margin: 3px;
+    float: left;
+}
+
+.tour-adviser .visa-sendR {
+    margin-bottom: 15px;
+}
+
+
+/*发票信息*/
+
+.visa-ticket {
+    background-color: #fff;
+    margin: 0 auto;
+    border: 3px solid #f5f5f5;
+    padding: 35px 15px 30px;
+}
+
+.visa-ticket label {
+    display: inline-block;
+    padding-left: 25px;
+    margin-right: 30px;
+    font-size: 14px;
+    height: 20px;
+    float: left;
+    cursor: pointer;
+    background: url("images/icon-ticket.png") 0 -51px no-repeat;
+}
+
+.visa-ticket label.checked {
+    background-position: 0 -23px;
+}
+
+.visa-ticket label input {
+    display: none;
+}
+
+.visa-ticket label span b {
+    display: block;
+    color: #999;
+}
+
+.visa-ticket label span a {
+    text-decoration: none;
+}
+
+.visa-ticket label span em,
+.visa-ticket label span i {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.visa-ticket .has-data {
+    display: none;
+}
+
+.visa-ticket-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 9000;
+    overflow: hidden;
+    -webkit-user-select: none;
+    background-color: #000;
+    opacity: .7;
+    filter: alpha(opacity=70);
+}
+
+.visa-ticket-module {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 735px;
+    height: 500px;
+    z-index: 10000;
+    margin-left: -400px;
+    margin-top: -250px;
+    padding: 10px 16px 10px 40px;
+    font-size: 14px;
+    background-color: #fff;
+}
+
+.visa-ticket-module h3 {
+    font-size: 18px;
+    font-weight: bold;
+    height: 39px;
+    line-height: 39px;
+}
+
+.visa-ticket-module .tk-close {
+    position: absolute;
+    cursor: pointer;
+    top: 10px;
+    right: 10px;
+    background: url("images/z_public.png") no-repeat -83px 7px;
+    width: 30px;
+    height: 30px;
+}
+
+.tk-content {
+    height: 450px;
+    overflow-y: scroll;
+}
+
+.tk-content i.title {
+    color: #666;
+    margin-right: 10px;
+    width: 60px;
+    display: inline-block;
+    text-align: right;
+}
+
+.tk-cost span,
+.tk-tips span,
+.tk-send-content {
+    width: 640px;
+    vertical-align: text-top;
+    display: inline-block;
+}
+
+.tk-cost,
+.tk-header,
+.tk-tips,
+.tk-send {
+    margin-top: 15px;
+}
+
+.tk-header input {
+    color: #333;
+    width: 448px;
+    height: 26px;
+    line-height: 26px;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    text-indent: 5px;
+    font-family: 'microsoft yahei';
+}
+
+.tk-type,
+.tk-btn {
+    margin-top: 15px;
+}
+
+.tk-traveler {
+    position: relative;
+    height: 25px;
+    width: 450px;
+    overflow: hidden;
+}
+
+.tk-traveler label {
+    display: inline-block;
+    padding-left: 17px;
+    cursor: pointer;
+    font-size: 14px;
+    height: 16px;
+    width: 66px;
+    overflow: hidden;
+    margin: 2px 0 8px 0;
+    float: left;
+    line-height: 16px;
+    background: url("images/icon-ticket.png") 0 -172px no-repeat;
+}
+
+.tk-traveler label.checked {
+    background-position: 0 -133px;
+}
+
+.tk-traveler .icon-arrow {
+    position: absolute;
+    width: 15px;
+    height: 10px;
+    display: inline-block;
+    background: url("images/icon-ticket.png") 0 -194px no-repeat;
+    right: 0;
+    bottom: 10px;
+    cursor: pointer;
+}
+
+.tk-traveler .icon-arrow.on {
+    bottom: 8px;
+    background-position: 0 -156px;
+}
+
+.tk-traveler .address {
+    float: right;
+    position: relative;
+    width: 83px;
+    color: #0185c6;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 16px;
+    font-size: 12px;
+    margin-right: 35px;
+}
+
+.tk-traveler .address i {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("images/icon-ticket.png") -2px 1px no-repeat;
+    position: relative;
+    top: 3px;
+}
+
+.tk-traveler .address em {
+    margin-left: 4px;
+}
+
+.tk-box-info {
+    position: relative;
+    width: 446px;
+    height: 66px;
+    margin-bottom: 10px;
+    border: 2px solid #ff7800;
+}
+
+.tk-box-info b {
+    position: absolute;
+    display: inline-block;
+    width: 22px;
+    height: 19px;
+    background: url("images/icon-ticket.png") 0 -82px no-repeat;
+    right: 0;
+    bottom: 0;
+}
+
+.tk-box-info .user,
+.tk-box-info .address {
+    display: block;
+    width: 420px;
+    height: 32px;
+    line-height: 32px;
+    margin-left: 10px;
+    border-bottom: 1px dashed #f0f0f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.tk-box-info .user i:first-child {
+    margin-right: 10px;
+}
+
+.make-info .title,
+.mark-address .title {
+    color: #666;
+    width: 45px;
+    display: inline-block;
+    text-align: center;
+}
+
+.make-info .user-name {
+    width: 126px;
+}
+
+.make-info .user-phone {
+    width: 198px;
+}
+
+.make-info input,
+.mark-address input {
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    padding-left: 0px;
+    height: 26px;
+    text-indent: 5px;
+    line-height: 26px;
+    color: #333;
+    font-family: 'microsoft yahei';
+}
+
+.mark-address {
+    position: relative;
+    margin-top: 10px;
+}
+
+.mark-address .title {
+    vertical-align: middle;
+}
+
+.send-pro,
+.send-city,
+.send-region {
+    display: inline-block;
+    width: 128px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #ddd;
+    color: #333;
+    font-size: 14px;
+    box-sizing: border-box;
+    padding: 0 20px 0 10px;
+    cursor: pointer;
+    margin-right: 9px;
+    position: relative;
+    vertical-align: middle;
+    border-radius: 2px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.send-pro:after,
+.send-city:after,
+.send-region:after {
+    content: "";
+    top: 6px;
+    left: 93px;
+    position: absolute;
+    display: inline-block;
+    width: 25px;
+    height: 17px;
+    background: url("images/icon-ticket.png") 0 -210px no-repeat;
+}
+
+.send-region {
+    margin-right: 0;
+}
+
+.mark-address input {
+    width: 397px;
+    margin-left: 52px;
+    margin-top: 10px;
+    vertical-align: sub;
+}
+
+.mark-address .send-pro-ul {
+    left: 49px;
+}
+
+.mark-address .send-city-ul {
+    left: 186px;
+}
+
+.mark-address .send-region-ul {
+    left: 323px;
+}
+
+.tk-type span {
+    color: #000;
+    position: relative;
+    border: 1px solid #ddd;
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    cursor: pointer;
+    padding: 5px 15px;
+    margin-right: 20px;
+}
+
+.tk-type span.active {
+    border: 2px solid #ff7800;
+}
+
+.tk-type span.active:after {
+    content: ' ';
+    font-size: 0;
+    width: 19px;
+    height: 16px;
+    background: url("images/icon-ticket.png") 0 -109px no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.tk-btn button {
+    height: 34px;
+    width: 130px;
+    line-height: 30px;
+    font-size: 16px;
+    border-radius: 3px;
+    margin-right: 10px;
+    display: inline-block;
+    cursor: pointer;
+    text-align: center;
+    font-family: "Microsoft Yahei";
+}
+
+.tk-btn .btn {
+    color: #fff;
+    margin-left: 70px;
+    background-color: #ff7800;
+    border: 1px solid #ff7800;
+}
+
+.tk-btn .btn:hover {
+    background-color: #ff6633;
+    border: 1px solid #ff6633;
+}
+
+.tk-btn .cancel {
+    background-color: #fff;
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+.tk-btn .cancel:hover {
+    color: #ff7800;
+}
+
+
+/*页面样式迁移至css*/
+
+.arrows_pop,
+.qdcode {
+    background: url("//img1.40017.cn/cn/c/c/common_aspect/w2m.png?v=140429") no-repeat scroll 0 0 transparent;
+}
+
+.backtop {
+    color: #b5b5b5;
+    display: inline-block;
+    position: fixed;
+    cursor: pointer;
+    height: 50px;
+}
+
+.qdcode {
+    display: inline-block;
+    height: 50px;
+    text-align: center;
+    width: 50px;
+}
+
+.hover_span b {
+    color: #999;
+}
+
+.bor_pop {
+    border: 4px solid #ddd;
+    float: left;
+}
+
+.bor_pop em {
+    border: 1px solid #999;
+    padding: 7px 6px;
+    float: left;
+    background-color: #fff;
+    width: 140px;
+}
+
+.arrows_pop {
+    background-position: 0 0;
+    height: 20px;
+    position: absolute;
+    right: -5px;
+    top: 11px;
+    width: 10px;
+}
+
+.qdcode {
+    background-position: 0 -125px;
+    width: 50px;
+    height: 50px;
+}
+
+.qdcode_hover {
+    background-position: 0 -73px;
+}
+
+
+/*二维码*/
+
+#showpopQdcod {
+    position: absolute;
+    right: 55px;
+    top: -6px;
+}
+
+.hasboxbg {
+    background-color: #fff;
+    padding: 12px;
+    border: 1px solid #999;
+    width: 84px;
+    float: left;
+}
+
+.hasboxbg span,
+.hasboxbg img {
+    float: left;
+    width: 84px;
+}
+
+.hasboxbg span {
+    color: #666666;
+    line-height: 18px;
+    padding-top: 5px;
+}
+
+.none {
+    display: none;
+}
+
+#header_lite .logo,
+#header_lite.menu {
+    width: 1200px;
+}
+
+
+/*百旅会样式*/
+
+tbody .blh-icon {
+    display: inline-block;
+    font-size: 12px;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid #f60;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+tbody .blh-icon i {
+    background: #f60;
+    color: #fff;
+    padding: 0 5px;
+    display: inline-block;
+}
+
+tbody .blh-icon em {
+    background: #fff;
+    color: #f60;
+    font-weight: bold;
+    padding: 0 5px;
+    display: inline-block;
+}
+
+tbody .blh-icon em:before {
+    font-weight: normal;
+    content: "抵";
+}
+
+tbody .blh-icon em:after {
+    font-weight: normal;
+    content: "元/人";
+}
+
+.disccheck-td {
+    width: 100px;
+}
+
+.disccheck-td label {
+    color: #ff9f20;
+    margin-left: 10px;
+}
+
+.no-disc {
+    margin-left: 10px;
+}
+
+.disccheck-td input {
+    vertical-align: -2px;
+}
+
+.disscore-td span {
+    margin-left: 15px;
+    cursor: pointer;
+    color: #8ab923;
+}
+
+.disscore-td span.close {
+    color: #ff9f20;
+}
+
+.disscore-td span:after {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(//img1.40017.cn/cn/v/2015/book2016/canuse.png) center no-repeat;
+    margin-left: 5px;
+    vertical-align: -3px;
+}
+
+.disscore-td span.close:after {
+    background: url(//img1.40017.cn/cn/v/2015/book2016/cannotuse.png) center no-repeat;
+}
+.discname-td .blh-msg{
+    height: 24px;
+    line-height: 24px;
+}
+.discname-td .blh-msg span {
+    display: inline-block;
+    width: 360px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.loading {
+    width: 100%;
+    height: 105px;
+    background-color: #fff;
+    position: relative;
+}
+
+.loading-img {
+    width: 97px;
+    height: 72px;
+    background: url(//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif?v=20140417) center no-repeat #fff;
+    margin: 0 auto;
+}
+
+.loading-txt {
+    text-align: center;
+    font-size: 14px;
+    line-height: 30px;
+}

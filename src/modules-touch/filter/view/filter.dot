@@ -1,0 +1,40 @@
+<div id="J_FilterPanel" class="filter-panel">
+    <div class="cond-panels">
+        <div class="cond-panel-wrap">
+            {{~it.conditions:cond:ind}}
+            <div class="cond-panel {{=ind==0?"selected":""}}">
+                <span class="label">{{=cond.label}}</span>
+                <div class="flow-box">
+                    <div class="J_FlowBox flow-box-inner">
+                        <ul>
+                            {{~cond.list:item:index}}
+                            <li data-param='{{=item.param}}' class="needsclick {{?index==(it.localFilter&&it.localFilter[ind]||0)}}active{{?}}">
+                                <span class="needsclick">{{=item.text}}</span>
+                                {{?item.date}}
+                                <div class="button-content num-ctrlbox">
+                                    <i data-ctrl="-1" class="button-minus needsclick"></i>
+                                    <input type="text" name="" disabled class="J_Number" min="{{=item.date.min}}" value="{{=it.now}}">
+                                    <i data-ctrl="+1" class="button-plus off needsclick"></i>
+                                </div>
+                                {{?}}
+                            </li>
+                            {{~}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{~}}
+        </div>
+
+    </div>
+    <div class="ctrl-panel">
+        <div class="ctrl-box">
+            <a href="javascript:;" class="confirm">
+                <span>确定</span>
+            </a>
+            <a href="javascript:;" class="reset">
+                <span>重置</span>
+            </a>
+        </div>
+    </div>
+</div>

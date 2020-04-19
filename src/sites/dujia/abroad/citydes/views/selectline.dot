@@ -1,0 +1,45 @@
+<div class="middle_content">
+    <div class="middle_header">
+        <div class="middle_title skin1">
+            {{=country}}精选线路
+        </div>
+        <div class="md_select_gp" cityid="{{=cityId}}" cityname="{{=startCity}}" destname="{{=country}}" destpinyin = "{{=destPinYin}}">
+            <span class="select_text">{{=startCity}}</span>
+            <span class="select_fold">出发</span>
+            <div class="select_btn">
+                <i class="ico ico_sel_btn"></i>
+            </div>
+        </div>
+    </div>
+    <div class="md_line_tab">
+        <span class="md_line_tab_type select" data-value="1">跟团游</span>
+        <span class="md_line_tab_type" data-value="3">自由行</span>
+        <a class="md_line_tab_more" href="//www.ly.com/dujia/{{=destPinYin}}-lvyou/f{{=cityId}}">查看全部</a>
+    </div>
+
+    <!--跟团游-->
+    <div class="md_line_list" data-index="1">
+        {{?selectLine.ProductList && selectLine.ProductList.length>0}}
+            {{~selectLine.ProductList:rem:rIndex}}
+                <a class="md_line_item" href="//www.ly.com/dujia/tours/{{=rem.LineId}}.html">
+                    <div class="md_line_img">
+                        <img data-img="{{=rem.ImgUrl.replace('http:','')}}" alt="{{=rem.MainTitle}}"/>
+                    </div>
+                    <div class="content_gp">
+                        <div class="content_title">{{=rem.MainTitle}}</div>
+                        <div class="content_price_gp">
+                            &yen;<span class="content_price">{{=rem.TcPrice}}</span>起
+                            <i class="depcity">{{=rem.LeaveCity}}出发</i>
+                        </div>
+                    </div>
+                </a>
+            {{~}}
+        {{??}}
+        <div class="md_line_nothing">
+            没有线路哦，您可以选择附近出发地查看更多线路！或者来一次<a href="//www.ly.com/dujia/schedule.html" class="fontstyle">定制</a>吧！
+        </div>
+        {{?}}
+    </div>
+    <!--自由行-->
+    <div class="md_line_list" style="display: none;" data-index="3"></div>
+</div>

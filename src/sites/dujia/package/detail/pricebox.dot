@@ -1,0 +1,32 @@
+<!--packedDetail 里脚本有引用-->
+<div class="title-price">费用明细</div>
+    <div class="tit-pr-mess">
+        <dl>
+            <dt>出游信息</dt>
+            <dd>
+                <div>出游日期：<span class="start-date">{{=it.Data.DepartDate}}</span> 至 <span class="end-date">{{=it.Data.ReturnDate}}</span></div>
+            </dd>
+            <dd>
+                <div>出游人数：{{=it.Data.Adult}}成人 {{?it.Data.childNum}}{{=it.Data.childNum}}儿童{{?}}</div>
+            </dd>
+        </dl>
+    </div>
+    <div class="pr-product">
+        <dl>
+            <dt>套餐价格</dt>
+            <dd class="J_packedDetail"><span class="Lbox">{{=it.Data.totalNum}}人往返机票+{{=it.Data.Nights}}晚酒店</span><span class="Rbox"><em>¥{{=it.Data.TotalPrice}}</em></span></dd>
+        </dl>
+        {{?it.Data.DefaultAcc}}
+        <dl>
+            <dt>保险</dt>
+            <dd class="J_Accidents"><span class="Lbox">{{=it.Data.DefaultAcc}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultAccPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+            <dd class="J_Cancles"><span class="Lbox">{{=it.Data.DefaultCan}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultCanPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+        </dl>
+        {{?}}
+    </div>
+    <div class="total-pr">
+        <dl>
+            <dd><span class="Lbox">套餐总价</span><span class="Rbox">¥<em>{{=it.Data.sumPrice}}</em></span></dd>
+        </dl>
+    </div>
+    <div class="price-box-warning">机酒产品不支持部分退订，如机票或酒店任一资源需要单独退订，则必须整单同时退订。</div>

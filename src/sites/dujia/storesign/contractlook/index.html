@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    {{ var it = IT;}}
+    {{ var dataparam = it.dataparam||{};}}
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="同程旅游" /><meta name="copyright" content="同程旅游络科技股份有限公司" />
+<title>门店签约查询</title>
+<meta name="apple-itunes-app" content="app-id=475966832" />
+<link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/c/c/pay/base.0.0.2.css?v=2013102303" media="screen" />
+<% includeId = cnwidescreenjscss %>
+<style>
+    a:hover{
+        text-decoration: none;
+    }
+    #footer_lite {
+        margin: 20px auto 0;
+        border-top: none;
+    }
+    .logo{
+        width: 1200px;
+    }
+</style>
+</head>
+<body>
+<!--头部start-->
+<div>
+    <div class="login_bg_bag"></div>
+    <span id="bulletin"></span>
+    <div id="header_lite">
+        <div class="logo clearfix">
+            <h1><a href="javascript:void(0);" title="同程旅游"><img src="//img1.40017.cn/cn/c/c/2015/2015129100342.png" alt="同程旅游"></a></h1>
+        </div>
+    </div>
+</div>
+<div class="content">
+	<input name="Customerid" type="hidden" id="Customerid" value='{{=dataparam.CustomerSerialid||""}}'>
+	<input name="ChangeSignBodyCode" type="hidden" id="ChangeSignBodyCode" value='{{=dataparam.ChangeSignBodyCode||0}}'>
+	<input name="OpName" type="hidden" id="OpName" value="">
+	<input name="OpJobnum" type="hidden" id="OpJobnum" value='{{=dataparam.OpJobnum||""}}'>
+	<input name="ProjectCode" type="hidden" id="ProjectCode" value='{{=dataparam.ProjectCode||""}}'>
+	<input name="StoreCode" type="hidden" id="StoreCode" value='{{=dataparam.StoreCode||""}}'>
+    <input name="Contractid" type="hidden" id="Contractid" value='{{=it.ContractSerialid||""}}'>
+	
+    <h2 class="tit">在线签约</h2>
+    <div class="contract_con">
+        <div class="line"></div>
+        <div class="contract_doc">
+        {{?it.Result&&it.Result==true&&it.ContractImgs&&it.ContractImgs.length>0}}
+            {{?it.ContractImgs.length==1}}
+                {{~it.ContractImgs:imgs}}
+                <img src='{{=imgs.ImgUrl}}' alt="合同">
+                {{~}}
+            {{??}}
+                {{var arrList = [];}}
+                {{
+                    var sortFun = function (name) {
+                        return function (o, p) {
+                            var vala = o[name];
+                            var valb = p[name];
+                            if (vala < valb) {
+                                return -1;
+                            } else if (vala > valb) {
+                                return 1;
+                            } else {
+                                return 0;
+                            }            
+                        } 
+                    };
+                    arrList = it.ContractImgs.sort(sortFun("SortNum"));
+                }}
+                {{?arrList&&arrList.length>0}}
+                {{~arrList:picList}}
+                    <img src='{{=picList.ImgUrl}}' alt="合同">
+                {{~}}
+                {{?}}
+            {{?}}
+        {{??it.Message&&it.Message!=""}}
+            <div class="fail_t">{{=it.Message}}</div>
+        {{??}}
+            <div class="fail_t">抱歉，请刷新页面重新获取合同信息！</br>刷新未获取到合同信息，请联系技术人员施永刚13053！</div>
+        {{?}}
+        </div>
+        <div class="con_bg">
+            <div class="other_doc">
+                <span class="loading_c">请稍候,正在努力加载中···</span>
+            </div>
+            {{?it.Result&&it.Result==true&&it.ContractImgs&&it.ContractImgs.length>0}}    
+            <a href="javascript:void(0)" class="J_appoint appoint_btu" style="display:block;">去签约</a>
+            {{?}}
+        </div>
+    </div>
+</div>
+
+<!--底部-->
+<span id="ucFooter">
+    <div id="footer_lite"> Copyright&nbsp;©&nbsp;
+        <span class="cr_time" type="Holiday">2002-2017</span>&nbsp;版权所有&nbsp;
+        <span class="corp_name">同程网络科技股份有限公司</span>&nbsp;
+        <a class="icp_num" href="//img1.40017.cn/cn/new_ui/public/images/20141103174615.jpg" target="_blank">苏ICP证B2-20100204</a>
+    </div>
+</span>
+<!-- 底部脚本放置区 -->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js"></script>
+<script data-loader="true" src="//modules/sea.js"></script>
+<script>
+    seajs.require("./index").init();
+</script>
+
+</body>
+</html>

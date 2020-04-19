@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+{{var it = IT.Data;}}
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn" />
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _hmt = _hmt || [];
+        var _tcHotmapx = { pid: 212, sp: 100 };
+    </script>
+    <title>海外玩乐</title>
+    <!-- 公共样式表 -->
+    <script src="/modules-lite/mod.js" data-loader="true"></script>
+    <!-- 页面样式表 -->
+
+    <link href="http://css.40017.cn/touch/public/common/0.2.2/common.css?v=07121702" rel="stylesheet" />
+
+</head>
+
+<body onselectstart="return false;">
+    <!-- 页面内容块 -->
+
+    <div class="page-body">
+        <div class="page-box" id="J_pageBox">
+            <section class="layout-main" id="layout-main">
+                <div class="header">
+                    <a class="search" href="/localfun/search.html">
+                        <em></em>
+                        <i>请输入国家/城市/景点名称</i>
+                    </a>
+                    <p class="page-name">海外玩乐</p>
+                    <p class="page-desc">为您提供境外当地的玩乐产品预订</p>
+                    <a class="searchNew" href="/localfun/citylist?wvc1=1&amp;wvc2=1&amp;source=1">
+                        <i>选择目的地</i>
+                        <em></em>
+                    </a>
+                </div>
+                <div class="theme">
+                    <ul class="clearfix">
+                        <li class="scenery">
+                            <a href="/localfun/全部.html?wvc1=1&wvc2=1&singleTypeId=6&sourceId=1">
+                                <span>景点门票</span>
+                                <img src="//img1.40017.cn/touch/v/wanle/img/singlePro/main/scenery_442bc23.png">
+                            </a>
+                        </li>
+                        <li class="visited">
+                            <a href="/localfun/全部.html?wvc1=1&wvc2=1&singleTypeId=11&sourceId=1">
+                                <span>一日游</span>
+                                <img src="//img1.40017.cn/touch/v/wanle/img/singlePro/main/visited_29d79e0.png">
+                            </a>
+                        </li>
+                        <li class="transport">
+                            <a href="/localfun/全部.html?wvc1=1&wvc2=1&singleTypeId=8&sourceId=1">
+                                <span>国际租车</span>
+                                <img src="//img1.40017.cn/touch/v/wanle/img/singlePro/main/transport_adb07b6.png">
+                            </a>
+                        </li>
+                        <li class="wifi">
+                            <a href="/localfun/全部.html?wvc1=1&wvc2=1&singleTypeId=9&sourceId=0">
+                                <span>通讯工具</span>
+                                <img src="//img1.40017.cn/touch/v/wanle/img/singlePro/main/wifi_7abe3db.png">
+                            </a>
+                        </li>
+                        <li class="share">
+                            <a href="/localfun/全部.html?wvc1=1&wvc2=1&singleTypeId=13&sourceId=1">
+                                <span>美食必享</span>
+                                <img src="//img1.40017.cn/touch/v/wanle/img/singlePro/main/share_3975b2a.png">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="destTab clearfix">
+                    <div class="destTab_box J_dest_boxs">
+                        <ul class="clearfix">
+                            <li class="select" data-id="0" data-city="6103402">日韩</li>
+                            <li data-id="1" data-city="6103403">东南亚</li>
+                            <li data-id="2" data-city="6103404">港澳台</li>
+                            <li data-id="3" data-city="6103407">欧美澳</li>
+                            <li data-id="4" data-city="6103406">海岛</li>
+                        </ul>
+                        <div class="lines"></div>
+                    </div>
+                    <div class="destTab_detail J_dest_details">
+                        {{#def.cities}}
+                    </div>
+                </div>
+                <div class="slider_box">
+                    <h2>行走海外</h2>
+                    <h3>摆脱千篇一律，带你玩遍世界每个有趣的角落</h3>
+                    <div class="m_slider" id="m_slider">
+                        <div class="slider" style="overflow: hidden; position: relative;">
+                            <ul>
+                                {{#def.slider}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="hot_products">
+                    <h3>热卖产品</h3>
+                    <ul class="clearfix J_hotProduct">
+                        {{#def.hotProducts}}
+                    </ul>
+                    <a class="more_products" href="/localfun/全部.html?wvc1=1&wvc2=1&sourceId=1">查看全部产品</a>
+                </div>
+
+            </section>
+        </div>
+
+    </div>
+
+    <div id="wxShare" style="display: none;">
+        <input type="hidden" name="tcshareurl" value="//wx.17u.cn/localfun/wifi">
+        <input type="hidden" name="tcshareimg" value="http://pic3.40017.cn/line/admin/2015/08/25/17/1YBwDG.jpg">
+        <input type="hidden" name="tcsharetext" value="海外玩乐，出境必备-同程旅游">
+        <input type="hidden" name="tcDesc" value="海外玩乐，出境必备-同程旅游">
+    </div>
+    <!-- 公共页脚 -->
+
+    <script type="text/javascript" charset="utf-8" src="//wx.40017.cn/touch/min/??/touch/weixin/public/js/comQdid.js"></script>
+    <script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '10003-2027-0']);
+        _tcq.push(['_refId', 107075804]);
+        _tcq.push(['_userId', "{{=it.UserId || 0}}"]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '{{=it.OpenId ||""}}||微信/玩乐/海外玩乐']);
+    </script>
+    <script type="text/javascript">
+        var Main = require("./index");
+        Main.init();
+    </script>
+
+    <script type='text/javascript' src="http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+
+    
+</body>
+
+</html>

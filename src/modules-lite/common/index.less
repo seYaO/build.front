@@ -1,0 +1,230 @@
+@import url("/styles/mixins/a.media.less");
+/* 单页面应用中的页面切换*/
+.fixed {
+    position: fixed;
+}
+.fixed_replace {
+    position: absolute;
+}
+.page {
+    position: static;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    display: block;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    //background: #efeff4;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+@nmbHeight: 44px;
+.nmbcnucndy{
+    height: @nmbHeight;
+    overflow: hidden;
+}
+.app-include.has-download-ads .filter-panel,
+.app-include.has-download-ads #calendarPage{
+    padding-top: @nmbHeight;
+}
+@media screen and (min-width: 360px) {
+    @nmbHeight: 50px;
+    .nmbcnucndy {
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+
+    .has-download-ads .page {
+        padding-top: @nmbHeight;
+    }
+
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page{
+        padding-top: @nmbHeight;
+    }
+}
+@media screen and (min-width: 400px){
+    @nmbHeight: 57px;
+    .nmbcnucndy{
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+    .has-download-ads .page{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page{
+        padding-top: @nmbHeight !important;
+    }
+}
+@media screen and (min-width: 440px){
+    @nmbHeight: 63px;
+    .nmbcnucndy{
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+    .has-download-ads .page{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page{
+        padding-top: @nmbHeight !important;
+    }
+}
+@media screen and (min-width: 480px){
+    @nmbHeight: 69px;
+    .nmbcnucndy{
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+    .has-download-ads .page{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page,.has-download-ads .page.chengyizhengpin-page{
+        padding-top: @nmbHeight !important;
+    }
+}
+@media screen and (min-width: 640px){
+    @nmbHeight: 88px;
+    .nmbcnucndy{
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+    .has-download-ads .page{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page,.has-download-ads .page.chengyizhengpin-page{
+        padding-top: @nmbHeight !important;
+    }
+}
+.page.current {
+    -webkit-transform: none;
+    transform: none;
+    display: block;
+    position: static;
+}
+.app-include .page-header{
+    display: none;
+}
+.app-include .page{
+    padding-top: 0;
+}
+.is-qq-browser.app-include .page-header{
+    display: block;
+}
+.isQQTravel .main-pic {
+    .img-area{
+        background: url("/wanleTouch/assets/images/qqloading.gif") no-repeat center center;
+    }
+}
+.isQQTravel #pageLoading,.isQQTravel .page-loading{
+    background: url("/wanleTouch/assets/images/qqloading.gif") no-repeat center center !important;
+}
+.isQQTravel .online-service{
+    display:none !important;
+}
+/*图片列表*/
+#imageViewPage{
+    width: 100%;
+    position: fixed;
+    cursor: pointer;
+    z-index: 16;
+}
+.page{
+    position: fixed;
+}
+#initImageListPage {
+    z-index: 15;
+    .content {
+        padding: 3.125% 2%;
+        .image-line {
+            margin-bottom: 2%;
+            padding-left: 2%;
+            li {
+                width: 30.1948%;
+                padding-bottom: 30.1948%;
+                margin-right: 3.125%;
+                margin-bottom: 3.125%;
+                float: left;
+                background: url(//img1.40017.cn/touch/c/public/comment/comment-fish.png) scroll no-repeat center center #d6dce3;
+                background-size: 59px 50px;
+                position: relative;
+                cursor: pointer;
+                img {
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+
+#imageListPage {
+    z-index: 15;
+    .content {
+        padding: 3.125% 2%;
+        .image-line {
+            margin-bottom: 2%;
+            padding-left: 2%;
+            li {
+                width: 30.1948%;
+                height: 0;
+                padding-bottom: 30.1948%;
+                margin-right: 3.125%;
+                margin-bottom: 3.125%;
+                float: left;
+                background: url(//img1.40017.cn/touch/c/public/comment/comment-fish.png) scroll no-repeat center center #d6dce3;
+                background-size: 59px 50px;
+                position: relative;
+                img {
+                    position: absolute;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+    }
+}

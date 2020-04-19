@@ -1,0 +1,57 @@
+<div class="ft_center">
+ {{var singleProductTypeArr = [61028024,61028016,61028017,61028018];}}
+ {{~ singleProductTypeArr:type}}
+     {{? type == 61028024}}
+       {{var typeName = "门票精选";}}
+       {{var skinCls = "lwifi";}}
+       {{var sift = "1";}}
+       {{var singleProductInfo = it.HotDestDic.menpiaoJingXuanBottom && it.HotDestDic.menpiaoJingXuanBottom.HotProductList;}}
+     {{?? type == 61028016}}
+       {{var typeName = "玩乐精选";}}
+        {{var skinCls = "lwanle";}}
+        {{var sift = "2";}}
+        {{var singleProductInfo = it.HotDestDic.wanleJingXuanBottom && it.HotDestDic.wanleJingXuanBottom.HotProductList;}}
+     {{?? type == 61028017}}
+       {{var typeName = "交通精选";}}
+       {{var skinCls = "ljiaotong";}}
+       {{var sift = "3";}}
+       {{var singleProductInfo = it.HotDestDic.jiaoTongJingXuanBottom && it.HotDestDic.jiaoTongJingXuanBottom.HotProductList;}}
+     {{??}}
+       {{var typeName = "餐厅精选";}}
+       {{var skinCls = "lcanting";}}
+       {{var sift = "4";}}
+       {{var singleProductInfo = it.HotDestDic.canTingJingXuanBottom && it.HotDestDic.canTingJingXuanBottom.HotProductList;}}
+     {{?}}
+
+    <div class="ft_list {{=skinCls}}" trace="shft{{=sift}}">
+
+        <div class="ft_list_tit">
+            <h2>{{=typeName}}</h2>
+        </div>
+
+        {{?singleProductInfo && singleProductInfo.length > 0}}
+        <div class="ft_list_con">
+            <ul>
+            {{~singleProductInfo:singlePro:index}}
+                {{?index < 3}}
+	                {{?singlePro.MainTitle.length > 15}}
+	                    {{singlePro.MainTitle= singlePro.MainTitle.substring(0,15)+"...";}}
+	                {{??}}
+	                    {{singlePro.MainTitle = singlePro.MainTitle;}}
+	                {{?}}
+                    
+                    <li class="icon top_{{=index+1}}">
+                {{??index >=3 && index <=9}}
+                    <li class="icon default {{?index >= 9}}nopadding{{?}}">
+                {{?}}
+                        <em>{{=index+1}}</em>
+                        <a href="/dujia/wanle/{{=singlePro.ProductId}}.html" target="_blank" title="{{=singlePro.MainTitle}}" trace="shft{{=sift}}_{{=index}}">{{=singlePro.MainTitle}}</a>
+                        <span class="rprice">￥{{=singlePro.Price}}<i>起</i></span>
+                    </li>
+            {{~}}
+            </ul>
+        </div>
+       {{?}}
+    </div>
+{{~}}
+</div>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+{{
+  var data = IT || {},
+      controlList = encodeURIComponent(JSON.stringify(data.USAControlList || ""));
+}}
+<head>
+    <meta charset="UTF-8">
+    <title>美国签证</title>
+    <% includeId = cnwidescreenjscss %>
+    <script type="text/javascript" src="//modules/jquery.js" data-loader="true"></script><!--ignore-->
+</head>
+<body>
+    <input type="hidden" id="hidOrderId" value="{{=data.OrderId || ""}}">
+    <input type="hidden" id="hidCustomerSerialId" value="{{=data.CustomerSerialid || ''}}">
+    <input type="hidden" id="hidPassengerId" value="{{=data.PassengerId || ''}}">
+    <input type="hidden" id="hidPassengerName" value="{{=data.PassengerName || ''}}">
+    <input type="hidden" id="hidIsSubmit" value="{{=data.IsSubmit || 1}}">
+    <input type="hidden" id="hidUSAControlList" value="{{=controlList}}">
+    <div class="content" id="J_content">
+        <div class="flow_charts">
+            <a href="#part1" data-index="1"><i></i>基本信息</a>
+            <a href="#part2" data-index="2"><i></i>护照信息</a>
+            <a href="#part3" data-index="3"><i></i>旅行计划</a>
+            <a href="#part4" data-index="4"><i></i>同行人信息</a>
+            <a href="#part5" data-index="5"><i></i>美国旅行史</a>
+            <a href="#part6" data-index="6"><i></i>在美联系人</a>
+            <a href="#part7" data-index="7"><i></i>家庭背景</a>
+            <a href="#part8" data-index="8"><i></i>社会经历</a>
+            <a href="#part9" data-index="9"><i></i>其他信息</a>
+            <a href="#part10" data-index="10"><i></i>辅助资料</a>
+        </div>
+        <div class="notice">
+            <h5><i></i>注意事项</h5>
+            1.请真实和完整填写表格的内容，一份如实详尽的申请资料，将有助于提高您获得签证的几率<br/>
+            2.加 * 的为必填选项，选填内容要有，请尽量提供<br/>
+            3.填写过程中，为了保证资料填写高效性，请手动保存每个板块的信息，系统自动校验<br/>
+        </div>
+
+        {{#def.baseinfo}}
+
+        {{#def.passportinfo}}
+
+        {{#def.travelplan}}
+
+        {{#def.peersinfo}}
+
+        {{#def.travelhistory}}
+
+        {{#def.linkman}}
+
+        {{#def.familybg}}
+
+        {{#def.experience}}
+
+        {{#def.otherinfo}}
+
+        {{#def.supportdetail}}
+
+        {{?data.IsSubmit > 1}}
+        <div class="submit">
+            <button type="submit" class="btn_submit J_btnSubmit" data-type="3">审核并提交资料</button>
+            <span>填写结束后确定资料无误，请点击</span>
+        </div>
+        {{?}}
+
+    </div>
+
+<link rel="stylesheet" href="//js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.css">
+<script src="//js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2016021901"></script>
+
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js?v=20150413"></script><!--ignore-->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/modules/upload/0.1.0/plupload.js?v=2015050501"></script><!--ignore-->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/modules/upload/0.1.0/index.js?v=151028"></script><!--ignore-->
+
+<script src="//js.40017.cn/cn/v/2015/jqmodules/scrollspy/0.2.0/index.js"></script><!--ignore-->
+<script src="//modules/sea.js" data-loader= "true"></script>
+<script>
+    seajs.require("./index").init();
+</script>
+</body>
+</html> 

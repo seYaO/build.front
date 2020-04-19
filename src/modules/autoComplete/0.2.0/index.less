@@ -1,0 +1,63 @@
+@p-100: 100%;
+.search-box{
+    width: 756px;
+    height: 41px;
+    border: 2px solid #ff7800;
+    border-radius: 2px;
+    position: relative;
+    input{
+        width: 570px;
+        padding-left: 40px;
+        height: 41px;
+        line-height: 41px;
+        font-size: 14px;
+        color: #999;
+        border: none;
+        background: url("img/dest/index_v1.png") no-repeat 5px -309px;
+        float: left;
+    }
+    a{
+        width: 145px;
+        height: @p-100;
+        line-height: 41px;
+        text-align: center;
+        font-size: 18px;
+        font-family: "microsoft yahei";
+        background-color: #ff7800;
+        color: #fff;
+        display: inline-block;
+        float: right;
+    }
+}
+.matchContent{
+    width: 610px;
+    background-color: #fff;
+    border: 2px solid #ff7800;
+    position: absolute;
+    top: 41px;
+    left: -2px;
+    z-index: 99999;
+    overflow: hidden;
+    li{
+        width: 100%;
+        padding: 0 10px;
+        font: 14px/26px "microsoft yahei";
+        color: #333;
+        text-align: left;
+        height: auto;
+        display: block;
+        background-color: #fff;
+        &.current{
+            background-color: #ff7800;
+            color: #fff;
+        }
+    }
+    .search-box-red{
+        color: red;
+    }
+    .jump-label{
+        padding-left: 40px;
+//        width: 560px;
+    }
+}
+

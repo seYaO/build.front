@@ -1,0 +1,8 @@
+{
+    "dataUri": "/intervacation/api/PDynamicPackageOrder/BookPageInfo",
+    "query": {
+        "id": 338083,
+        "fromcct": 1
+    },
+    "desc": "动态打包下单页"
+}

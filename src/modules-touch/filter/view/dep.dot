@@ -1,0 +1,12 @@
+<div class="city-wrap">
+    <div class="city-inner clearfix">
+        <ul class="">
+            {{~it:key:index}}
+            <li class="{{?index === 0 }} active {{?}}" data-param="{BeginCity:'{{=key.Name}}',Page:1}" Property="{{=key.Property || 0}}">
+                <span class="needsclick">{{=key.Name || ''}}</span>
+                <i></i>
+            </li>
+            {{~}}
+        </ul>
+    </div>
+</div>

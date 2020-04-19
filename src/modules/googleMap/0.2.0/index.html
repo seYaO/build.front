@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false"></script>
+    <style>
+        #map {
+            width: 800px;
+            height: 500px;
+        }
+
+        .pointInfo-box {
+            width: 237px;
+            height: 74px;
+            background-color: #fff;
+            border-radius: 4px;
+        }
+
+        .pointInfo-box p {
+            padding: 13px 14px;
+            font-size: 14px;
+            color: #ff7800;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="map">
+    </div>
+
+</body>
+<script src="../../jquery.js"></script>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js"></script>
+<script>
+    seajs.config({
+        //"base": "http://js.40017.cn/cn/v/2015/jqmodules/"
+        base: "../../../modules/"
+    });
+</script>
+<script src="index.js"></script>
+<script>
+    seajs.use("googleMap/0.2.0/index", function(index) {
+        index.init();
+    });
+</script>
+
+</html>

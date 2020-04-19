@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="console"></div>
+<div class="console1"></div>
+<div class="console2"></div>
+<script src="//js.40017.cn/cn/min/??/touch/app/public/zepto.20140624.js?v=2015060101"></script>
+<script src="//10.101.42.110//jqmodule/common/0.1.0/uschack.js"></script>
+
+<script>
+    Zepto(".console").html(UScheck.userinfo.url);
+    /*加不加true来判断是否需要跳登录页*/
+    UScheck.checkDone(function(info){
+        Zepto('.console1').html(JSON.stringify(info));
+    },true);
+
+    //
+    UScheck.asynCheckDone(function(info){
+        Zepto('.console2').html(JSON.stringify(info));
+    })
+</script>
+</body>
+</html>

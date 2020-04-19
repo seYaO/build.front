@@ -1,0 +1,48 @@
+{{~it.AreaList:List:index}}
+    {{var flag;}}
+    {{?it.source == 0}}
+    {{flag = (List.AreaId >= 6103503 && List.AreaId <= 6103507);}}
+    {{?flag}}
+            <section class="city-dest">
+                <h3><i class="city-icon wifi-icon{{=index}}"></i><span>{{=List.AreaName}}</span></h3>
+            <ul>
+                {{~List.HotDestinationList:cityItem}}
+                    {{?cityItem.Image}}
+                    <li><span data-id="{{=cityItem.CityId}}" data-image="{{=cityItem.Image}}">{{=cityItem.CityName}}</span></li>
+                    {{??}}
+                    <li><span>{{=cityItem.CityName}}</span></li>
+                    {{?}}
+                {{~}}
+            </ul>
+            </section>
+        {{?}}
+    {{??}}
+    {{flag = (List.AreaId >= 6103401 && List.AreaId <= 6103408 && List.AreaId!= 6103405);}}
+    {{?flag}}
+            {{?List.AreaId ==6103401}}
+                <section class="city-dest">
+                    <h3><i class="city-icon city-icon{{=index}}"></i><span>{{=List.AreaName}}</span></h3>
+                    <ul>
+                        {{~List.HotProductList:cityItem}}
+                            <li><a href="{{=cityItem.Url}}">{{=cityItem.MainTitle}}</a></li>
+                        {{~}}
+                    </ul>
+                </section>
+            {{??}}
+                <section class="city-dest">
+                    <h3><i class="city-icon city-icon{{=index}}"></i><span>{{=List.AreaName}}</span></h3>
+                    <ul>
+                        {{~List.HotDestinationList:cityItem}}
+                            {{?cityItem.Image}}
+                            <li><span data-id="{{=cityItem.CityId}}" data-image="{{=cityItem.Image}}">{{=cityItem.CityName}}</span></li>
+                            {{??}}
+                            <li><span>{{=cityItem.CityName}}</span></li>
+                            {{?}}
+                        {{~}}
+                    </ul>
+                </section>
+            {{?}}
+    {{?}}
+    {{?}}
+
+{{~}}

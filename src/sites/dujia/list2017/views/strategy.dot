@@ -1,0 +1,23 @@
+{{?it.Title && it.Title!=""}}
+    <h4 class="module-top"><i class="icon-gl">&nbsp;</i>{{=it.Title}}</h4>
+{{?}}
+{{?it.AreaIntro && it.AreaIntro!=""}}
+    {{?it.AreaIntro.length>30}}
+        <p>{{=it.AreaIntro.substring(0,30)}}...</p>
+    {{??}}
+        <p>{{=it.AreaIntro}}</p>
+    {{?}}
+{{??}}
+    <p>暂无简介说明</p>
+{{?}}
+{{?it.PoiSummaryList && it.PoiSummaryList.length>0}}
+    {{var arrList = [];}}
+    {{~it.PoiSummaryList:poi}}
+        {{?poi.SummaryName!="购物"}}
+            {{arrList.push(poi);}}
+        {{?}}
+    {{~}}
+    {{?arrList && arrList.length>0}}
+        <div class="module-btns">{{~arrList:arr:index}}{{?index < 4}}<a target="_blank" href='{{=arr.SummaryJumpUrl.replace("http:","")}}'>{{=arr.SummaryName}}</a>{{?}}{{~}}</div>
+    {{?}}
+{{?}}

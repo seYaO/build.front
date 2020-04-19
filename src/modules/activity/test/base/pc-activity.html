@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+	
+	<!-- TDK: title, description, keywords -->
+    <title>东南亚暖冬之旅_东南亚旅游线路_同程出境游</title>
+    <meta name="description" content="同程旅游出境游频道为您提供东南亚旅游产品，精选东南亚旅游路线，东南亚暖冬特惠季，劲爆优惠泰国超值游999元起，更多东南亚冬季旅游，出境游路线，尽在同程出境游。">
+    <meta name="keywords" content="东南亚旅游，东南亚冬季旅游">
+	
+	<!-- stylesheet -->
+    <link rel="stylesheet" type="text/css" href="http://css.40017.cn/cn/min/??/cn/c/zt/2013/ztBase.css?v=13080902"/>
+    <link href="http://css.40017.cn/cn/v/2015/zhuanti/26839/dome.12084.css" rel="stylesheet" />
+
+	<!-- temp style -->
+    <style>
+        .footer{
+            font-family:Arial, serif;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+            margin: 180px auto 0;
+        }
+    </style>
+</head>
+
+<body>
+<!-- common head -->
+<div class="head">
+<div class="p1">请填写手机号码以领取优惠码
+            </div>
+            <input class="input_1" type="text" value="输入手机号" />
+            <p>亲，您已经领取过了哦！</p>
+            <input type="button" value="提交"/>
+
+
+
+    <div class="headCont">
+        <a class="headLogo" href="/" title="同程旅游" target="_blank">
+            <img src="http://img1.40017.cn/cn/new_ui/public/images/logo/16652/zt_Logo.png" alt="同程旅游" />
+        </a>
+        <div id="zhuantiHeadNew" class="headR">
+            <a id="loginHref" rel="nofollow" onclick="this.href = this.getAttribute('nhref').replace('{backurl}', encodeURIComponent(window.location.href))" nhref="https://passport.ly.com/?pageurl={backurl}" href="https://passport.ly.com/">登录</a>
+            <span class="headR_sp">|</span>
+            <a class="head_register" rel="nofollow" href="https://passport.ly.com/register/index/" onclick="this.href = this.getAttribute('nhref').replace('{backurl}', encodeURIComponent(window.location.href))" nhref="https://passport.ly.com/register/index/?pageurl={backurl}">注册</a>
+        </div>
+    </div>
+</div>
+
+
+<div class="main container" >
+
+    <div class="ui_head" id="tophash">
+        <div class="top01"></div>
+        <div class="top02"></div>
+        <div class="top03"></div>
+    </div>
+    <!-- 满减-->
+    <div class="ui-manjian J_NavBox" id="manjian">
+        <div class="center-align">
+            <div class="title3"></div>
+            <div class="center-align1">
+                <div class="tab-one1 J_tab1 active2">满5000立减400</div>
+                <div class="tab-two1 J_tab1" data-text="J_time15">满15000立减1200</div>
+            </div>
+            <div class="manjian_items">
+            	<!-- 用来填充渲染产品的容器 -->
+                <div class="ui-manjian-lists J_ProList shanghai" data-filter="CycleId=2318&DedicatLine=减400" data-tmpl="#pinzhitmpl"></div>
+            </div>
+            <div class="manjian_items none">
+                <div class="ui-manjian-lists J_ProList shanghai" data-filter="CycleId=2318&DedicatLine=减1200" data-tmpl="#pinzhitmpl"></div>
+            </div>
+        </div>
+    </div>
+	
+	<!-- 公司版权信息 -->
+    <div class="footer">
+        <p>Copyright © 2002-2015 同程网络科技股份有限公司 版权所有</p>
+    </div>
+</div>
+
+<!-- doT 模板 品质渲染-->
+<script type="text/plain" id="pinzhitmpl">
+{{~it:value:index}}
+{{
+	/* 获取需要的尺寸的产品图片地址 */
+    var sImgUrl = Activity.setImageSize(value.ImgUrl,"400x300");
+    /* 根据产品种类拼出跳转详情页的链接 */
+    var url = "http://www.ly.com/dujia/tours/"+value.LineId+(value.LineType==0?".html":"/")+"?ak="+value.RedirectKey+"&SellType="+value.SellType;
+    /* 根据不同产品读出需要呈现的价格 */
+    var outputPrice = value.Preferential;
+    /* 海外玩乐产品 */
+    if(value.SingleResourceId !== 0) {
+        url = "http://www.ly.com/dujia/wanle/"+value.SingleResourceId+".html?ak="+value.RedirectKey+"&SellType="+value.SellType;
+        outputPrice = value.AmountAdvice;
+    }
+
+    var chajia = value.MarketPrice - value.Preferential;
+    var strTitle = value.DepartCity + '—' + value.GoalCity;
+    if(!value.DepartCity||value.DepartCity===''||!value.GoalCity||value.GoalCity==='') {
+        strTitle = value.MainTitle;
+    }
+}}
+    <div class="ui-pinzhi-list">
+        {{?value.IsSellOut==0 /* 产品售罄需要显示遮罩层 */}}
+        <div class="saleover-cover none"></div>
+        {{??}}
+        <div class="saleover-cover"></div>
+        {{?}}
+        <div class="pro  clearfix">
+            <div class="wrap--head">
+                <div class="wrap--pro-img">
+                	<!-- 链接元素里需要写入 data-* 自定义属性 -->
+                    <a class="link--booking" target="_blank" title="{{=value.MainTitle}}" href="{{=url}}{{=Activity.getPassParam()}}" data-url="{{=url}}{{=Activity.getPassParam()}}" data-lineid="{{=value.LineId}}" data-cycleid="{{=value.CycleId}}" data-activityid="{{=value.ActivityId}}" data-enterid="{{=value.SingleResourceId}}">
+                    <!-- 产品图片需要用 data-img 写入，延迟加载 -->
+                    <img data-img="{{=sImgUrl}}" alt="{{=value.MainTitle}}">
+                    </a>
+                </div>
+                <a class="pro--main-title" target="_blank" title="{{=value.MainTitle}}" href="{{=url}}{{=Activity.getPassParam()}}" data-url="{{=url}}" data-lineid="{{=value.LineId}}" data-cycleid="{{=value.CycleId}}" data-activityid="{{=value.ActivityId}}">{{=value.MainTitle}}
+                </a>
+            </div>
+            <div class="wrap--body clearfix">
+                <div class="wrap--pro-info">
+                    <div class="dep-end">{{=strTitle}}</div>
+                    <div class="details" title="{{=value.SubTitle}}">{{=value.SubTitle}}</div>
+                    <div class="TC-price">￥<em>{{=outputPrice}}</em>起</div>
+                    <div class="other--price-title">¥<em style="font-style:normal;">{{=value.MarketPrice}}</em></div>
+                </div>
+                {{?value.CycleId == 2318}}
+                <a class="pro--booking" target="_blank" title="{{=value.MainTitle}}" href="{{=url}}{{=Activity.getPassParam()}}" data-url="{{=url}}{{=Activity.getPassParam()}}" data-lineid="{{=value.LineId}}" data-cycleid="{{=value.CycleId}}" data-activityid="{{=value.ActivityId}}"><i>已减</i><em>¥{{=chajia}}</em>
+                {{??}}
+                <a class="pro--booking" target="_blank" title="{{=value.MainTitle}}" href="{{=url}}{{=Activity.getPassParam()}}" data-url="{{=url}}{{=Activity.getPassParam()}}" data-lineid="{{=value.LineId}}" data-cycleid="{{=value.CycleId}}" data-activityid="{{=value.ActivityId}}"><em>立即预订</em>
+                {{?}}
+                </a>
+            </div>
+        </div>
+    </div>
+{{~}}
+</script>
+
+<!-- jquery -->
+<script src="../../../jquery.js"></script>
+<!-- 监控组件 -->
+<script src="../../../monitor/0.1.1/index.js"></script>
+<!-- dot模板 -->
+<script src="../../../dot.js"></script>
+<!-- 图片懒加载 -->
+<script src="../../../lazyload/0.2.0/index.js"></script>
+<!-- 统计组件 -->
+<script src="../../../statistics/0.1.0/statistics.js"></script>
+<!-- pc专题渲染组件 -->
+<script src="../../../activity/0.3.0/pc/pc.js"></script>
+
+<script>
+	// 初始化专题渲染组件
+    Activity.init({
+        param: [{"1320":[2313,2315,2317,2318,2319,2320,2347,2348,2349,2362]}],
+        filter: true,
+        el: ".J_ProList",
+        querytype: 0,
+        IsSellOut: 1
+    });
+
+</script>
+
+<!-- pv统计 -->
+<script type="text/javascript">
+    var pageview = '东南亚开发';//后续统计代码中使用
+    stat.init({
+        "baidu": {
+            "parameter": "pc"        //PC端传“pc”，touch站传“touch”
+        },        //百度统计
+        "pvConfig": {       //PV统计
+            "PublicPlatId": "1",
+            "PageId": "2010",
+            "LineId": "0",
+            "ActivityId": "1309",
+            "ActivityPeriodId": "2293",
+            "ModuleId": "0",
+            "PVSource": "1",
+            "ak": "",
+            "url": "http://www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+        },
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', '10002-2000-0'],
+            ['_refId', stat.getRefid()],
+            ['_userId', '0'],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', pageview]
+        ]
+    });
+</script>
+</body>
+</html>

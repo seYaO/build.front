@@ -1,0 +1,70 @@
+<ul>
+{{var isClick = "";}}
+{{~it.ContactList:value:index}}
+{{var orderParam = {}, errorInfo = false;}}
+{{orderParam.LinkerName = value.LinkerName;}}
+{{orderParam.EnglishMing = value.EnglishMing;}}
+{{orderParam.EnglishXin = value.EnglishXin;}}
+{{orderParam.Sex = value.Sex;}}
+{{orderParam.BirthDay = value.BirthDay;}}
+{{orderParam.Mobile = value.Mobile;}}
+{{orderParam.Nationality = value.Nationality;}}
+{{orderParam.LinkerNoList = value.CertList;}}
+{{orderParam = JSON.stringify(orderParam);}}
+        <li>
+            <p class="person_name">{{=value.LinkerName}}</p>
+            <i class="address-left" id="index_{{=value.LinkerId}}"></i>
+            <p class="J_travel_num">{{=value.Mobile}}</p>
+            {{?value.Nationality !== ""}}
+            <p class="J_nation">{{=value.Nationality}}</p>
+            {{?}}
+            {{?value.CertList.length > 0}}
+            {{var certT,certs,certString = "";certJson="{";}}
+                {{~value.CertList:cert}}
+                    {{?cert.CertType === 1}}{{certT="身份证";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{??cert.CertType === 2}}{{certT="护照";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{??cert.CertType === 3}}{{certT="驾照";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{??cert.CertType === 4}}{{certT="军人证";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{??cert.CertType === 5}}{{certT="回乡证";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{??cert.CertType === 6}}{{certT="港澳通行证";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{??cert.CertType === 7}}{{certT="台胞证";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{??cert.CertType === 9}}{{certT="入台证";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{??cert.CertType === 8}}{{certT="其他";certs=certT+",";certJson = certJson+"'"+certT+"':'"+cert.CertNo+"',";}}
+                    {{?}}
+                {{certString = certString+certs;}}
+                {{?certT !== undefined}}
+                <p class="J_cert" data-certT="{{=certT}}">{{=certT}}&nbsp;{{=cert.CertNo}}</p>
+                {{?}}
+                {{~}}
+            {{??}}
+            {{var certT,certs,certString = "";certJson="{,";}}
+            {{?}}
+            {{?value.Sex !== 2 || value.Birthday !== "1900-01-01"}}
+            <p class="J_self">{{?value.Sex === 1}}男&nbsp;{{??value.Sex === 0}}女&nbsp;{{?}}{{?value.Birthday != "1900-01-01"}}{{=value.Birthday}}{{?}}</p>
+            {{?}}
+            <i class="edit" data-index="{{=index}}" data-linkerId = "{{=value.LinkerId}}" data-certString = "{{=certString}}" data-order='{{=orderParam}}'></i>
+
+
+            {{~it.needData:curInfo:i}}
+                {{?value[curInfo] === "" || value[curInfo] === 2}}
+                    <p class="error_type J_allInfo">{{=it.chineseData[i]}}信息不完善</p>
+                    {{isClick="J_notSelected";errorInfo = true;break;}}
+                {{?}}
+            {{~}}
+
+
+            {{?!errorInfo && it.VisitorCertificateType.length > 0}}
+                {{var flag = true;}}
+                {{~it.VisitorCertificateType:types}}
+                    {{?certString.search(types) === -1 && flag}}
+                    <p class="error_type J_certInfo">{{=types}}信息不匹配</p>
+                    {{flag = false;isClick="J_notSelected";break;}}
+                    {{??}}
+                    {{isClick="";}}
+                    {{?}}
+                {{~}}
+            {{?}}
+            <input type="hidden" class="{{=isClick}}" value="{{?certJson.length > 1}}{{=certJson.substring(0,certJson.length-1)}}}{{?}}"/>
+        </li>
+    {{~}}
+</ul>

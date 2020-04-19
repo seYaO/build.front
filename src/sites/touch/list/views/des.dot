@@ -1,0 +1,24 @@
+<div class="city-wrap">
+    <div class="city-inner clearfix">
+        <div class="city-panels">
+            {{~it.list:data:index}}
+            <div class="show-more {{=index==0?"selected":""}}">
+                <span class="label">{{=data.title}}</span>
+                {{?data.list}}
+                <div class="flow-box">
+                   <div class="J_FlowBox flow-box-inner">
+                    <ul>
+                       {{~data.list:list}}
+                       <li>
+                            <span class="needsclick" data-param="{Destination:'{{=list.cn}}',Page:1,pinyin:'{{=list.en}}'}">{{=list.cn}}</span>
+                       </li>
+                       {{~}}
+                    </ul>
+                   </div>
+                </div>
+                {{?}}
+            </div>
+            {{~}}
+        </div>
+    </div>
+</div>

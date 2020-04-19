@@ -1,0 +1,9 @@
+
+客户端唤起链接示例：
+http://m.17u.cn/app/pje/2480279
+?
+sUrl=
+shouji.17u.cn%7Cinternal%7Choliday%7Cdetails%7C69487%7C1376%7C2528
+&
+rUrl=
+http%3A%7C%7Cm.ly.com%7Cdujia%7Ctours%7C69487.html%3FactType%3DFF65F37F0D25BD44757AF5E5065701C56D70336776C9C041%26wvc1%3D1

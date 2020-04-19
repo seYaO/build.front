@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html trace='pc-theme-index' lang="en">
+{{var it = IT.Data;}}
+{{var themelabel = it.themelabel||{};}}
+{{var slideList = it.themeSlide;}}
+{{var themePro = it.ThemeProduct;}}
+<head>
+    <meta charset="UTF-8">
+    <title>主题游_旅游主题_出境主题游_出境主题旅游_国外主题旅游路线推荐_同程旅游</title>
+    <meta name="description"
+          content="同程出境旅游为您提供出境主题旅游，出境主题游攻略报价等，精选主题游路线，包含优质出境跟团及自助主题旅游服务，出境主题游就选同程旅游。">
+    <meta name="keywords" content="主题游,出境主题游,出境主题旅游,国外主题旅游路线推荐">
+    <meta name="apple-itues-app" content="">
+    
+    <% includeId = cnwidescreenjscss %>
+
+    <link rel="stylesheet" href="//css.40017.cn/cn/v/theme/2016/index/index.05185.css">
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.07044.css" rel="stylesheet">
+    <script>
+        window.host = 'http://www.ly.com';
+        var base = "./";
+        var pageConfig = {"module": "index", "page": "index"};
+    </script>
+    <style>
+        .content .product-list .outdoor-product{
+            background: url(http://pic4.40017.cn/line/admin/2016/06/17/16/dVVLN1.png) left no-repeat;
+        }
+        .tc_ac_tr:before{
+            right:13px;
+        }
+    </style>
+</head>
+<body>
+<!-- 公共头部 开始 -->
+    <% includeId = cnwidescreenhead?channel=theme %>
+<!-- 公共头部 结束 -->
+<!--主体内容-->
+<div class="content" trace='trace-content'>
+    <!--搜索框-->
+    <div class="search-box">
+        <div class="search"></div>
+        <div class="citybox"></div>
+    </div>
+    <!--顶部左侧主题列表-->
+    <div class="hot-theme" trace='hot-theme-trace'>
+        {{var themeList = themelabel.ComeTypeCalogy;}}
+        <div class="theme-list">
+        {{?themeList && themeList.length>0}}
+        {{~themeList:labelL:lIndex}}
+            <div class="J_listbox listbox listbox-{{=lIndex+1}}" trace='listbox-{{=lIndex+1}}'>
+                {{var sub = labelL.SubComeType;}}
+                <dl>
+                    <dt class="active">
+                        <a target="_blank" rel="nofollow" href="/dujia/theme/{{=labelL.MainComeTypeNamePinyin}}{{=labelL.MainComeTypeId}}">
+                        {{=labelL.MainComeTypeName}}
+                        </a>
+                    </dt>
+                    <dd>
+                    {{~sub:subL:sIndex}}
+                        {{?subL.IsRecommend==1}}
+                            <a href="/dujia/theme/{{=subL.SubComeTypeNamePinyin}}{{=subL.SubComeTypeId}}/" target="_blank" trace='{{=sIndex}}'
+                            rel="nofollow" title="{{=subL.SubComeTypeName}}">{{=subL.SubComeTypeName}}</a>
+                        {{?}}
+                    {{~}}
+                    </dd>
+                </dl>
+                <div class="showlist " trace='showlist-trace$velocityCount'>
+                    <h4>{{=labelL.MainComeTypeName}}</h4>
+                    <div class="all-theme">
+                        <ul>
+                            {{~sub:subL:subIndex}}
+                                <li class='{{?subL.IsRecommend==1}}orange{{?}}'>
+                                <a href="/dujia/theme/{{=subL.SubComeTypeNamePinyin}}{{=subL.SubComeTypeId}}/" target="_blank" trace='subIndexs'
+                                rel="nofollow" title="{{=subL.SubComeTypeName}}">{{=subL.SubComeTypeName}}</a>
+                                </li>
+                            {{~}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        {{~}}    
+        {{?}}    
+        </div>   
+        {{?slideList && slideList.length>0}}
+        <div class="sliderbox tc_ac_tr" trace='sliderbox-trace'>
+            <ul>
+                {{~slideList:slide:ins}}
+                <li>
+                    <a href="{{=slide.ShowUrl}}" title="{{=slide.ShowTitle}}" target="_blank" rel="nofollow" trace="huandeng_{{=ins}}">
+                        <img src="{{=slide.ShowImg}}" alt="{{=slide.ShowTitle}}">
+                    </a>
+                </li>
+                {{~}}    
+            </ul>
+        </div>
+        {{?}}
+        <div class="special">
+            <div class="special-zhuanxian">
+                <em></em>
+                <dl>
+                    <dt>
+                        <i></i>
+                        <span>主题专线</span>
+                        <i></i>
+                    </dt>
+                    <dd>
+                        <span>海量主题</span>
+                        <span>兴趣线路</span>
+                        <span>深度体验</span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="special-security">
+                <em></em>
+                <dl>
+                    <dt>
+                        <i></i>
+                        <span>安全保障</span>
+                        <i></i>
+                    </dt>
+                    <dd>
+                        <span>专业陪护</span>
+                        <span>品质行程</span>
+                        <span>同程保障</span>
+                    </dd>
+                </dl>
+            </div>
+            <div class="special-goodservice">
+                <em></em>
+                <dl>
+                    <dt>
+                        <i></i>
+                        <span>优质服务</span>
+                        <i></i>
+                    </dt>
+                    <dd>
+                        <span>贴心服务</span>
+                        <span>资深顾问</span>
+                        <span>口碑好评</span>
+                    </dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <!--产品列表-->
+    <div class="product-list">
+        <!--户外活动-->
+        {{var ThemeProduct0 = themePro[0];}}
+        {{var themeType0 = themelabel.ComeTypeCalogy[0];}}
+        <div id="outdoor-line" class="J_line outdoor-product line" trace='outdoor-line-trace'>
+            <div class="line-content">
+                {{var currentName = "",currentNamePinyin = "",currentId = "";}}
+                <div class="J_tabs tabs clearfix" trace='outdoor-tab-trace'>
+                    <ul class="clearfix">
+                        {{~themeType0.SubComeType:theme0:index1}}
+                            {{
+                                if(index1==0){
+                                    currentName = theme0.SubComeTypeName,
+                                    currentNamePinyin = theme0.SubComeTypeNamePinyin,
+                                    currentId = theme0.SubComeTypeId;
+                                }
+                            }}
+                            {{?index1<9}}
+                            <li class="{{?index1==0}}current{{?}} J_trace" trace='{{=index1}}' data-key="{{=theme0.SubComeTypeName}}" data-themetype='{{=themeType0.MainComeTypeId}}'  data-themeid='{{=theme0.SubComeTypeId}}' more-line='更多{{=theme0.SubComeTypeName}}线路'
+                            more-url="/dujia/theme/{{=theme0.SubComeTypeNamePinyin}}{{=theme0.SubComeTypeId}}/">{{=theme0.SubComeTypeName}}
+                            </li>
+                            {{?}}
+                        {{~}}
+                    </ul>
+                    <a class="area__link" target="_blank" trace='0'
+                    href="/dujia/theme/{{=currentNamePinyin}}{{=currentId}}/">更多{{=currentName}}线路</a>
+                </div>
+                    <div class="product-list-wrap" id="J_proList_{{=themeType0.MainComeTypeId}}" trace='outdoor-product-trace'>
+                    <div class="proList" trace='outdoor-chushi'>
+                        <ul class="clearfix">
+                        {{~ThemeProduct0.ProductSearchList.ProductList:themePro0:proIndex}}
+                            {{?themePro0}}
+                            {{?proIndex<4}}
+                            <li class="product">
+                                {{?themePro0.Property==1 || themePro0.Property==10}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro0.LineId}}.html?isTheme=1">
+                                {{??}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro0.LineId}}/?isTheme=1">
+                                {{?}}
+                                    <div class="proline__img">
+                                        <img data-img="{{=themePro0.ImgUrl}}" title="{{=themePro0.MainTitle}}" onerror="Monitor.log(this.src,'image')">
+                                    </div>
+                                    <div class="proline__txt">
+                                        <p class="proline__title" title="{{=themePro0.MainTitle}}">&lt;{{=themePro0.MainTitle}}&gt;{{=themePro0.SubTitle}}</p>
+                                        <p class="proline__price">
+                                            <i class="proline__depcity">{{?themePro0.Property!=10}}{{=themePro0.LeaveCity}}出发{{??}}目的地参团{{?}}</i>
+                                            <span>¥<em>{{=themePro0.TcPrice}}</em><b> 起</b></span>
+                                        </p>
+                                    </div>
+                                    {{?themePro0.LineQualityTxt=="初级体验"}}
+                                        <span class="experience primary">{{=themePro0.LineQualityTxt}}</span>
+                                    {{??themePro0.LineQualityTxt=="中级体验"}}
+                                        <span class="experience middle">{{=themePro0.LineQualityTxt}}</span>
+                                    {{??}}
+                                        <span class="experience advanced">{{=themePro0.LineQualityTxt}}</span>
+                                    {{?}}
+                                </a>
+                                </li>      
+                            {{?}}
+                            {{?}}
+                        {{~}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a class="btn-more btn-more-outdoor" trace='0' rel='nofollow' href="/dujia/theme/{{=themeType0.MainComeTypeNamePinyin}}{{=themeType0.MainComeTypeId}}/" title="{{=themeType0.MainComeTypeName}}" target="_blank">
+                更多{{=themeType0.MainComeTypeName}}线路<span><i></i></span>
+            </a>
+        </div>
+        <!--文化-->
+        {{var ThemeProduct1 = themePro[1];}}
+        {{var themeType1 = themelabel.ComeTypeCalogy[1];}}
+        <div id="yiyu-line" class="J_line yiyu-product line" trace='yiyu-line-trace'>
+            <div class="line-content">
+                {{var currentName = "",currentNamePinyin = "",currentId = "";}}
+                <div class="J_tabs tabs clearfix" trace='outdoor-tab-trace'>
+                    <ul class="clearfix">
+                        {{~themeType1.SubComeType:theme1:index1}}
+                            {{
+                                if(index1==0){
+                                    currentName = theme1.SubComeTypeName,
+                                    currentNamePinyin = theme1.SubComeTypeNamePinyin,
+                                    currentId = theme1.SubComeTypeId;
+                                }
+                            }}
+                            {{?index1<9}}
+                            <li class="{{?index1==0}}current{{?}} J_trace" trace='{{=index1}}' data-key="{{=theme1.SubComeTypeName}}" data-themetype='{{=themeType1.MainComeTypeId}}'  data-themeid='{{=theme1.SubComeTypeId}}' more-line='更多{{=theme1.SubComeTypeName}}线路'
+                            more-url="/dujia/theme/{{=theme1.SubComeTypeNamePinyin}}{{=theme1.SubComeTypeId}}/">{{=theme1.SubComeTypeName}}
+                            </li>
+                            {{?}}
+                        {{~}}
+                    </ul>
+                    <a class="area__link" target="_blank" trace='0'
+                    href="/dujia/theme/{{=currentNamePinyin}}{{=currentId}}/">更多{{=currentName}}线路</a>
+                </div>
+                    <div class="product-list-wrap" id="J_proList_{{=themeType1.MainComeTypeId}}" trace='outdoor-product-trace'>
+                    <div class="proList" trace='outdoor-chushi'>
+                        <ul class="clearfix">
+                        {{~ThemeProduct1.ProductSearchList.ProductList:themePro1:proIndex}}
+                            {{?themePro1}}
+                            {{?proIndex<4}}
+                            <li class="product">
+                                {{?themePro1.Property==1 || themePro1.Property==10}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro1.LineId}}.html?isTheme=1">
+                                {{??}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro1.LineId}}/?isTheme=1">
+                                {{?}}
+                                    <div class="proline__img">
+                                        <img data-img="{{=themePro1.ImgUrl}}" title="{{=themePro1.MainTitle}}" onerror="Monitor.log(this.src,'image')">
+                                    </div>
+                                    <div class="proline__txt">
+                                        <p class="proline__title" title="{{=themePro1.MainTitle}}">&lt;{{=themePro1.MainTitle}}&gt;{{=themePro1.SubTitle}}</p>
+                                        <p class="proline__price">
+                                            <i class="proline__depcity">{{?themePro1.Property!=10}}{{=themePro1.LeaveCity}}出发{{??}}目的地参团{{?}}</i>
+                                            <span>¥<em>{{=themePro1.TcPrice}}</em><b> 起</b></span>
+                                        </p>
+                                    </div>
+                                    {{?themePro1.LineQualityTxt=="初级体验"}}
+                                        <span class="experience primary">{{=themePro1.LineQualityTxt}}</span>
+                                    {{??themePro1.LineQualityTxt=="中级体验"}}
+                                        <span class="experience middle">{{=themePro1.LineQualityTxt}}</span>
+                                    {{??}}
+                                        <span class="experience advanced">{{=themePro1.LineQualityTxt}}</span>
+                                    {{?}}
+                                </a>
+                                </li>      
+                            {{?}}
+                            {{?}}
+                        {{~}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a class="btn-more btn-more-yiyu" trace='0' rel='nofollow' href="/dujia/theme/{{=themeType1.MainComeTypeNamePinyin}}{{=themeType1.MainComeTypeId}}/" title="{{=themeType1.MainComeTypeName}}" target="_blank">
+                更多{{=themeType1.MainComeTypeName}}线路<span><i></i></span>
+            </a>
+        </div>
+        <!--海外旅拍-->
+        {{var ThemeProduct2 = themePro[2];}}
+        {{var themeType2 = themelabel.ComeTypeCalogy[2];}}
+        <div id="global-line" class="J_line global-product line" trace='global-line-trace'>
+            <div class="line-content">
+                {{var currentName = "",currentNamePinyin = "",currentId = "";}}
+                <div class="J_tabs tabs clearfix" trace='outdoor-tab-trace'>
+                    <ul class="clearfix">
+                        {{~themeType2.SubComeType:theme2:index1}}
+                            {{
+                                if(index1==0){
+                                    currentName = theme2.SubComeTypeName,
+                                    currentNamePinyin = theme2.SubComeTypeNamePinyin,
+                                    currentId = theme2.SubComeTypeId;
+                                }
+                            }}
+                            {{?index1<9}}
+                            <li class="{{?index1==0}}current{{?}} J_trace" trace='{{=index1}}' data-key="{{=theme2.SubComeTypeName}}" data-themetype='{{=themeType2.MainComeTypeId}}'  data-themeid='{{=theme2.SubComeTypeId}}' more-line='更多{{=theme2.SubComeTypeName}}线路'
+                            more-url="/dujia/theme/{{=theme2.SubComeTypeNamePinyin}}{{=theme2.SubComeTypeId}}/">{{=theme2.SubComeTypeName}}
+                            </li>
+                            {{?}}
+                        {{~}}
+                    </ul>
+                    <a class="area__link" target="_blank" trace='0'
+                    href="/dujia/theme/{{=currentNamePinyin}}{{=currentId}}/">更多{{=currentName}}线路</a>
+                </div>
+                    <div class="product-list-wrap" id="J_proList_{{=themeType2.MainComeTypeId}}" trace='outdoor-product-trace'>
+                    <div class="proList" trace='outdoor-chushi'>
+                        <ul class="clearfix">
+                        {{~ThemeProduct2.ProductSearchList.ProductList:themePro2:proIndex}}
+                            {{?themePro2}}
+                            {{?proIndex<4}}
+                            <li class="product">
+                                {{?themePro2.Property==1 || themePro2.Property==10}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro2.LineId}}.html?isTheme=1">
+                                {{??}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro2.LineId}}/?isTheme=1">
+                                {{?}}
+                                    <div class="proline__img">
+                                        <img data-img="{{=themePro2.ImgUrl}}" title="{{=themePro2.MainTitle}}" onerror="Monitor.log(this.src,'image')">
+                                    </div>
+                                    <div class="proline__txt">
+                                        <p class="proline__title" title="{{=themePro2.MainTitle}}">&lt;{{=themePro2.MainTitle}}&gt;{{=themePro2.SubTitle}}</p>
+                                        <p class="proline__price">
+                                            <i class="proline__depcity">{{?themePro2.Property!=10}}{{=themePro2.LeaveCity}}出发{{??}}目的地参团{{?}}</i>
+                                            <span>¥<em>{{=themePro2.TcPrice}}</em><b> 起</b></span>
+                                        </p>
+                                    </div>
+                                    {{?themePro2.LineQualityTxt=="初级体验"}}
+                                        <span class="experience primary">{{=themePro2.LineQualityTxt}}</span>
+                                    {{??themePro2.LineQualityTxt=="中级体验"}}
+                                        <span class="experience middle">{{=themePro2.LineQualityTxt}}</span>
+                                    {{??}}
+                                        <span class="experience advanced">{{=themePro2.LineQualityTxt}}</span>
+                                    {{?}}
+                                </a>
+                                </li>      
+                            {{?}}
+                            {{?}}
+                        {{~}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a class="btn-more btn-more-global" trace='0' rel='nofollow' href="/dujia/theme/{{=themeType2.MainComeTypeNamePinyin}}{{=themeType2.MainComeTypeId}}/" title="{{=themeType2.MainComeTypeName}}" target="_blank">
+                更多{{=themeType2.MainComeTypeName}}线路<span><i></i></span>
+            </a>
+        </div>
+        <!--国际游学-->
+        {{var ThemeProduct3 = themePro[3];}}
+        {{var themeType3 = themelabel.ComeTypeCalogy[3];}}
+        <div id="national-line" class="J_line national-product line" trace='national-line-trace'>
+            <div class="line-content">
+                {{var currentName = "",currentNamePinyin = "",currentId = "";}}
+                <div class="J_tabs tabs clearfix" trace='outdoor-tab-trace'>
+                    <ul class="clearfix">
+                        {{~themeType3.SubComeType:theme3:index1}}
+                            {{
+                                if(index1==0){
+                                    currentName = theme3.SubComeTypeName,
+                                    currentNamePinyin = theme3.SubComeTypeNamePinyin,
+                                    currentId = theme3.SubComeTypeId;
+                                }
+                            }}
+                            {{?index1<9}}
+                            <li class="{{?index1==0}}current{{?}} J_trace" trace='{{=index1}}' data-key="{{=theme3.SubComeTypeName}}" data-themetype='{{=themeType3.MainComeTypeId}}'  data-themeid='{{=theme3.SubComeTypeId}}' more-line='更多{{=theme3.SubComeTypeName}}线路'
+                            more-url="/dujia/theme/{{=theme3.SubComeTypeNamePinyin}}{{=theme3.SubComeTypeId}}/">{{=theme3.SubComeTypeName}}
+                            </li>
+                            {{?}}
+                        {{~}}
+                    </ul>
+                    <a class="area__link" target="_blank" trace='0'
+                    href="/dujia/theme/{{=currentNamePinyin}}{{=currentId}}/">更多{{=currentName}}线路</a>
+                </div>
+                    <div class="product-list-wrap" id="J_proList_{{=themeType3.MainComeTypeId}}" trace='outdoor-product-trace'>
+                    <div class="proList" trace='outdoor-chushi'>
+                        <ul class="clearfix">
+                        {{~ThemeProduct3.ProductSearchList.ProductList:themePro3:proIndex}}
+                            {{?themePro3}}
+                            {{?proIndex<4}}
+                            <li class="product">
+                                {{?themePro3.Property==1 || themePro3.Property==10}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro3.LineId}}.html?isTheme=1">
+                                {{??}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro3.LineId}}/?isTheme=1">
+                                {{?}}
+                                    <div class="proline__img">
+                                        <img data-img="{{=themePro3.ImgUrl}}" title="{{=themePro3.MainTitle}}" onerror="Monitor.log(this.src,'image')">
+                                    </div>
+                                    <div class="proline__txt">
+                                        <p class="proline__title" title="{{=themePro3.MainTitle}}">&lt;{{=themePro3.MainTitle}}&gt;{{=themePro3.SubTitle}}</p>
+                                        <p class="proline__price">
+                                            <i class="proline__depcity">{{?themePro3.Property!=10}}{{=themePro3.LeaveCity}}出发{{??}}目的地参团{{?}}</i>
+                                            <span>¥<em>{{=themePro3.TcPrice}}</em><b> 起</b></span>
+                                        </p>
+                                    </div>
+                                    {{?themePro3.LineQualityTxt=="初级体验"}}
+                                        <span class="experience primary">{{=themePro3.LineQualityTxt}}</span>
+                                    {{??themePro3.LineQualityTxt=="中级体验"}}
+                                        <span class="experience middle">{{=themePro3.LineQualityTxt}}</span>
+                                    {{??}}
+                                        <span class="experience advanced">{{=themePro3.LineQualityTxt}}</span>
+                                    {{?}}
+                                </a>
+                                </li>      
+                            {{?}}
+                            {{?}}
+                        {{~}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a class="btn-more btn-more-national" trace='0' rel='nofollow' href="/dujia/theme/{{=themeType3.MainComeTypeNamePinyin}}{{=themeType3.MainComeTypeId}}/" title="{{=themeType3.MainComeTypeName}}" target="_blank">
+                更多{{=themeType3.MainComeTypeName}}线路<span><i></i></span>
+            </a>
+        </div>
+        <!--赛事庆典-->
+        {{var ThemeProduct4 = themePro[4];}}
+        {{var themeType4 = themelabel.ComeTypeCalogy[4];}}
+        <div id="saishi-line" class=" J_line saishi-product line" trace='saishi-line-trace'>
+            <div class="line-content">
+                {{var currentName = "",currentNamePinyin = "",currentId = "";}}
+                <div class="J_tabs tabs clearfix" trace='outdoor-tab-trace'>
+                    <ul class="clearfix">
+                        {{~themeType4.SubComeType:theme4:index1}}
+                            {{
+                                if(index1==0){
+                                    currentName = theme4.SubComeTypeName,
+                                    currentNamePinyin = theme4.SubComeTypeNamePinyin,
+                                    currentId = theme4.SubComeTypeId;
+                                }
+                            }}
+                            {{?index1<9}}
+                            <li class="{{?index1==0}}current{{?}} J_trace" trace='{{=index1}}' data-key="{{=theme4.SubComeTypeName}}" data-themetype='{{=themeType4.MainComeTypeId}}'  data-themeid='{{=theme4.SubComeTypeId}}' more-line='更多{{=theme4.SubComeTypeName}}线路'
+                            more-url="/dujia/theme/{{=theme4.SubComeTypeNamePinyin}}{{=theme4.SubComeTypeId}}/">{{=theme4.SubComeTypeName}}
+                            </li>
+                            {{?}}
+                        {{~}}
+                    </ul>
+                    <a class="area__link" target="_blank" trace='0'
+                    href="/dujia/theme/{{=currentNamePinyin}}{{=currentId}}/">更多{{=currentName}}线路</a>
+                </div>
+                    <div class="product-list-wrap" id="J_proList_{{=themeType4.MainComeTypeId}}" trace='outdoor-product-trace'>
+                    <div class="proList" trace='outdoor-chushi'>
+                        <ul class="clearfix">
+                        {{~ThemeProduct4.ProductSearchList.ProductList:themePro4:proIndex}}
+                            {{?themePro4}}
+                            {{?proIndex<4}}
+                            <li class="product">
+                                {{?themePro4.Property==1 || themePro4.Property==10}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro4.LineId}}.html?isTheme=1">
+                                {{??}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro4.LineId}}/?isTheme=1">
+                                {{?}}
+                                    <div class="proline__img">
+                                        <img data-img="{{=themePro4.ImgUrl}}" title="{{=themePro4.MainTitle}}" onerror="Monitor.log(this.src,'image')">
+                                    </div>
+                                    <div class="proline__txt">
+                                        <p class="proline__title" title="{{=themePro4.MainTitle}}">&lt;{{=themePro4.MainTitle}}&gt;{{=themePro4.SubTitle}}</p>
+                                        <p class="proline__price">
+                                            <i class="proline__depcity">{{?themePro4.Property!=10}}{{=themePro4.LeaveCity}}出发{{??}}目的地参团{{?}}</i>
+                                            <span>¥<em>{{=themePro4.TcPrice}}</em><b> 起</b></span>
+                                        </p>
+                                    </div>
+                                    {{?themePro4.LineQualityTxt=="初级体验"}}
+                                        <span class="experience primary">{{=themePro4.LineQualityTxt}}</span>
+                                    {{??themePro4.LineQualityTxt=="中级体验"}}
+                                        <span class="experience middle">{{=themePro4.LineQualityTxt}}</span>
+                                    {{??}}
+                                        <span class="experience advanced">{{=themePro4.LineQualityTxt}}</span>
+                                    {{?}}
+                                </a>
+                                </li>      
+                            {{?}}
+                            {{?}}
+                        {{~}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a class="btn-more btn-more-saishi" trace='0' rel='nofollow' href="/dujia/theme/{{=themeType4.MainComeTypeNamePinyin}}{{=themeType4.MainComeTypeId}}/" title="{{=themeType4.MainComeTypeName}}" target="_blank">
+                更多{{=themeType4.MainComeTypeName}}线路<span><i></i></span>
+            </a>
+        </div>
+        <!--健康养生-->
+        {{var ThemeProduct5 = themePro[5];}}
+        {{var themeType5 = themelabel.ComeTypeCalogy[5];}}
+        <div id="yangsheng-line" class="J_line yangsheng-product line" trace='yangsheng-line-trace'>
+            <div class="line-content">
+                {{var currentName = "",currentNamePinyin = "",currentId = "";}}
+                <div class="J_tabs tabs clearfix" trace='outdoor-tab-trace'>
+                    <ul class="clearfix">
+                        {{~themeType5.SubComeType:theme5:index1}}
+                            {{
+                                if(index1==0){
+                                    currentName = theme5.SubComeTypeName,
+                                    currentNamePinyin = theme5.SubComeTypeNamePinyin,
+                                    currentId = theme5.SubComeTypeId;
+                                }
+                            }}
+                            {{?index1<9}}
+                            <li class="{{?index1==0}}current{{?}} J_trace" trace='{{=index1}}' data-key="{{=theme5.SubComeTypeName}}" data-themetype='{{=themeType5.MainComeTypeId}}'  data-themeid='{{=theme5.SubComeTypeId}}' more-line='更多{{=theme5.SubComeTypeName}}线路'
+                            more-url="/dujia/theme/{{=theme5.SubComeTypeNamePinyin}}{{=theme5.SubComeTypeId}}/">{{=theme5.SubComeTypeName}}
+                            </li>
+                            {{?}}
+                        {{~}}
+                    </ul>
+                    <a class="area__link" target="_blank" trace='0'
+                    href="/dujia/theme/{{=currentNamePinyin}}{{=currentId}}/">更多{{=currentName}}线路</a>
+                </div>
+                    <div class="product-list-wrap" id="J_proList_{{=themeType5.MainComeTypeId}}" trace='outdoor-product-trace'>
+                    <div class="proList" trace='outdoor-chushi'>
+                        <ul class="clearfix">
+                        {{~ThemeProduct5.ProductSearchList.ProductList:themePro5:proIndex}}
+                            {{?themePro5}}
+                            {{?proIndex<4}}
+                            <li class="product">
+                                {{?themePro5.Property==1 || themePro5.Property==10}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro5.LineId}}.html?isTheme=1">
+                                {{??}}
+                                    <a class="proline__link" trace="{{=proIndex}}" target="_blank"
+                                href="/dujia/tours/{{=themePro5.LineId}}/?isTheme=1">
+                                {{?}}
+                                    <div class="proline__img">
+                                        <img data-img="{{=themePro5.ImgUrl}}" title="{{=themePro5.MainTitle}}" onerror="Monitor.log(this.src,'image')">
+                                    </div>
+                                    <div class="proline__txt">
+                                        <p class="proline__title" title="{{=themePro5.MainTitle}}">&lt;{{=themePro5.MainTitle}}&gt;{{=themePro5.SubTitle}}</p>
+                                        <p class="proline__price">
+                                            <i class="proline__depcity">{{?themePro5.Property!=10}}{{=themePro5.LeaveCity}}出发{{??}}目的地参团{{?}}</i>
+                                            <span>¥<em>{{=themePro5.TcPrice}}</em><b> 起</b></span>
+                                        </p>
+                                    </div>
+                                    {{?themePro5.LineQualityTxt=="初级体验"}}
+                                        <span class="experience primary">{{=themePro5.LineQualityTxt}}</span>
+                                    {{??themePro5.LineQualityTxt=="中级体验"}}
+                                        <span class="experience middle">{{=themePro5.LineQualityTxt}}</span>
+                                    {{??}}
+                                        <span class="experience advanced">{{=themePro5.LineQualityTxt}}</span>
+                                    {{?}}
+                                </a>
+                                </li>      
+                            {{?}}
+                            {{?}}
+                        {{~}}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <a class="btn-more btn-more-yangsheng" trace='0' rel='nofollow' href="/dujia/theme/{{=themeType5.MainComeTypeNamePinyin}}{{=themeType5.MainComeTypeId}}/" title="{{=themeType5.MainComeTypeName}}" target="_blank">
+                更多{{=themeType5.MainComeTypeName}}线路<span><i></i></span>
+            </a>
+        </div>
+    </div>
+    <!--左侧边导航-->
+    <div class="J_side-tab side-tab" trace='trace-side'>
+        <ul>
+            <li class="side-outdoor">
+                <a href="#outdoor-line" title="" target="_blank" trace='1'>户外运动</a>
+            </li>
+            <li class="side-yiyu">
+                <a href="#yiyu-line" title="" target="_blank" trace='2'>自驾摄影</a>
+            </li>
+            <li class="side-global">
+                <a href="#global-line" title="" target="_blank" trace='3'>海外旅拍</a>
+            </li>
+            <li class="side-national">
+                <a href="#national-line" title="" target="_blank" trace='4'>国际游学</a>
+            </li>
+            <li class="side-saishi">
+                <a href="#saishi-line" title="" target="_blank" trace='5'>赛事庆典</a>
+            </li>
+            <li class="side-yangsheng">
+                <a href="#yangsheng-line" title="" target="_blank" trace='6'>健康养生</a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- 公共页脚 开始 -->
+    <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+<!-- 公共页脚 结束 -->
+<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script>
+<script type="text/javascript" src="http://js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015103002"></script>
+<script type="text/javascript" src="http://js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js?v=2015103002"></script>
+
+<script src="http://js.40017.cn/cn/v/2015/kefu/util.08145.js" type="text/javascript"></script>
+<script src="http://js.40017.cn/cn/v/2015/kefu/index.03075.js" type="text/javascript"></script>
+<script type="text/javascript">
+    ESQ.init({
+        url: "http://livechat.ly.com/out/guest?p=2&c=2"
+    })
+</script>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js"></script>
+<script src="http://www.ly.com/dujia/config.ashx?type=pcindex&nocache=1"></script>
+<script>
+    seajs.config({
+        "base": "http://js.40017.cn/cn/v/2015/jqmodules/"
+    });
+    seajs.use("//js.40017.cn/cn/v/theme/2016/index/index.04284.js", function () {
+        with (document) with (body) with (insertBefore(createElement("script"), firstChild)) setAttribute("vst", src = ("http://js.40017.cn/cn/v/2015/newindex/banner.05284.js"));
+    });
+
+</script>
+<!--公共脚部-->
+
+    <input type="hidden" id="AjaxRequestPath" value="http://www.ly.com/AjaxHelper/TopLoginHandler.aspx?channel=Holiday">
+    <input type="hidden" id="TcPmsUniqueKey" value="cnintervacationthemeindex">
+    <script type="text/javascript" src="http://js.40017.cn/cn/c/c/2016/common.0.1.6.js?v=2016030401"></script>
+    <script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '']);
+        _tcq.push(['_refId', getRefid()]);
+        _tcq.push(['_userId', fish.getNmemberId()]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '']);
+        _tcq.push(['_resId', fish.getProId()]);         _tcq.push(['_qdid',getQdid()]);    
+    </script>
+    <script type='text/javascript' src=" http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+
+<script type="text/javascript" src="http://js.40017.cn/cn/v/2015/jqmodules/slidertoolbar/0.1.0/index.js"></script>
+    <script src="//js.40017.cn/cn/v/2015/group-index/tool.10083.js"></script>
+<script>
+seajs.use("index", function (Index) {
+        Index.init();
+    });
+</script>
+<script type="text/javascript"
+        src="http://js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js?v=20160117"></script>
+<script>
+    //初始化模块统计
+    window.SPM_MODULE && window.SPM_MODULE.init({
+        module: [
+            {
+                'class': "#headerSlider",
+                value: 1
+            }, {
+                'class': "#slide",
+                value: 2
+            }, {
+                'class': ".fendiv",
+                value: 8
+            }, {
+                'class': ".prolist--theme",
+                value: 12
+            }, {
+                'class': ".searchtop",
+                value: 16
+            }
+        ]
+    });
+</script>
+<script type="text/javascript" src="http://js.40017.cn/cn/v/2015/jqmodules/statistics/0.3.0/statistics.js"></script>
+<script type="text/javascript">
+    stat.init({
+        "baidu": {
+            "parameter": "pc"        
+        },
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', '10002-2030-0'],
+            ['_refId', stat.getRefid()],
+            ['_userId', '0'],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', '/出境/主题游首页/']
+        ]
+        
+    });
+</script>
+
+<input type="hidden" id="Startcityid" value="{{=it.cId}}"/>
+<input type="hidden" id="Startcityname" value="{{=it.cName}}"/>
+</body>
+</html>

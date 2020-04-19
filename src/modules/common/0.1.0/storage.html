@@ -1,0 +1,17 @@
+<body>
+
+</body>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/jqmodules/sea.js" type="text/javascript"></script>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js" type="text/javascript"></script>
+<script>
+    seajs.config({
+        base: "../../"
+    });
+</script>
+<script src="storage.js"></script>
+<script>
+    seajs.use("common/0.1.0/storage",function(Storage) {
+        Storage.setItem("test1",{test:11233});
+        alert(Storage.getItem("test1"));
+    });
+</script>

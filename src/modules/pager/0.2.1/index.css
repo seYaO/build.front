@@ -1,0 +1,117 @@
+﻿.water-page {
+    display: inline-block;
+    font: 12px/20px Arial, SimSun;
+}
+.water-page li {
+    float: left;
+}
+.water-page li a, .water-page li span {
+    float: left;
+    margin-left: 10px;
+}
+.water-page li a {
+    padding: 0 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #999;
+}
+.water-page li span {
+    color: #333;
+}
+.water-page li a:first-child {
+    margin-left: 0;
+}
+.water-page a.current, .water-page .current:hover {
+    background-color: #8c96a2;
+    color: #fff;
+    font-weight: bold;
+    border-color: #8c96a2;
+    cursor: default;
+}
+.water-page a:hover {
+    background-color: #eceff2;
+}
+.water-page .turn-prev, .water-page .turn-next,
+.water-page .first-page, .water-page .last-page {
+    background: url(//js.40017.cn/cn/public/module/mPage/0.5/pageLinkGreen.png) no-repeat scroll 5px -352px transparent;
+}
+.water-page .turn-prev {
+    padding: 0 6px 0 17px;
+}
+.water-page .turn-prev:hover {
+    background-position: 5px -285px;
+}
+.water-page .turn-prev.disabled, .water-page .turn-prev.disabled:hover,
+.water-page .turn-next.disabled, .water-page .turn-next.disabled:hover,
+.water-page .first-page.disabled, .water-page .first-page.disabled:hover,
+.water-page .last-page.disabled, .water-page .last-page.disabled:hover {
+    background-color: #fff;
+    border-color: #ddd;
+    color: #ccc;
+    cursor: default;
+}
+.water-page .turn-prev.disabled, .water-page .turn-prev.disabled:hover {
+    background-position: 5px -175px;
+}
+.water-page .turn-next {
+    background-position: 47px -440px;
+    padding: 0 17px 0 6px;
+}
+.water-page .turn-next:hover {
+    background-position: 47px -258px;
+}
+.water-page .turn-next.disabled, .water-page .turn-next.disabled:hover {
+    background-position: 45px -22px;
+}
+.water-page .first-page {
+    background-position: 5px -394px;
+    padding: 0 6px 0 19px;
+}
+.water-page .first-page:hover {
+    background-position: 6px -310px;
+}
+.water-page .first-page.disabled, .water-page .first-page.disabled:hover {
+    background-position: 6px -205px;
+}
+.water-page .last-page {
+    background-position: 35px -486px;
+    padding: 0 19px 0 6px;
+}
+.water-page .last-page:hover {
+    background-position: 35px -234px;
+}
+.water-page .last-page.disabled, .water-page .last-page.disabled:hover {
+    background-position: 35px 4px;
+}
+.water-page li span {
+    float: left;
+}
+.water-page .jump-wrapper {
+    margin-left: 10px;
+    color: #333;
+}
+.water-page .jump-wrapper input, .water-page .jump-wrapper button {
+    font: 12px Arial, SimSun;
+    -webkit-appearance: none;
+    vertical-align: center;
+}
+.water-page .jump-wrapper input {
+    height: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 36px;
+    margin: 0 3px;
+    color: #333;
+}
+.water-page .jump-wrapper button {
+    margin-left: 10px;
+    height: 22px;
+    border: none;
+    width: 42px;
+    border-radius: 2px;
+    background: #8ab923;
+    color: #fff;
+    cursor: pointer;
+}

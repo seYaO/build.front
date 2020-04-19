@@ -1,0 +1,93 @@
+.skin-blue .form-control {
+    border: 0;
+}
+.skin-blue .module-checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 3px 5px;
+}
+.skin-blue .module-checkbox i {
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    color: #10a3ff;
+}
+.skin-blue .module-checkbox > label {
+    position: relative;
+    padding-left: 25px;
+    margin-right: 10px;
+}
+.skin-blue .module-checkbox > label:before {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    color: #10a3ff;
+    content: "";
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+}
+.skin-blue .module-checkbox > label input {
+    display: none;
+}
+.skin-blue .module-checkbox > label.checked:before {
+    background-image: url('img/blue/check_03.png');
+    background-size: cover;
+    border: 0;
+}
+
+.skin-green .form-control {
+    border: 0;
+}
+.skin-green .module-checkbox {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 3px 5px;
+}
+.skin-green .module-checkbox i {
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    color: #89ba23;
+}
+.skin-green .module-checkbox > label {
+    position: relative;
+    padding-left: 25px;
+    margin-right: 10px;
+}
+.skin-green .module-checkbox > label:before {
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    width: 14px;
+    height: 14px;
+    text-align: center;
+    color: #89ba23;
+    content: "";
+    border: 1px solid #dcdcdc;
+    background-color: #fff;
+}
+.skin-green .module-checkbox > label input {
+    display: none;
+}
+.skin-green .module-checkbox > label.checked:before {
+    background-image: url('img/green/check_03.png');
+    background-size: cover;
+    border: 0;
+}

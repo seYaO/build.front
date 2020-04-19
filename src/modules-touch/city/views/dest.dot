@@ -1,0 +1,44 @@
+<div class="dest-page J_DestPage">
+    <div class="searchbox search-reset">
+        <input placeholder="中文/拼音/首字母" />
+        <span class="search-icon"></span>
+        <span class="clear"><i>×</i></span>
+        <span class="cancel">取消</span>
+    </div>
+    <div class="J_CityBox">
+        {{var isHistory = it.history && it.history.length;}}
+        <section class="city-dest J_History {{?!isHistory}}none{{?}}">
+            <h3>历史<a class="clear-his J_ClearHis">清除历史纪录</a></h3>
+            <ul>
+                {{?isHistory}}
+                    {{var hisLen = Math.min(it.history.length,6);}}
+                    {{for(var i = 0; i<hisLen;i++){}}
+                        <li>{{=it.history[i]}}</li>
+                    {{}}}
+                {{?}}
+            </ul>
+        </section>
+        {{for(var depIndex in it.DepartCity){}}
+            {{var depItem = it.DepartCity[depIndex];}}
+            {{?depIndex === "热门"}}
+            <section class="city-dest">
+                <h3>{{=depIndex}}</h3>
+                <ul>
+                    {{for(var i = 0; i<12;i++){}}
+                    <li>{{=depItem[i].Name}}</li>
+                    {{}}}
+                </ul>
+            </section>
+            {{??}}
+            <section class="city-dest">
+                <h3>{{=depIndex}}</h3>
+                <ul>
+                    {{~depItem:cityItem}}
+                    <li>{{=cityItem.Name}}</li>
+                    {{~}}
+                </ul>
+            </section>
+            {{?}}
+        {{}}}
+    </div>
+</div>

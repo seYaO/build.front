@@ -1,0 +1,73 @@
+ <div class="recommend">
+    <h3 class="title">这有一大波适合您的产品哦！</h3>
+    <div class="recommend-content">
+        <div class="recommend-product-list">
+            <ul>
+                {{var num =  it.schedule.ProductList.length;}}
+                {{?it.schedule.ProductList && it.schedule.ProductList.length}}
+                    {{var cdj="";}}
+                    {{~it.schedule.ProductList:items}}
+                        {{var gih = [items.LineId, cdj];}}
+                        {{var cdj = gih;}}
+                        <li class="list">
+                        {{var imgUrl = items.ImgUrl;}}
+                            <p class="recommend-product-list-img">
+                                <a href="/dujia/tours/{{=items.LineId}}/" target="_blank" title="[{{=items.MainTitle}}]&lt;{{=items.SubTitle}}&gt;"><img  width="270" height="150" alt="[{{=items.MainTitle}}]&lt;{{=items.SubTitle}}&gt;" src='{{=imgUrl.replace("http:", "")}}'></a>
+                            </p>
+                            <div class="recommend-product-list-txt">
+                                {{var title = items.MainTitle + items.SubTitle;}}
+                                {{?title.length>39}}
+                                    <a href="/dujia/tours/{{=items.LineId}}/" target="_blank" title="[{{=items.MainTitle}}]&lt;{{=items.SubTitle}}&gt;">{{=title.substring(0,33)}}...</a>
+                                {{??}}
+                                    <a href="/dujia/tours/{{=items.LineId}}/" target="_blank" title="[{{=items.MainTitle}}]&lt;{{=items.SubTitle}}&gt;">{{=title}}</a>
+                                {{?}}
+                                <ul class="recommend-product-list-info">
+                                    {{?items.LeaveCity}}<li>出发城市: {{=items.LeaveCity}}</li>{{?}}
+                                    {{?items.DataList}}<li>出发日期：{{=items.DataList}}</li>{{?}}
+                                    {{?items.Transport}}<li>交通方式： {{=items.Transport}}</li>{{?}}
+                                </ul>
+                                <p>价格&nbsp;<span class="price">{{=items.TcPriceAll}}</span><span class="rmb">元</span><a class="button-min" href="/dujia/tours/{{=items.LineId}}/" target="_blank">查看详情</a></p>
+                            </div>
+                        </li>
+                    {{~}}
+                {{?}}
+                {{?num<8}}
+                     {{?it.recommands && it.recommands.length}}
+                        {{~it.recommands:item:valIndex}}
+                            {{?valIndex < 8 - num}}
+                                {{var gih = [item.LineId, cdj];}}
+                                {{var cdj = gih;}}
+                                <li class="list">
+                                {{var imgUrl = item.ImgUrl;}}
+                                    <p class="recommend-product-list-img">
+                                        <a href="/dujia/tours/{{=item.LineId}}/" target="_blank" title="[{{=item.MainTitle}}]&lt;{{=item.SubTitle}}&gt;"><img  width="270" height="150" alt="[{{=item.MainTitle}}]&lt;{{=item.SubTitle}}&gt;" src='{{=imgUrl.replace("http:", "")}}'></a>
+                                    </p>
+                                    <div class="recommend-product-list-txt">
+                                        {{var title = item.MainTitle + item.SubTitle;}}
+                                        {{?title.length>39}}
+                                            <a href="/dujia/tours/{{=item.LineId}}/" target="_blank" title="[{{=item.MainTitle}}]&lt;{{=item.SubTitle}}&gt;">{{=title.substring(0,33)}}...</a>
+                                        {{??}}
+                                            <a href="/dujia/tours/{{=item.LineId}}/" target="_blank" title="[{{=item.MainTitle}}]&lt;{{=item.SubTitle}}&gt;">{{=title}}</a>
+                                        {{?}}
+                                        <ul class="recommend-product-list-info">
+                                            {{?item.LeavelCity}}<li>出发城市: {{=item.LeavelCity}}</li>{{?}}
+                                            {{?item.PriceList && item.PriceList.length}}
+                                                <li>出发日期：{{?item.PriceList.length > 2}}
+                                                    {{~item.PriceList:price:index}}{{?index < 2}}{{=price.DepartDate}}&nbsp;&nbsp;{{?}}{{~}}...
+                                                {{??}}
+                                                    {{~item.PriceList:price:index}}{{=price.DepartDate}}&nbsp;&nbsp;{{~}}
+                                                {{?}}
+                                                </li>
+                                            {{?}}
+                                        </ul>
+                                        <p>价格&nbsp;<span class="price">{{=item.Preferential}}</span><span class="rmb">元</span><a class="button-min" href="/dujia/tours/{{=item.LineId}}/" target="_blank">查看详情</a></p>
+                                    </div>
+                                </li>
+                            {{?}}
+                        {{~}}
+                     {{?}}
+                  {{?}}
+            </ul>
+        </div>
+    </div>
+</div>

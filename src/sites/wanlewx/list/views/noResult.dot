@@ -1,0 +1,8 @@
+<div class="include-no-result">
+    <div class="no-result">
+        <div></div>
+        <p>您搜索的内容暂时没有产品，您可以返回重新搜索。</p>
+        <button style="display: block;">返回筛选</button>
+    </div>
+</div>
+

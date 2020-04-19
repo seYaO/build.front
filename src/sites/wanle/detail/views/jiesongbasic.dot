@@ -1,0 +1,127 @@
+
+{{var airportPickupInfo = basicInfo.AirportPickupInfoEntity;}}
+{{var mainTitle = basicInfo.MainTitle;}}
+<div class="info_Top">
+    <p class="resourceId">编号：<b title="{{=basicInfo.ProductId}}">{{=basicInfo.ProductId}}</b></p>
+    {{?basicInfo.DestinationCity}}
+    <p class="destCity">目的地：<b title="{{=basicInfo.DestinationCity}}">{{=basicInfo.DestinationCity}}</b></p>
+    {{??}}
+    <p class="destCity"></p>
+    {{?}}
+    <div class="line-other">
+        <span class="store J_Store"><i class="icons-store"></i>收藏&nbsp;</span>
+        <span class="share J_Share"><i class="icons-share"></i>分享</span>
+    </div>
+</div>
+<h1 style="max-height:72px;overflow:hidden;"title="{{=mainTitle}}">{{=mainTitle}}</h1>
+{{?airportPickupInfo && airportPickupInfo.AccessorialService && airportPickupInfo.AccessorialService.length}}
+<div class="server_label">
+    {{~airportPickupInfo.AccessorialService:server}}
+    <span>{{=server}}</span>
+    {{~}}
+</div>
+{{?}}
+<div class="include_items">
+    {{?basicInfo.AmountDirect}}
+        <div class="info_price">
+            <b>&yen;</b>
+            <em>{{=basicInfo.AmountDirect}}</em>
+            起
+        </div>
+    {{?}}
+    <div class="price_desc J_Tips"  data-content="<div>价格因不同用车时间、用车类型、接送区域和车型而不同，具体以选择后的单价为准</div>">价格说明</div>
+    <ul class="info_items clearfix">
+        {{?comment}}
+        {{var commentScore = comment.TotalCount;}}
+            {{?comment.ManYiDu && comment.ManYiDu !== "0"}}
+            <li class="items_right satisfaction"><em>{{=comment.ManYiDu}}</em>%满意度</li>
+            {{?}}
+            {{?commentScore !== "0"}}
+            <li><a>{{=commentScore}}条点评</a></li>
+            {{?}}
+        {{?}}
+       
+    </ul>
+</div>
+
+{{?airportPickup}}
+<ul class="order_info">
+    <i class="error J_error"></i>
+    {{?airportPickup.AirportPickupDateEntity}}
+    <li class="clearfix">
+        <div class="lie_left">用车时间</div>
+        <div class="lie_right">
+            <input class="use_time J_time" value="{{=airportPickup.AirportPickupDateEntity.StartDate}}" type="text" readonly="readonly" data-startDate="{{=airportPickup.AirportPickupDateEntity.StartDate}}" data-endData="{{=airportPickup.AirportPickupDateEntity.EndDate}}"/>
+            <i class="J_Tips little_desc J_little_tip" data-content="<div>请选择当地时间</div>"></i>
+        </div>
+    </li>
+    {{?}}
+    
+
+    {{?PickupTypeList && PickupTypeList.length}}
+    <li class="clearfix">
+        <div class="lie_left" data-type="PickupType">接送类型</div>
+        <div class="lie_right J_shuttle_type">
+            {{~PickupTypeList:PickupType}}
+                {{?PickupType.id === 1}}
+                <span data-type="1" data-id="1"><i class="none"></i>接机</span>
+                {{??PickupType.id === 2}}
+                <span data-type="2" data-id="2"><i class="none"></i>送机</span>
+                {{??PickupType.id === 3}}
+                <span data-type="3" data-id="3"><i class="none"></i>接机+送机</span>
+                {{?}}
+            {{~}}
+        </div>
+    </li>
+    {{?}}
+    {{?PickupAreaList && PickupAreaList.length}}
+    <li class="clearfix">
+        <div class="lie_left" data-type="PickupArea">接送区域</div>
+        <div class="lie_right bus_region J_region">
+            <div class="clearfix bus_choice_list">
+                {{~PickupAreaList:area}}
+                    <span data-id="{{=area.id}}"><i class="none"></i>{{=area.name}}</span>
+                {{~}}
+            </div>
+        </div>
+    </li>
+    {{?}}
+    {{?PickupCarTypeList && PickupCarTypeList.length}}
+    <li class="clearfix">
+        <div class="lie_left" data-type="PickupCarType">车型选择</div>
+        <div class="lie_right bus_choice J_choice">
+            <div class="clearfix bus_choice_list">
+                {{~PickupCarTypeList:carList}}
+                <span data-id="{{=carList.id}}"><i class="none"></i>{{=carList.name}}</span>
+                {{~}}
+            </div>
+        </div>
+    </li>
+    {{?}}
+    {{?PickupTypeList && PickupTypeList.length}}
+    <li class="clearfix">
+        <div class="lie_left">用车数量</div>
+        <div class="lie_right bus_count">
+            <div class="bus_num">
+                <a class="J_sub" href="javascript:;" data-price=""></a>
+                <input type="text" value="1" data-unitPrice=""/>
+                <a class="J_add add_btn" href="javascript:;" data-price=""></a>
+            </div> 
+        </div>
+    </li> 
+    {{?}}
+    <li class="clearfix total">
+        <div class="lie_left"></div>
+        <div class="lie_right totalPrice">
+            {{?PickupTypeList.length || PickupAreaList.length || PickupCarTypeList.length}}
+            <a class="J_airOrder" href="javascript:;">立即预订</a>
+            {{??}}
+            <a class="notClick J_airOrder" href="javascript:;">已售罄</a>
+            {{?}}
+            <span class="wrap-text">请选择接送条件</span>
+        </div>
+    </li>
+</ul>
+{{?}}
+
+

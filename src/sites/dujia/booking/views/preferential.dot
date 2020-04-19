@@ -1,0 +1,503 @@
+{{
+    var getLineCount = function(type) {
+        var typemap = {
+            'adult': ['1'],
+            'child': ['2', '8'],
+            'all': ['1', '2', '8']
+        };
+        var searchtype = typemap[type] ? typemap[type] : typemap['all'];
+        var result = 0;
+
+        $(".listSty input").each(function() {
+            var pricetype = $(this).attr('price-type');
+            if(searchtype.indexOf(pricetype)>=0) {
+                result += parseInt($(this).val());
+            }
+        });
+        return result;
+    };
+
+    var getLineDate = function() {
+        var strDate = $('#oneCal').val();
+        return Date.fromISO(strDate);
+    };
+
+    var getLinePrice = function(type) {
+        var typemap = {
+            'single': 0,
+            'totalWithInsurance': 1,
+            'totalWithoutInsurance': 2
+        };
+        var searchtype = typemap[type] !== undefined ? typemap[type] : typemap['single'];
+        var result = 0;
+
+        switch(searchtype) {
+            case 0:
+                var $input = $('input[type=text][price-type="1"]');
+                result = parseFloat($input.closest('.listSty').find('.f_price').text());
+                break;
+            case 1:
+                $('.R_box .fee-info .orderPrice, .R_box .InsuranceDL .orderPrice').each(function() {
+                    if($(this).closest('.none').length > 0) { return true; }
+                    result += parseFloat($(this).text());
+                });
+                break;
+            case 2:
+                $('.R_box .fee-info .orderPrice').each(function() {
+                    if($(this).closest('.none').length > 0) { return true; }
+                    result += parseFloat($(this).text());
+                });
+                break;
+        }
+
+        return isNaN(result) ? 0 : result;
+    };
+
+    var convertDate = function(strDate, strTime) {
+        var reTime = /T.*?([\+\.])/;
+        return Date.fromISO(strDate.replace(reTime, 'T'+strTime+'$1'));
+    };
+    var convertStartDate = function(strDate) {
+        return convertDate(strDate, '00:00:00');
+    };
+    var convertEndDate = function(strDate) {
+        return convertDate(strDate, '23:59:59');
+    };
+    var formatLocalDateString = function(date) {
+        var padding = function(num) {
+            if(num>9) {
+                return num;
+            } else {
+                return '0' + num;
+            }
+        };
+        return [
+            date.getFullYear(),
+            padding(date.getMonth()+1),
+            padding(date.getDate())
+        ].join('-');
+    };
+
+    var checkRuleAvailable = function(rule, batchinfo) {
+        var passed = true;
+        if(getLineCount('all') === 0) { return passed = false; }
+
+        var dateLine = getLineDate();
+        var dateServer = new Date(window.page_cf.dateTimeNow);
+        /* check redpack */
+        if(rule['PreferentialType'] === 2) {
+            if(rule['LineStartDate']) {
+                var startDate = convertStartDate(rule['LineStartDate']);
+                if(dateLine<startDate) { return passed = false; }
+            }
+            if(rule['LineEndDate']) {
+                var endDate = convertEndDate(rule['LineEndDate']);
+                if(dateLine>endDate) { return passed = false; }
+            }
+            var isContainsInsu = rule['OrderPriceRange'] === 1,
+                priceRangeStr = "totalWithoutInsurance";
+            if(isContainsInsu){
+                priceRangeStr = "totalWithInsurance";
+            }
+            if(!batchinfo) { return passed = false; }
+            if(batchinfo['SmallAmount']>getLinePrice(priceRangeStr)) { return passed = false; }
+            if(convertStartDate(batchinfo['BeginDate'])>dateServer) { return passed = false; }
+            if(convertEndDate(batchinfo['EndDate'])<dateServer) { return passed = false; }
+
+            /* check date */
+            if(rule['LineStartDate']) {
+                var startDate = convertStartDate(rule['LineStartDate']);
+                if(dateLine<startDate) { return false; }
+            }
+            if(rule['LineEndDate']) {
+                var endDate = convertEndDate(rule['LineEndDate']);
+                if(dateLine>endDate) { return false; }
+            }
+
+            return true;
+        }
+
+        /* check date */
+        if(rule['LineStartDate']) {
+            var startDate = convertStartDate(rule['LineStartDate']);
+            if(dateLine<startDate) { return false; }
+        }
+        if(rule['LineEndDate']) {
+            var endDate = convertEndDate(rule['LineEndDate']);
+            if(dateLine>endDate) { return false; }
+        }
+        /* check count */
+        switch(rule['OrderPersonType']) {
+            case 0:
+                if(rule['AdultCount']>getLineCount('all')) { passed = false; }
+                break;
+            case 1:
+                if(rule['AdultCount']>getLineCount('adult')) { passed = false; }
+                break;
+            case 2:
+                if(rule['ChildrenCount']>getLineCount('child')) { passed = false; }
+                break;
+            case 3:
+                if(rule['AdultCount']>getLineCount('adult')) { passed = false; }
+                if(rule['ChildrenCount']>getLineCount('child')) { passed = false; }
+                break;
+        }
+        if(!passed) { return passed; }
+        /* check price */
+        switch(rule['OrderPriceRange']) {
+            case 0:
+                if(rule['UnderPrice'] !== 0 && rule['UnderPrice']<getLinePrice('single')) {passed = false;}
+                if(rule['OverPrice'] !== 0 && rule['OverPrice']>getLinePrice('single')) {passed = false;}
+                break;
+            case 1:
+                if(rule['UnderPrice'] !== 0 && rule['UnderPrice']<getLinePrice('totalWithInsurance')) {passed = false;}
+                if(rule['OverPrice'] !== 0 && rule['OverPrice']>getLinePrice('totalWithInsurance')) {passed = false;}
+                break;
+            case 2:
+                if(rule['UnderPrice'] !== 0 && rule['UnderPrice']<getLinePrice('totalWithoutInsurance')) {passed = false;}
+                if(rule['OverPrice'] !== 0 && rule['OverPrice']>getLinePrice('totalWithoutInsurance')) {passed = false;}
+                break;
+        }
+        if(!passed) { return passed; }
+
+        return passed;
+    };
+
+    var calDiscountPrice = function(rule, batchinfo) {
+        var discount = 0;
+        if(rule['PreferentialType'] === 2) {
+            if(!batchinfo) { return discount = 0; }
+            return discount = batchinfo.ParValue;
+        }
+
+        if(rule['PreferentialType'] === 1) { return discount = 0; }
+
+        switch(rule['PreferentialMode']) {
+            case 0:
+                discount = rule.PreferentialPrice * getLineCount('adult');
+                break;
+            case 1:
+                discount = rule.PreferentialPrice * 1;
+                break;
+            case 2:
+                discount = rule.PreferentialPrice * getLineCount('all');
+                break;
+        }
+        if(isNaN(discount)) {discount = 0;}
+
+        return discount;
+    };
+}}
+{{?!it.length}}
+<div class="tc-default J_preferentialContent">
+    <div class="line-wrap clearfix">
+        <div class="radio-item active">没有可用的优惠信息</div>
+    </div>
+</div>
+{{??}}
+
+{{~it:itemGroup:i}}
+
+{{
+    /* loop for groups */
+    var itemIcon = itemGroup['IconInfo'];
+    var itemPreferentials = itemGroup['PreferentialConfigList'];
+    /* available classname: hide, noexpand, selectable, selected, getredpack, loginredpack */
+    var arrClass = [];
+    var lenItemPreferentials = itemPreferentials.length;
+
+    /* no expand while only include one item or only coupon */
+    if(lenItemPreferentials === 0) {
+        arrClass.push('hide');
+    }
+    if(lenItemPreferentials <= 1) {
+        arrClass.push('noexpand');
+    }
+    var isOnlyCoupons = true;
+    var isRedpackRules = false;
+    var isEarlyBooking = false;
+    var k = lenItemPreferentials-1;
+    while(k >= 0) {
+        if(itemPreferentials[k]['PreferentialType'] !== 1){
+            isOnlyCoupons = false;
+        }
+        if(itemPreferentials[k]['PreferentialType'] == 2){
+            isRedpackRules = true;
+        }
+        if(itemPreferentials[k]['MarkId'] == 21){
+            isEarlyBooking = true;
+        }
+        k--;
+    }
+    if(isOnlyCoupons) {
+        arrClass.push('noexpand');
+    }
+    if(isRedpackRules) {
+        arrClass.push(
+            window.page_cf.isLogin === 0 ? 'loginredpack' : 'getredpack'
+        );
+        arrClass.push('hasredpack');
+    }
+    if(isEarlyBooking) {
+        arrClass.push('early-booking');
+    }
+    var strCssStyle = "color: {COLOR}; border-color: {COLOR};"
+        .replace(/\{COLOR\}/g, itemIcon.IconColor);
+    var strRadioGroup = "radio-group-"+i;
+    var strIcon = itemIcon['IconContent'];
+}}
+<div class="tc-default J_preferentialContent {{=arrClass.join(' ')}}"
+    data-icon-id="{{=itemIcon['IconId']}}"
+    data-union-icon-ids="{{=itemIcon['UnionIconIds'].join(',')}}">
+    <div class="line-wrap line-header clearfix">
+        <a href="javascript:void(0)" class="btn-showAll J_btnToggleExpand">展开全部</a>
+        <a href="javascript:void(0)" class="btn-hideAll J_btnToggleExpand">收起全部</a>
+        <i class="icons" style="{{=strCssStyle}}" title="{{=strIcon}}">{{=strIcon.slice(0,4)}}</i>
+        <em class="tips-multiple">可叠加选择</em>
+        <span class="tips-login">本线路有可用红包，请<a href="javascript:void(0)" class="J_login">登录</a>后查看或使用。</span>
+        <a href="javascript:void(0)" class="tips-getredpack J_bonus">戳我领红包</a>
+    </div>
+    <div class="line-wrap clearfix">
+{{
+    var hasConfigCoupon = false;
+    var itemConfigCoupon;
+    var arrRemark = [];
+    var strCouponRadioId = "";
+    var strCouponTextId = "";
+    var activeIndex = 0;
+    var arrClass2 = [];
+    var arrClass3 = [];
+    var arrRuleIds = [];
+    var arrAvaiableRules = [];
+}}
+
+{{~itemPreferentials:itemConfig:j}}
+
+{{
+    var itemConfig = itemPreferentials[j];
+    var strRadioId = "radio-item-"+i+"-"+j;
+    var strPrice = itemConfig['PreferentialPrice'];
+    var strPriceType = itemConfig['PreferentialMode'];
+    var strDesc = itemConfig['Remark'];
+    var strTooltip = strDesc;
+    var dateTemp = Date.fromISO(itemConfig['EndDate']);
+    var strDate = "有效期至"+ (dateTemp.toString() === "Invalid Date" ?
+        "无效的时间" :
+        formatLocalDateString(dateTemp).split('T')[0]);
+
+    switch (strPriceType) {
+        case 0:
+            /* 按人头（成人） */
+            strPrice += '×' +getLineCount('adult')+ '人';
+            break;
+        case 1:
+            /* 按订单 */
+            break;
+        case 2:
+            /* 按人头（全部） */
+            strPrice += '×' +getLineCount('all')+ '人';
+            break;
+        case 3:
+            /* 按人头（全部） */
+            strPrice += '/份';
+            break;
+    }
+
+    arrClass2 = [];
+    arrClass3 = [];
+    if(j === activeIndex) {
+        arrClass2.push("active");
+    }
+
+    if(window.page_cf.isLogin === 0 && itemConfig.IsNoLoginShow === 0) {
+        continue;
+    }
+
+    switch (itemConfig['PreferentialType']) {
+        case 0:
+            /* 常规 */
+            if(!checkRuleAvailable(itemConfig)) {
+                arrClass2.push('disabled');
+            }
+}}
+    <div class="radio-item {{=arrClass2.join(' ')}}" data-rule-id="{{=itemConfig['RuleId']}}" data-discount-price="{{=calDiscountPrice(itemConfig)}}">
+        <input type="radio" name="{{=strRadioGroup}}" id="{{=strRadioId}}" {{=arrClass2.indexOf('disabled')>-1?'disabled':''}} />
+        {{?itemConfig['PreferentialMode']==3}}
+        <label class="item-name bankNum-label" for="{{=strRadioId}}"><span class='preferPrice'>¥{{=strPrice}}</span><input type="number" id="fen" class='fen J_fen needValid' vType="number" data-err-number='请输入数字' vFn="isValGreatThan99" data-err-fn='优惠金额大于团款,最多购买99份' min=0 value='{{=getLineCount('all')||$("#hidOrderPerson").val()}}'/><em>份</em> </label>
+        {{??}}
+         <label class="item-name" for="{{=strRadioId}}">¥{{=strPrice}}</label>
+        {{?}}
+
+        <label class="item-desc J_Tips" for="{{=strRadioId}}" data-content="{{=strTooltip}}">{{=strDesc}}</label>
+        <label class="item-date" for="{{=strRadioId}}">{{=strDate}}</label>
+    </div>
+{{
+            break;
+        case 1:
+            /* 优惠码 */
+            if(itemConfig['Remark'] && itemConfig['Remark'] !== '') { arrRemark.push(itemConfig['Remark']); }
+            arrRuleIds.push(itemConfig['RuleId']);
+
+            if(checkRuleAvailable(itemConfig)) {
+                arrAvaiableRules.push(itemConfig['RuleId']);
+            }
+            if(!hasConfigCoupon) {
+                hasConfigCoupon = true;
+                itemConfigCoupon = itemConfig;
+                strCouponRadioId = "radio-item-"+i+"-"+j;
+                strCouponTextId = "text-item-"+i+"-"+j;
+            }
+            if(j === activeIndex) {
+                activeIndex++;
+            }
+            break;
+        case 2:
+            /* 同程红包 */
+            var mapTags = {
+                '12': ', {DATE}后团期可用',
+                '13': ', 同程专线专享'
+            };
+            var strInsruance = '(不含保险)';
+            if(itemConfig['OrderPriceRange'] === 1) {strInsruance = '(含保险)';}
+            var strTemp = mapTags[itemConfig['MarkId']];
+            if(itemConfig['MarkId'] === 12) {
+                strTemp = strTemp.replace('{DATE}', itemConfig['LineStartDate'].split('T')[0]);
+            }
+            var itemBatchList = itemConfig['HongBaoBatchList'];
+}}
+
+{{~itemBatchList:itemBatchCoupon:k}}
+
+{{
+            var strPriceCoupon = itemBatchCoupon['ParValue'];
+            var strDescCoupon = "满{PRICE1}{INSURANCE}减{PRICE2}"
+                .replace('{PRICE1}', itemBatchCoupon['SmallAmount'])
+                .replace('{PRICE2}', itemBatchCoupon['ParValue'])
+                .replace('{INSURANCE}', strInsruance)
+                +(strTemp?strTemp:'')
+                +', 红包不可叠加';
+            dateTemp = Date.fromISO(itemBatchCoupon['EndDate']);
+            var strDateCoupon = "有效期至"+ (dateTemp.toString() === "Invalid Date" ?
+                "无效的时间" :
+                formatLocalDateString(dateTemp).split('T')[0]);
+            strRadioId += itemBatchCoupon['CouponNo'];
+            arrClass3 = [];
+            if(!checkRuleAvailable(itemConfig, itemBatchCoupon)) {
+                arrClass3.push('disabled');
+            }
+}}
+    <div class="radio-item J_batchCoupon {{=arrClass3.join(' ')}}"
+        data-rule-id="{{=itemConfig['RuleId']}}"
+        data-price="{{=strPriceCoupon}}"
+        data-batch-no="{{=itemBatchCoupon['BatchNo']}}"
+        data-coupon-no="{{=itemBatchCoupon['CouponNo']}}"
+        data-discount-price="{{=calDiscountPrice(itemConfig, itemBatchCoupon)}}">
+        <input type="radio" name="{{=strRadioGroup}}" id="{{=strRadioId}}" {{=arrClass3.indexOf('disabled')>-1?'disabled':''}} />
+        <label class="item-name" for="{{=strRadioId}}">¥{{=strPriceCoupon}}</label>
+        <label class="item-desc J_Tips" for="{{=strRadioId}}" data-content="{{=strDescCoupon}}">{{=strDescCoupon}}</label>
+        <label class="item-date" for="{{=strRadioId}}">{{=strDateCoupon}}</label>
+    </div>
+{{~}}
+
+{{
+            break;
+        case 4:
+            /* 价格折扣 */
+            if(!checkRuleAvailable(itemConfig)) {
+                arrClass2.push('disabled');
+            }
+            var  _Notice = '';
+             if(itemConfig.PreferentialPriceType===0){
+                _Notice = '第'+itemConfig.DiscountOverPerson+'人优惠'+itemConfig.PreferentialPrice+'元';
+            }else{
+                if(itemConfig.PreferentialPrice === 50){
+                    _Notice = '第'+itemConfig.DiscountOverPerson+'人半价';
+                }else if(itemConfig.PreferentialPrice === 0){
+                    _Notice = '第'+itemConfig.DiscountOverPerson+'人免费';
+                }else{
+                    _Notice = '第'+itemConfig.DiscountOverPerson+'人'+(10 - itemConfig.PreferentialPrice/10)+'折';
+                }
+            }
+
+            var price0 = getLinePrice('single');
+            var pricenum0 = getLineCount('adult');
+
+            var discountprice = itemConfig.PreferentialPrice;
+            var offnum = itemConfig.DiscountOverPerson;
+            var offtype = itemConfig.PreferentialPriceType;
+            var _discountprice = 0;
+
+            var num = Math.floor(parseInt(pricenum0)/parseInt(offnum));
+            if(parseInt(offtype)===0){
+                _discountprice = parseInt(discountprice)*num;
+            }else{
+                var discount = parseInt(discountprice)/100;
+                _discountprice = Math.ceil(price0*num*discount);
+            }
+
+            }}
+            <div class="radio-item {{=arrClass2.join(' ')}}" data-rule-id="{{=itemConfig['RuleId']}}" data-discount-price="{{=_discountprice}}">
+                <input type="radio" name="{{=strRadioGroup}}" id="{{=strRadioId}}" {{=arrClass2.indexOf('disabled')>-1?'disabled':''}} />
+                <label class="item-name" for="{{=strRadioId}}">{{=_Notice}}</label>
+                <label class="item-desc J_Tips" for="{{=strRadioId}}" data-content="{{=strTooltip}}">{{=strDesc}}</label>
+                <label class="item-date" for="{{=strRadioId}}">{{=strDate}}</label>
+            </div>
+            {{
+        break;
+
+    }
+}}
+
+{{~}}
+
+{{
+    arrClass2 = [];
+    if(activeIndex === itemPreferentials.length){
+        arrClass2.push('active');
+    }
+
+    if(hasConfigCoupon) {
+        var strTooltip = "本线路适用以下优惠码：<br />";
+        var strRuleIds = '';
+        for(var ii=0,ll=arrRuleIds.length; ii<ll; ii++){
+        	strRuleIds += arrRuleIds[ii] + ',';
+        }
+        for(var ii=0,ll=arrRemark.length; ii<ll; ii++){
+            if(ll === 1) {
+                strTooltip += arrRemark[ii] + '<br />';
+            } else {
+                strTooltip += (ii+1) + '. ' + arrRemark[ii] + '<br />';
+            }
+        }
+}}
+        <div class="radio-item disabled J_code {{=arrClass2.join(' ')}} "
+            data-rule-id="{{=strRuleIds}}"
+            data-avaiable-rules="{{=arrAvaiableRules.join(',')}}">
+            <input type="radio" name="{{=strRadioGroup}}" id="{{=strCouponRadioId}}" disabled />
+            <label class="item-name icon-info" for="{{=strCouponRadioId}}">
+                使用优惠码<i class="J_Tips" data-content="{{=strTooltip}}"></i></label>
+            <label class="item-code">
+            	<input type="text" name="{{=strCouponTextId}}" id="{{=strCouponTextId}}" placeholder="请输入优惠码" autocomplete="false" />
+	            <span class="tips-verify-success J_tipsRule"></span>
+	            <span class="tips-verify-fail">请输入正确的优惠码</span>
+	            <span class="tips-verify-unmatch">优惠码不适用</span>
+            </label>
+        </div>
+{{
+        hasConfigCoupon = false;
+        arrRemark = [];
+    }
+}}
+    </div>
+</div>
+{{~}}
+<div class="tc-default J_preferentialContent expand" data-icon-id="" data-union-icon-ids="">
+    <div class="line-wrap clearfix">
+        <div class="radio-item" data-rule-id="0"
+            data-price="0" data-coupon-no="" data-discount-price="0">
+            <input type="radio" name="radio-group" id="radio-item-0"}} />
+            <label class="item-desc J_Tips" for="radio-item-0" data-content="">不使用优惠</label>
+        </div>
+    </div>
+</div>
+{{?}}

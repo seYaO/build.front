@@ -1,0 +1,59 @@
+{{var it = it.response[0];}}
+{{var receiveTypeList = it.receiveTypeList[0].receiveType;}}
+{{~receiveTypeList:receiveValue:reindex}}
+{{?receiveValue.id === "1"}}
+    {{var getType = "terminalId";}}
+{{??receiveValue.id === "2"}}
+    {{var getType = "takeCityId";}}
+{{??}}
+    {{var getType = "";}}
+{{?}}
+
+{{?receiveValue.id === "1" || receiveValue.id === "2" || receiveValue.id === "3"}}
+<div class="filter-show" data-type="{{=getType}}" data-way="{{=receiveValue.id}}">
+    <div class="one-menu J-left">
+        <ul>
+            <li class="{{?reindex == 0}}select{{??}}{{?}}" data-type="{{=receiveValue.id}}">{{=receiveValue.name}}</li>
+        </ul>
+    </div>
+
+    {{?receiveValue.id === "1"}}
+        <div class="two-menu J-center">
+            <div class="border_zhe">
+            <ul>
+                {{~it.terminalCityList[0].takeCity:arr:i}}
+                    <li data-id="{{=i}}" {{?i === 0}}class="select"{{?}}>{{=arr.name}}<i></i></li>
+                {{~}}
+            </ul>
+            </div>
+        </div>
+    {{?}}
+
+    <div class="thr-menu J-right {{?receiveValue.id === "1"}}L220{{??}}L120 none{{?}}">
+    {{?receiveValue.id === "3"}}
+        <ul class="city{{=ins}}">
+            <li data-id="{{=terList.id}}">快递取还</li>
+        </ul>
+    {{??receiveValue.id === "6"}}
+       
+    {{??receiveValue.id === "1"}}
+        {{~it.terminalCityList[0].takeCity:childList:ins}}
+        <ul class="city{{=ins}} {{?ins}}none{{?}}">
+            {{~childList.terminal:terList:ind}}
+                <li data-id="{{=terList.id}}">{{=terList.name}}</li>
+            {{~}}
+        </ul>
+        {{~}}
+    {{??receiveValue.id === "2"}}
+        <ul>
+        {{~it.takeCityList[0].takeCity:childList:ins}}
+            <li data-id="{{=childList.id}}">{{=childList.name}}</li>
+        {{~}}
+        </ul>
+    {{?}}
+    </div>
+</div>
+{{?}}
+{{~}}
+
+

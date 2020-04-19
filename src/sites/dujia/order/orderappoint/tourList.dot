@@ -1,0 +1,40 @@
+{{?it.status && it.status=="Success"}}
+<div class="com_bg J_ui_select">
+    <div class="select_box">
+        <h4>请选择签约人</h4>
+        {{?it.OrderPassegerLst&&it.OrderPassegerLst.length>0}}
+        <div class="s_person J_person">
+            <span class="btu_ctrl"><i></i></span>
+            <dl class="ui-select_dl">
+                <dt class="select-per" data-id="" per-index="0">请选择签约人</dt>
+                {{~it.OrderPassegerLst:list}}
+                {{?list.IsAdult && list.IsAdult=="1"}}
+                    <dd data-id='{{=list.CustomerId}}' data-phone='{{=list.MobileNo.substring(0,3)+"****"+list.MobileNo.substring(8,11)}}'>{{=list.CustomerName}}&nbsp;{{=list.CertNo}}</dd>
+                {{?}}
+                {{~}}
+            </dl>
+        </div>
+        {{??it.OrderPassegerLst&&it.OrderPassegerLst.length==0}}
+            <div class="no_person"><span class="tip_code"><em></em>未获取到签约人，请确认是否维护出游人信息</span></div>
+        {{?}}
+        <label> 为了保证合同的有效性，合同签约人必须为出游人，签约验证码将发送至签约人手机，请提醒签约人注意查收！ </label>
+    </div>
+    <div class="btu_all">
+        <span class="J_select_confirm confirm_all">确认</span>
+        <span class="J_select_cancel cancel_all">取消</span>
+    </div>
+</div>
+{{?}}
+{{?it.status && it.status=="failTure"}}
+<div class="com_bg J_ui_select">
+    <div class="select_box">
+        <h4>请选择签约人</h4>
+        <div class="no_person"><span class="tip_code"><em></em>签约人获取失败，请联系客服！</span></div>
+        <label>为了保证合同的有效性，合同签约人必须为出游人签约验证码将发送至签约人手机，请提醒签约人注意查收</label>
+    </div>
+    <div class="btu_all">
+        <span class="J_select_confirm confirm_all">确认</span>
+        <span class="J_select_cancel cancel_all">取消</span>
+    </div>
+</div>
+{{?}}

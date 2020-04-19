@@ -1,0 +1,34 @@
+{{?it && it.length != 0}}
+{{~it:item:index}}
+<div class="content-item">
+    {{?item.preferentialDetailList && item.preferentialDetailList.length != 0}}
+    <div class="content-inner">
+        {{~item.preferentialDetailList : preferentList}}
+        <p>
+            <span class="content">
+                名称：{{=preferentList.RuleTitle}}<br>
+                {{
+                    var startDate = preferentList.StartDate,
+                        endDate = preferentList.EndDate;
+                    var _startDate = startDate.split("+")[0].replace("T"," ");
+                    var _endDate = endDate.split("+")[0].replace("T"," ");
+
+                }}
+                时间：{{=_startDate}}-{{=_endDate}}<br>
+                内容：{{=preferentList.Remark.replace(/\n/g,"<br/>")}}<br>
+            </span>
+        </p>
+        {{~}}
+    </div>
+    <em class="content-more J_more"><a href="javascript:void(0)">展开</a></em>
+    {{?}}
+    {{?item.IconContent}}
+    <div class="top-wrap">
+        <span class="icons-default">
+        <em>{{=item.IconContent}}</em><i class="icons-default-patch" ></i>
+    </span>
+    </div>
+    {{?}}
+</div>
+{{~}}
+{{?}}

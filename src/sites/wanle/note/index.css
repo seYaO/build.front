@@ -1,0 +1,38 @@
+#header_lite {
+  width: 1000px;
+  height: 100px;
+}
+#header_lite .logo {
+  padding-top: 20px;
+}
+body {
+  font-size: 14px;
+  font-family: "Microsoft YaHei";
+}
+.content {
+  width: 1000px;
+  margin: 0 auto;
+  font-family: "Microsoft YaHei";
+  text-align: center;
+}
+table {
+  margin: 0 auto;
+}
+.ly_crumbs {
+  width: 100%;
+  font-size: 12px;
+  text-align: left;
+}
+.content-titile {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 90px;
+  text-align: center;
+}
+.footer {
+  font-size: 14px;
+  color: #333;
+  line-height: 14px;
+  text-align: center;
+  padding: 25px 0;
+}

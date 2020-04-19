@@ -1,0 +1,17 @@
+<link rel="import" href="/app/assets/header/index.html?__inline" />
+<div id="showCityPage" class="page" style="display: block;">
+
+</div>
+<link rel="import" href="/app/assets/footer/index.html?__inline" />
+<script>
+    var city = require("modules-touch/themeCity/dep");
+    city.init({
+        el: "#showCityPage",
+        itemClick: function(el){
+
+        }
+    });
+    var onePage = require("modules-touch/common/onepage");
+    $("#showCityPage").addClass("current");
+    onePage.reflow(".J_CityNav");
+</script>

@@ -1,0 +1,27 @@
+/*from tccdn minify at 2015-8-21 9:09:14,file：/touch/public/autoComplete/0.0.1/autoComplete.css*/
+@import "../../styles/mixins/a.icon.less";
+.sug {
+    position: absolute;
+    background-color: #FFF;
+    font: 12px/24px SimSun;
+    width: 100%;
+    display: none;
+    top: 56px;
+    left: 0;
+}
+.sug-list{
+    background: #fff;
+    width: 100%;
+    .line-bottom();
+    .sug-item{
+        .line-top();
+        line-height: 88/@rem;
+        font-size: 27/@rem;
+        margin-left: 40/@rem;
+        display: block;
+        color: #666;
+        &:first-child {
+            background: none;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+
+{{?it && it.ProductLists}}
+{{~it.ProductLists.CommonSearchList:list}}
+{{ var index = 1;}}
+    {{~list.ProductList:value}}
+        <li>
+              <a href="/localfun/wanle/{{=value.ResourceId}}.html?wvc1=1&wvc2=1" onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/homepage', '/detail','|*|pos:{{=index}}|*|k:{{=value.DestList[0]}}|*|pjId:2027|*|resId:{{=value.ResourceId}}|*|')"></a>
+              <img data-original="{{=value.ImgUrl.replace('.jpg','_172x172_00.jpg').replace('.png','_172x172_00.png')}}"/>
+              <div class="product_right">
+                  <div class="product_right_top">
+                      <h4>{{=value.MainTitle}}</h4>
+                      <p class="property">
+                          <span>{{=value.SingleTypeName}}</span>
+                          <span>{{=value.DestList[0]}}</span>
+                      </p>
+                  </div>
+                  <div class="product_right_bottom">
+                      <span class="price">
+                          <em>&yen;</em>
+                          <span class="price_num">{{=value.TcPrice}}</span>
+                          <span>起</span>
+                      </span>
+                      <span class="sale_num">月销{{=value.MonthOrderCount}}</span>
+                  </div>
+              </div>
+          </li>
+          {{ index++; }}
+    {{~}}
+{{~}}
+{{?}}

@@ -1,0 +1,449 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+code,
+form,
+fieldset,
+legend,
+input,
+textarea,
+p,
+blockquote,
+th,
+td,
+hr,
+button,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+}
+.clearfix {
+    zoom: 1;
+}
+.clearfix:before,
+.clearfix:after {
+    display: table;
+    content: "";
+}
+.clearfix:after {
+    clear: both;
+}
+.puzzle {
+    width: 900px;
+    margin: 15px auto 15px auto;
+    font-size: 14px;
+    line-height: 0;
+    font-family: "microsoft yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+}
+.puzzle .img-wrap {
+    font-size: 0;
+}
+.puzzle1 {
+    position: relative;
+}
+.puzzle1 .title-wrap {
+    position: absolute;
+    display: inline-block;
+    z-index: 3;
+    top: 38px;
+    padding: 22px 40px;
+    line-height: 34px;
+}
+.puzzle1 .title {
+    font-family: "microsoft yahei", "Hiragino Sans GB", "WenQuanYi Micro Hei", sans-serif;
+    font-size: 34px;
+    color: white;
+    position: relative;
+    z-index: 3;
+    top: 3px;
+}
+.puzzle1 .bg-title {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: black;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+.puzzle1 img {
+    width: 900px;
+    height: 280px;
+}
+.puzzle1 .auto-height img {
+    height: auto;
+}
+.puzzle2 .inner {
+    margin-right: 16px;
+    width: 442px;
+    display: inline-block;
+    float: left;
+    position: relative;
+    height: 393px;
+    line-height: 0;
+}
+.puzzle2 img {
+    width: 442px;
+    height: 249px;
+    border-radius: 5px 5px 0 0;
+}
+.puzzle2 .title {
+    height: 45px;
+    line-height: 46px;
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/normal/bg-puzzle2-title2.png") repeat-x;
+}
+.puzzle2 .desc {
+    background: #dcf8f4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    color: #7f7f7f;
+    line-height: 22px;
+    height: 88px;
+    padding: 5px 15px;
+    border-radius: 0 0 5px 5px;
+}
+.puzzle2 .last {
+    margin-right: 0;
+}
+.puzzle2 .last .title {
+    border-radius: 5px 5px 0 0;
+}
+.puzzle2 .last .img-wrap {
+    position: absolute;
+    bottom: 1px;
+    left: 0;
+}
+.puzzle2 .last img {
+    border-radius: 0 0 5px 5px;
+}
+.puzzle2 .last .desc {
+    border-radius: 0;
+}
+.puzzle3 ul {
+    width: 915px;
+}
+.puzzle3 li {
+    float: left;
+    width: 33.3%;
+    height: 193px;
+    overflow: hidden;
+}
+.puzzle3 li div {
+    padding-right: 15px;
+    height: 100%;
+}
+.puzzle3 li img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+.puzzle4 .img-wrap,
+.puzzle5 .img-wrap {
+    float: right;
+    width: 548px;
+    height: 311px;
+}
+.puzzle4 .img-wrap img,
+.puzzle5 .img-wrap img {
+    width: 100%;
+    height: 100%;
+}
+.puzzle4 .title,
+.puzzle5 .title {
+    height: 46px;
+    line-height: 47px;
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/normal/bg-puzzle2-title3.png") repeat-x;
+}
+.puzzle4 .desc,
+.puzzle5 .desc {
+    background: #fdefe1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 11;
+    -webkit-box-orient: vertical;
+    color: #7f7f7f;
+    line-height: 22px;
+    padding: 8px 15px;
+    height: 249px;
+}
+.puzzle4 img {
+    border-radius: 0 5px 5px 0;
+}
+.puzzle4 .title {
+    margin-right: 500px;
+    border-radius: 5px 0 0 0;
+}
+.puzzle4 .desc {
+    border-radius: 0 0 0 5px;
+}
+.puzzle5 .img-wrap {
+    float: left;
+}
+.puzzle5 .title-wrap {
+    margin-left: 548px;
+}
+.puzzle5 img {
+    border-radius: 5px 0 0 5px;
+}
+.puzzle5 .title {
+    border-radius: 0 5px 0 0;
+}
+.puzzle5 .desc {
+    border-radius: 0 0 5px 0;
+}
+.puzzle6 .inner {
+    background: #eaf8ed;
+    border-radius: 0 0 5px 5px;
+}
+.puzzle6 .title {
+    height: 46px;
+    line-height: 47px;
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/normal/bg-puzzle2-title4.png") repeat-x;
+    background-size: 100%;
+    border-radius: 5px 5px 0 0;
+    position: relative;
+    top: 1px;
+}
+.puzzle6 .desc {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 11;
+    -webkit-box-orient: vertical;
+    color: #7f7f7f;
+    line-height: 22px;
+    padding: 8px 15px;
+}
+.puzzle6 .img-wrap {
+    padding: 15px;
+    height: 327px;
+    overflow: hidden;
+}
+.puzzle6 .small-img {
+    width: 276px;
+    margin-right: 15px;
+    float: left;
+}
+.puzzle6 .small-img img {
+    width: 100%;
+    height: 156px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+}
+.puzzle6 .big-img {
+    width: 579px;
+    float: left;
+    height: 326px;
+    overflow: hidden;
+}
+.puzzle6 .big-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+.puzzle7 {
+    background: #fffedb;
+    border-radius: 8px;
+}
+.puzzle7 .inner {
+    padding-left: 15px;
+    overflow: hidden;
+    padding-top: 15px;
+}
+.puzzle7 ul {
+    width: 915px;
+}
+.puzzle7 li {
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 280px;
+    height: 156px;
+}
+.puzzle7 li img {
+    width: 100%;
+    height: 100%;
+}
+.puzzle7 .img-preview {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/normal/icon-preview.png") no-repeat;
+    display: inline-block;
+    width: 280px;
+    height: 156px;
+}
+.puzzle8 .title {
+    height: 46px;
+    line-height: 47px;
+    font-weight: bold;
+    font-size: 20px;
+    display: block;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/normal/bg-puzzle2-title5.png") repeat-x;
+    background-size: 100%;
+    border-radius: 8px 8px 0 0;
+}
+.puzzle8 .desc {
+    background: #fff2f6;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10;
+    -webkit-box-orient: vertical;
+    color: #7f7f7f;
+    line-height: 22px;
+    padding: 7px 15px;
+    border-radius: 0 0 8px 8px;
+}
+.puzzle.spring {
+    background: #c00015;
+    border-radius: 6px;
+}
+.puzzle.spring .desc {
+    background: transparent;
+    color: white;
+}
+.puzzle.spring .title {
+    color: white;
+    background: transparent;
+}
+.puzzle.spring .inner {
+    background: transparent;
+}
+.puzzle2.spring {
+    background: transparent;
+}
+.puzzle2.spring .title-wrap {
+    background: #c00015 url("//img1.40017.cn/cn/v/details/2014/linefeature/spring/bg-puzzle2-left-spring.png") no-repeat right top;
+    border-radius: 0 0 6px 6px;
+}
+.puzzle2.spring .last .title-wrap {
+    background: #c00015 url("//img1.40017.cn/cn/v/details/2014/linefeature/spring/bg-puzzle2-right-spring.png") no-repeat right top;
+    border-radius: 6px 6px 0 0;
+}
+.puzzle3.spring {
+    background: transparent;
+}
+.puzzle4.spring .desc {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/spring/bg-puzzle4-spring.png") no-repeat right bottom;
+}
+.puzzle5.spring .title-wrap {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/spring/bg-puzzle5-spring.png") no-repeat 298px 10px;
+}
+.puzzle6.spring .title-wrap {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/spring/bg-puzzle6-spring.png") no-repeat right top;
+}
+.puzzle7.spring {
+    background: #c00015;
+}
+.puzzle7.spring .inner {
+    background: transparent;
+}
+.puzzle7.spring .img-preview {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/spring/icon-preview.png") no-repeat;
+}
+.puzzle8.spring {
+    background: #c00015;
+    border-radius: 6px;
+}
+.puzzle8.spring .title-wrap {
+    background: transparent url("//img1.40017.cn/cn/v/details/2014/linefeature/spring/bg-puzzle8-spring.png") no-repeat right top;
+    background-size: 166px;
+}
+.puzzle8.spring .desc {
+    background-color: transparent;
+}
+.puzzle2.europe .title {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/europe/bg-puzzle2-europe.png") no-repeat;
+}
+.puzzle2.europe .desc {
+    background: #a46ebb;
+    color: white;
+}
+.puzzle4.europe .title,
+.puzzle5.europe .title {
+    background: #e3694a url("//img1.40017.cn/cn/v/details/2014/linefeature/europe/bg-puzzle5-europe.png") no-repeat;
+}
+.puzzle4.europe .desc,
+.puzzle5.europe .desc {
+    background: #e98e7a;
+    color: white;
+}
+.puzzle6.europe .inner {
+    background: #e8c34c;
+    border-radius: 8px;
+}
+.puzzle6.europe .title {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/europe/bg-puzzle6-europe.png") no-repeat;
+    background-size: contain;
+}
+.puzzle6.europe .desc {
+    color: white;
+}
+.puzzle7.europe {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/europe/bg-puzzle7-europe.png") no-repeat;
+}
+.puzzle7.europe .img-preview {
+    background: url("//img1.40017.cn/cn/v/details/2014/linefeature/europe/icon-preview.png") no-repeat;
+}
+.puzzle8.europe .title-wrap,
+.puzzle8.europe .desc {
+    background: #6791cd;
+    color: white;
+}
+.puzzle8.europe .title-wrap {
+    border-radius: 8px;
+}
+.puzzle8.europe .title {
+    background: transparent url("//img1.40017.cn/cn/v/details/2014/linefeature/europe/bg-puzzle8-europe.png") no-repeat;
+}

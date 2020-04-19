@@ -1,0 +1,41 @@
+{{~it.Orders:line:index}}
+
+{{?line.ProductType === 9}}
+{{var href = "/dujia/localfun/wanle/DujiaOrderDetail_"+ line.OrderId +"_1.html";}}
+{{??line.ProductType === 6}}
+{{var href = "/dujia/visa/orderinfo_"+ line.OrderId +".html";}}
+{{??}}
+{{var href = "/dujia/crmorder/" + line.CustomerSerialid + ".html";}}
+{{?}}
+
+<a href="{{=href}}" title="{{=line.Title}}">
+	<li class="pro-info">
+		<div class="wrap-left">
+			<p>
+				<span class="pro-title">
+				{{?line.PublicPlatment == "8"}}
+                    <span>【CCT】</span>
+                {{??line.PublicPlatment == "557"}}
+                    <span>【分公司后台】</span>
+                {{??line.PublicPlatment == "747"}}
+                    <span>【移动销售】</span>
+                {{??line.PublicPlatment == "558"}}
+                    <span>【外呼】</span>
+                {{??}}
+                    <span>【其它】</span>
+                {{?}}
+				{{=line.Title}}</span>
+				<span class="pro-price">￥{{=line.Amount}}</span>
+			</p>
+			<p>
+				<span class="dep-date">出发日期：{{=line.StartDate}}</span>
+				<span class="status" data-status="{{=line.CnFlag}}">{{=line.CnFlag}}</span>
+			</p>
+		</div>
+		<div class="wrap-right">
+			<i></i>
+		</div>
+	</li>
+</a>
+{{~}}
+

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>澳星移民局</title>
+    <meta name="keywords" content="同程出境旅游，同程秋冬旅游，美国旅游">
+    <meta name="description" content="同程旅游为您提供特惠出境游！更多美国、澳大利亚路线，更低出境游价格尽在同程旅游。">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+</head>
+<body>
+    <div class="container">
+        <img src="img/dest/axymtop.jpg">
+        <img src="img/dest/axymtitle.jpg">
+        <img src="img/dest/axympic.jpg">
+        <div class="main">
+            <img src="img/dest/mg.jpg" alt="">
+            <ul class="J_prolist" data-filter="CycleId=4278" data-tmpl="#tmpl">
+            </ul>
+        </div>
+        <div class="main main2">
+            <img src="img/dest/adly.jpg" alt="">
+            <ul class="J_prolist" data-filter="CycleId=4279" data-tmpl="#tmp2">
+            </ul>
+            <div class="footer">&copy;同程旅游</div>
+        </div>
+        
+    </div>
+    <script id="tmpl" type="text/plain">
+    {{~it:value:index}}
+     {{var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+     var groupLen = value.StartDateList.length;
+            var groupOne = value.StartDateList[0].split("-");
+            var groupTwo = value.StartDateList[groupLen-1].split("-");
+            var groupStart = groupOne[0]+"."+groupOne[1];
+            var groupEnd = groupTwo[0]+"."+groupTwo[1];
+     }}
+        <li>
+            <a {{=Activity.tmplProAttr(value)}}>
+                <img data-img="{{=sImgUrl.replace('http:','')}}">
+                <span class="startCity">{{=value.DepartCity}}出发|{{? value.LineType=="0"}}跟团游{{??}}自由行{{?}}</span>
+                <div>
+                    <span>{{=value.MainTitle}}</span>
+                    <span>{{=value.SubTitle}}</span>
+                    <span>团期:{{=groupStart}}-{{=groupEnd}}</span>
+                    <span>&yen;<i>{{=value.Preferential}}</i>起<b>立即购买</b></span>
+                </div>
+            </a>
+        </li>
+        {{~}}
+</script>
+<script id="tmp2" type="text/plain">
+    {{~it:value:index}}
+     {{var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+     var groupLen = value.StartDateList.length;
+            var groupOne = value.StartDateList[0].split("-");
+            var groupTwo = value.StartDateList[groupLen-1].split("-");
+            var groupStart = groupOne[0]+"."+groupOne[1];
+            var groupEnd = groupTwo[0]+"."+groupTwo[1];
+     }}
+        <li>
+            <a {{=Activity.tmplProAttr(value)}}>
+                <img data-img="{{=sImgUrl.replace('http:','')}}">
+                <span class="startCity">{{=value.DepartCity}}出发|{{? value.LineType=="0"}}跟团游{{??}}自由行{{?}}</span>
+                <div>
+                    <span>{{=value.MainTitle}}</span>
+                    <span>{{=value.SubTitle}}</span>
+                    <span>团期:{{=groupStart}}-{{=groupEnd}}</span>
+                    <span>&yen;<i>{{=value.Preferential}}</i>起<b>立即购买</b></span>
+                </div>
+            </a>
+        </li>
+        {{~}}
+</script>
+
+
+<div id="wxShare" style="display: none;">
+  <input type="hidden" name="tcshareurl" value="//wx.17u.cn/ivacation/zhuanti/axym.html">
+  <input type="hidden" name="tcshareimg" value="">
+  <input type="hidden" name="tcsharetext" value="同程出境旅游，同程秋冬旅游，美国旅游//wx.17u.cn/ivacation/zhuanti/axym.html">
+  <input type="hidden" name="tcDesc" value="同程出境旅游，同程秋冬旅游，美国旅游">
+</div>
+
+<script data-loader="true" src="/modules/sea.js"></script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js,/touch/app/pub/public/share.js?v=20160113,/cn/v/2015/jqmodules/dot.js,/cn/v/2015/jqmodules/monitor/0.2.1/index.js?v=20160113,/cn/v/2015/jqmodules/statistics/0.2.0/statistics.js,/cn/v/2015/jqmodules/lazyload/0.2.1/touch.js?v=20160113"></script><!--ignore-->
+<script type="text/javascript">
+  (function () {
+    Zepto(document).on('page:resize', function (e) {
+      var _w = Zepto(document.body).width();
+      Zepto('html').css('font-size', ((_w > 640) ? 640 : _w) / 640 * 24 + 'px');
+    });
+    Zepto(document).trigger('page:resize');
+    Zepto(window).on('resize', function () {
+      Zepto(document).trigger('page:resize');
+    })
+  })();
+</script>
+<script type="text/javascript">
+  seajs.require("./index").init({
+    param: [
+      {"2069": [4278,4279]}
+    ],
+    host: "//www.ly.com",
+    filter: true,
+    querytype: 0,
+    IsSellOut: 1,
+    needJumpWX: true,
+    goTop:false,
+    beforeRender:function(data){
+      return data;
+    }
+  });
+</script>
+
+<!--统计代码开始-->
+<script type="text/javascript">
+  (function() {
+    var pageview = stat.formatPageview('/出境/touch活动页/澳新移民');
+    stat.init({
+      "baidu": {
+        "parameter": "touch"
+      },
+      "pvConfig": {
+        "PublicPlatId": "1",
+        "PageId": "44507",
+        "LineId": "0",
+        "ActivityId": "2069",
+        "ActivityPeriodId": "4278",
+        "ModuleId": "0",
+        "PVSource": "1",
+        "ak": "",
+        "url": "//www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+      },
+      "vst": [
+        ['_serialid', '0'],
+        ['_vrcode', stat.getVrcode()],
+        ['_refId', stat.getRefid()],
+        ['_userId', stat.getMemberId()],
+        ['_openTime', stat.timeDiff],
+        ['_trackPageview', pageview]
+      ]
+    });
+  })();
+</script>
+</body>
+</html>

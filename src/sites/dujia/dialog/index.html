@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>对话框测试用例</title>
+    <script type="text/javascript" src="/modules/jquery.js"></script><!--ignore-->
+</head>
+
+<body class="skin-blue">
+    <div class="container">
+        <div>基本类型</div>
+        <div class="bs-example">
+            <div class="row">
+                <div class="col-xs-3">
+                    <button class="btn btn-fixed btn-warning J_warning">警告对话框</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn btn-fixed btn-default J_confirm">确认对话框</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <button class="btn btn-fixed btn-success J_operate" data-type="success" data-content="操作成功">操作成功</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn btn-fixed btn-danger J_operate" data-type="danger" data-content="操作失败">操作失败</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn btn-fixed btn-warning J_operate" data-type="warning" data-content="操作警告">操作警告</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <button class="btn btn-fixed btn-success J_commitSuccess">提交成功</button>
+                </div>
+                <div class="col-xs-3">
+                    <button class="btn btn-fixed btn-danger J_commitFailure">提交失败</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/modules/sea.js" data-loader="true" type="text/javascript"></script>
+    <script>
+        seajs.require('./index').init();
+    </script>
+</body>
+</html>

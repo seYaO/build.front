@@ -1,0 +1,4 @@
+<li>
+    <input type="checkbox" class="linkerChk" linkerid="{{=LinkerId}}" id="linkerChk_{{=LinkerId}}" />
+    <label for="linkerChk_{{=LinkerId}}">{{=LinkerName}}</label>
+</li>

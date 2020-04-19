@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+ {{var it = IT.Data;}}
+ {{var basicInfo = it.ProductBasicInfo;}}
+ {{var adField = it.WanLeSingleHotDestDic;}}
+ {{var headBanner = adField.topBarner;}}
+ {{var rightBanner = adField.sideBarner;}}
+ {{var slideNavBanner = adField.sideNavBarner;}}
+ {{var searchResult = it.PublicProductSearchResponseDic;}}
+ {{var recommendLists = it.MainResourceRecommandList;}}
+ {{var recommendCoordinate = searchResult.recommendByCoordinate;}}
+ {{var recommendDestination = searchResult.recommendByDestination;}}
+ {{var comment = it.CommentRespose;}}
+ {{var hotList = searchResult.sideSearchBarner;}}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{{=basicInfo.MainTitle}}_{{=basicInfo.DestinationCity}}当地玩乐到{{=basicInfo.DestinationCity}}玩乐路线价格-同程旅游</title>
+    <meta name="keywords" content="{{=basicInfo.DestinationCity}}旅游，{{=basicInfo.DestinationCity}}当地玩乐，{{=basicInfo.DestinationCity}}玩乐路线" />
+    <meta name="description" content="同程出境跟团游为您提供跟{{=basicInfo.MainTitle}}，{{=basicInfo.DestinationCity}}当地玩乐,{{=basicInfo.DestinationCity}}玩乐路线价格，精选{{=basicInfo.DestinationCity}}当地玩乐路线，{{=basicInfo.DestinationCity}}玩乐路线价格当然选同程{{=basicInfo.DestinationCity}}旅游。" />
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="//m.ly.com/localfun/wanle/{{=basicInfo.ProductId}}.html?wvc1=1&wvc2=1">
+    <meta name="mobile-agent" content="format=xhtml; url=//m.ly.com/localfun/wanle/{{=basicInfo.ProductId}}.html?wvc1=1&wvc2=1">
+    <meta name="mobile-agent" content="format=html5; url=//m.ly.com/localfun/wanle/{{=basicInfo.ProductId}}.html?wvc1=1&wvc2=1">
+    <meta name="mobile-agent" content="format=wml; url=//m.ly.com/localfun/wanle/{{=basicInfo.ProductId}}.html?wvc1=1&wvc2=1">
+    <link rel="canonical" href="//www.ly.com/dujia/wanle/{{=basicInfo.ProductId}}.html"/> 
+    <% includeId = cnwidescreenjscss %>
+    <!--<link rel="stylesheet" type="text/css" href="//js.40017.cn/cn/v/wanle/2015/jqmodules/slidertoolbar/0.1.0/index.css">-->
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet">
+    <link rel="stylesheet" href="//js.40017.cn/cn/min/??/cn/public/jquery/slider/0.0.1/slider.css?v=20160603"/>
+    <link rel="stylesheet" type="text/css" href="//js.40017.cn/cn/public/jquery/calendar/0.0.3/calendar.css?v=20161118001">
+    <script src="http://ditu.google.cn/maps/api/js?sensor=false&language=zh-CN&key=AIzaSyB05KSOzubEfYJWO4uscBh3mS2GSo8ZhE0"></script> <!--ignore-->
+    <script type="text/javascript" src="/modules/jquery.js" data-loader="true"></script><!--ignore-->
+    <style type="text/css">
+        .order_wifi .recommend .book_tt .td1{
+            padding-left: 0;
+            width: 900px;
+        }
+        .mSlider_nav_circle {
+            background: url(//js.40017.cn/cn/public/module/mSlider/0.4.3/circle-bg.png) scroll repeat-x 0 0 transparent;
+        }
+
+        .mSlider_nav_circle:before,.mSlider_nav_circle:after {
+            background: url(//js.40017.cn/cn/public/module/mSlider/0.4.3/circle_v2.png) scroll no-repeat 0 -24px transparent;
+        }
+        .mSlider_nav_circle li {
+            background: url(//js.40017.cn/cn/public/module/mSlider/0.4.3/circle_v2.png) scroll no-repeat 0 0 transparent;
+        }
+    </style>
+</head>
+<body>
+<!-- 公共头部 start -->
+<% includeId = cnwidescreenhead?channel=dujia %>
+<!-- 公共头部 end -->
+<div class="ly_warp">
+    <div class="ly_crumbs clearfix">
+        <div class="crumb">
+            <span>您所在位置：</span>
+            <a href="/" title="同程首页" target="_blank" rel="nofollow">同程首页</a> <span>&gt;</span>
+            <a href="/dujia/wanle/" title="海外玩乐首页" target="_blank" rel="nofollow">海外玩乐首页</a> <span>&gt;</span>
+            {{?basicInfo.ProductType === 6}}
+                <a href="/dujia/wanle/{{=basicInfo.DestinationCityPinYin}}-menpiao/" title="{{=basicInfo.DestinationCityFirst}}景点门票" target="_blank">{{=basicInfo.DestinationCityFirst}}景点门票</a> <span>&gt;</span>
+            {{??basicInfo.ProductType === 9}}
+                <a href="/dujia/wanle/{{=basicInfo.DestinationCityPinYin}}-tongxun/" title="{{=basicInfo.DestinationCityFirst}}通讯wifi" target="_blank">{{=basicInfo.DestinationCityFirst}}通讯wifi</a> <span>&gt;</span>
+            {{??}}
+                <a href="/dujia/wanle/{{=basicInfo.DestinationCityPinYin}}-dangdi/" title=" {{=basicInfo.DestinationCityFirst}}当地玩乐" target="_blank">{{=basicInfo.DestinationCityFirst}}当地玩乐</a> <span>&gt;</span>
+            {{?}}
+            <span title="{{=basicInfo.MainTitle}}">{{=basicInfo.MainTitle}}</span>
+        </div>
+    </div>
+
+{{var airportPickup = basicInfo.AirportPickupEntity;}}
+{{var PickupTypeList = [],PickupAreaList = [],PickupCarTypeList = [];}}
+{{?airportPickup &&　airportPickup.AirportPickupEntityList}}
+    {{var data = airportPickup.AirportPickupEntityList;}}
+    {{?data && data.length}}
+    {{
+        for(var i = 0;i < data.length;i++){
+            var elem = data[i];
+            if(elem.PickupType){
+                distinct(PickupTypeList,elem.PickupType);
+            }
+            if(elem.PickupArea){
+                distinct(PickupAreaList,elem.PickupArea);
+            }
+            if(elem.PickupCarType){
+                distinct(PickupCarTypeList,elem.PickupCarType);
+            }
+        }
+        function distinct(arr,param){
+            var insetFlag = true;
+            for(var i = 0;i < arr.length;i++){
+                if(arr[i].id === param){
+                    insetFlag = false;
+                    return;
+                }
+            }
+            insetFlag && arr.push({
+                id:param,
+                name: param
+            });
+        }
+
+     }}
+     
+    <input id="airInfo" type="hidden" value='{{=JSON.stringify(airportPickup.AirportPickupEntityList)}}'>
+    <input id="PickupType" type="hidden" value='{{=JSON.stringify(PickupTypeList)}}'>
+    <input id="PickupArea" type="hidden" value='{{=JSON.stringify(PickupAreaList)}}'>
+    <input id="PickupCarType" type="hidden" value='{{=JSON.stringify(PickupCarTypeList)}}'>
+    <input id="canOrderTime" type="hidden" value='{{=JSON.stringify(airportPickup.AirportPickupDateEntity)}}'>
+    {{?}}
+{{?}}
+
+
+<!--头部幻灯-->
+{{?headBanner && headBanner.HotProductList}}
+<div class="ly_banner" id="mSlider_top">
+    {{#def.banner}}
+</div>
+{{?}}
+<div class="ly_hd clearfix">
+    <!--幻灯start-->
+    <div id="mSlider" class="ly_slider">
+        <div class="slider_bd mSlider_con">
+            <img alt="" src='{{=basicInfo.ImgUrl}}'>
+        </div>
+        {{?basicInfo && basicInfo.ImgUrlList}}
+            {{#def.slider}}
+        {{?}}
+
+        {{?!(basicInfo.ProductType === 8 && basicInfo.ProductCategory === 86) && basicInfo.ProductType !==16}}
+            <div class="line-other">
+                <div class="store J_Store"><i class="icons-store"></i>收藏&nbsp;</div>
+                <div class="share J_Share"><i class="icons-share"></i>分享</div>
+            </div>
+        {{?}}
+
+    </div>
+    <!--幻灯end-->
+
+    <!--基本信息start-->
+    {{?basicInfo.ProductType === 9}}
+        <div class="ly_info tx_info">
+        {{#def.txbasic}}
+    {{??basicInfo.ProductType === 8 && basicInfo.ProductCategory === 86 || basicInfo.ProductType ===16}}
+        <div class="ly_info jies_info">
+        {{#def.jiesongbasic}}
+    {{??}}
+        <div class="ly_info">
+        {{#def.basic}}
+    {{?}}
+    </div>
+    <!--基本信息end-->
+</div>
+
+<div class="ly_main clearfix">
+    <!--预定模块 start-->
+    {{?!(basicInfo.ProductType === 8 && basicInfo.ProductCategory === 86) && basicInfo.ProductType !==16}}
+    {{#def.order}}
+    {{?}}
+    <!--预定模块 end-->
+    <!--介绍模块 start-->
+    <div class="ly_cont {{?basicInfo.ProductType === 9}}tx_cont J_tx_cont{{??basicInfo.ProductType === 8 && basicInfo.ProductCategory === 86 || basicInfo.ProductType ===16}} jiesong_count{{?}}">
+        <!--tab标签start-->
+        <div id="detail_tab" class="ly_details_tab">
+            <ul class="tab_list"></ul>
+            {{?basicInfo.ProductType === 8 && basicInfo.ProductCategory === 86 || basicInfo.ProductType ===16}}
+                {{?basicInfo.AirportPickupEntity && basicInfo.AirportPickupEntity.AirportPickupEntityList}}
+                <a href="#mSlider" class="J_orderBtn none">立即预订>></a>
+                {{??}}
+                    <a href="javascript:;" class="J_orderBtn none hadEnd">已售罄</a>
+                {{?}}
+            {{??}}
+                {{?(basicInfo.PriceInfoOfType && basicInfo.PriceInfoOfType.length) ||(basicInfo.PriceInfo && basicInfo.PriceInfo.length)}}
+                    <a href="#ly_order" class="J_orderBtn none">立即预订>></a>
+                {{??}}
+                    <a href="javascript:;" class="J_orderBtn none hadEnd">已售罄</a>
+                {{?}}
+            {{?}}
+        </div>
+        <!--tab标签end-->
+
+        <!--品类特色呈现start-->
+        {{?basicInfo.ProductType === 9 || basicInfo.ProductType === 6}}
+            {{#def.txintroduce}}
+        {{?? (basicInfo.ProductType === 8 && basicInfo.ProductCategory === 86) || basicInfo.ProductType ===16}}
+            {{#def.jiesongintroduce}}
+        {{??}}
+            {{#def.defaultintroduce}}
+        {{?}}
+        <!--品类特色呈现end-->
+
+
+
+        <!--交通指南start-->
+        {{?basicInfo.CoordinateList && basicInfo.CoordinateList.length && basicInfo.ProductType !== 9 && !(basicInfo.ProductType === 8 && basicInfo.ProductCategory === 86) && basicInfo.ProductType !==16}}
+        <div id="transInfo" data-txt="交通指南" class="ly_details_item J_NavBox trans_guide">
+            <h2 class="detial_tit"><i class="i_trans"></i>交通指南</h2>
+            <div class="trans_detail clearfix">
+                <div class="trans_map" id="trans_map"></div>
+                <div class="trans_location clearfix">
+                    {{~basicInfo.CoordinateList:location:index}}
+                    <p data-location ='{"jingdu":{{=location.Longitude}},"weidu":{{=location.Latitude}},"title":"{{=location.Name}}","desc":"{{=location.Describe}}"}' >
+                        <span><em>{{=index+1}}</em>{{=location.Name}}</span>
+                    </p>
+                    {{~}}
+                </div>
+                <div class="trans_intro">
+                    <ul class="intro_text">
+                    {{~basicInfo.CoordinateList:remark:i}}
+                        <li class="none" data-key="{{=i}}">
+                            {{?remark.Remark.length}}
+                            <h4>其他信息</h4>
+                            <span>{{?remark.Remark.length > 300}}{{=remark.Remark.substring(0,300)}}{{??}}{{=remark.Remark}}{{?}}</span>
+                            {{?}}
+                        </li>
+                    {{~}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{?}}
+        <!--交通指南end-->
+
+        <!--用户点评start-->
+        {{?comment.TotalCount != 0}}
+        <div id="commentInfo" data-txt="用户点评 <em style='color:#ff8315; font-weight:bold;'>{{=comment.TotalCount}}</em>" class="ly_details_item J_NavBox">
+            <input type="hidden" value="233764"/>
+            <h2 class="detial_tit">{{?basicInfo.ProductType !== 9 && !(basicInfo.ProductType === 8 && basicInfo.ProductCategory === 86) && basicInfo.ProductType !==16}}<i class="i_detail5">{{?}}</i>用户点评</h2>
+            <div class="J_left_con msg_box"></div>
+        </div>
+        {{?}}
+        <!--用户点评end-->
+
+    </div>
+
+    <!-- 热门推荐和广告推荐start -->
+    <div class="ly_side">
+      {{#def.hot}}
+    </div>
+    <!-- 热门推荐和广告推荐end -->
+
+</div>
+</div>
+<!-- 侧边广告栏 start-->
+{{?slideNavBanner && slideNavBanner.HotProductList && slideNavBanner.HotProductList.length}}
+<div id="ImgUrl" class="none" value = "{{=slideNavBanner.HotProductList.length}}">
+    {{~slideNavBanner.HotProductList:navRight:i}}
+        {{?i === 0}}
+        <em>
+            <a target="_blank" href="{{=navRight.Url}}"><img src="{{=navRight.Image}}"></a>
+        </em>
+        {{??i === 1}}
+        <span>
+            <a target="_blank" href="{{=navRight.Url}}"><img src="{{=navRight.Image}}" width="234px" height="145px"></a>
+        </span>
+        {{?}}
+    {{~}}
+</div>
+{{?}}
+<!-- 侧边广告栏 end-->
+<input type="hidden" id="ProductType" value="{{=basicInfo.ProductType}}">
+<input type="hidden" id="ProductCategory" value="{{=basicInfo.ProductCategory}}">
+<input type="hidden" id="resourceId" value="{{=basicInfo.ProductId}}"/>
+ <!-- 公共统计用 -->
+<input type="hidden" id="commonProId" value="{{=basicInfo.ProductId}}" />
+</div>
+
+<!-- 公共页脚 开始 -->
+<% includeId = cnwidescreenfoot?vrcode=10002-2027-0 %>
+<!-- 公共页脚 结束 -->
+
+<script type="text/javascript" src="/modules/sea.js" data-loader="true"></script><!--ignore-->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/jquery/slider/0.0.1/slider.js?v=20160603"></script>
+<script type="text/javascript" src="/modules/monitor/0.3.0/index.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/public/jquery/calendar/0.0.3/calendar.js?v=20161118001"></script>
+
+<script type="text/javascript">
+     setTimeout(function(){$(".tooltip_gp a img").before("<span></span>")},2000);
+</script>
+
+<script type="text/javascript">
+    seajs.require("./index.js").init();
+</script>
+
+<!-- pv统计 start -->
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/common.js?v=2015052801" type="text/javascript"></script>
+<% includeId = dj_wanle_common_stat %>
+<script type="text/javascript">
+    var pvConfig = {
+        "PublicPlatId": "1",
+        "PageId": "1",
+        "LineId": "$!{resourceId}",
+        "ModuleId": common.getParamFromUrl("moduleId"),
+        "PVSource": "0",
+        "ActType": common.getParamFromUrl("actType"),
+        "url": "/dujia/AjaxHelper/PvHandler.ashx",
+        "StartCityId":"$!{k_city}"
+    }
+</script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/common/pvcount/pvcount_pc.04133.js" type="text/javascript"></script>
+<!-- pv统计 end -->
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+    var hm = document.createElement("script");
+    hm.src = "//hm.baidu.com/hm.js?ca5679d0986b1f42f800098b798c7008";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+var _tcHotmapx = {pid : 788 , sp : 100 };
+</script>
+<script type="text/javascript">
+var axel = Math.random() + "";
+var a = axel * 10000000000000;
+document.write('<iframe src="http://5663586.fls.doubleclick.net/activityi;src=5663586;type=zjsto0;cat=-pv330;ord=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+</script>
+<script type="text/javascript">
+var axel = Math.random() + "";
+var a = axel * 10000000000000;
+document.write('<iframe src="http://5663586.fls.doubleclick.net/activityi;src=5663586;type=zjsto0;cat=-uv540;ord=1;num=' + a + '?" width="1" height="1" frameborder="0" style="display:none"></iframe>');
+</script>
+</body>
+</html>

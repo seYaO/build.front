@@ -1,0 +1,30 @@
+    <ul>
+    {{~recommendList:product:index}}
+    {{?index <= 11}}
+        <li>
+            <a href="/localfun/wanle/{{=product.MainResourceId}}.html?wvc1=1&wvc2=1">
+                <div class="pro_img">
+                    <img src="{{=product.ResourceHeadUrl}}">
+                    <p>
+                        {{?product.CommentsCount != 0}}
+                        <span>{{=product.CommentsCount}}条点评</span>
+                        {{?}}
+                        {{?product.SatDeg != 0}}
+                        <span>{{=parseInt(product.SatDeg)}}%满意</span>
+                        {{?}}
+                    </p>
+                </div>
+                <div class="pro_detail">
+                    <h4>{{=product.ResourceName}}</h4>
+                    <p>
+                        <em><i>¥{{=product.MinAmountDirect}}</i>起</em>
+                        <span>{{=product.TypeName}}</span>
+                    </p>
+                </div>
+            </a>
+        </li>
+        
+    {{?}}
+    {{~}}
+    </ul>
+

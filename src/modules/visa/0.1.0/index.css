@@ -1,0 +1,131 @@
+﻿
+/**
+ * 终页签证模块
+ *
+ **/
+/*签证*/
+
+.visa-content {
+}
+.visa-content {
+    padding:25px 0 0 10px;
+}
+.visa-content .visa-notice {
+    padding:15px 10px 0;
+}
+.visa-content .visa-notice p {
+    line-height:24px;
+}
+.visa-content h3{
+    height:25px;
+    line-height:25px;
+    background:#f6f6f6;
+    position:relative;
+}
+.visa-content h3 a {
+    position: absolute;
+    right:10px;
+    color: #666;
+}
+.visa-content h3 label{
+    margin-right: 20px;
+    padding: 0 10px;
+    color:#666;
+}
+.visa-content h3 label em {
+    color:#ff9b26;
+}
+.visa-content h3 span {
+    color:#333;
+    margin-right:15px;
+}
+.visa-content .visa-item {
+    padding-bottom:20px;
+    margin-bottom:20px;
+}
+.visa-content .visa-item p {
+    margin-bottom: 15px;
+    margin-top: 15px;
+}
+.visa-content .visa-item p b {
+    color:red;
+    width:20px;
+    text-align:center;
+    display:inline-block;
+}
+.visa-content .visa-item p span {
+    width:90px;
+    height:22px;
+    line-height:22px;
+    background:#f5f5f5;
+    border:solid 1px #ddd;
+    display:inline-block;
+    text-align:center;
+    color:#ffaa2d;
+    margin-right:10px;
+    cursor:pointer;
+    border-radius:2px;
+}
+.visa-content .visa-item p span:hover {
+    color:#fff;
+    background:#ffaa2d;
+    border:solid 1px #ffaa2d;
+    border-radius:2px;
+}
+.visa-content .visa-info {
+    width:880px;
+    padding-bottom: 20px;
+}
+.visa-content .visa-info p{
+    margin-top:0px;
+}
+.visa-detail {
+    height:400px;
+    overflow: auto;
+    border:solid 1px #e8e8e8;
+    margin-top:5px;
+}
+.visa-detail .title {
+    padding:10px;
+}
+.visa-detail .title p {
+    float:left;
+}
+.visa-detail table {
+    margin:0 auto;
+    margin-top:10px;
+    /*border: 1px solid #ccc;*/
+    border-collapse: collapse;
+    border-spacing:0;
+    border-spacing:0;
+}
+.visa-detail > table {
+  width:1140px;
+}
+.visa-detail table td {
+    margin: 0;
+    padding:10px 10px;
+    color: #6e6e6e;
+    font-size: 12px;
+    line-height: 20px;
+    border:1px solid  #e8e8e8;
+    border-collapse: collapse;
+    border-spacing:0;
+    text-align: left;
+    border-left:none;
+}
+.visa-detail > table > tr:first-child td,.visa-detail > table th {
+    background:#ccc;
+    padding:0;
+    height:26px;
+    line-height:26px;
+    font-weight: normal;
+    font-size: 14px;
+    color: #333;
+    text-align:center;
+}
+.visa-detail table tr td:first-child{
+    text-align: left;
+    width:70px;
+    text-align:center;
+}

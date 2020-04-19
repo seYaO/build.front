@@ -1,0 +1,143 @@
+<h3>附加产品</h3>
+<div class="pro-list" id="pro-list">
+<table class="chose">
+    <tbody>
+        <tr>
+            <th class="pro-type">产品类型</th>
+            <th class="pro-name">产品名称</th>
+            <th class="pro-price">同程价</th>
+            <th class="pro-date">使用日期</th>
+            <th class="pro-num">数量</th>
+            <th class="pro-choose"></th>
+        </tr>
+        {{?it.data.WanLe}}
+        {{~it.data.WanLe:value:index}}
+        <tr class="">
+            <td class="pro-type {{?value.Product.length<=1}}disabled{{?}}" data-type="{{=value.Type}}"><p>{{=value.Category}}{{?value.length>1}}<i class="active"></i>{{?}}</p></td>
+            <td class="pro-visa" colspan="5" style="padding:0;">
+                {{~value.Product:proVal}}
+                    <table class="visa-table">
+                        <tr>
+                            <td class="pro-name">
+                                <div class="pro-title choosed">
+                                {{?proVal.AdvanceDay ==0}}
+                                    <p class="J_Add_Title desc" data-ProductId="{{=proVal.ProductId}}" data-ResourceId="{{=proVal.ResourceId}}" title="{{=proVal.Title}}" >{{=proVal.Title}}</p>
+                                {{??}}
+                                    <p class="J_Add_Title desc" data-ProductId="{{=proVal.ProductId}}" data-ResourceId="{{=proVal.ResourceId}}" title="{{=proVal.Title}}">{{=proVal.Title}}</p>
+                                {{?}}
+                            </div>
+                            </td>
+                            <td class="pro-price">
+                                <div>￥<span>{{=proVal.Price}}</span></div>
+                            </td>
+                            <td class="pro-date"{{?proVal.UsingDays}} data-UsingDays="{{=proVal.UsingDays}}{{?}}">
+                                <div class="IsCommunication" data-PriceId="{{=proVal.PriceId}}" data-UsingDate='{{=proVal.UsingDate}}'   data-IsCommunication ="{{=proVal.IsWifi}}">
+                                {{?parseInt(proVal.IsWifi) === 0}}
+                                {{=proVal.UsingDate}}
+                                {{??}}
+                                    <div class="hr"></div>
+                                {{?}}
+                                </div>
+                            </td>
+                            <td class="pro-num">
+                                 <div>{{=proVal.UsingCount}}</div>
+                            </td>
+                            <td class="pro-choose"></td>
+                        </tr>
+                        <tr class="order-know none">
+                            <td colspan="5">
+                                {{?proVal.AdvanceDay == 0}}
+                                    <ul>
+                                        <li><i class="f-weight">预订时间：</i>如需预订，您最晚要在游玩当天{{=proVal.AdvanceTime}}前下单，请尽早预订。</li>
+                                        {{?proVal.IsWifi ==1}}
+                                        <li><i class="f-weight">预订须知：</i><div class="need-know iswifi"</div></li>
+                                        {{??}}
+                                        <li><i class="f-weight">预订须知：</i><div class="need-know"</div></li>
+                                        {{?}}
+                                    </ul>
+                                {{??}}
+                                    <ul>
+                                        <li><i class="f-weight">预订时间：</i>如需预订，您最晚要在游玩前{{=proVal.AdvanceDay}}天{{=proVal.AdvanceTime}}前下单，请尽早预订。</li>
+                                         {{?proVal.IsWifi ==1}}
+                                         <li><i class="f-weight">预订须知：</i><div class="need-know iswifi"</div></li>
+                                         {{??}}
+                                         <li><i class="f-weight">预订须知：</i><div class="need-know"</div></li>
+                                         {{?}}
+                                    </ul>
+                                {{?}}
+                            </td>
+                        </tr>
+                    </table>
+                {{~}}
+            </td>
+        </tr>
+        {{~}}
+        {{?}}
+        {{?it.data.Visa}}
+        <tr class="J_qz">
+            <td class="pro-type {{?it.data.Visa.Product.length<=1}}disabled{{?}}" data-type="{{=it.data.Visa.Type}}"><p>{{=it.data.Visa.Category}}{{?it.data.Visa.Product.length>1}}<i class="active"></i>{{?}}</p></td>
+            <td class="pro-visa" colspan="5" style="padding:0;">
+            {{~it.data.Visa.Product:value:index}}
+                <table class="visa-table">
+                    <tr>
+                        <td class="pro-name">
+                            <div class="pro-title adult choosed">
+                                <p class="J_Visa" data-index="{{=index}}" data-ProductId="{{=value.ProductId}}" title="{{=value.Title}}">{{=value.Title}}</p>
+                            </div>
+                        </td>
+                        <td class="pro-price">
+                            <div class="adult">￥<span>{{=value.AdultPrice}}</span></div>
+                        </td>
+                        <td class="pro-date">
+                            <div class="adult" data-PriceId="{{=value.AdultPriceId}}">{{=value.UsingDate}}</div>
+                        </td>
+                        <td class="pro-num">
+                            <div class="adult J_visa" data-count="{{=value.UsingAdultCount}}">
+                            {{=value.UsingAdultCount}}
+                            <span>&nbsp;&nbsp;成人</span>
+                            </div>
+                        </td>
+                        <td class="pro-choose"></td>
+                    </tr>
+                    <tr class="tr"><td colspan="5" class="visa-dialog"></td><tr>
+                </table>
+            {{~}}
+            </td>
+        </tr>
+        {{?value.ChildPriceId==0}}
+
+        {{??}}
+         <tr class="J_qz">
+            <td class="pro-type {{?it.data.Visa.Product.length<=1}}disabled{{?}}" data-type="{{=it.data.Visa.Type}}"></td>
+            <td class="pro-visa" colspan="5" style="padding:0;">
+            {{~it.data.Visa.Product:value:index}}
+                <table class="visa-table">
+                    <tr>
+                        <td class="pro-name">
+                            <div class="pro-title child choosed">
+                                 <p class="J_Visa" data-index="{{=index}}" data-ProductId="{{=value.ProductId}}" title="{{=value.Title}}">{{=value.Title}}</p>
+                            </div>
+                        </td>
+                        <td class="pro-price">
+                            <div class="child">￥<span>{{=value.ChildPrice}}</span></div>
+                        </td>
+                        <td class="pro-date">
+                            <div class="child" data-PriceId="{{=value.ChildPriceId}}">{{=value.UsingDate}}</div>
+                        </td>
+                        <td class="pro-num">
+                            <div class="child J_show J_visa" data-count="{{=value.UsingChildCount}}">
+                            {{=value.UsingChildCount}}
+                            <span>&nbsp;&nbsp;儿童（2~12周岁）</span>
+                            </div>
+                        </td>
+                        <td class="pro-choose"></td>
+                    </tr>
+                    <tr class="tr"><td colspan="5" class="visa-dialog"></td><tr>
+                </table>
+            {{~}}
+            </td>
+        </tr>
+        {{?}}
+        {{?}}
+    </tbody>
+</table>

@@ -1,0 +1,351 @@
+{{ var pmList=it.PmList||[]; }}
+{{ var pmListSimple=(pmList!=null)?it.PmList.slice(0,6):[]; }}
+
+{{ DcList=it.DcList||[]; }}
+{{ PortList=it.PortList||[]; }}
+{{ ThemeList=it.ThemeList||[]; }}
+{{ SingleLanguageList=it.SingleLanguageList||[]; }}
+{{ ReceiveTypeList = it.ReceiveTypeList||[]; }}
+{{ SingleTypeList = it.SingleTypeList||[]; }}
+{{ SingleCategoryList = it.SingleCategoryList||[]; }}
+
+{{?it.curTabIndex==1}}
+    <div class="searchConBox_each searchConBox_each_1" data-conBoxEachIndex="1">
+        <div class="searchConList">
+            <dl class="search_dl" data-key="dcId">
+                <dt class="search_dt">目的城市</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="0" class="search_all on">不限</a>
+                    <ul class="search_ul dest_ul">
+                        {{~DcList:dest}}
+                            <li><a data-id="{{=dest.Id}}">{{=dest.Name}}</a></li>
+                        {{~}}
+                    </ul>
+                    {{?DcList.length > 7}}
+                    <div class="open_all">
+                        <span href="javascript:void(0);" class="more_even">
+                            <em>更多</em><i></i>
+                        </span>
+                    </div>
+                    {{?}}
+                </dd>
+            </dl>
+            {{?ThemeList && ThemeList.length > 0 }}
+            <dl class="search_dl" data-key="themeId" data-flag="1">
+                <dt class="search_dt">游玩分类</dt>
+                <dd class="search_dd MultiSelect">
+                    <a data-id="0" class="search_all on">不限</a>
+                    <ul class="search_ul dest_ul">
+                        {{~ThemeList:palytheme}}
+                           <li><a data-id="{{=palytheme.Id}}"><i></i>{{=palytheme.Name}}</a></li>
+                        {{~}}
+                    </ul>
+                    {{?ThemeList.length > 7}}
+                    <div class="open_all">
+                        <p href="javascript:void(0);" class="more_even">
+                            <em>更多</em><i></i>
+                        </p>
+                    </div>
+                    {{?}}
+                </dd>
+            </dl>
+            {{?}}
+            <dl class="search_dl" data-key="pm">
+                <dt class="search_dt">游玩时间</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="0" class="search_all on">不限</a>
+                    <ul class="search_ul">
+                        {{~pmListSimple:time}}
+                            <li><a data-id="{{=time.YearMonth}}">{{=time.Month}}月</a></li>
+                        {{~}}
+                    </ul>
+                </dd>
+            </dl>
+            <dl class="search_dl" data-key="MinPrice,MaxPrice" >
+                <dt class="search_dt">价格范围</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="," class="search_all on">不限</a>
+                    <ul class="search_ul">
+                        <li><a data-id="0,200">￥200以下</a></li>
+                        <li><a data-id="200,500">￥200-￥500</a></li>
+                        <li><a data-id="500,800">￥500-￥800</a></li>
+                        <li><a data-id="800,">￥800以上</a></li>
+                    </ul>
+                    <div class="sort_price">
+                        <label class="label-price">
+                            价格区间
+                            <input type="text" maxlength="8" class="input-price input-left">
+                            <i>¥</i>
+                        </label>
+                        <i>~</i>
+                        <label class="label-price label-price1">
+                            <input type="text" maxlength="8" class="input-price input-right">
+                            <i>¥</i>
+                        </label>
+                        <span class="price-btn">确定</span>
+                    </div>
+                </dd>
+            </dl>
+        </div>
+        <div class="searchTotalBox clearfix">
+            <span class="total">为您找到了<em class="pro_total">{{=it.TotalCount}}</em>份产品</span>
+            <div class="crumbox">
+                <span class="removeall none">清除</span>
+            </div>
+        </div>
+        <div class="searchSortBox" data-role='recommend'  data-sort='1'>
+            <a class="searchSortBox_a active" data-role="recommend">
+                <em>同程推荐</em>
+            </a>
+            <a class="searchSortBox_a" data-role="price" data-sort="1">
+                <em>价格<i></i></em>
+            </a>
+            <a class="searchSortBox_a other_a" data-role="hot" data-sort="1">
+                <em>销量<i></i></em>
+            </a>
+            <a class="searchSortBox_a other_a" data-role="rate" data-sort="1">
+                <em style="border-right: none">满意度<i></i></em>
+            </a>
+        </div>
+    </div>
+
+{{?? it.curTabIndex==2}}
+	<div class="searchConBox_each searchConBox_each_2" data-conBoxEachIndex="2">
+        <div class="searchConList">
+            {{?PortList && PortList.length > 0}}
+                <dl class="search_dl" data-key="lpCity" data-flag="0" data-way="receiveType">
+                    <dt class="search_dt">领取方式</dt>
+                    <dd class="search_dd MultiSelect">
+                        <a data-id="0" class="search_all on">不限</a>
+                            <ul class="search_ul dest_ul">
+                                {{var AddtionalDic = it.AddtionalDic;}}
+                                {{?AddtionalDic}}
+                                    {{var getcity = AddtionalDic.SelfGetCitys[0];}}
+                                    {{?AddtionalDic.SelfGetCitys[0] != "" && AddtionalDic.SelfGetCitys[0] != undefined}}
+                                        {{?AddtionalDic.SelfGetCitys[0].PortList &&　AddtionalDic.SelfGetCitys[0].PortList != ""}}
+                                            {{~AddtionalDic.SelfGetCitys[0].PortList:portCity}}
+                                                <li><a data-id="{{=portCity.Id}}" trace="city_{{=portCity.Id}}" data-wayid="1,2"><i></i>{{=portCity.Name}}自取</a></li>
+                                            {{~}}
+                                        {{?}}
+                                    {{?}}
+                                {{?}}
+
+                                {{var post="";}}
+                                {{~ReceiveTypeList:type}}
+                                    {{?type.Id != 1 && type.Id != 2 && type.Id != 4 && type.Id != 10}}
+                                        {{?type.Id != 3 && type.Id != 6}}
+                                            <li><a data-id="" data-wayid="{{=type.Id}}" trace="type_{{=type.Id}}"><i></i>{{=type.Name}}</a></li>        
+                                        {{??}}
+                                            {{post = "快递派送";}}                                        
+                                        {{?}}
+                                    {{?}}
+                                {{~}}
+                                {{?post != ""}}
+                                    <li><a data-id="" data-wayid="3,6" trace=""><i></i>{{=post}}</a></li>
+                                {{?}}
+
+                            </ul>
+                        {{?PortList && PortList.length > 7}}
+                        <div class="open_all">
+                            <span href="javascript:void(0);" class="more_even current">
+                                <em>收起</em><i></i>
+                            </span>
+                        </div>
+                        {{??}}
+                        <div class="open_all none">
+                            <span href="javascript:void(0);" class="more_even current">
+                                <em>收起</em><i></i>
+                            </span>
+                        </div>
+                        {{?}}
+                    </dd>
+                </dl>
+            {{?}}         
+
+            {{?SingleCategoryList != "" && SingleCategoryList.length > 0}}
+                <dl class="search_dl" data-key="singleCategory">
+                    <dt class="search_dt">WIFI通讯</dt>
+                    <dd class="search_dd MultiSelect">
+                        <a data-id="0" class="search_all on" trace="nolimit_time">不限</a>
+                        <ul class="search_ul">
+                            {{~SingleCategoryList:category}}
+                            <li><a data-id="{{=category.Id}}" trace="category_{{=category.Id}}"><i></i>{{=category.Name}}</a></li>
+                            {{~}}
+                        </ul>
+                    </dd>
+                </dl> 
+            {{?}}
+
+        </div>
+        <div class="searchTotalBox clearfix">
+            <span class="total">为您找到了<em class="pro_total">{{=it.TotalCount}}</em>份产品</span>
+            <div class="crumbox">
+                <span class="removeall none">清除</span>
+            </div>
+        </div>
+        <div class="searchSortBox" data-role='recommend'  data-sort='1'>
+            <a class="searchSortBox_a active" data-role="recommend">
+                <em>同程推荐</em>
+            </a>
+            <a class="searchSortBox_a" data-role="price" data-sort="1">
+                <em>价格<i></i></em>
+            </a>
+            <a class="searchSortBox_a other_a" data-role="hot" data-sort="1">
+                <em>销量<i></i></em>
+            </a>
+            <a class="searchSortBox_a other_a" data-role="rate" data-sort="1">
+                <em style="border-right: none">满意度<i></i></em>
+            </a>
+        </div>
+    </div>
+
+{{??}}
+    <div class="searchConBox_each searchConBox_each_3" data-conBoxEachIndex="3">
+        <div class="searchConList">
+            <dl class="search_dl" data-key="dcId">
+                <dt class="search_dt">目的城市</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="0" class="search_all on">不限</a>
+                    <ul class="search_ul dest_ul">
+                        {{~DcList:dest}}
+                            <li><a data-id="{{=dest.Id}}">{{=dest.Name}}</a></li>
+                        {{~}}
+                    </ul>
+                    {{?DcList.length > 7}}
+                    <div class="open_all">
+                        <span href="javascript:void(0);" class="more_even">
+                            <em>更多</em><i></i>
+                        </span>
+                    </div>
+                    {{?}}
+                </dd>
+            </dl>
+            <dl class="search_dl" data-key="SingleType">
+                <dt class="search_dt">游玩主题</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="0" class="search_all on">不限</a>
+                    <ul class="search_ul">
+                        {{~SingleTypeList:singleType}}
+                            <li><a data-id="{{=singleType.Id}}">{{=singleType.Name}}</a></li>
+                        {{~}}
+                    </ul>
+                </dd>
+            </dl>
+            {{?ThemeList && ThemeList.length > 0 }}
+            <dl class="search_dl" data-key="themeId" data-flag="1">
+                <dt class="search_dt">游玩分类</dt>
+                <dd class="search_dd MultiSelect">
+                    <a data-id="0" class="search_all on">不限</a>
+                    <ul class="search_ul dest_ul">
+                        {{~ThemeList:palytheme}}
+                           <li><a data-id="{{=palytheme.Id}}"><i></i>{{=palytheme.Name}}</a></li>
+                        {{~}}
+                    </ul>
+                    {{?ThemeList.length > 7}}
+                    <div class="open_all">
+                        <p href="javascript:void(0);" class="more_even">
+                            <em>更多</em><i></i>
+                        </p>
+                    </div>
+                    {{?}}
+                </dd>
+            </dl>
+            {{?}}
+            <dl class="search_dl" data-key="pm">
+                <dt class="search_dt">游玩时间</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="0" class="search_all on">不限</a>
+                    <ul class="search_ul">
+                        {{~pmListSimple:time}}
+                            <li><a data-id="{{=time.YearMonth}}">{{=time.Month}}月</a></li>
+                        {{~}}
+                    </ul>
+                </dd>
+            </dl>
+            {{?SingleLanguageList && SingleLanguageList.length > 0 }}
+            <dl class="search_dl" data-key="singleLanguage">
+                <dt class="search_dt">服务语言</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="0" class="search_all on">不限</a>
+                    <ul class="search_ul dest_ul">
+                        {{~SingleLanguageList:language}}
+                            <li><a data-id="{{=language.Id}}">{{=language.Name}}</a></li>
+                        {{~}}
+                    </ul>
+                    {{?SingleLanguageList.length > 7 }}
+                    <div class="open_all">
+                        <span href="javascript:void(0);" class="more_even">
+                            <em>更多</em><i></i>
+                        </span>
+                    </div>
+                    {{?}}
+                </dd>
+            </dl>
+            {{?}}
+            <dl class="search_dl" data-key="MinPrice,MaxPrice" >
+                <dt class="search_dt">价格范围</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="," class="search_all on">不限</a>
+                    <ul class="search_ul">
+                        <li><a data-id="0,200">￥200以下</a></li>
+                        <li><a data-id="200,500">￥200-￥500</a></li>
+                        <li><a data-id="500,800">￥500-￥800</a></li>
+                        <li><a data-id="800,">￥800以上</a></li>
+                    </ul>
+                    <div class="sort_price">
+                        <label class="label-price">
+                            价格区间
+                            <input type="text" maxlength="8" class="input-price input-left">
+                            <i>¥</i>
+                        </label>
+                        <i>~</i>
+                        <label class="label-price label-price1">
+                            <input type="text" maxlength="8" class="input-price input-right">
+                            <i>¥</i>
+                        </label>
+                        <span class="price-btn">确定</span>
+                    </div>
+                </dd>
+            </dl>
+            <dl class="search_dl" data-key="minSingleTime,maxSingleTime" >
+                <dt class="search_dt">活动时长</dt>
+                <dd class="search_dd setParentDirect">
+                    <a data-id="," class="search_all on">不限</a>
+                    <ul class="search_ul">
+                        <li><a data-id="0,3">0~3小时</a></li>
+                        <li><a data-id="3,5">3~5小时</a></li>
+                        <li><a data-id="5,7">5~7小时</a></li>
+                        <li><a data-id="7,24">7小时~1天</a></li>
+                         <li><a data-id="48,">2天以上</a></li>
+                    </ul>
+                </dd>
+            </dl>
+        </div>
+        <div class="searchTotalBox clearfix">
+            <span class="total">为您找到了<em class="pro_total">{{=it.TotalCount}}</em>份产品</span>
+            <div class="crumbox">
+                <span class="removeall none">清除</span>
+            </div>
+        </div>
+        <div class="searchSortBox" data-role="recommend" data-sort='1'>
+            <div class="SortBox_left">
+                <a class="searchSortBox_a other_a active" data-role="recommend">
+                    <em>同程推荐</em>
+                </a>
+                <a class="searchSortBox_a" data-role="price" data-sort="1">
+                    <em>价格<i></i></em>
+                </a>
+                <a class="searchSortBox_a other_a" data-role="hot" data-sort="1">
+                    <em>销量<i></i></em>
+                </a>
+                <a class="searchSortBox_a other_a" data-role="rate" data-sort="1">
+                    <em style="border-right: none">满意度<i></i></em>
+                </a>
+            </div>
+            <div class="SortBox_right">
+                <div class="sortKey" data-key="reserve"><a class="SortBox_add" data-id="1"><span><i></i>可订今日</span></a></div>
+                <div class="sortKey" data-key="dischannel"><a class="SortBox_add" data-id="1"><span><i></i>可享优惠</span></a></div>
+            </div>
+        </div>
+    </div>
+{{?}}

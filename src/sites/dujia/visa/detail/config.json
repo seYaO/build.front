@@ -1,0 +1,9 @@
+{
+    "dataUri":  "/intervacation/api/VisaInfo/GetVisaDetail",
+    "query": {
+        "siteType":0,
+        "productId":68,
+        "isActProduct":true
+    },
+    "desc": "签证终页"
+}

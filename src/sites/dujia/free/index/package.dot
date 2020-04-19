@@ -1,0 +1,30 @@
+<ul class="prolist clearfix {{="J_proList" + it.key}}">
+    {{~it:pro:index}}
+    {{?index == 3}}
+    <li class="last_1">
+    {{??index == 4}}
+    <li class="last_2">
+    {{??}}
+    <li >
+    {{?}}
+        <a class="proline-link" href="/dujia/tours/p{{=pro.LineId}}.html" target="_blank">
+            <div class="proline-img">
+                <img data-img="{{=common.setImageSize(pro.ImgUrl,"430x270").replace('http:','')}}" title="{{=pro.MainTitle}}" alt="{{=pro.MainTitle}}" />
+                <div class="sub-title">{{=pro.SubTitle}}</div>
+            </div>
+            <div class="proline-txt">
+                <p class="proline-tit">{{=pro.MainTitle}}</p>
+                <p class="proline-price">
+                    <span class="dep">{{=pro.SrcCity}}出发</span>
+                    {{?pro.Price == "0"}}
+                    <span class="price">实时计价</span>
+                    {{??}}
+                    <span class="price">￥{{=pro.Price}}</span>
+                    {{?}}
+                </p>
+            </div>
+        </a>
+    </li>
+    {{~}}
+</ul>
+

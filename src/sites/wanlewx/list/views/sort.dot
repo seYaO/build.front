@@ -1,0 +1,30 @@
+<ul data-mark="price" class="search_ul filter_price radio" data-id="">
+    <li data-id="" class="search_all select"><span>不限</span></li>
+    <li data-id="0,100"><span>￥100以下</span></li>
+    <li data-id="100,299"><span>￥100-299</span></li>
+    <li data-id="300,499"><span>￥300-499</span></li>
+    <li data-id="500,"><span>￥500以上</span></li>
+</ul>
+
+<ul data-mark="receive" class="search_ul filter_receive allowed none" data-id="">
+    <li data-id="" class="search_all select"><span>不限</span></li>
+    {{~condition.ReceiveTypeList:value}}
+        {{?value.TypeID != 4}}
+        <li data-id="{{=value.Id}}"><span>{{=value.Name}}</span></li>
+        {{?}}
+    {{~}}
+</ul>
+
+<ul data-mark="lpcity" class="search_ul filter_lpcity allowed none" data-id="">
+    <li data-id="" class="search_all select"><span>不限</span></li>
+    {{~condition.PortCityList:value}}
+    <li data-id="{{=value.Id}}"><span>{{=value.Name}}</span></li>
+    {{~}}
+</ul>
+
+<ul data-mark="language" class="search_ul filter_language radio none" data-id="">
+    <li data-id="" class="search_all select"><span>不限</span></li>
+    {{~condition.LanguageList:value}}
+    <li data-id="{{=value.Id}}"><span>{{=value.Name}}</span></li>
+    {{~}}
+</ul>

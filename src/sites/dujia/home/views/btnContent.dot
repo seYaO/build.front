@@ -1,0 +1,23 @@
+<div class="gonglue-left">
+    <div trace="mudidi-gonglve">
+        {{?it.DestStrategy && it.DestStrategy.length != 0}}
+            <p class="title">目的地攻略</p>
+            <div class="mudidi clearfix">
+                {{~it.DestStrategy:destStrategy:destStrategyindex}}
+                <a class="strategy__link" href="{{=(destStrategy.Url.replace('http:','')||'')}}" title="{{=(destStrategy.Name||'')}}" alt="{{=(destStrategy.Name||'')}}" target="_blank" trace="dest_{{=(destStrategyindex+1)}}">{{=(destStrategy.Name||'')}}</a>
+                </a>
+                {{~}}
+            </div>
+        {{?}}
+    </div>
+</div>
+<div class="gonglue-right" trace="changjian-wenti">
+    {{?it.CommonTips && it.CommonTips.length != 0}}
+    <p class="title">常见问题</p>
+    <div class="question">
+        {{~it.CommonTips:commonTips:commonTipsindex}}
+        <a target="_blank" trace="prob_{{=commonTipsindex}}" class="qa__link" href="{{=(commonTips.Url.replace('http:','')||'')}}" title="{{=(commonTips.Name||'')}}" alt="{{=(commonTips.Name||'')}}" rel="nofollow">{{=(commonTips.Name||'')}}</a>
+        {{~}}
+    </div>
+    {{?}}
+</div>

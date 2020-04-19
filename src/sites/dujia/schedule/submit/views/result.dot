@@ -1,0 +1,16 @@
+<div class="result">     
+{{?it.flag==1}}
+        <div class="result-error">
+                <img src="http://img1.40017.cn/cn/v/schedule/result_error.jpg" alt=""/>
+                <p>对不起！网络原因，需求提交失败了！</p>
+                <p class="mt10"><a href="" class="button-min">返回首页</a></p>
+        </div>
+{{??}}
+       <div class="result-success">
+                <img src="http://img1.40017.cn/cn/v/schedule/result_success.jpg" alt=""/>
+                <p>您的需求单已经提交， <br/>
+                    我们会在一到两个工作日内和您电话确认。</p>
+                <p class="mt10"><a href="/dujia/" class="button-min">返回首页</a></p>
+      </div>
+{{?}}
+</div>

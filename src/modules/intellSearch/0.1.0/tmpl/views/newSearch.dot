@@ -1,0 +1,19 @@
+<div class="new_play ly_search">
+    <div class="ly_search_row">
+        <div class="ly_search_inputgp" search-wapper>
+            <input type="text" search-input placeholder="{{=it.placeholder}}">
+            <div class="ly_search_gp" search-group></div>
+            <div class='new-label'>
+            {{var hotSearch = it.hotSearch;}}
+            {{?hotSearch&&hotSearch.length>0}}
+            {{~hotSearch:value}}
+            <li>
+                <a href={{=value.hotUrl}} target='_blank'>{{=value.hotName}}</a>
+            </li>
+            {{~}}
+            {{?}}
+            </div>
+        </div>
+        <label class="ly_search_btn" search-submit>{{=it.submitName}}</label>
+    </div>
+</div>

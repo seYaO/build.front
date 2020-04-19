@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="http://libs.baidu.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <link href="http://js.40017.cn/cn/v/2015/jqmodules/tcyup/0.1.0/index.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container"><!-- Docs nav -->
+    <div class="row">
+        <div class="span9"><!-- Download -->
+            <section id="invoke">
+                <div class="page-header">
+                    <h4>1. 引用脚本样式</h4>
+                </div>
+                <pre class="prettyprint linenums">
+                    http://js.40017.cn/cn/v/2015/jqmodules/tcyup/0.1.0/index.css
+                    http://js.40017.cn/cn/v/2015/jqmodules/tcyup/0.1.0/index.js
+                </pre>
+            </section>
+
+            <section id="purebox-invoke">
+                <div class="page-header">
+                    <h4>1. 用法示例</h4>
+                </div>
+                <div class="bs-docs-example" style="padding-bottom: 24px;">
+                    <a class="btn btn-primary tcyup">绑定调用</a>
+                    <a class="btn btn-primary tcyup-click">auto调用</a>
+                    <input type="hidden" id="hideToken" value="JGBwrXeaOtyPUANLMFDM0IB3QiweTn0xAlCjHeU2Xes%3d">
+                </div>
+                    <pre id="prettyprint" class="prettyprint linenums">
+                        //获取后台上传提供的密钥，例如放在隐藏域中hideToken的值,对所有要上传的按钮,例如class为tcyup的按钮进行绑定;
+                        var token = $('#hideToken');
+                        $(".tcyup").tcyup({
+                            token: token,//
+                            title: '测试上传',//上传标题
+                            pagesize: 3,//上传限制页数
+                            projectid: 1234,//项目id
+                            subprojectid: 1234,//项目子id
+                            success: function (data) {//成功回调返回上传url数组
+                                alert(data);
+                            }
+                        });
+                        //事件触发传入初始化参数auto为true，可在事件触发是初始化。当初始化参数传入auto时，初始绑定的元素默认为1个。
+                        $(".tcyup-click").on('click',function(){
+                            var token = $('#hideToken');
+                            $(this).tcyup({
+                                token: token,
+                                title: '测试上传',
+                                pagesize: 3,
+                                auto : true,//
+                                projectid: 1234,
+                                subprojectid: 1234,
+                                success: function (data) {
+                                    alert(data);
+                                }
+                            });
+                        });
+                    </pre>
+            </section>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="http://js.40017.cn/cn/v/2015/jqmodules/tcyup/0.1.0/index.js"></script>
+<script>
+    window.eval($('#prettyprint').html())
+</script>
+</body>
+</html>

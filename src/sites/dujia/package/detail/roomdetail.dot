@@ -1,0 +1,72 @@
+<!--HotelList packedDetail 脚本里也有引用-->
+{{?it.Data&&it.Code==4000}}
+<div class="CheckIn-box">
+    <div class="CheckIn-box-title">
+        <span></span>
+        <i class="btn-closeCheckIn"></i>
+    </div>
+    <div class="content-checkIn clearfix">
+        <div class="img-checkIn">
+        {{?it.Data.Images&&it.Data.Images.length}}
+            <div class="carousel-spot">
+                <ul>
+                    {{~it.Data.Images:itval:index}}
+                    <li>
+                        <img src="{{=itval.replace('http:','')}}" alt="房间照片">
+                    </li>
+                    {{~}}
+                </ul>
+                {{?it.Data.Images.length>1}}
+                <a class="prev" href="javascript:;"></a>
+                <a class="next" href="javascript:;"></a>
+                {{?}}
+            </div>
+        {{??}}
+        <img src="//img1.40017.cn/cn/v/package/2016/newdetails/load-picsmall.png">
+        {{?}}
+        </div>
+        <div class="txt-checkIn">
+            {{?it.Data.Square}}<div><span>房间面积：</span>{{=it.Data.Square}}</div>{{?}}
+            {{?it.Data.InternetConnection || it.Data.InternetDesc}}
+                <div>
+                    <span>上网方式：</span>
+                    {{
+                        var internet = '';
+                        if(it.Data.InternetConnection && it.Data.InternetDesc){
+                            internet = it.Data.InternetConnection + ',' + it.Data.InternetDesc;
+                        }else if(it.Data.InternetConnection && !it.Data.InternetDesc){
+                            internet = it.Data.InternetConnection;
+                        }else if(it.Data.InternetDesc && !it.Data.InternetConnection){
+                            internet = it.Data.InternetDesc;
+                        }
+                        var totleL = internet.length;
+                        var shtml = '';
+                        if(totleL > 36){
+                            shtml = internet.substring(0,36) + '...';
+                        }else{
+                            shtml = internet;
+                        }
+                    }}
+                    <span class="internet" title='{{=internet}}'>
+                        {{=internet}}
+                    </span>
+                </div>
+            {{?}}
+            {{?it.Data.ExtraBedCount}}<div><span>加&nbsp;床&nbsp;数：</span>{{=it.Data.ExtraBedCount}}</div>{{?}}
+            {{?it.Data.CheckInNotes || it.Data.SpecialCheckInNotes}}
+              <div class="hotelfee-box">
+                  <p>{{=it.Data.CheckInNotes}}</p>
+                  {{?it.Data.SpecialCheckInNotes}}<p><span>特殊说明：</span><br/>{{=it.Data.SpecialCheckInNotes}}</p>{{?}}
+              </div>
+            {{?}}
+        </div>
+    </div>
+</div>
+{{??}}
+<div class="CheckIn-box CheckIn-sbox">
+        <div class="CheckIn-box-title"> <span class="nohotel-title"></span> <i class="btn-closeCheckIn"></i> </div>
+        <div class="content-checkIn clearfix">
+            <div class="noroom"><i></i><span>很抱歉，暂无该房型信息</span></div>
+        </div>
+</div>
+{{?}}

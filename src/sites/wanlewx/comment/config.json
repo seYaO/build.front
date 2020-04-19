@@ -1,0 +1,12 @@
+{
+  "dataUri": "/wanle/api/WanleComment/GetWanleCommentList",
+  "query": {
+        "sort" : 0,
+        "tagId" : 1,
+        "lineId": 12430,
+        "pageSize": 10,
+        "pageIndex": 1,
+        "dpSite": 6
+  },
+  "desc": "玩乐微信点评页"
+}

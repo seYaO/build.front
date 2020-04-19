@@ -1,0 +1,87 @@
+.container {
+  position: relative;
+  width: 1200px;
+  -moz-perspective: 1500px;
+  -webkit-perspective: 1500px;
+  perspective: 1500px;
+}
+.flipper {
+  position: absolute;
+  width: 184px;
+  height: 210px;
+  margin: 10px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.flipper > div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  text-align: center;
+  font-weight: bold;
+  font-size: 140px;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.flipper .front {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  z-index: 2;
+  -moz-transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+  background: url("img/dest/again_fail.jpg") no-repeat;
+  background-size: 100%;
+}
+.flipper .back {
+  z-index: 3;
+  height: 100%;
+  background: url("img/dest/already.jpg") no-repeat;
+  background-size: 100%;
+}
+.flipper.flipped .front {
+  opacity: 1;
+  filter: alpha(opacity=100);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -moz-transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.flipper.flipped .back {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -moz-transform: rotateY(-180deg);
+  -webkit-transform: rotateY(-180deg);
+  transform: rotateY(-180deg);
+}
+.yicard #card1 .front {
+  background: url("img/dest/again_suce.jpg") no-repeat;
+}
+.ercard #card2 .front {
+  background: url("img/dest/again_suce.jpg") no-repeat;
+}
+.sancard #card3 .front {
+  background: url("img/dest/again_suce.jpg") no-repeat;
+}
+.sicard #card4 .front {
+  background: url("img/dest/again_suce.jpg") no-repeat;
+}
+.wucard #card5 .front {
+  background: url("img/dest/again_suce.jpg") no-repeat;
+}
+.container .flipper:not(.flipped):hover {
+  -webkit-transform: rotateY(-10deg);
+  transform: rotateY(-10deg);
+  box-shadow: 2px 2px 10px 0px #ccc;
+}

@@ -1,0 +1,35 @@
+{{var saleList = data.HotDestDic.teHui.HotProductList;}}
+{{? saleList!="" && saleList.length > 0}}
+<ul class="pro-list" trackkit="Line_Recommend">
+{{var trcIndex = 0;}}
+{{~saleList:salePro:index}}
+	{{? index < 5}}
+	{{var mainTitle = salePro.MainTitle.length > 32 ? salePro.MainTitle.substring(0,32)+"..." : salePro.MainTitle;}}
+    {{var imgUrl = salePro.ProductHeadImageUrl.replace('.jpg','_450x250_00.jpg');}}
+    <li class="pro-line">
+        <a target="_blank" title="{{=mainTitle}}" href="/dujia/wanle/{{=salePro.ProductId}}.html" trace="specialpro_{{=trcIndex}}" trackspot="{{=salePro.ProductId}}^{{=index+1}}^0^特惠专区">
+            <div class="pro-img">
+                <img src="{{=imgUrl.replace('http:','')}}" alt="{{=mainTitle}}" />
+                <span class="icon tips"><b>特卖</b></span>
+                <p class="mainTitle"><span>{{=mainTitle}}</span></p>
+            </div>
+            <div class="pro-intro">
+                <span class="subTitle">{{=salePro.SubTitle}}</span>
+                <p class="extra padd-top">
+                    <span class="money">
+                    <label>¥<b>{{=salePro.Price}}</b><em>起</em></label>
+                    </span>
+                    <span class="icon pro-btn">立即抢购</span>
+                </p>
+            </div>
+        </a>
+    </li>
+	{{?}}
+
+    {{trcIndex = trcIndex +1;}}
+{{~}}
+</ul>
+{{?}}
+
+
+

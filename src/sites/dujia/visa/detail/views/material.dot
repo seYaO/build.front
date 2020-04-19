@@ -1,0 +1,116 @@
+{{?productDetail.VisaMaterialList && productDetail.VisaMaterialList.length>0}}
+<div id="dataInfo" class="nav_box J_NavBox" data-txt="所需材料">
+    <div class="nav-tit"><span><i class="box-icons icons-data"></i><h3>所需材料</h3></span>
+    </div>
+    <div class="data-content">
+        <div>
+            {{var lenInd = productDetail.VisaMaterialList.length;}}
+            <ul class="tab-title">
+                {{~productDetail.VisaMaterialList:visaMaterial:matInd}}
+                    {{?matInd==0}}
+                        <li data-id="{{=visaMaterial.PersonalTypeId}}" class="cur">
+                        {{=visaMaterial.PersonalTypeName}}({{=visaMaterial.AllMaterialListCount}}项)<i></i></li>
+                    {{??lenInd == matInd+1}}
+                        <li data-id="{{=visaMaterial.PersonalTypeId}}" class="tab-title-line">
+                        {{=visaMaterial.PersonalTypeName}}({{=visaMaterial.AllMaterialListCount}}项)<i></i></li>
+                    {{??}}
+                        <li data-id="{{=visaMaterial.PersonalTypeId}}">{{=visaMaterial.PersonalTypeName}}({{=visaMaterial.AllMaterialListCount}}项)<i></i></li>
+                    {{?}}
+                {{~}}
+            </ul>
+            <div class="process">
+                <a trace="print" data-url="//www.ly.com/dujia/print_{{=productDetail.Id}}.html?" class="print J_btnPrint">打印材料</a>
+                <a class="btn-email">Email材料</a>
+            </div>
+        </div>
+        <div class="tab-content">
+            {{~productDetail.VisaMaterialList:visaMaterial:indexV}}
+                <div class="tab-pane {{?indexV!=0}}pane-none{{?}}" data-txt="{{=visaMaterial.PersonalTypeName}}">
+                {{?visaMaterial.NessaryMaterialList && visaMaterial.NessaryMaterialList.length}}
+                    <div class="mustTitle"><span>必须提供({{=visaMaterial.NessaryMaterialListCount}}项)</span><i></i></div>
+                    {{~visaMaterial.NessaryMaterialList:material}}
+                    <div class="m_List">
+                        <div class="onjob-left">
+                            <div class="onjob-body">
+                                <h4 class="m_title">★{{=material.Name}}</h4>
+                                   
+                                <div class="m_content">{{=material.Content}}</div>    
+                            </div>                   
+                        </div>
+                        <div class="onjob-right">
+                            {{? material.TemplateList && material.TemplateList.length > 0}}
+                                {{
+                                    var templateName="",
+                                        templateDesc = "",
+                                        templateUrl = "";
+                                }}
+                                {{~material.TemplateList:materialTemplate:temInd}}
+                                    {{?temInd==0}}
+                                        {{
+                                            templateName = materialTemplate.TemplateName;
+                                            templateDesc = materialTemplate.TemplateDesc;
+                                            templateUrl = materialTemplate.TemplateUrl;
+                                        }}
+                                    {{??}}
+                                        {{
+                                            templateName = templateName + "&" + materialTemplate.TemplateName;
+                                            templateDesc = templateDesc + "&" + materialTemplate.TemplateDesc;
+                                            templateUrl = templateUrl +"," + materialTemplate.TemplateUrl;
+                                        }}
+                                    {{?}}
+                                {{~}}
+                                <a alt="{{=productDetail.MainTitle}}" data-title="{{=templateName}}" data-content="{{=templateDesc}}" data-url="{{=templateUrl.replace('http:','')}}" class="onjob-sample" href="javascript:;">查看图样</a>
+                            {{?}}
+                        </div>
+                        
+                    </div>
+                    {{~}}
+                {{?}}     
+
+
+                {{?visaMaterial.NotNessaryMaterialList && visaMaterial.NotNessaryMaterialList.length}}
+                    <div class="mustTitle"><span>建议提供({{=visaMaterial.NotNessaryMaterialListCount}}项)</span><i></i></div>
+                    {{~visaMaterial.NotNessaryMaterialList:material}}
+                    <div class="m_List">
+                        <div class="onjob-left">
+                            <div class="onjob-body">
+                                <h4 class="m_title">●{{=material.Name}}</h4>                    
+                                <div class="m_content">{{=material.Content}}</div>    
+                            </div>                   
+                        </div>
+                        <div class="onjob-right">
+                            {{? material.TemplateList && material.TemplateList.length > 0}}
+                                {{
+                                    var templateName="",
+                                        templateDesc = "",
+                                        templateUrl = "";
+                                }}
+                                {{~material.TemplateList:materialTemplate:temInd}}
+                                    {{?temInd==0}}
+                                        {{
+                                            templateName = materialTemplate.TemplateName;
+                                            templateDesc = materialTemplate.TemplateDesc;
+                                            templateUrl = materialTemplate.TemplateUrl;
+                                        }}
+                                    {{??}}
+                                        {{
+                                            templateName = templateName + "&" + materialTemplate.TemplateName;
+                                            templateDesc = templateDesc + "&" + materialTemplate.TemplateDesc;
+                                            templateUrl = templateUrl +"," + materialTemplate.TemplateUrl;
+                                        }}
+                                    {{?}}
+                                {{~}}
+                                <a alt="{{=productDetail.MainTitle}}" data-title="{{=templateName}}" data-content="{{=templateDesc}}" data-url="{{=templateUrl.replace('http:','')}}" class="onjob-sample" href="javascript:;">查看图样</a>
+                            {{?}}
+                        </div>
+                        
+                    </div>
+                    {{~}}
+                {{?}}   
+
+                </div>
+            {{~}}
+        </div>
+    </div>
+</div>
+{{?}}

@@ -1,0 +1,33 @@
+{{?it.Code==4000}}
+<div class="box-shop">
+    <h2>{{=it.Data.Province}}→{{=it.Data.City}}</h2>
+    {{~it.Data.Stores:itItems:index}}
+    <div class="nearshop-text">
+        <h3>{{=itItems.Name}}</h3>
+        {{?itItems.Telephone}}
+        <p class="tlephone"><span>电话 :</span> {{=itItems.Telephone}}</p>
+        {{?}}
+        {{?itItems.Address}}
+        <p class="adress"><span>地址 :</span> {{=itItems.Address}}</p>
+        {{?}}
+        {{?itItems.Traffic}}
+        <p class="traffic"><span>交通 :</span> {{=itItems.Traffic}}</p>
+        {{?}}
+    </div>
+    {{~}}
+    <span class="unfold more-content J_moreCity more-shop"> 更多城市门店<b></b> </span>
+    <div class="city-box none">
+        <i></i>
+        <div class="cityShop-top clearfix">
+            <span class="send-pro J_send_span" data-id="">请选择省</span>
+            <span class="send-city J_send_span" data-id="">请选择市</span>
+            <span class="search_shop">查找</span>
+            <ul class="send-pro-ul J_send_ul none"></ul>
+            <ul class="send-city-ul J_send_ul none"></ul>
+        </div>
+        <div class="shop-details">
+        </div>
+        <div class="dialog-arrow-b"></div>
+    </div>
+</div>
+{{?}}

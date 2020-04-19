@@ -1,0 +1,33 @@
+ {{?it}}
+<div class="visa-playlist" data-name="{{=it.playType}}">
+    <div class="visa-playL">
+        <p class="visa-playL-name">出游人{{=it.playLine}}</p>
+        <p class="visa-playL-type">{{=it.playName}}</p>
+    </div>
+    <div class="visa-playR">
+        <ul class="visa-playInfo">
+            <li>
+                <label class="title">姓名<em>*</em></label>
+                <input name="playName" data-type="{{=it.playType}}" type="text" class="J_Name J_PlayName" placeholder="请准确填写姓名" vtype="rq" data-err-rq="请输入联系人姓名" required=""/>
+            </li>
+            <li class="pType-li">
+                <label class="title">客户类型<em>*</em></label><span class="playType J_PlayType J_playType_select" data-index="{{=it.cusIndex}}">{{=it.cusName}}</span>
+                <ul class="pType-ul J_pType_ul none">
+                    {{=it.cusSelect}}
+                </ul>
+            </li>
+            <li>
+                <label class="title">出生日期<em>*</em></label>
+                <label>
+                    <i class="icon-date"></i>
+                    <input class="J_BirthDate" autocomplete="off" placeholder="请选择出生日期" type="text" vtype="rq" data-err-rq="请选择出生日期" value="" readonly="readonly" />
+                </label>
+            </li>
+            <li>
+                <label class="J_playerSave icon-save checked">保存为常旅客</label>
+                <span class="J_playerClear icon-clear">清空</span>
+            </li>
+        </ul>
+    </div>
+</div>
+{{?}}

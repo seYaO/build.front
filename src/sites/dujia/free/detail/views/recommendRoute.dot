@@ -1,0 +1,40 @@
+<div id="route-conlist" class="dayroute_conlist clearfix" trace="group-conlist" style="position: static;">
+    <div class="content-nav-inner">
+    </div>
+</div>
+<div class="day-content">
+    {{~travelData.LineDestinationPlayDetail.PlayDaysInfoList:item:index}}
+    <div id="day{{=item.TheDay}}" class="dayroute J_dayroute" data-txt="{{=item.TheDay}}">
+        <div class="dayNum">第{{=item.TheDay}}天</div>
+        <div class="daycon">{{=item.PlayDescription}}</div>
+        <div class="daydetails">
+        {{?item.PlayDaysDetailList && item.PlayDaysDetailList.length!=0}}
+        {{~item.PlayDaysDetailList:list}}
+            <div class="detailsTitle"><i class="{{?list.DetailType==1}}view{{?}}{{?list.DetailType==2}}shopping{{?}}{{?list.DetailType==3}}meal{{?}}{{?list.DetailType==4}}transport{{?}}"></i>{{=list.DetailName}}</div>
+            <div class="details-info">{{=list.DetailDescription}}</div>
+            {{?list.PlayAddr && list.PlayAddr !="" && list.PlayAddr != null}}
+            <p><em>商品地址：</em>{{=list.PlayAddr}}</p>
+            {{?}}
+            {{?list.PlayTypeOfShopsPlay && list.PlayTypeOfShopsPlay !="" && list.PlayTypeOfShopsPlay != null}}
+            <p><em>商品类型：</em>{{=list.PlayTypeOfShopsPlay}}</p>
+            {{?}}
+            {{?list.PlayMainProduct && list.PlayMainProduct !="" && list.PlayMainProduct != null}}
+            <p><em>主营产品：</em>{{=list.PlayMainProduct}}</p>
+            {{?}}
+            {{?list.PlayImage && list.PlayImage.length != 0}}
+            <div class="imgs-box hoverBig">
+                {{  var imgLen = list.PlayImage.length;
+                    if(imgLen>3){
+                    imgLen = 3;
+                }
+                    for(var i=0;i<imgLen;i++){ }}
+                {{?list.PlayImage[i]}}<span><img data-img="{{=list.PlayImage[i].replace('http:','')}}" ><div class="ImgShow"><img data-img="{{=list.PlayImage[i].replace('http:','')}}" /></div></span>{{?}}
+                {{ } }}
+            </div>
+            {{?}}
+        {{~}}
+        {{?}}
+        </div>
+    </div>
+    {{~}}
+</div>

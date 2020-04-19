@@ -1,0 +1,53 @@
+@import "../../styles/mixins/combine.less";
+@import "../../styles/mixins/b.search.less";
+
+
+#destCityPage{
+    padding-top: 0;
+}
+.city-dest{
+    padding: 0 32/@rem;
+    &.J_History{
+        h3{
+            margin-top: 0;
+        }
+    }
+    h3{
+        margin-top: 20/@rem;
+        font-size: 28/@rem;
+        color: @lightgrey;
+        font-weight: 400;
+        .clear-his{
+            float: right;
+        }
+    }
+    ul{
+        .clearfix();
+        li{
+            color: @grey;
+            box-sizing: border-box;
+            margin-left: 3.4482%;
+            margin-top: 25/@rem;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            border-radius: 3px;
+            width: 31.034483%;
+            height: 60/@rem;
+            line-height: 60/@rem;
+            text-align: center;
+            float: left;
+            overflow: hidden;
+            &:nth-child(3n+1){
+                margin-left: 0;
+            }
+        }
+    }
+}
+.dest-page{
+    display: block;
+    width: 100%;
+    position: absolute;
+    background: #efeff4;
+    z-index: 22;
+    padding-bottom: 20px;
+}

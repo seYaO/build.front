@@ -1,0 +1,174 @@
+{{
+    var arr = ['一','二','三','四','五','六','七','八','九','十'];
+}}
+{{?it && it.routes.length}}
+    {{~it.routes:itVal:itIndex}}
+        {{
+            var itItems = itVal.legs[0];
+            var time = itItems.duration.text.replace('天','day').replace('小时','hour').replace('分钟','min').replace('秒','sec');
+            var distance = itItems.distance.text.replace('千米','km').replace('公里','km').replace('米','m');
+        }}
+        {{?it.travel_mode == 'transit'}}
+            {{?it.isDetailLine}}
+                <div class="route-start-to-end">{{=it.transitName[itIndex]}}</div><div class="route-way-time">{{=time}}&nbsp;&nbsp;{{=distance}}</div>
+                    <div class="route-way-content">
+                    <div class="route-zdname"><i></i>{{=it.startplace}}</div>
+                    {{?itItems.steps && itItems.steps !=undefined}}
+                        {{~itItems.steps:item:stepIndex}}
+                            {{
+                                var itemTime = item.duration.text.replace('天','day').replace('小时','hour').replace('分钟','min').replace('秒','sec');
+                                var itDistance = item.distance.text.replace('千米','km').replace('公里','km').replace('米','m');
+                            }}
+                            {{?item.travel_mode == 'WALKING'}}
+                                <div class="OBRoute-zdtime route-zdtime route-mapWalk"><i></i>{{=item.html_instructions}}&nbsp;&nbsp;&nbsp;{{=itemTime}}({{=itDistance}})</div>
+                            {{??}}
+                                {{
+                                    var way = '';
+                                    if(item.transit_details && item.transit_details.line && item.transit_details.line.short_name){
+                                        way = item.transit_details.line.short_name;
+                                    }
+                                }}
+                                <div class="OBRoute-zdname route-zdname">
+                                    <i></i>
+                                    <div class="OBRoute-zdtime route-zdtime route-zdtime-normal clearfix">
+                                        <div class="localName">{{=way}}</div>
+                                        <div class="sub-content">{{=item.html_instructions}}</div>
+                                    </div>
+                                </div>
+                            {{?}}
+                        {{~}}
+                    {{?}}
+                    <div class="route-zdname"><i></i>{{=it.endplace}}</div>
+                </div>
+            {{??}}
+                <li class="OBRoute-content">
+                    <div class="OBRoute-title">线路{{=arr[itIndex]}}</div>
+                    <div class="OBRoute-start-to-end">
+                        {{=it.transitName[itIndex]}}
+                    </div>
+                    <div class="OBRoute-way-time">{{=time}}&nbsp&nbsp&nbsp{{=distance}}</div>
+                    <div class="J_open_detail_content">展开线路详情<i></i></div>
+                    <div class="OBRoute-way-content J_OBRoute_way_content none">
+                        <div class="OBRoute-taxiway-content route-way-content">
+                            <div class="OBRoute-zdname route-zdname"><i></i>{{=it.startplace}}</div>
+                            {{?itItems.steps && itItems.steps !=undefined}}
+                                {{~itItems.steps:item:stepIndex}}
+                                    {{
+                                        var itemTime = item.duration.text.replace('天','day').replace('小时','hour').replace('分钟','min').replace('秒','sec');
+                                        var itDistance = item.distance.text.replace('千米','km').replace('公里','km').replace('米','m');
+                                    }}
+                                    {{?item.travel_mode == 'WALKING'}}
+                                        <div class="OBRoute-zdtime route-zdtime route-mapWalk"><i></i>{{=item.html_instructions}}&nbsp;&nbsp;&nbsp;{{=itemTime}}({{=itDistance}})</div>
+                                    {{??}}
+                                        {{
+                                            var way = '';
+                                            if(item.transit_details && item.transit_details.line && item.transit_details.line.short_name){
+                                                way = item.transit_details.line.short_name;
+                                            }
+                                        }}
+                                        <div class="OBRoute-zdname route-zdname">
+                                            <i></i>
+                                            <div class="OBRoute-zdtime route-zdtime route-zdtime-normal clearfix">
+                                                <div class="localName">{{=way}}</div>
+                                                <div class="sub-content">{{=item.html_instructions}}</div>
+                                            </div>
+                                        </div>
+                                    {{?}}
+                                {{~}}
+                            {{?}}
+                            <div class="OBRoute-zdname route-zdname"><i></i>{{=it.endplace}}</div>
+                        </div>
+                    </div>
+                </li>
+            {{?}}
+        {{??}}
+            {{
+                var way_icon = '';
+                if(it.travel_mode == 'driving'){
+                    way_icon = 'route-taxiway-time';
+                }else if(it.travel_mode == 'walking'){
+                    way_icon = 'route-walkway-time';
+                }
+            }}
+            {{?it.isDetailLine}}
+                <div class="route-way-time {{=way_icon}}"><i></i>{{=time}}&nbsp;&nbsp;&nbsp;{{=distance}}</div>
+                    <div class="route-way-content OBRoute-taxiway-content">
+                    <div class="OBRoute-zdname route-zdname"><i></i>{{=it.startplace}}</div>
+                    {{?itItems.steps && itItems.steps !=undefined}}
+                        {{~itItems.steps:item:stepIndex}}
+                            {{ 
+                                var way = '';
+                                var itDistance = item.distance.text.replace('千米','km').replace('公里','km').replace('米','m');
+                                if(item.maneuver){
+                                    switch (item.maneuver) {
+                                        case "turn-slight-right":
+                                        case "keep-right":
+                                        case "keep-left":
+                                        case 'turn-right':
+                                            way = 'OBRoute-dir-right';
+                                            break;
+                                        case "turn-slight-left":
+                                        case 'turn-left':
+                                        case 'uturn-left':
+                                            way = 'OBRoute-dir-left';
+                                            break;
+                                        case 'straight':
+                                            way = 'OBRoute-dir-straight';
+                                            break;
+                                        default: 
+                                            way = 'OBRoute-dir-straight';
+                                            break;  
+                                    }
+                                }
+                            }}
+                            <div class="{{=way}} OBRoute-dir-taxi"><i></i>{{=item.html_instructions}}</div>
+                            <div class="OBRoute-dir-distance">{{=itDistance}}</div>
+                        {{~}}
+                    {{?}}
+                    <div class="OBRoute-zdname route-zdname"><i></i>{{=it.endplace}}</div>
+                </div>
+            {{??}}
+                <li class="OBRoute-content">
+                    <div class="OBRoute-title">线路{{=arr[itIndex]}}</div>
+                    <div class="OBRoute-way-time {{=way_icon}}"><i></i>{{=time}}&nbsp;&nbsp;&nbsp;{{=distance}}</div>
+                    <div class="J_open_detail_content">展开线路详情<i></i></div>
+                    <div class="OBRoute-way-content OBRoute-taxiway-content J_OBRoute_way_content none">
+                        <div class="OBRoute-taxiway-content route-way-content">
+                            <div class="OBRoute-zdname route-zdname"><i></i>{{=it.startplace}}</div>
+                            {{?itItems.steps && itItems.steps !=undefined}}
+                                {{~itItems.steps:item:stepIndex}}
+                                    {{
+                                        var itDistance = item.distance.text.replace('千米','km').replace('公里','km').replace('米','m');
+                                        if(item.maneuver){
+                                            switch (item.maneuver) {
+                                                case "turn-slight-right":
+                                                case "keep-right":
+                                                case "keep-left":
+                                                case 'turn-right':
+                                                    way = 'OBRoute-dir-right';
+                                                    break;
+                                                case "turn-slight-left":
+                                                case 'turn-left':
+                                                    way = 'OBRoute-dir-left';
+                                                    break;
+                                                case 'straight':
+                                                    way = 'OBRoute-dir-straight';
+                                                    break;
+                                                default: 
+                                                    way = 'OBRoute-dir-straight';
+                                                    break;  
+                                            }
+                                        }
+                                    }}
+                                    <div class="{{=way}} OBRoute-dir-taxi"><i></i>{{=item.html_instructions}}</div>
+                                <div class="OBRoute-dir-distance">{{=itDistance}}</div>
+                                {{~}}
+                            {{?}}
+                        <div class="OBRoute-zdname route-zdname"><i></i>{{=it.endplace}}</div>
+                        </div>
+                    </div>
+                </li>
+            {{?}}
+        {{?}}
+    {{~}}
+{{?}}

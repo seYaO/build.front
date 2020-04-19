@@ -1,0 +1,598 @@
+{{var it = IT.Data;}}
+{{var detail = it.Detail;}}
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn"/>
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <title>订单详情</title>
+    <script src="/modules-lite/mod.js" data-loader="true"></script>
+    <!-- 页面样式表 -->
+    
+    <meta name="x5-cache" content="disable">
+
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/touch/public/common/0.2.5/common.css?v=09231629" />
+</head>
+
+<body onselectstart="return false;" class="">
+  
+<div class="page-body">
+    <div class="page-box" id="J_pageBox">
+        <section class="layout-main {{?detail.ProductType === 9}}tx-info{{?}}" id="mainPage" style="display: block;">
+        <!--<section class="layout-main {{?true}}tx-info{{?}}" id="mainPage" style="display: block;">-->
+            {{?detail.ProductType !== 9}}
+            <div class="title-info common-part border-top-bottom">
+                <a class="part-head border-bottom" href="{{?it.IsDetail == 1}}/localfun/wanle/{{=detail.AtomicResourceId}}.html{{??}}javascript:;{{?}}">
+                    <h3>{{=detail.LineTitle}}</h3>
+                    <i class="jump"></i>
+                </a>
+                <div class="part-body">
+                    <p>
+                        <span class="lie-left">订单金额：</span>
+                        <span>                        
+                            <em>¥<i>{{=detail.AllAmount}}</i></em>
+                            {{?detail.InsuranceAmount}}
+                            <em>(产品总价¥{{=detail.LineAmount}}+保险费用¥{{=detail.InsuranceAmount}})</em>
+                            {{?}}                   
+                        </span>
+                    </p>
+                    {{?detail.OrderPreferentialList && detail.OrderPreferentialList.length}}
+                        {{~detail.OrderPreferentialList:item}}
+                            <p class="youhui">
+                                已使用{{=item.PreferentialAmount}}元{{=item.PreferentialName}}
+                            </p>
+                        {{~}}
+                    {{?}}
+                    <p>
+                        <span class="lie-left">订单号：</span>
+                        <span>{{=detail.CustomerSerialid}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">订单状态：</span>
+                        <span>{{=detail.OrderFlagDes}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">出行人数：</span>
+                        <span>{{=detail.PersonInfo}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">出发日期：</span>
+                        <span>{{=detail.StartDate}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">返回日期：</span>
+                        <span>{{=detail.ReturnDate}}</span>
+                    </p>
+                    <div class="border-top detail-releat">
+                    <p>
+                        <span class="lie-left">联系人：</span>
+                        <span>{{=detail.ContactPerson}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">联系手机：</span>
+                        <span>{{=detail.ContactMoblie}}</span>
+                    </p>
+                    {{?detail.PostAddress && detail.PostAddress.length}}
+                        <p>
+                            <span class="lie-left">邮寄地址：</span>
+                            <span>{{=detail.PostAddress}}</span>
+                        </p>
+                    {{?}}                    
+                    {{?detail.PostPerson && detail.PostPerson.length}}
+                        <p>
+                            <span class="lie-left">收件人：</span>
+                            <span>{{=detail.PostPerson}}</span>
+                        </p>
+                    {{?}}
+                    {{?detail.PostPhone && detail.PostPhone.length}}
+                        <p>
+                            <span class="lie-left">收件人电话：</span>
+                            <span>{{=detail.PostPhone}}</span>
+                        </p>
+                    {{?}}
+                    {{?detail.ReceivePlace && detail.ReceivePlace.length}}
+                        <p>
+                            <span class="lie-left">取机点：</span>
+                            <span>{{=detail.ReceivePlace}}</span>
+                        </p>
+                    {{?}}
+                    {{?detail.ReturnPlace && detail.ReturnPlace.length}}
+                        <p>
+                            <span class="lie-left">还机点：</span>
+                            <span>{{=detail.ReturnPlace}}</span>
+                        </p>
+                    {{?}}
+                    {{?detail.GatherAddress && detail.GatherAddress.length && (detail.ProductType == 8 || detail.ProductType == 11)}}
+                        <p>
+                            <span class="lie-left">集合点：</span>
+                            <span>{{=detail.GatherAddress}}</span>
+                        </p>
+                    {{?}}
+                    {{?detail.DissolveAddress && detail.DissolveAddress.length && (detail.ProductType == 8 || detail.ProductType == 11)}}
+                        <p>
+                            <span class="lie-left">解散点：</span>
+                            <span>{{=detail.DissolveAddress}}</span>
+                        </p>
+                    {{?}}
+                                                                                        
+                    </div>
+                </div>
+            </div>
+            {{??}}
+            <a class="part-head border-bottom title-main" href="{{?it.IsDetail == 1}}/localfun/wanle/{{=detail.AtomicResourceId}}.html{{??}}javascript:;{{?}}">
+                <h3>{{=detail.LineTitle}}</h3>
+            </a>
+            <div class="title-info common-part border-top-bottom">
+                
+                <a class="part-head border-bottom" href="javascript:;">
+                    <h3>订单信息</h3>
+                </a>
+                <div class="part-body">
+                    <p>
+                        <span class="lie-left">订单编号：</span>
+                        <span>{{=detail.CustomerSerialid}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">订单状态：</span>
+                        <span>{{=detail.OrderFlagDes}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">订单金额：</span>
+                        <span>                        
+                            <em>¥<i>{{=detail.AllAmount}}</i></em>
+                            {{?detail.InsuranceAmount}}
+                            <em>(产品金额¥{{=detail.LineAmount}}+保险金额¥{{=detail.InsuranceAmount}})</em>
+                            {{?}}                   
+                        </span>
+                    </p>
+                    {{?detail.OrderPreferentialList && detail.OrderPreferentialList.length}}
+                        {{~detail.OrderPreferentialList:item}}
+                            <p class="youhui">
+                                已使用{{=item.PreferentialAmount}}元{{=item.PreferentialName}}
+                            </p>
+                        {{~}}
+                    {{?}}
+                    {{?detail.WifiDeposit && detail.WifiDeposit.WifiDepositAmount}}
+                    <p>
+                        <span class="lie-left">押金金额：</span>
+                        <span>                        
+                            <em>¥<i>{{=detail.WifiDeposit.WifiDepositAmount}}</i></em>               
+                        </span>
+                    </p>
+                    {{?}}
+                </div>
+            </div>
+             <div class="title-info common-part border-top-bottom">
+                <a class="part-head border-bottom" href="{{?it.IsDetail == 1}}/localfun/wanle/{{=detail.AtomicResourceId}}.html{{??}}javascript:;{{?}}">
+                    <h3>取机信息</h3>
+                </a>
+                
+                <div class="part-body">
+                    
+                    <p>
+                        <span class="lie-left">取机数量：</span>
+                        <span>{{=detail.PersonInfo}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">取机时间：</span>
+                        <span>{{=detail.StartDate}}</span>
+                    </p>
+                    {{?detail.ReceivePlace && detail.ReceivePlace.length}}
+                        <p>
+                            <span class="lie-left">取机地点：</span>
+                            <span>{{=detail.ReceivePlace}}</span>
+                        </p>
+                    {{?}}
+                    <p>
+                        <span class="lie-left">还机时间：</span>
+                        <span>{{=detail.ReturnDate}}</span>
+                    </p>
+                    
+                    {{?detail.ReturnPlace && detail.ReturnPlace.length}}
+                        <p>
+                            <span class="lie-left">还机地点：</span>
+                            <span>{{=detail.ReturnPlace}}</span>
+                        </p>
+                    {{?}}
+                    <div class="border-top detail-releat">
+                    <p>
+                        <span class="lie-left">联系人：</span>
+                        <span>{{=detail.ContactPerson}}</span>
+                    </p>
+                    <p>
+                        <span class="lie-left">联系手机：</span>
+                        <span>{{=detail.ContactMoblie}}</span>
+                    </p>
+                    {{?detail.PostAddress && detail.PostAddress.length}}
+                        <p>
+                            <span class="lie-left">邮寄地址：</span>
+                            <span>{{=detail.PostAddress}}</span>
+                        </p>
+                    {{?}}                    
+                    {{?detail.PostPerson && detail.PostPerson.length}}
+                        <p>
+                            <span class="lie-left">收件人：</span>
+                            <span>{{=detail.PostPerson}}</span>
+                        </p>
+                    {{?}}
+                    {{?detail.PostPhone && detail.PostPhone.length}}
+                        <p>
+                            <span class="lie-left">收件人电话：</span>
+                            <span>{{=detail.PostPhone}}</span>
+                        </p>
+                    {{?}}
+                                                                                        
+                    </div>
+                </div>
+            </div>
+            {{?}}
+            
+            {{var invoiceInfo = detail.InvoiceDetailInfo;}}
+            {{?invoiceInfo}}
+            <div class="invoice_info border-top-bottom">
+                <div class="invoice-head">
+                    <h3>邮寄发票信息</h3>
+                </div>
+                <div class="invoice_info_list">
+                    <ul>
+                        <li><label>发票抬头 :</label><span>{{=invoiceInfo.Title}}</span></li>
+                        <li><label>发票内容 :</label><span>{{=invoiceInfo.Content}}</span></li>
+                        <li><label>邮寄地址 :</label><span>{{=invoiceInfo.Address}}</span></li>
+                        {{?invoiceInfo.ExpressMailNumber && invoiceInfo.ExpressMailNumber.length}}
+                            <li><label>物流单号 :</label><span>{{=invoiceInfo.ExpressMailNumber}}</span></li>
+                        {{?}}
+                    </ul>
+                </div>
+            </div>
+            {{?}}         
+            {{?detail.RedFlightDesc && detail.RedFlightDesc.length}}
+            <div class="service-info border-top-bottom">
+                <h3>同程服务</h3>
+                <p>{{=detail.RedFlightDesc}}</p>
+            </div>
+            {{?}}
+
+            {{var cancelInsures = detail.OrderCancelInsDetailList;}}
+            {{?cancelInsures && cancelInsures.length}}
+                {{var cancelInsure = cancelInsures[0];}}
+                {{?cancelInsure && (cancelInsure.RiskType || cancelInsure.ApplicationName || cancelInsure.InsuranceNo || cancelInsure.InsuranceFlag)}}
+                <div class="invoice_info border-top-bottom">
+                    <div class="invoice-head">
+                        <h3>保险信息</h3>
+                    </div>
+                    <div class="invoice_info_list">
+                        <ul>
+                            {{?cancelInsure.RiskType}}<li><label>保险类型：</label><span>{{=cancelInsure.RiskType}}</span></li>{{?}}
+                            {{?cancelInsure.ApplicantName}}<li><label>投保人：</label><span>{{=cancelInsure.ApplicantName}}</span></li>{{?}}
+                            {{?cancelInsure.InsuranceNo}}<li><label>保单号：</label><span>{{=cancelInsure.InsuranceNo}}</span></li>{{?}}
+                            {{?cancelInsure.InsuranceFlag}}<li><label>保单状态：</label><span>{{=cancelInsure.InsuranceFlag}}</span></li>{{?}}
+                        </ul>
+                    </div>
+                </div>
+                {{?}}
+            {{?}}
+
+            <div class="order-info common-part border-top-bottom">
+                <div class="part-head J_hide_show {{?detail.ProductType === 9}}title-main{{?}}">
+                <!--<div class="part-head J_hide_show {{?true}}title-main{{?}}">-->
+                    <h3>预订说明</h3>
+                    <i class="pack-up"></i>
+                </div>
+                <div class="part-body none">
+
+                </div>
+            </div>
+
+            {{?detail.OrderPassengerList && detail.OrderPassengerList.length}}
+            <div class="passenger-info common-part border-top-bottom">
+                <div class="part-head J_hide_show">
+                    <h3>出游人信息</h3>
+                    <i class="pack-up"></i>
+                </div>
+                <div class="part-body none">
+                    {{~detail.OrderPassengerList:passList:i}}
+                    <div class="passenger-list border-top">
+                        <p>
+                            <span class="lie-left">出游人{{=i + 1}}</span>
+                        </p>
+                        {{?passList.CnName && passList.CnName.length}}
+                        <p>
+                            <span class="lie-left">中文姓名：</span>
+                            <span>{{=passList.CnName}}</span>
+                        </p>
+                        {{?}}
+                        
+                        {{?passList.EnName && passList.EnName.length}}
+                        <p>
+                            <span class="lie-left">英文姓名：</span>
+                            <span>{{=passList.EnName}}</span>
+                        </p>
+                        {{?}}
+
+                        {{?passList.Mobile && passList.Mobile.length}}
+                        <p>
+                            <span class="lie-left">手机号码：</span>
+                            <span>{{=passList.Mobile}}</span>
+                        </p>
+                        {{?}}
+
+                        {{?passList.CertificateList && passList.CertificateList.length}}
+                            {{~passList.CertificateList:certList:index}}
+                                {{?certList.CertName.length && certList.CertNo.length}}
+                                    <p>
+                                        <span class="lie-left">证件类型{{?passList.CertificateList.length > 1}}{{=index + 1}}{{?}}：</span>
+                                        <span>{{=certList.CertName}}</span>
+                                    </p>
+                                    <p>
+                                        <span class="lie-left">证件号码：</span>
+                                        <span>{{=certList.CertNo}}</span>
+                                    </p>
+                                {{?}}
+                            {{~}}
+                        {{?}}
+
+                        {{?passList.Gender == 0 || passList.Gender == 1}}
+                            <p>
+                                <span class="lie-left">性别：</span>
+                                <span>{{?passList.Gender == 0}}女{{??}}男{{?}}</span>
+                            </p>
+                        {{?}}
+
+                        {{?passList.CustomerNationality && passList.CustomerNationality.length}}
+                            <p>
+                                <span class="lie-left">国籍：</span>
+                                <span>{{=passList.CustomerNationality}}</span>
+                            </p>
+                        {{?}}
+
+                        
+                        {{?passList.Birthday}}
+                            <p>
+                                <span class="lie-left">出生日期：</span>
+                                <span>{{=passList.Birthday.substring(0,10)}}</span>
+                            </p>
+                        {{?}}
+                    </div>
+                    {{~}}
+                </div>
+            </div>
+            {{?}}
+
+            {{var other = detail.OtherInfo;}}
+            {{?detail.OtherInfo}}
+            <div class="passenger-info common-part border-top-bottom">
+                <div class="part-head J_hide_show">
+                    <h3>其他信息</h3>
+                    <i class="pack-up"></i>
+                </div>
+                <div class="part-body none">
+                    <div class="passenger-list border-top">
+                        {{?other.OverSeaNum && other.OverSeaNum.length}}
+                        <p>
+                            <span class="lie-left">境外号码：</span>
+                            <span>{{=other.OverSeaNum}}</span>
+                        </p>
+                        {{?}}
+                        
+                        {{?other.FlightNum && other.FlightNum.length}}
+                        <p>
+                            <span class="lie-left">出境航班：</span>
+                            <span>{{=other.FlightNum}}</span>
+                        </p>
+                        {{?}}
+                        
+                        {{?other.FlightDate && other.FlightDate.length}}
+                        <p>
+                            <span class="lie-left">出境日期：</span>
+                            <span>{{=other.FlightDate}}</span>
+                        </p>
+                        {{?}}
+                        
+                        {{?other.AirportFlightNo && other.AirportFlightNo.length}}
+                        <p>
+                            <span class="lie-left">入境航班：</span>
+                            <span>{{=other.AirportFlightNo}}</span>
+                        </p>
+                        {{?}}
+                        
+                        {{?other.AirportFlightDate && other.AirportFlightDate.length}}
+                        <p>
+                            <span class="lie-left">入境日期：</span>
+                            <span>{{=other.AirportFlightDate}}</span>
+                        </p>
+                        {{?}}
+                        
+                        {{?other.FlightArrivedTime && other.FlightArrivedTime.length}}
+                        <p>
+                            <span class="lie-left">接机时间：</span>
+                            <span>{{=other.FlightArrivedTime}}</span>
+                        </p>
+                        {{?}}
+                        
+                        {{?other.DinnerTime && other.DinnerTime.length}}
+                        <p>
+                            <span class="lie-left">用餐时间：</span>
+                            <span>{{=other.DinnerTime}}</span>
+                        </p>
+                        {{?}}
+                        
+                        {{?other.ShowTime && other.ShowTime.length}}
+                        <p>
+                            <span class="lie-left">演出时间：</span>
+                            <span>{{=other.ShowTime}}</span>
+                        </p>
+                        {{?}}
+                        {{?other.IssueAddress && other.IssueAddress.length}}
+                        <p>
+                            <span class="lie-left">签发地：</span>
+                            <span>{{=other.IssueAddress}}</span>
+                        </p>
+                        {{?}}
+                        {{?other.VisaCategory && other.VisaCategory.length}}
+                        <p>
+                            <span class="lie-left">签发类别：</span>
+                            <span>{{=other.VisaCategory}}</span>
+                        </p>
+                        {{?}}
+                        {{?other.CheckInHotelName && other.CheckInHotelName.length}}
+                        <p>
+                            <span class="lie-left">入住酒店：</span>
+                            <span>{{=other.CheckInHotelName}}</span>
+                        </p>
+                        {{?}}
+                        {{?other.HotelAddress && other.HotelAddress.length}}
+                        <p>
+                            <span class="lie-left">酒店地址：</span>
+                            <span>{{=other.HotelAddress}}</span>
+                        </p>
+                        {{?}}
+                        {{?other.UserDefined && other.UserDefined.length && other.UserDefinedContent && other.UserDefinedContent.length}}
+                        <p>
+                            <span class="lie-left">{{=other.UserDefined}}：</span>
+                            <span>{{=other.UserDefinedContent}}</span>
+                        </p>
+                        {{?}}
+                    </div>
+                </div>
+            </div>
+            {{?}}
+
+            <div class="wrap">
+                <p>想咨询更多信息请联系同程客服<a class="wrap-phone" href="tel:4007777777">4007777777</a>
+                </p>
+            </div>
+
+            {{?detail.OrderFlag === "w" || detail.OrderFlag === "N" || detail.OrderFlag === "L"}}
+            <div class="order_btn">
+                <a class="cancel_btn {{?detail.OrderFlag === "L"}}prohibit{{?}}" href="javascript:;">申请取消</a>
+                <a class="bottom {{?detail.OrderFlag === "w"}}prohibit{{?}}" href="javascript:;">{{?detail.OrderFlag === "w"}}订单待审核{{??detail.OrderFlag === "N"}}立即支付{{??detail.OrderFlag === "L"}}立即支付{{?}}</a>
+            </div>
+            {{?}}
+
+        </section>
+
+        <div class="cancelBox none page clearfix" id="pick_cancelPage" data-address="pick_cancel">
+            <div class="J_cancel">
+                <div class="cancel_title">
+                    <h4>取消原因:</h4>
+                    <p>(便于我们更好的改进，提供更优质的服务)</p>
+                </div>
+                <ul>
+                    <li class="clearfix">
+                        <span class="cancel-left selected"></span>
+                        <span class="cancel-right">重复预定</span>
+                    </li>
+                    <li class="clearfix">
+                        <span class="cancel-left"></span>
+                        <span class="cancel-right">信息填写错误</span>
+                    </li>
+                    <li class="clearfix">
+                        <span class="cancel-left"></span>
+                        <span class="cancel-right">行程变更，去不了</span>
+                    </li>
+                    <li class="clearfix">
+                        <span class="cancel-left"></span>
+                        <span class="cancel-right">支付遇到问题</span>
+                    </li>
+                    <li class="clearfix selectOther">
+                        <span class="cancel-left"></span>
+                        <span class="cancel-right">其他原因</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="cancel_reason none">
+                <textarea id="changremark" name="Iremark" class="con_remark"></textarea>
+                <p>可输入<span class="word_number">30</span>字</p>
+            </div>
+            <a href="javascript:;" class="cancel_Go">确定</a>
+        </div>
+
+        <div class="none page" id="pick_canceledPage" data-address="pick_canceled">
+            <div class="J_cancel canceled">
+                <div class="canceled_sign">
+                    <h2></h2>
+                    <p>订单取消成功，感谢你的反馈！</p>
+                </div>
+            </div>
+            <a class="examine reserve" href="/localfun/wanle/{{=detail.AtomicResourceId}}.html">重新预定</a>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" id="tcOutSerialNo" value="{{=detail.OutSerialNo}}">
+<input type="hidden" id="tcOrderId" value="{{=detail.OrderId}}">
+<input type="hidden" id="tcLineId" value="{{=detail.LineId}}">
+<input type="hidden" id="tcProductId" value="{{=detail.AtomicResourceId}}">
+<input type="hidden" id="CustomerSerialid" value="{{=detail.CustomerSerialid}}">
+
+<script src="//js.40017.cn/cn/min/??/touch/hb/c/bridge.1.4.2.js"></script>
+<input id="commonDownload" type="hidden" value='{"channel":"localfun","page":"localfun-orderDetail","whiteList":"","removeError":"true"}'>
+
+<!-- 公共页脚 -->
+<script type="text/javascript" src="//js.40017.cn/touch/public/common/0.7.2/common.js?v=10091415"></script>
+<script type='text/javascript' src="//js.40017.cn/cn/min/??/touch/public/common/download/common-download.0.0.7.js?v=100914151" charset="utf-8"></script>
+<script src="//js.40017.cn/cn/min/??/touch/hb/p/monitor/fedapm.1.2.0.js?v=20160825171302"></script>
+<script src="//js.40017.cn/cn/min/??/touch/hb/p/hijack/hijack.2.0.2.js?v=201609231437"></script>
+<script>
+   $(function () {
+    var _config = document.getElementById('commonDownload'),
+        commonValue;
+
+    if (_config) {
+        try {
+            commonValue = JSON.parse(_config.value);
+            if (commonValue.removeError !== undefined && commonValue.removeError.toString() !== '') {
+                fed_hijack.init({
+                    whiteList: commonValue.whiteList,
+                    projectTag: commonValue.channel,
+                    removeError: commonValue.removeError.toString() === "true"
+                });
+            }
+
+            if (commonValue && commonValue['channel'] && commonValue['page']) {
+                fedApm.start({
+                    project: commonValue['channel'],
+                    pageName: commonValue['page'],
+                    errStat: 1,
+                    resTimingStat: 1,
+                    ajaxTiming: 1
+                });
+            }
+
+        }
+        catch (e) {
+        }
+    }
+   });
+
+</script>
+<script type="text/javascript">
+    var _tcq = _tcq || [];
+    var _timediff = -1;
+    if (typeof _tcopentime != "undefined")
+    { _timediff = new Date().getTime() - _tcopentime; }
+    _tcq.push(['_serialid', '0']);
+    _tcq.push(['_vrcode', '10003-2027-0']);
+    _tcq.push(['_refId', 107075804]);
+    _tcq.push(['_userId', "{{=it.UserId || 0}}"]);
+    _tcq.push(['_openTime', _timediff]);
+    _tcq.push(['_trackPageview', '{{=it.OpenId ||""}}||微信/玩乐/订单详情页']);
+</script>
+<script type="text/javascript">
+    var OrderDetail = require("./index");
+    OrderDetail.init();
+</script>
+
+<script type='text/javascript' src="//vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+</body>
+</html>

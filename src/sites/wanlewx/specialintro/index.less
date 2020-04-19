@@ -1,0 +1,27 @@
+@import url("/modules-lite/wanleCommon/common.less");
+@rem : 24rem;
+@p-100: 100%;
+.size(@w,@h){
+    width: @w;
+    height: @h;
+}
+
+.layout-main{
+    background: #fff;
+    .size(58000/640%,@p-100);
+    padding: 0 3000/640%;
+    margin: 0 auto;
+    word-wrap: break-word;
+    overflow: hidden;
+    div{
+        width: @p-100;
+        font-size: 28/@rem;
+        color: #333;
+        padding-top: 20/@rem;
+    }
+    img{
+        .size(@p-100,auto);
+        margin-top: 20/@rem;
+        background-color: #f3f6fc;
+    }
+}

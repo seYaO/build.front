@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>身份信息</title>
+
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+    <link rel="stylesheet" href="http://css.40017.cn/cn/min/??/cn/v/zt/2014/activity/public/baseactivity.css?v=2014070701"/>
+    <link rel="stylesheet" href="//css.40017.cn/touch/v/2015/zt/2016/ruzhutongcheng/index.02215.css"/>
+    <script>
+        window.cnhost = ""
+    </script>
+</head>
+<body>
+<div class="container" id="container">
+    <div class="page-box">
+        <div class="viewport">
+            <form id="J_form">
+                <section class="content">
+                    <div class="basic-info">
+                        <ul>
+                            <li>
+                                <label>姓名</label>
+                                <input type="text" class="J_checkName" value="" readonly="true">
+                            </li>
+                            <li class="sex">
+                                <label>性别</label>
+                                <i class="icon1 J_sex "></i><em class="">男</em><i class="icon2 J_sex"></i><em>女</em>
+                            </li>
+                            <li>
+                                <label>身份证号</label>
+                                <input class="J_checkId" readonly="true">
+                            </li>
+                            <li>
+                                <label>联系方式</label><i style="margin-left: 6.25rem">+86</i>
+                                <input class="J_checkTel" readonly="true" style="margin-left: .5rem;width: 55%;">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="sort-warp">
+                        <div class="sort">
+                            <label>类别</label>
+                            <i class="icon1 J_sort " data-index="0"></i><em class="">导游</em><i class="icon2 J_sort"  data-index="1"></i><em>领队</em>
+                        </div>
+                        <ul class="sub-form">
+                            <li id="daoyou">
+                                <label>导游证号</label>
+                                <input class="J_checkDyNum" readonly="true">
+                            </li>
+                            <li class="none" id="lingdui">
+                                <label>领队证号</label>
+                                <input class="J_checkLdNum" readonly="true">
+                            </li>
+                            <li class="time">
+                                <label>带团时间</label>
+                                <input id="datetime-picker" readonly="true">
+                                <div class="calendar"></div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="skill none">
+                        <ul>
+                            <li class="skill-item language">
+                                <label>擅长语种</label>
+                                <div class="select-box">
+                                    <span class="area J_select J_language">请选择<i></i></span>
+                                </div>
+                            </li>
+                            <li class="skill-item region">
+                                <label>擅长区域</label>
+                                <div class="select-box">
+                                    <span class="area J_select J_area">请选择<i></i></span>
+                                </div>
+                            </li>
+                            <li class="skill-item project">
+                                <label class="intent">意向项目</label>
+                                <div class="select-box">
+                                    <span class="area J_select J_intent">请选择<i></i></span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </section>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js,/cn/v/2015/jqmodules/statistics/0.2.0/statistics.js"></script>
+
+<script src="//js.40017.cn/touch/v/2015/zt/2016/ruzhutongcheng/checkinfo.02215.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+    Index.init();
+</script>
+<!--统计代码开始-->
+<script type="text/javascript">
+    var pageview = stat.formatPageview('/出境/touch活动页/入驻同程');
+    stat.init({
+        "baidu": {
+            "parameter": "touch"//PC端传“pc”，touch站传“touch”
+        },//百度统计
+        "pvConfig": {//PV统计
+            "PublicPlatId": "1",
+            "PageId": "9006",
+            "LineId": "0",
+            "ActivityId": "1290",
+            "ActivityPeriodId": "2234",
+            "ModuleId": "0",
+            "PVSource": "1",
+            "ak": "",
+            "url": "http://www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+        },
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', stat.getVrcode()],
+            ['_refId', stat.getRefid()],
+            ['_userId',stat.getMemberId()],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', pageview]
+        ]
+    });
+</script>
+
+</body>
+</html>

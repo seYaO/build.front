@@ -1,0 +1,40 @@
+<div class="TabSlider clearfix" class="tabSlider">
+    <ul>
+        <li>
+            <div>
+                <a href="/dujia/package/destination">
+                    <div class="pic_Titems">
+                        <div class="pic_tab">
+                            <img src="//img1.40017.cn/touch/cn/holiday/tchoutput/img/newindex/gentuan_c73a831.png?t=20160425" alt="跟团游">
+                        </div>
+                        <span class="text_tab">跟团游</span>
+                    </div>
+                </a>
+                <a href="/dujia/travel/destination">
+                    <div class="pic_Titems">
+                        <div class="pic_tab">
+                            <img src="//img1.40017.cn/touch/cn/holiday/tchoutput/img/newindex/free_57732e1.png?t=20160425" alt="自由行">
+                        </div>
+                        <span class="text_tab">自由行</span>
+                    </div>
+                </a>
+                <a href="//m.ly.com/visa/">
+                    <div class="pic_Titems">
+                        <div class="pic_tab">
+                            <img src="//img1.40017.cn/touch/cn/holiday/tchoutput/img/newindex/visa_5bbd8b0.png?t=20160425" alt="签证">
+                        </div>
+                        <span class="text_tab">签证</span>
+                    </div>
+                </a>
+                <a href="//m.ly.com/localfun/wifi">
+                    <div class="pic_Titems pic_Titems2">
+                        <div class="pic_tab">
+                            <img src="//img1.40017.cn/touch/cn/holiday/tchoutput/img/newindex/wifi_4170f79.png" alt="全球WIFI">
+                        </div>
+                        <span class="text_tab">全球WIFI</span>
+                    </div>
+                </a>
+            </div>
+        </li>
+    </ul>
+</div>

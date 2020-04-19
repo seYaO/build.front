@@ -1,0 +1,13 @@
+{
+  "dataUri": "/wanle/api/WWanleProduct/GetWanleSearchProductList?start=1&sort=1&count=2",
+  "query": {
+      "siteType": 1,
+      "pageType": 15,
+      "stp": "hot",
+      "singleType": "6,8,9,11,12,13",
+      "stp": "recommend",
+      "keyword": "香港",
+      "cityId": 3172
+  },
+  "desc": "玩乐微信城市列表"
+}

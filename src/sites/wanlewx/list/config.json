@@ -1,0 +1,13 @@
+{
+  "dataUri": "/wanle/api/WWanleProduct/GetWanleSearchList",
+  "query": {
+      "siteType": 1,
+      "pageType": 12,
+      "count": 6,
+      "pagenum": 1,
+      "singleType": "6",
+      "stp": "recommend",
+      "keyWord": "香港"
+  },
+  "desc": "玩乐微信列表页"
+}

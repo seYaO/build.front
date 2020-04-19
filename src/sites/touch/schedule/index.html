@@ -1,0 +1,106 @@
+<script type="text/javascript" charset="utf-8" src="//js.40017.cn/touch/cn/holiday/tchoutput/0.20.0/js/mod.js?t=2015431813"></script>
+<link type="text/css" rel="stylesheet" href="//css.40017.cn/touch/cn/holiday/tchoutput/0.20.0/css/tc_customize.css?t=2015431650"/>
+<!---->
+<div class="layout-main__form viewport" id="mainPage">
+  <form name="customize" action="/dujia/scheduledealing.html" method="post">
+    <input type="hidden" id="depCity" name="dep"/>
+    <input type="hidden" id="desCity" name="des"/>
+    <input type="hidden" id="earDate" name="atime"/>
+    <input type="hidden" id="larDate" name="btime"/>
+    <div class="form">
+      <div class="form__pro-info">
+        <div class="form__list J_travelType">
+          <span class="label">出游方式</span>
+          <div class="label-control">
+            <label for="label1"><input class="ui-radio" id="label1" name="travelType" checked type="radio" value="1"/><span>不限</span></label>
+            <label for="label2"><input class="ui-radio" id="label2" name="travelType" type="radio" value="1"/><span>跟团游</span></label>
+            <label for="label3"><input class="ui-radio" id="label3" name="travelType" type="radio" value="3"/><span>自由行</span></label>
+          </div>
+        </div>
+        <div class="form__list J_depCityDiv" data-flag="depCity">
+          <span class="label">出发城市</span>
+          <div class="label-control">
+            <span class="J_depCity"></span>
+            <i class="arrow arrow-right"></i>
+          </div>
+        </div>
+        <div class="form__list J_desCityDiv" data-flag="desCity">
+          <span class="label">目的城市</span>
+          <div class="label-control">
+            <span class="J_desCity"></span>
+            <i class="arrow arrow-right"></i>
+          </div>
+        </div>
+        <div class="form__list J_earDateDiv">
+          <span class="label">最早出发时间</span>
+          <div class="label-control">
+            <span class="J_earDate"></span>
+            <i class="icon-cal"></i>
+          </div>
+        </div>
+        <div class="form__list J_larDateDiv">
+          <span class="label">最晚出发时间</span>
+          <div class="label-control">
+            <span class="J_larDate"></span>
+            <i class="icon-cal"></i>
+          </div>
+        </div>
+        <div class="form__list">
+          <span class="label">出游天数</span>
+          <div class="label-control">
+            <span class="J_days"></span>
+                                                <span class="button-content num-ctrlbox">
+                                                        <i data-ctrl="-1" class="button-minus off"></i>
+                                                        <input type="text" name="days" class="J_Number" min="1" max="100" value="1">
+                                                        <i data-ctrl="+1" class="button-plus"></i>
+                                                </span><span>天</span>
+          </div>
+        </div>
+        <div class="form__list">
+          <span class="label">出游人数</span>
+          <div class="label-control">
+            <span class="J_persons"></span>
+                                                <span class="button-content num-ctrlbox">
+                                                        <i data-ctrl="-1" class="button-minus off"></i>
+                                                        <input type="text" name="persons" class="J_Number" min="1" max="100" value="1">
+                                                        <i data-ctrl="+1" class="button-plus"></i>
+                                                </span>人
+          </div>
+        </div>
+        <div class="form__list">
+          <span class="label">定制要求</span>
+          <div class="bubble">
+            <div class="bubble__arrow"></div>
+            <div class="bubble__content">
+              <textarea class="ui-textarea" maxlength="72" name="demand" id="" cols="30" rows="10" placeholder="请填写您的具体要求，同程专员会为您量身定制行程"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form__user-info">
+        <h3>联系人信息</h3>
+        <div class="form__list">
+          <label class="label" for="userName">姓名</label>
+          <div class="label-control">
+            <input name="userName" id="userName" type="text" placeholder="请输入中文名"/>
+          </div>
+        </div>
+        <div class="form__list">
+          <label class="label" for="phoneNumber">手机号码</label>
+          <div class="label-control">
+            <input name="phoneNumber" id="phoneNumber" type="text" placeholder="请输入正确的联系方式"/>
+          </div>
+        </div>
+      </div>
+      <a id="submit" class="btn-submit disabled" disabled="true" href = "#">提 交</a>
+    </div>
+  </form>
+</div>
+<div id="depCityPage" class="page cityDiv none" data-flag="depCity"></div>
+<div id="desCityPage" class="page cityDiv none" data-flag="desCity"></div>
+<div id="calendarPage" class="page none"></div>
+<script type="text/javascript" charset="utf-8" src="//js.40017.cn/touch/cn/holiday/tchoutput/0.20.0/js/map.js?t=2015431813"></script>
+<script type="text/javascript" charset="utf-8" src="//js.40017.cn/touch/cn/holiday/tchoutput/0.20.0/js/tc_customize.js?t=2015431813"></script>
+<script>
+  require("tc/customize/index");
+</script>

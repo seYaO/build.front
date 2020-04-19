@@ -1,0 +1,32 @@
+{{?it.data&&it.data.length}}
+<a href="//m.ly.com/dujia/zhuanti/temaihuis.html">
+<div class="temaiBox">
+    {{~it.data:itItems:index}}
+        {{?index<1}}
+        <div class="temaiT">
+            <i></i><span>特卖汇</span><em></em>
+            <div class="miaosha-time" data-time="{{=itItems.StartDate}}|{{=itItems.EndDate}}"></div>
+        </div>
+        {{?}}
+        <div class="miaoshaB clearfix">
+        {{?index<2}}
+        {{var LineType ="",typeClass=""; 
+        if(itItems.LineType==0){LineType ="跟团游";typeClass="tip_gentuan";}else{ LineType ="自由行";typeClass="tip_free";} }}
+        <a href="//m.ly.com/dujia/tours/{{=itItems.LineId}}.html?actType={{=itItems.RedirectKey}}">
+            <div class="msItem">
+                <div class="{{=typeClass}}">{{=LineType}}</div>
+                <div class="msItemT">
+                    {{?itItems.IsSellOut==1}}<div class="isSellOut"></div>{{?}}
+                    <img data-img="{{=itItems.ImgUrl.replace('http:','')}}" onerror="Monitor.log(this.src,'image')" style="opacity: 1;">
+                </div>
+                <div class="ms-txt">
+                    {{=itItems.MainTitle}}</div>
+                <div class="tc-price"><i>￥</i><em>{{=itItems.Preferential}}</em>起</div>
+            </div>
+        </a>
+        {{?}}
+    {{~}}
+    </div>
+</div>
+</a>
+{{?}}

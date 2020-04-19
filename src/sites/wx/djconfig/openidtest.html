@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+  <title>cookies</title>
+  <style>
+    html, body{
+      font-size: 62.5%;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+    button {
+      width: 20%;
+    }
+    pre {
+      background-color: #000;
+      color: #0f0;
+      height: 50%;
+      overflow: scroll;
+    }
+    .wrapper {
+      padding: 6px 0;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+<div class="wrapper">
+  <button id="J_btn_set">set login cookie</button>
+  <button id="J_btn_clear">clear login cookie</button>
+</div>
+<hr>
+<pre id="output"></pre>
+<script>
+  var $output = document.getElementById("output");
+  var tmpString = '';
+
+  var writeOutput = function (str) {
+    tmpString += str + '\n';
+    $output.innerHTML = tmpString;
+  }
+  var clearOutput = function() {
+    tmpString = '';
+    $output.innerHTML = '';
+  }
+
+  function cookie(key,value,options){
+    if (typeof value != 'undefined') { // name and value given, set cookie
+      options = options || {};
+      if (value === null) {
+        value = '';
+        options.expires = -1;
+      }
+      var expires = '';
+      if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+        var date;
+        if (typeof options.expires == 'number') {
+          date = new Date();
+          date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000));
+        } else {
+          date = options.expires;
+        }
+        expires = '; expires=' + date.toUTCString(); // use expires attribute, max-age is not supported by IE
+      }
+      var path = options.path ? '; path=' + options.path : '';
+      var domain = options.domain ? '; domain=' + options.domain : '';
+      var secure = options.secure ? '; secure' : '';
+      document.cookie = [key, '=', value, expires, path, domain, secure].join('');
+    } else { // only name given, get cookie
+      var ret, m;
+      if (key) {
+        if ((m = document.cookie.match(
+            new RegExp('(?:^| )' + key +
+              '(?:(?:=([^;]*))|;|$)')))) {
+          ret = m[1] ? decodeURIComponent(m[1]) : '';
+        }
+      }
+      return ret;
+    }
+  }
+
+  document.getElementById('J_btn_set').onclick = function() {
+    cookie("WxUser","openid=oOCyauBcEhDmV9nhh7PdbAfN8GsE&token=0&userid=p4vwAbA9AUQ%3d",{path:"/"})
+    writeOutput('set cookie [WxUser]');
+  };
+  document.getElementById('J_btn_clear').onclick = function() {
+    cookie("WxUser", "",{path:"/",expires: new Date("Thu, 01 Jan 1970 00:00:01 UTC")})
+    writeOutput('clear cookie [WxUser]');
+  };
+</script>
+</body>
+</html>

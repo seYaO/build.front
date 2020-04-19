@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>尾货闪购</title>
+
+  <meta name="description" content="同程旅游出境游为您提供出境特惠旅游，精选出境旅游线路，尾货闪购，席位紧缺随时售空，更多优质出境旅游产品尽在同程出境游。">
+  <meta name="keywords" content="特惠旅游，出境旅游线路">
+
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta content="telephone=no" name="format-detection"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+  <link rel="stylesheet" href="http://css.40017.cn/cn/min/??/cn/v/zt/2014/activity/public/baseactivity.css?v=2014070701"/>
+  <link rel="stylesheet" href="//css.40017.cn/touch/v/2015/zt/2016/30546/index.02234.css" />
+  <!-- <link rel="stylesheet/less" href="index.less"/>
+  <script src="http://cdn.bootcss.com/less.js/1.7.0/less.min.js"></script> -->
+</head>
+<body>
+  <div class="container">
+    <!--container begin -->
+    <header class="header">
+      <img src="http://img1.40017.cn/touch/v/2015/zt/2016/30546/banner.jpg" data-img-loaded="true" />
+    </header>
+
+    <!-- tab -->
+    <section class="section sec-discount">
+      <div class="tab" id="tab">
+        <ul class="clearfix">
+          <li class="tab-li active" data-tab="gentuan">跟团</li>
+          <li class="tab-li" data-tab="ziyouxing">自由行</li>
+        </ul>
+        <span class="tab-slide"></span>
+      </div>
+
+      <div class="tab-content" id="tab-content">
+        <div id="gentuan-content" class="tab-item active J_prolist" data-filter="CycleId=2528" data-tmpl="#tmpl-discount" data-tab="gentuan"></div>
+
+        <div id="ziyouxing-content" class="tab-item J_prolist" data-filter="CycleId=2529" data-tmpl="#tmpl-discount" data-tab="ziyouxing"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="filters-wrap">
+    <div class="filters-select" id="filters-select">
+      <ul>
+        <li class="filter-sort" data-param="sort"><span>排序</span></li>
+        <li class="filter-dest" data-param="dest"><span>目的地</span></li>
+        <li class="filter-depature" data-param="depature"><span>出发城市</span></li>
+      </ul>
+    </div>
+
+    <div class="filters-option filters-option-sort" data-param="sort">
+        <ul>
+            <li data-param="default" class="active">精选爆款</li>
+            <li data-param="priceAsc">价格从低到高</li>
+            <li data-param="discountDesc">折扣从高到低</li>
+        </ul>
+    </div>
+
+    <div class="filters-option filters-option-dest" data-param="dest">
+      <ul>
+        <li data-param="default" class="active">不限</li>
+        <!-- <li data-param="tailand">东南亚</li>
+        <li data-param="japan">日朝韩</li>
+        <li data-param="island">海岛</li>
+        <li data-param="hongkong">港澳台</li>
+        <li data-param="europe">欧美非澳</li> -->
+      </ul>
+    </div>
+
+    <div class="filters-option filters-option-depature" data-param="depature">
+      <ul>
+        <li data-param="default" class="active">不限</li>
+        <!-- <li data-param="3249">华东</li>
+        <li data-param="3244">华北</li>
+        <li data-param="3271">华南</li>
+        <li data-param="1">其他</li> -->
+      </ul>
+    </div>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div id="wxShare" style="display: none;">
+    <input type="hidden" name="tcshareurl" value="http://m.ly.com/dujia/zhuanti/whsg.html">
+    <input type="hidden" name="tcshareimg" value="http://img1.40017.cn/touch/v/2015/zt/2016/30546/wx-share.jpg">
+    <input type="hidden" name="tcsharetext" value="同程出境游临期尾货线路特卖，千元游世界，品质低价，说走就走！ http://m.ly.com/dujia/zhuanti/whsg.html">
+    <input type="hidden" name="tcDesc" value="同程出境游临期尾货线路特卖，千元游世界，品质低价，说走就走！">
+  </div>
+
+
+  <!-- dot -->
+  <script type="text/dot-tmpl" id="tmpl-discount">
+    {{? it.length > 0}}
+      {{~it:value:index}}
+        {{
+          var sImgUrl = Activity.setImageSize(value.ImgUrl,"400x300");
+          var subTitle = value.SubTitle.length > 32 ? 
+                            value.SubTitle.slice(0, 30) + "..." : 
+                            value.SubTitle;
+          var depatureDate = "";
+          var dateArr = value.StartDateList || [];
+          var len = dateArr.length;
+          var sDate, eDate;
+
+          if (len > 0) {
+            sDate = new Date(dateArr[0].replace(/-/g, "/"));
+            depatureDate += (sDate.getMonth() + 1) + "月";
+
+            if (len > 1) {
+              eDate = new Date(dateArr[len-1].replace(/-/g, "/"));
+              if (eDate.getMonth() !== sDate.getMonth()) {
+                depatureDate += "-" + (eDate.getMonth() + 1) + "月";
+              }
+            }
+          }
+        }}
+        <div class="pro-item">
+          <a href="javascript:void(0)" data-url="http://m.ly.com/dujia/tours/{{=value.LineId}}.html?actType={{=value.RedirectKey}}" data-RedirectKey="{{=value.RedirectKey||''}}" data-lineId="{{=value.LineId||''}}" data-LineType="{{=value.LineType}}" data-activityId="{{=value.ActivityId}}" data-cycleId="{{=value.CycleId}}" data-enterId="{{=value.SingleResourceId}}">
+            <img data-img="{{=sImgUrl}}" class="pic" />
+            <div class="pro-info">
+              <h4 class="title">{{=value.MainTitle}}</h4>
+              <h5 class="sub-title">{{=subTitle}}</h5>
+              <div class="details">
+                <div class="left">
+                  <strong class="price">{{=value.Preferential}}</strong>
+                  <p class="depature-date">出发日期：{{=depatureDate}}</p>
+                </div>
+                <div class="right">
+                  剩<span class="surplus">{{=value.Surplus}}</span>个席位
+                </div>
+              </div>            
+            </div>
+            <label class="depature">{{=value.DepartCity}}出发</label>
+          </a>
+        </div>
+      {{~}}
+    {{??}}
+      <div class="no-result">
+        <p>亲，没找到您想要的产品哦！</p>
+        <p>请您重置筛选条件。</p>
+      </div>
+    {{?}}
+  </script>
+
+
+  <script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js,/touch/app/pub/public/share.js?v=20160113,/cn/v/2015/jqmodules/dot.js,/cn/v/2015/jqmodules/monitor/0.2.1/index.js?v=20160113,/cn/v/2015/jqmodules/statistics/0.2.0/statistics.js,/cn/v/2015/jqmodules/lazyload/0.2.1/touch.js?v=20160113"></script>
+
+  <script src="../../../../../jqmodule/activity/0.3.3/touch/touch.js?v=20160225"></script>
+
+  <script src="//js.40017.cn/touch/v/2015/zt/2016/30546/index.02234.js"></script>
+
+  <script type="text/javascript">
+    Activity.init({
+      param: [{
+        "1376": [2528, 2529]
+      }],
+      host: "http://djtest.t.ly.com",
+      goTop: false,
+      el: ".J_prolist",
+      filter: true,
+      platform: 3, // touch
+      querytype: 0,
+      IsSellOut: 0,  // 如产品售罄则自动过滤不展示该产品
+      needJumpWX: true,
+      needLaunchApp: true,
+      // beforeRender: function (data) {
+      //   console.log(data)
+      //   return data;
+      // },
+      afterRender: function (data) {
+        Index.init(data);
+      }
+    });
+  </script>
+  <!--统计代码开始-->
+  <script type="text/javascript">
+  (function() {
+    var pageview = stat.formatPageview('/出境/touch活动页/尾货闪购');
+    stat.init({
+      "baidu": {
+            "parameter": "touch"//PC端传“pc”，touch站传“touch”
+        },//百度统计
+        "pvConfig": {//PV统计
+          "PublicPlatId": "1",
+          "PageId": "2058",
+          "LineId": "0",
+          "ActivityId": "1376",
+          "ActivityPeriodId": "2528",
+          "ModuleId": "0",
+          "PVSource": "1",
+          "ak": "",
+          "url": "http://www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+        },
+        "vst": [
+          ['_serialid', '0'],
+          ['_vrcode', stat.getVrcode()],
+          ['_refId', stat.getRefid()],
+          ['_userId', stat.getMemberId()],
+          ['_openTime', stat.timeDiff],
+          ['_trackPageview', pageview]
+        ]
+      });
+  })();
+  </script>
+
+</body>
+</html>

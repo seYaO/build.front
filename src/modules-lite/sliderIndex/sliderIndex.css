@@ -1,0 +1,51 @@
+/**为了touch新首页改造的**/
+.slider {
+    /*position: relative;*/
+    /*overflow: hidden;*/
+    height: 100%;
+}
+
+.slider ul {
+    position: relative;
+    width: 100%
+}
+
+.slider li {
+    position: relative;
+    width: 100%;
+    left: 100%;
+    top: 0
+}
+
+.slider li:first-child {
+    /*position: static*/
+}
+
+.slider a > img {
+    display: block;
+    width: 100%
+}
+
+.slider .indicator {
+    position: absolute;
+    left: 50%;
+    bottom: 0.54rem;
+    line-height: 0;
+    padding: 2px 3px 2px 8px;
+    border-radius: 5px;
+}
+
+.slider .indicator i {
+    width: 6px;
+    height: 6px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #ccc;
+    margin-right: 5px
+}
+
+.slider .indicator .active {
+    background: #2ebd59;
+}
+
+

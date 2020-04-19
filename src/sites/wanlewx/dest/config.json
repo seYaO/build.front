@@ -1,0 +1,8 @@
+{
+  "dataUri": "/wanle/api/WWanleProduct/GetWifiDest",
+  "query": {
+        "platment" : 61035,
+        "siteType" : 1
+  },
+  "desc": "玩乐微信目的地选择页"
+}

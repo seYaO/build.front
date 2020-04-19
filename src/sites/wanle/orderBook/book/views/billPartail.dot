@@ -1,0 +1,31 @@
+<!--发票开始-->
+{{var contactclass;}}
+{{var RemarkNeed = data.SubmitDetail.RemarkNeed;}}
+{{var ReserveRemark = data.SubmitDetail.ReserveRemark;}}
+
+{{?RemarkNeed == 1 || ReserveRemark !=""}}
+    {{contactclass = "procedureBox";}}
+{{??}}
+    {{contactclass = "procedureBox lastnobr";}}
+{{?}}
+
+<div class="{{=contactclass}}">
+    <h2 class="pro_title">发票信息</h2>
+    <div class="listbox fp_listbox">
+        <label class="ui-label">发票：</label>
+        <div class="radio-listbox">
+            <input type="radio" class="radio-fp" id="not-fp" name="fapiao1" value="not-fp">
+            <label class="fp-radio not-fp fpchecked" name="not-fp" for="not-fp">不需要发票</label>
+            <input type="radio" class="radio-fp" id="need-fp" name="fapiao1" value="need-fp" checked="checked">
+            <label class="fp-radio need-fp" name="need-fp" for="need-fp">需要发票</label>
+        </div>
+    </div>
+    <div class="listbox fp-xx none">
+        <label class="ui-label">发票：</label>
+        <span class="fp-xx1">个人发票抬头</span>
+        <span class="fp-xx2">旅游服务费</span>
+        <span class="fp-xx3">修改</span>
+    </div>
+    <div class="listbox lb-info none">我们会在您出游后2-3个工作日内尽快开票邮寄</div>
+</div>
+

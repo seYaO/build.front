@@ -1,0 +1,66 @@
+.login_user {
+    width: auto
+}
+
+.login_user .top_username {
+    float: left
+}
+
+.login_user .exit {
+    float: left;
+    border: 1px solid #ccc;
+    background: #fdfdfd;
+    width: 32px;
+    height: 18px;
+    margin-top: 5px;
+    line-height: 18px;
+    padding-left: 7px;
+    margin-left: 8px
+}
+
+.mLogin_iframe {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-top: -147px;
+    margin-left: -147px;
+    display: none;
+    width: 293px;
+    height: 293px;
+    background-color: #f0f0f0;
+    z-index: 9001
+}
+
+.mLogin_iframe iframe {
+    border: 0;
+    width: 295px;
+    height: 315px
+}
+
+.login_bg_bag {
+    background-color: #000;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 9000;
+    display: none
+}
+
+.login_top a {
+    position: absolute;
+    top: -33px;
+    right: -2px;
+    cursor: pointer;
+    width: 32px;
+    height: 35px;
+    background: url(//pic4.40017.cn/index/slide/2016/10/11/11/QQQQQQ.png) 0 -206px no-repeat
+}
+
+.mLogin_iframe .login_top a:hover {
+    background-position: 0 -260px
+}

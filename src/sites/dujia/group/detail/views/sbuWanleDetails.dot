@@ -1,0 +1,42 @@
+{{?it && it.productDetailInfo}}
+<div style="padding: 18px 18px;">
+    <ul>
+        {{?it.productDetailInfo.AdvanceDec}}
+        <li><i class="f-weight">预订时间：</i>&nbsp;{{=it.productDetailInfo.AdvanceDec}}</li>
+        {{?}}
+        <li>
+            <i class="f-weight">预订须知：</i>
+            <div class="need-know">
+                {{?it.productDetailInfo.Attention}}
+                <i class="ml-fl">注意事项：</i>
+                <p class="align">{{=it.productDetailInfo.Attention}}</p><br>
+                {{?}}
+                {{?it.productDetailInfo.CostInclude}}
+                <i class="ml-fl">费用包含：</i>
+                <p class="align">{{=it.productDetailInfo.CostInclude}}</p><br>
+                {{?}}
+                {{?it.productDetailInfo.CostNoInclude}}
+                <i class="ml-fl">费用不包含：</i>
+                <p class="align">{{=it.productDetailInfo.CostNoInclude}}</p><br>
+                {{?}}
+                {{?it.productDetailInfo.Direction}}
+                <i class="ml-fl">使用方法：</i>
+                <p class="align">{{=it.productDetailInfo.Direction}}</p><br>
+                {{?}}
+                {{?it.productDetailInfo.OrderLimit}}
+                <i class="ml-fl">预订限制：</i>
+                <p class="align">{{=it.productDetailInfo.OrderLimit}}</p><br>
+                {{?}}
+                {{?it.productDetailInfo.Preference}}
+                <i class="ml-fl">优惠信息：</i>
+                <p class="align">{{=it.productDetailInfo.Preference}}</p><br>
+                {{?}}
+                {{?it.productDetailInfo.ProductDesc}}
+                <i class="ml-fl">产品说明：</i>
+                <p class="align">{{=it.productDetailInfo.ProductDesc}}</p>
+                {{?}}
+            </div>
+        </li>
+    </ul> 
+</div>
+{{?}}

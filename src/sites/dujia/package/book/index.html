@@ -1,0 +1,1143 @@
+
+<!DOCTYPE html>
+<html trace="pc-package-book">
+{{
+    var it = IT.Data;
+    var Flights = it.Flights,
+        Hotels = it.Hotels,
+        CctLinkers = it.CctLinkers,
+        CancleIns = it.CancleInsurance||{},
+        AccidentIns = it.AccidentInsurance||{};
+}}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit"/>
+    <meta name="author" content="同程旅游" />
+    <meta name="copyright" content="同程旅游网络科技股份有限公司" />
+    <title>填写订单信息_出境游线路预订_同程旅游</title>
+    <link href="//css.40017.cn/cn/min/??/cn/c/c/common-aspect.1.1.2.css?v=2014112701" rel="Stylesheet" type="text/css" /><!--ignore-->
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/c/c/pay/base.0.0.2.css?v=2013102303" media="screen" /><!--ignore-->
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _nStartTime = new Date().getTime();
+        var loginState = window.loginState || {};
+    </script><!--ignore-->
+
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/fish.1.4.7.js,/cn/public/fc.1.1.7.js?v=2015021101"></script><!--ignore-->
+    <link href="./touristInfo.css" rel="stylesheet" type="text/css" /><!--ignore-->
+    <link href="//js.40017.cn/cn/v/2015/jqmodules/activity/0.1.1/bonus/pc/source/index.css" rel="stylesheet" type="text/css" /><!--ignore-->
+    <link href="//css.40017.cn/cn/c/c/2016/common.0.0.1.css" rel="stylesheet" type="text/css" /><!--ignore-->
+    <link href="//css.40017.cn/cn/min/???/cn/if/comm/2013/iflight_logo.0.0.5.css" rel="stylesheet" type="text/css" /><!--ignore-->
+    <link rel="stylesheet" href="//modules/datepicker/0.2.1/theme/default.css"><!--ignore-->
+    <link rel="stylesheet" href="//modules/datepicker/0.2.1/theme/calendar-year.css"><!--ignore-->
+    <link rel="stylesheet" href="//modules/datepicker/0.2.1/theme/calendar-month.css"><!--ignore-->
+    <link rel="stylesheet" type="text/css" href="./index.css"><!--ignore-->
+    <!--通栏样式-->
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.07044.css" rel="stylesheet">
+    <style>
+        a:hover{
+            text-orientation: none;
+        }
+        #module-slider .module-slider-header, #module-slider .module-slider-top {
+            display: none;
+        }
+        #module-slider{
+            min-height: 274px;
+            height: auto;
+            bottom: 0;
+            top: auto;
+        }
+        #module-slider .ico.c-4 {
+            background-position: -80px -94px;
+        }
+        #module-slider .content{
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    {{?it.IsFromCct==0}}
+    <!-- 公共头部 开始 -->
+    <% includeId = cnorderhead %>
+    <!-- 公共头部 结束 -->
+    {{?}}
+
+    {{
+        var personNum = parseInt(it.Adult)  + parseInt(it.Child),
+    		AccidentTotal = 0,
+    		CancleTotal = 0,
+            addPrices = 0,
+            addPriceList = it.AdditionProducts;
+    	if(AccidentIns && AccidentIns.Id && AccidentIns.Id!=0){
+    		AccidentTotal = parseInt(AccidentIns.Price)*personNum;
+    	}
+
+        if(CancleIns && CancleIns.Id && CancleIns.Id!=0){
+			CancleTotal = parseInt(CancleIns.Price)*personNum;
+        }
+
+        if(addPriceList && addPriceList.length>0){
+            for(i=0;i<addPriceList.length;i++){
+                var addditionP= addPriceList[i].Products;
+                for(j=0;j<addditionP.length;j++){
+                    if(addditionP[j].IsSelected==1){
+                        addPrices += parseInt(addditionP[j].Book.Price) * parseInt(addditionP[j].Book.Count);
+                    }
+                }
+            }
+        }
+        var hotelNum = 0,
+            payTotalPrice = parseInt(it.FlightHotelPrice) + CancleTotal + AccidentTotal + addPrices;
+        if (Hotels && Hotels.length) {
+            for(i=0;i<Hotels.length;i++){
+                hotelNum  += parseInt(Hotels[i].Nights);
+            }
+        }
+    }}
+    {{?it.Error && (it.Error == 1 || it.Error == '1')}}
+        <form method="post" action="./DynamicPackageBook?id={{=it.LineId}}" id="cjmain">
+    {{??}}
+        {{?it.IsFromCct && it.IsFromCct==1}}
+            <form method="post" action="./DynamicPackageBook?id={{=it.LineId}}&fromcct={{=it.IsFromCct}}" id="cjmain">
+        {{??}}
+            <form method="post" action="./DynamicPackageBook?id={{=it.LineId}}" id="cjmain">
+        {{?}}
+                <div class="aspNetHidden">
+                    <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTc1MTIzMjU4M2RkleBDgVx4uOhcZZ4Qf+rep3WKXqfW03X/5BnFv4cy9q4=" />
+                </div>
+                <div class="aspNetHidden">
+                    <input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="205FDF9C" />
+                </div>
+                <div class="content">
+                    <div class="flow_charts clearfix"></div>
+                    <div class="clearfix"></div>
+                    <div class="container">
+                        <!--主体-->
+                        <!--线路信息 start-->
+                        <div style="color: #fe3600;padding: 0 0 10px 20px;">*请您在30分钟内提交订单，如果超时，会为您重新核实机票和酒店价格，请尽快提交订单进行支付</div>
+                        <div class="routeInfo">
+                            <div class="routeTitle">
+                                <div class="routeHead"></div>
+                                <div class="routeContent">{{=it.Title}}</div>
+                                <div class="routeBack"><a href="###">返回上一步 <i class="backIcon"></i> </a></div>
+                            </div>
+
+                            <div class="routeDetail">
+                                <p>出发城市 :<b class="startcity">{{=it.StartCity}}</b>
+                                    出游日期:<span class="travelDate red"> {{=it.LineDate}} <em>至</em>{{=it.ReturnDate}}</span>
+                                    出游人数: <span class="travelNum">{{?it.Adult && it.Adult!=0}}<b id="J_num">{{=it.Adult}}</b>成人{{?}}{{?it.Child && it.Child!=0}}<b id="J_num">{{=it.Child}}</b>儿童{{?}}</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!--线路信息 end-->
+                        <div class="main clearfix">
+                            <div class="par-right">
+                                <div class="R-box">
+                                    <div class="R-top">
+                                        <!--价格明细-->
+                                        <div class="price-tit">费用明细</div>
+                                        <div class="tour-info clearfix">
+                                            <dl class="calculate_1">
+                                                <dt>出游信息</dt>
+                                                <dd>
+                                                    <div class="tour-detail">出游日期 :<span> {{=it.LineDate}} 至 {{=it.ReturnDate}}</span></div>
+                                                    <div class="tour-detail">出游人数 :<span> {{?it.Adult && it.Adult!=0}}{{=it.Adult}}成人{{?}} &nbsp; {{?it.Child && it.Child!=0}}{{=it.Child}}儿童{{?}}</span></div>
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="fee-info">
+                                            <dl class="package-pri">
+                                                <dt>套餐价格</dt>
+                                                <dd class="package-detail">
+                                                    <span class="package-head" title="{{=personNum}}人往返机票+{{=hotelNum}}晚酒店">{{=personNum}}人往返机票+{{=hotelNum}}晚酒店</span>
+                                                    <span class="package-fee red pri_box">&yen;{{=it.FlightHotelPrice}}</span>
+                                                </dd>
+                                            </dl>
+                                            <!--保险-->
+                                            {{?personNum>0}}
+                                                {{?(CancleIns && CancleIns.Id && CancleIns.Id!=0) || (AccidentIns && AccidentIns.Id && AccidentIns.Id!=0) }}
+                                                <dl class="package-pri">
+                                                    <dt>保险</dt>
+                                                    {{?AccidentIns && AccidentIns.Id && AccidentIns.Id!=0}}
+                                                    <dd class="package-detail">
+                                                        <span class="package-head" title="{{=AccidentIns.Name}}">{{=AccidentIns.Name}}</span>
+                                                        <span class="package-fee"><i class="red pri_box">&yen;{{=AccidentIns.Price}}</i>x<b class="num_box">{{=personNum}}</b></span>
+                                                    </dd>
+                                                    {{?}}
+                                                    {{?CancleIns && CancleIns.Id && CancleIns.Id!=0}}
+                                                    <dd class="package-detail">
+                                                        <span class="package-head" title="{{=CancleIns.Name}}">{{=CancleIns.Name}}</span>
+                                                        <span class="package-fee"><i class="red pri_box">&yen;{{=CancleIns.Price}}</i>x<b class="num_box">{{=personNum}}</b></span>
+                                                    </dd>
+                                                    {{?}}
+                                                </dl>
+                                                {{?}}
+                                            {{?}}
+
+                                            {{?it.AdditionProducts && it.AdditionProducts.length>0}}
+                                                {{~it.AdditionProducts:Addition}}
+                                                    <dl class="package-pri">
+                                                        <dt>{{=Addition.Category}}</dt>
+                                                        {{~Addition.Products:addList}}
+                                                        <dd class="package-detail">
+                                                            <span class="package-head" title="{{=addList.Name}}">{{=addList.Name}}</span>
+                                                            <span class="package-fee"><i class="red pri_box">&yen;{{=addList.Book.Price}}</i>x<b class="num_box">{{=addList.Book.Count}}</b></span>
+                                                        </dd>
+                                                        {{~}}
+                                                    </dl>
+                                                {{~}}
+                                            {{?}}
+                                        </div>
+                                        <!--总价-->
+                                        <div class="total-price">
+                                            <div class="total-info">套餐总价:</div>
+                                            <div class="f_price clearfix">
+                                                <div class="red">&yen;<i class="J_price">{{=payTotalPrice}}</i></div>
+                                            </div>
+                                        </div>
+                                        <div class="price-tip">该费用包含您需在线支付所有费用</div>
+                                        <div class="J_order order order-submit"><a href="javascript:;">提交订单</a></div>
+                                        <div class="J_tips red">
+                                            <p>为了您的顺利出行，</p><p>请确保在出游前已成功办理签证</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="par-left">
+                                <!--航班信息 start-->
+                                {{?Flights && Flights.length>0}}
+                                <div class="flightInfo">
+                                    <div class="flight-head"><i class="flight-icon"></i>
+                                        <h2>航班信息</h2></div>
+                                    <div class="flight-content">
+                                        {{~Flights:flights:index}}
+                                            {{
+                                                var hasConnectionFlight = '';
+                                                if(flights.ConnectingFlights && flights.ConnectingFlights.length){
+                                                    hasConnectionFlight = 'hasConnectionFlight';
+                                                }
+                                            }}
+                                            <div class="flightBox">
+                                                {{?Flights.length > 2}}
+                                                <div class="icon-goflight hasMoreFlights {{=hasConnectionFlight}}"><span>第{{=index+1}}程</span></div>
+                                                {{??}}
+                                                    <div class="icon-goflight {{=hasConnectionFlight}}"><span>{{?index == 0}}去程{{??}}返程{{?}}</span></div>
+                                                {{?}}
+                                                <div class="icon-router">
+                                                    <span>{{=flights.DepartCity}}</span><i></i><span>{{=flights.ArriveCity}}</span>
+                                                </div>
+                                                <div class="flight-go flight-detail">
+                                                    {{var flightValue = flights.Flight;}}
+                                                    <table class="flight-inner">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td rowspan="2" width="100" align="left">{{=flightValue.StartDate}}</td>
+                                                                <td rowspan="2" width="130" align="center" class="flight-size">
+                                                                    <span class="if_logo if_logo_{{=flights.Flight.AirCompanyCode}}"></span>
+                                                                    <div class="if_air">
+                                                                        <p>{{=flightValue.AirCompany}}</p>
+                                                                        <p>{{=flightValue.FlightNumber}}</p>
+                                                                    </div>
+                                                                </td>
+                                                                <td width="100" align="center"><span class="time">{{=flightValue.StartTime}}</span></td>
+                                                                <td rowspan="2" width="125" align="center" class="flight-size"><span class="flight-icon-gt"> <em>约{{=flightValue.FlightTime}}</em> </span></td>
+                                                                <td width="100" align="center"><span class="time">{{=flightValue.EndTime}}{{?flightValue.IsOverNight==1}}<em data-content="受时差和飞行时间影响，航班到达日期为起飞日期的次日。显示的到达时间为当地时间。">次日</em>{{?}}</span></td>
+                                                                {{ var paramObj = flights.Cabins[0].MainCabin;}}
+                                                                <td rowspan="2" width="75" align="center" class="flight-size">{{=paramObj.CabinName}}{{?flights.Cabins[0].LeftTicket<9}}<div class="flyticket">仅剩{{=flights.Cabins[0].LeftTicket}}张</div>{{?}}</td>
+                                                                <td rowspan="2" width="175" align="center">
+                                                                {{?paramObj.Consign}}
+                                                                    <a href="javascript:void(0);" data-content='<div class="packing-box"><div class="data-loading"><div class="bg"></div><span>请稍候,信息正在加载中...</span></div></div>' class="J_intro"
+                                                                    data-booknotice="{{=paramObj.BookNotice}}" data-consign="{{=paramObj.Consign}}" data-changerule="{{=paramObj.ChangeRule}}"
+                                                                    data-refundrule="{{=paramObj.RefundRule}}" data-isdirect="{{=flights.Cabins[0].IsDirect}}"  title="退改签及购票说明">退改签及购票说明</a>
+                                                                {{??}}
+                                                                <a href="javascript:void(0);" data-content='<div class="packing-box"><div class="data-loading"><div class="bg"></div><span>请稍候,信息正在加载中...</span></div></div>' class="J_intro"
+                                                                    data-booknotice="{{=paramObj.BookNotice}}" data-changerule="{{=paramObj.ChangeRule}}"
+                                                                    data-refundrule="{{=paramObj.RefundRule}}" data-isdirect="{{=flights.Cabins[0].IsDirect}}"  title="退改签及购票说明">退改签及购票说明</a>
+                                                                {{?}}
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="100" align="center" class="start-pos pos" title="{{=flightValue.DepartAirPort}}{{=flightValue.DepartAirFloor}}">{{=flightValue.DepartAirPort}}{{=flightValue.DepartAirFloor}}</td>
+                                                                <td width="100" align="center" class="reach-pos pos" title="{{=flightValue.ArriveAirPort}}{{=flightValue.ArriveAirFloor}}">{{=flightValue.ArriveAirPort}}{{=flightValue.ArriveAirFloor}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                {{?flights.ConnectingFlights && flights.ConnectingFlights.length}}
+                                                    {{~flights.ConnectingFlights:zItems:coIndex}}
+                                                    <div class="Z-line"><span><i></i><b>{{=zItems.ConnectingCity}}</b><em>中转停留{{=zItems.ConnectingTime}}</em></span></div>
+                                                    {{var aircode1 = "if_logo_"+zItems.ConnectingFlight.AirCompanyCode;}}
+                                                    <div class="flight-turn flight-detail">
+                                                        <table class="flight-inner">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td rowspan="2" width="100" align="left">{{=zItems.ConnectingFlight.StartDate}}</td>
+                                                                    <td rowspan="2" width="130" align="center" class="flight-size"><span class="if_logo {{=aircode1}}"></span>
+                                                                        <div class="if_air">
+                                                                            <p>{{=zItems.ConnectingFlight.AirCompany}}</p><p>{{=zItems.ConnectingFlight.FlightNumber}}</p>
+                                                                        </div>
+                                                                    </td>
+                                                                    <td width="100" align="center"><span class="time">{{=zItems.ConnectingFlight.StartTime}}</span></td>
+                                                                    <td rowspan="2" width="125" align="center" class="flight-size">
+                                                                        <span class="flight-icon-gt">
+                                                                        {{?zItems.ConnectingFlight.FlightTime}}<em>约{{=zItems.ConnectingFlight.FlightTime}}</em>{{?}}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td width="100" align="center"><span class="time">{{=zItems.ConnectingFlight.EndTime}}{{?zItems.ConnectingFlight.IsOverNight ==1}}<em data-content="受时差和飞行时间影响，航班到达日期为起飞日期的次日。显示的到达时间为当地时间。">次日</em>{{?}}</span></td>
+                                                                    <td rowspan="2" width="75" align="center" class="flight-size">{{=flights.Cabins[0].ConnectingCabins[coIndex].CabinName}}{{?flights.Cabins[0].LeftTicket<9}}<div class="flyticket">仅剩{{=flights.Cabins[0].LeftTicket}}张</div>{{?}}</td>
+                                                                    {{
+                                                                        var paramObj = '';
+                                                                        if(flights.Cabins[0].ConnectingCabins[coIndex].Index == parseInt(coIndex + 1)){
+                                                                            paramObj = flights.Cabins[0].ConnectingCabins[coIndex];
+                                                                        }
+                                                                    }}
+                                                                    {{?paramObj}}
+                                                                    <td rowspan="2" width="175" align="center">
+                                                                    {{?paramObj.Consign}}
+                                                                        <a href="javascript:void(0);" data-content='<div class="packing-box"><div class="data-loading"><div class="bg"></div><span>请稍候,信息正在加载中...</span></div></div>' class="J_intro"
+                                                                        data-booknotice="{{=paramObj.BookNotice}}" data-consign="{{=paramObj.Consign}}" data-changerule="{{=paramObj.ChangeRule}}"
+                                                                        data-refundrule="{{=paramObj.RefundRule}}" data-isdirect="{{=flights.Cabins[0].IsDirect}}"  title="退改签及购票说明">退改签及购票说明</a>
+                                                                    {{??}}
+                                                                    <a href="javascript:void(0);" data-content='<div class="packing-box"><div class="data-loading"><div class="bg"></div><span>请稍候,信息正在加载中...</span></div></div>' class="J_intro"
+                                                                        data-booknotice="{{=paramObj.BookNotice}}" data-changerule="{{=paramObj.ChangeRule}}"
+                                                                        data-refundrule="{{=paramObj.RefundRule}}" data-isdirect="{{=flights.Cabins[0].IsDirect}}"  title="退改签及购票说明">退改签及购票说明</a>
+                                                                    {{?}}
+                                                                    </td>
+                                                                    {{?}}
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="100" align="center" class="start-pos pos" title="{{=zItems.ConnectingFlight.DepartAirPort}}{{=zItems.ConnectingFlight.DepartAirFloor}}">{{=zItems.ConnectingFlight.DepartAirPort}}{{=zItems.ConnectingFlight.DepartAirFloor}}</td>
+                                                                    <td width="100" align="center" class="reach-pos pos" title="{{=zItems.ConnectingFlight.ArriveAirPort}}{{=zItems.ConnectingFlight.ArriveAirFloor}}">{{=zItems.ConnectingFlight.ArriveAirPort}}{{=zItems.ConnectingFlight.ArriveAirFloor}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    {{~}}
+                                                {{?}}
+                                            </div>
+                                        {{~}}
+                                    </div>
+                                </div>
+                                {{?}}
+                                <!--航班信息 end-->
+
+                                <!--酒店信息start-->
+                                {{?Hotels&&Hotels.length>0}}
+                                <div class="hotelInfo">
+                                    <div class="hotel-head">
+                                        <i class="hotel-icon"></i><h2>酒店信息</h2>
+                                    </div>
+                                    {{var hotelHobby=false,
+                                        hobbyNum = 0;
+                                    }}
+                                    {{~Hotels:HotelItems:index}}
+                                    <div class="hotel-content">
+                                        <span class="hotel-sum">{{=HotelItems.City}} 入住时间{{=HotelItems.CheckInTime}}至{{=HotelItems.CheckOutTime}}（共{{=HotelItems.Nights}}晚）</span>
+                                        <div class="hotel-main">
+                                            <div class="hotel-th">
+                                                <dl class="hotel-detail H-hotel">
+                                                    <dt class="col1">酒店名</dt>
+                                                    <dt class="col2">房型</dt>
+                                                    <dt class="col3">床型</dt>
+                                                    <dt class="col4">早餐</dt>
+                                                    <dt class="col5">间数</dt>
+                                                    <dt class="col6">房间政策</dt>
+                                                </dl>
+                                            </div>
+                                            <dl class="hotel-detail hotel-padding clearfix">
+                                                {{~HotelItems.Rooms:roomItems}}
+                                                {{~roomItems.Rates:itRoom:index1}}
+                                                <dd class="col1 hotel-name">{{=HotelItems.EnglishName}} {{?HotelItems.Name && HotelItems.Name!=""}}({{=HotelItems.Name}}){{?}}</dd>
+                                                <dd class="col2">
+                                                    <span class="name-room" data-name="{{=roomItems.Name}}{{?itRoom.Name}}|{{=itRoom.Name}}{{?}}" data-hotelid="{{=HotelItems.HotelId}}"
+                                                    data-roomid="{{=itRoom.RoomId}}" data-ratecode="{{=itRoom.RateCode}}" data-supplierid="{{=itRoom.SupplierId}}"
+                                                    data-startdate="{{=HotelItems.CheckInTime}}" data-isdirect="{{=HotelItems.IsDirect}}" data-nights="{{=HotelItems.Nights}}"
+                                                    data-roomcount="{{=itRoom.RoomCount}}">{{=roomItems.Name}}{{?itRoom.Name}}|{{=itRoom.Name}}{{?}}</span>
+                                                </dd>
+                                                {{
+                                                    if(itRoom.BedTypes && itRoom.BedTypes.length>1){
+                                                        hotelHobby=true;
+                                                        hobbyNum++;
+                                                    }
+                                                }}
+                                                <dd class="col3">{{=itRoom.BedType}}</dd>
+                                                <dd class="col4">{{?itRoom.IsIncludeBreakfast==1}}有{{??}}无{{?}}</dd>
+                                                <dd class="col5">{{=itRoom.RoomCount}}</dd>
+                                                <dd class="col6"><span class="cancel-hotel" data-content='{{=itRoom.CanclePolicy}}'>{{=itRoom.CancleType}}</span></dd>
+                                                {{~}}
+                                                {{~}}
+                                            </dl>
+                                        </div>
+                                    </div>
+                                    {{~}}
+                                    <!--住宿偏好-->
+                                    {{?hotelHobby==true && hobbyNum>0}}
+                                    <div class="hotelPerference J_preference">住宿偏好<i></i></div>
+                                    <div class="preferenceBox J_preferenceBox">
+                                        <p class="attention"><em>*</em>您的要求我们会及时传达给酒店，但不保证酒店一定会满足。</p>
+                                        {{~Hotels:HotelItems:index}}
+                                        {{~HotelItems.Rooms:roomItems}}
+                                        {{~roomItems.Rates:itRoom:index1}}
+                                        {{?itRoom.BedTypes && itRoom.BedTypes.length>1}}
+                                        <div class="hotelRequire">
+                                            <h3 class="hotelName">{{=HotelItems.EnglishName}} {{?HotelItems.Name &&HotelItems.Name!=""}}({{=HotelItems.Name}}){{?}}</h3>
+                                            <p class="roomStyle">房型：{{=roomItems.Name}}</p>
+                                            <div class="bedRequire">
+                                                <span>房型要求</span>
+                                                <div class="bedSelect">
+                                                    <span class="up-down"><i></i></span>
+                                                    <dl class="bedSelect-dl">
+                                                        {{?itRoom.BedTypes&&itRoom.BedTypes.length>1}}
+                                                            <dt class="select-bed" data-bedtypeid="0" data-bedtypename="无要求">无要求</dt>
+                                                            {{~itRoom.BedTypes:bedList:indexH}}
+                                                                <dd data-bedtypeid="{{=bedList.Id}}" data-bedtypename="{{=bedList.Name}}">{{=bedList.Name}}</dd>
+                                                            {{~}}
+                                                            <dd data-bedtypeid="0" data-bedtypename="无要求">无要求</dd>
+                                                        {{?}}
+                                                    </dl>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{?}}
+                                        {{~}}
+                                        {{~}}
+                                        {{~}}
+                                        <div class="J_hide">收起<i></i></div>
+                                    </div>
+                                    {{?}}
+                                </div>
+                                {{?}}
+                                <!--酒店信息end-->
+                                <!--其他产品 start-->
+                                {{?(CancleIns && CancleIns.Id && CancleIns.Id!=0) || (AccidentIns && AccidentIns.Id && AccidentIns.Id!=0)||(it.AdditionProducts && it.AdditionProducts.length>0)}}
+                                <div class="otherInfo">
+                                    <div class="other-head"><i class="other-icon"></i>
+                                        <h2>其他产品</h2></div>
+                                    <div class="other-content">
+                                        <div class="other-main">
+                                            <div class="other-th">
+                                                <dl class="other-detail H-other">
+                                                    <dt class="col1">类型</dt>
+                                                    <dt class="col2">产品名称</dt>
+                                                    <dt class="col-date">使用日期</dt>
+                                                    <dt class="col3">同程价</dt>
+                                                    <dt class="col4">份数</dt>
+                                                    <dt class="col5">小计</dt>
+                                                </dl>
+                                            </div>
+                                            {{?AccidentIns && AccidentIns.Id && AccidentIns.Id!=0}}
+                                            <dl class="other-detail other-padding clearfix">
+                                                <dd class="col1">意外险</dd>
+                                                <dd class="col2"><a href="javascript:void(0);" title="{{=AccidentIns.Name}}" data-id="{{=AccidentIns.Id}}" class="blue J_otherTips" data-content='{{=AccidentIns.Name}}</br>{{=AccidentIns.Detail}}{{=AccidentIns.ClauseUrl}}'>{{=AccidentIns.Name}}</a></dd>
+                                                <dd class="col-date">--</dd>
+                                                <dd class="col3">&yen;{{=AccidentIns.Price}}</dd>
+                                                <dd class="col4">{{=personNum}}</dd>
+                                                <dd class="col5 red">&yen;{{=AccidentTotal}}</dd>
+                                            </dl>
+                                            {{?}}
+                                            {{?CancleIns && CancleIns.Id && CancleIns.Id!=0}}
+                                            <dl class="other-detail other-padding clearfix">
+                                                <dd class="col1">取消险</dd>
+                                                <dd class="col2"><a href="javascript:void(0);" title="{{=CancleIns.Name}}" data-id="{{=CancleIns.Id}}" class="blue J_otherTips" data-content='{{=CancleIns.Name}}</br>{{=CancleIns.Detail}}{{=CancleIns.ClauseUrl}}'>{{=CancleIns.Name}}</a></dd>
+                                                <dd class="col-date">--</dd>
+                                                <dd class="col3">&yen;{{=CancleIns.Price}}</dd>
+                                                <dd class="col4">{{=personNum}}</dd>
+                                                <dd class="col5 red">&yen;{{=CancleTotal}}</dd>
+                                            </dl>
+                                            {{?}}
+
+                                            {{?it.AdditionProducts && it.AdditionProducts.length>0}}
+                                            {{~it.AdditionProducts:Addition:indexA}}
+                                                <dl class="other-detail other-padding clearfix">
+                                                    <dd class="col1">{{=Addition.Category}}</dd>
+                                                    {{?Addition.Products && Addition.Products.length>1}}
+                                                        <dd class="more_pro">
+                                                        {{var leng = Addition.Products.length;}}
+                                                        {{~Addition.Products:addList:ind}}
+                                                            <dl style="{{?leng=ind+1}}border-bottom:none{{?}}">
+                                                                {{var ReceiveIns = addList.ReceiveInstruction,GatherIns = addList.GatherInstruction;}}
+                                                                <dd class="col2">
+                                                                    <a href="javascript:void(0);" title="{{=addList.Name}}"
+                                                                    data-id="" class="blue J_addTips" data-content='<div class="other_ins">
+                                                                    {{?addList.ImportantClause && addList.ImportantClause!=""}}
+                                                                        <p class="add_tit">重要条款</p>
+                                                                        <div class="add_con">{{=addList.ImportantClause}}</div>
+                                                                    {{?}}
+                                                                    {{?addList.ResourceInstruction && addList.ResourceInstruction!=""}}
+                                                                        <p class="add_tit">资源说明</p>
+                                                                        <div class="add_con">{{=addList.ResourceInstruction}}</div>
+                                                                    {{?}}
+                                                                    {{?ReceiveIns}}
+                                                                        <p class="add_tit">领取说明</p>
+                                                                        <div class="add_con">
+                                                                            {{?ReceiveIns.ReceiveTypeName && ReceiveIns.ReceiveTypeName!=""}}<p>领取方式：{{=ReceiveIns.ReceiveTypeName}}</p>{{?}}
+                                                                            {{?ReceiveIns.ReceiveSite && ReceiveIns.ReceiveSite!=""}}<p>领取地点：{{=ReceiveIns.ReceiveSite}}</p>{{?}}
+                                                                            {{?ReceiveIns.ReceiveStartDate!="" && ReceiveIns.ReceiveEndDate!=""}}
+                                                                                <p>领取时间：{{=ReceiveIns.ReceiveStartDate}}至{{=ReceiveIns.ReceiveEndDate}}</p>
+                                                                            {{??ReceiveIns.ReceiveStartDate!="" && ReceiveIns.ReceiveEndDate==""}}
+                                                                                <p>领取时间：{{=ReceiveIns.ReceiveStartDate}}</p>
+                                                                            {{??ReceiveIns.ReceiveStartDate=="" && ReceiveIns.ReceiveEndDate!=""}}
+                                                                                <p>领取时间：{{=ReceiveIns.ReceiveEndDate}}</p>
+                                                                            {{?}}
+                                                                            {{?ReceiveIns.BackSite && ReceiveIns.BackSite!=""}}<p>送还地点：{{=ReceiveIns.BackSite}}</p>{{?}}
+                                                                            {{?ReceiveIns.BackStartDate!="" && ReceiveIns.BackEndDate!=""}}
+                                                                                <p>送还时间：{{=ReceiveIns.BackStartDate}}至{{=ReceiveIns.BackEndDate}}</p>
+                                                                            {{??ReceiveIns.BackStartDate!="" && ReceiveIns.BackEndDate==""}}
+                                                                                <p>送还时间：{{=ReceiveIns.BackStartDate}}</p>
+                                                                            {{??ReceiveIns.BackStartDate=="" && ReceiveIns.BackEndDate!=""}}
+                                                                                <p>送还时间：{{=ReceiveIns.BackEndDate}}</p>
+                                                                            {{?}}
+                                                                        </div>
+                                                                    {{?}}
+                                                                    {{?GatherIns}}
+                                                                        <p class="add_tit">集合说明</p>
+                                                                        <div class="add_con">
+                                                                            {{?GatherIns.GatherSite && GatherIns.GatherSite!=""}}<p>集合地点：{{=GatherIns.GatherSite}}</p>{{?}}
+                                                                                {{?GatherIns.GatherStartDate!="" && GatherIns.GatherEndDate!=""}}
+                                                                                    <p>集合时间：{{=GatherIns.GatherStartDate}}至{{=GatherIns.GatherEndDate}}</p>
+                                                                                {{??GatherIns.GatherStartDate!="" && GatherIns.GatherEndDate==""}}
+                                                                                    <p>集合时间：{{=GatherIns.GatherStartDate}}</p>
+                                                                                {{??GatherIns.GatherStartDate=="" && GatherIns.GatherEndDate!=""}}
+                                                                                    <p>集合时间：{{=GatherIns.GatherEndDate}}</p>
+                                                                                {{?}}
+                                                                            {{?GatherIns.DissolveSite && GatherIns.DissolveSite!=""}}<p>解散地点：{{=GatherIns.DissolveSite}}</p>{{?}}
+                                                                            {{?GatherIns.DissolveStartDate!="" && GatherIns.DissolveEndDate!=""}}
+                                                                                <p>解散时间：{{=GatherIns.DissolveStartDate}}至{{=GatherIns.DissolveEndDate}}</p>
+                                                                            {{??GatherIns.DissolveStartDate!="" && GatherIns.DissolveEndDate==""}}
+                                                                                <p>解散时间：{{=GatherIns.DissolveStartDate}}</p>
+                                                                            {{??GatherIns.DissolveStartDate=="" && GatherIns.DissolveEndDate!=""}}
+                                                                                <p>解散时间：{{=GatherIns.DissolveEndDate}}</p>
+                                                                            {{?}}
+                                                                        </div>
+                                                                    {{?}}
+                                                                    <p class="add_tip" style="font-size:12px;">提示：该产品一经支付，不支持更换和退订</p>
+                                                                </div>' >{{=addList.Name}}</a>
+                                                                {{?addList.Book.Date!=""}}
+                                                                <dd class="col-date">{{=addList.Book.Date}}</dd>
+                                                                {{??}}
+                                                                <dd class="col-date">--</dd>
+                                                                {{?}}
+                                                                <dd class="col3">&yen;{{=addList.Book.Price}}</dd>
+                                                                <dd class="col4">{{=addList.Book.Count}}</dd>
+                                                                {{var totalOther = parseInt(addList.Book.Count)*parseInt(addList.Book.Price);}}
+                                                                <dd class="col5 red">&yen;{{=totalOther}}</dd>
+                                                            </dl>
+                                                        {{~}}
+                                                        </dd>
+                                                    {{??}}
+                                                    {{~Addition.Products:addList:ind}}
+                                                    {{var ReceiveIns = addList.ReceiveInstruction,GatherIns = addList.GatherInstruction;}}
+                                                        <dd class="col2"><a href="javascript:void(0);" title="{{=addList.Name}}"
+                                                            data-id="" class="blue J_addTips" data-content='<div class="other_ins">
+                                                            {{?addList.ImportantClause && addList.ImportantClause!=""}}
+                                                                <p class="add_tit">重要条款</p>
+                                                                <div class="add_con">{{=addList.ImportantClause}}</div>
+                                                            {{?}}
+                                                            {{?addList.ResourceInstruction && addList.ResourceInstruction!=""}}
+                                                                <p class="add_tit">资源说明</p>
+                                                                <div class="add_con">{{=addList.ResourceInstruction}}</div>
+                                                            {{?}}
+                                                            {{?ReceiveIns}}
+                                                                <p class="add_tit">领取说明</p>
+                                                                <div class="add_con">
+                                                                    {{?ReceiveIns.ReceiveTypeName && ReceiveIns.ReceiveTypeName!=""}}<p>领取方式：{{=ReceiveIns.ReceiveTypeName}}</p>{{?}}
+                                                                    {{?ReceiveIns.ReceiveSite && ReceiveIns.ReceiveSite!=""}}<p>领取地点：{{=ReceiveIns.ReceiveSite}}</p>{{?}}
+                                                                    {{?ReceiveIns.ReceiveStartDate!="" && ReceiveIns.ReceiveEndDate!=""}}
+                                                                        <p>领取时间：{{=ReceiveIns.ReceiveStartDate}}至{{=ReceiveIns.ReceiveEndDate}}</p>
+                                                                    {{??ReceiveIns.ReceiveStartDate!="" && ReceiveIns.ReceiveEndDate==""}}
+                                                                        <p>领取时间：{{=ReceiveIns.ReceiveStartDate}}</p>
+                                                                    {{??ReceiveIns.ReceiveStartDate=="" && ReceiveIns.ReceiveEndDate!=""}}
+                                                                        <p>领取时间：{{=ReceiveIns.ReceiveEndDate}}</p>
+                                                                    {{?}}
+
+                                                                    {{?ReceiveIns.BackSite && ReceiveIns.BackSite!=""}}<p>送还地点：{{=ReceiveIns.BackSite}}</p>{{?}}
+
+                                                                    {{?ReceiveIns.BackStartDate!="" && ReceiveIns.BackEndDate!=""}}
+                                                                        <p>送还时间：{{=ReceiveIns.BackStartDate}}至{{=ReceiveIns.BackEndDate}}</p>
+                                                                    {{??ReceiveIns.BackStartDate!="" && ReceiveIns.BackEndDate==""}}
+                                                                        <p>送还时间：{{=ReceiveIns.BackStartDate}}</p>
+                                                                    {{??ReceiveIns.BackStartDate=="" && ReceiveIns.BackEndDate!=""}}
+                                                                        <p>送还时间：{{=ReceiveIns.BackEndDate}}</p>
+                                                                    {{?}}
+
+                                                                </div>
+                                                            {{?}}
+                                                            {{?GatherIns}}
+                                                                <p class="add_tit">集合说明</p>
+                                                                <div class="add_con">
+                                                                    {{?GatherIns.GatherSite && GatherIns.GatherSite!=""}}<p>集合地点：{{=GatherIns.GatherSite}}</p>{{?}}
+
+                                                                    {{?GatherIns.GatherStartDate!="" && GatherIns.GatherEndDate!=""}}
+                                                                        <p>集合时间：{{=GatherIns.GatherStartDate}}至{{=GatherIns.GatherEndDate}}</p>
+                                                                    {{??GatherIns.GatherStartDate!="" && GatherIns.GatherEndDate==""}}
+                                                                        <p>集合时间：{{=GatherIns.GatherStartDate}}</p>
+                                                                    {{??GatherIns.GatherStartDate=="" && GatherIns.GatherEndDate!=""}}
+                                                                        <p>集合时间：{{=GatherIns.GatherEndDate}}</p>
+                                                                    {{?}}
+                                                                    {{?GatherIns.DissolveSite && GatherIns.DissolveSite!=""}}<p>解散地点：{{=GatherIns.DissolveSite}}</p>{{?}}
+
+                                                                    {{?GatherIns.DissolveStartDate!="" && GatherIns.DissolveEndDate!=""}}
+                                                                        <p>解散时间：{{=GatherIns.DissolveStartDate}}至{{=GatherIns.DissolveEndDate}}</p>
+                                                                    {{??GatherIns.DissolveStartDate!="" && GatherIns.DissolveEndDate==""}}
+                                                                        <p>解散时间：{{=GatherIns.DissolveStartDate}}</p>
+                                                                    {{??GatherIns.DissolveStartDate=="" && GatherIns.DissolveEndDate!=""}}
+                                                                        <p>解散时间：{{=GatherIns.DissolveEndDate}}</p>
+                                                                    {{?}}
+                                                                </div>
+                                                            {{?}}
+                                                            <p class="add_tip" style="font-size:12px;">提示：该产品一经支付，不支持更换和退订</p>
+                                                        </div>' >{{=addList.Name}}</a>
+                                                        </dd>
+                                                        {{?addList.Book.Date!=""}}
+                                                        <dd class="col-date">{{=addList.Book.Date}}</dd>
+                                                        {{??}}
+                                                        <dd class="col-date">--</dd>
+                                                        {{?}}
+                                                        <dd class="col3">&yen;{{=addList.Book.Price}}</dd>
+                                                        <dd class="col4">{{=addList.Book.Count}}</dd>
+                                                        {{var totalOther = parseInt(addList.Book.Count)*parseInt(addList.Book.Price);}}
+                                                        <dd class="col5 red">&yen;{{=totalOther}}</dd>
+                                                    {{~}}
+                                                    {{?}}
+                                                </dl>
+                                            {{~}}
+                                            {{?}}
+                                        </div>
+                                    </div>
+                                </div>
+                                {{?}}
+                            </div>
+                        </div>
+                        <!--其他产品 end-->
+                        <div class="someinfo clearfix">
+                            <div class="contact clearfix">
+                                {{?it.IsFromCct && it.IsFromCct==1}}
+                                    <div class="seneitive-zone">
+                                    <ul>
+                                        <li class="zone-head"><em>*</em>&nbsp;请与客人核对户籍所在地,敏感地区不予接收！</li>
+                                        {{?it.CctSensitiveAreas}}
+                                        {{var CctSensitiveAreas = it.CctSensitiveAreas;}}
+                                            {{for(index in CctSensitiveAreas){}}
+                                            <li><em>{{=index}}</em>敏感地区：<em>{{~CctSensitiveAreas[index]:value}}{{=value}}{{~}}</em></li>
+                                            {{}}}
+                                        {{?}}
+                                    </ul>
+                                    </div>
+                                {{?}}
+                                <div class="contact-head infoWrap">
+                                    <div class="contacthead"></div>
+                                    <h2 class="contact-title">联系人信息</h2>
+                                </div>
+                                <div class="listbox J_vali">
+                                    <ul class="contactperson_info" id="J_validate1">
+                                        <li>
+                                            <label for="Iname" class="UserInfo_L"><em class="red">*</em>&nbsp;联&nbsp;系&nbsp;人：</label>
+                                            <input id="Iname" class="ui-contact" style="text-transform:uppercase;" name="Iname" validate="required name" vali-reg-name="^([一-龻]+([a-zA-Z]*|-[a-zA-Z]+)|[a-zA-Z]+)$"
+                                            vali-msg-name="*联系人姓名格式应为：张三、zhangsan、张san、张-san" value="{{=it.ContactName}}" type="text" vali-msg-required="*请输入联系人姓名">
+                                            <span class="valid_symbol none" style=""></span>
+                                        </li>
+                                        <li>
+                                            <label class="contactperson_lable UserInfo_L" for="Iphone"><em class="red">*</em> 手机号码：</label>
+                                            <input id="Iphone" class="ui-contact" name="Iphone" value="{{=it.ContactMobile}}" validate="required mobile"
+                                            vali-reg-mobile="^(\\s*|)1[3|5-9][0-9](([*]{4})|([0-9]{4}))\\d{4}(\\s*|)$" type="text" vali-msg-required="*请填写联系人手机号">
+                                            <span class="valid_symbol none" style=""></span>
+                                        </li>
+
+                                        <li>
+                                            <label for="Imailbox" class="UserInfo_L"><em class="red">*</em> 电子邮箱：</label>
+                                            <input id="Imailbox" class="ui-contact" name="Imailbox" validate="required email" type="text" attr-value="免费接收订单确认信息"
+                                            value="{{=it.ContactEmail}}" vali-msg-required="*请填写联系人邮箱" vali-msg-email="*格式应为:someone@somewhere.com">
+                                            <span class="valid_symbol none" style=""></span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <!--出游人部分 start-->
+                            <div class="tour">
+                                <div class="tour-head clearfix infoWrap">
+                                    <div class="tourhead"></div>
+                                    <h2 class="tour-title">出游人信息</h2><span class="extra-title">(必填)</span>
+                                </div>
+                                <div class="J_passenger J_vali">
+                                    <div class="normal-tour clearfix">
+                                    </div>
+                                    <div class="more clearfix">
+                                        <a href="javascript:void(0);" class="drop-down" style="">展开全部常用旅客<i class="icon-arrow-down"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--出游人部分 end-->
+                            {{?it.IsFromCct && it.IsFromCct==1}}
+                            <div class="cctTips clearfix">
+                                <div class="tipsHead"><em>*</em>下单重要提示 ：</div>
+                                <p class="tipsContent">
+                                下单前请严格核实用户的<em>出游人信息（中英文姓名，证件号，出生日期，国籍，性别等）</em>，并确认出游人<em>护照有效期</em>。在
+                                    没有获取用户完整真实信息的情况下，<em>严禁下意向单</em>，即使下单也无法成功占位，出票，由于出游人信息采集错误导致的
+                                    <em>损失由相关的操作人员承担</em>。
+                                </p>
+                            </div>
+                            {{?}}
+                            <div class="check_div">
+                                <input type="checkbox" id="Icheck">
+                                <label class="checksty" for="Icheck">我已认真阅读并同意以下条款（费用说明、预订须知、投保人告知声明、合同范本、酒店预订政策与隐私条款等）</label>
+                                <span id="nocheck" class="err_check">请仔细阅读合同条款并勾选确认</span>
+                            </div>
+                            <input id="cjdd" class="submit order-submit" type="submit" value="提交订单">
+                        </div>
+                        <!--合同信息-->
+                        <div class="orderInfo">
+                            <div class="orderInfoInner">
+                                <dl>
+                                    <dt>费用包含</dt>1.机 票：交通全程往返团队经济舱机票含税费（团队机票一经开出，不得更改、不得签转、不得退票）.
+                                    <br>2.酒 店：行程中所列酒店或同类别酒店双人标准间.
+                                    <br>
+                                </dl>
+                                <dl>
+                                    <dt>费用不包含</dt>1.其他行程中以及上述“费用包含”条款中未列明的一切额外费用。
+                                    <br>2.签证费：250元/人.
+                                    <br>3.保险费：建议购买旅游人身意外保险.
+                                    <br>
+                                </dl>
+                                <dl>
+                                    <dt>退规说明</dt>1.旅游者在出发前30 日内（含第30 日，下同）提出解除协议的，应当按下列标准向同程旅游支付业务损失费，(下述时间的计算不包括双休日及法定节假日)：
+                                    <br>出发前30 日至27 日，按旅游费用总额5%；
+                                    <br>出发前26 日至19 日，按旅游费用总额15%；
+                                    <br>出发前18 日至16 日，按旅游费用总额70%；
+                                    <br>出发前15 日至13 日，按旅游费用总额85%；
+                                    <br>出发前12 日至11 日，按旅游费用总额90%；
+                                    <br>出发前10 日至出发当日，按旅游费用总额100%；
+                                    <br>备注一：以上条款约定比例扣除的必要的费用低于实际发生的费用，旅游者按照实际发生的费用支付，但最高额不应当超过旅游费用总额。
+                                    <br>备注二：出境社提供的机票系团队机票或出境社与航空公司约定不签转、改期或退票的机票，不得签转、更改或退票。
+                                    <br>
+                                    <br>出境社在出发前30 日以内（含第30日，下同）提出解除协议的，向旅游者退还全额旅游费用（不得扣除签证／签注等费用），并按下列标准向旅游者支付违约金：（免签/落地签）
+                                    <br>出发前30 日至15 日，支付旅游费用总额2%的违约金；
+                                    <br>出发前14 日至7 日，支付旅游费用总额5%的违约金；
+                                    <br>出发前6 日至4 日，支付旅游费用总额10%的违约金；
+                                    <br>出发前3 日至1 日，支付旅游费用总额15%的违约金；
+                                    <br>出发当日，支付旅游费用总额20%的违约金。
+                                    <br>
+                                </dl>
+                                <dl>
+                                    <dt>预订须知</dt>
+                                    <dd>
+                                        <div class="info_box">1.为了确保您能够按时出行，产品确认后请在24小时内付款，同时请按要求尽快提供出游所需的材料并签订出境旅游合同.
+                                            <br>2.我公司保留因签证、机票、税金、汇率涨价等因素，对行程、出发日期及价格进行调整的权利.
+                                            <br>3.如因航空公司运力调配、航权审核、机场临时关闭、天气原因、航空管制等不可控制或其他不可抗拒力导致航班取消或延期的，同程不承担违约责任，同程将尽最大努力协助您办理变更事宜，如产生差价，多退少补.
+                                            <br>4.所有确认入住的酒店以我公司的“出团说明书”为准
+                                            <br>5.团队机票一经开出，不得更改，不得签转，不得退票；另飞行时间、车程时间、船程时间以当日实际所用时间为准.
+                                            <br>6.如遇国家或航空公司政策性调整机票、燃油税价格，按调整后的实际价格结算.
+                                            <br>7.是否给予签证或签注、是否准予出入境，是使领馆及有关部门的权力，如因游客自身原因或因提供材料存在问题不能及时办理签证或签注，以及被有关部门拒发签证或签注，不准出入境而影响行程的，签证费及其他费用损失由游客自行承担.
+                                            <br>8.为了不耽误您的行程，请您在国际航班起飞前180分钟到达机场办理登机以及出入境相关手续；如涉及海外国内段行程，请您在航班起飞前60分钟到达机场办理登机手续.
+                                            <br>9.自助游产品均为即时计价，请以我方确认价格为准.
+                                            <br><span class="cor_666"><span class="cf60">*</span> 附：<a href="/newhelp/questionlist/6-2-232.html" target="_blank" rel="nofollow">出境旅游预订须知</a></span>
+                                        </div>
+                                    </dd>
+                                </dl>
+                                <dl id="InsuranceDeclaration">
+                                    <dt>投保人告知声明</dt>
+                                    <dd>华泰境外旅行保险B1：</dd>
+                                    <p>1. 本投保人兹申明以上述各项内容填写属实。</p>
+                                    <p>本投保人已认真阅读并正确理解<a href="//img1.40017.cn/cn/v/2015/zhuanti/29183/tc-jingwaibaoxiantiaokuan.pdf" target="_blank">《华泰财产保险有限公司境外旅行人身意外伤害保险条款》</a>及相关附加条款的各项内容，尤其是有关免除责任条款。</p>
+                                    <p>2. 根据《中华人民共和国合同法》第十一条规定，数据电文是合法的表现形式。本人接受以华泰财产保险有限公司提供的电子保单作为本投保书成立的合法有效凭证，具有完全法律效力。</p>
+                                    <p>3. 本人同意提供给华泰财产保险有限公司（指华泰财产保险有限公司及其直接或间接的控股的公司）的信息，及本人享受华泰财产保险有限公司服务产生的信息（包括本单证签署之前提供和产生的），可用于华泰财产保险有限公司及因服务必要而委托的第三方为本人提供服务及推荐产品，法律禁止的除外。华泰财产保险有限公司及其委托的第三方对上述信息负有保密义务。本条款自本保险合同签署时生效，具有独立的法律效力，不受合同成立与否及效力状态变化的影响。</p>
+                                </dl>
+                                <dl id="cancelInsurance" class="">
+                                    <dt>投保人告知声明</dt>
+                                    <dd>太平洋预订取消险：</dd>
+                                    <dd>1. 本投保人兹申明以上述各项内容填写属实。</dd>
+                                    <dd>本投保人已认真阅读并正确理解<a href="//img1.40017.cn/cn/v/public/cancelInsurance.pdf" target="_blank">《中国太平洋财产保险股份有限公司旅程预订取消保险（B 款）条款》</a>及相关附加条款的各项内容，尤其是有关免除责任条款。</dd>
+                                    <dd>2.根据《中华人民共和国合同法》第十一条规定，数据电文是合法的表现形式。本人接收以中国太平洋财产保险股份有限公司提供的电子保单作为本投保书成立的合法有效凭证，具有完全法律效力。</dd>
+                                    <dd>3.本人同意提供给中国太平洋财产保险股份有限公司（指中国太平洋财产保险股份有限公司及其直接或间接的控股的公司）的信息，及本人享受中国太平洋财产保险股份有限公司服务产生的信息（包括本单证签署之前提供和产生的），可用于中国太平洋财产保险股份有限公司及因服务必要而委托第三方为本人提供服务及推荐产品，法律禁止的除外。中国太平洋财产保险股份有限公司及其委托的第三方对上述信息负有保密义务。本条款自本保险合同签署时生效，具有独立的法律效力，不受合同成立与否及效力状态变化的影响。</dd>
+                                </dl>
+                                <dl>
+                                    <dt>合同范本</dt>
+                                    <dt>GF-2014-2402</dt>
+                                    <dd>
+                                        <div class="left_box">
+                                            <div class="left_box">
+                                                <div class="contract_sty">
+                                                    <div class="contract_info">
+                                                        <p class="contract_txt contract_txt_title">团队出境旅游合同</p>
+                                                        <p class="contract_txt contract_txt_title">（示范文本）</p>
+                                                        <p class="contract_txt contract_txt_title">国&nbsp;家&nbsp;旅&nbsp;游&nbsp;局</p>
+                                                        <p class="contract_txt contract_txt_title">国家工商行政管理总局&nbsp;&nbsp;&nbsp;制定</p>
+                                                        <p class="contract_txt contract_txt_third_title">使用说明</p>
+                                                        <p class="contract_txt">1.本合同为示范文本，供中华人民共和国境内（不含港、澳、台地区）经营出境旅游业务或者边境旅游业务的旅行社（以下简称“出境社”）与出境旅游者（以下简称“旅游者”）之间签订团队出境包价旅游（不含赴台湾地区旅游）合同时使用。</p>
+                                                        <p class="contract_txt">2.双方当事人应当结合具体情况选择本合同协议条款中所提供的选择项，空格处应当以文字形式填写完整。</p>
+                                                        <p class="contract_txt">3.双方当事人可以书面形式对本示范文本内容进行变更或者补充，但变更或者补充的内容，不得减轻或者免除应当由出境社承担的责任。</p>
+                                                        <p class="contract_txt">4.本示范文本由国家旅游局和国家工商行政管理总局共同制定、解释，在全国范围内推行使用。</p>
+                                                        <p class="contract_txt contract_txt_title">团队出境旅游合同</p>
+                                                        <p class="contract_txt contract_txt_right">合同编号：______</p>
+                                                        <p class="contract_txt">旅游者：______等__人（名单可附页，需出境社和旅游者代表签字盖章确认）；</p>
+                                                        <p class="contract_txt">出境社：__________________________________________</p>
+                                                        <p class="contract_txt">旅行社业务经营许可证编号：_________________________</p>
+                                                        <p class="contract_txt">第一章 术语和定义</p>
+                                                        <p class="contract_txt">第一条　本合同术语和定义</p>
+                                                        <p class="contract_txt contract_txt_sub_con">1、团队出境旅游服务，指出境社依据《中华人民共和国旅游法》、《中国公民出国旅游管理办法》和《旅行社条例》等法律、法规，组织旅游者出国旅游及赴中外双方政府商定的国外边境区域和港、澳地区等旅游目的地旅游，代办旅游签证／签注，代订公共交通客票，提供餐饮、住宿、游览等两项以上服务活动。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">2、旅游费用，指旅游者支付给出境社，用于购买本合同约定的旅游服务的费用。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">旅游费用包括：</p>
+                                                        <p class="contract_txt contract_txt_third_con">（1）必要的签证/签注费用（旅游者自办的除外）；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（2）交通费（含境外机场税）；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（3）住宿费；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（4）餐费（不含酒水费）；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（5）出境社统一安排的景区景点的门票费；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（6）行程中安排的其他项目费用；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（7）导游服务费；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（8）边境旅游中办理旅游证件的费用；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（9）出境社、境外地接社等其他服务费用。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">旅游费用不包括：</p>
+                                                        <p class="contract_txt contract_txt_third_con">（1）办理护照、港澳通行证的费用；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（2）办理离团的费用；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（3）旅游者投保的人身意外伤害保险费用；</p>
+                                                        <p class="contract_txt contract_txt_third_con">（4）合同未约定由出境社支付的费用，包括但不限于行程以外非合同约定项目所需的费用、自行安排活动期间发生的费用;</p>
+                                                        <p class="contract_txt contract_txt_third_con">（5）境外小费;</p>
+                                                        <p class="contract_txt contract_txt_third_con">（6）行程中发生的旅游者个人费用，包括但不限于交通工具上的非免费餐饮费、行李超重费，住宿期间的洗衣、通讯 、饮料及酒类费用，个人娱乐费用，个人伤病医疗费，寻找个人遗失物品的费用及报酬，个人原因造成的赔偿费用。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">3、履行辅助人，指与旅行社存在合同关系，协助其履行本合同义务，实际提供相关服务的法人、自然人或者其他组织。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">4、自由活动，特指《旅游行程单》中安排的自由活动。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">5、自行安排活动期间，指《旅游行程单》中安排的自由活动期间、旅游者不参加旅游行程活动期间、每日行程开始前、结束后旅游者离开住宿设施的个人活动期间、旅游者经领队或者导游同意暂时离团的个人活动期间。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">6、不合理的低价，指出境社提供服务的价格低于接待和服务费用或者低于行业公认的合理价格，且无正当理由和充分证据证明该价格的合理性。其中，接待和服务费用主要包括出境社提供或者采购餐饮、住宿、交通、游览、导游或者领队等服务所支出的费用。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">7、具体购物场所，指购物场所有独立的商号以及相对清晰、封闭、独立的经营边界和明确的经营主体，包括免税店，大型购物商场，前店后厂的购物场所，景区内购物场所，景区周边或者通往景区途中的购物场所，服务旅游团队的专门商店，商品批发市场和与餐饮、娱乐、停车休息等相关联的购物场所等。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">8、旅游者投保的人身意外伤害保险，指旅游者自己购买或者通过旅行社、航空机票代理点、景区等保险代理机构购买的以旅行期间自身的生命、身体或者有关利益为保险标的的短期保险，包括但不限于航空意外险、旅游意外险、紧急救援保险、特殊项目意外险。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">9、离团，指团队旅游者在境外经领队同意不随团队完成约定行程的行为。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">10、脱团，指团队旅游者在境外未经领队同意脱离旅游团队，不随团队完成约定行程的行为。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">11、转团，指由于未达到约定成团人数不能出团，出境社征得旅游者书面同意，在行程开始前将旅游者转至其他出境社所组的出境旅游团队履行合同的行为。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">12、拼团，指出境社在保证所承诺的服务内容和标准不变的前提下，在签订合同时经旅游者同意，与其他出境社招徕的旅游者拼成一个团统一安排旅游服务的行为。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">13、不可抗力，指不能预见、不能避免并不能克服的客观情况，包括但不限于因自然原因和社会原因引起的，如自然灾害、战争、恐怖活动、动乱、骚乱、罢工、突发公共卫生事件、政府行为。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">14、已尽合理注意义务仍不能避免的事件，指因当事人故意或者过失以外的客观因素引发的事件，包括但不限于重大礼宾活动导致的交通堵塞，飞机、火车、班轮、城际客运班车等公共客运交通工具延误或者取消，景点临时不开放。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">15、必要的费用，指出境社履行合同已经发生的费用以及向地接社或者履行辅助人支付且不可退还的费用, 包括乘坐飞机（车、船）等交通工具的费用（含预订金）、旅游签证/签注费用、饭店住宿费用（含预订金）、旅游观光汽车的人均车租等。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">16、公共交通经营者，指航空、铁路、航运客轮、城市公交、地铁等公共交通工具经营者。</p>
+                                                        <p class="contract_txt">第二章 合同的订立</p>
+                                                        <p class="contract_txt">第二条 旅游行程单</p>
+                                                        <p class="contract_txt">出境社应当提供带团号的《旅游行程单》（以下简称《行程单》），经双方签字或者盖章确认后作为本合同的组成部分。《行程单》应当对如下内容作出明确的说明：</p>
+                                                        <p class="contract_txt">（1）旅游行程的出发地、途经地、目的地、结束地，线路行程时间（按自然日计算，含乘飞机、车、船等在途时间，不足24小时以一日计）；</p>
+                                                        <p class="contract_txt">（2）旅游目的地地接社的名称、地址、联系人和联系电话；</p>
+                                                        <p class="contract_txt">（3）交通服务安排及其标准（明确交通工具及档次等级、出发时间以及是否需中转等信息）；</p>
+                                                        <p class="contract_txt">（4）住宿服务安排及其标准（明确住宿饭店的名称、地址、档次等级及是否有空调、热水等相关服务设施）；</p>
+                                                        <p class="contract_txt">（5）用餐（早餐和正餐）服务安排及其标准（明确用餐次数、地点、标准）；</p>
+                                                        <p class="contract_txt">（6）出境社统一安排的游览项目的具体内容及时间（明确旅游线路内容包括景区点及游览项目名称、景区点停留的最少时间）；</p>
+                                                        <p class="contract_txt">（7）自由活动的时间；</p>
+                                                        <p class="contract_txt">（8）行程安排的娱乐活动（明确娱乐活动的时间、地点和项目内容）；</p>
+                                                        <p class="contract_txt">《行程单》用语须准确清晰，在表明服务标准用语中不应当出现“准×星级”、“豪华”、“仅供参考”、“以××为准”、“与××同级”等不确定用语。</p>
+                                                        <p class="contract_txt">第三条 订立合同</p>
+                                                        <p class="contract_txt">旅游者应当认真阅读本合同条款和《行程单》，在旅游者理解本合同条款及有关附件后，出境社和旅游者应当签订书面合同。</p>
+                                                        <p class="contract_txt">由旅游者的代理人订立合同的，代理人需要出具被代理的旅游者的授权委托书。</p>
+                                                        <p class="contract_txt">第四条 旅游广告及宣传品</p>
+                                                        <p class="contract_txt">出境社的旅游广告及宣传品应当遵循诚实信用的原则，其内容符合《中华人民共和国合同法》要约规定的，视为本合同的组成部分，对出境社和旅游者双方具有约束力。</p>
+                                                        <p class="contract_txt">第三章 合同双方的权利义务</p>
+                                                        <p class="contract_txt">第五条 出境社的权利</p>
+                                                        <p class="contract_txt">1、根据旅游者的身体健康状况及相关条件决定是否接纳旅游者报名参团；</p>
+                                                        <p class="contract_txt">2、核实旅游者提供的相关信息资料；</p>
+                                                        <p class="contract_txt">3、按照合同约定向旅游者收取全额旅游费用；</p>
+                                                        <p class="contract_txt">4、旅游团队遇紧急情况时，可以采取安全防范措施和紧急避险措施并要求旅游者配合；</p>
+                                                        <p class="contract_txt">5、拒绝旅游者提出的超出合同约定的不合理要求；</p>
+                                                        <p class="contract_txt">6、要求旅游者对在旅游活动中或者在解决纠纷时损害出境社合法权益的行为承担赔偿责任；</p>
+                                                        <p class="contract_txt">7、要求旅游者健康、文明旅游，劝阻旅游者违法和违反社会公德的行为。</p>
+                                                        <p class="contract_txt">第六条 出境社的义务</p>
+                                                        <p class="contract_txt">1、按照合同和《行程单》约定的内容和标准为旅游者提供服务，不擅自变更旅游行程安排，不降低服务标准；</p>
+                                                        <p class="contract_txt">2、向合格的供应商订购产品和服务；</p>
+                                                        <p class="contract_txt">3、不以不合理的低价组织旅游活动，诱骗旅游者，并通过安排购物或者另行付费旅游项目获取回扣等不正当利益；组织、接待旅游者，不指定具体购物场所，不安排另行付费旅游项目，但是，经双方协商一致或者旅游者要求，且不影响其他旅游者行程安排的除外；</p>
+                                                        <p class="contract_txt">4、在出团前采取行前说明会等方式，如实告知具体行程安排和有关具体事项。具体事项包括但不限于旅游目的地国家或者地区的相关法律、法规和风俗习惯、文化传统和宗教禁忌；旅游活动中的安全注意事项和安全避险措施、旅游者不适合参加旅游活动的情形；出境社依法可以减免责任的信息；境外小费标准、外汇兑换事项、应急联络方式（包括我驻外使领馆及出境社境内和境外应急联系人及联系方式）；法律、法规规定的其他应当告知的事项；</p>
+                                                        <p class="contract_txt">5、为旅游团队安排符合《中华人民共和国旅游法》、《旅行社条例》、《中国公民出国旅游管理办法》等法律、法规规定的持证领队人员；</p>
+                                                        <p class="contract_txt">6、妥善保管旅游者交其代管的证件、行李等物品；</p>
+                                                        <p class="contract_txt">7、为旅游者发放用中英文固定格式书写、由旅游者填写的安全信息卡（内容包括旅游者的姓名、国籍、血型、应急联络方式等）；</p>
+                                                        <p class="contract_txt">8、旅游者人身、财产权益受到损害时，应采取合理必要的保护和救助措施，避免旅游者人身、财产权益损失扩大；</p>
+                                                        <p class="contract_txt">9、积极协调处理旅游行程中的纠纷，采取适当措施防止损失扩大；</p>
+                                                        <p class="contract_txt">10、提示旅游者按照规定投保人身意外伤害保险；</p>
+                                                        <p class="contract_txt">11、向旅游者提供发票；</p>
+                                                        <p class="contract_txt">12、依法对旅游者个人信息保密。</p>
+                                                        <p class="contract_txt">第七条 旅游者的权利</p>
+                                                        <p class="contract_txt">1、要求出境社按照合同及《行程单》约定履行相关义务；</p>
+                                                        <p class="contract_txt">2、拒绝出境社未经事先协商一致的转团、拼团行为；</p>
+                                                        <p class="contract_txt">3、有权自主选择旅游产品和服务，有权拒绝出境社未与旅游者协商一致或者未经旅游者要求而指定购物场所、安排旅游者参加另行付费旅游项目的行为，有权拒绝出境社的导游、领队强迫或者变相强迫旅游者购物、参加另行付费旅游项目的行为；</p>
+                                                        <p class="contract_txt">4、在支付旅游费用时要求出境社出具发票；</p>
+                                                        <p class="contract_txt">5、人格尊严、民族风俗习惯和宗教信仰得到尊重；</p>
+                                                        <p class="contract_txt">6、在人身、财产安全遇有危险时，有权请求救助和保护；人身、财产受到侵害的，有权依法获得赔偿；</p>
+                                                        <p class="contract_txt">7、在合法权益受到损害时向有关部门投诉或者要求出境社协助索赔；</p>
+                                                        <p class="contract_txt">8、《中华人民共和国旅游法》、《中华人民共和国消费者权益保护法》和有关法律、法规赋予旅游者的其他各项权利。</p>
+                                                        <p class="contract_txt">第八条 旅游者的义务</p>
+                                                        <p class="contract_txt">1、如实填写《出境旅游报名表》、签证/签注资料和游客安全信息卡等各项内容，告知与旅游活动相关的个人健康信息，并对其真实性负责，保证所提供的联系方式准确无误且能及时联系；</p>
+                                                        <p class="contract_txt">2、向出境社提交能有效使用的因私护照或者通行证，自办签证/签注者应当确保所持签证/签注在出游期间有效；</p>
+                                                        <p class="contract_txt">3、按照合同约定支付旅游费用；</p>
+                                                        <p class="contract_txt">4、按照合同约定随团完成旅游行程，配合领队人员的统一管理；</p>
+                                                        <p class="contract_txt">5、遵守我国和旅游目的地国家（地区）的法律、法规和有关规定，不携带违禁物品出入境；不参与色情、赌博和涉毒活动；不擅自脱团；不在境外滞留不归；</p>
+                                                        <p class="contract_txt">6、遵守旅游目的地国家（地区）的公共秩序和社会公德，尊重当地的风俗习惯，文化传统和宗教信仰，爱护旅游资源，保护生态环境，遵守《中国公民出国（境）旅游文明行为指南》等文明行为规范；</p>
+                                                        <p class="contract_txt">7、对国家应对重大突发事件暂时限制旅游活动的措施以及有关部门、机构或者旅游经营者采取的安全防范和应急处置措施予以配合；</p>
+                                                        <p class="contract_txt">8、妥善保管自己的行李物品，随身携带现金、有价证券、贵重物品，不在行李中夹带；</p>
+                                                        <p class="contract_txt">9、在旅游活动中或者在解决纠纷时，应采取适当措施防止损失扩大，不损害当地居民的合法权益，不干扰他人的旅游活动，不损害旅游经营者和旅游从业人员的合法权益，不采取拒绝上、下机（车、船）、拖延行程或者脱团等不当行为；</p>
+                                                        <p class="contract_txt">10、在自行安排活动期间，应当在自己能够控制风险的范围内选择活动项目，遵守旅游活动中的安全警示规定，对自己的安全负责。</p>
+                                                        <p class="contract_txt">第四章 合同的变更与转让</p>
+                                                        <p class="contract_txt">第九条 合同的变更</p>
+                                                        <p class="contract_txt">1、出境社与旅游者双方协商一致，可以变更本合同约定的内容，但应当以书面形式由双方签字确认。由此增加的旅游费用及给对方造成的损失，由变更提出方承担；由此减少的旅游费用，出境社应当退还旅游者。</p>
+                                                        <p class="contract_txt">2、行程开始前遇到不可抗力或者出境社、履行辅助人已尽合理注意义务仍不能避免的事件的，双方经协商可以取消行程或者延期出行。取消行程的，按照本合同第十四条处理；延期出行的，增加的费用由旅游者承担，减少的费用退还旅游者。</p>
+                                                        <p class="contract_txt">3、行程中遇到不可抗力或者出境社、履行辅助人已尽合理注意义务仍不能避免的事件，影响旅游行程的，按以下方式处理：</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（1）合同不能完全履行的，旅行社经向旅游者作出说明，旅游者同意变更的，可以在合理范围内变更合同，因此增加的费用由旅游者承担，减少的费用退还旅游者。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（2）危及旅游者人身、财产安全的，旅行社应当采取相应的安全措施，因此支出的费用，由出境社与旅游者分担。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（3）造成旅游者滞留的，旅行社应采取相应的安置措施。因此增加的食宿费用由旅游者承担，增加的返程费用双方分担。</p>
+                                                        <p class="contract_txt">第十条 合同的转让</p>
+                                                        <p class="contract_txt">旅游行程开始前，旅游者可以将本合同中自身的权利义务转让给第三人，出境社没有正当理由的不得拒绝，并办理相关转让手续，因此增加的费用由旅游者和第三人承担。</p>
+                                                        <p class="contract_txt">正当理由包括但不限于：对应原报名者办理的相关服务不可转让给第三人的；无法为第三人办妥签证/签注、安排交通等情形的；旅游活动对于旅游者的身份、资格等有特殊要求的。</p>
+                                                        <p class="contract_txt">第十一条 不成团的安排</p>
+                                                        <p class="contract_txt">当未达到约定的成团人数不能成团时，旅游者可以与出境社就如下安排在本合同第二十三条中做出约定。</p>
+                                                        <p class="contract_txt">1、转团：出境社可以在保证所承诺的服务内容和标准不降低的前提下，经事先征得旅游者书面同意，委托其他旅行社履行合同，并就受委托出团的出境社违反本合同约定的行为先行承担责任，再行追偿。旅游者和受委托出团的出境社另行签订合同的，本合同的权利义务终止。</p>
+                                                        <p class="contract_txt">2、延期出团或者改签线路出团：出境社经征得旅游者书面同意，可以延期出团或者改签其他线路出团，因此增加的费用由旅游者承担，减少的费用出境社予以退还。需要时可以重新签订旅游合同。</p>
+                                                        <p class="contract_txt">第五章合同的解除</p>
+                                                        <p class="contract_txt">第十二条 出境社解除合同</p>
+                                                        <p class="contract_txt">1、未达到约定的成团人数不能成团时，出境社解除合同的，应当采取书面等有效形式。出境社在行程开始前30日（按照出发日减去解除合同通知到达日的自然日之差计算，下同）以上（含第30日，下同）提出解除合同的，不承担违约责任，出境社向旅游者退还已收取的全部旅游费用（不得扣除签证/签注费用）；出境社在行程开始前30日以内（不含第30日，下同）提出解除合同的，除向旅游者退还已收取的全部旅游费用外，还应当按照本合同第十七条第1款的约定承担相应的违约责任。</p>
+                                                        <p class="contract_txt">2、旅游者有下列情形之一的，出境社可以解除合同（相关法律、行政法规另有规定的除外）：</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（1）患有传染病等疾病，可能危害其他旅游者健康和安全的；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（2） 携带危害公共安全的物品且不同意交有关部门处理的；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（3）从事违法或者违反社会公德的活动的；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（4）从事严重影响其他旅游者权益的活动，且不听劝阻、不能制止的；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（5）法律规定的影响合同履行的其他情形。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">出境社因上述情形解除合同的，应当以书面等形式通知旅游者，按照本合同第十五条的相关约定扣除必要的费用后，将余款退还旅游者。</p>
+                                                        <p class="contract_txt">第十三条 旅游者解除合同</p>
+                                                        <p class="contract_txt">1、未达到约定的成团人数不能成团时，旅游者既不同意转团，也不同意延期出行或者改签其他线路出团的，出境社应及时发出不能成团的书面通知，旅游者可以解除合同。旅游者在行程开始前30日以上收到旅行社不能成团通知的，旅行社不承担违约责任，向旅游者退还已收取的全部旅游费用；旅游者在行程开始前30日以内收到旅行社不能成团通知的，按照本合同第十七条第1款相关约定处理。</p>
+                                                        <p class="contract_txt">2、除本条第1款约定外，在行程结束前，旅游者亦可以书面等形式解除合同（相关法律、行政法规另有规定的除外）。旅游者在行程开始前30日以上提出解除合同的，未办理签证/签注的，出境社应当向旅游者退还全部旅游费用；已办理签证/签注的，应当扣除签证/签注费用（旅游者自办的除外）；旅游者在行程开始前30日以内提出解除合同的，出境社按照本合同第十五条相关约定扣除必要的费用后，将余款退还旅游者。</p>
+                                                        <p class="contract_txt">3、旅游者未按约定时间到达约定集合出发地点，也未能在出发中途加入旅游团队的，视为旅游者解除合同，按照本合同第十五条相关约定处理。</p>
+                                                        <p class="contract_txt">第十四条 因不可抗力或者已尽合理注意义务仍不能避免的事件解除合同</p>
+                                                        <p class="contract_txt">因不可抗力或者出境社、履行辅助人已尽合理注意义务仍不能避免的事件，影响旅游行程，合同不能继续履行的，出境社和旅游者均可以解除合同；合同不能完全履行，旅游者不同意变更的，可以解除合同（因已尽合理注意义务仍不能避免的事件提出解除合同的，相关法律、行政法规另有规定的除外）。</p>
+                                                        <p class="contract_txt">合同解除的，出境社应当在扣除已向地接社或者履行辅助人支付且不可退还的费用后，将余款退还旅游者。</p>
+                                                        <p class="contract_txt">第十五条 必要的费用扣除</p>
+                                                        <p class="contract_txt">1、旅游者在行程开始前30日以内提出解除合同或者按照本合同第十二条第2款约定由出境社在行程开始前解除合同的，按下列标准扣除必要的费用：</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始前29日至15日，按旅游费用总额的5%；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始前14日至7日，按旅游费用总额的20%；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始前6日至4日，按旅游费用总额的50%；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始前3日至1日，按旅游费用总额的60%；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始当日，按旅游费用总额的70%。</p>
+                                                        <p class="contract_txt">2、在行程中解除合同的，必要的费用扣除标准为：</p>
+                                                        <p class="contract_txt contract_txt_sub_con">旅游费用×行程开始当日扣除比例+（旅游费用-旅游费用×行程开始当日扣除比例)÷旅游天数×已经出游的天数。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">如按上述第1款或者第2款约定比例扣除的必要的费用低于实际发生的费用，旅游者按照实际发生的费用支付，但最高额不应当超过旅游费用总额。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">解除合同的，出境社扣除必要的费用后，应当在解除合同通知到达日起5个工作日内为旅游者办结退款手续。</p>
+                                                        <p class="contract_txt">第十六条 出境社协助旅游者返程及费用承担</p>
+                                                        <p class="contract_txt">旅游行程中解除合同的，出境社应协助旅游者返回出发地或者旅游者指定的合理地点。因旅行社或者履行辅助人的原因导致合同解除的，返程费用由出境社承担；行程中按照本合同第十二条第2款，第十三条第2款约定解除合同的，返程费用由旅游者承担；按照本合同第十四条约定解除合同的，返程费用由双方分担。</p>
+                                                        <p class="contract_txt">第六章 违约责任</p>
+                                                        <p class="contract_txt">第十七条　出境社的违约责任</p>
+                                                        <p class="contract_txt">1、出境社在行程开始前30日以内提出解除合同的，或者旅游者在行程开始前30日以内收到出境社不能成团通知，不同意转团、延期出行和改签线路解除合同的，出境社向旅游者退还已收取的全部旅游费用（不得扣除签证／签注等费用），并按下列标准向旅游者支付违约金：</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始前29日至15日，支付旅游费用总额2%的违约金；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始前14日至7日，支付旅游费用总额5%的违约金；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始前6日至4日，支付旅游费用总额10%的违约金；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始前3日至1日，支付旅游费用总额15%的违约金；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">行程开始当日，支付旅游费用总额20%的违约金。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">如按上述比例支付的违约金不足以赔偿旅游者的实际损失，出境社应当按实际损失对旅游者予以赔偿。</p>
+                                                        <p class="contract_txt contract_txt_sub_con">出境社应当在取消出团通知或者旅游者不同意不成团安排的解除合同通知到达日起5个工作日内，为旅游者办结退还全部旅游费用的手续并支付上述违约金。</p>
+                                                        <p class="contract_txt">2、出境社未按合同约定提供服务，或者未经旅游者同意调整旅游行程（本合同第九条第3款规定的情形除外），造成项目减少、旅游时间缩短或者标准降低的，应当依法承担继续履行、采取补救措施或者赔偿损失等违约责任。</p>
+                                                        <p class="contract_txt">3、出境社具备履行条件，经旅游者要求仍拒绝履行本合同义务的，出境社向旅游者支付旅游费用总额30%的违约金，旅游者采取订同等级别的住宿、用餐、交通等补救措施的，费用由出境社承担；造成旅游者人身损害、滞留等严重后果的，旅游者还可以要求出境社支付旅游费用一倍以上三倍以下的赔偿金。</p>
+                                                        <p class="contract_txt">4、未经旅游者同意，出境社转团、拼团的，出境社应向旅游者支付旅游费用总额25%的违约金；旅游者解除合同的，出境社还应向未随团出行的旅游者退还全部旅游费用，向已随团出行的旅游者退还尚未发生的旅游费用。如违约金不足以赔偿旅游者的实际损失，出境社应当按实际损失对旅游者予以赔偿。</p>
+                                                        <p class="contract_txt">5、出境社有以下情形之一的，旅游者有权在旅游行程结束后30日内，要求出境社为其办理退货并先行垫付退货货款，或者退还另行付费旅游项目的费用：</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（1）出境社以不合理的低价组织旅游活动，诱骗旅游者，并通过安排购物或者另行付费旅游项目获取回扣等不正当利益的；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">（2）未经双方协商一致或者未经旅游者要求，出境社指定具体购物场所或者安排另行付费旅游项目的。</p>
+                                                        <p class="contract_txt">6、与旅游者出现纠纷时，出境社应当积极采取措施防止损失扩大，否则应当就扩大的损失承担责任。</p>
+                                                        <p class="contract_txt">第十八条 旅游者的违约责任</p>
+                                                        <p class="contract_txt">1、因不听从出境社及其领队的劝告、提示而影响团队行程，给出境社造成损失的，应当承担相应的赔偿责任。</p>
+                                                        <p class="contract_txt">2、旅游者超出本合同约定的内容进行个人活动所造成的损失，由其自行承担。</p>
+                                                        <p class="contract_txt">3、由于旅游者的过错，使出境社、履行辅助人、旅游从业人员或者其他旅游者遭受损害的，应当由旅游者赔偿损失。</p>
+                                                        <p class="contract_txt">4、旅游者在旅游活动中或者在解决纠纷时，应采取措施防止损失扩大，否则应当就扩大的损失承担相应的责任。</p>
+                                                        <p class="contract_txt">5、旅游者违反安全警示规定，或者对国家应对重大突发事件暂时限制旅游活动的措施、安全防范和应急处置措施不予配合，造成旅行社损失的，应当依法承担相应责任。</p>
+                                                        <p class="contract_txt">第十九条 其他责任</p>
+                                                        <p class="contract_txt">1、因旅游者提供材料存在问题或者自身其他原因被拒签、缓签、拒绝入境和出境的，相关责任和费用由旅游者承担，出境社将未发生的费用退还旅游者。如给出境社造成损失的，旅游者还应当承担赔偿责任。因出境社原因导致旅游者被拒签而解除合同的，依据本合同第十七条第1款处理。</p>
+                                                        <p class="contract_txt">2、由于旅游者自身原因导致本合同不能履行或者不能按照约定履行，或者造成旅游者人身损害、财产损失的，出境社不承担责任。</p>
+                                                        <p class="contract_txt">3、旅游者自行安排活动期间人身、财产权益受到损害的，出境社在事前已尽到必要警示说明义务且事后已尽到必要救助义务的，出境社不承担赔偿责任。</p>
+                                                        <p class="contract_txt">4、由于第三方侵害等不可归责于出境社的原因导致旅游者人身、财产权益受到损害的，出境社不承担赔偿责任。但因出境社不履行协助义务致使旅游者人身、财产权益损失扩大的，应当就扩大的损失承担赔偿责任。</p>
+                                                        <p class="contract_txt">5、由于公共交通经营者的原因造成旅游者人身损害、财产损失依法应承担责任的，出境社应当协助旅游者向公共交通经营者索赔。</p>
+                                                        <p class="contract_txt">第七章 协议条款</p>
+                                                        <p class="contract_txt">第二十条 线路行程时间</p>
+                                                        <p class="contract_txt">出发时间 年 月 日 时，结束时间 年 月 日 时；共 天，饭店住宿 夜。</p>
+                                                        <p class="contract_txt">第二十一条 旅游费用及支付（以人民币为计算单位）</p>
+                                                        <p class="contract_txt">成人____元/人， 儿童（不满14岁）__元/人； 其中，导游服务费__元/人；</p>
+                                                        <p class="contract_txt">旅游费用合计 ：____元。</p>
+                                                        <p class="contract_txt">旅游费用支付方式：____。</p>
+                                                        <p class="contract_txt">旅游费用支付时间：____。</p>
+                                                        <p class="contract_txt">第二十二条 人身意外伤害保险</p>
+                                                        <p class="contract_txt">1、出境社提示旅游者购买人身意外伤害保险；</p>
+                                                        <p class="contract_txt">2、旅游者可以做以下选择：</p>
+                                                        <p class="contract_txt contract_txt_sub_con">□委托出境社购买（出境社不具有保险兼业代理资格的，不得勾选此项）： 保险产品名称 （投保的相关信息以实际保单为准）；</p>
+                                                        <p class="contract_txt contract_txt_sub_con">□自行购买； （自行购买说明，详见补充条款）</p>
+                                                        <p class="contract_txt contract_txt_sub_con">□放弃购买。</p>
+                                                        <p class="contract_txt">第二十三条 成团人数与不成团的约定</p>
+                                                        <p class="contract_txt">成团的最低人数：___人。</p>
+                                                        <p class="contract_txt">如不能成团，旅游者是否同意按下列方式解决：</p>
+                                                        <p class="contract_txt">1、__（同意或者不同意，打勾无效）出境社委托____出境社履行合同；</p>
+                                                        <p class="contract_txt">2、__（同意或者不同意，打勾无效）延期出团；</p>
+                                                        <p class="contract_txt">3、__（同意或者不同意，打勾无效）改签其他线路出团；</p>
+                                                        <p class="contract_txt">4、__（同意或者不同意，打勾无效）解除合同。</p>
+                                                        <p class="contract_txt">第二十四条 拼团约定</p>
+                                                        <p class="contract_txt">旅游者____（同意或者不同意，打勾无效）采用拼团方式拼至____出境社成团。</p>
+                                                        <p class="contract_txt">第二十五条 自愿购物和参加另行付费旅游项目约定</p>
+                                                        <p class="contract_txt">1、旅游者可以自主决定是否参加出境社安排的购物活动、另行付费旅游项目；</p>
+                                                        <p class="contract_txt">2、出境社可以在不以不合理的低价组织旅游活动、不诱骗旅游者、不获取回扣等不正当利益，且不影响其他旅游者行程安排的前提下，按照平等自愿、诚实信用的原则，与旅游者协商一致达成购物活动、另行付费旅游项目协议；</p>
+                                                        <p class="contract_txt">3、购物活动、另行付费旅游项目安排应不与《行程单》冲突；</p>
+                                                        <p class="contract_txt">4、地接社及其从业人员在行程中安排购物活动、另行付费旅游项目的，责任由订立本合同的出境社承担；</p>
+                                                        <p class="contract_txt">5、购物活动、另行付费旅游项目 具体约定见《自愿购物活动补充协议》（附件 3）、《自愿参加另行付费旅游项目补充协议》（附件 4）。</p>
+                                                        <p class="contract_txt">第二十六条 争议的解决方式</p>
+                                                        <p class="contract_txt">本合同履行过程中发生争议，由双方协商解决，亦可向合同签订地的旅游质监执法机构、消费者协会、有关的调解组织等有关部门或者机构申请调解。协商或者调解不成的，按下列第____种方式解决：</p>
+                                                        <p class="contract_txt">1、提交________仲裁委员会仲裁；</p>
+                                                        <p class="contract_txt">2、依法向人民法院起诉。</p>
+                                                        <p class="contract_txt">第二十七条 其他约定事项</p>
+                                                        <p class="contract_txt">未尽事宜，经旅游者和出境社双方协商一致，可以列入补充条款。（如合同空间不够，可以另附纸张，由双方签字或者盖章确认。）</p>
+                                                        <p class="contract_txt contract_txt_sub_title">合同补充条款</p>
+                                                        <p class="contract_txt">1、 甲方已清楚且愿意遵守：乙方提供的机票系团队机票或乙方与航空公司约定不签转、改期或退票的机票，不得签转、更改或退票。如根据航空公司规定，机票可签转、改期或退票，乙方可协助甲方办理。</p>
+                                                        <p class="contract_txt contract_txt_bold">2、 旅游者（即出游人）委托他人签约的或签约人与旅游者不一致的，签约人保证已得到全体旅游者的授权签署本合同（包括附件），并保证将合同中的约定事项（含附件等）向全体旅游者作出必要说明，如签约人未履行上述义务或因没有代理权限导致旅游者与旅行社发生纠纷的，由签约人承担全部赔偿责任。</p>
+                                                        <p class="contract_txt">3、 如遇不可抗力因素，甲乙双方友好协商改变或缩短行程；如遇甲方游客临时中途更改或取消住宿、景点，将被视为自动放弃。</p>
+                                                        <p class="contract_txt">4、 旅行社在不减少行程、景点及旅游者体验的情况下，可根据实际情况适当调整行程及景点的游览顺序。</p>
+                                                        <p class="contract_txt">5、 因旅游者个人证件（包括但不限于护照及签证等）或自身其他原因造成无法正常出入境的，由旅游者本人自行承担全部责任，如给出境社造成损失的，旅游者还应当承担赔偿责任。</p>
+                                                        <p class="contract_txt">6、 旅游者委托出境社办理签证，签证中含有旅行社的资金和信誉担保，旅游者应如期前往目的地旅游，否则出境社有权注销该签证。旅游者在旅行期间应遵守中国及当地法律法规并按时归国、按要求参加面试和面试销签、提交销签材料，如旅游者违反该条规定，旅游者自愿承担同程因此产生的全部损失，同时，如旅游者提交担保金的，同程有权直接扣除全部担保金，如旅游者提交担保函的，同程有权按照担保函中的担保金额向旅游者和担保人索赔。</p>
+                                                        <p class="contract_txt">7、 因甲方原因不能出发，在开机票前可与旅行社协商更换出游人，乙方同意变更的，则变更产生的损失或费用由甲方承担。</p>
+                                                        <p class="contract_txt">8、 未经旅行社得知且同意，不得有当地的参团者进入团队并与团队一起游玩。</p>
+                                                        <p class="contract_txt">9、 甲方应根据自身健康状况报名参加旅游活动，甲方在报名时应书面提供个人正确信息（包括健康状况等信息或证明），乙方有权根据甲方的身体情况及相关条件等因素接纳甲方报名参团。甲方虚报、瞒报有关情况，一经发现或旅途中发生意外，由甲方承担全部责任或后果。</p>
+                                                        <p class="contract_txt contract_txt_bold">10、 乙方在甲方报名和签订本合同时已特别提醒：旅游者是七十岁以上老人、或未成年人、或怀孕、或患有心脏病、高血压、呼吸系统等病史、以及存在可能影响旅行的其他情况，请在签订本合同时向乙方提供征得医生或家属书面同意意见书，或由家属陪同出行；便于乙方给予适当关注。如甲方在行程中因身体不适而终止旅游或变更行程时，应将要求书面明确向乙方提出；乙方应给予配合；由此所产生本合同团费以外的全部费用由甲方自行承担。</p>
+                                                        <p class="contract_txt">11、 甲方已清楚行程中关于酒店等价标准的说明，在不使用国际统一标准的国家和地区以当地行业标准为准。</p>
+                                                        <p class="contract_txt">12、 甲方的随身行李物品、现金和贵重物品等应自行妥善保管。甲方在旅游行程中自由活动或自行安排活动期间，应根据身体状况决定是否参加并注意自身和他人的人身和财产安全，并在自己能够控制风险的范围内活动。该期间若发生任何意外事故，应及时联系乙方随团人员。乙方积极配合协助甲方处理意外事故。</p>
+                                                        <p class="contract_txt contract_txt_bold">13、 乙方已向甲方提示投保旅游意外保险，甲方已明确。乙方提示甲方应仔细阅读相关保险条款，如发生意外，切记在国外及时就医，并保留相关凭证，保险公司按理赔细则进行处理。</p>
+                                                        <p class="contract_txt">14、 设立社许可证编号：L-JS-CJ00070。</p>
+                                                        <p class="contract_txt">15、 本线路我司委托______________________________________提供旅游接待服务。</p>
+                                                        <p class="contract_txt">本人已阅读以上合同附件内容并同意履行以上约定。</p>
+                                                        <p class="contract_txt">16、 游客名单。</p>
+                                                        <p class="contract_txt contract_txt_bold">甲方代表签字或盖章：________________ 乙方签字或盖章：_____________</p>
+                                                        <p class="contract_txt contract_txt_bold">____年____月____日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;____年____月____日</p>
+                                                        <p class="contract_txt">第二十八条 合同效力</p>
+                                                        <p class="contract_txt">本合同一式____份，双方各持____份，具有同等法律效力，自双方当事人签字或者盖章之日起生效。</p>
+                                                        <p class="contract_txt">旅游者代表签字（盖章）：____________________出境社盖章：____________________</p>
+                                                        <p class="contract_txt">证件号码：____________________________________签约代表签字（盖章）：_____________________</p>
+                                                        <p class="contract_txt">住&nbsp;&nbsp;&nbsp;&nbsp;址：____________________________________营业地址：________________________________</p>
+                                                        <p class="contract_txt">联系电话：____________________________________联系电话：________________________________</p>
+                                                        <p class="contract_txt">传&nbsp;&nbsp;&nbsp;&nbsp;真：____________________________________传&nbsp;&nbsp;&nbsp;&nbsp;真：________________________________</p>
+                                                        <p class="contract_txt">邮&nbsp;&nbsp;&nbsp;&nbsp;编：____________________________________邮&nbsp;&nbsp;&nbsp;&nbsp;编：________________________________</p>
+                                                        <p class="contract_txt">电子信箱：____________________________________电子信箱：_________________________________</p>
+                                                        <p class="contract_txt">签约日期：____年____月____日&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;签约日期：____年____月____日 </p>
+                                                        <p class="contract_txt">签约地点：____________________________________</p>
+                                                        <p class="contract_txt">出境社监督、投诉电话：_________________________</p>
+                                                        <p class="contract_txt">____省____市旅游质监执法机构</p>
+                                                        <p class="contract_txt">投诉电话：____________________________________电子邮箱：________________________________</p>
+                                                        <p class="contract_txt">地&nbsp;&nbsp;&nbsp;&nbsp;址：____________________________________邮&nbsp;&nbsp;&nbsp;&nbsp;编：________________________________</p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </dd>
+                                    {{?it.IsHasExpedia && it.IsHasExpedia==1}}
+                                    <dt>酒店预订政策</dt>
+                                    <dl><a href="http://travel.ian.com/templates/496741/terms-of-use?lang=Zh_CN" target="_blank">http://travel.ian.com/templates/496741/terms-of-use?lang=Zh_CN</a></dl>
+                                    <dt>酒店隐私政策</dt>
+                                    <dl>
+                                        <a href="http://wx.17u.cn/ghotel/LawRule.html" target="_blank">http://wx.17u.cn/ghotel/LawRule.html</a>
+                                    </dl>
+                                    {{?}}
+                                </dl>
+                            </div>
+                        </div>
+                        <!--主体-->
+                    </div>
+                </div>
+            </form>
+    {{?}}
+    <script type="text/javascript" src="//js.40017.cn/cn/c/c/2016/common.0.3.5.js?v=2016030401"></script>
+    <script src="//modules/sea.js" data-loader = "true" type="text/javascript"></script>
+    <script type="text/javascript" src="/modules/common/0.1.0/index.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+
+    <script>
+        seajs.require('./index').init({
+            "Error": "{{=it.Error}}"||"",
+            "LineId": "{{=it.LineId}}"||"",
+            "Days":{{?it.Days}}{{=it.Days}}{{??}}0{{?}},
+            "StartDate": "{{=it.LineDate}}"||"",
+            "Adult": "{{=it.Adult}}"||"",
+            "Child": "{{=it.Child}}"||"",
+            "ChildAges":{{?it.ChildAges && it.ChildAges.length>0}}{{=JSON.stringify(it.ChildAges)}}{{??}}[]{{?}},
+            "AccidentInsurance": "{{=it.AccidentInsuranceCode}}"||"",
+            "CancleInsurance": "{{=it.CancleInsuranceCode}}"||"",
+            "TempOrderGuid": "{{=it.TempOrderGuid}}"||"",
+            "AdditionProductGuid": "{{=it.AdditionProductGuid}}" || "",
+            "ModuleId": "{{=it.ModuleId}}"||"",
+            "ExternalId": "{{=it.ExternalId}}"||"",
+            "CertificateType": "{{=it.CertificateType}}",
+            "SearchType": "{{=it.SearchType}}",
+            "IsFromCct":"{{=it.IsFromCct}}",
+            "IsErrorCct":"{{=it.IsErrorCct}}",
+            "CctParam":"{{?it.CctParam}}{{=it.CctParam}}{{?}}"|| {},
+            "CctLinkers":{{?it.CctLinkers && it.CctLinkers.PassengerInfoDataList && it.CctLinkers.PassengerInfoDataList.length>0}}{{=JSON.stringify(it.CctLinkers.PassengerInfoDataList)}}{{??}}[]{{?}}
+        });
+    </script>
+    {{?it.IsFromCct==0}}
+    <!--页脚cct不显示-->
+    <span id="ucFooter">
+        <div id="footer_lite" >
+            Copyright&nbsp;&copy;&nbsp;<span class="cr_time" type="Holiday">2002-2016</span>&nbsp;版权所有&nbsp;<span
+            class="corp_name">同程网络科技股份有限公司</span>&nbsp;<a class="icp_num" href="//img1.40017.cn/cn/new_ui/public/images/20141103174615.jpg"
+            target="_blank">苏ICP证B2-20100204</a></div>
+            <script type="text/javascript">
+                var bd_cpro_rtid = "n1DvrHf";
+            </script>
+            <script type="text/javascript" src="http://cpro.baidu.com/cpro/ui/rt.js"></script>
+            <noscript>
+                <div style="display:none;">
+                    <img height="0" width="0" style="border-style:none;" src="http://eclick.baidu.com/rt.jpg?t=noscript&rtid=n1DvrHf" />
+                </div>
+            </noscript>
+
+            <script type="text/javascript">
+                var _tcq = _tcq || [];
+                var _timediff = -1;
+                if (typeof _tcopentime != "undefined") {
+                    _timediff = new Date().getTime() - _tcopentime;
+                    }
+                    _tcq.push(['_serialid', '0']);
+                    _tcq.push(['_vrcode', '10002-2006-3020601']);
+                    _tcq.push(['_refId', getRefid()]);
+                    _tcq.push(['_userId', fish.getNmemberId()]);
+                    _tcq.push(['_openTime', _timediff]);
+                    _tcq.push(['_trackPageview', '']);
+                    _tcq.push(['_resId', fish.getProId()]); 
+            </script>
+            
+            <% includeId = node_dj_common_stat %>
+
+            <script type='text/javascript' src="http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+            <script type="text/javascript" language="javascript">
+            fish.ajax({url:"//js.40017.cn/cn/new_ui/comprehensive/js/other/whiteSign/whiteSign.js?v=2013031801",type:"script"});
+            </script>
+        </div>
+    </span>
+    {{?}}
+    <!-- 百度统计start -->
+    <script type="text/javascript">
+        var _hmt = _hmt || [];
+        var rtTag = {
+            "data": {
+                "etravel_order": {
+                    "prod": [{
+                        "p_id": "{{=it.LineId}}"
+                    }]
+                }
+            }
+        };
+        _hmt.push(['_setAccount', '53a0d71dba66835ff1aa907db99144d8']);
+        _hmt.push(['_trackRTEvent', rtTag]);
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?7cda147e17cf103b1fb19362796011e2";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <script type="text/javascript">
+        var _tcHotmapx = { pid: 802, sp: 100 };
+    </script>
+    <script type="text/javascript">
+        var pvConfig = {
+            "PublicPlatId": "1",
+            "PageId": "2",
+            "LineId": "{{=it.LineId}}",
+            "ModuleId": "",
+            "SearchPlatId": common.getParamFromUrl("searchplatid"),
+            "PVSource": "0",
+            "ak": common.getParamFromUrl("ak"),
+            "url": "/dujia/AjaxHelper/PvHandler.ashx"
+        };
+    </script>
+</body>
+</html>

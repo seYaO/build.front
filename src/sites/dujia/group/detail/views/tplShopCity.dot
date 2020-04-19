@@ -1,0 +1,5 @@
+{{?it.cityList}}
+{{~it.cityList.cityList:city:index}}
+ <li data-cityId="{{=city.cityId}}">{{=city.name}}</li>
+{{~}}
+{{?}}

@@ -1,0 +1,9 @@
+<ul>
+{{~it:val}}
+    <li>
+        <a href='{{=val.ShowUrl.replace("http:","")}}'>
+            <img data-img='{{=val.ShowImg.replace("http:","")}}' alt='{{=val.ShowContent}}'/>
+        </a>
+    </li>
+{{~}}
+</ul>

@@ -1,0 +1,144 @@
+<h1>dialog组件</h1>
+
+<h2>集成用法（<a href="index.html">详见demo页面</a>）</h2>
+
+<h4>引用+初始化</h4>
+
+<p><code>javascript
+    // 加载入口模块
+    seajs.use("dialog/0.2.0/dialog", function (Dialog) {
+        //全局装载模板
+        $dialog = new Dialog({ skin: 'skin1' });
+    });
+</code></p>
+
+<h4>alert 确认对话框</h4>
+
+<p><code>javascript
+  $dialog.alert('样式1', function () {
+            //alert('ok');
+        });
+</code></p>
+
+<h4>confirm 选择确认对话框</h4>
+
+<p><code>javascript
+  $dialog.confirm("确认样式1", function () {
+            //alert('ok');
+        }, function () {
+            //alert('cannel');
+        });
+</code></p>
+
+<h4>tooltip 提示对话框</h4>
+
+<p><code>javascript
+    $dialog.tooltip('tooltip 样式一',1000, function () {
+            //alert('ok');
+        });
+</code></p>
+
+<h4>modal模态框</h4>
+
+<p>```javascript
+ var config = {
+            type: 'div',
+            url: 'htmlpage.html',
+            title: '标题1'
+        };
+        _modal = $dialog.modal(config);</p>
+
+<pre><code>    _modal.show();
+</code></pre>
+
+<p>```</p>
+
+<h2>基础属性介绍</h2>
+
+<blockquote>
+  <p>type   : 内容呈现方式（html，div，iframe）默认html <br>
+  skin     : 皮肤（目前有skin1和skin2，待补充）<br>
+  template  : 重定义模板样式，设置项会覆盖已选skin样式                        <br>
+  url      : type为ifirame和div时有效                                <br>
+  content   : 内容，type=html时有效                       <br>
+  title    : 标题，为空时不显示标题                            <br>
+  titlestyle:   标题样式                                <br>
+  lock     :   是否锁定屏幕，阻塞模式                          <br>
+  mask     :  是否显示遮罩层                                   <br>
+  quickClose:   为true时触发快捷关闭对话框功能（esc或点击其他区域）<br>
+  width     :宽度                                         <br>
+  height        :高度                                 <br>
+  time      :关闭时间（毫秒），默认-1，大于0时触发定时关闭效果<br></p>
+</blockquote>
+
+<h2>常用方法</h2>
+
+<blockquote>
+  <p>show()：显示 <br />
+  hide()：隐藏 <br />
+  refresh()： 刷新内容 <br /></p>
+</blockquote>
+
+<h2>事件</h2>
+
+<blockquote>
+  <p>show <br />
+  hide <br />
+  close <br /></p>
+</blockquote>
+
+<h2>自定义模板介绍</h2>
+
+<h3>配置说明</h3>
+
+<p><code>javascript
+  var template = {
+                alert: {
+                    width: '宽度',
+                    height: '高度',
+                    html: '内容'
+                },
+                confirm: {
+                    width: '宽度',
+                    height: '高度',
+                    html: '内容'
+                },
+                tooltip: {
+                    width: '宽度',
+                    height: '高度',
+                    html: '内容'
+                },
+                modal: {
+                    width: '宽度',
+                    height: '高度',
+                    html: '内容'
+                }
+            };
+</code></p>
+
+<h3>内容特殊标记</h3>
+
+<blockquote>
+  <p>data-dialog-title:    标题        <br>
+  data-dialog-content:  内容    <br>
+  data-dialog-submit:   提交    <br>
+  data-dialog-hide: 隐藏        <br>
+  data-dialog-close:    关闭      <br>
+  data-dialog-drag: 拖动标记    <br>
+  data-dialog-arrows:箭头 <br></p>
+</blockquote>
+
+<h3>关于tooltip</h3>
+
+<p>tooltip附属函数</p>
+
+<p>/*
+  * 附着某元素，主要确定位置用
+  * @ele 可为选择器或者obj对象
+  * @triggertype 触发类型'click','hover' 默认为'click',
+  * @align  显示方位 top bottom left right
+  */</p>
+
+<blockquote>
+  <p>triggerShow(ele,triggertype,align)</p>
+</blockquote>

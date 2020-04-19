@@ -1,0 +1,118 @@
+.pagination {
+    display: inline-block;
+    font: 12px/20px Arial, SimSun;
+}
+.pagination li {
+    float: left;
+    list-style:none;
+}
+.pagination li a, .pagination li span {
+    float: left;
+    margin-left: 10px;
+}
+.pagination li a {
+    padding: 0 8px;
+    border: 1px solid #ddd;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    color: #999;
+}
+.pagination li span {
+    color: #333;
+}
+.pagination li:first-child a {
+    margin-left: 0;
+}
+.pagination li.active a, .pagination .active:hover a {
+    background-color: #8c96a2;
+    color: #fff;
+    font-weight: bold;
+    border-color: #8c96a2;
+    cursor: default;
+}
+.pagination a:hover {
+    background-color: #eceff2;
+}
+.pagination .prev a, .pagination .next a,
+.pagination .first-page a, .pagination .last-page a {
+    background: url(//js.40017.cn/cn/public/module/mPage/0.5/pageLinkGreen.png) no-repeat scroll 5px -352px transparent;
+}
+.pagination .prev a {
+    padding: 0 6px 0 17px;
+}
+.pagination .prev:hover a {
+    background-position: 5px -285px;
+}
+.pagination .prev.disabled a, .pagination .prev.disabled:hover a,
+.pagination .next.disabled a, .pagination .next.disabled:hover a,
+.pagination .first-page.disabled a, .pagination .first-page.disabled:hover a,
+.pagination .last-page.disabled a, .pagination .last-page.disabled:hover a {
+    background-color: #fff;
+    border-color: #ddd;
+    color: #ccc;
+    cursor: default;
+}
+.pagination .prev.disabled a, .pagination .prev.disabled:hover a {
+    background-position: 5px -175px;
+}
+.pagination .next a {
+    background-position: 47px -440px;
+    padding: 0 17px 0 6px;
+}
+.pagination .next:hover a {
+    background-position: 47px -258px;
+}
+.pagination .next.disabled a, .pagination .next.disabled:hover a {
+    background-position: 45px -22px;
+}
+.pagination .first-page a {
+    background-position: 5px -394px;
+    padding: 0 6px 0 19px;
+}
+.pagination .first-page:hover a {
+    background-position: 5px -310px;
+}
+.pagination .first-page.disabled a, .pagination .first-page.disabled:hover a {
+    background-position: 6px -205px;
+}
+.pagination .last-page a {
+    background-position: 35px -486px;
+    padding: 0 19px 0 6px;
+}
+.pagination .last-page:hover a {
+    background-position: 35px -234px;
+}
+.pagination .last-page.disabled a, .pagination .last-page.disabled:hover a {
+    background-position: 35px 4px;
+}
+.pagination li span {
+    float: left;
+}
+.pagination .jump-wrapper a {
+    margin-left: 10px;
+    color: #333;
+}
+.pagination .jump-wrapper input, .pagination .jump-wrapper button {
+    font: 12px Arial, SimSun;
+    -webkit-appearance: none;
+    vertical-align: center;
+}
+.pagination .jump-wrapper input {
+    height: 20px;
+    border: 1px solid #ddd;
+    text-align: center;
+    width: 36px;
+    margin: 0 3px;
+    color: #333;
+}
+.pagination .jump-wrapper button {
+    margin-left: 10px;
+    height: 22px;
+    border: none;
+    width: 42px;
+    border-radius: 2px;
+    background: #8ab923;
+    color: #fff;
+    cursor: pointer;
+}

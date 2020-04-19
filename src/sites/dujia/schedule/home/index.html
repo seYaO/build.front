@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{var it = IT;}}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>提交旅游计划表_旅游行程安排_同程旅游</title>
+    <meta id="Keywords" content="旅游计划表，旅游行程安排" />
+    <meta id="Description" content="同程旅游提供：公司旅游，消夏游，年会游，度假游，拓展游，奖励游，公关游，会议游。提交旅游计划表，安排您想要去的地方。要旅游，选择有保障的同程旅游！" />
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+    <% includeId = cnwidescreenjscss %>
+    <!--当前样式表 -->
+    <!--<link rel="stylesheet" href="index.css">-->
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+</head>
+
+<body>
+<!-- 公共头部 开始 -->
+<% includeId = cnwidescreenhead?channel=dujia %>
+<!-- 公共头部 结束 -->
+
+<div class="wrapper">
+  <div class="content">
+      <input type="hidden" value='{{=it.CityID || "226"}}' id="hidCityId">
+    <!--<div class="nav">
+      <span>您所在位置：</span> <a href="/" title="同程首页" target="_blank">同程首页</a> <span class="font_999">&gt;</span> <a
+      href="/dujia/" title="出境游" target="_blank">出境游</a>
+      <span>&gt;</span>
+
+      <h1>出境定制</h1>
+    </div>-->
+    <div class="team-top">
+        <div class="team-middle">
+            <div class="team-middle-btn">
+                <a class="team-btn J_ScheduleBtn">私人定制</a><a class="team-btn J_ScheduleBtn">公司定制</a>
+            </div>
+        </div>
+    </div>
+    <div class="team-flow">
+        <ul class="team-flow-icon clearfix">
+            <li>
+                <em class="team-demand"></em>
+            </li>
+            <li>
+                <em class="team-route"></em>
+            </li>
+            <li>
+                <em class="team-pay"></em>
+            </li>
+            <li class="team-flow-last">
+                <em class="team-tour"></em>
+            </li>
+        </ul>
+        <ul class="team-flow-desc clearfix">
+            <li>
+                <p>填写需求单</p>
+                <p>Fill a travel order</p>
+            </li>
+            <li>
+                <p>定制行程</p>
+                <p>Custom travel</p>
+            </li>
+            <li class="team-flow-third">
+                <p>签约付款</p>
+                <p>Contract payment</p>
+            </li>
+            <li class="team-flow-last">
+                <p>快乐出游</p>
+                <p>Happy travel</p>
+            </li>
+        </ul>
+    </div>
+    <div class="team-module">
+        <div class="team-content team-realize">
+            <div class="team-realize-content" id="write_info">
+                <div class="team-title">
+                    <h3>您的需求我们实现</h3>
+                    <div>Your needs we achieve</div>
+                    <div class="team-line"></div>
+                </div>
+                <div class="team-table">
+                    <div class="team-table-head team-table-info">
+                        <ul class="team-table-lists clearfix">
+                            <li class="team-list">
+                                <div class="team-list-step team-list-info">1</div>
+                                基本信息
+                            </li>
+                            <li class="team-list">
+                                <div class="team-list-step team-list-special">2</div>
+                                特色定制
+                            </li>
+                            <li class="team-list">
+                                <div class="team-list-step team-list-contact">3</div>
+                                联系人信息
+                            </li>
+                        </ul>
+                        <div class="t-bot"><span class="t-sbot"></span></div>
+                    </div>
+                    {{#def.basicInfo}}
+                    {{#def.special}}
+                    {{#def.contactInfo}}
+                </div>
+            </div>
+        </div>
+        <div class="team-content team-recommend">
+            <div class="team-recommend-content">
+                <div class="team-title">
+                    <h3>热门推荐</h3>
+                    <div>Popular Recommended</div>
+                    <div class="team-line"></div>
+                </div>
+                <div class="team-table">
+                    <a href="/dujia/dongjing235-gentuan/" target="_blank" class="team-list-url team-jp"></a>
+                    <a href="/dujia/xianggang231-gentuan/" target="_blank" class="team-list-url team-hk"></a>
+                    <a href="/dujia/haidao-lvyou/" target="_blank" class="team-list-url team-sea team-hd"></a>
+                    <a href="/dujia/dongnanya3039-gentuan/" target="_blank" class="team-list-url team-list team-mg"></a>
+                    <a href="/dujia/ouzhou-lvyou/" target="_blank" class="team-list-url team-list team-ep"></a>
+                    <a href="/dujia/aodaliya293-gentuan/" target="_blank" class="team-list-url team-list team-hg"></a>
+                </div>
+            </div>
+        </div>
+        <div class="team-content team-choose">
+            <div class="team-choose-content">
+                <div class="team-title">
+                    <h3>为什么选我们</h3>
+                    <div>Why choose us ?</div>
+                    <div class="team-line"></div>
+                </div>
+                <div class="team-table">
+                    <ul class="clearfix">
+                        <li>
+                            <span class="team-personal"></span>
+                            <dl>
+                                <dt><em>个性</em>化定制</dt>
+                                <dd>专属体验，深入了解需求量身定制出游方案</dd>
+                            </dl>
+                        </li>
+                        <li class="team-right">
+                            <div>
+                                <span class="team-intimate"></span>
+                                <dl>
+                                    <dt><em>贴心</em>服务</dt>
+                                    <dd>专业的定制团队，一对一专属服务，想你所想</dd>
+                                </dl>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="team-sunshine"></span>
+                            <dl>
+                                <dt><em>阳光</em>透明</dt>
+                                <dd>品牌保证，统一采购，避免价格陷阱，保障出行体验</dd>
+                            </dl>
+                        </li>
+                        <li class="team-right">
+                            <div>
+                                <span class="team-outing"></span>
+                                <dl>
+                                    <dt><em>卓越</em>品质</dt>
+                                    <dd>对旅游线路、景点、酒店、餐饮、航班等精挑<br />细选，品质保证</dd>
+                                </dl>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+        
+  </div>
+</div>
+
+<!-- 公共页脚 开始 -->
+<% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+<!-- 公共页脚 结束 -->
+<!-- timing begin -->
+<!-- timing end -->
+
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015103002"></script><!--ignore-->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2015072201" charset="utf-8"></script>
+<script src="/modules/sea.js" data-loader="true" type="text/javascript"></script>
+<script type="text/javascript">
+    seajs.require("./index").init();
+</script>
+</body>
+
+</html>

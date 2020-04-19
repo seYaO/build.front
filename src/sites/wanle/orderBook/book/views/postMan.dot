@@ -1,0 +1,81 @@
+<!--邮寄信息开始-->
+{{var ReceiveType = data.SubmitDetail.ReceiveType;}}
+{{? ReceiveType == 3 || ReceiveType == 6}}
+    <div class="mail_place clearfix" id="mail_place">
+        <h2 class="pro_title">邮寄信息</h2>
+        <div class="look_btn postLogin">
+            <a class="look_all look_all_up " href="javascript:;">查看全部</a>
+            <i class="point_down"></i>
+        </div>
+        <div class="mail-info-table">
+            <div class="postLogin none">
+                <div class="write_list ">
+                    <label class="ui-label"><span class="required">*</span>邮寄地址：</label>
+
+                    <div class="select_address height_address">
+                        <div class="" id="select_address_list">
+                            <div class="select_address" id="selfInputAddrDiv">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="write_address" style="margin-top: -10px;">
+                    <div class="handInput_address">
+                        <label class="piaocheckedTwo on_check">
+                            <input class="ui-radio" type="radio" name="postchk" checked="checked" id="selfInputAddr" />
+                        </label>
+                        <label for="selfInputAddr">手动输入收货地址</label>
+                    </div>
+
+                </div>
+            </div>
+            <div class="postUnLogin none">
+                <div class="write_list">
+                    <label class="ui-label"><span class="required">*</span>邮寄地址：</label>
+                    <div class="select_address ">
+                        <label class="piaochecked on_check">
+                            <input class="ui-radio ui-radio-sex" type="radio" name="sex0" checked="checked">
+                        </label>
+                        <label>手动输入收货地址，立即<a href="javascript:;" class="orderLogin">登录</a>，快速选择您的常用邮寄信息</label>
+                    </div>
+                </div>
+
+            </div>
+            <div class="write_list">
+                <label class="ui-label"><span class="required">*</span>姓名：</label>
+                <input id="postperson" class="ui-input inputBeforeSubmitChk" maxlength="26" attr-value="请填写收件人姓名" type="text" value="请填写收件人姓名" />
+                <span class="valid_symbol none">收件人姓名不能为空</span>
+            </div>
+            <div class="write_list">
+                <label class="ui-label"><span class="required">*</span>手机号码：</label>
+                <input id="postmobile" class="ui-input inputBeforeSubmitChk" attr-value="请填写手机号码" maxlength="20" type="text" value="请填写手机号码" />
+                <span class="valid_symbol none">手机号码不能为空</span>
+            </div>
+            <div class="province_city">
+                <label class="ui-label"><span class="required">*</span>配送地址：</label>
+
+                <div class="select_box">
+                    <div id="provinceqg" class="addr_type" value="0">请选择省</div>
+                    <ul id="proList" class="none block"></ul>
+                </div>
+
+                <div class="select_box">
+                    <div id="city" class="addr_type" value="0">请选择市</div>
+                    <ul id="cityList" class="none block"></ul>
+                </div>
+                <div class="select_box">
+                    <div id="district" class="addr_type" value="0">区/县</div>
+                    <ul id="trictList" class="none block"></ul>
+                </div>
+                <span class="valid_symbol none ">*请选择配送地址</span>
+            </div>
+            <div class="write_list">
+                <label class="ui-label"><span class="required">*</span>详细地址：</label>
+                <input id="postaddress" class="ui-input inputBeforeSubmitChk" maxlength="80" attr-value="请填写详细地址 例：裕新路188号" type="text" value="请填写详细地址 例：裕新路188号" />
+                <span class="valid_symbol none">详细地址不能为空</span>
+            </div>
+        </div>
+    </div>
+{{?}}
+

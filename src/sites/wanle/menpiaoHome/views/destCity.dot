@@ -1,0 +1,28 @@
+{{var cityPro = data.PublicProductSearchResponseDic.destJingXuan[0];}}
+<div class="pro-list">
+ {{? cityPro.LineList && cityPro.LineList.length > 0}}
+    <ul class="J_proList_Hongkong" trackkit="Line_Recommend">
+         {{~ cityPro.LineList:product:index}}
+         {{? index < 8}}
+            <li class="pro-line">
+                <a target="_blank" title="{{=product.Title}}" href="/dujia/wanle/{{=product.Id}}.html" trace="dest_prolist_{{=index}}" trackspot="{{=product.Id}}^{{=index+1}}^香港^热门目的地">
+                    <div class="pro-img">
+                        {{ product.ImgUrl = product.ImgUrl.replace('.jpg','_430x270_00.jpg');}}
+                        <img src="{{=product.ImgUrl.replace('http:','')}}" alt="{{=product.Title}}" />
+                        <p class="mainTitle"><span>{{=product.Title}}</span></p>
+                    </div>
+                    <div class="pro-intro">
+                        <span class="subTitle">{{=product.SubTitle}}</span>
+                        <p class="extra">
+                            <span class="money">
+                                <label>¥<b>{{=product.MinTcPrice}}</b><em>起</em></label>
+                            </span>
+                        </p>
+                    </div>
+                </a>
+            </li>
+         {{?}}
+        {{~}}
+    </ul>
+{{?}}
+</div>

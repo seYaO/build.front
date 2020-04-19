@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+{{var it = IT.Data;}}   
+{{var info = it.productDetail;}}
+{{var price_info = it.productDetail.PriceInfo[0];}}
+{{var recommendList = it.recoPro;}}
+{{var ProductType = info.ProductType;}}
+{{var ProductCategory = info.ProductCategory;}}
+
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn" />
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _hmt = _hmt || [];
+        var _tcHotmapx = { pid: 212, sp: 100 };
+    </script>
+    <title>产品详情</title>
+    <!-- 公共样式表 -->
+    <link href="http://css.40017.cn/touch/public/common/0.2.2/common.css?v=07121702" rel="stylesheet" /><!--ignore-->
+    <script src="/modules-lite/mod.js" data-loader="true"></script>
+    <!-- 页面样式表 -->
+
+</head>
+
+<body onselectstart="return false;">
+<!-- 页面内容块 -->
+
+<div class="page-body">
+    <div class="page-box" id="J_pageBox">
+        <div id="mainPage" class="viewport">
+                {{?(ProductType == 9 && ProductCategory == 91) || (ProductType == 9 && ProductCategory == 93)}}
+                    <a class="call_here" href="http://livechat.ly.com/out/robotservice/robottouch?p=24&sourcetype=16&type=0&pageid=0&pagetype=0"></a>
+                {{?}}
+
+                {{#def.list}}
+               
+                <section class="comment_part">
+                    <div class="comment-list border-top">
+                        <div class="comment-content J_comment_info"></div>
+                    </div>
+                </section> 
+            
+                {{#def.productInfo}}    
+                {{#def.getaddress}}
+               
+                {{?ProductType == 9 && ProductCategory == 92}}
+                <section class="fee_info">
+                    <div class="part_title title4"><i></i>费用说明</div>
+                    <div class="info_detail">
+                        {{?info.WifiIntroduction}}
+                        {{?info.WifiIntroduction.Rent !=""}}
+                            <p><em>*</em><strong>租金</strong><br/>{{=info.WifiIntroduction.Rent}}</p>
+                        {{?}}
+
+                        {{?info.WifiIntroduction.Deposit !=""}}
+                            <p><em>*</em><strong>押金</strong><br/>{{=info.WifiIntroduction.Deposit}}</p>
+                        {{?}}
+                        {{?info.WifiIntroduction.ReNew !=""}}
+                            <p><em>*</em><strong>续租</strong><br/>{{=info.WifiIntroduction.ReNew}}</p>
+                        {{?}}
+                        
+                        {{?info.WifiIntroduction.Refund !=""}}
+                            <p><em>*</em><strong>退改</strong><br/>{{=info.WifiIntroduction.Refund}}</p>
+                        {{?}}
+                        {{?}}
+                    </div>    
+                </section>
+                {{?}}
+
+                {{?ProductType == 9 && ProductCategory == 92}}
+                <section class="use_info">
+                    <a href="/localfun/wanle/detailnotice_{{=info.ProductId}}.html?wvc1=1&wvc2=1"><div class="part_title title5"><i></i>使用说明<span></span></div></a>
+                </section>
+                {{?}}
+
+                {{?ProductType == 9 && ProductCategory == 92}}
+                <section class="book_part">
+                    <a href="//livechat.ly.com/out/guest/touch?p=24&source=16">咨询客服</a>
+                    <a class="book_btn" href="{{=info.PriceInfo[0].priceDetail[0].BookUrl}}&tcwvclogin&memberid=tcwvmid">立即预订</a>
+                </section>
+                {{?}}
+
+                {{?(ProductType == 9 && ProductCategory == 91) || (ProductType == 9 && ProductCategory == 93)}}
+                   <section class="use_info">
+                        <div class="part_title title5"><i></i>预订须知<a href="/localfun/wanle/detailnotice_{{=info.ProductId}}.html?wvc1=1&wvc2=1"><span></span></a></div>
+                        <div class="device_detail">
+                            {{?info}}
+                                {{var notice = info.NoticeDetail;}}
+                                {{var newNotice = notice.NewNoticeInfo;}}
+                                
+                                {{?newNotice.CostInclude}}
+                                    <p><span><em>*</em><strong>费用包含</strong></span><br/>{{=newNotice.CostInclude}}</p>
+                                {{?}}
+                                {{?newNotice.CostNoInclude}}
+                                    <p><span><em>*</em><strong>费用不包含</strong></span><br/>{{=newNotice.CostNoInclude}}</p>
+                                {{?}}
+                                {{?newNotice.Direction}}
+                                    <p><span><em>*</em><strong>使用方法</strong></span><br/>{{=newNotice.Direction}}</p>
+                                {{?}}
+                            {{?}}
+
+                        </div>
+                   </section> 
+                {{?}}
+
+                {{?it.IsCanSell}}
+                <div class="pop J_pop">该产品已下架</div>
+                {{?}}
+        </div>
+    </div>
+</div>
+<input type="hidden" id="productId" value="{{=info.ProductId}}">
+
+<div id="wxShare" style="display: none;">
+<input type="hidden" name="tcshareurl" value="http://wx.17u.cn/localfun/wanle/{{=info.ProductId}}.html?wvc1=1&amp;wvc2=1">
+<input type="hidden" name="tcshareimg" value="{{=info.ImgUrl.replace("_450x250_00", "_90x90_00")}}">
+<input type="hidden" name="tcsharetext" value="{{=info.MainTitle}}">
+<input type="hidden" name="tcDesc" value="海外玩乐，出境必备-同程旅游">
+</div>
+
+<!-- 公共页脚 -->
+
+<script type="text/javascript" charset="utf-8" src="//wx.40017.cn/touch/min/??/touch/weixin/public/js/comQdid.js"></script>
+<script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '10003-2027-0']);
+        _tcq.push(['_refId', 107075804]);
+        _tcq.push(['_userId', "{{=it.UserId || 0}}"]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '{{=it.OpenId ||""}}||微信/玩乐/海外玩乐']);
+    </script>
+
+<link href="http://css.40017.cn/touch/c/public/innerComment/0.0.1/innerComment.css?v=20150615001" rel="stylesheet" type="text/css"/> <!--ignore-->
+<script src="http://js.40017.cn/touch/public/common/0.0.8/common.js?v=20150618001"></script>
+<script src="http://js.40017.cn/touch/v/2015/zt/2016/30680/iscroll.02294.js"></script>
+<script>
+        try {
+            var PVJson = {
+                "PublicPlatId": 661,
+                "PageId": 1,
+                "RefId": 107075804,
+                "LineId": "12195",
+                "TravelDate": "1900-01-01",
+                "ActivityId": 0,
+                "ActivityPeriodId": 0,
+                "LoginKey": "",
+                "UserId": "0",
+                "UserIp": "172.16.6.105",
+                "ModuleId": 0,
+                "PVSource": 0,
+                "StartCityId": "0",
+                "EndCityId": "0",
+                "TagPageId": 1,
+                "SearchPlatId": 1,
+                "ProductTagId": 1234567890
+            };
+
+            $.ajax({
+                type: 'post',
+                url: 'http://intervacationapi.17usoft.com/commonwebapi/pageview/SavePageViewHandler.ashx?param=' + encodeURI(JSON.stringify(PVJson)),
+                dataType: 'json',
+                timeout: 300,
+                context: $('body'),
+                success: function (data) {
+                },
+                error: function (error) {
+                }
+            });
+        }
+        catch (e) {
+
+        }
+    </script>
+<script>
+    var Detail = require("./index");
+    Detail.init();
+    // _tcq.push(['_resId', 12195]);
+</script>
+
+<script type='text/javascript' src="http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+</body>
+
+</html>

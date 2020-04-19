@@ -1,0 +1,27 @@
+.ly_intelsearch {
+  width: 100%;
+  height: auto;
+  float: left;
+  position: relative;
+  line-height: 30px;
+}
+.ly_intelsearch .intelsearch_item {
+  width: 100%;
+  height: 30px;
+  text-indent: 20px;
+  display: block;
+  cursor: pointer;
+}
+.ly_intelsearch .intelsearch_item.select {
+  background-color: #fff3ea;
+}
+.ly_intelsearch .intelsearch_tip {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  width: auto;
+  height: 30px;
+}
+.ly_intelsearch .intelsearch_tip .count {
+  color: #ff6a00;
+}

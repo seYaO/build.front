@@ -1,0 +1,167 @@
+{{?it.Data.visaInfo}}
+    <div class="visaInfo">
+        <ul >
+            <li >办签国家：
+                <span class="visaCountry">
+                    <span>{{=it.Data.visaInfo.CountryName}}</span>
+                </span>
+            </li>
+        </ul>
+        <ul class="visaInfos">
+            <li>签证类型：
+                <span>{{=it.Data.visaInfo.VisaTypeName}}</span>
+            </li>
+            <li class="none J_Interview">是否面试：<span></span></li>
+            <li class="J_visaTime">办理时长：
+                <span>送签后{{=it.Data.visaInfo.Days}}个工作日</span>
+            </li>
+            <li>受理范围：
+                <span>{{=it.Data.visaInfo.RegionName}}领区</span>
+            </li>
+            {{?it.Data.visaInfo.Notice&&it.Data.visaInfo.Notice!=""}}
+            <li class="tip_import"><em>重要提醒：</em>
+                <span>{{=it.Data.visaInfo.Notice.replace(/\r\n/g,"<br />")}}</span>
+                <a class="J_showImport" href="javascript:void(0);">展开</a>
+            </li>
+            {{?}}
+        </ul>
+        <a class="btn-email none">Email材料</a>
+    </div>
+    <div class="visasource-time none">
+        <p>材料收取截止时间：</p>
+        <div class="visasource-content">
+            <div class="visasource-content-title">
+                <span class="visasource-col-1">出发班期</span>
+                <span class="visasource-col-2">截止收取材料时间</span>
+                <span class="visasource-col-3">出发班期</span>
+                <span class="visasource-col-4">截止收取材料时间</span>
+            </div>
+            <div class="visasource-content-main clearfix">
+                <ul>
+
+                </ul>
+            </div>
+        </div>
+        <div><span class="togglemore open">展开全部信息</span></div>
+    </div>
+    {{?it.Data.visaInfo.PersonTypes && it.Data.visaInfo.PersonTypes.length}}
+        <div class="moduleInfo-name">
+            <i class="ziyou-right-arrow"></i>
+            <span>所需材料</span>
+        </div>
+        <div class="visa-item" continent-id="{{=it.Data.visaInfo.ContinentId}}" country-id="{{=it.Data.visaInfo.CountryId}}" visa-id="{{=it.Data.visaInfo.VisaTypeId}}" region-id="{{=it.Data.visaInfo.RegionId}}">
+            <ul class="nav-tab J_visaPersonType clearfix">
+                {{var person = it.Data.visaInfo.PersonTypes;var len = it.Data.visaInfo.PersonTypes.length;}}
+                {{for(var j=0;j< len;j++){ }}
+                    {{?person[j].TypeName && person[j].TypeName!=""}}
+                        <li {{?j==0}}class="current"{{?}}>{{=person[j].TypeName}}</li>
+                    {{?}}
+                {{ } }}
+            </ul>
+            <div class="visa-details ">
+                {{?it.Data.visaInfo.MaterialByType && it.Data.visaInfo.MaterialByType.length != 0}}
+                    {{~it.Data.visaInfo.MaterialByType:materialbytype:mIndex}}
+                        <div class="visa-material {{?mIndex != 0}}none{{?}}">
+                            {{var item = materialbytype.Materials;}}
+                            {{
+                                var len1 = 0,len2 = 0;
+                                for(var i=0;i<item.length;i++){
+                                    if(item[i].IsNecessary == 1){
+                                        len1 ++;
+                                    }else{
+                                        len2 ++;
+                                    }
+                                }
+                            }}
+                            {{?len1>0}}
+                            <div class="J_mustInfo">
+                                <table class="mustInfo">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="3">必须提供（共{{=len1}}项）</th>
+                                        </tr>
+                                        {{~materialbytype.Materials:item}}
+                                            {{?item.IsNecessary == 1}}
+                                                <tr>
+                                                    <td class="lefttd">{{=item.MaterialName}}</td>
+                                                    <td class="midtd grayword">{{=item.MaterialDescription.replace(/\n/g,'<br>')}}</td>
+                                                    <td class="righttd">
+                                                    {{?item.SampleUrls && item.SampleUrls.length !=0}}
+                                                        {{var piclen =  item.SampleUrls.length;}}
+                                                        <span class="onjob-sample" alt="{{=item.MaterialName}}"
+                                                        data-title='{{for(var i=0;i<piclen;i++){ }}
+                                                        {{=item.MaterialName+"样本&"}}
+                                                        {{ } }}'
+                                                        data-content='{{for(var i=0;i<piclen;i++){ }}
+                                                        {{=item.MaterialDescription + "&"}}
+                                                        {{ } }}'
+                                                        data-url='
+                                                        {{for(var i=0;i<piclen-1;i++){ }}
+                                                        {{=item.SampleUrls[i] +","}}
+                                                        {{ } }}
+                                                        {{=item.SampleUrls[piclen-1]}}'>查看图样</span>
+                                                     {{?}}
+                                                    </td>
+                                                </tr>
+                                            {{?}}
+                                        {{~}}
+                                    </tbody>
+                                </table>
+                            </div>
+                                {{?len1>3}}
+                                    <div><span class="togglemore open">展开全部信息</span></div>
+                                {{?}}
+                            {{?}}
+                            {{?len2>0}}
+                            <div class="J_noMustInfo">
+                                <table class="noMustInfo">
+                                    <tbody>
+                                        <tr>
+                                            <th colspan="3">酌情提供（共{{=len2}}项）<span style="color:red">*可视个人实际情况酌情提供，提供越多越有利于出签</span></th>
+                                        </tr>
+                                        {{~materialbytype.Materials:item}}
+                                            {{?item.IsNecessary == 0}}
+                                                <tr>
+                                                    <td class="lefttd">{{=item.MaterialName}}</td>
+                                                    <td class="midtd grayword">{{=item.MaterialDescription}}</td>
+                                                    <td class="righttd">
+                                                    {{?item.SampleUrls && item.SampleUrls.length !=0}}
+                                                        {{var piclen =  item.SampleUrls.length;}}
+                                                        <span class="onjob-sample" alt="{{=item.MaterialName}}"
+                                                        data-title='{{for(var i=0;i<piclen;i++){ }}
+                                                        {{=item.MaterialName+"样本&"}}
+                                                        {{ } }}'
+                                                        data-content='{{for(var i=0;i<piclen;i++){ }}
+                                                        {{=item.MaterialDescription + "&"}}
+                                                        {{ } }}'
+                                                        data-url='
+                                                        {{for(var i=0;i<piclen-1;i++){ }}
+                                                        {{=item.SampleUrls[i] +","}}
+                                                        {{ } }}
+                                                        {{=item.SampleUrls[piclen-1]}}'>查看图样</span>
+                                                     {{?}}
+                                                    </td>
+                                                </tr>
+                                            {{?}}
+                                        {{~}}
+                                    </tbody>
+                                </table>
+                            </div>
+                                {{?len2>3}}
+                                <div><span class="togglemore open">展开全部信息</span></div>
+                                {{?}}
+                            {{?}}
+                        </div>
+                    {{~}}
+                {{?}}
+            </div>
+        </div>
+    {{?}}
+    <div class="moduleInfo-name none">
+        <i class="ziyou-right-arrow"></i>
+        <span>其他注意事项</span>
+    </div>
+    <div class="visaOther-tips">
+        
+    </div>
+{{?}}

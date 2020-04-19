@@ -1,0 +1,69 @@
+<div class="ui-hotSearch" trace="trace_hotSearch">
+    <h1>选择国家/地区</h1>
+    <div class="ui-hotSearch-box ">
+        {{?VisaLabel && VisaLabel.length>0}}
+            <ul class="J_hotSearch-box" trackkit="Category_destination">
+                {{var leng = VisaLabel.length;}}
+                {{~VisaLabel:countryList:Lindex}}
+                    <li class="clearfix">
+                        <div class="ui-hotSearch-box-main {{?leng==Lindex+1}} no-border{{?}}" >
+                            <div class="ui-icon-normal{{=Lindex+1}} J_ui-icon"></div>
+                            <div class="ui-hotCities">
+                                <p>
+                                    <a target="_blank" trace="continent_{{=Lindex+1}}" trackspot="{{=countryList.ContName}}^外显^{{=Lindex+1}}" href="/dujia/visa/country-{{=countryList.ContinentEnName}}.html">{{=countryList.ContName}}</a>
+                                </p>
+                                <dl>
+                                    <dd>
+                                        {{
+                                            var dataList  = [],
+                                                lengList = countryList.LabelDetails;
+                                        }}
+                                        {{
+                                            for(i=0;i<lengList.length;i++){
+                                                if(countryList.LabelDetails[i].HotVisa == 1){
+                                                    dataList.push(countryList.LabelDetails[i]);
+                                                }
+                                            }
+                                        }}
+                                        {{?dataList&&dataList.length>0 }}
+                                            {{~dataList:dataValue:Rindex}}
+                                                {{?Rindex<4}}
+                                                    <a href="/dujia/visa/country-{{=dataValue.IVREnName}}.html" trackspot="{{=dataValue.CountryName}}^外显^{{=Lindex+1}}" target="_blank" title="{{=dataValue.CountryName}}" trace="hotcountry_{{=Lindex+1}}_{{=Rindex+1}}">
+                                                        {{=dataValue.CountryName}}
+                                                    </a>
+                                                {{?}}
+                                            {{~}}
+                                        {{?}}
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <div class="ui-hotCities-more">
+                            <div class="ui-hotCities-more-title">
+                                <p>{{=countryList.ContName}}</p>
+                            </div>
+                            <dl class="ui-hotCity-lists">
+                                {{?countryList.LabelDetails && countryList.LabelDetails.length>0}}
+                                    {{~countryList.LabelDetails:itemList:Dindex}}
+                                        {{var Durl = "/dujia/visa/country-"+ itemList.IVREnName + ".html";}}
+                                        {{?itemList.HotVisa == 1}}
+                                            <dd>
+                                                <a href="{{=Durl}}" target="_blank" title="{{=itemList.CountryName}}" style="color:#f60;" trackspot="{{=itemList.CountryName}}^hover^{{=Lindex+1}}" trace="country_{{=Lindex+1}}_{{=Dindex+1}}">{{=itemList.CountryName}}</a>
+                                            </dd>
+                                        {{??}}
+                                            {{?itemList.CountryName != "中国" && itemList.CountryName != "香港" && itemList.CountryName != "中国香港" && itemList.CountryName != "澳门" && itemList.CountryName != "中国澳门"}}
+                                                <dd>
+                                                    <a href="{{=Durl}}" target="_blank" title="{{=itemList.CountryName}}" trackspot="{{=itemList.CountryName}}^hover^{{=Lindex+1}}" trace="country_{{=Lindex+1}}_{{=Dindex+1}}">{{=itemList.CountryName}}</a>
+                                                </dd>
+                                            {{?}}
+                                        {{?}}
+                                    {{~}}
+                                {{?}}
+                            </dl>
+                        </div>
+                    </li>
+                {{~}}
+            </ul>
+        {{?}}
+    </div>
+</div>

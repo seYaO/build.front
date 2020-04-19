@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html trace="wanle-pc-dangdilabel">
+{{var data = IT.Data;}}
+{{?data.AreaInfo && data.AreaInfo != undefined}}
+    {{var destName = data.AreaInfo.AreaName;}}
+    {{var destPinYin = data.AreaInfo.AreaPinYin;}}
+{{?}}
+{{var startCityId = 321;}}
+{{var startCityName = "上海";}}
+{{var dataType = 3;}}
+{{var totalCount = 0;}}
+{{var silderbar = data.HotDestDic.sideNavBarner.HotProductList;}}
+{{var rightBanner = data.HotDestDic.sideHotBarner;}}
+{{var hotList = data.PublicProductSearchResponseDic.sideHotProduct;}}
+{{var hotSearchList = data.HotDestDic.hotSearchKeyWord.HotProductList;}}
+{{var dataYear = data.CurrentDate.split("-")[0];}}
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{=destName}}当地玩乐_ {{=destName}}玩乐路线价格_{{=dataYear}} {{=destName}}旅游玩乐多少钱-同程旅游</title>
+    <meta name="description" content="同程出境跟团游为您提供跟{{=destName}}当地玩乐, {{=destName}}玩乐路线价格, {{=destName}}旅游玩乐多少钱等,精选{{=destName}}当地玩乐路线, {{=destName}}玩乐路线价格当然选同程{{=destName}}旅游。">
+    <meta name="keywords" content="{{=destName}}旅游, {{=destName}}当地玩乐, {{=destName}}玩乐路线, {{=destName}}旅游玩乐多少钱">
+    {{?destPinYin}}
+    <link rel="canonical" href="//www.ly.com/dujia/wanle/{{=destPinYin}}-dangdi/" />
+    {{?}}
+    <% includeId = cnwidescreenjscss %>
+
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/v/2015/startList/starList.04235.css?v=20150423" media="screen">
+    <!--<link rel="stylesheet" type="text/css" href="//js.40017.cn/cn/v/wanle/2015/jqmodules/slidertoolbar/0.1.0/index.css">-->
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/v/wanle/2015/proLists/search.12235.css">
+    <script type="text/javascript" src="//modules/jquery.js" data-loader="true"></script><!--ignore-->
+    <link rel="stylesheet" type="text/css" href="../search.css">
+</head>
+<body>
+<!--公共头部start-->
+<% includeId = cnwidescreenhead?channel=dujia %>
+<!--公共头部end-->
+
+<!--搜索start-->
+<div id="J_search" class="search">
+    <div class="SortBox_main">
+        <div class="SortBox_left none">
+            <a class="SortBox_a other_a current" data-role="recommend">
+                <em>推荐</em>
+            </a>
+            <a class="SortBox_a" data-role="price" data-sort="1">
+                <em>价格<i></i></em>
+            </a>
+            <a class="SortBox_a other_a" data-role="hot" data-sort="1">
+                <em>销量<i></i></em>
+            </a>
+        </div>
+        <div class="SortBox_center">
+            <div class="search_main">
+                <div class="search_box">
+                    <div class="cj_search">
+                        {{#def.searchbox}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="SortBox_right none">
+            <div class="sortKey" data-key="reserve"><a href="javascript:void(0);" class="SortBox_add" data-id="1"><span><i></i>可订今日</span></a></div>
+            <div class="sortKey" data-key="dischannel"><a href="javascript:void(0);" class="SortBox_add" data-id="1"><span><i></i>可享优惠</span></a></div>
+        </div>
+    </div>
+</div>
+<div class="dotline"></div>
+<input type="hidden" id="propertyFd" value="3">
+<input type="hidden" id="nameFd" value="玩乐">
+<!--搜索end-->
+
+<!--主内容start-->
+<div class="both">
+    <div class="content">
+        <div class="bread">
+            <p>您所在位置：<a href="/dujia/wanle/">海外玩乐首页</a>
+                &gt;{{=destName}}旅游
+            </p>
+        </div>
+        <div class="content_main">
+            <div class="main-right lazyimgload">
+                {{#def.hot}}
+            </div>
+            {{var tabAll = data.PublicProductSearchResponseDic.curSearchSingTypeCount;}}
+            {{var proAll = data.PublicProductSearchResponseDic.mainSearch;}}
+
+            <div class="main-left lazyimgload">
+                 {{? tabAll && tabAll[0] && tabAll[0].SingleTypeList && proAll && proAll[0] && proAll[0].LineList}}
+                    {{? tabAll[0].SingleTypeList !="" && tabAll[0].SingleTypeList.length > 0}}
+                        {{var tabList = tabAll[0].SingleTypeList;}}
+                        <div class="searchWrap" id="searchWrap">
+                            {{#def.searchtab}}
+                            {{#def.searchconthree}}
+                        </div>
+                    {{?}}
+                    {{var proList = proAll[0].LineList;}}
+                    {{#def.wanleproduct}}
+                {{??}}
+                <div id="J_pro_no_main" class="pro_no_main">
+                    <div class="pro_no_tip">
+                        <i></i>没找到{{=destName}}的当地玩乐,为您推荐其他目的地！
+                    </div>
+                    <dl class="pro_no_hot">
+                        <dt><i></i>热门目的地</dt>
+                        <dd class="clearfix">
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/泰国.html">泰国</a></div>
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/日本.html">日本</a></div>
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/港澳.html">港澳</a></div>
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/巴厘岛.html">巴厘岛</a></div>
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/欧洲.html">欧洲</a></div>
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/美国.html">美国</a></div>
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/澳大利亚.html">澳大利亚</a></div>
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/迪拜.html">迪拜</a></div>
+                            <div class="item"><a href="/dujiatag/wanlesearchlist/普吉岛.html">普吉岛</a></div>
+                        </dd>
+                    </dl>
+                </div>
+                {{?}}
+
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>
+
+<!--侧边栏 start-->
+{{#def.silderbar}}
+<!--侧边栏 end-->
+<div id="SilderEwm" class="none"><img src="//img1.40017.cn/cn/v/wanle/2015/sceneryIndex/ewm.png"></div>
+<input id="destName" type="hidden" value="{{=destName}}">
+<input id="startCityId" type="hidden" value="{{=startCityId}}">
+<input id="startCityName" type="hidden" value="{{=startCityName}}">
+<input type="hidden" id="repleaceType" value="//www.ly.com/wanle/api/WanleProduct/GetPublicProductSearchData?siteType=0&">
+<input type="hidden" id="matchDest" value="/wanle/AjaxHelperWanle/GetSearchSelectData?NeedCount=10&ChannelId=1">
+<!--主内容end-->
+
+<!--公共底部start-->
+<% includeId = cnwidescreenfoot?vrcode=10002-2027-0 %>
+<!--友情提示start-->
+{{?data.LinkList && data.LinkList.length}}
+<div class="seodiv">
+    <div class="iv-bottomlink">
+         <dl>
+            <dt>友情链接：</dt>
+            <dd class="iv-hotlink">
+                {{~data.LinkList:linker}}
+                    <a href="{{=linker.LinkUrl}}" target="_blank">{{=linker.LinkName}}</a>
+                {{~}}
+            </dd>
+        </dl>
+    </div>
+</div>
+{{?}}
+<!--友情提示end-->
+<!--产品精选start-->
+{{?data.ReferralLink && data.ReferralLink.length}}
+<div class="seodiv">
+    <div class="products-featured">
+        {{~data.ReferralLink:ReferralLink}}
+            {{?ReferralLink.Links && ReferralLink.Links.length}}
+                <div class="dl">
+                    {{?ReferralLink.Type == "Ploy"}}
+                        <div class="dt">海外玩乐产品精选：</div>
+                    {{??ReferralLink.Type == "Traffic"}}
+                        <div class="dt">海外交通产品精选：</div>
+                    {{??ReferralLink.Type == "Food"}}
+                        <div class="dt">海外美食餐厅精选：</div>
+                    {{?}}
+                    <div class="dd hotlink">
+                        {{~ReferralLink.Links:Links}}
+                            <a href="{{=Links.LinkUrl}}" target="_blank">{{=Links.LinkName}}</a>
+                        {{~}}
+                    </div>
+                    <div class="click-more">
+                        <a href="javascript:;">更多<i></i></a>
+                    </div>
+                </div>
+            {{?}}  
+        {{~}}
+    </div>
+ </div>
+{{?}}
+<!--产品精选end-->
+<input type="hidden" id="AjaxRequestPath" value="//www.ly.com/AjaxHelper/TopLoginHandler.aspx?channel=Holiday">
+<input type="hidden" id="hidPageName" value="海玩玩乐列表页">
+<input type="hidden" id="TcPmsUniqueKey" value="cndujiasingleticketlisttest">
+<input id="comsilderinfo" type="hidden" value='{"Url":"http://www.ly.com/scenery/zhuanti/sdlj2016pc?dhgg","SmallPic":"//pic4.40017.cn/index/slide/2016/08/11/17/Tfpauq.jpg","BigPic":"//pic4.40017.cn/index/slide/2016/08/11/17/z1b2H1.jpg","QrPic":"//pic4.40017.cn/index/slide/2016/05/18/17/6JWpBe.png"}' />
+<div style="display:none;">Holiday</div>
+
+<!--公共底部end-->
+<script src="//modules/sea.js" data-loader= "true" type="text/javascript"></script>
+<script type="text/javascript">
+    seajs.require("../index.js").init({
+        "pageLabel": "/lineWanle/dangdi/list"
+    });
+    setTimeout(function(){$(".tooltip_gp a img").before("<span></span>")},2000);
+</script>
+
+<!-- pv统计 start -->
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/common.js?v=2015052801" type="text/javascript"></script>
+<script type="text/javascript">
+    var pvConfig = {
+        "PublicPlatId": "1",
+        "PageId": "0",
+        "LineId": "0",
+        "ModuleId": "",
+        "PVSource": "0",
+        "ActType": "",
+        "url": "/dujia/AjaxHelper/PvHandler.ashx"
+    }
+</script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/common/pvcount/pvcount_pc.04133.js" type="text/javascript"></script>
+<!-- pv统计 end -->
+
+<script type="text/javascript" src="//js.40017.cn/cn/v/wanle/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script>
+<% includeId = dj_wanle_common_stat %>
+<script type="text/javascript">
+    var rtTag ={
+        "data": {
+            "etravel_page": {
+                "page_type": "index",
+                "p_class1": "海外玩乐",
+                "p_class2": "首页"
+            }
+        }
+    };
+    stat.init({
+        "baidu": {
+            "parameter": "pc",
+            "hmt": [
+                ['_setAccount', '53a0d71dba66835ff1aa907db99144d8'],
+                ['_trackRTEvent', rtTag]
+            ]
+        },
+        "_tcHotmapx": {
+            "pid": "792",
+            "sp": "100"
+        },
+        "mvl": {
+            "_mvq": [
+                ['$setAccount', 'm-135073-0'],
+                ['$logConversion']
+            ],
+            "isImmediateExcu": true
+        }
+    });
+</script>
+</body>
+</html>

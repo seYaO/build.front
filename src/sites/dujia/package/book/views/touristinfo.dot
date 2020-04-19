@@ -1,0 +1,296 @@
+<p class="confirmTip"><i>*</i>游客信息将用来航司出票和酒店预订，请务必确保所填姓名、性别、证件号与所持证件一致。</p>
+{{for(var i =0; i< it.Adult ;i ++){}}
+{{var people = i+1;}}
+    <div class="passenger-info iamadult clearfix" data-type="1" data-isinsert="0" data-listid="" data-linkerid="" data-index="" data-flag="0" id="passengerInfo{{=i}}">
+        <div class="passenger-info-content">
+            <div class="passenger-info-type type-adult type-man">
+                <p class="img"><em></em></p>
+                <p class="tag">  <em class="type-adult_em">成人{{=people}}<i></i></em>   </p>
+            </div>
+            <div class="passenger-info-icon"></div>
+            <div class="passenger-info-table" data-type="1">
+                <div class="order-fn-btns">
+                    <span class="save"><input type="checkbox" id="save00{{=i}}" checked="checked">
+                    <label for="save00{{=i}}">&nbsp;保存为常用联系人</label></span>
+                    <span class="reset"><i class="icon-trash"></i>
+                    <label>&nbsp;清空</label></span>
+                </div>
+                <div class="list">
+                    <label class="ui-label">
+                        <span class="required">*</span>
+                        中文姓名：
+                    </label>
+                    <input class="ui-input ui-input-nameZh ui-input-nameZh-first"  validate="required zhname"vali-reg-zhname="^[\u4e00-\u9fbb]*$|^[a-zA-Z]*$" vali-msggroup="msg{{=i}}" vali-group="group{{=i}}" vali-msg-required="*请输入中文名称" vali-msg-zhname="*请输入中文名称"  name="nameZh" maxlength="26" placeholder="姓  ">
+                    <input class="ui-input ui-input-nameZh ui-input-nameZh-last" validate="required zhlastName" name="nameZh" maxlength="26" placeholder="名  " vali-reg-zhlastName="^[\u4e00-\u9fbb]*$|^[a-zA-Z]*$" vali-msg-required="*请输入中文名称" vali-msg-zhlastName="*请输入中文名称" vali-msggroup="msg{{=i}}" vali-group="group{{=i}}" vali-msggroup-breth="msg{{=i}}">
+                    <span class="valid_symbol none"></span>
+                    <i class="help" data-type="zh" data-content='<ol class="order-tips"><li><em>1.</em><span>乘客姓名必须与所持证件一致。</span></li><li><em>2.</em><span>名字中含生僻字可直接输入拼音代替。例：“王鬳”可输入为“王 yan”或者“王-yan”。</span></li><li><em>3.</em><span>姓名中不可含有称谓等词语，如：小姐、先生、太太、夫人等。</span></li><li><em>4.</em><span>中文姓名不可少于 2 个汉字，英文姓名不可少于 2 个英文单词。</span></li></ol>'></i>
+                    {{?it.CertificateType == 8}}
+                        <span class="signStantart J_passInfo" data-content='<div class="clearfix passInfo">
+                            <ul>
+                                <li class="current passLi">台湾通行证</li>
+                            </ul>
+                            <p><em>*</em>请严格按照登机时所用证件的信息填写</p>
+                            <div class="passImg "><img src="http://img1.40017.cn/cn/v/package/2016/book/pass_03.png"></img></div></div>'>
+                            填写标准
+                        </span>
+                    {{??it.CertificateType == 7}}
+                        <span class="signStantart J_passInfo" data-content='<div class="clearfix passInfo">
+                            <ul>
+                                <li class="current">港澳通行证</li>
+                            </ul>
+                            <p><em>*</em>请严格按照登机时所用证件的信息填写</p>
+                            <div class="passImg"><img src="http://img1.40017.cn/cn/v/package/2016/book/pass_04.png"></img></div></div>'>
+                            填写标准
+                        </span>
+                    {{??}}
+                        <span class="signStantart J_passInfo" data-content='<div class="clearfix passInfo J_passSignStantart">
+                            <ul>
+                                <li class="current ">新版护照</li>
+                                <li>老版护照</li>
+                            </ul>
+                            <p><em>*</em>请严格按照登机时所用证件的信息填写</p>
+                            <div class="passImg"><img src="http://img1.40017.cn/cn/v/package/2016/book/pass_02.png"></img></div>
+                            <div class="passImg none"><img src="http://img1.40017.cn/cn/v/package/2016/book/pass_01.png"></img></div></div>'>
+                            填写标准
+                        </span>
+                    {{?}}
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>英文姓名：</label>
+                    <input class="ui-input ui-input-enName ui-input-first-name" validate="required onlyLetterSp" vali-msggroup="msg{{=i}}{{=i}}" vali-group="group{{=i}}{{=i}}"vali-msg-required="*请输入英文名称" name="firstNameEn" maxlength="10" type="text" placeholder="姓 拼音或英文">
+                    <input class="ui-input ui-input-enName ui-input-last-name"validate="required onlyLetterSp" vali-msggroup="msg{{=i}}{{=i}}" vali-group="group{{=i}}{{=i}}"  vali-msggroup-breth="msg{{=i}}{{=i}}"  vali-msg-required="*请输入英文名称" name="lastNameEn" maxlength="10" type="text" placeholder="名 拼音或英文">
+                    <span class="valid_symbol none"></span>
+                    <i class="help" data-type="en" data-content="<ul class=&quot;order-tips&quot;>
+        <li><em>1.</em><span>必须用英文字母填写，并确保与所持证件一致。</span></li>
+        <li><em>2.</em><span>请以姓在前名在后的方式填写，如乘客姓名为诸葛亮，则在“姓（拼音或英文）”栏中输入 ZhuGe （注：复姓中无空格或特殊符号）；在“名（拼音或英文）”栏中输入 Liang。如乘客姓名为 Green（姓）/Jim（名） Stephanie（中间名），则在“姓（拼音或英文）”栏中输入 Green；在“名（拼音或英文）”栏中输入 JimStephanie（注：中间名需空一格紧随名之后）。</span></li>
+        <li><em>3.</em><span>英文名字的长度不可超过 26 个字符，如名字过长请使用缩写，乘客的姓氏不能缩写，名可以缩写。姓氏中如包括空格请在输入时删掉空格。</span></li>
+        <li><em>4.</em><span> 英文姓名不可少于 2 个英文单词。</span></li>
+    </ul>"></i>
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+                    <input class="ui-radio ui-radio-sex radio-man" data-value="1" type="radio" name="sex{{=i}}" id="sexid{{=i}}">
+                    <label class="mr30" for="sexid{{=i}}">男</label>
+                    <input class="ui-radio ui-radio-sex  radio-woman" data-value="0" type="radio" name="sex{{=i}}" id="sexid1{{=i}}">
+                    <label class="" for="sexid1{{=i}}">女</label>
+                    <div class="dj-validate"><span class="error_gp">*请选择性别</span></div>
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>证件号码：</label>
+                    <div class="ui-select ui-select-certificate mr6 J_select">
+                        <dl class="ui-select_dl">
+                            {{?it.CertificateType == 8}}
+                                <dt class="select-certificate" data-value="8">台湾通行证</dt>
+                            {{??it.CertificateType == 7}}
+                                <dt class="select-certificate" data-value="7">港澳通行证</dt>
+                            {{??}}
+                                <dt class="select-certificate" data-value="2">护照</dt>
+                            {{?}}
+                        </dl>
+                    </div>
+                    {{?it.CertificateType == 8}}
+                        <input class="ui-input ui-select-certificate-id" validate="required twpass" data-value="{{=it.CertificateType}}" vali-reg-twpass = "^(T)(\d{8})$" name="cardId" maxlength="30" type="text" placeholder="格式 :T12345678" vali-msg-twpass="*格式为: T12345678" vali-msg-required="*请输入所选证件号码">
+                    {{??it.CertificateType == 7}}
+                        <input class="ui-input ui-select-certificate-id" validate="required" data-value="{{=it.CertificateType}}" name="cardId" maxlength="30" type="text" placeholder="证件号码" vali-msg-required="*请输入所选证件号码">
+                    {{??}}
+                        <input class="ui-input ui-select-certificate-id" validate="required" data-value="{{=it.CertificateType}}" name="cardId" maxlength="30" type="text" placeholder="证件号码" vali-msg-required="*请输入所选证件号码">
+                    {{?}}
+                    <span class="valid_symbol none"></span>
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍：</label>
+                    <div class="ui-select ui-select-country mr6 J_select">
+                        <span class="up-down"><i></i></span>
+                        <dl class="ui-select_dl">
+                            <dt class="select-country" visitor-index="0">中国</dt>
+                            <dd >中国</dd>
+                            <dd >中国香港</dd>
+                            <dd >中国澳门</dd>
+                            <dd >中国台湾</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="list fn-hide">
+                    <label class="ui-label"><span class="required">*</span>出生日期：</label>
+                    <input id="J_birth{{=i}}" readonly="readonly" class="ui-input ui-input-date ui-input-birthday" name="birth" maxlength="20" type="text" value="" placeholder=" 年-月-日" vali-msg-required="*请填写出生日期">
+                    <div class="date-validate age-vali"><span class="error_gp"></span></div>
+                    <span class="valid_symbol none"></span>
+                    <label class="ui-label"><span class="required">*</span>证件有效期：</label>
+                    <input id="J_expirydate{{=i}}" readonly="readonly" class="ui-input ui-input-date ui-input-expirydate" name="birth" maxlength="20" type="text" value="" placeholder=" 年-月-日" vali-msg-required="*请填写证件有效期">
+                    <div class="date-validate passPort-vali"><span class="error_gp">证件有效期需比行程结束<br/>&nbsp;&nbsp;&nbsp;&nbsp;晚6个月以上</span></div>
+                    <span class="valid_symbol none"></span>
+                </div>
+                <div class="list">
+                    <label class="ui-label">手机号码：</label>
+                    <input class="ui-input ui-input-mobile" name="mobile" maxlength="11" type="text" placeholder="请输入手机号码" validate="mobile" vali-reg-mobile = "(^1[3|5-9][0-9]\d{8})$|(^$)" vali-msg-mobile="*请填写正确的手机号码">
+                    <label class="prompt_message green" style=""><span></span>请填写手机号码，以便客服向您提供最新行程信息。</label>
+                </div>
+            </div>
+        </div>
+    </div>
+{{}}}
+{{?it.Child}}
+{{for(var i =0; i< it.Child ;i ++){}}
+{{var people = i+1;}}
+    <div class="passenger-info iamchild clearfix" data-type="1" data-isinsert="0" data-listid="" data-linkerid="" data-index="" data-flag="0" id="passengerInfo{{=i}}">
+        <div class="passenger-info-content">
+            <div class="passenger-info-type type-child">
+                <p class="img"><em></em></p>
+                <p class="tag">  <em class="type-adult_em">儿童{{=people}}<i></i></em>   </p>
+                {{var ChildAges;
+                    if(it.ChildAges[i] ==0){
+                        ChildAges = "&lt;1";
+                    }else{
+                        ChildAges = it.ChildAges[i];
+                    }
+                }}
+                <p class="p-childAge">({{=ChildAges}} 周岁)</p>
+            </div>
+            <div class="passenger-info-icon"></div>
+            <div class="passenger-info-table" data-type="1">
+                <div class="order-fn-btns">
+                    <span class="save"><input type="checkbox" id="save00{{=i}}" checked="checked">
+                    <label for="save00{{=i}}">&nbsp;保存为常用联系人</label></span>
+                    <span class="reset"><i class="icon-trash"></i>
+                    <label>&nbsp;清空</label></span>
+                </div>
+                <div class="list">
+                    <label class="ui-label">
+                        <span class="required">*</span>
+                        中文姓名：
+                    </label>
+                    <input class="ui-input ui-input-nameZh ui-input-nameZh-first"  validate="required zhname"vali-reg-zhname="[\u4e00-\u9fa5]" vali-msggroup="msg{{=i}}" vali-group="group{{=i}}" vali-msg-required="*请输入中文名称" vali-msg-zhname="*请输入中文名称"  name="nameZh" maxlength="26" placeholder="姓  ">
+                    <input class="ui-input ui-input-nameZh ui-input-nameZh-last" validate="required zhlastName" name="nameZh" maxlength="26" placeholder="名  " vali-reg-zhlastName="" vali-msg-required="*请输入中文名称" vali-msg-zhlastName="*请输入中文名称" vali-msggroup="msg{{=i}}" vali-group="group{{=i}}" vali-msggroup-breth="msg{{=i}}">
+                    <span class="valid_symbol none"></span>
+                    <i class="help" data-type="zh" data-content='<ol class="order-tips"><li><em>1.</em><span>乘客姓名必须与所持证件一致。</span></li><li><em>2.</em><span>名字中含生僻字可直接输入拼音代替。例：“王鬳”可输入为“王 yan”或者“王-yan”。</span></li><li><em>3.</em><span>姓名中不可含有称谓等词语，如：小姐、先生、太太、夫人等。</span></li><li><em>4.</em><span>中文姓名不可少于 2 个汉字，英文姓名不可少于 2 个英文单词。</span></li></ol>'></i>
+                    {{?it.CertificateType == 8}}
+                        <span class="signStantart J_passInfo" data-content='<div class="clearfix passInfo">
+                            <ul>
+                                <li class="current">台湾通行证</li>
+                            </ul>
+                            <p><em>*</em>请严格按照登机时所用证件的信息填写</p>
+                            <div class="passImg"><img src="http://img1.40017.cn/cn/v/package/2016/book/pass_03.png"></img></div></div>'>
+                            填写标准
+                        </span>
+                    {{??it.CertificateType == 7}}
+                        <span class="signStantart J_passInfo" data-content='<div class="clearfix passInfo">
+                            <ul>
+                                <li class="current">港澳通行证</li>
+                            </ul>
+                            <p><em>*</em>请严格按照登机时所用证件的信息填写</p>
+                            <div class="passImg"><img src="http://img1.40017.cn/cn/v/package/2016/book/pass_04.png"></img></div></div>'>
+                            填写标准
+                        </span>
+                    {{??}}
+                        <span class="signStantart J_passInfo" data-content='<div class="clearfix passInfo J_passSignStantart">
+                            <ul>
+                                <li class="current ">新版护照</li>
+                                <li>老版护照</li>
+                            </ul>
+                            <p><em>*</em>请严格按照登机时所用证件的信息填写</p>
+                            <div class="passImg"><img src="http://img1.40017.cn/cn/v/package/2016/book/pass_02.png"></img></div>
+                            <div class="passImg none"><img src="http://img1.40017.cn/cn/v/package/2016/book/pass_01.png"></img></div></div>'>
+                            填写标准
+                        </span>
+                    {{?}}
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>英文姓名：</label>
+                    <input class="ui-input ui-input-enName ui-input-first-name" validate="required onlyLetterSp" vali-msggroup="msg{{=i}}{{=i}}" vali-group="group{{=i}}{{=i}}"vali-msg-required="*请输入英文名称" name="firstNameEn" maxlength="10" type="text" placeholder="姓 拼音或英文">
+                    <input class="ui-input ui-input-enName ui-input-last-name"validate="required onlyLetterSp" vali-msggroup="msg{{=i}}{{=i}}" vali-group="group{{=i}}{{=i}}"  vali-msggroup-breth="msg{{=i}}{{=i}}"  vali-msg-required="*请输入英文名称" name="lastNameEn" maxlength="10" type="text" placeholder="名 拼音或英文">
+                    <span class="valid_symbol none"></span>
+                    <i class="help" data-type="en" data-content="<ul class=&quot;order-tips&quot;>
+        <li><em>1.</em><span>必须用英文字母填写，并确保与所持证件一致。</span></li>
+        <li><em>2.</em><span>请以姓在前名在后的方式填写，如乘客姓名为诸葛亮，则在“姓（拼音或英文）”栏中输入 ZhuGe （注：复姓中无空格或特殊符号）；在“名（拼音或英文）”栏中输入 Liang。如乘客姓名为 Green（姓）/Jim（名） Stephanie（中间名），则在“姓（拼音或英文）”栏中输入 Green；在“名（拼音或英文）”栏中输入 JimStephanie（注：中间名需空一格紧随名之后）。</span></li>
+        <li><em>3.</em><span>英文名字的长度不可超过 26 个字符，如名字过长请使用缩写，乘客的姓氏不能缩写，名可以缩写。姓氏中如包括空格请在输入时删掉空格。</span></li>
+        <li><em>4.</em><span> 英文姓名不可少于 2 个英文单词。</span></li>
+    </ul>"></i>
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</label>
+                    <input class="ui-radio ui-radio-sex radio-man" data-value="1" type="radio" name="sex00{{=i}}" id="sexid00{{=i}}">
+                    <label class="mr30" for="sexid00{{=i}}">男</label>
+                    <input class="ui-radio ui-radio-sex  radio-woman" data-value="0" type="radio" name="sex00{{=i}}" id="sexid01{{=i}}">
+                    <label class="" for="sexid01{{=i}}">女</label>
+                    <div class="dj-validate"><span class="error_gp">*请选择性别</span></div>
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>证件号码：</label>
+                    <div class="ui-select ui-select-certificate mr6 J_select">
+                        <dl class="ui-select_dl">
+                            {{?it.CertificateType == 8}}
+                                <dt class="select-certificate" data-value="8">台湾通行证</dt>
+                            {{??it.CertificateType == 7}}
+                                <dt class="select-certificate" data-value="7">港澳通行证</dt>
+                            {{??}}
+                                <dt class="select-certificate" data-value="2">护照</dt>
+                            {{?}}
+                        </dl>
+                    </div>
+                    {{?it.CertificateType == 8}}
+                        <input class="ui-input ui-select-certificate-id" validate="required twpass" data-value="{{=it.CertificateType}}" vali-reg-twpass = "^(T)(\d{8})$" name="cardId" maxlength="30" type="text" placeholder="格式 :T12345678" vali-msg-twpass="*格式为: T12345678" vali-msg-required="*请输入所选证件号码">
+                    {{??it.CertificateType == 7}}
+                        <input class="ui-input ui-select-certificate-id" validate="required" data-value="{{=it.CertificateType}}" name="cardId" maxlength="30" type="text" placeholder="证件号码" vali-msg-required="*请输入所选证件号码">
+                    {{??}}
+                        <input class="ui-input ui-select-certificate-id" validate="required" data-value="{{=it.CertificateType}}" name="cardId" maxlength="30" type="text" placeholder="证件号码" vali-msg-required="*请输入所选证件号码">
+                    {{?}}
+                    <span class="valid_symbol none"></span>
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍：</label>
+                    <div class="ui-select ui-select-country mr6 J_select">
+                        <span class="up-down"><i></i></span>
+                        <dl class="ui-select_dl">
+                            <dt class="select-country" visitor-index="0">中国</dt>
+                            <dd>中国</dd>
+                            <dd>中国香港</dd>
+                            <dd>中国澳门</dd>
+                            <dd>中国台湾</dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="list fn-hide">
+                    <label class="ui-label"><span class="required">*</span>出生日期：</label>
+                    <input id="J_birth{{=i}}" readonly="readonly" data-age="{{=it.ChildAges[i]}}" class="ui-input ui-input-date ui-input-birthday" name="birth" maxlength="20" type="text" value="" placeholder=" 年-月-日" vali-msg-required="*请填写出生日期">
+                    <div class="date-validate age-vali"><span class="error_gp"></span></div>
+                    <span class="valid_symbol none"></span>
+                    <label class="ui-label"><span class="required">*</span>证件有效期：</label>
+                    <input id="J_expirydate{{=i}}" readonly="readonly" class="ui-input ui-input-date ui-input-expirydate" name="birth" maxlength="20" type="text" value="" placeholder=" 年-月-日" vali-msg-required="*请填写证件有效期">
+                    <div class="date-validate passPort-vali"><span class="error_gp">证件有效期需比行程结束<br/>&nbsp;&nbsp;&nbsp;&nbsp;晚6个月以上</span></div>
+                    <span class="valid_symbol none"></span>
+                </div>
+                <div class="list">
+                    <label class="ui-label">手机号码：</label>
+                    <input class="ui-input ui-input-mobile" name="mobile" maxlength="11" type="text" placeholder="请输入手机号码" validate="mobile" vali-reg-mobile = "(^1[3|5-9][0-9]\d{8})$|(^$)" vali-msg-mobile="*请填写正确的手机号码">
+                    <label class="prompt_message green" style=""><span></span>请填写手机号码，以便客服向您提供最新行程信息。</label>
+                </div>
+            </div>
+        </div>
+    </div>
+{{}}}
+{{?}}
+<div class="procedureBox procedurBottom clearfix">
+    <h3 class="traveller-h">出游人概况</h3><span class="traveller-span">为了更好的为您服务，请您确认以下情况。如与实际情况不符，因此产生的损失需您自行承担，敬请谅解。</span>
+    <div class="listbox traveller-list">
+        <label class="txt">我们当中</label>
+        <div>
+        <input type="checkbox" value="1" id="pregnantWoman">
+        <label for="pregnantWoman">有孕妇</label>
+        </div>
+        <div>
+        <input type="checkbox" value="2" id="smalBaby">
+        <label for="smalBaby">有2岁以下婴儿</label>
+        </div>
+        <div>
+        <input type="checkbox" value="3" id="olderMan">
+        <label for="olderMan">有80周岁（含）以上的老人</label>
+        </div>
+        <div>
+        <input type="checkbox" value="4" id="foreigners">
+        <label for="foreigners">有外籍友人（含港澳台同胞）</label>
+        </div>
+        <div>
+        <input type="checkbox" value="5" id="minors">
+        <label for="minors">都是未成年人</label>
+        </div>
+        </div>

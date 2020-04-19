@@ -1,0 +1,2097 @@
+body {
+    font-family: 'Microsoft YaHei',Arial,sans-serif;
+}
+.ui-content {
+    font-family: 'Microsoft Yahei';
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.ui-topSearch {
+    width: 1190px;
+    height: auto;
+    margin: 46px auto 20px;
+    position: relative;
+}
+
+.ui-hotSearch {
+    width: 309px;
+    height: 459px;
+    float: left;
+    border-radius: 5px;
+    background-color: #50b400;
+    z-index: 9999;
+    position: relative;
+}
+
+.ui-hotSearch h1 {
+    width: 100%;
+    height: 44px;
+    font-size: 20px;
+    color: #fff;
+    text-align: center;
+    line-height: 44px;
+}
+
+.ui-hotSearch-box {
+    width: 300px;
+    height: 409px;
+    background-color: #fff;
+    margin: 0 auto;
+}
+
+.ui-hotSearch-box li {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.ui-hotSearch-box-main {
+    width: 275px;
+    height: 68px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed #ccc;
+    margin: 0 auto;
+}
+
+.ui-icon-normal1 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesD1.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal2 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesD2.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal3 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesD3.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal4 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesD4.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal5 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesD5.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal6 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesD6.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal1-1 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesH1.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal2-2 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesH2.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal3-3 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesH3.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal4-4 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesH4.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal5-5 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesH5.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-icon-normal6-6 {
+    background: url("//img1.40017.cn/cn/v/2015/zhuanti/visalistdes/visadesH6.png") no-repeat;
+    width: 28px;
+    height: 24px;
+    float: left;
+    margin-top: 15px;
+}
+
+.ui-hotSearch-box li .ui-hotCities {
+    width: 247px;
+    height: 100%;
+    float: right;
+}
+
+.ui-hotCities dl {
+    margin-top: 3px;
+    margin-left: 9px;
+}
+
+.ui-hotCities p {
+    margin-top: 15px;
+    margin-left: 9px;
+    font-size: 16px;
+    color: #333;
+}
+
+.ui-hotCities p a {
+    font-size: 16px;
+    color: #333;
+}
+
+.ui-hotCities dd {
+    height: 20px;
+    overflow: hidden;
+}
+
+.ui-hotCities dd a {
+    color: #666;
+    font-size: 14px;
+    margin-right: 15px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.ui-hotCities-more {
+    width: 331px;
+    height: auto;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    left: 300px;
+    display: none;
+}
+
+.ui-hotCities-more-title {
+    width: 289px;
+    height: 26px;
+    margin: 20px auto;
+    background-color: #f5f5f5;
+    line-height: 26px;
+}
+
+.ui-hotCities-more-title p {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+    margin-left: 9px;
+}
+
+.ui-hotCity-lists {
+    height: auto;
+    padding-left: 25px;
+    margin-bottom: 15px;
+}
+
+.ui-hotCity-lists dd {
+    border-right: 1px solid #d3d3d3;
+    display: inline-block;
+    line-height: 14px;
+    padding: 0 5px;
+    margin-bottom: 5px;
+}
+
+.ui-hotCity-lists dd:last-child {
+    border-right: 0;
+}
+
+.ui-hotCity-lists dd a {
+    font-size: 12px;
+    color: #666;
+    cursor: pointer;
+}
+
+.ui-hotCity-lists dd .hot-city-font {
+    color: #ff6633;
+}
+
+.ui-hotCity-select {
+    -webkit-box-shadow: 0 0 8px #ccc;
+    box-shadow: 0 0 8px #ccc;
+}
+
+.hot-city {
+    color: #ff6600;
+}
+
+.ui-searchBox {
+    width: 860px;
+    height: 44px;
+    float: right;
+}
+
+.ui-search-box {
+    width: 707px;
+    height: 100%;
+    border: 4px solid #ff7800;
+    border-right: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    float: left;
+    position: relative;
+}
+
+.searchBtn {
+    width: 153px;
+    color: #fff;
+    background-color: #ff7800;
+    cursor: pointer;
+    float: left;
+    font-family: 'microsoft yahei';
+    font-size: 18px;
+    line-height: 44px;
+    text-align: center;
+}
+
+.searchBtn:hover {
+    color: #fff;
+    background-color: #ff7800;
+}
+
+.search-line {
+    width: 141px;
+    height: 100%;
+    float: left;
+    border-right: solid 4px #ff7800;
+    background: #FFF;
+    position: relative;
+}
+
+.ui-search-box input.icon-up {
+    background-position: -34px -458px;
+}
+
+.ui-search-box input.icon-down {
+    background-position: -34px -417px;
+}
+
+.search-line input {
+    width: 126px;
+    height: 26px;
+    line-height: 26px;
+    display: block;
+    padding-left: 15px;
+    font-size: 14px;
+    font-family: "Microsoft YaHei", Arial, sans-serif;
+    margin-top: 5px;
+    background: #fff;
+    color: #333;
+    border: none;
+    background: url("//img1.40017.cn/cn/v/2015/visa/visa_icon.png");
+}
+
+.visa_type {
+    width: 135px;
+    padding: 5px 0 5px 15px;
+    position: absolute;
+    top: 50px;
+    background-color: #fff;
+    box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.visa_type i {
+    position: absolute;
+    display: block;
+    height: 0;
+    width: 0;
+    border-color: transparent transparent #fff;
+    border-style: dashed dashed solid;
+    border-width: 8px;
+    top: -16px;
+    left: 35px;
+}
+
+.visa_type li {
+    font-size: 14px;
+    line-height: 30px;
+    color: #333;
+    cursor: pointer;
+}
+
+.visa_type li:hover {
+    color: #ff6600;
+}
+
+.search-input {
+    float: left;
+    font-size: 14px;
+    color: #999;
+    font-family: Microsoft YaHei;
+    width: 490px;
+    height: 100%;
+    border: 0;
+    line-height: 36px;
+    padding-left: 20px;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.none {
+    display: none;
+}
+
+.ui-visaTips {
+    width: 1190px;
+    height: 120px;
+    margin: 0 auto 40px;
+    box-sizing: border-box;
+    border: 1px solid #e8e8e8;
+}
+
+.ui-tipsH {
+    width: 225px;
+    height: 89px;
+    margin-top: 10px;
+    border-right: 1px solid #e8e8e8;
+    float: left;
+}
+
+.ui-tipsH .ui-tips-head {
+    font-size: 36px;
+    color: #ff6633;
+    text-align: center;
+    padding-top: 12px;
+    padding-bottom: 9px;
+    font-weight: bold;
+}
+
+.ui-tipsH .ui-tips-head em {
+    font-style: normal;
+    font-size: 26px;
+}
+
+.ui-tips-one {
+    font-size: 18px;
+    color: #50b400;
+    text-align: center;
+    margin-bottom: 6px;
+}
+
+.ui-tips-bt {
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+}
+
+.ui-tips-bt i {
+    font-style: normal;
+    color: #ff6633;
+}
+
+.ui-tipSteps {
+    width: 960px;
+    height: 100%;
+    float: left;
+}
+
+.ui-tipSteps li {
+    width: 237px;
+    height: 100%;
+    margin-top: 10px;
+    float: left;
+}
+
+.ui-icon {
+    float: left;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+.ui-icon1 {
+    width: 60px;
+    height: 60px;
+    background: url("img/dest/icon-tip1_03.png") no-repeat;
+}
+
+.ui-icon2 {
+    width: 60px;
+    height: 60px;
+    background: url("img/dest/icon-tip2_03.png") no-repeat;
+}
+
+.ui-icon3 {
+    width: 60px;
+    height: 60px;
+    background: url("img/dest/icon-tip3_03.png") no-repeat;
+}
+
+.ui-icon4 {
+    width: 60px;
+    height: 60px;
+    background: url("img/dest/icon-tip4_03.png") no-repeat;
+}
+
+.ui-text {
+    width: 132px;
+    height: 40px;
+    float: left;
+    margin-top: 30px;
+}
+
+.ui-text p {
+    font-size: 18px;
+    color: #666;
+}
+
+.ui-text span {
+    font-size: 14px;
+    color: #999;
+}
+
+.ui-conMain {
+    width: 1190px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.ui-conLeft {
+    width: 960px;
+    float: left;
+}
+
+.ui-conRight {
+    width: 213px;
+    float: right;
+}
+
+.ui-hotVisa {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.ui-hotVisa-head {
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    /*border-bottom:1px dashed #a7a7a7;*/
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAABAQMAAAAsMPawAAAABlBMVEX///+JiYnFA+v3AAAACklEQVQI12NoAAAAggCB3UNq9AAAAABJRU5ErkJggg==) bottom repeat-x;
+}
+
+.ui-hotVisa-head h2 {
+    font-size: 28px;
+    color: #ff7800;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+.ui-hotVisa-head p {
+    display: inline-block;
+    font-size: 14px;
+    color: #999;
+    margin-left: 13px;
+}
+
+.icon-hotVisa {
+    width: 32px;
+    height: 32px;
+    background: url("img/dest/icon-hotVisa_03.png") no-repeat;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.ui-hotVisa-proLists {
+    width: 979px;
+    margin-left: -19px;
+}
+
+.ui-hotVisa-proList {
+    width: 225px;
+    height: 320px;
+    position: relative;
+    float: left;
+    margin-top: 20px;
+    margin-left: 19px;
+    overflow: hidden;
+}
+
+.ui-hotVisa-proList img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.ui-proInfos {
+    width: 200px;
+    height: 87px;
+    background-color: rgba(255, 255, 255, 0.3);
+    position: absolute;
+    top: 220px;
+    left: 12px;
+}
+
+.ui-proInfo {
+    width: 193px;
+    height: 79px;
+    background-color: rgba(255, 255, 255, 0.85);
+    margin: 4px 4px;
+}
+
+.ui-proInfo-head {
+    width: 182px;
+    height: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #666;
+    margin-left: 5px;
+    line-height: 40px;
+}
+
+.ui-proInfo-foot {
+    width: 162px;
+    height: 39px;
+    padding-left: 20px;
+    font-size: 14px;
+    color: #333;
+    line-height: 39px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ui-proCity {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    float: left;
+    padding-left: 15px;
+}
+
+.ui-proPrice {
+    font-weight: bold;
+    font-size: 14px;
+    color: #ff6600;
+    float: right;
+    padding-right: 15px;
+}
+
+.ui-proPrice em {
+    font-size: 20px;
+}
+
+.ui-proCover {
+    width: 100%;
+    height: 100%;
+    /*background-color: rgba(0,0,0,0.5);*/
+    position: absolute;
+    top: 54%;
+}
+
+.ui-proCover a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.ui-proCover-active {
+    position: absolute;
+}
+
+.ui-cover {
+    width: 201px;
+    height: 88px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-left: 12px;
+    position: relative;
+    top: 40px;
+}
+
+.ui-coverInfos {
+    width: 193px;
+    height: 80px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin-left: 4px;
+    position: relative;
+    top: 4px;
+}
+
+.ui-coverInfo-head {
+    width: 184px;
+    height: 49px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #666;
+    margin: 0 auto;
+}
+
+.ui-coverInfo-head p {
+    font-size: 26px;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    line-height: 46px;
+}
+
+.ui-coverInfo-foot {
+    width: 155px;
+    height: 31px;
+    margin: 0 auto;
+    line-height: 31px;
+    text-align: center;
+}
+
+.coverInfo-icon {
+    color: #ff7800;
+    font-size: 14px;
+    font-weight: bold;
+    float: left;
+    margin-top: 2px;
+}
+
+.coverInfo-price {
+    color: #ff7800;
+    font-size: 20px;
+    font-weight: bold;
+    float: left;
+}
+
+.coverInfo-qi {
+    font-size: 14px;
+    font-weight: bold;
+    color: #999;
+    vertical-align: middle;
+}
+
+.ui-coverInfo-foot p {
+    font-size: 14px;
+    color: #333;
+    float: left;
+}
+
+.ui-coverInfo-foot i {
+    float: right;
+    font-size: 14px;
+    color: #333;
+}
+
+
+/*.ui-coverInfo-foot p em{
+    color: #ff7800;
+    font-style: normal;
+}*/
+
+.ui-satisfaction {
+    color: #fff;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 35px;
+}
+
+.ui-satisfaction em {
+    font-style: normal;
+    font-size: 14px;
+    margin: 4px 4px;
+}
+
+.ui-proBtn {
+    width: 130px;
+    height: 34px;
+    background-color: #ff7800;
+    border-radius: 2px;
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    line-height: 34px;
+    display: block;
+    margin: 75px auto 0;
+    cursor: pointer;
+}
+
+.ui-proBtn:hover {
+    color: #fff;
+}
+
+.ui-visaFlow {
+    width: 1190px;
+    height: 179px;
+    box-sizing: border-box;
+    border: 1px solid #e8e8e8;
+    margin-bottom: 40px;
+}
+
+.icon-steps {
+    width: 85px;
+    height: 6px;
+    background: url("img/dest/icon-flowStep_03.png") no-repeat;
+    display: inline-block;
+    vertical-align: text-top;
+    margin: 0 54px;
+}
+
+.ui-visaFlow-nums {
+    margin: 30px auto 15px;
+    padding: 0 100px;
+}
+
+.ui-visaFlow-nums span {
+    font-size: 32px;
+    color: #50b400;
+    font-family: "Arial", serif;
+    font-weight: bold;
+}
+
+.ui-visaFlow-info {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.ui-visaFlow-info li {
+    width: 232px;
+    box-sizing: border-box;
+    border-left: 1px solid #e8e8e8;
+    text-align: center;
+    display: inline-block;
+}
+
+.ui-visaFlow-info li p {
+    margin-bottom: 13px;
+    font-size: 16px;
+    color: #333;
+}
+
+.ui-visaFlow-info li span {
+    display: block;
+    font-size: 12px;
+    color: #999;
+}
+
+.ui-visaFlow-info li:first-child {
+    border-left: 0;
+}
+
+.ui-freeVisa {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.ui-freeVisa-head {
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    border-bottom: 1px dashed #a7a7a7;
+}
+
+.ui-freeVisa-head h2 {
+    font-size: 28px;
+    color: #50b400;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+.ui-freeVisa-head p {
+    display: inline-block;
+    font-size: 14px;
+    color: #999;
+    margin-left: 13px;
+}
+
+.icon-freeVisa {
+    width: 32px;
+    height: 31px;
+    background: url("img/dest/icon-freeVisa_03.png") no-repeat;
+    vertical-align: bottom;
+    display: inline-block;
+}
+
+.ui-freeVisa-proLists {
+    width: 980px;
+    margin-left: -20px;
+    margin-top: 20px;
+}
+
+.ui-proLists-head {
+    margin: 20px 0;
+    height: 18px;
+}
+
+.ui-proLists-country {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.ui-proLists-country li {
+    float: left;
+    width: 43px;
+    height: 18px;
+    line-height: 18px;
+    text-align: center;
+    margin-right: 20px;
+    color: #000;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.J_proLists-country li.cur {
+    background: #8c96a2;
+    color: #fff;
+}
+
+.ui-proLists-more {
+    /*display: none;*/
+    font-size: 14px;
+    float: right;
+}
+
+.ui-proLists-content {
+    height: 386px;
+    line-height: 246px;
+    text-align: center;
+}
+
+.proLists-tab-panel {
+    height: 386px;
+    line-height: 243px;
+    text-align: center;
+}
+
+.ui-proLists-content ul li {
+    width: 225px;
+    height: 173px;
+    float: left;
+    margin: 0 0 20px 20px;
+    cursor: pointer;
+}
+
+.ui-proLists-content ul li:hover {
+    box-shadow: 3px 3px 20px #ccc;
+}
+
+.ui-freeVisa-proList {
+    width: 225px;
+    position: relative;
+    display: block;
+    cursor: pointer;
+    transition: transform .5s ease, box-shadow .5s ease;
+    -webkit-transition: -webkit-transform .5s ease, box-shadow .5s ease
+}
+
+.ui-freeVisa-proList:hover {
+    box-shadow: 0 0 6px rgba(0, 0, 0, .6);
+}
+
+.ui-freeVisa-area {
+    width: 60px;
+    height: 21px;
+    line-height: 21px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #50b400;
+    color: #fff;
+}
+
+.ui-freeVisa-proList img {
+    width: 225px;
+    height: 126px;
+    display: block;
+}
+
+.ui-freeVisa-footer {
+    height: 48px;
+    background: #f5f5f5;
+    position: relative;
+}
+
+.ui-freeVisa-footer.on b {
+    border-bottom: 26px solid #f25f0e;
+}
+
+.ui-freeVisa-footer.on span {
+    background: #f25f0e;
+}
+
+.freeVisa-price {
+    float: left;
+    margin-left: 10px;
+}
+
+.freeVisa-price i {
+    height: 44px;
+    line-height: 44px;
+    color: #ff7800;
+    font-size: 14px;
+    margin-top: 4px;
+    float: left;
+}
+
+.freeVisa-price em {
+    height: 48px;
+    line-height: 48px;
+    color: #ff7800;
+    float: left;
+    font-size: 20px;
+}
+
+.freeVisa-price .price-start {
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px;
+    float: left;
+    color: #999;
+    font-weight: 600;
+    margin-top: 4px;
+}
+
+.ui-freeVisa-footer b {
+    width: 0;
+    height: 0;
+    border-bottom: 26px solid #ff7800;
+    border-left: 10px solid transparent;
+    position: absolute;
+    top: 11px;
+    left: 138px;
+}
+
+.ui-freeVisa-footer span {
+    width: 77px;
+    height: 26px;
+    line-height: 26px;
+    background: #ff7800;
+    color: #fff;
+    float: right;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 11px;
+}
+
+.ui-freeVisa-info {
+    width: 225px;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    line-height: 30px;
+    background-color: #000000;
+    background: -webkit-gradient(linear, 0 0, 0 90%, from(rgba(0, 0, 0, 0)), to(rgba(0, 0, 0, .8)));
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, .8));
+    _background: #000;
+    filter: Alpha(style=1, opacity=70, finishOpacity=0, startY=50, finishY=100);
+}
+
+.ui-freeVisa-info p {
+    font-size: 16px;
+    color: #fff;
+    padding-left: 10px;
+    text-align: left;
+}
+
+.ui-freeVisa-info p em {
+    font-style: normal;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.ui-visaHelp {
+    width: 1190px;
+    height: auto;
+    margin-bottom: 40px;
+}
+
+.ui-visaHelp-head {
+    width: 100%;
+    height: 45px;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 28px;
+    color: #1d9efd;
+}
+
+.ui-visaHelp-head a {
+    font-size: 14px;
+    float: right;
+    vertical-align: bottom;
+    height: 50px;
+    line-height: 50px;
+}
+
+.ui-visaHelp-head .icon-help {
+    width: 32px;
+    height: 32px;
+    background: url("img/dest/icon_question.png") no-repeat;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.ui-visaHelp-lists {
+    border: 1px solid #e8e8e8;
+    padding-top: 15px;
+}
+
+.ui-visaHelp-list {
+    margin: 0 15px 0 20px;
+    width: 559px;
+    float: left;
+}
+
+.ui-visaHelp-list a:before {
+    content: "Q.";
+    font-size: 16px;
+    color: #1d9efd;
+    margin-right: 5px;
+}
+
+.ui-visaHelp-list a {
+    display: inline-block;
+    padding: 2px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.ui-visaHelp-list a:hover {
+    color: #ff6600;
+}
+
+.ui-visaHelp-list p,
+.ui-visaHelp-list p i {
+    display: inline-block;
+}
+
+.ui-visaHelp-list p i {
+    vertical-align: top;
+}
+
+.ui-visaHelp-list p i:before {
+    content: "A.";
+    font-weight: bold;
+    font-size: 16px;
+    color: #1d9efd;
+    margin-right: 5px;
+}
+
+.ui-visaHelp-list p span {
+    width: 537px;
+    display: inline-block;
+    height: 21px;
+    line-height: 21px;
+    color: #666;
+}
+
+.ui-visaHelp-top {
+    width: 244px;
+    height: 122px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #dddddd;
+    margin-left: 18px;
+}
+
+.ui-visaHelp-nav {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.ui-visaHelp-nav span {
+    display: inline-block;
+}
+
+.ui-visaHelp-nav span a {
+    float: left;
+    cursor: pointer;
+    border: 2px solid #d2ecff;
+    display: inline-block;
+    width: 20px;
+    margin: 0 5px;
+}
+
+.ui-visaHelp-nav span a.on {
+    border: 2px solid #1d9efd;
+}
+
+.ui-comment-title {
+    display: block;
+    font-size: 16px;
+    line-height: 16px;
+    color: #333;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-top: 20px;
+    cursor: pointer;
+}
+
+.ui-comment-con {
+    height: 60px;
+    font-size: 12px;
+    line-height: 20px;
+    color: #666;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.ui-visaHelp-bottom {
+    width: 244px;
+    margin-left: 18px;
+    margin-top: 10px;
+}
+
+.icon-userName {
+    width: 13px;
+    height: 12px;
+    background: url("img/dest/icon-user_03.png") no-repeat;
+    display: inline-block;
+    vertical-align: super;
+}
+
+.ui-userName {
+    float: left;
+}
+
+.ui-userName span {
+    font-size: 12px;
+    color: #666;
+    display: inline-block;
+    width: 120px;
+    height: 20px;
+    overflow: hidden;
+}
+
+.ui-commtDate {
+    font-size: 12px;
+    color: #666;
+    float: right;
+}
+
+.ui-visaPlan {
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+.ui-visaPlan-title,
+.ui-visaRank-title,
+.ui-visaNew-title,
+.ui-visaQuestion-title {
+    height: 50px;
+    box-sizing: border-box;
+    /*border-bottom: 1px dashed #a7a7a7;*/
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAABAQMAAAAsMPawAAAABlBMVEX///+JiYnFA+v3AAAACklEQVQI12NoAAAAggCB3UNq9AAAAABJRU5ErkJggg==) bottom repeat-x;
+}
+
+.ui-visaPlan-title h3,
+.ui-visaRank-title h3,
+.ui-visaNew-title h3,
+.ui-visaQuestion-title h3 {
+    font-size: 18px !important;
+    color: #333 !important;
+    line-height: 40px !important;
+}
+
+.ui-visaPlan-form {
+    height: auto;
+    margin-top: 10px;
+}
+
+.ui-visaPlan-form label {
+    font-size: 12px;
+    color: #666;
+}
+
+.ui-input-normal {
+    width: 151px;
+    height: 28px;
+    line-height: 28px;
+}
+
+.ui-input-small {
+    width: 55px;
+    height: 28px;
+    line-height: 28px;
+    display: inline-block;
+}
+
+.ui-visaPlan-form li {
+    margin-bottom: 10px;
+}
+
+.ui-visaPlan-form input {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    padding-left: 5px;
+    vertical-align: top;
+}
+
+.ui-visaPlan-btn {
+    width: 125px;
+    height: 28px;
+    display: block;
+    background-color: #ff7800;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    margin: 0 auto;
+    border-radius: 2px;
+    position: relative;
+    top: 9px;
+    cursor: pointer;
+    margin-bottom: 26px;
+    margin-left: 50px;
+}
+
+.ui-visaPlan-btn:hover {
+    color: #fff;
+    background: #f25f0e;
+}
+
+.ui-visaPlan-tips {
+    font-size: 12px;
+    color: #999;
+    float: right;
+    cursor: pointer;
+}
+
+.ui-visaPlan-tips:hover {
+    color: #ff6600;
+}
+
+.ui-getValidCode {
+    width: 90px;
+    height: 28px;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    display: inline-block;
+}
+
+.ui-getValidCode img {
+    width: 60px;
+    height: 100%;
+    float: left;
+}
+
+.ui-getValidCode i {
+    display: inline-block;
+    width: 29px;
+    height: 100%;
+    cursor: pointer;
+    border-left: 1px solid #dedede;
+    float: right;
+    text-align: center;
+    line-height: 28px;
+    background: #f5f5f5;
+    color: #329bcf;
+    font-weight: bold;
+}
+
+.ui-getValidCode i:hover {
+    color: #f25f0e;
+}
+
+.ui-vailTips {
+    min-height: 48px;
+}
+
+.ui-vailTips p {
+    display: inline-block;
+    font-size: 12px;
+    color: #666;
+    width: 150px;
+    margin-top: 20px;
+    border: 1px solid #f4e09d;
+    background: #fff7dc;
+    padding: 3px;
+    margin-left: 52px;
+}
+
+.ui-vailTips p.none {
+    display: none;
+}
+
+.ui-vailTips p i {
+    margin-right: 5px;
+    vertical-align: text-bottom;
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    background: url("img/dest/icon_progress.png") no-repeat;
+}
+
+.ui-visaFair {
+    width: 213px;
+    height: 65px;
+    margin-bottom: 10px;
+    vertical-align: text-bottom;
+    background: url("//pic4.40017.cn/line/admin/2016/12/01/11/ZhF8jM.png") no-repeat;
+}
+
+.ui-visaFair a {
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+}
+
+.ui-visaRank {
+    width: 100%;
+    height: 100%;
+}
+
+.ui-visaRank-list li {
+    width: 100%;
+    height: 34px;
+}
+
+.ui-visaRank-list li i {
+    width: 12px;
+    height: 12px;
+    background-color: #8c96a2;
+    display: block;
+    float: left;
+    text-align: center;
+    line-height: 12px;
+    margin-top: 15px;
+    margin-left: 10px;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.ui-visaRank-list li .ui-visaRank-1 {
+    background-color: #ea4126;
+}
+
+.ui-visaRank-list li .ui-visaRank-2 {
+    background-color: #ff8400;
+}
+
+.ui-visaRank-list li .ui-visaRank-3 {
+    background-color: #ffae00;
+}
+
+.ui-visaRank-con {
+    font-size: 12px;
+    color: #666;
+    float: left;
+    margin-top: 10px;
+    margin-left: 8px;
+    display: block;
+    cursor: pointer;
+    width: 182px;
+    height: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ui-visaRank-con:hover {
+    color: #f25f0e;
+}
+
+.ui-visaNew {
+    width: 100%;
+    margin: 25px 0;
+}
+
+.ui-visaNew-list {
+    margin-top: 20px;
+    margin-bottom: 6px;
+    overflow: hidden;
+    height: 145px;
+}
+
+.ui-visaNew-list li {
+    width: 100%;
+    height: 53px;
+}
+
+.icon-sort {
+    width: 7px;
+    height: 53px;
+    background: url("img/dest/icon-sort_03.png") no-repeat;
+    display: block;
+    float: left;
+}
+
+.ui-visaNew-list li p {
+    float: left;
+    margin-left: 10px;
+    width: 195px;
+}
+
+.ui-visaNew-top {
+    height: 20px;
+    overflow: hidden;
+}
+
+.ui-visaNew-top,
+.ui-visaNew-bottom {
+    display: block;
+}
+
+.ui-visaNew-bottom {
+    cursor: pointer;
+    color: #0185c6;
+    height: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ui-visaNew-bottom:hover {
+    color: #0185c6;
+}
+
+.ui-visaQuestion {
+    width: 100%;
+    height: 100%;
+}
+
+.ui-visaQuestion a {
+    display: block;
+    margin-top: 12px;
+    color: #666;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.ui-visaQuestion a:hover {
+    color: #ff6600;
+    text-decoration: underline;
+}
+
+.ui-visaQuestion .ui-visaQuestion-more {
+    font-size: 12px;
+    color: #999;
+    margin-left: 100px;
+}
+
+.ui-noResult {
+    width: 230px;
+    height: 120px;
+    margin: 50px auto 0;
+}
+
+.icon-search {
+    width: 38px;
+    height: 38px;
+    background: url("img/dest/icon-search_03.png") no-repeat;
+    display: inline-block;
+    float: left;
+    margin-right: 16px;
+}
+
+.ui-noResult-content {
+    font-size: 16px;
+    color: #333;
+}
+
+.ui-searchResult {
+    width: 525px;
+    height: auto;
+    margin: 28px auto 0;
+    overflow: hidden;
+    font-family: 'Microsoft Yahei';
+}
+
+.ui-resultTop {
+    width: 100%;
+    height: 160px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+.ui-resultTop img {
+    float: left;
+    width: 210px;
+    height: 130px;
+    display: block;
+}
+
+.ui-result-right {
+    width: 289px;
+    height: 130px;
+    float: right;
+}
+
+.ui-result-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+    height: 40px;
+    overflow: hidden;
+}
+
+.ui-result-span {
+    font-size: 14px;
+    color: #666;
+    margin-top: 11px;
+    display: block;
+}
+
+.ui-result-span em {
+    font-style: normal;
+    color: #333;
+    margin-left: 10px;
+}
+
+.ui-resultCon {
+    width: 514px;
+    height: 375px;
+    margin-left: 10px;
+    margin-top: 17px;
+}
+
+.ui-resultCon-list {
+    overflow-y: scroll;
+    height: 100%;
+    overflow-x: hidden;
+}
+
+.ui-resultCon-list li {
+    width: 100%;
+    height: 54px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.ui-resultCon-list .ui-list-first {
+    border-top: 0;
+}
+
+.ui-resultCon-list i {
+    display: block;
+    float: left;
+    width: 7px;
+    height: 7px;
+    border-radius: 25px;
+    background-color: #dcdcdc;
+    margin-left: 1px;
+    margin-top: 20px;
+    position: absolute;
+    left: 4px;
+}
+
+.ui-resultCon-list .first-i {
+    margin-top: 4px;
+}
+
+.ui-resultInfo {
+    width: 477px;
+    height: 100%;
+    float: right;
+    border-top: 1px solid #dcdcdc;
+}
+
+.ui-resultInfo:first-child {
+    border-top: 0;
+}
+
+.ui-resultInfo p {
+    font-size: 14px;
+    color: #666;
+    width: 433px;
+    margin-left: 10px;
+}
+
+.ui-resultInfo .first-p {
+    margin-top: 13px;
+}
+
+.ui-resultCon-list .select-i {
+    width: 14px;
+    height: 14px;
+    background-color: #50b400;
+    margin-top: 0;
+    margin-left: -3px;
+}
+
+.ui-line {
+    height: 375px;
+    position: absolute;
+    width: 1px;
+    background: #dcdcdc;
+    left: 47px;
+}
+
+.popBox {
+    position: absolute;
+    display: none;
+    overflow: hidden;
+    font: 12px/22px "microsoft yahei";
+    border: 0;
+}
+
+.popBox_show {
+    display: block;
+    top: 228px;
+    left: 837px;
+}
+
+.pop_top {
+    position: relative;
+    top: 1px;
+    left: 11px;
+    width: 9px;
+    height: 6px;
+    background: url("//img1.40017.cn/cn/v/visa/n_visa/index/visa-index2.png") no-repeat -422px -106px;
+}
+
+.pop_main {
+    padding: 0 5px;
+    height: 22px;
+    border: 1px solid #ffd5a1;
+    background: #fff4d9;
+}
+
+
+/*.skin2 .dialog_modal_gp {
+    height: auto !important;
+}*/
+
+.no-border {
+    border: none;
+}
+
+
+/*full screen slider*/
+
+#ivFavorableCon .mSlider_nav_orange,
+#ivBoutiqueIslandCon .mSlider_nav_orange {
+    top: 19px;
+    bottom: inherit;
+}
+
+.mSlider_nav_orange {
+    position: absolute;
+    top: -60px;
+    left: 530px;
+    height: 45px;
+}
+
+.mSlider_nav_orange li a {
+    background-color: #38415f !important;
+    color: #fff !important;
+}
+
+.mSlider_nav_orange .current a {
+    background-color: #ff6600 !important;
+}
+
+#ivFavorableCon .mSlider_nav_orange li a,
+#ivBoutiqueIslandCon .mSlider_nav_orange li a {
+    font: 14px/16px 'Arial';
+    width: 16px;
+    height: 16px;
+    text-align: center;
+    color: #fff;
+    border-radius: 8px;
+    background-color: #38415f !important;
+}
+
+#ivFavorableCon .mSlider_nav_orange li.current a,
+#ivBoutiqueIslandCon .mSlider_nav_orange li.current a {
+    background-color: #ff6600;
+}
+
+.iv_full_screen_slider {
+    position: relative;
+    overflow: visible !important;
+    margin: 0 auto;
+    z-index: 0;
+    width: 1200px;
+}
+
+.Small_conter .iv_full_screen_slider {
+    width: 960px;
+}
+
+.iv_full_screen_slider_con {
+    width: 1920px;
+    margin-left: -960px;
+    left: 50%;
+    /*position: relative;*/
+    height: 380px;
+    overflow: hidden;
+    position: absolute;
+    top: -410px;
+}
+
+.iv_full_screen_slider_con ul {
+    z-index: 0;
+    float: left;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.iv_full_screen_slider_con li {
+    float: left;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+.iv_full_screen_slider_con img {
+    width: 1920px;
+    overflow: hidden;
+    height: 380px;
+    border: 0;
+}
+
+.skin2 .dialog_modal_title {
+    height: 30px !important;
+    line-height: 30px !important;
+}
+
+.skin2 .dialog_modal_title .close {
+    margin: 5px 10px !important;
+}
+
+body .ui_dialog_gp {
+    position: fixed !important;
+    top: 0 !important;
+}
+
+
+/*红包入口*/
+
+@keyframes balloon {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.packetBox .packet-bg-color {
+    display: none;
+    background-color: #000;
+    opacity: .7;
+    filter: alpha(opacity=70);
+    top: 0;
+    left: 0;
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 9000;
+}
+
+.packetBox .packet-bg-img {
+    display: none;
+    position: fixed;
+    width: 729px;
+    height: 487px;
+    top: 50%;
+    left: 50%;
+    background: url("img/dest/icon-packet-bg.png") no-repeat;
+    margin-top: -265px;
+    margin-left: -366px;
+    z-index: 9001;
+    -webkit-animation: balloon 3s ease-in-out infinite;
+    -moz-animation: balloon 3s ease-in-out infinite;
+    -o-animation: balloon 3s ease-in-out infinite;
+    animation: balloon 3s ease-in-out infinite;
+}
+
+.packetBox .packet-btn {
+    position: fixed;
+    cursor: pointer;
+    z-index: 1000;
+    bottom: 0;
+    left: 0;
+}
+
+.packetBox .packet-btn img {
+    border: 0;
+    padding: 0;
+}
+
+.packet-main {
+    display: none;
+    position: fixed;
+    width: 458px;
+    height: 452px;
+    top: 50%;
+    left: 50%;
+    background: url("img/dest/icon-packet-content.png") no-repeat;
+    margin-top: -255px;
+    margin-left: -200px;
+    z-index: 9002;
+}
+
+.packet-main .close {
+    position: absolute;
+    top: -5px;
+    right: -25px;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    background: url("img/dest/icon-packet-btn.png") no-repeat;
+    background-position: -29px -33px;
+}
+
+.packet-content {
+    font-family: "Microsoft YaHei";
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.packet-content .packet-view {
+    color: #e9d648;
+    position: absolute;
+    width: 210px;
+    top: 205px;
+    left: 130px;
+}
+
+.packet-view .title {
+    display: block;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    height: 25px;
+}
+
+.packet-view .cost {
+    font-size: 52px;
+    font-weight: bold;
+    padding-right: 20px;
+    border-right: 1px dashed;
+    display: inline-block;
+}
+
+.packet-view .cost:before {
+    content: "￥";
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: 27px;
+}
+
+.packet-view .cost:after {
+    font-size: 14px;
+    content: "元";
+    font-weight: normal;
+}
+
+.packet-view .cost.use {
+    padding-right: 13px;
+}
+
+.packet-view .tips {
+    width: 110px;
+    margin-left: 10px;
+    display: inline-block;
+    color: #fff;
+    vertical-align: text-bottom;
+}
+
+.packet-view .tips i {
+    border: solid 1px #e9d648;
+    color: #e9d648;
+    padding: 0 2px;
+}
+
+.packet-view .notice {
+    display: block;
+    font-size: 21px;
+    line-height: 25px;
+    text-align: center;
+    margin: 27px 0 20px 0;
+}
+
+.packet-view .notice i {
+    display: block;
+}
+
+.packet-view .btn {
+    display: inline-block;
+    cursor: pointer;
+    width: 100px;
+    text-align: center;
+    font-weight: bold;
+    height: 30px;
+    line-height: 25px;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #e71f19;
+    vertical-align: 12px;
+    color: #e71f19;
+    background: url("img/dest/icon-packet-btn.png") no-repeat;
+    background-position: 0 0;
+}
+
+.packet-view .btn.use {
+    margin-left: 60px;
+}
+
+.packet-view .date {
+    display: block;
+    font-size: 13px;
+    margin-top: 3px;
+    margin-bottom: 13px;
+}
+
+.packet-content .packet-boy {
+    position: absolute;
+    width: 120px;
+    height: 166px;
+    bottom: 105px;
+    right: 3px;
+    z-index: 100;
+    background: url("img/dest/icon-packet-boy.png") no-repeat;
+}
+
+.packet-content .packet-cloud {
+    position: absolute;
+    width: 451px;
+    height: 208px;
+    bottom: -30px;
+    right: -30px;
+    z-index: 99;
+    color: #000;
+    font-size: 12px;
+    background: url("img/dest/icon-packet-cloud.png") no-repeat;
+}
+
+.packet-cloud h6 {
+    font-weight: bold;
+    margin: 50px 0 0 50px;
+}
+
+.packet-cloud span {
+    width: 350px;
+    margin-left: 50px;
+    display: block;
+}
+
+.packet-cloud span i {
+    border: solid 1px #eb5a18;
+    color: #eb5a18;
+    display: inline-block;
+    height: 16px;
+    line-height: 16px;
+    margin: 0 5px;
+    padding: 0 2px;
+    background-color: #fae2ba;
+}
+
+
+/*页面样式*/
+
+#pageheader .logo_style {
+    background: 0 !important;
+}
+
+.ui-visaRank {
+    margin-bottom: 1px;
+}
+
+.ui-hotCities dd a:hover,
+.ui-hotCities p a:hover,
+.ui-hotCity-lists dd a:hover {
+    color: #f60;
+}
+
+.ui-hotCity-lists {
+    width: 285px;
+}
+
+.icon-steps {
+    vertical-align: top;
+    margin-top: 6px;
+}
+
+.ui-comment-con {
+    margin-top: 10px;
+}
+
+.ui-visaComment-bottom {
+    margin-top: 7px;
+}
+
+.ui-freeVisa-head,
+.ui-visaComment-head {
+    border: none;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAABAQMAAAAsMPawAAAABlBMVEX///+JiYnFA+v3AAAACklEQVQI12NoAAAAggCB3UNq9AAAAABJRU5ErkJggg==) bottom repeat-x;
+}
+
+.ui-hotSearch {
+    z-index: 99;
+}
+
+body .ui_dialog_gp {
+    position: absolute;
+    top: 100px;
+}
+
+.tc_ac_tr:before {
+    right: 360px;
+}
+
+/*公共友情链接*/
+
+.footer-link {
+    min-width: 1200px;
+    background: #eaeaea;
+    padding-bottom: 10px;
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+
+.visa-link {
+    width: 1190px;
+    margin: 0 auto;
+    color: #bbb;
+}
+
+.visa-link span {
+    float: left;
+    font-weight: 700;
+}
+
+.visa-link .list {
+    display: inline-block;
+    width: 1020px;
+}
+
+.visa-link a {
+    display: inline-block;
+    color: #bbb;
+    margin-right: 10px;
+}
+
+.visa-link a:hover {
+    color: #f60;
+}

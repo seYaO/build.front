@@ -1,0 +1,44 @@
+<div class="tip_gp">当线路出现降价促销时，我们会通过短信/电话来通知您哦~        </div>
+<div class="form_gp">
+    <div class="row">
+        <label>期望价格</label>
+        <div class="control">
+            <div class="tbx_price_gp active">
+                <input placeholder="您能接受的最高价格" type="text" id="tbxjj_price" class="tbx_price" maxlength="18">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <label>出游日期</label>
+        <div class="control goup_2">
+            <input type="text" id="startTime" readonly="readonly" placeholder="最早出发" >
+            <em class="split">~</em>
+            <input type="text" id="endTime" readonly="readonly" placeholder="最晚出发">
+        </div>
+    </div>
+    <div class="row">
+        <label>联系姓名</label>
+        <div class="control">
+            <input placeholder="请输入联系人姓名" type="text" id="tbxjj_name" maxlength="18">
+        </div>
+    </div>
+    <div class="row">
+        <label class="no_empty">手机号码</label>
+        <div class="control">
+            <input placeholder="请输入联系人手机号" data-valitxt="请谨慎填写手机号" data-valireg="/^d{11}$/" type="text" id="tbxjj_mobile" maxlength="18">
+            <span class="validata" id="lbvali_mobile">请填写有效的手机号</span>
+        </div>
+    </div>
+    <div class="row">
+        <label class="no_empty">验&nbsp;&nbsp;证&nbsp;&nbsp;码</label>
+        <div class="control">
+            <input placeholder="短信验证码" type="text" id="tbxjj_code" maxlength="18">
+            <span class="form_btn btn_sendsms" id="btnjj_getmsg">发送验证码</span>           
+            <span class="validata" id="lbvali_code">手机验证码错误，请重新输入</span>
+        </div>
+    </div>
+    <div class="row" style="height:50px">
+        <span class="btn_submit" id="btnjj_submit">提交</span>
+    </div>
+</div>
+<div class="clearfix"></div>

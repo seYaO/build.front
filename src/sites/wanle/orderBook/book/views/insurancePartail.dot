@@ -1,0 +1,25 @@
+<!--保险开始-->
+<div class="insurance">
+	<h2 class="pro_title">附加信息</h2>
+	<div class="type_name">
+		<span class="t1">类型</span>
+		<span class="t2">产品名称</span>
+		<span class="t3">同程价</span>
+		<span class="t4">份数</span>
+	</div>
+
+	<div class="insure_table">
+		<a href="javascript:;" class="more_insure">
+			更多意外险<span class="no_more"></span>
+		</a>
+        
+		<div class="accident accident_list accident_more"></div>
+        <ul class="accident accident_list first_insure accident_more none"></ul>
+
+        <div class="accident_list canecl">
+            <div class="warm_tip warm2">
+                温馨提示：取消险能够减少订单取消时产生的赔付金额，所以同程旅游强烈建议您购买取消险。
+            </div>
+        </div>
+	</div>
+</div>

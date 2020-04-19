@@ -1,0 +1,26 @@
+<div class="team-table-content team-contact-content none">
+    <div class="table-title">联系人信息</div>
+    <div class="table-content table-content-info">
+        <div class="table-info">
+            <label><em>*</em>联系人</label><input type="text" class="table-link-input table-person-info J_Name" placeholder="请输入联系人姓名" data-rq="请输入联系人姓名" data-error="请输入正确的联系人姓名"><span class="error-tip"></span>
+        </div>
+        <div class="table-info">
+            <label><em>*</em>手机号</label><input type="text" maxlength="11" class="table-link-input table-person-info J_Phone" placeholder="请输入手机号码" data-rq="请输入手机号码" data-error="请输入正确的手机号码"><span class="error-tip"></span>
+        </div>
+        <div class="table-info">
+            <label><em>*</em>电子邮箱</label><input type="text" class="table-link-input table-person-info J_Mail" placeholder="请输入您的邮箱" data-rq="请输入您的邮箱" data-error="请输入正确的邮箱号码"><span class="error-tip"></span>
+        </div>
+        <div class="table-info J_Table_Company none">
+            <label>公司名称</label><input type="text" class="table-link-input table-person-info J_Company" placeholder="公司出游填写">
+        </div>
+        <div class="table-info J_LinkTime">
+            <label><em>*</em>联系时间</label><span class="table-time table-morning current">9:00~12:00<i></i></span><span class="table-time">12:00~18:00<i></i></span><span class="table-time">18:00~21:00<i></i></span>
+        </div>
+        <div class="table-info table-tip">
+            <label></label><i class="table-change"><em>*</em>方便我们与您联系的时间</i>
+        </div>
+        <div class="table-submit">
+            <input type="button" class="table-submit-btn J_PreBtn" value="上一步" /><input type="button" class="table-submit-btn disabled J_SubmitBtn" value="提交需求单" />
+        </div>
+    </div>
+</div>

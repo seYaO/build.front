@@ -1,0 +1,333 @@
+{{?it &&it.length}}
+{{~it:flightItem:index}}
+    {{
+        var itItem = flightItem;
+    }}
+
+    {{?itItem.ConnectingFlights && itItem.ConnectingFlights.length}}
+        {{var aircode2 = "if_logo_"+itItem.Flight.AirCompanyCode;}}
+        <div class="fp-item" data-flight='{{=encodeURIComponent(JSON.stringify(itItem))}}'>
+            <div class="flight-content flight-back">
+                <table class="flight-table"  border="0">
+                    <tbody>
+                    <tr>
+                        <td width="100" align="center"><span style="font-size:12px">{{=itItem.Flight.StartDate}}</span></td>
+                        <td width="125" align="center"><span class="if_logo {{=aircode2}}"></span>
+                            <div class="if_air">
+                                <p title="{{=itItem.Flight.AirCompany}}">{{=itItem.Flight.AirCompany}}</p>
+                                <p>{{=itItem.Flight.FlightNumber}}<span>{{=itItem.Flight.FlightModels}}</span></p>
+                            </div>
+                        </td>
+                        <td width="350" align="center">
+                            <table class="table-flight" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td width="120" align="center"> <strong>{{=itItem.Flight.StartTime}}</strong> </td>
+                                        <td width="140" rowspan="2">
+                                            <span class="flight-icon">
+                                                {{?itItem.Flight.FlightTime}}
+                                                    <em>约{{=itItem.Flight.FlightTime}}</em>
+                                                {{?}}
+                                                {{?itItem.Flight.StopCity}}
+                                                    <div class="stopCity">
+                                                        <span class="stopCitySpan">{{=itItem.Flight.StopCity}}</span><span class="jingting">经停</span>
+                                                    </div>
+                                                {{?}}
+                                            </span>
+                                        </td>
+                                        <td width="120" align="center"> <span class="time"> <strong>{{=itItem.Flight.EndTime}}</strong>{{?itItem.Flight.IsOverNight}}<em data-content="受时差和飞行时间影响，航班到达日期为起飞日期的次日。显示的到达时间为当地时间。">次日</em>{{?}}    </span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120" align="center" class="overHidden" title="{{=itItem.Flight.DepartAirPort}}{{=itItem.Flight.DepartAirFloor}}" style="font-size:14px">{{=itItem.Flight.DepartAirPort}}{{=itItem.Flight.DepartAirFloor}}</td>
+                                        <td width="120" align="center" class="overHidden" title="{{=itItem.Flight.ArriveAirPort}}{{=itItem.Flight.ArriveAirFloor}}" style="font-size:14px">{{=itItem.Flight.ArriveAirPort}}{{=itItem.Flight.ArriveAirFloor}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            {{~itItem.ConnectingFlights:ConnectingFlights:index3}}
+                {{
+                    var aircode3 = "if_logo_"+ConnectingFlights.ConnectingFlight.AirCompanyCode;
+                }}
+                <div class="Z-line"><span><i></i><b>{{=ConnectingFlights.ConnectingCity}}</b><em>中转停留{{=ConnectingFlights.ConnectingTime}}</em></span></div>
+                <div class="Z-hasTurn">
+                    {{?ConnectingFlights.ConnectingFlight.TransitsSign}}
+                        <div class="J_transitsSign transitsSign" data-content='{{=ConnectingFlights.ConnectingFlight.TransitsSign}}'>
+                            过境签证
+                        </div>
+                    {{?}}
+                    <div class="cabinName">{{=itItem.Cabins[0].MainCabin.CabinName}}</div>
+                    <div class="bookNotice">
+                        {{?itItem.Cabins[0].MainCabin.Consign}}
+                            <span class="explain-fly" data-co="1" data-departCity="{{=itItem.Flight.DepartCity}}" data-coCity="{{=itItem.Flight.ArriveCity}}" data-arriveCity="{{=ConnectingFlights.ConnectingFlight.ArriveCity}}" data-goBookNotice="{{=itItem.Cabins[0].MainCabin.BookNotice}}" data-goChangeRule="{{=itItem.Cabins[0].MainCabin.ChangeRule}}" data-goRefundRule="{{=itItem.Cabins[0].MainCabin.RefundRule}}"  data-IsDirect="{{=itItem.Cabins[0].IsDirect}}" data-goConsign ="{{=itItem.Cabins[0].MainCabin.Consign}}"
+                            {{~itItem.Cabins[0].ConnectingCabins:connectingCabin:connCabinIndex}}
+                                {{?itItem.Cabins[0].ConnectingCabins[connCabinIndex].Index == index3 + 1}}
+                                    data-coBookNotice="{{=itItem.Cabins[0].ConnectingCabins[connCabinIndex].BookNotice}}" data-coChangeRule="{{=itItem.Cabins[0].ConnectingCabins[connCabinIndex].ChangeRule}}" data-coRefundRule="{{=itItem.Cabins[0].ConnectingCabins[connCabinIndex].RefundRule}}"data-coConsign ="{{=itItem.Cabins[0].ConnectingCabins[0].Consign}}"
+                                {{?}}
+                            {{~}} data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span>
+                        {{??}}
+                            <span class="explain-fly" data-co="1" data-departCity="{{=itItem.Flight.DepartCity}}" data-coCity="{{=itItem.Flight.ArriveCity}}" data-arriveCity="{{=ConnectingFlights.ConnectingFlight.ArriveCity}}" data-goBookNotice="{{=itItem.Cabins[0].MainCabin.BookNotice}}" data-goChangeRule="{{=itItem.Cabins[0].MainCabin.ChangeRule}}" data-goRefundRule="{{=itItem.Cabins[0].MainCabin.RefundRule}}" data-IsDirect="{{=itItem.Cabins[0].IsDirect}}"
+                            {{~itItem.Cabins[0].ConnectingCabins:connectingCabin:connCabinIndex}}
+                                {{?itItem.Cabins[0].ConnectingCabins[connCabinIndex].Index == index3 + 1}}
+                                    data-coBookNotice="{{=itItem.Cabins[0].ConnectingCabins[connCabinIndex].BookNotice}}" data-coChangeRule="{{=itItem.Cabins[0].ConnectingCabins[connCabinIndex].ChangeRule}}" data-coRefundRule="{{=itItem.Cabins[0].ConnectingCabins[connCabinIndex].RefundRule}}"
+                                {{?}}
+                            {{~}} data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span>
+                        {{?}}
+                    </div>
+                    <div class="diffPrice">
+                        {{?itItem.Cabins[0].DifferencePrice >0}}
+                        <span class="fp-fee-add overzero">差价：+{{=itItem.Cabins[0].DifferencePrice}}</span>
+                        {{??itItem.Cabins[0].DifferencePrice ==0}}
+                        <span class="fp-fee-add equirezero">差价：--</span>
+                        {{??}}
+                        <span class="fp-fee-add downzero"><i>差价：-{{=Math.abs(itItem.Cabins[0].DifferencePrice)}}</i></span>
+                        {{?}}
+                    </div>
+                    <div class="key">
+                        {{
+                            var flyParam = {};
+                            var moreCabinItems = itItem.Cabins;
+                            flyParam = itItem;
+                            flyParam.Cabins = itItem.Cabins.slice(0, 1);
+                            flyParam = encodeURIComponent(JSON.stringify(flyParam));
+                        }}
+                        {{?itItem.IsSelected == 1}}
+                            <span class="btn-choice-flight has-choice-hotel" data-flyParam = '{{=flyParam}}' data-IsDirect="{{=itItem.Cabins[0].IsDirect}}">已 选<i></i>{{?itItem.Cabins[0].LeftTicket<9}}<em>仅剩{{=itItem.Cabins[0].LeftTicket}}张</em>{{?}}</span>
+                        {{??}}
+                            <span class="btn-choice-flight" data-flyParam = '{{=flyParam}}' data-IsDirect="{{=itItem.Cabins[0].IsDirect}}">选 择<i></i>{{?itItem.Cabins[0].LeftTicket<9}}<em>仅剩{{=itItem.Cabins[0].LeftTicket}}张</em>{{?}}</span>
+                        {{?}}
+                    </div>
+                </div>
+                <div class="flight-content flight-back">
+                    <table class="flight-table"  border="0">
+                        <tbody>
+                            <tr>
+                            <td width="100" align="center"><span style="font-size:12px">{{=ConnectingFlights.ConnectingFlight.StartDate}}</span></td>
+                            <td width="125" align="center"><span class="if_logo {{=aircode3}}"></span>
+                                <div class="if_air">
+                                    <p title="{{=ConnectingFlights.ConnectingFlight.AirCompany}}">{{=ConnectingFlights.ConnectingFlight.AirCompany}}</p>
+                                    <span style="display:none;" class="air_share J_air_share" data-content="航班由OZ232实际由NH922承运">共享</span>
+                                    <p>{{=ConnectingFlights.ConnectingFlight.FlightNumber}}<span>{{=ConnectingFlights.ConnectingFlight.FlightModels}}</span></p>
+                                </div>
+                            </td>
+                            <td width="350" align="center">
+                                <table class="table-flight" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="120" align="center"> <strong>{{=ConnectingFlights.ConnectingFlight.StartTime}}</strong> </td>
+                                            <td width="140" rowspan="2">
+                                                <span class="flight-icon">
+                                                    {{?ConnectingFlights.ConnectingFlight.FlightTime}}
+                                                        <em>约{{=ConnectingFlights.ConnectingFlight.FlightTime}}</em>
+                                                    {{?}}
+                                                    {{?ConnectingFlights.ConnectingFlight.StopCity}}
+                                                        <div class="stopCity">
+                                                            <span class="stopCitySpan">{{=ConnectingFlights.ConnectingFlight.StopCity}}</span><span class="jingting">经停</span>
+                                                        </div>
+                                                    {{?}}
+                                                </span>
+                                            </td>
+                                            <td width="120" align="center"> <span class="time"> <strong>{{=ConnectingFlights.ConnectingFlight.EndTime}}</strong>{{?ConnectingFlights.ConnectingFlight.IsOverNight}}<em data-content="受时差和飞行时间影响，航班到达日期为起飞日期的次日。显示的到达时间为当地时间。">次日</em>{{?}}  </span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="120" align="center" class="overHidden" title="{{=ConnectingFlights.ConnectingFlight.DepartAirPort}}{{=ConnectingFlights.ConnectingFlight.DepartAirFloor}}" style="font-size:14px">{{=ConnectingFlights.ConnectingFlight.DepartAirPort}}{{=ConnectingFlights.ConnectingFlight.DepartAirFloor}}</td>
+                                            <td width="120" align="center" class="overHidden" title="{{=ConnectingFlights.ConnectingFlight.ArriveAirPort}}{{=ConnectingFlights.ConnectingFlight.ArriveAirFloor}}"  style="font-size:14px">{{=ConnectingFlights.ConnectingFlight.ArriveAirPort}}{{=ConnectingFlights.ConnectingFlight.ArriveAirFloor}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {{?moreCabinItems.length > 1}}
+                    {{for(var i=1; i<moreCabinItems.length; i++ ){}}
+                        <div class="Z-hasTurn isTurn none">
+                            <div class="cabinName">{{=moreCabinItems[i].MainCabin.CabinName}}</div>
+                            <div class="bookNotice">
+                                {{?moreCabinItems[i].MainCabin.Consign}}
+                                    <span class="explain-fly" data-co="1" data-departCity="{{=itItem.Flight.DepartCity}}" data-coCity="{{=itItem.Flight.ArriveCity}}" data-arriveCity="{{=ConnectingFlights.ConnectingFlight.ArriveCity}}" data-goBookNotice="{{=moreCabinItems[i].MainCabin.BookNotice}}" data-goChangeRule="{{=moreCabinItems[i].MainCabin.ChangeRule}}" data-goRefundRule="{{=moreCabinItems[i].MainCabin.RefundRule}}"  data-IsDirect="{{=moreCabinItems[i].IsDirect}}" data-goConsign ="{{=moreCabinItems[i].Consign}}"
+                                    {{~moreCabinItems[i].ConnectingCabins:connectingCabin:connCabinIndex}}
+                                        {{?moreCabinItems[i].ConnectingCabins[connCabinIndex].Index == index3 + 1}}
+                                            data-coBookNotice="{{=moreCabinItems[i].ConnectingCabins[connCabinIndex].BookNotice}}" data-coChangeRule="{{=moreCabinItems[i].ConnectingCabins[connCabinIndex].ChangeRule}}" data-coRefundRule="{{=moreCabinItems[i].ConnectingCabins[connCabinIndex].RefundRule}}"data-coConsign ="{{=moreCabinItems[i].ConnectingCabins[connCabinIndex].Consign}}"
+                                        {{?}}
+                                    {{~}} data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span>
+                                {{??}}
+                                    <span class="explain-fly" data-co="1" data-departCity="{{=itItem.Flight.DepartCity}}" data-coCity="{{=itItem.Flight.ArriveCity}}" data-arriveCity="{{=ConnectingFlights.ConnectingFlight.ArriveCity}}" data-goBookNotice="{{=moreCabinItems[i].MainCabin.BookNotice}}" data-goChangeRule="{{=moreCabinItems[i].MainCabin.ChangeRule}}" data-goRefundRule="{{=moreCabinItems[i].MainCabin.RefundRule}}" data-IsDirect="{{=moreCabinItems[i].IsDirect}}"
+                                    {{~moreCabinItems[i].ConnectingCabins:connectingCabin:connCabinIndex}}
+                                        {{?moreCabinItems[i].ConnectingCabins[connCabinIndex].Index == index3 + 1}}
+                                            data-coBookNotice="{{=moreCabinItems[i].ConnectingCabins[connCabinIndex].BookNotice}}" data-coChangeRule="{{=moreCabinItems[i].ConnectingCabins[connCabinIndex].ChangeRule}}" data-coRefundRule="{{=moreCabinItems[i].ConnectingCabins[connCabinIndex].RefundRule}}"
+                                        {{?}}
+                                    {{~}} data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span>
+                                {{?}}
+                            </div>
+                            <div class="diffPrice">
+                                {{?moreCabinItems[i].DifferencePrice >0}}
+                                <span class="fp-fee-add overzero">差价：+{{=moreCabinItems[i].DifferencePrice}}</span>
+                                {{??moreCabinItems[i].DifferencePrice ==0}}
+                                <span class="fp-fee-add equirezero">差价：--</span>
+                                {{??}}
+                                <span class="fp-fee-add downzero"><i>差价：-{{=Math.abs(moreCabinItems[i].DifferencePrice)}}</i></span>
+                                {{?}}
+                            </div>
+                            <div class="key">
+                                {{
+                                    var single = itItem;
+                                    var cabins = moreCabinItems[i];
+                                    single.Cabins= [];
+                                    single.Cabins.push(cabins);
+                                    var flyParam = encodeURIComponent(JSON.stringify(single));
+                                }}
+                                <span class="btn-choice-flight"  data-flyParam = '{{=flyParam}}' data-IsDirect="{{=itItem.IsDirect}}" data-id="{{=itItem.FlightNos}}">选 择<i></i>
+                                    {{?moreCabinItems[i] && moreCabinItems[i].LeftTicket<9}}
+                                        <em>仅剩{{=moreCabinItems[i].LeftTicket}}张</em>
+                                    {{?}}
+                                </span>
+                            </div>
+                        </div>
+                    {{}}}
+                    <div class="moreCabin J_moreCabin"><span>更多舱位</span><i></i></div>
+                {{?}}
+            {{~}}
+        </div>
+    {{??}}
+        {{var aircode2 = "if_logo_"+itItem.Flight.AirCompanyCode;}}
+        <div class="fp-item" data-flight='{{=encodeURIComponent(JSON.stringify(itItem))}}'>
+            <div class="flight-content flight-back">
+                <table class="flight-table"  border="0">
+                <tbody>
+                    <tr>
+                        <td width="100" align="center"><span style="font-size:12px">{{=itItem.Flight.StartDate}}</span></td>
+                        <td width="125" align="center"><span class="if_logo {{=aircode2}}"></span>
+                            <div class="if_air">
+                                <p title="{{=itItem.Flight.AirCompany}}">{{=itItem.Flight.AirCompany}}</p>
+                                <span style="display:none;" class="air_share J_air_share" data-content="航班由OZ232实际由NH922承运">共享</span>
+                                <p>{{=itItem.Flight.FlightNumber}}<span>{{=itItem.Flight.FlightModels}}</span></p>
+                            </div>
+                        </td>
+                        <td width="350" align="center">
+                            <table class="table-flight" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td width="120" align="center"> <strong>{{=itItem.Flight.StartTime}}</strong> </td>
+                                        <td width="140" rowspan="2">
+                                            <span class="flight-icon">
+                                                {{?itItem.Flight.FlightTime}}
+                                                    <em>约{{=itItem.Flight.FlightTime}}</em>
+                                                {{?}}
+                                                {{?itItem.Flight.StopCity}}
+                                                    <div class="stopCity">
+                                                        <span class="stopCitySpan">{{=itItem.Flight.StopCity}}</span><span class="jingting">经停</span>
+                                                    </div>
+                                                {{?}}
+                                            </span>
+                                        </td>
+                                        <td width="120" align="center"> <span class="time"> <strong>{{=itItem.Flight.EndTime}}</strong>{{?itItem.Flight.IsOverNight}}<em data-content="受时差和飞行时间影响，航班到达日期为起飞日期的次日。显示的到达时间为当地时间。">次日</em>{{?}}    </span> </td>
+                                    </tr>
+                                    <tr>
+                                        <td width="120" align="center" class="overHidden" title="{{=itItem.Flight.DepartAirPort}}{{=itItem.Flight.DepartAirFloor}}" style="font-size:14px">{{=itItem.Flight.DepartAirPort}}{{=itItem.Flight.DepartAirFloor}}</td>
+                                        <td width="120" align="center" class="overHidden" title="{{=itItem.Flight.ArriveAirPort}}{{=itItem.Flight.ArriveAirFloor}}" style="font-size:14px">{{=itItem.Flight.ArriveAirPort}}{{=itItem.Flight.ArriveAirFloor}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                        <td width="120" align="center"><span>{{=itItem.Cabins[0].MainCabin.CabinName}}</span></td>
+                        {{?itItem.Cabins[0].MainCabin.Consign}}
+                            <td width="150" align="left">
+                                <span class="explain-fly" data-IsDirect="{{=itItem.Cabins[0].IsDirect}}" data-goConsign ="{{=itItem.Cabins[0].MainCabin.Consign}}"
+                                data-goBookNotice="{{=itItem.Cabins[0].MainCabin.BookNotice}}" data-goChangeRule="{{=itItem.Cabins[0].MainCabin.ChangeRule}}"
+                                data-goRefundRule="{{=itItem.Cabins[0].MainCabin.RefundRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">
+                                    退改签及购票说明
+                                </span>
+                            </td>
+                        {{??}}
+                            <td width="150" align="left">
+                                <span class="explain-fly" data-IsDirect="{{=itItem.Cabins[0].IsDirect}}" data-goBookNotice="{{=itItem.Cabins[0].MainCabin.BookNotice}}"
+                                data-goChangeRule="{{=itItem.Cabins[0].MainCabin.ChangeRule}}" data-goRefundRule="{{=itItem.Cabins[0].MainCabin.RefundRule}}"
+                                data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">
+                                    退改签及购票说明
+                                </span>
+                            </td>
+                        {{?}}
+                        {{?itItem.Cabins[0].DifferencePrice >0}}
+                        <td width="120" align="left"><span class="fp-fee-add overzero">差价：+{{=itItem.Cabins[0].DifferencePrice}}</span></td>
+                        {{??itItem.Cabins[0].DifferencePrice ==0}}
+                        <td width="120" align="left"><span class="fp-fee-add equirezero">差价：--</span></td>
+                        {{??}}
+                        <td width="120" align="left"><span class="fp-fee-add downzero"><i>差价：-{{=Math.abs(itItem.Cabins[0].DifferencePrice)}}</i></span></td>
+                        {{?}}
+                        {{
+                            var single = itItem;
+                            var cabins = itItem.Cabins.slice(0, 1);
+                            var moreCabinItems = single.Cabins;
+                            single.Cabins= cabins;
+                            var flyParam = encodeURIComponent(JSON.stringify(single));
+                        }}
+                        {{?itItem.Cabins[0].IsSelected==1}}
+                        <td width="50" align="center"><span class="btn-choice-flight has-choice-hotel" data-flyParam = '{{=flyParam}}' data-IsDirect="{{=itItem.Cabins[0].IsDirect}}">已 选<i></i>{{?itItem.Cabins[0].LeftTicket<9}}<em>仅剩{{=itItem.Cabins[0].LeftTicket}}张</em>{{?}}</span></td>
+                        {{??}}
+                        <td width="50" align="center"><span class="btn-choice-flight" data-flyParam = '{{=flyParam}}' data-IsDirect="{{=itItem.Cabins[0].IsDirect}}">选 择<i></i>{{?itItem.Cabins[0].LeftTicket<9}}<em>仅剩{{=itItem.Cabins[0].LeftTicket}}张</em>{{?}}</span></td>
+                        {{?}}
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+            {{?moreCabinItems.length > 1}}
+                {{for(var i=1; i<moreCabinItems.length; i++ ){}}
+                    <div class="Z-hasTurn isTurn none">
+                        <div class="cabinName">{{=moreCabinItems[i].MainCabin.CabinName}}</div>
+                        <div class="bookNotice">
+                            {{?moreCabinItems[i].MainCabin.Consign}}
+                                <span class="explain-fly" data-IsDirect="{{=moreCabinItems[i].IsDirect}}" data-goConsign ="{{=moreCabinItems[i].MainCabin.Consign}}"
+                                data-goBookNotice="{{=moreCabinItems[i].MainCabin.BookNotice}}" data-goChangeRule="{{=moreCabinItems[i].MainCabin.ChangeRule}}"
+                                data-goRefundRule="{{=moreCabinItems[i].MainCabin.RefundRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">
+                                    退改签及购票说明
+                                </span>
+                            {{??}}
+                                <span class="explain-fly" data-IsDirect="{{=moreCabinItems[i].IsDirect}}" data-goBookNotice="{{=moreCabinItems[i].MainCabin.BookNotice}}"
+                                data-goChangeRule="{{=moreCabinItems[i].MainCabin.ChangeRule}}" data-goRefundRule="{{=moreCabinItems[i].MainCabin.RefundRule}}"
+                                data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">
+                                    退改签及购票说明
+                                </span>
+                            {{?}}
+                        </div>
+                        <div class="diffPrice">
+                            {{?moreCabinItems[i].DifferencePrice >0}}
+                            <span class="fp-fee-add overzero">差价：+{{=moreCabinItems[i].DifferencePrice}}</span>
+                            {{??moreCabinItems[i].DifferencePrice ==0}}
+                            <span class="fp-fee-add equirezero">差价：--</span>
+                            {{??}}
+                            <span class="fp-fee-add downzero"><i>差价：-{{=Math.abs(moreCabinItems[i].DifferencePrice)}}</i></span>
+                            {{?}}
+                        </div>
+                        <div class="key">
+                            {{
+                                var single = itItem;
+                                var cabins = moreCabinItems[i];
+                                single.Cabins= [];
+                                single.Cabins.push(cabins);
+                                var flyParam = encodeURIComponent(JSON.stringify(single));
+                            }}
+                            <span class="btn-choice-flight"  data-flyParam = '{{=flyParam}}' data-IsDirect="{{=itItem.Cabins[0].IsDirect}}"  data-id="{{=itItem.FlightNos}}">选 择<i></i>{{?moreCabinItems[i].LeftTicket<9}}<em>仅剩{{=moreCabinItems[i].LeftTicket}}张</em>{{?}}</span>
+                        </div>
+                    </div>
+                {{}}}
+                <div class="moreCabin J_moreCabin"><span>更多舱位</span><i></i></div>
+            {{?}}
+        </div>
+    {{?}}
+{{~}}
+{{??}}
+    {{?it.times&&it.times==2}}
+    <div class="temai-noresult"><img src="//img1.40017.cn/cn/v/2015/yushou/no-result.png" alt=""><p>亲，筛选无结果啦，重新筛选吧。</p></div>
+    <div class="back-page">返回套餐<i></i></div>
+    {{
+        $(".search_loading").addClass('none');
+    }}
+    {{??}}
+    <div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>
+    {{?}}
+{{?}}

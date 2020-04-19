@@ -1,0 +1,36 @@
+
+    {{~it.PriceList:value:index}}
+    {{var productType = it.productType_hide;var prodcutCategory = it.ProdcutCategory;}}
+
+       {{?productType == 9 && index == 0 && prodcutCategory == 92}}
+       <li class="wifi_spe"><label data-isautoclose="0" data-type="1" data-iscount="1" data-id="66084614" data-daren="0" data-discount="0" class="J_PriceType wifi_priceType J_Price" data-name="{{=value.Name}}" data-price = "{{=value.Price}}">预订台数</label>
+           <div class="label-control">
+               <div class="button-content num-ctrlbox"><i data-ctrl="-1" class="button-minus off"></i>
+                   <input type="text" name="" class="J_Number" min="{{=value.OrderDefault}}" max="{{=value.OrderMax}}" value="{{=value.OrderDefault}}" priceId="{{=value.Id}}" attr-unit="/{{=value.PriceUnit}}" autocomplete="off">
+                   <i data-ctrl="+1" class="button-plus  {{?value.OrderMax == 1}}off{{?}}"></i>
+               </div>
+           </div>
+       </li>
+       {{??}}
+       {{?productType != 9 || (productType == 9 && prodcutCategory !== 92)}}
+       <li><label data-isautoclose="0" data-type="1" data-iscount="1" data-id="66084614" data-daren="0" data-discount="0" class="J_PriceType">{{=value.Name}}</label>
+           <div class="label-control">
+               {{?index == 0}}
+               <div class="button-content num-ctrlbox"><i data-ctrl="-1" class="button-minus off"></i>
+                   <input type="text" name="" class="J_Number" min="0" max="{{=value.OrderMax}}" value="{{=value.OrderDefault}}" priceId="{{=value.Id}}" attr-unit="/{{=value.PriceUnit}}" autocomplete="off">
+               {{?}}
+               {{?index > 0}}
+               <div class="button-content num-ctrlbox"><i data-ctrl="-1" class="button-minus off"></i>
+                  <input type="text" name="" class="J_Number" min="0" max="{{=value.OrderMax}}" value="0" priceId="{{=value.Id}}" attr-unit="/{{=value.PriceUnit}}" autocomplete="off">
+               {{?}}
+                   <i data-ctrl="+1" class="button-plus  {{?value.OrderMax == 1}}off{{?}}"></i>
+               </div>
+           </div>
+
+           <div class="price" attr-unit="{{=value.PriceUnit}}"><span><span class="fn-rmb">￥</span><em id="J_SinglePrice" class="J_Price" data-price="{{=value.Price}}">{{=value.Price}}</em></span>{{?value.PriceUnit != ""}}/{{=value.PriceUnit}}{{?}}
+           </div>
+       </li>
+       {{?}}
+       {{?}}
+
+    {{~}}

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413"/>
+    <link rel="stylesheet" href="index.css"/>
+    <style>
+        body{
+            padding:50px;
+        }
+    </style>
+</head>
+<body>
+  
+<div class="citybox">
+    <input type="" name="" value="">  
+
+</div>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script src="../../jquery.js" type="text/javascript"></script>
+
+<script>
+    seajs.config({
+        base: "../../"
+    });
+</script>
+
+<script>
+    seajs.use("departure/0.3.0/index", function (Departure) {
+        new Departure({
+            className:".J_startCity",
+            eventType:'click',
+            success:function(param){
+                var dom = param.parent;
+                dom.find('input').val(param.cityname);
+            }
+        }).init();
+    });
+
+</script>
+</body>
+</html>

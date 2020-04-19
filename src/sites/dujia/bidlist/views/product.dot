@@ -1,0 +1,265 @@
+{{?it.Products && it.Products.length}}
+{{~it.Products:products}}
+{{?(it.BaseData.PageType == 1 || it.BaseData.PageType == 3) && products.IsGroup}}
+<div class="module">
+    {{var perClass = "playStyle",
+          psClass = "pSty";}}
+    {{?products.Title}}
+    {{?products.Title == "特惠专区"}}
+        {{perClass = "preferential";}}
+        {{psClass = "prefer";}}
+    {{?}}
+        <div>
+            <span class="tabs {{=perClass}}">
+                <i class="tab-txt">{{=products.Title}}</i>
+            </span>
+        </div>
+    {{?}}
+    <div class="mod-list {{=psClass}}">
+{{??}}
+    <div class="mod-pager">
+{{?}}
+        <ul class="prolist">
+            {{~products.Products:pro}}
+            {{var linkUrl = "",
+                property = "",
+                proClass = "";}}
+            {{?pro.LineProperty == 3}}
+                {{?!pro.IsSuperFree}}
+                    {{linkUrl = "/dujia/tours/" + pro.LineId + "/";}}
+                    {{property = "自由行";}}
+                    {{proClass = "free";}}
+                {{??}}
+                    {{linkUrl = "/dujia/tours/p" + pro.LineId + "/";}}
+                    {{property = "机酒任选";}}
+                    {{proClass = "package";}}
+                {{?}}
+            {{??}}
+                {{linkUrl = "/dujia/tours/" + pro.LineId + ".html";}}
+                {{?pro.LineProperty == 1}}
+                    {{property = "跟团游";}}
+                    {{proClass = "pack";}}
+                {{??}}
+                    {{property = "目的地参团";}}
+                    {{proClass = "local";}}
+                {{?}}
+            {{?}}
+            <li class="pro-line">
+                <div class="pro-redu">
+                    <div class="pro-img">
+                        <a href="{{=linkUrl}}" target="_blank" data-paramed="true">
+                            <img data-img="{{=pro.LineImg}}" onerror="Monitor.log(this.src,'image')">
+                        </a>
+                        <span class="mark {{=proClass}}">{{=property}}</span>
+                        <div class="pro-compare" style="display: none;">
+                            <span data-content="收藏后您可进入我的同程-我的收藏进行查看。" attr-id="{{=pro.LineId}}" class="J_Store store J_Tips"><i></i>收藏</span>
+                            |
+                            <span attr-tit="{{=pro.Title}}" attr-price="{{=pro.Price}}" attr-id="{{=pro.LineId}}" class="compare"><i></i>加入对比</span>
+                        </div>
+                    </div>
+                    {{var iconClass = "";}}
+                    {{?pro.IsTcSpecialLine == 1}}
+                    {{iconClass = "tc_ico";}}
+                    {{?}}
+                    <div class="pro-info {{=iconClass}}">
+                        <p class="pro-title">
+                            {{var clractTitle = "";}}
+                            {{?pro.SeasonTitle}}
+                                {{clractTitle = "<b>【" + pro.SeasonTitle + "】</b>";}}
+                            {{?}}
+                            {{var seasonTitle = pro.SeasonTitle ? ("【" + pro.SeasonTitle + "】") : "";}}
+                            {{var proTitle = clractTitle + "<em>" + pro.Title + "</em>&nbsp;" + pro.SubTitle;}}
+                            {{var mainTitle = seasonTitle + pro.Title + pro.SubTitle;}}
+                            {{var titleLen = 0;}}
+                            {{?mainTitle && mainTitle.length > 45}}
+                                {{titleLen = 45 - seasonTitle.length;}}
+                                {{?titleLen > 0}}
+                                    {{?(titleLen - pro.Title.length) > 0}}
+                                        {{proTitle = clractTitle + "<em>" + pro.Title + "</em>&nbsp;" + pro.SubTitle.substring(0, (titleLen - pro.Title.length-1)) + "...";}}
+                                    {{??}}
+                                        {{proTitle = clractTitle + "<em>" + pro.Title.substring(0,titleLen) + "</em>...";}}
+                                    {{?}}
+                                {{??}}
+                                    {{proTitle = "<b>【" + pro.SeasonTitle.substring(0,45) + "】</b>...";}}
+                                {{?}}
+                            {{?}}
+                            <a title='{{=seasonTitle}}{{=pro.Title}}{{=pro.SubTitle}}' href="{{=linkUrl}}" target="_blank" data-paramed="true">
+                                {{=proTitle}}
+                            </a>
+                            {{?pro.LineClassific && pro.LineClassific.Name}}
+                                <span data-content="{{=pro.LineClassific.Desc}}" class="stars J_Tips">
+                                    <span class="stars-txt">{{=pro.LineClassific.Name}}</span>
+                                    <span class="icon-star">{{for(var i=0;i<pro.LineClassific.Level;i++){}}<i></i>{{}}}</span>
+                                </span>
+                            {{?}}
+                            {{?pro.IsTcSpecialLine != 0}}
+                            <span data-content="{{=pro.TcSpecialLineTip}}" class="icon-tczx J_Tips"></span>
+                            {{?}}
+                            {{?pro.IsExtraordinary != 0}}
+                            <span data-content="{{=pro.ExtraordinaryTip}}" class="icon-ffxl J_Tips"></span>
+                            {{?}}
+                        </p>
+                        <p class="pro-pre">
+                            {{?pro.LinePreferential && pro.LinePreferential.length}}
+                            {{~pro.LinePreferential:preferList}}
+                                {{var name = "";}}
+                                {{var iconContent = "";}}
+                                {{?preferList.Name.Length > 4}}
+                                    {{name = preferList.Name.Substring(0, 4);}}
+                                {{??}}
+                                    {{name = preferList.Name;}}
+                                {{?}}
+                                {{if(name == "第二人半"){name = "第二人半价";}}}
+                                {{?preferList.LongContent}}
+                                    {{var tips = preferList.LongContent.split(/\d\./g);}}
+                                    {{var tipCount = 0;}}
+                                    {{~tips:iconTip}}
+                                        {{?iconTip}}
+                                            {{tipCount++;}}
+                                            {{iconContent += tipCount + "." + iconTip.trim() + "<br />";}}
+                                        {{?}}
+                                    {{~}}
+                                {{?}}
+                                {{var content = "<div><strong>" + preferList.Name + "</strong><hr />" + iconContent + "</div>";}}
+                                {{var iconStyle = "border:solid 1px " + preferList.Color + "; color:" + preferList.Color + ";";}}
+                                {{?name}}
+                                <span data-content='{{=content}}' class="J_Tips" style='{{=iconStyle}}'>{{=name}}</span>
+                                {{?}}
+                            {{~}}
+                            {{?}}
+                            {{?pro.IsWhiteBar != 0}}
+                                <span data-content="{{=pro.WhiteBarTip}}" class="J_Tips">分期付款</span>
+                            {{?}}
+                            {{?pro.IsExtraordinary == 0}}
+                                {{var dpContent = `1.点评成功后，您将获得25-50元不等的点评奖金,审核通过后返还至您的奖金账户。<br />
+                                                     <span style="color: #ff7800">2.如果您的点评足够细致、有特色，将有机会被评为精华点评，被评为精华点评，奖金是原点评奖金的2倍哦！</span><br />
+                                                     <span style="color: #ff7800">3.若是点评上传图片，图片实拍，成像清晰美丽，被评为精华点评机会更大哦！</span>`;}}
+                                <span data-content='<div>{{=dpContent}}</div>' class="J_Tips">点评返现</span>
+                            {{??}}
+                                {{var extraContent = `1.点评提交，通过审核后您将可以获得<span style="color: #ff7800">100元/人</span>的立返奖金，返现人数即参与点评人数（奖金统一返至预定人立返奖金账户）。<br />
+                                                                               2.出游前一天会有短信通知，出游后即可点击短信中的链接参与非凡点评。<br />
+                                                                               3.非凡点评需满足100字以上的文字+4张以上的图片，每个出游人的点评内容不可完全一致哦。<br />
+                                                                               4.在回团后15天内点评有效。`;}}
+                                <span data-content='<div>{{=extraContent}}</div>' class="J_Tips">非凡立返</span>
+                            {{?}}
+                        </p>
+                        <div class="branch_style">
+                            <p class="pro-tip">
+                                {{?pro.LineProperty != 10}}
+                                    {{?pro.IsBusCombinedTransportation != 0 && pro.IsBusCombinedTransportation == 1}}
+                                        <span class="pro-dep"><i></i>{{=pro.StartCity}}联运大巴</span>
+                                    {{??}}
+                                        <span class="pro-dep"><i></i>{{=pro.StartCity}}出发</span>
+                                    {{?}}
+                                {{?}}
+                                {{?pro.LineFeature && pro.LineFeature.length}}
+                                    {{~pro.LineFeature:rcImg}}
+                                        <span class="pro-light">{{=rcImg}}</span>
+                                    {{~}}
+                                {{?}}
+                                {{?pro.LineRecommend}}
+                                    {{~pro.LineRecommend:serviceFeature}}
+                                        <span class="pro-light">{{=serviceFeature}}</span>
+                                    {{~}}
+                                {{?}}
+                            </p>
+                            {{?!pro.IsSuperFree}}
+                                <p class="pro-scen">
+                                    {{?pro.LineProperty == 1 || pro.LineProperty == 10}}
+                                        {{var scenery = "";}}
+                                        {{?pro.TravelSpots && pro.TravelSpots.length}}
+                                        <span class="pro-text">行程景点：{{=pro.TravelSpots.toString().replace(/,/g, "、")}}</span>
+                                        {{?}}
+                                    {{??}}
+                                        {{?pro.HotelLevel > 0}}
+                                            <span class="pro-text hotelName">酒店等级：</span>
+                                            <span class='level J_Tips marlef'  data-content="<div class='assess assess-tip'>行业网站评定为：<span>{{=pro.HotelLevel}}钻</span></div>"  data-name='{{=pro.HotelLevel}}'>
+                                                {{for (var i = 0; i < Math.ceil(pro.HotelLevel); i++) {}}
+                                                    {{?i < Math.floor(pro.HotelLevel)}}
+                                                        <em class="diamond"></em>
+                                                    {{??}}
+                                                        <em></em>
+                                                    {{?}}
+                                                {{}}}
+                                            </span>
+                                        {{?}}
+                                        {{?pro.FlightType}}
+                                            <span class="pro-text">航班信息：</span>{{=pro.FlightType}}&nbsp;&nbsp;
+                                            {{?pro.FlightGoTime&&pro.FlightBackTime}}
+                                                {{=pro.FlightGoTime.substring(0,pro.FlightGoTime.length-2)}}:{{=pro.FlightGoTime.substring(pro.FlightGoTime.length-2,pro.FlightGoTime.length)}}出发/{{=pro.FlightBackTime.substring(0,pro.FlightBackTime.length-2)}}:{{=pro.FlightBackTime.substring(pro.FlightBackTime.length-2,pro.FlightBackTime.length)}}返回
+                                            {{??}}
+                                                暂无
+                                            {{?}}
+                                        {{?}}
+                                    {{?}}
+                                </p>
+                                <p class="pro-date">
+                                    <span class="pro-text">出发日期：</span>
+                                    {{var lineDate = "", len = pro.LineDates.length;}}
+                                    {{for(var i = 0; i < len; i++) {
+                                        if (len > 7) {
+                                            if (i < 6) {
+                                                lineDate += pro.LineDates[i].replace(/^2\d+\-/g,"") + " | ";
+                                            } else {
+                                                lineDate += "... | ";
+                                                break;
+                                            }
+                                        } else if (len > 1 && len < 7) {
+                                            if (i < len - 1) {
+                                                lineDate += pro.LineDates[i].replace(/^2\d+\-/g,"") + " | ";
+                                            } else {
+                                                break;
+                                            }
+                                        } else {
+                                            break;
+                                        }
+                                    } }}
+                                    {{lineDate  +=  pro.LineDates[len - 1];}}
+                                    <span class="date-list">{{=lineDate}}</span>
+                                    <span firstdate="{{=pro.LineDates[0]}}" attr-lineid="{{=pro.LineId}}" class="J_fond fond">更多<i></i></span>
+                                </p>
+                            {{??}}
+                                <p class="pro-date">
+                                    <span class="pro-text">出发日期：</span>
+                                    <span class="date-list">天天发团</span>
+                                </p>
+                            {{?}}
+                        </div>
+                    </div>
+                    <div class="pro-detail">
+                        {{?pro.Price}}
+                            <p class="pro-price"><em>¥</em>{{=pro.Price}}<i>起</i></p>
+                        {{??}}
+                            <p class="pro-price"><em class="time-price">实时计价</em></p>
+                        {{?}}
+                        {{?pro.VipDiscount>0}}
+                            <div>
+                                <span class="J_Tips J_Tips_async allTravel" data-content="{{=pro.VipDiscountDesc}}">
+                                    <span class="allTravel-name">百旅会</span>
+                                    <span class="allTravel-price">抵{{=pro.VipDiscount||""}}元/人</span>
+                                </span>
+                            </div>
+                        {{?}}
+                        {{var btnClass = "";}}
+                        <a target="_blank" href="{{=linkUrl}}" class="pro-btn {{=btnClass}}" data-paramed="true">查看详情</a>
+                        {{?pro.Satisfaction == "0.0"}}
+                            <p class="newpro">新产品</p>
+                        {{??}}
+                        <a target="_blank" onclick="_tcTraObj._tcTrackEvent('bq_chanpin', 'scj_dianping', '点评', ' ');" href="{{=linkUrl}}#CommentContent">
+                            <p class="pro-comm">
+                                <em>{{=pro.Satisfaction}}%</em>满意度&nbsp;&nbsp;<em>{{=pro.CommentCount}}</em>条点评
+                            </p>
+                        </a>
+                        {{?}}
+                    </div>
+                </div>
+                <div class="pro-cal none"></div>
+            </li>
+            {{~}}
+        </ul>
+    </div>
+{{?(it.BaseData.PageType == 1 || it.BaseData.PageType == 3) && products.IsGroup}}
+</div>
+{{?}}
+{{~}}
+{{?}}

@@ -1,0 +1,58 @@
+ {{?it.ShortTripProduct.ProductList && it.ShortTripProduct.ProductList.length != 0}}
+<div class="prolist">
+   <ul class="clearfix">
+
+    {{~it.ShortTripProduct.ProductList:shortTripProduct:shortTripProductIndex}}
+    {{var traceLineId = shortTripProduct.LineId;}}
+    {{?shortTripProduct.IsChengYiProduct}}
+        {{var traceType = 3;}}
+    {{??shortTripProduct.IsTCSpecialLine}}
+        {{var traceType = 1;}}
+    {{??}}
+        {{var traceType = 0;}}
+    {{?}}
+    {{?shortTripProduct.Property === 1||shortTripProduct.Property==="1"}}
+        {{var traceLineType = 1;}}
+    {{??}}
+        {{var traceLineType = 3;}}
+    {{?}}
+       <li class='proline'>
+            {{?it.Label.ShortTripLabel.LabelNames && it.Label.ShortTripLabel.LabelNames.length>0}}
+            <a class='proline__link' target='_blank' trackspot="{{=it.CityName}}^{{=shortTripProduct.LineId}}^{{=shortTripProductIndex+1}}^{{=it.Label.ShortTripLabel.LabelNames[0].Name}}^出境短线" target='_blank' trace="{{=shortTripProductIndex}}"  trace="{{=shortTripProductIndex}}" data-trace="{{= 2 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + shortTripProduct.LineId + (shortTripProduct.Property === 1 ? ".html" : "/")}}'>
+            {{??}}
+            <a class='proline__link' target='_blank' target='_blank' trace="{{=shortTripProductIndex}}"  trace="{{=shortTripProductIndex}}" data-trace="{{= 2 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + shortTripProduct.LineId + (shortTripProduct.Property === 1 ? ".html" : "/")}}'>
+            {{?}}
+                <div class='proline__img'>
+                    <img data-img="{{=shortTripProduct.ImgUrl.replace('http:','')}}" title="{{=shortTripProduct.MainTitle}}" alt="{{=shortTripProduct.MainTitle}}">
+                    <div class="sub-title" title="{{=shortTripProduct.SubTitle}}">
+                        {{=shortTripProduct.SubTitle}}
+                    </div>
+                </div>
+                <div class='proline__txt'>
+                    <p class='proline__title' title="{{=shortTripProduct.MainTitle}}">{{=shortTripProduct.MainTitle}}</p>
+                    <p class='proline__price'>
+                        ¥<em>{{=shortTripProduct.TcPrice}}</em><b>起</b>
+                        <i class="proline__depcity">{{=shortTripProduct.LeaveCity}}出发</i>
+                    </p>
+                </div>
+                        {{var tag ,tagClass;}}
+                        {{?shortTripProduct.Property == 1}}
+                        {{tag = "跟团游";}}
+                        {{tagClass = "proline__kind-gt";}}
+                        {{??shortTripProduct.Property == 3}}
+                        {{tag = "自由行";}}
+                        {{tagClass = "proline__kind-zy";}}
+                        {{??}}
+                        {{tag = "目的地参团";}}
+                        {{tagClass = "proline__kind-mdd";}}
+                        {{?}}
+                <span class='{{=tagClass }}'>
+                    {{=tag}}
+                </span>
+            </a>
+       </li>
+       {{~}}
+
+   </ul>
+</div>
+{{?}}

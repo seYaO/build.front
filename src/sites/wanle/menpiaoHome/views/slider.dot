@@ -1,0 +1,18 @@
+{{var sliderList = data.HotDestDic.huanDeng.HotProductList;}}
+<div class="sliderDiv" id="sliderDiv">
+    <span></span>
+    <ul class="sliderCon clearfix" trackkit="AD">
+    {{? sliderList != "" && sliderList.length > 0}}
+    {{~ sliderList:pro:index}}
+        <li>
+        <a href="{{=pro.Url.replace('http:','')}}" title="{{=pro.MainTitle}}" target="_blank"  rel="nofollow"  trace="huandeng_{{=index}}" trackspot="{{=pro.MainTitle}}^{{=index+1}}">
+            <img src="{{=pro.Image.replace('http:','')}}" alt="{{=pro.MainTitle}}">
+        </a>
+        </li>
+    {{~}}
+    {{?}}
+
+    </ul>
+</div>
+
+

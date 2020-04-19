@@ -1,0 +1,232 @@
+{{
+    var it = headData;
+    it.hasWide = 1;
+    it.TabTagList = [];
+    it.CustTagList = [];
+    it.List = allCommentData.List;
+
+    if (it.TagList&&it.TagList.length>0) {
+        for(var i=0;i<it.TagList.length;i++){
+            it.TagList[i].TagName = it.TagList[i].TagName.split('(')[0];
+            if (it.TagList[i].TagId < 6) {
+                it.TabTagList.push(it.TagList[i]);
+            } else {
+                if(it.CustTagList.length<=10){
+                    it.CustTagList.push(it.TagList[i]);
+                }
+            }
+        }
+    };
+}}
+<div class="comment-moudle {{?it.hasWide}}w1190{{??}}w950{{?}}" id="comment-moudle">
+    <div class="comm-head clearfix">
+        <div class="comm-satis">
+            <p class="satis-num">{{=it.Satisfaction}}<em>%</em></p>
+            <p class="satis-txt">满意度</p>
+        </div>
+
+        <div class="comm-count">
+            <div class="c_score_bar">
+                <span class="bar_label">好评率</span>
+                <span class="bar_data">
+                    <span style="width:{{=it.GoodFaction}}%"></span>
+                </span>
+                <i>{{=it.GoodFaction}}%</i>
+            </div>
+            <div class="c_score_bar">
+                <span class="bar_label">中评率</span>
+                <span class="bar_data">
+                    <span style="width:{{=it.ModeFaction}}%"></span>
+                </span>
+                <i>{{=it.ModeFaction}}%</i>
+            </div>
+            <div class="c_score_bar">
+               <span class="bar_label">差评率</span>
+                <span class="bar_data">
+                    <span style="width:{{=it.BadFation}}%"></span>
+                </span>
+                <i>{{=it.BadFation}}%</i>
+            </div>
+        </div>
+        {{?it.CustTagList.length}}
+        <div class="comm-custtag">
+            <p class="custtag-txt">出游人都觉得：</p>
+            <div id="J_custtag" class="custtag-list">
+                {{~it.CustTagList:value:index}}
+                    <a class="custtag-li" data-param="tagId={{=value.TagId}}" data-tagid="{{=value.TagId}}" data-tagtype="{{=value.TagType}}" data-tagnum="{{=value.TagNum}}">{{=value.TagName}}<em>({{=value.TagNum}})</em></a>
+                {{~}}
+            </div>
+        </div>
+        {{?}}
+
+        {{?parseInt(lineDetail.IVRLRSourceFrom) == 1}}
+            <!--平台模式提示-->
+            <div class="comm-commit platform-model">
+                <p class="comm-info">游玩后发表点评可获得<a target="_blank" href="//www.ly.com/newhelp/questionlist/6-1-451.html">点评奖金&gt;&gt;</a></p>
+                <a class="gocomm" target="_blank" href="http://member.ly.com/default.aspx">立即点评</a>
+            </div>
+        {{??}}
+           <div class="comm-commit">
+               <p class="comm-info">游玩后发表点评可获得<a target="_blank" href="//www.ly.com/newhelp/questionlist/6-1-451.html">点评奖金&gt;&gt;</a></p>
+               <a class="gocomm" target="_blank" href="http://member.ly.com/default.aspx">立即点评</a>
+           </div>
+        {{?}}
+    </div>
+
+    <div class="comm-filter clearfix">
+        <div class="fliter-left" id="J_CometTab">
+            <!--排序标签-->
+            {{~it.TabTagList:value:index}}
+                {{var isCheck = (index===0) ? "checked" : "";}}
+                <span data-param="tagId={{=value.TagId}}" data-tagid="{{=value.TagId}}" data-tagtype="{{=value.TagType}}" data-tagnum="{{=value.TagNum}}">
+                    <input id="radio{{=index+1}}" type="radio" name="commfil" {{=isCheck}}>
+                    <label for="radio{{=index+1}}">{{=value.TagName}}<b>（{{=value.TagNum}}）</b></label>
+                </span>
+            {{~}}
+        </div>
+        <div class="filter-right" id="filter-sort">
+            <a href="javascript:void(0);" class="J_sort up" data-sorttype="1">最有价值<i></i></a>
+            <a href="javascript:void(0);" class="J_sort up" data-sorttype="3">时间排序<i></i></a>
+        </div>
+    </div>
+
+    {{?it.List && it.List.length>0}}
+	<div class="comm-content">
+        <ul>
+            <!--点评主体列表-->
+            {{~it.List:value}}
+            <li class="commli clearfix">
+                {{?parseInt(value.IsElite,10)===1}}<span class="comm-mark"></span>{{?}}
+                <div class="comm-user">
+                    <img data-img="{{?value.UserAvatar}}{{=value.UserAvatar.replace('http:','')}}{{??}}//security.40017.cn/touch/img/mytouch/dllogo.png{{?}}" />
+                    <p class="user-tel">{{=value.Creator}}</p>
+                    <div class="pro_level i_level_{{=value.Level}}"></div>
+                </div>
+                <div class="comm-con">
+                    {{?it.hasWide}}
+                    <div class="comm-txt"  data-shou="{{?value.Comment.length > 170}}{{=value.Comment.substring(0,170)}}......{{?}}" data-zhan="{{=value.Comment}}">
+                        <span>{{?value.Comment.length > 170}}{{=value.Comment.substring(0,170)}}......{{??}}{{=value.Comment}}{{?}}</span>
+                        {{?value.Comment.length > 170}}<a href="javascript:void(0);" class="J_tan zhan">展开全部<i></i></a>{{?}}
+                    </div>
+                    {{??}}
+                    <div class="comm-txt"  data-shou="{{?value.Comment.length > 140}}{{=value.Comment.substring(0,130)}}......{{?}}" data-zhan="{{=value.Comment}}">
+                                <span>{{?value.Comment.length > 130}}{{=value.Comment.substring(0,130)}}......{{??}}{{=value.Comment}}{{?}}</span>
+                                {{?value.Comment.length > 130}}<a href="javascript:void(0);" class="J_tan zhan">展开全部<i></i></a>{{?}}
+                            </div>
+                    {{?}}
+                    <div class="comm-img clearfix">
+                        {{?value.PhotoList && value.PhotoList.length>0}}
+                            {{~value.PhotoList:imgs:index}}
+                            {{?index<5}}
+                            <img data-img="{{=imgs.replace('http:','')}}"/>
+                            {{??}}
+                            <span>查看更多</span>
+                            {{break;}}
+                            {{?}}
+                        {{~}}
+                        {{?}}
+                    </div>
+                    {{?value.PhotoList && value.PhotoList.length>0}}
+                    <div class="mslide-panel none">
+                        <h3><span>{{=it.mainTitle}}</span><a href="javascript:void(0)" class="J_close"></a></h3>
+                        <div class="mp-content">
+                            <div class="photo-detail">
+                                <div class="photo">
+                                {{?value.PhotoList[0] && value.PhotoList[0].length>0}}
+                                    <img id="focusPic" data-img="{{=value.PhotoList[0].replace('http:','')}}"/>
+                                {{??}}
+                                    <img id="focusPic" alt="" data-img="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png"/>
+                                {{?}}
+                                <a class="mslide-num" href="javascript:void(0)"></a>
+                                </div>
+                                <div class="detail">
+                                    <p class="date">{{=value.Creator}}<br />上传于{{=value.CreateDate}}</p>
+                                    <p class="detail-content">
+                                    {{?value.Comment}}
+                                        {{=value.Comment}}
+                                    {{?}}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="photo-mslide">
+                                <a href="javascript:void(0)" class="prev"><span class="btn-prev"></span></a>
+                                <div class="list">
+                                    <ul>
+                                        {{~value.PhotoList:imgs:index}}
+                                        <li><a href="javascript:void(0);"><img data-img="{{=imgs.replace('http:','')}}"/></a></li>
+                                        {{~}}
+                                    </ul>
+                                </div>
+                                <a href="javascript:void(0)" class="next"><span class="btn-next"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                    {{?}}
+                    {{
+                    function getStar(total,num){
+                        var str = "",
+                            diff = total-num;
+                        if(num>0){
+                            for(var i=1;i<=num;i++){
+                                str += '<i class="stars"></i>';
+                            }
+                        }
+                        if(diff>0){
+                            for(var j=1;j<=diff;j++){
+                                str += '<i></i>';
+                            }
+                        }
+                        return str;
+                    }
+                    }}
+
+                    {{?value.ChildCommentInfoList.length>0}}
+                    <ul class="sub-comment">
+                    {{~value.ChildCommentInfoList:subs}}
+                    {{?subs.CLDTCommentContent}}
+                        <li>
+                            <p><span>{{=subs.CLDTCommentTypeName}}</span>{{=getStar(5,subs.CLDTCommentScore)}}</p>
+                            <p>{{=subs.CLDTCommentContent}}</p>
+                        </li>
+                    {{?}}
+                    {{~}}
+                    </ul>
+                    {{?}}
+
+                    <div class="comm-useful clearfix">
+                        <p class="useful-left">
+                            {{?value.WalkAim}}<span class="travel-kind">{{=value.WalkAim}}</span>{{?}}<span class="traver-time">{{=value.CreateDate}}&nbsp;&nbsp;{{?value.CommentSourceDes}}来自于{{=value.CommentSourceDes}}{{?}}</span>
+                        </p>
+                        <a class="btn-comet comet_useful" data-cometid="{{=value.GuId}}" data-resId="{{=value.ResId}}" href="javascript:;"><em></em><b>{{=value.PraiseCount}}</b>有用</a>
+                    </div>
+                    {{?value.Response}}
+                    <div class="comm-recall clearfix">
+                        <span class="recall-name">同程回复：</span>
+                        <span class="recall-txt">{{=value.Response}}</span>
+
+                    </div>
+                    {{?}}
+
+                </div>
+                {{?value.CommentAward !== "0" && value.CommentAward !== "0.00"}}
+                    {{?parseInt(lineDetail.IVRLRSourceFrom) === 1}}
+                        <div class="comm-reward none">
+                    {{??}}
+                        <div class="comm-reward">
+                    {{?}}
+                        <div class="comm-bonus">&yen;<em>{{=value.CommentAward}}</em></div>
+                    </div>
+                {{?}}
+            </li>
+            {{~}}
+            <!--点评主体列表-->
+        </ul>
+    </div>
+    {{?}}
+            
+    <!--点评翻页-->
+    <div class="comet-pager" id="J_CometPager">
+    </div>
+    <!--点评翻页-->
+</div>
+

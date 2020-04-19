@@ -1,0 +1,597 @@
+.no-data {
+  margin: 50px 0 0 0;
+  font-size: 16px;
+  text-align: center;
+  max-height: 200px;
+}
+.order-head {
+  padding-left: 20px;
+  margin: 30px 0 38px 0;
+  font-family: "Microsoft Yahei";
+}
+.order-head h3 {
+  font-size: 24px;
+  line-height: 40px;
+}
+.order-head i {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  vertical-align: middle;
+  margin-right: 20px;
+  background: url(img/dest/s_btu.png) no-repeat;
+}
+.order-head span,
+.order-head em {
+  display: inline-block;
+  vertical-align: middle;
+}
+.order-head em {
+  color: #999;
+  font-size: 12px;
+  font-weight: normal;
+  vertical-align: bottom;
+}
+.order-head .order-no {
+  display: block;
+  padding: 10px 0 0 60px;
+  color: #999;
+}
+.order-no em {
+  color: #333;
+}
+.bg-pic {
+  background-image: url('img/dest/icon-sproduct.png');
+  background-repeat: no-repeat;
+}
+.sub-show-line td span {
+  display: block;
+  padding-right: 6px;
+}
+.line-info {
+  border: #fff4d9 3px solid;
+  margin-bottom: 35px;
+}
+.line-info-main > table,
+.sub-show-line,
+#subLineDetailId > table {
+  border-bottom: #f5f5f5 1px solid;
+}
+.line-info-main {
+  padding: 0 17px;
+}
+.line-info h3 {
+  background: #fff4d9;
+  line-height: 35px;
+  padding-left: 17px;
+  font-size: 16px;
+  text-align: left;
+}
+.line-info h3 span {
+  font-size: 12px;
+  padding-left: 22px;
+}
+.line-info h3 i {
+  width: 14px;
+  height: 13px;
+  background-position: 0 -60px;
+  display: inline-block;
+  margin: 0 9px 0 22px;
+  vertical-align: middle;
+}
+.line-info-main > table td,
+#subLineDetailId > table td {
+  text-align: left;
+  /* line-height: 50px; */
+  padding: 15px 0;
+  vertical-align: top;
+}
+.sub-show-line {
+  padding: 20px 0;
+  display: table;
+  width: 100%;
+}
+.sub-show-line .line-tit,
+.line-detail-main {
+  float: left;
+}
+.line-tit {
+  width: 9.2%;
+  vertical-align: top;
+}
+.line-detail {
+  margin-bottom: 20px;
+}
+.line-detail label {
+  width: 3%;
+  background: #f5f5f5;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+.sub-line-detail,
+.fly-detail table,
+.fly-detail > span {
+  display: table-cell;
+}
+.fly-detail {
+  width: 96%;
+  padding-left: 20px;
+}
+.fly-detail table {
+  width: 72%;
+}
+.fly-detail table td {
+  line-height: 22px;
+}
+.fly-detail > span {
+  width: 20%;
+  vertical-align: middle;
+}
+.ting {
+  border-bottom: #e5e5e5 1px dashed;
+  position: relative;
+  margin: 11px 0;
+}
+.ting span {
+  color: #999;
+  background: #fff;
+  display: inline-block;
+  margin-left: 108px;
+  position: absolute;
+  top: -11px;
+  padding: 0 4px;
+}
+.ting span i {
+  background-position: 0px -80px;
+  width: 17px;
+  height: 17px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.hotel-info div {
+  width: 230px;
+  line-height: 14px;
+}
+.hotel-info td {
+  vertical-align: top;
+  padding-bottom: 10px;
+}
+.hotel-info span {
+  color: #999;
+}
+.last-dom {
+  margin-bottom: 0;
+}
+.check-p {
+  text-align: center;
+  margin: 40px 0;
+  padding-left: 40px;
+}
+.check-p label,
+#nocheck {
+  float: left;
+}
+.check-p label {
+  margin-right: 20px;
+}
+.checksty {
+  padding-left: 10px;
+  line-height: 22px;
+}
+.pay-info {
+  width: 240px;
+  height: 41px;
+  background-position: -630px -105px;
+  color: #fff;
+  font-size: 20px;
+  text-align: center;
+  line-height: 41px;
+  display: block;
+  margin: 0 auto;
+}
+.pay-info:hover {
+  background-position: -630px -55px;
+  color: #fff;
+  text-decoration: none;
+}
+.orderInfo {
+  border: 1px solid #ddd;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 15px 10px 0 15px;
+  height: 363px;
+  margin-top: 40px;
+}
+.orderInfo dl {
+  padding-bottom: 10px;
+}
+.orderInfo dt {
+  font-size: 14px;
+  font-weight: bold;
+  padding-bottom: 7px;
+}
+.orderInfo dd {
+  color: #666;
+  padding-bottom: 7px;
+}
+.procedureBox {
+  border-top: 1px solid #8ab923;
+  padding: 0 3px;
+  background: #f6f6f6;
+}
+.procedurBottom {
+  padding-bottom: 3px;
+  margin-bottom: 30px;
+  margin-top: 20px;
+}
+.traveller-h {
+  float: left;
+  width: 80px;
+  height: 39px;
+  line-height: 39px;
+  padding-left: 12px;
+  font-size: 14px;
+  font-weight: bold;
+}
+.traveller-span {
+  display: inline-block;
+  height: 39px;
+  line-height: 39px;
+  color: #666;
+}
+.traveller-list {
+  padding: 16px 15px 36px 50px;
+  background: #fff;
+}
+.traveller-list label.txt {
+  cursor: default;
+}
+.traveller-list label {
+  line-height: 23px;
+  cursor: pointer;
+  float: left;
+}
+.traveller-list div {
+  display: inline-block;
+  padding-left: 20px;
+  float: left;
+}
+.traveller-list input {
+  float: left;
+  margin-top: 5px;
+}
+.traveller-list label {
+  line-height: 23px;
+  cursor: pointer;
+  float: left;
+}
+.table-total {
+  float: right;
+  line-height: 46px;
+  margin: 0 3px;
+}
+.song-total {
+  float: left;
+  color: #f60;
+  height: 16px;
+  padding-left: 18px;
+  font-family: Arial;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 16px;
+  margin-top: 22px;
+  margin-right: 10px;
+}
+.song-total i {
+  background: url(//img1.40017.cn/cn/v/details/2014/g_sprin.png) no-repeat -83px -17px;
+  width: 17px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.song-total em {
+  display: inline-block;
+  vertical-align: middle;
+  border: #ffa63c 1px solid;
+  height: 14px;
+  padding: 0 2px;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+}
+.jian-total i {
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 5px;
+  background: url(//img1.40017.cn/cn/v/book/2014/cjSpirit.png) -1184px -250px no-repeat;
+}
+.jian-total {
+  color: #f60;
+  display: inline-block;
+  vertical-align: middle;
+  line-height: 30px;
+  margin: -18px 18px 0 1px;
+}
+.table-total span {
+  float: left;
+  border-left: #f5f5f5 1px solid;
+  padding-left: 18px;
+}
+.table-total span em {
+  font-size: 30px;
+  color: #f60;
+}
+.table-total span i {
+  color: #f60;
+}
+a.hide-more,
+.show-more {
+  float: right;
+  text-align: right;
+}
+.show-more {
+  display: none;
+}
+a.hide-more i {
+  background-position: -75px -65px;
+  width: 9px;
+  height: 6px;
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.show-more i {
+  background-position: -140px -95px;
+  width: 9px;
+  height: 6px;
+  display: inline-block;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.order_suc .order-wrap {
+  padding: 0;
+  border: 0;
+}
+span.pre-num {
+  float: left;
+}
+.c999 {
+  color: #999;
+  font-size: 14px;
+}
+.show-single {
+  position: relative;
+}
+.show-single td {
+  padding-bottom: 5px;
+}
+.hide-icon {
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
+}
+/**/
+.order-survey {
+  margin: 0 10px;
+  vertical-align: middle;
+}
+.order-survey a {
+  text-align: center;
+  text-decoration: none;
+  vertical-align: text-top;
+}
+/**/
+.mosPout {
+  padding: 1px;
+}
+.mosPout .loadingImg {
+  background: url(//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif) no-repeat 0px center;
+  display: block;
+  margin: 15px auto 0;
+  width: 100px;
+  height: 70px;
+}
+.mes01 {
+  padding: 10px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+.alertpop {
+  width: 350px;
+}
+.youhui {
+  margin-bottom: 30px;
+  margin-left: 30px;
+}
+.youhui em {
+  color: #f60;
+}
+.order_conbg {
+  border-top: solid 1px #dcdcdc;
+  margin: 0 20px;
+}
+.appoint_tip {
+  font-family: "Microsoft Yahei";
+}
+.appoint_tip p {
+  color: #333;
+  font-size: 16px;
+  padding-left: 8px;
+  font-weight: bold;
+  position: relative;
+  margin: 20px 0 20px 0;
+}
+.appoint_tip p em {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  top: 2px;
+  background: #50b400;
+  width: 3px;
+  height: 16px;
+}
+.appoint_tip .tip_con {
+  color: #926f24;
+  background: #fff7dc;
+  height: 33px;
+  line-height: 33px;
+  border: solid 1px #f4e09f;
+  font-size: 14px;
+  padding-left: 10px;
+  margin-bottom: 16px;
+}
+.go_appoint {
+  height: 36px;
+  line-height: 36px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.go_appoint span {
+  display: inline-block;
+  color: #666;
+}
+.go_appoint a {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  width: 130px;
+  height: 34px;
+  line-height: 34px;
+  background: #ff7800;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 2px;
+  top: 0;
+}
+.go_appoint a:hover {
+  text-decoration: none;
+}
+.menu ul .menu_not {
+  color: #8ab923;
+}
+.menu ul {
+  color: #333;
+}
+.menu ul {
+  width: 960px;
+  height: 25px;
+  line-height: 25px;
+  line-height: 26px\9;
+  float: left;
+  clear: both;
+  overflow: hidden;
+}
+.m5_info03 {
+  background: url(//img1.40017.cn/cn/v/book/vacation/spt-order.0.0.2.png) left top no-repeat;
+}
+.btn_look,
+.btn_reserve {
+  background: url(//img1.40017.cn/cn/comm/images/book/dujia/1226/spt-order.png) no-repeat;
+}
+.order_suc .contact-tc .btn_look,
+.order_suc .contact-tc .btn_reserve {
+  display: inline-block;
+  width: 130px;
+  height: 41px;
+  font: 20px/40px "Microsoft Yahei";
+  text-align: center;
+  margin: 0 10px;
+}
+.order_suc .contact-tc {
+  padding: 35px;
+  border: 3px solid #f6f6f6;
+  border-top: 1px dotted #f6f6f6;
+  color: #333;
+}
+.order_suc .order-wrap .contact-tc {
+  border: 0;
+  padding-top: 0;
+}
+.order_suc .contact-tc .unpay {
+  text-align: center;
+  margin-top: 35px;
+}
+.order_suc .order-wrap .contact-tc .unpay {
+  margin-top: 0;
+}
+.order_suc .contact-tc .btn_look {
+  color: #64a10a;
+  background-position: 0 -94px;
+}
+.order_suc .contact-tc .btn_look:hover {
+  color: #fff;
+  background-position: 100% -94px;
+  text-decoration: none;
+}
+.order_suc .contact-tc .btn_reserve {
+  color: #fff;
+  background-position: 0 -135px;
+}
+.order_suc .contact-tc .btn_reserve:hover {
+  color: #fff;
+  background-position: 100% -135px;
+  text-decoration: none;
+}
+.backtop {
+  display: block;
+  bottom: 230px;
+  position: fixed;
+  right: 50px;
+}
+.fail_tip_s {
+  font-family: "Microsoft Yahei";
+  padding: 95px 0 0 50px;
+  font-size: 16px;
+  color: #333;
+}
+.fail_tip_s p {
+  position: relative;
+  padding: 0 50px 0 56px;
+  height: 66px;
+}
+.fail_tip_s p em {
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  background: url(img/dest/order_pop.png) no-repeat;
+  background-position: 0px -18px;
+  height: 70px;
+  width: 54px;
+}
+.fail_tip_s p span {
+  display: inline-block;
+  padding-top: 20px;
+  margin-left: 8px;
+}
+.pop_box_bg {
+  background-color: #000;
+  background-color: rgba(3, 3, 3, 0.5);
+  filter: alpha(opacity=50);
+}
+.pop_box_bg,
+.pop_b {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  margin: auto;
+}
+.appoint_load {
+  display: inline-block;
+  background: url(//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif) no-repeat;
+  padding-left: 100px;
+  height: 70px;
+  margin: 0 auto;
+  line-height: 70px;
+  font-size: 16px;
+  margin-top: 42px;
+  margin-left: 10px;
+}

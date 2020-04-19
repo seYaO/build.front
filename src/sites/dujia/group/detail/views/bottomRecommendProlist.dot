@@ -1,0 +1,36 @@
+{{?it.ProductList && it.ProductList.length>0}}
+{{~it.ProductList:item:index}}
+{{?index<8}}
+{{
+    var url="";
+    if(item.Property==1){
+        url = "//www.ly.com/dujia/tours/" + item.LineId + ".html";
+    }else{
+         url = "//www.ly.com/dujia/tours/" + item.LineId;
+    }
+}}
+<a href="{{=url}}">
+<div class="pro" style="{{?index==3||index==7}}margin-right:0{{?}}">
+    <div class="pro-top">
+        <img src="{{=item.ImgUrl.replace('http:','')}}" data-img-loaded="true" />
+        <div class="pro-subtitle">{{=item.SubTitle}}</div>
+    </div>
+    <div class="pro-bottom">
+        <div class="pro-maintitle">{{=item.MainTitle}}</div>
+        <div class="pro-price">
+            {{?item.TcPrice==0}}
+                <span><em>实时计价</em></span>
+            {{??}}
+                <span><em><i>￥</i>{{=item.TcPrice}}</em>起</span>
+            {{?}}
+            <span class="departCity">{{=item.LeaveCity}}出发</span>
+        </div>
+    </div>
+</div>
+</a>
+{{?}}
+{{~}}
+{{??}}
+<p>暂无推荐线路！</p>
+{{?}}
+

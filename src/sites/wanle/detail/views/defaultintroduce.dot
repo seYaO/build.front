@@ -1,0 +1,110 @@
+<!--除去通讯和门票的品类-->
+<!--行程简介start-->
+{{var routeList = basicInfo.RouteList;}}
+{{?routeList && routeList.length}}
+<div id="routeInfo" data-txt="行程简介" class="ly_details_item J_NavBox route_info">
+    <h2 class="detial_tit"><i class="i_route"></i>行程简介</h2>
+    <div class="day_route">
+        <div class="route-list-line"></div>
+        {{~routeList:routes}}
+            <dl>
+                {{?routes.RouteGroupType === 2}}
+                <dt>{{=routes.RouteTile}}</dt>
+                {{??}}
+                <dt>第{{=routes.TheDay}}{{=routes.RouteTile}}天</dt>
+                {{?}}
+                {{~routes.RouteDetailList:route}}
+                    <dd><i></i><em>{{=route.RouteTime}}</em><span>{{=route.RouteDesc}}</span></dd>
+                {{~}}
+            </dl>
+        {{~}}
+    </div>
+    <p class="wrap">*以上行程可能会因天气、路况等原因做相应调整，敬请谅解。</p>
+</div>
+{{?}}
+<!--行程简介end-->
+
+<!--特色介绍start-->
+{{var exerienceList = basicInfo.PlayExerienceList;}}
+{{?exerienceList && exerienceList.length}}
+<div id="lineInfo" data-txt="特色体验" class="ly_details_item  J_NavBox">
+    <h2 class="detial_tit"><i class="i_detail1"></i>特色体验</h2>
+    {{~exerienceList:play}}
+        <p tid="{{=play.UrlType}}">{{=play.TravelDescription}}</p>
+        {{?play.UrlType === 1}}
+            <ul class="img_p big_single_pic">
+                <li><img src="{{=play.ImgUrlA.replace('http:','')}}"></li>
+            </ul>
+        {{??play.UrlType === 2}}
+            <ul class="img_p surper_single">
+                <li class="surper_big"><img src="{{=play.ImgUrlA.replace('http:','')}}"></li>
+            </ul>
+        {{??}}
+            <ul class="img_p">
+                {{?play.ImgUrlA !== ""}}<li class="twoSmall"><img src="{{=play.ImgUrlA.replace('http:','')}}"></li>{{?}}
+                {{?play.ImgUrlB !== ""}}<li class="twoSmall last"><img src="{{=play.ImgUrlB.replace('http:','')}}"></li>{{?}}
+            </ul>
+        {{?}}
+    {{~}}
+    
+    {{?basicInfo.ViewTitle}}
+    <h3 class="add_experience_title">【温馨提示】</h3>
+    <div class="add_experience">
+        <a href="/dujia/wanle/notes/{{=basicInfo.ProductId}}.html" target="_blank">{{=basicInfo.ViewTitle}}</a>
+    </div>
+    {{?}}
+</div>
+{{?}}
+<!--特色介绍end-->
+
+<!-- 预订须知start -->
+{{var newNotice = basicInfo.NewNoticeInfo;}}
+{{?newNotice.CostInclude.length || newNotice.CostNoInclude.length || newNotice.Preference.length || newNotice.ProductDesc.length || newNotice.OrderLimit.length || newNotice.Direction.length || newNotice.Attention.length}}
+<div id="ReserveInfo" data-txt="预订须知" class="ly_details_item J_NavBox order_know">
+    <h2 class="detial_tit"><i class="i_detail3"></i>预订须知</h2>
+    <div class="order_detail">
+        {{?newNotice.CostInclude.length}}
+        <h3>费用信息</h3>
+        <p class="order_fyt">费用包含</p>
+        <p class="order_fy">{{=newNotice.CostInclude}}</p>
+        {{?}}
+        {{?newNotice.CostNoInclude.length}}
+        <p class="order_fyt">费用不包含</p>
+        <p class="order_fy">{{=newNotice.CostNoInclude}}</p>
+        {{?}}
+        {{?newNotice.Preference.length}}
+        <h3>优惠信息</h3>
+        <p>{{=newNotice.Preference}}</p>
+        {{?}}
+        {{?newNotice.ProductDesc.length}}
+        <h3>产品说明</h3>
+        <p>{{=newNotice.ProductDesc}}</p>
+        {{?}}
+        {{?newNotice.OrderLimit.length}}
+        <h3>预订限制</h3>
+        <p>{{=newNotice.OrderLimit}}</p>
+        {{?}}
+        {{?newNotice.Direction.length}}
+        <h3>使用方法</h3>
+        <p>{{=newNotice.Direction}}</p>
+        {{?}}
+        {{?newNotice.Attention.length}}
+        <h3>注意事项</h3>
+        <p>{{=newNotice.Attention}}</p>
+        {{?basicInfo.ProductType ==11 || basicInfo.ProductType==12}}
+        <p class="hotWarning">温馨提示：此类游玩项目具有一定的风险性，游玩过程中务必遵守规则，保障自身安全。如患有心脏病、高血压、呼吸系统疾病等，请根据自身条件或遵医嘱，谨慎决定是否出行。</p>
+        {{?}}
+        {{?}}
+    </div>
+</div>
+{{??basicInfo.Notice.length}}
+<div id="ReserveInfo" data-txt="预订须知" class="ly_details_item J_NavBox">
+    <h2 class="detial_tit"><i class="i_detail3"></i>预订须知</h2>
+    <p>{{=basicInfo.Notice}}</p>
+    {{?basicInfo.ProductType ==11 || basicInfo.ProductType==12}}
+    <p class="hotWarning">温馨提示：此类游玩项目具有一定的风险性，游玩过程中务必遵守规则，保障自身安全。如患有心脏病、高血压、呼吸系统疾病等，请根据自身条件或遵医嘱，谨慎决定是否出行。</p>
+    {{?}}
+</div>
+{{?}}
+<!-- 预订须知end -->
+

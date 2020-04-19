@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413" />
+</head>
+<body>
+<button id="test">点击分享</button>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script src="../../jquery.js" type="text/javascript"></script>
+<script>
+    seajs.config({
+        base: "../../"
+    });
+</script>
+
+<script>
+    seajs.use("share/0.1.0/index", function (Share) {
+        var share = new Share({
+            trigger: "#test",
+            id: "shareContent",
+            summary: "测试标题",
+            pic: "http://pic3.40017.cn/line/admin/2014/11/04/09/pwMUoR_90x90_00.jpg"
+        });
+    });
+</script>
+</body>
+</html>

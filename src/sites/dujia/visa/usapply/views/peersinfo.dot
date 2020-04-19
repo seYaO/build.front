@@ -1,0 +1,14 @@
+<div class="borBox J_NavBox" id="part4" data-type="peersinfo">
+            <div class="tab_head">
+                <h4>同行人信息</h4>
+                <span class="save_btn J_saveBtn">保存资料</span>
+            </div>
+            <div class="is_show J_xianyin J_choose J_AddOrDelete" data-index="1">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherPersonsTravelingWithYou">
+                    <p><i></i>本次旅行是否有人与您同行？ 若有，请予以提供。</p>
+                    <span class="radio" value="Y" data-dot="1" data-dotname="peersInfoYes"><i></i>是</span>
+                    <span class="radio" value="N" data-dot="1" data-dotname="peersInfoNo"><i></i>否</span>
+                </div>
+                <div class="J_renderDot"></div>
+            </div>
+        </div>

@@ -1,0 +1,15 @@
+{{?travelData.transportation && travelData.transportation.length>0}}
+<div class="route-part none">
+    <div class="transport">
+        <span class="bg-img"></span>
+        <h4></h4>
+        <ul>
+            {{~travelData.transportation:transport}}
+                <li>
+                    <div class="transport-info">{{=transport.TrafficContent}}</div>
+                </li>
+            {{~}}
+        </ul>
+    </div>
+</div>
+{{?}}

@@ -1,0 +1,21 @@
+{{?hotProduct.TotalCount}}
+<div class="left-module scoreTop" trace="scoreTop-module">
+    <h3>{{=destC}}销量排行榜</h3>
+    <div class="lists-box">
+        {{~hotProduct.Products[0].Products:productList:index}}
+        <div class="list-box" trace="hot-{{=index}}">
+            <a class='hot_pic {{=index ? "none" : "show"}}' href="/dujia/tours/{{=productList.LineId}}/" target="_blank" trace="hot_pic-{{=index}}">
+                <img src="{{=productList.LineImg}}">
+                <i class="hot_top{{=index+1}}"></i>
+                <div class="hot_title" href="/dujia/tours/{{=productList.LineId}}/" target="_blank">{{=productList.Title}}</div>
+                <div class="hot_des "><i class="des">{{=productList.StartCity}}出发</i><i class="yuan"><i>￥{{=productList.Price}}元</i>起</i></div>
+            </a>
+            <a class="hot_maintitle {{=index ? "show" : "none"}}" href="/dujia/tours/{{=productList.LineId}}/" target="_blank" trace="hot_maintitle-{{=index}}">
+                <i class="hot_num color_{{=index+1}}">{{=index+1}}</i>{{=productList.Title}}
+                <div class="hot_des "><i class="des">{{=productList.StartCity}}出发</i><i class="yuan"><i>￥{{=productList.Price}}元</i>起</i></div>
+            </a>
+        </div>
+        {{~}}
+    </div>
+</div>
+{{?}}

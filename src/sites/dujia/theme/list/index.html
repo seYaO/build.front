@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+{{var it = IT.Data;}}
+{{var themePro = it.ThemeProduct;}}
+{{var cityName = themePro.CityName;}} 
+{{var prolist = themePro.ProductSearchList||{};}}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <title>{{=cityName}}旅游_{{=cityName}}旅行_{{=cityName}}_{{=cityName}}旅游好去处_价格_线路_推荐_攻略_同程旅游</title>
+    <meta name='keywords' content='{{=cityName}}旅游,{{=cityName}}旅行,{{=cityName}}游,{{=cityName}}旅游价格' />
+    <meta name='description' content='{{=cityName}}旅游：同程旅游为您提供{{=cityName}}旅游，精选旅行路线，包含优质跟团及自助旅游服务，海量路线，优惠的北京旅游报价，出境游就选同程旅游。' />
+    
+    <% includeId = cnwidescreenjscss %>
+    <link href="http://css.40017.cn/cn/min/??/cn/v/public/2013/v_public.0.5.css?v=2014061811" rel="stylesheet" type="text/css" />
+    <link href="//css.40017.cn/cn/v/theme/2016/list/index.02295.css" rel="stylesheet" type="text/css">
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.07044.css" rel="stylesheet">
+    <script>
+        window.ajaxConfig = {
+            searchUrl:"http://www.ly.com"
+        };
+    </script>
+    <style>
+        .calendar-panel.white a.previous-month, .calendar-panel.white a.next-month {
+            background: url(http://js.40017.cn/cn/public/module/Calendar/0.3/calendar_arrow_white.png?v=2) 0 0 no-repeat;
+        }
+
+        .calendar-panel.white a.previous-month-disabled, .calendar-panel.white a.previous-month-disabled:hover {
+            background-position: -100px -43px;
+        }
+
+        .calendar-panel.white a.next-month {
+            background-position: -49px 0;
+        }
+
+        .calendar-panel.white a.previous-month:hover {
+        }
+
+        .calendar-panel.white a.previous-month {
+            background-position: -8px 0;
+        }
+
+        .calendar-panel.white .calendar-wrapper td.to-day:hover span {
+            color: #fff
+        }
+
+        .calendar-panel.white .calendar-wrapper td.festival:hover span {
+            color: #b54800
+        }
+    </style>
+</head>
+<body>
+<!-- 公共头部 开始 -->
+    <% includeId = cnwidescreenhead?channel=dujia %>
+<!-- 公共头部 结束 -->
+<!--主体部分 开始-->
+<div class="ui-container clearfix">
+    <div class="ui-bread">
+      <!-- 面包屑导航begin -->
+        <div class="ui-bread-left">
+            您所在位置：
+            <a href="/" rel="nofollow">同程首页</a> >
+            <a href="/dujia/" rel="nofollow">出境游</a> >
+             {{?themePro.PriThemeName ==""}}
+            <em>主题游</em> {{??}}
+            <em>{{=themePro.PriThemeName}}</em>
+            {{?}}
+        </div>
+        <div class="ui-bread-right">
+            <i class="icon-tel"></i>
+            <em>4007-777-777</em>
+        </div>
+        <!-- 面包屑导航end -->
+    </div>
+    <div class="ui-container-left ">
+        <div class="clearfix">
+            <div class="citybox"></div>
+            <div class="search"></div>
+        </div>
+        <!-- 筛选start -->
+        <input type="hidden" id="hidTotalCount" value="{{=prolist.TotalCount}}"> 
+        <input type="hidden" id="MainThemeType" value="{{=themePro.PriThemeType}}"> 
+        {{var condition = prolist.ConditionList;}}
+        <div class="ui-searchList">
+            <ul class="ui-select-tab">
+                {{?themePro.PriThemeType==""}}<li class="selected">{{??}}<li>{{?}}
+                    <a href="/dujia/theme/all/">全部</a>
+                </li>
+                {{?themePro.PriThemeType=="1"}}<li class="selected">{{??}}<li>{{?}}
+                    <a href="/dujia/theme/huwaiyundong1/">户外运动</a>
+                </li>
+                {{?themePro.PriThemeType=="4"}}<li class="selected">{{??}}<li>{{?}}
+                    <a href="/dujia/theme/zijiasheying4/">自驾摄影</a>
+                </li>
+                {{?themePro.PriThemeType=="5"}}<li class="selected">{{??}}<li>{{?}}
+                    <a href="/dujia/theme/haiwailvpai5/">海外旅拍</a>
+                </li>
+                {{?themePro.PriThemeType=="6"}}<li class="selected">{{??}}<li>{{?}}
+                    <a href="/dujia/theme/guojiyouxue6/">国际游学</a>
+                </li>
+                {{?themePro.PriThemeType=="7"}}<li class="selected">{{??}}<li>{{?}}
+                    <a href="/dujia/theme/saishiqingdian7/">赛事庆典</a>
+                </li>
+                {{?themePro.PriThemeType=="8"}}<li class="selected">{{??}}<li>{{?}}
+                    <a href="/dujia/theme/jiankangyangsheng8/">健康养生</a>
+                </li>
+            </ul>
+            <div class="ui-select-box">
+                <div class="ui-rowRule J_rowRule clearfix none">
+                    <h4>已选择条件:</h4>
+                    <div class="ui-rowRule-terms J_rowRule-terms">
+                    </div>
+                    <span class="ui-ruleClear-btn J_ruleClear-btn">全部清除</span>
+                </div>
+                <div class="J_rowRuleFilter">      
+                    {{?condition.ThemTypeList && condition.ThemTypeList.length>0}}
+                    <div class="ui-rowBox clearfix">
+                        <h4 data-name="subThemeType">主题选择:</h4>
+                        <div class="ui-rowBox-term">
+                        {{~condition.ThemTypeList:mtlist}}
+                            <a href="/dujia/theme/{{=mtlist.PinYin}}{{=mtlist.Id}}" data-index="{{=mtlist.Name}}" data-id="{{=mtlist.Id}}" title="{{=mtlist.Name}}">{{=mtlist.Name}}</a>
+                        {{~}}
+                        </div>
+                        {{?condition.ThemTypeList.length>12}}
+                        <div class="ui-rowBox-option">
+                            <a class="ui-more-btn J_more-btn">更多<em class="icon-more"></em></a>
+                        </div>
+                        {{?}}
+                    </div>
+                    {{?}}
+
+                    {{?condition.DesList && condition.DesList.length>0}}
+                    <div class="ui-rowBox clearfix">
+                        <h4 data-name="dcId">目的地:</h4>
+                        <div class="ui-rowBox-term J_filter">
+                            {{~condition.DesList:deslist}}
+                                <a href="javascript:void(0);" data-index="{{=deslist.Name}}" data-id="{{=deslist.Id}}" title="{{=deslist.Name}}">{{=deslist.Name}}</a>
+                            {{~}}
+                        </div>
+                    </div>
+                    {{?}}
+
+                    {{?condition.LineQuality && condition.LineQuality.length>0}}
+                    <div class="ui-rowBox clearfix">
+                        <h4 data-name="lineQualityFT">线路品质:</h4>
+                        <div class="ui-rowBox-term J_filter">
+                            {{~condition.LineQuality:lqlist}}
+                            <a href="javascript:void(0);"  data-index="{{=lqlist.Name}}" data-id="{{=lqlist.Id}}" title="{{=lqlist.Name}}">{{=lqlist.Name}}</a>
+                            {{~}}
+                        </div>
+                    </div>
+                    {{?}}
+                    
+                    {{?condition.DayList && condition.DayList.length>0}}
+                    <div class="ui-rowBox clearfix">
+                        <h4 data-name="days">游玩天数:</h4>
+                        <div class="ui-rowBox-term J_filter">
+                        {{~condition.DayList:daylist}}
+                            <a class="J_item" href="javascript:void(0);" data-index="{{=daylist.Name}}" data-id="{{=daylist.Name}}" title="{{=daylist.Name}}天">{{=daylist.Name}}天</a>
+                        {{~}}
+                            <div class="ui-multiBtns">
+                                <span class="ui-multi-sub J_multi-sub">确定</span>
+                                <span class="ui-multi-cal J_multi-cal">取消</span>
+                            </div>
+                        </div>
+                        <div class="ui-rowBox-option">
+                            <a class="ui-multi-btn J_multi-btn">多选</a>
+                        </div>
+                    </div>
+                    {{?}}
+
+                    {{?condition.TravelDateList && condition.TravelDateList.length>0}}
+                    <div class="ui-rowBox clearfix">
+                        <h4 data-name="pm">出游日期:</h4>
+                        <div class="ui-rowBox-term ui-cal-term J_filter">
+                        {{~condition.TravelDateList:tdlist}}
+                            <a href="javascript:void(0);" data-index="{{=tdlist.Name}}" data-id="{{=tdlist.Id}}" title="{{=tdlist.Name}}">{{=tdlist.Name.split("年")[1]}}</a>
+                        {{~}}    
+                        </div>
+                        <div class="ui-calendar-option">
+                            <input id="J_startTime" class="ui-mCal" placeholder="最早出发" readonly="readonly">
+                            <em>~</em>
+                            <input id="J_endTime" class="ui-mCal" placeholder="最晚出发" readonly="readonly">
+                            <a class="ui-mCal-btn J_ui-mCal-btn">确定</a>
+                        </div>
+                    </div>
+                    {{?}}
+
+                    {{?condition.SrcNameList && condition.SrcNameList.length>0}}
+                    <div class="ui-rowBox clearfix">
+                        <h4>出发城市:</h4>
+                        <div class="ui-rowBox-term J_filter-city">
+                        {{~condition.SrcNameList:snlist}}
+                            <a href="javascript:void(0);" title="{{=snlist.Name}}" data-cityId="{{=snlist.Id}}">{{=snlist.Name}}</a>
+                        {{~}}
+                        </div>
+                        <div class="ui-rowBox-option">
+                            <a class="ui-more-btn J_more-btn">更多<em class="icon-more"></em></a>
+                        </div>
+                    </div>  
+                    {{?}}         
+                </div>
+            </div>
+            <div class="ui-select-rule">
+                <ul class="ui-ruleList clearfix">
+                    <li class="first-title">排序规则:</li>
+                    <li class="recommend J_recommend rule-click">推荐</li>
+                    <li>
+                        <span class="ui-rule-price J_rule-price">价格<em class="icon-normal"></em></span>
+                        <div class="ui-price-box ">
+                            <div class="ui-price-input">
+                                <input id="J_left-price" maxlength="6" class="ui-price" placeholder="¥">
+                                <em>~</em>
+                                <input id="J_right-price" maxlength="6" class="ui-price" placeholder="¥">
+                            </div>
+                            <div class="ui-price-btn none">
+                                <span class="ui-priClear-btn J_priClear-btn">清除价格</span>
+                                <a class="ui-priSubmit-btn">确定</a>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--筛选end -->
+        <!--产品列表begin-->
+        {{var plist = prolist.ProductList;}}
+        {{?plist && plist.length>0}}
+        <div class="ui-proList ">
+            {{~plist:product}}
+                {{?product.Property==1}} 
+                    {{var tourUrl = "/dujia/tours/"+product.LineId+".html?isTheme=1";}}
+                    {{var linePropertyText = "跟团游";}} 
+                    {{var linePropertyClass = "ui-proTag-group";}} 
+                {{??product.Property==3}} 
+                    {{var tourUrl = "/dujia/tours/"+product.LineId+"/?isTheme=1";}}
+                    {{var linePropertyText = "自由行";}} 
+                    {{var linePropertyClass = "ui-proTag-free";}} 
+                {{??product.Property==10}} 
+                    {{var tourUrl = "/dujia/tours/"+product.LineId+".html?isTheme=1";}}
+                    {{var linePropertyText = "目的地参团";}} 
+                    {{var linePropertyClass = "ui-proTag-local";}}                             
+                {{?}}
+            <div class="ui-proBox ">
+                <div class="ui-proBox-main clearfix">
+                    <a class="ui-proImg pro-img" trace="0" target="_blank" href="{{=tourUrl}}">
+                        <img data-img="{{=product.ImgUrl}}" title="{{=product.MainTitle}}" alt="{{=product.MainTitle}}">
+                        <span class="ui-proTag {{=linePropertyClass}}">{{=linePropertyText}}</span>
+                    </a>
+
+                    <div class="ui-proInfo">
+                        {{?product.SubThemeName != ""}}
+                        <a class="ui-mainTile" href="{{=tourUrl}}" target="_blank" title="{{=product.SubThemeName}}&bull;{{=product.MainTitle}}">{{=product.SubThemeName}}&bull;{{=product.MainTitle}}</a>
+                        {{??}}
+                        <a class="ui-mainTile" href="{{=tourUrl}}" title="{{=product.MainTitle}}" target="_blank">{{=product.MainTitle}}</a>
+                        {{?}}
+                        <a class="ui-subTitle" href="{{=tourUrl}}" title="{{=product.SubTitle}}" target="_blank">{{=product.SubTitle}}</a>
+                        <ul class="clearfix">     
+                        {{?product.FeatureService && product.FeatureService.length>0}}          
+                        {{~product.FeatureService:tag}}
+                            {{?tag != ""}}<li>{{=tag}}</li>{{?}}
+                        {{~}}
+                        {{?}}
+                        </ul>
+                        {{var leaveCity = product.LeaveCity;}}
+                        {{var lineQualityTxt= product.LineQualityTxt;}}
+                        <div class="ui-position">
+                            {{?product.Property!=10}}
+                            <i></i>
+                            {{?lineQualityTxt != ""}}
+                            <span class="ui-dep">{{=leaveCity}}出发</span>
+                            {{??}}
+                            <span class="ui-dep ui-dep-noborder">{{=leaveCity}}出发</span>
+                            {{?}}
+                            {{?}}
+
+                            {{?product.Property==10}}
+                            {{?lineQualityTxt != ""}}
+                            <span class="ui-dep">目的地出发</span>
+                            {{??}}
+                            <span class="ui-dep ui-dep-noborder">目的地出发</span>
+                            {{?}}
+                            {{?}}  
+                            <span class="ui-type">{{=lineQualityTxt}}</span>
+                        </div>
+                        <div class="ui-depDate">
+                            <span class="ui-depDate-title">出发日期</span>
+                            <span class="ui-depDate-date">{{=product.DataList}}</span>
+                            <a class="ui-depDate-more" href="{{=tourUrl}}" target="_blank">更多<em></em></a>
+                        </div>
+                    </div>
+
+                    <div class="ui-proPay">
+                        <p class="ui-proPay-price">
+                            <em>¥</em>{{=product.TcPrice}}<i>起</i>
+                        </p>
+                        <a class="ui-proPay-btn" href="{{=tourUrl}}" target="_blank">查看详情</a>
+                    </div>
+                </div>
+            </div>
+            {{~}}
+        </div>
+        {{?}}
+        <!--产品列表end-->
+    
+        <div id="J_linkPage">
+            <div class="bag_page">
+            </div>
+        </div>
+        <!--搜索无结果begin-->
+        {{?prolist.TotalCount ===0}}
+        <div class="ui-noresult">
+        {{??}}
+        <div class="ui-noresult none">
+        {{?}}
+            <div class="ui-noresult-title">
+                <i></i>
+                <span>没有线路了哦，尝试其他关键词吧！</span>
+            </div>
+            <div class="ui-noresult-main">
+                <div class="ui-noresult-head">
+                    <p>热门搜索</p>
+                </div>
+                <div class="ui-noresult-content">
+                    <ul class="clearfix">
+                        <li><a href="/dujia/theme/hunshaxiezhen29/" target='_blank'>婚纱写真</a></li>
+                        <li><a href="/dujia/theme/xialingying32/" target='_blank'>夏令营</a></li>
+                        <li><a href="/dujia/theme/zijia23/" target='_blank'>国际自驾</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--搜索无结果end-->
+    </div>
+    <div class="ui-container-right">
+        <!--右侧部分begin-->
+        <div class="ui-feature">
+            <div class="ui-feature-head">
+                同程主题游特色
+            </div>
+            <div class="ui-feature-main ">
+                <ul>
+                    <li class="clearfix">
+                        <em class="icon-feature-1"></em>
+                        <div>
+                            <p class="ui-feature-title">主题专线</p>
+                            <p>海量主题 兴趣线路 深度体验</p>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <em class="icon-feature-2"></em>
+                        <div>
+                            <p class="ui-feature-title">安全保障</p>
+                            <p>专业陪护 品质行程 同程保障</p>
+                        </div>
+                    </li>
+                    <li class="clearfix">
+                        <em class="icon-feature-3"></em>
+                        <div>
+                            <p class="ui-feature-title">优质服务</p>
+                            <p>贴心服务 资深顾问 口碑好评</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <a class="ui-feature-img" href="http://www.ly.com/dujia/tours/305548/" target="_blank">
+            <img src="http://pic4.40017.cn/index/slide/2016/07/06/10/syAYhB.jpg">
+        </a>
+        <!--右侧部分end-->
+    </div>
+    <div class="service none">
+        <a class="service-kind" style="cursor: pointer" href="http://www.ly.com/dujia/schedule.html" target="_blank" data-name="customize">
+            <img src="http://img1.40017.cn/cn/v/2015/newdetails/icon_service.png">
+        </a>
+        <div class="service-kind" data-name="number" style="background-image: url(http://img1.40017.cn/cn/v/2015/kefu/wifi_gif.gif)"></div>
+        <a class="service-kind J_Kefu" target="_blank" data-name="ui-service" href="#" style="background-image: url(http://img1.40017.cn/cn/v/2015/kefu/Customer-service_gif.gif)"></a>
+        <div class="service-kind" data-name="erwei" style="background-image: url(http://img1.40017.cn/cn/v/2015/kefu/QRcode_gif.gif)"></div>
+        <a style="visibility: visible;" class="back_top" href="javascript:;" title="返回顶部"></a>
+        </div>
+    </div>
+</div>    
+<!--主体部分 结束-->
+<!-- 公共页脚 开始 -->
+    <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+<!-- 公共页脚 结束 -->
+<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js?v=20150413"></script>
+<script type="text/javascript"
+        src="http://js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015103002"></script>
+<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2015072201" charset="utf-8"></script>
+
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script src="http://js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js?v=2015112501"></script>
+<script type="text/javascript" src="http://js.40017.cn/cn/v/2015/kefu/index.03075.js">
+</script>
+
+<script>
+    seajs.config({
+      "base": "http://js.40017.cn/cn/v/2015/jqmodules/"
+    });
+</script>
+<script src="//js.40017.cn/cn/v/theme/2016/list/index.04215.js" type="text/javascript"></script>
+<script>
+    seajs.use("theme", function (module) {
+        module.init();
+    });
+</script>
+<script type="text/javascript">
+   var url="http://www.ly.com/dujia/ajaxcall.aspx?type=GetTel400";
+   jQuery.ajax({
+        url: url,
+        dataType: "jsonp",
+        success: function(data){
+            jQuery(".ui-bread-right em").html(data);    
+        }
+    });  
+</script>
+
+<script type="text/javascript" src="http://js.40017.cn/cn/v/2015/jqmodules/slidertoolbar/0.1.0/index.js"></script>
+<script src="//js.40017.cn/cn/v/2015/group-index/tool.10083.js"></script>
+<script>
+    seajs.use("index", function (Index) {
+        Index.init();
+    });
+</script>
+
+<script type="text/javascript" src="http://js.40017.cn/cn/v/2015/jqmodules/statistics/0.3.0/statistics.js"></script>
+<script type="text/javascript">
+    stat.init({
+        "baidu": {
+            "parameter": "pc"   
+        },  
+       "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', '10002-2030-0'],
+            ['_refId', stat.getRefid()],
+            ['_userId', '0'],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', '/出境/主题游首页/']
+        ],
+       "_tcHotmapx": { 
+            "pid": "779",
+            "sp": "100"
+        }
+    });
+</script>
+<input type="hidden" id="priThemeType" value="{{=themePro.PriThemeType}}">   
+<input type="hidden" id="selectedThemeType" value="{{=themePro.SubThemeType}}">  
+<input type="hidden" id="StartCityId" value="{{=themePro.CityId}}"/>
+<input type="hidden" id="StartCityName" value="{{=themePro.CityName}}"/>
+<input type="hidden" id="SearchKeyWord" value="{{=themePro.SelectSearchWord}}"/>
+<input type="hidden" id="PageType" value="{{=themePro.PageType}}"/>
+</body>
+</html>

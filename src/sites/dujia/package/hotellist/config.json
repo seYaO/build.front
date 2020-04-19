@@ -1,0 +1,9 @@
+{
+    "dataUri": "/intervacation/api/PDynamicPackageHotel/ChooseHotelInfo",
+    "query": {
+        "siteType": 0,
+        "productType": 0,
+        "lineId": "336838"
+    },
+    "desc": "动态打包更换酒店页面"
+}

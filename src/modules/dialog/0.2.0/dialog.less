@@ -1,0 +1,1148 @@
+﻿body {
+}
+
+/*#region 公共样式  */
+
+
+.ui_dialog_mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    font-size: .4rem;
+    text-align: center;
+    z-index: 9999;
+}
+
+    .ui_dialog_mask.mask {
+        background-color: #000;
+        background-color: rgba(0, 0, 0, 0.8);
+        filter: alpha(opacity=80);
+    }
+
+.ui_dialog_gp {
+    width: auto;
+    height: auto;
+    position: fixed;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: block;
+    visibility: hidden;
+    z-index: 10000;
+}
+
+.ui_dialog_bottom {
+    width: 100%;
+    height: .75rem;
+    float: left;
+    background-color: #ff0000;
+}
+
+
+.ui_dialog_alert {
+    width: 250px;
+    height: 100px;
+    border: 1px solid red;
+}
+
+
+/*#endregion */
+
+/*#region skin1 */
+
+.ui_dialog_gp.skin1 {
+}
+
+
+.skin1 {
+    /*#region alert */
+    .dialog_alert_gp {
+        width: 100%;
+        height: 100%;
+        border: 1px solid #cac4c4;
+        position: relative;
+        text-align: center;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+
+    .dialog_alert_text {
+        font-size: 12px;
+        width: 100%;
+        margin: auto;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+    }
+
+    .dialog_alert_submit {
+        width: 100px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+    }
+    /*#endregion */
+    /*#region confrim */
+    .dialog_confirm_gp {
+        width: 200px;
+        height: 120px;
+        border: 1px solid #cac4c4;
+        position: relative;
+        text-align: center;
+        border-radius: 10px;
+        background-color: #fff;
+    }
+
+    .dialog_confirm_text {
+        font-size: 12px;
+        width: 150px;
+        margin: auto;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+    }
+
+    .dialog_confirm_submit {
+        width: 70px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+    }
+
+    .dialog_confirm_cannel {
+        width: 70px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        right: 20px;
+    }
+    /*#endregion */
+    /*#region tooltip */
+    .dialog_tooltip_gp {
+        width: auto;
+        height: auto;
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 3px 8px 0 rgba(0,0,0,0.2);
+    }
+
+    .dialog_tooltip_text {
+        font-size: 12px;
+        width: 100%;
+        margin: auto;
+        height: auto;
+        text-align: center;
+        position: relative;
+    }
+
+    .dialog-arrow-a {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        line-height: 0;
+        font-size: 0;
+    }
+
+        .dialog-arrow-a.bottom {
+            border-top: 0 none;
+            border-bottom: 8px solid #fff;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            left: 50%;
+            bottom: 5px;
+        }
+
+        .dialog-arrow-a.top {
+            left: 50%;
+            top: 5px;
+            border-top: 8px solid #fff;
+            border-bottom: 0 none;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+        }
+
+        .dialog-arrow-a.left {
+            top: 5px;
+            left: 4px;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid #fff;
+            border-right: 0 none;
+        }
+
+        .dialog-arrow-a.right {
+            top: 5px;
+            right: 5px;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 0 none;
+            border-right: 8px solid #fff;
+        }
+
+    .dialog-arrow-b {
+        position: absolute;
+        display: block;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        line-height: 0;
+        font-size: 0;
+    }
+
+        .dialog-arrow-b.bottom {
+            border-top: 0 none;
+            border-bottom: 8px solid #fff;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+            left: 50%;
+            bottom: 4px;
+        }
+
+        .dialog-arrow-b.top {
+            left: 50%;
+            top: 4px;
+            border-top: 8px solid #fff;
+            border-bottom: 0 none;
+            border-left: 8px solid transparent;
+            border-right: 8px solid transparent;
+        }
+
+        .dialog-arrow-b.left {
+            top: 5px;
+            left: 3px;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 8px solid #fff;
+            border-right: 0 none;
+        }
+
+        .dialog-arrow-b.right {
+            top: 5px;
+            right: 5px;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-left: 0 none;
+            border-right: 8px solid #fff;
+        }
+    /*#endregion */
+    /*#region modal */
+    .dialog_modal_gp {
+        width: 100%;
+        height: 100%;
+        border: solid 20px #4c4c4c;
+        position: relative;
+        background-color: #ffffff;
+    }
+
+    .dialog_modal_title {
+        width: 100%;
+        height: 40px;
+        font-size: 16px;
+        line-height: 40px;
+        background-color: #38414c;
+        color: #fff;
+        text-align: center;
+
+        .text {
+            height: 40px;
+            width: auto;
+        }
+
+        .close {
+            width: 20px;
+            height: 20px;
+            display: inline-block;
+            background: url("//img1.40017.cn/cn/v/2015/jqmodules/comment/0.2.0/close.png") no-repeat center;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    }
+
+    .dialog_modal_content {
+        width: 100%;
+        height: 400px;
+        padding-top: 20px;
+    }
+    /*#endregion */
+    /*#region validata */
+    .dialog_validata_gp {
+        width: auto;
+        height: auto;
+        position: relative;
+        text-align: center;
+        padding: 2px 15px;
+        background-color: #fff;
+        box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        float: left;
+
+        .dialog-arrow-b {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            line-height: 0;
+            font-size: 0;
+
+            &.bottom {
+                border-top: 0 none;
+                border-bottom: 8px solid #fff;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                left: 50%;
+                bottom: 4px;
+            }
+
+            &.top {
+                left: 50%;
+                top: 4px;
+                border-top: 8px solid #fff;
+                border-bottom: 0 none;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            &.left {
+                top: 5px;
+                left: 3px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #fff;
+                border-right: 0 none;
+            }
+
+            &.right {
+                top: 5px;
+                right: 5px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 0 none;
+                border-right: 8px solid #fff;
+            }
+        }
+
+        .dialog-arrow-a {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            line-height: 0;
+            font-size: 0;
+
+            &.bottom {
+                border-top: 0 none;
+                border-bottom: 8px solid #fff;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                left: 50%;
+                bottom: 5px;
+            }
+
+            &.top {
+                left: 50%;
+                top: 5px;
+                border-top: 8px solid #fff;
+                border-bottom: 0 none;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            &.left {
+                top: 5px;
+                left: 4px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #fff;
+                border-right: 0 none;
+            }
+
+            &.right {
+                top: 5px;
+                right: 5px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 0 none;
+                border-right: 8px solid #fff;
+            }
+        }
+    }
+
+    .dialog_validata_text {
+        font-size: 12px;
+        width: auto;
+        margin: auto;
+        height: auto;
+        text-align: center;
+        position: relative;
+        float: left;
+    }
+}
+/*#endregion */
+
+/*#endregion */
+
+/*#region skin2 */
+.skin2 {
+    /*#region tooltip */
+    .dialog_tooltip_gp {
+        width: auto;
+        height: auto;
+        border: 1px solid #cac4c4;
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        background-color: #fff;
+
+        .dialog_tooltip_text {
+            font-size: 12px;
+            width: 100%;
+            margin: auto;
+            height: auto;
+            text-align: center;
+            position: relative;
+        }
+
+        .dialog-arrow-a {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            line-height: 0;
+            font-size: 0;
+
+            &.bottom {
+                border-top: 0 none;
+                border-bottom: 8px solid #cac4c4;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                left: 50%;
+                bottom: 5px;
+            }
+
+            &.top {
+                left: 50%;
+                top: 5px;
+                border-top: 8px solid #cac4c4;
+                border-bottom: 0 none;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            &.left {
+                top: 5px;
+                left: 4px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #cac4c4;
+                border-right: 0 none;
+            }
+
+            &.right {
+                top: 5px;
+                right: 6px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 0 none;
+                border-right: 8px solid #cac4c4;
+            }
+        }
+
+        .dialog-arrow-b {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            line-height: 0;
+            font-size: 0;
+
+            &.bottom {
+                border-top: 0 none;
+                border-bottom: 8px solid #fff;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                left: 50%;
+                bottom: 4px;
+            }
+
+            &.top {
+                left: 50%;
+                top: 4px;
+                border-top: 8px solid #fff;
+                border-bottom: 0 none;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            &.left {
+                top: 5px;
+                left: 3px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #fff;
+                border-right: 0 none;
+            }
+
+            &.right {
+                top: 5px;
+                right: 5px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 0 none;
+                border-right: 8px solid #fff;
+            }
+        }
+    }
+    /*#endregion */
+    .dialog_alert_gp {
+        width: 200px;
+        height: 120px;
+        border: 1px solid #ff6a00;
+        position: relative;
+        text-align: center;
+        border-radius: 10px;
+        color: #ff6a00;
+        background-color: #fff;
+    }
+
+    .dialog_alert_text {
+        font-size: 12px;
+        width: 150px;
+        margin: auto;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+    }
+
+    .dialog_alert_submit {
+        width: 100px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        border: 1px solid #ff6a00;
+        color: #ff6a00;
+        background-color: #ffffff;
+    }
+
+    .dialog_confirm_gp {
+        width: 200px;
+        height: 120px;
+        border: 1px solid #ff6a00;
+        position: relative;
+        text-align: center;
+        border-radius: 10px;
+        color: #ff6a00;
+        background-color: #fff;
+    }
+
+    .dialog_confirm_text {
+        font-size: 12px;
+        width: 150px;
+        margin: auto;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+    }
+
+    .dialog_confirm_submit {
+        width: 70px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+        border: 1px solid #ff6a00;
+        color: #ff6a00;
+        background-color: #ffffff;
+    }
+
+    .dialog_confirm_cannel {
+        width: 70px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        right: 20px;
+        border: 1px solid #ff6a00;
+        color: #ff6a00;
+        background-color: #ffffff;
+    }
+
+    .dialog_modal_gp {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: #ffffff;
+    }
+
+    .dialog_modal_title {
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        line-height: 50px;
+        background-color: #f5f5f5;
+        font-weight: bold;
+
+        .text {
+            height: 35px;
+            float: left;
+            width: auto;
+            margin-left: 20px;
+        }
+
+        .close {
+            float: right;
+            margin: 15px 10px 10px;
+            width: 20px;
+            height: 22px;
+            display: block;
+            text-decoration: none;
+            background: url("//img1.40017.cn/cn/v/2015/newdetails/pop_icon.png") no-repeat 0 -109px;
+        }
+
+            .close:hover {
+                background: url("//img1.40017.cn/cn/v/2015/newdetails/pop_icon.png") no-repeat 0 -151px;
+            }
+    }
+
+    .dialog_modal_content {
+        width: 100%;
+        margin-top: 20px;
+    }
+    /*#region validata */
+    .dialog_validata_gp {
+        width: auto;
+        height: auto;
+        position: relative;
+        text-align: center;
+        padding: 2px 10px;
+        background-color: #fff3d9;
+        border: 1px solid #ff6a00;
+        float: left;
+
+        .dialog-arrow-b {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            line-height: 0;
+            font-size: 0;
+
+            &.bottom {
+                border-top: 0 none;
+                border-bottom: 8px solid #fff;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                left: 50%;
+                bottom: 4px;
+            }
+
+            &.top {
+                left: 50%;
+                top: 4px;
+                border-top: 8px solid #fff;
+                border-bottom: 0 none;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            &.left {
+                top: 5px;
+                left: 3px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #fff;
+                border-right: 0 none;
+            }
+
+            &.right {
+                top: 5px;
+                right: 5px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 0 none;
+                border-right: 8px solid #fff;
+            }
+        }
+
+        .dialog-arrow-a {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            line-height: 0;
+            font-size: 0;
+
+            &.bottom {
+                border-top: 0 none;
+                border-bottom: 8px solid #fff;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                left: 50%;
+                bottom: 5px;
+            }
+
+            &.top {
+                left: 50%;
+                top: 5px;
+                border-top: 8px solid #fff;
+                border-bottom: 0 none;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            &.left {
+                top: 5px;
+                left: 4px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #fff;
+                border-right: 0 none;
+            }
+
+            &.right {
+                top: 5px;
+                right: 5px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 0 none;
+                border-right: 8px solid #fff;
+            }
+        }
+    }
+
+    .dialog_validata_text {
+        font-size: 12px;
+        width: auto;
+        margin: auto;
+        height: auto;
+        position: relative;
+        float: left;
+        line-height: 20px;
+        text-align: left;
+    }
+    /*#endregion */
+}
+/*#endregion */
+
+/*#region default */
+.default {
+    /*#region tooltip */
+    .dialog_tooltip_gp {
+        width: auto;
+        height: auto;
+        border: 1px solid #ccc;
+        border: 1px solid rgba(0,0,0,0.1);
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        background-color: #fff;
+        box-shadow: 0 3px 8px 0px rgba(0, 0, 0, 0.2);
+
+        .dialog_tooltip_text {
+            font-size: 12px;
+            width: 100%;
+            margin: auto;
+            height: auto;
+            text-align: center;
+            position: relative;
+            word-wrap: break-word;
+        }
+
+        .dialog_berch_mask {
+            position: absolute;
+        }
+
+        .dialog-arrow {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+
+            .dialog-arrow-a {
+                position: absolute;
+                display: block;
+                width: 0;
+                height: 0;
+                overflow: hidden;
+                line-height: 0;
+                font-size: 0;
+            }
+
+            .dialog-arrow-b {
+                position: absolute;
+                display: block;
+                width: 0;
+                height: 0;
+                overflow: hidden;
+                line-height: 0;
+                font-size: 0;
+            }
+
+            &.bottom {
+                top: -8px;
+                left: 8px;
+
+                .dialog-arrow-a {
+                    border-top: 0 none;
+                    border-bottom: 8px solid #ccc;
+                    border-bottom: 8px solid rgba(0,0,0,0.1);
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    left: 0;
+                    top: 0;
+                }
+
+                .dialog-arrow-b {
+                    border-top: 0 none;
+                    border-bottom: 8px solid #fff;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                    left: 0;
+                    top: 1px;
+                }
+            }
+
+            &.top {
+                bottom: -8px;
+                left: 8px;
+
+                .dialog-arrow-a {
+                    left: 0;
+                    bottom: 0;
+                    border-top: 8px solid #ccc;
+                    border-top: 8px solid rgba(0,0,0,0.1);
+                    border-bottom: 0 none;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                }
+
+                .dialog-arrow-b {
+                    left: 0;
+                    bottom: 1px;
+                    border-top: 8px solid #fff;
+                    border-bottom: 0 none;
+                    border-left: 8px solid transparent;
+                    border-right: 8px solid transparent;
+                }
+            }
+
+            &.right {
+                .dialog-arrow-a {
+                    top: 0;
+                    left: 0;
+                    border-top: 8px solid transparent;
+                    border-bottom: 8px solid transparent;
+                    border-left: 0 none;
+                    border-right: 8px solid #ccc;
+                    border-right: 8px solid rgba(0,0,0,0.1);
+                }
+
+                .dialog-arrow-b {
+                    top: 0;
+                    left: 1px;
+                    border-top: 8px solid transparent;
+                    border-bottom: 8px solid transparent;
+                    border-left: 0 none;
+                    border-right: 8px solid #fff;
+                }
+            }
+
+            &.left {
+                .dialog-arrow-a {
+                    top: 0;
+                    right: 0;
+                    border-top: 8px solid transparent;
+                    border-bottom: 8px solid transparent;
+                    border-left: 8px solid #ccc;
+                    border-left: 8px solid rgba(0,0,0,0.1);
+                    border-right: 0 none;
+                }
+
+                .dialog-arrow-b {
+                    top: 0;
+                    right: 1px;
+                    border-top: 8px solid transparent;
+                    border-bottom: 8px solid transparent;
+                    border-left: 8px solid #fff;
+                    border-right: 0 none;
+                }
+            }
+        }
+    }
+    /*#endregion */
+    /*#region alert */
+    .dialog_alert_gp {
+        width: 200px;
+        height: 120px;
+        border: 1px solid #ff6a00;
+        position: relative;
+        text-align: center;
+        border-radius: 10px;
+        color: #ff6a00;
+        background-color: #fff;
+    }
+
+    .dialog_alert_text {
+        font-size: 12px;
+        width: 150px;
+        margin: auto;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+    }
+
+    .dialog_alert_submit {
+        width: 100px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        left: 0;
+        right: 0;
+        border: 1px solid #ff6a00;
+        color: #ff6a00;
+        background-color: #ffffff;
+    }
+    /*#endregion */
+    /*#region confirm */
+    .dialog_confirm_gp {
+        width: 200px;
+        height: 120px;
+        border: 1px solid #ff6a00;
+        position: relative;
+        text-align: center;
+        border-radius: 10px;
+        color: #ff6a00;
+        background-color: #fff;
+    }
+
+    .dialog_confirm_text {
+        font-size: 12px;
+        width: 150px;
+        margin: auto;
+        text-align: center;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        right: 0;
+    }
+
+    .dialog_confirm_submit {
+        width: 70px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        left: 20px;
+        border: 1px solid #ff6a00;
+        color: #ff6a00;
+        background-color: #ffffff;
+    }
+
+    .dialog_confirm_cannel {
+        width: 70px;
+        height: 30px;
+        margin: auto;
+        position: absolute;
+        bottom: 30px;
+        right: 20px;
+        border: 1px solid #ff6a00;
+        color: #ff6a00;
+        background-color: #ffffff;
+    }
+    /*#endregion */
+    /*#region modal */
+    .dialog_modal_gp {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        background-color: #ffffff;
+    }
+
+    .dialog_modal_title {
+        width: 100%;
+        height: 50px;
+        font-size: 18px;
+        line-height: 50px;
+        background-color: #f5f5f5;
+        font-weight: bold;
+
+        .text {
+            height: 35px;
+            float: left;
+            width: auto;
+            margin-left: 20px;
+        }
+
+        .close {
+            float: right;
+            margin: 15px 10px 10px;
+            width: 20px;
+            height: 22px;
+            display: block;
+            text-decoration: none;
+            background: url("//img1.40017.cn/cn/v/2015/newdetails/pop_icon.png") no-repeat 0 -109px;
+        }
+
+            .close:hover {
+                background: url("//img1.40017.cn/cn/v/2015/newdetails/pop_icon.png") no-repeat 0 -151px;
+            }
+    }
+
+    .dialog_modal_content {
+        width: 100%;
+        margin-top: 20px;
+    }
+    /*#endregion */
+    /*#region validata */
+    .dialog_validata_gp {
+        width: auto;
+        height: auto;
+        position: relative;
+        text-align: center;
+        padding: 2px 10px;
+        background-color: #fff3d9;
+        border: 1px solid #ff6a00;
+        float: left;
+
+        .dialog-arrow-b {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            line-height: 0;
+            font-size: 0;
+
+            &.bottom {
+                border-top: 0 none;
+                border-bottom: 8px solid #fff;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                left: 50%;
+                bottom: 4px;
+            }
+
+            &.top {
+                left: 50%;
+                top: 4px;
+                border-top: 8px solid #fff;
+                border-bottom: 0 none;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            &.left {
+                top: 5px;
+                left: 3px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #fff;
+                border-right: 0 none;
+            }
+
+            &.right {
+                top: 5px;
+                right: 5px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 0 none;
+                border-right: 8px solid #fff;
+            }
+        }
+
+        .dialog-arrow-a {
+            position: absolute;
+            display: block;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+            line-height: 0;
+            font-size: 0;
+
+            &.bottom {
+                border-top: 0 none;
+                border-bottom: 8px solid #fff;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+                left: 50%;
+                bottom: 5px;
+            }
+
+            &.top {
+                left: 50%;
+                top: 5px;
+                border-top: 8px solid #fff;
+                border-bottom: 0 none;
+                border-left: 8px solid transparent;
+                border-right: 8px solid transparent;
+            }
+
+            &.left {
+                top: 5px;
+                left: 4px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 8px solid #fff;
+                border-right: 0 none;
+            }
+
+            &.right {
+                top: 5px;
+                right: 5px;
+                border-top: 8px solid transparent;
+                border-bottom: 8px solid transparent;
+                border-left: 0 none;
+                border-right: 8px solid #fff;
+            }
+        }
+    }
+
+    .dialog_validata_text {
+        font-size: 12px;
+        width: auto;
+        margin: auto;
+        height: auto;
+        position: relative;
+        float: left;
+        line-height: 20px;
+        text-align: left;
+    }
+    /*#endregion */
+}
+/*#endregion */
+

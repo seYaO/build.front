@@ -1,0 +1,194 @@
+{{?it.Data}}
+<p class="fp-title"> <span class="label">  <i></i> {{=it.Data.Dest}}  </span> <span class="date"> 入住日期：<strong>{{=it.Data.CheckInTime}}至{{=it.Data.CheckOutTime}}（共{{=it.Data.Nights}}晚）</strong> </span>&nbsp;&nbsp;&nbsp;&nbsp; <em>共{{=it.Data.TotalCount}}家可选酒店</em> <span class="back-cho">返回套餐<i></i></span></p>
+<div class="fp-search-box">
+    <div class="fp-search J_fp-search">
+        {{?it.Data.Conditions.Site && it.Data.Conditions.Site.length}}
+        {{
+            var allsel = "selected";
+            for(var i=0; i<it.Data.Conditions.Site.length; i++){
+                if(it.Data.Conditions.Site[i].IsSelected && it.Data.Conditions.Site[i].IsSelected == 1){
+                    allsel = "";
+                }
+            }
+        }}
+        <div class="J_hotelLocation">
+            <span class="loacal-title">酒店位置</span>
+            <span class="all-sel {{=allsel}}"><a class="all">全部</a></span>
+            <span class="WeiZhiTabs">
+                {{~it.Data.Conditions.Site:sitSearch}}
+                    {{?sitSearch.IsSelected == 1}}
+                    <span class="J_click"><a>{{=sitSearch.Name}}</a><em></em></span>
+                    {{??}}
+                    <span><a>{{=sitSearch.Name}}</a><em></em></span>
+                    {{?}}
+                {{~}}
+            </span>
+        </div>
+        {{?}}
+        {{?it.Data.Conditions.Site.length}}
+        {{~it.Data.Conditions.Site:siteSearch:index}}
+            {{?siteSearch.Name == "地铁"}}
+                <div class="WeiZhiList J_subWay clearfix" {{?siteSearch.IsSelected == 0}}style="display: none;"{{?}}>
+                    <ul class="subway clearfix">
+                        {{?siteSearch.Childrens && siteSearch.Childrens.length}}
+                            {{
+                                var activeType = "";
+                                for(var j=0; j<siteSearch.Childrens.length; j++){
+                                    if(siteSearch.Childrens[j].IsSelected && siteSearch.Childrens[j].IsSelected == 1){
+                                        activeType = "activeType";
+                                    }
+                                }
+                            }}
+                            {{~siteSearch.Childrens:subwayTabs:subwayIndex}}
+                                {{?activeType == "activeType"}}
+                                    <li index="{{=subwayIndex}}" {{?subwayTabs.IsSelected == 1}} class="{{=activeType}}" {{?}}><a>{{=subwayTabs.Name}}</a></li>
+                                {{??}}
+                                    <li index="{{=subwayIndex}}" {{?subwayIndex == 0}}class="activeType"{{?}}><a>{{=subwayTabs.Name}}</a></li>
+                                {{?}}
+                            {{~}}
+                        {{?}}
+                    </ul>
+                    {{?siteSearch.Childrens && siteSearch.Childrens.length}}
+                        {{
+                            var block = "";
+                            for(var j=0; j<siteSearch.Childrens.length; j++){
+                                if(siteSearch.Childrens[j].IsSelected && siteSearch.Childrens[j].IsSelected == 1){
+                                    block = "block";
+                                }
+                            }
+                        }}
+                        {{~siteSearch.Childrens:subwayItems:subWayI}}
+                            {{?block == "block"}}
+                                <div class="J_poiDesc subwayStations" {{?subwayItems.IsSelected == 1}}style="display: block;"{{?}}>
+                            {{??}}
+                                <div class="J_poiDesc subwayStations" {{?subWayI == 0}}style="display: block;"{{?}}>
+                            {{?}}
+                                {{~subwayItems.Childrens:childItems}}
+                                <span {{?childItems.IsSelected == 1}}class="selectp"{{?}} data-param="{{=childItems.Name}}"><a title="{{=childItems.Name}}">{{=childItems.Name}}</a></span>
+                                {{~}}
+                            </div>
+                        {{~}}
+                    {{?}}
+                </div>
+            {{??}}
+                <div class="WeiZhiList J_BusinessCircles clearfix" data-index="{{=index}}" {{?!siteSearch.IsSelected == 1}}style="display: none;"{{?}}>
+                    {{~siteSearch.Childrens:childrens}}
+                        {{?childrens.Childrens.length && childrens.Childrens.length > 0}}
+                        <div class="css_item">
+                            <div class="type">{{=childrens.Name}}</div>
+                            <div class="choseItem">
+                            {{~childrens.Childrens:Items}}
+                                <span data-param="{{=Items.Name}}" {{?Items.IsSelected==1}}class="selectp"{{?}}><a title="{{=Items.Name}}">{{=Items.Name}}</a></span>
+                            {{~}}
+                            </div>
+                        </div>
+                        {{??}}
+                            <span data-param="{{=childrens.Name}}" {{?childrens.IsSelected==1}}class="selectp"{{?}}><a title="{{=childrens.Name}}">{{=childrens.Name}}</a></span>
+                        {{?}}
+                    {{~}}
+                </div>
+            {{?}}
+        {{~}}
+        {{?}}
+        {{?it.Data.Conditions.Drills&&it.Data.Conditions.Drills.length}}
+        {{
+            var DrillsArr = [],lowTwo = "",Bitem = {},towSelect=false,ASelect=false,AllSelect=true;
+            for(var i=0;i<it.Data.Conditions.Drills.length;i++){
+                var Aitem = {},newparam="",Value = it.Data.Conditions.Drills[i].Value;
+                if(parseInt(Value)>2){
+                    Aitem.Name = Value+"钻";
+                    Aitem.IsSelected = it.Data.Conditions.Drills[i].IsSelected;
+                    Aitem.param = it.Data.Conditions.Drills[i].Id+"-"+Value;
+                    DrillsArr.push(Aitem);
+                    if(it.Data.Conditions.Drills[i].IsSelected==1){
+                        ASelect = true;
+                    }
+                    if(it.Data.Conditions.Drills[i].IsSelected==0){
+                        AllSelect = false;
+                    }
+                }else{
+                    newparam = it.Data.Conditions.Drills[i].Id+"-"+Value+",";
+                    lowTwo += newparam;
+                    if(it.Data.Conditions.Drills[i].IsSelected==1){
+                        towSelect = true;
+                    }
+                }
+            }
+            var BArr = [];
+            if(lowTwo){
+                Bitem.Name = "2钻及以下";
+                lowTwo  = lowTwo.slice(0,lowTwo.length-1);
+                Bitem.param = lowTwo;
+                if(towSelect){
+                    Bitem.IsSelected = 1;
+                }else{
+                    Bitem.IsSelected = 0;
+                }
+                BArr.push(Bitem);
+            }else{
+                towSelect = true;
+            }
+            var CArr = DrillsArr.concat(BArr);
+            var AllArr = [],AllStr="";
+            if(CArr.length){
+                for(var i=0;i<CArr.length;i++){
+                    AllArr.push(CArr[i].param);
+                    AllStr = AllArr.join(",");
+                }
+            }
+        }}
+        <dl class="J_hotelStar">
+            <dt>酒店钻级</dt>
+            {{?AllSelect && towSelect}}
+            <dd class="all-sel selected" data-param="{{=AllStr}}"> <a class="all">全部</a> </dd>
+            {{~CArr:itItems:index}}
+            <dd data-param="{{=itItems.param}}"> <a title="{{=itItems.Name}}">{{=itItems.Name}}</a> </dd>
+            {{~}}
+            {{??}}
+            <dd class="all-sel {{?!ASelect&&!towSelect}}selected{{?}}" data-param="{{=AllStr}}"> <a class="all">全部</a> </dd>
+            {{~CArr:itItems:index}}
+            <dd data-param="{{=itItems.param}}" {{?itItems.IsSelected==1}}class="selected"{{?}}> <a title="{{=itItems.Name}}">{{=itItems.Name}}</a> </dd>
+            {{~}}
+            {{?}}
+        </dl>
+        {{?}}
+
+        {{?it.Data.Conditions.Facilities&&it.Data.Conditions.Facilities.length}}
+        {{var FacilitiesArr = ["中文服务","机场接送","免费WiFi","有线网络","健身中心","餐厅","SPA","室外游泳",
+                "室内游泳","快速入住、退房"];
+                var newArr=[],oldArr=it.Data.Conditions.Facilities;
+                var FIsSelect = false;
+                for(var ii=0;ii<FacilitiesArr.length;ii++){
+                    for(var j=0;j<oldArr.length;j++){
+                        if(FacilitiesArr[ii]==oldArr[j].Name){
+                            var newObj = {};
+                            newObj.Name = oldArr[j].Name;
+                            newObj.Value = oldArr[j].Id+"-"+oldArr[j].Name;
+                            newObj.IsSelected = oldArr[j].IsSelected;
+                            if(oldArr[j].IsSelected == 1){
+                               FIsSelect = true;
+                            }
+                            newArr.push(newObj);
+                        }
+                    }
+                }
+        }}
+        <dl class="J_hotelFacilities">
+            <dt>酒店设施</dt>
+            <dd class="all-sel {{?!FIsSelect}}selected{{?}}"> <a class="all">全部</a> </dd>
+            {{~newArr:itItems:index}}
+            <dd data-param="{{=itItems.Value}}" {{?itItems.IsSelected==1}}class="selected"{{?}}> <a title="{{=itItems.Name}}">{{=itItems.Name}}</a> </dd>
+            {{~}}
+        </dl>
+        {{?}}
+    </div>
+    <div class="fp-sort J_fp_sort">
+        <span data-index="2" statspot="true" class="J_Orderdefault down selected" title="默认排序">默认排序</span>
+        <span data-index="3" statspot="true" class="J_OrderPrice down up" title="按价格">按价格<em></em></span>
+        <span data-index="1" statspot="true" class="J_OrderComment down" title="按评分">按评分<em></em></span>
+        <span data-index="0" statspot="true" class="J_OrderZhuan down" title="按钻级">按钻级<em></em></span>
+        <div class="J_searchHotel">搜索<em class="none" title="清空">清空<i></i></em></div>
+        <input class="ui-input input-hotel-search" placeholder="请输入酒店名称">
+    </div>
+</div>
+{{?}}

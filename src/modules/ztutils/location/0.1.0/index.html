@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js"></script>
+<script src="index.js"></script>
+<script>
+
+    /*单例 调用函数只能写一个*/
+    /*
+     Location.getCity({
+     success: function (cityName) {
+     alert(JSON.stringify(area));
+     }
+     });
+     */
+    /*Location.getArea({
+     success: function (area) {
+     alert(JSON.stringify(area));
+     }
+     });*/
+
+    Location.getArea({
+        success: function (area) {
+            /*成功回调*/
+            this.renderTip("南京",area,function(){
+                /*确定回调：定位城市与默认城市相同不执行*/
+                alert(1);
+            });
+        }
+    });
+
+    /*
+     if (navigator.geolocation) {
+     navigator.geolocation.getCurrentPosition(function(position){
+     var coords = position.coords;
+     alert(JSON.stringify(position));
+     // 纬度
+     //            coords.latitude,
+     // 经度
+     //            coords.longitude
+
+     }, function(error){
+     switch(error.code) {
+     case error.TIMEOUT:
+     alert("超时");
+     break;
+     case error.POSITION_UNAVAILABLE:
+     alert('失败');
+     break;
+     case error.PERMISSION_DENIED:
+     alert('没有权限');
+     break;
+     case error.UNKNOWN_ERROR:
+     alert('未知');
+     break;
+     }
+     },{
+     // 指示浏览器获取高精度的位置，默认为false
+     enableHighAccuracy: true,
+     // 指定获取地理位置的超时时间，默认不限时，单位为毫秒
+     timeout: 5000,
+     // 最长有效期，在重复获取地理位置时，此参数指定多久再次获取位置。
+     maximumAge: 3000
+     });
+     }else{
+     alert("不支持");
+     }
+     */
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+{{?travelData.sceneryIntroduction && travelData.sceneryIntroduction.length>0}}
+<div class="route-part none">
+     <ul class="scenery clearfix">
+         {{~travelData.sceneryIntroduction:scenery}}
+         <li class="scenery-list">
+             <div class="pro-slider" id="mSlider1">
+                 <div class="mSlider1">
+                     <div class="mSlider1_con" id="mSlider1_con">
+                         <ul style="width: 317px; position: relative;">
+                         {{?scenery.SceneryImage && scenery.SceneryImage.length>0}}
+                            {{~scenery.SceneryImage:imgs}}
+                                {{?imgs}}
+                                    <li>
+                                        <a href="javascript:void(0)" hidefocus="true">
+                                        <img data-img="{{=imgs.replace('http:','')}}"></a>
+                                    </li>
+                                {{??}}
+                                    <li>
+                                        <a href="javascript:void(0)" hidefocus="true">
+                                        <img src="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png"></a>
+                                    </li>
+                                {{?}}
+                            {{~}}
+                         {{??}}
+                            <li>
+                                <a href="javascript:void(0)" hidefocus="true">
+                                <img src="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png"></a>
+                            </li>
+                         {{?}}
+                         </ul>
+                     </div>
+                     {{?scenery.SceneryImage && scenery.SceneryImage.length>0}}
+                        <span id="mSlider1-left" class="btn-prev btn-prev-operate"></span>
+                        <span id="mSlider1-right" class="btn-next btn-next-operate"></span>
+                     {{?}}
+
+                 </div>
+             </div>
+             <div class="scenery-right">
+                 <h4 class="title">{{=scenery.SceneryName}}
+                     <b>推荐指数:
+                     {{for(var i = 0; i<5;i++){}}
+                        {{?i < scenery.SceneryIndex}}
+                            <em class="reward"></em>
+                        {{??}}
+                            <em></em>
+                        {{?}}
+                     {{}}}
+                     </b>
+                 </h4>
+                 {{?scenery.SceneryAddress}}<p class="adress"><span class="every-item">地址：</span><span class="every-item-info">{{=scenery.SceneryAddress}}</span></p>{{?}}
+                 {{?scenery.SceneryTraffic}}<p class="trans"><span class="every-item">交通：</span><span class="every-item-info">{{=scenery.SceneryTraffic}}</span></p>{{?}}
+                 {{?scenery.SceneryDescript}}<div class="scenery-info">{{=scenery.SceneryDescript}}</div>{{?}}
+             </div>
+         </li>
+         {{~}}
+     </ul>
+</div>
+{{?}}

@@ -1,0 +1,207 @@
+<div trace="duanxian-box">
+   {{?it.ShortTripLabel}}
+   {{var shortTripLabel = it.ShortTripLabel;}}
+       <div class="module short-distance">
+           <div class="module__content">
+               <div class="content-head clearfix">
+                   <div class="head-right">
+                       <div class="area area__demand J_distance J_short_distance clearfix" data-tag="J_short_distance" data-tmpl="J_short_proList">
+                           <ul class="clearfix">
+                           {{?shortTripLabel.LabelNames && shortTripLabel.LabelNames.length != 0}}
+                               {{~shortTripLabel.LabelNames:shortNames:shortNamesindex}}
+                               {{?shortNamesindex<10}}
+                               {{?shortNamesindex == 0}}
+                               <li class="current" data-key="shorttag_{{=(shortNamesindex+1)}}" more-country="更多{{=shortNames.Name}}线路" more-url="{{=shortNames.Url.replace('http:','')}}">
+                               {{??}}
+                               <li data-key="shorttag_{{=(shortNamesindex+1)}}" more-country="更多{{=shortNames.Name}}线路" more-url="{{=shortNames.Url.replace('http:','')}}">
+                               {{?}}
+                                   {{=shortNames.Name}}
+                                   <em><i></i></em>
+                               </li>
+                               {{?}}
+                               {{~}}
+                           {{?}}
+                           </ul>
+
+                           {{~shortTripLabel.LabelNames:shortNames:shortNamesindex}}
+                           {{?shortNamesindex == 0}}
+                           <a class="area__link" target="_blank" href="{{=shortNames.Url.replace('http:','')}}">
+                               更多{{=shortNames.Name}}线路
+                               <em>
+                                   <i></i>
+                               </em>
+                           </a>
+                          {{?}}
+                          {{~}}
+
+                       </div>
+                   </div>
+               </div>
+               <div class="content-body clearfix">
+                   <div class="body-left">
+                       <div class="hot-destination" trace="hot-destination">
+                           <p class="title">常用目的地</p>
+                           {{?shortTripLabel.HotDest && shortTripLabel.HotDest.length != 0}}
+                           <div class="destination">
+                               <ul class="clearfix ">
+                                   {{~shortTripLabel.HotDest:shortHotDest:shortHotDestindex}}
+                                   <li><a href="{{=(shortHotDest.Url.replace('http:','')||'')}}" title="{{=(shortHotDest.Name||'')}}" alt="{{=(shortHotDest.Name||'')}}" target="_blank" trace="dest_{{=shortHotDestindex}}">{{=(shortHotDest.Name||'')}}</a></li>
+                                   {{~}}
+                               </ul>
+                           </div>
+                           {{?}}
+                       </div>
+                       <div class="short-play" trace="short-play">
+                           <p class="title">短线玩法</p>
+                           {{?shortTripLabel.HotPlay && shortTripLabel.HotPlay.length != 0}}
+                           <div class="lines">
+                               <ul class="clearfix ">
+                                   {{~shortTripLabel.HotPlay:shortHotPlay:shortHotPlayindex}}
+                                   <li><a href="{{=(shortHotPlay.Url.replace('http:','')||'')}}" title="{{=(shortHotPlay.Name||'')}}" alt="{{=(shortHotPlay.Name||'')}}" target="_blank" trace="{{=shortHotPlayindex}}">{{=(shortHotPlay.Name||'')}}</a></li>
+                                   {{~}}
+                               </ul>
+                           </div>
+                           {{?}}
+                       </div>
+                   </div>
+                   <div class="body-right">
+                       <div class="product-list-wrap" id="J_short_proList">
+
+
+                       </div>
+                   </div>
+               </div>
+
+           </div>
+       </div>
+   {{?}}
+</div>
+<div trace="changxian-box">
+   {{?it.LongTripLabel}}
+   {{var longTripLabel = it.LongTripLabel;}}
+       <div class="module long-distance">
+           <div class="module__content">
+               <div class="content-head clearfix">
+                   <div class="head-right">
+                       <div class="area area__demand J_distance J_long_distance clearfix" data-tag="J_long_distance" trace="tablist" data-tmpl="J_long_proList">
+                           <ul class="clearfix">
+                           {{?longTripLabel.LabelNames && longTripLabel.LabelNames.length != 0}}
+                               {{~longTripLabel.LabelNames:longLabelNames:longLabelNamesindex}}
+                               {{?longLabelNamesindex<10}}
+                               {{?longLabelNamesindex == 0}}
+                               <li class="J_trace current" trace="{{=(longLabelNamesindex+1)}}" data-key="longtag_{{=(longLabelNamesindex+1)}}" more-country="更多{{=(longLabelNames.Name||'')}}线路" more-url="{{=(longLabelNames.Url.replace('http:','')||'')}}">
+                               {{??}}
+                               <li class="J_trace" trace="{{=(longLabelNamesindex+1)}}" data-key="longtag_{{=(longLabelNamesindex+1)}}" more-country="更多{{=(longLabelNames.Name||'')}}线路" more-url="{{=(longLabelNames.Url.replace('http:','')||'')}}">
+                               {{?}}
+                                   {{=(longLabelNames.Name||'')}}
+                                   <em><i></i></em>
+                               </li>
+                               {{?}}
+                               {{~}}
+                           {{?}}
+                           </ul>
+                           {{~longTripLabel.LabelNames:longLabelNames:longLabelNamesindex}}
+                          {{?longLabelNamesindex == 0}}
+                          <a class="area__link" target="_blank" href="{{=(longLabelNames.Url.replace('http:','')||'')}}">
+                              更多{{=(longLabelNames.Name||'')}}线路
+                              <em>
+                                  <i></i>
+                              </em>
+                          </a>
+                          {{?}}
+                          {{~}}
+                       </div>
+                   </div>
+               </div>
+               <div class="content-body clearfix">
+                   <div class="body-left">
+                       <div class="hot-destination">
+                           <p class="title">常用目的地</p>
+                           {{?longTripLabel.HotDest && longTripLabel.HotDest.length != 0}}
+                           <div class="destination" trace="destination">
+                               <ul class="clearfix ">
+                                   {{~longTripLabel.HotDest:longTripHotDest:longHotDestindex}}
+                                   <li><a trace="{{=longHotDestindex}}" href="{{=(longTripHotDest.Url.replace('http:','')||'')}}" title="{{=(longTripHotDest.Name||'')}}" alt="{{=(longTripHotDest.Name||'')}}" target="_blank" trace="dest_{{=longHotDestindex}}">{{=(longTripHotDest.Name||'')}}</a></li>
+                                   {{~}}
+                               </ul>
+                           </div>
+                           {{?}}
+                       </div>
+                       <div class="short-play" trace="wanfa">
+                           <p class="title">长线玩法</p>
+                           {{?longTripLabel.HotPlay && longTripLabel.HotPlay.length != 0}}
+                           <div class="lines">
+                               <ul>
+                                   {{~longTripLabel.HotPlay:longTripHotPlay:longHotPlayindex}}
+                                   <li><a trace="{{=longHotPlayindex}}" href="{{=(longTripHotPlay.Url.replace('http:','')||'')}}" title="{{=(longTripHotPlay.Name||'')}}" alt="{{=(longTripHotPlay.Name||'')}}" target="_blank" trace="dest_{{=longHotPlayindex}}">{{=(longTripHotPlay.Name||'')}}</a>
+                                   {{~}}
+                               </ul>
+                           </div>
+                           {{?}}
+                       </div>
+                   </div>
+                   <div class="body-right" trace="prolist">
+                       <div class="product-list-wrap" id="J_long_proList">
+
+                       </div>
+                   </div>
+               </div>
+
+           </div>
+       </div>
+   {{?}}
+</div>
+<div trace="jijiajiu-box">
+   {{?it.TPackageLabel}}
+   {{var tPackageLabel = it.TPackageLabel;}}
+   {{var cityId = $('#Startcityid').val();}}
+   <div class="module tpackage" trace="jijiu-renxuan">
+       <div class="module__content">
+           <div class="content-head clearfix">
+               {{?tPackageLabel.LabelNames && tPackageLabel.LabelNames.length != 0}}
+               <div class="head-right">
+                   <div class="area area__demand J_Tpackage clearfix" data-tag="J_Tpackage" trace="tab" data-tmpl="J_Tpackage_prolist">
+                       <ul class="clearfix">
+                           {{~tPackageLabel.LabelNames:labelNames:labelNamesindex}}
+                           {{?labelNamesindex<10}}
+                           {{?labelNamesindex == 0}}
+                           <li class="J_trace current" trace="" data-key="tp_{{=(labelNamesindex+1)}}">
+                           {{??}}
+                           <li class="J_trace" trace="" data-key="tp_{{=(labelNamesindex+1)}}">
+                           {{?}}
+                               {{=labelNames}}
+                               <em><i></i></em>
+                           </li>
+                           {{?}}
+                           {{~}}
+                       </ul>
+                   </div>
+               </div>
+               {{?}}
+           </div>
+           <div class="content-body clearfix">
+               <div class="body-left" trace="jingxuan-huodong">
+                   <div class="hot-destination">
+                       <p class="title">常用目的地</p>
+                       {{?tPackageLabel.SepcialPlay && tPackageLabel.SepcialPlay.length != 0}}
+                       <div class="destination J_changeId">
+                           <ul class="clearfix ">
+                               {{~tPackageLabel.SepcialPlay:packagePlay:packagePlayindex}}
+                               <li><a trace="{{=(packagePlayindex+1)}}" href="{{=(packagePlay.Url.replace('http:','')+'f'+cityId||'')}}" target="_blank" rel="nofollow">{{=(packagePlay.Name||'')}}</a></li>
+                               {{~}}
+                           </ul>
+                       </div>
+                       {{?}}
+                   </div>
+               </div>
+               <div class="body-right" trace="product-list">
+                   <div class="product-list-wrap" id="J_Tpackage_prolist">
+
+                   </div>
+               </div>
+           </div>
+
+       </div>
+   </div>
+   {{?}}
+</div>

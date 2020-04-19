@@ -1,0 +1,429 @@
+<div class="resource-module clearfix">
+<div class="module-name">
+    <div class="icon-contain">
+        <span></span>
+    </div>
+    <p class="module-title">可选资源</p>
+</div>
+<div class="resource-contains">
+<table class="resource-container ">
+<tbody>
+    <tr class="resource-container-th">
+        <th class="th_col_01">产品类型</th>
+        <th class="th_col_02">产品名称</th>
+        <th class="th_col_03">同程价</th>
+        <th class="th_col_04">使用时间</th>
+        <th class="th_col_05" style="left:30px">份数</th>
+        <th class="th_col_06"></th>
+    </tr>
+    {{var hidLineDate = $('#hidLineDate').val();}}
+    {{?it.product}} {{var product = it.product;}}
+    {{?it.paramData && it.paramData.length !=0}}
+    {{~it.paramData:paramData}}
+    {{?paramData.PriceType != 1 && paramData.PriceType != 8}}
+    {{
+        var singleMin = 0;
+        if(data.singleNumMin==1){
+            singleMin = 1;
+        }
+    }}
+    <tr>
+        <td class="td-firstChild pro-type">
+            <p title='{{=paramData.PriceDes}}'>{{=paramData.PriceDes}}</p>
+        </td>
+        <td colspan="5" class="resource-items">
+            <div class="resource-box J_resource-box clearfix">
+                <div class="J_resourceBox" trackkit="{{?paramData.PriceName == '单房差'}}single{{?}}">
+                    <div class="resource-item th_col_02">
+                        <span class="label-click-size J_resource-box-name">{{=paramData.PriceName}}</span>
+                    </div>
+                    <div class="resource-item th_col_03" >
+                        <span class="price-common-color price-common-size J_orderItem" data-time="{{=hidLineDate}}" data-type="{{=paramData.PriceType}}" data-priceId="{{=paramData.PriceId}}" data-resourceid='' data-productid='' data-usingDays=''>￥<b class="price-large-size J_resource-box-price"
+                         >{{=paramData.DisCountedPrice}}</b></span>
+                    </div>
+                    <div class="resource-item th_col_04">
+                        <p class="resource-noTime">— —</p>
+                    </div>
+                    <div class='resource-item th_col_05 {{?paramData.PriceName == "单房差"}}J_singleNumChange{{?}}'>
+                        <div class="peopleNum-picker ">
+                            <a href="javascript:void(0)" trackspot="{{?paramData.PriceName == '单房差'}}1^减少{{?}}" class='peopleNum-picker-btn peopleNum-disPicker-leftBtn J_resource-leftBtn'></a>
+                            <input class="peopleNum-picker-input J_picker-input" max="{{=paramData.ResidualCount==0?20:paramData.ResidualCount}}" readonly="readonly" value='{{?paramData.PriceName == "单房差"}}{{=singleMin}}{{??}}0{{?}}'>
+                            <a href="javascript:void(0)" trackspot="{{?paramData.PriceName == '单房差'}}1^增加{{?}}" class='peopleNum-picker-btn peopleNum-picker-rightBtn J_resource-rightBtn'></a>
+                        </div>
+                    </div>
+                    <div class="resource-item th_col_07">
+                        <a href="javascript:void(0)" class="resource-radio  J_resource-radio"></a>
+                    </div>
+                </div>
+            </div>
+            {{?paramData.PriceName == '单房差'}}
+                <div class="sin_tips">如您有特殊需求，请在订单提交后、付款前，联系客服协调，我们将会尽量满足您的需求。</div>
+            {{?}}
+        </td>
+    </tr>
+    {{?}}
+    {{~}}
+    {{?}}
+    {{?product.Insurance && product.Insurance.Insurance && product.Insurance.Insurance.length >0}}
+    {{var insurance = product.Insurance.Insurance;}}
+    {{var accident = [],cancel = [];}}
+    {{for(var i = 0;i< insurance.length;i++){ }}
+    {{?insurance[i].FunctionType===1 }}
+    {{accident.push(insurance[i]);}}
+    {{??}}
+    {{cancel.push(insurance[i]);}}
+    {{?}}
+    {{ } }}
+    {{?}}
+    {{?accident && accident.length>0}}
+        <tr>
+            <td class="td-firstChild pro-type">
+                <p>意外险</p>
+            </td>
+            <td colspan="5" class="resource-items J_showToTop" style="padding-bottom: 0;">
+            <span class="none" style="position: absolute;bottom: 12px;left: 0;width: 900px;color: #ff7800;">*旅游意外险能够给您的出行带来更多安全保障，所以同程旅游强烈建议您购买旅游意外险。如您放弃购买，则行程中的风险和损失将由您自行承担。</span>
+            {{?accident.length >1}}
+            <div class="resource-more ui-resource-hide">
+                <a href="javascript:void(0)" class="label-click-color label-click-size J_moreResource">更多意外险</a>
+            </div>
+            {{?}}
+                {{for(var i = 0;i
+                < accident.length;i++){ }} {{?i===0 }} <div class="resource-box J_resource-box">
+
+                    {{??}}
+                    <div class="resource-box J_resource-box none">
+                        {{?}}
+                        <div class="clearfix J_resourceBox" >
+                            <div class="resource-item th_col_02 ui-product-hide">
+                                <a href="javascript:void(0)" class="label-click-size J_resourceInfo J_resource-box-name">{{=accident[i].name}}</a>
+                            </div>
+                            <div class="resource-item th_col_03" >
+                                <span class="price-common-color price-common-size J_orderItem" data-time="{{=hidLineDate}}" data-count='{{=(it.residualCount == 1?1:2)}}' data-productId='' data-resourceId='' data-type='{{=accident[i].FunctionType}}' data-priceId="{{=accident[i].id}}" data-usingDays=''>￥<b class="price-large-size J_resource-box-price">{{=accident[i].price}}</b></span>
+                            </div>
+                            <div class="resource-item th_col_04">
+                                <p class="resource-noTime">— —</p>
+                            </div>
+                            <div class="resource-item th_col_05">
+                                <p class="safeNum J_safeNum J_resource-box-number">{{=(it.residualCount == 1?1:2)}}</p>
+                            </div>
+                            <div class="resource-item th_col_07">
+                                {{?i === 0}}
+                                <a href="javascript:void(0)" class="resource-radio J_resource-radio J_resource-safeRadio  resource-radio-checked"></a>
+                                {{??}}
+                                <a href="javascript:void(0)" class="resource-radio J_resource-radio J_resource-safeRadio  resource-radio-normal"></a>
+                                {{?}}
+                            </div>
+                            <div class="resource-item th_col_06 ">
+
+                            </div>
+                        </div>
+                        {{?accident[i].detail && accident[i].detail !== ''}}
+                        <div class="resource-info none">
+                            <div style="padding: 18px 18px;">
+                                {{=accident[i].detail}}{{=accident[i].CustomerInsReferUrl}}
+                            </div>
+                        </div>
+                        {{?}}
+                    </div>
+                    {{ } }}
+            </td>
+        </tr>
+        {{?}} {{?cancel && cancel.length >0}}
+        <tr>
+            <td class="td-firstChild pro-type">
+                <p title='取消险'>取消险</p>
+            </td>
+            <td colspan="5" class="resource-items" style="padding-bottom: 0;">
+                <span class="none" style="position: absolute;bottom: 12px;left: 0;width: 900px;color: #ff7800;">*取消险能够减少线路取消时产生的赔付金额，所以同程旅游强烈建议您购买取消险。如您放弃购买，则线路取消时造成的赔付金额将由您自行承担。</span>
+                {{?cancel.length >1}}
+                <div class="resource-more ui-resource-hide">
+                    <a href="javascript:void(0)" class="label-click-color label-click-size J_moreResource">更多取消险</a>
+                </div>
+                {{?}}
+                {{for(var i = 0;i
+                < cancel.length;i++){ }} {{?i===0 }} <div class="resource-box J_resource-box">
+                    {{??}}
+                    <div class="resource-box J_resource-box none">
+                        {{?}}
+                        <div class="clearfix J_resourceBox">
+                            <div class="resource-item th_col_02 ui-product-hide">
+                                <a href="javascript:void(0)" class="label-click-size J_resourceInfo J_resource-box-name">{{=cancel[i].name}}</a>
+                            </div>
+                            <div class="resource-item th_col_03" >
+                                <span class="price-common-color price-common-size J_orderItem" data-time="{{=hidLineDate}}" data-count='{{=(it.residualCount == 1?1:2)}}' data-productId='' data-resourceId='' data-type='{{=cancel[i].FunctionType}}' data-priceId="{{=cancel[i].id}}" data-usingDays=''>￥<b class="price-large-size J_resource-box-price"
+                                 >{{=cancel[i].price}}</b></span>
+                            </div>
+                            <div class="resource-item th_col_04">
+                                <p class="resource-noTime">— —</p>
+                            </div>
+                            <div class="resource-item th_col_05">
+                                <p class="safeNum J_safeNum J_resource-box-number">{{=(it.residualCount == 1?1:2)}}</p>
+                            </div>
+                            <div class="resource-item th_col_07">
+                                {{?i === 0}}
+                                <a href="javascript:void(0)" class="resource-radio J_resource-radio J_resource-safeRadio  resource-radio-checked"></a>
+                                {{??}}
+                                <a href="javascript:void(0)" class="resource-radio J_resource-radio J_resource-safeRadio  resource-radio-normal"></a>
+                                {{?}}
+                            </div>
+                            <div class="resource-item th_col_06 ">
+                            </div>
+                        </div>
+                        {{?cancel[i].detail && cancel[i].detail !== ''}}
+                        <div class="resource-info none">
+                            <div style="padding: 18px 18px;">
+                                {{=cancel[i].detail}}{{=cancel[i].CustomerInsReferUrl}}
+                            </div>
+                        </div>
+                        {{?}}
+                    </div>
+                    {{ } }}
+            </td>
+        </tr>
+        {{?}}
+        {{?product.WanLe && product.WanLe.length >0}}
+        {{~product.WanLe:wanle}}
+        {{?wanle.Product && wanle.Product.length}}
+        <tr class="J_amusement">
+            <td class="td-firstChild pro-type">
+                <p title='{{=wanle.Category}}'>{{=wanle.Category}}</p>
+            </td>
+            <td colspan="5" class="resource-items">
+
+                {{for(var i = 0;i < wanle.Product.length;i++){ }}
+                {{?i===0 }}
+                <div class="resource-box J_resource-box">
+                    {{??}}
+                    <div class="resource-box J_resource-box none">
+                        {{?}}
+                        {{var pickDate = "", bookCount = "";}}
+                        {{?i===0 && wanle.Category == '通讯工具'}}
+                            {{
+                                pickDate = $("#J_startTime").val();
+                                bookCount = "1";
+                            }}
+                        {{?}}
+                        <div class="clearfix J_resourceBox">
+                            <div class="resource-item th_col_02 ui-product-hide">
+                                <a href="javascript:void(0)" class="label-click-size J_resourceInfo J_resource-box-name" data-resourceId='{{=wanle.Product[i].ResourceId}}' data-AdvanceDay='{{=wanle.Product[i].AdvanceDay}}' data-AdvanceTime='{{=wanle.Product[i].AdvanceTime}}'>{{=wanle.Product[i].Title}}</a>
+                            </div>
+                            <div class="resource-item th_col_03">
+                                <span class="price-common-color price-common-size J_orderItem" data-productId='{{=wanle.Product[i].ProductId}}' data-resourceId='{{=wanle.Product[i].ResourceId}}' data-type='{{=wanle.Type}}' data-priceId="{{=wanle.Product[i].PriceId}}" data-usingDays='{{=wanle.Product[i].UsingDays}}' data-time="{{=pickDate}}" data-count="{{=bookCount}}">￥<b class="price-large-size J_resource-box-price"
+                                >{{=wanle.Product[i].Price}}</b></span>
+                            </div>
+                            <div class="resource-item th_col_04">
+                                <div class="resource-data-td">
+                                    <input type="text" readonly="readonly" class="resource-data-picker J_resource-data-picker" placeholder="请选择时间"
+                                    data-ProductId="{{=wanle.Product[i].ProductId}}" data-SupplyId="{{=wanle.Product[i].SupplyId}}" data-wifi="{{=wanle.Product[i].IsWifi}}" value="{{=pickDate}}">
+                                    <ul class="ui-dropDown">
+
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="resource-item th_col_05">
+                                <div class="peopleNum-picker ">
+                                    {{?i===0 && wanle.Category == "通讯工具"}}
+                                        <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-leftBtn J_resource-leftBtn"></a>
+                                        <input class="peopleNum-picker-input J_picker-input" readonly="readonly" value="1">
+                                    {{??}}
+                                        <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-disPicker-leftBtn J_resource-leftBtn"></a>
+                                        <input class="peopleNum-picker-input J_picker-input" readonly="readonly" value="0">
+                                    {{?}}
+                                    <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-rightBtn J_resource-rightBtn"></a>
+                                </div>
+                            </div>
+                            <div class="resource-item th_col_07">
+                                <a href="javascript:void(0)" class="resource-radio  J_resource-radio {{?i===0 && wanle.Category == '通讯工具'}}resource-radio-checked{{?}}"></a>
+                            </div>
+                            {{?wanle.Product.length >1 && i === 0}}
+                            <div class="resource-item th_col_06 ">
+                                <div class="resource-more ui-resource-hide">
+                                    <a href="javascript:void(0)" class="label-click-color label-click-size J_moreResource">更多{{=wanle.Category}}</a>
+                                </div>
+                            </div>
+                            {{?}}
+                        </div>
+
+                        <div class="resource-info none">
+                        </div>
+
+                    </div>
+                    {{ } }}
+            </td>
+        </tr>
+        {{?}}
+        {{~}}
+        {{?}}
+
+        {{?product.Visa && product.Visa !== null}}
+        {{?product.Visa.Product && product.Visa.Product.length !== 0}}
+        <tr class="J_visa">
+            <td class="td-firstChild">
+                <p>签证</p>
+            </td>
+
+            <td colspan="5" class=" clearfix ">
+            {{~product.Visa.Product:visaProduct:index}}
+
+                {{?index == 0}}
+                    <div class="resource-box J_resource-box">
+                {{??}}
+                    <div class="resource-box J_resource-box none">
+                {{?}}
+                        <div class="clearfix J_resourceBox">
+                        {{?visaProduct.AdultPrice && visaProduct.AdultPrice !== 0}}
+                            <div class="resource-item th_col_02 ui-product-hide" data-price='{{=visaProduct.AdultPrice}}'>
+                                <a href="javascript:void(0)" class="label-click-size J_resourceInfo J_resource-box-name">{{=visaProduct.Title}}</a>
+                            </div>
+                        {{?}}
+                        {{?visaProduct.ChildPrice && visaProduct.ChildPrice !== 0}}
+                            <div class="resource-item th_col_02 ui-product-hide none" data-price='{{=visaProduct.ChildPrice}}'>
+                                <a href="javascript:void(0)" class="label-click-size J_resourceInfo J_resource-box-name">{{=visaProduct.Title}}</a>
+                            </div>
+                        {{?}}
+                            <div class="resource-item th_col_03">
+                            {{?visaProduct.AdultPrice && visaProduct.AdultPrice !== 0}}
+                                <div>
+                                    <span class="price-common-color price-common-size J_orderItem" data-usingDays='{{=visaProduct.UsingDays}}' data-productId='{{=visaProduct.ProductId}}' data-resourceId='' data-type='{{=product.Visa.Type}}' data-priceId="{{=visaProduct.AdultPriceId}}">￥<b class="price-large-size J_resource-box-price">{{=visaProduct.AdultPrice}}</b></span>
+                                </div>
+                            {{?}}
+                            {{?visaProduct.ChildPrice && visaProduct.ChildPrice !== 0}}
+                                <div class='visa-childPrice'>
+                                    <span class="price-common-color price-common-size J_orderItem" data-usingDays='{{=visaProduct.UsingDays}}' data-title='{{=visaProduct.Title}}' data-productId='{{=visaProduct.ProductId}}' data-resourceId='' data-type='{{=product.Visa.Type}}' data-priceId="{{=visaProduct.ChildPriceId}}">￥<b class="price-large-size J_resource-box-price">{{=visaProduct.ChildPrice}}</b></span>
+                                </div>
+                            {{?}}
+                            </div>
+                            <div class="resource-item th_col_04">
+                            {{?visaProduct.AdultPrice && visaProduct.AdultPrice !== 0}}
+                                <div class="resource-data-td">
+                                    <input type="text" readonly="readonly" class="resource-data-picker J_resource-data-picker" placeholder="请选择时间">
+                                    {{?visaProduct.UsingDate && visaProduct.UsingDate !== ''}}
+                                    <ul class="ui-dropDown">
+                                        <li>{{=visaProduct.UsingDate}}</li>
+                                    </ul>
+                                    {{?}}
+                                </div>
+                            {{?}}
+                            {{?visaProduct.ChildPrice && visaProduct.ChildPrice !== 0}}
+                                <div class="resource-data-td visa-childDate">
+                                    <input type="text" readonly="readonly" class="resource-data-picker J_resource-data-picker" placeholder="请选择时间">
+                                    {{?visaProduct.UsingDate && visaProduct.UsingDate !== ''}}
+                                        <ul class="ui-dropDown">
+                                            <li>{{=visaProduct.UsingDate}}</li>
+                                        </ul>
+                                    {{?}}
+                                </div>
+                            {{?}}
+                            </div>
+                            <div class="resource-item th_col_05">
+                            {{?visaProduct.AdultPrice && visaProduct.AdultPrice !== 0}}
+                                <div class="peopleNum-picker ">
+                                    <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-disPicker-leftBtn J_resource-leftBtn"></a>
+                                    <input class="peopleNum-picker-input J_picker-input" readonly="readonly" value="0">
+                                    <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-rightBtn J_resource-rightBtn"></a>
+                                </div>
+
+                            {{?}}
+                            {{?visaProduct.ChildPrice && visaProduct.ChildPrice !== 0}}
+                                <div class="peopleNum-picker visa-childPicker">
+                                    <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-disPicker-leftBtn J_resource-leftBtn"></a>
+                                    <input class="peopleNum-picker-input J_picker-input" readonly="readonly" value="0">
+                                    <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-rightBtn J_resource-rightBtn"></a>
+                                </div>
+
+                            {{?}}
+                            {{?visaProduct.AdultPrice && visaProduct.AdultPrice !== 0}}
+                             <p class='visa-type-adult'>成人</p>
+                            {{?}}
+                            {{?visaProduct.ChildPrice && visaProduct.ChildPrice !== 0}}
+                             <p class='visa-type-child'>儿童（2-12周岁）</p>
+                            {{?}}
+                            </div>
+                            <div class="resource-item th_col_07">
+                            {{?visaProduct.AdultPrice && visaProduct.AdultPrice !== 0}}
+                                <div>
+                                    <a href="javascript:void(0)" class="resource-radio  J_resource-radio"></a>
+                                </div>
+                            {{?}}
+                            {{?visaProduct.ChildPrice && visaProduct.ChildPrice !== 0}}
+                                <div>
+                                    <a href="javascript:void(0)" class="resource-radio visa-childRadio J_resource-radio"></a>
+                                </div>
+                            </div>
+                            {{?}}
+                            {{?product.Visa.Product.length >1 && index === 0}}
+                            <div class="resource-item th_col_06 ">
+                                <div class="resource-more ui-resource-hide">
+                                    <a href="javascript:void(0)" class="label-click-color label-click-size J_moreResource">更多签证</a>
+                                </div>
+                            </div>
+                            {{?}}
+                        </div>
+                        {{?visaProduct.Materials && visaProduct.Materials.length >0}}
+                        <div class="resource-info info-border none">
+                            <div class="resource-visa-head info-border-bottom">
+                                <ul class="clearfix J_visa-type">
+                                    {{~visaProduct.Materials:materials:visaIndex}}
+                                    {{?visaIndex == 0}}
+                                        <li class="visa-type visa-type-checked">
+                                    {{??}}
+                                        <li class="visa-type visa-type-common">
+                                    {{?}}
+                                            <p>{{=materials.Person}}</p>
+                                        </li>
+                                    {{~}}
+                                </ul>
+                            </div>
+
+                            {{for(var i = 0; i< visaProduct.Materials.length;i++){　}}
+                            {{?i==0 }}
+                                <table class="visa-type-content">
+                            {{??}}
+                                <table class="visa-type-content none">
+                            {{?}}
+                                    <tbody>
+                                        <tr class="info-border-bottom">
+                                            <td style="width: 155px;" class="visa-item-label info-border-right">
+                                                <p>材料类型</p>
+                                            </td>
+                                            <td style="width: 110px;" class="visa-item-text info-border-right">
+                                                <p>是否原件</p>
+                                            </td>
+                                            <td style="width: 627px;" class="visa-item-text">
+                                                <p>材料说明</p>
+                                            </td>
+                                        </tr>
+                                        {{?visaProduct.Materials[i].Material && visaProduct.Materials[i].Material.length !== 0}}
+                                        {{~visaProduct.Materials[i].Material:material}}
+                                        <tr class="info-border-bottom">
+                                            <td class="visa-item-label info-border-right">
+                                                <p>{{=material.Name}}</p>
+                                            </td>
+                                            <td class="visa-item-text info-border-right">
+                                                <p>{{=material.Type}}</p>
+                                            </td>
+                                            <td class="visa-item-content">
+                                                {{=material.Description}}
+                                            </td>
+                                        </tr>
+                                        {{~}}
+                                        {{?}}
+                                    </tbody>
+                                </table>
+                                {{ } }}
+                                <div class="resource-visa-foot">
+                                </div>
+                        </div>
+                        {{?}}
+                    </div>
+            {{~}}
+            </td>
+        </tr>
+        {{?}}
+        {{?}}
+
+        {{?}}
+</tbody>
+</table>
+</div>
+</div>

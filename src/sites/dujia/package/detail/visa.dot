@@ -1,0 +1,79 @@
+{{?it.Data&&it.Code==4000}}
+{{ var visaC = "";
+if(it.Data.Regions.length>1){
+    visaC = "morevisa";
+}
+}}
+<div class="title-all tour-visa"><i></i>准备签证</div>
+<h3><label>签证国家：<span>{{=it.Data.VisaCountry}}</span></label>
+<label>签证类型：<span>{{=it.Data.VisaType}}</span></label>
+<label>领区：<span class="{{=visaC}}"><em>{{=it.Data.Region}}</em>
+{{?it.Data.Regions.length>1}}<i></i>
+    <div class="moreVisaBox none">
+        <ul>
+        {{~it.Data.Regions:visaItems}}
+            <li data-id="{{=visaItems.Id}}">{{=visaItems.Name}}</li>
+        {{~}}
+        </ul>
+    </div>
+{{?}}</span>
+</label>
+<label>办理时长：<span>送签后的<em>{{=it.Data.HandleTimer}}</em>个工作日</span></label>
+</h3>
+<div class="visa-item">
+    <ul class="nav-tab clearfix">
+    {{~it.Data.Materials:itItems:index}}
+    {{?index==0}}
+        <li title="{{=itItems.Person}}" class="current">{{=itItems.Person}}</li>
+    {{??}}
+        <li title="{{=itItems.Person}}">{{=itItems.Person}}</li>
+    {{?}}
+    {{~}}
+    </ul>
+    {{~it.Data.Materials:itItems:index}}
+    {{?index ==0}}
+    <div class="visa-details">
+        <div class="visa-detail">
+            <table>
+                <tbody>
+                    <tr>
+                        <th class="leftth">材料类型</th>
+                        <th class="midth">是否原件</th>
+                        <th class="righttd">详细说明</th>
+                    </tr>
+                    {{~itItems.Material:MaItems:index1}}
+                    <tr>
+                        <td class="lefttd">{{=MaItems.Name}}</td>
+                        <td class="midtd">{{=MaItems.Type}}</td>
+                        <td class="righttd">{{=MaItems.Description}}</td>
+                    </tr>
+                    {{~}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{??}}
+    <div class="visa-details none">
+        <div class="visa-detail">
+            <table>
+                <tbody>
+                    <tr>
+                        <th class="leftth">材料类型</th>
+                        <th class="midth">是否原件</th>
+                        <th class="righttd">详细说明</th>
+                    </tr>
+                    {{~itItems.Material:MaItems:index1}}
+                    <tr>
+                        <td class="lefttd">{{=MaItems.Name}}</td>
+                        <td class="midtd">{{=MaItems.Type}}</td>
+                        <td class="righttd">{{=MaItems.Description}}</td>
+                    </tr>
+                    {{~}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{?}}
+    {{~}}
+</div>
+{{?}}

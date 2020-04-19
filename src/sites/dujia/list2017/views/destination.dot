@@ -1,0 +1,157 @@
+<div class="city-list">
+    {{var tagType = baseData.PageType, searchId = tagType, lineProType;}}
+    {{var startCityId = baseData.StartCityId;}}
+    {{?tagType == "1"}}
+    {{lineProType = "gentuan";}}
+    {{??tagType == "3"}}
+    {{lineProType = "zizhu";}}
+    {{searchId = "2";}}
+    {{??tagType == "10"}}
+    {{lineProType = "local";}}
+    {{??tagType == "0"}}
+    {{lineProType = "lvyou";}}
+    {{?}}
+    {{~destCity:des:desIndex}}
+    <div class="des-item">
+        <div class="list-conn {{?desIndex == destCity.length-1}}last-list-conn{{?}} clearfix">
+            <dl>
+                <dt onclick="_tcTraObj._tcTrackEvent('bq_daohang', 'scj_2jbq', '二级标签','');">
+                    {{~des.DestGroups:destGroups}}
+                        {{var destGroupsId = "";}}
+                        {{?tagType == "1" || tagType == "3"}}
+                            {{destGroupsId = destGroups.Id ? destGroups.Id : "";}}
+                        {{?}}
+                        {{?destGroups.Link}}
+                        {{var href = destGroups.Link.replace('http:','');}}
+                        {{??}}
+                        {{?baseData.SearchType == 0}}
+                        {{var href = "/dujia/" + destGroups.PinYin + destGroupsId  + "-" + lineProType + "/";}}
+                        {{??}}
+                        {{var href = "/dujia/search.aspx?src=" + baseData.StartCityName  + "&dest=" + destGroups.Name + "&prop=" + searchId;}}
+                        {{?}}
+                        {{?}}
+                        <a target="_blank" href="{{=href}}" rel="nofollow" data-spmed="true">{{=destGroups.Name}}</a>
+                    {{~}}
+                </dt>
+                <dd onclick="_tcTraObj._tcTrackEvent('bq_daohang', 'scj_3jbqtj', '三级标签推荐','');">
+                {{~des.DestGroups:groups}}
+                    {{~groups.Dests:dests}}
+                        {{var destsId = "", destIndex = 0;}}
+                        {{?tagType == "1" || tagType == "3"}}
+                            {{destsId = dests.Id ? dests.Id : "";}}
+                        {{?}}
+                        {{?dests.IsRecommend}}
+                            {{?destIndex < 3}}
+                                {{?dests.Link}}
+                                {{var url = dests.Link.replace('http:','');}}
+                                {{??}}
+                                {{?baseData.SearchType == 0}}
+                                {{var url = "/dujia/" + dests.Pinyin + destsId + "-" + lineProType + "/";}}
+                                {{??}}
+                                {{var url = "/dujia/search.aspx?src=" + baseData.StartCityName  + "&dest=" + dests.Name + "&prop=" + searchId;}}
+                                {{?}}
+                                {{?}}
+                                <a href="{{=url}}" target="_blank" title="{{=dests.Name}}" rel="nofollow" data-spmed="true">{{=dests.Name}}</a>
+                            {{?}}
+                            {{destIndex++;}}
+                        {{?}}
+                    {{~}}
+                {{~}}
+                </dd>
+            </dl>
+        </div>
+        <div class="showlist none">
+        {{~des.DestGroups:lists:index}}
+            {{var listId = "";}}
+            {{?tagType == "1" || tagType == "3"}}
+                {{listId = lists.Id ? lists.Id : "";}}
+            {{?}}
+            {{?lists.Link}}
+            {{var desHref = lists.Link.replace('http:','');}}
+            {{??}}
+            {{?baseData.SearchType == 0}}
+            {{var desHref = "/dujia/" + lists.PinYin + listId + "-" + lineProType + "/";}}
+            {{??}}
+            {{var desHref = "/dujia/search.aspx?src=" + baseData.StartCityName  + "&dest=" + lists.Name + "&prop=" + searchId;}}
+            {{?}}
+            {{?}}
+            {{var showBoxClass = "";}}
+            {{?index == 1}}
+                {{showBoxClass = "nobor";}}
+            {{??}}
+                {{showBoxClass = "";}}
+            {{?}}
+            <div class="showbox {{=showBoxClass}}">
+                <h4>
+                    <a target="_blank" href="{{=desHref}}" rel="nofollow" data-spmed="true">{{=lists.Name}}</a>
+                </h4>
+                {{var childIndex = 0;}}
+                <dl class="hotcitylist">
+                    <dt>热门目的地</dt>
+                    {{~lists.Dests:childLink}}
+                        {{var childId = "";}}
+                        {{?tagType == "1" || tagType == "3"}}
+                            {{childId = childLink.Id ? childLink.Id : "";}}
+                        {{?}}
+                        {{childIndex++;}}
+                        {{?childLink.Name}}
+                            {{?childLink.Link}}
+                            {{var linkHref = childLink.Link.replace('http:','');}}
+                            {{??}}
+                            {{?baseData.SearchType == 0}}
+                            {{var linkHref = "/dujia/" + childLink.Pinyin + childId + "-" + lineProType + "/";}}
+                            {{??}}
+                            {{var linkHref = "/dujia/search.aspx?src=" + baseData.StartCityName  + "&dest=" + childLink.Name + "&prop=" + searchId;}}
+                            {{?}}
+                            {{?}}
+                            {{var linkClass = "";}}
+                            {{?childLink.IsHot}}
+                                {{linkClass = "f60";}}
+                            {{??}}
+                                {{linkClass = "";}}
+                            {{?}}
+                            <dd onclick="_tcTraObj._tcTrackEvent('bq_daohang', 'scj_3jbq', '三级标签全部','');">
+                                <a class="{{=linkClass}}" href="{{=linkHref}}" target="_blank" rel="nofollow" title="{{=childLink.Name}}" data-spmed="true">{{=childLink.Name}}<i class="free{{=childLink.VisaType}}"></i>
+                                </a>
+                            </dd>
+                        {{?}}
+                    {{~}}
+                </dl>
+                {{?lists.FreePlays && lists.FreePlays.length}}
+                    <dl class="hotcitylist">
+                        <dt>自由行玩法</dt>
+                        {{~lists.FreePlays:freePlay}}
+                            {{var freeId = "";}}
+                            {{?tagType == "1" || tagType == "3"}}
+                                {{freeId = freePlay.Id ? freePlay.Id : "";}}
+                            {{?}}
+                            {{?freePlay.Name}}
+                                {{?freePlay.Link}}
+                                {{var freeHref = freePlay.Link.replace('http:','');}}
+                                {{??}}
+                                {{?baseData.SearchType == 0}}
+                                {{var freeHref = "/dujia/" + freePlay.Pinyin + freeId + "-" + lineProType + "/";}}
+                                {{??}}
+                                {{var freeHref = "/dujia/search.aspx?src=" + baseData.StartCityName  + "&dest=" + freePlay.Name + "&prop=" + searchId;}}
+                                {{?}}
+                                {{?}}
+                                {{var linkClass = "";}}
+                                {{?freePlay.IsHot}}
+                                    {{linkClass = "f60";}}
+                                {{??}}
+                                    {{linkClass = "";}}
+                                {{?}}
+                                <dd onclick="_tcTraObj._tcTrackEvent('bq_daohang', 'scj_3jbq', '三级标签全部','');">
+                                    <a class="{{=linkClass}}" href="{{=freeHref}}" target="_blank" rel="nofollow" title="{{=freePlay.Name}}" data-spmed="true">{{=freePlay.Name}}<i class="free{{=freePlay.VisaType}}"></i>
+                                    </a>
+                                </dd>
+                            {{?}}
+                        {{~}}
+                    </dl>
+                {{?}}
+            </div>
+            {{~}}
+        </div>
+    </div>
+    {{~}}
+</div>

@@ -1,0 +1,88 @@
+﻿@bg_color:#1ab394;  
+@over_bg_color:#137c66;
+
+.year_panel {
+    width: 120px;
+    height: auto;
+    background-color: @bg_color;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    font-weight: bold;
+    letter-spacing: 1px;
+
+    span {
+        width: 60px;
+        height: 25px;
+        line-height: 25px;
+        display: block;
+        float: left;
+        cursor: pointer;
+
+        &:hover {
+            background-color: @over_bg_color;
+        }
+    }
+
+    .yp_btn {
+        width: 100%;
+        display: block;
+        cursor: pointer;
+        position: relative;
+        text-align: center;
+
+        i {
+            margin:auto;
+            right: 0;
+            left: 0;
+        }
+
+        .yp_btn_up {
+        }
+
+        .yp_btn_down {
+        }
+    }
+
+    .ico {
+        width: 17px;
+        height: 17px;
+        position: absolute;
+        top: 8px;
+        cursor: pointer;
+        overflow: hidden;
+        outline: 0;
+
+        &.next-month {
+            background: url(../img/dest/calendar_arrow_green.png) scroll no-repeat 0 0 transparent;
+            background-position: -17px 0;
+            right: 10px;
+
+            &:hover {
+                background-position: -17px -17px;
+            }
+        }
+
+        &.previous-month {
+            left: 10px;
+            background: url(../img/dest/calendar_arrow_green.png) scroll no-repeat 0 0 transparent;
+
+            &:hover {
+                background-position: 0 -17px;
+            }
+        }
+
+        &.sort-asc {
+            width: 17px;
+            height: 17px;
+            background: url(../img/dest/sort-asc.png) scroll no-repeat 0 0 transparent;
+        }
+
+        &.sort-desc {
+            width: 17px;
+            height: 17px;
+            background: url(../img/dest/sort-desc.png) scroll no-repeat 0 0 transparent;
+        }
+    }
+}

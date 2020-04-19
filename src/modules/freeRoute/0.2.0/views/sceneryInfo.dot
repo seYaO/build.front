@@ -1,0 +1,54 @@
+{{var item = it;}}
+{{?item.sceneryIntroduction && item.sceneryIntroduction.length>0}}
+<div class="route-part none">
+     <ul class="scenery clearfix">
+         {{~item.sceneryIntroduction:its}}
+         <li class="scenery-list">
+             <div class="pro-slider" id="mSlider1">
+                 <div class="mSlider1">
+                     <div class="mSlider1_con" id="mSlider1_con">
+                         <ul style="width: 317px; position: relative;">
+                         {{?its.SceneryImage.length>0}}
+                         {{~its.SceneryImage:imgs}}
+                             {{?imgs}}
+                             <li><a href="javascript:void(0)" hidefocus="true">
+                                 <img src="{{=common.setImageSize(imgs,"450x250").replace('http:','')}}"></a></li>
+                             {{??}}
+                             <li><a href="javascript:void(0)" hidefocus="true">
+                                 <img src="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png"></a></li>
+                             {{?}}
+                         {{~}}
+                         {{??}}
+                         <li><a href="javascript:void(0)" hidefocus="true">
+                              <img src="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png"></a></li>
+                         {{?}}
+                         </ul>
+                     </div>
+                     {{?its.SceneryImage.length>0}}
+                     <span id="mSlider1-left" class="btn-prev btn-prev-operate"></span>
+                     <span id="mSlider1-right" class="btn-next btn-next-operate"></span>
+                     {{?}}
+
+                 </div>
+             </div>
+             <div class="scenery-right">
+                 <h4 class="title">{{=its.SceneryName}}
+                     <b>推荐指数:
+                     {{for(var i = 0; i<5;i++){}}
+                     {{?i < its.SceneryIndex}}
+                     <em class="reward"></em>
+                     {{??}}
+                     <em></em>
+                     {{?}}
+                     {{}}}
+                     </b>
+                 </h4>
+                 {{?its.SceneryAddress}}<p class="adress"><span class="every-item">地址：</span><span class="every-item-info">{{=its.SceneryAddress}}</span></p>{{?}}
+                 {{?its.SceneryTraffic}}<p class="trans"><span class="every-item">交通：</span><span class="every-item-info">{{=its.SceneryTraffic}}</span></p>{{?}}
+                 {{?its.SceneryDescript}}<div class="scenery-info">{{=its.SceneryDescript}}</div>{{?}}
+             </div>
+         </li>
+         {{~}}
+     </ul>
+</div>
+{{?}}

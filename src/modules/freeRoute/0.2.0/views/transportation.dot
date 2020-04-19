@@ -1,0 +1,16 @@
+{{var item = it;}}
+{{?item.transportation && item.transportation.length>0}}
+<div class="route-part none">
+    <div class="transport">
+        <span class="bg-img"></span>
+        <h4></h4>
+        <ul>
+        {{~item.transportation:its}}
+            <li>
+                <div class="transport-info">{{=its.TrafficContent}}</div>
+            </li>
+        {{~}}
+        </ul>
+    </div>
+</div>
+{{?}}

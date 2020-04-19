@@ -1,0 +1,89 @@
+<div class="mod-pager">
+    <ul class="prolist">
+    {{~it.VisaProductLists:val}}
+    <li class="pro-line">
+        <div class="pro-redu">
+            <div class="pro-img">
+                <a trace="visalist_img_{{=val.Id}}" href="/dujia/visa/visa-{{=val.Id}}.html" target="_blank">
+                    <img data-img="{{=val.NewImgUrl.replace('http:','')}}">
+                </a>
+            </div>
+            <div class="pro-info">
+                <p class="pro-title">
+                    <a trace="visalist_tit_{{=val.Id}}" title="{{=val.MainTitle}}" href="/dujia/visa/visa-{{=val.Id}}.html" target="_blank">
+                        {{=val.MainTitle}}
+                    </a>
+                </p>
+                {{?val.ComList.length || (val.DiscountList && val.DiscountList.length)}}
+                    <div class="pro-jqqp">
+                    {{~val.ComList:tips}}
+                        <div class="pro-icon">
+                            <img src="{{=tips.ComImgUrl.replace('http:','')}}" />
+                            <div class="cursor-show">
+                                <span></span>
+                                {{=tips.ComDescribe ? tips.ComDescribe : "" }}
+                            </div>
+                        </div>
+                    {{~}}
+                    {{?val.DiscountList && val.DiscountList.length}}
+                    {{~val.DiscountList:prefer:pIndex}}
+                        {{?prefer.DisType != 10}}
+                            <div class="pro-icon coupon_icon">
+                                <em style="border: solid 1px {{=prefer.IconColor}};color:{{=prefer.IconColor}};">{{=prefer.IconContent}}</em>
+                                <div class="cursor-show">
+                                    <span></span>
+                                    {{=prefer.Remark ? prefer.Remark :"" }}
+                                </div>
+                            </div>
+                        {{?}}
+                    {{~}}
+                    {{?}}
+                    </div>
+                {{?}}
+                <span>
+                 <i class="icon-warning"></i>
+                 提前{{=val.AdvanceDay===undefined?"":val.AdvanceDay}}个工作日预订，收齐材料后{{=val.TranTR}}个工作日出签
+                </span>
+                <table class="J_trace" trace="table_{{=val.Id}}">
+                    <tr>
+                        <td width="10">最长停留:</td><td class="txt" width="40">{{=val.MaxST}}</td>
+                        <td width="10">是否面试:</td><td class="txt" width="40">{{=val.IsInview}}</td>
+                    </tr>
+                    <tr>
+                        <td width="10">入境次数:</td><td class="txt" width="40">{{=val.ETimes}}</td>
+                        <td width="10">费用包含:</td><td class="txt" width="40">{{=val.IncludeCost}}</td>
+                    </tr>
+                </table>
+
+            </div>
+            <div class="pro-detail">
+                <p class="pro-price"><em>¥</em>{{=val.TcPrice}}<i>起</i></p>
+                 {{?val.DiscountList&&val.DiscountList.length}}
+                    {{~val.DiscountList:disc:Index}}
+                        {{?disc.DisType == 10}}
+                           <p class="pro-blh J_blhTags">
+                            <span class="tag">
+                                <i>{{=disc.IconContent}}</i>
+                                <em>{{=disc.Amount || 0}}</em>
+                            </span>
+                            <span class="cursor-show">{{=disc.Remark}}</span>
+                            </p>
+                        {{?}}
+                    {{~}}
+                {{?}}
+                <a target="_blank" trace="visalist_pri_{{=val.Id}}" href="/dujia/visa/visa-{{=val.Id}}.html" class="pro-btn">马上办理</a>
+                {{?val.SatDeg=="0"}}
+                <p class="newpro">新产品</p>
+                {{??}}
+                <a target="_blank" trace="visalist_satDeg_{{=val.Id}}" href="/dujia/visa/visa-{{=val.Id}}.html#module_4">
+                    <p class="pro-comm">
+                        <em>{{=val.SatDeg}}%</em>满意度&nbsp;&nbsp;<em>{{=val.CmtCount}}</em>条点评
+                    </p>
+                </a>
+                {{?}}
+            </div>
+        </div>
+    </li>
+    {{~}}
+    </ul>
+</div>

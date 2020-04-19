@@ -1,0 +1,44 @@
+{{var carInfo = it.PickupCarInfo;}}
+{{?carInfo}}
+<div class="bus_slider">
+    <div class="carousel">
+        {{?carInfo.CarImageList && carInfo.CarImageList.length}}
+        <ul class="carousel_img">
+            {{~carInfo.CarImageList:imgs}}
+            <li><img src="{{=imgs.replace(".png","_430x270_00.png").replace(".jpg","_430x270_00.jpg").replace('http:','')}}" alt=""/></li>
+            {{~}}
+        </ul>
+        {{?}}
+    </div>
+</div>
+<div class="slider_info">
+    <div class="model_detail_top">
+        {{?carInfo.CarName}}
+        <h3>{{=carInfo.CarName}}</h3>
+        {{?}}
+        {{?carInfo.ReferCarStyle}}
+        <span>参考车型：{{=carInfo.ReferCarStyle}}</span>
+        {{?}}
+        <i class="J_Tips little_desc" data-content="<div>人数行李说明
+                    <p>1、目前页面显示人数均为可乘坐人数的最高上限，儿童婴儿同样占座。</p>
+                    <p>2、每减少一位乘客，可相应增加一件行李。</p>
+                    <p>3、以上行李均为24寸大小标准，1件28寸行李=2件24寸行李。</p></div>"></i>
+    </div>
+    <div class="model_detail_bottom">
+        {{?carInfo.CarPassengerNum}}
+        <span class="sug_num">建议乘坐{{=carInfo.CarPassengerNum}}人</span>
+        {{?}}
+        {{?carInfo.CarLuggageNum}}
+        <span class="luggage_num">{{=carInfo.CarLuggageNum}}件行李</span>
+        {{?}}
+    </div>
+    {{?it.services && it.services.length}}
+    <div class="bus_server">
+        <div class="append_server">附加服务：</div>
+        <div class="server_label">
+           {{=it.services}}
+        </div>
+    </div>
+    {{?}}
+</div>
+{{?}}

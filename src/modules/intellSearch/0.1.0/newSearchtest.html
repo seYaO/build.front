@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title><link href="../0.1.0/search.css" rel="stylesheet" />
+</head>
+<body>
+<div class="search"></div>
+
+</body>
+<script src="../../jquery.js"></script>
+<script src="../../sea.js"></script>
+<script src="../../dot.js"></script>
+<script src="newSearch.js"></script>
+<script>
+    seajs.config({
+        base: "../../"
+    });
+    seajs.use("intellSearch/0.1.0/newSearch", function (Fn) {
+        var fn = new Fn();
+        fn.init(
+        [
+            {
+                hotName:"苏州",
+                hotUrl:"http://www.ly.com"
+            },
+            {
+                hotName:"上海",
+                hotUrl:"http://www.ly.com"
+            },
+            {
+                hotName:"北京",
+                hotUrl:"http://www.ly.com?cityId={{replace}}"
+            }
+        ]
+        );
+    });
+
+</script>
+</html>

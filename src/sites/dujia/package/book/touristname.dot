@@ -1,0 +1,29 @@
+<div class="surname_select">
+{{?it && it.length}}
+{{~it:itVal:index}}
+    <div class="surname_item">
+        <span class="tags_name">{{=itVal.Chinese}}</span>
+        {{?itVal.IsMoreSound==1}}
+            {{~itVal.PinYins:PinVal:index1}}
+            <label class="input_radio"><input type="radio" name="ming{{=index}}" value="{{=PinVal}}"><span class="name_english">{{=PinVal}}</span></label>
+            {{~}}
+        {{??}}
+            <label class="input_radio"><input type="radio" name="ming{{=index}}" checked value="{{=itVal.PinYins[0]}}"><span class="name_english">{{=itVal.PinYins[0]}}</span></label>
+        {{?}}
+    </div>
+{{~}}
+{{?}}
+{{var ziArr=[];
+if (it && it.length) {
+    for(var i=0;i<it.length;i++){
+        if(it[i].IsMoreSound==1){
+            ziArr.push(it[i].Chinese);
+        }
+    }
+}
+}}
+    <div class="surname_acions"> 
+        <a href="javascript:;" class="btn_link">确定</a> 
+        <span class="tips_txt"> <i class="ico"></i>请确认多音字：<span class="high">{{~ziArr:ziItem}}（{{=ziItem}}）{{~}}</span></span> 
+    </div>
+</div>

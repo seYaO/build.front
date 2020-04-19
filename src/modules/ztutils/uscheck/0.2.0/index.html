@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="info"></div>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js"></script>
+<script src="http://10.101.40.81:1111/jqmodule/ztutils/uscheck/0.1.0/index.js"></script>
+<script>
+    UScheck.check({
+        decode: true,
+        direct: true,
+        callback :function(data){
+            $('.info').val(data);
+        }
+    })
+</script>
+</body>
+</html>

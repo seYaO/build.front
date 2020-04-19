@@ -1,0 +1,275 @@
+<!--预定模块 start-->
+{{var priceInfoType = basicInfo.PriceInfoOfType;}}
+{{var priceInfo = basicInfo.PriceInfo;}}
+{{var ticketInfo = priceInfoType.concat(priceInfo);}}
+{{?ticketInfo && ticketInfo.length}}
+
+<div class="ly_order" id = "ly_order">
+    <div class="ly_details">
+        <ul class="ly_order_tab">
+            <li data-id="0" class="current">玩乐预订</li>
+            <li data-id="1" {{?basicInfo.MainResourceRecommandType}}class="none"{{?}}>附近推荐</li>
+        </ul>
+        <!--预订start-->
+        {{var productType = basicInfo.ProductType;}}
+        {{var bookingClass = "order_trans";}}
+        {{?productType === 6}}
+            {{bookingClass = "order_wifi";}}
+        {{??productType === 11 || productType === 8 || productType === 12}}
+            {{bookingClass = "order_visit";}}
+        {{?}}
+        {{var index = 1;}}
+        <div id="booking" class="ly_details_item ly_order_details_item {{=bookingClass}}">
+            {{?ticketInfo && ticketInfo.length}}
+            <div class="ly_book book_module_0">
+                <div class="book_tt">
+                    <span class="td1">名称</span>
+                    <span class="td2">可订时间</span>
+                    {{?productType === 11 || productType === 8 || productType === 12}}
+                    <span class="td_language">服务语言</span>
+                    {{?}}
+                    <span class="td6"></span>
+                    <span class="td4">同程价</span>
+                </div>
+                <div class="book_bd">
+                {{~ticketInfo:list}}
+                    {{?list.priceDetail && list.priceDetail.length}}
+                        {{?ticketInfo.length && productType === 6 && priceInfoType.length}}
+                        <div class="book_tr">
+                            <div class="book_label"><em>{{?list.PriceName === ""}}其他{{??}}{{=list.PriceName}}{{?}}</em></div>
+                            <div class="book_ul">
+                        {{?}}
+                            {{~list.priceDetail:price}}
+                                <div class="book_li">
+                                    <dl class="book_li_tt clearfix">
+                                        <dt class="td1">
+                                            <div class="book_name">
+                                                {{?basicInfo.ProductId == 12430 && (price.ProductId == 385904 || price.ProductId == 386120 || price.ProductId == 386122 || price.ProductId == 386124 || price.ProductId == 419699)}}
+                                                <a href="javascript:void(0);" class="name" style="font-weight: bold;color: #f60;">
+                                                {{??}}
+                                                <a href="javascript:void(0);" class="name">
+                                                {{?}}
+                                                    <span class="txt">{{=price.PriceDes}}<em class="i_arrow"><i></i></em></span>
+                                                </a>
+                                            </div>
+                                        </dt>
+                                        <dd class="td2">
+                                            {{var advanceInfo = price.PriceExtendDetail;}}
+                                            {{var advanceDays = advanceInfo.AdvanceDays;}}
+                                            {{var advanceTime = advanceInfo.AdvanceTime;}}
+                                            {{var advanceType = advanceInfo.AdvanceType;}}
+                                           <span fx="{{=advanceType}}" a="{{=advanceDays}}">
+                                                {{?advanceDays != 0}}
+                                                    {{?advanceType !== 0}}
+                                                    游玩前{{=advanceDays}}个工作日{{=advanceTime}}前
+                                                    {{??}}
+                                                    游玩前{{=advanceDays}}天{{=advanceTime}}前
+                                                    {{?}}
+                                                {{??}}
+                                               当天{{=advanceTime}}前
+                                                {{?}}
+                                            </span>
+                                        </dd>
+                                        {{var language = advanceInfo.Language;}}
+                                        {{?productType === 11 || productType === 8 || productType === 12}}
+                                            <dd class="td_func" title="{{=language.toString()}}">
+                                            {{?language && language.length}}
+                                                {{?language.length >1}}
+                                                    {{=language[0]}}等
+                                                {{??}}
+                                                    {{=language[0]}}
+                                                {{?}}
+                                            {{?}}
+                                            <dd>
+                                        {{?}}
+                                        <dd class="td6">
+                                            {{?price.DiscountInfoList && price.DiscountInfoList.length}}
+                                                {{var length1 = 0;}}
+                                                {{~price.DiscountInfoList:discountInfo:i}}
+                                                    {{?i === 0 && discountInfo.DiscountName.length <= 6}}
+                                                        {{length1 = discountInfo.DiscountName.length;}}
+                                                        <span class="J_Tips" data-content="<div><strong>{{=discountInfo.DiscountName}}</strong><hr />{{=discountInfo.LongDesc}}</div>">{{=discountInfo.DiscountName}}</span>
+                                                    {{??i === 1 && (length1+discountInfo.DiscountName.length <= 6)}}
+                                                        <span class="J_Tips" data-content="<div><strong>{{=discountInfo.DiscountName}}</strong><hr />{{=discountInfo.LongDesc}}</div>">{{=discountInfo.DiscountName}}</span>
+                                                    {{?}}
+                                                {{~}}
+                                            {{??}}
+                                                &nbsp;
+                                            {{?}}
+                                        </dd>
+                                        {{var urlHref = "//www.ly.com/wanle/bookwanle.html?productId="+price.ProductId +"&supplyId="+price.SupplierRelationId+"&resourceId="+basicInfo.ProductId;}}
+                                        {{?price.StrAk != ""}}
+                                            {{urlHref = urlHref + "&ak="+ price.StrAk;}}
+                                            <dd class="td4"><span class="tcprice"><b>￥</b>{{=price.AmountDirect}}<i></i></span></dd>
+                                        {{??}}
+                                            <dd class="td4"><span class="tcprice">{{?basicInfo.ProductType !== 9}}<em class="J_Tips" data-content="<div><strong>点评返现</strong><hr />购买此产品并发表点评即刻获得最高¥20的奖金(满200提现)</div>">返</em>{{?}}<b>￥</b>{{=price.AmountDirect}}</span></dd>
+                                        {{?}}
+                                        <dd class="td5">
+                                            <a class="bookbtn" target="_blank" href="{{=urlHref}}" onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/detail', '/book', '|*|pos:{{=index}}|*|pjId:2027|*|resId:{{=basicInfo.ProductId}}|*|')">预订</a>
+                                        </dd>
+                                    </dl>
+                                    <div class="book_li_bd">
+                                        <i class="arrow" ></i>
+                                        {{?advanceInfo && advanceDays !=="" && advanceTime !== ""}}
+                                        <ul class="book_info">
+                                            {{?basicInfo.ProductType === 9 && basicInfo.ProductCategory !== 92}}
+                                                {{?advanceInfo.ValidateDesc && advanceInfo.ValidateDesc.length}}
+                                                <li>
+                                                    <span class="r_name">有效期：</span>
+                                                    <div class="r_content">
+                                                        <p>{{=advanceInfo.ValidateDesc}}</p>
+                                                    </div>
+                                                </li>
+                                                {{?}}
+                                                {{?advanceInfo.PackageContent && advanceInfo.PackageContent.length}}
+                                                <li>
+                                                    <span class="r_name">套餐说明：</span>
+                                                    <div class="r_content">
+                                                        <p>{{=advanceInfo.PackageContent}}</p>
+                                                    </div>
+                                                </li>
+                                                {{?}}
+                                            {{??advanceDays !== 0 || advanceTime !== "00:00"}}
+                                                <li>
+                                                    <span class="r_name">预订时间：</span>
+                                                    {{?advanceDays !== 0}}
+                                                        {{?advanceType !== 0}}
+                                                            <div class="r_content"><p>如需预订，您最晚要在游玩前{{=advanceDays}}个工作日{{=advanceTime}}前下单，请尽早预订。</p></div>
+                                                        {{??}}
+                                                            <div class="r_content"><p>如需预订，您最晚要在游玩前{{=advanceDays}}天{{=advanceTime}}前下单，请尽早预订。</p></div>
+                                                        {{?}}
+
+                                                    {{??}}
+                                                        <div class="r_content"><p>如需预订，您最晚要在游玩当天{{=advanceTime}}前下单，请尽早预订。</p></div>
+                                                    {{?}}
+                                                </li>
+                                            {{?}}
+                                            {{?basicInfo.ProductType === 9 && basicInfo.ProductCategory === 92}}
+                                                {{var wifiDesc = advanceInfo.WifiInstruction;}}
+                                                {{?wifiDesc && wifiDesc.WifiReceiveNotes}}
+                                                <li>
+                                                    <span class="r_name">押金说明：</span>
+                                                    <div class="r_content">
+                                                        <p>{{=wifiDesc.WifiReceiveNotes}}</p>
+                                                    </div>
+                                                </li>
+                                                {{?}}
+                                                {{?wifiDesc && wifiDesc.WifiDataNotes}}
+                                                <li>
+                                                    <span class="r_name">流量说明：</span>
+                                                    <div class="r_content">
+                                                        <p>{{=wifiDesc.WifiDataNotes}}</p>
+                                                    </div>
+                                                </li>
+                                                {{?}}
+                                                {{?wifiDesc && wifiDesc.WifiCertificateNotes}}
+                                                <li>
+                                                    <span class="r_name">领取凭证：</span>
+                                                    <div class="r_content">
+                                                        <p>{{=wifiDesc.WifiCertificateNotes}}</p>
+                                                    </div>
+                                                </li>
+                                                {{?}}
+                                            {{?}}
+
+                                            {{?basicInfo.ProductType !== 9}}
+                                                {{?advanceInfo.ReserveRemark && advanceInfo.ReserveRemark.length}}
+                                                <li>
+                                                    <span class="r_name">预订说明：</span>
+                                                    <div class="r_content">
+                                                        <p>{{=advanceInfo.ReserveRemark}}</p>
+                                                    </div>
+                                                </li>
+                                                {{?}}
+                                            {{?}}
+                                        </ul>
+                                        {{?}}
+                                    </div>
+                                </div>
+                                {{index = index + 1;}}
+                            {{~}}
+                        {{?ticketInfo.length && productType === 6 && priceInfoType.length}}
+                            </div>
+                        </div>
+                        {{?}}
+                    {{?}}
+                {{~}}
+                </div>
+            </div>
+            {{?}}
+
+            {{var recType = basicInfo.MainResourceRecommandType;}}
+            {{var proRecommend;}}
+            {{?recType && recType != 0}}
+                {{?recType === 1}}
+                    {{proRecommend = recommendCoordinate;}}
+                {{??recType === 2}}
+                    {{proRecommend = recommendDestination;}}
+                {{??recType === 3}}
+                    {{proRecommend = recommendLists;}}
+                {{?}}
+            {{?}}
+            <div class="ly_book recommend book_module_1 none">
+                <div class="book_tt">
+                    <span class="td1">名称</span>
+                    <span class="td4">同程价</span>
+                </div>
+                <div class="book_bd">
+                    {{?proRecommend &&　proRecommend.length}}
+                        {{?recType === 1 || recType === 2}}
+                            {{~proRecommend:products}}
+                                {{~products.LineList:product}}
+                                {{var id = product.Id;}}
+                                {{var title = product.Title;}}
+                                {{var tcprice = product.MinTcPrice;}}
+                                <div class="book_li">
+                                    <dl class="book_li_tt clearfix">
+                                        <dt class="td1">
+                                            <div class="book_name">
+                                                <a class="recommend" target="_blank" href="/dujia/wanle/{{=id}}.html">{{=title}}</a>
+                                            </div>
+                                        </dt>
+                                        <dd class="td4">
+                                            <span class="tcprice">{{?basicInfo.ProductType !== 9}}<em class="J_Tips" data-content="<div><strong>点评返现</strong><hr />购买此产品并发表点评即刻获得最高¥20的奖金(满200提现)</div>">返</em>{{?}}<b>￥</b>{{=tcprice}}<font>起</font></span>
+                                        </dd>
+                                        <dd class="td5">
+                                            <a class="bookbtn" target="_blank" href="/dujia/wanle/{{=id}}.html" onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/detail', '/book', '|*|pos:{{=index}}|*|pjId:2027|*|resId:{{=id}}|*|')">预订</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                {{index = index + 1;}}
+                                {{~}}
+                            {{~}}
+                        {{??}}
+                            {{~proRecommend:product}}
+                                {{var id = product.MainResourceId;}}
+                                {{var title = product.ResourceName;}}
+                                {{var tcprice = product.MinAmountDirect;}}
+                                <div class="book_li">
+                                    <dl class="book_li_tt clearfix">
+                                        <dt class="td1">
+                                            <div class="book_name">
+                                                <a class="recommend" target="_blank" href="/dujia/wanle/{{=id}}.html">{{=title}}</a>
+                                            </div>
+                                        </dt>
+                                        <dd class="td4">
+                                            <span class="tcprice">{{?basicInfo.ProductType !== 9}}<em class="J_Tips" data-content="<div><strong>点评返现</strong><hr />购买此产品并发表点评即刻获得最高¥20的奖金(满200提现)</div>">返</em>{{?}}<b>￥</b>{{=tcprice}}<font>起</font></span>
+                                        </dd>
+                                        <dd class="td5">
+                                            <a class="bookbtn" target="_blank" href="/dujia/wanle/{{=id}}.html" onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/detail', '/book', '|*|pos:{{=index}}|*|pjId:2027|*|resId:{{=id}}|*|')">预订</a>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                {{index = index + 1;}}
+                            {{~}}
+                        {{?}}
+                    {{?}}
+                </div>
+
+            </div>
+        </div>
+        <!--预订end-->
+    </div>
+</div>
+{{?}}
+<!--预订模块 end-->

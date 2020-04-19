@@ -1,0 +1,298 @@
+a {
+  text-decoration: none;
+}
+.jiangjia_gp {
+  width: 520px;
+  height: auto;
+  font-size: 12px;
+  line-height: 25px;
+  font: 12px/24px "Microsoft YaHei";
+  background-color: #fff;
+}
+.jiangjia_gp .title_gp {
+  width: 100%;
+  height: 28px;
+  background-color: #f0f0f0;
+  text-indent: 10px;
+  line-height: 28px;
+  font-size: 14px;
+}
+.jiangjia_gp .title_gp .title_close {
+  float: right;
+  width: 30px;
+  height: 28px;
+  display: block;
+  text-align: center;
+  cursor: pointer;
+  background-image: url(img/dest/ico_close.png);
+  background-repeat: no-repeat;
+}
+.jiangjia_gp .main_gp {
+  width: 100%;
+  height: auto;
+  padding: 0;
+}
+.jiangjia_gp .tip_gp {
+  width: 100%;
+  height: 25px;
+  margin-top: 20px;
+  color: #ff6a00;
+  text-indent: 30px;
+  font-size: 14px;
+}
+.jiangjia_gp .form_gp {
+  width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+.jiangjia_gp .form_gp .tbx_price_gp {
+  position: relative;
+  width: 185px;
+  height: 30px;
+  /*.tbx_price{
+                text-indent:15px;
+            }*/
+}
+.jiangjia_gp .form_gp .tbx_price_gp.active:after {
+  content: "¥";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 26px;
+  z-index: 1;
+  display: block;
+  line-height: 26px;
+}
+.jiangjia_gp .content_gp {
+  width: 100%;
+  height: 230px;
+  position: relative;
+}
+.jiangjia_gp .content_gp .ct_title {
+  position: absolute;
+  width: 200px;
+  height: 20px;
+  display: block;
+  top: 50px;
+  left: 190px;
+  font-size: 18px;
+  line-height: 20px;
+}
+.jiangjia_gp .content_gp .ct_logo {
+  position: absolute;
+  background-image: url(img/dest/ico_right.png);
+  width: 56px;
+  height: 56px;
+  display: block;
+  top: 50px;
+  left: 110px;
+}
+.jiangjia_gp .content_gp .ct_content {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  display: block;
+  top: 80px;
+  left: 190px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #999;
+}
+.jiangjia_gp .content_gp .btn_close {
+  width: 75px;
+  height: 27px;
+  position: absolute;
+  line-height: 27px;
+  margin: auto;
+  bottom: 70px;
+  left: 190px;
+  /*right: 0;*/
+  background-image: url(img/dest/btn1.png);
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+.jiangjia_gp .content_gp .btn_close:hover {
+  background-image: url(img/dest/btn2.png);
+}
+.jiangjia_gp .row {
+  width: 100%;
+  height: auto;
+  /*padding:5px 0;*/
+  margin: 8px 0;
+  float: left;
+}
+.jiangjia_gp .row label {
+  width: 70px;
+  float: left;
+  text-align: justify;
+  -ms-text-justify: auto;
+  text-justify: auto;
+  display: inline-block;
+  text-indent: 0;
+  margin-left: 30px;
+  /*font-weight:bold;*/
+  font-size: 14px;
+}
+.jiangjia_gp .row .control {
+  width: 420px;
+  float: left;
+  position: relative;
+}
+.jiangjia_gp .row .control .split {
+  width: 20px;
+  font-style: normal;
+  float: left;
+  text-align: center;
+}
+.jiangjia_gp input {
+  width: 182px;
+  padding: 2px 12px;
+  margin-top: 2px;
+  border: 1px solid #ccc;
+  height: 18px;
+  float: left;
+}
+.jiangjia_gp input:hover {
+  border: 1px solid #ff6a00;
+}
+.jiangjia_gp input:active {
+  border: 1px solid #ff6a00;
+}
+.jiangjia_gp input:focus {
+  border: 1px solid #ff6a00;
+}
+.jiangjia_gp .form_btn {
+  height: 29px;
+  color: #ff6a00;
+  width: 88px;
+  background-image: url(img/dest/btn1.png);
+  display: block;
+  text-align: center;
+  text-indent: 0;
+  line-height: 29px;
+  float: left;
+  cursor: pointer;
+}
+.jiangjia_gp .btn_sendsms {
+  margin-left: 5px;
+  width: 75px;
+  height: 27px;
+  line-height: 27px;
+  background-image: url(img/dest/btn1.png);
+  text-align: center;
+  display: block;
+  cursor: pointer;
+}
+.jiangjia_gp .btn_sendsms:hover {
+  background-image: url(img/dest/btn2.png);
+}
+.jiangjia_gp .btn_sendsms.disable {
+  color: #ccc;
+}
+.jiangjia_gp .btn_sendsms.disable:hover {
+  background-image: url(img/dest/btn1.png);
+}
+.jiangjia_gp .btn_submit {
+  width: 80px;
+  height: 25px;
+  background-color: #ff7800;
+  display: block;
+  cursor: pointer;
+  line-height: 25px;
+  color: #fff;
+  text-indent: 0;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-left: 100px;
+  border-radius: 2px;
+}
+.jiangjia_gp .btn_submit:hover {
+  background-color: #ff6633;
+}
+.jiangjia_gp .goup_2 input {
+  width: 75px;
+  text-align: center;
+  text-indent: 0;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+.jiangjia_gp .no_empty:before {
+  content: "*";
+  position: absolute;
+  left: 20px;
+  line-height: 29px;
+  color: #ff6a00;
+  font-weight: bold;
+}
+.jiangjia_gp .validata {
+  width: auto;
+  height: auto;
+  float: left;
+  background-color: #fff3d9;
+  border: 1px solid #ffd29c;
+  clear: left;
+  padding: 2px 10px;
+  line-height: 18px;
+  position: absolute;
+  left: 0;
+  top: 30px;
+  z-index: 1;
+  display: none;
+}
+.jiangjia_gp .validata:before {
+  content: " ";
+  background-image: url(img/dest/arrow.png);
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  z-index: 2;
+  width: 11px;
+  height: 6px;
+}
+.jiangjia_gp .clearfix {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+.calendar-panel.white .calendar-container {
+  width: 250px;
+}
+.calendar-panel.white a.previous-month,
+.calendar-panel.white a.next-month {
+  background: url(//js.40017.cn/cn/public/module/Calendar/0.3/calendar_arrow_white.png?v=2) 0 0 no-repeat;
+}
+.calendar-panel.white a.previous-month-disabled,
+.calendar-panel.white a.previous-month-disabled:hover {
+  background-position: -100px -43px;
+}
+.calendar-panel.white a.next-month {
+  background-position: -49px 0;
+}
+.calendar-panel.white a.previous-month {
+  background-position: -8px 0;
+}
+.calendar-panel.white .calendar-wrapper td.to-day:hover span {
+  color: #fff;
+}
+.calendar-panel.white .calendar-wrapper td.festival:hover span {
+  color: #b54800;
+}
+.calendar-panel.white .d {
+  line-height: 20px;
+  height: 20px;
+}
+.calendar-panel.white .date {
+  color: #ccc;
+  cursor: default;
+  line-height: 20px;
+  height: 20px;
+  padding: 0;
+}
+.calendar-panel.white .testaaaa {
+  width: auto;
+}

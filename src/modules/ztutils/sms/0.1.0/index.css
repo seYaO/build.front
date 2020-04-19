@@ -1,0 +1,53 @@
+.form-warp {
+  margin: 0 auto;
+  width: 21.66666667rem;
+}
+.form-warp .form-li {
+  position: relative;
+  padding-bottom: 2.08333333rem;
+}
+.form-warp .form-li.hide {
+  display: none;
+}
+.form-warp .form-txt {
+  box-sizing: border-box;
+  padding: 0.41666667rem 1.25rem;
+  width: 100%;
+  height: 3.33333333rem;
+  font-size: 1.33333333rem;
+  line-height: 2.5rem;
+  border-radius: 0.33333333rem;
+  background: #ffffff;
+  outline: none;
+  border: 1px solid #e4e4e4;
+}
+.form-warp .form-tip {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  color: #ff4614;
+  font-size: 1rem;
+  line-height: 2rem;
+}
+.form-warp .form-btn {
+  display: block;
+  height: 3.33333333rem;
+  font-size: 1.33333333rem;
+  color: #fefefe;
+  text-align: center;
+  line-height: 3.33333333rem;
+  border-radius: 0.33333333rem;
+  background-color: #ff6815;
+}
+.code-warp {
+  position: absolute;
+  top: 0.625rem;
+  right: 0;
+  width: 8.125rem;
+  height: 2.08333333rem;
+  font-size: 1.33333333rem;
+  color: #cccccc;
+  text-align: center;
+  line-height: 2.08333333rem;
+  border-left: 1px solid #cccccc;
+}

@@ -1,0 +1,114 @@
+{{var data = baseData, 
+	pageType = data.PageType, lineType, labelId;}}
+{{?pageType == 1}}
+	{{lineType = "gentuan";}}
+	{{labelId = data.GroupLabelId;}}
+{{??pageType == 3}}
+	{{lineType = "zizhu";}}
+	{{labelId = data.FreeLabelId;}}
+{{??pageType == 0}}
+	{{lineType = "lvyou";}}
+	{{labelId = "";}}
+{{?}}
+<div class="seodiv">
+	<h3>{{=data.DestName}}旅游介绍</h3>
+	<div class="bot-con" id="contest">
+		<p class="bot-title">同程旅游为您提供最新的{{=data.DestName}}旅游景点线路预订,同时为您推荐最新的{{=data.DestName}}旅游线路报价,{{=data.DestName}}旅游攻略,{{=data.DestName}}旅游好玩的城市以及{{=data.DestName}}自由行,跟团游,半自助游,团队游等多种出游形式,想要出境旅游就找同程旅游。</p>
+		<div class="bot-text">
+			<div class="bot-comment">
+				<div class="bot-link">
+					<dl>
+						<dt>{{=data.DestName}}旅游相关推荐：</dt>
+						<dd class="hot-link">						
+							<a href="/dujia/{{=data.DestPinYin}}{{=labelId}}-gentuan/" target="_blank">{{=data.DestName}}跟团游</a>
+							<a href="/dujia/{{=data.DestPinYin}}{{=labelId}}-zizhu/" target="_blank">{{=data.DestName}}自助游</a>              
+							<a href="/dujia/{{=data.DestPinYin}}-lvyou/" target="_blank">{{=data.DestName}}旅游</a> 
+						</dd>
+					</dl>
+					<span class="bot-more">展开<i></i></span>
+				</div>
+			</div>
+			{{?it.daysList && it.daysList.length && it.daysList[0].days && it.daysList[0].days.length}}
+			<div class="bot-link">
+				<dl>
+					<dt>行程推荐：</dt>
+					<dd class="hot-link">
+						{{~it.daysList[0].days:travelDay}}
+							<a href="/dujia/{{=data.DestPinYin}}{{=labelId}}-{{=lineType}}/d{{=travelDay.days}}/" target="_blank">{{=data.DestName}}{{=travelDay.days}}日游</a>
+						{{~}}
+					</dd>
+				</dl>
+				<span class="bot-more">展开<i></i></span>
+			</div>
+			{{?}}
+			{{?hotRecommend && hotRecommend.StartCitys && hotRecommend.StartCitys.length}}
+			<div class="bot-link">
+				<dl>
+					<dt>到{{=data.DestName}}路线：</dt>
+					<dd class="hot-link">
+					{{~hotRecommend.StartCitys:startCity}}                         
+						<a href="/dujia/{{=data.DestPinYin}}{{=labelId}}-{{=lineType}}/f{{=startCity.Id}}/" target="_blank">{{=startCity.Name}}到{{=data.DestName}}旅游</a>
+					{{~}}
+					</dd>
+				</dl>
+				<span class="bot-more">展开<i></i></span>
+			</div>
+			{{?}}
+			{{?it.pmList && it.pmList.length && it.pmList[0].m && it.pmList[0].m.length}}
+			<div class="bot-link">
+				<dl>
+					<dt>月份旅游推荐：</dt>
+					<dd class="hot-link">
+					{{~it.pmList[0].m:travelDate}}
+						{{var travelMonth = travelDate.value.substring(4),
+							  month = "";}}
+						{{month = (travelMonth > 9) ? travelMonth : travelMonth.substring(1);}}
+						<a href="/dujia/{{=data.DestPinYin}}{{=labelId}}-{{=lineType}}/m{{=travelMonth}}/" target="_blank">{{=month}}月到{{=data.DestName}}旅游</a>                        
+					{{~}}
+					</dd>
+				</dl>
+				<span class="bot-more">展开<i></i></span>
+			</div>
+			{{?}}
+			{{?hotRecommend && hotRecommend.DestCitys && hotRecommend.DestCitys.length}}
+			<div class="bot-link">
+				<dl>
+					<dt>热门城市推荐：</dt>
+					<dd class="hot-link">
+					{{~hotRecommend.DestCitys:destCity}}                       
+						<a href="/dujia/{{=destCity.PinYin}}{{=destCity.Id || ''}}-{{=lineType}}/" target="_blank">{{=destCity.Name}}旅游</a>
+					{{~}}                          
+					</dd>
+				</dl>
+				<span class="bot-more">展开<i></i></span>
+			</div>
+			{{?}}
+			{{?hotRecommend && hotRecommend.DestCountries && hotRecommend.DestCountries.length}}
+			<div class="bot-link">
+				<dl>
+					<dt>热门国家推荐：</dt>
+					<dd class="hot-link">
+					{{~hotRecommend.DestCountries:destCountry}}                          
+						<a href="/dujia/{{=destCountry.PinYin}}{{=destCountry.Id || ''}}-{{=lineType}}/" target="_blank">{{=destCountry.Name}}旅游</a>
+					{{~}}  
+					</dd>
+				</dl>
+				<span class="bot-more">展开<i></i></span>
+			</div>
+			{{?}}
+			{{?friendLink && friendLink.length}}
+			<div class="bot-link">
+				<dl>
+					<dt>友情链接：</dt>
+					<dd class="hot-link">
+					{{~friendLink:friend}}                          
+						<a href="{{=friend.Link}}" target="_blank">{{=friend.Name}}</a>
+					{{~}}  
+					</dd>
+				</dl>
+				<span class="bot-more">展开<i></i></span>
+			</div>
+			{{?}}
+		</div>
+	</div>
+</div>

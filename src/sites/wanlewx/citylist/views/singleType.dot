@@ -1,0 +1,12 @@
+{{~productInfo.CommonSearchList:list}}
+	{{? list.TotalCount > 0}}
+    <li data-id = {{=list.ProductList[0].SingleTypeId}}>
+		<i class="icon typeIcon_{{=list.ProductList[0].SingleTypeId}}"></i>
+        <p>
+            <span>{{=list.ProductList[0].SingleTypeName}}</span>
+            <i class="rightIcon"></i>
+            <span class="productNum">{{=list.TotalPage}}</span>
+        </p>
+    </li>
+    {{?}}
+{{~}}

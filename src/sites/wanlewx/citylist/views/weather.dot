@@ -1,0 +1,11 @@
+
+<img src="" id="destImg">
+<div class="destName">{{=weatherInfo.DestName}}</div>
+<div class="destWeather">
+{{~weatherInfo.WeatherList:list}}
+	{{? list.Days == 1}}
+		<img src="//img1.40017.cn/touch/v/wanle/img/common/weather/{{=list.Picture.split(".")[0]}}.png">
+        <span class="temp">{{=list.Temperature}}</span>
+	{{?}}
+{{~}}
+</div>

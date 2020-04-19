@@ -1,0 +1,26 @@
+{{var carInfo = it.PickupCarInfo;}}
+{{?carInfo && carInfo.CarImageList}}
+<div class="slider_bd mSlider_con">
+    <img alt="" src='{{=carInfo.CarImageList[0]}}'>
+</div>
+<div class="slider_thumb">
+    <a href="javascript:void(0);" rel="nofollow" class="slider_pre"><i></i></a>
+    <div id="silderThumbMain" class="thumb_main">
+        {{var sliderWidth = carInfo.CarImageList.length *150;}}
+        <ul id="silderUl" class="thumb_ul" style="width:{{=sliderWidth}}px">
+            {{var newIndex = 0;}}
+            {{~carInfo.CarImageList:imgItem}}
+              {{?imgItem}}
+              {{newIndex = newIndex + 1;}}
+              <li>
+                {{var imgUrlSmall = imgItem.replace(".jpg","_400x300_00.jpg");}}
+                {{var imgUrlBig = imgItem.replace(".jpg","_640x360_00.jpg");}}
+                  <a href="javascript:;" class="thumb_link" data-index="{{=newIndex}}" data-src="{{=imgUrlSmall}}" data-bsrc="{{=imgUrlBig}}"></a>
+              </li>
+              {{?}}
+           {{~}}
+        </ul>
+    </div>
+    <a href="javascript:void(0);" rel="nofollow" class="slider_next"><i></i></a>
+</div>
+{{?}}

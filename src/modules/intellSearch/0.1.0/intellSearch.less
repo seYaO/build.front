@@ -1,0 +1,33 @@
+@coler1: #ff6a00;
+.ly_intelsearch {
+    width: 100%;
+    height: auto;
+    float: left;
+    position: relative;
+    line-height: 30px;
+
+    .intelsearch_item {
+        width: 100%;
+        height: 30px;       
+        text-indent: 20px;
+        display:block;
+        cursor:pointer;
+
+        &.select {
+            background-color: rgb(255,243,234);
+        }
+    }
+
+    .intelsearch_tip {
+        position: absolute;
+        top: 0;
+        right: 10px;
+        width: auto;
+        height: 30px;
+
+        .count {
+            color: @coler1;
+        }
+    }
+}
+    

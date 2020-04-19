@@ -1,0 +1,69 @@
+ {{?it && it.length>0}}
+    {{~it:navBar:navindex}}
+    <div effect_index="{{=(navindex+1)}}" trace="{{=(navindex+1)}}" class="listbox ">
+        <div class="box">
+            <img attr-image="//img1.40017.cn/cn/v/2015/zhuanti/28658/icon{{=navindex}}.png" attr-imageH="//img1.40017.cn/cn/v/2015/zhuanti/28658/iconH{{=navindex}}.png" src="//img1.40017.cn/cn/v/2015/zhuanti/28658/icon{{=navindex}}.png" />
+            <dl>
+                {{?navBar.MasterDest && navBar.MasterDest.length>0}}
+                <dt>
+                    {{~navBar.MasterDest:masterDest}}
+                    <a href="{{=masterDest.Url.replace('http:','')}}" trackspot="{{=it.CityName}}^{{=masterDest.Name||''}}^外显^{{=navindex+1}}^0" trace="{{=masterDest.Name}}">{{=masterDest.Name}}</a>
+                    {{~}}
+                </dt>
+                {{?}}
+                <dd>
+                {{?navBar.HotDest && navBar.HotDest.length>0}}
+                {{~navBar.HotDest:hotDest}}
+                    <a trace="{{=(hotDest.Name||'')}}" trackspot='{{=it.CityName}}^{{=hotDest.Name||''}}^外显^{{=navindex+1}}^0' href="{{=hotDest.Url.replace('http:','')}}" target="_blank" title="{{=(hotDest.Name||'')}}">
+                        {{=(hotDest.Name||'')}}
+                    </a>
+                {{~}}
+                {{?}}
+                </dd>
+            </dl>
+            <em><i></i></em>
+        </div>
+        {{?navBar.DestDetail && navBar.DestDetail.length>0}}
+        {{var len;}}
+        {{?navBar.MasterDest.length < navBar.DestDetail.length}}
+            {{len = navBar.MasterDest.length;}}
+        {{??}}
+            {{len = navBar.DestDetail.length;}}
+        {{?}}
+        <div effect_index="0" class="showlist none {{?len > 1}}show_double{{?}}">
+            {{~navBar.DestDetail:destDetail:destDetailindex}}
+            {{?navBar.MasterDest[destDetailindex]}}
+            <div class="showbox bor_no">
+                <h4>
+                    <a trace="{{=(destDetail.Name||'')}}" trackspot="{{=it.CityName}}^{{=destDetail.Name||''}}^hover^{{=navindex+1}}^0" href="{{=navBar.MasterDest[destDetailindex].Url.replace('http:','')}}" title="{{=(destDetail.Name||'')}}">{{=(destDetail.Name||'')}}</a>
+                </h4>
+                {{?destDetail.HotDest && destDetail.HotDest.length>0}}
+                <dl class="hotcitylist" trace="host-citylist">
+                    <dt>热门目的地</dt>
+                    {{~destDetail.HotDest:hotDestDetail}}
+                    <dd>
+                        <a class='{{?hotDestDetail.HotFlag == 1}}f60{{?}}' trackspot="{{=it.CityName}}^{{=hotDestDetail.Name||""}}^hover^{{=navindex+1}}^热门目的地" href="{{=(hotDestDetail.Url.replace('http:','')||'')}}" trace="{{=(hotDestDetail.Name||'')}}" target="_blank" title="{{=(hotDestDetail.Name||'')}}">{{=(hotDestDetail.Name||'')}}
+                            <i class="{{?hotDestDetail.VisaFlag == 1}}free1{{??hotDestDetail.VisaFlag == 2}}free2{{??}}free0{{?}}"></i>
+                        </a>
+                    </dd>
+                    {{~}}
+                </dl>
+                {{?}}
+                {{?destDetail.HotPlay && destDetail.HotPlay.length> 0}}
+                <dl class="hotcitylist" trace="wanfa-free">
+                    <dt>热门玩法</dt>
+                    {{~destDetail.HotPlay:hotPlayDetail}}
+                    <dd>
+                        <a href="{{=(hotPlayDetail.Url.replace('http:','')||'')}}" trackspot="{{=it.CityName}}^{{=hotPlayDetail.Name||''}}^hover^{{=navindex+1}}^热门玩法" target="_blank" rel="nofollow" trace="{{=(hotPlayDetail.Name||'')}}" title="{{=(hotPlayDetail.Name||'')}}">{{=(hotPlayDetail.Name||'')}}<i class="free0"></i></a>
+                    </dd>
+                    {{~}}
+                </dl>
+                {{?}}
+            </div>
+            {{?}}
+            {{~}}
+        </div>
+        {{?}}
+    </div>
+    {{~}}
+    {{?}}

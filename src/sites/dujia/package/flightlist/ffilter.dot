@@ -1,0 +1,113 @@
+{{?it.Data}}
+<p class="fp-title" style="margin-top:0px;"> 
+    <span class="label">  
+        <i></i> 
+        {{=it.Data.DepartCity}}-{{=it.Data.ArriveCity}}
+        {{?it.flightType}}
+            （第{{=it.Data.Index + 1}}程）
+        {{??}}
+            （{{?it.Data.FlightTrip==1}}去程{{??it.Data.FlightTrip==2}}返程{{?}}） 
+        {{?}}
+    </span> 
+    <span class="date"> 
+        出发日期：<strong>{{=it.Data.DepartDate}}</strong> 
+    </span>
+        &nbsp;&nbsp;&nbsp;&nbsp; 
+        <em data-count="{{=it.Data.TotalCount}}">
+            <i class="loading-flight"></i>
+            正在为您加载更多优质低价航班，已加载{{=it.Data.TotalCount}}条
+        </em> 
+    <span class="back-cho">返回套餐<i></i>
+    </span>
+</p>
+<div class="fp-search-box">
+<div class="fp-search J_fp-search">
+{{?it.Data.Conditions}}
+<dl class="dateTime">
+    <dt>起飞时段:</dt>
+    {{?it.filtrates.Period.length > 0}}
+    <dd class="all-sel"> <a class="all">全部</a> </dd>
+    {{??}}
+    <dd class="all-sel selected"> <a class="all">全部</a> </dd>
+    {{?}}
+    {{~it.Data.Conditions.Periods:perItems:index}}
+        {{?$.inArray(parseInt(perItems.Value),it.filtrates.Period) < 0}}
+        <dd data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{??}}
+        <dd class="selected" data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{?}}
+    {{~}}
+</dl>
+<dl class="DepartAirPort">
+    <dt>起飞机场:</dt>
+    {{?it.filtrates.DepartAirPortCode.length > 0}}
+    <dd class="all-sel"> <a class="all">全部</a> </dd>
+    {{??}}
+    <dd class="all-sel selected"> <a class="all">全部</a> </dd>
+    {{?}}
+    {{~it.Data.Conditions.DepartPorts:perItems:index}}
+        {{?$.inArray(perItems.Value,it.filtrates.DepartAirPortCode) < 0}}
+        <dd data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{??}}
+        <dd class="selected" data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{?}}
+    {{~}}
+</dl>
+<dl class="ArriveAirPort">
+    <dt>降落机场:</dt>
+    {{?it.filtrates.ArriveAirPortCode.length > 0}}
+    <dd class="all-sel"> <a class="all">全部</a> </dd>
+    {{??}}
+    <dd class="all-sel selected"> <a class="all">全部</a> </dd>
+    {{?}}
+    {{~it.Data.Conditions.ArrivePorts:perItems:index}}
+        {{?$.inArray(perItems.Value,it.filtrates.ArriveAirPortCode) < 0}}
+        <dd data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{??}}
+        <dd class="selected" data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{?}}
+    {{~}}
+</dl>
+<dl class="company">
+    <dt>航空公司:</dt>
+    {{?it.filtrates.AirCompanyCode.length > 0}}
+    <dd class="all-sel"> <a class="all">全部</a> </dd>
+    {{??}}
+    <dd class="all-sel selected"> <a class="all">全部</a> </dd>
+    {{?}}
+    {{~it.Data.Conditions.AirCompanys:perItems:index}}
+        {{?$.inArray(perItems.Value,it.filtrates.AirCompanyCode) < 0}}
+        <dd data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{??}}
+        <dd class="selected" data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{?}}
+    {{~}}
+</dl>
+<dl class="AirType">
+    <dt>航程类型:</dt>
+    {{?it.filtrates.FlightType.length > 0}}
+    <dd class="all-sel"> <a class="all">全部</a> </dd>
+    {{??}}
+    <dd class="all-sel selected"> <a class="all">全部</a> </dd>
+    {{?}}
+    {{~it.Data.Conditions.FlightTypes:perItems:index}}
+        {{?$.inArray(parseInt(perItems.Value),it.filtrates.FlightType) < 0}}
+        <dd data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{??}}
+        <dd class="selected" data-param="{{=perItems.Value}}"> <a title="{{=perItems.Name}}">{{=perItems.Name}}</a> </dd>
+        {{?}}
+    {{~}}
+</dl>
+{{?}}
+</div>
+{{?it.sorts.StartDate == 1 && it.sorts.Sort == 1}}
+ <div class="fp-sort J_fp_sort"> <span data-index="0" statspot="true" class="J_OrderTime up selected">按起飞时间排序<em></em></span> <span data-index="1" statspot="true" class="J_OrderPrice up">按价格排序<em></em></span> <em class="tips f-right"> <s>*</s>所有起降时间均为当地时间 </em> </div>
+{{??it.sorts.StartDate == 1 && it.sorts.Sort == 0}}
+<div class="fp-sort J_fp_sort"> <span data-index="0" statspot="true" class="J_OrderTime selected">按起飞时间排序<em></em></span> <span data-index="1" statspot="true" class="J_OrderPrice up">按价格排序<em></em></span> <em class="tips f-right"> <s>*</s>所有起降时间均为当地时间 </em> </div>
+{{??it.sorts.Price == 1 && it.sorts.Sort == 1}}
+<div class="fp-sort J_fp_sort"> <span data-index="0" statspot="true" class="J_OrderTime">按起飞时间排序<em></em></span> <span data-index="1" statspot="true" class="J_OrderPrice  up selected">按价格排序<em></em></span> <em class="tips f-right"> <s>*</s>所有起降时间均为当地时间 </em> </div>
+{{??it.sorts.Price == 1 && it.sorts.Sort == 0}}
+<div class="fp-sort J_fp_sort"> <span data-index="0" statspot="true" class="J_OrderTime">按起飞时间排序<em></em></span> <span data-index="1" statspot="true" class="J_OrderPrice selected">按价格排序<em></em></span> <em class="tips f-right"> <s>*</s>所有起降时间均为当地时间 </em> </div>
+{{?}}
+</div>
+{{?}}

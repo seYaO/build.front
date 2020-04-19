@@ -1,0 +1,6 @@
+{{?it.sourceId !== 0}}
+    <li data-index="6,8,11,12,13,15,16,17,18,19,20" {{? !it.singleType}}class="current"{{?}}><span>全部</span></li>
+    {{~condition.ThemeList:value}}
+    <li data-index="{{=value.Id}}" {{?value.Id == it.singleType}} class="current"{{?}}><span>{{=value.Name}}</span></li>
+    {{~}}
+{{?}}

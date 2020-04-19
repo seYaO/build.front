@@ -1,0 +1,10 @@
+{
+    "dataUri":"/intervacation/api/PThemePage/GetThemeIndexLable",
+    "query": {
+        "dataFlag":1,
+        "count":7,
+        "showType":37,
+        "srcId":321
+    },
+    "desc": "出境主题游首页"
+}

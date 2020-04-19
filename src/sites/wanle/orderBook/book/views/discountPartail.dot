@@ -1,0 +1,32 @@
+<!--优惠模块开始-->
+<div class="procedureBox" id="preferential_wrap" style="padding-bottom: 10px;">
+    <h2 class="pro_title">优惠信息</h2>
+    <div class="listbox" id="preferential_wrap_listBox">
+        <div class="write_list rule_each">
+            <div style="display: inline-block; width: 79px;" class="ui-label" style="display: block;">
+                <span>无需优惠：</span>
+            </div>
+
+            <div style="display: inline-block; width: 730px; margin-left: 3px;">
+                <div class="rule_each  " id="rule_0" attrconfigrule="0-0" style="font-size: 14px;">
+                    <label class="on_check">
+                        <input type="radio" checked="checked" value="0-0" name="chk_rule" class="chk_rule" id="chk_rule_0" /></label>
+                    <span for="chk_rule_0">不使用优惠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="discountLogin none">如帐户内有更多优惠,请<i style="color: #ff7800; text-decoration: underline; cursor: pointer;" class="orderLogin">&nbsp;登录&nbsp;</i>后使用</span> </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="tooltip-bubble" id="discount-tooltip-bubble" style="display: none; top: 40px; left: 340px; position: absolute;">
+    <div class="tooltip-bubble-content">
+        <ul class="order-tips">
+            <li><span></span></li>
+        </ul>
+    </div>
+    <div class="tooltip-bubble-arrow tooltip-bubble-arrow-top">
+        <div class="tooltip-bubble-arrow-before"></div>
+        <div class="tooltip-bubble-arrow-after"></div>
+    </div>
+</div>
+

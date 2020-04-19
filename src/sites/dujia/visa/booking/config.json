@@ -1,0 +1,9 @@
+{
+    "dataUri":  "/intervacation/api/VisaOrder/GetVisaOrderInitData",
+    "body":{
+    	"id":599,
+        "pricelist":"1|0"
+    },
+    "method": "post",
+    "desc": "签证下单页"
+}

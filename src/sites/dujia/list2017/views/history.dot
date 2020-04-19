@@ -1,0 +1,28 @@
+{{var lineList = it.lineList;}}
+{{?lineList && lineList.length && lineList[0].line && lineList[0].line.length}}
+<h4 class="module-top"><i class="icon-ls">&nbsp;</i>浏览历史</h4>
+<ul>
+    {{~lineList[0].line:value:listIndex}}
+        {{var linkUrl = "";}}
+        {{?value.prop == 3}}
+            {{?value.isTpackage == '0'}}
+                {{linkUrl = "/dujia/tours/" + value.id + "/";}}
+            {{??}}
+                {{linkUrl = "/dujia/tours/p" + value.id + "/";}}
+            {{?}}
+        {{??}}
+            {{linkUrl = "/dujia/tours/" + value.id + ".html";}}
+        {{?}}
+        <li>
+            <div class="history-line">
+                <a href="{{=linkUrl}}" target="_blank">
+                    <img data-img="{{=value.absImgURL.replace('http:','')}}" />
+                    <div class="mask-img"></div>
+                    <p title='{{=value.title + "&nbsp;" + value.subTitle}}'>{{=value.title + "&nbsp;" + value.subTitle}}</p>
+                    {{?value.tcPrice}}<span>¥{{=value.tcPrice}}<em>起</em></span>{{??}}<span>实时计价</span>{{?}}
+                </a>
+            </div>    
+        </li>
+    {{~}}
+</ul>
+{{?}}

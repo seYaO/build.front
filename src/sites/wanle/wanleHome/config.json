@@ -1,0 +1,8 @@
+{
+  "dataUri": "/wanle/api/WanleProduct/GetWanleShowPage",
+  "query": {
+      "siteType": 0,
+      "pageId": 2
+  },
+  "desc": "玩乐WIFI首页"
+}

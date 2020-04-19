@@ -1,0 +1,114 @@
+/* 弹层 */
+.clearfix{
+    zoom: 1;
+}
+.clearfix:after {
+    content: '.';
+    display: block;
+    clear: both;
+    line-height: 0;
+    height: 0;
+    visibility: hidden
+}
+.comm_cut {
+    background-color: #dddddd;
+    padding: 5px;
+    font-size: 12px;
+}
+.comm_cut p{
+    padding: 0;
+    margin: 0;
+}
+
+.comm_cut .comm_mian {
+    background-color: #FFFFFF;
+    border: 1px solid #999999;
+    padding: 5px 10px;
+    position: relative;
+    line-height: 22px;
+}
+
+.comm_cut .comm_mian .comm_s {
+    position: absolute;
+    top: -9px;
+    left: 20px;
+    width: 17px;
+    height: 9px;
+    background: url(//img1.40017.cn/cn/y/14/p/bg_bg.0.4.png?v=004) 0 -71px no-repeat;
+}
+
+.comm_cut .comm_mian .comm_sr {
+    position: absolute;
+    top: -9px;
+    right: 20px;
+    width: 17px;
+    height: 9px;
+    background: url(//img1.40017.cn/cn/y/14/p/bg_bg.0.4.png?v=004) 0 -71px no-repeat;
+}
+
+#upPriceInfo,
+.comm_cut {
+    width: 355px;
+    position: absolute;
+}
+
+.ui-tips .share_c {
+    color: #fc924c;
+    margin-top: 5px;
+}
+
+.ui-tips .share_d a {
+    float: left;
+    background: url(//img1.40017.cn/cn/y/14/p/bg_bg.0.4.png?v=004) 0 -71px no-repeat;
+    padding: 3px 5px 3px 25px;
+    margin-right: 15px;
+    color: #666666;
+    line-height: 18px;
+    border-radius: 2px;
+}
+
+.ui-tips .share_d a:hover {
+    color: #666666;
+    text-decoration: none;
+    background-color: #f0f0f0;
+}
+
+.ui-tips .share_d .sina_ico {
+    background-position: -200px -431px;
+}
+
+.ui-tips .share_d .weixin_ico {
+    background-position: -200px -399px;
+}
+
+.ui-tips .share_d .qqzone_ico {
+    background-position: -200px -365px;
+}
+td.ui-dialog-body{
+    padding: 10px;
+    width: 252px;
+    height: 315px;
+}
+.ui-dialog-body .tc_weixin_pop_head {
+    font-size: 12px;
+    font-weight: bold;
+    text-align: left;
+    line-height: 16px;
+    height: 16px;
+    position: relative;
+    color: #000
+}
+
+.ui-dialog-body .tc_weixin_pop_foot {
+    font-size: 12px;
+    text-align: left;
+    line-height: 22px;
+    color: #666;
+    text-align: center
+}
+
+.ui-dialog-body .qr_con {
+    width: 200px;
+    height: 200px;
+    margin: 25px auto
+}

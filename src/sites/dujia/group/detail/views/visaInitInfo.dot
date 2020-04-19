@@ -1,0 +1,94 @@
+{{?it.VisaTemplateId}}
+    <div class="list-box visa-content" attr-url="/intervacation/api/VisaInfo/GetVisaInfo?siteType=0"
+        data-templateidlist={{=JSON.stringify(it.VisaTemplateIdList)}}
+        data-templateid="{{=it.VisaTemplateId}}"
+        data-viewid="{{=it.VisaInterviewTemplateId}}">
+    </div>
+{{??it.length}}
+    <div class="list-box visa-content" attr-url="/intervacation/api/VisaInfo/GetVisaInfo?siteType=0"
+         data-templateid="0">
+        <div class="visaInfo">
+            <ul >
+                <li >办签国家：
+                    <span class="visaCountry">
+                        {{~it:visa:countryNameIndex}}
+                        <span {{?countryNameIndex == 0}}class="cur"{{?}}>{{=visa.CountryName}}</span>
+                        {{~}}
+                    </span>
+                </li>
+            </ul>
+            {{~it:visa:visaIndex}}
+            <ul class="visaInfos {{?visaIndex != 0}}none{{?}}">
+                <li>签证类型：
+                    <span>{{=visa.VisaTypeName}}</span>
+                </li>
+                <li class="J_visaTime">办理时长：
+                    <span>送签后{{=visa.Duration}}个工作日</span>
+                </li>
+                <li>受理范围：
+                    <span>{{=visa.RegionName}}领区</span>
+                </li>
+                {{?visa.Notice&&visa.Notice!=""}}
+                {{var Notice = ((visa.Notice.replace(/&nbsp;/g,"").replace(/(^\s+)|(\s+$)/g, "")));}}
+                    {{?Notice&&Notice!=""}}
+                    <li class="tip_import"><em>重要提醒：</em>
+                        <span>{{=Notice.replace(/\r\n/g,"<br />")}}</span>
+                        <a class="J_showImport" href="javascript:void(0);">展开</a>
+                    </li>
+                    {{?}}
+                {{?}}
+            </ul>
+            {{~}}
+            <a class="btn-email none">Email材料</a>
+        </div>
+        <div class="visasource-time none">
+            <p>材料收取截止时间：</p>
+            <div class="visasource-content">
+                <div class="visasource-content-title">
+                    <span class="visasource-col-1">出发班期</span>
+                    <span class="visasource-col-2">截止收取材料时间</span>
+                    <span class="visasource-col-3">出发班期</span>
+                    <span class="visasource-col-4">截止收取材料时间</span>
+                </div>
+                <div class="visasource-content-main clearfix">
+                    <ul>
+
+                    </ul>
+                </div>
+            </div>
+            <div><span class="togglemore open">展开全部信息</span></div>
+        </div>
+        <div class="moduleInfo-name">
+            <i class="ziyou-right-arrow"></i>
+            <span>所需材料</span>
+        </div>
+        {{~it:visa:visaItem}}
+        <div class="visa-item {{?visaItem != 0}}none{{?}}" continent-id="{{=visa.ContinentId}}" country-id="{{=visa.CountryId}}" visa-id="{{=visa.VisaTypeId}}" region-id="{{=visa.RegionId}}">
+
+            {{?visa.visaPersonType && visa.visaPersonType.length!=0}}
+            <ul class="nav-tab J_visaPersonType clearfix">
+                {{var person = visa.visaPersonType;var len = visa.visaPersonType.length;}}
+                {{for(var j=0;j< len;j++){ }}
+                {{?person[j].PersonName && person[j].PersonName!=""}}
+                <li  person-id="{{=person[j].PersonType}}" data-persontypeid="{{=person[j].PersonType}}" {{?j==0}}class="current"{{?}}>{{=person[j].PersonName}}</li>
+                {{?}}
+                {{ } }}
+            </ul>
+            {{?}}
+            <div class="visa-details ">
+            </div>
+        </div>
+        {{~}}
+        <div class="moduleInfo-name none">
+            <i class="ziyou-right-arrow"></i>
+            <span>其他注意事项</span>
+        </div>
+        <div class="visaOther-tips">
+
+        </div>
+    </div>
+{{??}}
+<div class="list-box visa-content">
+    暂无签证信息
+</div>
+{{?}}

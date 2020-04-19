@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"  trace="pc-visadetails-new">
+{{var it = IT.Data || {};}}
+{{
+    var productDetail = it.data,
+        visaTDK=it.visaTDK || {};
+}}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{{=visaTDK.Tilte}}</title>
+    <meta id="Keywords"content="{{=visaTDK.KeyWords}}" />
+    <meta id="Description"content="{{=visaTDK.Description}}"/>
+     <!-- 适配声明start -->
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="//m.ly.com/visa/visa-{{=productDetail.Id}}.html">
+    <meta name="mobile-agent" content="format=xhtml; url=//m.ly.com/visa/visa-{{=productDetail.Id}}.html">
+    <meta name="mobile-agent" content="format=html5; url=//m.ly.com/visa/visa-{{=productDetail.Id}}.html">
+    <meta name="mobile-agent" content="format=wml; url=//m.ly.com/visa/visa-{{=productDetail.Id}}.html">
+    <meta name="applicable-device" content="pc">
+    <!-- 适配声明end -->
+    <% includeId = cnwidescreenjscss %>
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./visa_details.css">
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+
+    <script type="text/javascript">
+        window.host = {
+            page: "//www.ly.com",
+            comment: "//tctj.ly.com"
+        };
+    </script>
+</head>
+
+<body>
+<!-- 公共头部 start -->
+<% includeId = cnwidescreenhead?channel=visa %>
+<!-- 用于PC轨迹收集资源Id -->
+        <input type="hidden" id="commonProId" value="{{=productDetail.Id}}" />
+<!-- 公共头部 end -->
+
+<!-- 主体内容 start -->
+<div class="wapper">
+    <div id="content" class="content">
+        <!-- 面包屑和电话start -->
+        <div id="nav" class="nav">
+            <span>您所在位置：</span>
+            <a href="/" title="同程首页" rel="nofollow" target="_blank">同程首页</a>
+            <span class="font_gt">&gt;</span>
+            <a href="/dujia/" title="出境游" rel="nofollow" target="_blank">出境游</a>
+            <span class="font_gt">&gt;</span>
+            <a href="/dujia/visa/" title="签证" target="_blank">签证</a>
+            <span class="font_gt">&gt;</span>
+            <a href="/dujia/visa/country-{{=productDetail.CountryEnName}}.html" title="{{=productDetail.CountryName}}签证办理" target="_blank">{{=productDetail.CountryName}}签证办理</a>
+            <span class="font_gt">&gt;</span>
+            <span><h2>{{=productDetail.MainTitle}}</h2></span>
+            <h1  class="c_phone_add">客服电话：4001-899-812</h1>
+        </div>
+        <!-- 面包屑和电话end -->
+
+        <!-- 主体内容 end -->
+        <!-- 签证产品信息 -->
+        <input type="hidden" id="hidProductId" value="{{=productDetail.Id}}" />
+        <input type="hidden" id="hidCountryName" value="{{=productDetail.CountryName}}" />
+        <input type="hidden" id="hidEarlyBookDate" value="{{=productDetail.EarlyBookDate}}" />
+        <input type="hidden" id="hidLaterBookDate" value="{{=productDetail.LaterBookDate}}" />
+
+        <div class="box-top clearfix">
+            <div class="pro-left clearfix">
+                <div class="pro-img">
+                    <img src="{{=productDetail.ImageUrl.replace('http:','')}}" alt="{{=productDetail.TypeName}}">
+                    <span>编号：{{=productDetail.Id}}</span>
+                </div>
+                <div class="pro-ensure">
+                    {{?productDetail.VisaPolicyDes && productDetail.VisaPolicyDes.SurrenderDescription}}
+                    <span>{{=productDetail.VisaPolicyDes.SurrenderDescription}}</span>
+                    {{?}}
+                </div>
+                <div class="pro-topComment">
+
+                </div>
+            </div>
+            <div class="pro-right">
+                <div class="pro-title">
+                    <span class="title">
+                    {{?productDetail.CountryName == "中国台湾"}}
+                       {{=productDetail.CountryName}}自由行入台证
+                    {{??productDetail.CountryName == "中国香港" || productDetail.CountryName == "中国澳门"}}
+                       {{=productDetail.CountryName}}L签送关
+                    {{??}}
+                        {{=productDetail.MainTitle+"（"+ productDetail.RegionName +"领区）"}}
+                    {{?}}
+                    </span>
+                  <!--   <span class="moreCountry">
+                        <span class="more J_moreCountries">更多国家及地区&gt;&gt;</span>
+                        <div class="cursor-show-child"></div>
+                    </span> -->
+                </div>
+                <div class="pro-details">
+                    <div class="pro-in">
+                        <div class="pro-select">
+                            <div class="region">
+                                送签领区：<span class="select-area J_trace" data-regionid="{{=productDetail.RegionId}}">{{=productDetail.RegionName}}领区</span>
+                                <ul class="J_regionlist select-areas none">
+                                {{?productDetail.Conditions && productDetail.Conditions.RegionLists && productDetail.Conditions.RegionLists.length > 0}}
+                                    {{~productDetail.Conditions.RegionLists:productRegion}}
+                                    <li data-regionid="{{=productRegion.Id}}">{{=productRegion.Name}}</li>
+                                    {{~}}
+                                {{?}}
+                                </ul>
+                            </div>
+                            <div class="related">
+                                签证类型：<span class="select-area J_trace" data-relatedid="{{=productDetail.TypeId}}">{{=productDetail.TypeName}}</span>
+                                <ul class="J_typelist select-areas none">
+                                {{?productDetail.Conditions && productDetail.Conditions.RelatedLists && productDetail.Conditions.RelatedLists.length > 0}}
+                                    {{~productDetail.Conditions.RelatedLists:productRelatedLists}}
+                                    <li data-relatedid="{{=productRelatedLists.Id}}">{{=productRelatedLists.Name}}</li>
+                                    {{~}}
+                                {{?}}
+                                </ul>
+                            </div>
+                            <div class="enterTimes" style="margin-right: 0;">
+                            {{~productDetail.Conditions.EnterTimes:productEnterTimes}}
+                                {{?productEnterTimes.Name == productDetail.EnterTimes}}
+                                入境次数：<span class="select-area J_trace" data-etimes="{{=productEnterTimes.Id}}">{{=productDetail.EnterTimes}}</span>
+                                {{?}}
+                            {{~}}
+                            <ul class="J_turnslist select-areas none">
+
+                            {{?productDetail.Conditions && productDetail.Conditions.EnterTimes && productDetail.Conditions.EnterTimes.length > 0}}
+                                {{~productDetail.Conditions.EnterTimes:productEnterTimes}}
+                                <li data-etimes="{{=productEnterTimes.Id}}">{{=productEnterTimes.Name}}</li>
+                                {{~}}
+                            {{?}}
+                            </ul>
+                            </div>
+                        </div>
+                        <div class="pro-meal">
+                            <em>选择套餐：</em>
+                            <div class="J_meallist" style="height:78px;overflow:hidden;"><p class='loading'>正在加载...</p></div>
+                            <a href="javascript:void(0);" class="moremeal open none">更多</a>
+
+                            <div class="cursor-show-icon" style="display: none;color:red;">
+                                <i></i>您还未选择套餐，请选择！
+                            </div>
+                        </div>
+                        {{?productDetail.VisaProductTagList && productDetail.VisaProductTagList.length > 0}}
+                        <div class="pro-service">
+                            特色服务：
+                            {{~productDetail.VisaProductTagList:productTag}}
+                                <div class="pro-icon">
+                                    <img src="{{=productTag.ImageUrl.replace('http:','')}}">
+                                    <div class="cursor-show-icon">
+                                        <span></span>{{=productTag.TagDesc}}
+                                    </div>
+                                </div>
+                            {{~}}
+                        </div>
+                        {{??}}
+                        <div class="pro-service" style="height:15px"></div>
+                        {{?}}
+
+                        <div class="pro-info">
+                            <ul>
+                                <li class="handle-1 J_trace" trace="handle-1"><span class="title">有效天数:</span><span title="{{=productDetail.ValidityTimes}}" class="desk">{{=productDetail.ValidityTimes}}</span></li>
+                                <li class="handle-2 J_trace" trace="handle-2"><span class="title">最长停留:</span><span title="{{=productDetail.MaxStopTimes}}" class="desk">{{=productDetail.MaxStopTimes}}</span></li>
+                                <li class="handle-3 J_trace" trace="handle-3"><span class="title">是否面试:</span>
+                                <span title="{{=productDetail.IsInterview}}" class="desk">{{=productDetail.IsInterview}}</span>
+                                {{?productDetail.InterviewMaterialTemplateId && productDetail.InterviewMaterialTemplateId != 0}}
+                                    &nbsp;&nbsp;
+                                    <a href="/dujia/visa/ms-{{=productDetail.InterviewMaterialTemplateId}}.html" target="_blank">查看面试材料详情</a>
+                                {{?}}
+                                </li>
+                                <li class="handle-4 J_trace" trace="handle-4"><span style="left:0;" class="title">是否录指纹:</span>
+                                    <span style="margin-left:82px;" title="否" class="desk">
+                                    {{?productDetail.IsRecordFingerprint==0}}否{{??}}是{{?}}
+                                    </span>
+                                </li>
+                            </ul>
+                            {{?productDetail.TransactTimeRangeDetail}}
+                            <div class="time">
+                                <span class="title">办理时长:</span>
+                                <span class="content J_trace" trace="p-time" title="{{=productDetail.TransactTimeRangeDetail}}">{{=productDetail.TransactTimeRangeDetail}}</span>
+                            </div>
+                            {{?}}
+                            {{?productDetail.AcceptedRange}}
+                            <div class="area J_area">
+                                <span class="title">受理范围:</span>
+                                <span class="content J_trace" trace="p-area">{{=productDetail.AcceptedRange}}</span>
+                            </div>
+                            {{?}}
+
+                            <div class="pops">
+                                {{?productDetail.CountryName == "中国台湾"}}
+                                <span class="company">本产品由同程旗下南通辉煌国际旅行社有限公司及具有资质的合作旅行社提供相关服务</span>
+                                {{??}}
+                                <span class="company">本产品由同程国旅或其关联公司旅行社及具有资质的合作旅行社提供相关服务</span>
+                                {{?}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{?productDetail.PreferentialList && productDetail.PreferentialList.length>0}}
+                    {{var cssPerfer = "price-box1";}}
+                {{?}}
+                <div class="pro-order">
+                    <div class="price-box {{=cssPerfer || ''}}">
+                        <div class="p_bg">
+                            <!--同程价格  -->
+                            <span class="y-title">同程价格:</span>
+                            <span><em class="price-em-1">¥</em><em class="price-em-2">{{=productDetail.AdultPrice}}</em>/人</span>
+                            <div class="intro">
+                                <a href="javascript:void(0);" class="priceInform">价格说明</a>
+                                <div class="cursor-show-child">
+                                    <span></span>
+                                    <ul>
+                                        {{?productDetail.FeeContain!=""}}
+                                        <li><strong>起价说明：</strong><em>
+                                            {{?productDetail.FeeContainList && productDetail.FeeContainList.length>0}}
+                                            {{var len = productDetail.FeeContainList.length;}}
+                                            {{~productDetail.FeeContainList:feeprice:fIndex}}
+                                                {{?len == fIndex+1}}
+                                                    {{=feeprice.Name}}{{=feeprice.Amount}}
+                                                {{??}}
+                                                    {{=feeprice.Name}}{{=feeprice.Amount}}+
+                                                {{?}}
+                                            {{~}}
+                                            {{?}}
+                                        </em></li>
+                                        {{?}}
+                                        <li><strong>服务内容：</strong><em>{{=productDetail.TCServer}}</em></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        {{?productDetail.PreferentialList && productDetail.PreferentialList.length>0}}
+                        {{~productDetail.PreferentialList:perfer}}
+                            <div class="coupon_bg">
+                                <div class="coupon_box">
+                                 {{?perfer.PreferentialType ==10}}
+                                    <span class="cou-blh J_cou">
+                                    <i>{{=perfer.IconContent}}</i>
+                                    <em>{{=perfer.PreAmount}}</em>
+                                    </span>
+                                 {{??}}
+                                    <a href="javascript:(0)" class="J_cou cou_infro" style="border: solid 1px {{=perfer.IconColor}};color: {{=perfer.IconColor}};">{{=perfer.IconContent}}</a>
+                                     {{?}}
+                                    <div class="cou-show-child">
+                                        <span></span>
+                                        <div>
+                                            <strong>{{=perfer.IconContent}}</strong><hr>
+                                            {{=perfer.Remark}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {{~}}
+                        {{?}}
+                    </div>
+                    <a class="buy-btn J_trace" trace="buy-btn" href="javascript:void(0)" title="立即预订">立即预订</a>
+                </div>
+            </div>
+        </div>
+        {{?productDetail.FriendlyReminder && productDetail.FriendlyReminder != ""}}
+        <div class="box-about" trace="box-about">
+            <div class="box-about-tips"></div>
+            <div class="box-about-content">
+                <h3>重要提醒</h3>
+                <div class="box-about-message">
+                    {{=productDetail.FriendlyReminder}}
+                </div>
+            </div>
+            <div class="box-about-backgroud"></div>
+        </div>
+        {{?}}
+
+        <div class="box-main">
+            <div id="conlist" class="box-main-nav clearfix">
+                <div class="content-nav-inner"></div>
+                <a class="reserve-btn" trace="reserve-btn" href="javascript:void(0)" rel="nofollow" title="立即预订">立即预订&gt;&gt;</a>
+                <span class="box-tel"><i class="box-icons icons-phone"></i>咨询热线：<span>4001-899-812</span></span>
+            </div>
+            <div class="box-main-content">
+                <!-- 所需材料start -->
+                {{#def.material}}
+
+                <!-- 预订流程start -->
+                {{?productDetail.HandleProcessList && productDetail.HandleProcessList.length > 0}}
+                <div id="flowInfo" class="nav_box J_NavBox flow-info" data-txt="预订流程">
+                    <div class="nav-tit"><span><i class="box-icons icons-flow"></i><h3>预订流程</h3></span>
+                    </div>
+                    <div class="flow-content clearfix">
+                        <span class="flow-left">
+                            <i class="flow-scroll-left"></i>
+                        </span>
+                        <div id="wins" class="flow-msg">
+                            <ul>
+                                {{~productDetail.HandleProcessList:handleProcess}}
+                                    <li>
+                                        <div class="flow-icon">
+                                            <i class="icon-line-2"></i>
+                                            <h2>0{{=handleProcess.Index}}</h2>
+                                            <i class="icon-line-1"></i></div>
+                                        <div class="flow-border">
+                                            <p>{{=handleProcess.Name}}</p>
+                                            <span>{{=handleProcess.Description}}</span>
+                                        </div>
+                                    </li>
+                                {{~}}
+                            </ul>
+                        </div>
+                        <span class="flow-right">
+                            <i class="flow-scroll-right"></i>
+                        </span>
+                    </div>
+                </div>
+                {{?}}
+                <!-- 预订须知start -->
+                {{?productDetail.Notice&&productDetail.Notice != ""}}
+                <div id="noticeInfo" class="nav_box J_NavBox" data-txt="预订须知">
+                    <div class="nav-tit"><span><i class="box-icons icons-notice"></i><h3>预订须知</h3></span>
+                    </div>
+                    <div class="notice-content-t">
+                        <div class="notice-tit">
+                            <i></i><span>签证须知</span>
+                        </div>
+                        <ul class="notice-msg">
+                            <li>{{=productDetail.Notice}}</li>
+                        </ul>
+                    </div>
+                </div>
+                {{?}}
+                <!-- 预订须知end -->
+
+
+                <!-- 用户点评start -->
+                <div id="commentsInfo" class="nav_box J_NavBox data-outer-loading" data-ref="#J_SubCommentContent" data-txt="用户点评">
+                    <div class="nav-tit"><span><i class="box-icons icons-comments"></i><h3>用户点评</h3></span>
+                    </div>
+                    <div class="list-box comment-content" id="J_SubCommentContent">
+                    </div>
+                    <div class="data-loading">
+                        <div class="bg"></div><span>请稍候,用户点评正在加载中...</span></div>
+                </div>
+                <!-- 用户点评end -->
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<!--侧边栏begin-->
+<!--侧边栏end-->
+
+<!-- 图样展示start -->
+<div id="show_photo" class="none ui-dialog-content">
+    <div class="ui-tips">
+        <div id="content">
+            <div class="mslide-panel none">
+                <h3><a href="javascript:void(0)" class="JJ_close"></a></h3>
+                <div class="mp-content">
+                    <div class="photo-detail">
+                        <div class="photo">
+                            <a class="mslide-num" href="javascript:void(0)"></a>
+                        </div>
+                        <div class="detail">注意事项：
+                        </div>
+                    </div>
+                    <div class="photo-mslide"> <a href="javascript:void(0)" class="prev disabled"><span class="btn-prev"></span></a>
+                        <div class="list">
+                            <ul>
+                            </ul>
+                        </div>
+                        <a href="javascript:void(0)" class="next"><span class="btn-next"></span></a> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 图样展示end -->
+<!--邮箱内容start-->
+<div class="send-email ">
+    <div class="headbox visa-dialog">
+        <h3>请选择需要发送的签证材料类型</h3>
+        <div class="J_renderType">
+        </div>
+        <div class="header">
+            <div class="head_left">
+                <div class="input_box">
+                    <div class="mail_input_box">
+                        <span>常用的邮箱：</span>
+                        <input type="text" name="" id="" class="email_input" />
+                    </div>
+                    <div class="code_input_box">
+                        <span>图形验证码：</span>
+                        <input type="text" name="" id="" class="code_input" />
+                    </div>
+                    <div class="code_view_box">
+                        <i onclick="$('.dialog_modal_gp #imgcode').attr('src','//www.ly.com/dujia/AjaxCallTravel.aspx?type=ValidateCode&amp;r='+Math.random());" class="change_code_btn"></i>
+                        <img id="imgcode" class="code_view_con" src="//www.ly.com/dujia/AjaxCallTravel.aspx?type=ValidateCode" alt="验证码" />
+                    </div>
+                    <div class="clear_float"></div>
+                    <a href="javascript:void(0);" title="发送" class="send_submit">发送</a>
+                    <a href="javascript:void(0);" data-dialog-hide title="取消" class="send_cancel">取消</a>
+                    <span class="prompt-info"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--邮箱内容end-->
+
+
+<% includeId = cnwidescreenfoot?vrcode=10002-2008-0 %>
+
+<script>
+    fish.admin.config({
+        verify: {
+            v: "0.4.1",
+            css: 1,
+            g: 2012082123
+        },
+        Calendar: {
+            v: "0.2",
+            css: 1,
+            g: 20140106
+        }
+    });
+</script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js?v=2015103002"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2015072201" charset="utf-8"></script>
+
+<script src="//modules/sea.js" data-loader= "true" type="text/javascript"></script>
+<script type="text/javascript">
+    seajs.require("./index.js").init();
+</script>
+<!-- 统计相关功能 -->
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js"></script>
+<script>
+    //初始化模块统计
+    SPM_MODULE&&SPM_MODULE.init();
+</script>
+
+<% includeId = node_dj_common_stat %>
+<script type="text/javascript">
+    var rtTag ={
+        "data": {
+            "etravel_page": {
+                "page_type": "index",
+                "p_class1": "出境游",
+                "p_class2": "签证终页"
+            }
+        }
+    };
+  stat.init({
+        "baidu": {
+            "parameter": "pc",
+            "hmt": [
+                ['_setAccount', '53a0d71dba66835ff1aa907db99144d8'],
+                ['_trackRTEvent', rtTag]
+            ]
+        },
+         "pvConfig": {
+            "PublicPlatId": "1",
+            "PageId": "11",
+            "PVSource": "0",
+            "LineId":$('#hidProductId').val(),
+            "url": "/dujia/AjaxHelper/PvHandler.ashx"
+        },
+        "_tcHotmapx": {
+            "pid": "787",
+            "sp": "100"
+        },
+        "mvl": {
+            "_mvq": [
+                ['$setAccount', 'm-135073-0'],
+                ['$logConversion']
+            ],
+            "isImmediateExcu": true
+        }
+    });
+</script>
+</body>
+</html>

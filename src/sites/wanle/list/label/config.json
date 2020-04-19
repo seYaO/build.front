@@ -1,0 +1,10 @@
+{
+  "dataUri": "/wanle/api/WanleProduct/GetWanleSearchLable",
+  "query": {
+    "siteType": 0,
+    "pageId": 2,
+    "keyWord": "香港"
+  },
+  "desc": "玩乐门票标签页",
+  "views":"../views"
+}

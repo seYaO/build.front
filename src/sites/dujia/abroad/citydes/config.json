@@ -1,0 +1,11 @@
+{
+    "dataUri":  "/intervacation/api/CountryDestination/GetCityTravelDetail",
+    "query": {
+        "siteType":0,
+        "pageType":30,
+        "destType":1,
+        "destId":3172,
+        "destPinYin":"DONGJING"
+    },
+    "desc": "出境目的地城市页"
+}

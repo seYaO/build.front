@@ -1,0 +1,125 @@
+<div class="travel-flight-title J_flightTitle">
+<div class="travel-flight-title">
+   <div>
+     <span class="label"><h3>航班信息</h3></span><em><s>*</s>（航班仅供参考，具体航班以出团通知书为准，起飞与抵达时间以当地时间为准）</em>
+     <em class="hangsi">
+            航司托运信息
+     </em>
+   </div>
+</div>
+<div class="travel-flight-content">
+  {{?(it.flightBack && it.flightBack.length>0) || (it.flightGo && it.flightGo.length>0)}}
+  {{?it.flightGo && it.flightGo.length>0}}
+  <div class="table-flight-warp flight-go">
+       <div class="flight-type"><span>去程</span></div>
+       <table class="table-flight" border="0">
+           <tbody>
+               <tr>
+                 <td class="flight-title" colspan="9">
+                   {{~it.flightGo:flightGo}} <span class="mr20">{{=flightGo.Departure}} → {{=flightGo.Destination}}</span> {{~}}
+                 </td>
+               </tr>
+             {{~it.flightGo:flightGo}}
+             <tr>
+                 <td width="106" rowspan="2">
+                {{=flightGo.AirCompany}} <br><span class="flightNum">{{=flightGo.FlightNumber}}</span></td>
+                 <td width="62" rowspan="2">
+                   <span class="flight-go-icon"></span>
+                 </td>
+                 <td width="42">
+                   <span class="c9">起飞</span>
+                 </td>
+                 <td width="90">{{=flightGo.StartTime.split(" ")[0]}}</td>
+                 <td width="62">{{=flightGo.StartTime.split(" ")[1]}}</td>
+                 <td width="68">{{=flightGo.Departure}}</td>
+                 <td width="160">{{=flightGo.AirportOfDeparture}}</td>
+                 <td width="60" rowspan="2" align="right">
+                   <span class="flight-back-icon"></span>
+                 </td>
+                 <td width="150" rowspan="2" align="right">
+                   <span class="flight-time">飞行时长:{{=flightGo.FlightTime}}</span>
+                 </td>
+             </tr>
+             <tr>
+                 <td>
+                   <span class="c9">抵达</span>
+                 </td>
+                <td width="90">{{=flightGo.EndTime.split(" ")[0]}}</td>
+                <td width="62">{{=flightGo.EndTime.split(" ")[1]}}</td>
+                 <td>{{=flightGo.Destination}}</td>
+                 <td>{{=flightGo.AirportOfDestination}}</td>
+             </tr>
+             {{?flightGo.Transfer}}
+             <tr>
+             <td colspan="9">
+               <div class="flight-transfer">
+                 <span>{{=flightGo.Destination}}中转</span>
+               </div>
+             </td>
+             </tr>
+             {{?}}
+             {{~}}
+          </tbody>
+       </table>
+     </div>
+  {{?}}
+  {{?it.flightBack && it.flightBack.length>0}}
+  <div class="spacing"></div>
+   <div class="table-flight-warp flight-back">
+     <div class="flight-type"><span>返程</span></div>
+     <table class="table-flight" border="0">
+       <tbody>
+         <tr>
+           <td class="flight-title" colspan="9">
+             {{~it.flightBack:flightBack}} <span class="mr20">{{=flightBack.Departure}} → {{=flightBack.Destination}}</span> {{~}}
+           </td>
+         </tr>
+         {{~it.flightBack:flightBack}}
+         <tr>
+           <td width="106" rowspan="2">
+             {{=flightBack.AirCompany}} <br><span class="flightNum">{{=flightBack.FlightNumber}}</span></td>
+           <td width="62" rowspan="2">
+             <span class="flight-go-icon"></span>
+           </td>
+           <td width="42">
+             <span class="c9">起飞</span>
+           </td>
+           <td width="90">{{=flightBack.StartTime.split(" ")[0]}}</td>
+           <td width="62">{{=flightBack.StartTime.split(" ")[1]}}</td>
+           <td width="68">{{=flightBack.Departure}}</td>
+           <td width="105">{{=flightBack.AirportOfDeparture}}</td>
+           <td width="60" rowspan="2" align="right">
+             <span class="flight-back-icon"></span>
+           </td>
+           <td width="150" rowspan="2" align="right">
+             <span class="flight-time">飞行时长:{{=flightBack.FlightTime}}</span>
+           </td>
+         </tr>
+         <tr>
+           <td>
+             <span class="c9">抵达</span>
+           </td>
+           <td width="90">{{=flightBack.EndTime.split(" ")[0]}}</td>
+           <td width="62">{{=flightBack.EndTime.split(" ")[1]}}</td>
+           <td>{{=flightBack.Destination}}</td>
+           <td>{{=flightBack.AirportOfDestination}}</td>
+         </tr>
+         {{?flightBack.Transfer}}
+         <tr>
+           <td colspan="9">
+             <div class="flight-transfer">
+               <span>{{=flightBack.Destination}}中转</span>
+             </div>
+           </td>
+         </tr>
+         {{?}}
+         {{~}}
+       </tbody>
+     </table>
+     </div>
+  {{?}}
+  {{??}}
+  暂无航班信息，具体信息请咨询客服人员！
+  {{?}}
+</div>
+

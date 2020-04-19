@@ -1,0 +1,8 @@
+{
+  "dataUri": "/wanle/api/WWanleProduct/GetProductDetail",
+  "query": {
+      "siteType": 1,
+      "productId": "16671"
+  },
+  "desc": "玩乐微信终页"
+}

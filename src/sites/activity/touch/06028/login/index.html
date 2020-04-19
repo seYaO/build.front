@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta content="telephone=no" name="format-detection">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>海外分公司导游报账系统</title>
+
+  <link rel="stylesheet" href="http://js.40017.cn/cn/v/v1/backend/libs/prodev/guide/jqmodule/tc/login/index.css" />
+</head>
+<body>
+<div class="page-body">
+  <div class="page-box" id="J_pageBox">
+    <div id="mainPage" class="viewport">
+      <section class="content">
+        <div class="top-title">
+          海外分公司导游报账系统
+        </div>
+        <div class="user-login">
+          <div>
+            <label for="loginName" class="">
+              <input id="loginName" name="loginName" type="text" placeholder="用户名">
+            </label>
+          </div>
+          <div>
+            <label for="password" class="">
+              <input id="password" name="password" type="password" placeholder="密码">
+            </label>
+          </div>
+          <button class="btn btn-login J_submit">登录</button>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<!--<script src="../../jqmodule/tc/login/index.js"></script>-->
+
+<script src="http://js.40017.cn/cn/v/v1/backend/libs/prodev/guide/jqmodule/zepto.js"></script>
+<script src="http://js.40017.cn/cn/v/v1/backend/jqmodule/require.js"></script>
+<script type="text/javascript">
+  requirejs.config({
+    baseUrl: 'http://js.40017.cn/cn/v/v1/backend/libs/prodev/guide/jqmodule/'
+  });
+
+
+  require(['tc/login/index']);
+</script>
+</body>
+</html>

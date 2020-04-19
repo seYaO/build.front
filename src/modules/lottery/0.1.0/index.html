@@ -1,0 +1,112 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+    <script src="../../jquery.js" type="text/javascript"></script>
+    <style>
+        .rewards_list {
+            border-top: 3px solid #15516b;
+            border-left: 3px solid #15516b;
+            width: 316px;
+            height: 184px;
+            position: absolute;
+            top: 127px;
+            left: 39px;
+        }
+
+            .rewards_list td {
+                border-bottom: 3px solid #15516b;
+                border-right: 3px solid #15516b;
+                color: #15516b;
+                font-size: 16px;
+            }
+
+                .rewards_list td.select {
+                    background-color: #d3f89f;
+                }
+
+    </style>
+</head>
+<body>
+    <table class="rewards_list" cellspacing="0">
+        <tr>
+            <td data-index="0">拉杆箱</td>
+            <td data-index="1">谢谢参与</td>
+            <td data-index="2">背包</td>
+        </tr>
+        <tr>
+            <td data-index="7">谢谢参与</td>
+            <td></td>
+            <td data-index="3">谢谢参与</td>
+        </tr>
+        <tr>
+            <td data-index="6">WIFI</td>
+            <td data-index="5">谢谢参与</td>
+            <td data-index="4">转换插头</td>
+        </tr>
+    </table>
+    <button type="button" id="btnstart">自定义抽奖</button>
+    <input type="number" id="nbxnum"/>
+    <button type="button" id="btnset">设置奖项</button>
+
+    <button type="button" onclick="fn_auto();">随机抽奖</button>
+
+  
+    <script>
+        seajs.config({
+            base: "../../"
+        });
+    </script>
+
+    <script>
+       
+        seajs.use("lottery/0.1.0/index", function (lottery) {
+            var $obj = $('.rewards_list');
+            var $lottery = new lottery({
+                count: 8,
+                speed: 100,
+                cycle: 50,
+                modal: 'custom',
+                onStay: function (index) {
+                    $obj.find(".select").removeClass("select");
+                    $obj.find("[data-index=" + index + "]").addClass("select");
+                },
+                onLottery: function (index) {
+                    alert('恭喜你中了:' + index);
+                }
+            });
+
+            $("#btnset").click(function () {
+                var prize = $("#nbxnum").val();
+                $lottery.stop(prize);
+            });
+
+            $("#btnstart").click(function () {
+                $lottery.start();
+            });
+        });      
+
+        function fn_auto() {           
+            seajs.use("lottery/0.1.0/index", function (lottery) {
+                var $obj = $('.rewards_list');              
+                var $lottery = new lottery({
+                    count: 8,
+                    speed: 100,
+                    cycle: 50,
+                    modal: 'random',
+                    onStay: function (index) {
+                        $obj.find(".select").removeClass("select");
+                        $obj.find("[data-index=" + index + "]").addClass("select");
+                    },
+                    onLottery: function (index) {
+                        alert('恭喜你中了:' + index);
+                    }
+                });
+                $lottery.start();
+            });
+        }
+    </script>
+</body>
+</html>

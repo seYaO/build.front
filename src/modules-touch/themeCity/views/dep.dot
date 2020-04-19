@@ -1,0 +1,77 @@
+<div class="dep-outer">
+    <div class="dep-page J_DepPage">
+    <div>
+    {{var depData = it.DepartCity;}}
+        <div class="searchbox search-reset">
+            <input placeholder="中文/拼音/首字母" />
+            <span class="search-icon"></span>
+            <span class="clear needsclick"><i>×</i></span>
+            <span class="cancel needsclick">取消</span>
+        </div>
+        <div class="J_CityBox">
+            <div class="city-notice">
+                <div class="city-wrapper c-wrapper J_CityWrapper"><h3 class="city-key-dw">当前</h3>
+                    <ul class="dw-city">
+                        <li class="J_Location needsclick" data-name="{{=it.now}}" data-id="{{=it.nowId}}">{{=it.now}}<span style="margin-left:15px;">GPS定位</span></li>
+                    </ul>
+                    {{var isHistory = it.history;}}
+                    {{var hisFlag;}}
+                    {{for(var key in isHistory){ }}
+                        {{?isHistory.hasOwnProperty(key)}}
+                            {{hisFlag = true;}}
+                        {{??}}
+                            {{hisFlag = false;}}
+                        {{?}}
+                    {{ }}}
+                    <div class="J_DepHistory {{?!isHistory || !hisFlag}}none{{?}}">
+                        <h3 class="dep-key-ls city-key-ls">历史选择<a class="clear-his needsclick J_DepClearHis">清除历史记录</a></h3>
+                        <ul class="hot-city-ul clearfix">
+                            {{?isHistory&&hisFlag}}
+                            {{var hisLen = Math.min(it.history.cityName.length,6);}}
+                            {{for(var i = 0; i<hisLen;i++){ }}
+                                <li class="needsclick" data-name="{{=it.history.cityName[i]}}" data-en="{{=it.history.cityEnName[i]}}" data-id="{{=it.history.DepartCityId[i]}}">{{=it.history.cityName[i]}}</li>
+                            {{ }}}
+                            {{?}}
+                        </ul>
+                    </div>
+                    {{var cArr = [];}}
+                    {{for(var index in depData){}}
+                        {{?!it.hasOwnProperty(index)&&index!="key"}}
+                            {{var item = depData[index];}}
+                            {{?index === "Hot"}}
+                                <h3 class="city-key-rm">热门</h3>
+                                <ul class="hot-city-ul clearfix">
+                                    {{for(var i = 0; i<12; i++){}}
+                                    <li data-name="{{=item[i].Name}}" data-en="{{=item[i].PinYin}}"  data-id="{{=item[i].DepartCityId}}" class="needsclick">{{=item[i].Name}}</li>
+                                    {{}}}
+                                </ul>
+                            {{??}}
+                                {{cArr.push(index);}}
+                                <h3 class="city-key-{{=index}}">{{=index}}</h3>
+                                <ul class="sort-city">
+                                    {{~item:zItem}}
+                                    <li data-name="{{=zItem.Name}}" data-en="{{=zItem.PinYin}}" data-id="{{=zItem.DepartCityId}}" class="needsclick">{{=zItem.Name}}</li>
+                                    {{~}}
+                                </ul>
+                            {{?}}
+                        {{?}}
+                    {{}}}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {{var cLen = cArr.length,cLineH= Math.floor((it.navH)/(cLen+2)),
+        allcLineH = cLineH*(cLen+2),
+        paddingDiff = (it.navH - allcLineH)/2;}}
+    <div class="city-nav gcity-nav J_CityNav" style="padding: {{=paddingDiff}}px 0">
+        <ul>
+            <li data-key="dw" class="nav-city-dw" style="line-height: {{=cLineH}}px;">当前<span>当前</span></li>
+            <li data-key="ls" class="nav-city-ls" style="line-height: {{=cLineH}}px;">历史<span>历史</span></li>
+            <li data-key="rm" class="nav-city-dw" style="line-height: {{=cLineH}}px;">热门<span>热门</span></li>
+            {{~cArr:cItem}}
+            <li data-key="{{=cItem}}"  style="line-height: {{=cLineH}}px;">{{=cItem}}<span>{{=cItem}}</span></li>
+            {{~}}
+        </ul>
+    </div>
+</div>

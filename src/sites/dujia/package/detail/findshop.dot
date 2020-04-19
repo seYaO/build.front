@@ -1,0 +1,20 @@
+{{?it.Code==4000&&it.Data}}
+<div class="shop_Bbox">
+{{~it.Data.Stores:itItems:index}}
+{{?itItems.Name}}
+<p class="shop_name">{{=itItems.Name}}</p>
+{{?}}
+{{?itItems.Telephone}}
+<p>电话：{{=itItems.Telephone}}</p>
+{{?}}
+{{?itItems.Address}}
+<p>地址：{{=itItems.Address}}</p>
+{{?}}
+{{?itItems.Traffic}}
+<p>交通：{{=itItems.Traffic}}</p>
+{{?}}
+{{~}}
+</div>
+{{??}}
+<p>暂无门店信息</p>
+{{?}}

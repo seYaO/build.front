@@ -1,0 +1,23 @@
+{{~it.VisaPrintMaterial.InterVisaMaterial:Interdata:index}}
+<div class="stuff_detail_box">
+  <span class="stuff_title" typeId="">面试材料<em>★为必须提供的材料 ●为建议提供的材料（可视个人实际情况提供，提供越多越有利于出签）</em></span>
+  <p class="stuff_tip">*申请人在面试当天携带以下真实资料到领馆签证处面试即可（面试材料无需提供给同程旅游签证部）</p>
+  <div class="table2_title">办签人员：{{=Interdata.PersonalTypeName}}</div>
+      <table border="1" class="tab_table2" typeId="">
+        <tbody>
+        {{~Interdata.MaterialDetailList:Material}}
+              <tr>
+                <td style="color:#333;width:178px;text-align: center">
+                  {{=Material.Name}}
+                </td>
+                <td style="padding: 15px;">
+                  {{=Material.Content}}
+                </td>
+              </tr>
+          {{~}}
+          </tbody>      
+      </table>      
+</div>  
+
+
+{{~}}

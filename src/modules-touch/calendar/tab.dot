@@ -1,0 +1,26 @@
+{{?it.length>0}}
+<div class="calendar-tab">
+    <div class="tip">滑动查看月份,点击选择日历上的日期</div>
+    <div class="tablist">
+        <div class="tablist-inner">
+            <ul>
+                {{~it:value}}
+                <li class="" data-month="{{=value.Month}}" data-year="{{=value.Year}}">
+                    <a href="javascript:;"><span>{{=value.Month}}月</span>
+                        {{?value.LowerPriceDescribe === "余位充足"}}
+                        <span class="price"><em>￥{{=value.LowerPrice}}</em>起</span>
+                        {{??}}
+                        {{=value.LowerPriceDescribe}}
+                        {{?}}
+                    </a>
+                </li>
+                {{~}}
+            </ul>
+        </div>
+        <div class="tablist-nav">
+            <span class="prev disable"></span>
+            <span class="next"></span>
+        </div>
+    </div>
+</div>
+{{?}}

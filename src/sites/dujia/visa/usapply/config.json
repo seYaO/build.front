@@ -1,0 +1,8 @@
+{
+    "dataUri":  "/intervacation/api/VisaOrder/GetVisaAutoControl",
+    "query": {
+        "customerSerialId":"303228321",
+        "passengerId":"5538481"
+    },
+    "desc": "美签申请"
+}

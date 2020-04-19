@@ -1,0 +1,5 @@
+{{?it.newbie}}
+<div>hi,{{=it.name}}</div>
+{{??}}
+<div>怎么又是你,{{=it.name}}</div>
+{{?}}

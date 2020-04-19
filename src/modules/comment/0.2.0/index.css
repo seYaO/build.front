@@ -1,0 +1,537 @@
+
+/*ly_comment*/
+.ly_comment .comet_score {
+    padding: 10px 0;
+    border-bottom: 1px solid #e8e8e8;
+}
+.ly_comment .comet_score p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 28px;
+}
+.ly_comment .comet_score .label {
+    float: left;
+    width: 150px;
+    height: 70px;
+    border-right: 1px solid #f0f0f0;
+    text-align: center;
+}
+.ly_comment .comet_score .score {
+    font-size: 28px;
+    color: #ff6600;
+    height: 36px;
+    line-height: 36px;
+}
+.ly_comment .comet_score .cont {
+    height: 70px;
+    line-height: 70px;
+}
+.ly_comment .comet_score .data {
+    margin: 0 20px 0 65px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.ly_comment .comet_score .data em {
+    margin-right: 20px;
+    font-size: 28px;
+    font-weight: normal;
+    color: #ff6633;
+}
+.ly_comment .comet_grade {
+    padding: 10px 0;
+    border-top: 1px solid #f0f0f0;
+}
+.ly_comment .comet_grade p {
+    margin: 0;
+}
+.ly_comment .comet_grade p {
+    font-size: 14px;
+    line-height: 28px;
+}
+.ly_comment .comet_grade .label {
+    float: left;
+    width: 150px;
+    height: 60px;
+    border-right: 1px solid #f0f0f0;
+    text-align: center;
+}
+.c_score_bar {
+    padding-top: 12px;
+    height: 18px;
+}
+.c_score_bar .bar_label {
+    float: left;
+    line-height: 18px;
+    margin-right: 10px;
+}
+.c_score_bar .bar_data {
+    float: left;
+    width: 164px;
+    height: 18px;
+    background: #f0f0f0;
+}
+.c_score_bar .bar_data .good, .c_score_bar .bar_data .bad {
+    position: relative;
+    float: left;
+    height: 18px;
+    line-height: 18px;
+    color: #ffffff;
+    text-align: center;
+    background-color: #b8c1ca;
+    cursor: pointer;
+}
+.c_score_bar .bar_data .bad {
+    background-color: #f0f0f0;
+}
+.c_score_bar .bar_data .bar_tag {
+    display: block;
+    position: absolute;
+    left: 50%;
+    top: -24px;
+    margin-left: -30px;
+    width: 60px;
+    height: 24px;
+    color: #999999;
+    text-align: center;
+    line-height: 24px;
+    background: url("img/dest/score_bar_a1.png") center bottom no-repeat;
+}
+.c_score_bar .bar_data .bad .bar_tag {
+    background-image: url("img/dest/score_bar_a2.png");
+}
+.ly_comment .c_score_bar {
+    float: left;
+    margin: 8px 0 0 25px;
+    width: 210px;
+}
+/*comet__state*/
+.ly_comment .comet_sort {
+    padding: 8px 0;
+    height: 24px;
+    line-height: 24px;
+    font-size: 12px;
+    background: #ecf0f3;
+}
+.ly_comment .comet_sort .sort_tags {
+    float: left;
+}
+.ly_comment .comet_sort .sort_tags .title {
+    float: left;
+    width: 150px;
+    font-size: 14px;
+    text-align: center;
+}
+.ly_comment .comet_sort .sort_tags .tag {
+    float: left;
+    margin-right: 18px;
+    padding: 0 12px;
+    height: 24px;
+    line-height: 24px;
+    color: #333333;
+    text-align: center;
+}
+.ly_comment .comet_sort .sort_tags .tag:hover, .ly_comment .comet_sort .sort_tags .tag.current {
+    color: #ffffff;
+    background: #8c96a2;
+}
+.ly_comment .comet_sort .sort_items {
+    float: right;
+}
+.ly_comment .comet_sort .sort_items .item {
+    float: right;
+    margin-right: 10px;
+    padding: 0 10px;
+    color: #333333;
+    line-height: 24px;
+}
+.ly_comment .sort_items .item i {
+    display: inline-block;
+    margin-left: 5px;
+    width: 12px;
+    height: 12px;
+    vertical-align: -1px;
+    background: url("img/dest/arrow_d.png") no-repeat;
+}
+.ly_comment .sort_items .item i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    vertical-align: -2px;
+    background: url("img/dest/arrow_d.png") no-repeat;
+}
+.ly_comment .sort_items .item i.up {
+    background-image: url("img/dest/arrow_u.png");
+}
+.ly_comment .sort_items .item:hover i,.ly_comment .sort_items .item.current i {
+    background-image: url("img/dest/arrow_d_h.png");
+}
+.ly_comment .sort_items .item:hover i.up,.ly_comment .sort_items .item.current i.up {
+    background-image: url("img/dest/arrow_u_h.png");
+}
+.ly_comment .comet_sort .sort_items .item:hover, .ly_comment .comet_sort .sort_items .item.current {
+    color: #ffffff;
+    background: #8c96a2;
+}
+.ly_comment .comet_sort .sort_img {
+    float: right;
+    margin-right: 20px;
+}
+.ly_comment .comet_sort .sort_img input {
+    margin-right: 5px;
+}
+/*comet_tab*/
+.ly_comment .comet_tab {
+    height: 54px;
+    line-height: 54px;
+    border-top: 1px solid #f0f0f0;;
+    border-bottom: 2px solid #f0f0f0;
+}
+.ly_comment .comet_tab {
+    height: 54px;
+    line-height: 54px;
+    border-bottom: 2px solid #e8e8e8;
+}
+.ly_comment .comet_tab a {
+    float: left;
+    height: 54px;
+    width: 150px;
+    font-size: 14px;
+    color: #333333;
+    text-align: center;
+}
+.ly_comment .comet_tab label{
+    margin-left: 5px;
+}
+.ly_comment .comet_tab a b {
+    color: #999999;
+}
+.ly_comment .comet_tab a:hover, .ly_comment .comet_tab a.current {
+    border-bottom: 2px solid #52b500;
+    color: #52b500;
+}
+.ly_comment .comet_tab a:hover b, .ly_comment .comet_tab a.current b {
+    color: #999999;
+}
+/*comet_item*/
+.ly_comment .no_comet {
+    padding: 20px;
+}
+.ly_comment .comet_item {
+    padding: 20px 0;
+    border-top: 1px solid #e8e8e8;
+}
+.ly_comment .comet_item:first-child {
+    border-top: none;
+}
+.ly_comment .profile {
+    float: left;
+    margin-left: 20px;
+    width: 80px;
+}
+.ly_comment .profile .pro_img {
+    margin: 0 auto;
+    width: 72px;
+    height: 72px;
+}
+.i_cpro_family, .i_cpro_business, .i_cpro_friend, .i_cpro_couple, .i_cpro_behalf, .i_cpro_son, .i_cpro_single, .i_cpro_other{background: url("//img1.40017.cn/cn/v/details/2013/dp_ico.png") no-repeat;}
+.i_cpro_family { background-position:-304px -113px;}
+.i_cpro_business { background-position:-377px -112px;}
+.i_cpro_friend { background-position: -451px -110px;}
+.i_cpro_couple{ background-position: -304px -188px;}
+.i_cpro_other { background-position:-377px -188px;}
+.i_cpro_single { background-position:-451px -188px;}
+.i_cpro_behalf  { background-position:-30px -188px;}
+.i_cpro_son { background-position:-103px -188px;}
+
+.ly_comment .profile .pro_name {
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+    text-align: center;
+    white-space: nowrap;
+}
+.ly_comment .profile .pro_level {
+    margin: 0 auto;
+    width: 72px;
+    height: 15px;
+}
+.i_level_1 {
+    background-image: url("//js.40017.cn/cn/public/module/memberLevel/0.4/lev1.gif")
+}
+.i_level_2 {
+    background-image: url("//js.40017.cn/cn/public/module/memberLevel/0.4/lev2.gif")
+}
+.i_level_3 {
+    background-image: url("//js.40017.cn/cn/public/module/memberLevel/0.4/lev3.gif")
+}
+.i_level_4 {
+    background-image: url("//js.40017.cn/cn/public/module/memberLevel/0.4/lev4.gif")
+}
+.i_level_5 {
+    background-image: url("//js.40017.cn/cn/public/module/memberLevel/0.4/lev5.gif")
+}
+
+.ly_comment .profile .pro_time {
+    height: 30px;
+    line-height: 30px;
+    color: #999999;
+    text-align: center;
+}
+.ly_comment .comet_main {
+    margin-left: 150px;
+}
+.ly_comment .comet_main .tag {
+    height: 24px;
+    line-height: 24px;
+}
+.ly_comment .comet_main .tag dt {
+    float: left;
+    margin-right: 20px;
+    font-size: 14px;
+    color: #52b500;
+}
+.ly_comment .comet_main .tag dd {
+    float: left;
+    margin-right: 28px;
+}
+.ly_comment .comet_main .tag dd b {
+    color: #999999;
+}
+.ly_comment .comet_main .comet_cont {
+    min-height: 60px;
+}
+.ly_comment .comet_main .comet_word {
+    margin: 12px 0 20px;
+    line-height: 20px;
+}
+.ly_comment .comet_main .comet_img {
+    margin: 20px 0;
+}
+.ly_comment .comet_main .bottom {
+    height: 28px;
+}
+.ly_comment .comet_main .from {
+    float: left;
+    padding-left: 18px;
+    line-height: 28px;
+    color: #999999;
+    background: url("img/dest/comet_from.png") 0 center no-repeat;
+}
+.ly_comment .comet_main .opera {
+    float: right;
+}
+.btn_comet {
+    padding: 0 15px;
+    height: 26px;
+    line-height: 26px;
+    color: #666666;
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+}
+.ly_comment .comet_main .btn_comet {
+    float: right;
+    margin-left: 10px;
+}
+.ly_comment .comet_main .comet_useful {
+    color: #ff7800;
+}
+.ly_comment .comet_main .btn_comet:hover {
+    color: #666666;
+    background-color: #f0f0f0;
+}
+.ly_comment .comet_main .comet_useful:hover {
+    color: #ff7800;
+}
+.ly_comment .comet_main .btn_comet b {
+    margin: 0 5px;
+}
+.ly_comment .comet_main .disable{
+    cursor: default;
+}
+.ly_comment .comet_main .disable:hover{
+    background: white;
+}
+/*comet_slide*/
+.ly_comment .comet_slide {
+    position: relative;
+    padding: 0 20px;
+}
+.ly_comment .comet_slide .slider_pre, .ly_comment .comet_slide .slider_next {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 92px;
+    background: url("img/dest/comet_imgl.png") center center no-repeat;
+}
+.ly_comment .comet_slide .slider_next {
+    left: auto;
+    right: 0;
+    background-image: url("img/dest/comet_imgr.png");
+}
+.ly_comment .comet_slide .slider_pre:hover, .ly_comment .comet_slide .slider_next:hover {
+    background-color: #e8e8e8;
+}
+.ly_comment .comet_slide .slide_main {
+    position: relative;
+    width: 700px;
+    height: 92px;
+    overflow: hidden;
+}
+.ly_comment .comet_slide .slide_ul {
+    position: relative;
+}
+.ly_comment .comet_slide .slide_ul li {
+    float: left;
+    margin-left: 5px;
+    margin-right: 5px;
+    width: 164px;
+    height: 92px;
+}
+.ly_comment .comet_slide .slide_link {
+    display: block;
+    position: relative;
+    width: 164px;
+    height: 92px;
+    overflow: hidden;
+}
+.ly_comment .comet_slide .slide_link img {
+    margin: 1px;
+    width: 164px;
+    height: 92px;
+}
+
+/*翻页*/
+.ly_comment .paging {
+    margin-right: -10px;
+    padding-top: 20px;
+}
+.ly_comment .bag_page {
+    clear: both;
+    float: right;
+}
+.mr10 {
+    margin-right: 10px;
+    display: inline-block
+}
+.ly_comment .bag_page input {
+    margin-right: 10px
+}
+.ly_comment .bag_page a.pagenum {
+    padding: 0 8px
+}
+.ly_comment .bag_page a.pagenum, .ly_comment .bag_page a.guidnum {
+    float: left;
+    margin-right: 10px;
+    height: 22px;
+    line-height: 22px;
+    color: #999999;
+    border: 1px solid #e8e8e8;
+    text-align: center;
+    cursor: pointer;
+}
+.ly_comment .bag_page a.pagenum:hover, .ly_comment .bag_page a.guidnum:hover {
+    background-color: #eceff2;
+    border-color: #eceff2;
+    color: #999999;
+}
+.ly_comment .bag_page a.currentpage, .ly_comment .bag_page a.currentpage:hover {
+    background-color: #8c96a2;
+    border-color: #8c96a2;
+    color: #ffffff;
+}
+.ly_comment .bag_page span {
+    float: left
+}
+.ly_comment .bag_page a.indexGrey {
+    color: #cccccc;
+    cursor: default;
+    background: url("img/dest/page_left1.png") 4px 7px no-repeat;
+    padding: 0 8px 0 18px
+}
+.ly_comment .bag_page a.indexGrey:hover {
+    background-color: #ffffff;
+    color: #cccccc;
+    border: 1px solid #dddddd
+}
+.ly_comment .bag_page a.indexNormal {
+    background: url("img/dest/page_left.png") 4px 7px no-repeat;
+    padding: 0 8px 0 18px
+}
+.ly_comment .bag_page a.indexNormal:hover {
+    background:#eceff2 url("img/dest/page_left.png") 4px 7px no-repeat;
+}
+.ly_comment .bag_page a.prevGrey {
+    color: #cccccc;
+    cursor: default;
+    background: url("img/dest/page_pre1.png") 4px 7px no-repeat;
+    padding: 0 6px 0 16px
+}
+.ly_comment .bag_page a.prevGrey:hover {
+    background-color: #ffffff;
+    color: #cccccc;
+    border: 1px solid #dddddd
+}
+.ly_comment .bag_page a.prevNormal {
+    background: url("img/dest/page_pre.png") 4px 7px no-repeat;
+    padding: 0 8px 0 18px
+}
+.ly_comment .bag_page a.prevNormal:hover {
+    background:#eceff2 url("img/dest/page_pre.png") 4px 7px no-repeat;
+}
+.ly_comment .bag_page a.nextGrey {
+    color: #cccccc;
+    cursor: default;
+    background: url("img/dest/page_next1.png") 48px 7px no-repeat;
+    border: 1px solid #dddddd;
+    padding: 0 18px 0 8px
+}
+.ly_comment .bag_page a.nextGrey:hover {
+    background-color: #ffffff;
+    color: #cccccc;
+    border: 1px solid #dddddd
+}
+.ly_comment .bag_page a.nextNormal {
+    background: url("img/dest/page_next.png") 48px 7px no-repeat;
+    padding: 0 18px 0 8px;
+}
+.ly_comment .bag_page a.nextNormal:hover {
+    background:#eceff2 url("img/dest/page_next.png") 48px 7px no-repeat;
+}
+.ly_comment .bag_page a.lastGrey {
+    color: #cccccc;
+    cursor: default;
+    background: url("img/dest/page_right1.png") 36px 7px no-repeat;
+    padding: 0 18px 0 8px;
+}
+.ly_comment .bag_page a.lastGrey:hover {
+    background-color: #ffffff;
+    color: #cccccc;
+    border: 1px solid #dddddd
+}
+.ly_comment .bag_page a.lastNormal {
+    background: url("img/dest/page_right.png") 36px 7px no-repeat;
+    padding: 0 18px 0 8px;
+}
+.ly_comment .bag_page a.lastNormal:hover {
+    background:#eceff2 url("img/dest/page_right.png") 36px 7px no-repeat;
+}
+/*.bag_page a.prevNormal:hover {*/
+/*background-image: url("img/dest/page_pre_h.png");*/
+/*}*/
+/*.bag_page a.nextNormal:hover {*/
+/*background-image: url("img/dest/page_next_h.png");*/
+/*}*/
+/*.bag_page a.indexNormal:hover {*/
+/*background-image: url("img/dest/page_left_h.png");*/
+/*}*/
+/*.bag_page a.lastNormal:hover {*/
+/*background-image: url("img/dest/page_right_h.png");*/
+/*}*/
+#comet_tab_checkbox{
+    position: relative;
+    top: -1px;
+}
+.comet-pager{
+    text-align: center;
+}

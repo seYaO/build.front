@@ -1,0 +1,174 @@
+﻿@bg_color:#1ab394;
+@sel_color:#8ab923;
+
+.dj-calendar {
+    width: 100%;
+    height: auto;
+
+    .ico {
+        width: 17px;
+        height: 17px;
+        position: absolute;
+        top: 8px;
+        cursor: pointer;
+        overflow: hidden;
+        outline: 0;
+
+        &.next-month {
+            background: url(../img/dest/calendar_arrow_green.png) scroll no-repeat 0 0 transparent;
+            background-position: -17px 0;
+            right: 10px;
+
+            &:hover {
+                background-position: -17px -17px;
+            }
+        }
+
+        &.previous-month {
+            left: 10px;
+            background: url(../img/dest/calendar_arrow_green.png) scroll no-repeat 0 0 transparent;
+
+            &:hover {
+                background-position: 0 -17px;
+            }
+        }
+
+        &.sort-asc {
+            width: 17px;
+            height: 17px;
+            background: url(../img/dest/sort-asc.png) scroll no-repeat 0 0 transparent;
+        }
+
+        &.sort-desc {
+            width: 17px;
+            height: 17px;
+            background: url(../img/dest/sort-desc.png) scroll no-repeat 0 0 transparent;
+        }
+    }
+
+    .panel {
+        width: 100%;
+        background: #FFF;
+        box-shadow: -2px 2px 5px #b6b6b6,2px 2px 5px #b6b6b6;
+        font: 12px/20px Arial,'Microsoft YaHei',sans-serif,SimSun;
+        color: #666;
+        position: relative;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#b6b6b6,direction=90,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#b6b6b6,direction=180,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#b6b6b6,direction=270,strength=3)";
+
+
+        .month-nav {
+            background: #8ab923;
+            width: 100%;
+            height: 34px;
+            text-align: center;
+            line-height: 34px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+
+            .title {
+                width: 100%;
+                height: 34px;
+                text-align: center;
+                line-height: 34px;
+                color: #fff;
+                display: inline-block;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .group_title {
+                display: inline-block;
+                float: left;
+
+                i {
+                    font-size: 12px;
+                    position: absolute;
+                    right: 0;
+                    top: 12px;
+                }
+
+                .year {
+                    width: 70px;
+                    display: inline-block;
+                    text-align: left;
+                    position: relative;
+                }
+
+                .month {
+                    width: 50px;
+                    display: inline-block;
+                    text-align: left;
+                    position: relative;
+                    margin-left: 10px;
+                }
+
+                .btn_monthcheck {
+                    position: relative;
+                    width: 20px;
+                    height: 20px;
+                    display: inline-block;
+                    top: auto;
+                    font-size: 16px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        .month-panel {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-spacing: 0;
+            border-collapse: collapse;
+
+            td, th {
+                width: 14%;
+            }
+
+            td {
+                text-align: center;
+                border: 1px solid #f0f0f0;
+
+                &.over {
+                    color: #666;
+                    cursor: pointer;
+                }
+
+                &.disable {
+                    color: #f0f0f0;
+                }
+
+                &.select {
+                    background-color: @sel_color;
+                    color: #fff;
+                }
+
+                &.nextmonthday {
+                    color: #f0f0f0;
+                }
+
+                &.prevmonthday {
+                    color: #f0f0f0;
+                }
+            }
+
+            th {
+                text-align: center;
+                border: 1px solid #f0f0f0;
+                cursor: pointer;
+
+                &.select {
+                    background-color: @sel_color;
+                    color: #fff;
+                }
+            }
+
+            thead {
+                .sunday, .saturday {
+                    color: #f60;
+                }
+            }
+        }
+    }
+}

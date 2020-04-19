@@ -1,0 +1,46 @@
+<!doctype html>
+<!--引用的comment.css和index.js-->
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413" />
+</head>
+<body>
+<div class="teset2-parent">
+    <div id="test2"></div>
+</div>
+
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script src="../../jquery.js" type="text/javascript"></script>
+<script>
+    seajs.config({
+        base: "../../",
+//        "base": "http://localhost:63342/tc-intervacation-front/module/",
+//        "base": "http://js.40017.cn/cn/v/2015/modules/"
+        //"base":"http://localhost:63342/tc-intervacation-front/module/"
+        //"base": "http://js.40017.cn/cn/min/??/cn/v/2015/modules/"
+        paths: {
+            "jquery": "http://localhost:63342/tc-intervacation-front/jqmodule"
+        }
+    });
+</script>
+
+<script>
+        seajs.use("jquery/comment/0.2.0/index", function (Comment) {
+            var comment = new Comment();
+            comment.init({
+                el: "#test2",
+                host: "http://10.14.40.56:8088",
+                param: {
+                    lineId: "200442"
+                },
+                parent: "#comment-moudle",
+                callback: function(){
+                    //$(".data-loading").remove();
+                }
+            });
+        });
+</script>
+</body>
+</html>

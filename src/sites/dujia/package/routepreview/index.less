@@ -1,0 +1,516 @@
+body {
+    font-family: "Microsoft Yahei";
+    font-size: 14px;
+}
+.wrapper{
+    width: 1240px;
+    margin: 0 auto;
+    .content{
+        width: 1032px;
+        margin: 0 auto;
+        padding: 14px;
+        .head{
+            height: 93px;
+            border-bottom: 1px solid #dcdcdc;
+            margin-bottom: 37.5px;
+            .logo{
+                float: left;
+                position: relative;
+                width: 210px;
+                height: 80px;
+                background: url('//pic4.40017.cn/index/slide/2016/06/17/13/gQ4fcp.png') no-repeat;
+                top: 13px;
+            }
+            .head_pic{
+                float: right;
+                position: relative;
+                width: 273.5px;
+                height: 93px;
+                background: url('../detail/img/dest/newIcon/icon-mapHead.png') no-repeat;
+                background-size: 100% 100%;
+            }
+        }
+    }
+}
+
+.routeMap-box{
+    .lineInfoContent{
+        .lineSummary{
+            h2{
+                font-size: 16px;
+                font-weight: bold;
+                color: #333;
+                border-bottom: 1px solid #dcdcdc; 
+                padding-bottom: 9px;
+            }
+            .summaryCon{
+                font-size: 14px;
+                color: #333;
+                margin-top: 9.5px;
+                line-height: 22px;
+            }
+        } 
+        .lineDayInfo-box{
+            .line-leftLine{
+                margin-left: 14px;
+                border-left: 1px solid #eee;
+                .lineInfo-box{
+                    padding-left: 20px;
+                    .day-maintitle{
+                        position: relative;
+                        margin-top: 25px;
+                        font-size: 20px;
+                        font-weight: bold;
+                        color: #333;
+                        i{
+                            position: absolute;
+                            top: -4px;
+                            left: -35px;
+                            display: inline-block;
+                            width: 35px;
+                            height: 29px;
+                            color: #fff;
+                            background: url('../detail/img/dest/newIcon/icon-mapday.png') no-repeat;
+                            line-height: 29px;
+                            font-size: 14px;
+                            padding-left: 5px;
+                        }
+                    }
+                    .route-bg{
+                        margin-top: 14px;
+                        .line-mapCon{
+                            .route-title{
+                                margin-bottom: 0;
+                                font-size: 18px;
+                                color: #333;
+                                font-weight: bold;
+                                position: relative;
+                                .title-icon{
+                                    width: 17px;
+                                    height: 40px;
+                                    position: absolute;
+                                    top: -12px;
+                                    left: -39px;
+                                }
+                                .title-arrow{
+                                    position: absolute;
+                                    width: 11px;
+                                    height: 11px;
+                                    background: url('../detail/img/dest/newIcon/icon-mapArrow.png') no-repeat;
+                                    left: -15px;
+                                    top: 2px;
+                                }
+                            }
+                            .route-detail{
+                                font-weight: normal;
+                                font-size: 14px;
+                                line-height: 22px;
+                                color: #666;
+                                margin-left: 7px;
+                                .site-intro{
+                                    color: #333;
+                                    position: relative;
+                                    padding-left: 10px;
+                                    i{
+                                        width: 4px;
+                                        height: 4px;
+                                        border-radius: 50%;
+                                        background: #4c5a65;
+                                        position: absolute;
+                                        top: 8px;
+                                        left: 0;
+                                    }
+                                }
+                                p:first-child{
+                                    margin-top: 12px;
+                                }
+                            }
+                            .info-tips{
+                                margin-top: 14px;
+                                margin-left: 17px;
+                                ul{
+                                    li{
+                                        margin-top: 15px;
+                                        width: 96px;
+                                        height: 27px;
+                                        line-height: 27px;
+                                        font-size: 14px;
+                                        color: #fff;
+                                        background: #4c5a65;
+                                        position: relative;
+                                        p{
+                                            margin-left: 29px;
+                                        }
+                                        i{
+                                            position: absolute;
+                                            left: 9px;
+                                            top: 6px;
+                                        }
+                                    }
+                                    .opentime{
+                                        i{
+                                            width: 14px;
+                                            height: 13px;
+                                            background: url('../detail/img/dest/newIcon/icon-mapOpentime.png') no-repeat;
+                                            top: 7px;
+                                        }
+                                    }
+                                    .menpiao-info{
+                                        i{
+                                            width: 13px;
+                                            height: 15px;
+                                            background: url('../detail/img/dest/newIcon/icon-mapMenpiao.png') no-repeat;
+                                        }
+                                    }
+                                    .youwantime{
+                                        i{
+                                            width: 14px;
+                                            height: 14px;
+                                            background: url('../detail/img/dest/newIcon/icon-mapPlaytime.png') no-repeat;
+                                            top: 7px;
+                                        }
+                                    }
+                                    .map_info_tips_con{
+                                        margin-top: 10px;
+                                    }
+                                    .tips{
+                                        p{
+                                            margin-left: 40px;
+                                        }
+                                        i{
+                                            width: 13px;
+                                            height: 13px;
+                                            background: url('../detail/img/dest/newIcon/icon-mapTips.png') no-repeat;
+                                            top: 7px;
+                                            left: 20px;
+                                        }
+                                    }
+                                    li:first-child{
+                                        margin-left: 0;
+                                    }
+                                } 
+                            }
+                        }
+                        .line-mapCon:first-child{
+                            margin-top: 0;
+                        }
+                        .poi-subtitle + .line-mapCon{
+                            margin-top: 0;
+                        }
+                        .mapSite{
+                            background: #f0f2f5;
+                            padding: 10px;
+                            .route-title{
+                                .icon-mapTower{
+                                    background: #fff url('../detail/img/dest/newIcon/icon-mapTower.png') center no-repeat;
+                                }
+                                .icon-mapSite{
+                                    background: #fff url('../detail/img/dest/newIcon/icon-mapSite.png') center no-repeat;
+                                }
+                                .icon-mapFood{
+                                    background: #fff url('../detail/img/dest/newIcon/icon-mapFood.png') center no-repeat;
+                                }
+                                .icon-mapTraffic{
+                                    left: -38px;
+                                    width: 15px;
+                                    background: #fff url('../detail/img/dest/newIcon/icon-mapTraffic.png') center no-repeat;
+                                }
+                                .icon-mapYule{
+                                    left: -38px;
+                                    width: 12px;
+                                    background: #fff url('../detail/img/dest/newIcon/icon-mapYule.png') center no-repeat;
+                                }
+                                .icon-mapShop{
+                                    left: -38px;
+                                    width: 15px;
+                                    background: #fff url('../detail/img/dest/newIcon/icon-mapShop.png') center no-repeat;
+                                }
+                                //todo待补充
+                            }
+                        }
+                        .poi-subtitle{
+                            width: 104%;
+                            background: #fff;
+                            margin-left: -10px;
+                            .day-subtitle{
+                                padding: 30px 0;
+                                .route-ways{
+                                    top: 19px;
+                                }
+                            }
+                        }
+                    }
+                    .day-subtitle{
+                        margin-top: 15px;
+                        margin-bottom: 15px;
+                        position: relative;
+                        font-size: 16px;
+                        font-weight: bold;
+                        color: #333;
+                        .route-ways{
+                            position: absolute;
+                            height: 40px;
+                            top: -10px;
+                            left: -19px;
+                        }
+                        .walk-way{
+                            width: 10px;
+                            background: #fff url('../detail/img/dest/newIcon/icon-mapWalk.png') center no-repeat;
+                            left: -16px;
+                        }
+                        .bus-way{
+                            width: 17px;
+                            background: #fff url('../detail/img/dest/newIcon/icon-mapBus.png') center no-repeat;
+                        }
+                        .ship-way{
+                            width: 17px;
+                            background: #fff url('../detail/img/dest/newIcon/icon-mapShip.png') center no-repeat;
+                        }
+                        .fly-way{
+                            width: 15px;
+                            background: #fff url('../detail/img/dest/newIcon/icon-mapFly.png') center no-repeat;
+                            left: -18px;
+                        }
+                        .gaotie-way{
+                            width: 16px;
+                            background: #fff url('../detail/img/dest/newIcon/icon-mapGaotie.png') center no-repeat;
+                        }
+                        .taxi-way{
+                            width: 17px;
+                            background: #fff url('../detail/img/dest/newIcon/icon-mapTaxi.png') center no-repeat;
+                        }
+                        .train-way{
+                            width: 15px;
+                            background: #fff url('../detail/img/dest/newIcon/icon-mapTrain.png') center no-repeat;
+                            left: -18px;
+                        }
+                        //todo待补充
+                        .localName, .sub-content, .route-num{
+                            float: left;
+                        }
+                        .route-maps{
+                            float: right;
+                        }
+                        .localName{
+                            font-size: 14px;
+                            color: #fff;
+                            padding: 1px 5px;
+                            border-radius: 3px;
+                            background: #ebb623;
+                            font-weight: normal;
+                        }
+                        .sub-content{
+                            margin-left: 10px;
+                            margin-top: 1px;
+                        }
+                        .route-num{
+                            margin-left: 15px;
+                            margin-top: 1px;
+                        }
+                        .route-maps{
+                            font-size: 14px;
+                            color: #0185c6;
+                            font-weight: normal;
+                            width: 200px;
+                            margin-right: 10px;
+                            .route-details{
+                                float: left;
+                            }
+                            .route-others{
+                                float: right;
+                            }
+                            .xianlu-box{
+                                position: relative;
+                                .J_route_box_title{
+                                    cursor: pointer;
+                                }
+                                .J_map_dialog{
+                                    position: absolute;
+                                    width: 385px;
+                                    border: 1px solid rgba(0, 0, 0, 0.1);
+                                    background-color: #fff;
+                                    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);
+                                    top: 30px;
+                                    z-index: 10;
+                                    color: #666;
+                                    .route-box-title{
+                                        position: relative;
+                                        font-size: 14px;
+                                        font-weight: bold;
+                                        i{
+                                            font-weight: normal;
+                                            position: absolute;
+                                            cursor: pointer;
+                                            top: -10px;
+                                            right: -10px;
+                                            width: 10px;
+                                            height: 10px;
+                                            background: url('../detail/img/dest/newIcon/icon-mapClosedialog.png') no-repeat;
+                                        }
+                                        padding-bottom: 10px;
+                                        border-bottom: 1px dotted #ddd;
+                                    }
+                                    .route-detail-dialog{
+                                        padding: 20px;
+                                        position: relative;
+                                        .route-detail-arrow{
+                                            position: absolute;
+                                            width: 16px;
+                                            height: 16px;
+                                            top: -8px;
+                                            .route-detail-arrow-a{
+                                                position: absolute;
+                                                display: block;
+                                                width: 0;
+                                                height: 0;
+                                                overflow: hidden;
+                                                line-height: 0;
+                                                font-size: 0;
+                                                border-top: 0 none;
+                                                border-bottom: 8px solid #ccc;
+                                                border-bottom: 8px solid rgba(0, 0, 0, 0.1);
+                                                border-left: 8px solid transparent;
+                                                border-right: 8px solid transparent;
+                                                left: 0;
+                                                top: 0;
+                                            }
+                                            .route-detail-arrow-b{
+                                                position: absolute;
+                                                display: block;
+                                                width: 0;
+                                                height: 0;
+                                                overflow: hidden;
+                                                line-height: 0;
+                                                font-size: 0;
+                                                border-top: 0 none;
+                                                border-bottom: 8px solid #fff;
+                                                border-left: 8px solid transparent;
+                                                border-right: 8px solid transparent;
+                                                left: 0;
+                                                top: 1px;
+                                            }
+                                        }
+                                    }
+                                    .route-bus-box, .route-taxi-box{
+                                        margin-top: 10px;
+                                        .route-way-name{
+                                            display: inline-block;
+                                            color: #fff;
+                                            padding: 0 5px;
+                                            border-radius: 3px;
+                                            background: #ebb623;
+                                        }
+                                        .route-way-time{
+                                            margin-top: 10px;
+                                        }
+                                        .route-taxiway-time, .route-walkway-time{
+                                            position: relative;
+                                            padding-left: 25px;
+                                            i{
+                                                position: absolute;
+                                                width: 17px;
+                                                height: 17px;
+                                                background: url('../detail/img/dest/newIcon/icon-mapTaxi.png') center no-repeat;
+                                                top: 0;
+                                                left: 0;
+                                            }
+                                        }
+                                        .route-walkway-time{
+                                            i{
+                                                background: url('../detail/img/dest/newIcon/icon-mapWalk.png') center no-repeat;
+                                            }
+                                        }
+                                    }
+                                }
+                                .route-way-content{
+                                    margin-top: 15px;
+                                    border-left: 1px solid #eee;
+                                    padding-left: 15px;
+                                    margin-left: 5px;
+                                    .route-zdname{
+                                        line-height: 18px;
+                                        margin-top: 20px;
+                                        position: relative;
+                                        font-weight: bold;
+                                        i{
+                                            position: absolute;
+                                            width: 7px;
+                                            height: 7px;
+                                            background: url('../detail/img/dest/newIcon/icon-mapZdname.png') no-repeat;
+                                            left: -19px;
+                                            top: 5px;
+                                        }
+                                    }
+                                    .route-zdname:first-child{
+                                        margin-top: 0;
+                                        i{
+                                            height: 13px;
+                                            top: 0;
+                                            background: #fff url(/images/sites/dujia/package/detail/../detail/img/dest/newIcon/icon-mapZdname.png) bottom no-repeat;
+                                        }
+                                    }
+                                    .route-zdname:last-child{
+                                        i{
+                                            height: 14px;
+                                            background: #fff url(/images/sites/dujia/package/detail/../detail/img/dest/newIcon/icon-mapZdname.png) top no-repeat;
+                                        }
+                                    }
+                                    .route-zdtime{
+                                        line-height: 18px;
+                                        margin-top: 8px;
+                                        position: relative;
+                                        padding-left: 15px;
+                                        word-break: break-all;
+                                        .localName{
+                                            padding: 0 5px;
+                                        }
+                                        i{
+                                            position: absolute;
+                                            width: 10px;
+                                            height: 17px;
+                                            background: url('../detail/img/dest/newIcon/icon-mapWalk.png') no-repeat;
+                                            left: 0;
+                                        }
+                                    }
+                                    .route-zdtime-normal{
+                                        padding-left: 0;
+                                    }
+                                }
+                                .OBRoute-taxiway-content, .OBRoute-Walkway-content{
+                                    .OBRoute-dir-taxi{
+                                        margin-top: 15px;
+                                        position: relative;
+                                        padding-left: 20px;
+                                        overflow: hidden;
+                                        white-space: nowrap;
+                                        text-overflow: ellipsis;
+                                        i{
+                                            position: absolute;
+                                            left: 0;
+                                            width: 14px;
+                                            height: 14px;
+                                            background: url('../detail/img/dest/newIcon/icon-mapTurn.png') no-repeat;
+                                        }
+                                    }
+                                    .OBRoute-dir-distance{
+                                        margin-left: 20px;
+                                    }
+                                    .OBRoute-dir-left{
+                                        i{
+                                            background-position: 0 -15px;
+                                        }
+                                    }
+                                    .OBRoute-dir-right{
+                                        i{
+                                            background-position: 0 -30px;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,179 @@
+<div class="borBox J_NavBox" id="part8" data-type="experience">
+            <div class="tab_head">
+                <h4>社会经历</h4>
+                <span class="save_btn J_saveBtn">保存资料</span>
+            </div>
+            <div class="is_show J_tabchange J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblEmploymentStatus">
+                    <p><i></i>职业状况</p>
+                    <span class="radio" data-index="0" value="雇员"><i></i>雇员</span>
+                    <span class="radio" data-index="0" value="自雇"><i></i>自雇</span>
+                    <span class="radio" data-index="1" value="退休"><i></i>退休</span>
+                    <span class="radio" data-index="2" value="学生"><i></i>学生</span>
+                    <span class="radio" data-index="3" value="无业"><i></i>无业</span>
+                    <span class="radio" data-index="1" value="家庭主妇"><i></i>家庭主妇</span>
+                </div>
+                <div>
+                    <div class="form_ul none" type="form">
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>从事行业：</span>
+                            <div class="info_con">
+                                <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                                    <div class="dropdown_tit pull_down w130 J_dropDown" verify-type="required" vali-msg-required="请选择从事行业" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlPresentOccupation"></div>
+                                    <ul class="dropdown_menu none J_dropDown_list">
+                                        <li>农业</li>
+                                        <li>艺术家/表演家</li>
+                                        <li>商业</li>
+                                        <li>计算机科学</li>
+                                        <li>烹饪/食品服务</li>
+                                        <li>教育</li>
+                                        <li>工程</li>
+                                        <li>政府</li>
+                                        <li>法律行业</li>
+                                        <li>医疗/健康</li>
+                                        <li>军事</li>
+                                        <li>自然科学</li>
+                                        <li>物理学</li>
+                                        <li>宗教职业</li>
+                                        <li>研究</li>
+                                        <li>社会科学</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>单位名称：</span>
+                            <div class="info_con">
+                                <input class="w220" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请输入单位名称" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxEmpSchName"> 
+                            </div>
+                        </li> 
+                        <li class="info_list">
+                            <span class="info_tit">英&nbsp;&nbsp;文&nbsp;&nbsp;名：</span>
+                            <div class="info_con">
+                                <input class="w220" type="text" placeholder="" verify-type="enName" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxEnglishEmpSchName"> 
+                                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>如果单位名称有专属的英文名称，请选中并在右侧输入英文名称。</p></div>"></i>
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>主要工作：</span>
+                            <div class="info_con">
+                                <input class="w130" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写主要工作" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxDescribeDuties"> 相关工作
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>月&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;薪：</span>
+                            <div class="info_con">
+                                <input class="w130" type="text" placeholder="" verify-type="required onlyNumberSp" vali-msg-required="请输入月薪" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxCURR_MONTHLY_SALARY"> 元/月
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>邮政编码：</span>
+                            <div class="info_con">
+                                <input class="w130" type="text" placeholder="" verify-type="required charOrNum" vali-msg-required="请填写邮政编码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxWORK_EDUC_ADDR_POSTAL_CD">
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>单位电话：</span>
+                            <div class="info_con">
+                                <input class="w130" type="text" placeholder="" verify-type="required phone" vali-msg-required="请填写单位电话" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxWORK_EDUC_TEL">
+                                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>单位电话若不记得，可用“0000”代替</p></div>"></i>
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>单位地址：</span>
+                            <div class="info_con">
+                                <input type="text" class="w130" placeholder="请输入国家" verify-type="required charFilter" vali-msg-required="请输入国家" vali-msggroup="msg8_1" vali-group="msg8_1" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlEmpSchCountry">
+                                <input type="text" class="w130" placeholder="请输入洲"  verify-type="required charFilter" vali-msg-required="请输入洲" vali-msggroup="msg8_1" vali-group="msg8_1" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxWORK_EDUC_ADDR_STATE">
+                                <input type="text" class="w130" placeholder="请输入城市" verify-type="required charFilter" vali-msg-required="请完善单位地址" vali-msggroup="msg8_1" vali-group="msg8_1" vali-msggroup-breth="msg8_1" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxEmpSchCity">
+                                <span class="valid_symbol none"></span>
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>详细街道：</span>
+                            <div class="info_con">
+                                <input class="w575" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写详细街道" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxEmpSchAddr1">
+                            </div>
+                        </li>
+                        <div class="sub_line mar15"></div>
+                    </div>
+                    <div class="form_ul J_xianyin none" type="form">
+                    </div>
+                    <div class="form_ul none" type="form">
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>学校名称：</span>
+                            <div class="info_con">
+                                <input class="w220" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写学校名称" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxEmpSchName">
+                            </div>
+                        </li> 
+                        <li class="info_list">
+                            <span class="info_tit">英&nbsp;&nbsp;文&nbsp;&nbsp;名：</span>
+                            <div class="info_con">
+                                <input class="w220" type="text" placeholder="" verify-type="enName" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxEnglishEmpSchName">
+                                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>如果学校名称有专属的英文名称，请选中并在右侧输入英文名称。</p></div>"></i>
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>主要工作：</span>
+                            <div class="info_con">
+                                <input class="w130" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写主要工作" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxDescribeDuties"> 相关工作
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>邮政编码：</span>
+                            <div class="info_con">
+                                <input class="w130" type="text" placeholder="" verify-type="required charOrNum" vali-msg-required="请填写邮政编码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxWORK_EDUC_ADDR_POSTAL_CD">
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>学校电话：</span>
+                            <div class="info_con">
+                                <input class="w130" type="text" placeholder="" verify-type="required phone" vali-msg-required="请填写学校电话" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxWORK_EDUC_TEL">
+                                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>学校电话若不记得，可用“0000”代替</p></div>"></i>
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>学校地址：</span>
+                            <div class="info_con">
+                                <input type="text" class="w130" placeholder="请输入国家" verify-type="required charFilter" vali-msg-required="请输入国家" vali-msggroup="msg8_4" vali-group="msg8_4" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlEmpSchCountry">
+                                <input type="text" class="w130" placeholder="请输入洲" verify-type="required charFilter" vali-msg-required="请输入洲" vali-msggroup="msg8_4" vali-group="msg8_4" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxWORK_EDUC_ADDR_STATE">
+                                <input type="text" class="w130" placeholder="请输入城市" verify-type="required charFilter" vali-msg-required="请完善学校地址" vali-msggroup="msg8_4" vali-group="msg8_4"  vali-msggroup-breth="msg8_4" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxEmpSchCity">
+                                <span class="valid_symbol none"></span>
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>详细街道：</span>
+                            <div class="info_con">
+                                <input class="w575" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写详细街道" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxEmpSchAddr1">
+                            </div>
+                        </li>
+                        <div class="sub_line mar15"></div>
+                    </div>
+                    <div class="form_ul J_xianyin none" type="form">
+                        <ul class="form_ul">
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                                <div class="info_con">
+                                    <input class="w220" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxExplainOtherPresentOccupation" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请完善信息">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="is_show J_choose J_xianyin J_AddOrDelete" data-index="1">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed">
+                    <p><i></i>您5年内是否在其他单位工作过？<em>（除了当前的工作）</em></p>
+                    <span class="radio" value="Y" data-dot="1" data-dotname="workDot"><i></i>是</span>
+                    <span class="radio" value="N" data-dot="0"><i></i>否</span>
+                </div>
+                <div class="J_renderDot"></div>
+            </div>
+            <div class="is_show J_choose J_xianyin J_AddOrDelete" data-index="1">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc">
+                    <p><i></i>您之前是否接受过教育？<em>（从最高学历开始填写）</em> <span class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>请至少填写两段学历信息</p></div>"></span></p>
+                    <span class="radio" value="Y" data-dot="1" data-dotname="educationDot"><i></i>是</span>
+                    <span class="radio" value="N" data-dot="0"><i></i>否</span>
+                </div>
+                <div class="J_renderDot"></div>
+            </div>
+        </div>

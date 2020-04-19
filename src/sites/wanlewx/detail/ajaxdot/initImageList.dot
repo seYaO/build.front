@@ -1,0 +1,13 @@
+{{var list = it.CommentList[0];}}
+    <div class="content">
+        <ul class="image-line clearfix" data-index="{{=it.commentIndex}}">
+        {{? typeof(list.ImageList) == "string"}}
+            {{var imgs = list.ImageList.split(",");}}
+        {{??}}
+            {{var imgs = list.ImageList;}}
+        {{?}}
+        {{~imgs:img:index}}
+            <li><img data-pos="{{=index}}" src="{{=img}}" data-length={{=imgs.length}} data-key="imageView" data-context="#imageViewPage"></li>
+        {{~}}
+        </ul>
+    </div>

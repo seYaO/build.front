@@ -1,0 +1,315 @@
+
+    {{var VisitorInfoField = parseInt($("#VisitorInfoField").val());}}
+    {{var VisitorInfoNeed = parseInt($("#VisitorInfoNeed").val());}}
+    {{var VisitorCertificateType = parseInt($("#VisitorCertificateType").val());}}
+    {{var HasInsurance = $("#HasInsurance").val() === 'false' ? false : true;}}
+
+{{?it.length}}
+    {{~it:list:index}}
+    <div class="passenger-info-table  PassengerTimer_New" saveType="1" id="LinkerEachContainer_{{=list.LinkerId}}">
+        {{? (VisitorInfoField & 1) == 1 || HasInsurance}}
+            <div class="write_list">
+                <label class="ui-label"><span class="required">*</span>出游人<em></em>：</label>
+                <input class="ui-input ui-input-nameZh inputBeforeSubmitChk" maxlength="26" type="text" value="{{=list.LinkerName}}" />
+                <i class="help zh_tip"></i>
+                <span class="valid_symbol none">*出游人姓名为空</span>
+            </div>
+        {{?}} 
+
+        {{?(VisitorInfoField & 2) == 2}}
+            <div class="write_list">
+                <label class="ui-label"><span class="required">*</span>英文名：</label>
+                <input class="ui-input ui-input-first-name inputBeforeSubmitChk" maxlength="10" type="text" value="{{=list.EnglishXin}}">
+                <input class="ui-input ui-input-last-name inputBeforeSubmitChk" maxlength="10" type="text" value="{{=list.EnglishMing}}">
+                <i class="help en_tip"></i>
+                <span class="valid_symbol" style="display: none;"></span>
+            </div>
+        {{?}}
+
+        {{var Sex = list.Sex;}}
+        {{?!HasInsurance}}
+            {{? (VisitorInfoField & 16) == 16}}
+                <div class="write_list old_sex">
+                {{?Sex == 1}}
+                        <label class="ui-label peo_sex" put_sex="男"><span class="required">*</span>性别：</label>
+                        <label class="piaochecked on_check">
+                            <input class="ui-radio ui-radio-sex" type="radio" sex_type="男" name="sex" checked="checked">
+                        </label>
+                        <label class="mr30">男</label>
+                        <label class="piaochecked">
+                            <input class="ui-radio ui-radio-sex" type="radio" sex_type="女" name="sex">
+                        </label>
+                        <label class="">女</label>
+                    {{?? Sex == 0}}
+                        <label class="ui-label peo_sex" put_sex="女"><span class="required">*</span>性别：</label>
+                        <label class="piaochecked ">
+                            <input class="ui-radio ui-radio-sex" type="radio" sex_type="男" name="sex">
+                        </label>
+                        <label class="mr30">男</label>
+                        <label class="piaochecked on_check">
+                            <input class="ui-radio ui-radio-sex" type="radio" sex_type="女" name="sex" checked="checked">
+                        </label>
+                        <label class="">女</label>
+                    {{??}}
+                        <label class="ui-label peo_sex" put_sex=""><span class="required">*</span>性别：</label>
+                        <label class="piaochecked ">
+                            <input class="ui-radio ui-radio-sex" type="radio" sex_type="男" name="sex">
+                        </label>
+                        <label class="mr30">男</label>
+                        <label class="piaochecked ">
+                            <input class="ui-radio ui-radio-sex" type="radio" sex_type="女" name="sex" checked="">
+                        </label>
+                        <label class="">女</label>
+                        <span class="valid_symbol none">*性别不能为空</span>
+                    {{?}}
+                </div>
+            {{?}}
+
+            {{?(VisitorInfoField & 4) == 4}}
+                <div class="z_Type">
+                    {{var Cert_Dic = list.CertDic;}}
+                    {{var CertList = list.CertList;}}
+                    {{var CertList_count = list.CertList.length;}}
+                    {{~ CertList:certType:certIndex}}
+                        {{? certIndex < CertList_count}}
+                            <div class="write_list">
+                                <label class="ui-label"><span class="required">*</span>证件类型：</label>
+                                <div class="ui-select">{{=certType.certTypeName}}</div>
+                                {{?Cert_Dic[certType.certType]}}
+                                    {{? certType.certType == 1}}
+                                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk  sfcard" maxlength="30" type="text" value="{{=Cert_Dic[certType.certType].CertNo}}" placeholder="请输入证件号码"/>
+                                    {{?? certType.certType==256}}
+                                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk taiwancard" maxlength="30" type="text" value="{{=Cert_Dic[certType.certType].CertNo}}" placeholder="请输入证件号码"/>
+                                    {{??}}
+                                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk notsfcard" maxlength="30" type="text" value="{{=Cert_Dic[certType.certType].CertNo}}" placeholder="请输入证件号码">
+                                    {{?}}
+                                {{??}}
+                                    {{? certType.certType == 1}}
+                                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk  sfcard" maxlength="30" type="text" value="" placeholder="请输入证件号码"/>
+                                    {{?? certType.certType==256}}
+                                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk taiwancard" maxlength="30" type="text" value="" placeholder="请输入证件号码"/>
+                                    {{??}}
+                                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk notsfcard" maxlength="30" type="text" value="" placeholder="请输入证件号码">
+                                    {{?}}
+                                {{?}}
+                            </div>
+                        {{?}}
+                    {{~}}
+                </div>
+            {{?}}
+            
+            {{?(VisitorInfoField & 64) == 64}}
+                <div class="write_list old_birthday">
+                    <label class="ui-label"><span class="required">*</span>出生日期：</label>
+                    <input class="ui-input ui-input-date ui-input-birthday inputBeforeSubmitChk" readonly="readonly" maxlength="20" type="text" value="{{=list.Birthday}}" placeholder="请输入生日" />
+                    <span class="valid_symbol" style="display: none;"></span>
+                </div>
+            {{?}}
+        {{??}}
+            {{?VisitorInfoNeed == 2 || VisitorInfoNeed==1}}
+                {{?(VisitorInfoField & 4) == 4}}
+                    <div class="z_Type">
+                        {{var Cert_Dic = list.CertDic;}}
+                        {{var CertList = list.CertList;}}
+                        {{var CertList_count = list.CertList.length;}}
+                        {{~ CertList:certType:certIndex}}
+                            {{? certIndex < CertList_count}}
+                                <div class="write_list">
+                                    <label class="ui-label"><span class="required">*</span>证件类型：</label>
+                                    <div class="ui-select">{{=certType.certTypeName}}</div>
+                                    {{?Cert_Dic[certType.certType]}}
+                                        {{? certType.certType == 1}}
+                                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk  sfcard" maxlength="30" type="text" value="{{=Cert_Dic[certType.certType].CertNo}}" placeholder="请输入证件号码"/>
+                                        {{?? certType.certType==256}}
+                                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk taiwancard" maxlength="30" type="text" value="{{=Cert_Dic[certType.certType].CertNo}}" placeholder="请输入证件号码"/>
+                                        {{??}}
+                                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk notsfcard" maxlength="30" type="text" value="{{=Cert_Dic[certType.certType].CertNo}}" placeholder="请输入证件号码">
+                                        {{?}}
+                                    {{??}}
+                                        {{? certType.certType == 1}}
+                                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk  sfcard" maxlength="30" type="text" value="" placeholder="请输入证件号码"/>
+                                        {{?? certType.certType==256}}
+                                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk taiwancard" maxlength="30" type="text" value="" placeholder="请输入证件号码"/>
+                                        {{??}}
+                                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk notsfcard" maxlength="30" type="text" value="" placeholder="请输入证件号码">
+                                        {{?}}
+                                    {{?}}
+                                </div>
+                            {{?}}
+                        {{~}}
+                    </div>  
+
+                    {{?(VisitorCertificateType & 1) == 1}} 
+                        <div class="write_list old_sex">
+                            {{?Sex == 1}}
+                                <label class="ui-label peo_sex" put_sex="男"><span class="required">*</span>性别：</label>
+                                <label class="piaochecked on_check">
+                                    <input class="ui-radio ui-radio-sex" type="radio" sex_type="男" name="sex" checked="checked">
+                                </label>
+                                <label class="mr30">男</label>
+                                <label class="piaochecked">
+                                    <input class="ui-radio ui-radio-sex" type="radio" sex_type="女" name="sex">
+                                </label>
+                                <label class="">女</label>
+                            {{?? Sex == 0}}
+                                <label class="ui-label peo_sex" put_sex="女"><span class="required">*</span>性别：</label>
+                                <label class="piaochecked ">
+                                    <input class="ui-radio ui-radio-sex" type="radio" sex_type="男" name="sex">
+                                </label>
+                                <label class="mr30">男</label>
+                                <label class="piaochecked on_check">
+                                    <input class="ui-radio ui-radio-sex" type="radio" sex_type="女" name="sex" checked="checked">
+                                </label>
+                                <label class="">女</label>
+                            {{??}}
+                                <label class="ui-label peo_sex" put_sex=""><span class="required">*</span>性别：</label>
+                                <label class="piaochecked ">
+                                    <input class="ui-radio ui-radio-sex" type="radio" sex_type="男" name="sex">
+                                </label>
+                                <label class="mr30">男</label>
+                                <label class="piaochecked ">
+                                    <input class="ui-radio ui-radio-sex" type="radio" sex_type="女" name="sex" checked="">
+                                </label>
+                                <label class="">女</label>
+                                <span class="valid_symbol none">*性别不能为空</span>
+                            {{?}}
+                        </div>
+
+                        <input type="hidden" id="sexValue" setData="(VisitorInfoField & 16) == 16 ? 1:0)" />
+                        <input type="hidden" id="birthDayValue" setData="(VisitorInfoField & 64) == 64 ? 1:0)" />
+
+                        <div class="write_list old_birthday">
+                            {{var CertList = list.CertList;}}
+                            {{var CertList_count = list.CertList.length;}}
+                            {{~ CertList:certType:certIndex}}
+                                {{? certIndex < CertList_count}}
+                                <label class="ui-label"><span class="required">*</span>出生日期：</label>
+                                <input class="ui-input ui-input-date ui-input-birthday inputBeforeSubmitChk" readonly="readonly" maxlength="20" type="text" value="{{=certType.Birthday}}" placeholder="请输入生日" />
+                                <span class="valid_symbol" style="display: none;"></span>
+                                {{?}}
+                            {{~}}
+                        </div>
+                    {{?}}                 
+                {{??}}
+                    <div class="z_Type insure_z_Type">
+                        {{? list.CertList.length > 0 }}
+                            {{var Cert_Dic = list.CertDic;}}
+                            {{var CertList = list.CertList;}}
+                            {{var CertList_count = list.CertList.length;}}
+                            {{~ CertList:certType:certIndex}}
+                                {{? certIndex < CertList_count}}
+                                    <div class="write_list">
+                                        <label class="ui-label"><span class="required">*</span>证件类型：</label>
+                                        <div class="ui-select"> 身份证</div>
+                                        {{? certType.certType == 1 }}
+                                            {{?Cert_Dic[certType.certType]}}
+                                                <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk sfcard newCard" maxlength="30" type="text" value="{{=Cert_Dic[certType.certType].CertNo}}" placeholder="请输入证件号码" />
+                                            {{??}}
+                                                <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk sfcard newCard" maxlength="30" type="text" value="" placeholder="请输入证件号码" />
+                                            {{?}}
+                                        {{??}}
+                                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk sfcard newCard" maxlength="30" type="text" value="" placeholder="请输入证件号码">
+                                        {{?}}
+                                        <span class="valid_symbol" style="display: none;"></span>
+                                    </div>
+                                {{??}}
+                                    <div class="write_list">
+                                        <label class="ui-label"><span class="required">*</span>证件类型：</label>
+                                        <div class="ui-select"> 身份证</div>
+                                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk sfcard newCard" maxlength="30" type="text" value="" placeholder="请输入证件号码" />
+                                        <span class="valid_symbol" style="display: none;"></span>
+                                    </div>
+                                {{?}}
+                            {{~}}
+                        {{?}}
+                    </div>
+                {{?}}
+            {{??}}
+                <div class="z_Type insure_z_Type">
+                    {{? list.CertList.length > 0 }}
+                        {{var Cert_Dic = list.CertDic;}}
+                        {{var CertList = list.CertList;}}
+                        {{var CertList_count = list.CertList.length;}}
+                        {{~ CertList:certType:certIndex}}
+                            {{? certIndex < CertList_count}}
+                                <div class="write_list">
+                                    <label class="ui-label"><span class="required">*</span>证件类型：</label>
+                                    <div class="ui-select"> 身份证</div>
+                                    {{? certType.certType==1 }}
+                                        {{?Cert_Dic[certType.certType]}}
+                                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk sfcard newCard" maxlength="30" type="text" value="{{=Cert_Dic[certType.certType].CertNo}}" placeholder="请输入证件号码" />
+                                        {{??}}
+                                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk sfcard newCard" maxlength="30" type="text" value="" placeholder="请输入证件号码" />
+                                        {{?}}
+                                    {{??}}
+                                    <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk sfcard newCard" maxlength="30" type="text" value="" placeholder="请输入证件号码">
+                                    {{?}}
+                                    <span class="valid_symbol" style="display: none;"></span>
+                                </div>
+                            {{?}}
+                        {{~}}
+                    {{??}}
+                        <div class="write_list">
+                            <label class="ui-label"><span class="required">*</span>证件类型：</label>
+                            <div class="ui-select">身份证</div>
+                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk sfcard newCard" maxlength="30" type="text" value="" placeholder="请输入证件号码" />
+                            <span class="valid_symbol" style="display: none;"></span>
+                        </div>
+                    {{?}}
+                </div>
+            {{?}}
+        {{?}}
+
+        {{?(VisitorInfoField & 8) == 8}}
+            <div class="write_list">
+                <label class="ui-label"><span class="required">*</span>手机号码：</label>
+                <input class="ui-input ui-input-mobile inputBeforeSubmitChk" maxlength="11" type="text" value="{{=list.Mobile}}" />
+                <span class="valid_symbol none"></span>
+            </div>
+        {{?}}
+
+        {{?(VisitorInfoField & 32) == 32}}
+            <div class="write_list">
+                <label class="ui-label"><span class="required">*</span>国籍：</label>
+                <input class="ui-input ui-input-country inputBeforeSubmitChk" maxlength="10" type="text" value="{{=list.Nationality}}" />
+                <span class="valid_symbol none"></span>
+            </div>
+        {{?}}
+
+        <div class="order-fn-btns" style="margin-left: 80px;">
+            <input type="checkbox" checked="checked">
+            <span class="save postLogin" linkerid="{{=list.LinkerId}}">保存为常旅客
+            </span>
+        </div>
+        <div class="tooltip-bubble zh_tip_box" style="display: none; top: 40px; left: 340px;">
+            <div class="tooltip-bubble-content">
+                <ul class="order-tips">
+                    <li><em>1.</em><span>乘客姓名必须与所持证件一致。</span></li>
+                    <li><em>2.</em><span>名字中含生僻字可直接输入拼音代替。例：“王鬳”可输入为“王 yan”或者“王-yan”。</span></li>
+                    <li><em>3.</em><span>姓名中不可含有称谓等词语，如：小姐、先生、太太、夫人等。</span></li>
+                    <li><em>4.</em><span>中文姓名不可少于 2 个汉字，英文姓名不可少于 2 个英文单词。</span></li>
+                </ul>
+            </div>
+            <div class="tooltip-bubble-arrow tooltip-bubble-arrow-top">
+                <div class="tooltip-bubble-arrow-before"></div>
+                <div class="tooltip-bubble-arrow-after"></div>
+            </div>
+        </div>
+         <div class="tooltip-bubble en_tip_box" style="display: none; top: 75px; left: 340px;">
+            <div class="tooltip-bubble-content">
+                <ul class="order-tips">
+                    <li><em>1.</em><span>必须用英文字母填写，并确保与所持证件一致。</span></li>
+                    <li><em>2.</em><span>请以姓在前名在后的方式填写，如乘客姓名为诸葛亮，则在“姓（拼音或英文）”栏中输入 ZhuGe （注：复姓中无空格或特殊符号）；在“名（拼音或英文）”栏中输入 Liang。如乘客姓名为 Green（姓）/Jim（名） Stephanie（中间名），则在“姓（拼音或英文）”栏中输入 Green；在“名（拼音或英文）”栏中输入 JimStephanie（注：中间名需空一格紧随名之后）。</span></li>
+                    <li><em>3.</em><span>英文名字的长度不可超过 26 个字符，如名字过长请使用缩写，乘客的姓氏不能缩写，名可以缩写。姓氏中如包括空格请在输入时删掉空格。</span></li>
+                    <li><em>4.</em><span> 英文姓名不可少于 2 个英文单词。</span></li>
+                </ul>
+            </div>
+            <div class="tooltip-bubble-arrow tooltip-bubble-arrow-top">
+                <div class="tooltip-bubble-arrow-before"></div>
+                <div class="tooltip-bubble-arrow-after"></div>
+            </div>
+        </div>
+    </div>    
+
+{{?}}
+{{~}}

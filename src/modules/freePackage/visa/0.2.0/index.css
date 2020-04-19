@@ -1,0 +1,139 @@
+﻿
+/**
+ * 终页签证模块
+ *
+ **/
+/*签证*/
+
+.visa-content {
+}
+.visa-content {
+    padding:25px 0 0 10px;
+}
+.visa-content .visa-notice {
+    padding:15px 10px 0;
+}
+.visa-content .visa-notice p {
+    line-height:24px;
+}
+.visa-content h3{
+    height:25px;
+    line-height:25px;
+    position:relative;
+}
+.visa-content h3 a {
+    position: absolute;
+    right:10px;
+    color: #666;
+}
+.visa-content h3 label{
+    margin-right: 20px;
+    color:#666;
+}
+.visa-content h3 label em {
+    color:#ff9b26;
+}
+.visa-content h3 span {
+    margin-right:15px;
+}
+.visa-content .visa-item {
+    padding-bottom:20px;
+    margin-bottom:20px;
+}
+.visa-content .visa-item p {
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+.visa-content .visa-item p b {
+    color:red;
+    width:20px;
+    text-align:center;
+    display:inline-block;
+}
+.visa-content .visa-item p span {
+
+    display:inline-block;
+}
+
+.visa-content .visa-info {
+    width:880px;
+    padding-bottom: 20px;
+}
+.visa-content .visa-info p{
+    margin-top:0px;
+}
+.visa-detail {
+    height:350px;
+    overflow-y: auto;
+    border:solid 1px #e8e8e8;
+    margin-top:5px;
+}
+.visa-detail .title {
+    padding:0 15px;
+    font-size: 12px;
+    line-height: 20px;
+    color:#333;
+    font-family: "microsoft yahei";
+}
+.visa-detail .title p {
+    float:left;
+}
+.visa-detail table {
+    margin:0 auto;
+    border: 2px solid #f0f2f5;
+    border-collapse: collapse;
+    border-spacing:0;
+    border-spacing:0;
+}
+.visa-detail table {
+  width:100%;
+}
+/*table 表格*/
+.visa-detail th,.visa-detail td{
+    color: #666;
+    font-size: 12px;
+    line-height: 19px;
+    border: 1px solid #e8e8e8;
+}
+.visa-detail th.righttd,.visa-detail td.righttd{
+    border-right: none;
+}
+.visa-detail th{
+    padding:8px 16px;
+    font-size: 13px;
+    color: #333;
+}
+.visa-detail th.leftth{
+    width: 116px;
+    border-left: none;
+    text-align: center;
+}
+.visa-detail td{
+    font-size: 12px;
+    color: #666;
+    padding: 10px 30px;
+    line-height: 26px;
+}
+.visa-detail td.lefttd{
+    color: #666;
+    border-left: none;
+    text-align: center;
+    font-size: 12px;
+    padding: 0;
+    font-weight: bold;
+}
+.visa-detail tr:nth-of-type(even){
+    background-color: #f0f2f5;
+    border-left: 2px solid #f0f2f5;
+}
+.visa-detail tr:nth-of-type(odd){
+    border-left: 2px solid #f0f2f5;
+}
+.visa-detail a{
+    color: #0185c6;
+}
+.visa-detail .midtd{
+    padding: 0;
+    text-align: center;
+    width: 116px;
+}

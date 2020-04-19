@@ -1,0 +1,96 @@
+{{?it.IsDirect == 0}}
+<div class="rule">
+    {{?it.goConsign || it.Data}}
+        {{?it.IsCo}}
+            <h2>购票说明</h2>
+            <div class="IsCo">
+                <div><em>去</em><span>{{=it.departcity}}</span><i></i><span>{{=it.cocity}}</span></div>
+                {{?it.goConsign && it.goConsign.length}}
+                    <p class="title">托运说明 :</p>
+                    <p>{{=it.goConsign}}</p>
+                {{?}}
+                {{?it.Data}}
+                    <div class="rule">
+                    {{?it.Data.goRefundRule}}
+                        <p class="title">退票说明 :</p>
+                        <p>{{=it.Data.goRefundRule}}</p>
+                    {{?}}
+                    {{?it.Data.goChangeRule}}
+                        <p class="title">改签说明 :</p>
+                        <p>{{=it.Data.goChangeRule}}</p>
+                    {{?}}
+                        {{?it.Data.goBookNotice}}
+                            <p class="title">误机说明 :</p>
+                            <p>{{=it.Data.goBookNotice}}</p>
+                        {{?}}
+                    </div>
+                {{?}}
+                {{?!it.goConsign && !it.Data.goRefundRule &&!it.Data.goChangeRule &&!it.Data.goBookNotice}}
+                    <p>暂无退改签说明</p>
+                {{?}}  
+            </div>
+            <div class="IsCo">
+                <div><em>转</em><span>{{=it.cocity}}</span><i></i><span>{{=it.arrivecity}}</span></div>
+                {{?it.coConsign && it.coConsign.length}}
+                    <p class="title">托运说明 :</p>
+                    <p>{{=it.coConsign}}</p>
+                {{?}}
+                {{?it.Data}}
+                    <div class="rule">
+                    {{?it.Data.coRefundRule}}
+                        <p class="title">退票说明 :</p>
+                        <p>{{=it.Data.coRefundRule}}</p>
+                    {{?}}
+                    {{?it.Data.coChangeRule}}
+                        <p class="title">改签说明 :</p>
+                        <p>{{=it.Data.coChangeRule}}</p>
+                    {{?}}
+                        {{?it.Data.coBookNotice}}
+                            <p class="title">误机说明 :</p>
+                            <p>{{=it.Data.coBookNotice}}</p>
+                        {{?}}
+                    </div>
+                {{?}}
+                {{?!it.coConsign && !it.Data.coRefundRule &&!it.Data.coChangeRule &&!it.Data.coBookNotice}}
+                    <p>暂无退改签说明</p>
+                {{?}}  
+            </div>
+        {{??}}
+            <h2>购票说明</h2>
+            {{?it.goConsign && it.goConsign.length}}
+                <p class="title">托运说明 :</p>
+                <p>{{=it.goConsign}}</p>
+            {{?}}
+            {{?it.Data}}
+                <div class="rule">
+                {{?it.Data.goRefundRule}}
+                    <p class="title">退票说明 :</p>
+                    <p>{{=it.Data.goRefundRule}}</p>
+                {{?}}
+                {{?it.Data.goChangeRule}}
+                    <p class="title">改签说明 :</p>
+                    <p>{{=it.Data.goChangeRule}}</p>
+                {{?}}
+                    {{?it.Data.goBookNotice}}
+                        <p class="title">误机说明 :</p>
+                        <p>{{=it.Data.goBookNotice}}</p>
+                    {{?}}
+                </div>
+            {{?}}
+            {{?!it.goConsign && !it.Data.goRefundRule &&!it.Data.goChangeRule &&!it.Data.goBookNotice}}
+                <p>暂无退改签说明</p>
+            {{?}} 
+        {{?}}
+    {{?}} 
+</div>
+{{??it.IsDirect == 1}}
+<div class="rule">
+    <h2>购票说明</h2>
+    {{?it.goConsign && it.goConsign.length}}
+        <p class="title">托运说明 :</p>
+        <p>{{=it.goConsign}}</p>
+    {{?}}
+        <p class="title">退改签说明 :</p>
+        <p>该机票为供应商提供的优惠机票，一经出票不退不改，如您计划可能有变，请谨慎预定。</p>
+</div>
+{{?}}

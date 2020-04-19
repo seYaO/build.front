@@ -1,0 +1,71 @@
+{{var singleProductTypeArr = [61028012,61028014,61028013,61028020];}}
+ {{~ singleProductTypeArr:type}}
+     {{? type == 61028012}}
+        {{var typeName = "主题乐园";}}
+        {{var typeEnglish = "Theme park";}}
+        {{var pictureUrl = "cate_1.png";}}
+        {{var skinCls = "dsn";}}
+        {{var module = "1";}}
+        {{var singleProductInfo = data.HotDestDic.zhuTiLeYuan && data.HotDestDic.zhuTiLeYuan.HotProductList;}}
+     {{?? type == 61028014}}
+        {{var typeName = "特色主题";}}
+        {{var typeEnglish = "Characteristic theme";}}
+        {{var pictureUrl = "cate_2.png";}}
+        {{var skinCls = "hqysc";}}
+        {{var module = "2";}}
+        {{var singleProductInfo =  data.HotDestDic.teSeZhuTi && data.HotDestDic.teSeZhuTi.HotProductList;}}
+     {{?? type == 61028013}}
+        {{var typeName = "海洋公园";}}
+        {{var typeEnglish = "Ocean Park";}}
+        {{var pictureUrl = "cate_4.png";}}
+        {{var skinCls = "shuizuguan";}}
+        {{var module = "3";}}
+        {{var singleProductInfo =  data.HotDestDic.haiYangGongYuan && data.HotDestDic.haiYangGongYuan.HotProductList;}}
+     {{??}}
+        {{var typeName = "动植物园";}}
+        {{var typeEnglish = "Animal and vegetable garden";}}
+        {{var pictureUrl = "cate_3.png";}}
+        {{var skinCls = "shamo";}}
+        {{var module = "4";}}
+        {{var singleProductInfo =  data.HotDestDic.dongZhiWuYuan && data.HotDestDic.dongZhiWuYuan.HotProductList;}}
+     {{?}}
+
+     {{? singleProductInfo  && singleProductInfo.length > 0}}
+        <div class="list_product {{?typeName == '动植物园'}}lastnomr{{?}}" trace="module{{=module}}">
+            <div class="product_type_tit {{=skinCls}}">
+                <div class="type_tit">
+                    <h2>{{=typeName}}</h2>
+                    <p>{{=typeEnglish}}</p>
+                </div>
+                <div class="type_img">
+                    <img src="//img1.40017.cn/cn/v/wanle/2015/gangaotai/{{=pictureUrl}}" alt="{{=typeName}}">
+                </div>
+            </div>
+			<ul class="pro-list" trackkit="Line_Recommend">
+                {{~ singleProductInfo:ztlylist:index}}
+                     {{? index < 4}}
+                      {{? ztlylist.MainTitle.length > 40}}
+                         {{ztlylist.MainTitle = ztlylist.MainTitle.substring(0,40)+"……";}}
+                      {{??}}
+                         {{ztlylist.MainTitle = ztlylist.MainTitle;}}
+                      {{?}}
+                      {{ztlylist.ProductHeadImageUrl = ztlylist.ProductHeadImageUrl.replace('.jpg','_430x270_00.jpg');}}
+                        <li>
+                            <a target="_blank" title="{{=ztlylist.MainTitle}}" href="/dujia/wanle/{{=ztlylist.ProductId}}.html" trace="module{{=module}}_{{=index}}" trackspot="{{=ztlylist.ProductId}}^{{=index+1}}^0^{{=typeName}}">
+                                <div class="pro-img">
+                                    <img src="{{=ztlylist.ProductHeadImageUrl.replace('http:','')}}" alt="{{=ztlylist.MainTitle}}">
+                                </div>
+                                <div>
+                                    <span class="p_tit">{{=ztlylist.MainTitle}}</span>
+                                    <span><i>¥</i><em>{{=ztlylist.Price}}</em>起</span>
+                                    <span class="link">立即抢购</span>
+                                </div>
+                            </a>
+                        </li>
+                    {{?}}
+                {{~}}
+            </ul>
+        </div>
+     {{?}}
+    <div class="clear"></div>
+{{~}}

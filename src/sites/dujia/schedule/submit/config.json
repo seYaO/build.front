@@ -1,0 +1,8 @@
+{
+    "dataUri":  "/dujia/scheduleSuccess.html?prop=1&src=长沙&dest=清迈&days=4&minSDate=2016-12-31&maxSDate=2016-12-31&minPrice=0&maxPrice=3000&flag=2&debug=data",
+    "query": {
+        "slideCount":6,
+        "tourstype":3
+    },
+    "desc": "出境自由行首页"
+}

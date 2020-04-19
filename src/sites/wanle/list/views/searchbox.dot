@@ -1,0 +1,20 @@
+
+<div class="sousuo_box">
+    <div class="search-box">
+        <i></i>
+        <input id="txtScenicValue" attrvalue="香港迪士尼" value="香港迪士尼" style="color: rgb(153, 153, 153);">
+        <a href="javascript:;">搜&nbsp;&nbsp;索</a>
+        <ul id="matchContent" class="matchContent none sz"></ul>
+    </div>
+</div>
+
+<div class="hotcity-name" style="width:480px;overflow:hidden;">
+{{?hotSearchList != "" && hotSearchList.length > 0}}
+    <span>热门搜索词：</span>
+	{{~hotSearchList:hotSearch:index}}
+		{{? index < 4}}
+			<a href="{{=hotSearch.Url.replace('http:','')}}" target="_blank" title="{{=hotSearch.MainTitle}}">{{=hotSearch.MainTitle}}</a>
+		{{?}}
+	{{~}}
+{{?}}
+</div>

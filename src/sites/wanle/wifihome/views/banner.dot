@@ -1,0 +1,9 @@
+{{?it.HotDestDic.huanDeng && it.HotDestDic.huanDeng.HotProductList && it.HotDestDic.huanDeng.HotProductList.length > 0}}
+    {{~it.HotDestDic.huanDeng.HotProductList:banner:index}}
+        <li>
+            <a href="{{=banner.Url.replace('http:','')}}" title="{{=banner.MainTitle}}" target="_blank"  rel="nofollow" trace="huandeng_{{=index}}" trackspot="{{=banner.MainTitle}}^{{=index+1}}">
+                <img src="{{=banner.Image.replace('http:','')}}" alt="{{=banner.MainTitle}}">
+            </a>
+        </li>
+    {{~}}
+{{?}}

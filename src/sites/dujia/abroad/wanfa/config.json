@@ -1,0 +1,10 @@
+{
+    "dataUri":  "/intervacation/api/CountryDestination/GetWanfaDetail",
+    "query": {
+        "siteType":0,
+        "pageType":30,
+        "destType":1,
+        "wanFaId":69
+    },
+    "desc": "出境目的玩法页"
+}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+{{var it = IT.Data;}}
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn" />
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _hmt = _hmt || [];
+        var _tcHotmapx = { pid: 212, sp: 100 };
+    </script>
+<title>全部点评</title>
+<!-- 公共样式表 -->
+<script src="/modules-lite/mod.js" data-loader="true"></script>
+<!-- 页面样式表 -->
+
+<link rel="stylesheet" type="text/css" href="http://css.40017.cn/touch/public/common/0.2.1/common.css?v=04221828" />
+<link rel="stylesheet" type="text/css" href="http://css.40017.cn/cn/min/??/touch/public/page/0.0.2/page.css,/touch/public/dataLoader/0.0.1/dataLoader.css,/touch/public/slider/0.0.1/slider.css?v=20150618001"
+/>
+
+
+</head>
+
+<body onselectstart="return false;">
+<!-- 页面内容块 -->
+
+
+<!-- 公共页头  -->
+<div id="mainPage">
+    <div class="top-wrapper">
+    </div>
+    <div class="top-wrapper-new">
+        <!--<ul>
+            <li data-value="tagId:1;">全部</li>
+            <li data-value="tagId:2;">好评</li>
+            <li data-value="tagId:3;">中评</li>
+            <li data-value="tagId:4;">差评</li>
+            <li data-value="tagId:5;">有图</li>
+        </ul>-->
+    </div>
+    <div class="content">
+        <ul class="comment-list">
+        </ul>
+    </div>
+</div>
+<div id="imageListPage" class="page">
+    <div class="content"></div>
+</div>
+<div id="imageViewPage" class="page">
+</div>
+
+<div id="pageLoading">
+    <i class="loading-img"></i>
+</div>
+<input type="hidden" name="LineId" id="LineId" value="{{=it.LineId}}">
+
+
+<!-- 公共页脚 -->
+
+
+<script type="text/javascript" charset="utf-8" src="//wx.40017.cn/touch/min/??/touch/weixin/public/js/comQdid.js"></script>
+<script type="text/javascript">
+    var _tcq = _tcq || [];
+    var _timediff = -1;
+    if (typeof _tcopentime != "undefined")
+    { _timediff = new Date().getTime() - _tcopentime; }
+    _tcq.push(['_serialid', '0']);
+    _tcq.push(['_vrcode', '10003-2027-0']);
+    _tcq.push(['_refId', 107075804]);
+    _tcq.push(['_userId', "{{=it.UserId || 0}}"]);
+    _tcq.push(['_openTime', _timediff]);
+    _tcq.push(['_trackPageview', '{{=it.OpenId ||""}}||微信/玩乐/海外玩乐']);
+</script>
+
+<script src="http://js.40017.cn/cn/min/??/touch/public/page/0.0.2/page.js,/touch/public/dataLoader/0.0.1/dataLoader.js,/touch/public/slider/0.0.1/slider.js?v=20150618001"></script>
+<script type="text/javascript" src="http://js.40017.cn/touch/public/common/0.0.8/common.js?v=05261720"></script>
+<script type="text/javascript">
+    require("./index");
+</script>
+
+
+<script type='text/javascript' src="http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+</body>
+
+</html>

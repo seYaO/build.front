@@ -1,0 +1,298 @@
+<div class="borBox J_NavBox" id="part1" data-index="1" data-type="baseinfo">
+    <div class="tab_head">
+        <h4>基本信息</h4>
+        <span class="save_btn J_saveBtn">保存资料</span>
+    </div>
+    <ul class="basic_info tab_con">
+        <li class="info_list info_list_first">
+            <span class="info_tit"><i>*</i>中文姓名：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="请填写姓名" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_FULL_NAME_NATIVE"  validate="required cnName" vali-msg-required="请输入中文名称">
+                <span class="valid_symbol none"></span>
+                <div class="former_name J_more">
+                    <div class="name_lf lf">
+                        <em class="checked J_check"></em>
+                        <span class="lf">曾用名</span>
+                    </div>
+                    <div class="name_rt J_addBtn none" type="form">
+                        <input class="w105 lf J_last_name" type="text" placeholder="请填写姓">
+                        <input class="w105 lf J_first_name" type="text" placeholder="请填写名">
+                        <span class="valid_symbol none" style="display:none"></span>
+                        <span class="butt add_name" verify-type="required" vali-msg-required="*请添加曾用名" FCControlId="baseInfo_formerName"><i></i>添加</span>
+                        <div class="clearfix"></div>
+                        <div class="mar15 nameBox J_tags"></div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>姓(拼音)：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="请填写护照一致的姓" FCControlId="ctl00$SiteContentPlaceHolder$FormView1$tbxAPP_SURNAME" validate="required enName" vali-msg-required="请输入英文名称">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>名(拼音)：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="请填写护照一致的名" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_GIVEN_NAME" validate="required enName" vali-msg-required="请输入英文名称">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</span>
+            <div class="info_con J_choose lf" verify validate="required" vali-msg-required="请选择性别" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblAPP_GENDER">
+                <span class="radio" value="M"><i></i>男</span>
+                <span class="radio" value="F"><i></i>女</span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>国&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;籍：</span>
+            <div class="info_con">
+                <input type="text" class="w130" placeholder="请输入国籍" validate="required cnName" vali-msg-required="请输入国籍" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlAPP_NATL">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>身份证号：</span>
+            <div class="info_con">
+                <input class="w220 lf" type="text" placeholder="请输入身份证" validate="required cardNo" vali-msg-required="请输入身份证" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_NATIONAL_ID">
+                <span class="valid_symbol none"></span>
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>未成年人无身份证号码，可不填写</p></div>"></i>
+                <label class="check_label rt">
+                    <em class="checked mar20_l J_check cardNo" FCControlId="NoidNumber" validate="none"></em>
+                    <span class="lf">无身份证号码</span>
+                </label>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>手机号码：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="输入手机号码" validate="required mobile" vali-msg-required="请输入手机号码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxUS_POC_HOME_TEL">
+                <span class="valid_symbol none"></span>
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>未成年人请填写监护人手机号码</p></div>"></i>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit">家庭电话：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="格式：区号+电话" validate="phone" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_HOME_TEL">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit">工作电话：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="输入工作电话" validate="phone" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_BUS_TEL">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>E-mail：</span>
+            <div class="info_con">
+                <input class="w130 lf" type="text" placeholder="输入E-mail"  validate="required email" vali-msg-required="请输入E-mail" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_EMAIL_ADDR">
+                <span class="valid_symbol none"></span>
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>若无本人邮箱，请填写熟人邮件地址</p></div>"></i>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>婚姻状况：</span>
+            <div class="info_con J_choose" verify validate="required" vali-msg-required="请选择婚姻状况" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlAPP_MARITAL_STATUS">
+                <span class="radio" value="M"><i></i>已婚</span>
+                <span class="radio" value="S"><i></i>未婚</span>
+                <span class="radio" value="D"><i></i>离异</span>
+                <span class="radio" value="W"><i></i>丧偶</span>
+                <span class="radio other" value="O"><i></i>其他</span>
+                <input class="w190 user_defined  none" type="text" verify-type="required charFilter" vali-msg-required="请完善婚姻状况" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxOtherMaritalStatus">
+            </div>
+        </li>
+        <li class="info_list clearfix">
+            <span class="info_tit"><i>*</i>出生日期：</span>
+            <div class="dropdown_tit">
+                <input type="text" class="w130 input_date J_dateTime" placeholder="请选择出生日期" readonly="readonly" validate="required date" vali-msg-required="请选择出生日期" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlAPP_DATE">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>出生地址：</span>
+            <div class="info_con">
+                <input type="text" class="w130" placeholder="请输入国家" validate="required charFilter" vali-msg-required="请输入国家" vali-msggroup="msg1_2"  vali-group="msg1_2" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlAPP_POB_CNTRY">
+                <input type="text" class="w130" placeholder="请输入省" validate="required charFilter" vali-msg-required="请输入省" vali-msggroup="msg1_2"  vali-group="msg1_2" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_POB_ST_PROVINCE">
+                <input type="text" class="w130" placeholder="请输入市" validate="required charFilter" vali-msg-required="请完善出生地址" vali-msggroup="msg1_2" vali-group="msg1_2" vali-msggroup-breth="msg1_2" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_POB_CITY">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>家庭地址：</span>
+            <div class="info_con">
+                <input type="text" class="w130" placeholder="请输入国家" validate="required charFilter" vali-msg-required="请输入国家" vali-msggroup="msg1_3" vali-group="msg1_3" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlCountry">
+                <input type="text" class="w130" placeholder="请输入省" validate="required charFilter" vali-msg-required="请输入省" vali-msggroup="msg1_3" vali-group="msg1_3" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_ADDR_STATE">
+                <input type="text" class="w130" placeholder="请输入市" validate="required charFilter" vali-msg-required="请完善家庭地址" vali-msggroup="msg1_3" vali-group="msg1_3" vali-msggroup-breth="msg1_3" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_ADDR_CITY">
+                <span class="valid_symbol none"></span>
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>请填写现住家庭住址</p></div>"></i>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit">邮政编码：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="输入邮政编码" validate="mailCode" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_ADDR_POSTAL_CD">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>详细街道：</span>
+            <div class="info_con">
+                <input class="w575" type="text" placeholder="街道详情地址不要包括国家省市，从区开始填写，例如：工业园区裕新路188号同程大厦" validate="required charFilter" vali-msg-required="请输入街道详情地址" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_ADDR_LN1">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <div class="J_choose mar15">
+            <div class="sub_title clearfix" verify validate="required"  vali-msg-required="请完善信息" FCControlId="MailingAddress">
+                <p><i></i>您的邮寄地址是否与您的家庭地址一致？</p>
+                <span class="radio" data-type="0" value="Y"><i></i>是</span>
+                <span class="radio" data-type="1" value="N"><i></i>否</span>
+            </div>
+            <ul class="form_ul none" type="form">
+                <li class="info_list">
+                    <span class="info_tit"><i>*</i>邮寄地址：</span>
+                    <div class="info_con">
+                        <input type="text" class="w130" placeholder="请输入省份"verify-type="required charFilter"  vali-msg-required="请输入省份" vali-msggroup="msg1_4" vali-group="msg1_4" FCControlId="MailingAddress_province">
+                        <input type="text" class="w130" placeholder="请输入城市" verify-type="required charFilter"  vali-msg-required="请完善邮寄地址" vali-msggroup="msg1_4" vali-group="msg1_4" vali-msggroup-breth="msg1_4" FCControlId="MailingAddress_city">
+                    </div>
+                </li>  
+                <li class="info_list">
+                    <span class="info_tit"><i>*</i>详细街道：</span>
+                    <div class="info_con">
+                        <input class="w575 lf" type="text" placeholder="街道详情地址不要包括省市，从区开始填写，例如：工业园区裕新路188号同程大厦" verify-type="required charFilter" vali-msg-required="请输入详细街道" FCControlId="MailingAddress_street">
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="line"></div>
+        <li class="info_list">
+            <span class="info_quiz">1 ).您是否拥有其他国家国籍？ 若有，请予以提供。</span>
+            <div class="info_con J_choose" verify validate="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblAPP_OTH_NATL_IND">
+                <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                <span class="radio" data-type="0" value="N"><i></i>否</span>
+                <input type="text" class="w130 none J_render" placeholder="请输入国籍" verify-type="required cnName" vali-msg-required="请输入国籍" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlOTHER_NATL_ctl00_ddlOTHER_NATL">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_quiz">2 ).您是否拥有此国家或地区的护照？</span>
+            <div class="info_con J_choose" verify validate="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlOTHER_NATL_ctl00_rblOTHER_PPT_IND">
+                <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                <span class="radio" data-type="0" value="N"><i></i>否</span>
+                <input class="w220 none J_render" type="text" placeholder="请输入证件号码" verify-type="required charOrNum" vali-msg-required="请输入证件号码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlOTHER_NATL_ctl00_tbxOTHER_PPT_NUM">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_quiz">3 ).您是否是其他国家的永久居民？</span>
+            <div class="info_con J_choose" verify validate="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPermResOtherCntryInd">
+                <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                <span class="radio" data-type="0" value="N"><i></i>否</span>
+                <input type="text" class="w130 none J_render" placeholder="请输入国家" verify-type="required cnName" vali-msg-required="请输入国家" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlOthPermResCntry_ctl00_ddlOthPermResCntry">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_quiz">4 ).您是否拥有美国社会安全号？</span>
+            <div class="info_con J_choose" verify validate="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_cbxAPP_SSN_NA">
+                <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                <span class="radio" data-type="0" value="N"><i></i>否</span>
+                <input class="w220 none J_render" type="text" placeholder="请输入证件号码" verify-type="required charOrNum" vali-msg-required="请输入证件号码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_SSN">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_quiz">5 ).您是否拥有美国纳税人身份号码？</span>
+            <div class="info_con J_choose" verify validate="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_cbxAPP_TAX_ID_NA">
+                <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                <span class="radio" data-type="0" value="N"><i></i>否</span>
+                <input class="w220 none J_render" type="text" placeholder="请输入证件号码" verify-type="required charOrNum" vali-msg-required="请输入证件号码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAPP_TAX_ID">
+            </div>
+        </li>
+        {{var dataList = (data && data.USAControlList) || [];}}
+        {{var  baseinfoList = (dataList[0] || {}).USAControlList || [];}}
+        {{var imgStatus1="",imgStatus2="",imgStatus3="",imgStatus4="";}}
+        <div class="co-pic J_pic-box" style="right: 190px;z-index:100;">
+            {{?baseinfoList && baseinfoList.length}}
+                {{~baseinfoList:baseInfo:index}}
+                    {{?baseInfo.FCControlId == "passport_photo"}}
+                        {{var imgUrl = baseInfo.Value.replace('http:','');}}
+                        <div class="upload-pic J_Close_Pic">
+                            <img class="pic J_Pic" src="{{=imgUrl}}" style="width:100px;height:100px" data-src="{{=imgUrl}}" FCControlId="{{=baseInfo.FCControlId}}" value="{{=imgUrl}}" validate="none">
+                            {{?data.IsSubmit == "1"}}
+                                <i></i>
+                            {{?}}
+                        </div>
+                         {{imgStatus1= baseInfo.Value ? "display:none":"";}}
+                    {{?}}
+                {{~}}
+            {{?}}
+            <div class="add-pic J_add-pic " style="{{=imgStatus1}}" id="addpic-1" data-tag="1" data-type="passport_photo">
+                <i class="add-pic-bg"></i>
+            </div>
+            <span class="pic-for J_tips" data-content="<div class='tips_con'><span>照片要求</span><p>•提供护照首页图片<br/>•提供护照首页图片必须本人签字：申请者护照签字处<br/>•旧版在尾页，新版在首页</p></div>">护照要求</span>
+        </div>
+        <div class="co-pic J_pic-box" style="z-index:100;">
+            {{?baseinfoList && baseinfoList.length}}
+                {{~baseinfoList:baseInfo:index}}
+                    {{?baseInfo.FCControlId == "Id_photo"}}
+                        {{var imgUrl = baseInfo.Value.replace('http:','');}}
+                        <div class="upload-pic J_Close_Pic">
+                            <img class="pic J_Pic" src="{{=imgUrl}}" style="width:100px;height:100px" data-src="{{=imgUrl}}" FCControlId="{{=baseInfo.FCControlId}}" value="{{=imgUrl}}" validate="none">
+                            {{?data.IsSubmit == "1"}}
+                                <i></i>
+                            {{?}}
+                        </div>
+                         {{imgStatus2= baseInfo.Value ? "display:none":"";}}
+                    {{?}}
+                {{~}}
+            {{?}}
+
+            <div class="add-pic J_add-pic" style="{{=imgStatus2}}" id="addpic-2" data-tag="1" data-type="Id_photo"> 
+                <i class="add-pic-bg"></i>
+            </div>
+            <span class="pic-for J_tips" data-content="<div class='tips_con'><span>照片要求</span><p>1.最近6个月内拍摄的白底正面彩照，尺寸5.1厘米X5.1厘米（正方形照片），头部的垂直尺寸2.5 -3.5 厘米之间<br/>2.整个面容（额头至下巴、颈部、双耳）可见，最好不露牙齿；不能配戴眼镜，不能配戴美瞳<br/>3.照片最小尺寸为600x600像素（高x宽）。最大尺寸为1200x1200像素（高x宽）</p></div>">证件照要求</span>
+        </div>
+        <div class="co-pic J_pic-box" style="right: 190px;top:191px;">
+            {{?baseinfoList && baseinfoList.length}}
+                {{~baseinfoList:baseInfo:index}}
+                    {{?baseInfo.FCControlId == "cardno_head_photo"}}
+                        {{var imgUrl = baseInfo.Value.replace('http:','');}}
+                        <div class="upload-pic J_Close_Pic">
+                            <img class="pic J_Pic" src="{{=imgUrl}}" style="width:100px;height:100px" data-src="{{=imgUrl}}" FCControlId="{{=baseInfo.FCControlId}}" value="{{=imgUrl}}" validate="none">
+                            {{?data.IsSubmit == "1"}}
+                                <i></i>
+                            {{?}}
+                        </div>
+                         {{imgStatus3= baseInfo.Value ? "display:none":"";}}
+                    {{?}}
+                {{~}}
+            {{?}}
+
+            <div class="add-pic J_add-pic" style="{{=imgStatus3}}" id="addpic-3" data-tag="1" data-type="cardno_head_photo"> 
+                <i class="add-pic-bg"></i>
+            </div>
+            <span class="pic-for" style="color:#333;">请上传身份证正面</span>
+        </div>
+        <div class="co-pic J_pic-box" style="top:191px;">
+            {{?baseinfoList && baseinfoList.length}}
+                {{~baseinfoList:baseInfo:index}}
+                    {{?baseInfo.FCControlId == "cardno_back_photo"}}
+                        {{var imgUrl = baseInfo.Value.replace('http:','');}}
+                        <div class="upload-pic J_Close_Pic">
+                            <img class="pic J_Pic" src="{{=imgUrl}}" style="width:100px;height:100px" data-src="{{=imgUrl}}" FCControlId="{{=baseInfo.FCControlId}}" value="{{=imgUrl}}" validate="none">
+                            {{?data.IsSubmit == "1"}}
+                                <i></i>
+                            {{?}}
+                        </div>
+                         {{imgStatus4= baseInfo.Value ? "display:none":"";}}
+                    {{?}}
+                {{~}}
+            {{?}}
+
+            <div class="add-pic J_add-pic" style="{{=imgStatus4}}" id="addpic-4" data-tag="1" data-type="cardno_back_photo"> 
+                <i class="add-pic-bg"></i>
+            </div>
+            <span class="pic-for" style="color:#333;">请上传身份证反面</span>
+        </div>
+    </ul>
+</div>

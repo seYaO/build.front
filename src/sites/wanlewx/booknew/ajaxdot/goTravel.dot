@@ -1,0 +1,13 @@
+ {{~it.travels:value:index}}
+     {{?value == undefined || value == ""}}
+     <li data-index = "{{=index + 1}}">
+        <label>出游人{{=index + 1}}</label>
+        <span><em data-desc = "请选择出游人(可不填)">请选择出游人(可不填)</em><i></i></span>
+    </li>
+    {{??}}
+    <li data-index = "{{=index + 1}}">
+        <label>出游人{{=index + 1}}</label>
+        <span><em data-desc="请选择出游人(可不填)" data-travelid="{{=value.travelId}}" style="color: rgb(51, 51, 51);">{{=value.travelName}}</em><i></i></span>
+    </li>
+    {{?}}
+{{~}}

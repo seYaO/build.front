@@ -1,0 +1,36 @@
+<div class="team-table-content team-info-content">
+    <div class="table-title">基本信息</div>
+    <div class="table-content table-content-info">
+        <div class="table-info">
+            <label>出行方式</label><span class="table-type table-type-person current J_PerType" data-id="1">私人定制<i></i></span><span class="table-type J_ComType" data-id="2">公司定制<i></i></span>
+        </div>
+        <div class="table-info">
+            <label><em>*</em>出发地</label><input type="text" value='{{=it.cityName || "苏州"}}' class="table-input table-city J_StartCity" placeholder="请输入您的出发地" data-rq="请输入您的出发地" data-error="请输入正确的出发地"><span class="error-tip"></span>
+        </div>
+        <div class="table-info">
+            <label><em>*</em>目的地</label><input type="text" class="table-input table-city J_DestCity" placeholder="请输入您的目的地" data-rq="请输入您的目的地" data-error="请输入正确的目的地"><span class="error-tip"></span>
+        </div>
+        <div class="table-info">
+            <label><em>*</em>出游人数</label><div class="peopleNum-picker">
+                <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-dispicker-leftBtn J_PickerLeftBtn"></a><input class="table-input peopleNum-picker-input J_PickerInput J_PickerAdult" readonly="readonly" value="1" min="1" autocomplete="off"><a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-rightBtn J_PickerRightBtn"></a>
+            </div><i>成人</i>
+            <div class="peopleNum-picker people-child">
+                <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-dispicker-leftBtn J_PickerLeftBtn"></a><input class="table-input peopleNum-picker-input J_PickerInput J_PickerChild" readonly="readonly" value="0" min="0" autocomplete="off"><a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-rightBtn J_PickerRightBtn"></a>
+            </div><i>儿童</i>
+        </div>
+        <div class="table-info">
+            <label>人均预算</label><input type="text" min="0" placeholder="无明确预算可不填" class="table-input table-budget J_Budget"><i>元/人</i>
+        </div>
+        <div class="table-info">
+            <label><em>*</em>出发时间</label><input type="text" class="table-input table-start" id="startTime" readonly="readonly" placeholder="最早出发"><i>至</i><input type="text" class="table-input table-end" id="endTime" readonly="readonly" placeholder="最晚出发">
+        </div>
+        <div class="table-info">
+            <label><em>*</em>游玩天数</label><div class="days-picker">
+                <a href="javascript:void(0)" class="days-picker-btn days-picker-leftBtn J_DayLeftBtn"></a><input class="table-input days-picker-input J_PickerDays" readonly="readonly" value="3" min="1" autocomplete="off"><a href="javascript:void(0)" class="days-picker-btn days-picker-rightBtn J_DayRightBtn"></a>
+            </div>
+        </div>
+        <div class="table-submit">
+            <label></label><input type="button" class="table-btn table-submit-btn disabled J_Next" value="下一步" />
+        </div>
+    </div>
+</div>

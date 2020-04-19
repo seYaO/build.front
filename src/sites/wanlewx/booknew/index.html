@@ -1,0 +1,1192 @@
+<!DOCTYPE html> 
+{{var it = IT.Data;}} 
+{{var basicInfo = it.SingleProductData;}}
+{{var receiver = it.Receiver;}}
+<html>
+
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn" />
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _hmt = _hmt || [];
+        var _tcHotmapx = { pid: 212, sp: 100 };
+    </script>
+    <title>产品预订</title>
+    <!-- 公共样式表 -->
+    <script src="/modules-lite/mod.js" data-loader="true"></script>
+    <link href="http://css.40017.cn/touch/public/common/0.2.2/common.css?v=07121702" rel="stylesheet" />
+    <!-- 页面样式表 -->
+
+    <meta name="x5-cache" content="disable">
+</head>
+
+<body onselectstart="return false;">
+<!-- 页面内容块 -->
+
+
+<div class="page-body">
+    <div class="page-box" id="J_pageBox">
+        <div id="mainPage" class="viewport current switching" style="display: block;">
+            <section class="content ui-dialog-container">
+                <div class="auction-info">
+                    <p class="title">{{=basicInfo.MainTitle}}</p>
+                    <!--wifi产品就有该预订天数-->
+                    {{?basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 92}}
+                        {{?basicInfo.PackageDays}}
+                            <p class="wrap">最小预订{{=basicInfo.PackageDays}}天，最多预订{{=basicInfo.PackageDays}}天</p>
+                        {{??}}
+                            <p class="wrap">最小预订{{=basicInfo.BookDaysMin}}天，最多预订{{=basicInfo.BookDaysMax}}天</p>
+                        {{?}}
+                    {{?}}
+                    
+                    <!--<a class="more-info-button"></a>
+                    <a class="more-info"><i class="more-info-bottom"></i></a>-->
+                </div>
+                
+                <div class="auction-persons ">
+                    <h2>预订信息</h2>
+                    <ul>
+                        {{?basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 92}}
+                            <li class="rele-data">
+                                <label>取件日期</label> 
+                                <span data-date="{{=it.CalData.ValidDate.replace(/\-/g, '/')}}" id="J_DepTime">{{=it.CalData.ValidDate.replace(/\-/g, '/')}}<i></i></span>
+                            </li>
+                            {{?basicInfo.PackageDays > 0}}
+                                {{var dateParam = new Date(+new Date(basicInfo.ValidDate) + (basicInfo.PackageDays - 1)*24*60*60*1000);}}
+                                {{var date = dateParam.getFullYear() + "/" + dateParam.getMonth() + "/" + dateParam.getDate();}}
+                                <li class="rele-data"><label>还件日期</label> 
+                                    <span data-date="{{=date}}" id="J_sendTime"{{=date}}<i style="border-color: transparent"></i></span>
+                                </li>
+                            {{??}}
+                                <li class="rele-data"><label>还件日期</label> 
+                                    <span data-date="" id="J_sendTime"><i></i></span>
+                                </li>
+                            {{?}}
+                            <div class="asyn-data">
+                            {{?it.CalData.PriceCalDetails && it.CalData.PriceCalDetails.length}}
+                                {{var item = it.CalData.PriceCalDetails[0];}}
+                                <li class="wifi_spe">
+                                    <label data-isautoclose="0" data-type="1" data-iscount="1" data-id="66084614" data-daren="0" data-discount="0" class="J_PriceType wifi_priceType J_Price" data-name="{{=item.PriceName}}" data-price ="{{=item.AmountDirect}}">预定台数</label>
+                                    <div class="label-control">
+                                        <div class="button-content num-ctrlbox">
+                                            <i data-ctrl="-1" class="button-minus off"></i>
+                                            <input type="text" name="" class="J_Number" min="{{=basicInfo.BookPerson}}" max="{{=basicInfo.BookPersonMax}}" value="{{=basicInfo.BookPerson}}" priceId="{{=item.PriceId}}" maxlength="4" attr-unit="/台" autocomplete="off">
+                                            <i data-ctrl="+1" class="button-plus {{?basicInfo.BookPersonMax == 1}}off{{?}}"></i>
+                                        </div>
+                                    </div>
+                                </li>
+                            {{?}}
+                            </div>
+                        {{??}}
+                            <li>
+                                <label>出发日期</label>
+                                <span data-date="{{=it.CalData.ValidDate.replace(/\-/g, '/')}}" id="J_DepTime">{{=it.CalData.ValidDate.replace(/\-/g, '/')}} 
+                                    <i></i>
+                                </span>
+                            </li>
+                            <div class="asyn-data">
+                                {{~it.CalData.PriceCalDetails:item:index}}
+                                <li>
+                                    <label data-isautoclose="0" data-type="1" data-iscount="1" data-id="66084614" data-daren="0" data-discount="0" class="J_PriceType">
+                                        {{?(basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 91) || (basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 93)}}        
+                                        <span>预计件数<span>
+                                        {{??}}
+                                        {{=item.PriceName}}
+                                        {{?}}
+                                    </label>
+                                    <div class="label-control">
+                                        <div class="button-content num-ctrlbox">
+                                            {{?!index}}
+                                            <i data-ctrl="-1" class="button-minus off"></i>
+                                            <input type="text" name="" class="J_Number" min="{{=basicInfo.BookPerson}}" max="{{=basicInfo.BookPersonMax}}" value="{{=basicInfo.BookPerson}}" priceId="{{=item.PriceId}}" maxlength="4" attr-unit="{{=item.PriceUnit}}" autocomplete="off"/>
+                                            <i data-ctrl="+1" class="button-plus {{?basicInfo.BookPersonMax == 1}}off{{?}}"></i>
+                                            {{??}}
+                                            <i data-ctrl="-1" class="button-minus off"></i>
+                                            <input type="text" name="" class="J_Number" min="0" max="{{=basicInfo.BookPersonMax}}" value="0" priceId="{{=item.PriceId}}" maxlength="4" attr-unit="{{=item.PriceUnit}}" autocomplete="off"/>
+                                            <i data-ctrl="+1" class="button-plus"></i>
+                                            {{?}}
+                                        </div>
+                                    </div>
+                                    <div class="price" attr-unit="@item.PriceUnit">
+                                        <span>
+                                            <span class="fn-rmb">￥</span>
+                                            <em id="J_SinglePrice" class="J_Price" data-price="{{=item.AmountDirect}}">{{=item.AmountDirect}}</em>
+                                        </span>{{=item.PriceUnit}}
+                                    </div>
+                                </li>
+                            {{~}}
+                               
+                            </div>
+                        {{?}}
+
+                        {{?basicInfo.ProdcutType == 9 && (basicInfo.ReceiveType == 1 || basicInfo.ReceiveType == 2)}}
+                            {{?basicInfo.ReceivePlaceDetailList && basicInfo.ReceivePlaceDetailList.length}}
+                                <li class="choose-adress">
+                                    <label>取件点</label>
+                                    <span class="pick_address">
+                                        {{var flag;}}
+                                        {{?basicInfo.ReceivePlaceDetailList && basicInfo.ReceivePlaceDetailList.length}}
+                                            {{~basicInfo.ReceivePlaceDetailList:place}}
+                                                {{?(!flag) && it.terminalId && it.terminalId === place.AtId}}
+                                                    {{flag = true;}}
+                                                    <em data-desc="请选择取件地址" style="color:#333;">{{=place.ReceivePlace}}{{=place.ReceiveAddress}}{{=place.ReceiveTime}}{{=place.DotId}}</em>
+                                                    {{?}}
+                                                {{~}}
+                                                {{?!flag}}
+                                                    <em data-desc="请选择取件地址">请选择取件地址</em>
+                                                {{?}}
+                                            {{??}}
+                                            <em data-desc="请选择取件地址"></em>
+                                            {{?}}
+                                        <i></i>
+                                    </span>
+                                </li>
+                            {{?}}
+                            {{?basicInfo.ReturnPlaceDetailList && basicInfo.ReturnPlaceDetailList.length}}
+                                <li class="choose-adress"><label>还件点</label><span class="send_address"><em data-desc="请选择还件地址">请选择还件地址</em><i></i></span></li>
+                            {{?}}
+                        {{??basicInfo.ReceiveType == 3 || basicInfo.ReceiveType == 6}}
+                            {{?receiver.ReceiverAddress.length && receiver.ReceiverPhone.length && receiver.ReceiverName.length && receiver.ReceiverRegion.length && receiver.ReceiverProvince.length && receiver.ReceiverCity.length}}
+                                <li class="post-address"><label>邮寄地址</label> 
+                                    <span class="detail-address"  data-id="{{=receiver.AddressId}}">
+                                        <p class="J_address1" data-address="{'ProvinceName':'{{=receiver.ReceiverProvince}}','ProvinceId':{{=receiver.ReceiverProvinceId}},'CityName':'{{=receiver.ReceiverCity}}','CityId':{{=receiver.ReceiverCityId}},'RegionName':'{{=receiver.ReceiverRegion}}','RegionId':{{=receiver.ReceiverRegionId}},'PostAddress':'{{=receiver.ReceiverAddress}}','PostPerson':'{{=receiver.ReceiverName}}','PostMobile':'{{=receiver.ReceiverPhone}}'}"  
+                                        post_address="{{=receiver.ReceiverProvince}}{{=receiver.ReceiverCity}}{{=receiver.ReceiverRegion}}{{=receiver.ReceiverAddress}}">{{=receiver.ReceiverProvince}}{{=receiver.ReceiverCity}}{{=receiver.ReceiverRegion}}{{=receiver.ReceiverAddress}}</p>
+                                        <p class="J_address2" post_num="{{=receiver.ReceiverPhone}}" post_name="{{=receiver.ReceiverName}}">{{=receiver.ReceiverName}}  收  {{=receiver.ReceiverPhone}}</p><i></i>
+                                    </span>
+                                </li>
+                            {{??}}
+                                <li class="post-address" data-address=""><label>邮寄地址</label> <span class="detail-address"><p class="J_address1"></p><p class="J_address2"></p><i></i></span></li>
+                            {{?}}
+                        {{?}}
+                    </ul>
+                </div>
+                <div class="discount-info hongbao">
+                    <div class="border-bottom">
+                        <label data-desc="使用优惠"><em></em><span>使用优惠</span></label>
+                        <span class="use_hongbao"><em data-desc="请选择">请选择</em><i></i></span>
+
+                    </div>
+                </div>
+
+                <!--出游人-->
+                {{?basicInfo.VisitorInfoNeed == 1}}
+                    <div class="travel-persons">
+                        <ul>
+                            <li data-index = "1">
+                                <label>出游人1</label>
+                                <span><em data-desc = "请选择出游人(可不填)">请选择出游人(可不填)</em><i></i></span>
+                            </li> 
+                        </ul>
+                    </div>
+                    <div class="travel-warm">为了您的顺利出行，您可填写<em>1</em>位出游人信息</div>
+                {{??basicInfo.VisitorInfoNeed == 2}}
+                    <div class="travel-persons">
+                        <ul>
+                            {{for(var i = 1;i <= basicInfo.BookPerson;i++){}}
+                                <li data-index = "{{=i}}">
+                                    <label>出游人{{=i}}</label>
+                                    <span><em data-desc = "请选择出游人(可不填)">请选择出游人(可不填)</em><i></i></span>
+                                </li>
+                            {{}}}
+                        </ul>
+                    </div>
+                    <div class="travel-warm">为了您的顺利出行，您可填写<em>{{=basicInfo.BookPerson}}</em>位出游人信息</div>
+                {{?}}
+
+                 <!--红眼航班-->
+                {{?basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 92 && basicInfo.ReceiveType == 1 && basicInfo.ReceiveTime && basicInfo.ReceiveTime.length}}
+                    <div class="auction-redFlight">
+                        <h2>夜间航班取还优惠</h2>
+                        <ul class="clearfix">
+                            <li>
+                                <div class="lie-left">
+                                    <h3>
+                                        {{?basicInfo.ReturnTime && basicInfo.ReturnTime.length}}
+                                            <span class="J_firstDay">{{=it.CalData.ValidDate.replace(/\-/g, '/')}}</span> {{=basicInfo.ReceiveTime}} 后取或者<span class="J_endDay">还件日期</span> {{=basicInfo.ReturnTime}} 前还，可退一日租金
+                                        {{??}}
+                                            <span class="J_firstDay">{{=it.CalData.ValidDate.replace(/\-/g, '/')}}</span> {{=basicInfo.ReceiveTime}} 后取，可退一日租金
+                                        {{?}}
+                                    </h3>
+                                </div>
+                                <div class="lie-right J_pay"></div>
+                            </li>
+                        </ul>
+                    </div>
+                {{?}}
+
+                 <!--押金-->
+                 {{?basicInfo.PrePayAmount != 0 && basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 92}}
+                    <div class="auction-deposit">
+                        <h2>押金</h2>
+                        <ul class="clearfix">
+                            {{?basicInfo.ReceiveType == 1 || basicInfo.ReceiveType == 2 || basicInfo.ReceiveType == 3}}
+                                <li>
+                                    <div class="lie-left">
+                                        <h3>在线支付（取还更快）</h3>
+                                        <p>￥{{=basicInfo.PrePayAmount}}/台，归还设备后由同程在3～10个工作日内退还押金</p>
+                                    </div>
+                                    <div class="lie-right selected J_deposit" data-param="" data-value="true"></div>
+                                </li>
+                                {{?basicInfo.ReceiveType == 1 || basicInfo.ReceiveType == 2 }}
+                                <li>
+                                    <div class="lie-left">
+                                        <h3>现场支付</h3>
+                                        <p>￥{{=basicInfo.PrePayAmount}}/台，限刷卡支付，还件后现场退还押金</p>
+                                    </div>
+                                    <div class="lie-right J_deposit" data-value="false"></div>
+                                </li>
+                                {{?}}
+                            {{?}}
+                        </ul>
+                    </div>
+                 {{?}}
+               
+               
+                {{?basicInfo.ContactInfoNeed == 1}}
+                <div class="auction-contact-info">
+                    <h2>联系人信息</h2>
+                    <ul>
+                        {{?(basicInfo.ContactInfoField & 1) == 1}}
+                        <li>
+                            <label>联系人</label> 
+                            <input maxlength="30" type="text" class="J_CheckInput" data-checktype="name" data-text="仅支持中文英文" placeholder="填写联系人姓名" name="ContactPerson" value="{{=receiver.ReceiverName}}" attr-tips="请正确填写联系人姓名">
+                        </li>
+                        {{?}}
+                        {{?(basicInfo.ContactInfoField & 2) == 2}}
+                        <li>
+                            <label>手机号</label> 
+                            <input type="text" id="J_phone" class="J_CheckInput" maxlength="11" data-phone="" data-checktype="phone" placeholder="填写联系人手机号" name="ContactMoblie" value="{{=receiver.ReceiverPhone}}" attr-tips="请正确填写手机号">
+                        </li>
+                        {{?}}
+                        {{?(basicInfo.ContactInfoField & 4) == 4}}
+                        <li>
+                            <label>邮箱</label>
+                            <input type="text" id="J_mail" class="J_CheckInput" data-phone="" data-checktype="mail" placeholder="填写有效邮箱" name="ContactMail" value="" attr-tips="请正确填写邮箱地址">
+                        </li>
+                        {{?}}
+                        <!--电话卡没有取消险 basicInfo.HasInsurance &&-->
+                        {{? !(basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 91)}}
+                        <li>
+                            <label>身份证号</label>
+                            <input type="text" id="J_cert" class="J_CheckInput" data-cert="1" data-checktype="identityCard" placeholder="用于购买取消险" value="" attr-tips="由于购买取消险需要，请填写联系人的身份证件号！">
+                        </li>
+                        {{?}}
+                    </ul>
+                </div>    
+                {{??}}
+                <div class="auction-contact-info">
+                    <ul>     
+                        <li>
+                            <label>联系人</label> 
+                            <input maxlength="30" type="text" class="J_CheckInput" data-checktype="name" data-text="仅支持中文英文" placeholder="填写联系人姓名" name="ContactPerson" value="{{=receiver.ReceiverName}}" attr-tips="请正确填写联系人姓名">
+                        </li>
+                        <li>
+                            <label>手机号</label> 
+                            <input type="text" id="J_phone" class="J_CheckInput" maxlength="11" data-phone="" data-checktype="phone" placeholder="填写联系人手机号" name="ContactMoblie" value="{{=receiver.ReceiverPhone}}" attr-tips="请正确填写手机号">
+                        </li>
+                        <li>
+                            <label>邮箱</label>
+                            <input type="text" id="J_mail" class="J_CheckInput" data-phone="" data-checktype="mail" placeholder="填写有效邮箱" name="ContactMail" value="" attr-tips="请正确填写邮箱地址">
+                        </li>
+                        <!--电话卡没有取消险-->
+                        {{?!(basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 91)}}
+                        <li>
+                            <label>身份证号</label>
+                            <input type="text" id="J_cert" class="J_CheckInput" data-cert="1" data-checktype="identityCard" placeholder="用于购买取消险" value="" attr-tips="由于购买取消险需要，请填写联系人的身份证件号！">
+                        </li>
+                        {{?}}
+                    </ul>
+                </div>
+                {{?}}
+
+                <!--其他信息-->
+                {{?basicInfo.AttributeNeed == 1}}
+                <div class="auction-other-info">
+                    <div class="border-bottom">
+                        <label>其他信息</label>
+                        <span class="J_inputInfo">
+                            <em>（可不填）</em>
+                            <i class="unfold"></i>
+                        </span>
+                    </div>
+                    <ul class="none J_other_info"> 
+                        {{~basicInfo.Attribute:Attribute}}
+                            {{?Attribute == 1}}
+                                <li>
+                                    <label>境外电话</label>
+                                    <input type="tel" placeholder="请输入" maxlength="20" data-type="OverSeaNum"/>
+                                </li>
+                            {{??Attribute == 2}}
+                                <li>
+                                    <label>出境航班</label>
+                                    <input type="text" placeholder="当地送机 例:NS8288" maxlength="20" data-type="FlightNum"/>
+                                </li>
+                            {{??Attribute == 3}}
+                                <li>
+                                    <label>出境日期</label>
+                                    <input type="text" placeholder="例:10.30日  20:00起飞" maxlength="20" data-type="FlightDate"/>
+                                </li>
+                            {{??Attribute == 4}}
+                                 <li>
+                                    <label>酒店名称</label>
+                                    <input type="text" placeholder="请输入" maxlength="100" data-type="CheckInHotelName"/>
+                                </li>
+                            {{??Attribute == 5}}
+                                <li>
+                                    <label>酒店地址</label>
+                                    <input type="text"  placeholder="请输入" maxlength="100" data-type="HotelAddress"/>
+                                </li>
+                            {{??Attribute == 6}}
+                                <li>
+                                    <label>入境航班</label>
+                                    <input type="text" placeholder="当地接机 例:NS8288" maxlength="20" data-type="AirportFlightNo"/>
+                                </li>
+                            {{??Attribute == 7}}
+                                <li>
+                                    <label>入境日期</label>
+                                    <input type="text" placeholder="当地接机 例:6.30日抵达" maxlength="20" data-type="AirportFlightDate"/>
+                                </li>
+                            {{??Attribute == 8}}
+                                <li>
+                                    <label>接机时间</label>
+                                    <input type="text" placeholder="当地接机 例:20:00抵达" maxlength="20" data-type="FlightArrivedTime"/>
+                                </li>  
+                            {{??Attribute == 9}}
+                                <li>
+                                    <label>签发地</label>
+                                    <input type="text" placeholder="证件签发地" maxlength="20" data-type="IssueAddress"/>
+                                </li>  
+                            {{??Attribute == 10}}
+                                <li>
+                                    <label>签发类别</label>
+                                    <input type="text" placeholder="请输入" maxlength="20" data-type="VisaCategory"/>
+                                </li> 
+                            {{??Attribute == 11}}
+                                <li>
+                                    <label>用餐时间</label>
+                                    <input type="text" placeholder="例:18：00左右" maxlength="20" data-type="DinnerTime"/>
+                                </li> 
+                            {{??Attribute == 12}}
+                                <li>
+                                    <label>演出时间</label>
+                                    <input type="text" placeholder="例:18：00左右" maxlength="20" data-type="ShowTime"/>
+                                </li> 
+                            {{?}}
+                        {{~}}
+                        {{?basicInfo.UserDefinedAttribute && basicInfo.UserDefinedAttribute.length}}
+                        <li>
+                            <label data-type="UserDefined">{{=basicInfo.UserDefinedAttribute}}</label>
+                            <input type="text" placeholder="请输入" maxlength="100" data-type="UserDefinedContent"/>
+                        </li>
+                        {{?}}
+                    </ul>
+                </div>
+                {{?}}
+
+                <!--电话卡没有取消险-->
+                {{? !(basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 91)}}
+                <!--取消险-->
+                <div class="cancel-insure J_insure none">
+                    <div class="border-bottom">
+                        <label data-desc="取消险">取消险</label>
+                        <div><span class="J_cancelInsurePrice">¥50</span><em class="selected"></em></div>
+                    </div>
+                </div>
+                {{?}}
+
+                <!--发票-->
+                {{?!(basicInfo.ProdcutType == 9 && basicInfo.ReceiveType == 4)}}
+                    <div class="auction-invoice">
+                    <ul>
+                        <li class="isneed_invoice noneed">
+                            <label>需要发票</label><span></span>
+                        </li>
+                        <li class="invoice_none none">
+                            <label>发票抬头</label><input class="invoice_title" type="text" placeholder="可输入个人/单位名称">
+                        </li>
+                        <li class="invoice_none none">
+                            <label>发票内容</label>
+                            <div class="invoice_type" data-desc="服务费" data_typeid="3">
+                                <i></i><span class="amount">服务费</span>
+                            </div>
+                            <div class="invoice_type" data-desc="旅游服务费" data_typeid="1">
+                                <i></i><span class="amount">旅游服务费</span>
+                            </div>
+                            <!--<span class="select_invoiceType"><em data-desc = "请选择发票内容">请选择发票内容</em><i></i></span>-->
+                        </li>
+                        <li class="invoice_none none">
+                            <label>收件地址</label>
+                            <span class="invoice-address"><em data-desc = "请选择收件地址">请选择收件地址</em><i></i></span>
+                        </li>
+                        <li class="invoice-address-detail none">
+                            <span class="detail-address">
+                                <p class="J_address3">XX省 XX市 XX区XX街道</p>
+                                <p class="J_address4"> 测试 收   15852001328</p>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                {{?}}
+
+                <!--备注-->
+                {{?basicInfo.RemarkNeed == 1 || (basicInfo.ReserveRemark && basicInfo.ReserveRemark.length)}}
+                    <div class="auction-notice-tips ">
+                        <p class="notice-tips-header">备注</p>
+                        <div class="text-box">
+                            <textarea type="text" name="" class="J_Tips" placeholder="{{=basicInfo.ReserveRemark}}" value="" maxlength="200" rows="3"></textarea>
+                        </div>
+                    </div>
+                {{?}}
+
+                <div class="contact-info"><i>*</i>点击提交订单表示您已阅读并同意<em class="J_agreement">委托代订协议和预订须知</em></div>
+
+                <div class="auction-money-wrap">
+                    <div class="auction-money">
+                        {{?it.CalData.PriceCalDetails != null && it.CalData.PriceCalDetails.length}}
+                            {{var item = it.CalData.PriceCalDetails[0];}}
+                            <div class="auction-ctrlbox"><span class="ctrl-submit">提交订单</span>
+                                {{?basicInfo.ProdcutType == 9 && basicInfo.ProdcutCategory == 92}}
+                                    <!--wifi打包-->
+                                    {{?basicInfo.PackageDays > 0}}
+                                        <input type="hidden" id="totalPrice" value="{{=item.AmountDirect*basicInfo.BookPerson}}"/>
+                                        <div class="price-count J_price_count price-count-active"><label>订单总额:</label><span><s>￥</s><b id="J_TotalPrice">{{=item.AmountDirect*basicInfo.BookPerson}}</b><i></i></span></div>
+                                    <!--wifi押金-->
+                                    {{??basicInfo.PrePayAmount}}
+                                        <input type="hidden" id="totalPrice" value="0"/>
+                                        <div class="price-count J_price_count price-count-active"><label>订单总额:</label><span><s>￥</s><b id="J_TotalPrice">{{=basicInfo.PrePayAmount*basicInfo.BookPerson}}</b><i></i></span></div>
+                                    {{??}}
+                                        <input type="hidden" id="totalPrice" value="0"/>
+                                        <div class="price-count"><label>订单总额:</label><span><s>￥</s><b id="J_TotalPrice">0</b><i style="display: none"></i></span></div>
+                                    {{?}}
+                                {{??}}
+                                    <input type="hidden" id="totalPrice" value="{{=item.AmountDirect*basicInfo.BookPerson}}"/>
+                                    <div class="price-count J_price_count price-count-active"><label>订单总额:</label><span><s>￥</s><b id="J_TotalPrice">{{=item.AmountDirect*basicInfo.BookPerson}}</b><i></i></span></div>
+                                {{?}}
+                            </div>
+                            <div id="J_MoneyWrap" class="money-content" style="height: 0px;">
+                                <dl>
+                                    <dt>价格详情</dt>
+                                    <!--wifi打包-->
+                                    {{?basicInfo.PackageDays > 0}}
+                                        <dd><label>{{=basicInfo.MainTitle}}</label><span>￥<em class="J_UnitPrice">{{=item.AmountDirect}}({{=basicInfo.PackageDays}}天)</em>x<em>{{=basicInfo.BookPerson}}</em>台</span></dd>
+                                    <!--wifi押金-->
+                                    {{??basicInfo.PrePayAmount}}
+                                        <dd><label>押金</label><span>￥<em class="J_UnitPrice">{{=basicInfo.PrePayAmount}}/台</em>x<em>{{=basicInfo.BookPerson}}</em></span></dd>
+                                    {{??}}
+                                        <dd><label>{{=item.PriceName}}</label><span>￥<em class="J_UnitPrice">{{=item.AmountDirect}}{{=item.PriceUnit}}</em>x<em>{{=basicInfo.BookPerson}}</em></span></dd>
+                                    {{?}}
+                                </dl>
+                            </div>
+                        {{?}}
+                    </div>
+                </div>
+                
+            </section>
+            <input type="hidden" name="UserId" id="UserId" value="{{=it.UserId || 0}}">
+            <input type="hidden" name="ProductId" id="ProductId" value="{{=it.ProductId}}">
+            <input type="hidden" name="StartDate" id="StartDate" value="{{=it.CalData.ValidDate}}">
+            <input type="hidden" name="ReMark" id="ReMark" value="{{=basicInfo.ReserveRemark}}">
+            <input type="hidden" name="BookMin" id="BookMin" value="{{=basicInfo.BookPerson}}">
+            <input type="hidden" name="ProdcutType" id="ProdcutType" value="{{=basicInfo.ProdcutType}}">
+            <input type="hidden" name="AllPersons" id="AllPersons" value="{{=basicInfo.BookPerson}}">
+            <input type="hidden" name="BookMax" id="BookMax" value="{{=basicInfo.BookPersonMax}}">
+            <input type="hidden" name="minDay" id="minDay" value="{{=basicInfo.BookDaysMin}}">
+            <input type="hidden" name="maxDay" id="maxDay" value="{{=basicInfo.BookDaysMax}}">
+            <input type="hidden" name="ReceiveType" id="ReceiveType" value="{{=basicInfo.ReceiveType}}">
+            <input type="hidden" name="ProdcutCategory" id="ProdcutCategory" value="{{=basicInfo.ProdcutCategory}}">
+            <input type="hidden" name="hidWifiPackageDays" id="hidWifiPackageDays" value="{{=basicInfo.PackageDays}}">
+            <input type="hidden" name="VisitorCertificateType" id="VisitorCertificateType" value="{{=it.VisitorCertificateType}}">
+            <input type="hidden" name="Deposit"  id="Deposit" value="{{=basicInfo.PrePayAmount}}">
+            <input type="hidden" id ="cancelInsure" value="50"/>
+            
+
+            <!-- 0---不需要出游人   1---此订单只需要一个出游人   2---此订单出游人数根据预定数量改变 -->
+            <input type="hidden" name="VisitorInfoNeed" id="VisitorInfoNeed" value="{{=basicInfo.VisitorInfoNeed}}" />
+            <!--出游人需要填写的信息 -->
+            <span class="none" id="PassNeedInfo" name="PassNeedInfo">{{=it.PassNeedInfo}}</span>
+            <!-- 出游人信息是否显示 -->
+            <span class="none" id="ShowTravelInfo" name="ShowTravelInfo">{{=it.VisitorInfoField}}</span>
+            {{?it.CalData.PriceCalDetails && it.CalData.PriceCalDetails.length}}
+            <input type="hidden" name="discountAmount" id="discountAmount" value="{{it.CalData.PriceCalDetails[0].AmountDirect}}" />
+            {{?}}
+
+        </div>
+        <div class="page" id="calendarPage" style="display: none;"></div>
+        <div class="ui-mask" style="display:none;"></div>
+        <div class="dialog_city none" style="height: 26rem; bottom: 0px;">
+            <div class="ctrl-main-box J-city">
+                <div class="one-menu J-left">
+                </div>
+                <div class="two-menu J-center">
+                    <ul>
+                    
+                    </ul>
+                </div>
+
+                <div class="thr-menu J-right">
+                    
+                </div>
+            </div>
+        </div>
+        <!--取还地址-->
+        <div class="addressList J_address none page " id="pick_addressPage" data-address="pick_address">
+            <ul>
+                {{?basicInfo.ReceivePlaceDetailList && basicInfo.ReceivePlaceDetailList.length}}
+                    {{~basicInfo.ReceivePlaceDetailList:place}}
+                    <li class="clearfix">
+                        <span class="address-left {{?it.terminalId > 0 && it.terminalId === place.AtId}}selected{{?}}"></span>
+                        <span class="address-right">{{=place.ReceivePlace}}{{=place.ReceiveAddress}}{{=place.ReceiveTime}}{{=place.DotId}}</span>
+                    </li>
+                    {{~}}
+                {{?}}
+            </ul>
+        </div>
+
+        <div class="addressList J_address none page" id="send_addressPage" data-address="send_address">
+            <ul>
+                 {{?basicInfo.ReturnPlaceDetailList && basicInfo.ReturnPlaceDetailList.length}}
+                    {{~basicInfo.ReturnPlaceDetailList:place}}
+                    <li class="clearfix">
+                        <span class="address-left"></span>
+                        <span class="address-right">{{=place.ReturnPlace}}{{=place.ReturnAddress}}{{=place.ReturnTime}}{{=place.DotId}}</span>
+                    </li>
+                    {{~}}
+                {{?}}
+            </ul>
+        </div>
+
+
+        <!-- 新增出游人 -->
+        <div class="none page add_person J_person" id="add_personPage" data-playPerson="add_person">
+            <div class="personList">
+                <ul>
+                    {{?(basicInfo.VisitorInfoField & 1) == 1}}                        
+                        <li data-submit="LinkerName">
+                            <label>姓名</label> 
+                            <input maxlength="30" type="text" class="J_AddTravel" data-checktype="name" placeholder="请填写中文姓名" name="ContactPerson" value="" attr-tips="请正确填写中文姓名">
+                        </li>
+                    {{?}}
+                    {{?(basicInfo.VisitorInfoField & 2) == 2}}
+                        <li data-submit="EnglishMing">
+                            <label>英文名</label> 
+                            <input maxlength="20"type="text" class="J_AddTravel" data-checktype="english" placeholder="请填写英文名" name="ContactFirst" value="" attr-tips="请正确填写英文名">
+                        </li>
+                        <li data-submit="EnglishXin">
+                            <label>英文姓</label> 
+                            <input maxlength="20" type="text" class="J_AddTravel" data-checktype="english" placeholder="请填写英文姓" name="ContactGiven" value="" attr-tips="请正确填写英文姓">
+                        </li>
+                    {{?}}
+                    {{?(basicInfo.VisitorInfoField & 4) == 4}}
+                        <li data-submit="DefaultCertType">
+                            <label>证件类型</label>
+                            <span class="cert_id_type"><input class="J_AddTravel" name="CertType" data-checktype="notnull" placeholder="请选择证件类型" value="" attr-tips="请正确选择证件类型"><i></i></span>
+                        </li>
+                        <li data-submit="CertNo">
+                            <label>证件号码</label> 
+                            <input maxlength="30" type="text" class="card_number J_AddTravel" name="CertNum" data-checktype="notnull" placeholder="请填写证件号码" name="ContactId" value="" attr-tips="请正确填写证件号码">
+                        </li>
+                    {{?}}
+                    {{?(basicInfo.VisitorInfoField & 8) == 8}}
+                        <li data-submit="Mobile">
+                            <label>手机</label> 
+                            <input type="text" class="J_AddTravel" maxlength="11" data-checktype="phone" placeholder="请填写手机号码" name="ContactMoblie" value="" attr-tips="请正确填写手机号码">
+                        </li>
+                    {{?}}
+                    {{?(basicInfo.VisitorInfoField & 16) == 16}}
+                        <li data-submit="Sex">
+                            <label>性别</label>
+                            <span class="choose_sex"><input class="J_AddTravel" name="Sex" data-checktype="notnull"  placeholder="请选择性别" value="" attr-tips="请选择性别"><i></i></span>
+                        </li>
+                    {{?}}
+                    {{?(basicInfo.VisitorInfoField & 32) == 32}}
+                        <li data-submit="Nationality">
+                            <label>国籍</label>
+                            <span class="addEdit_country"><input class="J_AddTravel" name="Country" data-checktype="notnull"  placeholder="请选择国籍" attr-tips="请选择国籍" value=""><i></i></span>
+                        </li>
+                    {{?}}
+                    {{?(basicInfo.VisitorInfoField & 64) == 64}}
+                        <li data-submit="Birthday">
+                            <label>出生日期</label>
+                            <input class="add_birthday J_AddTravel" data-curPage="add_person" data-checktype="notnull" name="Birthday" placeholder="选择出生日期" attr-tips="选择出生日期" value="" readonly="readonly">
+                        </li>
+                    {{?}}
+                </ul>
+            </div>
+            <div class="sub-person J_travelSure" data-flag = "add">确定</div>
+            <div id="datePlugin"></div>
+        </div>
+
+
+         <!-- 编辑出游人 -->
+        <div class="none page edit_person J_person" id="edit_personPage" data-playPerson="edit_person">
+            <div class="personList" >
+            </div>
+            <div class="sub-person J_travelSure" data-flag = "edit">确定</div>
+            <div id="datePlugin"></div>
+        </div>
+
+        <!-- 选择出游人 -->
+        <div class="choose_person page none" id="choose_personPage" data-playPerson="choose_person">
+            <p class="add_person_btn">＋新增出游人</p>
+            <div class="person_lists">
+            </div>
+        </div>
+
+        <!-- 证件类型 -->
+        <div class="none page card_type J_card" id="card_typePage" data-playPerson="id_type">
+            <div class="cardList">
+                <ul>
+                    <li><label>身份证</label><input type="text" name="身份证" /></li>
+                    <li><label>护照</label><input type="text" name="护照" /></li>
+                    <li><label>驾照</label><input type="text" name="驾照" /></li>
+                    <li><label>军人证</label><input type="text" name="军人证" /></li>
+                    <li><label>回乡证</label><input type="text" name="回乡证" /></li>
+                    <li><label>港澳通行证</label><input type="text" name="港澳通行证" /></li>
+                    <li><label>台胞证</label><input type="text" name="台胞证" /></li>
+                    <li><label>入台证</label><input type="text" name="入台证" /></li>
+                    <li><label>其他</label><input type="text" name="其他" /></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 选择性别 -->
+        <div class="none page sex_type J_sex" id="sex_typePage" data-sex="sex">
+            <div class="sexList">
+                <ul>
+                    <li>男</li>
+                    <li>女</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 选择邮寄地址 -->
+        <div class="post_address page none" id="post_addressPage">
+            <p class="add_post_address">＋新增邮寄地址</p>
+            <div class="post_lists">
+            </div>
+        </div>
+
+        <!-- 新增邮寄地址 -->
+        <div class="none page" id="addEdit_postAddressPage">
+            <div class="personList J_person " data-playPerson="add_person">
+                <ul>
+                    <li>
+                        <label>姓名</label> 
+                        <input type="text" class="J_addPost_info addPost_name" data-checktype="name" placeholder="请填写中文姓名" name="ContactPerson" value="" attr-tips="请填写中文姓名">
+                    </li>
+                    <li>
+                        <label>所在地区</label>
+                         <input type="text" class="J_addPost_info J_address_select" readonly data-title="请选择地区"  data-index="0" data-id="2" data-checktype="notnull" placeholder="请选择地区" value=""
+                            attr-tips="请选择地区">
+                    </li>
+                    <li>
+                        <label>街道地址</label> 
+                        <input type="text" class="J_addPost_info addPost_address" data-checktype="notnull" placeholder="请填写详细地址" value="" attr-tips="请填写详细地址">
+                    </li>
+                    <li>
+                        <label>手机</label> 
+                        <input type="text" class="J_addPost_info addPost_num" maxlength="11" data-checktype="phone"
+                            placeholder="请填写手机号码" name="ContactMoblie" value="" attr-tips="请填写手机号码">
+                    </li>
+                </ul>
+            </div>
+            <div class="sub-person J_addOrEditPost">确定</div>
+
+            <!-- 省市区选择 -->
+            <div class="none page J_citySelected">
+                <div class="citySelectList">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- 国籍选择 -->
+        <div class="countrySearch page none J_country" id="countryPage" data-country="edit_country">
+            <div class="searchbox search-reset">
+                <label>
+                    <span class="search-icon"></span>
+                    <input type="search" placeholder="中国" id="search">
+                </label>
+                <span class="cancel">取消</span>
+            </div>
+        </div>
+
+        <!-- 优惠选择 -->
+        <div class="hongbaoList page none J_hongbao" id="pick_hongbaoPage" data-address="pick_hongbao">
+            <ul>
+            </ul>
+        </div>
+
+        <!-- 发票类型选择 -->
+        <div class="invoiceType page none " id="pick_invoiceTypePage" data-address="pick_invoiceType">
+            <ul>
+                <li class="clearfix J_first" data-desc="服务费" data_typeID="3">
+                    <p><span class="amount">服务费</span><i></i></p>
+                </li>
+                <li class="clearfix J_first" data-desc="旅游服务费" data_typeID="1">
+                    <p><span class="amount">旅游服务费</span><i></i></p>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 选择发票邮寄地址 -->
+        <div class="invoice_post_address page none" id="invoice_post_addressPage">
+            <p class="add_invoice_post_address">＋新增邮寄地址</p>
+            <div class="invoice_post_lists">
+
+            </div>
+        </div>
+
+        <div class="J_insure_pop none">保险保险保险保险保险保险保险保险保险保险保险保险</div>
+        
+        <div class="J_concat_pop none">
+            <div>
+                <label>预订时间</label>
+                {{?it.DTime}}
+                <p><span>{{?basicInfo.AdvanceDays == 0}}须在游玩当天{{=it.DTime}}前下单{{??}}须在游玩前{{=basicInfo.AdvanceDays}}天{{=it.DTime}}前下单{{?}}</span></p>
+                {{?}}
+                <label>预订信息</label>
+                {{?basicInfo.Instruction}}
+                <p>
+                    {{=basicInfo.Instruction}}
+                </p>
+                {{?}}
+                <h1>委托代订协议</h1>
+                <p class="first">甲方（旅游者）：</p>
+                <p class="second">乙方：同程国际旅行社有限公司</p>
+                <div>
+                    根据《中华人民共和国合同法》等有关法律、法规的规定，甲方与乙方在平等，自愿的基础上就委托代办事宜，经协商达成协议如下：
+                </div>
+                <div>
+                    第一条 旅游者信息
+                </div>
+                <div>
+                    甲方需要仔细核对旅客的姓名与证件号，乙方将按照以下信息为甲方预订，若因信息有误造成甲方损失，所产生损失由甲方自行承担。
+                </div>
+                <div>
+                    姓名 性别 证件类型 证件号
+                </div>
+                <div>
+                    ____ ____ ________ ______
+                </div>
+                <div>
+                    备注:出游行姓名须写汉字全名,拼音须按汉字字母拼音格式，护照号和身份证号二选一填写.
+                </div>
+                <div>
+                    第二条 预订项目及要求
+                </div>
+                <div>
+                    甲方委托乙方办理以下一项或几项服务，乙方按甲方选择的内容代为预订，并接受甲方以总价支付：代订机票、酒店；代办个人旅游签证；代办目的地地面资源（例如用车、门票、当地观光游览等）；抵离接送机等。
+                </div>
+                <div>
+                    所有代订业务如有不退、不改、不可转让规则的，乙方有义务告知甲方此信息，甲方知晓后签约即表示接受此内容要求。所有代订业务最终以出游通知书为准。
+                </div>
+                <div>
+                    第三条 费用计算
+                </div>
+                <div>
+                    1、成人RMB:_______元/人，儿童RMB：（不满12岁）_______元/人；
+                </div>
+                <div>
+                    保险产品名称_______，RMB_____元/人，
+                </div>
+                <div>
+                    费用总额：RMB：_____元，人民币（大写________）。
+                </div>
+                <div>
+                    请您于___年___月___日 前付清款数，以便我们及时为您确认。所有代订服务见款留位，如果甲方没有按约定期限完成付款，乙方有权单方面解除委托约定关系，终止合作。费用说明： 以上费用包含机场建设费及燃油附加费
+                </div>
+                <div>
+                    太平“游天下”国内长线自助游保险计划：
+                </div>
+                <div>
+                    承保年龄：0天-80周岁（含）
+                </div>
+                <div>
+                    保险期限_____天
+                </div>
+                <div>
+                    1)、保障区域：中国大陆境内
+                </div>
+                <div>
+                    2)、18周岁以下的被保险人须由父母作为投保人投保，根据保监会规定，未满18周岁的未成年人的意外身故、烧伤及残疾保障的最高给付金额为100000元。
+                </div>
+                <div>
+                    3)、66周岁（含）-75周岁（含）被保险人意外身故、烧伤及残疾保额以100000元为限；
+                </div>
+                <div>
+                    4)、76周岁（含）以上被保险人意外身故、烧伤及残疾保额以50000元为限；
+                </div>
+                <div>
+                    5)、游客从事赛车、赛马、攀崖、滑翔、漂流、潜水、滑雪、滑板、跳伞、热气球、蹦极、冲浪、探险、摔跤、武术比赛、特技表演等高风险运动的项目必须是按照国家有关规定取得经营许可的项目，上述无经营许可的项目不在保险的保障责任内
+                </div>
+                <div>
+                    6)、只能选择全程购买保险或不购买保险，在旅行期间，每一被保险人限投保1份，多投部分本公司不承担保险责任
+                </div>
+                <div>
+                    7)、其他保障责任详见保险条款
+                </div>
+                <div>
+                    2、如需开具发票，请旅游者归来后两个月内向旅行社索要。发票开具后，若办理退款，需先退还原发票，并保持发票兑奖联完好（如有兑奖联）。旅行社可接受旅游者、或除旅游者之外的其他人员、单位对本合同付款，并且旅行社按照国家法规要求对签约一方开具发票。
+                </div>
+                <div>
+                    第四条 双方确认
+                </div>
+                <div>
+                    1.甲方知悉并确认预订信息无误，乙方接受甲方预订的以上事项。
+                </div>
+                <div>
+                    2.甲方无法与乙方用合同确认事项的，甲方同意采用电话、或电子邮件等方式与乙方确认。
+                </div>
+                <div>
+                    3.若甲方未能在最后付款期限前确认并付款，所有的预订将会被自动取消，乙方不再做任何预先通知。
+                </div>
+                <div>
+                    第五条 甲方的权利和义务
+                </div>
+                <div>
+                    1.以上各项服务内容均为委托业务，为了人身财产安排，乙方有义务提醒甲方购买保险，是否购买由甲方自行决定。乙方与甲方间不涉及强制绑定保险责任关系，委托服务事项之外甲方所发生的问题，乙方概不承担任何责任。甲方在出游期间的任何活动纯属个人行为，与乙方无关。
+                </div>
+                <div>
+                    2.甲方在接受委托事项期间，向服务方提出遭受人身、财产损失的或有关服务质量的投诉，乙方可以协助处理，但乙方不承担赔偿责任；因乙方过错导致代办服务内容如航班、酒店等需要调整，乙方承诺将本着诚信原则为甲方更换同等标准的服务项目，保证在出发前，及时将更改后的服务项目交由甲方确认。
+                </div>
+                <div>
+                    3.甲方应携带有效证件，按照航班时间提前前往机场登机（出境旅游，宜提前180分钟到达机场）。否则，误机自理，如遇政策性调价，如燃油税调整等，将由甲方负责补足或退回差价
+                </div>
+                <div>
+                    4.甲方应保证所持证件为过关和登机的的有效证件，如因个人证件问题不能及时登机和出入境，由甲方自行负责。
+                </div>
+                <div>
+                    5.甲方在委托事项执行过程中如有不满意之时，不得以滞留境外、拒绝登机（车、船）、拒绝入住等方式对委托事项故意拖延、扩大损失、擅自取消行程等处理方法，由此造成的所有损失由甲方承担。
+                </div>
+                <div>
+                    6.甲方在执行委托事项时，必须符合我国和目的地国家及地区的有关规定；委托事项实施方（如酒店、机场、票务、景区、海关等）有另外特别规定的，甲方应予以遵守。
+                </div>
+                <div>
+                    第六条 乙方的权利和义务
+                </div>
+                <div>
+                    1.乙方应在甲方委托服务范围内为甲方提供服务。
+                </div>
+                <div>
+                    2.乙方有权根据委托人的身体健康状况及相关条件决定是否接纳报名。
+                </div>
+                <div>
+                    3.乙方有权拒绝委托人提出的超出合同约定的不合理要求。
+                </div>
+                <div>
+                    第七条 其他约定
+                </div>
+                <div>
+                    1.黄金周、特殊节日等旅游旺季，房间预订以款到确认为准，一经确认不得随意变更。
+                </div>
+                <div>
+                    2.请自愿购买旅游人身意外保险。乙方郑重提醒甲方应安排好自己的活动项目，谨慎参加赛车、骑马、攀岩、滑翔、探险、漂流、潜水、游泳、滑雪、滑冰、滑板、跳伞、热气球、蹦极、冲浪等高风险活动，如需参加上述活动，乙方建议甲方投保包含高风险项目的意外险种。出游过程中请妥善保管好个人物品，注意安全。
+                </div>
+                <div>
+                    3.机票准确航班信息及具体事宜请以出游前一天的出游通知书为准，如通知后航班有变化，乙方需及时用电话、电子邮件方式、短信或传真告知甲方，甲方需提前抵达机场办登机手续，如有误机甲方自行承担责任。
+                </div>
+                <div>
+                    4.酒店凭证件、或护照名字入住。酒店正常入住时间 14：00 ，退房时间为 12：00 ，若提前入住或延迟退房，需甲方自行与酒店协商，若产生费用，由甲方自理。
+                </div>
+                <div>
+                    5.甲方代理其他游客签约的，甲方有义务将本协议的约定事项向其代理的游客做出必要说明，并保证其在协议中的签字能够代表旅游者信息表格中列明的其它旅游者对协议约定的认可，表格中列明的任一位旅游者均应当按照协议约定维护权益并履行义务。如甲方未履行上述义务，导致其代理的游客与乙方发生纠纷，责任在于签约人甲方，与乙方无关。
+                </div>
+                <div>
+                    第八条 违约责任
+                </div>
+                <div>
+                    1.甲方和乙方在行前可以书面形式提出解除合同;
+                </div>
+                <div>
+                    2.甲方在出发前提出解除合同的,应当按下列标准向乙方支付业务损失费;
+                </div>
+                <div>
+                    3.支付成功后,若要取消订单,则机票,酒店全损.
+                </div>
+                <div>
+                    4.双方特别约定：
+                </div>
+                <div>
+                    若甲方所预订的旅游产品在目的地停留的日期部分或全部处在春节、国庆节、五一劳动节、元旦、圣诞节或其它国家性或地方性重大节日期间（圣诞节：12月24日-12月25日；其他节日的具体时段以国家节前颁布的休假日期为准），鉴于资源的特殊状况，甲方解除协议时，须按费用总额的100％向乙方支付业务损失费，此约定不受本委托协议第八条第1款、第2款的约束。
+                </div>
+                <div>
+                    甲方明确知晓且同意，因爆款产品资源特殊，甲方付款后无法更改、取消、退款。如此款约定与合同中其他条款约定不一致的，以此款约定为准。
+                </div>
+                <div>
+                    5.甲方同意乙方转委托的，乙方仅就对第三人的选任及其对第三人的指示承担责任。
+                </div>
+                <div>
+                    第九条 协议变更
+                </div>
+                <div>
+                    1.协议生效后，基于可协调范围内.甲方可以将其在协议中的权利和义务转让给符合出游条件的第三人，但甲方应向乙方支付由此增加的费用以及给乙方造成的损失也由甲方承担，由此减少的费用，乙方应当退还甲方.
+                </div>
+                <div>
+                    2.协议生效后，因乙方原因引起的更改，由此增加的费用由乙方承担，由此减少的费用，乙方应当退还甲方。
+                </div>
+                <div>
+                    第十条 不可抗力
+                </div>
+                <div>
+                    1.不可抗力，指不能预见、不能避免并不能克服的客观情况，包括但不限于因自然原因和社会原因引起的，如自然灾害、战争、恐怖活动、动乱、骚乱、罢工、突发公共卫生事件、政府行为等。
+                </div>
+                <div>
+                    2.意外事件，指因当事人故意或者过失以外的偶然因素引发的事件，包括但不限于重大礼宾活动导致的交通堵塞、列车航班晚点或取消、景点临时不开放、黑客攻击、电信部门技术管制。
+                </div>
+                <div>
+                    3.因不可抗力或者意外事件导致无法履行或者继续履行合同的，双方均可以解除合同，合同解除后，乙方退还甲方未发生的费用后不再承担其他任何责任；双方同意变更合同的，因此增加的费用由甲方承担，减少的费用乙方退还甲方。
+                </div>
+                <div>
+                    第十一条 第三方责任
+                </div>
+                <div>
+                    由于航空公司、保险公司、及其他有权机构等不可归责于乙方的原因导致甲方人身、财产权益受到损害的，包括但不限于，列车航班 延误或取消等，乙方予以协助，不再承担其他责任。
+                </div>
+                <div>
+                    第十二条 争议的解决方式
+                </div>
+                <div>
+                    本协议在履行中如发生争议，双方应协商解决，协商不成，应向乙方住所地人民法院提起诉讼。
+                </div>
+                <div>
+                    第十三条 温馨提示
+                </div>
+                <div>
+                    1.黄金周或者其他旅游旺季期间，由于国内、国际航班中加班机、包机的数量大增，极易引起航班的延误，如遇此种情况，请甲方在候机厅耐心等待，密切注意航班的信息，不要到处乱跑，以免误机。同时，航空公司因运力等因素有可能临时调整航班，如有此情况发生，乙方将及时通知甲方，届时敬请甲方配合与谅解。
+                </div>
+                <div>
+                    2.甲方应遵守中国和目的地国家的法律法规，尊重旅游途经地区当地居民的民族、民俗习惯。
+                </div>
+                <div>
+                    3.入住酒店后，应了解酒店安全须知，熟悉酒店的太平门、安全出路、安全楼梯的位置及安全转移的路线。
+                </div>
+                <div>
+                    4.进入客房后，请及时了解房间内设备情况，如房门插销、浴室水龙头开关、电视及冰箱饮料等，如有不能使用或者缺损的情况，请及时向酒店反映，退房时需自行结清房间提供的饮料、食品、洗涤和长途电话费用。
+                </div>
+                <div>
+                    5.经过危险地段（如陡峭、狭窄、潮湿泛滑的道路等）不可拥挤，前往险峻景点观光时应充分考虑自身的条件是否可行，不要强求和存侥幸心理；参与登山等活动时，应注意适当休息，避免过度激烈运动，同时做好防护工作。
+                </div>
+                <div>
+                    6.在水上（包括江河、湖海、水库）游览或者活动时，甲方须注意乘船安全，应穿戴救生衣，不可单独前往深水水域或者危险河道；选择水下游泳时，应携救生设备助游；海上浮潜时请关注海况及海流，务必穿上救生衣。
+                </div>
+                <div>
+                    7.海拔3000公尺以上的高原地带，气压低，空气含氧量少，易导致人体缺氧，引起高原不良反应，请甲方避免剧烈运动和情绪兴奋，洗澡水不易过热，学会正确呼吸方法。16周岁以下及60周岁以上者，患有贫血、糖尿病、慢性肺病、较严重心脑血管疾病、精神病及孕妇等不宜进入高原旅游。
+                </div>
+                <div>
+                    第十四条 协议的生效及组成：
+                </div>
+                <div>
+                    本协议一式二份，双方各执一份，自双方签字或盖章之日起生效。传真件与原件具有同等法律效力。
+                </div>
+                <div>
+                    甲    方：__________________________ 乙 方：同程国际旅行社有限公司
+                </div>
+                <div>
+                    联系电话：__________________________ 合同经办人：____________________
+                </div>
+                <div>
+                    签约日期：__________________________ 签约日期：____________________
+                </div>
+                <div>
+                    安全须知
+                </div>
+                <div>
+                    为了增强旅游者安全意识，普及旅游安全基本常识，使旅游者参加旅游活动的计划能圆满、愉快、顺利完成，本公司特制定旅游安全须知，请旅游者认真阅读知晓并切实遵守。
+                </div>
+                <div>
+                    一、出发前准备事项
+                </div>
+                <div>
+                    1. 旅游者在临行前应考虑自身身体状况，必要时旅行前须征得医生同意后方可动身。如有体质较弱或者曾患病的旅游者必须坚持治疗，防止旧病复发。老年人往往患有多种慢性病，平时需要用药治疗者，出游时切不可遗忘服药，否则，可能导致旧病复发、病情加重或恶化。临行前，旅游者应根据自己的身体状况随身携带一些必备的药品及常用药品（如感冒药、止泻药、晕车药等），境外药房只能依处方购买药品。
+                </div>
+                <div>
+                    2. 到野生动物保护区游览，应尽量穿中性颜色衣服，如棕色、米色或土黄色；白色和其他鲜艳的颜色会令动物不安。
+                </div>
+                <div>
+                    3. 临行前安排好家中相应事宜，把旅游线路、旅行社紧急联系人等信息告诉自己家人，同时，也可将自己家人的紧急联系方式告知旅行社。
+                </div>
+                <div>
+                    4. 请旅游者务必带上身份证等有效证件、个人旅行用品、车船票、飞机票，准时到达行程地点。有些景区景点对于军人、老人、儿童、残疾人士有一定优惠，请旅游者提前出示证件以购买优惠门票。
+                </div>
+                <div>
+                    二、行程中注意事项
+                </div>
+                <div>
+                    （一）乘坐交通工具注意事项
+                </div>
+                <div>
+                    1. 黄金周或者其他旅游旺季期间，由于国内航班及加班机、包机的数量大增，极易引起航班的延误，如遇此种情况，请旅游者在候机厅耐心等待，密切注意航班的信息，不要到处乱跑，以免误机。同时，航空公司因运力等因素有可能临时调整航班，敬请旅游者配合与谅解。
+                </div>
+                <div>
+                    2. 旅游者乘坐交通工具时，应系好安全带，在交通工具停稳后方可离开；上下交通工具时，须排队等候，讲究文明礼貌，并优先照顾老人、儿童、妇女，切勿拥挤，以免发生意外。
+                </div>
+                <div>
+                    3. 旅游者乘坐交通工具时，请不要与司机交谈和催促司机开快车，不要将头、手、脚或者行李物品伸出窗外，以防意外发生；不要向车窗外扔废（杂）物品，特别是硬质物品，以免伤害他人。
+                </div>
+                <div>
+                    4. 旅游者下车游览、就餐、购物时，请注意关好旅游车窗并随身携带贵重物品。
+                </div>
+                <div>
+                    5. 旅游者乘坐飞机时，应随身携带有效身份证（小孩应带户口本原件，年满16周岁未办理身份证的旅游者须持派出所证明原件）。
+                </div>
+                <div>
+                    6. 搭乘快艇、漂流木筏、参加水上活动时，请旅游者按规定穿着救生衣，并遵照工作人员的指导。乘坐快艇游玩时，所有旅游者请抓紧扶手，年幼或者年长者请不要坐船头，以免发生不测。途中严禁追跑打闹。
+                </div>
+                <div>
+                    7. 乘机、坐车、乘船时要注意扶梯，在台阶处站稳。乘车时注意颠簸路段及司机急刹车，以免扭伤或摔伤身体。带儿童的游客乘坐交通工具时要特别注意儿童的安全。
+                </div>
+                <div>
+                    （二）住宿注意事项
+                </div>
+                <div>
+                    1. 抵达酒店后，酒店住宿以两人一室、自由组合为原则，如出现单男单女，本公司将调换夫妻用房或者调整为三人房；随行的小孩12周岁以上才能占床，请旅游者谅解。如果旅游者特别指定单人房间，请于出行前支付单人房差额并取得本公司的确认，以免出行后产生纷争。
+                </div>
+                <div>
+                    2. 旅游者入住酒店后，应了解酒店安全须知，熟悉酒店的太平门、安全出路、安全楼梯的位置及安全转移的路线。
+                </div>
+                <div>
+                    3. 沐浴时地面、浴缸容易打滑，一定要把防滑垫放好以防滑倒摔伤，酒后不要沐浴，更不要蒸洗桑拿浴。
+                </div>
+                <div>
+                    4. 不要将自己住宿的酒店、房号随便告诉陌生人，不要让陌生人或者自称酒店的维修人员随便进入客房，出入客房要锁好房门，睡觉前注意门窗是否关好，保险锁是否锁上；贵重物品请放置酒店保险箱，注意保管好收据，如随身携带请注意妥善保管。
+                </div>
+                <div>
+                    5. 如遇紧急情况请勿慌张：发生火警时请勿搭乘电梯或者随意跳楼，应镇定判断火情，主动实行自救；若身上着火，可就地打滚，或者用重衣物压火苗；必须穿过有浓烟的走廊、通道时，用浸湿的衣物披裹身体、捂着口鼻，贴近地、顺墙爬行；大火封门无法逃出时，可采用浸湿的衣物披裹身体、被褥堵门缝或者泼水降温的方法等待救援，或者摇动色彩鲜艳的衣物呼唤救援人员。
+                </div>
+                <div>
+                    （三）饮食卫生注意事项
+                </div>
+                <div>
+                    1. 外出旅游，旅游者应注意身体健康，切勿吃生食、生海鲜、未剥皮的水果，不可光顾路边无牌照摊档，忌暴饮暴食，应多喝开水，多吃蔬菜水果，少抽烟，少喝酒。因私自食用不洁食品和海鲜引起的肠胃疾病旅行社不承担责任。
+                </div>
+                <div>
+                    2. 不要随意接受和食用陌生人赠送的香烟、食物和饮品，防止他人暗算。
+                </div>
+                <div>
+                    3. 为防止旅途中水土不服，旅游者应自备一些常用药品以备不时之需，切勿随意服用他人提供的药品。
+                </div>
+                <div>
+                    4. 如对饮食有特殊要求，请在报名时告知旅行社并提前说明，以便更好的给您安排饮食。
+                </div>
+                <div>
+                    5. 旅游者品尝涮食时，为避免烫伤，待食物稍微凉却一下后再食用。使用酒精炉加热的，如需添加酒精，由酒店工作人员关闭火源后添加，请旅游者切勿自行添加；使用燃气加热的，旅游者严禁抽烟或将明火靠近火源，以免引起爆炸，带来不必要的伤亡。
+                </div>
+                <div>
+                    （四）购物注意事项
+                </div>
+                <div>
+                    1. 请勿轻信流动推销人员的商品推荐。由于小摊位物品真伪及质量难以保障，尽量不要在小摊位购买物品。如必须购买，请看好再与商家讨价。
+                </div>
+                <div>
+                    2. 购物时，请注意商品质量及价格，并向商家索取正式发票。
+                </div>
+                <div>
+                    3. 非旅行社指定购物点，旅游者消费属个人行为，如产生纠纷，旅行社可协助处理，但不承担任何责任。
+                </div>
+                <div>
+                    三、温馨提醒
+                </div>
+                <div>
+                    1. 为了确保旅行团顺利出行，防止旅途中发生人身意外伤害事故，请旅游者在出行前做一次必要的身体检查，80岁以上老人或存在下列健康问题的病患者，请勿报名，如隐瞒参团发生事故，责任自负：
+                </div>
+                <div>
+                    1) 传染性疾病患者，如传染性肝炎、活动期肺结核、伤寒等传染病人；
+                </div>
+                <div>
+                    2) 心血管疾病患者，如严重高血压、心功能不全、心肌缺氧、心肌梗等病人；
+                </div>
+                <div>
+                    3) 脑血管疾病患者，如脑栓塞、脑出血、脑肿瘤等病人；
+                </div>
+                <div>
+                    4) 呼吸系统疾病患者，如肺气肿、肺心病等病人；
+                </div>
+                <div>
+                    5) 精神病患者，如癫痫及各种精神病人；
+                </div>
+                <div>
+                    6) 严重贫血病患者，如血红蛋白量水平在 50 克 / 升以下的病人；
+                </div>
+                <div>
+                    7) 大中型手术的恢复期病患者；
+                </div>
+                <div>
+                    8) 孕妇及行动不便者。
+                </div>
+                <div>
+                    2. 60岁（含）以上70岁以下老年人报名出游的，需填写《健康证明》后方可报名，70岁（含）以上老年人需有家属陪同方可出游；未成年人需由父母或由父母指定的临时监护人陪同，如同行人员中有未成年人无父母陪同出游的，同行的成年出游人均视为未成年人的临时监护人，负责全程看管、照顾。
+                </div>
+                <div>
+                    3. 按照国家规定，旅游者在境内不准许参与色情场所活动，如有前往者，须负责自己的行为后果。文明公约为提高公民文明素质，塑造中国公民良好形象，中央文明办、国家旅游局今天联合颁布《中国公民国内旅游文明行为公约》。《中国公民国内旅游文明行为公约》营造文明、和谐的旅游环境，关系到每位游客的切身利益。做文明游客是我们?家的义务，请遵守以下公约：
+                </div>
+                <div>
+                    1、维护环境卫生。不随地吐痰和?香糖，不乱扔废弃物，不在禁烟场所吸烟。
+                </div>
+                <div>
+                    2、遵守公共秩序。不喧哗吵闹，排队遵守秩序，不并行挡道，不在公众场所高声交谈。
+                </div>
+                <div>
+                    3、保护生态环境。不踩踏绿地，不摘折花木和果　实，不追捉、投打、乱喂动物。
+                </div>
+                <div>
+                    4、保护文物古迹。不在文物古迹上涂刻，不攀爬触摸文物，拍照摄像遵守规定。
+                </div>
+                <div>
+                    5、爱惜公共设施。不污损客房用品，不损坏公用设施，不贪占小便宜，节约用水用电，用餐不浪费。
+                </div>
+                <div>
+                    6、尊重别人权利。不强行和外宾合影，不对着别人打喷嚏，不长期占用公共设施，尊重服务人员的劳动，尊重各民族宗教习俗。
+                </div>
+                <div>
+                    7、讲究以礼待人。衣着整洁得体，不在公共场所袒胸赤膊；礼让老幼病残，礼让女士；不讲粗话。
+                </div>
+                <div>
+                    8、提倡健康娱乐。抵制封建迷信活动，拒绝黄、赌、毒。
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<!-- 公共页脚 -->
+<!--<script src="http://js.40017.cn/cn/min/??/cn/s/yry/c/iscroll.js"></script>ignore-->
+<script src="http://js.40017.cn/touch/v/2015/zt/2016/30680/iscroll.02294.js"></script><!--ignore-->
+
+<script type="text/javascript" charset="utf-8" src="//wx.40017.cn/touch/min/??/touch/weixin/public/js/comQdid.js"></script>
+<script type="text/javascript">
+    var _tcq = _tcq || [];
+    var _timediff = -1;
+    if (typeof _tcopentime != "undefined")
+    { _timediff = new Date().getTime() - _tcopentime; }
+    _tcq.push(['_serialid', '0']);
+    _tcq.push(['_vrcode', '10003-2027-0']);
+    _tcq.push(['_refId', 107075804]);
+    _tcq.push(['_userId', "{{=it.UserId || 0}}"]);
+    _tcq.push(['_openTime', _timediff]);
+    _tcq.push(['_trackPageview', '{{=it.OpenId ||""}}||微信/玩乐/海外玩乐']);
+</script>
+
+<script>
+        var Detail = require("./index");
+        Detail.init();
+    </script>
+
+<script type='text/javascript' src="http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+</body>
+
+</html>

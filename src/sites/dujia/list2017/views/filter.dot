@@ -1,0 +1,220 @@
+<div class="condition_list">
+    {{var specialNickList = it.specialNickList;}}
+    {{?specialNickList && specialNickList.length && specialNickList[0].specialNick && specialNickList[0].specialNick.length}}
+        <div class="rowbox" data-key="specialNickId" data-list="2" data-openurl="false" data-multiselect="false" trace="specialNickId" attr-name="线路玩法">
+            <h4>线路玩法：</h4>
+            <div class="rowlist J_linePlay">
+                {{~specialNickList[0].specialNick:wanFa}}
+                    <a href="javascript:;" data-value="{{=wanFa.id}}" trace="{{=wanFa.id}}" title="{{=wanFa.name}}">{{=wanFa.name}}</a>
+                {{~}}
+                <div class="btns none">
+                    <span attr-data="" class="J_Trace submit" trace="filter-submit">确定</span><span class="J_Trace cancel" trace="filter-cancel">取消</span>
+                </div>
+            </div>
+            <div class="operationbox">
+                <span class="more-btn" trace="" >更多</span> 
+                <a class="multibtn" href="javascript:void(0);" title="" trace="multibtn">多选</a>
+            </div>
+        </div>
+    {{?}}
+    {{var pmList = it.pmList,
+        clractTitleList = it.clractTitleList;}}
+    {{?pmList && pmList.length && pmList[0].m && pmList[0].m.length}}
+        <div class="rowbox" data-key="pm|clractTitleId|minVGDate|maxVGDate" data-list="3" data-openurl="false" data-multiselect="false" attr-name="出游日期" trace="chuyou-date">
+            <h4>出发日期：</h4>
+            <div id="datelist" class="rowlist J_lineStartDate">
+                <div id="datelist" class="daylist">
+                    {{~pmList[0].m:travelDate}}
+                        {{var month = travelDate.value.substring(4);}}
+                        {{month = (month > 9) ? month : month.substring(1);}}
+                        <a href="javascript:;" title="{{=travelDate.value.substring(0,4)}}年{{=month}}月" data-key="pm" data-value="{{=travelDate.value}}">{{=month}}月</a>
+                    {{~}}
+                    {{?clractTitleList && clractTitleList.length && clractTitleList[0].clractTitle && clractTitleList[0].clractTitle.length}}
+                        {{~it.clractTitleList[0].clractTitle:clractTitle}}
+                            <a href="javascript:;" title="{{=clractTitle.name}}" data-key="clractTitleId" data-value="{{=clractTitle.id}}">{{=clractTitle.name}}</a>
+                        {{~}}
+                    {{?}}
+                </div>
+                <div class="calbox">
+                    <div class="mcalbox">
+                        <input id="startTime" placeholder="最早出发" readonly="true" class="mCal" data-key="minVGDate" attr-timeb="" attr-timee="" type="text"> 
+                    </div> 
+                    <em class="cal_em">&nbsp;&nbsp;~&nbsp;&nbsp;</em> 
+                    <div class="mcalbox2"> 
+                        <input id="endTime" placeholder="最晚出发" readonly="true" class="mCal" data-key="maxVGDate" attr-timeb="" type="text"> 
+                    </div> 
+                    <em class="cal_btn">确定</em> 
+                    <em class="cal_clear">清空</em> 
+                    <div class="btns none">
+                        <span attr-data="" class="submit">确定</span><span class="cancel">取消</span>
+                    </div>
+                </div>
+            </div>
+            <div class="operationbox">
+                <span class="more-btn" trace="" >更多</span>
+            </div>
+        </div>
+    {{?}}
+    {{var daysList = it.daysList;}}
+    {{?daysList && daysList.length && daysList[0].days && daysList[0].days.length}}
+        <div class="rowbox" data-key="days" data-list="4" data-openurl="false" data-multiselect="false" trace="days" attr-name="游玩天数" >
+            <h4>游玩天数：</h4>
+            <div class="rowlist J_lineDays">
+                {{~daysList[0].days:dayList}}
+                    <a href="javascript:;" title="{{=dayList.days}}" trace="{{=dayList.days}}" data-value="{{=dayList.days}}">{{=dayList.days}}天</a>
+                {{~}}
+                <div class="btns none">
+                    <span attr-data="" class="submit">确定</span><span class="cancel">取消</span> 
+                </div>
+            </div>
+            <div class="operationbox">
+                <span class="more-btn" trace="" >更多</span> 
+                <a class="multibtn" href="javascript:void(0);" title="" trace="multibtn">多选</a>
+            </div>
+        </div>
+    {{?}}
+    {{var lpCityList = it.lpCityList;}}
+    {{?lpCityList && lpCityList.length && lpCityList[0].lpCity && lpCityList[0].lpCity.length}}
+        {{var href = "";}}
+        <div class="rowbox" data-key="scId" data-list="5" data-openurl="false" data-multiselect="false" attr-name="出发城市" trace="chuyou-city">
+            <h4>出发城市 :</h4>
+            <div class="rowlist J_lineCity spm-deliver">
+                {{~lpCityList[0].lpCity:srcName}}
+                {{var labelId = "",
+                    propType = "",
+                    dataValue = "";}}
+                {{?it.BaseData.SearchType == 0}}
+                    {{dataValue = srcName.id;}}
+                    {{?it.BaseData.PageType == 0}}
+                        {{propType = "lvyou";}}
+                    {{??it.BaseData.PageType == 1}}
+                        {{labelId = it.BaseData.GroupLabelId;}}
+                        {{propType = "gentuan";}}
+                    {{??it.BaseData.PageType == 3}}
+                        {{labelId = it.BaseData.FreeLabelId;}}
+                        {{propType = "zizhu";}}
+                    {{??it.BaseData.PageType == 10}}
+                        {{propType = "local";}}
+                    {{?}}
+                    {{href = "/dujia/" + it.BaseData.DestPinYin + labelId + "-" + propType + "/f" + srcName.id + "/#cityanchor";}}
+                {{??}}
+                    {{?it.BaseData.PageType == 0}}
+                        {{href = "/dujia/search.aspx?src=" + srcName.name + "&dest=" + it.BaseData.DestName + "&prop=0";}}
+                    {{??}}
+                        {{dataValue = srcName.name;}}
+                    {{?}}
+                {{?}}
+                <a href="javascript:;" citypy="" data-spmed="true" data-value="{{=dataValue}}" title="{{=srcName.name}}">{{=srcName.name}}</a>
+                {{~}}
+                <div class="btns none">
+                    <span attr-data="" class="submit">确定</span><span class="cancel">取消</span>
+                </div>
+            </div>
+            <div class="operationbox">
+                <span class="more-btn">更多</span>
+            </div>
+        </div>
+    {{?}}
+    {{var showText = "";}}
+    <div class="showboxs J_Advanced none">
+        {{var rcImgTitleList = it.rcImgURLTitleList;}}
+        {{?rcImgTitleList && rcImgTitleList.length && rcImgTitleList[0].rcImgURLTitle && rcImgTitleList[0].rcImgURLTitle.length}}
+            {{?showText}}
+                {{showText = showText + " / ";}}
+            {{?}}
+            {{showText = showText + "产品特色";}}
+            <div class="rowbox" data-key="rcImgTitleId" data-list="6" data-openurl="false" data-multiselect="false" attr-name="产品特色" trace="line-spec">
+                <h4>产品特色 :</h4>
+                <div class="rowlist J_lineFeature">
+                    {{~rcImgTitleList[0].rcImgURLTitle:serviceFeature}}
+                    <a href="javascript:;" title="{{=serviceFeature.name}}" data-value="{{=serviceFeature.id}}">{{=serviceFeature.name}}</a>
+                    {{~}}
+                    <div class="btns none">
+                        <span attr-data="" class="submit">确定</span><span class="cancel">取消</span>
+                    </div>
+                </div>
+                <div class="operationbox">
+                    <span class="more-btn">更多</span>
+                    <a class="multibtn" href="javascript:void(0);" title="" trace="multibtn">多选</a>
+                </div>
+            </div>
+        {{?}}
+        {{var csList = it.csList;}}
+        {{?(it.BaseData.PageType != 3 || it.BaseData.SearchType == 1) && csList && csList.length && csList[0].scenery && csList[0].scenery.length}}
+            {{?showText}}
+                {{showText = showText + " / ";}}
+            {{?}}
+            {{showText = showText + "行程景点";}}
+            <div class="rowbox" data-key="sceneryId" data-list="7" data-openurl="false" data-multiselect="false" attr-name="行程景点" trace="line-scenery">
+                <h4>行程景点 :</h4>
+                <div class="rowlist J_lineScenery">
+                    {{~csList[0].scenery:scenery}}
+                        <a href="javascript:;" data-value="{{=scenery.id}}" title="{{=scenery.name}}">{{=scenery.name}}</a>
+                    {{~}}
+                    <div class="btns none">
+                        <span attr-data="" class="submit">确定</span><span class="cancel">取消</span>
+                    </div>
+                </div>
+                <div class="operationbox">
+                    <span class="more-btn">更多</span>
+                    <a class="multibtn" href="javascript:void(0);" title="" trace="multibtn">多选</a>
+                </div>
+            </div>
+        {{?}}
+        {{?it.BaseData.PageType == 0 || (it.BaseData.PageType == 3 && it.BaseData.SearchType == 0)}}
+            {{var flightTypeList = it.flightTypeList;}}
+            {{?flightTypeList && flightTypeList.length && flightTypeList[0].flightType && flightTypeList[0].flightType.length}}
+                {{?showText}}
+                    {{showText = showText + " / ";}}
+                {{?}}
+                {{showText = showText + "航班类型";}}
+                <div class="rowbox" data-key="flightTypeId" data-list="8" data-openurl="false" data-multiselect="false" attr-name="航班类型">
+                    <h4>航班类型 :</h4>
+                    <div class="rowlist J_flightType">
+                        {{~flightTypeList[0].flightType:flightList}}
+                        <a href="javascript:;" title="{{=flightList.name}}" data-value="{{=flightList.id}}">{{=flightList.name}}</a>
+                        {{~}}
+                        <div class="btns none"> <span attr-data="" class="submit">确定</span><span class="cancel">取消</span> </div>
+                    </div>
+                    <div class="operationbox">
+                        <span class="more-btn">更多</span>
+                    </div>
+                </div>
+            {{?}}
+            {{var hotelGradeList = it.hotelGradeList;}}
+            {{?hotelGradeList && hotelGradeList.length && hotelGradeList[0].hotelGrade && hotelGradeList[0].hotelGrade.length}}
+                {{?showText}}
+                    {{showText = showText + " / ";}}
+                {{?}}
+                {{showText = showText + "酒店星级";}}
+                <div class="rowbox" data-key="hotelGradeId" data-list="9" data-openurl="false" data-multiselect="false" attr-name="酒店星级">
+                    <h4>酒店星级 :</h4>
+                    <div class="rowlist J_hotelType">
+                        {{~hotelGradeList[0].hotelGrade:hotelList}}
+                        <a href="javascript:;" title="{{=hotelList.name}}" data-value="{{=hotelList.id}}">{{=hotelList.name}}</a>
+                        {{~}}
+                        <div class="btns none"> <span attr-data="" class="submit">确定</span><span class="cancel">取消</span> </div>
+                    </div>
+                    <div class="operationbox">
+                        <span class="more-btn">更多</span>
+                    </div>
+                </div>
+            {{?}}
+        {{?}}
+    </div>
+    {{?showText}}
+        <div class="rowbox showboxs">
+            <p class="senior">
+                <span class="showBtn" data-text='{{=showText}}'>高级选项：<em>({{=showText}})</em><i class="down"></i></span>
+            </p>
+        </div>
+    {{?}}
+</div>
+<div class="sort_list">
+    <ul class="sort-ul"><li class="cur" title="综合排序">综合排序</li><li class="satisfaction desc" title="按照满意度从高到低排序">满意度<i></i></li><li class="sale desc" title="按照月销量从高到低排序">月销量<i></i></li><li class="cost" title="">价格</li></ul>
+    {{?it.isTCSpecialLineList && it.isTCSpecialLineList[0].isTCSpecialLine && it.isTCSpecialLineList[0].isTCSpecialLine.length}}
+    <div class="extra">
+        <span data-content="<div class='extra-all'><div class='extra-left'><img class='extra-lyline' src=//pic3.40017.cn/line/admin/2015/10/27/18/0n16g0.png /></div> <div class='extra-right'><p class='p1'>什么是同程专线?</p><p class='p2'>同程旅游联合境内外优秀供应商为用户甄选提供更专业更高品质的产品。</p></div></div>"class="tc-line J_TcLine J_Tips"><i>&nbsp;</i></span>
+    </div>
+    {{?}}
+</div>

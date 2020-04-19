@@ -1,0 +1,7 @@
+{
+    "dataUri":  "/intervacation/api/CountryDestination/GetCountryDestination",
+    "query": {
+        "siteType":0
+    },
+    "desc": "出境目的地国家选择页"
+}

@@ -1,0 +1,70 @@
+<div class="moduleInfo-name">
+    <i class="ziyou-right-arrow"></i>
+    <span>出游前须知</span>
+</div>
+<div class="tips-head clearfix">
+    <div class="head-item head-item1"><i class="J_tcwx"></i><span class="weixinhao">关注微信公众号<br>（tctemai）</span><div class="erweima none"><p>立刻扫描二维码</p><p>旅游问题全搞定</p></div></div>
+    <div class="head-item head-item2"><i></i><span>旅途中遇到问题</span></div>
+    <div class="head-item head-item3"><i></i><span>点击人工客服反馈</span></div>
+</div>
+{{?lineDetail.TravelTips.TravelTips　&& lineDetail.TravelTips.TravelTips.length>0}}
+{{var TravelTips = lineDetail.TravelTips.TravelTips;}}
+{{?TravelTips[0].ImmigrationInfo}}
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all tips"></i>出入境须知</div>
+    <p>{{=TravelTips[0].ImmigrationInfo}}</p>
+</div>
+{{?}}
+{{?TravelTips[0].TravelTime}}
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all time"></i>旅游时间</div>
+    <p>{{=TravelTips[0].TravelTime}}</p>
+</div>
+{{?}}
+{{?TravelTips[0].CurrencyExchange}}
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all money"></i>兑换货币</div>
+    <p>{{=TravelTips[0].CurrencyExchange}}</p>
+</div>
+{{?}}
+{{?TravelTips[0].Postal}}
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all call"></i>邮政通讯</div>
+    <p>{{=TravelTips[0].Postal}}</p>
+</div>
+{{?}}
+{{?TravelTips[0].Socket}}
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all power"></i>插座电源</div>
+    <p>{{=TravelTips[0].Socket}}</p>
+</div>
+{{?}}
+{{?TravelTips[0].Custom}}
+<div class="moduleInfo-name">
+    <i class="ziyou-right-arrow"></i>
+    <span>出游中须知</span>
+</div>
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all custom"></i>风俗禁忌</div>
+    <p>{{=TravelTips[0].Custom}}</p>
+</div>
+{{?}}
+{{?TravelTips[0].Tip}}
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all fee"></i>小费</div>
+    <p>{{=TravelTips[0].Tip}}</p>
+</div>
+{{?}}
+{{?TravelTips[0].Embassy}}
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all embassy"></i>使馆信息</div>
+    <p>{{=TravelTips[0].Embassy}}</p>
+</div>
+{{?}}
+{{?TravelTips[0].Attention}}
+<div class="tips-item">
+    <div class="item-hd"><i class="icons-tips-all matters"></i>注意事项</div>
+    <p>{{=TravelTips[0].Attention}}</p>
+</div>
+{{?}}
+{{?}}

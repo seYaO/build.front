@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>canvasResize</title>
+    <meta name="description" content="Javascript Canvas Resize Plugin. It can work both with jQuery and Zepto. It's compatible with iOS6 and Android 2.3+" />
+    <meta name="keywords" content="javascript, jquery, zepto, canvas, image, resize" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link type="text/plain" rel="author" href="http://gokercebeci.com/humans.txt" />
+    <link rel="shortcut icon" href="http://gokercebeci.com/favicon.ico" type="image/x-icon" />
+    <style>
+        body { margin: 0; padding: 0; color:#333; font: normal 13px/1.264 sans-serif; }
+        img { border:0 }
+        .clearfix { clear:both; }
+        #devcontainer { margin: 20px auto; padding: 0 10px; width: 940px; }
+        pre, code {
+            display: block;
+            padding: 10px;
+            color: #eee;
+            border: 1px solid #222;
+            background: #333;
+            font-family: monospace, monospace;
+            _font-family: 'courier new', monospace;
+            font-size: 1em;
+        }
+        #area { float:left; width: 480px; }
+        .desc { float:right; width: 440px; }
+        .signature a { color:#555; text-decoration:none; }
+        .signature img { margin-right:5px; vertical-align: middle; }
+    </style>
+    <!-- jquery -->
+    <script src="http://js.40017.cn/touch/cn/public/zepto.20140212.js"></script>
+</head>
+<body>
+<div id="devcontainer">
+    <!-- development area -->
+
+    <!-- SAMPLE -->
+    <section>
+        <h2>SAMPLE</h2>
+        <style>
+            #area div p { display: block; width: 300px; }
+            #area div p span { display: block; padding: 2px 0; width: 0; background: #193; text-align: center; }
+            #area b, #area img { display: block; }
+            #area img { margin: 10px 0; width: 300px; }
+            #area input { visibility: hidden; height: 0; }
+            #area u { display: block; padding: 15px; text-align: center; background: #ddd; border-radius: 6px; }
+        </style>
+        <div id="area">
+            <h3>canvasResize</h3>
+
+            <div>
+                <input name="photo" type="file"/>
+                <u>Choose file</u>
+                <p><span></span></p>
+                <i></i>
+            </div>
+
+            <script src="../../../jqmodule/sea.js"></script>
+            <script src="index.js"></script>
+
+            <script>
+                seajs.use("canvas/0.1.0/index", function (fn) {
+                    $('#area u').click(function() {
+                        $('input[name=photo]').trigger('click');
+                    });
+
+                    $('input[name=photo]').change(function(e) {
+                        var file = e.target.files[0];
+
+                        // RESET
+                        $('#area p span').css('width', 0 + "%").html('');
+
+                        // CANVAS RESIZING
+                        fn.init(file, {
+                            width: 6144,
+                            height: 6144,
+                            crop: false,
+                            quality: 80,
+                            //rotate: 90,
+                            callback: function(data) {
+
+                                // SHOW AS AN IMAGE
+                                $('<img>').attr('src', data).appendTo("#area i").css({
+                                    "width": '480px',
+                                    "height": '640px'
+                                });
+                                var urlData=$("#area img").attr("src");
+                                var bytes=window.atob(urlData.split(',')[1]);
+                                console.log(bytes.length);
+                                // IMAGE UPLOADING
+                                // Create a new formdata
+                                var fd = new FormData();
+                                // Add file data
+                                var f = fn.methods.dataURLtoBlob(data);
+                                f.name = file.name;
+                                fd.append($('#area input').attr('name'), f);
+
+                                $.ajax({
+                                    url: 'http://mtest.t.ly.com/dujia/AjaxHelper/UpLoadImage',
+                                    type: 'POST',
+                                    data: fd,
+                                    dataType: 'json',
+                                    contentType: false,
+                                    processData: false,
+                                    beforeSend: function(xhr) {
+                                        xhr.setRequestHeader("pragma", "no-cache");
+                                    },
+                                    xhr: function() {
+                                        //进度条 可选
+                                        var xhr = new window.XMLHttpRequest();
+                                        //Upload progress
+                                        xhr.upload.addEventListener("progress", function(e) {
+                                            if (e.lengthComputable) {
+                                                var loaded = Math.ceil((e.loaded / e.total) * 100);
+                                                $('p span').css({
+                                                    'width': loaded + "%"
+                                                }).html(loaded + "%");
+                                            }
+                                        }, false);
+                                        return xhr;
+                                    },
+                                    success: function(response) {
+
+                                        //console.log(response);
+                                        if (response.filename) {
+                                            // Complete
+                                            $('#area p span').html('done');
+                                            $('#area b').html(response.filename);
+                                            $('<img>').attr({
+                                                'src': response.filename
+                                            }).appendTo($('#area div'));
+                                        }
+
+                                    }
+                                });
+                            }
+                        });
+
+                    });
+                });
+            </script>
+        </div>
+        <div class="clearfix"></div>
+    </section>
+    <!-- SAMPLE -->
+
+    <!-- USAGE -->
+    <section>
+        <h2>USAGE</h2>
+        <pre>
+            <code>
+                $('input[name=photo]').change(function(e) {
+                var file = e.target.files[0];
+                canvasResize(file, {
+                width: 300,
+                height: 0,
+                crop: false,
+                quality: 80,
+                //rotate: 90,
+                callback: function(data, width, height) {
+                $(img).attr('src', data);
+                }
+                });
+                });
+            </code>
+        </pre>
+    </section>
+    <!-- /USAGE -->
+    <!-- OPTIONS -->
+    <section>
+        <h2>OPTIONS</h2>
+        <pre>
+            <code>
+                width : 300, // Image width.
+                height : 0, // Image height, default 0 (flexible).
+                crop : false, // default false.
+                quality : 80, // Image quality default 80.
+                rotate : 90, // Image rotation default 0
+                callback : function(){},
+            </code>
+        </pre>
+    </section>
+    <!-- /OPTIONS -->
+</div>
+</body>
+</html>

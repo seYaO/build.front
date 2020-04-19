@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html >
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn"/>
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <title>我的订单</title>
+    <!-- 公共样式表 -->
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/touch/public/common/0.2.4/common.css?v=09231627" />
+
+    <!-- 页面样式表 -->
+</head>
+<body onselectstart="return false;" class="">
+<div id="publicNotice" data-channel="dujia"></div>
+<!-- 页面内容块 start --> 
+<div class="content">
+    <section>
+        <div class="part">
+            <div class="part-body">
+                <div class="part-list J_List">
+                </div>
+            </div>
+        </div>
+    </section>             
+</div>
+
+<div class="data-loader">点击加载更多</div>
+<!-- 页面内容块 end -->
+<script type="text/javascript" src="/modules/sea.js" data-loader="true"></script>
+<script type="text/javascript">
+    seajs.require("./index.js").init();
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p>加载的是http://js.40017.cn/cn/v/2015/jqmodules/lazyload/0.1.0/index.js</p>
+<img data-img="http://pic3.40017.cn/line/admin/2014/10/23/11/Q7amrc.jpg" />
+</body>
+<script src="../../sea.js"></script>
+<script src="../../jquery.js"></script>
+<script type="text/javascript">
+    seajs.config({
+        //base: "http://js.40017.cn/cn/v/2015/jqmodules/"
+        base: "../../"
+    })
+</script>
+<script>
+    define("test",["lazyload/0.1.0/index"],function(require,exports,module){
+        var testModule = {
+            init: function(){
+                require("lazyload/0.1.0/index");
+                $("img").lazyload({
+                    data_attribute:"img"
+                })
+            }
+        };
+        return testModule;
+    });
+</script>
+<script>
+    seajs.use("test",function(Test){
+        Test.init();
+    })
+</script>
+</html>

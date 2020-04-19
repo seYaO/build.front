@@ -1,0 +1,87 @@
+<div class="comment-moudle {{?it.hasWide}}w1190{{??}}w950{{?}}" id="comment-moudle">
+    <div class="comm-head clearfix">
+        <div class="comm-satis">
+            <p class="satis-num">{{=it.Satisfaction}}<em>%</em></p>
+            <p class="satis-txt">满意度</p>
+        </div>
+
+        <div class="comm-count">
+            <div class="c_score_bar">
+                <span class="bar_label">好评率</span>
+                <span class="bar_data">
+                    <span style="width:{{=it.GoodFaction}}%"></span>
+                </span>
+                <i>{{=it.GoodFaction}}%</i>
+            </div>
+            <div class="c_score_bar">
+                <span class="bar_label">中评率</span>
+                <span class="bar_data">
+                    <span style="width:{{=it.ModeFaction}}%"></span>
+                </span>
+                <i>{{=it.ModeFaction}}%</i>
+            </div>
+            <div class="c_score_bar">
+               <span class="bar_label">差评率</span>
+                <span class="bar_data">
+                    <span style="width:{{=it.BadFation}}%"></span>
+                </span>
+                <i>{{=it.BadFation}}%</i>
+            </div>
+        </div>
+        {{?it.CustTagList.length}}
+        /*自定义标签*/
+        <div class="comm-custtag">
+            <p class="custtag-txt">出游人都觉得：</p>
+            <div id="J_custtag" class="custtag-list">
+                {{~it.CustTagList:value:index}}
+                    <a class="custtag-li" data-param="tagId={{=value.TagId}}" data-tagid="{{=value.TagId}}" data-tagtype="{{=value.TagType}}" data-tagnum="{{=value.TagNum}}">{{=value.TagName}}<em>({{=value.TagNum}})</em></a>
+                {{~}}
+            </div>
+        </div>
+        {{?}}
+        /*平台模式提示*/
+        {{?parseInt($("#hidIVRLRSourceFrom").val()) === 1}}
+            <div class="comm-commit platform-model">
+                <p class="comm-info">游玩后发表点评可获得<a target="_blank" href="//www.ly.com/newhelp/questionlist/6-1-451.html">点评奖金&gt;&gt;</a></p>
+                <a class="gocomm" target="_blank" href="http://member.ly.com/default.aspx">立即点评</a>
+            </div>
+        {{??}}
+           <div class="comm-commit">
+               <p class="comm-info">游玩后发表点评可获得<a target="_blank" href="//www.ly.com/newhelp/questionlist/6-1-451.html">点评奖金&gt;&gt;</a></p>
+               <a class="gocomm" target="_blank" href="http://member.ly.com/default.aspx">立即点评</a>
+           </div>
+        {{?}}
+
+
+    </div>
+
+    <div class="comm-filter clearfix">
+        <div class="fliter-left" id="J_CometTab">
+            /*排序标签*/
+            {{~it.TabTagList:value:index}}
+                {{var isCheck = (index===0) ? "checked" : "";}}
+                <span data-param="tagId={{=value.TagId}}" data-tagid="{{=value.TagId}}" data-tagtype="{{=value.TagType}}" data-tagnum="{{=value.TagNum}}">
+                    <input id="radio{{=index+1}}" type="radio" name="commfil" {{=isCheck}} />
+                    <label for="radio{{=index+1}}">{{=value.TagName}}<b>（{{=value.TagNum}}）</b></label>
+                </span>
+
+            {{~}}
+        </div>
+        <div class="filter-right" id="filter-sort">
+            <a href="javascript:void(0);" class="J_sort up" data-sorttype="1">最有价值<i></i></a>
+            <a href="javascript:void(0);" class="J_sort up" data-sorttype="3">时间排序<i></i></a>
+        </div>
+    </div>
+
+    <div class="comm-content">
+        <ul>
+
+        </ul>
+
+    </div>
+    <!--点评翻页-->
+    <div class="comet-pager" id="J_CometPager">
+    </div>
+    <!--点评翻页-->
+</div>
+

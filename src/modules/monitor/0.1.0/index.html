@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="../../jquery.js"></script>
+    <script src="../../sea.js"></script>
+    <script>
+        seajs.config({
+            "base": "../../"
+        });
+    </script>
+    <script src="http://www.ly.com/dujia/config.ashx"></script>
+</head>
+<body>
+</body>
+<script>
+    seajs.use("monitor/0.1.0/index",function(Monitor){
+        Monitor.log("test");
+    })
+</script>
+</html>

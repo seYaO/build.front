@@ -1,0 +1,10 @@
+{
+    "dataUri": "/intervacation/api/OrderHandler/GetInitOrderData",
+    "query": {
+        "siteType": 0,
+        "lineId": 362550,
+        "pageType": "OrderPage"
+    },
+    "method": "post",
+    "desc": "预订页面"
+}

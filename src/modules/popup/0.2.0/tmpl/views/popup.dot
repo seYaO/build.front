@@ -1,0 +1,7 @@
+﻿<div class="modal-dialog {{=it.modalSize}}">
+    <div class="modal-content">
+        <div class="modal-body">
+            {{=it.content}}
+        </div>
+    </div>
+</div>

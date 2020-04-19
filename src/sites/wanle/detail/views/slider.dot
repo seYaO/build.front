@@ -1,0 +1,21 @@
+
+<div class="slider_thumb">
+    <a href="javascript:void(0);" rel="nofollow" class="slider_pre"><i></i></a>
+    <div id="silderThumbMain" class="thumb_main">
+        {{var sliderWidth = basicInfo.ImgUrlList.length *150;}}
+        <ul id="silderUl" class="thumb_ul" style="width:{{=sliderWidth}}px">
+            {{var newIndex = 0;}}
+            {{~basicInfo.ImgUrlList:imgItem}}
+              {{?imgItem}}
+              {{newIndex = newIndex + 1;}}
+              <li>
+                {{var imgUrlSmall = imgItem.replace(".jpg","_400x300_00.jpg").replace('http:','');}}
+                {{var imgUrlBig = imgItem.replace(".jpg","_640x360_00.jpg").replace('http:','');}}
+                  <a href="javascript:;" class="thumb_link" data-index="{{=newIndex}}" data-src="{{=imgUrlSmall}}" data-bsrc="{{=imgUrlBig}}"></a>
+              </li>
+              {{?}}
+           {{~}}
+        </ul>
+    </div>
+    <a href="javascript:void(0);" rel="nofollow" class="slider_next"><i></i></a>
+</div>

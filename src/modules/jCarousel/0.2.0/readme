@@ -1,0 +1,2 @@
+新增了events模块
+给left按钮 right按钮 和li绑定了自定义事件分别为 prevClick  itemClick rightClick

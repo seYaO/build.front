@@ -1,0 +1,299 @@
+{{?it.IncludeFees&&it.IncludeFees.length}}
+<div class="title-costContain">费用包含</div>
+<div class="costCotain-box clearfix">
+{{~it.IncludeFees:includeItems:index}}
+    {{?includeItems.Type=="flight"}}
+    <div class="cost contain-fly">
+        <div class="cost-item">
+            <i></i>
+            <span>机票</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="tax"}}
+    <div class="cost contain-shui">
+        <div class="cost-item">
+            <i></i>
+            <span>税费</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="localtransport"}}
+    <div class="cost contain-car">
+        <div class="cost-item">
+            <i></i>
+            <span>当地交通</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="hotel"}}
+    <div class="cost contain-hotel">
+        <div class="cost-item">
+            <i></i>
+            <span>酒店</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="meal"}}
+    <div class="cost contain-food">
+        <div class="cost-item">
+            <i></i>
+            <span>用餐</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="ticket"}}
+    <div class="cost contain-menpiao">
+        <div class="cost-item">
+            <i></i>
+            <span>门票</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="guide"}}
+    <div class="cost contain-daofu">
+        <div class="cost-item">
+            <i></i>
+            <span>导服费</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="visa"}}
+    <div class="cost contain-visa">
+        <div class="cost-item">
+            <i></i>
+            <span>签证</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="singleroompoor"}}
+    <div class="cost contain-danfang">
+        <div class="cost-item">
+            <i></i>
+            <span>单房差</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="driver"}}
+    <div class="cost contain-siji">
+        <div class="cost-item">
+            <i></i>
+            <span>司机</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="personalcost"}}
+    <div class="cost contain-geren">
+        <div class="cost-item">
+            <i></i>
+            <span>个人消费</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="baggage"}}
+    <div class="cost contain-xingli">
+        <div class="cost-item">
+            <i></i>
+            <span>行李费</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="insurance"}}
+    <div class="cost contain-baoxian">
+        <div class="cost-item">
+            <i></i>
+            <span>保险费</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?includeItems.Type=="other"}}
+    <div class="cost contain-other">
+        <div class="cost-item">
+            <i></i>
+            <span>其他</span>
+        </div>
+        <p>{{=includeItems.Description}}</p>
+    </div>
+    {{?}}
+{{~}}
+</div>
+{{?}}
+{{?it.NoIncludeFees&&it.NoIncludeFees.length}}
+<div class="title-notContain">费用不包含</div>
+<div class="notCotain-box clearfix">
+{{~it.NoIncludeFees:NoIncludeItems:index}}
+    {{?NoIncludeItems.Type=="flight"}}
+    <div class="cost not-fly contain-fly">
+        <div class="cost-item">
+            <i></i>
+            <span>机票</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="tax"}}
+    <div class="cost not-shui contain-shui">
+        <div class="cost-item">
+            <i></i>
+            <span>税费</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="localtransport"}}
+    <div class="cost not-car contain-car">
+        <div class="cost-item">
+            <i></i>
+            <span>当地交通</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="hotel"}}
+    <div class="cost not-hotel contain-hotel">
+        <div class="cost-item">
+            <i></i>
+            <span>酒店</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="meal"}}
+    <div class="cost not-food  contain-food">
+        <div class="cost-item">
+            <i></i>
+            <span>用餐</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}  </p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="ticket"}}
+    <div class="cost not-menpiao contain-menpiao">
+        <div class="cost-item">
+            <i></i>
+            <span>门票</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="guide"}}
+    <div class="cost not-daofu contain-daofu">
+        <div class="cost-item">
+            <i></i>
+            <span>导服费</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="visa"}}
+    <div class="cost not-visa contain-visa">
+        <div class="cost-item">
+            <i></i>
+            <span>签证</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="singleroompoor"}}
+    <div class="cost not-danfang contain-danfang">
+        <div class="cost-item">
+            <i></i>
+            <span>单房差</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="driver"}}
+    <div class="cost not-siji contain-siji">
+        <div class="cost-item">
+            <i></i>
+            <span>司机</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="personalcost"}}
+    <div class="cost not-geren contain-geren">
+        <div class="cost-item">
+            <i></i>
+            <span>个人消费</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="baggage"}}
+    <div class="cost not-xingli contain-xingli">
+        <div class="cost-item">
+            <i></i>
+            <span>行李费</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="insurance"}}
+    <div class="cost not-baoxian contain-baoxian">
+        <div class="cost-item">
+            <i></i>
+            <span>保险费</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+    {{?NoIncludeItems.Type=="other"}}
+    <div class="cost not-other contain-other">
+        <div class="cost-item">
+            <i></i>
+            <span>其他</span>
+        </div>
+        <p>{{=NoIncludeItems.Description}}</p>
+    </div>
+    {{?}}
+{{~}}
+</div>
+{{?}}
+<div class="title-infoTuigai">退改说明</div>
+<div class="fly-tuigaiBox clearfix">
+    <div class="left-part">
+        <div class="tuigai-fly">
+            <i></i>
+            <span>机票</span>
+        </div>
+    </div>
+    <div class="right-part">
+        <span>去程退改签</span>
+        <p>退票规定：购票后不同时间退票规则会有不同，请以航空公司实时规定为准。</p>
+        <p>改期规定：购票后不同时间改签规则会有不同，请以航空公司实时规定为准。</p>
+        <p>误机罚金：购票后不同时间误机罚金规则会有不同，此规定仅供参考，最终以航空公司实时规定为准；国际往返机票单段使用后一般不得退票，最终以航空公司规定为准。</p>
+        <div style="margin-top:15px;">
+            <span>回程退改签</span>
+            <p>退票规定：购票后不同时间退票规则会有不同，请以航空公司实时规定为准。</p>
+            <p>改期规定：购票后不同时间改签规则会有不同，请以航空公司实时规定为准。</p>
+            <p>误机罚金：购票后不同时间误机罚金规则会有不同，此规定仅供参考，最终以航空公司实时规定为准；国际往返机票单段使用后一般不得退票，最终以航空公司规定为准。</p>
+        </div>
+    </div>
+</div>
+<div class="hotel-tuigaiBox clearfix">
+    <div class="left-part">
+        <div class="tuigai-hotel">
+            <i></i>
+            <span>酒店</span>
+        </div>
+    </div>
+    <div class="right-part">
+        <span>酒店退改</span>
+        <p>不同时间段、不同酒店、房型退改政策不同，请以具体酒实时店退改政策为准。</p>
+    </div>
+</div>

@@ -1,0 +1,142 @@
+<div class="borBox J_NavBox" id="part5" data-type="travelhistory">
+             <div class="tab_head">
+                <h4>美国旅行史</h4>
+                <span class="save_btn J_saveBtn">保存资料</span>
+            </div>
+            <div class="is_show J_xianyin J_choose J_AddOrDelete" data-index="1">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_US_TRAVEL_IND">
+                    <p>
+                        <span class="lf"><i></i>您之前是否去过美国？（若有，请提供最近5次）</span>
+                        <span class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>包括塞班等海外领土</p></div>"></span>
+                    </p>
+                    <span class="radio" value="Y" data-dot="1" data-dotname="traveldate1"><i></i>是</span>
+                    <span class="radio" value="N" data-dot="0" ><i></i>否</span>
+                </div>
+                <div class="J_renderDot"></div>
+            </div>
+
+            <div class="is_show J_xianyin J_choose">
+                <div class="sub_title" verify-type="required" vali-msg-required="请完善信息" FCControlId="drivingLicence_Info">
+                    <p>
+                        <span class="lf"><i></i>您是否拥有美国驾驶证？ </span>
+                    </p>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <div class="none" type="form">
+                    <ul class="form_ul clearfix">
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>驾驶证号：</span>
+                            <div class="info_con">
+                                <input class="w220" type="text" placeholder="请填写驾驶证号" verify-type="required charOrNum" vali-msg-required="请填写驾驶证号" FCControlId="drivinglicence_number">
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>所属洲：</span>
+                            <div class="info_con">
+                                <input class="w220" type="text" placeholder="请填写所属洲" verify-type="required charFilter" vali-msg-required="请填写所属洲" FCControlId="drivinglicence_continent">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="is_show J_xianyin J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_VISA_IND">
+                    <p>
+                        <span class="lf"><i></i>您之前是否获得过美国签证？</span>
+                    </p>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <div class="none" type="form">
+                    <ul class="form_ul clearfix">
+                        <li class="info_list">
+                            <div class="single_li">
+                                <span class="info_tit w135"><i>*</i>上次获得签证时间：</span>
+                                <div class="dropdown_tit">
+                                    <input type="text" class="w130 input_date J_dateTime" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择时间" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPREV_VISA_ISSUED_DTEYMD">
+                                </div>
+                            </div>
+                            <div class="single_li">
+                                <span class="info_tit">签证号码：</span>
+                                <div class="info_con">
+                                    <input class="w130 lf" type="text" placeholder="请输入签证号码" verify-type="charOrNum" vali-msg-required="请输入签证号码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPREV_VISA_FOIL_NUMBER">
+                                    <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>未成年人无身份证号码，可不填写</p></div>"></i>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="info_list mar10_l">
+                            <span class="info_quiz">1.您此次是否申请同类签证？</span>
+                            <div class="info_con" verify-type="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_VISA_SAME_TYPE_IND">
+                                <span class="radio"  value="Y"><i></i>是</span>
+                                <span class="radio"  value="N"><i></i>否</span>
+                            </div>
+                        </li>
+                        <li class="info_list mar10_l">
+                            <span class="info_quiz">2.此次申请的国家和地点一样吗？</span>
+                            <div class="info_con" verify-type="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_VISA_SAME_CNTRY_IND">
+                                <span class="radio"  value="Y"><i></i>是</span>
+                                <span class="radio"  value="N"><i></i>否</span>
+                            </div>
+                        </li>
+                        <li class="info_list mar10_l">
+                            <span class="info_quiz">3.你是否在领事馆留取过十指指纹？</span>
+                            <div class="info_con" verify-type="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_VISA_TEN_PRINT_IND">
+                                <span class="radio"  value="Y"><i></i>是</span>
+                                <span class="radio"  value="N"><i></i>否</span>
+                            </div>
+                        </li>
+                        <li class="info_list mar10_l">
+                            <span class="info_quiz">4.您的美国签证是否曾经遗失或被盗过？</span>
+                            <div class="info_con" verify-type="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_VISA_LOST_IND">
+                                <span class="radio" data-dot="1" data-dotname="VisalostYes" value="Y"><i></i>是</span>
+                                <span class="radio" data-dot="0" value="N"><i></i>否</span>
+                            </div>
+                            <div class="J_renderDot clearfix"></div>
+                        </li>
+                        <li class="info_list mar10_l">
+                            <span class="info_quiz">5.您的美国签证是否曾经被注销或撤销过？</span>
+                            <div class="info_con" verify-type="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_VISA_CANCELLED_IND">
+                                <span class="radio" value="Y"><i></i>是</span>
+                                <span class="radio" value="N"><i></i>否</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="is_show J_xianyin J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_VISA_REFUSED_IND">
+                    <p><i></i>您是否被美国拒签过，或被拒入境，或被撤销入境申请?</p>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <div class="none" type="form">
+                    <ul class="form_ul">
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>填写原因：</span>
+                            <div class="info_con">
+                                <input class="w575 lf" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写原因" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPREV_VISA_REFUSED_EXPL">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="is_show J_xianyin J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblIV_PETITION_IND">
+                    <p><i></i>您曾经申请过美国移民吗?</p>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <div class="none" type="form">
+                    <ul class="form_ul">
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>填写原因：</span>
+                            <div class="info_con">
+                                <input class="w575 lf" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写原因" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxIV_PETITION_EXPL">
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>

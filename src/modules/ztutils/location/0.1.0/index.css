@@ -1,0 +1,47 @@
+p {
+  margin: 0;
+}
+.address-tip {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2000;
+}
+.address-tip div {
+  width: 15.28em;
+  background: #fff;
+  border-radius: .3571em;
+  padding: 1.4285em 1.964285em;
+  margin: 0 auto;
+  margin-top: 9.4em;
+  white-space: nowrap;
+}
+.address-tip p {
+  margin-top: 1.4285em;
+  text-align: center;
+}
+.address-tip span {
+  color: #ff8400;
+  font-size: 1.285714em;
+}
+.address-tip a {
+  color: #333;
+  text-decoration: none;
+  border: 1px solid #dcdcdc;
+  border-radius: .3571em;
+  width: 7em;
+  height: 2.714em;
+  display: inline-block;
+  line-height: 2.714em;
+  text-align: center;
+  margin-top: 2em;
+}
+.address-tip a:last-child {
+  background: #ff8400;
+  color: #fff;
+  border: 0;
+  margin-left: 0.7142825em;
+}

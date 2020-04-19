@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html trace="test-base">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://js.40017.cn/cn/v/2015/jqmodules/jquery.js"></script>
+    <script src="http://js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js"></script>
+    <style>
+        /*demo 样式　*/
+        .demo-ul li.selected{
+            color: red;
+        }
+        body{
+            padding-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div trace="test-module">
+        <ul>
+            <li><a target="_blank" href="http://www.ly.com/dujia" trace="cn" data-trace="sdfsd">(新窗口)跳到cn站出境</a></li>
+            <li><a href="http://m.ly.com/dujia" trace="touch">跳到touch站出境</a></li>
+            <li><a href="javascript:;" id="demo-test-a" data-url="http://wx.17u.cn/ivacation/">(脚本跳转)wx站出境</a></li>
+        </ul>
+    </div>
+    <div trace="test-module1">
+        <h2>tab切换-示例</h2>
+        <ul class="demo-ul">
+            <li><span class="J_trace" trace="1">tab1</span></li>
+            <li><span class="J_trace" trace="2">tab2</span></li>
+        </ul>
+    </div>
+    <script src="./statistics.js"></script>
+    <script>
+        //demo的脚本
+        $(".demo-ul").find("li").on("click",function(){
+            $(this).addClass("selected").siblings().removeClass("selected");
+        })
+        $("#demo-test-a").on("click",function(){
+            location.href = this.getAttribute("data-url");
+        })
+    </script>
+    <script>
+        stat.init({
+            "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', '10004-2006-0'], //pmas里用来区分平台的流量,stat.getVrCode() 这个方法包含了出境的平台判断
+            ['_refId', stat.getRefid()], //refidid
+            ['_userId', '0'],  //用户id
+            ['_openTime', stat.timeDiff], //打开的时间
+            ['_trackPageview', '/出境/touch活动页/####'] //在pmas里的分类.
+        ]});
+    </script>
+</body>
+</html>

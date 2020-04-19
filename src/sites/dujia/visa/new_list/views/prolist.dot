@@ -1,0 +1,91 @@
+{{?it.PackageList && it.PackageList.length}}
+   {{var conDes=it.Des || {};}}
+   {{~it.PackageList:package:pIndex}}
+   <div class="product-box">
+        {{?package.VisaProductLists && package.VisaProductLists.length}}
+        {{var visaPro =package.VisaProductLists[0] || {};}}
+           <div class="product-title clearfix">
+               <div class="img">
+                    <img data-img="{{=visaPro.ImgUrl.replace('http:','')}}"/>
+               </div>
+               <div class="title">
+                   <h3 title="{{=package.MainTitle}}">{{=package.MainTitle}}</h3>
+                   <span class="clearfix">
+                       <i>入境次数：{{=visaPro.ETimes}}</i>
+                       <i>停留时长：{{=visaPro.MaxST}}</i>
+                       <i>签证有效期：{{=package.VTimes}}</i>
+                   </span>
+               </div>
+               <div class="price">
+                   <span><em class="cost">{{=package.MinPrice}}</em>起</span>
+                   {{?package.OrderCount>0}}
+                       <span><em>{{=package.OrderCount}}</em>人办理</span>
+                   {{?}}
+               </div>
+           </div>
+           <ul class="product-list">
+            {{~package.VisaProductLists:product:sIndex}}
+               {{
+                  var noneLi = sIndex > 3 ? "none":"",
+                      onEm = (pIndex == 0 && sIndex == 0) ? "on":"",
+                      noneDiv = (pIndex == 0 && sIndex == 0) ? "":"none",
+                      trackspot = product.Id+"^"+(pIndex+1+it.TNumber)+"^"+(sIndex+1)+"^"+conDes.RelatedDes+"^"+conDes.ComDes+"^"+conDes.ProvinceName+"^"+conDes.SortDes+"^"+it.CountryName;
+               }}
+               <li class="{{=noneLi}} clearfix" trackkit="Line">
+                    <div data-href="/dujia/visa/visa-{{=product.Id}}.html" class="route-link">
+                        <div class="title">
+                        <a trackspot="{{=trackspot}}" title="{{=product.SubTitle}}" target="_blank" data-href="/dujia/visa/visa-{{=product.Id}}.html">{{=product.SubTitle}}</a>
+                        <span trackkit="Requirements">
+                            {{?product.ComList && product.ComList.length}}
+                            {{~product.ComList:com}}
+                            <i class="J_tips" data-content="{{=com.ComDescribe}}">{{=com.ComTitle}}</i>
+                            {{~}}
+                            {{?}}
+                            <em class="J_btnRequire {{=onEm}}" trackspot="展开/收起">受理范围</em>
+                        </span>
+                        </div>
+                        <div class="tips">
+                        <span>收齐材料后预计<em>{{=product.TranTR}}</em>个工作日出签</span>
+                        {{?(parseInt(product.HeadCount) || 0)+(parseInt(product.SatDeg) || 0)>0}}
+                            <span>
+                                {{?product.HeadCount>0}}
+                                {{var styles = product.SatDeg <= 0 ? "border-right:0":"";}}
+                                <i style={{=styles}}><em>{{=product.HeadCount}}</em>人办理</i>
+                                {{?}}
+                                {{?product.SatDeg>0}}
+                                <i><em>{{=product.SatDeg}}%</em>满意度</i>
+                                {{?}}
+                            </span>
+                            {{??}}
+                            <span class="new">新产品</span>
+                            {{?}}
+                        </div>
+                        {{var blh = product.DiscountList && product.DiscountList.length?"blh":"";}}
+                        <div class="price {{=blh}}">
+                        <span class="cost">{{=product.TcPrice}}</span>
+                        {{?product.DiscountList && product.DiscountList.length > 0}}
+                                {{~product.DiscountList:disc}}
+                                    {{?disc.DisType == 10}}
+                                    <span class="blh J_tips" title="{{=disc.HoverContent}}" data-content="{{=disc.Remark}}"> <i>{{=disc.IconContent}}</i><em>{{=disc.Amount || 0}}</em> </span>
+                                    {{?}}
+                                {{~}}
+                            {{?}}
+                        </div>
+                        <div class="btn">
+                        <a target="_blank" trackspot="{{=trackspot}}" data-href="/dujia/visa/visa-{{=product.Id}}.html">办理</a>
+                        </div>
+                    </div> 
+                    <div class="details clearfix {{=noneDiv}}">
+                        <div class="title">受理范围：</div>
+                        <div class="explain">{{=product.ModuleContents}}</div>
+                    </div>
+               </li>
+            {{~}} 
+            {{?package.VisaProductLists.length > 4}}
+             <li class="btn-more" trackkit="More"><i class="J_btnMore" trackspot="{{=pIndex+1}}"><em>展开更多</em></i></li>
+            {{?}}
+           </ul>
+       {{?}}
+   </div>
+   {{~}}
+{{?}}

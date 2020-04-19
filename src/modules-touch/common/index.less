@@ -1,0 +1,242 @@
+@import url("../../styles/mixins/common.css?__inline");
+@import "../../styles/mixins/base.less";
+/* 单页面应用中的页面切换 */
+.fixed {
+    position: fixed;
+}
+.fixed_replace {
+    position: absolute;
+}
+.viewport{
+    width: 100%;
+}
+.page-body{
+    width:100%;
+}
+.page-box{
+    width:100%;
+    overflow-x: hidden;
+}
+.page {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+    left: 0;
+    display: block;
+    -webkit-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+    padding-top: 46px;
+}
+
+@nmbHeight: 44px;
+.nmbcnucndy{
+    height: @nmbHeight;
+    overflow: hidden;
+}
+.has-download-ads .page{
+    padding-top: @nmbHeight+46;
+}
+.app-include .filter-panel,
+.app-include #calendarPage{
+    padding-top: 0;
+}
+.has-download-ads .filter-panel,
+.has-download-ads #calendarPage{
+    padding-top: @nmbHeight+46;
+}
+.app-include.has-download-ads .filter-panel,
+.app-include.has-download-ads #calendarPage{
+    padding-top: @nmbHeight;
+}
+@media screen and (min-width: 360px) {
+    @nmbHeight: 50px;
+    .nmbcnucndy {
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+
+    .has-download-ads .page {
+        padding-top: @nmbHeight+46;
+    }
+
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight+46;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page{
+        padding-top: @nmbHeight + 46 !important;
+    }
+    .page.notice-page,.page.cost-page{
+        padding-top: 46px !important;
+    }
+}
+@media screen and (min-width: 400px){
+    @nmbHeight: 57px;
+    .nmbcnucndy{
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+    .has-download-ads .page{
+        padding-top: @nmbHeight+46;
+    }
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight+46;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page{
+        padding-top: @nmbHeight + 46 !important;
+    }
+    .page.notice-page,.page.cost-page{
+        padding-top: 46px !important;
+    }
+}
+@media screen and (min-width: 440px){
+    @nmbHeight: 63px;
+    .nmbcnucndy{
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+    .has-download-ads .page{
+        padding-top: @nmbHeight+46;
+    }
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight+46;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page{
+        padding-top: @nmbHeight + 46 !important;
+    }
+    .page.notice-page,.page.cost-page{
+        padding-top: 46px !important;
+    }
+}
+@media screen and (min-width: 480px){
+    @nmbHeight: 69px;
+    .nmbcnucndy{
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+    .has-download-ads .page{
+        padding-top: @nmbHeight+46;
+    }
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight+46;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page,.has-download-ads .page.chengyizhengpin-page{
+        padding-top: @nmbHeight + 46 !important;
+    }
+    .page.notice-page,.page.cost-page,.page.chengyizhengpin-page{
+        padding-top: 46px !important;
+    }
+}
+@media screen and (min-width: 640px){
+    @nmbHeight: 88px;
+    .nmbcnucndy{
+        height: @nmbHeight;
+        overflow: hidden;
+    }
+    .has-download-ads .page{
+        padding-top: @nmbHeight+46;
+    }
+    .has-download-ads .filter-panel,
+    .has-download-ads #calendarPage{
+        padding-top: @nmbHeight+46;
+    }
+    .app-include.has-download-ads .filter-panel,
+    .app-include.has-download-ads #calendarPage{
+        padding-top: @nmbHeight;
+    }
+    .has-download-ads .page.notice-page,.has-download-ads .page.cost-page,.has-download-ads .page.chengyizhengpin-page{
+        padding-top: @nmbHeight + 46 !important;
+    }
+    .page.notice-page,.page.cost-page,.page.chengyizhengpin-page{
+        padding-top: 46px !important;
+    }
+}
+
+
+/*.page.switching {
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+    display: block;
+}*/
+/*.page.switching{*/
+    /*top: 46px;*/
+/*}*/
+.page.current {
+    -webkit-transform: none;
+    transform: none;
+    //position: static;
+}
+/*.page-header.no-zindex{*/
+    /*z-index: inherit;*/
+/*}*/
+.app-include .page-header{
+    display: none;
+}
+.app-include .page{
+    padding-top: 0;
+}
+.is-qq-browser.app-include .page-header{
+    display: block;
+}
+.is-qq-browser.app-include #calendarPage,
+.is-qq-browser.app-include #insuPage,
+.is-qq-browser.app-include #chengyizhengpinPage{
+    padding-top: 46px;
+}
+.isQQTravel .main-pic {
+    .img-area{
+        background: url("./images/qqloading.gif") no-repeat center center;
+    }
+}
+.isQQTravel #pageLoading,.isQQTravel .page-loading{
+    background: url("./images/qqloading.gif") no-repeat center center !important;
+}
+.isQQTravel .online-service{
+    display:none !important;
+}
+/*touch在线客服优化*/
+ .online-service{
+   position: fixed;
+   bottom: 3.1rem;
+   right: 0;
+   padding: 6px 10px;
+   width: 17.5rem;
+}
+ .online-service .service-first{
+     width: 2.666666667rem;
+     height: 2.666666667rem;
+     position: absolute;
+     bottom: 4.75rem;
+     right: 0.875rem;
+     background: url("./images/ico.gif") no-repeat;
+     background-size: 100% 100%;
+}
+.page.curApp{
+    position: absolute;
+    top: 4.8rem;
+}
+div[data-dl="top"] img{
+    height: 4.8rem;
+}

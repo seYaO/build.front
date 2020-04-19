@@ -1,0 +1,99 @@
+{{var index = 1;}}
+{{~it.ProductList:value}}
+{{?it.sourceId == 0}}
+<li class="wifi_list">
+    <h4>{{=value.MainTitle}}</h4>
+    <div class="wifi_label">
+        <div class="book_time">
+            <span>最早可定{{=value.AdvanceDay}}</span>
+            {{?value.TakeMechinePointCount == 0}}
+            <span>邮寄</span>
+            {{??}}
+            <span>{{=value.TakeMechinePointCount}}个取机点</span>
+            {{?}}
+        </div>
+    </div>
+
+    {{?value.CsBrandName}}
+        {{?value.CsBrandName.length >= 4}}
+        <div class="brand_name">供应商:{{=value.CsBrandName.substring(0,4)}}</div>
+        {{??}}
+        <div class="brand_name">供应商:{{=value.CsBrandName}}</div>
+        {{?}}
+    {{?}}
+
+    <div class="wifi_detail">
+        <em><i>￥</i>{{=value.TcPrice}}<b>起</b></em>
+        <p>
+            {{?value.CommentsCount == 0 }}
+            <span>暂无点评</span>|
+            {{??}}
+            <span><i>{{=value.CommentsCount}}</i>人点评</span>|
+            {{?}}
+
+            {{?value.SatDeg != 0}}
+            <span><i>{{=value.SatDeg}}%</i>满意</span>|
+            {{?}}
+
+            {{?value.MonthOrderCount != 0}}
+            <span>月销<i>{{=value.MonthOrderCount}}</i></span>
+            {{?}}
+
+            {{?value.CommentsCount == 0 && value.SatDeg == 0.0 && value.MonthOrderCount == 0}}
+            <span>新品上线</span>
+            {{?}}
+        </p>
+    </div>
+    <a href="/localfun/wanle/{{=value.ResourceId}}.html?wvc1=1&wvc2=1" onclick="_tcTraObj._tcTrackEvent('search', '/linewanle/wifi/list', '/detail','|*|pos:{{=index}}|*|k:{{=it.keyWord}}|*|pjId:2027|*|resId:{{=value.ResourceId}}|*|')"></a>
+</li>
+{{??}}
+<li class="wanle_list">
+    <div class="pro_img">
+        {{? !value.RecdTagName == "" }}
+            <div class="recommend_tip">
+                 <span>{{=value.RecdTagName}}</span>
+                <i></i>
+            </div>
+        {{?}}
+        <img data-original="{{=value.ImgUrl.replace('.jpg','_172x172_00.jpg').replace('.png','_172x172_00.png')}}">
+    </div>
+    <div class="pro_detail">
+        <h4>{{=value.MainTitle}}</h4>
+        <div class="pro_intro">
+            <em><i>￥</i>{{=value.TcPrice}}<b>起</b></em>
+
+            {{if(value.TigNameList && value.TigNameList != ""){}}
+            <div class="tag_name">
+                {{ for(var a=0; a<value.TigNameList.length; a++){}}
+                {{if (a<2){ }}
+                <span><i></i><em>{{=value.TigNameList[a]}}</em></span>
+                {{ } }}
+                {{ } }}
+            </div>
+            {{ } }}
+            <p>
+                {{?value.CommentsCount == 0 }}
+                <span>暂无点评</span>
+                {{??}}
+                <span><i>{{=value.CommentsCount}}</i>人点评</span>
+                {{?}}
+
+                {{?value.SatDeg != 0}}
+                <span><i>{{=value.SatDeg}}%</i>满意</span>
+                {{?}}
+
+                {{?value.MonthOrderCount == 0}}
+                <span>新品上线</span>
+                {{??}}
+                <span>月销<i>{{=value.MonthOrderCount}}</i></span>
+                {{?}}
+            </p>
+        </div>
+    </div>
+    <a href="/localfun/wanle/{{=value.ResourceId}}.html?wvc1=1&wvc2=1" onclick="_tcTraObj._tcTrackEvent('search', '/linewanle/list', '/detail','|*|pos:{{=index}}|*|k:{{=it.keyWord}}|*|pjId:2027|*|resId:{{=value.ResourceId}}|*|')"></a>
+</li>
+{{?}}
+{{index++;}}
+{{~}}
+
+

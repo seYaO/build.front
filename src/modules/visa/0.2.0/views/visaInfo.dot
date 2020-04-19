@@ -1,0 +1,93 @@
+{{?it.MaterialDetails && it.MaterialDetails.length != 0}}
+<div class="visa-material">
+{{var item = it.MaterialDetails;}}
+{{
+    var len1 = 0,len2 = 0;
+    for(var i=0;i<item.length;i++){
+        if(item[i].IsNecessary == 1){
+            len1 ++;
+        }else{
+            len2 ++;
+        }
+    }
+}}
+{{?len1>0}}
+<div class="J_mustInfo">
+    <table class="mustInfo">
+        <tbody>
+            <tr>
+                <th colspan="3">必须提供（共{{=len1}}项）</th>
+            </tr>
+            {{~it.MaterialDetails:item}}
+            {{?item.IsNecessary == 1}}
+            <tr>
+                <td class="lefttd">{{=item.MaterialName}}</td>
+                <td class="midtd grayword">{{=item.MaterialDescription.replace(/\n/g,'<br>')}}</td>
+                <td class="righttd">
+                {{?item.SampleUrls && item.SampleUrls.length !=0}}
+                {{var piclen =  item.SampleUrls.length;}}
+                <span class="onjob-sample" alt="{{=item.MaterialName}}"
+                data-title='{{for(var i=0;i<piclen;i++){ }}
+                {{=item.MaterialName+"样本&"}}
+                {{ } }}'
+                data-content='{{for(var i=0;i<piclen;i++){ }}
+                {{=item.MaterialDescription + "&"}}
+                {{ } }}'
+                data-url='
+                {{for(var i=0;i<piclen-1;i++){ }}
+                {{=item.SampleUrls[i] +","}}
+                {{ } }}
+                {{=item.SampleUrls[piclen-1]}}'>查看图样</span>
+                 {{?}}
+                </td>
+            </tr>
+            {{?}}
+            {{~}}
+        </tbody>
+    </table>
+</div>
+    {{?len1>3}}
+    <div><span class="togglemore open">展开全部信息</span></div>
+    {{?}}
+{{?}}
+{{?len2>0}}
+<div class="J_noMustInfo">
+    <table class="noMustInfo">
+        <tbody>
+            <tr>
+                <th colspan="3">酌情提供（共{{=len2}}项）<span style="color:red">*可视个人实际情况酌情提供，提供越多越有利于出签</span></th>
+            </tr>
+            {{~it.MaterialDetails:item}}
+            {{?item.IsNecessary == 0}}
+            <tr>
+                <td class="lefttd">{{=item.MaterialName}}</td>
+                <td class="midtd grayword">{{=item.MaterialDescription}}</td>
+                <td class="righttd">
+                {{?item.SampleUrls && item.SampleUrls.length !=0}}
+                {{var piclen =  item.SampleUrls.length;}}
+                <span class="onjob-sample" alt="{{=item.MaterialName}}"
+                data-title='{{for(var i=0;i<piclen;i++){ }}
+                {{=item.MaterialName+"样本&"}}
+                {{ } }}'
+                data-content='{{for(var i=0;i<piclen;i++){ }}
+                {{=item.MaterialDescription + "&"}}
+                {{ } }}'
+                data-url='
+                {{for(var i=0;i<piclen-1;i++){ }}
+                {{=item.SampleUrls[i] +","}}
+                {{ } }}
+                {{=item.SampleUrls[piclen-1]}}'>查看图样</span>
+                 {{?}}
+                </td>
+            </tr>
+            {{?}}
+            {{~}}
+        </tbody>
+    </table>
+</div>
+    {{?len2>3}}
+    <div><span class="togglemore open">展开全部信息</span></div>
+    {{?}}
+{{?}}
+</div>
+{{?}}

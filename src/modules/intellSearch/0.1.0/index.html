@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+</head>
+<body>
+    <input type="text" id="search" />
+
+    <script src="../../jquery.js"></script>
+    <script src="../../base/base.js"></script>
+    <script src="../../sea.js"></script>
+
+    <script>
+        seajs.config({
+            base: "../../"
+        });
+
+        var $fn = $fn || {};
+        $fn.getJsonp = function (url, callback, error) {
+            $.ajax({
+                type: 'get',
+                url: url,
+                dataType: 'jsonp',
+                success: function (data) {
+                    console.log("request:" + url);
+                    //monitorModule.log('url:' + url + ',success:' + JSON.stringify(data), 'success', 'pc_zhuanti_1111');
+                    callback(data);
+                },
+                error: function (err) {
+                    //monitorModule.log('url:' + url + ',err:' + JSON.stringify(err), 'error', 'pc_destination');
+                    if (error) {
+                        error();
+                    }
+                }
+            });
+        };
+
+        var options = {
+            el: "#search",
+            width: "100%", 
+            background: "url(http://pic3.40017.cn/line/admin/2014/09/19/16/38a0966f6d484ccfaf0d438ad64997d5_640x360_00.jpg)",
+            itemNumber: 5,
+            isEmptyRequest: true,//true后会触发defdata          
+            highLightStyle: "color:black;font-weight:bolder;",//高亮显示内容样式           
+            renderItem: function (keyword, value) {
+                var _html = '<div class=""></div>';
+                return value[0] + value[1];
+            },
+            reqData: function (keyword, res) {
+                var url = "https://suggest.taobao.com/sug?q={0}&callback=test";
+                $fn.getJsonp(url.replace("{0}", keyword), function (data) {
+                    res(data.result);
+                });
+            },
+            defData: function (keyword,res) {
+                var data = [["aaaaa", "11111"], ["ddddd", "2222"]];
+                res(data);
+            },
+            onEnter: function (e,obj) {
+                //alert($(obj).val());
+            }
+           
+        };
+        seajs.use("intellsearch/0.1.0/intellsearch", function (intellSearch) {
+            var o_intel = new intellSearch(options);
+            o_intel.before("show", function () {
+                return false;
+            });           
+            o_intel.before("onDataEmpty", function () {
+                return false;
+            });
+            o_intel.on("enter", function (e, obj) {
+                alert($(obj).val());
+            });
+            //o_intel.before()
+            //o_intel.init(options);
+        });
+    </script>
+</body>
+</html>

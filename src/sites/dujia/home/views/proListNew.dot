@@ -1,0 +1,76 @@
+<div class="prolist {{="J_proList" + it.key}}">
+    {{?it.key.split('_')[0] == "shorttag"}}
+    {{var tracePos =2; }}
+    {{var destType = "出境短线";}}
+    {{??it.key.split('_')[0] == "longtag"}}
+    {{var tracePos =3; }}
+    {{var destType = "出境长线";}}
+    {{??}}
+    {{var tracePos =4; }}
+    {{?}}
+    <ul class="clearfix">
+        {{~it.ProductList:pro:index}}
+        {{var traceLineId = pro.LineId;}}
+        {{?pro.IsChengYiProduct}}
+            {{var traceType = 3;}}
+        {{??pro.IsTCSpecialLine}}
+            {{var traceType = 1;}}
+        {{??}}
+            {{var traceType = 0;}}
+        {{?}}
+        {{?pro.Property === 1||pro.Property==="1"}}
+            {{var traceLineType = 1;}}
+        {{??}}
+            {{var traceLineType = 3;}}
+        {{?}}
+
+        {{var tag ,tagClass;}}
+        {{?pro.Property == 1}}
+        {{tag = "跟团游";}}
+        {{tagClass = "proline__kind-gt";}}
+        {{??pro.Property == 3}}
+        {{tag = "自由行";}}
+        {{tagClass = "proline__kind-zy";}}
+        {{??}}
+        {{tag = "目的地参团";}}
+        {{tagClass = "proline__kind-mdd";}}
+        {{?}}
+        <li class="proline">
+        {{?it.jijiu == "1"}}
+        <a class="proline__link" trackspot="{{=it.startCity}}^{{=pro.LineId}}^{{=index+1}}^{{=it.dest}}^机+酒" trace="{{=index}}" data-trace="{{= tracePos + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}"   target="_blank" href="{{="//www.ly.com/dujia/tours/" + "p" + pro.LineId + ".html" }}">
+        {{??}}
+            <a class="proline__link" trackspot="{{=it.startCity}}^{{=pro.LineId}}^{{=index+1}}^{{=it.dest}}^{{=destType}}" trace="{{=index}}" data-trace="{{= tracePos + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}"   target="_blank" href="{{="//www.ly.com/dujia/tours/" + pro.LineId + (pro.Property === 1 ? ".html" : "/")}}">
+            {{?}}
+                <div class="proline__img">
+                    <img data-img="{{=common.setImageSize(pro.ImgUrl,"400x300").replace('http:','')}}" title="{{=pro.MainTitle}}" alt="{{=pro.MainTitle}}">
+                    <div class="sub-title" title="{{=pro.SubTitle}}">{{=pro.SubTitle}}</div>
+                </div>
+                <div class="proline__txt">
+                    <p class="proline__title" title="{{=pro.MainTitle}}">{{=pro.MainTitle}}</p>
+
+                    <p class="proline__price">
+                    {{?pro.TcPrice == "0"}}
+                    <em>实时计价</em>
+                    {{??}}
+                    ¥<em>{{=pro.TcPrice}}</em><b>起</b>
+                    {{?}}
+                    <i class='proline__depcity'>
+                    {{?pro.Property == 10}}
+                    当地出发
+                    {{??}}
+                    {{=pro.LeaveCity}}出发
+                    {{?}}
+                    </i>
+                    </p>
+                </div>
+                <span class="{{=tagClass}}">{{=tag}}</span>
+                {{?pro.IsChengYiProduct}}
+                    <span class="rightico"></span>
+                {{??pro.IsTCSpecialLine}}
+                    <span class="rightico tc-line"></span>
+                {{?}}
+            </a>
+        </li>
+        {{~}}
+    </ul>
+</div>

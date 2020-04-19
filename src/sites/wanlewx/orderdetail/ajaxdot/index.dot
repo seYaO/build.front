@@ -1,0 +1,5 @@
+
+<div class="part-content">
+    <p>预订信息</p>
+    <p>{{=it.BookingContent}}</p>
+</div>

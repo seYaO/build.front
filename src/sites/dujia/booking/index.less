@@ -1,0 +1,391 @@
+@col-gainsboro:#dcdcdc;
+@col-whitesmoke :#f5f5f5;
+@col-black:#333;
+@col-lightBlack:#666;
+@col-green:#8ab923;
+@col-orange:#ff6633;
+@col-blue:#006dae;
+
+@font-normal:12px;
+@font-big:14px;
+
+.sbu-box{
+    width: 100%;
+    border: 2px solid #8ab923;
+    box-sizing: border-box;
+    background-color: #fff;
+    margin-bottom: 18px;
+    .sbu-container{
+        width: 824px;
+        margin-left: 20px;
+        margin-right: 20px;
+        position: relative;
+        .sbu-headBox{
+            width: 100%;
+            border-bottom: 1px solid @col-gainsboro;
+            box-sizing: border-box;
+            div{
+                margin-top: 19px;
+                margin-bottom: 19px;
+                line-height: 25px;
+                span{
+                    font-size: 22px;
+                }
+                .sbu-mainTitle{
+                    color: @col-green;
+                    padding-top: 19px;
+                }
+                .sbu-subTitle{
+                    color: @col-black;
+                    padding-bottom: 19px;
+                }
+            }
+        }
+        .sbu-resourceBox{
+            padding-bottom: 37px;
+            .sbu-itemBox{
+                .sbu-itemBox-head{
+                    width: 100%;
+                    height: 25px;
+                    background-color: @col-whitesmoke;
+                    margin-top: 15px;
+                    margin-bottom: 15px;
+                    span{
+                        display: inline-block;
+                        line-height: 25px;
+                        font-size: @font-normal;
+                        color: @col-lightBlack;
+                    }
+                    .sbu-more{
+                        color: @col-blue;
+                        font-size: @font-normal;
+                        cursor: pointer;
+                    }
+                }
+                .sbu-itemBox-content{
+                    width: 100%;
+                    div{
+                        width: 100%;
+                        position: relative;
+                        span{
+                            vertical-align: text-top;
+                            display: inline-block;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+                        .sbu-itemPop{
+                            background-color: @col-whitesmoke;
+                            margin-left: 252px;
+                            margin-top: 10px;
+                            width: 570px;
+                            .sbu-itemPopContent{
+                                overflow:hidden;
+                                .sbu-itemPopInfo{
+                                    label{
+                                        color: @col-black;
+                                        font-size: @font-normal;
+                                        font-weight: bold;
+                                        width: 64px;
+                                        display: inline-block;
+                                    }
+                                    p{
+                                        display: inline-block;
+                                        color: @col-black;
+                                        font-size: @font-normal;
+                                        vertical-align:top;
+                                    }
+                                    .need-know{
+                                        width:507px;
+                                        .ml-fl{
+                                            margin-left:0;
+                                        }
+                                        .align{
+                                            width:385px;
+                                            margin-left:0;
+                                            text-align:none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .sbu-boxBtn{
+            position: absolute;
+            bottom: 0;
+            right: -19px;
+            width: 68px;
+            height: 20px;
+            background-color: #8ab923;
+            line-height: 20px;
+            padding-left: 13px;
+            font-size: 12px;
+            color: #fff;
+            cursor: pointer;
+            &.sbu-boxBtn-show{
+                &:after{
+                content: " ";
+                border: 5px solid transparent;
+                border-top-color: #fff;
+                border-bottom-width: 0;
+                position: absolute;
+                top: 8px;
+                margin-left: 5px;
+                }
+            }
+             &.sbu-boxBtn-hide{
+                &:after{
+                content: " ";
+                border: 5px solid transparent;
+                border-bottom-color: #fff;
+                border-top-width: 0;
+                position: absolute;
+                top: 8px;
+                margin-left: 5px;
+                }
+            }
+        }
+    }
+    .sbu-td-1{
+        width: 138px;
+        margin-left: 20px;
+        font-size: @font-big;
+        color: @col-black;
+    }
+    .sbu-td-2{
+        width: 91px;
+    }
+    .sbu-td-3{
+        width: 137px;
+    }
+    .sbu-td-3-large{
+        width: 288px;
+    }
+    .sbu-td-4{
+        width: 151px;
+    }
+    .sbu-td-5{
+        width: 112px;
+        float: none;
+        margin-bottom: 0;
+    }
+    .sbu-td-6{
+        width: 80px;
+    }
+    .sbu-td-7{
+        width: 75px;
+    }
+    .sbu-hide,.sbu-show{
+        position: relative;
+    }
+    .none{
+        display: none;
+    }
+    .sbu-hide:after{
+       content: " ";
+       border: 5px solid transparent;
+       border-top-color: #000;
+       border-bottom-width: 0;
+       position: absolute;
+       top: 8px;
+       margin-left: 5px;
+    }
+    .sbu-show:after{
+       content: " ";
+       border: 5px solid transparent;
+       border-bottom-color: #000;
+       border-top-width: 0;
+       position: absolute;
+       top: 8px;
+       margin-left: 5px;
+    }
+    .sbu-moreshow:after{
+        content: " ";
+        border: 5px solid transparent;
+        border-top-color: #000;
+        border-bottom-width: 0;
+        position: relative;
+        top: 10px;
+        left: 5px;
+    }
+    .sbu-morehide:after{
+         content: " ";
+        border: 5px solid transparent;
+        border-bottom-color: #000;
+        border-top-width: 0;
+        position: relative;
+        bottom: 10px;
+        left: 5px;
+    }
+    .sbu-letter{
+        color: @col-black;
+    }
+    .sbu-sumLetter{
+        color:@col-orange;
+        font-size: @font-normal;
+    }
+    .sbu-td-6 .sbu-strongLetter{
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .sbu-resLetter{
+        cursor: pointer;
+    }
+}
+.smallC{
+    .sbu-box{
+        .sbu-container{
+            width: 648px;
+            .sbu-resourceBox{
+                .sbu-itemBox{
+                    .sbu-itemBox-content{
+                        div{
+                            .sbu-itemPop{
+                                width:480px;
+                                margin-left:164px;
+                                .sbu-itemPopContent{
+                                    .sbu-itemPopInfo{
+                                        .need-know{
+                                            width:417px;
+                                            .align{
+                                                width:345px;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .sbu-td-1{
+            width: 74px;
+            margin-left: 20px;
+        }
+        .sbu-td-2{
+            width: 67px;
+        }
+        .sbu-td-3{
+            width: 123px;
+        }
+        .sbu-td-3-large{
+            width: 240px;
+        }
+        .sbu-td-4{
+            width: 114px;
+        }
+        .sbu-td-5{
+            width: 69px;
+        }
+        .sbu-td-6{
+            width: 78px;
+        }
+        .sbu-td-7{
+            width: 81px;
+        }
+    }
+
+}
+.info-border{
+    border:1px solid #e4e4e4;
+    box-sizing: border-box;
+}
+.info-border-bottom{
+    border-bottom:1px solid #e4e4e4;
+}
+.info-border-right{
+    border-right:1px solid #e4e4e4;
+    padding-left:5px;
+    padding-right:5px;
+}
+.info-border-noBottom{
+    border-bottom: 0;
+}
+.resource-info{
+    background-color: #f6f6f6;
+}
+.resource-items{
+    border-bottom: 1px dashed #e4e4e4;
+}
+.resource-item{
+    float: left;
+    margin-top: 7px;
+}
+.resource-item.th_col_02{
+    width:328px;
+}
+.resource-item.th_col_06{
+    width: 140px;
+    margin-top: 11px !important;
+}
+.resource-visa-head{
+    height:48px;
+    background-color: #f0f0f0;
+}
+.resource-visa-foot{
+    height:40px;
+    background-color: #f0f0f0;
+    line-height: 40px;
+}
+.resource-visa-foot a{
+    float: right;
+    margin-right: 20px;
+}
+.cost-contains{
+    width:1005px;
+    float: left;
+}
+.cost-contains{
+    line-height: 1.7;
+    font-size: 14px;
+}
+.visa-item-label{
+    text-align: center;
+    background-color: #f6f6f6;
+}
+.visa-item-text{
+    text-align: center;
+    background-color: #fff;
+}
+.visa-item-content{
+    background-color: #fff;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+table{
+    border-collapse: collapse;
+}
+.visa-type{
+    width:88px;
+    height:28px;
+    font-size:14px;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 28px;
+    background-color: #fff;
+}
+.visa-type-common{
+    border:1px solid #e4e4e4;
+    color: #333;
+}
+.visa-type-checked{
+    background: url('img/dest/icon-visatype_03.png') no-repeat;
+    width:88px;
+    height:28px;
+    color: #50b400;
+}
+.resource-visa-head ul{
+    padding-top: 9px;
+    padding-left: 24px;
+}
+.resource-visa-head ul li{
+    float: left;
+    margin-right:15px;
+    cursor: pointer;
+}

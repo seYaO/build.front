@@ -1,0 +1,39 @@
+
+{{var areaList = it.HotProducts.AreaList,wifyData = [],prolist = [];}}
+{{~areaList:list}}
+    {{?list.AreaId === 6103502}}
+        {{prolist.push(list);}}
+    {{??}}
+        {{wifyData.push(list);}}
+    {{?}}
+{{~}}
+{{it.AreaList = wifyData.concat(prolist);}}
+
+{{~it.AreaList:list}}
+    {{?list.AreaId == "6103501"}}
+        <div class="wifi_list" id="wifi_list">
+            {{?list.HotProductList.length > 0}}
+                {{~list.HotProductList:value:HotProductIndex}}
+                    {{? HotProductIndex < 9}}
+                        <div>
+                        {{?it.isNewApp}}
+                            <a href='tctclient://destination/list?destName={{=value.MainTitle}}&sourceType=3&projectId=40&extendInfo={
+                                    "productType":1,"keyWord":"{{=value.MainTitle}}","themeId":9}'>
+                        {{??}}
+                            <a href="/localfun/{{=value.MainTitle}}.html?wvc1=1&wvc2=1&sourceId=0">
+                        {{?}}
+                                <img src="{{=value.Image}}">
+                                <span ><em>{{=value.MainTitle}} </em><br><i>&yen;{{=value.Price}}/天起</i></span>
+                            </a>
+                        </div>
+                    {{?}}
+                {{~}}
+            {{?}}
+        </div>
+    {{?}}
+    
+{{~}}
+<div class="all_list get-city">全部产品<em></em></div>
+
+
+

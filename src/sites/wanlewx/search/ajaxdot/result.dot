@@ -1,0 +1,33 @@
+<div class="J_line l_des list_box">
+    <div class="fx">
+    {{~it.Data.Result:value:index}}
+    {{var selectedContent =value.Content.replace(new RegExp('{{=it.search}}',"g"),'<em>{{=it.search}}</em>');}}
+            <div data-en="{{=value.Content}}" typeId="{{=value.UnitType}}" link_id="{{=value.ProductId}}" class="needsclick">
+               <span>{{=selectedContent}}</span>
+               {{?index === 0}}
+                  <ul class="themeType">
+                  {{?value.TheamTypes.indexOf("6") > -1}}
+                        <li><div><a href="/localfun/{{=value.Content}}.html?wvc1=1&wvc2=1&singleTypeId=6&sourceId=1">海外门票</a></div></li>
+                  {{?}}
+                  {{?value.TheamTypes.indexOf("9") > -1}}
+                        <li><div><a href="/localfun/{{=value.Content}}.html?wvc1=1&wvc2=1&singleTypeId=6&sourceId=0">通讯工具</a></div></li>
+                  {{?}}
+                  {{?value.TheamTypes.indexOf("8") > -1}}
+                        <li><div><a href="/localfun/{{=value.Content}}.html?wvc1=1&wvc2=1&singleTypeId=8&sourceId=1">交通接驳</a></div></li>
+                  {{?}}
+                  {{?value.TheamTypes.indexOf("11") > -1}}
+                        <li><div><a href="/localfun/{{=value.Content}}.html?wvc1=1&wvc2=1&singleTypeId=11&sourceId=1">观光旅游</a></div></li>
+                  {{?}}
+                  {{?value.TheamTypes.indexOf("13") > -1}}
+                        <li><div><a href="/localfun/{{=value.Content}}.html?wvc1=1&wvc2=1&singleTypeId=13&sourceId=1">美食必享</a></div></li>
+                  {{?}}
+                  {{?value.TheamTypes.indexOf("12") > -1}}
+                        <li><div><a href="/localfun/{{=value.Content}}.html?wvc1=1&wvc2=1&singleTypeId=12&sourceId=1">休闲娱乐</a></div></li>
+                  {{?}}
+                  </ul>
+               {{?}}
+            </div>
+    {{~}}
+    </div>
+</div>
+

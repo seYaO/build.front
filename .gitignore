@@ -1,0 +1,11 @@
+.vscode
+.idea
+/node_modules
+/output
+/build_artifacts
+npm-debug.log
+.md5
+.hashconfig
+.env
+debug.log
+test.html

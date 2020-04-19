@@ -1,0 +1,7 @@
+{{?it && it.ProductPrice && it.ProductPrice.length!=0}}
+{{~it.ProductPrice:date}}
+<li data-timePriceId='{{=date.Id}}'>
+    {{=date.Date}}
+</li>
+{{~}}
+{{?}}

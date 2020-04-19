@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html>
+{{var it = IT.Data;}}
+<head id="Head1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <script type="text/javascript">var _tcopentime = new Date().getTime();</script>
+    <meta name="author" content="同程旅游"/>
+    <meta name="copyright" content="同程旅游络科技股份有限公司"/>
+    <title>订单提交成功_度假线路预订_同程旅游</title>
+    <!-- 头部脚本放置区 -->
+    <meta name="apple-itunes-app" content="app-id=475966832"/>
+    <% includeId = cnwidescreenjscss %>
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/c/c/pay/base.0.0.2.css?v=2013102302" media="screen"/>
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _nStartTime = new Date().getTime();
+        var loginState = window.loginState || {};
+    </script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/fish.1.4.5.js,/cn/public/fc.1.1.6.js?v=092201"></script>
+    <link rel="stylesheet" media="screen" type="text/css" href="//css.40017.cn/cn/comm/style/common_1.2.1.css?v=201409011830"/>
+
+    <!--出游人样式-->
+    <link rel="stylesheet" href="../ordertour/touristInfo.css">
+    <link rel="stylesheet" href="ordersuccess.css">
+
+
+    <style type="text/css">
+        .arrows_pop, .qdcode {
+            background: url("//img1.40017.cn/cn/v/details/2013/float_img-24.png") no-repeat scroll 0 0 transparent;
+        }
+        .backtop {
+            color: #b5b5b5;
+            display: inline-block;
+            position: fixed;
+            cursor: pointer;
+            height: 50px;
+        }
+        .qdcode {
+            display: inline-block;
+            height: 50px;
+            text-align: center;
+            width: 50px;
+        }
+        .hover_span b {
+            color: #999999;
+        }
+        .bor_pop {
+            border: 4px solid #dddddd;
+            float: left;
+        }
+        .bor_pop em {
+            border: 1px solid #999999;
+            padding: 7px 6px;
+            float: left;
+            background-color: #ffffff;
+            width: 140px;
+        }
+        .arrows_pop {
+            background-position: 0 -178px;
+            height: 20px;
+            position: absolute;
+            right: -5px;
+            top: 11px;
+            width: 10px;
+        }
+        .qdcode {
+            background-position: 0 0;
+            width: 50px;
+            height: 50px;
+        }
+        .qdcode_hover {
+            background-position: -60px 0;
+        }
+        /*二维码*/
+        #showpopQdcod {
+            position: absolute;
+            right: 55px;
+            top: -6px;
+        }
+        .hasboxbg {
+            background-color: #ffffff;
+            padding: 12px;
+            border: 1px solid #999999;
+            width: 84px;
+            float: left;
+        }
+        .hasboxbg span, .hasboxbg img {
+            float: left;
+            width: 84px;
+        }
+        .hasboxbg span {
+            color: #666666;
+            line-height: 18px;
+            padding-top: 5px;
+        }
+        .none {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<% includeId = cnorderhead %>
+<!-- 主体内容 -->
+<div class="content" id="content">
+    <form id="J_appointCom" name="commitAppoint" method="post" action="/dujia/orderappoint">
+        <input type="hidden" name="SbuItems" id="formSub" value="">
+    </form>
+
+    <input name="hidCustomerSerialId" type="hidden" id="hidCustomerSerialId" value="{{=it.CustomerSerialId}}"/>
+    <input name="hidId" type="hidden" id="hidId" value="{{=it.OrderId}}"/>
+    <!--免登陆-->
+    <input name="IsNeedLoad" type="hidden" id="IsNeedLoad" value="{{=it.IsNeedLoad}}"/>
+    <input name="encryptUserId" type="hidden" id="encryptUserId" value="{{=it.EncryptUserId}}"/>
+    <input name="IsSuperFree" type="hidden" id="IsSuperFree" value="{{=it.IsSuperFree}}"/>
+    <!--是否待确认-->
+    <input name="OrderFlag" type="hidden" id="OrderFlag" value="{{=it.OrderFlag}}"/>
+    <input name="hidPassenger" type="hidden" id="hidPassenger" value=""/>
+    <input name="hidNumAdult" type="hidden" id="hidNumAdult" value="{{=it.OrderPersonNumber}}"/>
+    <input name="hidBookDate" type="hidden" id="hidBookDate" value="{{=it.StartDate}}"/>
+    <!--是否电子签约-->
+    <input name="IsNeedElectronicSignature" type="hidden" id="IsNeedElectronicSignature" value="{{=it.IsNeedElectronicSignature}}"/>
+    {{?it.Preferentials && it.Preferentials.length>0}}
+        {{var   prefer = it.Preferentials,
+                PreferValue = 0,
+                count = 0;
+        }}
+        {{
+            for(i=0;i<prefer.length;i++){
+                count +=  parseInt(prefer[i].Amount);
+            }
+            PreferValue = count;
+        }}
+    {{?}}
+    <div class="menu m5">
+        <ul class="m5_info03">
+            <li class="menu_not">
+                <h2>
+                    1、选择线路</h2>
+            </li>
+            <li class="menu_not">
+                <h2>
+                    2、填写订单</h2>
+            </li>
+            <li class="menu_at">
+                <h2>
+                    3、预订成功</h2>
+            </li>
+            <li class="menu_sel">
+                <h2>
+                    4、在线支付</h2>
+            </li>
+            <li class="menu_sel">
+                <h2>
+                    5、支付成功</h2>
+            </li>
+        </ul>
+    </div>
+    <div class="order_suc mtop">
+        <!--未登录，有加密id可请求id-->
+        <!--此处判断是否是其他页面退出登录，刷新当前页面，页面没有数据-->
+         {{?it.SubTitle || (it.TotalAmount && it.TotalAmount!=0)}}
+        <div class="set_wrap">
+            <!--提交说明 start-->
+            <div class="order-head">
+                {{?it.OrderFlag && it.OrderFlag=="W"}}
+                <h3><i></i><span>恭喜您，线路预订成功！</span><em>您已成功预定，同程将尽快确认您的订单</em></h3>
+                {{??}}
+                <h3><i></i><span>恭喜您，线路预订成功！</span></h3>
+                {{?}}
+                <span class="order-no"><em>订单号：</em><a href="http://member.ly.com/dujia/dujiaoderdetail.aspx?id={{=it.OrderId}}">{{=it.CustomerSerialId}}</a>（订单状态可点击<a href="http://member.ly.com/dujia/dujiaoderdetail.aspx?id={{=it.OrderId}}">订单中心</a>查看）</span>
+            </div>
+            <!--电子签约-->
+            <div class="J_appInfro"></div>
+            <!--提交说明 end-->
+            <div class="order-wrap">
+                <!--订单列表 start -->
+                <div class="line-info" id="lineInfoId"><h3>{{=it.MainTitle}}</h3>
+                    <div class="line-info-main clearfix">
+                        <table width="100%">
+                            <tbody>
+                            <tr>
+                                <td class="c999" width="9.2%">线路信息</td>
+                                <td width="16.6%">出发城市: {{=it.StartCity}}</td>
+                                <td width="20.8%">出发时间：{{=it.StartDate}}</td>
+                                <td width="20.8%">回团时间：{{=it.ReturnDate}}</td>
+                                <td>
+                                    <span class="pre-num">人数：{{=it.OrderPersonNumber}}</span><a href="javascript:void(0);" class="show-more" style="display:block">查看详情<i class="bg-pic"></i></a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <div class="show-line" style="display:none">
+                            <div class="sub-show-line">
+                                <table width="100%">
+                                    <tbody>
+                                    <tr>
+                                        <td class="c999" width="9.2%">行程</td>
+                                        <td width="16.6%"><span>{{=it.MainTitle}}</span></td>
+                                        <td>线路{{=it.TripName}}行程</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            {{?(it.Insurances && it.Insurances.length>0) || (it.AdditionProducts && it.AdditionProducts.length>0)}}
+                            <div class="sub-show-line">
+                                {{?it.Insurances && it.Insurances.length>0}}
+                                <div class="sub_box clearfix">
+                                    <span class="c999 line-tit">保险</span>
+                                    <table class="line-detail-main hotel-info">
+                                        <tbody>
+                                        {{~it.Insurances:list:index}}
+                                            <tr>
+                                                <td width="136">{{=list.Name}}</td>
+                                                <td width="42">{{=list.Number}}份</td>
+                                                <td>{{=list.Price}}元/人</td>
+                                            </tr>
+                                        {{~}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {{?}}
+
+                                {{?it.AdditionProducts && it.AdditionProducts.length>0}}
+                                {{~it.AdditionProducts:addition}}
+                                <div class="sub_box clearfix">
+                                    <span class="c999 line-tit">{{=addition.Category}}</span>
+                                    <table class="line-detail-main hotel-info">
+                                        <tbody>
+                                        {{~addition.Products:list}}
+                                            <tr>
+                                                <td width="136">{{=list.Name}}</td>
+                                                <td width="42">{{=list.Count}}份</td>
+                                                <td>{{=list.Price}}元/份</td>
+                                            </tr>
+                                        {{~}}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                {{~}}
+                                {{?}}
+                                <a href="javascript:void(0);" class="hide-more">隐藏详情<i class="bg-pic"></i></a>
+                            </div>
+                            {{?}}
+                        </div>
+                        <div class="table-total">
+                            {{?it.Preferentials && it.Preferentials.length>0}}
+                            <div class="jian-total"><i></i>{{=PreferValue}}元</div>
+                            {{?}}
+                            <span>费用总额：<em>&yen;{{=it.TotalAmount}}</em><i> 元</i></span>
+                        </div>
+                    </div>
+                </div>
+                {{?it.Preferentials && it.Preferentials.length>0}}
+                <div class="youhui">出境宝支付金额：<em>&yen;{{=PreferValue}}</em>&nbsp;您的订单需要审核，待审核通过后需要支付金额&nbsp;<em>&yen;{{=it.TotalAmount}}</em></div>
+                {{?}}
+                {{?(it.OrderFlag && it.OrderFlag=="W") || it.IsNeedElectronicSignature==0 || (it.IsSuperFree && it.IsSuperFree===true)}}
+                <div class="contact-tc">
+                    <p id="" class="unpay">
+                        <a class="btn_look" href="http://member.ly.com/dujia/DujiaOderDetail.aspx?id={{=it.OrderId}}" target="_blank">查看订单</a>
+                        <a class="btn_reserve" href="//www.ly.com/dujia/" target="_blank">继续预订</a>
+                    </p>
+                </div>
+                {{?}}
+                <!--订单列表 end-->
+            </div>
+        </div>
+        {{??}}
+        <div class="no-data">请登录，查看预订成功页信息！</div>
+        {{?}}
+    </div>
+
+    <div class="tooltip-bubble" id="tipForZhName" style="display: none">
+        <div class="tooltip-bubble-content">
+            <ul class="order-tips">
+                <li><em>1.</em><span>乘客姓名必须与所持证件一致。</span></li>
+                <li><em>2.</em><span>名字中含生僻字可直接输入拼音代替。例：“王鬳”可输入为“王 yan”或者“王-yan”。</span></li>
+                <li><em>3.</em><span>姓名中不可含有称谓等词语，如：小姐、先生、太太、夫人等。</span></li>
+                <li><em>4.</em><span>中文姓名不可少于 2 个汉字，英文姓名不可少于 2 个英文单词。</span></li>
+            </ul>
+        </div>
+        <div class="tooltip-bubble-arrow tooltip-bubble-arrow-top">
+            <div class="tooltip-bubble-arrow-before"></div>
+            <div class="tooltip-bubble-arrow-after"></div>
+        </div>
+    </div>
+    <div class="tooltip-bubble" id="tipForEnName" style="display: none">
+        <div class="tooltip-bubble-content">
+            <ul class="order-tips">
+                <li><em>1.</em><span>必须用英文字母填写，并确保与所持证件一致。</span></li>
+                <li>
+                    <em>2.</em><span>请以姓在前名在后的方式填写，如乘客姓名为诸葛亮，则在“姓（拼音或英文）”栏中输入 ZhuGe （注：复姓中无空格或特殊符号）；在“名（拼音或英文）”栏中输入 Liang。如乘客姓名为 Green（姓）/Jim（名） Stephanie（中间名），则在“姓（拼音或英文）”栏中输入 Green；在“名（拼音或英文）”栏中输入 JimStephanie（注：中间名需空一格紧随名之后）。</span>
+                </li>
+                <li><em>3.</em><span>英文名字的长度不可超过 26 个字符，如名字过长请使用缩写，乘客的姓氏不能缩写，名可以缩写。姓氏中如包括空格请在输入时删掉空格。</span></li>
+                <li><em>4.</em><span> 英文姓名不可少于 2 个英文单词。</span></li>
+            </ul>
+        </div>
+        <div class="tooltip-bubble-arrow tooltip-bubble-arrow-top">
+            <div class="tooltip-bubble-arrow-before"></div>
+            <div class="tooltip-bubble-arrow-after"></div>
+        </div>
+    </div>
+
+    <div id="popQdcode" class="backtop">
+        <span class="qdcode"></span>
+
+        <div id="showpopQdcod" class="none">
+            <div class="bor_pop">
+                <div class="hasboxbg" style="width: 110px;padding: 7px;">
+                    <img src="//img1.40017.cn/cn/v/public/ico/2014/QRcode.jpg" style="width: 84px; height: 83px;padding-left: 13px;" alt="二维码"/>
+                <span style="width: 110px; text-align: center;">
+                    扫一扫千元出国游
+                    尽在同程旅游客户端
+                </span>
+                </div>
+                <span class="arrows_pop"></span>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        (function () {
+            fish.ready(function () {
+                "use strict";
+                var e = fish.browser("ms", 6), t = 50;
+                e && (t = 100);
+                fish.one("#popQdcode").mFix({showType: "fixed", bottom: 230, right: t});
+                fish.one("#popQdcode").hover(function () {
+                    fish.one("#showpopQdcod").removeClass("none");
+                    fish.one("#popQdcode .qdcode").addClass("qdcode_hover");
+                }, function () {
+                    fish.one("#showpopQdcod").addClass("none");
+                    fish.one("#popQdcode .qdcode").removeClass("qdcode_hover");
+                });
+            });
+        })();
+    </script>
+    <input name="hdCityid" type="hidden" id="hdCityid"/>
+</div>
+<!-- 公共页脚 -->
+<span id="ucFooter">
+    <div id="footer_lite"> Copyright&nbsp;©&nbsp;
+        <span class="cr_time" type="Holiday">2002-2016</span>&nbsp;版权所有&nbsp;
+        <span class="corp_name">同程网络科技股份有限公司</span>&nbsp;
+        <a class="icp_num" href="//img1.40017.cn/cn/new_ui/public/images/20141103174615.jpg" target="_blank">苏ICP证B2-20100204</a>
+    </div>
+</span>
+<script type="text/javascript" data-loader="true" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js?v=20150413"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js"></script>
+<script type="text/javascript">
+    var _tcq = _tcq || [];
+    var _timediff = -1;
+    if (typeof _tcopentime != "undefined") {
+        _timediff = new Date().getTime() - _tcopentime;
+    }
+    _tcq.push(['_serialid', 'du55fba81121003bd207']);
+    _tcq.push(['_vrcode', '10002-2006-3020601']);
+    _tcq.push(['_refId', getRefid()]);
+    _tcq.push(['_userId', getMemberId()]);
+    _tcq.push(['_openTime', _timediff]);
+    _tcq.push(['_trackPageview', '/度假/新预订流程/提交成功/1675914']);
+</script>
+<script type='text/javascript' src="//vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+<script type="text/javascript" language="javascript">
+    fish.ajax({
+        url: "//js.40017.cn/cn/new_ui/comprehensive/js/other/whiteSign/whiteSign.js?v=2013031801",
+        type: "script"
+    });
+</script>
+
+
+<!-- 底部脚本放置区 -->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/book/vacation/json2.js?v=2014123103"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/book/vacation/fish.placeholder.js?v=2014123103"></script>
+<script data-loader="true" src="//modules/sea.js"></script>
+<script>
+    var pageurl = 'https://passport.ly.com/?pageurl=' + location.href;
+    $(".exit").attr({"href":pageurl});
+    seajs.require("./index");
+</script>
+
+<script type="text/javascript">
+    var _tcHotmapx = {pid: 222, sp: 100};
+</script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/public/2014/sliderBar/InterVacationPublic.js?v=2014112101" charset="utf-8"></script>
+<!--百度统计-->
+<script type="text/javascript">
+    var _hmt = _hmt || [];
+    var orderId = "order" + fish.one("#hidOrderId").val();
+    var proId = "chujing_" + fish.one("#hidLineId").val();
+    var rtTag = {
+        "data": {
+            "etravel_order": {
+                "order_id": orderId,
+                "p_id": proId
+            }
+        }
+    };
+    _hmt.push(['_setAccount', '53a0d71dba66835ff1aa907db99144d8']);
+    _hmt.push(['_trackRTEvent', rtTag]);
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?7cda147e17cf103b1fb19362796011e2";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<!--PC统计-->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?ca5679d0986b1f42f800098b798c7008";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+
+</body>
+</html>

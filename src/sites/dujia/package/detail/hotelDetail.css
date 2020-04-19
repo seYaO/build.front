@@ -1,0 +1,801 @@
+/*酒店详情*/
+.ui-hotel {
+    width: 1200px;
+    background: white;
+    top: 18%;
+    min-height: 100px;
+}
+
+.ui-hotel .data-loading span{
+    margin-top: 65px;
+    display: inline-block;
+    left: 50%;
+    position: relative;
+    margin-left: -125px;
+    top: 0;
+}
+.ui-hotelMain {
+    margin-left: 25px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    padding-right: 25px;
+}
+
+.ui-hotelInfo {
+    width: 1170px;
+    height: 355px;
+}
+
+.ui-hotel-left {
+    width: 574px;
+    float: left;
+}
+
+.ui-hotel-right {
+    width: 570px;
+    float: left;
+    margin-left: 20px;
+}
+
+.ui-hotelname h3 {
+    font-size: 14px;
+    color: #0185c6;
+}
+
+.ui-hotelname h3 em {
+    font-style: normal;
+    color: #ff6633;
+    font-size: 14px;
+    margin-left: 15px;
+}
+
+.ui-hotel-right li {
+    font-size: 12px;
+    color: #666;
+    margin-top: 15px;
+    max-height: 300px;
+    overflow: hidden;
+}
+.ui-hotel-right li:first-child{
+    margin-top: 0px;
+}
+/*幻灯*/
+.ui-hotel .focus-pic {
+    position: relative;
+    width: 573px;
+    height: 268px;
+}
+
+.ui-hotel .mSlide {
+    float: left;
+}
+
+.ui-hotel .focus-pic .main-pic {
+    font-size: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.ui-hotel .focus-pic .main-pic img {
+    width: 100%;
+    height: 100%;
+}
+
+.ui-hotel .focus-pic .carousel-wrap {
+    position: absolute;
+    bottom: -80px;
+    height: 80px;
+    width: 590px;
+    margin: 0 auto;
+    background: white;
+}
+
+.ui-hotel .focus-pic .carousel li {
+    font-size: 0;
+    border: solid 3px transparent;
+    border-bottom: none;
+    float: left;
+    width: 141px;
+    height: 81px;
+    margin-left: -3px;
+}
+
+.ui-hotel .focus-pic .carousel {
+    top: 0;
+    right: 0;
+    background: #000;
+    background: white;
+    overflow: hidden;
+    height: 86px;
+    margin-left: 0px;
+}
+
+.ui-hotel .focus-pic .carousel li:hover {
+    border: solid 3px #FF7738;
+    margin-bottom: -5px;
+}
+
+.ui-hotel .focus-pic .carousel li img {
+    cursor: pointer;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+.ui-hotel .noBility1{
+    font-size: 12px;
+    color: #ccc;
+    margin-top: 5px;
+    margin-left: 35px;
+}
+
+.ui-hotel .noBility2{
+    position: relative;
+    color: #ccc;
+    top: -24px;
+    left: 120px;
+}
+
+.ui-hotel .noBility1 em, .ui-hotel .noBility2 em{
+    color: #f63;
+    vertical-align: -1px;
+}
+
+.hotel-zhuan i {
+    background: url("//img1.40017.cn/cn/v/2015/newAllList/ban-zuan.png") no-repeat;
+    width: 12px;
+    height: 8px;
+    display: inline-block;
+}
+
+.hotel-zhuan .icon-select {
+    background: url("//img1.40017.cn/cn/v/2015/newAllList/zuan.png") no-repeat;
+    width: 12px;
+    height: 8px;
+    display: inline-block;
+}
+
+.icon-pic1 {
+    background: url("../img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -524px -330px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic2 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -524px -370px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic3 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -524px -410px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic4 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -524px -450px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic5 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -594px -10px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic6 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -594px -50px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic7 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -594px -90px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic8 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -594px -130px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic9 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -594px -170px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic10 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -594px -210px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic11 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -594px -250px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.icon-pic12 {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -594px -290px;
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.ui-hotel-row .ui-row-title {
+    height: 44px;
+    border-bottom: 1px dashed #ddd;
+}
+
+.ui-hotel-row .ui-row-title p {
+    width: 98px;
+    height: 30px;
+    border-left: 8px solid #50b400;
+    font-size: 20px;
+    color: #50b400;
+    line-height: 30px;
+    text-align: right;
+    border-radius: 2px;
+}
+
+.ui-row-content {
+    margin-top: 12px;
+    padding: 7px;
+    color: #666;
+}
+
+.ui-hotel-rule,
+.ui-area-rule {
+    border-radius: 4px;
+    margin-top: 20px;
+}
+
+.ui-area-rule li {
+    font-size: 16px;
+    color: #666;
+}
+
+.ui-area-rule li i {
+    background-color: #50b400;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    border-radius: 25px;
+    margin-right: 14px;
+}
+
+.ui-hotel-rule li,
+.ui-area-rule li {
+    padding-bottom: 14px;
+}
+
+.ui-area-rule li:first-child {
+    padding-top: 20px;
+}
+
+.ui-rule-head {
+    width: 155px;
+    color: #50b400;
+    font-size: 14px;
+    vertical-align: top;
+    line-height: 20px;
+}
+
+.ui-rule-text {
+    font-size: 12px;
+    color: #666;
+    line-height: 22px;
+    margin-left: 28px;
+}
+
+.icon-rule1 {
+    background: url("./img/dest/fandabao/icon-zc1.png") center no-repeat;
+    width: 22px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 6px;
+}
+
+.icon-rule2 {
+    background: url("./img/dest/fandabao/icon-zc2.png") center no-repeat;
+    width: 23px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 6px;
+}
+
+.icon-rule3 {
+    background: url("./img/dest/fandabao/icon-zc3.png") center no-repeat;
+    width: 22px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 11px;
+}
+
+.icon-rule4 {
+    background: url("./img/dest/fandabao/icon-zc4.png") no-repeat;
+    width: 21px;
+    height: 22px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 6px;
+}
+
+.icon-rule5 {   
+    background: url("./img/dest/fandabao/childbed.png") no-repeat;
+    width: 22px;
+    height: 18px;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 6px;
+}
+
+.ui-hotel-dp {
+    float: left;
+    width: 1020px;
+}
+
+.ui-hotel-dp p {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.ui-hotel-nodp p{
+    margin-top: 38px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+}
+
+.ui-hotel-dp .ui-dp-text {
+    position: relative;
+    font-size: 12px;
+    color: #666;
+}
+
+.ui-hotel-dp .ui-dp-text p {
+    font-size: 16px;
+    color: #666;
+    padding: 30px 0px;
+}
+
+.ui-left {
+    float: left;
+    position: relative;
+    background: url("./img/dest/fandabao/icon-left_03.png") no-repeat 6px;
+}
+
+.ui-right {
+    float: right;
+    position: relative;
+    background: url("./img/dest/fandabao/icon-right_03.png") no-repeat 6px;
+}
+
+.ui-left,
+.ui-right {
+    width: 30px;
+    height: 225px;
+    background-color: #f0f2f5;
+    cursor: pointer;
+}
+
+.ui-marquee {
+    margin-top: 38px;
+}
+
+.ui-marquee-main {
+    width: 1080px;
+    height: 225px;
+    float: left;
+    overflow: hidden;
+    position: relative;
+}
+
+.ui-roomlists {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+
+.ui-roomlist {
+    float: left;
+    width: 300px;
+    margin-left: 6px;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+.ui-roomlist img {
+    width: 100%;
+    height: 100%;
+}
+
+.ui_dialog_gp {
+    margin: 0 auto !important;
+}
+
+.ui_dialog_gp {
+    height: auto !important;
+}
+
+.ui_dialog_gp {
+    position: absolute !important;
+}
+
+.ui-right:hover {
+    width: 30px;
+    height: 225px;
+    background-color: #f0f2f5 !important;
+    cursor: pointer;
+    background: url("./img/dest/fandabao/icon-right_03h.png") no-repeat 6px;
+}
+
+.ui-left:hover {
+    width: 30px;
+    height: 225px;
+    background-color: #f0f2f5 !important;
+    cursor: pointer;
+    background: url("./img/dest/fandabao/icon-left_03h.png") no-repeat 6px;
+}
+
+.scdHeaderMenu {
+    height: 46px;
+}
+
+.ui-hotel-dp .comment-date {
+    float: right;
+    color: #999;
+}
+
+.ui-hotel-dp em {
+    float: right;
+    margin-right: 1px;
+    margin-top: -27px;
+}
+
+.ui-title-hotel {
+    height: 60px;
+    width: 100%;
+    background-color: #f0f2f5;
+    font-size: 28px;
+    color: #333;
+    line-height: 60px;
+    position: relative;
+    border-bottom: 1px solid #dcdcdc;
+    text-align: center;
+}
+
+.ui-title-hotel span{
+    display: inline-block;
+    width: 130px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+}
+.ui-title-hotel .tab_active{
+    height: 51px;
+    background-color: #fff;
+}
+.ui-title-hotel .tab_active:after,.ui-title-hotel .tab_activeb:after{
+    display: none;
+}
+.ui-hotel .focus-pic .carousel li:first-child {
+    margin-left: -3px;
+}
+
+.ui-title-hotel i {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url("./img/dest/fandabao/icon-close.png") no-repeat center;
+    float: right;
+    margin-right: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.ui_dialog_mask.mask {
+    filter: alpha(opacity=80);
+    background-color: #000;
+}
+
+.hotel-title em:hover {
+    text-decoration: underline;
+}
+
+.ui-roomlist i {
+    display: inline-block;
+    line-height: 28px;
+    padding-left: 13px;
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -664px -249px;
+    width: 92px;
+    height: 28px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 14px;
+}
+
+.ui-roomlist div {
+    height: 42px;
+    width: 100%;
+    text-align: center;
+    line-height: 36px;
+    color: white;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.7);
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=70);
+    background: -moz-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    background: -o-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    background: -ms-linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.7));
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}
+
+.ui-title-hotel i:hover {
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -447px -271px;
+    width: 16px;
+    height: 16px;
+}
+.ui-hotel-right ul li label{
+    vertical-align: top;
+}
+.hotelFacilities .facilities{
+    margin-top: 15px;
+    margin-left: 8px;
+}
+.hotelFacilities .facilities ul li{
+    float: left;
+    max-width: 1080px;
+}
+.hotelFacilities .facilities .facilitiesTitle{
+    font-size: 14px;
+    color: #333;
+}
+.hotelFacilities .facilities .facilitiesContent span{
+    margin-left: 30px;
+    width: 85px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.hotelFacilities .facilities span{
+    height: 20px;
+    color: #666;
+    float: left;
+}
+.hotelFacilities .facilities span img{
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 3px;
+}
+.hotelFacilities span em{
+    font-size: 15px;
+    font-weight: bold;
+}
+.hotelFacilities {
+    display: inline-block;
+    vertical-align: top;
+}
+.hotel-comment-img{
+    float: left;
+    width: 125px;
+    text-align: center;
+}
+.hotel-comment-img span{
+    display: inline-block;
+    width: 47px;
+    height: 47px;
+    background: url("./img/dest/fandabao/hotel-comment.png") center no-repeat;
+}
+.single-hotel-comment{
+    padding: 15px 0;
+    border-bottom: 1px dashed #ccc;
+    vertical-align: middle;
+}
+.ui-hotel-row .ui-addAndTel{
+    margin-top: 5px;
+}
+.ui-addAndTel ul li{
+    float: left;
+    position: relative;
+    height: 23px;
+}
+.ui-addAndTel ul li i{
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    position: absolute;
+}
+.ui-addAndTel ul li.hotelAdd{
+    background: url('img/dest/fandabao/icon-hotelPos.png') no-repeat;
+}
+.ui-addAndTel ul li.hotelTel{
+    background: url('img/dest/fandabao/icon-hotelPhone.png') no-repeat;
+    margin-left: 30px;
+}
+.ui-addAndTel ul li span{
+    padding-left: 26px;
+}
+.ui-hotel-row .hotelDetailHead{
+    border-bottom: 1px dashed #ccc;
+    margin-top: 20px;
+}
+.ui-hotel-row .hotelDetailHead i{
+    width: 8px;
+    height: 30px;
+    float: left;
+    margin: 10px auto;
+    background: #50b400;
+    border-radius: 2px;
+}
+.ui-hotel-row .hotelDetailHead label{
+    float: left;
+    font-size: 20px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 10px;
+    color: #50b400;
+}
+
+.hotelDetailHead .ui-hotelc-bottom  i {
+    display: inline-block;
+    background: url("./img/dest/fandabao/packed.png") center no-repeat;
+    background-position: -524px -237px;
+    width: 37px;
+    height: 23px;
+    vertical-align: -7px;
+    float: none;
+    margin: 0 0 0 4px;
+}
+
+.ui-hotelc-bottom{
+    margin-top: 16px;
+    color: #999;
+    float: left;
+    margin-left: 15px;
+}
+.ui-hotelc-bottom em{
+    color: #ff6600;
+}
+.Polocy{
+    margin-top: 20px;
+}
+.hotelFacility{
+    margin-top: 40px;
+}
+.ui-hotelInfo{
+    width: 1070px;
+    margin-top: 10px;
+    margin-left: 35px;
+    position: relative;
+}
+.ui-hotelInfo .outer{
+    width: 1070px;
+    height: 350px;
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+}
+.ui-hotelInfo .inner{
+    position: absolute;
+}
+.ui-hotelInfo .imgWrapper{
+    width: 1070px;
+    height: 350px;
+}
+.ui-hotelInfo .imgWrapper img{
+    width: 100%;
+    height: 100%;
+}
+.ui-hotelInfo .inner li {
+    list-style: none;
+    float: left;
+}
+.ui-hotelInfo .prev, .ui-hotelInfo .next{
+    width: 30px;
+    height: 350px;
+    background: #f0f2f5;
+    cursor: pointer;
+    position: absolute;
+    left: -35px;
+    top: 0;
+    text-align: center;
+}
+.ui-hotelInfo .next{
+    left: 1075px;
+}
+.imgWrapper .col-left{
+    width: 364px;
+    height: 350px;
+    float: left;
+}
+.imgWrapper .col-right{
+    float: left;
+    height: 350px;
+    width: 706px;
+}
+.imgWrapper .col{
+    width: 230px;
+    height: 172.5px;
+}
+.imgWrapper .col-1, .imgWrapper .col-2, .imgWrapper .col-3,.imgWrapper .col-4, .imgWrapper .col-5, .imgWrapper .col-6{
+    float: left;
+    margin-left: 5px;
+}
+.imgWrapper .col-4, .imgWrapper .col-5, .imgWrapper .col-6{
+    margin-top: 5px;
+}
+.ui-hotelInfo .prev i, .ui-hotelInfo .next i{
+    display: inline-block;
+    width: 21px;
+    height: 31px;
+    background: url('img/dest/fandabao/icon-prevDown.png') no-repeat;
+    margin-top: 160px;
+}
+.ui-hotelInfo .next i{
+    background: url('img/dest/fandabao/icon-nextDown.png') no-repeat;
+}
+.ui-hotelInfo .prev i.active{
+    background: url('img/dest/fandabao/icon-prevOn.png') no-repeat;
+}
+.ui-hotelInfo .next i.active{
+    background: url('img/dest/fandabao/icon-nextOn.png') no-repeat;
+}

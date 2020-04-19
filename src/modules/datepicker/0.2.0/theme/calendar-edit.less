@@ -1,0 +1,88 @@
+﻿.dj-calendar {
+    width: 100%;
+    height: auto;
+
+    .panel {
+        width: 100%;
+        background: #FFF;
+        box-shadow: -2px 2px 5px #b6b6b6,2px 2px 5px #b6b6b6;
+        font: 12px/20px Arial,'Microsoft YaHei',sans-serif,SimSun;
+        color: #666;
+        -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(color=#b6b6b6,direction=90,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#b6b6b6,direction=180,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#b6b6b6,direction=270,strength=3)";
+
+        .month-nav {
+            background: #8ab923;
+            width: 100%;
+            height: 34px;
+            text-align: center;
+            line-height: 34px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 16px;
+
+            .title {
+                width: 100%;
+                height: 34px;
+                text-align: center;
+                line-height: 34px;
+                color: #fff;
+                display: inline-block;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .group_title {               
+                display: inline-block;
+                float: left;
+            }
+        }
+
+        .month-panel {
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            border-spacing: 0;
+            border-collapse: collapse;
+
+            td, th {
+                width: 14%;
+            }
+
+            td {
+                text-align: center;
+                border: 1px solid #f0f0f0;
+            }
+
+            th {
+                text-align: center;
+                border: 1px solid #f0f0f0;
+            }
+
+            thead {
+                .sunday, .saturday {
+                    color: #f60;
+                }
+            }
+        }
+    }
+
+    &.editor {
+        .panel {
+            .title a {
+                width: 65px;
+                display: inline-block;
+            }
+
+            .header, .daterow {
+                background-color: #ffe;
+            }
+
+            .month-panel {
+                td, th {
+                    width: 12.5%;
+                    /*height:60px;*/
+                }
+            }
+        }
+    }
+}

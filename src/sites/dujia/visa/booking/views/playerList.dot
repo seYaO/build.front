@@ -1,0 +1,18 @@
+{{?it && it.length}}
+<div class="visa-playbox">
+    <h6 class="title">常用旅客({{=it.length}})</h6>
+    <div class="J_selectPlayer list">
+    {{~it:value}}
+        <label data-id="{{=value.LinkerId}}" data-birth="{{=value.BirthDay}}" data-type="{{=value.Type}}" data-size="{{=value.PersonTypeId}}" data-type-name="{{=value.CustomerTypeName}}">
+            <span>{{=value.LinkerName}}</span>
+            {{?value.PersonTypeName}}
+              <i>{{=value.PersonTypeName}}</i>
+            {{?}}
+        </label>
+    {{~}}
+    </div>
+    {{?it.length>5}}
+    <a class="J_disPlayer" href="javascript:void(0);">展开</a>
+    {{?}}
+</div>
+{{?}}

@@ -1,0 +1,111 @@
+@import "../../../styles/mixins/combine.less";
+@import "../../../styles/mixins/ordercommon.less";
+html{
+  background-color: @bg-color;
+}
+
+.main{
+  background-color: @bg-color;
+  font-size: 32/@rem;
+  padding-bottom: 130/@rem;
+  min-width: 320px;
+
+  section{
+    margin-bottom: 20/@rem;
+    background-color: white;
+    border: @borderStyle;
+    border-width: 1px 0;
+
+    &.S_show-detail {
+      header {
+        border-bottom: @borderStyle;
+      }
+    }
+    header {
+      padding: 0 30/@rem;
+      h2 {
+        font-size: 32/@rem;
+        line-height: 90/@rem;
+      }
+    }
+    ul{
+      padding: 10/@rem 30/@rem;
+      li{
+        font-size: 28/@rem;
+        padding: 5/@rem 0;
+        display: -webkit-box;
+
+        label{
+          color:@grey;
+          display: block;
+          width: 160/@rem;
+        }
+        em{
+          -webkit-box-flex:1;
+          display: block;
+          color: @deepgrey;
+        }
+      }
+    }
+    &.order-info{
+      border-top: 0;
+    }
+    &.btn{
+      position: fixed;
+      z-index: 22;
+      background-color: @bg-color;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin:0;
+      padding: 20/@rem 0;
+      border-width: 0;
+      a{
+        display: block;
+        width: 80%;
+        margin: 0 auto;
+        color: white;
+        font-size: 36/@rem;
+        line-height: 90/@rem;
+        text-align: center;
+        background-color: @orange;
+        border-radius: 5px;
+      }
+    }
+  }
+}
+
+/* 动画效果 start*/
+  .J_detail-box{
+    header i{
+      .icon-arrow-down();
+      position: absolute;
+      margin-top: -25/4/@rem;
+      top: 50%;
+      right: 0;
+      padding-right: 30/@rem;
+    }
+    ul{
+      display: none;
+    }
+    &.S_show-detail{
+      header i{
+        .icon-arrow-up();
+        position: absolute;
+      }
+      ul{
+        display: block;
+      }
+    }
+  }
+/* 动画效果 end*/
+.tel-tips {
+    font-size: 24/@rem;
+    color: #999;
+    text-align: center;
+    em{
+        color: #0095df;
+        cursor: pointer;
+    }
+}
+

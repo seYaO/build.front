@@ -1,0 +1,10 @@
+{
+  "dataUri": "/wanle/api/WWanleBook/GetInitWanleBookData",
+  "query": {
+  	  "siteType": 1,
+      "productId": 385005,
+      "supplyId": 158075,
+      "resourceId": 12463
+  },
+  "desc": "玩乐微信预定页"
+}

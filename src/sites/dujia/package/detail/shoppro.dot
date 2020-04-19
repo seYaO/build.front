@@ -1,0 +1,5 @@
+{{?it.Data&&it.Data.length}}
+{{~it.Data:itItems:index}}
+	<li data-id="{{=itItems.Id}}">{{=itItems.Name}}</li>
+{{~}}
+{{?}}

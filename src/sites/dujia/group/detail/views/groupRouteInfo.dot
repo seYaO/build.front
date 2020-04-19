@@ -1,0 +1,455 @@
+<!--团期-->
+<div class="travel-version" id="travel1">
+    <div class="travel-meta J_travelMeta">
+        <div class="travel-meta-content clearfix">
+            <div>
+                <label>行程天数:</label>
+                <span class="J_RouteDay"><em>{{=travelData.days}}</em>天{{=travelData.night}}晚</span>
+            </div>
+            {{?lineDetail.RouteVersionInfo && lineDetail.RouteVersionInfo.length > 1}}
+            <div class="cycle">
+                <label>使用团期:</label>
+                {{
+
+                    var strArr = travelData.date.split("、");
+                    var key ,obj = {},arr = [];
+                    strArr.forEach(function (item,index) {
+                        key = item.substr(0,7);
+                        if(obj[key]){
+                            obj[key].push(item);
+                        }else{
+                            obj[key] = [];
+                            obj[key].push(item);
+                            arr.push(key);
+                        }
+                    });
+
+                }}
+                <ul>
+                    {{~arr:item:itemIndex}}
+                    {{
+                        var str = "";
+                        str = item.split("-")[0]+"年"+item.split("-")[1]+"月";
+                    }}
+                    <li><i>【{{=str}}】</i>{{=obj[item].join().replace(/,/g,"、")}}</li>
+                    {{~}}
+                </ul>
+            </div>
+            {{?}}
+        </div>
+    </div>
+</div>
+<!--团期-->
+<div class="travelInfo">
+
+    <!--航班信息-->
+    {{?travelData.flightInfo && travelData.flightInfo.length>0}}
+    {{
+        var flightData = travelData.flightInfo;
+        var flightNum = [];
+        var flight = {};
+        for (var i = 0; i < flightData.length; i++) {
+            flightNum.push(flightData[i].GTYVersion);
+        }
+        function setArray(arr) {
+            var a = {};
+            for (var i = 0; i < arr.length; i++) {
+                if (typeof a[arr[i]] == "undefined") {
+                    a[arr[i]] = 1;
+                }
+            }
+            arr.length = 0;
+            for (var i in a) {
+                arr[arr.length] = i;
+            }
+            return arr;
+        };
+        var flightArr = setArray(flightNum);
+        flight.title = [];
+        flight.fightList = [];
+        var index = 1;
+        for (var i = 0; i < flightArr.length; i++) {
+            flight.title.push("参考航班" + index);
+            var flightGo = [];
+            var flightBack = [];
+            var json = {
+                flightGo: flightGo,
+                flightBack: flightBack
+            };
+            index++;
+            for (var j = 0; j < flightData.length; j++) {
+                if (flightArr[i] == flightData[j].GTYVersion) {
+                    if(flightData[j].FlightTrip ===0){
+                        flightGo.push(flightData[j]);
+                    }
+                    if (flightData[j].FlightTrip === 1) {
+                        flightBack.push(flightData[j]);
+                    }
+                }
+            }
+            flight.fightList.push(json);
+        }
+        travelData.flight = flight;
+    }}
+    <div class="subTravelTitle">
+        <i class="group-icon-flight"></i>
+        <span>航班信息</span>
+    </div>
+    <div class="travelInfo-content clearfix">
+        <ul class="tab-title J_flight_tab clearfix">
+            {{~travelData.flight.title:title:index}}
+            <li class="{{?index==0}}cur{{?}}" data-index="{{=index}}">{{=title}}</li>
+            {{~}}
+        </ul>
+        {{?travelData.flight.fightList && travelData.flight.fightList.length>0}}
+        {{~travelData.flight.fightList:fightList:fightListIndex}}
+        <table class="travelInfo-main {{?fightListIndex != 0}}none{{?}}">
+            <tbody>
+                {{?fightList.flightGo && fightList.flightGo.length>0}}
+                {{~fightList.flightGo:flightGo:flightGoIndex}}
+                <tr>
+                    {{?flightGoIndex == 0}}
+                    <td class="col_01"><span class="travel-type">去</span></td>
+                    {{??}}
+                    <td class="col_01"><span class="travel-middle-change"></span></td>
+                    {{?}}
+                    <td class="col_03"><p class="label-common-color label-common-size" style="line-height:1.2;">{{=flightGo.FlightAirCompany}}</p><p class="label-common-color label-common-size J_flightNum">{{=flightGo.FlightFrequency}}</p></td>
+                    <td class="col_04"><p class="label-common-color label-large-size">{{=flightGo.FlightStartTime}}</p>  <p class="label-common-color label-common-size">{{=flightGo.AirPort}}</p>  </td>
+                    <td class="col_05"><span class="travel-time"></span>  <i class="ui-arrow"></i> </td>
+                    <td class="col_06"><p class="label-common-color label-large-size">{{=flightGo.FlightArriveTime}}</p>  <p class="label-common-color label-common-size">{{=flightGo.ArriveAirport}}</p>  </td>
+                </tr>
+                {{?flightGoIndex === 0 && fightList.flightGo.length >1}}
+                <tr>
+                    <td colspan="7">
+                        <div class='ui-midChange-line'>
+                             <div class='travel-midChange-info'>
+                                  <span class='travel-midChange-title'>{{=flightGo.FlightDestination}}中转</span>
+                             </div>
+                        </div>
+                    </td>
+                </tr>
+                {{?}}
+                {{~}}
+                {{?}}
+                <tr>
+                    <td colspan="7"> <div class="ui-line"></div> </td>
+                </tr>
+                {{?fightList.flightBack && fightList.flightBack.length>0}}
+                {{~fightList.flightBack:flightBack:flightBackIndex}}
+                <tr>
+                    {{?flightBackIndex == 0}}
+                    <td class="col_01"><span class="travel-type">返</span></td>
+                    {{??}}
+                    <td class="col_01"><span class="travel-middle-change"></span></td>
+                    {{?}}
+                    <td class="col_03"><p class="label-common-color label-common-size" style="line-height:1.2;">{{=flightBack.FlightAirCompany}}</p><p class="label-common-color label-common-size J_flightNum">{{=flightBack.FlightFrequency}}</p></td>
+                    <td class="col_04"><p class="label-common-color label-large-size">{{=flightBack.FlightStartTime}}</p>  <p class="label-common-color label-common-size">{{=flightBack.AirPort}}</p>  </td>
+                    <td class="col_05"><span class="travel-time"></span>  <i class="ui-arrow"></i> </td>
+                    <td class="col_06"><p class="label-common-color label-large-size">{{=flightBack.FlightArriveTime}}</p>  <p class="label-common-color label-common-size">{{=flightBack.ArriveAirport}}</p>  </td>
+                </tr>
+                {{?flightBackIndex === 0 && fightList.flightBack.length >1}}
+                <tr>
+                    <td colspan="7">
+                        <div class='ui-midChange-line'>
+                             <div class='travel-midChange-info'>
+                                  <span class='travel-midChange-title'>{{=flightBack.FlightDestination}}中转</span>
+                             </div>
+                        </div>
+                    </td>
+                </tr>
+                {{?}}
+                {{~}}
+                {{?}}
+            </tbody>
+        </table>
+        {{~}}
+        <a href="javascript:void(0)" class=" label-click-color label-click-size J_flightCheck" style="margin-top: 85px;margin-left: 55px;display: inline-block;">航司托运信息</a>
+        {{?}}
+    </div>
+    {{?}}
+    <!--航班信息-->
+
+    <!--地图-->
+    <div class="tab">
+        <div class="subTravelTitle">
+            <i class="group-icon-map"></i>
+            <span>行程地图</span>
+        </div>
+        <div class="ui-map none">
+            <div id="map"></div>
+            <div class="ui-map-large ui-follow">
+                <i></i>
+                跟随浮动
+                </div>
+            <div class="ui-map-large J_map-large">
+                <i></i>
+                查看大图
+            </div>
+        </div>
+    </div>
+    <!--地图-->
+
+
+    <!--行程介绍-->
+    <div class="travelDetail">
+        <div class="print-info">
+            <a class="print" href="javascript:;">下载行程</a>
+        </div>
+        <ul class="travelDetail-tab tab-title">
+            <li class="cur">详细行程<i></i></li>
+            <li>行程概要<i></i></li>
+        </ul>
+
+        <div class="travelDetail-content">
+
+            {{?travelData.detail}}
+            <div class="tab-pane ">
+                {{?travelData.detail.TravelDetail && travelData.detail.TravelDetail.length>0}}
+                {{~travelData.detail.TravelDetail:travelDetail:index}}
+                <div id="day{{=travelDetail.Day}}" class="travel-day J_dayroute" data-txt="{{=travelDetail.Day}}">
+                    <div class="travel-day-title">
+                    {{var _travelDetailTitle = travelDetail.Title.replace(/飞机/g,' <span class="group-icons-fly"></span> ')
+                    .replace(/汽车/g,' <span class="group-icons-bus"></span> ')
+                    .replace(/轮船/g,' <span class="group-icons-ship"></span> ')
+                    .replace(/邮轮/g,' <span class="group-icons-ship"></span> ')
+                    .replace(/游轮/g,' <span class="group-icons-ship"></span> ')
+                    .replace(/火车/g,' <span class="group-icons-train"></span> ')
+                    .replace(/动车/g,' <span class="group-icons-train"></span> ')
+                    .replace(/高铁/g,' <span class="group-icons-train"></span> ');
+                    }}
+                        <p>
+                            <span class="ol">第{{=travelDetail.Day||""}}天</span>
+                            {{=_travelDetailTitle}}
+                            <span class="theme">当天游玩主题：{{=travelDetail.TheDayTheme||""}}</span>
+                        </p>
+                    </div>
+                    <div class="travel-day-content">
+                        <div class="period">
+                            <div class="period-content">
+
+                                {{?travelDetail.RouteList && travelDetail.RouteList.length>0}}
+                                {{~travelDetail.RouteList:routeList}}
+                                <span class="period-label">{{=routeList.DetailTime}}</span>
+
+                                {{?routeList.Detail}}
+                                <div class="period-items">
+                                    <!--行程描述-->
+                                    <div class="period-items-title">
+                                        <i class="group-icon-describe"></i>
+                                        <p>行程描述</p>
+                                    </div>
+                                    <div class="period-items-content">
+                                        <div class="period-items-text">
+                                            <p>{{=routeList.Detail}}</p>
+                                        </div>
+                                    </div>
+                                    <!--行程描述-->
+                                </div>
+                                {{?}}
+
+                                {{?routeList.MealList && routeList.MealList.length>0}}
+                                <div class="period-items">
+                                    <!--餐饮-->
+                                    <div class="period-items-title">
+                                        <i class="group-icon-food"></i>
+                                        <p>餐饮</p>
+                                    </div>
+                                    {{~routeList.MealList:mealList}}
+                                    <div class="period-items-content">
+                                        <div class="period-items-text">
+                                            <p>{{=mealList.DinnerName||""}}：{{=(mealList.EatProject == 1)?"包含":"自理"}}  {{?mealList.EatTime}}约{{=mealList.EatTime}}分钟{{?}} {{=mealList.EatRemark}}</p>
+                                        </div>
+                                    </div>
+                                    {{~}}
+                                    <!--餐饮-->
+                                </div>
+                                {{?}}
+
+                                {{?routeList.ScenicList && routeList.ScenicList.length>0}}
+                                {{~routeList.ScenicList:scenicList}}
+                                <div class="period-items">
+                                    <!--景点-->
+                                    <div class="period-items-title">
+                                        <i class="group-icon-place"></i>
+                                        <p>{{=scenicList.ScenicName}}</p>
+                                    </div>
+                                    <div class="period-items-content">
+                                        <div class="period-items-text">
+                                            <p>{{=scenicList.ScenicDes}}</p>
+                                        </div>
+                                        {{?scenicList.ScenicPics && scenicList.ScenicPics.length>0}}
+                                        <div class="imgs-box hoverBig">
+                                            {{~scenicList.ScenicPics:scenicPics:scenicPicsIndex}}
+                                            {{?scenicPicsIndex<3}}
+                                                {{?scenicPics.ScenicPic}}
+                                                <span>
+                                                    <img data-img="{{=scenicPics.ScenicPic.replace('http:','')}}">
+                                                    <div class="ImgShow hoverBig" >
+                                                        <img data-img="{{=scenicPics.ScenicPic.replace('http:','')}}">
+                                                    </div>
+                                                </span>
+                                                {{?}}
+                                            {{?}}
+                                            {{~}}
+                                        </div>
+                                        {{?}}
+                                    </div>
+                                    <!--景点-->
+                                </div>
+                                {{~}}
+                                {{?}}
+
+
+                                {{?routeList.Lodge}}
+                                <div class="period-items">
+                                <!--酒店-->
+                                    <div class="period-items-title">
+                                        <i class="group-icon-hotel"></i>
+                                        <p>住宿</p>
+                                    </div>
+                                    <div class="period-items-content">
+                                        <div class="period-items-text">
+                                            <p>{{=routeList.Lodge.substring(3)}}</p>
+                                        </div>
+                                    </div>
+                                <!--酒店-->
+                                </div>
+                                {{?}}
+
+                                {{?routeList.ShoppingItmes && routeList.ShoppingItmes.length>0}}
+                                <div class="period-items">
+                                    <!--购物-->
+                                    <div class="period-items-title">
+                                        <i class="group-icon-shop"></i>
+                                        <p>购物店</p>
+                                    </div>
+                                    <div class="period-items-content">
+                                        {{~routeList.ShoppingItmes:shoppingItmes}}
+                                        <div class="period-items-text">
+                                            <span>购物点：{{=shoppingItmes.ShoppingName}}<i>({{=shoppingItmes.ShoppingLowConsumptionMoney}})</i></span>
+                                            <span>主营产品：{{=shoppingItmes.ShoppingManagerProduct}}</span>
+                                            {{?shoppingItmes.ShoppingTimes}}
+                                            <span>停留时间：{{=shoppingItmes.ShoppingTimes}}分钟</span>
+                                            {{?}}
+                                        </div>
+                                        {{~}}
+                                    </div>
+                                    <!--购物-->
+                                </div>
+                                {{?}}
+                            {{~}}
+                            {{?}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{~}}
+                {{?}}
+            </div>
+             <div class="tab-pane none">
+                <div class="travel-outline">
+                    <div class="travel-outline-title">
+                        <span class="travel-outline-travel"><p>行程</p></span>
+                        <span class="travel-outline-food"><p>用餐</p></span>
+                        <span class="travel-outline-place"><p>景点</p></span>
+                        <span class="travel-outline-shop"><p>购物点</p></span>
+                        <span class="travel-outline-hotel"><p>酒店</p></span>
+                    </div>
+                    {{?travelData.detail.TravelDetail && travelData.detail.TravelDetail.length>0}}
+                    <div class="travel-outline-content">
+                        {{~travelData.detail.TravelDetail:travelDetail}}
+                        {{~travelDetail.RouteList:routeList}}
+                        <div class="travel-outline-day">
+                            <span class="travel-outline-travel">
+                            {{var _travelDetailTitle = travelDetail.Title.replace(/飞机/g,' <span> -> </span> ')
+                            .replace(/汽车/g,' <span> -> </span> ')
+                            .replace(/轮船/g,' <span> -> </span> ')
+                            .replace(/邮轮/g,' <span> -> </span> ')
+                            .replace(/游轮/g,' <span> -> </span> ')
+                            .replace(/火车/g,' <span> -> </span> ')
+                            .replace(/动车/g,' <span> -> </span> ')
+                            .replace(/高铁/g,' <span> -> </span> ');
+                            }}
+                                <p>第{{=travelDetail.Day}}天</p>
+                                <p>{{=_travelDetailTitle}}</p>
+                            </span>
+                            <span class="travel-outline-food">
+                                {{?routeList.MealList && routeList.MealList.length>0}}
+                                {{~routeList.MealList:mealList}}
+                                <p>{{=mealList.DinnerName}}: {{=(mealList.EatProject == 1)?"包含":"自理"}}</p>
+                                {{~}}
+                                {{?}}
+                            </span>
+                            <span class="travel-outline-place">
+                                {{?routeList.ScenicList && routeList.ScenicList.length>0}}
+                                {{~routeList.ScenicList:scenicList}}
+                                <p>{{=scenicList.ScenicName}}</p>
+                                {{~}}
+                                {{??}}
+                                <p>暂无信息</p>
+                                {{?}}
+                            </span>
+                            <span class="travel-outline-shop">
+                                {{?routeList.ShoppingItmes && routeList.ShoppingItmes.length>0}}
+                                {{~routeList.ShoppingItmes:shoppingItmes}}
+                                <p>{{=shoppingItmes.ShoppingName}}({{?shoppingItmes.ShoppingTimes!=""}}{{=shoppingItmes.ShoppingTimes}}分钟{{?}})</p>
+                                {{~}}
+                                {{??}}
+                                <p>无</p>
+                                {{?}}
+                            </span>
+                            <span class="travel-outline-hotel">
+                                {{?routeList.Lodge}}
+                                <p>{{=routeList.Lodge}}</p>
+                                {{??}}
+                                <p>无</p>
+                                {{?}}
+                            </span>
+                        </div>
+                        {{~}}
+                        {{~}}
+                    </div>
+                    {{?}}
+                </div>
+            </div>
+            <p class="travelDetail-tips">*以上行程时间安排可能会因天气、路况等原因做相应调整，敬请谅解。</p>
+            {{?}}
+        </div>
+    </div>
+    <!--行程介绍-->
+
+    <!--推荐自费-->
+    {{?travelData.lineEditionOwnExpenseList && travelData.lineEditionOwnExpenseList.length>0}}
+    <div class="ownExpense">
+        <div class="nav-tit"><span><i class="group-icon-ownPrice"></i><h2>推荐自费项目</h2></span></div>
+        <div class="ownExpense-main">
+            <div class="ownExpense-title">
+                <span class="ownExpense-name">自费项目名称</span>
+                <span class="ownExpense-info">自费项目介绍</span>
+                <span class="ownExpense-price">价格</span>
+                <span class="ownExpense-type">币种</span>
+            </div>
+            <table class="ownExpense-content">
+                {{~travelData.lineEditionOwnExpenseList:ownExpenseList:ownExpenseListIndex}}
+                <tr class="ownExpense-item {{?ownExpenseListIndex>4}}none J_ownExpense-item{{?}}">
+                    <td class="ownExpense-name">{{=ownExpenseList.ExcursionName||""}}</td>
+                    <td class="ownExpense-info">{{=ownExpenseList.ExcursionIntroduction||"无"}}</td>
+                    <td class="ownExpense-price">{{=ownExpenseList.ExcursionMoney||""}}</td>
+                    <td class="ownExpense-type">{{=ownExpenseList.ExcursionCurrency||""}}</td>
+                </tr>
+                {{~}}
+            </table>
+        </div>
+        {{?travelData.lineEditionOwnExpenseList.length>5}}
+        <div>
+            <span class="ownTogglemore open">
+                展开全部信息
+            </span>
+        </div>
+        {{?}}
+    </div>
+    {{?}}
+    <!--推荐自费-->
+
+</div>
+

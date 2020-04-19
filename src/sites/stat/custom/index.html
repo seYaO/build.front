@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="height: 1000px">
+<script src="./index.js"></script>
+
+
+<div data-statsnip="test"  data-statsnip1="test">11111</div>
+<script>
+    debugger;
+     window._statlog_({
+        // 模块名
+        snipid: 'test',
+        // 模块属性
+        snipattr: 'data-statsnip',
+        // 额外统计参数
+        param: {
+            mode : 'test'
+        }
+    })
+
+
+     window._statlog_({
+      // 模块名
+      snipid: 'tes11t',
+      // 模块属性
+      snipattr: 'data-statsnip1',
+      // 额外统计参数
+      param: {
+        mode : 'test'
+      }
+    })
+</script>
+</body>
+</html>

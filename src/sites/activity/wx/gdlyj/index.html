@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>同程暑期特卖</title>
+  <meta name="keywords" content="出境旅游，关岛出游，关岛出境游">
+  <meta name="description" content="同程旅游出境游频道为您提供暑期旅游选择，暑期出行！更多出境游路线，更多出境游价格尽在同程出境旅游。">
+
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+  <meta content="telephone=no" name="format-detection"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+  <link rel="stylesheet" href="//css.40017.cn/cn/min/??/cn/v/zt/2014/activity/public/baseactivity.css?v=2014070728"/>
+</head>
+<body>
+<div class="container">
+  <header>
+    <img src="img/dest/top_01.jpg" data-img-loaded="true">
+    <img src="img/dest/top_02.jpg" data-img-loaded="true">
+    <img src="img/dest/top_03.jpg" data-img-loaded="true">
+    <img src="img/dest/top_04.jpg" data-img-loaded="true">
+  </header>
+
+  <section class="part1">
+    <div class="title"><img src="img/dest/top_05.jpg" data-img-loaded="true"></div>
+
+    <div class="menu J_menu">
+      <ul>
+        <li class="active">查莫洛文化</li>
+        <li>购物天堂</li>
+        <li>休闲度假</li>
+        <li>梦中蜜月</li>
+      </ul>
+    </div>
+    <div class="menucon">
+      <div class="pc"><img src="img/dest/pc1.jpg" data-img-loaded="true"></div>
+      <div class="pc none"><img src="img/dest/pc2.jpg" data-img-loaded="true"></div>
+      <div class="pc none"><img src="img/dest/pc3.jpg" data-img-loaded="true"></div>
+      <div class="pc none"><img src="img/dest/pc4.jpg" data-img-loaded="true"></div>
+    </div>
+
+  </section>
+
+  <section class="part2">
+    <div class="title"><img src="img/dest/top_07.jpg" data-img-loaded="true"></div>
+    <div class="prolist J_prolist" data-filter="CycleId=4060&IsRecommend=1" data-tmpl="#tmpl">
+      <div class="pro1">
+        <a>
+          <img src="img/dest/pc1.jpg">
+          <div class="sale">第二人立减1000元</div>
+          <div class="pro-con">
+            <div class="maintit">长滩岛4晚6日自助游</div>
+            <div class="subtit">入住天堂花园酒店入住天堂花园酒店入住天堂花园酒店入住，一价全含...</div>
+            <div class="price"><b>58888</b></div>
+            <div class="order">立即购买</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="part3">
+    <div class="title"><img src="img/dest/top_09.jpg" data-img-loaded="true"></div>
+
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="img/dest/lb1.jpg" /></div>
+        <div class="swiper-slide"><img src="img/dest/lb2.jpg" /></div>
+        <div class="swiper-slide"><img src="img/dest/lb3.jpg" /></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+  </section>
+
+  <section class="part4">
+    <div class="title"><img src="img/dest/top_11.jpg" data-img-loaded="true"></div>
+    <div class="main J_prolist" data-filter="CycleId=4060&IsRecommend=0" data-tmpl="#tmpl2">
+      <div class="pro2">
+        <a>
+          <img src="img/dest/pc1.jpg">
+          <div class="sale">第二人立减1000元</div>
+          <div class="pro-con">
+            <div class="maintit">&lt;长滩岛4晚6日自助游&gt;入住天堂花园酒店入住，一价全含...</div>
+            <div class="price"><b>58888</b></div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="part5">
+    <div class="title"><img src="img/dest/top_13.jpg" data-img-loaded="true"></div>
+  </section>
+
+</div>
+
+<div id="wxShare" style="display: none;">
+  <input type="hidden" name="tcshareurl" value="https://wx.17u.cn/ivacation/zhuanti/gdlyj.html">
+  <input type="hidden" name="tcshareimg" value="img/dest/share.jpg">
+  <input type="hidden" name="tcsharetext" value="同程旅游关岛购物指南，全岛免税遇上购物节，嗨购这个秋冬！旅游局赞助下单立减，品质保证，优惠享不停！https://wx.17u.cn/ivacation/zhuanti/gdlyj.html">
+  <input type="hidden" name="tcDesc" value="同程旅游关岛购物指南，全岛免税遇上购物节，嗨购这个秋冬！旅游局赞助下单立减，品质保证，优惠享不停！">
+</div>
+<script id="tmpl" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+            }}
+            {{
+                var title = value.SubTitle;
+                if(title.length>25){
+                    title = title.substring(0,24)+"...";
+                }
+            }}
+            <div class="pro1">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <img data-img="{{=sImgUrl.replace('http:','')}}">
+                    {{?value.DedicatLine}}
+                    <div class="sale">{{=value.DedicatLine}}</div>
+                    {{?}}
+                    <div class="pro-con">
+                        <div class="maintit">{{=value.MainTitle}}</div>
+                        <div class="subtit">{{=title}}</div>
+                        <div class="price"><b>{{=value.Preferential}}</b></div>
+                        <div class="order">立即购买</div>
+                    </div>
+                </a>
+            </div>
+        {{~}}
+</script>
+<script id="tmpl2" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+            }}
+            {{
+                var title = value.SubTitle;
+                if(title.length>17){
+                    title = title.substring(0,16)+"...";
+                }
+            }}
+            <div class="pro2">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <img data-img="{{=sImgUrl.replace('http:','')}}">
+                    {{?value.DedicatLine}}
+                    <div class="sale">{{=value.DedicatLine}}</div>
+                    {{?}}
+                    <div class="pro-con">
+                        <div class="maintit">&lt;{{=value.MainTitle}}&gt;{{=title}}</div>
+                        <div class="price"><b>{{=value.Preferential}}</b></div>
+                    </div>
+                </a>
+            </div>
+        {{~}}
+</script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js,/touch/app/pub/public/share.js?v=20160113,/cn/v/2015/jqmodules/dot.js,/cn/v/2015/jqmodules/monitor/0.2.1/index.js?v=20160113,/cn/v/2015/jqmodules/statistics/0.2.0/statistics.js,/cn/v/2015/jqmodules/lazyload/0.2.1/touch.js?v=20160113"></script><!--ignore-->
+<script data-loader="true" src="/modules/sea.js"></script>
+
+<script src="//js.40017.cn/cn/v/2015/jqmodules/activity/0.3.4/touch/touch.pkg.js?v=20160113"></script><!--ignore-->
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/timer/0.2.0/touch.js"></script><!--ignore-->
+<script src="//js.40017.cn/cn/v/2015/jqmodules/ztutils/tel/0.1.1/index.js"></script><!--ignore-->
+<script src="/modules/swiper/0.1.0/index.js"></script>
+
+<script type="text/javascript">
+  (function () {
+    Zepto(document).on('page:resize', function (e) {
+      var _w = Zepto(document.body).width();
+      Zepto('html').css('font-size', ((_w > 640) ? 640 : _w) / 640 * 24 + 'px');
+    });
+    Zepto(document).trigger('page:resize');
+    Zepto(window).on('resize', function () {
+      Zepto(document).trigger('page:resize');
+    })
+  })();
+  var noLaunchApp = window.location.search.indexOf('noLaunchApp') > 0 ? false : true;
+  seajs.require("./index").init({
+    param: [
+      {"1970": [4060]}
+    ],
+    host: "//www.ly.com",
+    filter: true,
+    querytype: 0,
+    IsSellOut: 1,
+    needJumpWX: true,
+    goTop:false,
+    needLaunchApp: noLaunchApp,
+    beforeRender:function(data){
+      return data;
+    }
+  });
+</script>
+<!--统计代码开始-->
+<script type="text/javascript">
+  (function() {
+    var pageview = stat.formatPageview('/出境/touch活动页/关岛');
+    stat.init({
+      "baidu": {
+        "parameter": "touch"
+      },
+      "pvConfig": {
+        "PublicPlatId": "1",
+        "PageId": "41576",
+        "LineId": "0",
+        "ActivityId": "1970",
+        "ActivityPeriodId": "4060",
+        "ModuleId": "0",
+        "PVSource": "1",
+        "ak": "",
+        "url": "//www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+      },
+      "vst": [
+        ['_serialid', '0'],
+        ['_vrcode', stat.getVrcode()],
+        ['_refId', stat.getRefid()],
+        ['_userId', stat.getMemberId()],
+        ['_openTime', stat.timeDiff],
+        ['_trackPageview', pageview]
+      ]
+    });
+  })();
+</script>
+
+
+</body>
+</html>

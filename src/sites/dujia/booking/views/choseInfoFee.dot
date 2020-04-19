@@ -1,0 +1,19 @@
+{{?it.data.WanLe}}
+{{~it.data.WanLe :value:index}}
+{{~value.Product:val}}
+<dl class="calcle">
+    <dt>{{=val.Title}}</dt>
+    <dd class="{{?!val.UsingCount}}none{{?}}"><div class="boxE"><span class="extra"><b><label class="ex_price E_price" style="visibility: visible;">{{=val.Price}}</label></b>元</span>×<b class="listnum">{{=val.UsingCount}}</b></div><span class="colF60 font_E boxE"><strong class="extraPrice E_price" style="visibility: visible;">{{=val.UsingCount*val.Price}}</strong>元</span></dd>
+</dl>
+{{~}}
+{{~}}
+{{?}}
+{{?it.data.Visa}}
+{{~it.data.Visa.Product:proVal}}
+<dl class="calcle">
+    <dt>{{=proVal.Title}}</dt>
+    <dd class="{{?!proVal.UsingAdultCount}}none{{?}}"><div class="boxE"><span class="extra"><b><label class="ex_price E_price" style="visibility: visible;">{{=proVal.AdultPrice}}</label></b>元</span>×<b class="listnum">{{=proVal.UsingAdultCount}}</b></div><span class="colF60 font_E boxE"><strong class="extraPrice E_price" style="visibility: visible;">{{=proVal.UsingAdultCount*proVal.AdultPrice}}</strong>元</span></dd>
+    <dd class="{{?!proVal.UsingChildCount}}none{{?}}"><div class="boxE"><span class="extra"><b><label class="ex_price E_price" style="visibility: visible;">{{=proVal.ChildPrice}}</label></b>元</span>×<b class="listnum">{{=proVal.UsingChildCount}}</b></div><span class="colF60 font_E boxE"><strong class="extraPrice E_price" style="visibility: visible;">{{=proVal.UsingChildCount*proVal.ChildPrice}}</strong>元</span></dd>
+</dl>
+{{~}}
+{{?}}

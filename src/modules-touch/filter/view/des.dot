@@ -1,0 +1,20 @@
+<div class="city-wrap">
+    <div class="city-inner clearfix">
+        <div class="title needsclick active" data-param="{Destination:'',Page:1}">不限</div>
+        <ul class="">
+            {{~it:data:index}}
+            <li>
+                <span class="needsclick">{{=data.title}}</span>
+                <i></i>
+                {{?data.list}}
+                <div class="show-more">
+                    {{~data.list:list}}
+                    <p class="needsclick" data-param="{Destination:'{{=list.cn}}',Page:1}">{{=list.cn}}</p>
+                    {{~}}
+                </div>
+                {{?}}
+            </li>
+            {{~}}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+{{? sliderBarList!="" && sliderBarList.length > 0}}
+    {{~sliderBarList:adImage:index}}
+        {{? index == 0}}
+        <em>
+            <a target="_blank" href="{{=adImage.Url.replace('http:','')}}"><img src="{{=adImage.Image.replace('http:','')}}"></a>
+        </em>
+        {{?? index == 1}}
+        <span>
+            <a target="_blank" href="{{=adImage.Url.replace('http:','')}}"><img src="{{=adImage.Image.replace('http:','')}}" width="234px" height="145px"></a>
+        </span>
+        {{?}}
+    {{~}}
+{{?}}

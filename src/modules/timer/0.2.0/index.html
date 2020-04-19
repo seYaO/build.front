@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>timer</title>
+	<script src="http://js.40017.cn/touch/cn/public/zepto.20140212.js"></script>
+</head>
+<body>
+<span class="test"></span>
+</body>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript">
+	var timer = window.TimerModule,
+	cfg = [{
+		"tmpl": '<p>距开始还有<span>{days}</span>天<span>{hour}</span>时<span>{minute}</span>分<span>{second}</span>秒</p>',
+ 		"callback": function(el) {
+	         el.parent().parent().addClass("time-wait");
+	         $(".booking").addClass("disable");
+     	}
+  	},
+  	{
+		"tmpl": '<p>还有<span>{days}</span>天<span>{hour}</span>时<span>{minute}</span>分<span>{second}</span>秒</p>',
+ 		"callback": function(el) {
+     	}
+  	},
+	{
+     	"tmpl": '<p>本次抢购结束</p>',
+     	"callback": function(el){
+         	el.parent().parent().addClass("time-end");
+         	$(".booking").addClass("disable");
+     	}
+  	}];
+	  var nowTime = new Date("2017-03-15T17:55:50+08:00");
+      var beginTime = new Date("2017-03-15T08:00:00+08:00");
+      var endTime = new Date("2017-03-15T23:55:50+08:00");
+	timer.init({
+		cfg: cfg,
+		date: [nowTime,endTime],
+		el: ".test"
+	});
+</script>
+</html>

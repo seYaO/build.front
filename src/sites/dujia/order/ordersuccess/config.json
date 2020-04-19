@@ -1,0 +1,8 @@
+{
+    "dataUri":  "/intervacation/api/OrderSuccess/OrderSuccessSyncData",
+    "query": {
+        "customerSerialId":"102967256",
+        "encryptUserId":"61jmLdKYZ3s%3d"
+    },
+    "desc": "出境订单预订成功页"
+}

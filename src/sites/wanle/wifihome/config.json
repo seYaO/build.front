@@ -1,0 +1,8 @@
+{
+  "dataUri": "/wanle/api/WanleProduct/GetWanleShowPage",
+  "query": {
+      "siteType": 0,
+      "pageId": 3
+  },
+  "desc": "全球WIFI首页"
+}

@@ -1,0 +1,50 @@
+
+<div class="box-consign">
+        {{?!it.Data}}
+           <div class="box-tips">抱歉，没有对应航司的托运信息，了解详情，请致电相关航司。<div>
+        {{??}}
+        <table class="travel-consign"  width="96%" cellspacing="0" cellpadding="0">
+            <tbody>
+                <tr>
+                    <th>航空公司</th>
+                    <th>二字码</th>
+                    <th>航线</th>
+                    <th>舱位</th>
+                    <th>免费托运行李额</th>
+                    <th>托运行李尺寸：长+宽+高不超过</th>
+                    <th>免费手提行李额</th>
+                    <th>手提行李尺寸：长+宽+高不超过</th>
+                    <th>备注</th>
+                </tr>
+                {{~ it.Data.flight:value}}
+                {{?it.Data.flight.length}}
+                {{~value.AirConsignInfo:title}}
+                <tr>
+                    <td rowspan="{{=title.Consign.length}}">{{=value.AirCompanyName}}</td>
+                    <td rowspan="{{=title.Consign.length}}">{{=value.AirCompanyCode}}</td>
+                    <td rowspan="{{=title.Consign.length}}">{{=title.Line||"-"}}</td>
+                    <td>{{=title.Consign[0].Cabin||"-"}}</td>
+                    <td>{{=title.Consign[0].ConsignBagage||"-"}}</td>
+                    <td>{{=title.Consign[0].ConsignBagageSize||"-"}}</td>
+                    <td>{{=title.Consign[0].HandBagage||"-"}}</td>
+                    <td>{{=title.Consign[0].HandBagageSize||"-"}}</td>
+                    <td rowspan="{{=title.Consign.length}}">{{=title.Remark||"-"}}</td>
+                </tr>
+                {{~title.Consign:tip:index}}
+                {{if(index === 0) {continue;}}}
+                <tr>
+                    <td>{{=tip.Cabin||"-"}}</td>
+                    <td>{{=tip.ConsignBagage||"-"}}</td>
+                    <td>{{=tip.ConsignBagageSize||"-"}}</td>
+                    <td>{{=tip.HandBagage||"-"}}</td>
+                    <td>{{=tip.HandBagageSize||"-"}}</td>
+                </tr>
+                {{~}}
+                {{~}}
+                {{?}}
+                {{~}}
+            </tbody>
+        </table>
+        {{?}}
+</div>
+

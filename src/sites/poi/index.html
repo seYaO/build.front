@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>POI</title>
+    <link rel="stylesheet" href="//js.40017.cn/cn/v/v1/backend/jqmodule/icon/0.4.0/font.css"><!--ignore-->
+    <link rel="stylesheet" href="//js.40017.cn/cn/v/v1/backend/jqmodule/skin/0.4.0/blue.css"><!--ignore-->
+</head>
+{{var it =IT;}}
+<body class="skin-blue">
+<script src="//js.40017.cn/cn/v/v1/backend/jqmodule/jquery-2.1.1.min.js" data-loader="true"></script><!--ignore-->
+<input type="hidden" id="proType" value="{{=it.projectType}}">
+<input type="hidden" id="routeId" value="{{=it.routeId}}">
+<input type="hidden" id="totalDays" value="{{=it.totalDays}}">
+<input type="hidden" id="destId" value="{{=it.destId}}">
+
+<input type="hidden" id="userId" value="{{=it.extend.jobnumber}}">
+<input type="hidden" id="userName" value="{{=it.extend.username}}">
+<div class="both">
+    <div class="top">
+        <div class="chooseBox">
+            <ul class="chooseTab">
+                <li class="c_active cursorBtn">列表模式</li>
+                <li class="cursorBtn">地图模式</li>
+            </ul>
+        </div>
+        <div class="lookBox">
+            <span class="subRoute routeBtn cursorBtn" data-type="3">提交行程</span>
+            <span class="saveRoute routeBtn cursorBtn" data-type="1">保存行程</span>
+            <span class="lookRoute routeBtn cursorBtn" data-type="2">预览</span>
+        </div>
+    </div>
+    <div class="content">
+        <div class="dayList contentList">
+            {{#def.dayList}}
+        </div>
+        {{#def.dayDetail}}
+        <div class="proList contentList">
+            <div class="cityDest mappanel">
+                <!--<span class="cityName" data-cityId="5120">东京</span>-->
+                <span class="cityName" data-cityId="{{=it.destId}}">{{=it.destName}}</span>
+                <span class="destBox">切换城市</span>
+            </div>
+            <ul class="changeCity none">
+                <li data-cityId="{{=it.destId}}">{{=it.destName}}</li>
+                {{~it.transRoutes:city:index}}
+                <li data-cityId="{{=city.id}}">{{=city.name}}</li>
+                {{~}}
+            </ul>
+            <div class="proBox">
+                <ul class="typeList">
+                    <li class="J_scenery active" data-type="1,2,3,4" data-click="1">全部</li>
+                    <li class="J_scenery" data-type="1" data-click="0">景点</li>
+                    <li class="J_scenery" data-type="4" data-click="0">美食</li>
+                    <li class="J_scenery" data-type="2" data-click="0">休闲娱乐</li>
+                    <li class="J_scenery" data-type="3" data-click="0">购物</li>
+                    <li class="J_scenery" data-type="0" data-click="0">自定义</li>
+                    <li class="searchIn">
+                        <i></i>
+                        <input type="text">
+                    </li>
+                </ul>
+                <div class="sceneryList"></div>
+                <div class="customList none">
+                    <div class="scenery userText mb_20">
+                        <div class="customTitle mb_20">
+                            <span>自由文本</span>
+                            <span class="customAdd" data-user="1"></span>
+                        </div>
+                        <div class="textInfo">说明：支持标题文字，内容文字，图片的编辑与组合</div>
+                    </div>
+                    <div class="scenery userTraffic mb_20">
+                        <div class="customTitle mb_20">
+                            <span>城际交通</span>
+                            <span class="customAdd" data-user="2"></span>
+                        </div>
+                        <div class="textInfo">说明：支持城际交通方式的信息编辑</div>
+                    </div>
+                </div>
+            </div>
+            <div class="proMap mappanel none">
+                <ul class="proMap-tab clearfix">
+                    <!--<li class="proMap-all cur">
+                        <span>全部</span>
+                    </li>-->
+                    <li data-type='1' class="cur">
+                        <span>景点</span>
+                    </li>
+                    <li data-type='4'>
+                        <span>美食</span>
+                    </li>
+                    <li data-type='3'>
+                        <span>购物</span>
+                    </li>
+                    <li data-type='2'>
+                        <span>休闲娱乐</span>
+                    </li>
+                </ul>
+                <div class="mappanel-level">
+                    <label for="">优质度</label>
+                    <span class="ui-levelDeep" data-star='5'>A</span>
+                    <ul class="ui-levelDeep-list none">
+                        <li data-stars='5'>A</li>
+                        <li data-stars='4'>B</li>
+                        <li data-stars='3'>C</li>
+                        <li data-stars='2'>D</li>
+                        <li data-stars='1'>E</li>
+                    </ul>
+                </div>
+                <div id="myMapTip" style="visibility: hidden; left: -1000px; top: -1000px; min-height: 95px; max-height: 128px;" class="HotelWindowInfo"></div>
+                <div id = "MyMap" style="height: 300px;"></div>
+            </div>
+        </div>
+        <div class="sceneryInfo contentList" style='visibility: hidden'></div>
+    </div>
+</div>
+<div class="subPop none">
+    <p class="subTitle"></p>
+    <p class="subClose"></p>
+    <p class="subContent"></p>
+    <div class="subBtn">
+        <p class="submitBtn button" data-flag="1">确定</p>
+        <p class="cancleBtn button">取消</p>
+    </div>
+</div>
+<div class="popBg none"></div>
+<div class="popFade" style="display:none">已添加</div>
+<div class="mapPopBg none"></div>
+<div class="mapPopFade" style="display:none">
+  <p>未获取到地图数据</p>
+  <p>请更换筛选条件哦！</p>
+</div>
+<div class="userBox none">
+    <div class="scenery userText user_text mb_20">
+        <div class="customTitle mb_20">
+            <span>自由文本</span>
+            <span class="customDel action"></span>
+        </div>
+        <div class="btnList mb_20 userInput">
+            <span class="btn_title" data-click="1" data-channel="1">+添加标题</span>
+            <span class="btn_text" data-click="1" data-channel="2">+添加内容</span>
+        </div>
+        <div class="scenery_title sceneryInput none mb_20" data-channel="1">
+            <input type="text" placeholder="请输入标题" class="textIn" maxlength="200">
+            <i class="title_close i_close"></i>
+        </div>
+        <div class="scenery_text sceneryInput none mb_20" data-channel="2">
+            <textarea cols="30" rows="3" class="textIn textareaIn" placeholder="请输入内容" maxlength="450" data-value=""></textarea>
+            <i class="text_close i_close"></i>
+        </div>
+        <div class="picselect userInput"></div>
+    </div>
+    <div class="scenery userTraffic user_traffic mb_20">
+        <div class="customTitle mb_20">
+            <span>城际交通</span>
+            <span class="customDel action"></span>
+        </div>
+        <div class="cityChooseBox customBox mb_20 userInput">
+            <div class="startCity">
+                <input class="firstCity" placeholder="出发城市" maxlength="20">
+            </div>
+            <span>--</span>
+            <div class="endCity">
+                <input class="lastCity" placeholder="目的城市" maxlength="20">
+            </div>
+           <div class="warningBox">*城市必填</div>
+            <ul class="input_cityList none"></ul>
+        </div>
+        <div class="trafficChooseBox customBox userInput">
+            <select name="" id="" class="trafficIN">
+                <option value="0">--请选择交通方式--</option>
+                <option value="4">飞机</option>
+                <option value="5">巴士</option>
+                <option value="6">火车</option>
+                <option value="7">轮船</option>
+                <option value="8">地铁</option>
+            </select>
+          <div class="warningBox">*交通必选</div>
+        </div>
+    </div>
+</div>
+<script src="/modules/sea.js" data-loader="true"></script>
+<script src="//ui.1024.team/jqmodule/react/react.js" data-loader="true"></script>
+<script src="//ui.1024.team/jqmodule/react/react-dom.js" data-loader="true"></script>
+<script type="text/javascript">
+    seajs.require("./index");
+</script>
+</body>
+</html>

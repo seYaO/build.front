@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="关键字"/>
+    <meta name="description" content="描述啥的"/>
+    <title>测试</title>
+    <link href="" rel="stylesheet">
+    <script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js?v=20150413"></script>
+</head>
+<body style="background-color: #fef" trace="test-index">
+<div trace="test-box">
+    <a trace="test-index0">测试点击</a>
+    <span class="J_trace" trace="test-index1">测试点击1</span>
+</div>
+<script src="../../monitor/0.1.1/index.js"></script>
+<script type="text/javascript" src="../../statistics/0.2.0/statistics.js"></script>
+<script type="text/javascript">
+    var pageview = '缤纷夏日品质出境_暑期出境旅游_暑假出境旅游预售_同程出境游';
+    stat.init({
+        "baidu": {
+            "parameter": "pc",        //PC端传“pc”，touch站传“touch”
+            "hmt": []
+        },        //百度统计
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', stat.getVrcode()],
+            ['_refId', stat.getRefid()],
+            ['_userId', '0'],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', pageview]
+        ]
+    });
+</script>
+</body>
+</html>

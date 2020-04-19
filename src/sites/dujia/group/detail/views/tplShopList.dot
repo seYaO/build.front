@@ -1,0 +1,10 @@
+{{?it.regionInfo}}
+{{~it.regionInfo:regionInfo:index}}
+<div class="sl-address">
+    <p class="shop-name">{{=regionInfo.name}}</p>
+    <p><em class="grayword">电话：</em>{{=regionInfo.phone}}</p>
+    <p><em class="grayword">地址：</em>{{=regionInfo.address}}</p>
+    <p><em class="grayword">交通：</em>{{=regionInfo.traffic}}</p>
+</div>
+{{~}}
+{{?}}

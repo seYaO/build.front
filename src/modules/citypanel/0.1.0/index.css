@@ -1,0 +1,300 @@
+body {
+    background-color:#fff;
+    margin:0;
+    font: normal normal normal 12px Arial,sans-serif;
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,button,p,blockquote,th,td,address span a{border:0;margin:0;padding:0;}
+a{text-decoration:none;}
+img{border:0;}
+em{
+    font-style:normal;
+}
+ul,ul li{list-style:none;margin:0;padding:0;}
+table {
+    border-spacing: 0;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
+.city_b,h3 i,.procomment_tel i,.aside__nav__logo,.step__img,.step__arrow,.iv-bothow i,.visa-free,.visa-land{
+    background:url("img/dest/total1.png") no-repeat center;
+}
+h3 {
+    font-size: 28px;
+    color: #50b400;
+    line-height: 28px;
+    position:relative;
+    padding-left:47px;
+    margin:0;
+    font-weight: normal;
+}
+
+h3 i{
+    width:32px;
+    height:32px;
+    display:inline-block;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.none { display: none; }
+.clearfix:after{
+    display:block;
+    clear:both;
+    content:"";
+    visibility:hidden;
+    height:0
+}
+.clearfix{zoom:1}
+
+.mNotice-wrap {
+    box-shadow: 0 0 16px 2px rgba(0, 0, 0, .2);
+}
+
+.depCity_s_warp,
+.desCity_s_warp {
+    border: 0;
+    font-size: 12px;
+    background: #fff;
+}
+
+body .mNotice-mTab-head {
+    background-color: #fff;
+    color: #999;
+    padding: 11px 10px 0 8px
+}
+
+.mNotice-wrap .mNotice-mTab .mNotice-mTab-head .white:hover {
+    background-position: 0 -16px
+}
+
+.mNotice-wrap .mNotice-mTab-wrap {
+    width: 400px;
+    padding: 5px 10px 13px;
+}
+
+.mNotice-wrap .mNotice-mTab-tab-tray {}
+
+.mNotice-close {
+    top: 22px;
+    right: 18px
+}
+
+.mNotice-mTab-item {
+    color: #333
+}
+
+.scenery_search_city_more .rBox_top_r {
+    border: 1px solid #ddd
+}
+
+.scenery_search_city_more .oteCitySpan_on {
+    border-color: #ddd #ddd -moz-use-text-color
+}
+
+.mNotice-mTab-head {
+    font-weight: 400;
+    border-bottom: 0
+}
+
+.mNotice-mTab-head-remark {
+    font-weight: 400
+}
+
+.mNotice-mTab-tab-tray {
+    margin-top: 0px;
+    position: relative;
+    z-index: 1
+}
+
+.mNotice-mTab .mNotice-mTab-wrap .mNotice-mTab-tab-tray .current {
+    border: 0;
+    border-bottom: 1px solid #50b400;
+    color: #50b400
+}
+
+.mNotice-mTab-tab-tray .mNotice-mTab-item {
+    padding: 0 12px;
+}
+
+.mNotice-wrap .mNotice-mTab .mNotice-mTab-head .white {
+    background: url(//img1.40017.cn/cn/c/home/2013/pic.png) no-repeat;
+    background-position: 0 0;
+    width: 11px;
+    height: 11px;
+    top: 22px;
+    right: 18px;
+    position: absolute;
+    cursor: pointer;
+}
+
+.mNotice-mTab .mNotice-mTab-wrap .mNotice-mTab-content {
+    border-top: 1px solid #ddd;
+}
+
+.mNotice-mTab-content {
+    width: 400px;
+    padding-top: 10px;
+    background: #fff;
+}
+
+.mNotice-mTab-wrap .mNotice-mTab-content .mNotice-normal {
+    color: #333;
+    overflow: hidden;
+    padding: 2px 10px;
+    margin: 0;
+    float: left;
+    cursor: pointer;
+    display: block;
+    border: 1px solid #FFF;
+    height: 22px;
+    line-height: 22px;
+    max-width: 6em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.mNotice-mTab-wrap .mNotice-mTab-content .mNotice-normal:hover {
+    color: #f60;
+}
+
+.mNotice-normal:hover {
+    color: #f60;
+}
+
+.mNotice-mTab-head {
+    background: #8ab923;
+    color: #fff;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    text-indent: 10px;
+    font-size: 12px;
+}
+
+.mNotice-mTab-item {
+    float: left;
+    border: 1px solid #fff;
+    border-bottom: 0;
+    padding-bottom: 1px;
+    height: 22px;
+    line-height: 22px;
+    padding: 0 11px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.desCity_s_warp:after,
+.depCity_s_warp:after {
+    display: none;
+}
+
+:root .desCity_s_warp:after,
+:root .depCity_s_warp:after {
+    content: ' ';
+    position: absolute;
+    display: block;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    border-color: transparent transparent #fff;
+    border-style: dashed dashed solid;
+    border-width: 8px;
+    z-index: 9999;
+    top: -16px;
+    left: 15px;
+}
+
+.depCity_s_warp,
+.desCity_s_warp {
+    z-index: 2000;
+    position: absolute;
+    left: 0;
+    top: 65px;
+    border: 1px solid #A0A0A0;
+}
+
+:root .depCity_s_warp,
+:root .desCity_s_warp {
+    border: 0;
+}
+
+.mNotice-title {
+    width: 25px;
+    text-align: center;
+    color: #f60;
+    padding: 1px 0;
+    line-height: 22px;
+    font-weight: 700;
+}
+
+.mNotice-title,
+.mNotice-def {
+    float: left;
+}
+
+.depCity_s_warp .mNotice-mTab-content .mNotice-def {
+    width: 350px;
+}
+
+.abroadInput {
+    position: relative;
+}
+
+.desCity_s_warp .mNotice-mTab-tab-tray .mNotice-mTab-item {
+    padding: 0 7px;
+}
+
+.desCity_s_warp .mNotice-mTab-content .mNotice-normal {
+    padding: 2px 5px;
+    width: 84px;
+    max-width: 84px;
+    text-overflow: clip;
+}
+
+.desCity_s_warp .mNotice-mTab-content .mNotice-normal em {
+    display: inline-block;
+    max-width: 4em;
+    overflow: hidden;
+}
+
+.desCity_s_warp .mNotice-title {
+    float: none;
+    width: auto;
+    text-align: left;
+}
+
+.desCity_s_warp .mNotice-title em {
+    display: inline-block;
+    padding: 0 5px;
+    line-height: 18px;
+    color: #B8B8B8;
+    font-weight: normal;
+}
+
+.visa-free {
+    display: inline-block;
+    background-position: -95px -470px;
+    width: 35px;
+    height: 14px;
+    vertical-align: 3px;
+}
+
+.visa-land {
+    display: inline-block;
+    vertical-align: 3px;
+    width: 44px;
+    height: 14px;
+    background-position: -94px -441px;
+}
+
+.mNotice-title .visa-free,
+.mNotice-title .visa-land {
+    vertical-align: -2px;
+}
+

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413" />
+</head>
+<body>
+<div class="teset2-parent">
+    <div class="crumbox" style="display: block;">
+        <h4>已选条件：</h4>
+        <span class="removeall">全部清除</span>
+    </div>
+    <div id="test2"></div>
+</div>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script src="../../jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2015072201" charset="utf-8"></script>
+<script>
+    seajs.config({
+        base: "../../",
+//        "base": "http://localhost:63342/tc-intervacation-front/module/",
+//        "base": "http://js.40017.cn/cn/v/2015/modules/"
+        //"base":"http://localhost:63342/tc-intervacation-front/module/"
+        //"base": "http://js.40017.cn/cn/min/??/cn/v/2015/modules/"
+        paths: {
+            "jquery": "http://localhost:63342/tc-intervacation-front/jqmodule"
+        }
+    });
+</script>
+
+<script>
+        seajs.use("tagfilter/0.1.0/index", function (Filters) {
+            var filters = new Filters();
+            filters._init({
+                el: "#test2",
+                host: "",
+                ajaxUrl: "http://10.1.56.88:8091/dujia/AjaxCallTravel.aspx?type=GetSearchPageList",
+                callback: function(){
+
+                }
+            });
+            console.log(window.fil);
+        });
+</script>
+</body>
+</html>

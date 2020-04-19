@@ -1,0 +1,9 @@
+{
+    "dataUri": "/intervacation/api/PDynamicPackageLabelSearch/GetLabelPageInfo",
+    "query": {
+        "siteType": 0,
+        "pageType": 1,
+        "destPinYin": "riben"
+    },
+    "desc": "动态打包列表页AB"
+}

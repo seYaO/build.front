@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+{{var it = IT.Data;}}   
+{{var info = it.productDetail;}}
+{{var recommendList = it.recoPro;}}
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn" />
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _hmt = _hmt || [];
+        var _tcHotmapx = { pid: 212, sp: 100 };
+    </script>
+    <title>产品详情</title>
+    <!-- 公共样式表 -->
+    <link href="http://css.40017.cn/touch/public/common/0.2.2/common.css?v=07121702" rel="stylesheet" /><!--ignore-->
+    <script src="/modules-lite/mod.js" data-loader="true"></script>
+    <!-- 页面样式表 -->
+
+</head>
+
+<body onselectstart="return false;">
+<!-- 页面内容块 -->
+
+
+<div class="page-body">
+    <div class="page-box" id="J_pageBox">
+        <div id="mainPage" class="viewport">
+            <section class="layout-main" id="layout-main">
+                <a class="call_here" href="http://livechat.ly.com/out/robotservice/robottouch?p=24&sourcetype=16&type=0&pageid=0&pagetype=0"></a>
+                
+                <div class="layout-header">
+                    <img src="{{=info.ImgUrl}}">
+                    <h3><p>{{=info.ProductTypeDes}}</p></h3>
+                </div>
+                <div class="layout-content">
+                    <ul class="tab-list border-bottom tab-bottom">
+                        <li class="cut-time border-bottom J_cutTimer none">
+
+                        </li>
+
+                        {{?info.SubTitle != null && info.SubTitle.length > 0}}
+                        <li class="pro-title border-bottom">
+                                <span>{{=info.MainTitle}}</span>
+                                <span>目的地：{{=info.DestinationCity}}</span>
+                        </li>
+                        {{?}}
+
+                        {{?info.Address != null && info.Address.length > 0}}
+                        <li class="location-adress border-bottom">
+                            <a href="javascript:;">
+                                <span>{{=info.Address}}</span>
+                                <i></i>
+                            </a>
+                        </li>
+                        {{?}}
+
+                    </ul>
+                    {{?info.ProductTypeTag != null && info.ProductTypeTag.length > 0}}
+                    <div class="travel_label">
+                    {{~info.ProductTypeTag:typeTag}}
+                        <span>
+                            <i></i>
+                            <em>{{=typeTag}}</em>
+                        </span>
+                    {{~}}
+                    </div>
+                    {{?}}
+
+                    {{#def.list}}
+                
+
+                    <div class="border-top  middle-product">
+                        <ul class="tab-list border-bottom clearfix">
+                            <li class="reason  border-bottom clearfix{{?info.RecommendReason.ReasonA == "" && info.RecommendReason.ReasonB == "" && info.RecommendReason.ReasonC == ""}} none{{?}}">
+                                <a href="javascript:;">
+                                    <i></i>
+                                    <span>推荐理由</span>
+                                </a>
+                                <p {{?info.RecommendReason.ReasonA == ""}}class="none"{{?}}><b>•</b>{{=info.RecommendReason.ReasonA}}</p>
+                                <p {{?info.RecommendReason.ReasonB == ""}}class="none"{{?}}><b>•</b>{{=info.RecommendReason.ReasonB}}</p>
+                                <p {{?info.RecommendReason.ReasonC == ""}}class="none"{{?}}><b>•</b>{{=info.RecommendReason.ReasonC}}</p>
+                            </li>
+                            <li class="spe-intro">
+                                <a href="/localfun/wanle/special-intro_{{=info.ProductId}}.html">
+                                    <span>查看产品简介</span>
+                                    <em class="jump"></em>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="comment-list border-top">
+                        <div class="comment-content J_comment_info">
+
+                        </div>
+                    </div>
+
+                    <div class="border-top middle-product">
+                        <ul class="tab-list border-bottom clearfix">
+                            <li class="order-know">
+                                <a href="/localfun/wanle/detailnotice_{{=info.ProductId}}.html?wvc1=1&wvc2=1">
+                                    <i></i>
+                                    <span>预订须知</span>
+                                    <em class="jump"></em>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {{?recommendList &&　recommendList.length}}
+                    <div class="lineBox"><em></em><span>看过此产品的人还看了</span><i></i></div>
+                    <div class="border-top recommend" data-value="{{=info.RecommandType}}">
+                        {{#def.recommend}}
+                    </div>
+                    <div class="lineBox"><em></em><span>已经到底了</span><i></i></div>
+                    {{?}}
+
+                </div>
+                {{?it.IsCanSell}}
+                <div class="pop J_pop">该产品已下架</div>
+                {{?}}
+
+            </section>
+        </div>
+    </div>
+</div>
+<input type="hidden" id="productId" value="{{=info.ProductId}}">
+
+<div id="wxShare" style="display: none;">
+<input type="hidden" name="tcshareurl" value="http://wx.17u.cn/localfun/wanle/{{=info.ProductId}}.html?wvc1=1&amp;wvc2=1">
+<input type="hidden" name="tcshareimg" value="{{=info.ImgUrl.replace("_450x250_00", "_90x90_00")}}">
+<input type="hidden" name="tcsharetext" value="{{=info.MainTitle}}">
+<input type="hidden" name="tcDesc" value="海外玩乐，出境必备-同程旅游">
+</div>
+
+
+<!-- 公共页脚 -->
+
+
+<script type="text/javascript" charset="utf-8" src="//wx.40017.cn/touch/min/??/touch/weixin/public/js/comQdid.js"></script>
+<script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '10003-2027-0']);
+        _tcq.push(['_refId', 107075804]);
+        _tcq.push(['_userId', "{{=it.UserId || 0}}"]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '{{=it.OpenId ||""}}||微信/玩乐/海外玩乐']);
+    </script>
+
+<link href="http://css.40017.cn/touch/c/public/innerComment/0.0.1/innerComment.css?v=20150615001" rel="stylesheet" type="text/css"/> <!--ignore-->
+<script src="http://js.40017.cn/touch/public/common/0.0.8/common.js?v=20150618001"></script>
+<script>
+        try {
+            var PVJson = {
+                "PublicPlatId": 661,
+                "PageId": 1,
+                "RefId": 107075804,
+                "LineId": "12195",
+                "TravelDate": "1900-01-01",
+                "ActivityId": 0,
+                "ActivityPeriodId": 0,
+                "LoginKey": "",
+                "UserId": "0",
+                "UserIp": "172.16.6.105",
+                "ModuleId": 0,
+                "PVSource": 0,
+                "StartCityId": "0",
+                "EndCityId": "0",
+                "TagPageId": 1,
+                "SearchPlatId": 1,
+                "ProductTagId": 1234567890
+            };
+
+            $.ajax({
+                type: 'post',
+                url: 'http://intervacationapi.17usoft.com/commonwebapi/pageview/SavePageViewHandler.ashx?param=' + encodeURI(JSON.stringify(PVJson)),
+                dataType: 'json',
+                timeout: 300,
+                context: $('body'),
+                success: function (data) {
+                },
+                error: function (error) {
+                }
+            });
+        }
+        catch (e) {
+
+        }
+    </script>
+<script>
+        var Detail = require("./index");
+        Detail.init();
+        _tcq.push(['_resId', 12195]);
+    </script>
+
+<script type='text/javascript' src="http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+</body>
+
+</html>

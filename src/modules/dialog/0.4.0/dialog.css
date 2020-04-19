@@ -1,0 +1,167 @@
+@charset "UTF-8";
+.skin-blue {
+  /***注意***/ }
+  .skin-blue .module-dialog-panel {
+    z-index: 2000; }
+    .skin-blue .module-dialog-panel .module-popup-body .module-popup-content {
+      padding: 20px;
+      text-align: center; }
+    .skin-blue .module-dialog-panel .module-popup-body .module-popup-text {
+      padding: 20px; }
+      .skin-blue .module-dialog-panel .module-popup-body .module-popup-text .module-popup-maincontent {
+        font-size: 14px;
+        font: bold;
+        color: #333333;
+        padding-bottom: 15px; }
+      .skin-blue .module-dialog-panel .module-popup-body .module-popup-text .module-popup-subcontent {
+        font-size: 12px;
+        color: #666666; }
+  .skin-blue .alert {
+    padding: 10px 20px;
+    border-radius: 2px;
+    border: 1px solid transparent; }
+  .skin-blue .prompt {
+    position: fixed;
+    top: 20px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 100000;
+    opacity: 0;
+    width: 300px;
+    height: auto;
+    -moz-transition: opacity 2s;
+    -o-transition: opacity 2s;
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s; }
+    .skin-blue .prompt.active {
+      font-size: 14px;
+      font-family: "Microsoft YaHei";
+      color: #ffffff;
+      border-width: 2px;
+      opacity: 1; }
+      .skin-blue .prompt.active.alert-success {
+        border-color: #6fba8f;
+        background-color: #78c599;
+        opacity: 0.8; }
+      .skin-blue .prompt.active.alert-danger {
+        border-color: #f06a69;
+        background-color: #ff7a75;
+        opacity: 0.8; }
+      .skin-blue .prompt.active.alert-warning {
+        border-color: #f6a43a;
+        background-color: #f6b63a;
+        opacity: 0.8; }
+      .skin-blue .prompt.active .icons {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle; }
+        .skin-blue .prompt.active .icons.icon-info {
+          background: transparent url("./images/icon-info.png") no-repeat; }
+        .skin-blue .prompt.active .icons.icon-success {
+          background: transparent url("./images/icon-success.png") no-repeat; }
+        .skin-blue .prompt.active .icons.icon-danger {
+          background: transparent url("./images/icon-danger.png") no-repeat; }
+        .skin-blue .prompt.active .icons.icon-error {
+          background: transparent url("./images/icon-error.png") no-repeat; }
+        .skin-blue .prompt.active .icons.icon-warning {
+          background: transparent url("./images/icon-warning.png") no-repeat; }
+    .skin-blue .prompt.prompt-center {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto; }
+    .skin-blue .prompt.prompt-top {
+      top: 20px;
+      bottom: auto; }
+
+@charset "UTF-8";
+.skin-green {
+  /***注意***/
+  /*$size-pading:10px;*/ }
+  .skin-green .row-btn {
+    padding: 20px 0;
+    background: #f5f5f5;
+    text-align: right; }
+  .skin-green .tabs-container.tabs-normal .nav.nav-tabs li.active a {
+    background-color: #fff; }
+  .skin-green .tabs-container.tabs-skin .nav.nav-tabs li.active a {
+    background-color: #fff; }
+  .skin-green .tabs-container.tabs-skin .nav > li > a:focus, .skin-green .tabs-container.tabs-skin .nav > li > a:hover {
+    text-decoration: none;
+    background-color: #eee; }
+  .skin-green .module-dialog-panel {
+    z-index: 2000; }
+    .skin-green .module-dialog-panel .module-popup-body .module-popup-content {
+      padding: 20px;
+      text-align: center; }
+    .skin-green .module-dialog-panel .module-popup-body .module-popup-text {
+      padding: 20px; }
+      .skin-green .module-dialog-panel .module-popup-body .module-popup-text .module-popup-maincontent {
+        font-size: 14px;
+        font: bold;
+        color: #333333;
+        padding-bottom: 15px; }
+      .skin-green .module-dialog-panel .module-popup-body .module-popup-text .module-popup-subcontent {
+        font-size: 12px;
+        color: #666666; }
+  .skin-green .alert {
+    padding: 10px 20px;
+    border-radius: 2px;
+    border: 1px solid transparent; }
+  .skin-green .prompt {
+    position: fixed;
+    top: 20px;
+    right: 0;
+    left: 0;
+    margin: auto;
+    z-index: 100000;
+    opacity: 0;
+    width: 300px;
+    height: auto;
+    -moz-transition: opacity 2s;
+    -o-transition: opacity 2s;
+    -webkit-transition: opacity 2s;
+    transition: opacity 2s; }
+    .skin-green .prompt.active {
+      font-size: 14px;
+      font-family: "Microsoft YaHei";
+      color: #ffffff;
+      border-width: 2px;
+      opacity: 1; }
+      .skin-green .prompt.active.alert-success {
+        border-color: #6fba8f;
+        background-color: #78c599;
+        opacity: 0.8; }
+      .skin-green .prompt.active.alert-danger {
+        border-color: #f06a69;
+        background-color: #fd6c4c;
+        opacity: 0.8; }
+      .skin-green .prompt.active.alert-warning {
+        border-color: #f6a43a;
+        background-color: #ff901a;
+        opacity: 0.8; }
+      .skin-green .prompt.active .icons {
+        width: 16px;
+        height: 16px;
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle; }
+        .skin-green .prompt.active .icons.icon-info {
+          background: transparent url("./images/icon-info.png") no-repeat; }
+        .skin-green .prompt.active .icons.icon-success {
+          background: transparent url("./images/icon-success.png") no-repeat; }
+        .skin-green .prompt.active .icons.icon-danger {
+          background: transparent url("./images/icon-danger.png") no-repeat; }
+        .skin-green .prompt.active .icons.icon-error {
+          background: transparent url("./images/icon-error.png") no-repeat; }
+        .skin-green .prompt.active .icons.icon-warning {
+          background: transparent url("./images/icon-warning.png") no-repeat; }
+    .skin-green .prompt.prompt-center {
+      top: 50%;
+      transform: translateY(-50%);
+      bottom: auto; }
+    .skin-green .prompt.prompt-top {
+      top: 20px;
+      bottom: auto; }

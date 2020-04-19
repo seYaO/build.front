@@ -1,0 +1,66 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <!--<link rel="stylesheet" href="http://css.40017.cn/cn/v/details/2014/linefeature.css?v=4"/>-->
+    <link rel="stylesheet" href="0.1.0/index.css?v=7"/>
+    <script src="http://js.40017.cn/cn/min/??/cn/public/fish.1.4.7.js,/cn/public/fc.1.1.7.js?v=14091202"></script>
+    <script src="http://js.40017.cn/cn/v/2015/modules/core/0.1.0/sea.js"></script>
+    <script src="http://js.40017.cn/cn/v/2015/modules/linefeature/0.1.0/index.js" type="text/javascript"></script>
+</head>
+<body>
+<!--<h1>
+    参数说明
+</h1>
+<h2>
+    __host__:数据来源
+</h2>
+<ul>
+    <li>
+        daily: 172.16.31.3:17003/InterVacation/query
+    </li>
+    <li>
+        dev: 10.1.56.130:8005
+    </li>
+    <li>
+        默认: 61.155.159.91:8208/InterVacation/query
+    </li>
+</ul>-->
+<div class="characteristic">
+
+</div>
+<script>
+    fish.admin.config({lazyLoad: { v: 0.2, g: 20120918 }});
+    seajs.config({
+        "base": "http://61.155.159.109:8038/dujia/js/cn/min/??/cn/v/2015/modules/",
+        "alias": {
+            "lineFeature": "linefeature/0.1.0/index.js?v=2015040713"
+        }
+    });
+    seajs.use("lineFeature",function(Feature){
+        var mockHost = Feature.getUrlParam("__host__"),
+                templateId = Feature.getUrlParam("lineid");
+        var host = "61.155.159.91:8208/InterVacation/query";
+        if(mockHost){
+            switch(mockHost){
+                case "daily": {host = "172.16.31.3:17003/InterVacation/query";}break;
+                case "dev": {host = "10.1.56.130:8005";}break;
+            }
+        }
+        fish.ajax({
+//                url:"http://61.155.159.91:8208/InterVacation/query/GetFeatureTemplateHandler.ashx?templateId=1",  // 提交地址
+            url:"http://"+host+"/GetFeatureTemplateHandler.ashx?templateId="+templateId,  // 提交地址
+            openType:"get",   // 提交懂得格式
+            type:"jsonp",   // 返回的数据格式
+            timeout: 8000,  // 延时 如果异步时间过长 终止异步
+            fn:function(data){
+                Feature.init(data);
+            }
+        });
+    });
+</script>
+</body>
+</html>

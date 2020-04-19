@@ -1,0 +1,15 @@
+{{~it:value:index}}
+        {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"} }}
+        {{ var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x400"); }}
+   <li>
+            <a href="javascript:void(0)" {{=Activity.tmplProAttr(value)}}>
+                    <div class="picture">
+                      <img data-img="{{=sImgUrl}}" />
+                        <em>{{=LineType }}丨 {{=value.DepartCity}}出发</em></div>
+                    <div class="des_tit"><p class="tit_main">   {{=value.MainTitle}}</p>
+                        <div class="price"><b>优惠价</b> <em>¥</em> <strong>{{=value.Preferential}}</strong> <i>起</i> <span>立即预订</span></div>
+            </a>
+                </li>
+
+                <div>111111111111</div>
+        {{~}}

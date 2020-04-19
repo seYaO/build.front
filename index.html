@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>site map</title>
+    <style>
+        body,pre{font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei"}
+    </style>
+</head>
+<body>
+<h2>site map</h2>
+    {{var entries = it.entries;}}
+    <ul>
+        {{~entries:entry}}
+        <li><a target="_blank" href="{{=entry.uri}}">{{=entry.title}}</a></li>
+        {{~}}
+    </ul>
+</body>
+</html>

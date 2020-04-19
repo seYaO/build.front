@@ -1,0 +1,49 @@
+{{var enObj = {
+    "日本": "riben",
+    "东南亚": "dongnanya",
+    "海岛": "haidao",
+    "港澳台": "gangaotai",
+    "欧洲": "ouzhou",
+    "美洲": "meizhou",
+    "中东非": "zhongdongfei",
+    "澳洲": "aozhou"
+};}}
+{{?it.CategoryList && it.CategoryList.length}}
+    <div class="destTab clearfix">
+        <div class="destTab_box">
+            <div class="destSlideBox">
+                <div class="lines"></div>
+                {{~it.CategoryList:val:index}}
+                    <div class="destTab_sBox {{?index == 0}}active{{?}}">
+                        <div class="{{=enObj[val.CategoryName]}}"></div>
+                        <span>{{=val.CategoryName}}</span>
+                    </div>
+                {{~}}
+            </div>
+        </div>
+        {{~it.CategoryList:value:valIndex}}
+            {{var destList = value.DestinationInfoList;}}
+            {{?destList && destList.length}}
+                <div class="J_destCitys clearfix {{?valIndex != 0}}none{{?}}">
+                    {{~destList:dest:desIndex}}
+                        {{?desIndex < 8}}
+                            <a href='/dujia/{{=it.CityInfo ? it.CityInfo.CityName : "all"}}/all/list/{{=dest.EnglishName}}.html'>
+                                <div class="relativeCity">
+                                    <div>{{=dest.Destination}}</div>
+                                </div>
+                            </a>
+                        {{?}}
+                    {{~}}
+                    {{?destList.length <= 8}}
+                        <a href="/dujia/all/destination">
+                            <div class="relativeCity">
+                                <div>更多</div>
+                            </div>
+                        </a>
+                    {{?}}
+                </div>
+            {{?}}
+        {{~}}
+
+    </div>
+{{?}}

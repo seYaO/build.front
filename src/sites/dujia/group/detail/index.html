@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" trace="PC_dujia_detail">
+<head>
+    {{var it=IT.Data;}}
+    {{var lineDetail = it.lineDetail;}}
+    {{var travelData = lineDetail.TravelDetail ? lineDetail.TravelDetail : "";}}
+    {{var tourProp = IT.otherData ? IT.otherData.TourProp : "";}}
+
+    {{var allCommentData = {};}}
+    {{?IT.allCommentData && IT.allCommentData.Data && IT.allCommentData.Data.CommentList}}
+    {{allCommentData = IT.allCommentData.Data.CommentList||{};}}
+    {{?}}
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <title>{{=lineDetail.LineTitle.MainTitle}}_{{=lineDetail.DepartureCity}}到{{=lineDetail.DestinationCity}}跟团旅游攻略报价-同程出境游</title>
+    <meta name='keywords' content='{{=lineDetail.LineTitle.MainTitle}}' />
+    <meta name='description' content='同程出境跟团游为您提供{{=lineDetail.LineTitle.MainTitle}}，精选{{=lineDetail.DestinationCity}}跟团游旅游攻略，{{=lineDetail.DestinationCity}}跟团游旅游报价，{{=lineDetail.DepartureCity}}到{{=lineDetail.DestinationCity}}跟团游优质{{=lineDetail.DestinationCity}}旅游服务，联系电话40077-40075，{{=lineDetail.DestinationCity}}跟团游当然选同程{{=lineDetail.DestinationCity}}旅游'/>
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="//m.ly.com/dujia/tours/{{=lineDetail.TravelInfo.LineId}}.html">
+    <meta name="mobile-agent" content="format=xhtml; url=//m.ly.com/dujia/tours/{{=lineDetail.TravelInfo.LineId}}.html">
+    <meta name="mobile-agent" content="format=html5; url=//m.ly.com/dujia/tours/{{=lineDetail.TravelInfo.LineId}}.html">
+    <meta name="mobile-agent" content="format=wml; url=//m.ly.com/dujia/tours/{{=lineDetail.TravelInfo.LineId}}.html">
+    <meta name="applicable-device" content="pc">
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+    </script>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?c6a93e2a75a5b1ef9fb5d4553a2226e5";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <% includeId = cnwidescreenjscss %>
+
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015103002"></script>
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet">
+    <link href="//css.40017.cn/cn/v/2015/details2016/icons.03024.css" rel="stylesheet" />
+    <link href="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/activity/0.1.1/bonus/pc/source/index.css" rel="stylesheet" />
+    <link href="//css.40017.cn/cn/v/2015/kefu/index.08145.css" rel="stylesheet"/>
+    <style>
+        .calendar-panel1.white .next-month, .calendar-panel1.white .previous-month{
+            background-image:url(//js.40017.cn/cn/public/module/Calendar/0.3/calendar_arrow_white.png?v=2) !important;
+        }
+        .content-nav{
+            z-index:99;
+        }
+        .wrapper .notice-item .togglemore.unfold:after{
+            border-bottom: 4px solid #000;
+            border-top:none;
+        }
+        #module-slider .module-slider-header{
+            display:none;
+        }
+    </style>
+</head>
+<body  data-test="0">
+{{?lineDetail.TravelInfo && lineDetail.TravelInfo.LineId}}
+<input type="hidden" id="hidLineId" value="{{=lineDetail.TravelInfo.LineId}}"/>
+{{?}}
+<input type="hidden" id="pagetype" value="1" />
+<input type="hidden" id="prop" value="1"/>
+<input type="hidden" id="LineProperty" value="{{=lineDetail.TravelInfo.LineProperty.split("|")[0]}}"/>
+
+<input type="hidden" id="hidLineDate" value=""/>
+{{?lineDetail.SerialId}}
+<input type="hidden" id="hidSerialId" value="{{=lineDetail.SerialId}}"/>
+{{?}}
+{{?lineDetail.PlayDays}}
+<input type="hidden" id="hidPlayDays" value="{{=lineDetail.PlayDays}}"/>
+{{?}}
+{{?lineDetail.SelfSupport && lineDetail.SelfSupport== 6}}
+<input type="hidden" id="isTheme" value="1"/>
+{{?}}
+<input type="hidden" id="hidDestinationCity" value="{{=lineDetail.DestinationCity}}"/>
+<input type="hidden" id="hidDepartureCity" value="{{=lineDetail.DepartureCity}}"/>
+<input type="hidden" id="hidDepartureCityId" value="{{=lineDetail.DepartureCityId}}"/>
+<input type="hidden" id="hidIsExtraordinary" value="{{=lineDetail.IsExtraordinary}}"/>
+<input type="hidden" id="hidActivityType" value="{{=lineDetail.ActProConfig.ActivityType}}"/>
+<input type="hidden" id="hidLocatedStartCityId" value="{{=lineDetail.LocatedStartCityId}}"/>
+<input type="hidden" name='TravelDates' id="formVisaTravelDates" value=""/>
+{{?it.SbuItems}}
+<input type="hidden" id="hidsbuItems" value='{{=(it.SbuItems != "")?it.SbuItems.SbuItems:""}}'/>
+{{??}}
+<input type="hidden" id="hidsbuItems" value=''/>
+{{?}}
+
+{{?IT.otherData && IT.otherData.CityInfo}}
+<input type="hidden" id="hidcityInfo" value="{{=IT.otherData.CityInfo.cityId}}"/>
+{{??}}
+<input type="hidden" id="hidcityInfo" value=""/>
+{{?}}
+
+<!--点评-->
+{{?allCommentData.Count&&allCommentData.Count[0].All!=0}}
+<input type="hidden" id="hidCommetCount" value="{{=allCommentData.Count[0].All}}"/>
+{{?}}
+<!-- 公共统计用 -->
+<input type="hidden" id="commonProId" value="{{=lineDetail.TravelInfo.LineId}}" />
+
+<!-- 公共头部 start -->
+    <% includeId = cnwidescreenhead?channel=dujia %>
+<!-- 公共头部 end -->
+<div class="wrapper">
+    <div id="content">
+        <input type="hidden" id="test" value="{{=lineDetail.LocatedStartCityId}}" />
+        <input type="hidden" id="hidTitle"  value="{{=lineDetail.LineTitle.MainTitle}}"  />
+        <input type="hidden" id="hidRequireUrl" value="/dujia/AjaxHelper/OrderRequireHandler.ashx?action=ADDORDERREQUIRE&lineId=272001&fee=1870&departureCity=上海&destinationCity=东京,大阪,名古屋,京都" />
+        <input type="hidden" id="hidTransportCalendarUrl" value="/dujia/AjaxcallTravel.aspx?Type=GetLinePiceForCombinedTransport&lineid=272001&date=2016-08-28">
+        <input type="hidden" id="ExtendLineTypeid"  value="{{=lineDetail.TravelInfo.LineId}}"  />
+        <input type="hidden" id="hidIVRLRSourceFrom"  value="{{=lineDetail.IVRLRSourceFrom}}"/>
+        <div class='theme-top'>
+            <!-- 面包屑  -->
+            <div class="nav" trace="group-bread">
+                <span>您所在位置：</span>
+                <a href="/" title="同程首页" target="_blank" trace="0">同程首页</a>
+                <span>&gt;</span>
+                <a href="/dujia/" title="出境游" target="_blank" trace="1">出境游</a>
+                {{var breadInfo = lineDetail.BreadInfo;}}
+                {{?breadInfo}}
+                {{?breadInfo.BreadLv3LvyouName}}
+                <span>&gt;</span><a href="{{=breadInfo.BreadLv3LvyouUrl}}" title="{{=breadInfo.BreadLv3LvyouName}}" target="_blank">{{=breadInfo.BreadLv3LvyouName}}</a>
+                {{?}}
+                {{?breadInfo.BreadLv3PropName}}
+                <span>&gt;</span><a href="{{=breadInfo.BreadLv3PropUrl}}" title="{{=breadInfo.BreadLv3PropName}}" target="_blank">{{=breadInfo.BreadLv3PropName}}</a>
+                {{?}}
+                <span>&gt;</span><h1>{{=breadInfo.LineMainTitle}}</h1>
+                {{?}}
+                <input type="hidden" id="hidIVRLRSourceFrom"  value="0"/>
+                <span class="instruction">{{=lineDetail.Supplier}}</span>
+            </div>
+            <!-- 面包屑 end -->
+            <div class="panel-top clearfix">
+                <div class="top-title">
+                    {{?lineDetail.LineTitle.SeasonalTitle !== ''}}
+                    <span class="top-title-season">【{{=lineDetail.LineTitle.SeasonalTitle}}】</span>
+                    {{?}}
+                    {{?lineDetail.LineTitle.MainTitle !== ''}}
+                    <span class="top-title-maintitle">&lt;{{=lineDetail.LineTitle.MainTitle}}&gt;</span>
+                    {{?}}
+                    {{?lineDetail.LineTitle.SubTitle !== ''}}
+                    <span class="top-title-subtitle">{{=lineDetail.LineTitle.SubTitle}}</span>
+                    {{?}}
+                    {{
+                       var service = lineDetail.ServiceFeature;
+                    }}
+                    {{=lineDetail.ProductTagInfo}}
+                    {{?service&&service.length!=0}}
+                        {{for(var i=0; i<service.length; i++){ }}
+                            {{?service[i].indexOf('旅博会专享')!=-1}}
+                                <span class="top-title-lbhicon"></span>
+                            {{?}}
+                        {{ } }}
+                     {{?}}
+                </div>
+                <div class="top-left clearfix">
+                    <div class="top-left-focus-pic mSlide">
+                        {{var PcSlidePicture = lineDetail.PcSlidePicture;}}
+                        <div class="main-pic">
+                            <img class="J_mainPic" data-img="{{=PcSlidePicture[0].replace('http:', '')}}" alt="{{=lineDetail.LineTitle.MainTitle}}"/>
+                        </div>
+                        <div class="carousel-wrap J_carouselWrap">
+                            <div class="left"></div>
+                            <div class="carousel">
+                                <ul>
+                                    {{for(var i = 0;i<4;i++){}}
+                                    {{?PcSlidePicture[i]}}
+                                    <li>
+                                        <img data-img="{{=PcSlidePicture[i].replace('http:', '')}}" hover-img="{{=PcSlidePicture[i].replace('http:', '')}}" width="101" height="74" alt=""/>
+                                    </li>
+                                    {{?}}
+                                    {{ } }}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top-left-midInfo">
+                        <span class="top-left-store J_Store"><i class="ziyou-icons-store"></i>收藏&nbsp;</span>
+                        <span class="top-left-share J_Share"><i class="ziyou icons-share"></i>分享</span>
+                        <span class="top-left-advance-day"><s>*</s><em>提前预订时间：</em>建议您至少提前{{=lineDetail.AdvanceDay?lineDetail.AdvanceDay:7}}天预订&nbsp;</span>
+                    </div>
+                    <div class="mCal">
+                    </div>
+                </div>
+                <div class="top-right">
+                    <div class="top-right-summary">
+                        <div class="line-info">
+                            <ul class="line-pro clearfix">
+                                {{?lineDetail.TravelInfo}}
+
+                                {{?lineDetail.TravelInfo.LineProperty !== ''}}
+                                {{var lineProperty = lineDetail.TravelInfo.LineProperty;}}
+                                {{
+                                var lineType = '';
+                                if(lineProperty.split('|')[0] == 1){
+                                lineType = '跟团游';
+                                }else if(lineProperty.split('|')[0] == 3){
+                                lineType = '自由行';
+                                }else{
+                                lineType = '目的地参团';
+                                }
+                                }}
+                                <li class="first">
+                                    <div class="txt"><span class="title">出游类型：</span><span>{{=lineType}}</span></div>
+                                </li>
+                                {{?}}
+
+                                {{?lineDetail.TravelInfo.LeavePortCity !== ''}}
+                                <li>
+                                    <div class="txt"><span class="title">出港城市：</span><span class="startCity">{{=lineDetail.TravelInfo.LeavePortCity}}</span></div>
+                                </li>
+                                {{?}}
+
+                                {{?lineDetail.TravelInfo.LineId !== ''}}
+                                <li>
+                                    <div class="txt"><span class="title">产品编号：</span><span>{{=lineDetail.TravelInfo.LineId}}</span></div>
+                                </li>
+                                {{?}}
+
+                                {{?}}
+                            </ul>
+                        </div>
+                        <div class="declare-box">
+                            {{?lineDetail.WhiteBarLineInfo.WhiteBarType === 2}}
+                            <div class="space none" style="height: 14px;"></div>
+                            {{??}}
+                            <div class="space" style="height: 14px;"></div>
+                            {{?}}
+                            <div trackkit="bottom_price">
+                                <span class="declare-price price"><b>￥</b><strong>{{=lineDetail.TcPrice}}</strong>/人起</span>
+                                <span class="inform">(降价通知)</span>
+                                <span class="declare-ico J_instruction J_Tips" tracktype="hover" trackspot="0" 
+                                    data-content="本起价是可选出发日期中，按双人出行共住一间房核算的最低单人价格。产品价格会根据您所选择的出发日期、出行人数、入住酒店房型、航班或交通以及所选附加服务的不同而有所差别。" style="cursor:pointer;">起价说明</span>
+                                {{?lineDetail.MoneyType == 2 && lineDetail.ActProConfig.ClueBonus !=0}}
+                                <span class="dingjin">定金：<b><em>￥</em>{{=lineDetail.ActProConfig.ClueBonus}}</b></span>
+                                {{?}}
+                            </div>
+                            <div class="J_bystages clearfix">
+
+                            </div>
+                            {{?lineDetail.WhiteBarLineInfo}}
+                            {{?lineDetail.WhiteBarLineInfo.WhiteBarType === 2}}
+                            <div class="J_TcBystages clearfix" style="display: block">
+                            <span class="TCBT-box">
+                                <span class="BT-txt"></span>
+                                <span class="BT-des">{{=lineDetail.WhiteBarLineInfo.WhiteBarTip}}</span>
+                                <span class="BT-explain">
+                                    <a href="http://jr.ly.com/static/intro" target="_blank"
+                                       trace="bt-explain">白条说明</a>
+                                </span>
+                            </span>
+                            </div>
+                            {{?}}
+                            {{?}}
+                            {{?lineDetail.ProductTag && lineDetail.ProductTag.length != 0}}
+                            {{for(var i = 0;i< lineDetail.ProductTag.length;i++){ }}
+                            {{?lineDetail.ProductTag[i].TagType && lineDetail.ProductTag[i].TagType == 7}}
+                            <a class="chengpin" href="#ChengYiShuoMing">
+                                <img src="//pic3.40017.cn/line/admin/2015/10/27/18/QJuIpe.png" alt="同程专线">
+                            </a>
+                            {{?}}
+                            {{ } }}
+                            {{?}}
+                        </div>
+
+                        <div class="declare clearfix J_YouHuiTop" trackkit="discount">
+                        </div>
+
+                        {{?lineDetail.ServiceFeature || lineDetail.LineFeature}}
+                        {{
+                        var service = lineDetail.ServiceFeature;
+                        var line = lineDetail.LineFeature;
+                        }}
+                        {{?service.length!=0 || line.length!=0}}
+                        <div class="declare">
+                            <span class="f-left">服务特色：</span>
+
+                            {{?service.length!=0}}
+                            {{  var serviceLen = service.length;
+                            if(serviceLen>2){
+                            serviceLen = 2;
+                            }
+                            }}
+                            {{for(var i=0;i<serviceLen;i++){ }}
+                            <div class="preferential"><span class="tag"><i class="service"></i>{{=service[i]}}</span></div>
+                            {{ } }}
+                            {{?}}
+
+                            {{?line.length!=0}}
+                            {{  var lineLen = line.length;
+                            if(lineLen>3){
+                            lineLen = 3;
+                            }
+                            }}
+                            {{for(var i=0;i<lineLen;i++){ }}
+                            <div class="preferential"><span class="tag"><i class="line"></i>{{=line[i]}}</span></div>
+                            {{ } }}
+                            {{?}}
+
+                        </div>
+                        {{??}}
+                        <br>
+                        {{?}}
+                        {{?}}
+                        <div class="reserDiv spm-deliver" trackkit="reserve">
+                            <a class="reserveBtn J_OrderBtn J_OrderBtn1 none {{?tourProp&&tourProp.IsDataFlag<=0}}endTime{{?}}" href="javascript:void(0)" trackspot="top" title="{{?tourProp&&tourProp.IsDataFlag<=0}}已售完{{??}}立即预订{{?}}" rel="nofollow" trace="free-orderBtn" data-spmed="true">{{?tourProp&&tourProp.IsDataFlag <= 0}}已售完{{??}}立即预订{{?}}</a>
+                            <span class="countdown J_CountDown "></span>
+                        <!--<span class="tel">
+                            <i class="ziyou icons-phone"></i>
+                            {{?lineDetail.Telephone}}
+                            <span class="J_Tel">{{=lineDetail.Telephone}}</span>
+                            {{?}}
+                        </span>-->
+                        </div>
+                    </div>
+
+                    <div class="top-right-intro">
+                        <h3>
+                            <i class="ziyou-right-arrow"></i>
+                            <span>行程推荐</span>
+                        </h3>
+                        <div class="lo-travel" trackkit="recommendtrip">
+                            <p id="J_routeSummary">
+                                {{?lineDetail.DetailScenery && lineDetail.DetailScenery.length!=0}}
+                                {{~lineDetail.DetailScenery:DetailScenery}}
+                                <strong>D{{=DetailScenery.Day}}</strong>
+                                <i class="icons-arrow"></i>
+                                {{?DetailScenery.SceneryList && DetailScenery.SceneryList.length!=0}}
+                                {{ var SceneryList = DetailScenery.SceneryList;
+                                for(var i=0;i<SceneryList.length;i++){ }}
+                                <span title="{{=SceneryList[i]}}">{{=SceneryList[i]}}</span>
+                                <!-- 控制最后一个箭头start-->
+                                <i class="icons-arrow"></i>
+                                {{ } }}
+                                {{?}}
+                                {{~}}
+                                {{?}}
+                            </p>
+                            <a href="#routeInfo" class="btn-travel J-btnTravel" trackspot="0">查看详情</a>
+                        </div>
+                        <h3>
+                            <i class="ziyou-right-arrow"></i>
+                            <span>产品经理推荐</span>
+                        </h3>
+                        <div class="lo-recommend clearfix">
+                            <div class="leftHd">
+                                <div class="img icons-managerhd">
+                                    {{?lineDetail.RecommendationInfo.ImgUrl !== '' && lineDetail.RecommendationInfo.ImgUrl!=null}}
+                                    <img data-img="{{=lineDetail.RecommendationInfo.ImgUrl.replace('http:','')}}">
+                                    {{?}}
+                                </div>
+                                <div class="name">{{=lineDetail.RecommendationInfo.Name?lineDetail.RecommendationInfo.Name:""}}</div>
+                            </div>
+                            <div class="rightcontent">
+                                {{?lineDetail.RecommendationInfo && lineDetail.RecommendationInfo.RecommendationContent !=""}}
+                                {{=lineDetail.RecommendationInfo.RecommendationContent}}
+                                {{??}}
+                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;暂无产品推荐</p>
+                                {{?}}
+                            </div>
+                        </div>
+                        <h3>
+                            <i class="ziyou-right-arrow"></i>
+                            <span>用户点评</span>
+                        </h3>
+                        <div class="lo-comment clearfix" trackkit="comment1">
+                            <div class="leftHd">
+                                <div class="img icons-managerhd">
+                                </div>
+                            </div>
+                            <!--顶部点评同步-->
+                            <div class="rightcontent J_TopComment">
+                            <!--点评开始 -->
+                            {{?allCommentData && allCommentData.List && allCommentData.Count && allCommentData.List.length>0}}
+                                {{
+                                    var feedBack = allCommentData.List[0].Comment||"";
+                                    if(feedBack.length>110){
+                                        feedBack = feedBack.substr(0, 110) + "...";
+                                    }
+                                }}
+                                <p>来自{{=allCommentData.Count[0].All}}条用户点评  <span>{{=allCommentData.Count[0].Satisfaction}}%</span>满意度</p><p class="top-comment" title="{{=allCommentData.List[0].Comment}}">{{=feedBack}}</p>
+                                <div class="paging">
+                                    <span class="J-prev disable" trackspot="上一条">上一条</span><span class="J-next {{?allCommentData.List&&allCommentData.List.length==1}}disable{{?}}" trackspot="下一条">下一条</span><a href="#CommentContent" class="J_BtnComment" trackspot="查看所有点评">查看所有点评</a>
+                                </div>
+                            {{??}}
+                            <p class="no-remark">同程旅游，快乐每一程，快来发表点评，与万千驴友分享您的精彩之旅吧！</p>
+                            {{?}}
+                            </div>
+                        </div>
+                        <h3 class="customize-schedule" trackkit="TeamCustomization">
+                            <i class="ziyou-right-arrow"></i>
+                            <em class="icon-schedule"></em><span>定制旅行</span><a class="customize-href" trackspot="0" target="_blank" href="/dujia/schedule.html">独立成团 我的行程我做主 &gt;&gt;</a>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form id="J_Form" name="booking" method="post" action="/dujia/book">
+            <div class="panel-middle clearfix">
+                <div class="package-module">
+                    <div class="resource-price-contain ">
+                        <ul class="clearfix">
+                            <li>
+                                <label>出发日期：</label>
+                                <div class="date-picker">
+                                    <input id='J_startTime' class="date-picker-input" readonly="readonly" placeholder="请选择时间" autocomplete="off">
+                                    <div class="mCal2 none"></div>
+                                </div>
+                            </li>
+                            <li class="J_travelTypeTip travelTypeTip">
+                                <i>*</i>
+                                <span>本团期对应A行程</span>
+                            </li>
+                            <li>
+                                <label class="picker-type">成人：</label>
+                                <div class="peopleNum-picker">
+                                    <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-leftBtn J_picker-leftBtn"></a>
+                                    <input class="peopleNum-picker-input J_picker-input J_picker-adult" readonly="readonly" value="2" min='1' max='10' maxlength="2" autocomplete="off">
+                                    <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-rightBtn J_picker-rightBtn"></a>
+                                </div>
+                                <p class="unitPrice J_aldutPrice"></p>
+                            </li>
+                            <li class='J_isChild'>
+                                <div class='isChild'>
+                                    <label class="picker-type">儿童：</label>
+                                    <div class="peopleNum-picker">
+                                        <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-disPicker-leftBtn J_picker-leftBtn"></a>
+                                        <input class="peopleNum-picker-input J_picker-input J_picker-child" readonly="readonly" value="0" min='0' max='10' maxlength="2" autocomplete="off">
+                                        <a href="javascript:void(0)" class="peopleNum-picker-btn peopleNum-picker-rightBtn J_picker-rightBtn"></a>
+                                    </div>
+                                    <p class="unitPrice J_childPrice"></p>
+                                    <div class="childTips">
+                                        <span class="child-tips J_child-tips">?</span>
+                                        <div class="pop-childTips">
+                                            <p>此为儿童不占床价格，儿童价费用标准请见费用包含说明，儿童必须在成人陪同下出游 </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class='noChild none'>不接受儿童预订</p>
+                            </li>
+                            <li class="price-contain" trackkit="reserve">
+                                <span class='J_sumPrice none'>
+                                    <label>总价：</label>
+                                    <p class="total-price">￥<b class="J_total-price"></b></p>
+                                    <span class="price-tips J_price-tips"></span>
+                                </span>
+                                <a href="javascript:void(0)" class="price-submit J_price-submit {{?tourProp && tourProp.IsDataFlag <= 0}}endTime{{?}}" trackspot="bottom" trace="group-price-submit" trace-loaded="true">{{?tourProp && tourProp.IsDataFlag <= 0}}已售完{{??}}立即预订&gt;&gt;{{?}}</a>
+                                <div class="ui-popover-contain">
+                                    <div class="ui-popover clearfix">
+                                        <div class="ui-popover-title">
+                                            <p class="label-common-color label-common-size">费用说明</p>
+                                        </div>
+                                        <ul class="clearfix J_popDetails">
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="J_numsTip">
+                                <p>当前出发日期余位已满，无法添加更多人数</p>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class='loading-box' style="width:500px;margin:0 auto">
+
+                    </div>
+                    <div class="resource-info-contain none">
+                        <div class="info-module J_flight-travelInfo">
+
+                        </div>
+                        <div class="info-module" id="hotelInfo">
+                            <div class="hotel-module clearfix ">
+
+                            </div>
+                        </div>
+                        <div class="info-module J_sbusource">
+
+                        </div>
+                        <div class="info-module">
+                            <div class="cost-module clearfix">
+                                <div class="module-name">
+                                    <div class="icon-contain">
+                                        <span></span>
+                                    </div>
+                                    <p class="module-title">费用包含</p>
+                                </div>
+                                <div class="cost-contains J_feeDes-box">
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="info-module">
+                            <div class="selfCost-module clearfix">
+                                <div class="module-name">
+                                    <div class="icon-contain">
+                                        <span></span>
+                                    </div>
+                                    <p class="module-title">自理费用</p>
+                                </div>
+                                <div class="cost-contains J_feeItem-box">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="hidden" name='Lineid' id="formLineId" value=""/>
+            <input type="hidden" name='CityId' id="formDepartureCityId" value=""/>
+            <input type="hidden" name='DepTime'  id="formLineDate" value=""/>
+            <input type="hidden" name='Ak' id="formAk" value=""/>
+            <input type="hidden" name='routeDay'  id="hidRouteDays" value=""/>
+            <input type="hidden" name='Dkey' id="formDk" value=""/>
+            <input type="hidden" name='SbuProductPara' id="formSbuProduct" value=""/>
+            <input type="hidden" name='Url' id="formUrl" value=""/>
+        </form>
+        <div class="panel-main">
+            <div id="conlist" class="main_conlist clearfix" trackkit="reserve">
+                <div class="content-nav-inner"></div>
+                <a class="reserveBtn J_OrderBtn spm-deliver {{?tourProp && tourProp.IsDataFlag <= 0}}endTime{{?}}" href="javascript:void(0)" trackspot="middle" title="{{?tourProp && tourProp.IsDataFlag <= 0}}已售完{{??}}立即预订{{?}}" rel="nofollow" trace="free-reserve-btn">{{?tourProp && tourProp.IsDataFlag <= 0}}已售完{{??}}立即预订&gt;&gt;{{?}}</a>
+                <!--<span class="tab-tel"><i class="ziyou-icons-phone"></i><span class="J_Tel">4007-997-915</span></span>-->
+            </div>
+            <div id="conlist1">
+            </div>
+            <div class="main_content">
+                {{?lineDetail.ProductTag && lineDetail.ProductTag.length != 0}}
+                {{for(var i = 0;i< lineDetail.ProductTag.length;i++){ }}
+                {{?lineDetail.ProductTag[i].TagType && lineDetail.ProductTag[i].TagType == 7}}
+                <div id="ChengYiShuoMing" data-txt="同程专线" class="ChengYiShuoMing-Box" style="display:block;">
+                    <img src="//pic4.40017.cn/line/admin/2016/11/22/12/8wtk9W.jpg" alt="同程专线" />
+                </div>
+                {{?}}
+                {{ } }}
+                {{?}}
+                <div class="main_pm-content clearfix">
+                    <div id="youhuiInfo" data-txt="优惠信息" class="nav_box J_NavBox">
+                        <div class="nav-tit youhui-tit"><span><i class="icons-youhui"></i><h2>优惠信息</h2></span></div>
+                        <div class="list-box youhui-content"></div>
+                    </div>
+                    <!--同程领队start-->
+                    {{?lineDetail.Leaders && lineDetail.Leaders.length != 0}}
+                    <div id="goldLeader" data-txt="同程领队" class="nav_box J_NavBox">
+                        <div class="nav-tit">
+                            <span><i class="icons-gl"></i><h2>同程领队</h2></span>
+                        </div>
+                        <div class="list-box">
+                            <div class="gl-items">
+                                {{~lineDetail.Leaders:leader}}
+                                <a href="/dujia/leader/{{=leader.Id}}" target="_blank">
+                                    <div class="gl-item clearfix">
+                                        <img src="{{=leader.PersonPhotoUrl.replace('http:','')}}">
+                                        <ul class="gl-itemInfo">
+                                            <li>{{=leader.Name}}<i class="icon-{{?leader.Sex==2}}nv{{??}}men{{?}}"></i></li>
+                                            <li>领队等级：资深领队</li>
+                                            <li>领队经验：{{=leader.ServiceYear}}年</li>
+                                            <li>个性签名：<span title="{{=leader.PersonNote}}">{{=leader.PersonNote}}</span></li>
+                                        </ul>
+                                    </div>
+                                </a>
+                                {{~}}
+                            </div>
+                        </div>
+                    </div>
+                    {{?}}
+                    <!--同程领队 end-->
+                    <!--行程介绍start-->
+                    <div id="routeInfo" data-txt="行程介绍" data-ref="#J_travelDetail" class="nav_box J_NavBox">
+                        <div class="nav-tit">
+                            <span><i class="icons-route"></i><h2>行程介绍</h2></span>
+                        </div>
+                        <div class="list-box">
+                            {{?lineDetail.FeatureTemplateDetail && lineDetail.FeatureTemplateDetail.TemplateId != 0}}
+                            <div class="featureContent">
+                                <div class="moduleInfo-name">
+                                    <i class="ziyou-right-arrow"></i>
+                                    <span>产品特色</span>
+                                </div>
+                                <div class="feature-content J_FeatureContent"></div>
+                                <script type="text/javascript">
+                                    var XFam = XFam||{};
+                                    XFam.config={
+                                        feature:{{=JSON.stringify(lineDetail.FeatureTemplateDetail)}}
+                                    }
+                                </script><!--ignore-->
+                            </div>
+                            {{??}}
+                            {{?lineDetail.Characteristic}}
+                            <div class="featureContent">
+                                <div class="moduleInfo-name">
+                                    <i class="ziyou-right-arrow"></i>
+                                    <span>产品特色</span>
+                                </div>
+                                <div class="list-box feature-content J_FeatureContent">{{=lineDetail.Characteristic}}</div>
+                            </div>
+                            {{?}}
+                            {{?}}
+                            <div class="travelDetail">
+                                <div class="moduleInfo-name">
+                                    <i class="ziyou-right-arrow"></i>
+                                    <span>参考行程</span>
+                                    {{?lineDetail.RouteVersionInfo && lineDetail.RouteVersionInfo.length>1}}
+                                    <em>*本线路属于多版本行程，团期不同行程会有不同，请注意选择！</em>
+                                    {{?}}
+                                </div>
+                                <div class="route-content">
+                                    {{?lineDetail.RouteVersionInfo && lineDetail.RouteVersionInfo.length>0}}
+                                    <div class="travel-sort J_travelSort clearfix {{?lineDetail.RouteVersionInfo.length==1}}none{{?}}">
+                                        <ul>
+                                            {{~lineDetail.RouteVersionInfo:version:index}}
+                                            <li {{?index==0}}class="cur"{{?}} data-version="{{=version.EditionId}}" attr-price="{{=version.VersionMinPrice}}" onclick="_tcTraObj._tcTrackEvent('zy_ABxc', 'scj_xc1', 'AB 行程前 5', '');">
+                                                {{=version.EditionName}}行程
+                                                <i>{{=version.EditionDes||""}}</i>
+                                            </li>
+                                            {{~}}
+                                        </ul>
+                                        <a class="ab-travel" id="tourlistAb" href="javascript:;" onclick="_tcTraObj._tcTrackEvent('zy_ABxc', 'scj_xcdb', 'AB行程对比', '');">行程对比</a>
+                                    </div>
+                                    {{?}}
+                                    <div class="travel-detail-wrap" id="J_travelDetail">
+                                        {{?travelData}}
+                                            {{#def.groupRouteInfo}}
+                                        {{?}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--行程介绍end-->
+                    <!--费用说明 start-->
+                    <div id="feeInfo" data-txt="费用包含" class="nav_box J_NavBox">
+                        <div class="nav-tit"><span><i class="icons-fee"></i><h2>费用包含</h2></span></div>
+                        <div class="list-box fee-content clearfix">
+                            {{var newSupply = lineDetail.NewSupplierInfoData,
+                                  resourceFrom = lineDetail.IVRLRSourceFrom;}}
+                            {{?resourceFrom && resourceFrom != 0 && newSupply}}
+                                <div class="fee-item J_supply">
+                                    {{?lineDetail.Supplier}}<p>*{{=lineDetail.Supplier}}</p>{{?}}
+                                    <p>{{?newSupply.LinkMan}}<span class="fee-link">联系人：{{=newSupply.LinkMan}}</span>{{?}}{{?newSupply.LinkMobile}}<span class="fee-mobile">联系电话：{{=newSupply.LinkMobile}}</span>{{?}}</p>
+                                </div>
+                            {{?}}
+                            {{?lineDetail.FeeDes}}
+                            <div class="moduleInfo-name">
+                                <i class="ziyou-right-arrow"></i>
+                                <span>费用包含</span>
+                            </div>
+                            <div class="fee-item J_feeDes">
+                                {{=lineDetail.FeeDes}}
+                            </div>
+                            {{?}}
+                            {{?lineDetail.FeeItem}}
+                            <div class="moduleInfo-name">
+                                <i class="ziyou-right-arrow"></i>
+                                <span>费用不包含</span>
+                            </div>
+                            <div class="fee-item J_feeItem">
+                                {{=lineDetail.FeeItem}}
+                            </div>
+                            {{?}}
+                            {{?lineDetail.CancelRule}}
+                            <div class="moduleInfo-name">
+                                <i class="ziyou-right-arrow"></i>
+                                <span>退规说明</span>
+                            </div>
+                            <div class="fee-item">
+                                {{=lineDetail.CancelRule}}
+                            </div>
+                            {{?}}
+                        </div>
+                    </div>
+                    <!--费用说明 end-->
+                    <!--签证信息 start-->
+                    <div id="visaInfo" data-txt="签证信息" data-ref=".visa-details" class="nav_box J_NavBox">
+                        <div class="nav-tit"><span><i class="icons-visa"></i><h2>签证信息</h2></span></div>
+                    </div>
+                    <!--签证信息 end-->
+                    <!-- 预定须知start-->
+                    <div id="noticeInfo" data-txt="预订须知" data-ref=".J_shoplists" class="nav_box J_NavBox clearfix" style="margin:0 auto;">
+                        <div class="nav-tit"><span><i class="icons-notice"></i><h2>预订须知</h2></span></div>
+                        <div class="list-box notice-content pading-bottom-none">
+                            <div class="moduleInfo-name">
+                                <i class="ziyou-right-arrow"></i>
+                                <span>签约方式</span>
+                            </div>
+                            <div class="notice-item clearfix">
+                                <div class="sign">
+                                    <div class="tag1"></div>
+                                    <div class="line"></div>
+                                    <span>在线签约</span>
+                                    <p>通过在线签约页面进行签约，付款成功后，将通过电子邮件接收电子版合同，与门市签约及传真签约同等有效。</p>
+                                    <i class="icons-lift"></i>
+                                </div>
+                                <div class="sign">
+                                    <div class="tag2"></div>
+                                    <div class="line"></div>
+                                    <span>快递签约</span>
+                                    <p>我们会将盖章的合同快递给您，请在收到合同后及时签字并回寄给我们。如涉及签证材料需要快递，请在快件中注明订单号，以便工作人员及时处理。</p>
+                                    <i class="icons-lift"></i>
+                                </div>
+                                <div class="sign last">
+                                    <div class="tag3"></div>
+                                    <div class="line"></div>
+                                    <span>门店签约</span>
+                                    <p>前往同程设在各城市的门店进行线下签约付款。</p>
+                                    <i class="icons-lift"></i>
+                                </div>
+                            </div>
+                            <div class="moduleInfo-name">
+                                <i class="ziyou-right-arrow"></i>
+                                <span>门店信息</span>
+                            </div>
+                            <div class="notice-item clearfix">
+                                <div class="J_shoplists"></div>
+                                <div class="shops-select J_shopproandcity">
+                                </div>
+                                <div class="shop-list J_shop-list clearfix">
+                                </div>
+                            </div>
+                            <div class="moduleInfo-name">
+                                <i class="ziyou-right-arrow"></i>
+                                <span>付款方式</span>
+                            </div>
+                            <div class="notice-item clearfix">
+                                <ul class="pay">
+                                    <li> <span class="title">【网上支付】</span>
+                                        <span class="content">A、下载同程旅游APP，支持微信支付、支付宝支付、信用卡支付、银联支付<br>
+                                        B、同程旅游网站在线支付微信扫码支付、支付宝支付、信用卡支付、网银支付、银联支付</span>
+                                    </li>
+                                    <li><span class="title">【对公汇款】</span><span class="content" >通过银行将相关款项汇至同程旅游指定对公账户</span></li>
+                                    <li><span class="title">【门市支付】</span><span class="content">为了您的支付方便和安全性，请优先选择刷卡支付，现金支付；重要提醒，台湾产品仅支持江苏同程辉煌门店支付。</span></li>
+                                </ul>
+                            </div>
+                            <div class="moduleInfo-name">
+                                <i class="ziyou-right-arrow"></i>
+                                <span>重要提醒</span>
+                            </div>
+                            <div class="notice-item clearfix">
+                                <div class="ni-content prompt">
+                                    {{=lineDetail.Notice}}
+                                </div>
+                                <i class="btn-fold packUp togglemore open none">展开全部信息</i>
+                            </div>
+                            <div class="moduleInfo-name">
+                                <i class="ziyou-right-arrow"></i>
+                                <span>安全须知</span>
+                            </div>
+                            <div class="notice-item pading-bottom-none clearfix">
+                                <div class="ni-content safety">
+                                    {{=lineDetail.securityNoticy}}
+                                </div>
+                                <i class="btn-fold packUp togglemore open none">展开全部信息</i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- 预定须知end-->
+                    <!-- 旅游贴士start-->
+                    {{?lineDetail.TravelTips && lineDetail.TravelTips.TravelTips && lineDetail.TravelTips.TravelTips.length != 0}}
+                    <div id="travelTips" data-txt="出游须知" class="nav_box J_NavBox" style="margin:0 auto;">
+                        <div class="nav-tit"><span><i class="icons-tip"></i><h2>出游须知</h2></span></div>
+                        <div class="list-box tips-content">
+                            {{#def.grouptraveltips}}
+                        </div>
+                    </div>
+                    {{?}}
+                    <!--旅游贴士end -->
+                    <!--用户点评-->
+                    <div id="CommentContent" data-txt="用户点评" data-ref="#J_SubCommentContent" class="nav_box J_NavBox data-outer-loading">
+                        <div class="nav-tit"><span><i class="icons-comment"></i><h2>用户点评</h2></span></div>
+                        <div class="list-box comment-content" id="J_SubCommentContent">
+                            {{?allCommentData && allCommentData.List && allCommentData.Count && allCommentData.List.length>0}}
+                            {{
+                                var headData = allCommentData.Count[0];
+                                headData.mainTitle = lineDetail.LineTitle.MainTitle;
+                            }}
+                            {{#def.commetBody}}
+                            {{??}}
+                            <p class="no-remark">同程旅游，快乐每一程，快来发表点评，与万千驴友分享您的精彩之旅吧！</p>
+                            {{?}}
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div id="recomendProduct" class="recomendProduct clearfix">
+                <p>看了此商品的会员还看了</p>
+                <div class="recoproduct-list J_recoproduct-list">
+                </div>
+            </div>
+        </div>
+        <div class="ui-map-dialog none">
+            <div class="ui-content clearfix">
+                <div class="ui-map-left">
+                    <div class="ui-tripInfo">
+                        <h3>行程概要</h3>
+                        <div class="ui-map-wrapper">
+                            <div class="scroller">
+                                <dl class="clearfix">
+                                </dl>
+
+                            </div>
+                            <div class="ui-dashLine"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ui-map-right">
+                    <div id="map-dialog"></div>
+                    <div class="ui-close J_ui-close"><i></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="ui-map-bg"></div>
+    </div>
+    <!-- 图样展示start -->
+    <div id="show_photo" class="none ui-dialog-content">
+        <div class="ui-tips">
+            <div id="visaImgContent">
+                <div class="mslide-panel">
+                    <h3><a href="javascript:void(0)" class="JJ_close"></a></h3>
+
+                    <div class="mp-content">
+                        <div class="photo-detail">
+                            <div class="photo">
+                                <a class="mslide-num" href="javascript:void(0)"></a>
+                            </div>
+                            <div class="detail">材料说明：
+                            </div>
+                        </div>
+                        <div class="photo-mslide"><a href="javascript:void(0)" class="prev disabled"><span
+                            class="btn-prev"></span></a>
+
+                            <div class="list">
+                                <ul>
+                                </ul>
+                            </div>
+                            <a href="javascript:void(0)" class="next"><span class="btn-next"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 图样展示end -->
+    <!--邮箱内容start-->
+    <div class="send-email" style="display:none">
+        <div class="headbox visa-dialog">
+            <h3>请选择需要发送的签证材料类型</h3>
+            <div class="J_renderType">
+            </div>
+            <div class="header">
+                <div class="head_left">
+                    <div class="input_box">
+                        <div class="mail_input_box">
+                            <span>常用的邮箱：</span>
+                            <input type="text" name="" id="" class="email_input" />
+                        </div>
+                        <div class="code_input_box">
+                            <span>图形验证码：</span>
+                            <input type="text" name="" id="" class="code_input" />
+                        </div>
+                        <div class="code_view_box">
+                            <i onclick="$('.dialog_modal_gp #imgcode').attr('src','//www.ly.com/dujia/AjaxCallTravel.aspx?type=ValidateCode&amp;r='+Math.random());" class="change_code_btn"></i>
+                            <img id="imgcode" class="code_view_con" src="//www.ly.com/dujia/AjaxCallTravel.aspx?type=ValidateCode" alt="验证码" />
+                        </div>
+                        <div class="clear_float"></div>
+                        <a href="javascript:void(0);" title="发送" class="send_submit">发送</a>
+                        <a href="javascript:void(0);" data-dialog-hide title="取消" class="send_cancel">取消</a>
+                        <span class="prompt-info"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--邮箱内容end-->
+    <!--side_nav侧边栏放到模块里 -->
+    <div class="service none">
+        <a class="service-kind" style="cursor: pointer" href="//www.ly.com/dujia/schedule.html" target="_blank" data-name="customize">
+            <img src="//img1.40017.cn/cn/v/2015/newdetails/icon_service.png">
+        </a>
+        <div class="service-kind" data-name="number">
+            <img src="//img1.40017.cn/cn/v/2015/kefu/wifi_gif.gif">
+        </div>
+        <a class="service-kind J_Kefu" target="_blank" data-name="ui-service" trace="service-kefu"><img src="//img1.40017.cn/cn/v/2015/kefu/Customer-service_gif.gif"></a>
+        <div class="service-kind" data-name="erwei"><img src="//img1.40017.cn/cn/v/2015/kefu/QRcode_gif.gif"></div>
+        <a style="visibility: visible;" class="back_top" href="javascript:;" title="返回顶部" trace="go-top"></a>
+    </div>
+    <!--日历的弹窗移动到日历组件里,不再放到页面上 -->
+    <!-- 公共页脚 开始 -->
+    <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+    <!-- 公共页脚 结束 -->
+    <div id="portal-block-512725698348" class="udiyblock"  type="CommonSource">
+        <div class="friend-url">
+            <div class="bot-link">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/modules/sea.js" data-loader="true" type="text/javascript"></script>
+<script type="text/javascript" src="/modules/common/0.1.0/index.js"></script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/activity/0.1.1/bonus/pc/source/index.js" type="text/javascript"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2015072201" charset="utf-8"></script>
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e2d30fc6f5f6fc3df46120c9c1b452c1"></script>
+<script type="text/javascript">
+    window.host ='//www.ly.com';
+</script>
+<script type="text/javascript">
+    
+    window.data = {{=JSON.stringify(lineDetail)}};
+    window.tripData = {{=JSON.stringify(travelData)}};
+    {{?lineDetail.YanXuanDetail}}
+
+        {{
+            lineDetail.YanXuanDetail.LineDate = lineDetail.LineDate || "";
+            lineDetail.YanXuanDetail.TcPrice = lineDetail.TcPrice;
+        }}
+        var page_cfg = {{=JSON.stringify(lineDetail.YanXuanDetail)}};
+
+    {{??lineDetail.VipDiscountDetail}}
+        {{
+            lineDetail.VipDiscountDetail.LineDate = lineDetail.LineDate || "";
+            lineDetail.VipDiscountDetail.TcPrice = lineDetail.TcPrice;
+        }}
+        var page_cfg = {{=JSON.stringify(lineDetail.VipDiscountDetail)}};
+
+    {{??lineDetail.BaiLvHuiDetail}}
+        {{
+            lineDetail.BaiLvHuiDetail.LineDate = lineDetail.LineDate || "";
+            lineDetail.BaiLvHuiDetail.TcPrice = lineDetail.TcPrice;
+        }}
+        var page_cfg = {{=JSON.stringify(lineDetail.BaiLvHuiDetail)}};
+
+    {{??}}
+        var page_cfg ={"IcoContent":null,"TcPrice":{{=lineDetail.TcPrice}},"PreAmount":0,"Remarks":null,"StyleId":0,"Title":null,"LineDate": {{=lineDetail.LineDate || ""}}}
+    {{?}}
+</script>
+<script src="//js.40017.cn/cn/v/2015/jqmodules/dialog/0.0.1/dialog.js"></script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/details/fish.placeholder.0295.js" type="text/javascript"></script>
+<style>
+    .w1190 .comm-kinds {
+        padding-right: 40px;
+    }
+    .c_score_bar {
+        padding-top: 0;
+        height: auto;
+    }
+    .c_score_bar .bar_data {
+        float: none;
+        width: 110px;
+        height: 10px;
+    }
+</style>
+
+<script type="text/javascript" src="//js.40017.cn/touch/v/2015/zt/2016/30680/iscroll.02294.js"></script>
+<script type="text/javascript">
+        var conf = {
+            ajaxhost: '//www.ly.com/'
+        };
+    seajs.require("./index").init(conf);
+</script>
+
+
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js"></script>
+<script>
+    SPM_MODULE&&SPM_MODULE.init({
+        deliver : [".J_price-submit",".J_OrderBtn"]
+    });
+</script>
+<% includeId = node_dj_common_stat %>
+<script type="text/javascript">
+    var _url=window.document.location.href;
+    var rtTag ={
+        "data": {
+            "etravel_view": {
+                "prod": [
+                    {
+                        "p_id": "chujing_{{=lineDetail.TravelInfo.LineId}}",
+                        "p_name": "{{=lineDetail.LineTitle.MainTitle}}",
+                        "p_class1": "出境游",
+                        "p_class2": "跟团游",
+                        "p_class3": '{{=lineDetail.DepartureCity}}',
+                        "p_stock": "1",
+                        "p_img_url": "{{=lineDetail.ImgUrl}}",
+                        "p_url": _url
+                    }
+                ]
+            }
+        }
+    };
+    var __zp_tag_params = {
+        outerid: '{{=lineDetail.TravelInfo.LineId}}',
+        price: '{{=lineDetail.TcPrice}}',
+        pagename:"detail",
+        p_zp_prodstype:"e638e078f50195e9258814bf62405f55",
+        p_zp_prods:{
+            "outerid":'{{=lineDetail.TravelInfo.LineId}}',
+            "url":_url,
+            "image":'{{=lineDetail.ImgUrl}}',
+            "name":'{{=lineDetail.LineTitle.MainTitle}}',
+            "category":"出境游",
+            "subcategory":'{{=lineDetail.DepartureCity}}',
+            "thirdcategory":'{{=lineDetail.DestinationCity}}',
+            "price":'{{=lineDetail.TcPrice}}',
+            "traveltype":"跟团游",
+        }
+    };
+    stat.init({
+        "baidu":{
+            "parameter": "pc",
+            "hmt": [
+                ['_setAccount', '53a0d71dba66835ff1aa907db99144d8'],
+                ['_trackRTEvent', rtTag]
+            ]
+        },
+        "pvConfig": {
+            "PublicPlatId": "1",
+            "PageId": "1",
+            "LineId": '{{=lineDetail.TravelInfo.LineId}}',
+            "ModuleId": common.getParamFromUrl("spm")||"",
+            "SearchPlatId": common.getParamFromUrl("searchplatid")||"",
+            "PVSource": "0",
+            "ak": common.getParamFromUrl("ak")||"",
+            "url": "/dujia/AjaxHelper/PvHandler.ashx",
+            "StartCityId":"{{=lineDetail.KCity||""}}",
+            "TagPageId": "{{=lineDetail.TagPageValueId||""}}",
+            "productTagId":"{{=lineDetail.ProductPageId||""}}"
+        },
+        "_tcHotmapx": {
+            "param": {
+                "pid": "474",
+                "sp": "100"
+            }
+        },
+        "mvl": {
+            "_mvq": [
+                ['$setAccount', 'm-135073-0'],
+                ['$setGeneral', 'goodsdetail', '', '', ''],
+                ['$logConversion'],
+                ['$addGoods','', '', '{{=lineDetail.LineTitle.MainTitle}}','{{=lineDetail.TravelInfo.LineId}}','{{=lineDetail.TcPrice}}','{{=lineDetail.ImgUrl}}','','跟团游','{{=lineDetail.DataFlag||""}}','{{=lineDetail.AdvicePrice||""}}','','','出境游','{{=lineDetail.DepartureCity}}','{{=lineDetail.DestinationCity}}'],
+                ['$logData']
+            ],
+            "isImmediateExcu": true
+        },
+        "__zpSMConfig": {
+            query: [
+                ["_setAccount","629"]
+            ],
+            args: __zp_tag_params||{}
+        }
+    });
+</script>
+<script>
+    var _hmt = _hmt || [];
+    (function() {
+        var hm = document.createElement("script");
+        hm.src = "//hm.baidu.com/hm.js?ca5679d0986b1f42f800098b798c7008";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+<script type="text/javascript">
+    var mobile = $("#mobile").val()||"",
+        criteoId = '{{=lineDetail.TravelInfo.LineId}}';
+    window.criteo_q = window.criteo_q || [];
+    window.criteo_q.push({ event: "setAccount", account: 20385 });
+    if(mobile != ""){
+        window.criteo_q.push({ event: "setHashedEmail", email: mobile });
+    }
+    window.criteo_q.push(
+        { event: "setSiteType", type: "d" },
+        { event: "viewItem", item: criteoId}
+    );
+</script>
+</body>
+</html>

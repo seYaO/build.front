@@ -1,0 +1,37 @@
+<ul class="route-item">
+    {{?travelData.sceneryIntroduction && travelData.sceneryIntroduction.length>0}}
+    <li class="" >
+        <span class="route-item-icon icon1"></span>
+        <span>景点介绍</span>
+        <i></i>
+    </li>
+    {{?}}
+    {{?travelData.fashionNowShopping && travelData.fashionNowShopping.length>0}}
+    <li data-index="1" class="">
+        <span class="route-item-icon icon2"></span>
+        <span>时尚购物</span>
+        <i></i>
+    </li>
+    {{?}}
+    {{?travelData.funFood && travelData.funFood.length>0}}
+    <li data-index="2" class="">
+        <span class="route-item-icon icon3"></span>
+        <span>美食休闲</span>
+        <i></i>
+    </li>
+    {{?}}
+    {{?travelData.transportation && travelData.transportation.length>0}}
+    <li data-index="3" class="">
+        <span class="route-item-icon icon4"></span>
+        <span>交通指南</span>
+        <i></i>
+    </li>
+    {{?}}
+    {{?travelData.EcommendedTravel && travelData.EcommendedTravel.length>0}}
+    <li data-index="4" class="route-border">
+        <span class="route-item-icon icon5"></span>
+        <span>行程推荐</span>
+        <i></i>
+    </li>
+    {{?}}
+</ul>

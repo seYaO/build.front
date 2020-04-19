@@ -1,0 +1,218 @@
+{{
+    var it = IT;
+    var dayArr = ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十'];
+}}
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <title>动态自由行行程下载页</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/2016/common.0.1.2.css?v=2015122113">
+    <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="content">
+            <div class="head clearfix">
+                <div class="logo"></div>
+                <div class="head_pic"></div>
+            </div>
+            <div class="routeMap-box clearfix">
+                <div class="lineInfoContent">
+                    {{?it.Data.Summarize || (it.Data.Images && it.Data.Images.length)}}
+                        <div class="map-day lineSummary" id="lineMapSummary" data-txt="行程概述">
+                            <h2>行程概述</h2>
+                            {{?it.Data.Summarize}}
+                                <div class="summaryCon">{{=it.Data.Summarize}}</div>
+                            {{?}}
+                        </div>
+                    {{?}}
+                    <div class="lineDayInfo-box">
+                        <div class="line-leftLine">
+                            {{?it.Data.Routes && it.Data.Routes.length}}
+                                {{~it.Data.Routes:Data:poiIndex}}
+                                    {{?poiIndex < 30}}
+                                        <div class="map-day lineInfo-box" id="mapTravelDay{{=[poiIndex]}}" data-txt="第{{=dayArr[poiIndex]}}天">
+                                            <div class="day-maintitle">
+                                                {{
+                                                    var desPlace = '';
+                                                    if(Data.Destinations && Data.Destinations.length){
+                                                        if(Data.Destinations.length == 1){
+                                                            desPlace = Data.Destinations[0];
+                                                        }else{
+                                                            for(var i=0; i<Data.Destinations.length; i++){
+                                                                desPlace += Data.Destinations[i] + '、';
+                                                            }
+                                                            desPlace = desPlace.substring(0 , desPlace.length -1);
+                                                        }
+                                                    }
+                                                    
+                                                }}
+                                                {{=desPlace}} 
+                                                <i>D{{=poiIndex + 1}}</i>
+                                            </div>
+                                            <div class="route-bg">
+                                                {{?Data.Pois && Data.Pois.length}}
+                                                    {{~Data.Pois:poiItem:poiItemIndex}}
+                                                        {{
+                                                            var poiType = '';
+                                                            if(poiItem.PoiType == 1){
+                                                                poiType = 'icon-mapSite';
+                                                            }else if(poiItem.PoiType == 2){
+                                                                poiType = 'icon-mapYule';
+                                                            }else if(poiItem.PoiType == 3){
+                                                                poiType = 'icon-mapShop';
+                                                            }else if(poiItem.PoiType == 4){
+                                                                poiType = 'icon-mapFood';
+                                                            }else if(poiItem.PoiType == 5){
+                                                                poiType = 'icon-mapTraffic';
+                                                            }else{
+                                                                poiType = 'icon-mapTower';
+                                                            }
+                                                        }}
+                                                        {{?poiItem.IsCustomRoute}}
+                                                            {{ 
+                                                                var trafficType = '';
+                                                                if(poiItem.TrafficType == 1){
+                                                                    trafficType = 'walk-way';
+                                                                }else if(poiItem.TrafficType == 2){
+                                                                    trafficType = 'bus-way';
+                                                                }else if(poiItem.TrafficType == 3){
+                                                                    trafficType = 'taxi-way';
+                                                                }else if(poiItem.TrafficType == 4){
+                                                                    trafficType = 'fly-way';
+                                                                }else if(poiItem.TrafficType == 5){
+                                                                    trafficType = 'bus-way';
+                                                                }else if(poiItem.TrafficType == 6){
+                                                                    trafficType = 'gaotie-way';
+                                                                }else if(poiItem.TrafficType == 7){
+                                                                    trafficType = 'ship-way';
+                                                                }else if(poiItem.TrafficType == 8){
+                                                                    trafficType = 'train-way';
+                                                                }else{
+                                                                    trafficType = 'walk-way';
+                                                                }
+                                                            }}
+                                                            {{?poiItem.CustomRouteType == 2}}
+                                                                <div class="poi-subtitle">
+                                                                    <div class="day-subtitle clearfix">
+                                                                        <i class="route-ways {{=trafficType}}"></i>
+                                                                        <div class="sub-content">乘坐{{=poiItem.TrafficTypeName}}前往{{=poiItem.Destination}}</div>
+                                                                    </div>
+                                                                </div>
+                                                            {{??}}
+                                                                {{?poiItem.CustomTitle || poiItem.CustomContent}}
+                                                                    <div class="mapSite line-mapCon">
+                                                                        {{?poiItem.CustomTitle && !poiItem.CustomContent}}
+                                                                            <div class="route-title">
+                                                                                {{=poiItem.CustomTitle}}
+                                                                                <i class="title-icon {{=poiType}}"></i>
+                                                                                <i class="title-arrow"></i>
+                                                                            </div>
+                                                                        {{??poiItem.CustomContent && !poiItem.CustomTitle}}
+                                                                            <div class="route-title">
+                                                                                <p class="route-detail">{{=poiItem.CustomContent}}</p>
+                                                                                <i class="title-icon {{=poiType}}"></i>
+                                                                                <i class="title-arrow"></i>
+                                                                            </div>
+                                                                        {{??poiItem.CustomTitle && poiItem.CustomContent}}
+                                                                            <div class="route-title">
+                                                                                {{=poiItem.CustomTitle}}
+                                                                                <i class="title-icon {{=poiType}}"></i>
+                                                                                <i class="title-arrow"></i>
+                                                                            </div>
+                                                                            <div class="route-detail">
+                                                                                <p class="site-detail">{{=poiItem.CustomContent}}</p>
+                                                                            </div>
+                                                                        {{?}}
+                                                                    </div>
+                                                                {{?}}
+                                                            {{?}}
+                                                        {{??}}
+                                                            {{
+                                                                var trafficType = '';
+                                                                if(poiItemIndex > 0){
+                                                                    if(Data.Pois[poiItemIndex - 1].TrafficType == 1){
+                                                                        trafficType = 'walk-way';
+                                                                    }else if(Data.Pois[poiItemIndex - 1].TrafficType == 2){
+                                                                        trafficType = 'bus-way';
+                                                                    }else if(Data.Pois[poiItemIndex - 1].TrafficType == 3){
+                                                                        trafficType = 'taxi-way';
+                                                                    }else if(Data.Pois[poiItemIndex - 1].TrafficType == 4){
+                                                                        trafficType = 'fly-way';
+                                                                    }else if(Data.Pois[poiItemIndex - 1].TrafficType == 5){
+                                                                        trafficType = 'bus-way';
+                                                                    }else if(Data.Pois[poiItemIndex - 1].TrafficType == 6){
+                                                                        trafficType = 'gaotie-way';
+                                                                    }else if(Data.Pois[poiItemIndex - 1].TrafficType == 7){
+                                                                        trafficType = 'ship-way';
+                                                                    }else if(Data.Pois[poiItemIndex - 1].TrafficType == 8){
+                                                                        trafficType = 'train-way';
+                                                                    }else{
+                                                                        trafficType = 'walk-way';
+                                                                    }
+                                                                }
+                                                            }}
+                                                            {{?poiItemIndex > 0 && Data.Pois[poiItemIndex - 1].PoiType != 0}}
+                                                                <div class="poi-subtitle">
+                                                                    <div class="day-subtitle clearfix">
+                                                                        <i class="route-ways {{=trafficType}}"></i>
+                                                                        <div class="sub-content">前往{{=poiItem.Name}}</div>
+                                                                    </div>
+                                                                </div>
+                                                            {{?}}
+                                                            <div class="mapSite line-mapCon">
+                                                                <div class="route-title">
+                                                                    {{=poiItem.Name}}
+                                                                    {{?poiItem.EngilshName}}
+                                                                        {{=poiItem.EngilshName}}
+                                                                    {{?}}
+                                                                    <i class="title-icon {{=poiType}}"></i>
+                                                                    <i class="title-arrow"></i>
+                                                                </div>
+                                                                <div class="route-detail">
+                                                                    {{?poiItem.BrightSpot}}
+                                                                        <p class="site-intro">{{=poiItem.BrightSpot.replace(/\\n/g,'<br>')}}</p>
+                                                                    {{?}}
+                                                                    <p class="site-intro">{{=poiItem.Intro.replace(/\\n/g,'<br>')}}</p>
+                                                                </div>
+                                                                {{?poiItem.ShopTime || poiItem.TicketInfo || poiItem.PlayTime || poiItem.Tips}}
+                                                                    <div class="info-tips clearfix">
+                                                                        <ul>
+                                                                            {{?poiItem.ShopTime}}
+                                                                                <li class="opentime J_map_info_tips"><i></i><p>开放时间</p></li>
+                                                                                <div class="map_info_tips_con">{{=poiItem.ShopTime.replace(/\\n/g,'<br>')}}</div>
+                                                                            {{?}}
+                                                                            {{?poiItem.TicketInfo}}
+                                                                                <li class="menpiao-info J_map_info_tips"><i></i><p>门票信息</p></li>
+                                                                                <div class="map_info_tips_con">{{=poiItem.TicketInfo.replace(/\\n/g,'<br>')}}</div>
+                                                                            {{?}}
+                                                                            {{?poiItem.PlayTime}}
+                                                                                <li class="youwantime J_map_info_tips"><i></i><p>游玩时间</p></li>
+                                                                                <div class="map_info_tips_con">{{=poiItem.PlayTime.replace(/\\n/g,'<br>')}}</div>
+                                                                            {{?}}
+                                                                            {{?poiItem.Tips}}
+                                                                                <li class="tips J_map_info_tips"><i></i><p>贴士</p></li>
+                                                                                <div class="map_info_tips_con">{{=poiItem.Tips.replace(/\\n/g,'<br>')}}</div>
+                                                                            {{?}}
+                                                                        </ul>
+                                                                    </div>
+                                                                {{?}}
+                                                            </div>
+                                                        {{?}}
+                                                    {{~}}
+                                                {{?}}
+                                            </div>
+                                        </div>
+                                    {{?}}
+                                {{~}}
+                            {{?}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

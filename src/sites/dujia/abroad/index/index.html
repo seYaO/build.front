@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <title>出境旅游_出国旅游推荐_境外旅游线路_同程旅游出境游</title>
+    <meta name="keywords" content="出境旅游,出国旅游推荐,境外旅游线路" />
+    <meta name="description" content="同程旅游（LY.COM）为您提供出境旅游攻略，境外旅游线路推荐，包括出境热门城市，精彩游记，交通出行，游玩路线，美食推荐，购物指南。让您的出境游更精彩。" />
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+
+    <% includeId = cnwidescreenjscss %>
+    <link href="//css.40017.cn/cn/v/2015/destination/main.04144.css" rel="stylesheet" />
+</head>
+<body>
+<!-- 公共头部 开始 -->
+    <% includeId = cnwidescreenhead?channel=dujia %>
+<!-- 公共头部 结束 -->
+
+<!-- 面包屑 start -->
+<div class="navigation_bars">
+    您所在位置：<a href="//www.ly.com/">同程首页</a>><a href="//www.ly.com/dujia/">出境游</a>> 玩法国家选择页
+</div>
+<!-- 面包屑 end -->
+<div class="search_gp">
+    <div class="search_title">世界新玩法</div>
+</div>
+<!-- 国家列表 start -->
+{{var it = IT.Data.Dest||{};}}
+{{var Continents = it.ContinentsList;}}
+<div class="container clearfix">
+    <div class="center">
+        <div class="country_gp">
+        {{?Continents&&Continents.length>0}}
+        {{~Continents:con}}
+        {{?con.PreCountryList.length>0}}
+             <div class="continent">
+                <div class="continent_title"><span>{{=con.ContinentsName}}</span></div>
+                <div class="item_gp">
+                {{
+                    var pre = con.PreCountryList;
+                    var tlen = pre.length;
+                    var blen = Math.ceil(tlen/3);
+                }}
+                {{?tlen>0}}
+                {{?blen>1}}
+
+                {{var pind = 3;}}
+                {{ for(var i=1; i <= 3; i++) { }}
+                <div class="item_list">
+                    {{~pre:item:index}}
+                    {{?index<(i*blen)&&index>=((i-1)*blen)}}
+                        <div class="item_title">{{=item.PreCountryName}}</div>
+                        {{~item.CountryList:Country}}
+                        <div class="item_item">
+                            <a class="cn getattr" href="/dujia/des-{{=Country.FullPinYinName}}{{=Country.CountryId}}" name="{{=Country.CountryName}}" enname="{{=Country.CountryEnglishName}}" pinyin="{{=Country.FullPinyinName}}">{{=Country.CountryName}}</a>
+                            <span class="en">{{=Country.CountryEnglishName}}</span>
+                        </div>
+                        {{~}}
+                    {{?}}
+                    {{~}}
+
+                </div>
+                {{}}}
+
+                {{??}}
+                {{~pre:item}}
+                <div class="item_list">
+                    <div class="item_title">{{=item.PreCountryName}}</div>
+                    {{~item.CountryList:Country}}
+                    <div class="item_item">
+                        <a class="cn getattr" href="/dujia/des-{{=Country.FullPinYinName}}{{=Country.CountryId}}" name="{{=Country.CountryName}}" enname="{{=Country.CountryEnglishName}}" pinyin="{{=Country.FullPinyinName}}">{{=Country.CountryName}}</a>
+                        <span class="en">{{=Country.CountryEnglishName}}</span>
+                    </div>
+                    {{~}}
+                </div>
+                {{~}}
+
+                {{?}}
+                {{?}}
+                </div>
+             </div>
+        {{?}}
+        {{~}}
+        {{?}}
+        </div>
+    </div>
+ </div>
+<!-- 国家列表 end -->
+
+<!--侧边栏begin-->
+<div class="udiy" id="ivacation-side-nav">
+
+</div>
+<!--侧边栏end-->
+
+<!-- 公共页脚 开始 -->
+<% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+<!-- 公共页脚 结束 -->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/fish.1.4.7.js,/cn/public/fc.1.1.7.js?v=2015021101"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/c/c/2016/common.0.1.2.js?v=2016030401"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js?v=2015103002"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script>
+<script src="//js.40017.cn/cn/v/2015/jqmodules/sea.js"></script>
+<script src="//js.40017.cn/cn/v/2015/destination/main.05134.js"></script>
+</body>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.3.0/statistics.js?v=16012120"></script>
+<script type="text/javascript">
+    stat.init({
+        "baidu": {
+            "parameter": "pc"
+        },
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', stat.getVrcode()],
+            ['_refId', stat.getRefid()],
+            ['_userId', stat.getMemberId()],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', '/出境/PC目的地/国家选择页/']
+        ]
+    });
+</script>
+</html>

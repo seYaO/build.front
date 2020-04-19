@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413" />
+    <link rel="stylesheet" href="index.css">
+    <style>
+        body{
+            padding-top: 200px;
+            padding-left: 200px;
+        }
+    </style>
+</head>
+<body>
+<div class="search-box">
+    <input id="txtScenicValue" attrvalue="香港迪士尼" value="香港迪士尼" style="color: rgb(153, 153, 153);">
+    <a href="javascript:;">搜索</a>
+    <ul id="matchContent" class="matchContent none"></ul>
+</div>
+<input type="hidden" id="matchDest" value="http://www.t.ly.com/wanle/AjaxHelperWanle/GetSearchSelectData?NeedCount=10">
+
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script src="../../jquery.js" type="text/javascript"></script>
+<script>
+    seajs.config({
+        base: "../../",
+        paths: {
+            "jquery": "../../"
+        }
+    });
+</script>
+
+<script>
+        seajs.use("jquery/autoComplete/0.1.1/index", function (AutoComplete) {
+            var autoComplete = new AutoComplete();
+            autoComplete.init({
+                showLabel: true,
+                checkFlag: true,
+                searchContent: $("#txtScenicValue"),
+                matchContent: $("#matchContent"),
+                matchUrl: $("#matchDest").val(),
+                pageLabel: "/lineWanle/homepage"
+            });
+        });
+</script> <script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '10002-2006-0']);
+        _tcq.push(['_refId', getRefid()]);
+        _tcq.push(['_userId', fish.getNmemberId()]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '/出境游/单产品搜索页/']);
+		_tcq.push(['_resId', fish.getProId()]);     </script>
+    <script type='text/javascript' src=" http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+
+</body>
+</html>

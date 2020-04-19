@@ -1,0 +1,39 @@
+<span class="mNotice-arrows"></span>
+{{?it.Code == 4000}}
+	{{?it.Data&&it.Data.length}}
+		{{?it.Data.length>1 && it.Data[0].IsCanUse==1}}
+			<div class="flycityBox">
+			    {{~it.Data:itVal:index}}
+			    {{var html1 = itVal.Description.replace(it.val,it.val1);
+			    	var nClass = "";
+			    	if(index==0){nClass="select";}
+			    }}
+			    <div class="flycityItem {{=nClass}}" data-name="{{=itVal.Name}}">{{=html1}}</div>
+			    {{~}}
+			</div>
+		{{?}}
+		{{?it.Data.length>1 && it.Data[0].IsCanUse==0}}
+		{{var html2 = it.Data[0].Description.replace(it.val,it.val1);}}
+			<div class="title-flycity">{{=html2}}</div>
+			<div class="flycityBox">
+			    {{~it.Data:itVal:index}}
+			    {{?index != 0}}
+			    {{var html3 = itVal.Name.replace(it.val,it.val1);
+			    	var nClass = "";
+			    	if(index==1){nClass="select";}
+			    }}
+			    <div class="flycityItem {{=nClass}}" data-name="{{=itVal.Name}}"><i></i><span>{{=html3}}</span><span class="flykm">{{=itVal.RouteDistance}}{{=itVal.RouteUnit}}</span></div>
+			    {{?}}
+			    {{~}}
+			</div>
+		{{?}}
+		{{?it.Data.length==1 && it.Data[0].IsCanUse==1}}
+		{{var html4 = it.Data[0].Description.replace(it.val,it.val1);}}
+			<div class="flycityItem select" data-name="{{=it.Data[0].Name}}">{{=html4}}</div>
+		{{?}}
+	{{??}}
+		<div class="noresult-fly">对不起，无法找到该地点</div>
+	{{?}}
+{{??}}
+<div class="noresult-fly">对不起，无法找到该地点</div>
+{{?}}

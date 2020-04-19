@@ -1,0 +1,8 @@
+{
+  "dataUri": "/wanle/api/WWanleProduct/GetWanleIndex?params=[{%22flag%22:1,%22Area%22:%226103402%22,%22Platment%22:%2261034%22},{%22flag%22:2,%22Area%22:%226103410%22,%22Platment%22:%2261034%22}]&pageType=10&stp=hot&start=1&sort=1&count=2",
+  "query": {
+      "siteType": 1,
+      "singleType": "6,9,8,11,12,13"
+  },
+  "desc": "订单失败页"
+}

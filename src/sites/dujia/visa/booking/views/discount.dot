@@ -1,0 +1,81 @@
+{{?it && it.length}}
+<div class="visa-box">
+    <h3 class="h3-title">优惠信息<em>优惠抵现仅限产品全额，不含保险及附加产品；</em></h3>
+    <div class="visa-coupon">
+        <div class="visa-couBg">
+            <table border="0" class="disc-table">
+                <tbody>
+                    {{var blhNum = 0;}}
+                    {{~it:item:rIndex}}
+                        {{?item.PreferentialType == 10}}
+                        {{blhNum++;}}
+                            <tr>
+                                <td class="blh-th" colspan="6">
+                                    <span class="blh-icon">
+                                        <i>{{=item.IconContent}}</i>
+                                        <em>{{=item.ParValue || 0}}</em>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr class="J_discBLH">
+                                <td class="disccheck-td">
+                                    <input type="checkbox" name="discount" class="J_discRadio" dataid="{{=item.RuleId}}" dataname="{{=item.IconContent}}" datatype="{{=item.PreferentialType}}" datanum="{{=item.PreferentialCount}}" dataprice="{{=item.ParValue}}" datacode="{{=item.CouponNo}}"  {{=item.checkStatus}}/>
+                                    <label>¥{{=item.ParValue || 0}}/人</label>
+                                </td>
+                                <td class="discnum-td" style="width:60px">{{=item.PreferentialCount}}人</td>
+                                <td class="discname-td" style="width:360px">
+                                    {{var remark=item.Remark;}}
+                                    <div class="blh-msg"><span class="J_coupon_detail">{{=remark}}</span><div class="coupon_tips"><em></em><div>{{=item.Remark}}</div></div></div>
+                                </td>
+                                    <td class="discdate-td">有效期至{{=item.EndDate}}</td>
+                                    <td class="disscore-td"><span class="{{=item.iconStatus}}" >所需积分：{{=parseInt((item.ParValue*item.PreferentialCount)/2) || 0}}</span></td>
+                            </tr>
+                        {{?}}
+                    {{~}}
+                    <tr class="J_discBLH">
+                        <td colspan="6">
+                           <input type="checkbox" name="discount" class="J_discRadio" dataid="0" dataname="" datatype="0" datanum="0" dataprice="0" datacode="0" />
+                            <label class="no-disc">不使用优惠</label>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            {{var discNum=it.length - blhNum;}}
+            {{?discNum > 0}}
+            <table border="0" class="disc-table">
+                <tbody>
+                    <tr class="disc-title">
+                        <th class="disctype-th">优惠方式</th>
+                        <th>优惠描述</th>
+                        <th>优惠价格</th>
+                        <th>份数</th>
+                        <th class="discdate-th">有效日期</th>
+                        <th style="text-align: center;">选择优惠</th>
+                    </tr>
+                    {{~it:item:rIndex}}
+                        {{?item.PreferentialType != 10}}
+                            {{var status=(rIndex > 2)? 'none':'';}}
+                            <tr class="{{=status}}">
+                                <td class="disctype-td"><span style="border: solid 1px {{=item.IconColor}};color: {{=item.IconColor}};">{{=item.IconContent}}</span></td>
+                                <td class="discname-td">
+                                {{var remark=item.Remark.substring(0,25) + '...';}}
+                                <div><span class="J_coupon_detail">{{=remark}}</span><div class="coupon_tips"><em></em><div>{{=item.Remark}}</div></div></div></td>
+                                <td class="discost-td"><em>{{=item.ParValue}}</em></td>
+                                <td class="discnum-td"><span>{{=item.PreferentialCount}}</span></td>
+                                <td class="discdate-td">{{=item.StartDate}}至{{=item.EndDate}}</td>
+                                <td>
+                                    <input type="checkbox" name="discount" class="radio-style J_discRadio" dataid="{{=item.RuleId}}" dataname="{{=item.IconContent}}" datatype="{{=item.PreferentialType}}" datanum="{{=item.PreferentialCount}}" dataprice="{{=item.ParValue}}" datacode="{{=item.CouponNo}}"/>
+                                </td>
+                            </tr>
+                        {{?}}
+                    {{~}}
+                   {{?discNum > 3}}
+                        <tr class="discount-more"><td class="disctype-td"></td><td><a class="J_discMore" datatype="0" href="javascript:void(0);">更多</a></td></tr>
+                   {{?}}
+                </tbody>
+            </table>
+            {{?}}
+        </div>
+    </div>
+</div>
+{{?}}

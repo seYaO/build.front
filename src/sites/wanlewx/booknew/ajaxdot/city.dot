@@ -1,0 +1,5 @@
+<ul>
+    {{~it:list:i}}
+    <li {{?(it.provinceId  ==0 &&i === 0) || (it.provinceId == list.Id)}}class="selected"{{?}} data-id="{{=list.Id}}" data-name="{{=list.Name}}">{{?list.Name.length > 4}}{{=list.Name.substring(0,4)}}...{{??}}{{=list.Name}}{{?}}</li>
+    {{~}}
+</ul>

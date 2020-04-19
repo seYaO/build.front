@@ -1,0 +1,303 @@
+<!--跟团游首页-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" trace="pc-gindex">
+{{var it = IT.Data;}}
+{{
+    var sliderList = it.SlideObj||{},
+        depList = it.DepartTigList||{},
+        endList = it.EndProductList||{},
+        longList = it.LongProductList||{},
+        shortList = it.ShortProductList||{},
+        longAndShort = it.TravelModule || [],
+        StartStr = it.StartListStr,
+        cityStart = it.CityInfo;
+
+}}
+<!--城市-->
+{{
+    var startcityid = cityStart.CityId || "321",
+        startCity =  cityStart.CityName || "上海",
+        startCityPinyin = cityStart.CityPy ||"shanghai";
+    var lineType = "gentuan",
+        titleTxt="跟团游",
+        pageTypeTxt="gentuan";
+}}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <title>跟团游_跟团旅游攻略_报团旅游_出境跟团报团半自助旅游网-同程旅游</title>
+    <meta name='keywords' content='跟团游，跟团旅游，跟团旅游攻略，抱团旅游，半自助游，跟团旅游网' />
+    <meta name='description' content='同程出境旅游为您提供跟团旅游，抱团旅游，半自助游攻略报价等，精选跟团旅游，半自助游优质出境跟团旅游服务，跟团游尽在同程，联系电话 40077-40075，跟团游当然选同程跟团游。' />
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+
+    <% includeId = cnwidescreenjscss %>
+    <link href="./index.css">
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet">
+    <link href="//css.40017.cn/cn/v/2015/kefu/index.08145.css" rel="stylesheet"/>
+    <style type="text/css">
+        body{
+            font: normal normal normal 12px Arial,sans-serif;
+            font-family: 'Microsoft YaHei',Arial,sans-serif;
+        }
+        div.search-box{
+            width: 389px;
+        }
+        .masklayer{
+            background: -ms-linear-gradient(top,rgba(0,0,0,0),rgba(0,0,0,.8));
+        }
+        .longboxl li{
+                overflow: hidden;
+        }
+        .zhekou{
+                display: none;
+        }
+    </style>
+
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+</head>
+<body>
+<!-- 公共头部 开始 -->
+    <% includeId = cnwidescreenhead?channel=dujia %>
+    <!-- 前端性能监控 -->
+    <input type="hidden" id="commonMonitor" value='{"channel":"dujia","page":"group-index"}'/>
+<!-- 公共头部 结束 -->
+
+    <!-- 主体模块 -->
+    <input type="hidden" id="baseUrl" value="/dujia/group/" />
+    <input type="hidden" id="startCity" value="{{=startCityPinyin}}" />
+    <input type="hidden" id="startCityName" value="{{=startCity}}" />
+    <input type="hidden" id="propertyFd" value="1" />
+    <input type="hidden" id="startcityId" value="{{=startcityid}}" />
+    <input type="hidden" id="nameFd" value="跟团游" />
+    <div id="conter" class="">
+        <div class="autotop">
+            <div class="topSearch">
+                <!--顶部搜索内容-->
+                <div class="searchbox">
+                    <div class="citybox new_city_b">
+                        <b id="city_select" class="city_b" data-scid="{{=startcityid}}" attrurl="/dujia/AjaxCallNew.aspx?type=GetQianzhengSearch&cityid=226">
+                            <strong>{{=startCity}}</strong>&nbsp;出发
+                        </b>
+                        <div id="popleave" class="none" style="display: none;" test="">
+                            <div class="leavecity"></div>
+                        </div>
+                    </div>
+                    <!--搜索-->
+                    <div class="cj-search">
+                        <div class="search-box">
+                            <div class="search-line icon-up">
+                                <span id="selectValue" class="selected" tid="2">自由行</span>
+                                <ul class="search-list" style="display: none;">
+                                    <li tid="0">全部</li>
+                                    <li tid="1">跟团游</li>
+                                    <li tid="2">自由行</li>
+                                    <li tid="6">签证</li>
+                                </ul>
+                            </div>
+                            <input id="searchinput" attrvalu="请输入目的地关键字" class="search-input" type="text" value="请输入目的地关键字">
+                        </div>
+                        <input attrurl="//www.ly.com/dujia/search.aspx" id="btnSubmit" class="search-button" type="button" value="搜 &nbsp;索">
+                    </div>
+                    <!--热门搜索-->
+                    <div class="hotcity_box">
+                        <span style="float: left">热门搜索词:</span>
+                        <a title="迪拜" href="#">迪拜</a>
+                        <a title="欧洲" href="#">欧洲</a>
+                        <a title="港澳" href="#">港澳</a>
+                        <a title="塞班岛" href="#">塞班岛</a>
+                    </div>
+                </div>
+                <div class="hotbox">
+                    <!--城市目的地-->
+                    {{#def.depcity}}
+                </div>
+            </div>
+        </div>
+        <!-- 幻灯 -->
+        <div class="iv_full_screen_slider tc_ac_tr" id="ivFullScreenSlider">
+            {{?sliderList && sliderList.length>0}}
+            <div class="iv_full_screen_slider_con">
+            <ul>
+                {{~sliderList:sList}}
+                <li>
+                    <!--注：狮子座页面转义要用双斜杠，本地调试页面不需要，本地调试时可用单斜杠，上线之前注意改-->
+                    <a href='{{=sList.LinkUrl.replace(/http\\:\\/\\/http\\:\\/\\//g,"http://")}}' title="{{=sList.Content}}" target="_blank">
+                        <img src="{{=sList.ImgUrl}}" alt="{{=sList.Content}}">
+                    </a>
+
+                </li>
+                {{~}}
+            </ul>
+            </div>
+            {{?}}
+        </div>
+        <!--产品说明-->
+        <div class="iv_info">
+            <div class="cen_box">
+                <ul>
+                    <li>
+                        <span class="price_ico"></span>
+                        <dl>
+                            <dt>透明低价</dt>
+                            <dd>透明团、无零负团费
+                            </dd>
+                            <dd>低价有保障</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span class="line_ico"></span>
+                        <dl>
+                            <dt>海量线路</dt>
+                            <dd>全国各地万余条线路</dd>
+                            <dd>包含跟团游/自由行</dd>
+                        </dl>
+                    </li>
+                    <li class="mar_no">
+                        <span class="experience_ico"></span>
+                        <dl>
+                            <dt>真实体验</dt>
+                            <dd>真实点评和原创游记
+                            </dd>
+                            <dd>提供真实的体验</dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--首页产品列表-->
+        <div class="mianbox">
+            <!--甩尾-->
+            {{?endList && endList.length>0}}
+                {{#def.endline}}
+            {{?}}
+            <!--长短线模块-->
+            {{#def.longandshort}}
+            <div class="t_empty"></div>
+        </div>
+    </div>
+    <!-- 公共页脚 开始 -->
+    <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+    <!-- 公共页脚 结束 -->
+
+    <input type="hidden" id="AjaxRequestPath" value="//www.ly.com/AjaxHelper/TopLoginHandler.aspx?channel=ChuJingTravel">
+    <input type="hidden" id="TcPmsUniqueKey" value="cndujiatoursindex">
+    <input id="comsilderinfo" type="hidden" value='{"Url":"http://www.ly.com/scenery/zhuanti/sdlj2016pc?dhgg","SmallPic":"//pic4.40017.cn/index/slide/2016/08/11/17/Tfpauq.jpg","BigPic":"//pic4.40017.cn/index/slide/2016/08/11/17/z1b2H1.jpg","QrPic":"//pic4.40017.cn/index/slide/2016/05/18/17/6JWpBe.png"}' />
+    <script type="text/javascript" src="//js.40017.cn/cn/c/c/2016/common.0.3.1.js?v=2016030403"></script>
+    <script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '10002-2006-0']);
+        _tcq.push(['_refId', getRefid()]);
+        _tcq.push(['_userId', fish.getNmemberId()]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '/出境游/跟团首页/']);
+        _tcq.push(['_resId', fish.getProId()]);         _tcq.push(['_qdid',getQdid()]);
+    </script>
+    <script type='text/javascript' src="//vstlog.17u.cn/vst.ashx" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        var cityInfo = {
+            startList: {{=StartStr.startCity}},
+            hotStartList:{{=StartStr.hotCity}}
+        };
+    </script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script>
+<script src="//js.40017.cn/cn/v/2015/searchtext/searchtext.02235.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/public/2014/v_common.0.0.2.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js?v=2015103002"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/lazyload/fish/0.1.0/index.js?v=123"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/startList/count.07294.js" charset="utf-8"></script>
+<script src="//js.40017.cn/cn/min/??/cn/v/public/2014/sliderBar/InterVacationPublic.js?v=2014112001" charset="utf-8"></script>
+<script type="text/javascript">
+    var _tcHotmapx = { pid: 318, sp: 100 };
+</script>
+<script type="text/javascript">
+    fish.ready(function(){
+        var host = "www.ly.com";
+        var url="//"+host+"/dujia/ajaxcall.aspx?type=GetTel400";
+        fish.ajax({
+            url:url,
+            type:"jsonp",
+            fn:function(data)
+            {
+                if(data!=""&&data!=null)
+                {
+                    fish.one(".ly_p_message em").html("请拨打"+data);
+                }
+            }
+        });
+    });
+</script>
+<script data-loader="true" src="//modules/sea.js"></script>
+
+<script>
+    window.host = "//www.ly.com";
+    seajs.require("./index");
+</script>
+
+<!-- 模块统计 -->
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js"></script>
+<script>
+SPM_MODULE&&SPM_MODULE.init({
+    module : [
+    {
+        cls : ".iv_full_screen_slider_con",
+        value : 17
+    }
+    ],
+        deliver : [".hotbox, .iv_full_screen_slider_con, .iv_favorable_slider, .longlinelist, .themebox"]
+});
+</script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.3.0/statistics.js?v=16030113"></script>
+<script type="text/javascript">
+        var rtTag ={
+            "data": {
+                "etravel_page": {
+                    "page_type": "index",
+                    "p_class1": "出境游",
+                    "p_class2": "跟团"
+                }
+            }
+        };
+        stat.init({
+        "baidu": {
+            "parameter": "pc",
+            "hmt": [
+                ['_setAccount', '53a0d71dba66835ff1aa907db99144d8'],
+                ['_trackRTEvent', rtTag]
+            ]
+        },
+        "_tcHotmapx": {
+            "pid": "318",
+            "sp": "100"
+        },
+        "mvl": {
+            "_mvq": [
+                ['$setAccount', 'm-135073-0'],
+                ['$logConversion']
+            ],
+            "isImmediateExcu": true
+        },
+        "param":{
+           "startCity": "{{=startCity}}",
+            "lineType": "gentuan"
+        }
+    });
+</script>
+<!-- Criteo---->
+<script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+<script type="text/javascript">
+        window.criteo_q = window.criteo_q || [];
+        window.criteo_q.push(
+        { event: "setAccount", account: 20385 },
+        { event: "setHashedEmail", email: "" },
+        { event: "setSiteType", type: "d" },
+        { event: "viewHome" }
+);
+</script>
+</body>
+</html>

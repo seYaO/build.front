@@ -1,0 +1,139 @@
+<div class="middle_content md_scenery">
+    <!--景点开始-->
+    {{var cityScenic = cInfor.DestinationRecommend.CityScenicSpotsList;}}
+    {{?cityScenic && cityScenic.length>0}}
+        <div class="middle_header">
+            <div class="middle_title scenery">
+                {{=country}}旅游必玩景点
+            </div>
+        </div>
+        <div class="md_scenery_list">
+            {{~cityScenic:cityS:index}}
+            {{var Scenery = cityS.SceneryPlaceExtends.SceneryPlaceExtendList;}}
+                {{?Scenery && Scenery.length>0}}
+                {{~Scenery:scenery:pIndex}}
+                {{?pIndex==0}}
+                <div class="md_scenery_item">
+                    <div class="content_gp">
+                        <div class="title">{{=scenery.Name}}</div>
+                        <div class="content">
+                            {{=scenery.AttractionDescription}}
+                        </div>
+                        {{?scenery.Tickets!=""}}
+                        <div class="content">
+                            门票：{{=scenery.Tickets}}
+                        </div>
+                        {{?}}
+                        {{?scenery.Transportation!=""}}
+                        <div class="content">
+                            交通：{{=scenery.Transportation}}
+                        </div>
+                        {{?}}
+                    </div>
+                    {{?scenery.AttractionPictures && scenery.AttractionPictures.length>0}}
+                    {{var pics = scenery.AttractionPictures[0];}}
+                    <div class="desimg">
+                        <img src="{{=pics.AttractionPictureUrl.replace('http:','')}}" data-img="{{=pics.AttractionPictureUrl.replace('http:','')}}" alt="{{=scenery.Name}}" />
+                    </div>
+                    {{?}}
+                </div>
+                {{?}}
+                {{~}}
+                {{?}}
+            {{~}}
+        </div>
+    {{?}}
+    <!-- 景点结束 -->
+    <!-- 美食开始 -->
+    {{var Restaurant = cInfor.DestinationRestaurant.RestaurantList;}}
+    {{?Restaurant && Restaurant.length>0}}
+        <div class="middle_header">
+            <div class="middle_title foot">
+                {{=country}}旅游推荐美食
+            </div>
+        </div>
+        {{~Restaurant:restList}}
+        <div class="md_scenery_list">
+            <div class="md_scenery_item">
+                <div class="content_gp">
+                    <div class="title">{{=restList.Name}}</div>
+                    {{?restList.Address!=""}}
+                    <div class="content">地址：{{=restList.Address}}</div>
+                    {{?}}
+                    {{?restList.FoodDescription != ""}}
+                    <div class="content">{{=restList.FoodDescription}}</div>
+                    {{?}}
+                </div>
+                <!--显示一张图片-->
+                {{?restList.PhotoLists && restList.PhotoLists.length>0}}
+                {{var picL = restList.PhotoLists[0];}}
+                <div class="desimg">
+                    <img src="{{=picL.PhotoUrl.replace('http:','')}}" data-img="{{=picL.PhotoUrl.replace('http:','')}}" alt="{{=picL.Title}}" />
+                </div>
+                {{?}}
+            </div>
+        </div>
+        {{~}}
+    {{?}}
+    <!-- 美食结束 -->
+    <!-- 购物开始 -->
+    {{var shop = cInfor.DestinationShoppingPoint.ResourceList;}}
+    {{?shop && shop.length>0}}
+        <div class="middle_header">
+            <div class="middle_title sale">{{=country}}旅游推荐购物</div>
+        </div>
+        {{~shop:shopList}}
+        <div class="md_scenery_list">
+            <div class="md_scenery_item">
+                <div class="content_gp">
+                    <div class="title">{{=shopList.Name}}</div>
+                        {{?shopList.Address != ""}}
+                        <div class="content">地址：{{=shopList.Address}}</div>
+                        {{?}}
+                        {{?shopList.ShoppingDescription != ""}}
+                        <div class="content"> {{=shopList.ShoppingDescription}}</div>
+                        {{?}}
+                </div>
+                {{?shopList.PhotoLists && shopList.PhotoLists.length>0}}
+                {{var shopimg = shopList.PhotoLists[0];}}
+                <div class="desimg">
+                    <img src="{{=shopimg.PhotoUrl.replace('http:','')}}" data-img="{{=shopimg.PhotoUrl.replace('http:','')}}" alt="{{=shopimg.Title}}" />
+                </div>
+                {{?}}
+            </div>
+        </div>
+        {{~}}
+    {{?}}
+    <!-- 购物结束 -->
+    <!-- 其它事宜开始 -->
+    {{var rebate = cInfor.DestinationShoppingPoint.ShoppingRebate;}}
+    {{var traffic = cInfor.DestinationTraffic;}}
+    {{?rebate && traffic}}
+    <div class="middle_header">
+        <div class="middle_title other">
+            {{=country}}旅游其他事宜
+        </div>
+    </div>
+    <div class="md_scenery_list">
+        <div class="md_scenery_item">
+            <div class="content_gp other">
+                {{?traffic.Guide != ""}}
+                <div class="content clearfix">
+                    <span class="tit">机场交通：</span>
+                    <span class="cont">{{=traffic.Guide}}</span>
+                </div>
+                {{?}}
+                {{?rebate != ""}}
+                <div class="content clearfix">
+                    <span class="tit">
+                    <i class="mr-rebate">退</i>税：
+                    </span>
+                    <span class="cont">{{=rebate}}</span>
+                </div>
+                {{?}}
+            </div>
+        </div>
+    </div>
+    {{?}}
+    <!-- 其它事宜结束 -->
+</div>

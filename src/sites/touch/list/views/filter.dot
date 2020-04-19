@@ -1,0 +1,144 @@
+<div id="J_FilterPanel" class="filter-panel">
+   <div class="ctrl-panel">
+           <div class="ctrl-box">
+                   <span class="confirm">确定</span>
+                   <span class="reset">清空筛选</span>
+                   <span class="cancel">取消</span>
+           </div>
+   </div>
+    <div class="cond-panels">
+        <div class="cond-panel-wrap">
+            <div class="pro_q">
+                <div class="cond-panel selected J_quality">
+                    <div class="J_FlowBox J_pinzhi_Box">
+                        <ul>
+                            <li data-param="isTcspecialline=1,isExtraordinary=0" class="needsclick J_Single "><span class="needsclick">同程专线</span></li>
+                            <li data-param="isTcspecialline=0,isExtraordinary=1" class="needsclick J_Single "><span class="needsclick">非凡系列</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="cond-panel s-prize selected">
+                <span class="label">价格区间</span>
+                <div class="flow-box">
+                    <div class="J_FlowBox flow-box-inner">
+                        <div id="dPrize" class="set-p">
+                            <p>自定义价格区间</p>
+                            <p class="J_P_limit p-limit">
+                                <span class="bottom-p">
+                                    <input  id="pLow" type="text" placeholder="" value=""/><em>元</em>
+                                </span>~
+                                <span class="top-p">
+                                    <input  id="pTop" type="text" placeholder="" value=""/><em>元</em>
+                                </span>
+                            </p>
+                            <p class="J_P_clear clear-p"><span class="needsclick">清空价格</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{var pmList = it.pmList;}}
+            {{?pmList && pmList.length && pmList[0].m && pmList[0].m.length}}
+                <div class="cond-panel">
+                    <span class="label">出发时间</span>
+                    <div class="flow-box s-select">
+                        <div class="J_FlowBox flow-box-inner">
+                            <ul>
+                                <li data-param='pm=' class="needsclick J_Single active">
+                                    <span class="needsclick">不限</span>
+                                </li>
+                                {{~pmList[0].m:pm}}
+                                    {{var month = pm.value.substring(4);}}
+                                    {{month = (month > 9) ? month : month.substring(1);}}
+                                    <li data-param='pm={{=pm.value}}' class="needsclick J_Single">
+                                        <span class="needsclick">{{=pm.value.substring(0,4)}}年{{=month}}月</span>
+                                    </li>
+                                {{~}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {{?}}
+            {{var daysList = it.daysList;}}
+            {{?daysList && daysList.length && daysList[0].days && daysList[0].days.length}}
+                <div class="cond-panel">
+                    <span class="label">游玩天数</span>
+                    <div class="flow-box">
+                        <div class="J_FlowBox flow-box-inner">
+                            <ul>
+                                <li data-param='days=' class="needsclick J_Multiple active">
+                                    <span class="needsclick">不限</span>
+                                </li>
+                                {{~daysList[0].days:days}}
+                                    <li data-param='days={{=days.days}}' class="needsclick J_Multiple">
+                                        <span class="needsclick">{{=days.days}}日</span>
+                                    </li>
+                                {{~}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {{?}}
+            {{var lineQualityList = it.lineQualityList;}}
+            {{?lineQualityList && lineQualityList.length && lineQualityList[0].lineQuality && lineQualityList[0].lineQuality.length}}
+                <div class="cond-panel">
+                    <span class="label">线路分类</span>
+                    <div class="flow-box s-select">
+                        <div class="J_FlowBox flow-box-inner">
+                            <ul>
+                                <li data-param='lineQuality=' class="needsclick J_Single active">
+                                    <span class="needsclick">不限</span>
+                                </li>
+                                {{~lineQualityList[0].lineQuality:lineQuality}}
+                                    <li data-param='lineQuality={{=lineQuality.id}}' class="needsclick J_Single">
+                                        <span class="needsclick">{{=lineQuality.name}}</span>
+                                    </li>
+                                {{~}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {{?}}
+            {{var csList = it.csList;}}
+            {{?it.BaseData.PageType != 3 && csList && csList.length && csList[0].scenery && csList[0].scenery.length}}
+                <div class="cond-panel">
+                    <span class="label">途经景点</span>
+                    <div class="flow-box">
+                        <div class="J_FlowBox flow-box-inner">
+                            <ul>
+                                <li data-param='sceneryId=' class="needsclick J_Multiple active">
+                                    <span class="needsclick">不限</span>
+                                </li>
+                                {{~csList[0].scenery:scenery}}
+                                    <li data-param='sceneryId={{=scenery.id}}' class="needsclick J_Multiple">
+                                        <span class="needsclick">{{=scenery.name}}</span>
+                                    </li>
+                                {{~}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {{?}}
+            {{var flightTypeList = it.flightTypeList;}}
+            {{?it.BaseData.PageType != 1 && flightTypeList && flightTypeList.length && flightTypeList[0].flightType && flightTypeList[0].flightType.length}}
+                <div class="cond-panel">
+                    <span class="label">航班</span>
+                    <div class="flow-box s-select">
+                        <div class="J_FlowBox flow-box-inner">
+                            <ul>
+                                <li data-param='flightTypeId=' class="needsclick J_Single active">
+                                    <span class="needsclick">不限</span>
+                                </li>
+                                {{~flightTypeList[0].flightType:flightType}}
+                                    <li data-param='flightTypeId={{=flightType.id}}' class="needsclick J_Single">
+                                        <span class="needsclick">{{=flightType.name}}</span>
+                                    </li>
+                                {{~}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            {{?}}
+        </div>
+    </div>
+</div>

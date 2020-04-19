@@ -1,0 +1,15 @@
+<span></span>
+{{?it && it.length}}
+	<ul class="continent">
+	    {{~it:country:index}}
+	    <li class="{{?index==0}}active{{?}}">{{=country.ContName}}</li>
+	    {{~}}
+	</ul>
+	{{~it:country:index}}
+	    <ul class="countries {{?index>0}}none{{?}}">
+	    {{~country.LabelDetails:detail}}
+	    <li class="J_trace" data-country="{{=detail.IVREnName}}" data-countryId="{{=detail.CountryId}}">{{=detail.CountryName}}</li>
+	    {{~}}
+	    </ul>
+	{{~}}
+{{?}}

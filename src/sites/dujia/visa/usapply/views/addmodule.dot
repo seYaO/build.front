@@ -1,0 +1,348 @@
+{{  var dotName = it.dotName,
+        index = it.Index;
+}}
+{{?dotName}}
+    {{?dotName == "passportInfo"}}
+        <ul class="single_ul clearfix add-html J_render">
+            <span class="crud_butt">
+                <a href="javascript:;" class="butt add_module"><i></i>添加</a>
+                <a href="javascript:;" class="butt del_btn"><i></i>删除</a>
+            </span>
+            <li class="single_li">
+                <span class="info_tit">护照号码：</span>
+                <div class="info_con">
+                    <input class="w190 lf" type="text" placeholder="请输入护照号码" verify-type="passPort" vali-msg-required="请输入护照号码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlLostPPT_ctl0{{=index}}_tbxLOST_PPT_NUM" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblLOST_PPT_IND" data-block="{{=index}}" value="">
+                </div>
+            </li>
+            <li class="single_li">
+                <span class="info_tit"><i>*</i>签发国家：</span>
+                <div class="info_con">
+                    <input class="w130" type="text" placeholder="请输入签发国家" verify-type="required cnName" vali-msg-required="请输入签发国家" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlLostPPT_ctl0{{=index}}_ddlLOST_PPT_NATL" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblLOST_PPT_IND" data-block="{{=index}}"> 
+                </div>
+            </li>
+            <li class="single_li">
+                <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                <div class="info_con">
+                    <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                        <div class="dropdown_tit pull_down w130 J_dropDown" verify-type="required" vali-msg-required="请选择丢失说明" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlLostPPT_ctl0{{=index}}_tbxLOST_PPT_EXPL" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblLOST_PPT_IND" data-block="{{=index}}">请选择丢失说明</div>
+                        <ul class="dropdown_menu none J_dropDown_list"> 
+                            <li>遗失</li>
+                            <li>盗过</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    {{??dotName == "peersInfoYes"}}
+    <ul class="single_ul clearfix add-html J_render">
+        <span class="crud_butt">
+            <a href="javascript:;" class="butt add_module"><i></i>添加</a>
+            <a href="javascript:;" class="butt del_btn"><i></i>删除</a>
+        </span>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+            <div class="info_con">
+                <input class="w130 lf" type="text" placeholder="请填写姓" verify-type="required cnOrEnName" vali-msg-required="请输入中文或英文名称" vali-msggroup="msg4_1_{{=index}}" vali-group="msg4_1_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dlTravelCompanions_ctl0{{=index}}_tbxSurname" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherPersonsTravelingWithYou" data-block="{{=index}}">
+
+                <input class="w130 lf" type="text" placeholder="请填写名" verify-type="required cnOrEnName" vali-msg-required="请输入中文或英文名称" vali-msggroup="msg4_1_{{=index}}" vali-group="msg4_1_{{=index}}" vali-msggroup-breth="msg4_1_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dlTravelCompanions_ctl0{{=index}}_tbxGivenName" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherPersonsTravelingWithYou" data-block="{{=index}}">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</span>
+            <div class="info_con">
+                <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                    <div class="dropdown_tit pull_down w130 J_dropDown" verify-type="required" vali-msg-required="请选择关系" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dlTravelCompanions_ctl0{{=index}}_ddlTCRelationship" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherPersonsTravelingWithYou" data-block="{{=index}}">请选择关系</div>
+                    <ul class="dropdown_menu J_dropDown_list none">
+                        <li>父母</li>
+                        <li>配偶</li>
+                        <li>子女</li>
+                        <li>朋友</li>
+                        <li>其他亲属</li>
+                        <li>其他</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    {{??dotName == "peersInfoNo"}}
+    <div class="J_tabchange J_choose add-html">
+        <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息"  FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblGroupTravel">
+            <em class="lf mar10_l">本次旅行是否是跟团出行？ 若有，请予以提供。</em>
+            <span class="radio" data-type="1" value="Y"><i></i>是</span>
+            <span class="radio" data-type="0" value="N"><i></i>否</span>
+        </div>
+        <div class="none" type="form">
+            <ul class="form_ul">
+                <li class="info_list">
+                    <span class="info_tit"><i>*</i>团组名称：</span>
+                    <div class="info_con">
+                        <input class="w220 lf" type="text" placeholder="请填写团组名称" verify-type="required charFilter" vali-msg-required="请填写团组名称" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxGroupName">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    {{??dotName == "traveldate1"}}
+    <ul class="single_ul clearfix add-html J_render">
+        <span class="crud_butt">
+            <a href="javascript:;" class="butt add_module"><i></i>添加</a>
+            <a href="javascript:;" class="butt del_btn"><i></i>删除</a>
+        </span>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>抵达时间：</span>
+            <div class="info_con">
+                <div class="dropdown_tit birth_date">
+                    <input type="text" class="w130 input_date J_dateTime" placeholder="请选择抵达时间" readonly="readonly" verify-type="required date" vali-msg-required="请选择抵达时间" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPREV_US_VISIT_ctl0{{=index}}_ddlPREV_US_VISIT_DTE" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_US_TRAVEL_IND" data-block="{{=index}}">
+                </div>
+            </div>
+        </li>
+        <li class="single_li mar10_l">
+            <span class="info_tit"><i>*</i>停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留：</span>
+            <div class="info_con">
+                <input class="w130 lf" type="text" placeholder="请输入数字" verify-type="required onlyNumberSp" vali-msg-required="请输入停留时间" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPREV_US_VISIT_ctl0{{=index}}_tbxPREV_US_VISIT_LOS" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_US_TRAVEL_IND" data-block="{{=index}}"> 
+                <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+
+                    <div class="dropdown_tit pull_down w130 J_dropDown" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPREV_US_VISIT_ctl0{{=index}}_ddlPREV_US_VISIT_LOS_CD" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPREV_US_TRAVEL_IND" verify-type="required" vali-msg-required="请选择" data-block="{{=index}}"></div>
+                    <ul class="dropdown_menu J_dropDown_list none">
+                        <li>天</li>
+                        <li>周</li>
+                        <li>月</li>
+                        <li>年</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    {{??dotName == "workDot"}}
+    <ul class="single_ul add-html J_render">
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>工作时间：</span>
+            <div class="info_con">
+                <input type="text" class="w130 input_date J_dateTime" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择开始时间" vali-msggroup="msg8_5_{{=index}}" vali-group="msg8_5_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbxEmpDateFromYMD" data-block="{{=index}}" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed">
+                至
+                <input type="text" class="w130 input_date J_dateTime" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择截止时间" vali-msggroup="msg8_5_{{=index}}" vali-group="msg8_5_{{=index}}"  vali-msggroup-breth="msg8_5_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbxEmpDateToYMD" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>职位名称：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="请输入职位名称" verify-type="required cnOrEnName" vali-msg-required="请填写职位名称" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbJobTitle" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}"> 
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>主要工作：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写主要工作" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbDescribeDuties" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}"> 相关工作
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit">上级主管：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="请填写姓" verify-type="cnOrEnName" vali-msg-required="请输入中文或英文名称" vali-msggroup="msg8_6_{{=index}}" vali-group="msg8_6_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbSupervisorSurname" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+                <input class="w130" type="text" placeholder="请填写名" verify-type="cnOrEnName" vali-msg-required="请输入中文或英文名称" vali-msggroup="msg8_6_{{=index}}" vali-group="msg8_6_{{=index}}" vali-msggroup-breth="msg8_6_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbSupervisorGivenName" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>单位名称：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写单位名称" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbEmployerName" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>如果单位名称有专属的英文名称，请选中并在右侧输入英文名称。</p></div>"></i>
+            </div>
+        </li> 
+        <li class="info_list">
+            <span class="info_tit">英&nbsp;&nbsp;文&nbsp;&nbsp;名：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="" verify-type="enName" FCControlId="work_english_name" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>如果单位名称有专属的英文名称，请选中并在右侧输入英文名称。</p></div>"></i>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>单位电话：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="" verify-type="required phone" vali-msg-required="请填写单位电话" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbEmployerPhone" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>邮政编码：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="" verify-type="required charOrNum" vali-msg-required="请填写邮政编码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbxPREV_EMPL_ADDR_POSTAL_CD" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>单位地址：</span>
+            <div class="info_con">
+                <input type="text" class="w130" placeholder="请输入国家" verify-type="required charFilter" vali-msg-required="请输入国家" vali-msggroup="msg8_7_{{=index}}" vali-group="msg8_7_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_DropDownList2" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+                <input type="text" class="w130" placeholder="请输入洲" verify-type="required charFilter" vali-msg-required="请输入洲" vali-msggroup="msg8_7_{{=index}}" vali-group="msg8_7_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbxPREV_EMPL_ADDR_STATE" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+                <input type="text" class="w130" placeholder="请输入城市" verify-type="required charFilter" vali-msg-required="请完善单位地址" vali-msggroup="msg8_7_{{=index}}" vali-group="msg8_7_{{=index}}"  vali-msggroup-breth="msg8_7_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbEmployerCity" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>详细街道：</span>
+            <div class="info_con">
+                <input class="w575" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写详细街道" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEmpl_ctl0{{=index}}_tbEmployerStreetAddress1" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblPreviouslyEmployed" data-block="{{=index}}">
+            </div>
+        </li>
+        <span class="crud_butt special_btn">
+            <a href="javascript:;" class="butt add_module"><i></i>添加</a>
+            <a href="javascript:;" class="butt del_btn"><i></i>删除</a>
+        </span>
+    </ul>
+    {{??dotName == "educationDot"}}
+    <ul class="single_ul add-html J_render">
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>教育时间：</span>
+            <div class="info_con">
+                <input type="text" class="w130 input_date J_dateTime start" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择开始时间" vali-msggroup="msg8_8_{{=index}}" vali-group="msg8_8_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_ddlSchoolFrom" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}">
+                至
+                <input type="text" class="w130 input_date J_dateTime end" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择结束时间" vali-msggroup="msg8_8_{{=index}}" vali-group="msg8_8_{{=index}}" vali-msggroup-breth="msg8_8_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_ddlSchoolTo" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>所学专业：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="请输入专业" verify-type="required charFilter" vali-msg-required="请填写所学专业" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_tbxSchoolCourseOfStudy" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}"> 
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>若为中学，请填写“中学课程”，若为大学或以上，请填写您的专业名称</p></div>"></i>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>学校名称：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写学校名称" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_tbxSchoolName" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}">
+            </div>
+        </li> 
+        <li class="info_list">
+            <span class="info_tit">英&nbsp;&nbsp;文&nbsp;&nbsp;名：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="" verify-type="enName" FCControlId="education_english_name" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}"> 
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>如果学校名称有专属的英文名称，请选中并在右侧输入英文名称。</p></div>"></i>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>邮政编码：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="" verify-type="required charOrNum" vali-msg-required="请填写邮政编码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_tbxEDUC_INST_POSTAL_CD" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}"> 
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>单位地址：</span>
+            <div class="info_con">
+                <input type="text" class="w130" placeholder="请输入国家" verify-type="required charFilter" vali-msg-required="请输入国家" vali-msggroup="msg8_9_{{=index}}" vali-group="msg8_9_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_ddlSchoolCountry" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}">
+                <input type="text" class="w130" placeholder="请输入洲" verify-type="required charFilter" vali-msg-required="请输入洲" vali-msggroup="msg8_9_{{=index}}" vali-group="msg8_9_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_tbxEDUC_INST_ADDR_STATE" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}">
+                <input type="text" class="w130" placeholder="请输入城市" verify-type="required charFilter" vali-msg-required="请完善单位地址" vali-msggroup="msg8_9_{{=index}}" vali-group="msg8_9_{{=index}}"  vali-msggroup-breth="msg8_9_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_tbxSchoolCity" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>详细街道：</span>
+            <div class="info_con">
+                <input class="w575" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请填写详细街道" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlPrevEduc_ctl0{{=index}}_tbxSchoolAddr1" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblOtherEduc" data-block="{{=index}}">
+            </div>
+        </li>
+        <span class="crud_butt special_btn">
+            <a href="javascript:;" class="butt add_module"><i></i>添加</a>
+            <a href="javascript:;" class="butt del_btn"><i></i>删除</a>
+        </span>
+    </ul>
+    {{??dotName == "serviceDot"}}
+    <ul class="single_ul add-html J_render">
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>服役国家：</span>
+            <div class="info_con">
+                <input type="text" class="w130" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlMILITARY_SERVICE_ctl0{{=index}}_ddlMILITARY_SVC_CNTRY" placeholder="请输入服役国家" verify-type="required charFilter" vali-msg-required="请输入服役国家" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblMILITARY_SERVICE_IND" data-block="{{=index}}">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>服役时间：</span>
+            <div class="info_con">
+                <input type="text" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlMILITARY_SERVICE_ctl0{{=index}}_tbxMILITARY_SVC_FROMYMD" class="w130 input_date J_dateTime start" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择开始时间" vali-msggroup="msg9_1_{{=index}}" vali-group="msg9_1_{{=index}}" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblMILITARY_SERVICE_IND" data-block="{{=index}}">
+                至
+                <input type="text" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlMILITARY_SERVICE_ctl0{{=index}}_tbxMILITARY_SVC_TOYMD" class="w130 input_date J_dateTime end" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择结束时间" vali-msggroup="msg9_1_{{=index}}" vali-group="msg9_1_{{=index}}" vali-msggroup-breth="msg9_1_{{=index}}" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblMILITARY_SERVICE_IND" data-block="{{=index}}">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>军&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;种：</span>
+            <div class="info_con">
+                <input type="text" class="w130" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlMILITARY_SERVICE_ctl0{{=index}}_tbxMILITARY_SVC_BRANCH" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblMILITARY_SERVICE_IND" placeholder="请输入军种" verify-type="required charFilter" vali-msg-required="请输入军种" data-block="{{=index}}">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>最高军衔：</span>
+            <div class="info_con">
+                <input type="text" class="w130" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlMILITARY_SERVICE_ctl0{{=index}}_tbxMILITARY_SVC_RANK" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblMILITARY_SERVICE_IND" placeholder="请输入最高军衔" verify-type="required charFilter" vali-msg-required="请输入最高军衔" data-block="{{=index}}">
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>军事特长：</span>
+            <div class="info_con">
+                <input type="text" class="w130" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlMILITARY_SERVICE_ctl0{{=index}}_tbxMILITARY_SVC_SPECIALTY" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblMILITARY_SERVICE_IND" placeholder="请输入军事特长" verify-type="required charFilter" vali-msg-required="请输入军事特长" data-block="{{=index}}">
+            </div>
+        </li>
+        <span class="crud_butt special_btn">
+            <a href="javascript:;" class="butt add_module"><i></i>添加</a>
+            <a href="javascript:;" class="butt del_btn"><i></i>删除</a>
+        </span>
+    </ul>
+    {{??dotName == "relativesDot"}}
+    <ul class="single_ul mar15 clearfix add-html J_render" type="form">
+        <span class="crud_butt">
+            <a href="javascript:;" class="butt add_module" data-dot="1" data-dotname="relativesDot"><i></i>添加</a>
+            <a href="javascript:;" class="butt del_btn" data-dot="0"><i></i>删除</a>
+        </span>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+            <div class="info_con">
+                <input class="w95 lf" type="text" placeholder="请填写姓" verify-type="required cnOrEnName" vali-msg-required="请输入中文或英文名称" vali-msggroup="msg7_3_{{=index}}" vali-group="msg7_3_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dlUSRelatives_ctl0{{=index}}_tbxUS_REL_SURNAME" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblUS_IMMED_RELATIVE_IND" data-block="{{=index}}">
+                <input class="w95 lf" type="text" placeholder="请填写名" verify-type="required cnOrEnName" vali-msg-required="请输入中文或英文名称" vali-msggroup="msg7_3_{{=index}}" vali-group="msg7_3_{{=index}}" vali-msggroup-breth="msg7_3_{{=index}}" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dlUSRelatives_ctl0{{=index}}_tbxUS_REL_GIVEN_NAME" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblUS_IMMED_RELATIVE_IND" data-block="{{=index}}">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</span>
+            <div class="info_con">
+                <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                    <div class="dropdown_tit pull_down w130 J_dropDown"  verify-type="required" vali-msg-required="请选择关系" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dlUSRelatives_ctl0{{=index}}_ddlUS_REL_TYPE" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblUS_IMMED_RELATIVE_IND" data-block="{{=index}}">请选择关系</div>
+                    <ul class="dropdown_menu J_dropDown_list none">
+                        <li value="S">父母</li>
+                        <li>子女</li>
+                        <li>朋友</li>
+                        <li>其他亲属</li>
+                        <li>其他</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>美国身份：</span>
+            <div class="info_con">
+                <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                    <div class="dropdown_tit pull_down w130 J_dropDown" verify-type="required" vali-msg-required="请选择身份" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dlUSRelatives_ctl0{{=index}}_ddlUS_REL_STATUS" FatherId="ctl00_SiteContentPlaceHolder_FormView1_rblUS_IMMED_RELATIVE_IND" data-block="{{=index}}">请选择身份</div>
+                    <ul class="dropdown_menu J_dropDown_list none">
+                        <li value="S">美国公民</li>
+                        <li value="C">合法永久居留者</li>
+                        <li value="P">非移民</li>
+                        <li value="O">其他</li>
+                    </ul>
+                </div>
+            </div>
+        </li>
+    </ul>
+    {{??dotName== "otherTelDot"}}
+    <ul class="form_ul add-html" type="form"> 
+        <li class="info_list">                                            
+            <div class="sub_title" verify validate="required" vali-msg-required="请选择" FCControlId="otherRelatives_info">                                  
+                 <em class="lf">您在美国是否有其他亲属？</em>  
+                <span class="radio"  value="Y"><i></i>是</span>                                  
+                <span class="radio"  value="N"><i></i>否</span>                                                      
+            </div>
+            <div class="J_xianyin J_renderDot"></div>
+        </li> 
+    </ul>
+    {{?}}
+
+{{?}}

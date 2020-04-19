@@ -1,0 +1,73 @@
+{{?it.length}}
+    {{~it:list:index}}
+    <div class="write_list rule_each" preferentialtype="{{=list.PreferentialType}}">
+            <div style="display: inline-block; width: 104px;" class="ui-label" style="display: block;">
+                <span>{{=list.PreferentialTypeName}}：</span>
+                {{?list.PreferentialTypeName == "" || list.PreferentialTypeName == "无需优惠"}}
+                    <label class="on_check">
+                        <input type="radio" checked="checked" value="{{=list.PreferentialType}}" name="chk_rule" class="chk_rule" id="chk_rule_{{=list.PreferentialType}}" />
+                    </label>
+                {{??}}
+                    <label class="">
+                        <input type="radio" value="{{=list.PreferentialType}}" name="chk_rule" class="chk_rule" id="chk_rule_{{=list.PreferentialType}}" />
+                    </label>
+                {{?}}                
+            </div>
+
+            <div style="display: inline-block; width: 720px; margin-right: 3px; line-height: 24px; height: 26px; font-size: 14px; margin-left: 14px;">
+            {{? list.PreferentialType == 0 && list.RuleList.length>0}}
+                <select id="select_{{=list.PreferentialType}}" class="select_type" style="line-height: 22px; height: 22px; margin-left: 5px">
+                    {{~list.RuleList:valueList:rule_index}}
+                        {{var endDate = (valueList.EndDate).split("T")[0];}}
+                        <option value="{{=valueList.RuleId}}-0-" index="{{=rule_index}}">￥{{=valueList.PreferentialPrice}}  有效期:{{=endDate}}</option>
+                    {{~}}
+                </select>
+                 {{~list.RuleList:valueList:rule_index}}
+                    {{?rule_index == 0}}
+                        <span class="rule_lable" index="{{=rule_index}}" titleself="{{=valueList.Remark}}">{{=valueList.Notice}}</span>
+                    {{??}}
+                        <span class="rule_lable none" index="{{=rule_index}}" titleself="{{=valueList.Remark}}">{{=valueList.Notice}}</span>
+                    {{?}}
+                 {{~}}
+            {{?}}
+
+            {{? list.PreferentialType == 5 && list.RuleList.length>0}}
+                <select Id="select_{{=list.PreferentialType}}" class="select_type" style="line-height:22px; height:22px; margin-left:5px">
+                    {{~list.RuleList:valueList:rule_index}}
+                        {{var endDate = (valueList.EndDate).split("T")[0];}}
+                        <option value="{{=valueList.RuleId}}-0-" index="{{=rule_index}}">有效期:{{=endDate}}</option>
+                    {{~}}
+                </select>
+                {{~list.RuleList:valueList:rule_index}}
+                    {{?rule_index == 0}}
+                        <span class="rule_lable" index="{{=rule_index}}" titleself="{{=valueList.Remark}}">{{=valueList.Notice}}</span>
+                    {{??}}
+                        <span class="rule_lable none" index="{{=rule_index}}" titleself="{{=valueList.Remark}}">{{=valueList.Notice}}</span>
+                    {{?}}
+                 {{~}}
+            {{?}}
+
+            {{?list.PreferentialType == 2 && list.HongBaoList.length>0}}
+                <select id="select_{{=list.PreferentialType}}" class="select_type" style="line-height: 22px; height: 22px; margin-left: 5px">
+                    {{~list.HongBaoList:bagvalueList:bag_index}}
+                        <option value="{{=bagvalueList.RuleId}}-{{=bagvalueList.ParValue}}-{{=bagvalueList.CouponNo}}" index="{{=bag_index}}">￥{{=bagvalueList.ParValue}}  有效期:{{=bagvalueList.EndDate}} </option>
+                    {{~}}
+                </select>
+                {{~list.HongBaoList:bagvalueList:bag_index}}
+                    {{? bag_index == 0}}
+                        <span class="rule_lable" index="{{=bag_index}}" titleself="{{=bagvalueList.Remark}}">{{=bagvalueList.Notice}}</span>
+                    {{??}}
+                        <span class="rule_lable none" index="{{=bag_index}}" titleself="{{=bagvalueList.Remark}}">{{=bagvalueList.Notice}}</span>
+                    {{?}}
+                {{~}}
+            {{?}}
+
+            {{?list.PreferentialType == ""}}
+                <span style="line-height: 22px; height: 22px; margin-left: 6px">
+                    <span for="chk_rule_0">不使用优惠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="discountLogin none">如帐户内有更多优惠,请<i style="color: #ff7800; text-decoration: underline; cursor: pointer;" class="orderLogin">&nbsp;登录&nbsp;</i>后使用</span></span>
+                </span>
+            {{?}}
+            </div>
+    </div>
+    {{~}}
+{{?}}

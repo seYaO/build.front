@@ -1,0 +1,127 @@
+@import "../../../../styles/mixins/t.media.less";
+/*RESET*/
+em, i {
+  font-style: normal;
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+img{
+    width: 100%;
+    height: auto;
+    display: block;
+    border: 0;
+}
+a::hover,a::active,a::visited{
+    text-decoration: none;
+}
+.container{
+    width: 100%;
+    max-width: 640px; /*是否为全屏宽度*/
+    margin: 0 auto;
+    height: auto;
+    font-family: "HiraginoSansGB W6", "microsoft yahei";
+    overflow: hidden;
+    position: relative;
+    
+    .main{
+        padding: 20/@rem;
+        background: url("img/dest/bg2.jpg") repeat;
+        background-size: 20/@rem 20/@rem;
+        li{
+            width: 100%;
+            margin-top: 16/@rem;
+            list-style: none;
+            a{
+                display: block;
+                position: relative;
+                text-decoration: none;
+                .startCity{
+                    position: absolute;
+                    top:16/@rem;
+                    left: 10/@rem;
+                    background: rgba(0,0,0,0.6);
+                    font-size: 20/@rem;
+                    line-height: 20/@rem;
+                    padding: 6/@rem 10/@rem;
+                    border-radius: 12/@rem;
+                    color: #fff;
+                }
+                div{
+                    width: 100%;
+                    height: 174/@rem;
+                    background: rgba(0,0,0,0.7);
+                    position: absolute;
+                    left: 0;
+                    bottom:0;
+                    box-sizing: border-box;
+                    padding: 10/@rem 20/@rem 14/@rem;
+                    span{
+                        display: block;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap; 
+                        width: 100%;
+                        &:first-child{
+                            font-size: 24/@rem;
+                            line-height: 26/@rem;
+                            height: 26/@rem;
+                            color:#fff;   
+                        }
+                        &:nth-child(2){
+                            font-size: 20/@rem;
+                            color: #e5e1e1;
+                            line-height: 38/@rem;
+                            height: 38/@rem;
+                        }
+                        &:nth-child(3){
+                            color: #48474b;
+                            font-size: 20/@rem;
+                            width: 250/@rem;
+                            height: 30/@rem;
+                            line-height: 30/@rem;
+                            background: #fff;
+                            border-radius: 4/@rem;
+                            text-align: center;
+                        }
+                        &:nth-child(4){
+                            height: 50/@rem;
+                            color: #ff7800;
+                            font-size: 24/@rem;
+                            margin-top: 4/@rem;
+                            i{
+                                font-size: 38/@rem;
+                            }
+                            b{
+                                display: block;
+                                width: 230/@rem;
+                                height: 50/@rem;
+                                line-height: 50/@rem;
+                                float: right;
+                                font-size: 24/@rem;
+                                color: #fff;
+                                text-align: center;
+                                background: #ff6600;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        &:last-child{
+            background: url("img/dest/bg3.jpg") repeat;
+            background-size: 20/@rem 20/@rem;
+        }
+    }
+    .main2{
+        background: url("img/dest/bg3.jpg") repeat;
+        background-size: 20/@rem 20/@rem;
+        .footer{
+            text-align: center;
+            line-height: 50/@rem;
+        }
+    }
+    
+}

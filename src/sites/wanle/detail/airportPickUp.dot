@@ -1,0 +1,74 @@
+    {{var dataObj = JSON.parse($("#canOrderTime").val());}}
+    {{var StartDate = dataObj.StartDate;}}
+    {{var EndDate = dataObj.EndDate;}}
+    <i class="error J_error"></i>
+    <li class="clearfix">
+        <div class="lie_left">用车时间</div>
+        <div class="lie_right">
+            {{?it.param && it.param.PickupDate}}
+                <input class="use_time J_time" value="{{=it.param.PickupDate}}" type="text" readonly="readonly"  data-startDate="{{=StartDate}}" data-endData="{{=EndDate}}"/>
+            {{??}}
+                <input class="use_time J_time" value="{{=StartDate}}" type="text" readonly="readonly"  data-startDate="{{=StartDate}}" data-endData="{{=EndDate}}"/>
+            {{?}}
+            <i class="J_Tips little_desc J_little_tip" data-content="<div>请选择当地时间</div>"></i>
+        </div>
+    </li>
+   
+    {{~it.tmpl:datali}}
+        {{?datali.data.length}}
+        <li class="clearfix">
+            <div class="lie_left" data-type="{{=datali.id}}">{{?datali.id == "PickupType"}}接送类型{{??datali.id == "PickupArea"}}接送区域{{??datali.id == "PickupCarType"}}车型选择{{?}}
+            </div>
+            <div class="lie_right bus_region {{?datali.id == 'PickupType'}}J_shuttle_type{{??datali.id == 'PickupArea'}}J_region{{??datali.id == 'PickupCarType'}}J_choice{{?}}">
+                <div class="clearfix bus_choice_list">
+                {{~datali.data:curData}}
+                    {{var isactive = '', isdisabled = '';}}
+                    {{?curData.isactive}}
+                        {{isactive = 'selected';}}
+                    {{?}}
+                    {{?curData.isdisabled}}
+                        {{isdisabled = 'notClick';}}
+                    {{?}}
+                    <span {{?!it.param.flag}}class="{{=isactive}} {{=isdisabled}}"{{?}}  data-id="{{=curData.name}}"><i class="none"></i>
+                        {{?datali.id == "PickupType"}}
+                            {{?curData.name ==1 }}接机{{??curData.name ==2 }}送机{{??}}接机+送机{{?}}
+                        {{??}}
+                            {{=curData.name}}
+                        {{?}}
+                    </span>
+                {{~}}
+                </div>
+            </div>
+        </li>
+        {{?}}
+    {{~}}
+    <li class="clearfix">
+        <div class="lie_left">用车数量</div>
+        <div class="lie_right bus_count">
+            {{?!it.param.flag}}
+            <div class="bus_num">
+                {{var params = it.param,curNum = params.currentNum;}}
+                <a class="J_sub {{?curNum&& curNum > params.orderMin}}sub_btn{{?}}" href="javascript:;" data-price=""></a>
+                <input type="text" value="{{?curNum && curNum >= params.orderMin}}{{=curNum}}{{??curNum && curNum < params.orderMin}}{{=params.orderMin}}{{??}}1{{?}}" data-unitPrice=""/>
+                <a class="J_add {{?!(curNum && (params.PickupBookMax <= curNum))}}add_btn{{?}}" href="javascript:;" data-price=""></a>
+            </div> 
+            <p>{{?it.param.PriceUnit}}{{=it.param.PriceUnit}}{{?}}</p>
+            {{??}}
+            <div class="bus_num">
+                <a class="J_sub" href="javascript:;" data-price=""></a>
+                <input type="text" value="1" data-unitPrice=""/>
+                <a class="J_add add_btn" href="javascript:;" data-price=""></a>
+            </div> 
+            <p>{{?it.param.PriceUnit}}{{=it.param.PriceUnit}}{{?}}</p>
+            {{?}}
+        </div>
+
+    </li> 
+    <li class="clearfix total">
+        <div class="lie_left"></div>
+        <div class="lie_right totalPrice">
+            <a  href="javascript:;" class="J_airOrder" data-href="http://www.ly.com/wanle/bookwanle.html?" >立即预订</a>
+            <span class="wrap-text">请选择接送条件</span>
+        </div>
+    </li>
+   

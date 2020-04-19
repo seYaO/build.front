@@ -1,0 +1,58 @@
+.fileList {
+    background: #fff;
+    padding: 0px 10px;
+    margin-top: 10px;
+    margin-right: 9px;
+    margin-bottom: 9px;
+    position: relative;
+    z-index: 99;
+}
+.fileList ul {
+    margin: 0px;
+    padding: 0px;
+    list-style: none;
+}
+.fileList ul li {
+    margin-top: 5px;
+}
+.fileList ul li .file-name {
+    color: #323232;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.fileList ul li .file-image {
+    width: 15px;
+    height: 15px;
+    background: url(images/icon-image.png) no-repeat;
+    display: inline-block;
+    vertical-align: top;
+}
+.fileList ul li .file-word {
+    width: 15px;
+    height: 15px;
+    background: url(images/icon-word.png) no-repeat;
+    display: inline-block;
+}
+.fileList ul li .file-excel {
+    width: 15px;
+    height: 15px;
+    background: url(images/icon-excel.png) no-repeat;
+    display: inline-block;
+}
+.fileList ul li .file-ppt {
+    width: 15px;
+    height: 15px;
+    background: url(images/icon-ppt.png) no-repeat;
+    display: inline-block;
+}
+.fileList ul li .file-other {
+    width: 15px;
+    height: 15px;
+    background: url(images/icon-file.png) no-repeat;
+    display: inline-block;
+}
+.fileList ul li .delete-file {
+    margin-top: 10px;
+    margin-left: 33px;
+    color: #0085c6;
+}

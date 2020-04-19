@@ -1,0 +1,23 @@
+{{var item = it;}}
+{{?item.funFood && item.funFood.length>0}}
+<div class="route-part none">
+    <ul class="food clearfix">
+        {{~item.funFood:its}}
+        <li class="food-list">
+            <h4 class="title">{{=its.DiningRoomName}}</h4>
+            {{?its.DiningRoomAddress}}<div class="font-route"><span class="every-item">地址：</span><span class="every-item-info">{{=its.DiningRoomAddress}}</span></div>{{?}}
+            <div class="font-route">{{=its.DiningRoomDescript}}</div>
+            <div>
+            {{?its.DiningRoomImage}}
+            {{~its.DiningRoomImage:imgs}}
+                <div class="food-img hoverBig">
+                    <img src="{{=common.setImageSize(imgs,"450x250").replace('http:','')}}" alt="">
+                </div>
+            {{~}}
+            {{?}}
+            </div>
+        </li>
+        {{~}}
+    </ul>
+</div>
+{{?}}

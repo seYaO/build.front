@@ -1,0 +1,277 @@
+<!--协议模块开始-->
+{{var ProdcutCategory ="";}}
+{{var WifiInstruction ="";}}
+{{var WifiCertificateNotes ="";}}
+{{var WifiDataNotes ="";}}
+{{var AdvanceDays ="";}}
+{{var ProdcutType ="";}}
+{{var AdvanceTime ="";}}
+{{var PackageContent ="";}}
+{{var WifiReceiveNotes ="";}}
+{{var PhoneCardInstruction ="";}}
+{{var ValidateDesc ="";}}
+
+{{?data.SubmitDetail.ErrorCode != 3}}
+    {{ ProdcutCategory = data.SubmitDetail.ProdcutCategory;}}
+    {{ WifiInstruction = data.SubmitDetail.WifiInstruction;}}
+    {{ WifiCertificateNotes = data.SubmitDetail.WifiInstruction.WifiCertificateNotes;}}
+    {{ WifiDataNotes = data.SubmitDetail.WifiInstruction.WifiDataNotes;}}
+    {{ ProdcutType = data.SubmitDetail.ProdcutType;}}
+    {{ AdvanceDays = data.SubmitDetail.AdvanceDays;}}
+    {{ AdvanceTime = data.SubmitDetail.AdvanceTime;}}
+    {{ PackageContent = data.SubmitDetail.PhoneCardInstruction.PackageContent;}}
+    {{ WifiReceiveNotes = data.SubmitDetail.WifiInstruction.WifiReceiveNotes;}}
+    {{ PhoneCardInstruction = data.SubmitDetail.PhoneCardInstruction;}}
+    {{ ValidateDesc = data.SubmitDetail.PhoneCardInstruction.ValidateDesc;}}
+
+    {{var advanceDays = AdvanceDays == 0 ? "当天" : "前" + AdvanceDays + "天";}}
+    {{var advanceTime = (AdvanceTime !="") ? "" : AdvanceTime.split(" ")[1].split(":")[2];}}
+{{?}}
+
+
+
+
+
+<div class="procedureBox" id="xieyi">
+    <h3>委托代订协议</h3>
+    <div class="listbox constract">
+        <ul class="book_info">
+            <li style="width:100%">
+                <p class="r_name">预订时间：</p>
+                <div class="r_content">
+                    <p>如需预订，您最晚要在游玩{{=advanceDays}}{{=advanceTime}}前下单，请尽早预订。</p>
+                </div>
+            </li>
+
+            {{?ProdcutCategory == 92}}            
+                    {{?WifiInstruction && WifiCertificateNotes !="" &&  WifiDataNotes != "" && WifiReceiveNotes != ""}}
+                        <li>
+                            <span class="r_name">押金说明：</span>
+                            <div class="r_content">
+                                <p>{{=WifiReceiveNotes}}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="r_name">流量说明：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.WifiInstruction.WifiDataNotes}}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="r_name">领取凭证：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.WifiInstruction.WifiCertificateNotes}}</p>
+                            </div>
+                        </li>
+                    {{??}}
+                        <li>
+                            <span class="r_name">预订说明：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.Instruction}}</p>
+                            </div>
+                        </li>
+                    {{?}}
+            {{?? ProdcutCategory == 86}}         
+                    {{?PhoneCardInstruction && ValidateDesc != "" && PackageContent !=""}}
+                        <li>
+                            <span class="r_name">有效期：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.PhoneCardInstruction.ValidateDesc}}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="r_name">套餐内容：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.PhoneCardInstruction.PackageContent}}</p>
+                            </div>
+                        </li>
+                    {{??}}
+                        <li><span class="r_name">预订说明：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.Instruction}}</p>
+                            </div>
+                        </li>
+                    {{?}}
+            {{?? ProdcutType == 6}}              
+                   <li><span class="r_name">预订说明：</span>
+                        <div class="r_content">
+                            <p>{{=data.SubmitDetail.Instruction}}</p>
+                        </div>
+                    </li>   
+            {{??}}
+                    {{?PhoneCardInstruction && ValidateDesc != "" && PackageContent != ""}}
+                        <li>
+                            <span class="r_name">有效期：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.PhoneCardInstruction.ValidateDesc}}</p>
+                            </div>
+                        </li>
+                        <li>
+                            <span class="r_name">套餐内容：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.PhoneCardInstruction.PackageContent}}</p>
+                            </div>
+                        </li>
+                    {{??}}
+                        <li><span class="r_name">预订说明：</span>
+                            <div class="r_content">
+                                <p>{{=data.SubmitDetail.Instruction}}</p>
+                            </div>
+                        </li>
+                    {{?}}
+            {{?}}
+        </ul>
+
+        <div class="orderInfo">
+            <div class="left_box"></div>
+            <dl>
+                <dt>协议范本</dt>
+                <dd>
+                    <div class="left_box">
+                        <div class="left_box">
+                            <div class="contract_sty">
+                                <div class="contract_info">
+                                    <p class="contract_txt contract_txt_title fb20">委 托 代 订 协 议</p>
+                                    <p class="contract_txt">甲方（旅游者）：</p>
+                                    <p class="contract_txt">乙方：同程国际旅行社有限公司</p>
+                                    <p class="contract_txt">根据《中华人民共和国合同法》等有关法律、法规的规定，甲方与乙方在平等，自愿的基础上就委托代办事宜，经协商达成协议如下：</p>
+                                    <p class="contract_txt">第一条 旅游者信息</p>
+                                    <p class="contract_txt">甲方需要仔细核对旅客的姓名与证件号，乙方将按照以下信息为甲方预订，若因信息有误造成甲方损失，所产生损失由甲方自行承担。</p>
+                                    <p class="contract_txt">姓名   性别 证件类型    证件号</p>
+                                    <p class="contract_txt">____     ____   ________    ______</p>
+                                    <p class="contract_txt">备注:出游行姓名须写汉字全名,拼音须按汉字字母拼音格式，护照号和身份证号二选一填写.</p>
+                                    <p class="contract_txt">第二条 预订项目及要求</p>
+                                    <p class="contract_txt">甲方委托乙方办理以下一项或几项服务，乙方按甲方选择的内容代为预订，并接受甲方以总价支付：代订机票、酒店；代办个人旅游签证；代办目的地地面资源（例如用车、门票、当地观光游览等）；抵离接送机等。</p>
+                                    <p class="contract_txt">所有代订业务如有不退、不改、不可转让规则的，乙方有义务告知甲方此信息，甲方知晓后签约即表示接受此内容要求。所有代订业务最终以出游通知书为准。</p>
+                                    <p class="contract_txt">第三条 费用计算</p>
+                                    <p class="contract_txt contract_txt_sub_con">1、成人RMB:_______元/人，儿童RMB：（不满12岁）_______元/人；</p>
+                                    <p class="contract_txt">保险产品名称_______，RMB_____元/人，</p>
+                                    <p class="contract_txt">费用总额：RMB：_____元，人民币（大写________）。</p>
+                                    <p class="contract_txt">请您于___年___月___日 前付清款数，以便我们及时为您确认。所有代订服务见款留位，如果甲方没有按约定期限完成付款，乙方有权单方面解除委托约定关系，终止合作。费用说明： 以上费用包含机场建设费及燃油附加费</p>
+                                    <p class="contract_txt">太平“游天下”国内长线自助游保险计划：</p>
+                                    <p class="contract_txt">承保年龄：0天-80周岁（含）</p>
+                                    <p class="contract_txt">保险期限_____天</p>
+                                    <p class="contract_txt sub_contract_txt">1)、保障区域：中国大陆境内</p>
+                                    <p class="contract_txt sub_contract_txt">2)、18周岁以下的被保险人须由父母作为投保人投保，根据保监会规定，未满18周岁的未成年人的意外身故、烧伤及残疾保障的最高给付金额为100000元。</p>
+                                    <p class="contract_txt sub_contract_txt">3)、66周岁（含）-75周岁（含）被保险人意外身故、烧伤及残疾保额以100000元为限；</p>
+                                    <p class="contract_txt sub_contract_txt">4)、76周岁（含）以上被保险人意外身故、烧伤及残疾保额以50000元为限；</p>
+                                    <p class="contract_txt sub_contract_txt">5)、游客从事赛车、赛马、攀崖、滑翔、漂流、潜水、滑雪、滑板、跳伞、热气球、蹦极、冲浪、探险、摔跤、武术比赛、特技表演等高风险运动的项目必须是按照国家有关规定取得经营许可的项目，上述无经营许可的项目不在保险的保障责任内</p>
+                                    <p class="contract_txt sub_contract_txt">6)、只能选择全程购买保险或不购买保险，在旅行期间，每一被保险人限投保1份，多投部分本公司不承担保险责任</p>
+                                    <p class="contract_txt sub_contract_txt">7)、其他保障责任详见保险条款</p>
+                                    <p class="contract_txt contract_txt_sub_con">2、如需开具发票，请旅游者归来后两个月内向旅行社索要。发票开具后，若办理退款，需先退还原发票，并保持发票兑奖联完好（如有兑奖联）。旅行社可接受旅游者、或除旅游者之外的其他人员、单位对本合同付款，并且旅行社按照国家法规要求对签约一方开具发票。</p>
+                                    <p class="contract_txt">第四条 双方确认</p>
+                                    <p class="contract_txt">1.甲方知悉并确认预订信息无误，乙方接受甲方预订的以上事项。</p>
+                                    <p class="contract_txt">2.甲方无法与乙方用合同确认事项的，甲方同意采用电话、或电子邮件等方式与乙方确认。</p>
+                                    <p class="contract_txt">3.若甲方未能在最后付款期限前确认并付款，所有的预订将会被自动取消，乙方不再做任何预先通知。</p>
+                                    <p class="contract_txt">第五条 甲方的权利和义务</p>
+                                    <p class="contract_txt">1.以上各项服务内容均为委托业务，为了人身财产安排，乙方有义务提醒甲方购买保险，是否购买由甲方自行决定。乙方与甲方间不涉及强制绑定保险责任关系，委托服务事项之外甲方所发生的问题，乙方概不承担任何责任。甲方在出游期间的任何活动纯属个人行为，与乙方无关。</p>
+                                    <p class="contract_txt">2.甲方在接受委托事项期间，向服务方提出遭受人身、财产损失的或有关服务质量的投诉，乙方可以协助处理，但乙方不承担赔偿责任；因乙方过错导致代办服务内容如航班、酒店等需要调整，乙方承诺将本着诚信原则为甲方更换同等标准的服务项目，保证在出发前，及时将更改后的服务项目交由甲方确认。</p>
+                                    <p class="contract_txt">3.甲方应携带有效证件，按照航班时间提前前往机场登机（出境旅游，宜提前180分钟到达机场）。否则，误机自理，如遇政策性调价，如燃油税调整等，将由甲方负责补足或退回差价。</p>
+                                    <p class="contract_txt">4.甲方应保证所持证件为过关和登机的的有效证件，如因个人证件问题不能及时登机和出入境，由甲方自行负责。</p>
+                                    <p class="contract_txt">5.甲方在委托事项执行过程中如有不满意之时，不得以滞留境外、拒绝登机（车、船）、拒绝入住等方式对委托事项故意拖延、扩大损失、擅自取消行程等处理方法，由此造成的所有损失由甲方承担。</p>
+                                    <p class="contract_txt">6.甲方在执行委托事项时，必须符合我国和目的地国家及地区的有关规定；委托事项实施方（如酒店、机场、票务、景区、海关等）有另外特别规定的，甲方应予以遵守。</p>
+                                    <p class="contract_txt">第六条 乙方的权利和义务</p>
+                                    <p class="contract_txt ">1.乙方应在甲方委托服务范围内为甲方提供服务。</p>
+                                    <p class="contract_txt ">2.乙方有权根据委托人的身体健康状况及相关条件决定是否接纳报名。</p>
+                                    <p class="contract_txt ">3.乙方有权拒绝委托人提出的超出合同约定的不合理要求。</p>
+                                    <p class="contract_txt">第七条 其他约定</p>
+                                    <p class="contract_txt ">1.黄金周、特殊节日等旅游旺季，房间预订以款到确认为准，一经确认不得随意变更。</p>
+                                    <p class="contract_txt ">2.请自愿购买旅游人身意外保险。乙方郑重提醒甲方应安排好自己的活动项目，谨慎参加赛车、骑马、攀岩、滑翔、探险、漂流、潜水、游泳、滑雪、滑冰、滑板、跳伞、热气球、蹦极、冲浪等高风险活动，如需参加上述活动，乙方建议甲方投保包含高风险项目的意外险种。出游过程中请妥善保管好个人物品，注意安全。</p>
+                                    <p class="contract_txt ">3.机票准确航班信息及具体事宜请以出游前一天的出游通知书为准，如通知后航班有变化，乙方需及时用电话、电子邮件方式、短信或传真告知甲方，甲方需提前抵达机场办登机手续，如有误机甲方自行承担责任。</p>
+                                    <p class="contract_txt ">4.酒店凭证件、或护照名字入住。酒店正常入住时间 14：00 ，退房时间为 12：00 ，若提前入住或延迟退房，需甲方自行与酒店协商，若产生费用，由甲方自理。</p>
+                                    <p class="contract_txt ">5.甲方代理其他游客签约的，甲方有义务将本协议的约定事项向其代理的游客做出必要说明，并保证其在协议中的签字能够代表旅游者信息表格中列明的其它旅游者对协议约定的认可，表格中列明的任一位旅游者均应当按照协议约定维护权益并履行义务。如甲方未履行上述义务，导致其代理的游客与乙方发生纠纷，责任在于签约人甲方，与乙方无关。</p>
+                                    <p class="contract_txt">第八条 违约责任</p>
+                                    <p class="contract_txt">1.甲方和乙方在行前可以书面形式提出解除合同;</p>
+                                    <p class="contract_txt">2.甲方在出发前提出解除合同的,应当按下列标准向乙方支付业务损失费;</p>
+                                    <p class="contract_txt">3.支付成功后,若要取消订单,则机票,酒店全损.</p>
+                                    <p class="contract_txt">4.双方特别约定：</p>
+                                    <p class="contract_txt sub_contract_txt">若甲方所预订的旅游产品在目的地停留的日期部分或全部处在春节、国庆节、五一劳动节、元旦、圣诞节或其它国家性或地方性重大节日期间（圣诞节：12月24日-12月25日；其他节日的具体时段以国家节前颁布的休假日期为准），鉴于资源的特殊状况，甲方解除协议时，须按费用总额的100％向乙方支付业务损失费，此约定不受本委托协议第八条第1款、第2款的约束。</p>
+                                    <p class="contract_txt sub_contract_txt">甲方明确知晓且同意，因爆款产品资源特殊，甲方付款后无法更改、取消、退款。如此款约定与合同中其他条款约定不一致的，以此款约定为准。</p>
+                                    <p class="contract_txt">5.甲方同意乙方转委托的，乙方仅就对第三人的选任及其对第三人的指示承担责任。</p>
+                                    <p class="contract_txt">第九条 协议变更</p>
+                                    <p class="contract_txt">1.协议生效后，基于可协调范围内.甲方可以将其在协议中的权利和义务转让给符合出游条件的第三人，但甲方应向乙方支付由此增加的费用以及给乙方造成的损失也由甲方承担，由此减少的费用，乙方应当退还甲方.</p>
+                                    <p class="contract_txt">2.协议生效后，因乙方原因引起的更改，由此增加的费用由乙方承担，由此减少的费用，乙方应当退还甲方。</p>
+                                    <p class="contract_txt">第十条 不可抗力</p>
+                                    <p class="contract_txt">1.不可抗力，指不能预见、不能避免并不能克服的客观情况，包括但不限于因自然原因和社会原因引起的，如自然灾害、战争、恐怖活动、动乱、骚乱、罢工、突发公共卫生事件、政府行为等。</p>
+                                    <p class="contract_txt">2.意外事件，指因当事人故意或者过失以外的偶然因素引发的事件，包括但不限于重大礼宾活动导致的交通堵塞、列车航班晚点或取消、景点临时不开放、黑客攻击、电信部门技术管制。</p>
+                                    <p class="contract_txt">3.因不可抗力或者意外事件导致无法履行或者继续履行合同的，双方均可以解除合同，合同解除后，乙方退还甲方未发生的费用后不再承担其他任何责任；双方同意变更合同的，因此增加的费用由甲方承担，减少的费用乙方退还甲方。</p>
+                                    <p class="contract_txt">第十一条 第三方责任</p>
+                                    <p class="contract_txt">由于航空公司、保险公司、及其他有权机构等不可归责于乙方的原因导致甲方人身、财产权益受到损害的，包括但不限于，列车航班 延误或取消等，乙方予以协助，不再承担其他责任。</p>
+                                    <p class="contract_txt">第十二条 争议的解决方式</p>
+                                    <p class="contract_txt">本协议在履行中如发生争议，双方应协商解决，协商不成，应向乙方住所地人民法院提起诉讼。</p>
+                                    <p class="contract_txt">第十三条 温馨提示</p>
+                                    <p class="contract_txt ">1.黄金周或者其他旅游旺季期间，由于国内、国际航班中加班机、包机的数量大增，极易引起航班的延误，如遇此种情况，请甲方在候机厅耐心等待，密切注意航班的信息，不要到处乱跑，以免误机。同时，航空公司因运力等因素有可能临时调整航班，如有此情况发生，乙方将及时通知甲方，届时敬请甲方配合与谅解。</p>
+                                    <p class="contract_txt ">2.甲方应遵守中国和目的地国家的法律法规，尊重旅游途经地区当地居民的民族、民俗习惯。</p>
+                                    <p class="contract_txt ">3.入住酒店后，应了解酒店安全须知，熟悉酒店的太平门、安全出路、安全楼梯的位置及安全转移的路线。</p>
+                                    <p class="contract_txt ">4.进入客房后，请及时了解房间内设备情况，如房门插销、浴室水龙头开关、电视及冰箱饮料等，如有不能使用或者缺损的情况，请及时向酒店反映，退房时需自行结清房间提供的饮料、食品、洗涤和长途电话费用。</p>
+                                    <p class="contract_txt ">5.经过危险地段（如陡峭、狭窄、潮湿泛滑的道路等）不可拥挤，前往险峻景点观光时应充分考虑自身的条件是否可行，不要强求和存侥幸心理；参与登山等活动时，应注意适当休息，避免过度激烈运动，同时做好防护工作。</p>
+                                    <p class="contract_txt ">6.在水上（包括江河、湖海、水库）游览或者活动时，甲方须注意乘船安全，应穿戴救生衣，不可单独前往深水水域或者危险河道；选择水下游泳时，应携救生设备助游；海上浮潜时请关注海况及海流，务必穿上救生衣。</p>
+                                    <p class="contract_txt ">7.海拔3000公尺以上的高原地带，气压低，空气含氧量少，易导致人体缺氧，引起高原不良反应，请甲方避免剧烈运动和情绪兴奋，洗澡水不易过热，学会正确呼吸方法。16周岁以下及60周岁以上者，患有贫血、糖尿病、慢性肺病、较严重心脑血管疾病、精神病及孕妇等不宜进入高原旅游。</p>
+                                    <p class="contract_txt">第十四条 协议的生效及组成：</p>
+                                    <p class="contract_txt">本协议一式二份，双方各执一份，自双方签字或盖章之日起生效。传真件与原件具有同等法律效力。</p>
+                                    <p class="contract_txt">甲&nbsp;&nbsp;&nbsp;&nbsp;方：__________________________  乙    方：同程国际旅行社有限公司</p>
+                                    <p class="contract_txt">联系电话：__________________________ 合同经办人：____________________</p>
+                                    <p class="contract_txt">签约日期：__________________________ 签约日期：____________________</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </dd>
+            </dl>
+            <div class="contract_info">
+                <p class="contract_txt contract_txt_title fb20">安全须知</p>
+                <p class="contract_txt">为了增强旅游者安全意识，普及旅游安全基本常识，使旅游者参加旅游活动的计划能圆满、愉快、顺利完成，本公司特制定旅游安全须知，请旅游者认真阅读知晓并切实遵守。</p>
+                <p class="contract_txt">一、出发前准备事项</p>
+                <p class="contract_txt">1. 旅游者在临行前应考虑自身身体状况，必要时旅行前须征得医生同意后方可动身。如有体质较弱或者曾患病的旅游者必须坚持治疗，防止旧病复发。老年人往往患有多种慢性病，平时需要用药治疗者，出游时切不可遗忘服药，否则，可能导致旧病复发、病情加重或恶化。临行前，旅游者应根据自己的身体状况随身携带一些必备的药品及常用药品（如感冒药、止泻药、晕车药等），境外药房只能依处方购买药品。</p>
+                <p class="contract_txt">2. 到野生动物保护区游览，应尽量穿中性颜色衣服，如棕色、米色或土黄色；白色和其他鲜艳的颜色会令动物不安。</p>
+                <p class="contract_txt">3. 临行前安排好家中相应事宜，把旅游线路、旅行社紧急联系人等信息告诉自己家人，同时，也可将自己家人的紧急联系方式告知旅行社。</p>
+                <p class="contract_txt">4. 请旅游者务必带上身份证等有效证件、个人旅行用品、车船票、飞机票，准时到达行程地点。有些景区景点对于军人、老人、儿童、残疾人士有一定优惠，请旅游者提前出示证件以购买优惠门票。</p>
+                <p class="contract_txt">二、行程中注意事项</p>
+                <p class="contract_txt">（一）乘坐交通工具注意事项</p>
+                <p class="contract_txt">1. 黄金周或者其他旅游旺季期间，由于国内航班及加班机、包机的数量大增，极易引起航班的延误，如遇此种情况，请旅游者在候机厅耐心等待，密切注意航班的信息，不要到处乱跑，以免误机。同时，航空公司因运力等因素有可能临时调整航班，敬请旅游者配合与谅解。</p>
+                <p class="contract_txt">2. 旅游者乘坐交通工具时，应系好安全带，在交通工具停稳后方可离开；上下交通工具时，须排队等候，讲究文明礼貌，并优先照顾老人、儿童、妇女，切勿拥挤，以免发生意外。</p>
+                <p class="contract_txt">3. 旅游者乘坐交通工具时，请不要与司机交谈和催促司机开快车，不要将头、手、脚或者行李物品伸出窗外，以防意外发生；不要向车窗外扔废（杂）物品，特别是硬质物品，以免伤害他人。</p>
+                <p class="contract_txt">4. 旅游者下车游览、就餐、购物时，请注意关好旅游车窗并随身携带贵重物品。</p>
+                <p class="contract_txt">5. 旅游者乘坐飞机时，应随身携带有效身份证（小孩应带户口本原件，年满16周岁未办理身份证的旅游者须持派出所证明原件）。</p>
+                <p class="contract_txt">6. 搭乘快艇、漂流木筏、参加水上活动时，请旅游者按规定穿着救生衣，并遵照工作人员的指导。乘坐快艇游玩时，所有旅游者请抓紧扶手，年幼或者年长者请不要坐船头，以免发生不测。途中严禁追跑打闹。</p>
+                <p class="contract_txt">7. 乘机、坐车、乘船时要注意扶梯，在台阶处站稳。乘车时注意颠簸路段及司机急刹车，以免扭伤或摔伤身体。带儿童的游客乘坐交通工具时要特别注意儿童的安全。</p>
+                <p class="contract_txt">（二）住宿注意事项</p>
+                <p class="contract_txt">1. 抵达酒店后，酒店住宿以两人一室、自由组合为原则，如出现单男单女，本公司将调换夫妻用房或者调整为三人房；随行的小孩12周岁以上才能占床，请旅游者谅解。如果旅游者特别指定单人房间，请于出行前支付单人房差额并取得本公司的确认，以免出行后产生纷争。</p>
+                <p class="contract_txt">2. 旅游者入住酒店后，应了解酒店安全须知，熟悉酒店的太平门、安全出路、安全楼梯的位置及安全转移的路线。</p>
+                <p class="contract_txt">3. 沐浴时地面、浴缸容易打滑，一定要把防滑垫放好以防滑倒摔伤，酒后不要沐浴，更不要蒸洗桑拿浴。</p>
+                <p class="contract_txt">4. 不要将自己住宿的酒店、房号随便告诉陌生人，不要让陌生人或者自称酒店的维修人员随便进入客房，出入客房要锁好房门，睡觉前注意门窗是否关好，保险锁是否锁上；贵重物品请放置酒店保险箱，注意保管好收据，如随身携带请注意妥善保管。</p>
+                <p class="contract_txt">5. 如遇紧急情况请勿慌张：发生火警时请勿搭乘电梯或者随意跳楼，应镇定判断火情，主动实行自救；若身上着火，可就地打滚，或者用重衣物压火苗；必须穿过有浓烟的走廊、通道时，用浸湿的衣物披裹身体、捂着口鼻，贴近地、顺墙爬行；大火封门无法逃出时，可采用浸湿的衣物披裹身体、被褥堵门缝或者泼水降温的方法等待救援，或者摇动色彩鲜艳的衣物呼唤救援人员。</p>
+                <p class="contract_txt">（三）饮食卫生注意事项</p>
+                <p class="contract_txt">1. 外出旅游，旅游者应注意身体健康，切勿吃生食、生海鲜、未剥皮的水果，不可光顾路边无牌照摊档，忌暴饮暴食，应多喝开水，多吃蔬菜水果，少抽烟，少喝酒。因私自食用不洁食品和海鲜引起的肠胃疾病旅行社不承担责任。</p>
+                <p class="contract_txt">2. 不要随意接受和食用陌生人赠送的香烟、食物和饮品，防止他人暗算。</p>
+                <p class="contract_txt">3. 为防止旅途中水土不服，旅游者应自备一些常用药品以备不时之需，切勿随意服用他人提供的药品。</p>
+                <p class="contract_txt">4. 如对饮食有特殊要求，请在报名时告知旅行社并提前说明，以便更好的给您安排饮食。</p>
+                <p class="contract_txt">5. 旅游者品尝涮食时，为避免烫伤，待食物稍微凉却一下后再食用。使用酒精炉加热的，如需添加酒精，由酒店工作人员关闭火源后添加，请旅游者切勿自行添加；使用燃气加热的，旅游者严禁抽烟或将明火靠近火源，以免引起爆炸，带来不必要的伤亡。</p>
+                <p class="contract_txt">（四）购物注意事项</p>
+                <p class="contract_txt">1. 请勿轻信流动推销人员的商品推荐。由于小摊位物品真伪及质量难以保障，尽量不要在小摊位购买物品。如必须购买，请看好再与商家讨价。</p>
+                <p class="contract_txt">2. 购物时，请注意商品质量及价格，并向商家索取正式发票。</p>
+                <p class="contract_txt">3. 非旅行社指定购物点，旅游者消费属个人行为，如产生纠纷，旅行社可协助处理，但不承担任何责任。</p>
+                <p class="contract_txt">三、温馨提醒</p>
+                <p class="contract_txt">1. 为了确保旅行团顺利出行，防止旅途中发生人身意外伤害事故，请旅游者在出行前做一次必要的身体检查，80岁以上老人或存在下列健康问题的病患者，请勿报名，如隐瞒参团发生事故，责任自负：</p>
+                <p class="contract_txt">1) 传染性疾病患者，如传染性肝炎、活动期肺结核、伤寒等传染病人；</p>
+                <p class="contract_txt">2) 心血管疾病患者，如严重高血压、心功能不全、心肌缺氧、心肌梗等病人；</p>
+                <p class="contract_txt">3) 脑血管疾病患者，如脑栓塞、脑出血、脑肿瘤等病人；</p>
+                <p class="contract_txt">4) 呼吸系统疾病患者，如肺气肿、肺心病等病人；</p>
+                <p class="contract_txt">5) 精神病患者，如癫痫及各种精神病人；</p>
+                <p class="contract_txt">6) 严重贫血病患者，如血红蛋白量水平在 50 克 / 升以下的病人；</p>
+                <p class="contract_txt">7) 大中型手术的恢复期病患者；</p>
+                <p class="contract_txt">8) 孕妇及行动不便者。</p>
+                <p class="contract_txt">2. 60岁（含）以上70岁以下老年人报名出游的，需填写《健康证明》后方可报名，70岁（含）以上老年人需有家属陪同方可出游；未成年人需由父母或由父母指定的临时监护人陪同，如同行人员中有未成年人无父母陪同出游的，同行的成年出游人均视为未成年人的临时监护人，负责全程看管、照顾。</p>
+                <p class="contract_txt">3. 按照国家规定，旅游者在境内不准许参与色情场所活动，如有前往者，须负责自己的行为后果。文明公约为提高公民文明素质，塑造中国公民良好形象，中央文明办、国家旅游局今天联合颁布《中国公民国内旅游文明行为公约》。《中国公民国内旅游文明行为公约》营造文明、和谐的旅游环境，关系到每位游客的切身利益。做文明游客是我们⼤家的义务，请遵守以下公约：</p>
+                <p class="contract_txt sub_contract_txt">1、维护环境卫生。不随地吐痰和⼝香糖，不乱扔废弃物，不在禁烟场所吸烟。</p>
+                <p class="contract_txt sub_contract_txt">2、遵守公共秩序。不喧哗吵闹，排队遵守秩序，不并行挡道，不在公众场所高声交谈。</p>
+                <p class="contract_txt sub_contract_txt">3、保护生态环境。不踩踏绿地，不摘折花木和果　实，不追捉、投打、乱喂动物。</p>
+                <p class="contract_txt sub_contract_txt">4、保护文物古迹。不在文物古迹上涂刻，不攀爬触摸文物，拍照摄像遵守规定。</p>
+                <p class="contract_txt sub_contract_txt">5、爱惜公共设施。不污损客房用品，不损坏公用设施，不贪占小便宜，节约用水用电，用餐不浪费。</p>
+                <p class="contract_txt sub_contract_txt">6、尊重别人权利。不强行和外宾合影，不对着别人打喷嚏，不长期占用公共设施，尊重服务人员的劳动，尊重各民族宗教习俗。</p>
+                <p class="contract_txt sub_contract_txt">7、讲究以礼待人。衣着整洁得体，不在公共场所袒胸赤膊；礼让老幼病残，礼让女士；不讲粗话。</p>
+                <p class="contract_txt sub_contract_txt">8、提倡健康娱乐。抵制封建迷信活动，拒绝黄、赌、毒。</p>
+            </div>
+        </div>
+    </div>
+</div>

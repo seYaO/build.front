@@ -1,0 +1,391 @@
+{{
+    var it = IT[1].Data;
+    var postData = IT[0].Data;
+}}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" trace="pc-package-detail">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit" />
+    <title>{{=it.LeavePortCity}}到{{=it.CustomTitle}}_{{=it.LeavePortCity}}到{{=it.DestCity}}自由行旅游报价-同程旅游</title>
+    <meta name="keywords" content="{{=it.CustomTitle}},{{=it.LeavePortCity}}到{{=it.DestCity}}自由行价格" />
+    <meta name="description" content="同程旅游出境游为您提供{{=it.CustomTitle}}，精选{{=it.LeavePortCity}}自由行旅游攻略，{{=it.LeavePortCity}}自由行旅游报价，{{=it.LeavePortCity}}到{{=it.DestCity}}自由行优质{{=it.DestCity}}旅游服务，{{=it.DestCity}}自由行当然选同程旅游" />
+    <% includeId = cnwidescreenjscss %>
+    <link href="./icons.css" rel="stylesheet" /><!--ignore-->
+    <link href="//css.40017.cn/cn/min/???/cn/if/comm/2013/iflight_logo.0.0.5.css" rel="stylesheet" /><!--ignore-->
+    <link href="./index.css" rel="stylesheet" /><!--ignore-->
+    <link href="./hotelDetail.css" rel="stylesheet" /><!--ignore-->
+    <link href="//css.40017.cn/cn/v/2015/kefu/index.08145.css" rel="stylesheet"/><!--ignore-->
+    <!--通栏样式-->
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.07044.css" rel="stylesheet">
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+    <style>
+        #module-slider .module-slider-header, #module-slider .module-slider-top {
+            display: none;
+        }
+        #module-slider{
+            min-height: 274px;
+            height: auto;
+            bottom: 0;
+            top: auto;
+        }
+        #module-slider .ico.c-4 {
+            background-position: -80px -94px;
+        }
+        .if_logo{background:url(//img1.40017.cn/cn/if/common/iflight_Logo_1818.1.4.png?v=2016111701) no-repeat right bottom;width:20px;height:20px;display:inline-block;}
+        .if_logo_B{background:url(//img1.40017.cn/cn/if/common/iflight_Logo_2727.1.3.png?v=2016083002) no-repeat right bottom;width:27px;height:27px;display:inline-block}
+    </style>
+</head>
+
+<body>
+    <input type="hidden" id="lineId" value="{{=it.LineId}}" />
+    <input type="hidden" id="cityId" value="{{=postData.PositionCityId}}">
+    <input type="hidden" id="hidDays" value="{{=it.Days}}">
+    {{?postData.IsCct && postData.IsCct == 1}}
+        <input type="hidden" id="advanceDay" value="4">
+        <input type="hidden" id="cctParam" name="cctParam" value='{{=postData.CctParam}}'>
+        <input type="hidden" id="isErrorCct" name="isErrorCct" value="{{=postData.IsErrorCct}}">
+    {{??}}
+        <input type="hidden" id="advanceDay" value="7">
+    {{?}}
+    <!--区分超级自由行和出境跟团自由行点评-->
+    <input type="hidden" id="hidIsFreeTravel" value="1">
+    
+    <!-- 公共头部 start -->
+    <div {{?postData.IsCct && postData.IsCct == 1}}style="display:none;"{{?}}>
+        <% includeId = cnwidescreenhead?channel=dujia %>
+    </div>
+    <!--区分超级自由行和出境跟团自由行点评-->
+    <input type="hidden" id="hidIsFreeTravel" value="1">
+    <!-- 公共头部 end -->
+    <div class="wrapper">
+        <div id="content">
+            <!-- 面包屑 start -->
+            <div class="nav" {{?postData.IsCct && postData.IsCct == 1}}style="display:none;"{{?}}>
+                <span>您所在位置：</span> <a href="/" title="同程首页" target="_blank">同程首页</a> <span>&gt;</span> <a href="/dujia/" title="出境游" target="_blank">出境游</a> <span>&gt;</span>
+                <a href="/dujia/search.html?src={{=it.LeavePortCity}}&amp;dest={{=it.DestCity}}&amp;prop=7" title="{{=it.LeavePortCity}}到{{=it.DestCity}}" target="_blank">{{=it.LeavePortCity}}到{{=it.DestCity}}</a>
+                <span>&gt;</span>
+                <h1>{{=it.CustomTitle}}</h1>
+                {{?it.TravelAgency != ""}}
+                    <span class="instruction"><em>*</em>{{=it.TravelAgency}}</span>
+                {{?}}
+            </div>
+            <!-- 面包屑 end -->
+            <div class="content-box">
+                <div class="left30box">
+                    <div class="panel-top">
+                        <div class="top-one clearfix">
+                            <div class="focus-pic mSlide">
+                                {{?it.ProductImages && it.ProductImages.length}}
+                                    <div class="main-pic">
+                                        <img class="J_mainPic" src="{{=it.ProductImages[0].replace('http:','')}}" alt="">
+                                    </div>
+                                    <div class="carousel-wrap J_carouselWrap">
+                                        <div class="left"></div>
+                                        <div class="carousel">
+                                            <ul>
+                                                {{for(var i=0; i<it.ProductImages.length; i++){}}
+                                                    {{?i <= 4}}
+                                                        <li><img src="{{=it.ProductImages[i].replace('http:','')}}" data-img="{{=it.ProductImages[i].replace('http:','')}}" width="101" height="74" alt="{{=it.CustomTitle}}" /></li>
+                                                    {{?}}
+                                                {{}}}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                {{?}}
+                            </div>
+                            <div class="summary">
+                                <div class="line-info">
+                                    <ul class="line-pro clearfix">
+                                        <li class="city first">
+                                            <div class="txt"><span class="title">出港城市：</span><span class="startCity" statspot="true">{{=it.LeavePortCity}}</span>{{?it.LeavePortCitys && it.LeavePortCitys.length > 1}}<i></i>{{?}}</div>
+                                            {{?!postData.IsCct}}
+                                                {{?it.LeavePortCitys && it.LeavePortCitys != ""}}
+                                                    <div class="select-box J_selectCity none">
+                                                        <dl>
+                                                            {{~it.LeavePortCitys:citys:cIndex}}
+                                                                <dd><a href="//www.ly.com/dujia/tours/p{{=citys.Value}}.html">{{=citys.Key}}</a></dd>
+                                                            {{~}}
+                                                        </dl>
+                                                    </div>
+                                                {{?}}
+                                            {{?}}
+                                        </li>
+                                        <li>
+                                            <div class="txt">
+                                                <span class="title">出游类型：</span><span>自由行</span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="txt"><span class="title">产品编号：</span><span>{{=it.LineId}}</span></div>
+                                        </li>
+                                    </ul>
+                                    {{
+                                        var fullTitle = it.CustomTitle + '•' + it.SubTitle;
+                                        var showTitle = "";
+                                        var fullLength = 45;
+                                        if(it.CustomTitle.length > fullLength){
+                                            showTitle = it.CustomTitle.substring(0,fullLength)+'...';
+                                        }else{
+                                            var leftLength = fullLength - it.CustomTitle.length;
+                                            if(it.SubTitle.length > leftLength){
+                                                showTitle = it.CustomTitle + '<span>' + '•' + it.SubTitle.substring(0,leftLength)+'...</span>';
+                                            }else{
+                                                showTitle = it.CustomTitle + '<span>' + '•' + it.SubTitle + '</span>'
+                                            }
+                                        }
+                                    }}
+                                    <div class="line-title" title="">
+                                        <h1 title="{{=it.CustomTitle}}•{{=it.SubTitle}}">{{=showTitle}}</h1></div>
+                                    <!-- <div class="good-product J_Tips" data-content="星级越高，行程中所含自由时间越多，更注重行程的休闲程度，适合自主型游客。"><span class="name">尊享奢华</span>
+                                    </div> -->
+                                    {{?it.ProductFeature &&it.ProductFeature != ""}}
+                                        <p title="{{=it.ProductFeature}}">{{=it.ProductFeature}}</p>
+                                    {{?}}
+                                </div>
+                                <div class="line-price clearfix">
+                                    <ul>
+                                        <li class="declare-box">
+                                            <span>同 程 价<i>：</i></span>
+                                            <span class="declare-price price">
+                                                {{?it.Price <= 0}}
+                                                    <b>实时计价</b>
+                                                {{??}}
+                                                    <b>¥</b><strong>{{=it.Price}}</strong>/人起
+                                                    <span class="declare-ico J_Tips" data-content="本起价是可选出发日期中，按双人出行共住一间房核算的最低单人价格。产品价格会根据您所选择的出发日期、出行人数、入住酒店房型、航班或交通以及所选附加服务的不同而有所差别。" style="cursor:pointer;">起价说明</span>
+                                                {{?}}
+                                            </span>
+                                            <span class="TCbaitiao"><a href="http://jr.ly.com/static/intro" target="_blank" class="J_baitiao">白条说明</a></span>
+                                        </li>
+                                        <li class="baitiao-title none"><span>白条分期：</span><i></i><em>！</em><span class="BT-explain"><a href="http://jr.ly.com/static/intro" target="_blank">白条说明</a></span></li>
+                                        {{?it.ServiceFeatures && it.ServiceFeatures.length > 0}}
+                                            <li class="clearfix">
+                                                <div>
+                                                    <span class="f-left">特色体验：</span>
+                                                </div>
+                                                <div class="experience">
+                                                    <ul class="experience-box">
+                                                        {{for(var i=0; i<it.ServiceFeatures.length; i++){}}
+                                                            <li><i></i>{{=it.ServiceFeatures[i]}}</li>
+                                                        {{}}}
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        {{?}}
+                                        <li class="declare-box clearfix J_YouHuiTop">
+                                        </li>
+                                        <li class="J_TcBystages clearfix none">
+                                        </li>
+                                    </ul>
+                                    <a href="http://livechat.ly.com/out/guest?p=2&c=2" target="_blank">
+                                        <div class="conect-kefu"><i></i><em>建议您提前{{?postData.IsCct && postData.IsCct == 1}}4{{??}}7{{?}}天预订</em></div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--自由行泛打包 start-->
+                    <div class="packed-panel clearfix">
+                        <div class="packed-info">
+                            <span class="cal-warn"><em>*</em>日历价格为人均起价，且存在滞后仅供参考，请以具体机酒套餐的实时价格为准。</span>
+                            <div class="packed-content clearfix">
+                                <div class="calendar-checked clearfix">
+                                    <div class="cc-calendar"></div>
+                                </div>
+                                <div class="result-info none"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--自由行泛打包 end-->
+                    <!--机酒，保险和SBU-->
+                    <div class="proDetail_box">
+                        <div class="product-box">
+                        </div>
+                        <div class="J_insuranceBox">
+                        </div>
+                    </div>
+                </div>
+                <div id="conlist" class="content-nav clearfix">
+                    <div class="content-nav-inner"></div>
+                    <a class="reserve-btn J_OrderBtn disable" href="javascript:void(0);" title="立即预订" rel="nofollow">努力加载中...</a>
+                </div>
+                <div class="J_routeDetail">
+                    <div id="conlist1" class="content-nav1 clearfix">
+                        <div class="con-itemlist version_test"></div>
+                        <div class="con-map-day version_test"></div>
+                    </div>
+                    <div id="routeInfo" data-txt="推荐行程" class="nav_box J_NavBox">
+                        {{#def.lineDetailInfo}}
+                    </div>
+                    <div id="feeInfo" data-txt="费用说明" class="nav_box J_NavBox">
+                        <div class="title-fee"><i></i>费用说明</div>
+                        <div class="fee-box">
+                            {{#def.fee}}
+                        </div>
+                    </div>
+                    <div id="noticeInfo" data-txt="预订须知" class="nav_box J_NavBox">
+                        <div class="title-fee"><i></i>预订须知</div>
+                        <div class="info-box">
+                            <ul class="info-tab">
+                                <li class="onlineBuy info-active"><i></i>网上预订</li>
+                                <li class="shopBuy "><i></i>线下门店预订</li>
+                            </ul>
+                            <div class="online-box">
+                                <div class="title-all info-flow"><i></i>预订流程</div>
+                                <div class="flow-content"><i>1</i><span>打开同程旅游客户端/网站</span><span class="info-xuxian"></span><i>2</i><span>选择线路</span><span class="info-xuxian"></span><i>3</i><span>确认线路</span><span class="info-xuxian"></span><i>4</i><span>填写订单信息</span><span class="info-xuxian"></span><i class="duigou"></i><span>支付订单</span>
+                                </div>
+                                <div class="title-all info-type"><i></i>签约方式</div>
+                                <div class="qianyue-box clearfix">
+                                    <div class="qianyue-item sign-email"><i></i>
+                                        <h3>邮件签约</h3>
+                                        <p>我们会将盖章的电子合同发送到您指定的电子邮箱</p>
+                                        <h4>方式一</h4></div>
+                                    <div class="qianyue-item sign-ems"><i></i>
+                                        <h3>快递签约</h3>
+                                        <p>我们会将盖章的合同快递给您，请在收到合同后及时签字并回寄给我们。</p>
+                                        <h4>方式二</h4></div>
+                                    <div class="qianyue-item sign-shop"><i></i>
+                                        <h3>门店签约</h3>
+                                        <p>前往同程设在各城市的门店进行线下签约付款。</p>
+                                        <h4>方式三</h4></div>
+                                </div>
+                                <div class="title-all pay-type"><i></i>付款方式</div>
+                                <div class="content-payType">
+                                    <ul>
+                                        <li></li>
+                                        <li class="pay-bao"></li>
+                                        <li class="pay-online"></li>
+                                        <li class="pay-card"></li>
+                                        <li class="pay-visa"></li>
+                                    </ul>
+                                </div>
+                                <div class="J_warnInfo">
+                                    {{#def.warningSafe}}
+                                </div>
+                            </div>
+                            <div class="shop-box none">
+                                <div class="title-all info-flow"><i></i>预订流程</div>
+                                <div class="flow-content"><i>1</i><span>当地同程旅游门店</span><span class="info-xuxian"></span><i>2</i><span>专业旅游顾问接待</span><span class="info-xuxian"></span><i>3</i><span>共同确认路线</span><span class="info-xuxian"></span><i class="duigou"></i><span>支付订单</span>
+                                </div>
+                                <div class="J_shopbox">
+                                </div>
+                                <div class="title-all info-type"><i></i>签约方式</div>
+                                <div class="qianyue-box clearfix">
+                                    <div class="cost sign-email"><i></i>
+                                        <h3>邮件签约</h3>
+                                        <p>我们会将盖章的电子合同发送到您指定的电子邮箱</p>
+                                        <h4>方式一</h4></div>
+                                    <div class="cost sign-ems"><i></i>
+                                        <h3>快递签约</h3>
+                                        <p>我们会将盖章的合同快递给您，请在收到合同后及时签字并回寄给我们。</p>
+                                        <h4>方式二</h4></div>
+                                    <div class="cost sign-shop"><i></i>
+                                        <h3>门店签约</h3>
+                                        <p>前往同程设在各城市的门店进行线下签约付款。</p>
+                                        <h4>方式三</h4></div>
+                                </div>
+                                <div class="title-all pay-type"><i></i>付款方式</div>
+                                <div class="content-payType">
+                                    <p>门市刷卡：门市刷卡（为了您的支付方便和安全性，请优先选择刷卡支付）、转账支票，现金支付；台湾产品仅支持南通门店支付。</p>
+                                    <p>对公汇款：通过银行将相关款项汇至同程旅游指定对公账户。</p>
+                                </div>
+                                <div class="J_warnInfo">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="travelTips" data-txt="出游须知" data-ref=".visa-detail" class="nav_box J_NavBox">
+                        <div class="title-fee"><i></i>出游须知</div>
+                        <div class="tips-box">
+                            <div class="title-warnInfo">出游前须知</div>
+                            <div id="visaInfo">
+                                <div class="list-box visa-content" {{?it.Visa && it.Visa != null}} data-CountryId = "{{=it.Visa.CountryId}}" data-VisaTypeId = "{{=it.Visa.VisaTypeId}}" data-Regions = '{{=JSON.stringify(it.Visa.Regions)}}'{{?}}>
+                                </div>
+                            </div>
+                            <div class="J_tourKnow">
+                                {{#def.tourKnow}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="CommentContent" data-txt="游客点评" data-ref="#J_SubCommentContent" class="nav_box J_NavBox data-outer-loading">
+                    <div class="title-fee"><i></i>游客点评</div>
+                    <div class="list-box comment-content" id="J_SubCommentContent">
+                    </div>
+                    <div class="data-loading">
+                        <div class="bg"></div><span>请稍候,用户点评正在加载中...</span></div>
+                </div>
+            </div>
+            <form id="bookingForm"  action="/dujia/DynamicPackageBook?id={{=it.LineId}}{{?postData.IsCct && postData.IsCct == 1}}&fromcct=1{{?}}" method ="post">
+                <input type="hidden" name="bookingParam" id="bookingParam" value="">
+                {{?postData.IsCct && postData.IsCct == 1}}
+                    <input type="hidden" name="CctParam" id="bookingCctParam" value="">
+                {{?}}
+            </form>
+            <form id="hotelForm"  action="" method ="post" redirectType="Temporary" type="Redirect">
+                <input type="hidden" name="productParam" id="productParam" value=''>
+                {{?postData.IsCct && postData.IsCct == 1}}
+                    <input type="hidden" name="CctParam" id="fromCctParam" value=''>
+                {{?}}
+            </form>
+        </div>
+    </div>
+    <!--地图部分start-->
+    <div class="maoBox-bg none"></div>
+    <div class="mapBox none">
+        <div class="mapBox-title clearfix">
+            <span>交通地图</span>
+            <i>X</i>
+        </div>
+        <!--<div class="dragToMap">拖动至地图查看街景地图</div>-->
+        <div id="map">
+            <div class='data-loading'><div class='bg'></div><span>请稍候，正在为您查询中</span></div>
+        </div>
+    </div>
+    <!--地图部分end-->
+    <!-- 公共页脚 开始 -->
+    <div {{?postData.IsCct && postData.IsCct == 1}}style="display:none;"{{?}}>
+        <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+    </div>
+    <!-- 公共页脚 结束 -->
+    <script type="text/javascript">
+        var product =  {
+            "isvalid":{{=postData.IsPostBack}},
+            "Data": {{=JSON.stringify(postData.PostBack)}}
+        }
+    </script>
+    <script src="//modules/sea.js" data-loader="true" type="text/javascript"></script>
+    <script src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js"></script>
+    <script src="//js.40017.cn/cn/v/2015/kefu/util.08145.js" type="text/javascript"></script>
+    <script src="//webapi.amap.com/maps?v=1.3&key=f801173ebbcc4e213b14558b08d7f88b&&plugin=AMap.Scale,AMap.OverView,AMap.ToolBar"></script>
+    <script type="text/javascript">
+        seajs.require("./index").init();
+    </script>
+    <!-- 统计相关功能 -->
+    <script src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js"></script>
+    <script type="text/javascript" src="/modules/common/0.1.0/index.js"></script>
+    {{?postData.IsCct && postData.IsCct == 1}}
+    {{??}}
+        <% includeId = node_dj_common_stat %>
+        <script type="text/javascript">
+            window.__stat_aggs__ =[{
+                key: 'pc-package-detail',
+                text: '动态打包终页'
+            }];
+            stat.init({
+                "vst": [
+                    ['_serialid', '0'],
+                    ['_vrcode', stat.getVrcode()],
+                    ['_refId', stat.getRefid()],
+                    ['_userId', stat.getMemberId()],
+                    ['_openTime', stat.timeDiff],
+                    ['_trackPageview', '/出境/动态打包/动态打包终页/']
+                ]
+            });
+        </script><!--ignore-->
+    {{?}}
+    <!-- 统计相关功能 -->
+</body>
+
+</html>

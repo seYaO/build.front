@@ -1,0 +1,9 @@
+{
+  "dataUri": "/wanle/api/WanleProduct/GetWanleProductDetail",
+  "query": {
+      "productid":12430,
+      "siteType": 0,
+      "ak": ""
+  },
+  "desc": "玩乐终页"
+}

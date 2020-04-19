@@ -1,0 +1,91 @@
+<div class="citylistbox">
+    <h3>{{=titleTxt}}目的地</h3>
+    {{?depList && depList.length>0}}
+
+    {{~depList:desMain:dIndex}}
+    {{?desMain}}
+        <div effect_index="{{=dIndex}}" class=" listbox {{?dIndex==desMain.length}}bottdiv{{?}} spm-block" data-spm="{{=dIndex+22}}">
+            <img attr-image="{{=desMain.FloorImgNoSelect.replace('http:','')}}"  attr-imageH="{{=desMain.FloorImgSelect}}" src="{{=desMain.FloorImgNoSelect.replace('http:','')}}" />
+            <dl>
+                {{?desMain.TigInfoList && desMain.TigInfoList.length}}
+                <dt>
+                    {{~desMain.TigInfoList:desList}}
+                        <a href="javascript:void(0)">{{=desList.Name}}</a>
+                        {{?desList.LVisaType==2}}
+                        <span class="ldq-a"></span>
+                        {{??desList.LVisaType==1}}
+                        <span class="mq-a"></span>
+                        {{?}}
+                    {{~}}
+                </dt>
+                <dd>
+                {{~desMain.TigInfoList:desList}}
+                {{?desList.ChildList}}
+                    {{~desList.ChildList:subList}}
+                    {{?subList.IsRecommend==1}}
+                        <a href="/dujia/{{=subList.Pinyin}}{{=subList.Id}}-{{=lineType}}/f{{=startcityid}}/" target="_blank" title="{{=subList.Name}}">
+                            {{=subList.Name}}
+                            {{?subList.LVisaType==2}}
+                            <div class="d-ldq-a"><span class="ldq-a"></span></div>
+                            {{??subList.LVisaType==1}}
+                            <div class="d-ldq-a"> <span class="mq-a"></span></div>
+                            {{?}}
+                        </a>
+                    {{?}}
+                    {{~}}
+                {{?}}
+                {{~}}
+                </dd>
+                {{?}}
+            </dl>
+            <span class="sign_ico">&nbsp;</span>
+        </div>
+    {{?}}
+    {{~}}
+    <em class="bottico">&nbsp;</em>
+    <div class="clear_float"> </div>
+    {{~depList:desSub:sIndex}}
+    {{?desSub}}
+        <div effect_index='{{=sIndex}}' class="showlist none spm-block" data-spm="{{=sIndex+22}}">
+            {{~desSub.TigInfoList:hidTig:hIndex}}
+                {{?hIndex<3}}
+                    <div class="showbox {{?hIndex==0}}bor_no{{??hIndex==1}}ico_rigth{{?}}">
+                        <h4>
+                            <a href="javascript:void(0)" title="{{=hidTig.Name}}">{{=hidTig.Name}}</a>
+                            {{?hidTig.LVisaType==1}}
+                            <span class="mq-a"></span>
+                            {{??hidTig.LVisaType==2}}
+                            <span class="ldq-a"></span>
+                            {{?}}
+                        </h4>
+                        <dl class="hotcitylist">
+                            <dt>热门目的地</dt>
+                            {{~hidTig.ChildList:threeTag}}
+                                {{?threeTag}}
+                                    <dd>
+                                        <a class="{{?threeTag.IsHot == 1}}f60{{?}}" href="/dujia/{{=threeTag.Pinyin}}{{=threeTag.Id}}-{{=lineType}}/f{{=startcityid}}/" target="_blank" title="{{=threeTag.Name}}">
+                                        {{=threeTag.Name}}
+                                        {{?threeTag.LVisaType==2}}
+                                        <div class="d-ldq-a"><span class="ldq-a"></span></div>
+                                        {{??threeTag.LVisaType==1}}
+                                        <div class="d-ldq-a"><span class="mq-a"></span></div>
+                                        {{?}}
+                                        </a>
+                                    </dd>
+                                {{?}}
+                            {{~}}
+                        </dl>
+                        <a href="{{=hidTig.SlideLink.replace('http:','')}}" target="_blank" class="show_ico" title="{{=hidTig.Name}}">
+                            <img src="{{=hidTig.SlideImg.replace('http:','')}}" alt="图片" />
+                        </a>
+                    </div>
+                    {{?hIndex ==0 && desSub.TigInfoList.length>0}}
+                        <span class="splitspan">&nbsp;</span>
+                    {{?}}
+                {{?}}
+            {{~}}
+        </div>
+    {{?}}
+    {{~}}
+    {{?}}
+</div>

@@ -1,0 +1,52 @@
+<li class="clearfix no-hongbao" data-desc="未使用优惠"  data-ParValue= "0" data-amount="0">
+            <span class="hongbao-left selected"></span>
+            <div class="hongbao-right no-use">暂不使用优惠</div>
+        </li>
+{{~it:value}}
+    {{?value.PreferentialType === 2}}
+        {{~value.HongBaoBatchList:list}}
+            {{?it.amount >= list.SmallAmount}}
+            <li class="clearfix" data-desc="省¥{{=list.ParValue}}元 红包" data-ParValue="{{=list.ParValue}}"
+            data-amount="{{=list.SmallAmount}}" data-ruleId = "{{=value.RuleId}}"
+             data-virtualAmount = "{{=list.ParValue}}" data-virtualCouponNo = "{{=list.CouponNo}}">
+                <span class="hongbao-left"></span>
+                <div class="hongbao-right">
+                    <p>
+                        <span class="amount">省¥{{=list.ParValue}}元 红包</span>
+                        <span class="endTime">{{=list.EndDate.substring(0,10)}}到期</span>
+                    </p>
+                    <p class="tips">{{=value.Notice}}</p>
+                </div>
+            </li>
+            {{?}}
+        {{~}}
+    {{??}}
+        {{?it.allOrderDay > 1 && value.PreferentialType === 5}}
+        <li class="clearfix J_first" data-desc="首日免单" data-ruleId = "{{=value.RuleId}}"  data-virtualCouponNo = "">
+            <span class="hongbao-left"></span>
+            <div class="hongbao-right">
+              <p>
+                  <span class="amount">首日免单</span>
+                  <span class="endTime">{{=value.EndDate.substring(0,10)}}到期</span>
+              </p>
+              <p class="tips">{{=value.Notice}}</p>
+            </div>
+        </li>
+        {{??value.PreferentialType !== 5}}
+            {{?it.amount >= value.PreferentialPrice}}
+            <li class="clearfix" data-desc="省¥{{=value.PreferentialPrice}}元 {{=value.ConfigName}}" data-ParValue="{{=value.PreferentialPrice}}"
+                data-ruleId = "{{=value.RuleId}}" data-virtualAmount = "{{=value.PreferentialPrice}}"  data-virtualCouponNo = "">
+
+              <span class="hongbao-left"></span>
+              <div class="hongbao-right">
+                  <p>
+                      <span class="amount">省¥{{=value.PreferentialPrice}}元 {{=value.ConfigName}}</span>
+                      <span class="endTime">{{=value.EndDate.substring(0,10)}}到期</span>
+                  </p>
+                  <p class="tips">{{=value.Notice}}</p>
+              </div>
+            </li>
+            {{?}}
+        {{?}}
+    {{?}}
+{{~}}

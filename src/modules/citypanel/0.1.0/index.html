@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <style>
+#dd001, #dd002 {
+    clear: both;
+    float: left;
+    margin: 0 2em 2em 0;
+    padding: 2em 0 0 0;
+    position: relative;
+}        
+        </style>
+    </head>
+    <body>
+             
+        <div id="dd001"><input type="text" placeholder="depart"></div>
+        <div id="dd002"><input type="text" placeholder="destination"></div>
+
+        <script src="../../../jqmodule/sea-debug.js"></script>
+        <script>
+var _tcTraObj = {};
+_tcTraObj._tcTrackEvent = function() {};
+
+seajs.config({
+    "base": "../../../jqmodule/"
+});
+seajs.use([
+    'citypanel/0.1.0/index',
+], function(panel) {
+    panel.init({
+        depWrapEl: document.getElementById('dd001'),
+        desWrapEl: document.getElementById('dd002'),
+        url: 'http://www.ly.com/dujia/AjaxActivity.aspx?type=QueryIndexTotalCity&lineType=0|1',
+        flag: 'group'
+    });
+});
+        </script>
+    </body>
+</html>

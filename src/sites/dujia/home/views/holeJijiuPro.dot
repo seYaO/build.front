@@ -1,0 +1,62 @@
+{{?it.TPackageProduct.ProductList && it.TPackageProduct.ProductList.length != 0}}
+<div class="prolist">
+<ul class="clearfix">
+
+{{~it.TPackageProduct.ProductList:tPackageProductList:tPackageProductListIndex}}
+{{var traceLineId = tPackageProductList.LineId;}}
+        {{?tPackageProductList.IsChengYiProduct}}
+            {{var traceType = 3;}}
+        {{??tPackageProductList.IsTCSpecialLine}}
+            {{var traceType = 1;}}
+        {{??}}
+            {{var traceType = 0;}}
+        {{?}}
+        {{?tPackageProductList.Property === 1||tPackageProductList.Property==="1"}}
+            {{var traceLineType = 1;}}
+        {{??}}
+            {{var traceLineType = 3;}}
+        {{?}}
+    <li class='proline'>
+        {{?it.Label.TPackageLabel.LabelNames && it.Label.TPackageLabel.LabelNames.length>0}}
+        <a class='proline__link' trackspot="{{=it.CityName}}^{{=tPackageProductList.LineId}}^{{=tPackageProductListIndex+1}}^{{=it.Label.TPackageLabel.LabelNames[0]}}^机+酒" target='_blank' trace="{{=tPackageProductListIndex}}" data-trace="{{= 4 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="http://www.ly.com/dujia/tours/" + "p" + tPackageProductList.LineId + ".html" }}'>
+        {{??}}
+        <a class='proline__link'  target='_blank' trace="{{=tPackageProductListIndex}}" data-trace="{{= 4 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + "p" + tPackageProductList.LineId + ".html" }}'>
+        {{?}}
+            <div class='proline__img'>
+                <img data-img="{{=tPackageProductList.ImgUrl.replace('http:','')}}" title="{{=tPackageProductList.MainTitle}}" alt="{{=tPackageProductList.MainTitle}}">
+                <div class="sub-title" title="{{=tPackageProductList.SubTitle}}">
+                    {{=tPackageProductList.SubTitle}}
+                </div>
+            </div>
+            <div class='proline__txt'>
+                <p class='proline__title' title="{{=tPackageProductList.MainTitle}}">{{=tPackageProductList.MainTitle}}</p>
+                <p class='proline__price'>
+                    {{?tPackageProductList.TcPrice == "0"}}
+                    <em>实时计价</em>
+                    {{??}}
+                    ¥<em>{{=tPackageProductList.TcPrice}}</em><b>起</b>
+                    {{?}}
+                    <i class="proline__depcity">{{=tPackageProductList.LeaveCity}}出发</i>
+                </p>
+            </div>
+                    {{var tag ,tagClass;}}
+                    {{?tPackageProductList.Property == 1}}
+                    {{tag = "跟团游";}}
+                    {{tagClass = "proline__kind-gt";}}
+                    {{??tPackageProductList.Property == 3}}
+                    {{tag = "自由行";}}
+                    {{tagClass = "proline__kind-zy";}}
+                    {{??}}
+                    {{tag = "目的地参团";}}
+                    {{tagClass = "proline__kind-mdd";}}
+                    {{?}}
+            <span class='{{=tagClass }}'>
+                {{=tag}}
+            </span>
+        </a>
+    </li>
+    {{~}}
+
+</ul>
+</div>
+{{?}}

@@ -1,0 +1,94 @@
+<!--发票-->
+<div class="J_fp_bg"></div>
+<div id="J_fp_post">
+    <div class="form-fp">
+        <h3>发票信息</h3>
+        <span class="close-dia-fp"></span>
+        <div class="fp-content">
+            <div class="fp-price">
+                <span class="fp-left">发票金额</span>
+
+                <span class="fp-price-detail">发票开具以实际支付费用为准，保险提供定额发票，红包、旅游卡支付金额不开具发票。</span>
+            </div>
+            <div class="fp-title">
+                <span class="fp-left ff-left-tt">发票抬头</span>
+                <div class="fp-ttbox none">
+                    <span class="fp-tt"></span>
+                    <span class="fp-change">修改抬头</span>
+                </div>
+                <div class="fp-box-fill clearright">
+                    <input type="text" class="fp-tt-in" maxlength="20" attr-value="请填写增加个人或公司名称" vType="rq" data-err-enorcnword="请输入正确抬头" required data-err-rq="请输入正确抬头" style="border-radius:2px;border:1px solid #ddd" onblur="if(this.value == '')this.value='请填写增加个人或公司名称';" onclick="if(this.value == '请填写增加个人或公司名称')this.value='';" value="请填写增加个人或公司名称" />
+                    <span class="valid_symbol_bill error_bill none">
+                        <i></i>
+                        <span></span>
+                    </span>
+                </div>
+                <div class="default-tt">
+                    <input type="checkbox" class="fp-tt-default" id="fp-tt-default" name="fp-tt-default" />
+                    <label for="fp-tt-default" class="fp-cb-default sjchecked">设为默认抬头</label>
+                </div>
+            </div>
+            <div class="fp-shoujian">
+                <span class="fp-left sj-left">&nbsp;&nbsp;&nbsp;收件人</span>
+                <div class="sjlist">
+                </div>
+                <div class="J-adbox">
+                </div>
+            </div>
+            <div class="fp-adress-write-box none">
+                <div>
+                    <input name="sendName" type="text" class="J_Name fp-adress-fill fp-adress-name " maxlength="15" data-err-rq="请输入联系人姓名" vtype="rq enOrCnWord" onblur="if(this.value == '')this.value='姓名';" onclick="if(this.value == '姓名')this.value='';" value="姓名" required="required" attr-value="姓名" data-err-enorcnword="请输入正确联系人姓名">
+                    <span class="valid_symbol_bill error_bill none">
+                        <i></i>
+                        <span></span>
+                    </span>
+                    <div class="clearright">
+                        <input name="sendPhoneNum" type="text" class="J_Phone fp-adress-fill fp-adress-tel " data-err-rq="请输入正确手机号码" vtype="rq mobile" data-err-mobile="号码不正确" onblur="if(this.value == '')this.value='手机号码';" onclick="if(this.value == '手机号码')this.value='';" value="手机号码" attr-value="手机号码" required="required">
+                        <span class="valid_symbol_bill error_bill none">
+	                        <i></i>
+	                        <span></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="fp-xl-box">
+                    <div class="select_box">
+                        <div id="province_bill" class="addr_type send-pro" value="0">请选择省</div>
+                        <ul id="proList_bill" class="none block"></ul>
+                    </div>
+
+                    <div class="select_box">
+                        <div id="city_bill" class="addr_type send-city" value="0">请选择市</div>
+                        <ul id="cityList_bill" class="none block"></ul>
+                    </div>
+                    <div class="select_box">
+                        <div id="district_bill" class="addr_type send-region" value="0">区/县</div>
+                        <ul id="trictList_bill" class="none block"></ul>
+                    </div>
+                    <span class="valid_symbol_bill error_bill none">
+                        <i></i>
+                        <span></span>
+                    </span>
+                </div>
+                <div class="fp-fillin clearfix">
+                    <input name="sendAddress" type="text" class="J_Area J_sendStreet" maxlength="28" attr-value="不需要重复填写省市区" vtype="rq" data-err-rq="请填写街道地址" required="required" onblur="if(this.value == '')this.value='不需要重复填写省市区';" onclick="if(this.value == '不需要重复填写省市区')this.value='';" value="不需要重复填写省市区">
+                    <span class="valid_symbol_bill error_bill none">
+                        <i></i>
+                        <span></span>
+                    </span>
+                </div>
+            </div>
+            <div class="fp-neirong">
+                <span class="fp-left fp-left-nr">发票内容</span>
+                <span class="fy-choice fp-fwf active-fp-nr">服务费</span>
+                <span class="fy-choice fp-lyfwf">旅游服务费</span>
+                <br>
+                <span class="fp-info-cost">如有特殊需求，请致电客服4007-777-777</span>
+            </div>
+            <div style="float: left">
+                <span class="fp-submit J_Submit">保存发票信息</span>
+                <input type="reset" id="fp-qx" name="reset" style="display: none;" />
+                <label for="fp-qx"><span class="fp-cancel">取消</span></label>
+            </div>
+        </div>
+    </div>
+</div>

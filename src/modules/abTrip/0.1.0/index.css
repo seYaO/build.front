@@ -1,0 +1,191 @@
+.ab_compare {
+    width: 890px;
+    background: #fff;
+    font-family: "微软雅黑"
+}
+
+.ab_compare_tit {
+    position: relative;
+    height: 45px;
+    background: #8ab923
+}
+
+.ab_compare_tit h2 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 45px;
+    height: 45px;
+    padding-left: 15px;
+    color: #fff
+}
+
+.ab_compare_close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url(//img1.40017.cn/cn/v/2015/modules/abTrip/0.1.0/ab_compare_close.png)
+}
+
+.ab_thead_cont,.ab_tbody_cont {
+    width: 890px
+}
+
+.ab_tbody_cont {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 410px
+}
+
+.ab_table {
+    width: 890px;
+    border-collapse: collapse;
+    border: 0
+}
+
+.ab_table td {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 10px 15px;
+    text-align: left;
+    vertical-align: top;
+    color: #333;
+    border: 1px solid #ddd
+}
+
+.ab_table td b {
+    font-weight: bold
+}
+
+.ab_table .ab_price {
+    color: #f60
+}
+
+.ab_table .ab_tips {
+    color: #666
+}
+
+.ab_table .ab_th {
+    color: #666;
+    background: #f0f0f0
+}
+
+.ab_table .ab_td {
+    width: 66px;
+    vertical-align: middle;
+    color: #666;
+    background: #f0f0f0
+}
+
+.ab_table .ab_td1 {
+    border-top: 0
+}
+
+.ab_table .ab_item {
+    width: 230px;
+    *width: 30%
+}
+
+.ab_table .ab_selt {
+    line-height: 22px;
+    width: 172px;
+    padding-left: 8px;
+    background: #fff
+}
+
+.ab_table dt {
+    font-weight: bold
+}
+
+.ab_table .ab_dt {
+    font-weight: bold;
+    margin-right: 10px;
+    display: inline-block;
+    width: 50px;
+    white-space: nowrap
+}
+
+.ab_table .ab_ico {
+    display: inline;
+    margin: 0 6px;
+    vertical-align: text-top
+}
+
+.ab_table1 tr:hover td {
+    background: #fff4d9
+}
+
+.ab_table1 tr:hover .ab_td {
+    background: #f0f0f0
+}
+
+.ab_pcover {
+    position: relative;
+    left: -15px;
+    top: -10px
+}
+
+.ab_cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 260px;
+    height: 342px;
+    background: url(//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif?v=20140417) 50% 100px no-repeat scroll #fff
+}
+
+.ab_compare {
+    font-family: "microsoft yahei"
+}
+
+.ab_finfo {
+    margin-bottom: 12px;
+    border-bottom: 1px solid #ddd
+}
+
+.ab_finfo_tt {
+    width: 38px;
+    height: 20px;
+    line-height: 20px;
+    background-color: #8ab923;
+    font-size: 12px;
+    color: #fff;
+    text-align: center
+}
+
+.ab_finfo_ct>li {
+    padding: 10px 0;
+    border-top: 1px dashed #ddd
+}
+
+.ab_finfo_ct>li:first-child {
+    border-top: 0
+}
+
+.ab_finfo_ct p {
+    font-size: 12px;
+    color: #666
+}
+
+.ab_finfo_ct .info {
+    font-size: 14px;
+    color: #333
+}
+
+.ab_finfo_ct span {
+    margin-right: 32px
+}
+
+.ab_finfo_tip {
+    font-size: 12px;
+    color: #999;
+    line-height: 22px
+}
+
+.ab_finfo_no {
+    line-height: 25px;
+    color: #666;
+    margin-bottom: 10px
+}

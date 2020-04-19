@@ -1,0 +1,45 @@
+{{?it.ExchangeMoney&&it.ExchangeMoney != "null"}}
+<div class="title-all tour-coin"><i></i>兑换货币</div>
+<div class="content-text">
+    {{=it.ExchangeMoney}}   
+</div>
+{{?}}
+{{?it.PostalCommunications&&it.PostalCommunications != "null"}}
+<div class="title-all tour-call"><i></i>邮政通讯</div>
+<div class="content-text">
+    {{=it.PostalCommunications}}     
+</div>
+{{?}}
+{{?it.PowerSupply&&it.PowerSupply != "null"}}
+<div class="title-all tour-socket"><i></i>插座电源</div>
+<div class="content-text">
+    {{=it.PowerSupply}}
+</div>
+{{?}}
+{{?it.CustomsTaboos || it.Tip&&it.Tip || it.Embassy&&it.Embassy || it.OtherRemind&&it.OtherRemind}}
+<div class="title-warnInfo">出游中须知</div>
+{{?}}
+{{?it.CustomsTaboos&&it.CustomsTaboos != "null"}}
+<div class="title-all tour-fengsu"><i></i>风俗禁忌</div>
+<div class="content-text">
+    {{=it.CustomsTaboos}}
+</div>
+{{?}}
+{{?it.Tip&&it.Tip != "null"}}
+<div class="title-all tour-cash"><i></i>小费</div>
+<div class="content-text">
+    {{=it.Tip}}
+</div>
+{{?}}
+{{?it.Embassy&&it.Embassy != "null"}}
+<div class="title-all tour-shiguan"><i></i>使馆信息</div>
+<div class="content-text">
+    {{=it.Embassy}}
+</div>
+{{?}}
+{{?it.OtherRemind&&it.OtherRemind != "null"}}
+<div class="title-all tour-others"><i></i>其他注意事项</div>
+<div class="content-text">
+    {{=it.OtherRemind}}
+</div>
+{{?}}

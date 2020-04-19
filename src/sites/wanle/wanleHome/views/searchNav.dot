@@ -1,0 +1,108 @@
+{{var subCityArrays=[
+    {City:["香港","澳门","台湾","巴厘岛"],Url: ["xianggang","aomen","taiwan","balidao"]},
+    {City:["东京","大阪"],Url: ["dongjing","daban"]},
+    {City:["新加坡","曼谷","清迈","普吉岛"],Url: ["xinjiapo","mangu","qingmai","pujidao"]},
+    {City:["美国","英国","法国","意大利"],Url: ["meiguo","yingguo","faguo","yidali"]},
+    {City:["迪拜","悉尼","墨尔本","新西兰"],Url: ["dibai","xini","moerben","xinxilan"]},
+    {City:["WIFI","电话卡","接送机"],Url: ["WIFI","电话卡","接送机"]}, 
+];}}
+
+<div class="naviga" trace="trace-dest">
+    <ul class="naviga-box" trackkit="Category_destination">
+    {{~it.HotDestNavList:destnav:index}}
+        {{?destnav != ""}}
+        <li data-index="{{=index+1}}">
+            <div class="tab-item">
+                <em class="tab{{=index+1}}"></em>
+                <div class="tab-box">
+                    <p class="main-city">
+                        {{?destnav.DestList.length > 0}}
+                        {{~destnav.DestList:dest}}
+                            <span>{{=dest}}</span>
+                        {{~}}
+                        {{?}}
+                    </p>
+                    <p class="sub-city">
+                    {{~subCityArrays[index].Url:sunCityUrl:cIndex}}
+                        <a href="{{?index == 5}}/dujia/wanle/searchlist_{{=sunCityUrl}}.html{{??}}/dujia/wanle/{{=sunCityUrl}}-dangdi/{{?}}" target="_blank" trace="{{=subCityArrays[index].City[cIndex]}}" trackspot="{{=subCityArrays[index].City[cIndex]}}^外显^{{=index+1}}^0">{{=subCityArrays[index].City[cIndex]}}</a>
+                    {{~}}
+                    </p>
+                </div>
+                <i></i>
+            </div>
+            {{?destnav.AreaList.length > 0}}
+                {{var showDouble = "";}}
+                {{?destnav.AreaList.length == 2}}
+                    {{var showDouble = "show-double";}}
+                {{?}}
+                <div class="naviga-box-content clearfix {{=showDouble}} none" data-index="{{=index}}">
+                {{~destnav.AreaList:cityDetail}}
+                    {{?cityDetail.AreaId != 61029014 && cityDetail.AreaId != 61029013}}
+                    <div class="naviga-module">
+                        <h3>{{=cityDetail.AreaName}}</h3>
+                        {{?cityDetail.HotDestinationList.length > 0}}
+                         <dl>
+                            <dt>热门目的地</dt>
+                            <dd>
+                                {{~cityDetail.HotDestinationList:hotDest:pageOne}}
+                                <a href="{{?hotDest.Url && hotDest.Url.length}}{{=hotDest.Url}}{{??}}/dujia/wanle/searchlist_{{=hotDest.CityName}}.html{{?}}" trace="{{=hotDest.CityName}}新" target="_blank" onclick = "_tcTraObj._tcTrackEvent('search', '/lineWanle/wifi/homepage', '/sbox/k/hot', '|*|k:{{=hotDest.CityName}}|*|pos:{{=pageOne+1}}|*|jpTp:1|*|pgLoc:sideNavigation|*|');" trackspot="{{=hotDest.CityName}}^hover^{{=index+1}}^热门目的地">{{=hotDest.CityName}}</a>
+                                {{~}}
+                            </dd>
+                        </dl>
+                        {{?}}
+
+                        {{?cityDetail.HotProductList.length > 0}}
+                         <dl>
+                            <dt>特色玩法</dt>
+                            <dd>
+                                {{~cityDetail.HotProductList:hotProduct}}
+                                <a class="{{=hotProduct.Color}}" trace="{{=hotProduct.MainTitle}}" href="/dujia/wanle/{{=hotProduct.ProductId}}.html" target="_blank" trackspot="{{=hotProduct.MainTitle}}^hover^{{=index+1}}^特色玩法">{{=hotProduct.MainTitle}}</a>
+                                {{~}}
+                            </dd>
+                        </dl>
+                        {{?}}
+                    </div>
+                    {{?? }}
+                    <div class="naviga-module">
+                        <h3>{{=cityDetail.AreaName}}</h3>
+                        {{?cityDetail.HotProductList.length > 0}}
+                        <dl>
+                            {{?cityDetail.AreaId==61029013}}
+                                <dt>热门WIFI</dt>
+                            {{?? }}
+                                <dt>热门目的地</dt>
+                            {{?}}
+                            <dd>
+                            {{var pageTwo = 0;}}
+                            {{~cityDetail.HotProductList:hotProduct}}
+                                {{?hotProduct.ProductId==14489}}
+                                {{pageTwo++;}}
+                                    <a href="{{=hotProduct.Url.replace('http:','')}}" trace="{{=hotProduct.MainTitle}}new" target="_blank" onclick = "_tcTraObj._tcTrackEvent('search', '/lineWanle/wifi/homepage', '/sbox/k/hot', '|*|k:{{=hotProduct.MainTitle}}|*|pos:{{=pageTwo}}|*|jpTp:1|*|pgLoc:sideNavigation|*|');" trackspot="{{=hotProduct.MainTitle}}^hover^{{=index+1}}^热门目的地">{{=hotProduct.MainTitle}}</a>
+                                {{?}}
+                            {{~}}
+                            </dd>
+                        </dl>
+                        {{?}}
+
+                        {{?cityDetail.HotProductList.length > 0}}
+                         <dl>
+                            <dt>特色玩法</dt>
+                            <dd>
+                            {{~cityDetail.HotProductList:hotProduct}}
+                                {{?hotProduct.ProductId!=14489}}
+                                    <a href="{{=hotProduct.Url.replace('http:','')}}" target="_blank" trace="{{=hotProduct.MainTitle}}" trackspot="{{=hotProduct.MainTitle}}^hover^{{=index+1}}^特色玩法">{{=hotProduct.MainTitle}}</a>
+                                {{?}}
+                            {{~}}
+                            </dd>
+                        </dl>
+                        {{?}}
+                    </div>
+                    {{?}}
+                {{~}}
+                </div>
+            {{?}}
+        </li>
+        {{?}}
+    {{~}}
+    </ul>
+</div>

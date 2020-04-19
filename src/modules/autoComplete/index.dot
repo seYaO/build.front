@@ -1,0 +1,49 @@
+{{var sceneryPlace = '<span class="search-box-red">{{=it.search}}</span>',clickIndex = 0;}}
+{{~it.Result:data:index}}
+{{var keyContent = it.search;}}
+{{var selectedContent =data.Content.replace(new RegExp('{{=keyContent}}',"g"),'<span class="search-box-red">{{=it.search}}</span>');}}
+    {{?index === 0 && (data.UnitType == "1" || data.UnitType == "5")}}
+    {{clickIndex = clickIndex + 1;}}
+            <li class="current" data-content="{{=data.Content}}"
+            onclick = "_tcTraObj._tcTrackEvent('search', '{{=it.pageLabel}}', '/sbox/ac/click', '|*|k:{{=it.search}}|*|ct:{{=data.Content}}|*|pos:{{=clickIndex}}|*|pjId:2027|*|');">{{=selectedContent}}</li>
+        {{?it.showLabel === true}}
+            {{?/6/.test(data.TheamTypes)}}
+            {{clickIndex = clickIndex + 1;}}
+            <li class = "jump-label" data-content="{{=data.Content}}" data-url  = "/dujia/wanle/{{=data.PinYing}}-menpiao/"
+            onclick = "_tcTraObj._tcTrackEvent('search', '{{=it.pageLabel}}', '/sbox/ac/click', '|*|k:{{=it.search}}|*|ct:{{=data.Content}}海外门票|*|pos:{{=clickIndex}}|*|pjId:2027|*|jpTp:1|*|');">{{=selectedContent}}海外门票</li>
+            {{?}}
+            {{?/9/.test(data.TheamTypes)}}
+            {{clickIndex = clickIndex + 1;}}
+            <li class = "jump-label" data-content="{{=data.Content}}" data-url  = "/dujia/wanle/{{=data.PinYing}}-tongxun/"
+            onclick = "_tcTraObj._tcTrackEvent('search', '{{=it.pageLabel}}', '/sbox/ac/click', '|*|k:{{=it.search}}|*|ct:{{=data.Content}}通讯工具|*|pos:{{=clickIndex}}|*|pjId:2027|*|jpTp:1|*|');">{{=selectedContent}}通讯工具</li>
+            {{?}}
+            {{?/[0-5]|7|8/.test(data.TheamTypes)}}
+            {{clickIndex = clickIndex + 1;}}
+            <li class = "jump-label" data-content="{{=data.Content}}" data-url  = "/dujia/wanle/{{=data.PinYing}}-dangdi/"
+            onclick = "_tcTraObj._tcTrackEvent('search', '{{=it.pageLabel}}', '/sbox/ac/click', '|*|k:{{=it.search}}|*|ct:{{=data.Content}}当地玩乐|*|pos:{{=clickIndex}}|*|pjId:2027|*|jpTp:1|*|');">{{=selectedContent}}当地玩乐</li>
+            {{?}}
+        {{?}}
+
+    {{??}}
+        {{?data.UnitType == "11" && sceneryPlace != "noMore"}}
+            {{clickIndex = clickIndex + 1;}}
+            <li class="spe-jump {{?index === 0}} current {{?}}" data-content="{{=data.Content}}" data-url = "/dujia/wanle/searchlist_{{=it.search}}.html"
+            onclick = "_tcTraObj._tcTrackEvent('search', '{{=it.pageLabel}}', '/sbox/ac/click', '|*|k:{{=it.search}}|*|ct:含有“{{=it.search}}”的相关玩乐|*|pos:{{=clickIndex}}|*|pjId:2027|*|jpTp:0|*|');">含有“{{=sceneryPlace}}”的相关玩乐</li>
+
+            {{clickIndex = clickIndex + 1;}}
+            <li  class = "jump-label" data-content="{{=data.Content}}" data-url  = "/dujia/wanle/{{=data.ProductId}}.html"
+            onclick = "_tcTraObj._tcTrackEvent('search', '{{=it.pageLabel}}', '/sbox/ac/click', '|*|k:{{=it.search}}|*|ct:{{=data.Content}}|*|pos:{{=clickIndex}}|*|pjId:2027|*|jpTp:0|*|');">{{=selectedContent}}</li>
+            {{sceneryPlace = "noMore";}}
+        {{??data.UnitType == "11"}}
+            {{clickIndex = clickIndex + 1;}}
+            <li  class="jump-label {{?index === 0}} current{{?}}" data-content="{{=data.Content}}"  data-url  = "/dujia/wanle/{{=data.ProductId}}.html"
+            onclick = "_tcTraObj._tcTrackEvent('search', '{{=it.pageLabel}}', '/sbox/ac/click', '|*|k:{{=it.search}}|*|ct:{{=data.Content}}|*|pos:{{=clickIndex}}|*|pjId:2027|*|jpTp:0|*|');">{{=selectedContent}}</li>
+        {{??}}
+            {{clickIndex = clickIndex + 1;}}
+            <li {{?index === 0}} class="current"{{?}} data-content="{{=data.Content}}"
+            onclick = "_tcTraObj._tcTrackEvent('search', '{{=it.pageLabel}}', '/sbox/ac/click', '|*|k:{{=it.search}}|*|ct:{{=data.Content}}|*|pos:{{=clickIndex}}|*|pjId:2027|*|jpTp:0|*|');">{{=selectedContent}}</li>
+
+        {{?}}
+    {{?}}
+
+{{~}}

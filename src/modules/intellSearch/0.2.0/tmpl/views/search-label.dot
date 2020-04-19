@@ -1,0 +1,10 @@
+<div class='new-label'>
+    {{var hotSearch = it;}}
+    {{?hotSearch&&hotSearch.length>0}}
+    {{~hotSearch:value}}
+    <li>
+        <a href={{=value.hotUrl}} target='_blank'>{{=value.hotName}}</a>
+    </li>
+    {{~}}
+    {{?}}
+</div>

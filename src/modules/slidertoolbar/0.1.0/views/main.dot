@@ -1,0 +1,66 @@
+<input type="hidden" id="UDC" data-platform="PC" data-channel="出境游" data-page="{{=it.pageName || ''}}" />
+<div id="module-slider" class="J-common-silder {{=it.skin}}">
+    <div class="module-slider-header" trackkit="AD_cebian">
+        <ul>
+            <li>
+                <div class="content">
+                  {{=it.header.icon}}
+                    <div class="tooltip_gp">
+                        {{=it.header.tooltips}}
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <div class="module-slider-top" trackkit="sidebar">
+        <ul>
+            {{~it.topMenu:item:index}}
+            <li class='{{=item.ideaClass || ""}}'>
+                <div class="content">
+                    {{=item.icon}}
+                    {{var tooltip_gp_class=item.arrow?'arrow':'';}}
+                    <div class="tooltip_gp {{=tooltip_gp_class}}">
+                        {{=item.tooltips}}
+                        {{?item.arrow}}
+                        <i></i>
+                        {{?}}
+                    </div>
+                </div>
+            </li>
+            {{~}}
+        </ul>
+    </div>
+    <div class="module-slider-bottom">
+        <ul>
+            {{~it.bottomMenu:item:index}}
+            <li>
+                <div class="content">
+                    {{=item.icon}}
+                    {{var tooltip_gp_class=item.arrow?'arrow':'';}}
+                    {{tooltip_gp_class += ' '+(item.tooltipCls || '');}}
+                    <div class="tooltip_gp {{=tooltip_gp_class}}">
+                        {{=item.tooltips}}
+                        {{?item.arrow}}
+                        <i></i>
+                        {{?}}
+                    </div>
+                </div>
+            </li>
+            {{~}}
+        </ul>
+    </div>
+    {{?it.toTop}}
+    <div class="module-slider-totop" style="visibility:hidden;">
+        <ul>
+            <li>
+                <div class="ico c-t"></div>
+                <div class="tooltip_gp">
+                    返回顶部
+                    <i></i>
+                </div>
+            </li>
+        </ul>
+    </div>
+    {{?}}
+</div>

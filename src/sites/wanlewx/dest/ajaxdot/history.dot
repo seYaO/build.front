@@ -1,0 +1,12 @@
+{{var isHistory = it.history && it.history.length;}}
+<section class="city-dest J_History {{?!isHistory}}none{{?}}">
+    <h3><i class="city-icon city-history"></i><span>搜索历史</span></h3>
+    <ul>
+        {{?isHistory}}
+            {{~it.history:hItem}}
+            <li>{{=hItem}}</li>
+            {{~}}
+        {{?}}
+    </ul>
+    <a class="clear-his J_ClearHis"><i class="city-icon city-delete"></i><span>清除搜索历史</span></a>
+</section>

@@ -1,0 +1,67 @@
+<!--热门旅游线路-->
+{{?hotLine.HotLines && hotLine.HotLines.length>0}}
+<div class="right_panel">
+    <div class="right_gp_header">
+        <div class="right_gp_title skin1">热门旅游线路</div>
+    </div>
+    <div class="right_line_list">
+    {{~hotLine.HotLines:hotlist:hotInd}}
+        {{?hotInd==0}}
+        <div class="item_item">
+            <span class="item_index disvisibility">{{=hotInd+1}}</span>
+            <a href= "//www.ly.com/dujia/tours/{{=hotlist.LineId}}/" class="item_aimgs">
+                <div class="item_img">
+                    <img src="{{=hotlist.ImageUrl}}" alt=""/>
+                </div>
+                <div class="left_top">
+                    <span class="font1">1</span>
+                    <span class="font2">st</span>
+                </div>
+            </a>
+            <a href= "//www.ly.com/dujia/tours/{{=hotlist.LineId}}" class="item_text">
+                {{=hotlist.MainTitle}}&lt;{{=hotlist.SubTitle}}>
+            </a>
+        </div>
+        {{??}}
+        <div class="item_item item_height">
+            <span class="item_index">{{=hotInd+1}}</span>
+            <a href= "//www.ly.com/dujia/tours/{{=hotlist.LineId}}" class="item_aimgs none">
+                <div class="item_img">
+                    <img src="{{=hotlist.ImageUrl}}" alt=""/>
+                </div>
+                <div class="left_top">
+                    <span class="font1">{{=hotInd+1}}</span>
+                    {{?hotInd==0}}
+                    <span class="font2">st</span>
+                    {{??hotInd==1}}
+                    <span class="font2">nd</span>
+                    {{??hotInd==2}}
+                    <span class="font2">rd</span>
+                    {{??}}
+                    <span class="font2">th</span>
+                    {{?}}
+                </div>
+            </a>
+            <a href= "//www.ly.com/dujia/tours/{{=hotlist.LineId}}" class="item_text text_height">
+                {{=hotlist.MainTitle}}&lt;{{=hotlist.SubTitle}}>
+            </a>
+        </div>
+        {{?}}
+    {{~}}
+    </div>
+</div>
+{{?}}
+
+<!--相关推荐-->
+{{?hotCity && hotCity.length>0}}
+<div class="right_panel">
+    <div class="right_gp_header">
+        <div class="right_gp_title skin3">{{=country}}相关推荐</div>
+    </div>
+    <div class="right_country_gp">
+    {{~hotCity:hotcityL}}
+        <a  href= "/dujia/des-{{=hotcityL.DestinationPinyin}}{{=hotcityL.DestinationId}}-c/" title="{{=hotcityL.DestinationName}}">{{=hotcityL.DestinationName}}</a>
+    {{~}}
+    </div>
+</div>
+{{?}}

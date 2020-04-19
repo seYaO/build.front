@@ -1,0 +1,16 @@
+<ul>
+   {{~it.AddressList:value:index}}
+    <li>
+        <i class="address-left {{?value.AddressId == it.selected}}selected{{?}}" data-id="{{=value.AddressId}}"></i>
+        <p class="post_name">{{=value.Name}}</p>
+        <p class="post_num">{{=value.Mobile}}</p>
+        {{var street = value.StreetAddress.replace(/\"/g,'“').replace(/\'/g,'‘').replace(/\,/g,'，');}}
+        <p class="post_address1" data-street = "{{=street}}"
+         data-address="{'ProvinceName':'{{=value.ProvinceName}}','ProvinceId':{{=value.ProvinceId}},'CityName':'{{=value.CityName}}',
+         'CityId':{{=value.CityId}},'RegionName':'{{=value.RegionName}}','RegionId':{{=value.RegionId}},
+         'PostAddress':'{{=street}}','PostPerson':'{{=value.Name}}','PostMobile':'{{=value.Mobile}}'}">
+         {{=value.ProvinceName}}{{=value.CityName}}{{=value.RegionName}}{{=value.StreetAddress}}</p>
+        <i class="edit J_edit" data-index="{{=index}}" data-addressId="{{=value.AddressId}}"></i>
+    </li>
+    {{~}}
+</ul>

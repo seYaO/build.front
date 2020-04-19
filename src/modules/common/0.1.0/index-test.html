@@ -1,0 +1,80 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<input type="button" value="防抓开关关闭,未接入防抓的异步" onclick="test()" />
+<input type="button" value="防抓开关开启,防抓接入" onclick="test1()" />
+<input type="button" value="防抓开关关闭,防抓接入" onclick="test2()" />
+<input type="button" value="防抓开关开启,防抓未接入" onclick="test3()" />
+<input type="button" value="当请求接口失败时" onclick="test4()" />
+<span id="test5"></span>
+</body>
+<script src="../../jquery.js"></script>
+<script src="http://js.40017.cn/cn/c/c/td/jq-td-all.js?v=20150504"></script>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript" src="../../monitor/0.1.0/index.js"></script>
+<script>
+    function test(){
+        window.isFangZhua = false;
+        common.getData({
+            url: "http://www.ly.com/dujia/AjaxCallTravel.aspx?type=GetTagPageList&isTCRecommand=0&days=&bqid=1766&specialNickId=&cityId=321&mcityId=&minPrice=&maxPrice=&pageNum=1&count=3&month=&lineQuality=&lineStar=0&isGenuine=0&gpMode=1&_dAjax=callback&labelType=3&k_city=321&fangzhua=1",
+            success: function(data){
+                console.log(data);
+            }
+        })
+    }
+    
+    function test1(){
+        window.isFangZhua = true;
+        common.getData({
+            url: "http://www.ly.com/dujia/AjaxCallTravel.aspx?type=GetTagPageList&isTCRecommand=0&days=&bqid=1766&specialNickId=&cityId=321&mcityId=&minPrice=&maxPrice=&pageNum=1&count=3&month=&lineQuality=&lineStar=0&isGenuine=0&gpMode=1&_dAjax=callback&labelType=3&k_city=321&fangzhua=1",
+            success: function(data){
+                console.log(data);
+            },
+            isFangZhua: true
+        })
+    }
+    function test2(){
+        window.isFangZhua = false;
+        common.getData({
+            url: "http://www.ly.com/dujia/AjaxCallTravel.aspx?type=GetTagPageList&isTCRecommand=0&days=&bqid=1766&specialNickId=&cityId=321&mcityId=&minPrice=&maxPrice=&pageNum=1&count=3&month=&lineQuality=&lineStar=0&isGenuine=0&gpMode=1&_dAjax=callback&labelType=3&k_city=321&fangzhua=1",
+            success: function(data){
+                console.log(data);
+            },
+            //这个接口接入防抓
+            isFangZhua: true
+        })
+    }
+    function test3(){
+        //设置防抓开关开启
+        window.isFangZhua = true;
+        common.getData({
+            url: "http://www.ly.com/dujia/AjaxCallTravel.aspx?type=GetTagPageList&isTCRecommand=0&days=&bqid=1766&specialNickId=&cityId=321&mcityId=&minPrice=&maxPrice=&pageNum=1&count=3&month=&lineQuality=&lineStar=0&isGenuine=0&gpMode=1&_dAjax=callback&labelType=3&k_city=321&fangzhua=1",
+            success: function(data){
+                console.log(data);
+            },
+            //这个接口接入防抓
+            isFangZhua: false
+        })
+    }
+    function test4(){
+        common.getData({
+            url: "http://10.1.56.121/dujia/AjaxCallTrael.aspx?type=GetTagPageList&isTCRecommand=0&days=&bqid=1766&specialNickId=&cityId=321&mcityId=&minPrice=&maxPrice=&pageNum=1&count=3&month=&lineQuality=&lineStar=0&isGenuine=0&gpMode=1&_dAjax=callback&labelType=3&k_city=321&fangzhua=1",
+            success: function(data){
+                console.log(data);
+            }
+        })
+    }
+    {
+        //测试common.getUser
+        var userid = common.getUser(),
+            text = "未登录";
+        if(userid){
+            text = userid;
+        }
+        $("#test5").text(text);
+    }
+</script>
+</html>

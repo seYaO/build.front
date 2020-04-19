@@ -1,0 +1,102 @@
+{{var dataPerType;}}
+{{for(var index=0;index<it.num;index++) {}}
+{{?it.type[index] === 2 || it.type[index] === 8}}
+    {{dataPerType = 2;}}
+{{??it.type[index] === 4}}
+    {{dataPerType = 4;}}
+{{??it.type[index] === 3}}
+    {{dataPerType = 3;}}
+{{??}}
+    {{dataPerType = 1;}}
+{{?}}
+<div class="visitor-info visitor-info{{=it.type[index]}}" data-index="{{=index}}">
+    <div class="passenger-info" id="passengerInfo{{=index}}" data-type="1" data-isinsert="0" data-listid="">
+        <div class="passenger-info-content">
+            <div class="passenger-info-type type-adult">
+                <p class="img"><em></em>&nbsp;出游人{{=index + 1}}</p>
+                <p class="tag">
+                    {{?dataPerType === 2}}
+                        <em class="type-child_em">儿童<i></i></em>
+                    {{??dataPerType === 4}}
+                        <em class="type-elder_em">老人<i></i></em>
+                    {{??dataPerType === 3}}
+                        <em class="type-baby_em">婴儿<i></i></em>
+                    {{??}}
+                        <em class="type-adult_em">成人<i></i></em>
+                    {{?}}
+                </p>
+            </div>
+            <div class="passenger-info-table" data-type="{{=dataPerType}}" data-isInsert="0">
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>中文姓名：</label>
+                    <input class="ui-input ui-input-nameZh" name="nameZh" maxlength="26" vfn="verifyCheckName" vtype="rq" data-err-rq="请填写中文名" data-err-fn="请输入中文姓名" type="text" placeholder="证件的中文姓名"/>
+                    <span class="valid_symbol" style="display: none;"></span>
+                    <i class="help" data-type="zh"></i>
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>英文姓名：</label>
+                    <input class="ui-input ui-input-first-name" name="firstNameEn" vfn="verifyCheckPreNameEn" vtype="rq" data-err-rq="请输入证件上的英文/拼音" data-err-fn="请输入英文或拼音" maxlength="10" type="text" placeholder="姓 拼音或英文"/>
+                    <input class="ui-input ui-input-last-name" data-showtype="static" name="lastNameEn" vfn="verifyCheckNameEn" maxlength="10" vtype="rq eng" data-err-rq="请输入证件上的英文/拼音" data-err-eng="请输入英文或拼音" data-err-fn="请输入英文或拼音" type="text" placeholder="名 拼音或英文"/>
+                    <label class="invalid_message invalid_message_right" style="display: none"><span></span>请输入证件上的英文/拼音</label>
+                    <span class="valid_symbol" style="display: none;"></span>
+                    <i class="help" data-type="en"></i>
+                </div>
+                <div class="list">
+                    <label class="ui-label" style="word-spacing:20px;"><span class="required">*</span>性&nbsp;别：</label>
+                    <input class="ui-radio ui-radio-sex" data-value="1" type="radio" name="sex{{=index}}" checked="checked" id="sexid{{=index}}"/>
+                    <label class="mr30" for="sexid{{=index}}">男</label>
+                    <input class="ui-radio ui-radio-sex" data-value="0" type="radio" name="sex{{=index}}" id="sexid{{=index+10}}"/>
+                    <label class="" for="sexid{{=index+10}}">女</label>
+                </div>
+                <div class="list" style="z-index:1;">
+                    <label class="ui-label"><span class="required">*</span>证件号码：</label>
+                    <div class="ui-select ui-select-certificate mr6">
+                        <span class="up-down"><i></i></span>
+                        <dl class="ui-select_dl">
+                            {{var provinceName = $("#hidProvinceName").val();}}
+                            {{?provinceName == "台湾"}}
+                                <dt class="select-certificate" data-value="5" visitor-index='{{=index}}'>台湾通行证</dt>
+                                <dd data-value="5">台湾通行证</dd>
+                                <dd data-value="2">护照</dd>
+                                <dd data-value="7">港澳通行证</dd>
+                                <dd data-value="6">稍后提供</dd>
+                            {{??provinceName == "香港" || provinceName == "澳门"}}
+                                <dt class="select-certificate" data-value="7" visitor-index='{{=index}}'>港澳通行证</dt>
+                                <dd data-value="7">港澳通行证</dd>
+                                <dd data-value="2">护照</dd>
+                                <dd data-value="5">台湾通行证</dd>
+                                <dd data-value="6">稍后提供</dd>
+                            {{??}}
+                                <dt class="select-certificate" data-value="2" visitor-index='{{=index}}'>护照</dt>
+                                <dd data-value="2">护照</dd>
+                                <dd data-value="7">港澳通行证</dd>
+                                <dd data-value="5">台湾通行证</dd>
+                                <dd data-value="6">稍后提供</dd>
+                            {{?}}
+                        </dl>
+                    </div>
+                    <input class="ui-input ui-select-certificate-id" name="cardId" vfn="verifyIdValid" maxlength="30" vtype="rq" data-err-rq="请输入所选证件号码" data-err-idcard="请输入正确的证件号码" data-err-fn="请输入正确的证件号码" type="text" placeholder="证件号码"/>
+                    <span class="valid_symbol" style="display: none;"></span>
+                    <i class="help" data-type="num"></i>
+                </div>
+                <div class="list">
+                    <label class="ui-label"><span class="required">*</span>手机号码：</label>
+                    <input class="ui-input ui-input-mobile" name="mobile" maxlength="11" id="mobile" vType="mobile" data-err-mobile="请输入正确手机号码" type="text" placeholder="请输入手机号码"/>
+                    <label for="mobile" class="prompt_message" style=""><span></span>请至少填写一个出游人的手机号码</label>
+                </div>
+                <div class="list">
+                    <label class="ui-label">出生日期：</label>
+                    <input class="ui-input ui-input-date ui-input-birthday" vtype="" data-err-rq="请填写出生日期" data-err-idcard="请填写出生日期" name="birth" maxlength="20" type="text" value="1985-01-01" />
+                </div>
+                <div class="order-fn-btns">
+                    <span class="save"><input type="checkbox" id="save00{{=index}}" checked="checked"/><label for="save00{{=index}}">&nbsp;保存为常旅客</label></span>
+                    <span class="reset"><i class="icon-trash"></i><label>&nbsp;清空</label></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ }}}
+<div class="other-passenger none">
+    <a class="expand-down" href="javascript:void(0);" >展开其他出游人<i class="icon-arrow-down"></i></a>
+</div>

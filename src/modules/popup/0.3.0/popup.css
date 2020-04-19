@@ -1,0 +1,192 @@
+@charset "UTF-8";
+@media (min-width: 992px) {
+  .skin-blue .modal-lg {
+    width: 900px;
+  }
+}
+@media (min-width: 768px) {
+  .skin-blue .modal-sm {
+    width: 300px;
+  }
+}
+.module-popup {
+  width: auto;
+  height: auto;
+  display: none;
+  position: fixed;
+  z-index: 1200;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  font-family: "Microsoft YaHei", serif;
+}
+.module-popup .module-popup-panel {
+  position: absolute;
+  margin: auto;
+  display: block;
+  border-radius: 2px;
+  top: 100px;
+  left: 0;
+  right: 0;
+}
+.module-popup .module-popup-panel.align-center {
+  margin: auto;
+}
+.module-popup .module-popup-panel.align-center .module-popup-body {
+  height: 100%;
+}
+.module-popup .module-popup-panel .module-popup-body {
+  -moz-background-clip: padding-box;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  background-color: #ffffff;
+  border: 1px solid #d9dee2;
+  border-radius: 2px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  outline: 0 none;
+  position: relative;
+  overflow: hidden;
+}
+.module-popup-body {
+  /****** 标题行开始********/
+  /****** 标题行结束********/
+  /****** 内容开始********/
+  /****** 内容结束********/
+  /****** 底部按钮开始********/
+  /****** 底部按钮结束********/
+}
+.module-popup-body .module-popup-icon {
+  width: 3px;
+  height: 18px;
+  background: #10a3ff;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  display: block;
+}
+.module-popup-body .module-popup-title {
+  width: 100%;
+  height: 50px;
+  font-size: 18px;
+  line-height: 50px;
+  background-color: #f5f5f5;
+  font-weight: 700;
+  color: #333333;
+  padding-left: 20px;
+}
+.module-popup-body .close {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-image: url("images/icon_close.png");
+  background-size: cover;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+.module-popup-body .close:hover {
+  background-image: url("images/icon_close_hover.png");
+}
+.module-popup-body .module-popup-content {
+  padding: 20px;
+  word-wrap: break-word;
+  font-size: 14px;
+}
+.module-popup-body .module-popup-content .icons {
+  width: 30px;
+  height: 30px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+.module-popup-body .module-popup-content .icons.icon-info {
+  background: transparent url("images/icon-info.png") no-repeat;
+}
+.module-popup-body .module-popup-content .icons.icon-warning {
+  background: transparent url("images/icon-warning.png") no-repeat;
+}
+.module-popup-body .module-popup-content .icons.icon-success {
+  background: transparent url("images/icon-success.png") no-repeat;
+}
+.module-popup-body .module-popup-content .icons.icon-danger {
+  background: transparent url("images/icon-danger.png") no-repeat;
+}
+.module-popup-body .module-popup-content .icons.icon-error {
+  background: transparent url("images/icon-error.png") no-repeat;
+}
+.module-popup-body .module-popup-iframe {
+  width: 100%;
+  height: auto;
+  border: 0;
+  overflow: auto;
+}
+.module-popup-body .module-footer {
+  padding-bottom: 20px;
+  text-align: center;
+}
+.module-popup-body .module-footer button {
+  font-size: 14px;
+  padding: 6px 10px;
+  line-height: 14px;
+  border: 1px solid #ff7800;
+  border-radius: 2px;
+  width: 96px;
+  height: 36px;
+  margin-right: 20px;
+  color: #666;
+  cursor: pointer;
+}
+.module-popup-body .module-footer button:last-child {
+  margin-right: 0;
+}
+.module-popup-body .module-footer button.btn_confirm_ok {
+  background: #ff7800;
+  color: #fff;
+}
+.module-popup-body .module-footer button.btn_confirm_ok:hover {
+  background: #ff6633;
+  border-color: #ff6633;
+}
+.module-popup-body .module-footer button.btn_confirm_cancel {
+  background: #fff;
+  border-color: #ddd;
+}
+.module-popup-body .module-footer button.btn_confirm_cancel:hover {
+  background: #ddd;
+  color: #fff;
+}
+.module-popup-body .module-footer button:focus {
+  outline: none;
+}
+.module-popup-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1050;
+  display: none;
+  overflow: hidden;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.module-popup-mask.fade {
+  -webkit-transition: opacity .15s linear;
+  -o-transition: opacity .15s linear;
+  -moz-transition: opacity .15s linear;
+  transition: opacity .15s linear;
+  opacity: 0;
+  background-color: #000;
+  filter: alpha(opacity=0);
+}
+.module-popup-mask.fade.in {
+  opacity: .5;
+  filter: alpha(opacity=50);
+}

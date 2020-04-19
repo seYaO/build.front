@@ -1,0 +1,296 @@
+.mpay-modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -400px;
+  margin-top: -300px;
+  width: 800px;
+  z-index: 10000;
+}
+.mpay-alert {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -200px;
+  margin-top: -150px;
+  width: 400px;
+  background-color: #ffffff;
+  z-index: 10000;
+}
+.mpay-alert .alert-cont {
+  padding: 18px 40px 25px;
+}
+.mpay-alert .alert-cont strong {
+  background: url(//img1.40017.cn/cn/v/book/2014/hintICO.png) no-repeat 0 0;
+  padding: 8px 0 22px 70px;
+  display: block;
+  font-size: 14px;
+  line-height: 20px;
+  min-height: 40px;
+}
+.mpay-alert .alert-btn {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  color: #ffffff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #ff7800;
+}
+.mpay-alert .alert-btn :hover {
+  color: #fff;
+  background-color: #ff6600;
+}
+.mpay-mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+  background: #000;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+.mpay-head {
+  height: 32px;
+  background-color: #f0f0f0;
+}
+.mpay-head .mpay-close {
+  margin-right: 10px;
+  width: 16px;
+  height: 15px;
+  background: url("img/dest/pay-close.png") -3px -4px no-repeat;
+  float: right;
+  margin-top: 7px;
+}
+.mpay-head .mpay-close:hover {
+  background-position: -31px -4px;
+}
+.mpay-box {
+  width: 760px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-family: "Microsoft Yahei";
+  background-color: #ffffff;
+}
+.mpay-switch {
+  height: 36px;
+  line-height: 36px;
+  border-bottom: 2px solid #f5f5f5;
+}
+.mpay-switch .switch-li {
+  float: left;
+  width: 76px;
+  text-align: center;
+  color: #333333;
+  cursor: pointer;
+}
+.mpay-switch .switch-li:hover,
+.mpay-switch .switch-li.current {
+  color: #50b400;
+  border-bottom: 2px solid #50b400;
+}
+.mpay-cont1 .mpay-price {
+  margin: 15px 0;
+}
+.mpay-cont1 .mpay-treaty {
+  margin-top: 32px;
+  height: 380px;
+}
+.mpay-cont2 .mpay-price {
+  margin-top: 15px;
+}
+.mpay-cont2 .mpay-price .price-info span em {
+  font-size: 20px;
+}
+.mpay-cont2 .mpay-form {
+  margin-top: 10px;
+}
+.mpay-cont2 .mpay-cate {
+  margin-top: 20px;
+}
+.mpay-cont2 .mpay-check {
+  margin-top: 10px;
+}
+.mpay-cont2 .mpay-treaty {
+  margin-top: 20px;
+  height: 247px;
+}
+.mpay-price {
+  color: #333333;
+}
+.mpay-price .price-info {
+  line-height: 36px;
+}
+.mpay-price .price-info i {
+  color: #666666;
+  font-style: normal;
+}
+.mpay-price .price-info b {
+  color: #ff6600;
+  font-style: normal;
+}
+.mpay-price .price-info b em {
+  font-size: 26px;
+}
+.mpay-price .price-pay {
+  font-size: 12px;
+  color: #666666;
+}
+.mpay-price .price-pay a {
+  margin: 0 3px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.mpay-price .price-put {
+  font-size: 12px;
+}
+.mpay-price .price-put .tips-money,
+.mpay-price .price-put .tips-pay {
+  font-size: 12px;
+  color: #999999;
+}
+.mpay-price .price-put input {
+  margin: 0  3px;
+  padding: 2px 6px;
+  width: 100px;
+  height: 24px;
+  color: #666666;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+}
+.mpay-price .price-put input.placehold {
+  color: #cccccc;
+}
+.mpay-check {
+  height: 34px;
+  line-height: 34px;
+}
+.mpay-check .check-btn {
+  font-size: 12px;
+  color: #0185c6;
+  cursor: pointer;
+}
+.mpay-check .check-btn input {
+  margin-right: 3px;
+}
+.mpay-check .sub-btn {
+  margin: 0 10px;
+  display: inline-block;
+  width: 100px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  color: #ffffff;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #C2C2C2;
+  cursor: pointer;
+}
+.mpay-check .sub-btn.active {
+  background-color: #ff7800;
+}
+.mpay-check .sub-btn.active:hover {
+  background-color: #ff6600;
+}
+.mpay-treaty {
+  width: 760px;
+  border: 1px solid #dddddd;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.mpay-treaty h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: 700;
+  padding: 15px 0 12px 0;
+}
+.mpay-treaty h3 {
+  font-size: 14px;
+  text-align: center;
+  color: #666666;
+}
+.mpay-treaty dl {
+  color: #666666;
+  font-size: 14px;
+  padding: 0 0 30px 10px;
+}
+.mpay-treaty dt {
+  font-weight: bold;
+  width: 753px;
+}
+.mpay-treaty dd {
+  position: relative;
+  line-height: 22px;
+  padding: 8px 0 4px 0;
+}
+.mpay-treaty dd b {
+  display: inline-block;
+}
+.mpay-treaty dd .treaty_no {
+  position: absolute;
+  left: 0;
+  top: 8px;
+}
+.mpay-treaty dd .treaty_p {
+  margin-left: 23px;
+}
+.mpay-cate {
+  margin: 0 -20px;
+  padding: 0 20px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #333333;
+  background-color: #f0f0f0;
+}
+.mpay-cate label {
+  margin-right: 10px;
+  cursor: pointer;
+}
+.mpay-cate em {
+  margin: 0 2px;
+  color: #666666;
+}
+.mpay-form {
+  font-size: 12px;
+}
+.mpay-form > li {
+  margin-bottom: 10px;
+  clear: both;
+  overflow: auto;
+  _height: 1%;
+}
+.mpay-form .ipt-txt {
+  margin: 0 3px;
+  padding: 2px 6px;
+  width: 170px;
+  height: 24px;
+  color: #333333;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+.mpay-form .ipt-txt[disabled] {
+  background-color: #eee;
+  cursor: not-allowed;
+}
+.mpay-form .form-l {
+  float: left;
+  width: 62px;
+  white-space: nowrap;
+}
+.mpay-form .form-r {
+  float: left;
+}
+.mpay-form .form-tip {
+  margin-left: 5px;
+  color: #999999;
+  line-height: 24px;
+}

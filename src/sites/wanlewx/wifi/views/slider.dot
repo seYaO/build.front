@@ -1,0 +1,8 @@
+{{~it.Ads:value:index}}
+    <li>
+        <a href="{{=value.Url}}">
+        <i></i>
+            <img src="{{=value.Image}}">
+        </a>
+    </li>
+{{~}}

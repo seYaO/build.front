@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <meta name="description" content="同程旅游出境游频道为您提供中东非旅游，中东非出境游；精选中东非出境旅游线路，玩遍中东非，惊喜服务只需1元 ,更多中东非出境旅游优惠路线尽在同程出境旅游。">
+    <meta name="keywords" content="中东非出境旅游">
+    <title>玩遍中东非，惊喜服务只需1元</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/min/??/cn/v/zt/2014/activity/public/baseactivity.css?v=2014070701">
+    <link rel="stylesheet" href="http://css.40017.cn/touch/v/2015/zt/2015/22515/index.09075.css">
+    <style>
+        .container .part-3 {
+            height: 33.666667rem;
+        }
+        .container .part-2 .pro-lists .common-lists .pro-list .sub-title {
+            color: #333333;
+            width: 92%;
+            text-align: center;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            margin-top: 0.5rem;
+            margin-left: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="head-part">
+        <img src="http://img1.40017.cn/touch/v/2015/zt/2015/22515/top1.jpg">
+        <img src="http://img1.40017.cn/touch/v/2015/zt/2015/22515/top2.jpg">
+        <img src="http://img1.40017.cn/touch/v/2015/zt/2015/22515/top3.jpg">
+        <div class="title"><em>首选</em>行程线路</div>
+    </div>
+    <div class="part-1">
+        <div class="part1-hd">领<em>7500</em>元出境红包&nbsp;全场通用</div>
+        <div class="bk-lists J_Pro" data-filter="IsRecommend=1" data-tmpl="#test1">
+        </div>
+    </div>
+    <div class="part-2">
+        <div class="pro-lists">
+            <div class="common-lists J_Pro" data-filter="IsRecommend=0" data-tmpl="#test2">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="http://js.40017.cn/touch/app/public/zepto.20140624.js?V=824" charset="utf-8"></script>
+<script src="../../../monitor/0.1.0/index.js"charset="utf-8"></script>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/dot/1.0.3/dot.js?v=20150413" charset="utf-8"></script>
+<script src="../../0.1.4/touch.js"charset="utf-8"></script>
+<script type="text/javascript">
+    Activity.init({
+        param: [
+            {"1170":[1734,1735]}//1245 2088
+        ],
+        host: "http://www.ly.com",
+        el: ".J_Pro"
+    });
+</script>
+<script id="test1" type="text/plain">
+    {{~it:value:index}}
+    {{?(index<1)}}
+                <div class="bk-list">
+                    <a class="bk-pic" href="javascript:void(0);" data-LineId="{{=value.LineId}}" data-activityId="{{=value.ActivityId}}" data-CycleId="{{=value.CycleId}}">
+                        <img data-img={{=Activity.setImageSize(value.ImgUrl,"400x300")}}>
+                         {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"} }}
+                         <span class="travel-type">{{=LineType}}</span>
+                         <span class="dep-city">{{=value.DepartCity}}出发</span>
+                         <span class="hongbao-sale"></span>
+                         <p class="main-title"><em>{{=value.MainTitle}}</em></p>
+                    </a>
+                   <h3 style="margin-left: 0.9rem;font-size: 15px;font-weight: bold;color: #333333;margin-top: 2px;">线路特色</h3>
+                  <dl class="recommend-info">
+                          {{var _rep=decodeURIComponent("%23%23");}}
+                          {{if(value.Explosion){}}
+                          {{var a=value.Explosion.indexOf("P");}}
+                          {{var Expl = value.Explosion.substring(2,a).replace(new RegExp(_rep,"g"),"</dd><dd><i></i>");}}
+                          {{Expl = "<dd><i></i>"+Expl+"</dd>";}}
+                          {{=Expl}}
+                          {{}}}
+                  </dl>
+                  <div class="liwu"></div>
+                  <div class="baodian">
+                    <em>{{var a=value.Explosion.indexOf("P");}}
+                    {{var Expl = value.Explosion.substring(a+1);}}
+                    {{=Expl}}</em>
+                   </div>
+                   <div class="bk-bd clearfix">
+                       <span class="bk-pre-price">￥<em>{{=value.Preferential}}</em>起</span>
+                       <span class="bk-market-price">￥{{=value.MarketPrice}}</span>
+                       <a class="bk-btn" href="javascript:void(0);" data-LineId="{{=value.LineId}}" data-activityId="{{=value.ActivityId}}" data-CycleId="{{=value.CycleId}}">
+                       <em>立即抢购</em></a>
+                   </div>
+                </div>
+    {{?}}
+    {{~}}
+</script>
+<script id="test2" type="text/plain">
+    {{~it:value:index}}
+    {{?(index<8)}}
+                    <div class="pro-list">
+                        <a class="pro-pic" href="javascript:void(0);" data-LineId="{{=value.LineId}}" data-activityId="{{=value.ActivityId}}" data-CycleId="{{=value.CycleId}}">
+                            <img data-img={{=Activity.setImageSize(value.ImgUrl)}}>
+                             {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"} }}
+                            <span class="travel-type">{{=LineType}}</span>
+                            <span class="dep-city">{{=value.DepartCity}}出发</span>
+                            <span class="hongbao-sale"></span>
+                            <p class="main-title"><em>{{=value.MainTitle}}</em></p>
+                        </a>
+                      <p class="sub-title">{{=value.SubTitle}}</p>
+                    <div class="recommend">
+                      <div class="liwu"></div>
+                      <div class="baodian">
+                          <em>{{var Expl=value.Explosion.trim();}}
+                          {{var shengji = Expl.substr(3);}}
+                          {{=shengji}}</em>
+                      </div>
+                    </div>
+                      <div class="pro-bd clearfix">
+                        <span class="pro-price">￥<em>{{=value.Preferential}}</em>起</span>
+                        <span class="market-price">￥{{=value.MarketPrice}}</span>
+                        <a class="gobuy" href="javascript:void(0);" data-LineId="{{=value.LineId}}" data-activityId="{{=value.ActivityId}}" data-CycleId="{{=value.CycleId}}"><em>立即抢购</em></a>
+                      </div>
+
+                    </div>
+    {{?}}
+    {{~}}
+</script>
+</html>

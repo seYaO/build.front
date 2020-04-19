@@ -1,0 +1,10 @@
+{
+  "dataUri": "/wanle/api/WanleProduct/GetWanleSearchLable",
+  "query": {
+      "siteType": 0,
+      "pageId": 6,
+      "keyWord": "交通接驳"
+  },
+  "desc": "玩乐搜索列表页",
+  "views": "../views"
+}

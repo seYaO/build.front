@@ -1,0 +1,30 @@
+{{var lineList = it.lineList;}}
+{{?lineList && lineList.length && lineList[0].line && lineList[0].line.length}}
+{{~lineList[0].line:value:index}}
+    <dl class="{{?index==3}}longlistlast{{?}}">
+         <dt>
+            <a href="//www.ly.com/dujia/tours/{{=value.id}}/" target="_blank" title="{{=value.title}}">
+                <img data-img="{{=value.absImgURL.replace('http:','')}}" alt="{{=value.title}}"/>
+                {{?value.subTitle && value.subTitle!=""}}
+                    <span class="sub-title" title="{{=value.subTitle}}">{{=value.subTitle}}</span>
+                {{?}}
+            </a>
+        </dt>
+        <dd>
+            <a href="//www.ly.com/dujia/tours/{{=value.id}}/" target="_blank" title="{{=value.title}}">
+                {{=value.title}}
+            </a>
+        </dd>
+        <dd>
+            {{var routeDays = value.routeDays.split(";");}}
+            <span class="iv_favor_start_city">{{=value.portCity}}出发&nbsp;&nbsp;{{?routeDays && routeDays.length}}{{=routeDays[0]}}日{{?}}</span>
+                {{?value.tcPrice==0}}
+                <div class="iv_favor_price"><em>实时计价</em></div>
+                {{??}}
+                <div class="iv_favor_price">¥<em>{{=value.tcPrice}}</em></div>
+                {{?}}
+            </div>
+        </dd>
+    </dl>
+{{~}}
+{{?}}

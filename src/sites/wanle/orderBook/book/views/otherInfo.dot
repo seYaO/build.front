@@ -1,0 +1,111 @@
+<!--其他信息开始-->
+{{var UserDefinedAttribute = data.SubmitDetail.UserDefinedAttribute;}}
+{{var Attribute = data.SubmitDetail.Attribute;}}
+{{var Attribute_count = data.SubmitDetail.Attribute.length;}}
+{{? Attribute_count > 0 || UserDefinedAttribute != ""}}
+<div class="procedureBox otherBox">
+    <h2 class="pro_title">其他信息</h2>
+    <div class="listbox otherInfo">
+        <div class="outPhone none">
+            <ul class="phoneList">
+                <li data-areaId="81">日本 +81</li>
+                <li data-areaId="82">韩国 +82</li>
+                <li data-areaId="33">法国 +33</li>
+                <li data-areaId="852">香港 +852</li>
+                <li data-areaId="886">台湾 +886</li>
+                <li data-areaId="1">美国/加拿大 +1</li>
+                <li data-areaId="65">新加坡 +65</li>
+                <li data-areaId="61">澳大利亚 +61</li>
+                <li data-areaId="44">英国 +44</li>
+                <li data-areaId="7">俄罗斯 +7</li>
+                <li data-areaId="49">德国 +49</li>
+            </ul>
+            <p class="other">仅支持上述国家，请谅解</p>
+        </div>
+        <ul class="contactperson_info user_info clearfix">
+            {{var attribute = data.SubmitDetail.Attribute;}}
+            {{var attribute_Count = data.SubmitDetail.Attribute.length;}}        
+
+            {{~attribute:attributeName:attributeIndex}}
+               {{?attributeName == 1}} 
+                <li data-submit="OverSeaNum">
+                    <label class="UserInfo_L">境外电话：</label>
+                    <div class="quhao">
+                        <input id="areaId" name="Iarea" class="con_mailbox con_country" attr-value="国家区号" type="text" value="国家区号">
+                        <span class="error_info none">*国家区号只为数字</span>
+                    </div>
+                    <div class="country_tel">
+                        <input id="phone" name="Iphone" class="con_mailbox" attr-value="确保准时接收短信" type="text" value="确保准时接收短信" maxlength="20">
+                        <span class="error_info none">*请填写正确的电话格式</span>
+                    </div>
+                </li>
+               {{?? attributeName == 2}}
+                <li data-submit="FlightNum">
+                    <label class="UserInfo_L">出境航班：</label>
+                    <input id="outFlight" name="Iflight" class="con_mailbox" attr-value="当地接机 例：NS8288" type="text" value="当地接机 例：NS8288" maxlength="20"/>
+                </li>
+               {{?? attributeName == 3}}
+                <li data-submit="FlightDate">
+                    <label class="UserInfo_L">出境日期：</label>
+                    <input id="outTime" name="Itime" class="con_mailbox" attr-value="当地接机 例：10月30日 20:00起飞" type="text" value="当地接机 例：10月30日 20:00起飞" maxlength="20"/>
+                </li>
+               {{?? attributeName == 4}}
+                 <li data-submit="CheckInHotelName">
+                    <label class="UserInfo_L">入住酒店：</label>
+                    <input id="hotel" name="Ihotel" class="con_mailbox con_user" type="text" maxlength="100" value="请填写酒店名称" attr-value="请填写酒店名称"/>
+                    <span class="error_info none">*请填写正确的酒店名称</span>
+                 </li>
+               {{?? attributeName == 5}}
+                <li data-submit="HotelAddress">
+                    <label class="UserInfo_L">酒店地址：</label> 
+                    <input id="hotelAdd" name="Iadd" class="con_mailbox con_user" type="text" maxlength="100" value="请填写酒店地址" attr-value="请填写酒店地址"/>
+                    <span class="error_info none">*请填写正确的酒店地址</span>
+                </li>
+               {{?? attributeName == 6}}
+                <li data-submit="AirportFlightNo">
+                    <label class="UserInfo_L">入境航班：</label>
+                    <input id="inFlight" name="Iflight" class="con_mailbox" attr-value="当地接机 例：NS8288" type="text" value="当地接机 例：NS8288" maxlength="20"/>
+                </li>
+               {{?? attributeName == 7}}
+                <li data-submit="AirportFlightDate">
+                    <label class="UserInfo_L">入境日期：</label>
+                    <input id="inTime" name="Itime" class="con_mailbox" attr-value="当地接机 例：10月30日抵达" type="text" value="当地接机 例：10月30日抵达" maxlength="20"/>
+                </li>
+               {{?? attributeName == 8}}
+                <li data-submit="FlightArrivedTime">
+                    <label class="UserInfo_L">接机时间：</label>
+                    <input id="pickTime" name="Itime" class="con_mailbox" attr-value="当地接机 例：20:00抵达" type="text" value="当地接机 例：20:00抵达" maxlength="20"/>
+                </li>
+               {{?? attributeName == 9}}
+                <li data-submit="IssueAddress">
+                    <label class="UserInfo_L">签发地：</label>
+                    <input id="issue" name="Isuue" class="con_mailbox" attr-value="证件签发地" type="text" value="证件签发地" maxlength="20"/>
+                </li>
+               {{?? attributeName == 10}}
+                <li data-submit="VisaCategory">
+                    <label class="UserInfo_L">签发类别：</label>
+                    <input id="" name="Isuue" class="con_mailbox" type="text" maxlength="20"/>
+                </li>
+               {{?? attributeName == 11}}
+                <li data-submit="DinnerTime">
+                    <label class="UserInfo_L">用餐时间：</label>
+                    <input id="dinnerTime" name="Itime" class="con_mailbox" attr-value="例：18:00左右" type="text" value="例：18:00左右" maxlength="20"/>
+                </li>
+               {{?? attributeName == 12}}
+                <li data-submit="ShowTime">
+                    <label class="UserInfo_L">演出时间：</label>
+                    <input id="actionTime" name="Itime" class="con_mailbox" attr-value="例：18:00左右" type="text" value="例：18:00左右" maxlength="20"/>
+                </li>
+               {{?}}
+            {{~}}
+
+            {{?UserDefinedAttribute !=""}}
+                <li class="userDefined">
+                    <label class="UserInfo_L UserDefined" data-submit="UserDefined">{{=UserDefinedAttribute}}</label>
+                    <input id="userDefined"  class="UserDefinedContent" name="Iuser" class="con_mailbox con_user" type="text" maxlength="100" data-submit="UserDefinedContent"/>
+                </li>
+            {{?}}
+        </ul>
+    </div>
+    </div>
+{{?}}

@@ -1,0 +1,118 @@
+{{var ProductType = info.ProductType;}}
+{{var ProductCategory = info.ProductCategory;}}
+{{var priceArr = info.PriceInfoOfType.concat(info.PriceInfo);}}
+
+
+{{?priceArr}}
+    {{var ticketType;}}
+    {{var flag = true;}}
+    {{?info.PriceInfoOfType.length > 0}}{{flag = true;}}{{??}}{{flag = false;}}{{?}}
+
+    <section class="head_info">
+        <div class="head_title">
+            <img src="{{=info.ImgUrl}}">
+            <span>产品编号：{{=info.ProductId}}</span>
+        </div>  
+        <div class="head_detail">
+            
+            <p>{{=info.MainTitle}}</p>
+            <div class="price_info">
+                <span><i>&yen;</i>{{=priceArr[0].priceDetail[0].AmountDirect}}</span>起 
+
+                {{?ProductType == 9 && ProductCategory == 92}}
+                    {{?priceArr[0].priceDetail[0].PriceExtendDetail.PrePayAmount != 0 || priceArr[0].priceDetail[0].PriceExtendDetail.PrePayAmount !=""}}
+                        押金<em>&yen;{{=priceArr[0].priceDetail[0].PriceExtendDetail.PrePayAmount}}</em>/台
+                        <a href="javascript:;" despoit_info="{{=priceArr[0].priceDetail[0].PriceExtendDetail.PrePayDes}}"></a>
+                    {{?}}
+                {{?}}
+            </div>
+
+            {{?ProductType == 9 && ProductCategory == 92}}
+                <div class="head_tip">
+                {{?parseInt(priceArr[0].priceDetail[0].PriceExtendDetail.AdvanceDays) === 0}}
+                    {{var AdvanceTime = priceArr[0].priceDetail[0].PriceExtendDetail.AdvanceTime;}}
+                    {{? AdvanceTime == "00:00"}}
+                        提前一天可订
+                    {{??}}
+                        出行当天{{=AdvanceTime}}前预订   
+                    {{?}}
+                {{??}}
+                    {{?priceArr[0].priceDetail[0].PriceExtendDetail.AdvanceType != 0}}
+                    出行前{{=priceArr[0].priceDetail[0].PriceExtendDetail.AdvanceDays}}个工作日{{=priceArr[0].priceDetail[0].PriceExtendDetail.AdvanceTime}}
+                    {{??}}
+                    出行前{{=priceArr[0].priceDetail[0].PriceExtendDetail.AdvanceDays}}天{{=priceArr[0].priceDetail[0].PriceExtendDetail.AdvanceTime}}
+                    {{?}}
+                    前预订
+                {{?}}
+                
+                {{?info.ValidOrderNumber != 0}}
+                    <span>月销:{{=info.ValidOrderNumber}}份</span> 
+                {{?}}
+                
+                </div>
+            {{??}}
+                <div class="head_tip">
+                    快递：{{=info.PhoneCardEntity.WPCReceiveTimeDesc}}
+                    {{?info.ValidOrderNumber != 0}}
+                    <span>月销:{{=info.ValidOrderNumber}}份</span>
+                    {{?}}
+                </div>
+            {{?}}
+        </div>
+    </section>
+    {{?ProductType == 9 && ProductCategory == 92}}
+       
+        {{?priceArr[0] && priceArr[0].priceDetail[0] && priceArr[0].priceDetail[0].DiscountInfoList && priceArr[0].priceDetail[0].DiscountInfoList.length > 0}}
+            <a class="tag" href="javascript:;">
+                <div class="tag_list">
+                    {{~priceArr[0].priceDetail[0].DiscountInfoList:DiscountInfo}}
+                        <span info_detail="{{=DiscountInfo.LongDesc}}">{{=DiscountInfo.DiscountName}}</span>
+                    {{~}}
+                </div>
+                <b></b>
+            </a>
+        {{?}}
+    {{?}}
+    
+    {{?(ProductType == 9 && ProductCategory == 93) || (ProductType == 9 && ProductCategory == 91)}}
+        {{~priceArr:list:index}}
+        <section class="tel_card_list">
+            <ul>
+                {{var posNum1 = 1;}}
+                {{~list.priceDetail:detail}}
+                    <li>
+                        <p class="title">{{=detail.PriceDes}}</p>
+                        <div class="label_list">
+                            {{?detail.PriceExtendDetail.ReceiveType != "" && detail.PriceExtendDetail.ReceiveType != undefined}}
+                                <span>{{=detail.PriceExtendDetail.ReceiveType}}</span>
+                            {{?}}
+                        </div>
+
+                        <p class="price_info">
+                            <em>&yen;</em>{{=detail.AmountDirect}}
+                            <span class="card_info" m_title="{{=detail.PriceDes}}" use_time="{{=detail.PriceExtendDetail.ValidateDesc}}">详细信息></span>
+                            <span class="packge_info none">{{=detail.PriceExtendDetail.PackageContent}}"</span>
+                        </p>
+                        <a href="{{=detail.BookUrl}}">预订</a>
+                    </li>  
+                {{~}} 
+            </ul>   
+        </section>
+        {{~}}
+    {{?}}
+    
+    {{?ProductType == 9 && ProductCategory == 92}}
+        <section class="device_info">
+            <div class="part_title title1"><i></i>设备信息</div>
+            <div class="device_detail">
+                {{?info.WifiIntroduction}}
+                <p><span>网速：</span>{{=info.WifiIntroduction.NetSpeed}}G网络</p>
+                <p><span>连接设备：</span>{{=info.WifiIntroduction.DeviceNumber}}</p>
+                <p><span>待机时长：</span>{{=info.WifiIntroduction.StandbyTime}}</p>
+                <p><span>标准配置：</span>{{=info.WifiIntroduction.StandardConfig}}</p>
+                <p><span>网络覆盖：</span>{{=info.WifiIntroduction.NetArea}}</p>
+                {{?}}
+            </div>
+        </section>
+    {{?}}
+{{?}}

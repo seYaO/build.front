@@ -1,0 +1,19 @@
+<div class="city-wrap">
+    <div class="city-inner clearfix">
+        <ul class="">
+            {{var beginCity = $("#hidBeginCity").val();}}
+            <li class='{{=(beginCity=="不限")?"active":""}}'>
+                <span class="needsclick" data-param="all">不限</span>
+                <i></i>
+            </li>
+            {{?it && it.length}}
+            {{~it:data:index}}
+            <li  class='{{?data.Name == beginCity}}active{{?}}'>
+                <span class="needsclick" data-param="{{=data.Pinyin}}">{{=data.Name}}</span>
+                <i></i>
+            </li>
+            {{~}}
+            {{?}}
+        </ul>
+    </div>
+</div>

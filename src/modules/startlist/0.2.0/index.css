@@ -1,0 +1,80 @@
+#popleave {
+  top: 15px;
+}
+#popleave .leavecity {
+  background: #fff;
+  border: #ddd 1px solid;
+  top: -1px;
+  position: absolute;
+  padding: 10px;
+  margin-top: 36px;
+  _margin-top: 0;
+  _margin-left: 0;
+  z-index: 2;
+  width: 384px;
+  box-shadow: 3px 3px 10px #ddd;
+}
+.leavecity .sub-scity-tips {
+  font-size: 12px;
+  color: #333;
+}
+.leavecity .sub-scity-tips ul {
+  border-bottom: #ddd 1px solid;
+}
+.leavecity .sub-scity-tips ul li {
+  float: left;
+  width: 56px;
+  text-align: center;
+  line-height: 32px;
+  cursor: pointer;
+  background: #fff;
+  border-top: #fff 1px solid;
+  border-bottom: #fff 1px solid;
+  top: 1px;
+}
+.leavecity .sub-scity-tips ul li.cur {
+  border: none;
+  border-bottom: #ff7800 2px solid;
+  color: #ff7800;
+  position: relative;
+}
+.leavecity .sub-scity-tips ul li + li {
+  margin-left: 26px;
+}
+.leavecity .sub-scity-tips .scity-tips-main {
+  margin-top: 12px;
+}
+.leavecity .sub-scity-tips .scity-tips-main.scity-en-show dd {
+  width: 348px;
+}
+.leavecity .sub-scity-tips .scity-tips-main.scity-en-show dd a {
+  margin: 0 0 0 10px;
+}
+.leavecity .sub-scity-tips .scity-tips-main dt {
+  float: left;
+  height: 28px;
+  text-align: center;
+  color: #ff7800;
+  line-height: 28px;
+  margin: 0 10px;
+}
+.leavecity .sub-scity-tips .scity-tips-main dd {
+  float: left;
+}
+.leavecity .sub-scity-tips .scity-tips-main dd a {
+  margin: 0 6px 0 10px;
+  float: left;
+  line-height: 28px;
+  height: 28px;
+  color: #666;
+  text-align: left;
+  white-space: nowrap;
+  width: 48px;
+  overflow: hidden;
+}
+.leavecity .sub-scity-tips .scity-tips-main dd a.subcur {
+  color: #ff7800;
+}
+.leavecity .sub-scity-tips .scity-tips-main dd a:hover {
+  color: #f60;
+}

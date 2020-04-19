@@ -1,0 +1,88 @@
+<div class="iv_favorable">
+    <div class="favorabletop">
+        <div class="favorabletitle"><i>&nbsp;</i> 跟团游尾货甩卖</div>
+    </div>
+    <div class="iv_favorable_con" id="ivFavorableCon">
+        <div class="iv_favorable_slider" id="ivFavorSlider">
+            <!--处理甩尾数据-->
+            {{
+                var endOne = [],
+                    endTwo = [],
+                    len = endList.length;
+            }}
+            {{for(i=0; i<len; i++){
+                if(i<5){
+                    endOne.push(endList[i]);
+                }else{
+                    endTwo.push(endList[i]);
+                }
+            } }}
+            <div class="iv_favor_slider_list">
+                {{~endOne:pro}}
+                <dl class="iv_favor_list">
+                    <dt>
+                        <span mprice="{{=pro.MarketPrice}}" tcprice="{{=pro.TcPrice}}" class="zhekou countzk"></span>
+                        <a href="//www.ly.com/dujia/tours/{{=pro.LineId}}.html?ak={{=pro.ActivityKey}}&selltype={{=pro.SellType}}" title="{{=pro.Title}}" target="_blank">
+                            <img data-src="{{=pro.ImgUrl.replace('http:','')}}" alt="{{=pro.Title}}">
+                        </a>
+                        <a class="masklayer" href="//www.ly.com/dujia/tours/{{=pro.LineId}}.html?ak={{=pro.ActivityKey}}&selltype={{=pro.SellType}}" target="_blank">&nbsp;</a>
+                        {{?pro.LowestDateReper > 0}}
+                        <a class="iv_favor_tip" href="//www.ly.com/dujia/tours/{{=pro.LineId}}.html?ak={{=pro.ActivityKey}}&selltype={{=pro.SellType}}" target="_blank">
+                            余位：{{=pro.LowestDateReper}}
+                        </a>
+                        {{?}}
+                    </dt>
+                    <dd class="iv_favor_dd iv_favor_main_title">
+                        <a href="//www.ly.com/dujia/tours/{{=pro.LineId}}.html?ak={{=pro.ActivityKey}}&selltype={{=pro.SellType}}" title="{{=pro.Title}}" target="_blank">
+                            {{?pro.Title.length>12}}
+                                {{=pro.Title.substring(0,12)}}...
+                            {{??}}
+                                {{=pro.Title}}
+                            {{?}}
+                        </a>
+                    </dd>
+                    <dd class="iv_favor_dd iv_favor_starting_price">
+                        <span class="iv_favor_start_city">{{=pro.DepartCity}}出发</span>
+                        <div class="iv_favor_price">&yen;<em>{{=pro.TcPrice}}</em>
+                        </div>
+                    </dd>
+                </dl>
+                {{~}}
+            </div>
+
+            <div class="iv_favor_slider_list">
+                {{~endTwo:proTwo}}
+                <dl class="iv_favor_list">
+                    <dt>
+                        <span mprice="{{=proTwo.MarketPrice}}" tcprice="{{=proTwo.TcPrice}}" class="zhekou countzk"></span>
+                        <a href="//www.ly.com/dujia/tours/{{=proTwo.LineId}}.html?ak={{=proTwo.ActivityKey}}&selltype={{=proTwo.SellType}}" title="{{=proTwo.Title}}" target="_blank">
+                            <img data-src="{{=proTwo.ImgUrl.replace('http:','')}}" alt="{{=proTwo.Title}}">
+                        </a>
+                        <a class="masklayer" href="//www.ly.com/dujia/tours/{{=proTwo.LineId}}.html?ak={{=proTwo.ActivityKey}}&selltype={{=proTwo.SellType}}" target="_blank">&nbsp;</a>
+                        {{?proTwo.LowestDateReper > 0}}
+                        <a class="iv_favor_tip" href="//www.ly.com/dujia/tours/{{=proTwo.LineId}}.html?ak={{=proTwo.ActivityKey}}&selltype={{=proTwo.SellType}}" target="_blank">
+                            余位：{{=proTwo.LowestDateReper}}
+                        </a>
+                        {{?}}
+                    </dt>
+                    <dd class="iv_favor_dd iv_favor_main_title">
+                        <a href="//www.ly.com/dujia/tours/{{=proTwo.LineId}}.html?ak={{=proTwo.ActivityKey}}&selltype={{=proTwo.SellType}}" title="{{=proTwo.Title}}" target="_blank">
+                        {{?proTwo.Title.length>12}}
+                            {{=proTwo.Title.substring(0,12)}}...
+                        {{??}}
+                            {{=proTwo.Title}}
+                        {{?}}
+                        </a>
+                    </dd>
+                    <dd class="iv_favor_dd iv_favor_starting_price">
+                        <span class="iv_favor_start_city">{{=proTwo.DepartCity}}出发</span>
+                        <div class="iv_favor_price">&yen;<em>{{=proTwo.TcPrice}}</em>
+                        </div>
+                    </dd>
+                </dl>
+                {{~}}
+            </div>
+        </div>
+
+    </div>
+</div>

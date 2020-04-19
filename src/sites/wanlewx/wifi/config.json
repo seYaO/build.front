@@ -1,0 +1,8 @@
+{
+    "dataUri": "/wanle/api/WWanleProduct/GetWanleWifiIndex",
+    "query": {
+        "siteType": 1,
+        "params": "[{\"flag\":1,\"Platment\":\"61035\"},{\"flag\":2,\"Area\":\"6103410\",\"Platment\":\"61034\"}]"
+    },
+    "desc": "玩乐微信wifi首页"
+}

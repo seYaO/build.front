@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+{{
+  var data = IT.Data||{},
+      it = data.data || {},
+      ContactDetail = it.ContactDetail || {},
+      baseInfo = it.VisaBaseInfo || {},
+      PersonTypeList = it.PersonTypeList || [],
+      AssuranceInfoList = it.AssuranceInfoList || [],
+      AdditionalServices = it.AdditionalServices || [],
+      PostInfo = it.PostInfo || {};
+}}
+<!-- 判断使用哪种总人数并获取总人数 -->
+{{
+ var  adultNum=parseInt(baseInfo.AdultCount) || 0,
+      childNum=parseInt(baseInfo.ChildCount) || 0,
+      youngNum=parseInt(baseInfo.YoungerChildCount) || 0,
+      elderNum=parseInt(baseInfo.ElderChildCount) || 0,
+      twoTypesCount = adultNum + childNum,
+      threeTypesCount = adultNum + youngNum+elderNum,
+      peopleCount = baseInfo.IsDistinctChildrenAgesPrice == 0 ? twoTypesCount:threeTypesCount;
+}}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="同程旅游" />
+    <meta name="copyright" content="同程旅游络科技股份有限公司" />
+    <title>填写订单信息_度假线路预订_同程旅游</title>
+    <% includeId = cnwidescreenjscss %>
+    <link rel="stylesheet" href=" //css.40017.cn/cn/min/??/cn/c/c/pay/base.0.0.2.css?v=2013102302" /><!--ignore-->
+    <link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+
+<body>
+    <input type="hidden" id="hidLineId" value="{{=baseInfo.LineId}}" runat="server" />
+    <input type="hidden" id="hidStartDate" value="{{=baseInfo.EarlyStartTime}}" runat="server" />
+    <input type="hidden" id="hidPriceList" value="{{=baseInfo.PriceSystemStr}}" runat="server" />
+    <input type="hidden" id="hidLinePayType" value="{{=baseInfo.LinePayType}}" runat="server" />
+    <input type="hidden" id="hidRefid" value="{{=baseInfo.RefId}}" runat="server" />
+    <input type="hidden" id="hidFromPlatform" value="{{=baseInfo.FromPlatform}}" runat="server" />
+    <input type="hidden" id="hidEarlyBookDate" value="{{=baseInfo.EarlyStartTime}}" runat="server" />
+    <input type="hidden" id="hidLaterBookDate" value="{{=baseInfo.LatterStartTime}}" runat="server" />
+    <input type="hidden" id="hidIsSelect" value="{{=baseInfo.IsSelect}}" runat="server" />
+    <input type="hidden" id="hidIsFromCCT" value="{{=baseInfo.IsFromCCT}}" runat="server" />
+    <input type="hidden" id="hidIsPreferential" value="{{=baseInfo.IsPreferential}}" runat="server" />
+    <input type="hidden" id="hidSendProvinceName" value="{{=it.SendProvinceName}}" runat="server" />
+    <input type="hidden" id="hidProvinceName" value="{{=PostInfo.ProvinceName || ''}}" runat="server" />
+    <div id="visa-header">
+        <div class="mLogin_iframe">
+            <div class="login_top">
+                <a href="javascript:;" onclick="closeMlogin();"></a>
+            </div>
+            <div class="login_iframe_content">
+                <iframe frameborder="no" scrolling="no" src="//passport.ly.com/login/loginmodule"></iframe>
+            </div>
+        </div>
+        <div class="login_bg_bag"></div>
+        <span id="bulletin"></span>
+        <div id="header_lite">
+            <div class="logo clearfix">
+                <h1><a href='//www.17u.cn/' title='同程旅游' target='_blank'>
+                <img src='//img1.40017.cn/cn/c/c/2015/2015129100342.png' alt='同程旅游' /></a></h1>
+                <div class="logo_right">
+                    <ul id="loginBar">
+                        <li id="loginLi" class="login">
+                            <div id="loginText" class="clearfix">
+                                <a href="javascript:;">登录 </a>
+                            </div>
+                            <div id="loginName" class="none">
+                                <span class="top_username"><a href="//member.ly.com/center" target="_blank" id="user_name" class="account_id"></a>，您好</span>
+                                <a href="javascript:;" class="exit">退出</a>
+                            </div>
+                        </li>
+                        <li class="zc"><a href="//passport.17u.cn/register/index/" target="_blank">注册</a></li>
+                        <li class="lhc"><a href="//www.17u.cn/newhelp/" title="帮助中心" target="_blank">帮助中心</a></li>
+                        <li class="login_seprator">|</li>
+                        <li class="tel">
+                            <span id="foottelephone">4007-777-777</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <script type="text/javascript">
+                (function() {
+                    var vst = document.createElement('script');
+                    vst.type = 'text/javascript';
+                    vst.async = true;
+                    vst.src = "/AjaxHelper/TopLoginHandler.aspx?channel=Travel&action=check&callback=getLoginInfoCallback&asyncRefid=" + getRefid() + "&date=" + new Date();
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(vst, s);
+                })();
+                (function() {
+                    if (fish.cookie.get('us', 'userid') || fish.cookie.get('passport_login_state', 'u_id')) {
+                        name = fish.cookie.get('us', 'nickName') || fish.cookie.get('passport_login_state', 'partner_loginname');
+                        fish.one('#user_name').html(name);
+                        fish.one('#loginName').removeClass('none');
+                        fish.one('#loginText').addClass('none');
+                        fish.one('#loginLi').removeClass('login').addClass('login_user');
+                    } else {}
+                })();
+            </script>
+        </div>
+    </div>
+    <div class="visa-content clearfix">
+        <ul class="flow_charts">
+            <li class="firstStyle">1、选择产品</li>
+            <li class="on">2、填写订单信息</li>
+            <li>3、预订成功</li>
+            <li>4、在线支付</li>
+            <li>5、支付成功</li>
+        </ul>
+        <div class="visa-left">
+            <!-- 签证线路信息start -->
+            <div class="visa-header">
+                <h1>{{=baseInfo.MainTitle}}</h1>
+                <div class="visa-header-details" style="display:block">
+                    <ul>
+                        <li title="{{=baseInfo.RegionName}}领区">办理地点：{{=baseInfo.RegionName}}领区</li>
+                        <li title="{{=baseInfo.IsInterview}}">是否面试：{{=baseInfo.IsInterview}}</li>
+                        <li title="{{=baseInfo.EnterTimes}}">入境次数：{{=baseInfo.EnterTimesValue}}</li>
+                        <li title="{{=baseInfo.ValidityTimes}}">有 效 期：{{=baseInfo.ValidityTimesValue}}</li>
+                        <li title="{{=baseInfo.MaxStopTomes}}">最长停留：{{=baseInfo.MaxStopTomesValue}}</li>
+                        <li title="预计{{=baseInfo.TransactTimeRange}}个工作日">办理时长：预计{{=baseInfo.TransactTimeRange}}个工作日</em><i class="J_DateTips"></i>
+                        <div class="visa-header-tips">
+                            <div>
+                                <em></em><span>预计{{=baseInfo.TransactTimeRange}}个工作日：使馆受理时间会因个人资料情况不同而有差异，具体以使馆为准</span><i>同程服务</i>
+                                <p>预约、资料审核、填表、代送取签等</p>
+                            </div>
+                        </div>
+                        </li>
+                    </ul>
+                    <div class="visa-header-outdate">
+                        出行日期：
+                        <label class="out_cal" for="J_outCal">
+                        <input id="J_outCal" autocomplete="off" type="text" value="{{=baseInfo.EarlyStartTime}}" readonly="readonly">
+                        <span class="icon-datetime"></span></label>
+                        <span>（请提前{{=baseInfo.AdvanceDay}}个工作日预订）</span>
+                    </div>
+                    <div class="visa-header-people">
+                        预定人数：
+                        <div class="visa-people-ad">
+                            <span>成人</span>
+                            <div class="people-box">
+                                <a href="javascript:void(0);" class="J_BtnDown"></a>
+                                <input class="J_adult" type="text" readonly="readonly" autocomplete="off" peopletype="1" peoplecost="{{=baseInfo.AdultPrice}}" value="{{=baseInfo.AdultCount || 0}}">
+                                <a href="javascript:void(0);" class="J_BtnUp"></a>
+                            </div>
+                        </div>
+                        {{?baseInfo.IsDistinctChildrenAgesPrice==0}}
+                        <div class="visa-people-ch">
+                            <span>儿童</span>
+                            <div class="people-box">
+                                <a href="javascript:void(0);" class="J_BtnDown"></a>
+                                <input class="J_child" type="text" readonly="readonly" autocomplete="off" peopletype="2" peoplecost="{{=baseInfo.ChildPrice}}" value="{{=baseInfo.ChildCount || 0}}">
+                                <a href="javascript:void(0);" class="J_BtnUp"></a>
+                            </div>
+                            <i>（2-12周岁）</i>
+                        </div>
+                        {{??}}
+                        <div class="visa-people-ch">
+                            <span>儿童</span>
+                            <div class='people-box'>
+                                <a href='javascript:void(0);' class='J_BtnDown' style='background-position: 7px -226px;'></a>
+                                <input class='J_child' type='text' readonly='readonly' autocomplete='off' peopletype='3' peoplecost='{{=baseInfo.ChildPrice3}}' value='{{=baseInfo.YoungerChildCount || 0}}'>
+                                <a href='javascript:void(0);' class='J_BtnUp' style='background-position: -19px -226px;'></a>
+                            </div>
+                            <i>（0-5周岁）</i>
+                        </div>
+                        <div class="visa-people-ch">
+                            <span>儿童</span>
+                            <div class="people-box">
+                                <a href="javascript:void(0);" class="J_BtnDown" style='background-position: 7px -226px;'></a>
+                                <input class="J_child" type="text" readonly="readonly" autocomplete="off" peopletype="4" peoplecost="{{=baseInfo.ChildPrice4}}" value="{{=baseInfo.ElderChildCount || 0}}">
+                                <a href="javascript:void(0);" class="J_BtnUp"></a>
+                            </div>
+                            <i>（6-12周岁）</i>
+                        </div>
+                        {{?}}
+                        <div class="people-is-zero J_PeopleIsZero none">
+                            <i></i>当前出游人数为0，不能进行预订哦！
+                        </div>
+                    </div>
+                </div>
+                <div class="visa-header-simple" style="display:none">
+                    <ul>
+                        <li>出行日期：{{=baseInfo.EarlyStartTime}}</li>
+                        <li>办理人数：成人x{{=baseInfo.AdultCount || 0}}人&nbsp;&nbsp;{{=baseInfo.ChildCount >0 ? "儿童x"+baseInfo.ChildCount+"人":""}}</li>
+                        <li>办理时长：预计{{=baseInfo.TransactTimeRange}}个工作日<i class="J_DateTips"></i>
+                        <div class="visa-header-tips">
+                            <div>
+                                <em></em><span>预计{{=baseInfo.TransactTimeRange}}个工作日：使馆受理时间会因个人资料情况不同而有差异，具体以使馆为准</span><i>同程服务</i>
+                                <p>
+                                    预约、资料审核、填表、代送取签等
+                                </p>
+                            </div>
+                        </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="visa-header-btn hide">
+                    隐藏明细
+                </div>
+            </div>
+            <div class="visa-header-warning">本产品需提前{{=baseInfo.AdvanceDay}}个工作日预订,最早可办理{{=baseInfo.EarlyBookDate}}出行的签证</div>
+            <!-- 签证线路信息end -->
+
+            <!-- 优惠信息start -->
+            <div class="J_coupon_box"></div>
+            <!-- 优惠信息end -->
+
+            <!-- 联系人信息start -->
+            <h2 class="h2-title">填写信息</h2>
+            <div class="visa-box">
+                <h3 class="h3-title">联系人信息<span>为方便客服及时与您联系，请准确填写联系人信息</span></h3>
+                <div class="visa-listbox">
+                    <ul class="visa-linkman">
+                        <li>
+                            <label for="linkName" class="content-name">联系人姓名<em>*</em></label>
+                            <input id="linkName" name="linkName" class="J_Name " value="{{=ContactDetail.ContactName|| ''}}" type="text" placeholder="请输入联系人姓名" vType="rq enOrCnWord" data-err-enorcnword="请输入正确联系人姓名" data-err-rq="请输入联系人姓名" required>
+                        </li>
+                        <li>
+                            <label for="phoneNum" class="phone-num">手机号码<em>*</em></label>
+                            <input id="phoneNum" name="phoneNum" class=J_Phone value="{{=ContactDetail.ContactMobile|| ''}}" type="text" placeholder="请填写准确的手机号码" vType="rq mobile" data-err-rq="请输入手机号码" data-err-mobile="号码不正确" required>
+                        </li>
+                        <li>
+                            <label for="email" class="content-email">电子邮箱<em>*</em></label>
+                            <input id="email" name="email" class="J_Email" value="{{=ContactDetail.ContactEmail|| ''}}" type="text" placeholder="请填写真实的邮箱地址" style="width: 290px" vType="rq mail rq" data-err-rq="请输入邮箱地址" data-err-mail="邮箱不正确" required>
+                        </li>
+                </div>
+            </div>
+            <!-- 联系人信息end -->
+
+            <!-- 出游人信息start -->
+            <div class="visa-box">
+                <h3 class="h3-title">出游人信息<span>为了您能顺利出行，请准确填写以下信息</span></h3>
+                <div class="visa-playlists">
+                   {{?peopleCount > 0}}
+                   {{for(var index = 0;index < peopleCount; index++) { }}
+                        {{var personEnType="",personCnType="";}}
+                        {{?index < baseInfo.AdultCount}}
+                            {{personEnType="adult";personCnType="成人";}}
+                        {{??}}
+                            {{personEnType="child";personCnType="儿童";}}
+                        {{?}}
+                        <div class="visa-playlist" data-name="{{=personEnType}}">
+                            <div class="visa-playL">
+                                <p class="visa-playL-name">出游人{{=index + 1}}</p>
+                                <p class="visa-playL-type">{{=personCnType}}</p>
+                            </div>
+                            <div class="visa-playR">
+                                <ul class="visa-playInfo">
+                                    <li>
+                                        <label class="title">姓名<em>*</em></label>
+                                        <input name="playName" data-type="{{=personEnType}}" type="text" class="J_Name J_PlayName" placeholder="请准确填写姓名" vType="rq enOrCnWord" data-err-enorcnword="请输入正确联系人姓名" data-err-rq="请输入联系人姓名" required>
+                                    </li>
+                                    {{?PersonTypeList && PersonTypeList.length}}
+                                        <li class="pType-li">
+                                            <label class="title">客户类型<em>*</em></label>
+                                            <span class="playType J_PlayType J_playType_select" data-index="{{=PersonTypeList[0].Id}}">{{=PersonTypeList[0].Name}}</span>
+                                            <ul class="pType-ul J_pType_ul none">
+                                            {{~PersonTypeList:Type}}
+                                                <li data-id="{{=Type.Id}}">{{=Type.Name}}</li>
+                                            {{~}}
+                                            </ul>
+                                        </li>
+                                    {{?}}
+                                    <li>
+                                        <label class="title">出生日期<em>*</em></label>
+                                        <label><i class="icon-date"></i>
+                                            <input class="J_BirthDate" autocomplete="off" placeholder="请选择出生日期" type="text" vtype="rq" data-err-rq="请选择出生日期" value="" readonly="readonly">
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="J_playerSave icon-save checked">保存为常旅客</label><span class="J_playerClear icon-clear">清空</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                   {{ } }}
+                   {{?}}
+                </div>
+            </div>
+            <!-- 出游人信息end -->
+
+            <!-- 附加产品start -->
+            {{?AssuranceInfoList.length || AdditionalServices.length}}
+                <div class="visa-box">
+                    <h3 class="h3-title">附加产品</h3>
+                    <div class="visa-insurances">
+                        <div class="visa-insurance">
+                            <div class="visa-insuranceR">
+                                {{?AssuranceInfoList.length}}
+                                <table border="0" class="insurance-table">
+                                    <tbody>
+                                        <tr class="insurance-title">
+                                            <th class="insutype-th">保险类型</th>
+                                            <th>保险名称</th>
+                                            <th>同程价格</th>
+                                            <th>份数</th>
+                                            <th class="insudate-th">生效日期<i class="J_timeTips"></i>
+                                                <div class="ui-dialog-effect">生效日期为您的出行日期</div>
+                                            </th>
+                                            <th style="text-align: center;">选择保险</th>
+                                        </tr>
+                                        {{~AssuranceInfoList:insuInfo}}
+                                            {{var list = insuInfo.AssuranceList || [];}}
+                                            {{~list:Insu:index}}
+                                            <tr class="{{=index < 3 ?'':'none'}}" datatype="{{=Insu.AssuanceType}}">
+                                                <td class="insutype-td">
+                                                    {{?index==0}}
+                                                    <span>{{=Insu.AssuanceTypeName}}</span>
+                                                    <div class="tip-info">
+                                                        <i class="J_Tips"></i>
+                                                        <div class="ui-dialog-arrow"></div>
+                                                        <div class="ui-dialog-safe">{{=Insu.AssuranceDescribe}}</div>
+                                                    </div>
+                                                    <div class="warn-info">
+                                                        <i class="J_Warn"></i>
+                                                        <div class="ui-dialog-arrow"></div>
+                                                        <div class="ui-dialog-safe">{{=Insu.IInformStatement}}</div>
+                                                    </div>
+                                                    {{?}}
+                                                </td>
+                                                <td class="insuname-td">{{=Insu.AssuranceName}}</td>
+                                                <td class="insucost-td"><em>{{=Insu.AssurancePrice || 0}}</em></td>
+                                                <td class="insunum-td"><span>{{=peopleCount}}</span></td>
+                                                <td class="insudate-td">{{=baseInfo.EarlyStartTime}}</td>
+                                                <td>
+                                                <!--CLPRefusedInsurance  0-客人自行选择拒签险 1-客人强制购买拒签险2-同程赠送拒签险 -->
+                                                {{var status="";}}
+                                                {{?Insu.AssuanceType == 2 && it.CLPRefusedInsurance > 0}}
+                                                    {{status = "checked  disabled";}}
+                                                {{??}}
+                                                    {{status = Insu.IsChoose ? "checked" :"";}}
+                                                {{?}}
+                                                <input type="checkbox" name="insurance" class="radio-style J_insuRadio" datacode="{{=Insu.AssuranceCode}}" dataname="{{=Insu.AssuranceName}}" datatype="{{=Insu.AssuanceType}}" datanum="{{=peopleCount}}" dataprice="{{=Insu.AssurancePrice}}" {{=status}} />
+                                                </td>
+                                            </tr>
+                                            {{~}}
+                                            {{?list.length>3}}
+                                             <tr class="insurance-more">
+                                                <td class="insutype-td"></td>
+                                                <td><a class="J_btnMore" datatype="{{=Insu.AssuanceType}}" href="javascript:void(0);">更多</a></td>
+                                            </tr>
+                                            {{?}}
+                                            {{?insuInfo.Type==0}}
+                                             <tr>
+                                                <td colspan="6" style="text-align: center;color: #999;">所有投保都是按照出行时间进行投保，若修改出行时间请提前2个工作日来电</td>
+                                            </tr>
+                                            {{?}}
+                                        {{~}}
+                                        <tr class="insurance-warning">
+                                            <td>
+                                                <div class="insu-warn"><i class="icon-warning"></i>
+                                                    <div class="warning-info">
+                                                        <p>旅行保险能够给您的出行安全带来更多保障，建议您务必购买旅游保险。</p>
+                                                        <p>若您放弃购买，则行程中的风险和损失将由您自行承担。</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {{?}}
+                                {{?AdditionalServices.length}}
+                                <table border="0" class="other-table">
+                                    <tbody>
+                                        <tr class="other-title">
+                                            <th class="othertype-th">其它类型</th>
+                                            <th>产品名称</th>
+                                            <th>同程价格</th>
+                                            <th>份数</th>
+                                            <th style="text-align: center;">选择产品</th>
+                                        </tr>
+                                        {{~AdditionalServices:service:index}}
+                                        {{var status="";}}
+                                        {{?service.Name.indexOf("照片") > -1}}
+                                            {{status = "checked";}}
+                                        {{?}}
+                                        <tr class="{{=index < 3 ?'':'none'}}">
+                                            <td class="othertype-td"><span></span></td>
+                                            <td class="othername-td">{{=service.Name}}</td>
+                                            <td class="othercost-td"><em>{{=service.AmountDirect || 0}}</em></td>
+                                            <td class="othernum-td"><span>{{=peopleCount}}</span></td>
+                                            <td>
+                                                <input type="checkbox" class="radio-style J_otherCheckBox" dataserviceid="{{=service.ProductServiceId}}" dataname="{{=service.Name}}" datacount="{{=peopleCount}}" dataprice="{{=service.AmountDirect || 0}}" {{=status}}>
+                                            </td>
+                                        </tr>
+                                        {{~}}
+                                         {{?AdditionalServices.length>3}}
+                                             <tr class="other-more">
+                                                <td class="othertype-td"></td>
+                                                <td><a class="J_otherMore"  href="javascript:void(0);">更多<em><i></i></em></a></td>
+                                            </tr>
+                                        {{?}}
+                                        <tr>
+                                            <td colspan="6" style="text-align: center;color: #999;">订单支付成功，到订单详情页，上传申请人照片，由同程提供照片打印服务</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                {{?}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {{?}}
+            <!-- 附加产品end -->
+
+            <!-- 邮寄信息start -->
+            {{?it.IsPostMaterialToUser && it.PostInfo}}
+            <div class="visa-box">
+                <h3 class="h3-title">邮寄信息<span>配送费按照实际快递费用收取</span></h3>
+                <div class="visa-send">
+                    <div class="visa-sendR">
+                        <ul class="J_visaAddress visa-sendInfo">
+                            <li>
+                             <label class="send-name">资料返还方式<em>*</em></label>
+                                <p><span>邮寄<i>[顺丰]</i><em dataname="{{=PostInfo.SendStyle || 0}}费" datanum="1" dataprice="20" class="J_emailP"></em></span></p>
+                            </li>
+                            <li>
+                                <label class="send-name">收件人姓名<em>*</em></label>
+                                <input name="sendName" type="text" class="J_Name" value="{{=PostInfo.Name || ''}}" placeholder="请准确填写姓名" vType="rq enOrCnWord" data-err-enorcnword="请输入正确联系人姓名" data-err-rq="请输入联系人姓名" required>
+                            </li>
+                            <li>
+                                <label class="send-area">所在区域<em>*</em></label><span class="send-pro J_send_span ">{{=PostInfo.ProvinceName ? PostInfo.ProvinceName:'请选择省'}}</span><span class="send-city J_send_span">{{=PostInfo.CityName ? PostInfo.CityName:'请选择市'}}</span><span class="send-region J_send_span">{{=PostInfo.RegionName ? PostInfo.RegionName:'请选择区/县'}}</span>
+                                <label for="linkName" class="invalid_message invalid_message_right none J_invalid"><span></span>不可为空</label>
+                                <ul class="send-pro-ul none J_send_ul" data-tmpl="#cityDot"></ul>
+                                <ul class="send-city-ul none J_send_ul" data-tmpl="#cityDot"></ul>
+                                <ul class="send-region-ul none J_send_ul" data-tmpl="#cityDot"></ul>
+                            </li>
+                            <li>
+                                <label class="send-address">街道地址<em>*</em></label>
+                                <input name="sendAddress" type="text" class="J_Area J_sendStreet" value="{{=PostInfo.StreetAddress || ''}}" style="width:405px" vType="rq" data-err-rq="请填写街道地址" required>
+                            </li>
+                            <li>
+                                <label class="send-mail">邮政编码</label>
+                                <input name="sendMail" type="text" class="J_sendCode" value="{{=PostInfo.ZipCode || ''}}">
+                            </li>
+                            <li>
+                                <label class="send-phoneNum">手机号码<em>*</em></label>
+                                <input name="sendPhoneNum" type="text" class="J_Phone J_sendPhone" value="{{=PostInfo.Mobile || ''}}" placeholder="请填写准确的手机号码" vType="rq mobile" data-err-rq="请填写手机号码" data-err-mobile="号码不正确" required>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {{?}}
+            <!-- 邮寄信息end -->
+
+            <!-- 发票信息start -->
+            <div class="visa-box">
+                <h3 class="h3-title">发票信息</h3>
+                <div class="visa-ticket clearfix J_visaTicket">
+                    <label class="checked" for="no-ticket">
+                        <input id="no-ticket" type="radio" class="radio-ticket no-tk" name="ticket">
+                        <span>不需要发票</span>
+                    </label>
+                    <label class="active" for="need-ticket">
+                        <input id="need-ticket" type="radio" class="radio-ticket need-tk" name="ticket">
+                        <span class="no-data">需要发票</span>
+                        <span class="has-data">
+                         <em>同程旅游</em>
+                        <i>服务费</i>
+                        <a class="J_editTicket active">修改</a>
+                            <b>
+                          提示：免费邮寄发票，3—7个工作日，可到达全国，出签后次日邮寄
+                          </b>
+                        </span>
+                    </label>
+                </div>
+            </div>
+            <!-- 发票信息end -->
+
+            <!-- 旅游顾问start -->
+            {{?it.ConsultantTip}}
+            <div class="visa-box tour-adviser" style="">
+                <h3 class="h3-title">旅游顾问</h3>
+                <div class="visa-send">
+                    <div class="visa-sendR">
+                        <input type="checkbox" id="lvguID">
+                        <label class="checksty" for="lvguID">{{=it.ConsultantTip}}</label>
+                    </div>
+                </div>
+            </div>
+            {{?}}
+            <!-- 旅游顾问end -->
+
+            <div class="order-btn">
+                <a class="visa-order-submit J_Submit">提交订单</a>
+                <span class="sub-tips">提交订单表明您已阅读并同意以下条款</span>
+            </div>
+
+            <!-- 免责申明start -->
+            <div class="visa-order-info J_order-info">
+                <div class="order-info">
+                    {{?it.Statement}}
+                    <div><h3>免责声明</h3>{{=it.Statement}}</div>
+                    {{?}}
+                    {{?it.Notice}}
+                    <div><h3>预定须知</h3>{{=it.Notice}}</div>
+                    {{?}}
+                </div>
+            </div>
+            <!-- 免责申明end -->
+        </div>
+
+        <!--  费用明细start -->
+        <div class="visa-right">
+           <div class="visa-right-content">
+                <div class="visa-priceT">
+                    <p class="visa-price-title">费用明细</p>
+                    {{?baseInfo.AdultCount > 0}}
+                        <div class="cost-line">
+                            <span class="price-left">成人</span>
+                            <span class="price-right J_Vcost" Vtype="people" datatype="1">
+                            <em>{{=baseInfo.AdultPrice || 0}}</em>
+                            <b>{{=baseInfo.AdultCount}}</b>
+                            <i>{{=baseInfo.AdultCount * baseInfo.AdultPrice || 0}}</i></span>
+                        </div>
+                    {{?}}
+
+                    {{?baseInfo.IsDistinctChildrenAgesPrice==0}}
+                        {{?baseInfo.ChildCount>0}}
+                        <div class="cost-line">
+                            <span class="price-left">儿童</span>
+                            <span class="price-right J_Vcost" Vtype="people" datatype="2">
+                            <em>{{=baseInfo.ChildPrice || 0}}</em>
+                            <b>{{=baseInfo.ChildCount}}</b>
+                            <i>{{=baseInfo.ChildCount * baseInfo.ChildPrice || 0}}</i></span>
+                        </div>
+                        {{?}}
+                    {{??}}
+                        {{?baseInfo.YoungerChildCount>0}}
+                        <div class="cost-line">
+                            <span class="price-left">儿童（0-5周岁）</span>
+                            <span class="price-right J_Vcost" Vtype="people" datatype="2">
+                            <em>{{=baseInfo.ChildPrice3 || 0}}</em>
+                            <b>{{=baseInfo.YoungerChildCount}}</b>
+                            <i>{{=baseInfo.YoungerChildCount * baseInfo.ChildPrice3 || 0}}</i></span>
+                        </div>
+                        {{?}}
+                        {{?baseInfo.ElderChildCount>0}}
+                        <div class="cost-line">
+                            <span class="price-left">儿童（6-12周岁）</span>
+                            <span class="price-right J_Vcost" Vtype="people" datatype="2">
+                            <em>{{=baseInfo.ChildPrice4 || 0}}</em>
+                            <b>{{=baseInfo.ElderChildCount}}</b>
+                            <i>{{=baseInfo.ElderChildCount * baseInfo.ChildPrice4 || 0}}</i></span>
+                        </div>
+                        {{?}}
+                    {{?}}
+                    <p class="visa-price-end"></p>
+                </div>
+                <div class="visa-priceB">
+                    {{?AssuranceInfoList.length || AdditionalServices.length || it.IsPostMaterialToUser}}
+                        <p class="visa-price-title">其他费用</p>
+                        {{?it.IsPostMaterialToUser && it.PostInfo}}
+                            <div class="cost-line">
+                            <span class="price-left">{{=PostInfo.SendStyle}}费</span>
+                            <span class="price-right J_Vcost" Vtype="post" datatype="">
+                            <em>{{=parseInt(PostInfo.Fee) || 0}}</em><b>1</b><i>{{=parseInt(PostInfo.Fee) || 0}}</i></span>
+                            </div>
+                        {{?}}
+                        <p class="visa-price-end"></p>
+                    {{?}}
+                </div>
+                <div class="visa-rightB-cont"><span class="price-total">费用总额：<i class="J_totalPrice">0</i></span></div>
+            </div>
+        </div>
+        <!--  费用明细end -->
+    </div>
+    <div id="visa-footer">
+        <div id="footer_lite">
+            Copyright&nbsp;&copy;&nbsp;<span class="cr_time" type="Holiday">2002-2015</span>&nbsp;版权所有&nbsp;<span class="corp_name">同程网络科技股份有限公司</span>&nbsp;<a class="icp_num" href="//img1.40017.cn/cn/new_ui/public/images/20141103174615.jpg" target="_blank">苏ICP证B2-20100204</a>
+        </div>
+    </div>
+    <!--发票弹窗start-->
+    <div class="visa-ticket-bg" style="display: none;"></div>
+    <div class="visa-ticket-module" style="display: none;">
+        <h3>发票信息</h3>
+        <span class="J_TKClose tk-close"></span>
+        <div class="tk-content">
+            <div class="tk-cost">
+                <i class="title">发票金额</i>
+                <span>发票开具以实际支付的费用为准 ，保险另外提供定额发票，红包，旅游卡支付金额不开具发票。</span>
+            </div>
+            <div class="tk-header">
+                <i class="title">发票抬头</i>
+                <input type="text" class="J_TKHeader" placeholder="请填写增加个人或公司名称" vtype="rq" data-err-rq="请输入正确抬头" data-err-enorcnword="请输入正确抬头" required="">
+            </div>
+            <div class="tk-send">
+                <i class="title">收件人</i>
+                <div class="tk-send-content">
+                    <div class="J_TKTraveler tk-traveler clearfix" style="height: 25px;">
+                        <i class="J_displayName icon-arrow"></i>
+                        <span class="J_addAddress address"><i></i><em>添加收件人</em></span>
+                    </div>
+                    <div class="tk-box-info" style="display: block;">
+                    </div>
+                    <div class="tk-box-make">
+                        <div class="make-info">
+                            <span class="title">姓名：</span>
+                            <span>
+                            <input type="text" class="user-name J_TKUserName" placeholder="姓名" vtype="rq enOrCnWord" data-err-rq="请输入正确抬头" data-err-enorcnword="请输入正确姓名" required="">
+                        </span>
+                            <span class="title">电话：</span>
+                            <span>
+                            <input type="text" class="user-phone J_TKUserPhone" placeholder="手机号码" vtype="rq mobile" data-err-rq="请输入手机号码" data-err-mobile="号码不正确" required="">
+                        </span>
+                        </div>
+                        <div class="J_visaAddress mark-address clearfix">
+                            <span class="title">地址：</span>
+                            <span class="send-pro J_send_span ">请选择省</span><span class="send-city J_send_span">请选择市</span><span class="send-region J_send_span">请选择区/县</span>
+                            <label class="invalid_message invalid_message_right none J_invalid"><span></span>省市区不可为空</label>
+                            <ul class="send-pro-ul none J_send_ul" data-tmpl="#cityDot">
+                            </ul>
+                            <ul class="send-city-ul none J_send_ul" data-tmpl="#cityDot"></ul>
+                            <ul class="send-region-ul none J_send_ul" data-tmpl="#cityDot"></ul>
+                            <span>
+                            <input type="text" class="J_TKUseraddress" vtype="rq" placeholder="不需要重复填写省市区" data-err-rq="请填写街道地址" required="" />
+                        </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="J_TKType tk-type">
+                <i class="title">发票内容</i>
+                <span data-type="3" class="active">服务费</span>
+                <span data-type="1" class="">旅游服务费</span>
+            </div>
+            <div class="tk-tips">
+                <i class="title">温馨提示</i>
+                <span>1、抬头必须为独立个体，不可以填写两个及以上的公司或个人；<br />
+                2、免费邮寄发票，3—7个工作日，可到达全国，出签后次日邮寄。
+                            <br />
+                3、如有其它需要，支付订单后，请咨询签证客服
+            </span>
+            </div>
+            <div class="tk-btn">
+                <button class="J_TKSubmit btn">保存发票信息</button>
+                <button class="J_TKClose cancel">取消</button>
+            </div>
+        </div>
+    </div>
+    <!-- 发票弹窗end-->
+    <!--侧边栏start-->
+    <div class="service">
+        <div class="service-kind" data-name="number"><img src="//img1.40017.cn/cn/v/2015/kefu/wifi_gif.gif"></div>
+        <a class="service-kind J_Kefu" target="_blank" href="javascript:void(0);"><img src="//img1.40017.cn/cn/v/2015/kefu/Customer-service_gif.gif"></a>
+        <div class="service-kind" data-name="erwei"><img src="//img1.40017.cn/cn/v/2015/kefu/QRcode_gif.gif"></div>
+        <a style="visibility: visible;" class="back_top" href="javascript:void(0);" title="返回顶部"></a>
+    </div>
+    <!-- 侧边栏end -->
+
+    <!-- 脚本依赖 -->
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js?v=20150413"></script><!--ignore-->
+    <script type="text/javascript" src="//js.40017.cn/cn/c/c/2016/common.0.3.7.js?v=2016030401"></script><!--ignore-->
+    <script>
+     fish.admin.config({verify: {v: "0.4.1",g: 2013052001,css: 1}});
+    </script><!--ignore-->
+    <script type="text/javascript" src="//js.40017.cn/cn/c/c/pay/c.0.0.8.js?v=2015120901"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/c/c/common-aspect.1.1.2.js,/cn/c/c/common-aspect-qrcode.1.1.2.js?v=2014121501"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2015072201" charset="utf-8"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/kefu-Visa/index.12285.js"></script>
+    <script type="text/javascript">
+    ESQ.init({
+        url: "//livechat.ly.com/out/guest?p=2&c=3"
+    });
+    </script>
+    <script type="text/javascript">
+        window.data = [{
+            "id": 2,
+            "name": "安徽"
+        }, {
+            "id": 3,
+            "name": "北京"
+        }, {
+            "id": 4,
+            "name": "福建"
+        }, {
+            "id": 5,
+            "name": "甘肃"
+        }, {
+            "id": 6,
+            "name": "广东"
+        }, {
+            "id": 7,
+            "name": "广西"
+        }, {
+            "id": 8,
+            "name": "贵州"
+        }, {
+            "id": 9,
+            "name": "海南"
+        }, {
+            "id": 10,
+            "name": "河北"
+        }, {
+            "id": 11,
+            "name": "河南"
+        }, {
+            "id": 12,
+            "name": "黑龙江"
+        }, {
+            "id": 13,
+            "name": "湖北"
+        }, {
+            "id": 14,
+            "name": "湖南"
+        }, {
+            "id": 15,
+            "name": "吉林"
+        }, {
+            "id": 16,
+            "name": "江苏"
+        }, {
+            "id": 17,
+            "name": "江西"
+        }, {
+            "id": 18,
+            "name": "辽宁"
+        }, {
+            "id": 19,
+            "name": "内蒙古"
+        }, {
+            "id": 20,
+            "name": "宁夏"
+        }, {
+            "id": 21,
+            "name": "青海"
+        }, {
+            "id": 22,
+            "name": "山东"
+        }, {
+            "id": 23,
+            "name": "山西"
+        }, {
+            "id": 24,
+            "name": "陕西"
+        }, {
+            "id": 25,
+            "name": "上海"
+        }, {
+            "id": 26,
+            "name": "四川"
+        }, {
+            "id": 27,
+            "name": "天津"
+        }, {
+            "id": 28,
+            "name": "西藏"
+        }, {
+            "id": 29,
+            "name": "新疆"
+        }, {
+            "id": 30,
+            "name": "云南"
+        }, {
+            "id": 31,
+            "name": "浙江"
+        }, {
+            "id": 32,
+            "name": "重庆"
+        }, {
+            "id": 33,
+            "name": "香港"
+        }, {
+            "id": 34,
+            "name": "澳门"
+        }, {
+            "id": 35,
+            "name": "台湾"
+        }];
+    </script>
+  
+    <script data-loader="true" src="//modules/sea.js"></script>
+    <script type="text/javascript">
+    seajs.require("./index").init({
+        data: window.data,
+        content: $(".send-pro-ul")
+    });
+    </script>
+    <script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '10002-2008-0']);
+        _tcq.push(['_refId', getRefid()]);
+        _tcq.push(['_userId', getMemberId()]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '']);
+        _tcq.push(['_resId', '0']);
+    </script>
+    <script type='text/javascript' src=" //vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script>
+    <!-- 统计相关功能 -->
+    <% includeId = node_dj_common_stat %>
+    <!-- 统计相关功能 -->
+
+</body>
+
+</html>

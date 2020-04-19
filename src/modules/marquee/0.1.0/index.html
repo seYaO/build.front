@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Marquee</title>
+	<style>
+		.marquee{
+		    border:1px solid #0a0;
+		    width:300px;
+		    height:100px;
+		    overflow:hidden;
+		}
+		.marquee li{
+		    font-size:16px;
+		    line-height:1.5;
+		}
+
+
+		.marquee2{
+		    width:300px;
+		    height:25px;
+		    border:1px solid #00a;
+		    overflow:hidden;
+		    white-space: nowrap;  /* 文字超出时不换行！！ */
+		}
+		.marquee2 ul, .marquee2 li{
+		    display:inline;
+		    font-size:16px;
+		    line-height:25px;
+		}
+	</style>
+</head>
+<body>
+	<div class="marquee">
+	    <ul>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	    </ul>    
+	</div>
+
+	<hr><hr>
+
+	<div class="marquee2">
+	    <ul>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	        <li>滚动吧少年</li>
+	    </ul>    
+	</div>
+	<script src="../../jquery.js"></script>
+	<script src="index.js"></script>
+	<script>
+		$(".marquee").marquee();
+
+		$(".marquee2").marquee({derection: "left", interval: 25});
+	</script>
+</body>
+</html>

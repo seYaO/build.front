@@ -1,0 +1,13 @@
+{
+    "dataUri":  "/intervacation/api/VisaInfo/GetVisaListNew",
+    "query": {
+        "countryName":"japan",
+        "relatedId":"301",
+        "depCityId":"266",
+        "cityId":"226",
+        "cityName":"苏州",
+        "siteType":0,
+        "count":4
+    },
+    "desc": "2017新版_签证列表页"
+}

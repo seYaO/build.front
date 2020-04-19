@@ -1,0 +1,21 @@
+{{var list = it.CommentList[0];}}
+    <div id="imageView" class="slider">
+        <ul>
+        {{? typeof(list.ImageList) == "string"}}
+            {{var imgs = list.ImageList.split(",");}}
+        {{??}}
+            {{var imgs = list.ImageList;}}
+        {{?}}
+            {{~imgs:img}}
+            <li>
+                <div><img src="{{=img}}"></div>
+            </li>
+            {{~}}
+
+        </ul>
+        <span class="indicator">
+            <i class="active"></i>
+            <i class=""></i>
+            <i class=""></i>
+        </span>
+    </div>

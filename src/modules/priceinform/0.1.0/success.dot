@@ -1,0 +1,9 @@
+<div class="content_gp">
+            <div class="ct_logo"></div>
+            <div class="ct_title">通知预约成功！</div>
+            <div class="ct_content">
+                当线路出现降价促销时，<br />
+                我们会通过短信/电话通知你哦~             
+            </div>
+            <span class="btn_close"  data-dialog-hide="">关闭</span>
+        </div>

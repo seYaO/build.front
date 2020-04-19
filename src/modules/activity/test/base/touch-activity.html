@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    
+    <!-- TDK: title, description, keywords -->
+    <title>12.12出境大促</title>
+    <meta name="description" content="同程旅游出境游频道为您提供出境旅游产品，双12旅游特惠；精选优质出境旅游线路，12.12出境大促，疯抢12天，低价产品high爆全场，更多出境旅游优惠路线尽在同程出境旅游。">
+    <meta name="keywords" content="出境旅游，双12特惠旅游">
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="//css.40017.cn/cn/min/??/cn/v/zt/2014/activity/public/baseactivity.css?v=2014070701"/>
+    <link rel="stylesheet" href="//css.40017.cn/touch/v/2015/zt/2015/26841/index.12084.css"/>
+
+</head>
+<body>
+<div class="container clearfix">
+    <div class="top">
+        <img src="//img1.40017.cn/touch/v/2015/zt/2015/26841/top-bg-01.jpg" />
+        <img src="//img1.40017.cn/touch/v/2015/zt/2015/26841/top-bg-02.jpg" />
+        <img src="//img1.40017.cn/touch/v/2015/zt/2015/26841/top-bg-03.jpg" />
+        <img src="//img1.40017.cn/touch/v/2015/zt/2015/26841/top-bg-04.jpg" />
+    </div>
+    <div class="middle">
+        <div class="product-manjian product-all clearfix" id="manjian">
+            <div class="hd"><img src="//img1.40017.cn/touch/v/2015/zt/2015/26841/hd-manjian.png" /></div>
+            <div class="select-nav"><span class="nav-normal nav-choosen">满5000元立减400元</span><span class="nav-normal">满15000元立减1200元</span></div>
+            <div class="pro-product clearfix">
+                <div class="boxs">
+                    <!-- 用来填充渲染产品的容器 -->
+                    <div class="J_probox" data-filter="DedicatLine=减400&CycleId=2318" data-tmpl="#template-normal"></div>
+                </div>
+                <div class="boxs none">
+                    <div class="J_probox" data-filter="DedicatLine=减1200&CycleId=2318" data-tmpl="#template-normal"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分享读取的文案，图片和链接 -->
+    <div id="wxShare" style="display: none;">
+        <input type="hidden" name="tcshareurl" value="http://m.ly.com/dujia/zhuanti/12dacu.html?wvc1=1&wvc2=1">
+        <input type="hidden" name="tcshareimg" value="http://pic3.40017.cn/line/admin/2015/12/01/13/wnrIsU.jpg">
+        <input type="hidden" name="tcsharetext" value="同程12.12出境大促，买满即赠iphone 6s；多人出游，更享立减￥199/人，每日4款秒杀，惊喜不断更新！双12结伴游世界！http://m.ly.com/dujia/zhuanti/12dacu.html?wvc1=1&wvc2=1">
+        <input type="hidden" name="tcDesc" value="同程12.12出境大促，买满即赠iphone 6s；多人出游，更享立减￥199/人，每日4款秒杀，惊喜不断更新！双12结伴游世界！">
+    </div>
+</div>
+
+    <!--dot模板开始-->
+    <script id="template-normal" type="text/plain">
+    {{~it:value:index}}
+    {{
+        var dataUrl = "http://m.ly.com/dujia/tours/"+value.LineId+".html?actType="+value.RedirectKey;
+        var sImgUrl = Activity.setImageSize(value.ImgUrl,"640x360"); 
+        var outputPrice = value.Preferential;
+        var startDatetime = new Date('2016/1/23').getTime();
+        var endDatetime = new Date('2016/2/23').getTime();
+        var isInSpringFestival = false;
+        if(value.SingleResourceId !== 0) {
+            dataUrl = "http://m.ly.com/localfun/wanle/"+value.SingleResourceId+".html?actType="+value.RedirectKey;
+            outputPrice = value.AmountAdvice;
+        }
+        if(value.StartDateList) {
+            for(var i=0,len=value.StartDateList.length;i<len;i++){
+                var tempDate=value.StartDateList[i].split(" ")[0].replace(/\-/g,"/");
+                var currentDate=new Date(tempDate).getTime();
+                if(currentDate>startDatetime&&currentDate<endDatetime) {
+                    isInSpringFestival = true;
+                    break;
+                }
+            }
+        }
+        var goalcity=/（(.*)）/g;
+        var GoalCity=value.GoalCity;
+        var c=goalcity.exec(GoalCity);
+        if(c){ GoalCity = c[1];}
+    }}
+    <!-- 根据产品是否售罄来显示遮罩层 -->
+    <div class="pro  {{=value.IsSellOut === 1? 'sellout' : ''}}">
+    <!-- 链接元素里需要写入 data-* 自定义属性 -->
+    <a href="javascript:void(0)" data-url="{{=dataUrl}}" data-lineId="{{=value.LineId||''}}" data-activityId="{{=value.ActivityId}}" data-cycleId="{{=value.CycleId}}" data-redirectKey="{{=value.RedirectKey}}" data-enterId="{{=value.SingleResourceId}}">
+        <div class="pro-box">
+            <div class="pro-top-img">
+            {{?isInSpringFestival}}
+                <span class="chunjie-icon"></span>
+            {{?}}
+                <!-- 产品图片需要用 data-img 写入，延迟加载 -->
+                <img alt="" data-img="{{=sImgUrl}}" />
+                <div class="cover"></div>
+                <div class="pro-info">
+                    <span>{{=GoalCity}}</span>
+                    <span class="price">￥<em>{{=outputPrice}}</em>起</span>
+                    <span class="other-price">￥{{=value.MarketPrice}}</span>
+                </div>
+            </div>
+            <div class="pro-bottom-time">
+                <span class="pro-subTitle">{{=value.MainTitle}}</span>
+            </div>
+        </div>
+    </a>
+    </div>
+   {{~}}
+</script>
+
+<!-- zepto -->
+<script src="../../../zepto.js"></script>
+<!-- 监控组件 -->
+<script src="../../../monitor/0.1.0/index.js"charset="utf-8"></script>
+<!-- dot模板 -->
+<script src="../../../dot.js?v=20150413" charset="utf-8"></script>
+<!-- 分享组件  -->
+<script src="../../../common/0.1.0/share.js" charset="utf-8"></script>
+<!-- 图片懒加载 -->
+<script src="../../../lazyload/0.2.0/touch.js" charset="utf-8"></script>
+<!-- 统计组件 -->
+<script src="../../../statistics/0.1.0/statistics.js" type="text/javascript"></script>
+<!-- touch专题渲染组件 -->
+<script src="../../../activity/0.3.0/touch/touch.js"></script>
+
+<script type="text/javascript">
+    Activity.init({
+        param: [
+            {"1320":[2313,2315,2317,2318,2319,2320,2347,2348,2349,2362]}
+        ],
+        host: "http://www.ly.com",
+        el: ".J_probox",
+        goTop: false,
+        filter: true,
+        querytype: 4,
+        IsSellOut: 1
+    });
+</script>
+
+<!-- 统计代码 -->
+<script type="text/javascript">
+    var pageview = '12.12出境大促';//后续统计代码中使用
+    stat.init({
+        "baidu": {
+            "parameter": "touch"        //PC端传“pc”，touch站传“touch”
+        },        //百度统计
+        "pvConfig": {       //PV统计
+            "PublicPlatId": "1",
+            "PageId": "2009",
+            "LineId": "0",
+            "ActivityId": "1306",
+            "ActivityPeriodId": "2272",
+            "ModuleId": "0",
+            "PVSource": "1",
+            "ak": "",
+            "url": "http://www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+        },
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', stat.getVrcode()],
+            ['_refId', stat.getRefid()],
+            ['_userId', '0'],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', pageview]
+        ]
+    });
+</script>
+</body>
+</html>

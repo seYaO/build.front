@@ -1,0 +1,157 @@
+.city-search {
+  top: 56px;
+  position: absolute;
+  width: 100%;
+  min-width: 1200px;
+}
+.city-search .search-con {
+  width: 750px;
+  margin: 0 auto;
+}
+.ly_search .ly_search_row {
+  width: 561px;
+  margin-right: 40px;
+  font-family: Microsoft YaHei, Simsun;
+  float: right;
+  position: relative;
+}
+.ly_search .search_input {
+  width: 466px;
+  display: inline-block;
+  border: 3px solid #ff7800;
+  height: 34px;
+  line-height: 33px;
+  text-indent: 10px;
+  font-size: 14px;
+  float: left;
+}
+.ly_search label.ly_search_btn {
+  width: 84px;
+  display: inline-block;
+  height: 40px;
+  text-align: center;
+  color: #fff;
+  background: #ff7800;
+  vertical-align: middle;
+  font-size: 18px;
+  line-height: 39px;
+  border: 0;
+  cursor: pointer;
+}
+.ly_search .ly_search_gp {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  background: #fff;
+  z-index: 1000;
+  border: 1px solid #dfdfdf;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+  font-size: 14px;
+  display: none;
+}
+.ly_search .ly_search_gp .ly_search_panel {
+  width: 470px;
+}
+.ly_search .ly_search_gp .ly_search_panel.hotcity,
+.ly_search .ly_search_gp .ly_search_panel.history {
+  width: 450px;
+  padding: 10px 10px 0;
+}
+.ly_search .ly_search_gp.active {
+  display: block;
+}
+.ly_search .g_header {
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 9px;
+  margin-bottom: 7px;
+  font-weight: 700;
+}
+.ly_search .g_list {
+  float: left;
+  padding: 7px 0 14px;
+  width: 100%;
+  line-height: 24px;
+}
+.ly_search .g_item {
+  cursor: pointer;
+}
+.ly_search .g_item.col_ff68 {
+  color: #ff6815;
+}
+.ly_search span.g_item {
+  margin-right: 17px;
+  line-height: 24px;
+  color: #666;
+  float: left;
+}
+.ly_search .new-label {
+  position: absolute;
+  top: 20%;
+  margin-top: 2px;
+  right: 93px;
+}
+.ly_search .new-label li {
+  float: left;
+  margin-right: 5px;
+  background: #f0f0f0;
+  padding: 0 12px;
+  border-radius: 12px;
+  height: 22px;
+  line-height: 22px;
+}
+.ly_search .new-label li a {
+  color: #999;
+  font-size: 14px;
+  height: 22px;
+  display: inline-block;
+  line-height: 21px;
+}
+.ly_search .history_gp {
+  float: left;
+  padding-top: 15px;
+  border-top: 1px dashed #ccc;
+  width: 100%;
+  position: relative;
+}
+.ly_search .history .g_header {
+  border-bottom: none;
+}
+.ly_search .history div.g_item {
+  display: inline-block;
+  margin-right: 17px;
+}
+.ly_search .g_clear {
+  position: absolute;
+  color: #333;
+  padding: 2px 10px;
+  background-color: #ddd;
+  cursor: pointer;
+  top: 11px;
+  right: 0;
+}
+/*搜索框小屏样式*/
+.w990 .city-search {
+  min-width: 990px;
+}
+.w990 .city-search .search-con {
+  width: 545px;
+}
+.w990 .city-search .search-con .ly_search .ly_search_row {
+  width: 400px;
+}
+.w990 .city-search .search-con .ly_search .search_input {
+  width: 330px;
+}
+.w990 .city-search .search-con .ly_search .new-label {
+  display: none;
+}
+.w990 .city-search .search-con label.ly_search_btn {
+  width: 64px;
+}
+.w990 .city-search .search-con .ly_search_gp .ly_search_panel {
+  width: 335px;
+}
+.w990 .city-search .search-con .ly_search_gp .ly_search_panel.hotcity,
+.w990 .city-search .search-con .ly_search_gp .ly_search_panel.history {
+  width: 315px;
+}

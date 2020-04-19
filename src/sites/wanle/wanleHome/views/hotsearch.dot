@@ -1,0 +1,31 @@
+{{?it.PageFeatherDic && it.PageFeatherDic != "" && it.PageFeatherDic != undefined && it.PageFeatherDic != null}}
+    {{?it.PageFeatherDic.HotWordSearch && it.PageFeatherDic.HotWordSearch.Total > 0}}
+        {{var hotSearch = it.PageFeatherDic.HotWordSearch;}}
+        <div class="HotSearch none">
+            <div class="hotcity">
+                <div class="g_header"> 热门搜索 </div>
+                <div class="g_list">
+                    {{~hotSearch.result:destName:num}}
+                    <a href="/dujia/wanle/searchlist_{{=destName.Name}}.html" title="{{=destName.Name}}" target="_blank" class="g_item" onclick = "_tcTraObj._tcTrackEvent('search', '/lineWanle/wifi/homepage', '/sbox/k/hot', '|*|k:{{=destName.Name}}|*|pos:{{=num+1}}|*|jpTp:1|*|');">{{=destName.Name}}</a>
+                    {{~}}
+                </div>
+            </div>
+
+            <div class="searchHistory">
+                <div class="g_header"> 搜索历史 </div>
+                <div class="g_list his_list">
+                    
+                </div>
+            </div>
+
+        </div>
+
+        <div class="searchLabel">
+            {{~hotSearch.result:destcity:index}}
+                {{?index < 3}}
+                <a href="/dujia/wanle/searchlist_{{=destcity.Name}}.html" title="{{=destcity.Name}}" target="_blank" class="h_label" onclick = "_tcTraObj._tcTrackEvent('search', '/lineWanle/wifi/homepage', '/sbox/k/hot', '|*|k:{{=destcity.Name}}|*|pos:{{=index+1}}|*|jpTp:1|*|');">{{=destcity.Name}}</a>
+                {{?}}
+            {{~}}
+        </div>
+    {{?}}
+{{?}}

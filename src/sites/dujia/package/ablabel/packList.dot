@@ -1,0 +1,95 @@
+{{?it.Products.length>0}}
+{{~it.Products:gro}}
+<div class="pro-title">
+    <a title="{{=gro.Title}}" href="/dujia/tours/p{{=gro.LineId}}.html" target="_blank" trace="goDetail">{{=gro.Title}}</a>
+</div>
+<div class="module">
+    <div class="mod-list normal-style">
+        <ul class="prolist">
+            <li class="pro-line">
+                <div class="pro-redu">
+                    <div class="pro-desc">
+                        {{var morefive = false;
+                            if(gro.Products&&gro.Products.length>5){
+                                morefive = true;
+                            }
+                        }}
+                        {{~gro.Products:pro}}
+                            <div class="pro-tree clearfix">
+                                <div class="pro-img">
+                                    <a href="/dujia/tours/p{{=gro.LineId}}.html" target="_blank" data-paramed="true" trace="goDetail">
+                                        <img data-img="{{=pro.Image.replace('http:','')}}"
+                                             src="{{=pro.Image.replace('http:','')}}"
+                                             onerror="Monitor.log(this.src,'image')" data-img-loaded="true" style="display: block;">
+                                    </a>
+                                    <span class="mark">机酒任选</span>
+                                </div>
+                                <div class="pro-branch clearfix">
+                                    <div class="pro-info">
+                                    {{
+                                        var fullTitle = pro.CustomTitle + '•' + pro.SubTitle;
+                                        var showTitle = "";
+                                        var fullLength = 45;
+                                        if(pro.CustomTitle.length > fullLength){
+                                            showTitle = pro.CustomTitle.substring(0,fullLength)+'...';
+                                        }else{
+                                          var leftLength = fullLength - pro.CustomTitle.length;
+                                          if(pro.SubTitle.length > leftLength){
+                                              showTitle = pro.CustomTitle + '<b>' + '•' + pro.SubTitle.substring(0,leftLength)+'...</b>';
+                                          }else{
+                                              showTitle = pro.CustomTitle + '<b>' + '•' + pro.SubTitle + '</b>'
+                                          }
+                                        }
+                                    }}
+                                        <p class="sub-title">
+                                            <a title="{{=pro.CustomTitle}}•{{=pro.SubTitle}}" href="/dujia/tours/p{{=pro.LineId}}.html" target="_blank" data-paramed="true" trace="goDetail">{{=showTitle}}</a>
+                                            {{?pro.IsTcSpecial ==1}}
+                                                <span data-content="同程旅游联合境内外优质供应商为用户甄选提供更专业更高品质的产品。" class="icon-tczx J_Tips"></span>
+                                            {{?}}
+                                        </p>
+                                        <p class="pro-pre">
+                                        {{?pro.WhiteBarType>0}}
+                                            <span data-content="{{=pro.WhiteBarTip}}" class="J_Tips">分期付款</span>
+                                        {{?}}
+                                            {{?pro.Services&&pro.Services.length}}
+                                            {{~pro.Services:itval}}
+                                            <span  class="stars">
+                                                <span class="stars-txt">{{=itval}}</span>
+                                            </span>
+                                            {{~}}
+                                            {{?}}
+                                        </p>
+                                        <div class="branch_style">
+                                            <p class="pro-tip">
+                                                <span class="pro-dep"><i></i>{{=pro.DepartCity}}出发</span>
+                                            </p>
+                                            <p class="pro-date">
+                                                <span class="pro-text">出发日期：</span><span class="date-list">天天发团</span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="pro-detail">
+                                        <span class="pro-price">{{?pro.Price == 0}}<i>实时计价</i>{{??}}<em>¥</em>{{=pro.Price}}<em>/人起</em>{{?}}</span>
+                                        <a href="/dujia/tours/p{{=pro.LineId}}.html" target="_blank"  class="pro-btn stages spm-deliver" data-paramed="true" trace="goDetail">查看详情</a>
+                                        {{?pro.Satisfaction =="0.0" || pro.Comments == 0}}
+                                        <p class="newpro">新产品</p>
+                                        {{??}}
+                                        <p class="pro-comm"><em>{{=pro.Satisfaction}}%</em>满意度  <em>{{=pro.Comments}}</em>条评论</p>
+                                        {{?}}
+                                    </div>
+                                </div>
+                            </div>
+                        {{~}}
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    {{?morefive}}
+    <div class="choose-button">
+        <span class="unfold J_more">展开更多<b></b></span>
+    </div>
+    {{?}}
+</div>
+{{~}}
+{{?}}

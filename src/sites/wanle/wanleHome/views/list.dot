@@ -1,0 +1,13 @@
+{{?index < 6}}
+<li>
+    <a href="/dujia/wanle/{{=stada.Id}}.html" target="_blank" title="{{=stada.Title}}" trace="{{=stada.Id}}" trackspot="{{=stada.Id}}^{{=index+1}}^{{=stada.SingleTypeName}}^{{=LineName}}">
+        <img data-img="{{=stada.ImgUrl.replace('.jpg','_430x270_00.jpg').replace('http:','')}}" alt="{{=stada.Title}}">
+        <div>
+            <span  class="mainTitle" title="{{=stada.Title}}">{{=stada.Title}}</span>
+            <span class="subTitle">{{=stada.SubTitle}}</span>
+            <p><i>¥</i>{{=stada.MinTcPrice}}<b>起</b></p>
+        </div>
+    </a>
+</li>
+{{?}}
+

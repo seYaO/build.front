@@ -1,0 +1,640 @@
+{{?it.TourGuideDays&&it.TourGuideDays.length}}
+    <div class="route-box routeDays-box">
+        <ul>
+        {{~it.TourGuideDays:itDays:index}}
+            <li class="travel-day" id="travelDay{{=itDays.Day}}" data-txt="第{{=itDays.Day}}天">
+                <div class="route-date-box route-title">
+                    <h2>{{=itDays.Theme}}<i>D{{=itDays.Day}}</i></h2>
+                </div>
+                {{?itDays.Scenics&&itDays.Scenics.length}}
+                {{~itDays.Scenics:StItems:index1}}
+                {{?StItems.Type==1}}
+                <div class="route-travel-box">
+                {{?StItems.Traffic=="plane"}}
+                    <div class="route-title title-arrvel">
+                        <h2>{{=StItems.Destination}}<i></i></h2>
+                    </div>
+                {{??StItems.Traffic=="metro"}}
+                    <div class="route-title bytrain">
+                        <h2>{{=StItems.Destination}}<i></i></h2>
+                    </div>
+                {{??StItems.Traffic=="ship"}}
+                    <div class="route-title byboot">
+                        <h2>{{=StItems.Destination}}<i></i></h2>
+                    </div>
+                {{??StItems.Traffic=="car"}}
+                    <div class="route-title bytaxi">
+                        <h2>{{=StItems.Destination}}<i></i></h2>
+                    </div>
+                {{??StItems.Traffic=="walk"}}
+                    <div class="route-title byfoot">
+                        <h2>{{=StItems.Destination}}<i></i></h2>
+                    </div>
+                {{?}}
+                    <div class="detail-routes">{{=StItems.Description}}
+                    </div>
+                </div>
+                {{??StItems.Type==2}}
+                    <div class="route-view-box">
+                    {{?StItems.ScenicType == "other"}}
+                    <div class="route-title title-view title-others">
+                        <h2>其他：{{=StItems.ScenicName}}<i></i></h2>
+                    </div>
+                    {{??StItems.ScenicType == "scenery"}}
+                    <div class="route-title title-view">
+                        <h2>景点：{{=StItems.ScenicName}}<i></i></h2>
+                    </div>
+                    {{??StItems.ScenicType == "shopping"}}
+                    <div class="route-title title-view title-shopping">
+                        <h2>购物点：{{=StItems.ScenicName}}<i></i></h2>
+                    </div>
+                    {{??StItems.ScenicType == "food"}}
+                    <div class="route-title title-view title-eatting">
+                        <h2>美食：{{=StItems.ScenicName}}<i></i></h2>
+                    </div>
+                    {{?}}
+                    <div class="detail-routes">{{=StItems.Description}}</div>
+                    {{?StItems.ScenicImages&&StItems.ScenicImages.length}}
+                    <div class="viewPic-box">
+                        <ul>
+                            {{~StItems.ScenicImages:itImgs:index2}}
+                            {{?index2<3}}
+                                <li><img src="{{=itImgs.replace('http:','')}}" alt="{{=StItems.ScenicName}}"></li>
+                            {{?}}
+                            {{~}}
+                        </ul>
+                    </div>
+                    {{?}}
+                </div>
+                {{??StItems.Type==3}}
+                <div class="route-hotel-box route-title">
+                    <h2>{{=StItems.Description}}<i></i></h2>
+                </div>
+                {{?}}
+                {{~}}
+                {{?}}
+            </li>
+        {{~}}
+        </ul>
+    </div>
+{{??it.TourScenicSites&&it.TourScenicSites.length}}
+    <div class="route-box routeView-box">
+        {{~it.TourScenicSites:TourItems:index2}}
+            <div class="route-date-box route-title">
+                <h2>{{=TourItems.Title}}<i></i></h2>
+            </div>
+            {{?TourItems.Description}}
+                <div class="detail-routes city-intro">{{=TourItems.Description}}</div>
+            {{?}}
+            {{~TourItems.Scenics:ScItems:index}}
+                <div class="route-view-box">
+                    {{?ScItems.ScenicType=="scenery"}}
+                        <div class="route-title title-view">
+                            <h2>景点：{{=ScItems.ScenicName}}<i></i>
+                                {{?ScItems.Star&&ScItems.Star !=0}}
+                                    <b>推荐星级：
+                                        {{for(var i=0;i<ScItems.Star;i++){}}
+                                            <em class="one-star"></em>
+                                        {{}}}
+                                    </b>
+                                {{?}}
+                            </h2>
+                            <div class="detail-routes">{{=ScItems.Description}}</div>
+                            {{?ScItems.ScenicImages&&ScItems.ScenicImages.length}}
+                                <div class="viewPic-box">
+                                    <ul>
+                                        {{~ScItems.ScenicImages:ImItems:index1}}
+                                            {{?index1<3}}
+                                                <li><img src="{{=ImItems.replace('http:','')}}" alt="{{=ScItems.ScenicName}}"></li>
+                                            {{?}}
+                                        {{~}}
+                                    </ul>
+                                </div>
+                            {{?}}
+                        </div>
+                    {{?}}
+                    {{?ScItems.ScenicType=="shopping"}}
+                        <div class="route-title title-view title-shopping">
+                            <h2>购物点：{{=ScItems.ScenicName}}<i></i></h2>
+                            <div class="detail-routes">{{=ScItems.Description}}</div>
+                            {{?ScItems.ScenicImages&&ScItems.ScenicImages.length}}
+                                <div class="viewPic-box">
+                                    <ul>
+                                        {{~ScItems.ScenicImages:ImItems:index1}}
+                                            {{?index1<3}}
+                                                <li><img src="{{=ImItems.replace('http:','')}}" alt="{{=ScItems.ScenicName}}"></li>
+                                            {{?}}
+                                        {{~}}
+                                    </ul>
+                                </div>
+                            {{?}}
+                        </div>
+                    {{?}}
+                    {{?ScItems.ScenicType=="food"}}
+                        <div class="route-title title-view title-eatting">
+                            <h2>美食：{{=ScItems.ScenicName}}<i></i></h2>
+                            <div class="detail-routes">{{=ScItems.Description}}</div>
+                            {{?ScItems.ScenicImages&&ScItems.ScenicImages.length}}
+                                <div class="viewPic-box">
+                                    <ul>
+                                        {{~ScItems.ScenicImages:ImItems:index1}}
+                                            {{?index1<3}}
+                                                <li><img src="{{=ImItems.replace('http:','')}}" alt="{{=ScItems.ScenicName}}"></li>
+                                            {{?}}
+                                        {{~}}
+                                    </ul>
+                                </div>
+                            {{?}}
+                        </div>
+                    {{?}}
+                    {{?ScItems.ScenicType=="other"}}
+                        <div class="route-title title-view title-others">
+                            <h2>其他：{{=ScItems.ScenicName}}<i></i></h2>
+                            <div class="detail-routes">{{=ScItems.Description}}</div>
+                            {{?ScItems.ScenicImages&&ScItems.ScenicImages.length}}
+                                <div class="viewPic-box">
+                                    <ul>
+                                        {{~ScItems.ScenicImages:ImItems:index1}}
+                                            {{?index1<3}}
+                                                <li><img src="{{=ImItems.replace('http:','')}}" alt="{{=ScItems.ScenicName}}"></li>
+                                            {{?}}
+                                        {{~}}
+                                    </ul>
+                                </div>
+                            {{?}}
+                        </div>
+                    {{?}}
+                </div>
+            {{~}}
+        {{~}}
+    </div>
+{{??it.RecommendJourney}}
+    <div class="routeModules-box">
+        <div class="title-fee"><i></i>推荐行程</div>
+        <div class="recommandJourneyBox">
+        {{?it.RecommendJourney.DestinationDesc}}
+            <div class="route-box-base route-module">
+                <div class="route-title"><h2>目的地概述<i></i></h2></div>
+                <div class="route-view-box ">
+                    {{?it.RecommendJourney.DestinationDesc.Desc}}<div class="detail-routes">{{=it.RecommendJourney.DestinationDesc.Desc}}</div>{{?}}
+                    {{?it.RecommendJourney.DestinationDesc.Images && it.RecommendJourney.DestinationDesc.Images.length}}
+                        <div class="viewPic-box">
+                            <ul>
+                                {{~it.RecommendJourney.DestinationDesc.Images:ImgItem:index3}}
+                                    <li><img src="{{=ImgItem.replace('http:','')}}" alt="{{=it.RecommendJourney.DestinationDesc.Title}}"></li>
+                                {{~}}
+                            </ul>
+                        </div>
+                    {{?}}
+                    {{?it.RecommendJourney.DestinationDesc.Tip}}<div class="detail-routes"><b>贴心提示：</b>{{=it.RecommendJourney.DestinationDesc.Tip}}</div>{{?}}
+                </div>
+            </div>
+        {{?}}
+        {{?it.RecommendJourney.RecommendScenic && it.RecommendJourney.RecommendScenic.length}}
+            <div class="route-box-scenery route-module">
+                <div class="route-title"><h2>推荐景点<i></i></h2></div>
+
+                    {{~it.RecommendJourney.RecommendScenic:RecScenic:index1}}
+                        <div class="route-view-box ">
+                            {{?RecScenic.Title}}<div class="route-title title-view"><h2>【{{=RecScenic.Title}}】</h2></div>{{?}}
+                            {{?RecScenic.Desc}}<div class="detail-routes">{{=RecScenic.Desc}}</div>{{?}}
+                            {{?RecScenic.Images && RecScenic.Images.length}}
+                                <div class="viewPic-box">
+                                    <ul>
+                                        {{~RecScenic.Images:ImgItem:index3}}
+                                            <li><img src="{{=ImgItem.replace('http:','')}}" alt="{{=RecScenic.Title}}"></li>
+                                        {{~}}
+                                    </ul>
+                                </div>
+                            {{?}}
+                            {{?RecScenic.Tip}}<div class="detail-routes"><b>贴心提示：</b>{{=RecScenic.Tip}}</div>{{?}}
+                        </div>
+                    {{~}}
+
+            </div>
+        {{?}}
+
+        {{?it.RecommendJourney.RecommendFood && it.RecommendJourney.RecommendFood.length}}
+            <div class="route-box-foods route-module">
+                <div class="route-title"><h2>推荐美食<i></i></h2></div>
+                {{~it.RecommendJourney.RecommendFood:RecFood:index1}}
+                    <div class="route-view-box ">
+                        {{?RecFood.Title}}<div class="route-title title-view"><h2>【{{=RecFood.Title}}】</h2></div>{{?}}
+                        {{?RecFood.Desc}}<div class="detail-routes">{{=RecFood.Desc}}</div>{{?}}
+                        {{?RecFood.Images && RecFood.Images.length}}
+                            <div class="viewPic-box">
+                                <ul>
+                                    {{~RecFood.Images:ImgItem:index3}}
+                                        <li><img src="{{=ImgItem.replace('http:','')}}" alt="{{=RecFood.Title}}"></li>
+                                    {{~}}
+                                </ul>
+                            </div>
+                        {{?}}
+                        {{?RecFood.Tip}}<div class="detail-routes"><b>贴心提示：</b>{{=RecFood.Tip}}</div>{{?}}
+                    </div>
+                {{~}}
+            </div>
+        {{?}}
+
+        {{?it.RecommendJourney.TrafficProfile && it.RecommendJourney.TrafficProfile.length}}
+            <div class="route-box-traffic route-module">
+                <div class="route-title"><h2>交通简介<i></i></h2></div>
+                {{~it.RecommendJourney.TrafficProfile:TrafProfile:index1}}
+                    <div class="route-view-box ">
+                        {{?TrafProfile.Title}}<div class="route-title title-view"><h2>【{{=TrafProfile.Title}}】</h2></div>{{?}}
+                        {{?TrafProfile.Desc}}<div class="detail-routes">{{=TrafProfile.Desc}}</div>{{?}}
+                        {{?TrafProfile.Tip}}<div class="detail-routes"><b>贴心提示：</b>{{=TrafProfile.Tip}}</div>{{?}}
+                    </div>
+                {{~}}
+            </div>
+        {{?}}
+
+        {{?it.RecommendJourney.OtherFeatures && it.RecommendJourney.OtherFeatures.length}}
+            <div class="route-box-other route-module">
+                <div class="route-title"><h2>其他特色<i></i></h2></div>
+                {{~it.RecommendJourney.OtherFeatures:OthFeature:index1}}
+                    <div class="route-view-box ">
+                        {{?OthFeature.Title}}<div class="route-title title-view"><h2>【{{=OthFeature.Title}}】</h2></div>{{?}}
+                        {{?OthFeature.Desc}}<div class="detail-routes">{{=OthFeature.Desc}}</div>{{?}}
+                        {{?OthFeature.Images && OthFeature.Images.length}}
+                            <div class="viewPic-box">
+                                <ul>
+                                    {{~OthFeature.Images:ImgItem:index3}}
+                                        <li><img src="{{=ImgItem.replace('http:','')}}" alt="{{=OthFeature.Title}}"></li>
+                                    {{~}}
+                                </ul>
+                            </div>
+                        {{?}}
+                    </div>
+                {{~}}
+            </div>
+        {{?}}
+        </div>
+    </div>
+{{??it.TravelLiterature && it.TravelLiterature.length}}  
+    <div class="editorable-box">
+        <div class="title-fee"><i></i>推荐行程</div>
+            <div class="route-body">
+                {{~it.TravelLiterature:travelImg}}
+                    <img src="{{=travelImg}}" alt="游记">
+                {{~}}
+            </div>
+        </div>
+    </div>
+{{??it.PoiRoute && it.PoiRoute.Routes && it.PoiRoute.Routes.length}}
+    {{
+        var dayArr = ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十','二十一','二十二','二十三','二十四','二十五','二十六','二十七','二十八','二十九','三十'];
+    }}
+    <div class="routeMap-box clearfix">
+        <div class="lineInfoContent">
+            {{?it.PoiRoute.Summarize || (it.PoiRoute.Images && it.PoiRoute.Images.length)}}
+                <div class="map-day lineSummary" id="lineMapSummary" data-txt="行程概述">
+                    <h2>行程概述</h2>
+                    {{?it.PoiRoute.Summarize}}
+                        <div class="summary-content">
+                            {{?it.PoiRoute.Summarize.length > 300}}
+                                <div class="summaryCon" data-content="{{=it.PoiRoute.Summarize}}">{{=it.PoiRoute.Summarize.substring(0,280)}}<div class="J_intro_more">展开更多<i></i></div></div>
+                            {{??}}
+                                <div class="summaryCon">{{=it.PoiRoute.Summarize}}</div>
+                            {{?}}
+                        </div>
+                    {{?}}
+                    {{?it.PoiRoute.Images && it.PoiRoute.Images.length}}
+                        <div class="summaryView J_route_img clearfix">
+                            <ul>
+                                {{~it.PoiRoute.Images:imgUrl}}
+                                    <li><img data-img="{{=imgUrl.Link.replace('http:','')}}" alt=""></li>
+                                {{~}}    
+                            </ul>
+                        </div>
+                    {{?}}
+                </div>
+            {{?}}
+            <div class="lineDayInfo-box">
+                <div class="line-leftLine">
+                    {{?it.PoiRoute.Routes && it.PoiRoute.Routes.length}}
+                        {{~it.PoiRoute.Routes:poiRoute:poiIndex}}
+                            {{?poiIndex < 30}}
+                                <div class="map-day lineInfo-box" id="mapTravelDay{{=[poiIndex + 1]}}" data-txt="第{{=dayArr[poiIndex]}}天">
+                                    <div class="day-maintitle">
+                                        {{
+                                            var desPlace = '';
+                                            if(poiRoute.Destinations && poiRoute.Destinations.length){
+                                                if(poiRoute.Destinations.length == 1){
+                                                    desPlace = poiRoute.Destinations[0];
+                                                }else{
+                                                    for(var i=0; i<poiRoute.Destinations.length; i++){
+                                                        desPlace += poiRoute.Destinations[i] + '、';
+                                                    }
+                                                    desPlace = desPlace.substring(0,desPlace.length -1);
+                                                }
+                                            }
+                                            
+                                        }}
+                                        {{=desPlace}} 
+                                        <i>D{{=poiIndex + 1}}</i>
+                                    </div>
+                                    <div class="route-bg">
+                                        {{?poiRoute.Pois && poiRoute.Pois.length}}
+                                            {{~poiRoute.Pois:poiItem:poiItemIndex}}
+                                                {{
+                                                    var poiType = '';
+                                                    if(poiItem.PoiType == 1){
+                                                        poiType = 'icon-mapSite';
+                                                    }else if(poiItem.PoiType == 2){
+                                                        poiType = 'icon-mapYule';
+                                                    }else if(poiItem.PoiType == 3){
+                                                        poiType = 'icon-mapShop';
+                                                    }else if(poiItem.PoiType == 4){
+                                                        poiType = 'icon-mapFood';
+                                                    }else if(poiItem.PoiType == 5){
+                                                        poiType = 'icon-mapTraffic';
+                                                    }else{
+                                                        poiType = 'icon-mapTower';
+                                                    }
+                                                }}
+                                                {{?poiItem.IsCustomRoute}}
+                                                    {{ 
+                                                        var trafficType = '';
+                                                        var J_trafficType = '';
+                                                        if(poiItem.TrafficType == 1){
+                                                            trafficType = 'walk-way';
+                                                            J_trafficType = 'J_walkWay';
+                                                        }else if(poiItem.TrafficType == 2){
+                                                            trafficType = 'bus-way';
+                                                            J_trafficType = 'J_busWay';
+                                                        }else if(poiItem.TrafficType == 3){
+                                                            trafficType = 'taxi-way';
+                                                            J_trafficType = 'J_taxiWay';
+                                                        }else if(poiItem.TrafficType == 4){
+                                                            trafficType = 'fly-way';
+                                                            J_trafficType = 'J_flyWay';
+                                                        }else if(poiItem.TrafficType == 5){
+                                                            trafficType = 'bus-way';
+                                                            J_trafficType = 'J_busWay';
+                                                        }else if(poiItem.TrafficType == 6){
+                                                            trafficType = 'gaotie-way';
+                                                            J_trafficType = 'J_trainWay';
+                                                        }else if(poiItem.TrafficType == 7){
+                                                            trafficType = 'ship-way';
+                                                            J_trafficType = 'J_shipWay';
+                                                        }else if(poiItem.TrafficType == 8){
+                                                            trafficType = 'train-way';
+                                                            J_trafficType = 'J_trainWay';
+                                                        }else{
+                                                            trafficType = 'walk-way';
+                                                            J_trafficType = 'J_walkWay';
+                                                        }
+                                                    }}
+                                                    {{?poiItem.CustomRouteType == 2}}
+                                                        <div class="poi-subtitle">
+                                                            <div class="day-subtitle clearfix {{?poiItemIndex == poiRoute.Pois.length-1}}subtitle_nopaddingbot{{?}}">
+                                                                <i class="route-ways {{=trafficType}}"></i>
+                                                                <div class="sub-content">乘坐{{=poiItem.TrafficTypeName}}前往{{=poiItem.Destination}}</div>
+                                                            </div>
+                                                        </div>
+                                                    {{??}}
+                                                        {{?poiItem.CustomTitle || poiItem.CustomContent || (poiItem.Images && poiItem.Images.length)}}
+                                                            <div class="mapSite line-mapCon">
+                                                                {{?poiItem.CustomTitle && !poiItem.CustomContent}}
+                                                                    <div class="route-title">
+                                                                        {{=poiItem.CustomTitle}}
+                                                                        <i class="title-icon {{=poiType}}"></i>
+                                                                        <i class="title-arrow"></i>
+                                                                    </div>
+                                                                {{??poiItem.CustomContent && !poiItem.CustomTitle}}
+                                                                    <div class="route-title">
+                                                                        <p class="route-intro">{{=poiItem.CustomContent}}</p>
+                                                                        <i class="title-icon {{=poiType}}"></i>
+                                                                        <i class="title-arrow"></i>
+                                                                    </div>
+                                                                {{??poiItem.CustomTitle && poiItem.CustomContent}}
+                                                                    <div class="route-title">
+                                                                        {{=poiItem.CustomTitle}}
+                                                                        <i class="title-icon {{=poiType}}"></i>
+                                                                        <i class="title-arrow"></i>
+                                                                    </div>
+                                                                    <div class="route-datail">
+                                                                        {{?poiItem.CustomContent.length > 300}}
+                                                                            <div class="site-detail" data-content="{{=poiItem.CustomContent}}">{{=poiItem.CustomContent.substring(0,280)}}<div class="J_intro_more">展开更多<i></i></div></div>
+                                                                        {{??}}
+                                                                            <div class="site-detail">{{=poiItem.CustomContent}}</div>
+                                                                        {{?}}
+                                                                    </div>
+                                                                {{?}}
+                                                                {{?poiItem.Images && poiItem.Images.length}}
+                                                                    <div class="route-view J_route_img clearfix">
+                                                                    <ul>
+                                                                        {{~poiItem.Images:itemImgUrl}}
+                                                                            <li {{?poiItem.Images.length == 1}}class="route-viewLi"{{?}}><img data-img="{{=itemImgUrl.Link.replace('http:','')}}"></li>
+                                                                        {{~}}  
+                                                                    </ul>
+                                                                </div>
+                                                                {{?}}
+                                                            </div>
+                                                        {{?}}
+                                                    {{?}}
+                                                {{??}}
+                                                    {{ 
+                                                        var trafficType = '';
+                                                        var J_trafficType = '';
+                                                        if(poiItemIndex > 0){
+                                                            if(poiRoute.Pois[poiItemIndex - 1].TrafficType == 1){
+                                                                trafficType = 'walk-way';
+                                                                J_trafficType = 'J_walkWay';
+                                                            }else if(poiRoute.Pois[poiItemIndex - 1].TrafficType == 2){
+                                                                trafficType = 'bus-way';
+                                                                J_trafficType = 'J_busWay';
+                                                            }else if(poiRoute.Pois[poiItemIndex - 1].TrafficType == 3){
+                                                                trafficType = 'taxi-way';
+                                                                J_trafficType = 'J_taxiWay';
+                                                            }else if(poiRoute.Pois[poiItemIndex - 1].TrafficType == 4){
+                                                                trafficType = 'fly-way';
+                                                                J_trafficType = 'J_flyWay';
+                                                            }else if(poiRoute.Pois[poiItemIndex - 1].TrafficType == 5){
+                                                                trafficType = 'bus-way';
+                                                                J_trafficType = 'J_busWay';
+                                                            }else if(poiRoute.Pois[poiItemIndex - 1].TrafficType == 6){
+                                                                trafficType = 'gaotie-way';
+                                                                J_trafficType = 'J_trainWay';
+                                                            }else if(poiRoute.Pois[poiItemIndex - 1].TrafficType == 7){
+                                                                trafficType = 'ship-way';
+                                                                J_trafficType = 'J_shipWay';
+                                                            }else if(poiRoute.Pois[poiItemIndex - 1].TrafficType == 8){
+                                                                trafficType = 'train-way';
+                                                                J_trafficType = 'J_trainWay';
+                                                            }else{
+                                                                trafficType = 'walk-way';
+                                                                J_trafficType = 'J_walkWay';
+                                                            }
+                                                        }
+                                                    }}
+                                                    {{?poiItemIndex > 0 && poiRoute.Pois[poiItemIndex - 1].PoiType != 0}}
+                                                        <div class="poi-subtitle">
+                                                            <div class="day-subtitle clearfix">
+                                                                <i class="route-ways {{=trafficType}}"></i>
+                                                                <div class="sub-content">前往{{=poiItem.Name}}</div>
+                                                                <div class="route-maps">
+                                                                    <div class="route-details xianlu-box">
+                                                                        {{
+                                                                            var preLat = poiRoute.Pois[poiItemIndex - 1].Lat;
+                                                                            var preLng = poiRoute.Pois[poiItemIndex - 1].Lon;
+                                                                            var nowLat = poiItem.Lat;
+                                                                            var nowLng = poiItem.Lon;
+                                                                            var startPlace = poiRoute.Pois[poiItemIndex - 1].Name;
+                                                                            var endPlace = poiItem.Name;
+                                                                        }}
+                                                                        <div class="map-detail-title J_route_box_title {{=J_trafficType}}" data-startplace = '{{=startPlace}}' data-endplace = '{{=endPlace}}' data-prelat = '{{=preLat}}' data-prelng = '{{=preLng}}' data-nowlat = '{{=nowLat}}' data-nowlng = '{{=nowLng}}' statspot>详细线路</div>
+                                                                        <div class="map-detail-content J_map_dialog none">
+                                                                            <div class="route-detail-dialog">
+                                                                                <div class="route-detail-arrow">
+                                                                                    <div class="route-detail-arrow-a"></div>
+                                                                                    <div class="route-detail-arrow-b"></div>
+                                                                                </div>
+                                                                                <div class="route-box-title">线路详情<i class="J_close_dialog"></i></div>
+                                                                                <div class="route-box-content route-bus-box">
+                                                                                    <div class="mapLoading"><i></i>正在加载中...</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="route-others xianlu-box">
+                                                                        <div class="otherRoute-title J_route_box_title" data-startplace = '{{=startPlace}}' data-endplace = '{{=endPlace}}' data-preLat = '{{=preLat}}' data-prelng = '{{=preLng}}' data-nowlat = '{{=nowLat}}' data-nowlng = '{{=nowLng}}' statspot>其他交通方案</div>
+                                                                        <div class="otherRoute-content J_map_dialog none">
+                                                                            <div class="route-detail-dialog">
+                                                                                <div class="route-detail-arrow">
+                                                                                    <div class="route-detail-arrow-a"></div>
+                                                                                    <div class="route-detail-arrow-b"></div>
+                                                                                </div>
+                                                                                <div class="otherRoute-box-title clearfix">
+                                                                                    <i class="J_close_dialog"></i>
+                                                                                    <ul>
+                                                                                        <li class="map-icon-bus J_tab_item J_tab_item_active" statspot><i></i></li>
+                                                                                        <li class="map-icon-taxi J_tab_item" statspot><i></i></li>
+                                                                                        <li class="map-icon-walk J_tab_item" statspot><i></i></li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                                <div class="otherRoute-box-content otherRoute-bus-box">
+                                                                                    <div class="mapLoading"><i></i>正在加载中...</div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {{?}}
+                                                    <div class="mapSite line-mapCon">
+                                                        <div class="route-title">
+                                                            {{=poiItem.Name}}
+                                                            {{?poiItem.EngilshName}}
+                                                                {{=poiItem.EngilshName}}
+                                                            {{?}}
+                                                            <i class="title-icon {{=poiType}}"></i>
+                                                            <i class="title-arrow"></i>
+                                                        </div>
+                                                        <div class="route-datail">
+                                                            {{?poiItem.BrightSpot}}
+                                                                <p class="site-intro">{{=poiItem.BrightSpot.replace(/\\n/g,'<br>')}}</p>
+                                                            {{?}}
+                                                            {{?poiItem.Intro.length > 300}}
+                                                                <div class="site-detail" data-content="{{=poiItem.Intro.replace(/\\n/g,'<br>')}}">{{=poiItem.Intro.substring(0,280)}}<div class="J_intro_more">展开更多<i></i></div></div>
+                                                            {{??}}
+                                                                <div class="site-detail">{{=poiItem.Intro}}</div>
+                                                            {{?}}
+                                                        </div>
+                                                        {{?poiItem.ShopTime || poiItem.TicketInfo || poiItem.PlayTime || poiItem.Tips}}
+                                                            <div class="info-tips clearfix">
+                                                                <ul>
+                                                                    {{?poiItem.ShopTime}}
+                                                                        <li class="opentime J_map_info_tips" data-content="{{=poiItem.ShopTime.replace(/\\n/g,'<br>')}}"><i></i><p>开放时间</p></li>
+                                                                    {{?}}
+                                                                    {{?poiItem.TicketInfo}}
+                                                                        <li class="menpiao-info J_map_info_tips" data-content="{{=poiItem.TicketInfo.replace(/\\n/g,'<br>')}}"><i></i><p>门票信息</p></li>
+                                                                    {{?}}
+                                                                    {{?poiItem.PlayTime}}
+                                                                        <li class="youwantime J_map_info_tips" data-content="{{=poiItem.PlayTime.replace(/\\n/g,'<br>')}}"><i></i><p>游玩时间</p></li>
+                                                                    {{?}}
+                                                                    {{?poiItem.Tips}}
+                                                                        <li class="tips J_map_info_tips" data-content='{{=poiItem.Tips.replace(/\\n/g,"<br>")}}'><i></i><p>贴士</p></li>
+                                                                    {{?}}
+                                                                </ul>
+                                                            </div>
+                                                        {{?}}
+                                                        {{?poiItem.Images && poiItem.Images.length}}
+                                                            <div class="route-view J_route_img clearfix">
+                                                                <ul>
+                                                                    {{~poiItem.Images:poiItemImgUrl:poiItemImgIndex}}
+                                                                        {{?poiItemImgIndex < 3}}
+                                                                            <li {{?poiItem.Images.length == 1}}class="route-viewLi"{{?}}><img data-img="{{=poiItemImgUrl.Link.replace('http:','')}}"></li>
+                                                                        {{?}}
+                                                                    {{~}}
+                                                                </ul>
+                                                            </div>
+                                                        {{?}}
+                                                    </div>
+                                                {{?}}
+                                            {{~}}
+                                        {{?}}
+                                    </div>
+                                </div>
+                            {{?}}
+                        {{~}}
+                    {{?}}
+                </div>
+            </div>
+        </div>
+        <div class="mapInfo" id = "lineMap">
+            <a class="J_download_lineinfo" data-routeid = '{{=it.RouteId}}' href="/intervacation/api/PDynamicPackageProductDetail/RouteDownLoad?id={{=it.RouteId}}" target="_blank"><i></i>下载行程</a>
+            <div class="mapinfo-content" id="gaodemap">
+            </div>
+            <div class="mapinfo-days clearfix">
+                {{?it.PoiRoute.Routes && it.PoiRoute.Routes.length}}
+                    {{~it.PoiRoute.Routes:poiMap:mapIndex}}
+                        {{?mapIndex < 30}}
+                            {{
+                                var desPlace = '';
+                                var latlng = [];
+                                var nowTitle = '';
+                                if(poiMap.Destinations && poiMap.Destinations.length){
+                                    if(poiMap.Destinations.length == 1){
+                                        desPlace = poiMap.Destinations[0];
+                                    }else{
+                                        for(var i=0; i<poiMap.Destinations.length; i++){
+                                            desPlace += poiMap.Destinations[i] + '、';
+                                        }
+                                        desPlace = desPlace.substring(0,desPlace.length -1);
+                                    }
+                                }
+                                if(desPlace.length > 5){
+                                    nowTitle = desPlace.substring(0,5) + '...';
+                                }else{
+                                    nowTitle = desPlace;
+                                }
+                                
+                                if(poiMap.Pois && poiMap.Pois.length){
+                                    for(var i=0; i<poiMap.Pois.length; i++){
+                                        if(poiMap.Pois[i].PoiType != 0){
+                                            var lat = poiMap.Pois[i].Lat;
+                                            var lng = poiMap.Pois[i].Lon;
+                                            var title = '';
+                                            var title = poiMap.Pois[i].Name + poiMap.Pois[i].EngilshName;
+                                            latlng.push({
+                                                lng: lng,
+                                                lat: lat,
+                                                title: title
+                                            });
+                                        }
+                                    }
+                                }
+                            }}
+                            <div class="mapinfo-item J_click_days {{?mapIndex == 0}}active{{?}}" data-latlng = "{{=encodeURIComponent(JSON.stringify(latlng))}}" title="{{=desPlace}}"><span>D{{=mapIndex + 1}}</span>{{=nowTitle}}</div>
+                        {{?}}
+                    {{~}}
+                {{?}}
+            </div>
+        </div>
+    </div>
+{{??}}
+    <div class="no-route">小编正在努力编辑中，请先移步至<a href="http://go.ly.com" target="_blank">攻略频道</a>查看</div>
+{{?}}

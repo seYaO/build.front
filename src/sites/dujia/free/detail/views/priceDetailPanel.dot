@@ -1,0 +1,12 @@
+{{~it.lists:data:index}}
+    {{?data.count && data.count !== 0}}
+        <li>
+            <p class="label-common-color label-common-size price-info-left">{{=data.name}}</p>
+            <div class="price-info-right">
+                <p class="price-common-color label-common-size">￥{{=data.price}}</p>
+                <p class="label-common-color label-common-size">x{{=data.count}}</p>
+            </div>
+        </li>
+    {{?}}
+{{~}}
+

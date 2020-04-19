@@ -1,0 +1,59 @@
+{{var it = it.Data;}}
+{{var centerDest0 = [];}}
+{{var centerDest1 = ["日本","韩国"];}}
+{{var centerDest2 = ["新加坡","泰国","越南","柬埔寨","马来西亚"];}}
+{{var centerDest3 = ["香港","澳门","台湾"];}}
+{{var centerDest4 = [];}}
+{{var centerDest5 = [];}}
+{{var centerDest6 = ["阿联酋","南非","斯里兰卡"];}}
+{{var centerCites;}}
+
+{{~it:value:index}}
+{{?index === 0}}
+{{var centerCites = centerDest0;}}
+{{??index === 1}}
+{{var centerCites = centerDest1;}}
+{{??index === 2}}
+{{var centerCites = centerDest2;}}
+{{??index === 3}}
+{{var centerCites = centerDest3;}}
+{{??index === 4}}
+{{var centerCites = centerDest4;}}
+{{??index === 5}}
+{{var centerCites = centerDest5;}}
+{{??index === 6}}
+{{var centerCites = centerDest6;}}
+{{?}}
+
+<div class="filter-show">
+    <div class="one-menu J-left">
+        <ul>
+            <li class="{{?index == 0}}select{{??}}{{?}}" data-type="0">{{=value.DestinationName}}</li>
+        </ul>
+    </div>
+    
+    {{?it.sourceId !==0}}
+    {{?centerCites.length}}
+    <div class="two-menu J-center{{?index !==0}} none{{?}}">
+        <div class="border_zhe">
+        <ul>
+        {{~centerCites:arr:i}}
+           <li data-id="{{=i}}" {{?i === 0}}class="select"{{?}}>{{=arr}}<i></i></li>
+        {{~}}
+        </ul>
+        </div>
+    </div>
+    {{?}}
+    {{?}}
+
+    <div class="thr-menu J-right{{?index !==0}} none{{?}} {{?centerCites.length}}L220{{??}}L120{{?}} ">
+        {{~value.CountryCityList:detail:_i}}
+        <ul class="city{{=_i}} {{?_i !== 0}}none{{?}}">
+            {{~detail.CityNameList:listArr}}
+                <li>{{=listArr}}</li>
+            {{~}}
+        </ul>
+        {{~}}
+    </div>
+</div>
+{{~}}

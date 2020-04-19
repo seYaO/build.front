@@ -1,0 +1,55 @@
+
+<div class="" id="J_orderPop_new" style="display: none;">
+    <div class="order-pop-content" style="margin: 10px auto;">
+        <i style="display: none;"></i>
+        <ul>
+            <li class="order-pop-tip" id="popTitle" style="font-size: 16px;"><span></span></li>
+            <li class="order-pop-desc" id="popDesc"><span></span></li>
+            <li class="order-pop-btns">
+                <a class="order-pop-btn reset none" href="javascript:void(0);" title="" target="_self">重新填写</a>
+                <a class="order-pop-btn reload none" href="javascript:void(0);" title="" target="_self">重新填写</a>
+                <a class="order-pop-btn oder-pop-contact none" href="http://livechat.ly.com/out/guest?p=7" title="" target="_blank">联系客服</a>
+                <a class="order-pop-btn oder-pop-gotopay none" href="http://member.ly.com/orderlist.aspx?order=1" title="" target="_blank">去支付</a>
+                <span class="order-pop-phone none">4007-777-777</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="hiddenDiv" style="display: none;">
+    <input type="hidden" id="isFangzhua" value="1" />
+
+    {{var VisitorCertificate = JSON.stringify(data.SubmitDetail.VisitorCertificate);}}
+    
+    {{?data.DefaultDate.DefaultPriceList.length >0}}
+        {{var PriceUnit = data.DefaultDate.DefaultPriceList[0].PriceUnit;}}
+    {{?}}
+
+    <input type="hidden" name="MemberID" id="MemberID" value="{{=data.mid}}" attrInstruction="会员Id">
+    <input type="hidden" name="VisitorCertificateType" id="VisitorCertificateType" value='{{=VisitorCertificate}}' attrInstruction="证件类型json">
+    <!--@* 是否有联系人相关信息填写  0---不填，隐藏    1---填写（还分好多种情况） *@-->
+    <input type="hidden" name="ContactInfoNeed" id="ContactInfoNeed" value="{{=data.SubmitDetail.ContactInfoNeed}}">
+    <input type="hidden" name="ContactInfoField" id="ContactInfoField" value="{{=data.SubmitDetail.ContactInfoField}}">
+    <!--@* 0---不需要出游人   1---此订单只需要一个出游人   2---此订单出游人数根据预定数量改变 *@-->
+    <input type="hidden" name="VisitorInfoNeed" id="VisitorInfoNeed" value="{{=data.SubmitDetail.VisitorInfoNeed}}" />
+
+    <input type="hidden" name="RemarkNeed" id="RemarkNeed"  value="{{=data.SubmitDetail.RemarkNeed}}" attrInstruction="备注信息是否必填" />
+    <input type="hidden" name="AK" id="AK"  value="{{=data.ak}}" attrInstruction="用于统计活动入口" />
+
+    
+    <input type="hidden" id="hidProductId" value="{{=data.Param.ProductId}}"/>
+    <input type="hidden" id="hidSupplyId" value="{{=data.Param.SupplierRelationId}}"/>
+    <input type="hidden" id="hidResourceId" value="{{=data.Param.ResourceId}}"/>
+    <input type="hidden" id="hidStartDate" value="{{=data.DefaultDate.StartDate}}"/>
+    <input type="hidden" id="hidEndDate" value="{{=data.DefaultDate.EndDate}}"/>
+    <input type="hidden" id="hidCurrentDate" value="{{=data.DefaultDate.StartDate}}"/>
+    <input type="hidden" id="hidOrderMin" value="{{=data.SubmitDetail.BookPerson}}"/>
+    <input type="hidden" id="hidOrderMax" value="{{=data.SubmitDetail.BookPersonMax}}"/>
+    <input type="hidden" id="hidOrderMinDay" value="{{=data.SubmitDetail.BookDaysMin}}"/>
+    <input type="hidden" id="hidOrderMaxDay" value="{{=data.SubmitDetail.BookDaysMax}}"/>
+    <input type="hidden" id="hidProductType" value="{{=data.SubmitDetail.ProdcutType}}"/>
+    <input type="hidden" id="hidProductCategory" value="{{=data.SubmitDetail.ProdcutCategory}}"/>
+    <input type="hidden" id="hidWifiPackageDays" value="{{=data.SubmitDetail.PackageDays}}">
+    <input type="hidden" id="hidProductUnit" value="{{=PriceUnit}}"/>
+
+    <!--<input type="hidden" id="allData" value="{{=data}}">-->
+</div>

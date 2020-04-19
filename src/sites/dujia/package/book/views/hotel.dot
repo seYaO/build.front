@@ -1,0 +1,87 @@
+{{?Hotels&&Hotels.length>0}}
+<div class="hotelInfo">
+    <div class="hotel-head">
+        <i class="hotel-icon"></i><h2>酒店信息</h2>
+    </div>
+    {{var hotelHobby=false,
+          hobbyNum = 0;
+    }}
+    {{~Hotels:HotelItems:index}}
+    <div class="hotel-content">
+        <span class="hotel-sum">{{=HotelItems.City}} 入住时间{{=HotelItems.CheckInTime}}至{{=HotelItems.CheckOutTime}}（共{{=HotelItems.Nights}}晚）</span>
+        <div class="hotel-main">
+            <div class="hotel-th">
+                <dl class="hotel-detail H-hotel">
+                    <dt class="col1">酒店名</dt>
+                    <dt class="col2">房型</dt>
+                    <dt class="col3">床型</dt>
+                    <dt class="col4">早餐</dt>
+                    <dt class="col5">间数</dt>
+                    <dt class="col6">房间政策</dt>
+                </dl>
+            </div>
+            <dl class="hotel-detail hotel-padding clearfix">
+                {{~HotelItems.Rooms:roomItems}}
+                {{~roomItems.Rates:itRoom:index1}}
+                <dd class="col1 hotel-name">{{=HotelItems.EnglishName}} {{?HotelItems.Name && HotelItems.Name!=""}}({{=HotelItems.Name}}){{?}}</dd>
+                <dd class="col2">
+                    <span class="name-room" data-name="{{=HotelItems.Rooms.Name}}" data-hotelid="{{=HotelItems.HotelId}}" 
+                    data-roomid="{{=itRoom.RoomId}}" data-ratecode="{{=itRoom.RateCode}}" data-supplierid="{{=itRoom.SupplierId}}" 
+                    data-startdate="{{=HotelItems.CheckInTime}}" data-isdirect="{{=HotelItems.IsDirect}}" data-nights="{{=HotelItems.Nights}}" 
+                    data-roomcount="{{=itRoom.RoomCount}}">{{=roomItems.Name}}</span>
+                </dd>
+                {{
+                    if(itRoom.BedTypes && itRoom.BedTypes.length>1){
+                        hotelHobby=true;
+                        hobbyNum++;
+                    }
+                }}
+                <dd class="col3">{{=itRoom.BedType}}</dd>
+                <dd class="col4">{{?itRoom.IsIncludeBreakfast==1}}有{{??}}无{{?}}</dd>
+                <dd class="col5">{{=HotelItems.IsSelected}}</dd>
+                <dd class="col6"><span class="cancel-hotel" data-content='{{=itRoom.CanclePolicy}}'>{{=itRoom.CancleType}}</span></dd>
+                {{~}}
+                {{~}}
+            </dl>
+        </div>
+    </div>
+    {{~}}
+    {{?hotelHobby==true && hobbyNum>0}}
+    <div class="hotelPerference J_preference">住宿偏好<i></i></div>
+    <div class="preferenceBox J_preferenceBox">
+        <p class="attention"><em>*</em>您的要求我们会及时传达给酒店，但不保证酒店一定会满足。</p>
+        {{~Hotels:HotelItems:index}}
+        {{~HotelItems.Rooms:roomItems}}
+        {{~roomItems.Rates:itRoom:index1}}
+        {{?itRoom.BedTypes && itRoom.BedTypes.length>1}}
+        <div class="hotelRequire">
+            <h3 class="hotelName">{{=HotelItems.EnglishName}} {{?HotelItems.Name &&HotelItems.Name!=""}}({{=HotelItems.Name}}){{?}}</h3>
+            <p class="roomStyle">房型：{{=roomItems.Name}}</p>
+            <div class="bedRequire">
+                <span>房型要求</span>
+                <div class="bedSelect">
+                    <span class="up-down"><i></i></span>
+                    <dl class="bedSelect-dl">
+                        {{?itRoom.BedTypes&&itRoom.BedTypes.length>1}}
+                            {{~itRoom.BedTypes:bedList:indexH}}
+                                {{?indexH==0}}
+                                <dt class="select-bed" data-bedtypeid="0" data-bedtypename="无要求">无要求</dt>
+                                {{??}}
+                                <dd data-bedtypeid="{{=bedList.Id}}" data-bedtypename="{{=bedList.Name}}">{{=bedList.Name}}</dd>
+                                {{?}}
+                            {{~}}
+                            <dd data-bedtypeid="0" data-bedtypename="无要求">无要求</dd>
+                        {{?}} 
+                    </dl>
+                </div>
+            </div>
+        </div>
+        {{?}}
+        {{~}}
+        {{~}}
+        {{~}}
+        <div class="J_hide">收起<i></i></div>
+    </div>
+    {{?}}
+</div>
+{{?}}

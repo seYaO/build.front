@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html trace="PC_dujia_home">
+{{var it = IT.Data;}}
+{{var entity = it.Label;}}
+{{var masterSlide = entity.MasterSlide||[];}}
+{{var minorSlide = entity.MinorSlide||[];}}
+{{var navigationBar = entity.NavigationBar||[];}}
+{{var themeLabel = entity.ThemeLabel;}}
+{{var tPackageLabel = entity.TPackageLabel||{};}}
+{{var longTripLabel = entity.LongTripLabel||{};}}
+{{var shortTripLabel = entity.ShortTripLabel||{};}}
+{{var destStrategy = entity.DestStrategy||[];}}
+{{var commonTips = entity.CommonTips;}}
+{{var searchTips = entity.SearchTips;}}
+{{var themeProductList = it.ThemeProduct.ProductList;}}
+{{var tPackageProductList = it.TPackageProduct.ProductList||[];}}
+{{var shortTripProduct = it.ShortTripProduct.ProductList||[];}}
+{{var longTripProduct = it.LongTripProduct.ProductList||[];}}
+<head lang="en">
+    <meta charset="utf-8">
+    {{?it.Title}}
+    <title>{{=it.Title}}</title>
+    {{?}}
+    {{?it.Description}}
+    <meta name="description" content="{{=it.Description}}">
+    {{?}}
+    {{?it.Keywords}}
+    <meta name="keywords" content="{{=it.Keywords}}">
+    {{?}}
+    <% includeId =cnwidescreenjscss %>
+    <style type="text/css">
+        .search {
+            border: 0 none;
+        }
+        #pageheader .logo_style{
+            z-index:100;
+        }
+        #pageheader .rightpic{
+            z-index: 100;
+    		position: relative;
+        }
+         #module-slider .module-slider-header{
+            display:none;
+        }
+    </style>
+    <script type="text/javascript">
+        var XFam = XFam || {};
+        XFam.searchUrl = "//www.ly.com/dujia/search.aspx?src={src}&dest={dest}&prop={type}";
+        var _tcHotmapx = {
+            pid: 287,
+            sp: 100
+        };
+    </script>
+    <script>
+        window.host = "";
+        var base = "./";
+        var pageConfig = {
+            "module": "index",
+            "page": "index"
+        };
+        window.conf = {
+            djhost: "//www.ly.com",
+            host: "//www.ly.com"
+        };
+    </script>
+
+</head>
+
+<body>
+    <% includeId =cnwidescreenhead?channel=dujia %>
+    <!-- 前端性能监控 -->
+    <input type="hidden" id="commonMonitor" value='{"channel":"dujia","page":"dujia-index"}'/>
+    <!--搜索框start-->
+    <div class="city-search">
+        <div class="search-con">
+            <div class="citybox none"></div>
+            <div class="search-box">
+                <div class="search"></div>
+            </div>
+        </div>
+    </div>
+    <!--搜索框end-->
+    <!-- 主体内容 -->
+    <div class="content">
+        <div trace="focus-box">
+            <div id="portal-block-379854426906" class="udiyblock" type="CommonSource">
+                <div class="searchSlider clearfix">
+                    <div class="searchbox">
+                        <div class="searchtop">
+                            <a href="javascript:void(0);" trace="searchtop-banner">
+                                <img src="//img1.40017.cn/cn/v/2015/zhuanti/28658/searchtop.gif" />
+                            </a>
+                        </div>
+
+                        <div class="citylistbox J_citylistbox" trace="dest-citylist" trackkit="Destination_navigate">
+                            {{?navigationBar && navigationBar.length != 0}}
+                            {{~navigationBar:navBar:navindex}}
+                            <div effect_index="{{=(navindex+1)}}" trace="{{=(navindex+1)}}" class="listbox ">
+                                <div class="box">
+                                    <img attr-image="//img1.40017.cn/cn/v/2015/zhuanti/28658/icon{{=navindex}}.png" attr-imageH="//img1.40017.cn/cn/v/2015/zhuanti/28658/iconH{{=navindex}}.png" src="//img1.40017.cn/cn/v/2015/zhuanti/28658/icon{{=navindex}}.png" />
+                                    <dl>
+                                        {{?navBar.MasterDest && navBar.MasterDest.length != 0}}
+                                        <dt>
+                                            {{~navBar.MasterDest:masterDest}}
+                                            <a href="{{=masterDest.Url}}" trackspot="{{=it.CityName}}^{{=masterDest.Name}}^外显^{{=navindex+1}}^0" trace="{{=masterDest.Name}}">{{=masterDest.Name}}</a>
+                                            {{~}}
+                                        </dt>
+                                        {{?}}
+                                        <dd>
+                                        {{?navBar.HotDest && navBar.HotDest.length != 0}}
+                                        {{~navBar.HotDest:hotDest}}
+                                            <a trace="{{=(hotDest.Name||'')}}" href="{{=hotDest.Url}}" trackspot="{{=it.CityName}}^{{=hotDest.Name}}^外显^{{=navindex+1}}^0" target="_blank" title="{{=(hotDest.Name||'')}}">
+                                                {{=(hotDest.Name||'')}}
+                                            </a>
+                                        {{~}}
+                                        {{?}}
+                                        </dd>
+                                    </dl>
+                                    <em><i></i></em>
+                                </div>
+                                {{?navBar.DestDetail && navBar.DestDetail.length != 0}}
+                                {{var len;}}
+                                {{?navBar.MasterDest.length < navBar.DestDetail.length}}
+                                    {{len = navBar.MasterDest.length;}}
+                                {{??}}
+                                    {{len = navBar.DestDetail.length;}}
+                                {{?}}
+                                <div effect_index="0" class="showlist none {{?len > 1}}show_double{{?}}">
+                                    {{~navBar.DestDetail:destDetail:destDetailindex}}
+                                    {{?navBar.MasterDest[destDetailindex]}}
+                                    <div class="showbox bor_no">
+                                        <h4>
+                                            <a trace="{{=(destDetail.Name||'')}}" trackspot="{{=it.CityName}}^{{=destDetail.Name}}^hover^{{=navindex+1}}^0" href="{{=navBar.MasterDest[destDetailindex].Url}}" title="{{=(destDetail.Name||'')}}">{{=(destDetail.Name||'')}}</a>
+                                        </h4>
+                                        {{?destDetail.HotDest && destDetail.HotDest.length != 0}}
+                                        <dl class="hotcitylist" trace="host-citylist">
+                                            <dt>热门目的地</dt>
+                                            {{~destDetail.HotDest:hotDestDetail}}
+                                            <dd>
+                                                <a class='{{?hotDestDetail.HotFlag == 1}}f60{{?}}' trackspot="{{=it.CityName}}^{{=hotDestDetail.Name}}^hover^{{=navindex+1}}^热门目的地" href="{{=(hotDestDetail.Url||'')}}" trace="{{=(hotDestDetail.Name||'')}}" target="_blank" title="{{=(hotDestDetail.Name||'')}}">{{=(hotDestDetail.Name||'')}}
+                                                    <i class="{{?hotDestDetail.VisaFlag == 1}}free1{{??hotDestDetail.VisaFlag == 2}}free2{{??}}free0{{?}}"></i>
+                                                </a>
+                                            </dd>
+                                            {{~}}
+                                        </dl>
+                                        {{?}}
+                                        {{?destDetail.HotPlay && destDetail.HotPlay.length != 0}}
+                                        <dl class="hotcitylist" trace="wanfa-free">
+                                            <dt>热门玩法</dt>
+                                            {{~destDetail.HotPlay:hotPlayDetail}}
+                                            <dd>
+                                                <a href="{{=(hotPlayDetail.Url||'')}}" trackspot="{{=it.CityName}}^{{=hotPlayDetail.Name}}^hover^{{=navindex+1}}^热门玩法" target="_blank" rel="nofollow" trace="{{=(hotPlayDetail.Name||'')}}" title="{{=(hotPlayDetail.Name||'')}}">{{=(hotPlayDetail.Name||'')}}<i class="free0"></i></a>
+                                            </dd>
+                                            {{~}}
+                                        </dl>
+                                        {{?}}
+                                    </div>
+                                    {{?}}
+                                    {{~}}
+                                </div>
+                                {{?}}
+                            </div>
+                            {{~}}
+                            {{?}}
+                        </div>
+
+                    </div>
+                    <div class="J_slidelistbox">
+                    {{?masterSlide && masterSlide.length != 0}}
+                    <div class="sliderbox  tc_ac_tr" trackkit="AD">
+                        <ul>
+                            {{~masterSlide:masterSlide:msindex}}
+                          	{{?msindex < 7}}
+                            <li>
+                                <a href="{{=masterSlide.Url}}" trackspot="{{=it.CityName}}^{{=msindex+1}}^{{=masterSlide.Name}}" title="{{=masterSlide.Name}}" target="_blank" rel="nofollow" trace="huandeng_{{=msindex}}">
+                                    <img src="{{=masterSlide.ImageUrl}}" alt="{{=masterSlide.Name}}">
+                                </a>
+                            </li>
+                          	{{?}}
+                            {{~}}
+                        </ul>
+                    </div>
+                    {{?}}
+
+                    <div class="carousel" trackkit="Operation_AD">
+                    {{?minorSlide && minorSlide.length != 0}}
+                        <ul>
+                            {{~minorSlide:minorSlide:minindex}}
+                            <li>
+                                <a href="{{=minorSlide.Url}}" trackspot="{{=it.CityName}}^{{=minindex+1}}^{{=minorSlide.Name}}" title="{{=minorSlide.Name}}" target="_blank" rel="nofollow" trace="carousel_{{=minindex}}">
+                                    <img src="{{=minorSlide.ImageUrl}}" alt="{{=minorSlide.Name}}">
+                                </a>
+                            </li>
+                            {{~}}
+                        </ul>
+                        <a href="javascript:void(0)" class="left"></a>
+                        <a href="javascript:void(0)" class="right"></a>
+                    {{?}}
+                    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--主体内容开始-->
+        <div class="main clearfix">
+            <!--主体内容左边部分-->
+            <div class="main__content J_mainContent" trackkit="Line_Recommend">
+               <div trace="duanxian-box">
+                   {{?shortTripLabel}}
+                       <div class="module short-distance">
+                           <div class="module__content">
+                               <div class="content-head clearfix">
+                                   <div class="head-right">
+                                       <div class="area area__demand J_distance J_short_distance clearfix" data-tag="J_short_distance" data-tmpl="J_short_proList">
+                                           <ul class="clearfix">
+                                           {{?shortTripLabel.LabelNames && shortTripLabel.LabelNames.length != 0}}
+                                               {{~shortTripLabel.LabelNames:shortNames:shortNamesindex}}
+                                               {{?shortNamesindex<10}}
+                                               {{?shortNamesindex == 0}}
+                                               <li class="current" data-key="shorttag_{{=(shortNamesindex+1)}}" more-country="更多{{=shortNames.Name}}线路" more-url="{{=shortNames.Url}}">
+                                               {{??}}
+                                               <li data-key="shorttag_{{=(shortNamesindex+1)}}" more-country="更多{{=shortNames.Name}}线路" more-url="{{=shortNames.Url}}">
+                                               {{?}}
+                                                   {{=shortNames.Name}}
+                                                   <em><i></i></em>
+                                               </li>
+                                               {{?}}
+                                            {{~}}
+                                         {{?}}
+                                           </ul>
+                                           {{~shortTripLabel.LabelNames:shortNames:shortNamesindex}}
+                                            {{?shortNamesindex == 0}}
+                                            <a class="area__link" target="_blank" href="{{=shortNames.Url}}">
+                                                更多{{=shortNames.Name}}线路
+                                                <em>
+                                                    <i></i>
+                                                </em>
+                                            </a>
+                                           {{?}}
+                                           {{~}}
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="content-body clearfix">
+                                   <div class="body-left">
+                                       <div class="hot-destination" trace="hot-destination">
+                                           <p class="title">常用目的地</p>
+                                           {{?shortTripLabel.HotDest && shortTripLabel.HotDest.length != 0}}
+                                           <div class="destination">
+                                               <ul class="clearfix ">
+                                                   {{~shortTripLabel.HotDest:shortHotDest:shortHotDestindex}}
+                                                   <li><a href="{{=(shortHotDest.Url||'')}}" title="{{=(shortHotDest.Name||'')}}" alt="{{=(shortHotDest.Name||'')}}" target="_blank" trace="dest_{{=shortHotDestindex}}">{{=(shortHotDest.Name||'')}}</a></li>
+                                                   {{~}}
+                                               </ul>
+                                           </div>
+                                           {{?}}
+                                       </div>
+                                       <div class="short-play" trace="short-play">
+                                           <p class="title">短线玩法</p>
+                                           {{?shortTripLabel.HotPlay && shortTripLabel.HotPlay.length != 0}}
+                                           <div class="lines">
+                                               <ul class="clearfix ">
+                                                   {{~shortTripLabel.HotPlay:shortHotPlay:shortHotPlayindex}}
+                                                   <li><a href="{{=(shortHotPlay.Url||'')}}" title="{{=(shortHotPlay.Name||'')}}" alt="{{=(shortHotPlay.Name||'')}}" target="_blank" trace="{{=shortHotPlayindex}}">{{=(shortHotPlay.Name||'')}}</a></li>
+                                                   {{~}}
+                                               </ul>
+                                           </div>
+                                           {{?}}
+                                       </div>
+                                   </div>
+                                   <div class="body-right">
+                                       <div class="product-list-wrap" id="J_short_proList">
+                                            <div class="prolist">
+                                               <ul class="clearfix">
+                                                {{?shortTripProduct && shortTripProduct.length != 0}}
+                                                {{~shortTripProduct:shortTripProduct:shortTripProductIndex}}
+                                                {{var traceLineId = shortTripProduct.LineId;}}
+                                                {{?shortTripProduct.IsChengYiProduct}}
+                                                    {{var traceType = 3;}}
+                                                {{??shortTripProduct.IsTCSpecialLine}}
+                                                    {{var traceType = 1;}}
+                                                {{??}}
+                                                    {{var traceType = 0;}}
+                                                {{?}}
+                                                {{?shortTripProduct.Property === 1||shortTripProduct.Property==="1"}}
+          	                                        {{var traceLineType = 1;}}
+  	                                            {{??}}
+                                                    {{var traceLineType = 3;}}
+                                                {{?}}
+                                                   <li class='proline'>
+                                                        {{?shortTripLabel.LabelNames && shortTripLabel.LabelNames.length>0}}
+                                                        <a class='proline__link' trackspot="{{=it.CityName}}^{{=shortTripProduct.LineId}}^{{=shortTripProductIndex+1}}^{{=shortTripLabel.LabelNames[0].Name||''}}^出境短线" target='_blank' trace="{{=shortTripProductIndex}}" data-trace="{{= 2 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + shortTripProduct.LineId + (shortTripProduct.Property === 1 ? ".html" : "/")}}'>
+                                                        {{??}}
+                                                        <a class='proline__link'  target='_blank' trace="{{=shortTripProductIndex}}" data-trace="{{= 2 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + shortTripProduct.LineId + (shortTripProduct.Property === 1 ? ".html" : "/")}}'>
+                                                        {{?}}
+                                                            <div class='proline__img'>
+                                                                <img data-img="{{=shortTripProduct.ImgUrl}}" title="{{=shortTripProduct.MainTitle}}" alt="{{=shortTripProduct.MainTitle}}">
+                                                                <div class="sub-title" title="{{=shortTripProduct.SubTitle}}">
+                                                                    {{=shortTripProduct.SubTitle}}
+                                                                </div>
+                                                            </div>
+                                                            <div class='proline__txt'>
+                                                                <p class='proline__title' title="{{=shortTripProduct.MainTitle}}">{{=shortTripProduct.MainTitle}}</p>
+                                                                <p class='proline__price'>
+                                                                    {{?shortTripProduct.TcPrice == "0"}}
+                                                            		<em>实时计价</em>
+                                                            		{{??}}
+                                                            		¥<em>{{=shortTripProduct.TcPrice}}</em><b>起</b>
+                                                            		{{?}}
+                                                                    <i class="proline__depcity">{{=shortTripProduct.LeaveCity}}出发</i>
+                                                                </p>
+                                                            </div>
+                                                                    {{var tag ,tagClass;}}
+                                                                    {{?shortTripProduct.Property == 1}}
+                                                                    {{tag = "跟团游";}}
+                                                                    {{tagClass = "proline__kind-gt";}}
+                                                                    {{??shortTripProduct.Property == 3}}
+                                                                    {{tag = "自由行";}}
+                                                                    {{tagClass = "proline__kind-zy";}}
+                                                                    {{??}}
+                                                                    {{tag = "目的地参团";}}
+                                                                    {{tagClass = "proline__kind-mdd";}}
+                                                                    {{?}}
+                                                            <span class='{{=tagClass }}'>
+                                                                {{=tag}}
+                                                            </span>
+                                                        </a>
+                                                   </li>
+                                                   {{~}}
+                                                   {{?}}
+                                               </ul>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+
+                           </div>
+                       </div>
+                   {{?}}
+               </div>
+               <div trace="changxian-box">
+                   {{?longTripLabel}}
+                       <div class="module long-distance">
+                           <div class="module__content">
+                               <div class="content-head clearfix">
+                                   <div class="head-right">
+                                       <div class="area area__demand J_distance J_long_distance clearfix" data-tag="J_long_distance" trace="tablist" data-tmpl="J_long_proList">
+                                           <ul class="clearfix">
+                                           {{?longTripLabel.LabelNames && longTripLabel.LabelNames.length != 0}}
+                                               {{~longTripLabel.LabelNames:longLabelNames:longLabelNamesindex}}
+                                               {{?longLabelNamesindex<10}}
+                                               {{?longLabelNamesindex == 0}}
+                                               <li class="J_trace current" trace="{{=(longLabelNamesindex+1)}}" data-key="longtag_{{=(longLabelNamesindex+1)}}" more-country="更多{{=(longLabelNames.Name||'')}}线路" more-url="{{=(longLabelNames.Url||'')}}">
+                                               {{??}}
+                                               <li class="J_trace" trace="{{=(longLabelNamesindex+1)}}" data-key="longtag_{{=(longLabelNamesindex+1)}}" more-country="更多{{=(longLabelNames.Name||'')}}线路" more-url="{{=(longLabelNames.Url||'')}}">
+                                               {{?}}
+                                                   {{=(longLabelNames.Name||'')}}
+                                                   <em><i></i></em>
+                                               </li>
+                                               {{?}}
+                                               {{~}}
+                                           {{?}}
+                                           </ul>
+                                           {{~longTripLabel.LabelNames:longLabelNames:longLabelNamesindex}}
+                                           {{?longLabelNamesindex == 0}}
+                                           <a class="area__link" target="_blank" href="{{=(longLabelNames.Url||'')}}">
+                                               更多{{=(longLabelNames.Name||'')}}线路
+                                               <em>
+                                                   <i></i>
+                                               </em>
+                                           </a>
+                                           {{?}}
+                                           {{~}}
+                                       </div>
+                                   </div>
+                               </div>
+                               <div class="content-body clearfix">
+                                   <div class="body-left">
+                                       <div class="hot-destination">
+                                           <p class="title">常用目的地</p>
+                                           {{?longTripLabel.HotDest && longTripLabel.HotDest.length != 0}}
+                                           <div class="destination" trace="destination">
+                                               <ul class="clearfix ">
+                                                   {{~longTripLabel.HotDest:longTripHotDest:longHotDestindex}}
+                                                   <li><a trace="{{=longHotDestindex}}" href="{{=(longTripHotDest.Url||'')}}" title="{{=(longTripHotDest.Name||'')}}" alt="{{=(longTripHotDest.Name||'')}}" target="_blank" trace="dest_{{=longHotDestindex}}">{{=(longTripHotDest.Name||'')}}</a></li>
+                                                   {{~}}
+                                               </ul>
+                                           </div>
+                                           {{?}}
+                                       </div>
+                                       <div class="short-play" trace="wanfa">
+                                           <p class="title">长线玩法</p>
+                                           {{?longTripLabel.HotPlay && longTripLabel.HotPlay.length != 0}}
+                                           <div class="lines">
+                                               <ul>
+                                                   {{~longTripLabel.HotPlay:longTripHotPlay:longHotPlayindex}}
+                                                   <li><a trace="{{=longHotPlayindex}}" href="{{=(longTripHotPlay.Url||'')}}" title="{{=(longTripHotPlay.Name||'')}}" alt="{{=(longTripHotPlay.Name||'')}}" target="_blank" trace="dest_{{=longHotPlayindex}}">{{=(longTripHotPlay.Name||'')}}</a>
+                                                   {{~}}
+                                               </ul>
+                                           </div>
+                                           {{?}}
+                                       </div>
+                                   </div>
+                                  <div class="body-right" trace="prolist">
+                                       <div class="product-list-wrap" id="J_long_proList">
+                                            <div class="prolist">
+                                               <ul class="clearfix">
+                                                {{?longTripProduct && longTripProduct.length != 0}}
+                                                {{~longTripProduct:longTripProduct:longTripProductIndex}}
+                                                {{var traceLineId = longTripProduct.LineId;}}
+                                                {{?longTripProduct.IsChengYiProduct}}
+                                                    {{var traceType = 3;}}
+                                                {{??longTripProduct.IsTCSpecialLine}}
+                                                    {{var traceType = 1;}}
+                                                {{??}}
+                                                    {{var traceType = 0;}}
+                                                {{?}}
+                                                {{?longTripProduct.Property === 1||longTripProduct.Property==="1"}}
+          	                                        {{var traceLineType = 1;}}
+  	                                            {{??}}
+                                                    {{var traceLineType = 3;}}
+                                                {{?}}
+                                                   <li class='proline'>
+                                                        {{?longTripLabel.LabelNames && longTripLabel.LabelNames.length>0}}
+                                                        <a class='proline__link' target='_blank' trackspot="{{=it.CityName}}^{{=longTripProduct.LineId}}^{{=longTripProductIndex+1}}^{{=longTripLabel.LabelNames[0].Name||''}}^出境长线" trace="{{=longTripProductIndex}}" data-trace="{{= 3 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + longTripProduct.LineId + (longTripProduct.Property === 1 ? ".html" : "/")}}'>
+                                                        {{??}}
+                                                        <a class='proline__link' target='_blank'  trace="{{=longTripProductIndex}}" data-trace="{{= 3 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + longTripProduct.LineId + (longTripProduct.Property === 1 ? ".html" : "/")}}'>
+                                                        {{?}}
+                                                            <div class='proline__img'>
+                                                                <img data-img="{{=longTripProduct.ImgUrl}}" title="{{=longTripProduct.MainTitle}}" alt="{{=longTripProduct.MainTitle}}">
+                                                                <div class="sub-title" title="{{=longTripProduct.SubTitle}}">
+                                                                    {{=longTripProduct.SubTitle}}
+                                                                </div>
+                                                            </div>
+                                                            <div class='proline__txt'>
+                                                                <p class='proline__title' title="{{=longTripProduct.MainTitle}}">{{=longTripProduct.MainTitle}}</p>
+                                                                <p class='proline__price'>
+                                                                    {{?longTripProduct.TcPrice == "0"}}
+                                                            		<em>实时计价</em>
+                                                            		{{??}}
+                                                            		¥<em>{{=longTripProduct.TcPrice}}</em><b>起</b>
+                                                            		{{?}}
+                                                                    <i class="proline__depcity">{{=longTripProduct.LeaveCity}}出发</i>
+                                                                </p>
+                                                            </div>
+                                                                    {{var tag ,tagClass;}}
+                                                                    {{?longTripProduct.Property == 1}}
+                                                                    {{tag = "跟团游";}}
+                                                                    {{tagClass = "proline__kind-gt";}}
+                                                                    {{??longTripProduct.Property == 3}}
+                                                                    {{tag = "自由行";}}
+                                                                    {{tagClass = "proline__kind-zy";}}
+                                                                    {{??}}
+                                                                    {{tag = "目的地参团";}}
+                                                                    {{tagClass = "proline__kind-mdd";}}
+                                                                    {{?}}
+                                                            <span class='{{=tagClass }}'>
+                                                                {{=tag}}
+                                                            </span>
+                                                        </a>
+                                                   </li>
+                                                   {{~}}
+                                                   {{?}}
+                                               </ul>
+                                           </div>
+                                       </div>
+                                   </div>
+                               </div>
+
+                           </div>
+                       </div>
+                   {{?}}
+               </div>
+               <div trace="jijiajiu-box">
+                   {{?tPackageLabel}}
+                   <div class="module tpackage" trace="jijiu-renxuan">
+                       <div class="module__content">
+                           <div class="content-head clearfix">
+                               {{?tPackageLabel.LabelNames && tPackageLabel.LabelNames.length != 0}}
+                               <div class="head-right">
+                                   <div class="area area__demand J_Tpackage clearfix" data-tag="J_Tpackage" trace="tab" data-tmpl="J_Tpackage_prolist">
+                                       <ul class="clearfix">
+                                           {{~tPackageLabel.LabelNames:labelNames:labelNamesindex}}
+                                           {{?labelNamesindex<10}}
+                                           {{?labelNamesindex == 0}}
+                                           <li class="J_trace current" trace="" data-key="tp_{{=(labelNamesindex+1)}}">
+                                           {{??}}
+                                           <li class="J_trace" trace="" data-key="tp_{{=(labelNamesindex+1)}}">
+                                           {{?}}
+                                               {{=labelNames}}
+                                               <em><i></i></em>
+                                           </li>
+                                           {{?}}
+                                           {{~}}
+                                       </ul>
+                                   </div>
+                               </div>
+                               {{?}}
+                           </div>
+                           <div class="content-body clearfix">
+                               <div class="body-left" trace="jingxuan-huodong">
+                                   <div class="hot-destination">
+                                       <p class="title">常用目的地</p>
+                                       {{?tPackageLabel.SepcialPlay && tPackageLabel.SepcialPlay.length != 0}}
+                                       <div class="destination J_changeId">
+                                           <ul class="clearfix ">
+                                               {{~tPackageLabel.SepcialPlay:packagePlay:packagePlayindex}}
+                                               <li><a trace="{{=(packagePlayindex+1)}}" href="{{=(packagePlay.Url+'f'+it.CityId||'')}}" target="_blank" rel="nofollow">{{=(packagePlay.Name||'')}}</a></li>
+                                               {{~}}
+                                           </ul>
+                                       </div>
+                                       {{?}}
+                                   </div>
+                               </div>
+                               <div class="body-right" trace="product-list">
+                                   <div class="product-list-wrap" id="J_Tpackage_prolist">
+                                       <div class="prolist">
+                                      <ul class="clearfix">
+                                        {{?tPackageProductList && tPackageProductList.length != 0}}
+                                        {{~tPackageProductList:tPackageProductList:tPackageProductListIndex}}
+                                        {{var traceLineId = tPackageProductList.LineId;}}
+                                                {{?tPackageProductList.IsChengYiProduct}}
+                                                    {{var traceType = 3;}}
+                                                {{??tPackageProductList.IsTCSpecialLine}}
+                                                    {{var traceType = 1;}}
+                                                {{??}}
+                                                    {{var traceType = 0;}}
+                                                {{?}}
+                                                {{?tPackageProductList.Property === 1||tPackageProductList.Property==="1"}}
+          	                                        {{var traceLineType = 1;}}
+  	                                            {{??}}
+                                                    {{var traceLineType = 3;}}
+                                                {{?}}
+                                            <li class='proline'>
+                                                {{?tPackageLabel.LabelNames && tPackageLabel.LabelNames.length>0}}
+                                                <a class='proline__link' trackspot="{{=it.CityName}}^{{=tPackageProductList.LineId}}^{{=tPackageProductListIndex+1}}^{{=tPackageLabel.LabelNames[0]}}^机+酒" target='_blank' trace="{{=tPackageProductListIndex}}" data-trace="{{= 4 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + "p" + tPackageProductList.LineId + ".html" }}'>
+                                                {{??}}
+                                                <a class='proline__link'  target='_blank' trace="{{=tPackageProductListIndex}}" data-trace="{{= 4 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + "p" + tPackageProductList.LineId + ".html" }}'>
+                                                {{?}}
+                                                    <div class='proline__img'>
+                                                        <img data-img="{{=tPackageProductList.ImgUrl}}" title="{{=tPackageProductList.MainTitle}}" alt="{{=tPackageProductList.MainTitle}}">
+                                                        <div class="sub-title" title="{{=tPackageProductList.SubTitle}}">
+                                                            {{=tPackageProductList.SubTitle}}
+                                                        </div>
+                                                    </div>
+                                                    <div class='proline__txt'>
+                                                        <p class='proline__title' title="{{=tPackageProductList.MainTitle}}">{{=tPackageProductList.MainTitle}}</p>
+                                                        <p class='proline__price'>
+                                                            {{?tPackageProductList.TcPrice == "0"}}
+                                                            <em>实时计价</em>
+                                                            {{??}}
+                                                            ¥<em>{{=tPackageProductList.TcPrice}}</em><b>起</b>
+                                                            {{?}}
+                                                            <i class="proline__depcity">{{=tPackageProductList.LeaveCity}}出发</i>
+                                                        </p>
+                                                    </div>
+                                                            {{var tag ,tagClass;}}
+                                                            {{?tPackageProductList.Property == 1}}
+                                                            {{tag = "跟团游";}}
+                                                            {{tagClass = "proline__kind-gt";}}
+                                                            {{??tPackageProductList.Property == 3}}
+                                                            {{tag = "自由行";}}
+                                                            {{tagClass = "proline__kind-zy";}}
+                                                            {{??}}
+                                                            {{tag = "目的地参团";}}
+                                                            {{tagClass = "proline__kind-mdd";}}
+                                                            {{?}}
+                                                    <span class='{{=tagClass }}'>
+                                                        {{=tag}}
+                                                    </span>
+                                                </a>
+                                            </li>
+                                            {{~}}
+                                            {{?}}
+                                        </ul>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+
+                       </div>
+                   </div>
+                   {{?}}
+               </div>
+            </div>
+        </div>
+        <!--主体内容结束-->
+        <!--预订流程开始-->
+        <div class="step" trace="step">
+            <i class="step__img step__img--txcp"></i><span class="step__txt">挑选产品</span><i class="step__arrow"></i><i class="step__img step__img--zxyd"></i><span class="step__txt">在线/电话预订</span><i class="step__arrow"></i><i class="step__img step__img--fkqy"></i>
+            <span class="step__txt">付款签约</span><i class="step__arrow"></i><i class="step__img step__img--qzbl"></i><span class="step__txt">签证办理</span><i class="step__arrow"></i><i class="step__img step__img--jstzs"></i><span class="step__txt">接收通知书</span>
+            <i class="step__arrow"></i>
+            <i class="step__img step__img--kxcy"></i><span class="step__txt">开心出游</span>
+        </div>
+        <!--预订流程结束-->
+        <!--攻略开始-->
+        <div class="gonglue J_gonglue clearfix" trace="gonglve-box">
+            <div class="gonglue-left">
+                <div trace="mudidi-gonglve">
+                    {{?destStrategy && destStrategy.length != 0}}
+                        <p class="title">目的地攻略</p>
+                        <div class="mudidi clearfix">
+                            {{~destStrategy:destStrategy:destStrategyindex}}
+                            <a class="strategy__link" href="{{=(destStrategy.Url||'')}}" title="{{=(destStrategy.Name||'')}}" alt="{{=(destStrategy.Name||'')}}" target="_blank" trace="dest_{{=(destStrategyindex+1)}}">{{=(destStrategy.Name||'')}}</a>
+                            </a>
+                            {{~}}
+                        </div>
+                    {{?}}
+                </div>
+            </div>
+            <div class="gonglue-right" trace="changjian-wenti">
+                {{?commonTips && commonTips.length != 0}}
+                <p class="title">常见问题</p>
+                <div class="question">
+                    {{~commonTips:commonTips:commonTipsindex}}
+                    <a target="_blank" trace="prob_{{=commonTipsindex}}" class="qa__link" href="{{=(commonTips.Url||'')}}" title="{{=(commonTips.Name||'')}}" alt="{{=(commonTips.Name||'')}}" rel="nofollow">{{=(commonTips.Name||'')}}</a>
+                    {{~}}
+                </div>
+                {{?}}
+            </div>
+        </div>
+        <!--攻略结束-->
+    </div>
+    <!--横屏弹窗-->
+    <div class="crossScreen">
+        <div class="J_asideTag "></div>
+        <div class="bonus_box">
+            <div class="bonus_bg"></div>
+            <a id="toother" href="//www.ly.com/dujia/zhuanti/321.html" target="_blank"  style="position: absolute;width: 100%;height: 100%;z-index: 1">
+            </a>
+            <div class="bonus">
+                <div class="close"><i></i></div>
+            </div>
+        </div>
+    </div>
+    <div style="display:none" id="hd_hotcityhtml">
+        <div class="hotcity" trace="hotcity">
+            <div class="hotcity_gp">
+                <div class="g_header"> 热门搜索 </div>
+                <div class="g_list">
+					<span data-href="//www.ly.com/dujia/riben-lvyou/f{{=it.CityId}}/" class="g_item J_trace" trace="日本" target="_blank" title="日本" data-value="日本" hotcity-item="">
+                        <em>日本</em> <b class="false"></b>
+                    </span>
+                    <span data-href="//www.ly.com/dujia/taiguo-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="泰国" target="_blank" data-value="泰国" trace="taiguo" hotcity-item>
+                        <em>泰国</em> <b class="false"></b>
+                    </span>
+                    <span data-href="//www.ly.com/dujia/gangao-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="港澳" target="_blank" data-value="港澳" trace="gangao" hotcity-item>港澳</span>
+                    <span data-href="//www.ly.com/dujia/balidao-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="巴厘岛" target="_blank" data-value="巴厘岛" trace="balidao" hotcity-item>
+                        <em>巴厘岛</em><b class="visa-free"></b>
+                    </span>
+                    <span data-href="//www.ly.com/dujia/ouzhou-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="欧洲" target="_blank" data-value="欧洲" trace="ouzhou" hotcity-item>欧洲</span>
+                    <span data-href="//www.ly.com/dujia/meiguo-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="美国" target="_blank" data-value="美国" trace="meiguo" hotcity-item>美国</span>
+                    <span data-href="//www.ly.com/dujia/aodaliya-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="澳大利亚" target="_blank" data-value="澳大利亚" trace="aodaliya" hotcity-item>
+                        澳大利亚
+                    </span>
+                    <span data-href="//www.ly.com/dujia/dibai-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="迪拜" target="_blank" data-value="迪拜" trace="dibai" hotcity-item>迪拜</span>
+                    <span data-href="//www.ly.com/dujia/pujidao-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="普吉岛" target="_blank" data-value="普吉岛" trace="pujidao" hotcity-item>普吉岛</span>
+                    <span data-href="//www.ly.com/dujia/gangao-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="香港" target="_blank" data-value="香港" trace="xianggang" hotcity-item>香港</span>
+                    <span data-href="//www.ly.com/dujia/qingmai-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="清迈" target="_blank" data-value="清迈" trace="qingmai" hotcity-item>清迈</span>
+                    <span data-href="//www.ly.com/dujia/maerdaifu-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="马尔代夫" target="_blank" data-value="马尔代夫" trace="maerdaifu" hotcity-item>
+                        <em>马尔代夫</em><b class="visa-land"></b>
+                    </span>
+                    <span data-href="//www.ly.com/dujia/wugeku-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="吴哥窟" target="_blank" data-value="吴哥窟" trace="wuge" hotcity-item>吴哥窟</span>
+                    <span data-href="//www.ly.com/dujia/maoliqiusi-lvyou/f{{=it.CityId}}/" class="g_item J_trace" title="毛里求斯" target="_blank" data-value="毛里求斯" trace="maoliqiushi" hotcity-item>
+                        <em>毛里求斯</em> <b class="visa-free"></b>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="/modules/jquery.js"></script><!--ignore-->
+    <script type="text/javascript" src="/modules/sea.js"></script><!--ignore-->
+    <script type="text/javascript" src="/modules/common/0.1.0/index.js"></script>
+    <script type="text/javascript" src="/modules/monitor/0.3.0/index.js"></script>
+
+    <!--<script src="/modules/lazyload/0.2.1/index.js" charset="utf-8"></script>-->
+    <!--图片懒加载组件-->
+    {{var searchLabelArr = [],searchLabelObj = {};}}
+    {{?searchTips && searchTips.length != 0}}
+        {{~searchTips:searchtips}}
+            {{searchLabelObj.hotName = searchtips.Name;}}
+            {{searchLabelObj.hotUrl = searchtips.Url;}}
+            {{searchLabelArr.push(searchLabelObj);}}
+            {{searchLabelObj = {};}}
+        {{~}}
+    {{?}}
+    <script type="text/javascript">
+        seajs.require("./index").init({
+            el: ".search",
+            hotCityTmpl: $('#hd_hotcityhtml').html(),
+            initCityID: "{{=it.CityId}}",
+            initCityName: "",
+            searchLabelData: {{=JSON.stringify(searchLabelArr)}},
+            trackdata: {
+                locCId: "321",
+                pageid: "search",
+                moduleid: "line/homepage",
+                pjId: "2006",
+                jpTp: "1",
+                ab: "0",
+                isShow: true
+            }
+        });
+        with(document) with(body) with(insertBefore(createElement("script"), firstChild)) setAttribute("vst", src = ("//js.40017.cn/cn/v/2015/newindex/banner.05284.js"));
+    </script>
+    <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+    <div id="portal-block-754489210026" class="udiyblock" type="CommonSource">
+        <div class="seodiv">
+            <div class="iv-bottomlink">
+                <dl>
+                    <dt>热门国家旅游：</dt>
+                    <dd class="iv-hotlink">
+                        <a href="//www.ly.com/dujia/aodaliya293-gentuan/" target="_blank">澳大利亚旅游</a>
+                        <a href="//www.ly.com/dujia/moerben2928-gentuan/" target="_blank">墨尔本旅游</a>
+                        <a href="//www.ly.com/dujia/kenniya257-gentuan/" target="_blank">肯尼亚旅游</a>
+                        <a href="//www.ly.com/dujia/yiselie259-gentuan/" target="_blank">以色列旅游</a>
+                        <a href="//www.ly.com/dujia/yilang3128-gentuan/" target="_blank">伊朗旅游</a>
+                        <a href="//www.ly.com/dujia/dibai258-gentuan/" target="_blank">迪拜旅游</a>
+                        <a href="//www.ly.com/dujia/nanfei255-gentuan/" target="_blank">南非旅游</a>
+                        <a href="//www.ly.com/dujia/jianada284-gentuan/" target="_blank">加拿大旅游</a>
+                        <a href="//www.ly.com/dujia/xiaweiyi283-gentuan/" target="_blank">夏威夷旅游</a>
+                        <a href="//www.ly.com/dujia/meiguo282-gentuan/" target="_blank">美国旅游</a>
+                        <a href="//www.ly.com/dujia/xila278-gentuan/" target="_blank">希腊旅游</a>
+                        <a href="//www.ly.com/dujia/yidali268-gentuan/" target="_blank">意大利旅游</a>
+                        <a href="//www.ly.com/dujia/eluosi274-gentuan/" target="_blank">俄罗斯旅游</a>
+                        <a href="//www.ly.com/dujia/ruishi269-gentuan/" target="_blank">瑞士旅游</a>
+                        <a href="//www.ly.com/dujia/aierlan279-gentuan/" target="_blank">爱尔兰旅游</a>
+                        <a href="//www.ly.com/dujia/yingguo277-gentuan/" target="_blank">英国旅游</a>
+                        <a href="//www.ly.com/dujia/xibanya275-gentuan/" target="_blank">西班牙旅游</a>
+                        <a href="//www.ly.com/dujia/aodili267-gentuan/" target="_blank">奥地利旅游</a>
+                        <a href="//www.ly.com/dujia/deguo263-gentuan/" target="_blank">德国旅游</a>
+                        <a href="//www.ly.com/dujia/faguo264-gentuan/" target="_blank">法国旅游</a>
+                        <a href="//www.ly.com/dujia/aomen233-gentuan/" target="_blank">澳门旅游</a>
+                        <a href="//www.ly.com/dujia/xianggang231-gentuan/" target="_blank">香港旅游</a>
+                        <a href="//www.ly.com/dujia/tuerqi260-gentuan/" target="_blank">耳其旅游</a>
+                        <a href="//www.ly.com/dujia/aiji256-gentuan/" target="_blank">埃及旅游</a>
+                        <a href="//www.ly.com/dujia/xinxilan295-gentuan/" target="_blank">新西兰旅游</a>
+                        <a href="//www.ly.com/dujia/jianpuzhai241-gentuan/" target="_blank">柬埔寨旅游</a>
+                        <a href="//www.ly.com/dujia/xinjiapo245-gentuan/" target="_blank">新加坡旅游</a>
+                        <a href="//www.ly.com/dujia/yuenan240-gentuan/" target="_blank">越南旅游</a>
+                        <a href="//www.ly.com/dujia/xinmatai1423-gentuan/" target="_blank">新马泰旅游</a>
+                        <a href="//www.ly.com/dujia/niboer252-gentuan/" target="_blank">尼泊尔旅游</a>
+                        <a href="//www.ly.com/dujia/yindu247-zizhu/" target="_blank">印度旅游</a>
+                        <a href="//www.ly.com/dujia/feilvbin246-gentuan/" target="_blank">菲律宾旅游</a>
+                        <a href="//www.ly.com/dujia/malaixiya244-gentuan/" target="_blank">马来西亚旅游</a>
+                        <a href="//www.ly.com/dujia/pujidao2939-gentuan/" target="_blank">普吉岛旅游</a>
+                        <a href="//www.ly.com/dujia/taiguo2946-gentuan/" target="_blank">泰国旅游</a>
+                        <a href="//www.ly.com/dujia/riben1363-gentuan/" target="_blank">日本旅游</a>
+                    </dd>
+                </dl>
+                <span class="iv-bothow">更多<i>&nbsp;&nbsp;&nbsp;</i>
+        </span>
+            </div>
+
+            <div class="iv-bottomlink">
+                <dl>
+                    <dt>热门目的地：</dt>
+                    <dd class="iv-hotlink">
+                        <a href="//www.ly.com/dujia/riben1363-gentuan/" target="_blank">日本旅游
+                </a>
+                        <a href="//www.ly.com/dujia/moerben2928-gentuan/" target="_blank">墨尔本旅游</a>
+                        <a href="//www.ly.com/dujia/xini1339-gentuan/" target="_blank">悉尼旅游</a>
+                        <a href="//www.ly.com/dujia/chongsheng2561-gentuan/" target="_blank">冲绳旅游</a>
+                        <a href="//www.ly.com/dujia/beihaidao236-gentuan/" target="_blank">北海道旅游</a>
+                        <a href="//www.ly.com/dujia/daban1021-gentuan/" target="_blank">大阪旅游</a>
+                        <a href="//www.ly.com/dujia/dongjing235-gentuan/" target="_blank">东京旅游</a>
+                        <a href="//www.ly.com/dujia/xiaweiyi283-gentuan/" target="_blank">夏威夷旅游</a>
+                        <a href="//www.ly.com/dujia/bali264-gentuan/" target="_blank">巴黎旅游</a>
+                        <a href="//www.ly.com/dujia/nisi264-gentuan/" target="_blank">尼斯旅游</a>
+                        <a href="//www.ly.com/dujia/qingmai2937-gentuan/" target="_blank">清迈旅游</a>
+                        <a href="//www.ly.com/dujia/pujidao562-gentuan/" target="_blank">普吉岛旅游</a>
+                        <a href="//www.ly.com/dujia/badiya2936-gentuan/" target="_blank">芭提雅旅游</a>
+                        <a href="//www.ly.com/dujia/mangu2935-gentuan/" target="_blank">曼谷旅游</a>
+                    </dd>
+                </dl>
+                <span class="iv-bothow">更多<i>&nbsp;&nbsp;&nbsp;</i>
+        </span>
+            </div>
+
+            <div class="iv-bottomlink">
+                <dl>
+                    <dt>热点推荐：</dt>
+                    <dd class="iv-hotlink">
+                        <a href="//www.ly.com/dujia/riben1363-gentuan/" target="_blank">上海到日本旅游</a>
+                        <a href="//www.ly.com/dujia/taiguo2946-gentuan/" target="_blank">上海到泰国旅游</a>
+                        <a href="//www.ly.com/dujia/dongnanya3039-gentuan/" target="_blank">上海到东南亚旅游</a>
+                        <a href="//www.ly.com/dujia/pujidao562-gentuan/" target="_blank">上海到普吉岛旅游</a>
+                        <a href="//www.ly.com/dujia/balidao565-gentuan/" target="_blank">上海到巴厘岛旅游</a>
+                        <a href="//www.ly.com/dujia/newtours/243754.html" target="_blank">西澳旅游</a>
+                        <a href="//www.ly.com/dujia/xianggang1751-zizhu/" target="_blank">香港自由行</a>
+                        <a href="//www.ly.com/dujia/riben2988-zizhu/" target="_blank">日本自由行</a>
+                        <a href="//www.ly.com/dujia/changtandao566-gentuan/" target="_blank">上海到长滩岛旅游</a>
+                        <a href="//www.ly.com/dujia/mangu2935-gentuan/" target="_blank">上海到曼谷旅游</a>
+                        <a href="//www.ly.com/dujia/xinjiapo245-gentuan/" target="_blank">上海到新加坡旅游</a>
+                        <a href="//www.ly.com/dujia/tours/213193.html" target="_blank">日本6日游</a>
+                        <a href="//www.ly.com/dujia/tours/213191.html" target="_blank">墨尔本旅游</a>
+                        <a href="//www.ly.com/dujia/tours/213188.html" target="_blank">夏威夷特价游</a>
+                        <a href="//www.ly.com/dujia/tours/213186.html" target="_blank">澳大利亚旅游</a>
+                        <a href="//www.ly.com/dujia/tours/213185.html" target="_blank">曼谷旅游</a>
+                        <a href="//www.ly.com/dujia/tours/213177.html" target="_blank">纽约周边游</a>
+                        <a href="//www.ly.com/dujia/tours/213163.html" target="_blank">港澳双飞游</a>
+                        <a href="//www.ly.com/dujia/tours/213159.html" target="_blank">巴厘岛半自助游</a>
+                        <a href="//www.ly.com/dujia/tours/213158.html" target="_blank">旧金山旅游</a>
+                        <a href="//www.ly.com/dujia/tours/213157.html" target="_blank">贝尔加湖旅游</a>
+                        <a href="//www.ly.com/dujia/tours/213153.html" target="_blank">巴厘岛旅游</a>
+                        <a href="//www.ly.com/dujia/tours/213147.html" target="_blank">埃及10日游</a>
+                        <a href="//www.ly.com/dujia/tours/213140.html" target="_blank">迪拜旅游</a>
+                        <a href="//www.ly.com/dujia/tours/213135.html" target="_blank">港澳休闲游</a>
+                        <a href="//www.ly.com/dujia/tours/213134.html" target="_blank">长滩岛旅游</a>
+                    </dd>
+                </dl>
+                <span class="iv-bothow">更多<i>&nbsp;&nbsp;&nbsp;</i>
+        </span>
+            </div>
+
+            <div class="iv-bottomlink">
+                <dl>
+                    <dt>友情链接：</dt>
+                    <dd class="iv-hotlink">
+                        <a href="http://www.westernaustralia.com/cn/Pages/Welcome_to_Western_Australia.aspx#/" target="_blank">西澳旅游局</a>
+                        <a href="http://www.xwlxw.com/" target="_blank">北京旅行社</a>
+                        <a href="http://cqhw.daoguo.com" target="_blank">重庆海外旅行社</a>
+                        <a href="http://www.zhuna.cn/newsinfo/" target="_blank">旅游资讯</a>
+                        <a href="http://sh.tuniu.com/" target="_blank">途牛上海旅游</a>
+                        <a href="//www.ly.com/dujia/biaoqian-6-5/" target="_blank">国内旅游</a>
+                        <a href="http://www.keyunzhan.com/lvxingshe/" target="_blank">旅行社</a>
+                        <a href="http://www.nanhutravel.com" target="_blank">南湖国旅</a>
+                        <a href="http://www.landtu.com/" target="_blank">深圳旅行社</a>
+                        <a href="http://tianjin.cncn.com/" target="_blank">天津旅游网</a>
+                        <a href="http://www.aoyou.com/" target="_blank">中青旅遨游网</a>
+                    </dd>
+                </dl>
+                <span class="iv-bothow">更多<i>&nbsp;&nbsp;&nbsp;</i>
+        </span>
+            </div>
+        </div>
+
+    </div>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js"></script>
+    <script>
+        SPM_MODULE && SPM_MODULE.init({
+            module: [{
+                'class': "#headerSlider",
+                value: 1
+            }, {
+                'class': "#slide",
+                value: 2
+            }, {
+                'class': ".fendiv",
+                value: 8
+            }, {
+                'class': ".prolist--theme",
+                value: 12
+            }, {
+                'class': ".searchtop",
+                value: 16
+            }]
+        });
+    </script>
+    <% includeId = node_dj_common_stat %>
+    <script type="text/javascript">
+        var __zp_tag_params = {
+            pagetype: "homepage"
+        };
+        stat.init({
+            "baidu": {
+                "parameter": "pc"
+            },
+            "vst": [
+                ['_serialid', '0'],
+                ['_vrcode', stat.getVrcode()],
+                ['_refId', stat.getRefid()],
+                ['_userId', stat.getMemberId()],
+                ['_openTime', stat.timeDiff],
+                ['_trackPageview', '/出境/新首页2016/']
+            ],
+            "_tcHotmapx": {
+                "pid": "287",
+                "sp": "100"
+            },
+            "__zpSMConfig": {
+                query: [
+                    ["_setAccount", "629"]
+                ],
+                args: __zp_tag_params || {}
+            }
+        });
+    </script>
+    <input type="hidden" id="Startcityid" value="{{=it.CityId}}" />
+</body>
+
+</html>

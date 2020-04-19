@@ -1,0 +1,329 @@
+﻿﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+
+    <style>
+        html {
+            font-size: 50px;
+        }
+
+        .testdiv {
+            width: 200px;
+            height: 100px;
+            background-color: #ff6a00;
+        }
+    </style>
+
+</head>
+<body>
+    <h5>Normal</h5>
+    <button type="button" onclick="alert_click();">alert1</button>
+    <button type="button" onclick="confirm_click();">confirm</button>
+
+    <br />
+    <button type="button" onclick="alert2_click();">alert2</button>
+    <button type="button" onclick="confirm2_click();">confirm2</button>
+
+    <br />
+    <button type="button" onclick="alert3_click();">自定义样式alert</button>
+    <button type="button" onclick="confirm3_click();">confirm3</button>
+
+    <br />
+
+    <h5>modal</h5>
+
+    <button type="button" onclick="modal2_click();">打开modal</button>
+
+    <button type="button" onclick="modal3_click();">显示modal</button>
+
+    <button type="button" onclick="modal4_click();">隐藏modal</button>
+
+    <button type="button" onclick="modal5_click();">刷新modal</button>
+
+    <button type="button" onclick="modal6_click();">公用modal</button>
+
+    <button type="button" onclick="modal_html_click();">modal for html</button>
+
+
+    <button type="button" onclick="modal_htmliframe_click();">自制iframe</button>
+    <h5>tooltip</h5>
+    <div style="width:100px;margin-left:500px;">
+        <button type="button" onclick="tooltip_bottom_click(this,'top');">上方的tooltip</button>
+        <button type="button" onclick="tooltip_bottom_click(this,'left');">左面的tooltip</button>
+        <button type="button" onclick="tooltip_bottom_click(this,'right');">右面的tooltip</button>
+        <button type="button" onclick="tooltip_bottom_click(this,'bottom');">下方的tooltip</button>
+    </div>
+    <button type="button" id="btn_tooltip_hover4">hover触发的tooltip</button>
+    <button type="button" id="btn_tooltip_click">click触发的tooltip</button>
+    <button type="button" id="btn_tooltip_click2">click+leaveout触发的tooltip()</button>
+    <h5>tooltip组</h5>
+    <div class="tooltip_group">
+        <button type="button" data-dialog-tooltip="提示1">hover触发的tooltip</button>
+        <button type="button" data-dialog-tooltip="">空值的tooltip</button>
+        <button type="button" data-dialog-tooltip="提示3">hover触发的tooltip</button>
+        <button type="button" data-dialog-tooltip="<div><strong>早订惠</strong><hr /><span class='have_discount'>售价已包含此优惠</span> | 本线路享受早订惠。【可与部分优惠叠加享受】<br />1. 提前45天预订品，每人（成人）立减100元。<br />2. 提前75天预订，每人（成人）立减200元。<br />3. 提前105天预订，每人（成人）立减300元。<br />4. 提前135天预订，每人（成人）立减400元。<br /></div>">早早慧</button>
+        <button type="button" data-dialog-tooltip="<div><strong>免息送红包</strong><hr />使用分期付款3期、10期全部0利息，成功出游后即送1万元红包大礼！活动截止日期：2015.11.30</div>">免费送红包</button>
+
+    </div>
+
+    <h5>延时加载的tooltip组</h5>
+    <div class="tooltip_group" id="yanshi">
+    </div>
+    <h5>自动调整位置tooltip组</h5>
+    <div class="tooltip_group">
+        <button type="button" data-dialog-tooltip="提示1">hover触发的tooltip</button>
+        <button type="button" data-dialog-tooltip="提示2">hover触发的tooltip</button>
+        <button type="button" data-dialog-tooltip="提示3">hover触发的tooltip</button>
+        <button type="button" data-dialog-tooltip="<div><strong>早订惠</strong><hr /><span class='have_discount'>售价已包含此优惠</span> | 本线路享受早订惠。【可与部分优惠叠加享受】<br />1. 提前45天预订品，每人（成人）立减100元。<br />2. 提前75天预订，每人（成人）立减200元。<br />3. 提前105天预订，每人（成人）立减300元。<br />4. 提前135天预订，每人（成人）立减400元。<br /></div>">早早慧</button>
+        <button type="button" data-dialog-tooltip="<div><strong>免息送红包</strong><hr />使用分期付款3期、10期全部0利息，成功出游后即送1万元红包大礼！活动截止日期：2015.11.30</div>">免费送红包</button>
+
+    </div>
+    <!--<div style="height:1000px;width:200px;"></div>-->
+</body>
+</html>
+<script src="../../jquery.js" type="text/javascript"></script>
+<script src="../../sea.js" type="text/javascript"></script>
+<script>
+
+    seajs.config({
+        base: "../../"
+        //alias: {
+        //    "dialog": "dialog/0.2.0/dialog",
+        //    "jquery":'jquery'
+        //}
+    });
+    var $dialog = {};//样式1
+
+    var $dialog2 = {};//样式2
+
+    var $dialog3 = {};//自定义样式
+
+
+    // 加载入口模块
+    seajs.use("dialog/0.2.0/dialog", function (Dialog) {
+        //全局装载模板
+        $dialog = new Dialog({ skin: 'default' });
+
+        $dialog2 = new Dialog({ skin: 'skin2' });
+
+        $dialog3 = new Dialog({
+            skin: 'skin2', template:
+                {
+                    alert: {
+                        height: '300px',
+                        html: '<div class="dialog_alert_gp"><div class="dialog_alert_text" data-dialog-content></div><button type="button" class="dialog_alert_submit" data-dialog-submit>确认ddd</button></div>'
+                    }
+                    ,
+                    tooltip: {
+                        width: '500px',
+                        height: '80px',
+                        html: '<div class="dialog_alert_gp" data-dialog-drag style="width:100%;heigth:100%;background-color:#ff6a00;color:#fff;"><div class="dialog_alert_text" data-dialog-content></div></div>'
+                    }
+                }
+        });
+
+        //独立tooltip
+        $dialog.tooltip({
+            content: 'tooltip hover', //内容,支持html,function
+            delay: 1000,//延时隐藏时间，>0：鼠标离开后指定时间内隐藏，0：鼠标离开后立即隐藏,<0:不隐藏
+            triggerEle: '#btn_tooltip_hover',//触发元素选择器
+            triggerType: 'hover',//hover|click
+            triggerAlign: 'bottom'//显示位置支持top,left,bottom,right
+        });
+
+        //独立tooltip
+        $dialog.tooltip({
+            content: 'tooltip hover', //内容,支持html,function
+            delay: 1000,//延时隐藏时间，>0：鼠标离开后指定时间内隐藏，0：鼠标离开后立即隐藏,<0:不隐藏
+            triggerEle: '#btn_tooltip_hover4',//触发元素选择器
+            triggerType: 'hover',//hover|click
+            triggerAlign: 'bottom'//显示位置支持top,left,bottom,right
+        });
+
+        //hover
+        $dialog.tooltip({
+            content: function (obj) {
+                var text = $(obj).attr('data-dialog-tooltip');
+                return text;
+            }, //内容,支持html,function
+            delay: 0,//延时隐藏时间，>0：鼠标离开后指定时间内隐藏，0：鼠标离开后立即隐藏,<0:不隐藏
+            onhide: function () { //隐藏后触发事件
+
+            },
+            triggerEle: '.tooltip_group button',//触发元素选择器
+            triggerType: 'hover',//hover|click
+            triggerAlign: 'bottom'//显示位置支持top,left,bottom,right
+        });
+
+
+        //单击触发
+        $dialog.tooltip({
+            content: 'tooltip click', //内容,支持html,function
+            delay: 2000,//延时隐藏时间，>0：鼠标离开后指定时间内隐藏，0：鼠标离开后立即隐藏,<0:不隐藏
+            onhide: function () { //隐藏后触发事件
+
+            },
+            triggerEle: '#btn_tooltip_click',//触发元素选择器
+            triggerType: 'click',//hover|click
+            triggerAlign: 'bottom',//显示位置支持top,left,bottom,right
+            wrapper:"body"//外容器,默认为document
+        });
+
+        //单击触发
+        $dialog.tooltip({
+            content: 'tooltip click', //内容,支持html,function
+            delay: 2000,//延时隐藏时间，>0：鼠标离开后指定时间内隐藏，0：鼠标离开后立即隐藏,<0:不隐藏
+            onhide: function () { //隐藏后触发事件
+
+            },
+            triggerEle: '#btn_tooltip_click2',//触发元素选择器
+            triggerType: 'click',//hover|click
+            leaveHide: true,//hover|click
+            triggerAlign: 'bottom'//显示位置支持top,left,bottom,right
+        });
+        //btn_tooltip_hover
+    });
+
+    //#region normal
+    function alert_click() {
+        //test1.confirm();
+        $dialog.alert('样式1', function () {
+            //alert('ok');
+        });
+    }
+    function confirm_click() {
+        $dialog.confirm("确认样式1", function () {
+            //alert('ok');
+        }, function () {
+            //alert('cannel');
+        });
+    }
+
+    function alert2_click() {
+        //test2.confirm();
+        $dialog2.alert('样式2', function () {
+            //alert('ok');
+        });
+    }
+
+    function confirm2_click() {
+        $dialog2.confirm("确认样式2", function () {
+            alert('ok');
+        }, function () {
+            alert('cannel');
+        });
+    }
+
+    function alert3_click() {
+        //test2.confirm();
+        $dialog3.alert('样式3', function () {
+            //alert('ok');
+        });
+    }
+
+    function confirm3_click() {
+        $dialog3.confirm("确认样式3", function () {
+            alert('ok');
+        }, function () {
+            //alert('cannel');
+        })
+    }
+
+    //#endregion
+
+    //#region modal
+    //var _modal;
+    function modal2_click() {
+        var config = {
+            type: 'div',
+            url: 'htmlpage.html',
+            title: '标题1'
+        };
+        $dialog.modal(config);
+    }
+
+    function modal3_click() {
+        $dialog.modal('show');
+    }
+    function modal4_click() {
+        //_modal.set("title", '新标题');
+        //_modal.refresh();
+        $dialog.modal('hide');
+    }
+
+    function modal5_click() {
+        //var config = {
+        //    type: 'div',
+        //    url: 'htmlpage.html',
+        //    title: '标题1'
+        //};
+        //_modal = $dialog2.modal(config);
+        //_modal.on("title:change", function () {
+        //    //debugger;
+        //});
+        //_modal.show();
+        $dialog.modal('refresh');
+
+    }
+
+    function modal6_click() {
+        var config = {
+             height: "300px", title: "新标题aaaa"
+        };
+        //_modal.open(config);
+        $dialog.modal(config);
+    }
+
+    function modal_html_click() {
+        var config = {
+            type: 'html',
+            title: '标题1',
+            content: 'dsadasdada<br/> dddd'
+        };
+        var new_modal = $dialog2.modal(config);
+        new_modal.show();
+    }
+    //#endregion
+
+
+    //#region tooltip
+    var $obj;
+    function tooltip_bottom_click(obj,align) {
+
+        //单击触发
+        $obj = $obj || $dialog.tooltip({
+            content: 'tooltip 样式二', //内容,支持html,function
+            delay: 1000//延时隐藏时间，>0：鼠标离开后指定时间内隐藏，0：鼠标离开后立即隐藏,<0:不隐藏
+        });
+        $obj.set("content", 'tooltip 样式二' + align);
+        $obj.show(obj, align, true);
+    }
+
+    //#endregion
+
+    $(function () {
+        setTimeout(function () {
+            for (var i = 0; i < 5; i++) {
+                $("#yanshi").append(' <button type="button" data-dialog-tooltip="提示'+i+'">后加载触发的tooltip</button> ');
+            }
+
+        }, 3000);
+    });
+
+
+    function modal_htmliframe_click() {
+        var pkid = $(this).attr("pkid");
+        var url = '/drm/Product/ProductLog?isDialog=1&pkid=' + pkid;
+        var config = {
+            type: 'html',
+            content: '<iframe style="width:100%;height:500px;border:0;padding: 0;margin: 0;" src="' + url + '"></iframe>',
+            title: '日志',
+            width: 800,
+            height: 600
+        };
+        $dialog.modal(config);
+    }
+
+</script>

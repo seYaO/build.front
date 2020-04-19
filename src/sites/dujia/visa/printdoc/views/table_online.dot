@@ -1,0 +1,23 @@
+{{~it.VisaPrintMaterial.VisaMaterial:fdata:index}}
+<div class="stuff_detail_box">
+  <span class="stuff_title" typeId="">所需材料<em>★为必须提供的材料 ●为建议提供的材料（可视个人实际情况提供，提供越多越有利于出签）</em></span>
+  <div class="table2_title">办签人员：{{=fdata.PersonalTypeName}}</div>
+      <table border="1" class="tab_table2" typeId="">
+        <tbody>
+        {{~fdata.MaterialDetailList:Material}}
+              <tr>
+                <td style="color:#333;width:178px;text-align: center">
+                  {{=Material.Name}}
+                </td>
+                <td style="padding: 15px;">
+                  {{=Material.Content}}
+                </td>
+              </tr>
+          {{~}}
+          </tbody>      
+      </table>      
+  </div>    
+          
+</div>
+
+{{~}}

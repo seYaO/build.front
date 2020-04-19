@@ -1,0 +1,14 @@
+<div class="dj-calendar">
+    <div class="panel">
+        {{?!it.hideButtons.contain('prevmonth')}}
+        <a href="javascript:;" hidefocus="true" class="ico previous-month" data-btn-premonth></a>
+        {{?}}
+        {{?!it.hideButtons.contain('nextmonth')}}
+        <a href="javascript:;" hidefocus="true" class="ico next-month" data-btn-nextmonth></a>
+        {{?}}
+        <div class="main-group">
+            <div class="main-group-show" style="width:{{=it.width}}">
+            </div>
+        </div>
+    </div>
+</div>

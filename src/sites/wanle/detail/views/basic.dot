@@ -1,0 +1,107 @@
+
+{{var mainTitle = basicInfo.MainTitle;}}
+<div class="info_Top">
+    <p class="resourceId">编号：<b title="{{=basicInfo.ProductId}}">{{=basicInfo.ProductId}}</b></p>
+    {{?basicInfo.DestinationCity}}
+    <p class="destCity">目的地：<b title="{{=basicInfo.DestinationCity}}">{{=basicInfo.DestinationCity}}</b></p>
+    {{??}}
+    <p class="destCity"></p>
+    {{?}}
+
+    {{?basicInfo.DestCityList && basicInfo.DestCityList.length}}
+        <input type="hidden" id="destID" value="{{=basicInfo.DestCityIdList[0]}}">
+        <input type="hidden" id="destName" value="{{=basicInfo.DestCityList[0]}}">
+        {{?basicInfo.ProductType == 9 && mainTitle.indexOf("全球") > -1}}
+        <div class="weather">
+            <span>优选产品</span>
+        </div>
+        {{??}}
+        <div class="weather J_weather">
+            <span>近日天气<em class="i_arrow"></em></span>
+            <ul class="weatherList none">
+            </ul>
+        </div>
+        {{?}}
+    {{??}}
+    <input type="hidden" id="destID" value="0">
+    <input type="hidden" id="destName" value="0">
+    <div class="weather">
+        <span>优选产品</span>
+    </div>
+    {{?}}
+</div>
+<h1 style="max-height:72px;overflow:hidden;"title="{{=mainTitle}}">{{=mainTitle}}</h1>
+<p class="sub_title">{{=basicInfo.SubTitle}}</p>
+<ul class="info_items clearfix">
+    {{?comment}}
+    {{var commentScore = comment.CommentStore;}}
+        {{?commentScore !== "0"}}
+        <li>
+            <div class="c_star_rate">
+                <ul class="rate_star" data-score="{{=commentScore}}">
+                    <li class="rate_item"></li>
+                    <li class="rate_item"></li>
+                    <li class="rate_item"></li>
+                    <li class="rate_item"></li>
+                    <li class="rate_item"></li>
+                </ul>
+                <span class="rate_tag">{{=commentScore}}分</span>
+            </div>
+        </li>
+        <li><a>{{=comment.TotalCount}}条点评</a></li>
+        {{?}}
+    {{?}}
+    
+    {{var destCity = basicInfo.DestinationCity;}}
+    {{?destCity}}
+        {{?destCity.length > 10}}
+            {{destCity = destCity.substring(0,10);}}
+        {{?}}
+        {{?basicInfo.ValidOrderNumber}}
+            <li class="items_right"><span>月销量：<em>{{=basicInfo.ValidOrderNumber}}</em></span></li>
+        {{?}}
+        {{?basicInfo.ProductType === 6 && basicInfo.Address.length}}
+            <li class="scenery_address"><em>景点地址：</em><b title="{{=basicInfo.Address}}">{{=basicInfo.Address}}</b>
+            {{?basicInfo.CoordinateList && basicInfo.CoordinateList.length}}
+                <a class="map-icon " href="#transInfo"><i></i><span>查看地图</span></a>
+            {{?}}
+        </li>
+        {{?}}
+    {{?}}
+    {{?basicInfo.ProductTypeTag && basicInfo.ProductTypeTag.length}}
+    <li class="label_li">
+        {{~basicInfo.ProductTypeTag:tag}}
+        <span class="travel_label">{{=tag}}</span>
+        {{~}}
+        <span class="travel_label">点评返现</span>
+    </li>
+    {{??}}
+    <li class="label_li">
+        <span class="travel_label">点评返现</span>
+    </li>
+    {{?}}
+</ul>
+
+<div style="display:none">{{=basicInfo.ProductTypeTag.length}}</div>
+<div class="info_opera">
+    {{?(basicInfo.PriceInfoOfType && basicInfo.PriceInfoOfType.length) ||(basicInfo.PriceInfo && basicInfo.PriceInfo.length)}}
+        <span class="price">￥<b>{{=basicInfo.AmountDirect}}</b>起</span>
+        <a href="#booking" class="reserve">立即预订</a>
+    {{??}}
+        <a href="javascript:;" class="reserve hadEnd">已售罄</a>
+    {{?}}
+</div>
+
+{{var reason = basicInfo.RecommendReason;}}
+{{?reason}}
+    {{?reason.ReasonA.trim().length || reason.ReasonB.trim().length || reason.ReasonC.trim().length}}
+    <div class="info_reason">
+        <div class="title">推荐理由</div>
+        <div class="reason_cont">
+            {{?reason.ReasonA.trim().length}}<p>★&nbsp;{{=reason.ReasonA}}</p>{{?}}
+            {{?reason.ReasonB.trim().length}}<p>★&nbsp;{{=reason.ReasonB}}</p>{{?}}
+            {{?reason.ReasonC.trim().length}}<p>★&nbsp;{{=reason.ReasonC}}</p>{{?}}
+        </div>
+    </div>
+    {{?}}
+{{?}}

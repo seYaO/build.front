@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="search.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="search" style="background: url(&quot;http://pic3.40017.cn/line/admin/2014/09/19/16/38a0966f6d484ccfaf0d438ad64997d5_640x360_00.jpg&quot;);">
+
+    </div>
+
+
+    <script src="../../jquery.js"></script>
+    <script src="../../sea.js"></script>
+    <script src="../../dot.js"></script>
+
+    <script>
+        seajs.config({
+            base: "../../"
+        });
+        seajs.use(["intellsearch/0.1.0/search", "intellsearch/0.1.0/intellsearch", "intellsearch/0.1.0/history", "intellsearch/0.1.0/track", 'intellsearch/0.1.0/hotcity']
+            , function (NewSearch, intellSearch, history, track, hotcity) {
+
+            //智能搜索配置
+            var searchconf = {
+                input: "#search",
+                highLightStyle: "color:#ff6a00;font-weight:bolder;",//高亮显示内容样式
+                apiurl: "http://10.1.56.20:1000/dujia/ajaxhelper/homepagehandler.ashx?type=SearchList&keyWord={keyword}&locationCityId={l_cityid}&selectCityId={s_cityid}",
+                itemNumber: 8,//显示的条数
+                //dotTemplate: searchTmpl,
+                reqData: function (keyword, res) {
+                    var self = this;
+                    var _data = new Array();
+                    var url = this.get("apiurl"),
+                        l_cityid = "321",
+                        s_cityid = "321";
+                    url = url.replace("{keyword}", keyword).replace("{l_cityid}", l_cityid).replace("{s_cityid}", s_cityid);
+
+                    this.getJsonp(url, function (data) {
+                        if (data != null && data.code == 4000) {
+                            for (var i = 0; i < data.data.length && (i < self.itemNumber) ; i++) {
+                                var item = data.data[i];
+                                var value = item.content;
+                                var link = item.link;
+                                //var type = item.itemType;
+                                var level = (item.itemType == "list") ? 1 : 2;
+                                _data.push(self.itemDataFormat(keyword, { value: value, link: link, text: value, level: level }));
+                            }
+                            res(_data);
+                        }
+                        else {
+                            res(null);
+                        }
+                    });
+                },
+            };
+            //热门城市配置
+            var hotcityconf = {
+                apiurl: "//www.ly.com/dujia/AjaxActivity.aspx?type=QueryIndexTotalCity",
+                itemNumber: 20,//显示的条数
+            };
+
+            //历史记录配置
+            var historyconf = {
+                "name": "search",
+                "user": "ly",
+                //"dotTemplate": historyTmpl,
+                itemNumber: 15,//显示的条数
+            };
+
+            var trackconf = {};
+            var o_intel = new NewSearch({
+                el: ".search",
+                width: "100%",
+                //dotTemplate: searchTmpl,
+                modules: {
+                    intellSearch: {
+                        type: 'module',
+                        key: 'intellSearch',
+                        config: searchconf,
+                        module: intellSearch
+                    },
+                    hotcity: {
+                        type: 'module',
+                        key: 'hotcity',
+                        module: hotcity,
+                        config: hotcityconf
+                    },
+                    history: {
+                        type: 'module',
+                        key: 'history',
+                        config: historyconf,
+                        module: history
+                    },
+                    track: {
+                        type: 'module',
+                        key: 'track',
+                        hasPanel: false,
+                        config: trackconf,
+                        module: track
+                    }
+                }
+            });
+        });
+
+        var l_city
+            , s_city
+            , searchtext
+            , selnum//点击位置,
+            ,selcount
+            , importcount //输入次数
+            , u_city
+        , abkey;
+
+        var mdtypes = [
+            { key: '/sbox/button', value: "searchtext,l_city,s_city,selcount,abkey" },//^搜索内容^定位城市id^页选择城市id^搜索结果数^AB开关标识^   用户不点提示词直接点击搜索按钮
+             { key: '/sbox/ac', value: "^搜索内容^定位城市id^页选择城市id^下拉结果数^AB开关标识^  " },//触发下拉列表提示
+             { key: '/sbox/ac/click', value: "^搜索内容^点击内容^点击位置^输入次数^定位城市id^页选择城市id^常住城市id^项目类型^跳转类别^资源所在城市id^点击内容分类^AB开关标识^" },
+             { key: '/sbox/k/hot', value: "^关键字^位置序号^定位城市id^页选择城市id^跳转类别^AB开关标识^" },
+             { key: '/sbox/k/history', value: "^历史内容^位置序号^定位城市id^页选择城市id^AB开关标识^" },
+             { key: '/sbox/inputAndDoNothing', value: "^搜索内容^定位城市id^选择城市id^AB开关标识^" }
+        ];
+
+
+        var report = function () {
+
+        }
+    </script>
+</body>
+
+
+
+</html>

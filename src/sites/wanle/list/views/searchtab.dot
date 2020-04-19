@@ -1,0 +1,44 @@
+{{var ticketCount = 0;}}
+{{var wanleCount = 0;}}
+{{var wifiCount = 0;}}
+{{var typeList = [];}}
+
+{{~ tabList:tabCount:index}}
+	{{? tabCount.Id == 6}}
+	    {{ticketCount = ticketCount + tabCount.Count;}}
+	{{?? tabCount.Id == 9}}
+		{{wifiCount = wifiCount + tabCount.Count;}}
+	{{??}}
+		{{wanleCount = wanleCount + tabCount.Count;}}
+		{{typeList.push(tabCount.Id);}}
+	{{?}}
+{{~}}
+{{? dataType == 1}}
+	{{totalCount = ticketCount;}}
+{{?? dataType == 2}}
+	{{totalCount = wifiCount;}}
+{{?? dataType == 3}}
+	{{totalCount = wanleCount;}}
+{{?}}
+<input type="hidden" id="deepUrl" value="{{=data.PublicProductSearchResponseDic.mainSearch[0].DeepSearchUrl}}">
+<input type="hidden" id="singleNum" value="{{=totalCount}}">
+<div class="searchTabBox">
+	<ul class="searchTab" data-role="singleType">
+		{{? !(dataType != 1 && ticketCount == 0)}}
+	    <li class="tab_nav {{? dataType == 1}}tab_active{{?}}" data-id="6" data-index="1" data-pageid="1">
+	        <a href="javascript:void(0);" data-href="/dujia/wanle/{{=destPinYin}}-menpiao/">海外门票({{=ticketCount}})</a>
+	    </li>
+		{{?}}
+	    {{? !(dataType !=3 && wanleCount == 0)}}
+	    <li class="tab_nav {{? dataType == 3}}tab_active{{?}}"  data-id="{{=typeList}}" data-index="3" data-pageid="3">
+	        <a href="javascript:void(0);" data-href="/dujia/wanle/{{=destPinYin}}-dangdi/">当地玩乐({{=wanleCount}})</a>
+	    </li>
+	    {{?}}
+
+	    {{? !(dataType !=2 && wifiCount == 0)}}
+	    <li class="tab_nav {{? dataType == 2}}tab_active{{?}}"  data-id="9" data-index="2" data-pageid="2">
+	        <a href="javascript:void(0);" data-href="/dujia/wanle/{{=destPinYin}}-tongxun/">通讯WIFI({{=wifiCount}})</a>
+	    </li>
+	    {{?}}
+	</ul>
+</div>

@@ -1,0 +1,9 @@
+{
+    "dataUri": "/wanle/api/WWanleProduct/GetHotProduct",
+    "query": {
+        "area": 6102301,
+        "platment": 61023,
+        "siteType": 1
+    },
+    "desc": "玩乐微信搜索页"
+}

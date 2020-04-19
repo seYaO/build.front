@@ -1,0 +1,462 @@
+<div class="borBox J_NavBox" id="part9" data-type="otherinfo">
+            <div class="tab_head">
+                <h4>其他信息</h4>
+                <span class="save_btn J_saveBtn">保存资料</span>
+            </div>
+            <div class="is_show mar15 J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlLANGUAGES_ctl00_rblLANGUAGE_NAME">
+                    <p><i></i>除了中文，您是否会用其他语言进行交流？</p>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <div class="none" type="form">
+                    <ul class="form_ul">                
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>外&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;语：</span>
+                            <div class="info_con J_addBtn">
+                                <input type="text" class="w130 lf" placeholder="请添加语种">                                
+                                <span  class="butt add_name" FCControlId="otherinfo_language" verify-type="required"  vali-msg-required="请添加语种"><i></i>添加</span>
+                                <span class="nameBox J_tags"></span>         
+                            </div>
+                        </li>   
+                    </ul>
+                </div>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblCOUNTRIES_VISITED_IND">
+                    <p><i></i>您最近5年出过国吗？</p>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <div class="none" type="form">
+                    <ul class="form_ul">                
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>全部国家：</span>
+                            <div class="info_con J_addBtn">
+                                <input type="text" class="w130 lf" placeholder="请添加国家">                                
+                                <span  class="butt add_name" FCControlId="otherinfo_NationName" verify-type="required" vali-msg-required="请添加国家"><i></i>添加</span>
+                                <span class="nameBox J_tags"></span>                                              
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="is_show J_xianyin J_choose J_AddOrDelete" data-index="1">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblMILITARY_SERVICE_IND">
+                    <p><i></i>您曾经在军队服过役吗？</p>
+                    <span class="radio" value="Y" data-dot="1" data-dotname="serviceDot"><i></i>是</span>
+                    <span class="radio" value="N" data-dot="0"><i></i>否</span>
+                </div>
+                <div class="J_renderDot"></div>
+            </div>
+            <div class="is_show J_xianyin J_choose J_AddOrDelete" data-index="1">                
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblSPECIALIZED_SKILLS_IND">
+                    <p><i></i>您是否具有某项特殊技能或受过特殊培训？</p>
+                    <span class="radio" value="Y" data-type="1"><i></i>是</span>
+                    <span class="radio" value="N" data-type="0"><i></i>否</span>
+                </div>
+                <div class="none" type="form">
+                    <ul class="form_ul">
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                            <div class="info_con">
+                                <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxSPECIALIZED_SKILLS_EXPL" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请完善信息">  
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblORGANIZATION_IND">
+                    <p><i></i>您是否属于或曾属于任何一个专业的，社会的或慈善机构？并为其工作或为其做过贡献？</p>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <div class="none" type="form">
+                    <ul class="form_ul">
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>单位名称：</span>
+                            <div class="info_con">
+                                <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlORGANIZATIONS_ctl00_tbxORGANIZATION_NAME" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请输入单位名称">  
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="line"></div>
+            </div>            
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblDisease">
+                    <em class="lf">1 ).您是否患有涉及公共卫生的传染病？如软下疳、淋病、腹股沟肉芽肿、传染性麻风病、性病性淋巴肉芽肿，传染期梅毒，活动性肺结核等。</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxDisease" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>            
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblDisorder">
+                    <em class="lf">2 ).您是否患有对其他人的人身安全及利益造成威胁的精神或身体疾病?</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxDisorder" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblDruguser">
+                    <em class="lf">3 ).您是否或曾经滥用药物并上瘾?</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxDruguser" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblArrested">
+                    <em class="lf">4 ).您是否曾经因违法或犯罪被捕或被判刑，即使后来您受到了宽恕、赦免或其它类似的裁决?</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxArrested" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblControlledSubstances">
+                    <em class="lf">5 ).您是否曾经违反或密谋违反有关管控物资方面的法律?</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxControlledSubstances" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblProstitution">
+                    <em class="lf">6 ).您是来美国从事卖淫或非法商业性交易吗？在过去十年中，您是否从事过卖淫或组织介绍过卖淫？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxProstitution" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblMoneyLaundering">
+                    <em class="lf">7 ).您是否曾经参与或意图从事洗钱活动？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxMoneyLaundering" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblHumanTrafficking">
+                    <em class="lf">8 ).您曾在美国或美国以外的地方犯有或密谋人口走私罪吗？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxHumanTrafficking" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblAssistedSevereTrafficking">
+                    <em class="lf">9 ).你有没有故意资助，教唆，协助或勾结某个人，而这个人在美国或美国以外的地方曾犯有、或密谋了一严重的人口走私案？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxAssistedSevereTrafficking" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblHumanTraffickingRelated">
+                    <em class="lf">10 ).您是一曾在美国或美国以外犯有或密谋人口走私案犯的配偶或儿女吗？您在最近5年里是否从走私活动中获得过好处？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxHumanTraffickingRelated" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblIllegalActivity">
+                    <em class="lf">11 ).在美国期间，您是否意图从事间谍活动、阴谋破坏、违反出口管制条例或其他任何非法活动？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxIllegalActivity" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblTerroristActivity">
+                    <em class="lf">12 ).在美国期间，您是否意图从事恐怖活动？或您是否曾经从事过恐怖活动？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxTerroristActivity" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblTerroristSupport">
+                    <em class="lf">13 ).您是否曾经或计划为恐怖分子或恐怖组织提供经济或其它方面的支持？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxTerroristSupport" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblTerroristOrg">
+                    <em class="lf">14 ).您是否是一恐怖组织的成员或代表？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxTerroristOrg" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblGenocide">
+                    <em class="lf">15 ).您是否曾经指使、煽动、从事、协助或参与了过种族灭绝大屠杀？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxGenocide" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblTorture">
+                    <em class="lf">16 ).您是否曾经从事、指使、煽动、协助或以其他方式参与了刑讯？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxTorture" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblExViolence">
+                    <em class="lf">17 ).您是否曾经从事、指使、煽动、协助或参与了法庭外的杀戮、政治谋杀或者其他暴力行为？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxExViolence" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblChildSoldier">
+                    <em class="lf">18 ).你曾经从事过招募士兵或利用儿童士兵吗？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxChildSoldier" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblReligiousFreedom">
+                    <em class="lf">19 ).在担任政府官员期间，您是否曾经负责或直接执行过严重违反宗教自由的行动？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxReligiousFreedom" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPopulationControls">
+                    <em class="lf">20 ).您曾经直接参与过制定或执行人口控制的规定,强迫妇女或男士违愿进行人流或绝育吗?</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPopulationControls" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblTransplant">
+                    <em class="lf">21 ).您是否直接参与过强迫人体器官及人体组织的移植？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxTransplant" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblImmigrationFraud">
+                    <em class="lf">22 ).您是否曾经试图以欺骗或故意造假及其他非法手段为自己，或帮助他人获取美国签证，入境美国或获取任何其他移民福利？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxImmigrationFraud" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblChildCustody">
+                    <em class="lf">23 ).您是否曾经拒绝将一在美国境外的美籍儿童的监护权移交给一被美国法庭批准享有法定监护权的人？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxChildCustody" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblVotingViolation">
+                    <em class="lf">24 ).您是否违反了法律或规定在美国进行过投票选举？</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxVotingViolation" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">  
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+            <div class="is_show J_choose">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblRenounceExp">
+                    <em class="lf">25 ).您是否曾为逃避交税而声明放弃美国公民身份?</em>
+                    <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                    <span class="radio" data-type="0" value="N"><i></i>否</span>
+                </div>
+                <ul class="none form_ul" type="form">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+                        <div class="info_con">
+                            <input class="w220 lf" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxRenounceExp" type="text" placeholder="" verify-type="required charFilter" vali-msg-required="请添加说明">
+                        </div>
+                    </li>                     
+                </ul>
+            </div>
+        </div>

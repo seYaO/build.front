@@ -1,0 +1,76 @@
+{{var priceArr = info.PriceInfoOfType.concat(info.PriceInfo);}}
+{{?priceArr}}
+    {{var ticketType;}}
+    {{var flag = true;}}
+    {{?info.PriceInfoOfType.length > 0}}{{flag = true;}}{{??}}{{flag = false;}}{{?}}
+    {{~priceArr:list:index}}
+    <div class="pro-list border-top">
+        <div class="pro-content border-bottom">                    
+            {{?flag}}
+            <div class="part-head {{?flag && index === 0}}border-bottom{{?}} J_hide_show">
+                {{?list.PriceName == "成人票"}}
+                    {{ticketType = "adult";}}
+                {{??list.PriceName == "儿童票"}}
+                    {{ticketType = "child";}}
+                {{??list.PriceName == "特惠票"}}
+                    {{ticketType = "newCheap";}}
+                {{??list.PriceName == "老人票"}}
+                    {{ticketType = "oldMan";}}
+                {{??list.PriceName == "学生票"}}
+                    {{ticketType = "student";}}
+                {{??list.PriceName == "套票"}}
+                    {{ticketType = "packages";}}
+                {{??}}
+                    {{ticketType = "otherType";list.PriceName = "其他";}}
+                {{?}}
+                <h3><em class="{{=ticketType}}"></em>{{=list.PriceName}}</h3>
+                <i class="{{?index !== 0}}pack-up{{??}}unfold{{?}}"></i>
+            </div>
+            {{?}}
+            <ul {{?index !== 0}}class="none"{{?}}>
+                {{var posNum1 = 1;}}
+                {{~list.priceDetail:detail}}
+                <li>
+                    <div class="pro-left">
+                        <h3>{{=detail.PriceDes}}</h3>
+                        <div class="main-info">
+                            <span>请在出行
+                            <em>
+                            {{?parseInt(detail.PriceExtendDetail.AdvanceDays) === 0}}
+                                当天{{=detail.PriceExtendDetail.AdvanceTime}}
+                            {{??}}
+                                {{?detail.PriceExtendDetail.AdvanceType != 0}}
+                                前{{=detail.PriceExtendDetail.AdvanceDays}}个工作日{{=detail.PriceExtendDetail.AdvanceTime}}
+                                {{??}}
+                                前{{=detail.PriceExtendDetail.AdvanceDays}}天{{=detail.PriceExtendDetail.AdvanceTime}}
+                                {{?}}
+                            {{?}}
+                            </em>
+                            前下单
+                            </span>
+                            <p>
+                                {{?detail.PriceExtendDetail.ReceiveType != "" && detail.PriceExtendDetail.ReceiveType != undefined}}
+                                <i>{{=detail.PriceExtendDetail.ReceiveType}}</i>
+                                {{?}}
+                                {{?detail.PriceExtendDetail.BookPerson >= 1 }}
+                                <i>{{=detail.PriceExtendDetail.BookPerson}}人起订</i>
+                                {{?}}
+                            </p>
+                        </div>
+                        <div class="pro-right">
+                            <span><em>￥</em>{{=detail.AmountDirect}}</span><i class="jump"></i>
+                        </div>
+                        <div class="pro-button">
+                        {{?it.jobNumber != ""}}{{detail.BookUrl = detail.BookUrl + "&jobnumber="+it.jobNumber;}}{{?}}
+                            <a class="on-top" href="{{=detail.BookUrl}}&tcwvclogin&memberid=tcwvmid" onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/detail', '/book','|*|pos:{{=posNum1}}|*|pjId:2027|*|resId:{{=it.ProductId}}|*|')"> 预订</a>
+                            <a class="on-bot" href="{{=detail.BookUrl}}&tcwvclogin&memberid=tcwvmid" onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/detail', '/book','|*|pos:{{=posNum1}}|*|pjId:2027|*|resId:{{=it.ProductId}}|*|')">在线支付 </a>
+                        </div>
+                    </div>
+                </li>
+                {{posNum1++;}}
+                {{~}}
+            </ul>
+        </div>
+    </div>
+    {{~}}
+{{?}}

@@ -1,0 +1,25 @@
+
+{{var RemarkNeed = data.SubmitDetail.RemarkNeed;}}
+{{var ReserveRemark = data.SubmitDetail.ReserveRemark;}}
+{{?RemarkNeed == 1 || ReserveRemark != ""}}
+    <div class="procedureBox lastnobr">
+        <h2 class="pro_title">备注信息</h2>
+        <div class="listbox">
+            <ul class="note_info clearfix">
+                <li>
+                    <label for="Inote" class="col_L">
+                        {{?RemarkNeed == 1}}
+                            <em>*</em>
+                        {{?}}
+                        填写备注：
+                    </label>
+                    <div class="col_R">
+                        <textarea id="Inote" maxlength="200" name="Iname" class="con_name inputBeforeSubmitChk"></textarea>
+                        <p class="col_tips" style="width: 82%; float: left;">提示：{{=ReserveRemark}}</p>
+                        <em class="none">备注信息不能为空</em>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+{{?}}

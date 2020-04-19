@@ -1,0 +1,75 @@
+{{  var dotName = it;}}
+{{?dotName}}
+    {{?dotName=="passportdot"}}
+    <ul class="single_ul clearfix add-html J_render">
+        <span class="crud_butt">
+            <a href="javascript:;" class="butt add_module"><i></i>添加</a>
+            <a href="javascript:;" class="butt del_btn"><i></i>删除</a>
+        </span>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>护照号码：</span>
+            <div class="info_con">
+                <input class="w220 lf" type="text" placeholder="" verify-type="required passPort" vali-msg-required="请输入护照号码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlLostPPT_ctl00_tbxLOST_PPT_NUM">                  
+            </div>
+        </li>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>签发国家：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="请输入签发国家" verify-type="required cnName" vali-msg-required="请输入签发国家" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlLostPPT_ctl00_ddlLOST_PPT_NATL"> 
+            </div>
+        </li>
+        <li class="single_li">
+            <span class="info_tit"><i>*</i>说&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;明：</span>
+            <div class="info_con">
+                <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                    <div class="dropdown_tit pull_down w130 J_dropDown" verify-type="required" vali-msg-required="请选择丢失说明" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlLostPPT_ctl00_tbxLOST_PPT_EXPL">请选择丢失说明</div>
+                    <ul class="dropdown_menu none J_dropDown_list"> 
+                        <li>遗失</li>
+                        <li>盗过</li>                
+                    </ul>
+                </div>              
+            </div>
+        </li>         
+    </ul>    
+    {{??dotName == "travelplandot"}}
+    <ul class="add-html specDiv">
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>承担方地址：</span>
+            <div class="info_con">
+                <input type="text" class="w130" placeholder="请输入国家" verify-type="required onlyLetterSp charFilter" vali-msg-required="请输入国家" vali-msggroup="msg3_7" vali-group="msg3_7" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlPayerCountry">
+                <input type="text" class="w130" placeholder="请输入省份" verify-type="required onlyLetterSp charFilter" vali-msg-required="请输入省份" vali-msggroup="msg3_7" vali-group="msg3_7" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerStateProvince">
+                <input type="text" class="w130" placeholder="请输入城市" verify-type="required onlyLetterSp charFilter" vali-msg-required="请完善承担方地址" vali-msggroup="msg3_7" vali-group="msg3_7"  vali-msggroup-breth="msg3_7" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerCity">
+                <span class="valid_symbol none"></span>                                                                            
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>详细街道：</span>
+            <div class="info_con">
+                <input class="w575 lf" type="text" placeholder="街道详情地址不包括省市，从区开始填写，例：Industrial park with cheng yu new road no. 188 building" verify-type="required street" vali-msg-required="请输入详细街道" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerStreetAddress1">                  
+            </div>
+        </li>  
+        <li class="info_list">
+            <span class="info_tit">邮政编码：</span>
+            <div class="info_con">
+                <input class="w130" type="text" placeholder="输入邮政编码" validate="charOrNum" fccontrolid="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerPostalZIPCode">
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+    </ul>
+    {{??dotName == "VisalostYes"}}
+    <ul class="add-html mar15">
+        <li class="single_li">遗失年份：<input class="w130" type="text" placeholder="请输入数字" validate="required onlyNumberSp" vali-msg-required="请输入遗失年份" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPREV_VISA_LOST_YEAR">年</li>
+        <li class="single_li mar20_l">遗失说明：<input class="w130" type="text" placeholder="遗失说明" validate="required charFilter" vali-msg-required="请输入遗失说明" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPREV_VISA_LOST_EXPL"></li>
+    </ul>
+    {{??dotName == "userinfo"}}
+    <ul type="form" class="form_ul add-html">
+        <li class="info_list">
+            <span class="lf lh24">请提供注册邮箱和登录密码：</span>
+            <div class="info_con">
+                <span class="info_tit"><i>*</i>注册邮箱：</span><input class="w130 lf" type="text" placeholder="请输入邮箱" verify-type="required email" vali-msg-required="请输入邮箱" FCControlId="supportdetail_Email">   
+                <span class="info_tit"><i>*</i>登录密码：</span><input class="w130 lf" type="text" placeholder="请输入密码" verify-type="required passWord" vali-msg-required="请输入密码" FCControlId="supportdetail_password">                       
+            </div>
+        </li>
+    </ul>   
+    {{?}}
+{{?}}

@@ -1,0 +1,27 @@
+    {{?it && it.length != 0}}
+        <ul>
+            {{~it:masterSlide:msindex}}
+            {{?msindex<7}}
+            <li>
+                <a href="{{=masterSlide.Url.replace('http:','')}}" trackspot="{{=$('#city_select').text()}}^{{=msindex+1}}^{{=masterSlide.Name}}" title="{{=masterSlide.Name}}" target="_blank" rel="nofollow" trace="huandeng_{{=msindex}}">
+                    <img src="{{=masterSlide.ImageUrl.replace('http:','')}}" alt="{{=masterSlide.Name}}">
+                </a>
+            </li>
+            {{?}}
+            {{~}}
+        </ul>
+    {{?}}
+
+    {{?it && it.length != 0}}
+        <ul>
+            {{~it:minorSlide:minindex}}
+            <li>
+                <a href="{{=minorSlide.Url.replace('http:','')}}" trackspot="{{=$('#city_select').text()}}^{{=minindex+1}}^{{=minorSlide.Name}}" title="{{=minorSlide.Name}}" target="_blank" rel="nofollow" trace="carousel_{{=minindex}}">
+                    <img src="{{=minorSlide.ImageUrl.replace('http:','')}}" alt="{{=minorSlide.Name}}">
+                </a>
+            </li>
+            {{~}}
+        </ul>
+        <a href="javascript:void(0)" class="left"></a>
+        <a href="javascript:void(0)" class="right"></a>
+    {{?}}

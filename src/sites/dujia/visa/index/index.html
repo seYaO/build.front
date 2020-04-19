@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html trace="PC_visa_home" xmlns="http://www.w3.org/1999/xhtml">
+{{var it = IT.Data||{};}}
+{{
+    var VisaLabel = it.visaLabel,
+        VisaSlide = it.visaSlide,
+        HotVisa = it.hotVisa,
+        PaniBuy = it.visaPaniBuying,
+        HotSale = it.visaHotSale,
+        LatestBook = it.visaLatestBook,
+        visaTDK = it.visaTDK || {},
+        visalinks = it.visaLinks;
+}}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{{=visaTDK.Tilte}}</title>
+    <meta name='keywords' content='{{=visaTDK.KeyWords}}' />
+    <meta name='description' content='{{=visaTDK.Description}}' />
+    <!-- 适配声明start -->
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="//m.ly.com/visa/">
+    <meta name="mobile-agent" content="format=xhtml; url=//m.ly.com/visa/">
+    <meta name="mobile-agent" content="format=html5; url=//m.ly.com/visa/">
+    <meta name="mobile-agent" content="format=wml; url=//m.ly.com/visa/">
+    <meta name="applicable-device" content="pc">
+    <!-- 适配声明end -->
+    <% includeId = cnwidescreenjscss %>
+    <link rel="stylesheet" type="text/css" href="./index.css">
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet">
+</head>
+<body>
+<!-- 公共头部 开始 -->
+    <% includeId = cnwidescreenhead?channel=visa %>
+    <!-- 前端性能监控 -->
+    <input type="hidden" id="commonMonitor" value='{"channel":"visa","page":"visa-index"}'/>
+<!-- 公共头部 结束 -->
+
+<!--主体部分开始-->
+<div class="ui-content">
+    <div class="ui-topSearch clearfix">
+        <!-- 签证目的地导航 -->
+        {{#def.deslist}}
+        <!-- 搜索框 -->
+        <div class="ui-searchBox">
+            <div class="ui-search-box">
+                <div class="search-line" id="search-line">
+                    <input id="visaType" type="text" value="全部" readonly="readonly" data-search-type="" class="icon-down">
+                    <ul class="visa_type" style="display: none;">
+                        <i></i>
+                        <li sttrid="0" class="J_trace" trace="search_0">全部</li>
+                        <li sttrid="301" class="J_trace" trace="search_301">个人旅游签证</li>
+                        <li sttrid="314" class="J_trace" trace="search_314">商务签证</li>
+                        <li sttrid="315" class="J_trace" trace="search_315">探亲访友签证</li>
+                    </ul>
+                </div>
+                <input id="sCountry" attrvalu="输入您需要签证的国家/地区" class="search-input icon-down" type="text" value="输入您需要签证的国家/地区">
+            </div>
+            <a data-search-ajax="//www.ly.com/dujia/AjaxCallNew.aspx?type=GetNewVisaCountryUrl1" id="btnSubmit" class="searchBtn" type="button" trace="searchBtn">搜索</a>
+        </div>
+    </div>
+    <!-- 幻灯 -->
+    <div class="iv_full_screen_slider" id="ivFullScreenSlider" trace="trace_screen_slider">
+        <div class="iv_full_screen_slider_con tc_ac_tr" trackkit="AD">
+            <ul>
+                {{?VisaSlide.VisaSlideList && VisaSlide.VisaSlideList.length>0}}
+                {{~VisaSlide.VisaSlideList:itemList:sIndex}}
+                    <li>
+                        <a href="{{=itemList.SlideUrl.replace('http:','')}}" title="{{=itemList.SlideName}}"  trackspot="{{=itemList.SlideName}}^{{=sIndex+1}}"  target="_blank" rel="nofollow" trace="slider_{{=sIndex+1}}">
+                            <img src="{{=itemList.SlideImgaeUrl.replace('http:','')}}" alt="{{=itemList.SlideName}}">
+                        </a>
+                    </li>
+                {{~}}
+                {{?}}
+            </ul>
+        </div>
+    </div>
+
+    <!--提示-->
+    <div class="ui-visaTips">
+        <div class="ui-tipsH">
+            <p class="ui-tips-head">99.8<em>%</em></p>
+            <p class="ui-tips-one">出签成功率</p>
+            <p class="ui-tips-bt">已为超<i>80万</i>人成功办理</p>
+        </div>
+        <ul class="ui-tipSteps">
+            <li>
+                <div class="ui-icon ui-icon1"></div>
+                <div class="ui-text">
+                    <p>产品丰富</p>
+                    <span>六大领区，一站搞定</span>
+                </div>
+            </li>
+            <li>
+                <div class=" ui-icon ui-icon2"></div>
+                <div class="ui-text">
+                    <p>高效服务</p>
+                    <span>办理进度，实时查询</span>
+                </div>
+            </li>
+            <li>
+                <div class="ui-icon ui-icon3"></div>
+                <div class="ui-text">
+                    <p>信息安全</p>
+                    <span>安全保障，绝不泄露</span>
+                </div>
+            </li>
+            <li>
+                <div class="ui-icon ui-icon4"></div>
+                <div class="ui-text">
+                    <p>专家团队</p>
+                    <span>行业专家，为您服务</span>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!--主体-->
+    <div class="ui-conMain clearfix">
+        <div class="ui-conLeft">
+            <!-- 热门签证 -->
+            {{#def.hotvisa}}
+            <!-- 本期抢购 -->
+            <div class="ui-hotVisa" trace="trace-benqiqianggou">
+                <div class="ui-hotVisa-head">
+                    <i class="icon-hotVisa"></i>
+                    <h2>本期抢购</h2>
+                    <p>优惠福利来一波</p>
+                </div>
+                <div class="ui-hotVisa-proLists clearfix" trackkit="Line_Recommend">
+                    {{?PaniBuy && PaniBuy.length>0}}
+                        {{~PaniBuy:buyying:Pindex}}
+                            <div class="ui-hotVisa-proList J_hotVisa-proList">
+                                <img src="{{=buyying.ImageUrl}}" alt="{{=buyying.CountryName}}签证">
+                                <div class="ui-proCover J_proCover ">
+                                <a href="/dujia/visa/visa-{{=buyying.Id}}.html" trace="proBtn_{{=Pindex+1}}" trackspot="{{=buyying.Id}}^{{=Pindex+1}}^0^本期抢购">
+                                    <div class="ui-cover">
+                                        <div class="ui-coverInfos">
+                                            <div class="ui-coverInfo-head">
+                                                <p>{{=buyying.CountryName}}</p>
+                                            </div>
+                                            <div class="ui-coverInfo-foot">
+                                                <p>
+                                                    <em class="coverInfo-icon">¥</em>
+                                                    <em class="coverInfo-price">{{=buyying.AmountDirect}}</em>
+                                                    <em class="coverInfo-qi">起</em>
+                                                </p>
+                                                <i>{{=buyying.RegionName}}领区</i>
+                                            </div>
+                                        </div>
+                                        <p class="ui-satisfaction">
+                                            ——— <em>{{=buyying.RelatedName}}</em> ———
+                                        </p>
+                                        <span class="ui-proBtn">立即抢购</span>
+                                    </div>
+                                    </a>
+                                </div>
+                            </div>
+                        {{~}}
+                    {{?}}
+                </div>
+            </div>
+            <!-- 常见问题 -->
+            {{#def.problem}}
+            <!-- 点评 -->
+            <div class="ui-visaFlow">
+                <div class="ui-visaFlow-nums">
+                    <span>01</span>
+                    <i class="icon-steps"></i>
+                    <span>02</span>
+                    <i class="icon-steps"></i>
+                    <span>03</span>
+                    <i class="icon-steps"></i>
+                    <span>04</span>
+                    <i class="icon-steps"></i>
+                    <span>05</span>
+                </div>
+                <ul class="ui-visaFlow-info">
+                    <li>
+                        <p>提交订单并支付</p>
+                        <span>根据实际情况出发时间</span>
+                        <span>选择对应产品并支付</span>
+                    </li>
+                    <li>
+                        <p>准备材料及审核</p>
+                        <span>按使馆要求准备及提交</span>
+                        <span>材料给客服审核</span>
+                    </li>
+                    <li>
+                        <p>材料邮寄</p>
+                        <span>确定初审通过后</span>
+                        <span>将材料寄往同程</span>
+                    </li>
+                    <li>
+                        <p>同程送签</p>
+                        <span>审核并整理寄送材料</span>
+                        <span>及时递送使馆</span>
+                    </li>
+                    <li>
+                        <p>出签及配送</p>
+                        <span>出签后将按邮寄地址</span>
+                        <span>及时回邮给您</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="ui-conRight">
+            <!-- 签证进度查询 -->
+            <div class="ui-visaPlan">
+                <div class="ui-visaPlan-title">
+                    <h3>签证进度查询</h3>
+                </div>
+                <div class="ui-vailTips">
+                <p class="none"><i></i><span>进度查询条件不可为空</span></p>
+                </div>
+                <ul class="ui-visaPlan-form">
+                    <li>
+                        <label for="orderId">订单号：</label>
+                        <input type="text" id="orderId" class="ui-input-normal J_input-orderId" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+                    </li>
+                    <li>
+                        <label for="phone">手机号：</label>
+                        <input type="text" id="phone" class="ui-input-normal J_input-phone" onkeyup='this.value=this.value.replace(/\D/gi,"")'>
+                    </li>
+                    <li>
+                        <label for="validCode" style="vertical-align: top;">验证码：</label>
+                        <input type="text" id="validCode" class="ui-input-small J_input-validCode">
+                        <div class="ui-getValidCode">
+                            <i onclick="$('#imgcode').attr('src','//www.ly.com/dujia/AjaxCallTravel.aspx?type=ValidateCode&r='+Math.random());">刷新</i>
+                            <img src="//www.ly.com/dujia/AjaxCallTravel.aspx?type=ValidateCode" id="imgcode" width="86" alt="验证码">
+                        </div>
+                    </li>
+                </ul>
+                <a class="ui-visaPlan-btn J_visaPlan-btn" trace="visaPlanbtn">查询</a>
+                <a class="ui-visaPlan-tips" target="_blank" href="//member.ly.com/orderlist.aspx" trace="visaPlantips">忘记订单号?</a>
+            </div>
+            <!--签证公正认证办理-->
+            <div class="ui-visaFair">
+                <a trace="visaFair" rel="nofollow"  target="_blank" href="//www.ly.com/dujia/notaryvisa.html"></a>
+            </div>
+            <div class="ui-visaRank"  trace="trace-visasort" trackkit="rank">
+                <div class="ui-visaRank-title">
+                    <h3>签证热销排行榜</h3>
+                </div>
+                <ul class="ui-visaRank-list clearfix">
+                    {{?HotSale && HotSale.length>0}}
+                        {{~HotSale:hotList:index}}
+                            {{?index<6}}
+                            <li>
+                                {{?index<3}}
+                                    <i class="ui-visaRank-{{=index+1}}">{{=index+1}}</i>
+                                {{??}}
+                                    <i>{{=index+1}}</i>
+                                {{?}}
+                                    <a href= "/dujia/visa/visa-{{=hotList.Id}}.html" trackspot="{{=hotList.Id}}" class="ui-visaRank-con" title="{{=hotList.Name}}" trace="visaRank_{{=index+1}}">{{=hotList.Name}}</a>
+                                </li>
+                            {{?}}
+                        {{~}}
+                    {{?}}
+                </ul>
+            </div>
+            <!-- 最新签证预订 -->
+            <div class="ui-visaNew" trace="trace-visanew">
+                <div class="ui-visaNew-title">
+                    <h3>最新签证预订</h3>
+                </div>
+                <ul id="J_visaNew-list" class="ui-visaNew-list">
+                    <div id="visaNew-hide">
+                        {{?LatestBook && LatestBook.length>0}}
+                            {{~LatestBook:newBook:Nindex}}
+                                <li>
+                                    <i class="icon-sort"></i>
+                                    <p>
+                                        <span class="ui-visaNew-top">
+                                            {{=newBook.Mobile}} {{=newBook.BookDate}}前预订了
+                                        </span>
+                                        <a href= "/dujia/visa/visa-{{=newBook.ProductId}}.html" class="ui-visaNew-bottom" title="{{=newBook.ProductName}}" trace="visaNew_{{=Nindex+1}}">
+                                            {{=newBook.ProductName}}
+                                        </a>
+                                    </p>
+                                </li>
+                            {{~}}
+                        {{?}}
+                    </div>
+                    <div id="visaNew-show">
+                    </div>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!--主体部分结束-->
+
+<!--侧边栏begin-->
+<div id="ivacation-side-nav"></div>
+<!--侧边栏end-->
+
+ <!--红包入口-->
+<div class="packetBox" style="display:none">
+    <div class="packet-btn open J_btnPkOn">
+        <img src="img/dest/icon-packet-go.png" alt="">
+    </div>
+    <div class="packet-main">
+        <div class="packet-content">
+            <div class="packet-view">
+                <div class="pop1">
+                    <span class="cost">5</span>
+                    <span class="btn J_btnPKGet">领取红包</span>
+                    <span class="date">有效期：2016/10/17-2016/11/31</span>
+                </div>
+                <div class="pop2" style="display:none">
+                    <span class="title">恭喜领取成功</span>
+                    <span class="cost use">5</span>
+                    <span class="tips">带有<i>同程红包</i>标签的签证产品均可使用</span>
+                    <span class="date ">有效期：2016/10/17-2016/11/31</span>
+                    <span class="btn use J_btnPKUse">立即使用</span>
+                </div>
+                <div class="pop3" style="display:none">
+                    <span class="notice">亲，您的5元红包已经躺在您的红包账户啦<i>( ^_^ )</i></span>
+                    <span class="btn use J_btnPKUse">立即使用</span>
+                </div>
+            </div>
+            <div class="packet-boy"></div>
+            <div class="packet-cloud">
+                <h6>活动规则：</h6>
+                <span>1、该红包仅适用于含<i>同程红包</i>标签的签证在线支付产品；</span>
+                <span>2、每个会员限领一个红包，一个订单只能使用一个红包，且不能与其他活动（如折扣卡、银行立减等优惠）同时使用；</span>
+                <span>3、使用红包的订单产生退款时，红包不予退还，且不拆分、不转赠、不提现；</span>
+            </div>
+        </div>
+        <i class="close J_btnPKClose"></i>
+    </div>
+    <div class="packet-bg-img"></div>
+    <div class="packet-bg-color"></div>
+</div>
+
+<!--弹框-->
+<div class="J_noResult" style="display: none;">
+    <div class="ui-noResult">
+        <i class="icon-search"></i>
+        <p class="ui-noResult-content">当前订单号并无代办签证<br>快去办理吧~~</p>
+    </div>
+</div>
+
+<div class="J_searchResult" style="display: none;">
+    <div class="ui-searchResult">
+
+
+    </div>
+</div>
+
+<div class="popBox">
+    <div class="pop_top"></div>
+    <div class="pop_main">暂无该国家签证，请重新输入</div>
+</div>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js?v=20150413"></script><!--ignore-->
+<!-- 统计相关功能 -->
+<% includeId = node_dj_common_stat %>
+<!-- 公共页脚 开始 -->
+<% includeId = cnwidescreenfoot?vrcode=10002-2008-0 %>
+<div class="footer-link">
+{{?visalinks && visalinks.length}}
+    <div class="visa-link ">
+        <span>友情链接：</span>
+        <div class="list">
+            {{~visalinks:link}}
+               <a href="{{=link.DURL}}" target="_blank">{{=link.DURLName}}</a>
+            {{~}}
+        </div>
+    </div>
+{{?}}
+</div>
+<!-- 公共页脚 结束 -->
+<script>
+    window.host = "//www.ly.com";
+</script><!--ignore-->
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script>
+
+<script type="text/javascript">
+    fish.admin.config({mSlider: {v: "0.4.1",g: 2013052001,css: 1}});
+</script>
+
+<script type="text/javascript">
+    fish.ready(function () {
+        (function () {
+            fish.one("#ivFullScreenSlider").mSlider({
+                canvas: "#ivFullScreenSlider .iv_full_screen_slider_con   ul",
+                content: "#ivFullScreenSlider .iv_full_screen_slider_con ul li" ,
+                aniType: "fade",
+                moveTime: "5000",
+                autoScroll: true
+            });
+        })();
+    });
+</script>
+<script data-loader="true" src="//modules/sea.js"></script>
+
+<script>
+    seajs.require("./index").init();
+</script>
+
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js"></script>
+<script>
+    //初始化模块统计
+    SPM_MODULE&&SPM_MODULE.init();
+</script>
+<script type="text/javascript">
+    var rtTag ={
+        "data": {
+            "etravel_page": {
+                "page_type": "index",
+                "p_class1": "出境游",
+                "p_class2": "签证首页"
+            }
+        }
+    };
+    stat.init({
+        "baidu": {
+            "parameter": "pc",
+            "hmt": [
+                ['_setAccount', '53a0d71dba66835ff1aa907db99144d8'],
+                ['_trackRTEvent', rtTag]
+            ]
+        },
+        "_tcHotmapx": {
+            "pid": "652",
+            "sp": "100"
+        },
+        "mvl": {
+            "_mvq": [
+                ['$setAccount', 'm-135073-0'],
+                ['$logConversion']
+            ],
+            "isImmediateExcu": true
+        }
+    });
+</script>
+</body>
+</html>

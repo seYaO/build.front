@@ -1,0 +1,67 @@
+<div class="write_list rule_each" preferentialtype="${PreferentialType}">
+        <div style="display: inline-block; width: 104px;" class="ui-label" style="display: block;">
+             <span>${PreferentialTypeName}：</span>
+             {{? PreferentialType==""}}
+             <label class="on_check">
+                 <input type="radio" checked="checked" value="${PreferentialType}" name="chk_rule" class="chk_rule" id="chk_rule_${PreferentialType}" />
+             </label>
+             {{??}}
+             <label class="">
+                 <input type="radio" value="${PreferentialType}" name="chk_rule" class="chk_rule" id="chk_rule_${PreferentialType}" />
+             </label>
+            {{?}}
+        </div>
+
+        <div style="display: inline-block; width: 720px; margin-right: 3px; line-height: 24px; height: 26px; font-size: 14px; margin-left: 14px;">
+          {{? (PreferentialType == 0) && RuleList.length > 0}}
+            <select id="select_${PreferentialType}" class="select_type" style="line-height: 22px; height: 22px; margin-left: 5px">
+               {{var RuleList_Count = RuleList.length;}}
+               {{~PreferentialType:Preferential_Type:PreferentialType_Index}}
+                    {{? PreferentialType_Index < RuleList_Count}}
+                        <option value="{{=Preferential_Type.RuleId}}-0-" index="{{=PreferentialType_Index}}">￥{{=Preferential_Type.PreferentialPrice}} 有效期:{{=Preferential_Type.EndDate}}</option>
+                    {{?}}
+               {{~}}
+            </select>
+               {{var RuleList_Count = RuleList.length;}}
+               {{~PreferentialType:Preferential_Type:PreferentialType_Index}}
+                    {{? PreferentialType_Index < RuleList_Count}}
+                        {{? PreferentialType_Index == 0}}
+                            <span class="rule_lable" index="{{=PreferentialType_Index}}" titleself="{{=Preferential_Type.Remark}}">{{=Preferential_Type.Notice}}</span>
+                        {{??}}
+                            <span class="rule_lable none" index="{{=PreferentialType_Index}}" titleself="{{=Preferential_Type.Remark}}">{{=Preferential_Type.Notice}}</span>
+                        {{?}}
+                    {{?}}
+               {{~}}
+          {{?}}
+
+          {{? PreferentialType == 5 && RuleList.length > 0}}
+              <select Id="select_${PreferentialType}" class="select_type" style="line-height:22px; height:22px; margin-left:5px">
+                {{var RuleList_Count = RuleList.length;}}
+                {{~PreferentialType:Preferential_Type:PreferentialType_Index}}
+                    {{? PreferentialType_Index < RuleList_Count}}
+                        <option value="{{=Preferential_Type.RuleId}}-0-" index="${m}">有效期:{{=Preferential_Type.EndDate}}</option>
+                    {{?}}
+                {{~}}
+              </select>  
+
+              {{var RuleList_Count = RuleList.length;}}
+               {{~PreferentialType:Preferential_Type:PreferentialType_Index}}
+                    {{? PreferentialType_Index < RuleList_Count}}
+                        {{? PreferentialType_Index == 0}}
+                            <span  class="rule_lable" index="{{=PreferentialType_Index}}" titleself="{{=Preferential_Type.Remark}}"> {{=Preferential_Type.Notice}}</span>
+                        {{??}}
+                            <span  class="rule_lable none" index="{{=PreferentialType_Index}}" titleself="{{=Preferential_Type.Remark}}"> {{=Preferential_Type.Notice}}</span>
+                        {{?}}
+                    {{?}}
+               {{~}}
+          {{?}}
+
+
+           {{? PreferentialType == ""}}
+                <span style="line-height: 22px; height: 22px; margin-left: 6px">
+                    <span for="chk_rule_0">不使用优惠&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="discountLogin none">如帐户内有更多优惠,请<i style="color: #ff7800; text-decoration: underline; cursor: pointer;" class="orderLogin">&nbsp;登录&nbsp;</i>后使用</span></span>
+                </span>
+            {{?}}
+        </div>
+
+</div>

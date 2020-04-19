@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script src="../../jquery.js"></script>
+        <style>
+            .J_Content{
+                height: 500px;
+            }
+            .J_ScrollNav{
+                right: 0;
+            }
+            .J_ScrollNav a{
+                display: block;
+            }
+            .J_ScrollNav a.on{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="J_ScrollNav">
+
+        </div>
+        <div class="J_Content" id="one" data-txt="123">123123</div>
+        <div class="J_Content" id="two" data-txt="234">1231234</div>
+        <div class="J_Content" id="three" data-txt="345">123123345</div>
+        <div class="J_Content" id="four" data-txt="456">1255553123345</div>
+        <div class="J_Content" id="five" data-txt="567">1333323123345</div>
+    </body>
+    <script src="index.js"></script>
+    <script>
+        $(".J_ScrollNav").scrollspy({
+            contentClass: ".J_Content",
+            curClass: "on"
+        })
+    </script>
+</html>

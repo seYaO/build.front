@@ -1,0 +1,292 @@
+.flyMoreCity{
+    background: #fff;
+    min-width: 315px;
+    z-index: 100;
+    position: relative;
+    box-shadow: 0 0 16px 2px rgba(0,0,0,.2);
+    color: #0185c6;
+    margin-top: 10px;
+    border: 1px solid #dcdcdc;
+}
+.flycityItem .flykm{
+    color: #999999;
+    margin-left: 16px;
+}
+.title-flycity{
+    border-bottom: 1px dashed #dcdcdc;
+    padding: 6px 2px 6px 4px;
+}
+.flycityItem{
+    padding-left: 4px;
+    line-height: 25px;
+    cursor: pointer;
+}
+.flycityItem i{
+    display: inline-block;
+    width: 10px;
+    height: 13px;
+    background: url("img/dest/icon-dest.png") left no-repeat;
+    margin-right: 6px;
+    vertical-align: -1px;
+    margin-left: 12px;
+}
+.mNotice-arrows{
+    position: absolute;
+    display: block;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    line-height: 0;
+    border-style: dashed dashed solid;
+    border-width: 8px;
+    z-index: 99999999;
+    background: 0;
+    top: -15px;
+    left: 15px;
+    border-color: transparent transparent #fff;
+}
+.flyMoreCity .noresult-fly{
+    color: #999999;
+    padding: 5px;
+}
+.flycityItem:hover{
+    background-color: #eceaea;
+}
+.flyMoreCity em{
+    color: #ff6633;
+}
+.flycityItem.select{
+    background-color: #eceaea;
+}
+.jijiuInfo .inStyle{
+    border: 1px solid #0185c6;
+}
+.dj-calendar .day_panel .group_month {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    padding: 0;
+}
+.dj-calendar .day_panel {
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%;
+}
+.dj-calendar .panel .month-nav{
+    height: 45px!important;
+    line-height: 45px!important;
+}
+.month-panel .header{
+    border: none!important;
+}
+.dj-calendar .panel .month-panel td {
+    height: 28px;
+    border:none!important;
+}
+.dj-calendar .panel .month-panel th{
+    border: none!important;
+}
+.dj-calendar .panel .month-nav{
+    background: #fff!important;
+}
+.dj-calendar .panel .month-nav .group_title{
+    color: #333;
+    font-weight: normal;
+}
+.dj-calendar .ico{
+    width: 30px!important;
+    height: 30px!important;
+}
+.dj-calendar .ico.previous-month,.dj-calendar .ico.next-month{
+    background: url(//js.40017.cn/cn/public/module/Calendar/0.3/calendar_arrow_white.png?v=2) 0 0 no-repeat!important;
+}
+.dj-calendar .panel .month-panel td.select{
+        background: #50b400!important;
+}
+.dj-calendar .ico.previous-month{
+    background-position: -8px 0px!important;
+}
+.dj-calendar .ico.next-month{
+    background-position: -49px 0px!important;
+}
+.dj-calendar .ico.previous-month:hover{
+    background-position: -100px 0!important;
+}
+.dj-calendar .ico.next-month:hover{
+    background-position: -143px 0px!important;
+}
+.mNotice-mTab {
+    width: 422px;
+    background: #fff;
+    box-shadow: 0 0 16px 2px rgba(0,0,0,.2);
+}
+.mNotice-mTab-head {
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    text-indent: 10px;
+    font-size: 12px;
+    font-weight: 400;
+    background: #fff;
+    color: #999;
+    padding: 15px 10px 0 8px;
+    border-top: none;
+    border-bottom: 0;
+}
+.mNotice-mTab-head-remark {
+    font-weight: 400;
+}
+.mNotice-wrap .white {
+    background-position: 0 0;
+}
+.mNotice-close {
+    position: absolute;
+    height: 11px;
+    width: 11px;
+    background: url(//js.40017.cn/cn/public/module/mNotice/0.4.5/img/pic.png) no-repeat 0 0;
+    right: 18px;
+    top: 22px;
+    cursor: pointer;
+}
+.mNotice-mTab-wrap {
+    padding: 5px 10px;
+    border-top: 0;
+}
+.mNotice-mTab-tab-tray {
+    margin-top: 5px;
+    position: relative;
+    z-index: 1;
+}
+.mNotice-mTab-tab-tray .mNotice-mTab-item {
+    padding: 0 7px;
+}
+.mNotice-mTab-item {
+    float: left;
+    padding: 0 12px;
+    height: 22px;
+    line-height: 22px;
+    font-weight: 500;
+    cursor: pointer;
+}
+body .mNotice-mTab-content {
+    width: 392px;
+}
+.mNotice-mTab-content {
+    margin-top: -1px;
+    border-top: 1px solid #ddd;
+    position: relative;
+    z-index: 0;
+    width: 375px;
+    padding: 10px 5px 5px;
+}
+.mNotice-mTab-content .mNotice-normal {
+    float: left;
+    cursor: pointer;
+    display: block;
+    border: 1px solid #FFF;
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+    padding: 2px 13px;
+    margin: 0;
+    width: 63px;
+    color: #333;
+    max-width: 6em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    z-index: 106;
+}
+body .mNotice-mTab-content .mNotice-fixWidth {
+    width: 63px;
+}
+.mNotice-mTab-tab-tray .current {
+    border: 0;
+    border-bottom: 1px solid #50b400;
+    font-weight: 700;
+    color: #50b400;
+}
+.defaultCity{
+    width: 422px;
+    z-index: 105;
+    position: absolute;
+    top: 37px;
+}
+.mNotice-mTab-content .mNotice-normal:hover{
+    color: #ff7800;
+}
+.hotelcityBox .flycityItem{
+    color: #666;
+    line-height: 28px;
+}
+.title-hotel-more{
+    color: #999;
+    line-height: 28px;
+    margin-left: 6px;
+    margin-right: 6px;
+    border-bottom: 1px solid #999;
+}
+input.input_error {
+    border: 1px solid #ff6600;
+}
+body .dj-validate {
+    width: auto;
+    color: #333;
+    font: 12px/12px arial,SimSun;
+    background: url("img/dest/icon-error.png") left no-repeat;
+    width: 118px;
+    height: 31px;
+    z-index: 10;
+    border: none;
+    position: absolute;
+}
+body .dj-validate .error_gp {
+    color: #333;
+}
+body .dj-validate .error_gp{
+    line-height: 36px;
+}
+.error-warning1 {
+    text-align: center;
+    width: 500px;
+    margin: 0 auto;
+    font-size: 16px;
+    color: #0185c6;
+}
+.fixed-warn1 {
+    position: fixed;
+    top: 38%;
+}
+.data-loading {
+    z-index: 3;
+    width: 100%;
+    height: 216px;
+    display: block;
+}
+.error-warning1 .data-loading {
+    height: 180px;
+}
+.data-loading .bg {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+}
+.data-loading span {
+    background: url(//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif) no-repeat;
+    padding-left: 76px;
+    height: 70px;
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    margin-left: -108px;
+    margin-top: -12px;
+    font-size: 18px;
+    line-height: 70px;
+}
+.fixed-warn1 .data-loading span {
+    left: 44%;
+}
+.default .dialog_modal_gp {
+    background-color: transparent !important;
+}
+input::-ms-clear{display:none;}
+input::-ms-reveal{display: none;}

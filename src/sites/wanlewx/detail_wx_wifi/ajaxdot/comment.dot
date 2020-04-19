@@ -1,0 +1,62 @@
+
+{{var value = it.CommentSummary,list = it.CommentList[0];}}
+<a class="part-head J_hide_show "  href="/localfun/wanle/comment_{{=list.lineId}}.html?wvc1=1&wvc2=1">
+    <div class="part_title title2"><i></i>用户点评<span></span>
+        <font class="comm-num">{{=value.TotalCount}}条点评 &nbsp;&nbsp; {{=value.ManYiDu}}%满意</font>
+    </div>
+</a>
+<div class="comment-list border-top border-bottom">
+    <div class="comment-content J_comment_info">
+        <div class="comm-detail">
+            <h4>
+                <img src="{{=list.UserImage}}">
+                <div class="tel">
+                    <span>{{=list.Creator}}</span>
+                    <span>{{=list.DPTime.split(" ")[0]}}</span>
+                </div>
+
+                {{?list.UserLeavel == 1}}
+                    {{var leavel_Name = "普卡";}}
+                {{??list.UserLeavel == 2}}
+                    {{var leavel_Name = "银卡";}}
+                {{??list.UserLeavel == 3}}
+                    {{var leavel_Name = "金卡";}}
+                {{??list.UserLeavel == 4}}
+                    {{var leavel_Name = "白金卡";}}
+                {{?}}
+
+                <div class="time">{{=list.TypeDesc}}</div>
+            </h4>
+            <p class="info">{{=list.Content}}</p>
+
+             {{?list.imageCount == 0}}
+                <ul class="image-line clearfix" data-index="0"></ul>
+                {{??}}
+                <ul class="image-line clearfix" data-index="0">
+                        {{? typeof(list.ImageList) == "string"}}
+                            {{var imgs = list.ImageList.split(",");}}
+                        {{??}}
+                            {{var imgs = list.ImageList;}}
+                        {{?}}
+                        {{?imgs.length > 4}}
+                            {{~imgs:img:index}}
+                            {{?index < 3}}
+                                <li><img data-pos="{{=index}}" src="{{=img}}" data-length={{=imgs.length}} data-key="imageView" data-context="#imageViewPage"></li>
+                            {{?}}
+                            {{~}}
+                        <li class="image-amount" data-key="initImageList" data-context="#initImageListPage">
+                            <p>
+                                <span>共{{=imgs.length}}张</span>
+                            </p>
+                        </li>
+                        {{??}}
+                            {{~imgs:img:index}}
+                                <li><img data-pos="{{=index}}" src="{{=img}}" data-length={{=imgs.length}} data-key="imageView" data-context="#imageViewPage"></li>
+                            {{~}}
+                        {{?}}
+
+                    </ul>    
+            {{?}}
+        </div>
+    </div>
+</div>

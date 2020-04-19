@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html xmlns="//www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <script type="text/javascript" data-loader="true" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script>
+<link href="index.css" rel="stylesheet" />
+<script src="index.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var content = $(".hotel-detail").prop("outerHTML");
+            var dialog = $.dialog({
+                width: "100%",
+                height: "100%",
+                mask: true,
+                buttons: {
+                    '<i><i>': function () {
+                        this.close();
+                        var returnUrl = encodeURIComponent(window.location.href);
+                        document.location.href = data.transferUrl + "?returnUrl=" + returnUrl;
+                    }
+                },
+                content: content
+            });
+            dialog.open();
+        });
+    </script>
+    <style type="text/css">
+        .hotel-detail {
+            padding-top: 30px;
+            display:none;
+        }
+        .hotel-detail h3 {
+            font-size: 32px;
+            height: 90px;
+            line-height: 90px;
+            text-align:center;
+        }
+        .hd-content .hd-pic {
+            width:100%;
+            height:400px;
+            display:inline-block;
+        }
+        .hd-content .hd-pic img {
+            width:100%;
+            height:100%;
+        }
+        .hd-describe {
+            padding:0 30px;
+        }
+        .ui-dialog-content .hotel-detail {
+            display: block;
+            font-size: 32px;
+            color: #fff;
+        }
+        .ui-dialog-btns .ui-btn i {
+            width:40px;
+            height:44px;
+            display:inline-block;
+            background:"url(img/close.png)" no-repeat center;
+        }
+    </style>
+</head>
+<body>
+    <div class="hotel-detail">
+        <h3>巴厘岛玛萨莉度假温泉酒店</h3>
+        <div class="hd-content">
+            <a class="hd-pic" href="javascript:void(0)">
+                <img src="//pic1.40017.cn/line/2006/09/19/2/2006091913375150721_600x300_00.jpg"/>
+            </a>
+            <div class="hd-describe">
+                <h4>酒店描述</h4>
+                <p class="describe">
+                    Jalan Saba, Banjar Gelumpang Sukawati Gianyar, 克拉马斯, 巴厘岛, 印度尼西亚Jalan Saba, Banjar Gelumpang Sukawati Gianyar, 克拉马斯, 巴厘岛, 印度尼西亚Jalan Saba, Banjar Gelumpang Sukawati Gianyar, 克拉马斯, 巴厘岛, 印度尼西亚
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

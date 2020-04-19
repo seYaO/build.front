@@ -1,0 +1,163 @@
+.citybox {
+  float: left;
+  position: relative;
+  z-index: 9999;
+  width: auto;
+  max-width: 118px;
+  margin-left: 5px;
+  line-height: 58px;
+  margin-top: -12px;
+}
+.citybox:hover {
+  cursor: pointer;
+}
+.citybox #city_select.city_b {
+  position: relative;
+  z-index: 3;
+  font-size: 14px;
+  line-height: 58px;
+  color: #999;
+  padding: 0 10px;
+  float: left;
+  width: auto;
+  border: 1px solid transparent;
+  box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0);
+  height: 58px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+  border-radius: 3px;
+  background: none;
+}
+.citybox #city_select.city_b.city_b_enter {
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 2px 0 #ccc;
+  border-bottom: none;
+}
+.citybox #city_select.city_b.city_b_enter:after {
+  content: '';
+  position: absolute;
+  top: 46px;
+  left: 0;
+  height: 13px;
+  width: 103%;
+  background: #fff;
+  z-index: 10003;
+}
+.citybox #city_select.city_b.city_b_enter i {
+  background: url(//img1.40017.cn/cn/c/home/common/top_bg.png) no-repeat;
+  background-position: -29px -10px;
+}
+.citybox #city_select.city_b strong {
+  width: auto;
+  max-width: 80px;
+  font-size: 20px;
+  color: #333;
+  padding: 0;
+  font-weight: normal;
+  height: 58px;
+  display: inline-block;
+  overflow: hidden;
+}
+.citybox #city_select.city_b i {
+  background: url(//img1.40017.cn/cn/c/home/common/top_bg.png) no-repeat;
+  display: inline-block;
+  margin: -3px 0 0 4px;
+  overflow: hidden;
+  background-position: -15px -10px;
+  width: 11px;
+  height: 6px;
+  vertical-align: 24px;
+}
+.citybox #popleave {
+  position: absolute;
+  z-index: 2;
+  top: 15px;
+}
+.citybox #popleave .leavecity {
+  width: 352px;
+  background: #fff;
+  box-shadow: 1px 1px 2px #f0f0f0;
+  top: -1px;
+  position: absolute;
+  margin-top: 33px;
+  z-index: 2;
+  border: 1px solid #ddd;
+}
+.citybox #popleave .leavecity.leavecity-enter {
+  background: #fff;
+  border: 1px solid #ddd;
+  box-shadow: 0 0 8px 0 #ccc;
+  border-top: none;
+}
+.citybox #popleave .leavecity .sub-scity-tips {
+  padding: 25px 15px 10px 20px;
+  font-size: 12px;
+  color: #666;
+}
+.citybox #popleave .leavecity .sub-scity-tips .scity-tips-main:nth-child(2) {
+  padding-left: 10px;
+}
+.citybox #popleave .leavecity .sub-scity-tips ul {
+  border-bottom: #ddd 1px solid;
+  padding-left: 0;
+}
+.citybox #popleave .leavecity .sub-scity-tips ul li {
+  float: left;
+  padding: 0 10px;
+  line-height: 25px;
+  cursor: pointer;
+  background: #fff;
+  border: #fff 1px solid;
+}
+.citybox #popleave .leavecity .sub-scity-tips ul li.cur {
+  border-bottom: #50b400 2px solid;
+  color: #50b400;
+  position: relative;
+  top: 1px;
+  font-weight: 700;
+}
+.citybox #popleave .leavecity .sub-scity-tips dl {
+  margin-top: 8px;
+  width: 332px;
+}
+.citybox #popleave .leavecity .sub-scity-tips dl dt {
+  float: left;
+  width: 16px;
+  height: 16px;
+  text-align: center;
+  background: #ffa63c;
+  color: #fff;
+  line-height: 16px;
+  margin-top: 2px;
+  margin-right: 16px;
+}
+.citybox #popleave .leavecity .sub-scity-tips dl dd {
+  float: left;
+  width: 300px;
+}
+.citybox #popleave .leavecity .sub-scity-tips dl dd .mbot5 {
+  margin-bottom: 5px;
+}
+.citybox #popleave .leavecity .sub-scity-tips dl dd a {
+  margin-right: 10px;
+  float: left;
+  line-height: 18px;
+  height: 18px;
+  color: #333;
+  text-align: left;
+  border: #fff 1px solid;
+  white-space: nowrap;
+  width: 48px;
+  width: 45px \9;
+  overflow: hidden;
+}
+.citybox #popleave .leavecity .sub-scity-tips dl dd a:hover {
+  text-align: left;
+  color: #ff7800;
+}
+.w990 .citybox {
+  margin-left: -15px;
+}

@@ -1,0 +1,185 @@
+<!--接送机品类-->
+<!--车型说明start-->
+{{?airportPickupInfo}}
+{{var carInfo = airportPickupInfo.CarInfoEntity;}}
+{{?carInfo}}
+<div id="carInfo" data-txt="车型说明" class="ly_details_item J_NavBox route_info">
+    <h2 class="detial_tit">车型说明</h2>
+    <div class="bus_explain clearfix">
+        <div class="bus_slider">
+            <div class="carousel">
+                {{?carInfo.CarImageList && carInfo.CarImageList.length}}
+                <ul class="carousel_img">
+                    {{~carInfo.CarImageList:imgs}}
+                    <li><img src="{{=imgs.replace(".png","_430x270_00.png").replace(".jpg","_430x270_00.jpg")}}" alt=""/></li>
+                    {{~}}
+                </ul>
+                {{?}}
+            </div>
+        </div>
+        <div class="slider_info">
+            <div class="model_detail_top">
+                {{?carInfo.CarName}}
+                <h3>{{=carInfo.CarName}}</h3>
+                {{?}}
+                {{?carInfo.ReferCarStyle}}
+                <span>参考车型：{{=carInfo.ReferCarStyle}}</span>
+                {{?}}
+                <i class="J_Tips little_desc" data-content="<div>人数行李说明
+                    <p>1、目前页面显示人数均为可乘坐人数的最高上限，儿童婴儿同样占座。</p>
+                    <p>2、每减少一位乘客，可相应增加一件行李。</p>
+                    <p>3、以上行李均为24寸大小标准，1件28寸行李=2件24寸行李。</p></div>"></i>
+            </div>
+            <div class="model_detail_bottom">
+                {{?carInfo.CarPassengerNum}}
+                <span class="sug_num">建议乘坐{{=carInfo.CarPassengerNum}}人</span>
+                {{?}}
+                {{?carInfo.CarLuggageNum}}
+                <span class="luggage_num">{{=carInfo.CarLuggageNum}}件行李</span>
+                {{?}}
+            </div>
+            {{?airportPickupInfo.AccessorialService && airportPickupInfo.AccessorialService.length}}
+            <div class="bus_server">
+                <div class="append_server">附加服务：</div>
+                <div class="server_label">
+                    {{~airportPickupInfo.AccessorialService:server}}
+                    <span>{{=server}}</span>
+                    {{~}}
+                </div>
+            </div>
+            {{?}}
+        </div>
+
+    </div>
+
+</div>
+{{?}}
+<!--车型说明end-->
+
+<!--服务说明start-->
+{{?airportPickupInfo.Area.length || airportPickupInfo.ServiceTime.length || airportPickupInfo.PriceInclude.length || airportPickupInfo.PriceNotInclude.length || airportPickupInfo.TakeInstruction.length || airportPickupInfo.SendInstruction.length}}
+<div id="serverInfo" data-txt="服务说明" class="ly_details_item  J_NavBox">
+    <h2 class="detial_tit">服务说明</h2>
+    <ul>
+        {{?airportPickupInfo.Area.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;服务区域：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.Area}}
+            </div>
+        </li>
+        {{?}}
+        {{?airportPickupInfo.ServiceTime.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;服务时间：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.ServiceTime}}
+            </div>
+        </li>
+        {{?}}
+        {{?airportPickupInfo.PriceInclude.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;费用包含：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.PriceInclude}}
+            </div>
+        </li>
+        {{?}}
+        {{?airportPickupInfo.PriceNotInclude.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;费用不包含：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.PriceNotInclude}}
+            </div>
+        </li>
+        {{?}}
+        {{?airportPickupInfo.TakeInstruction.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;接机服务说明：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.TakeInstruction}}
+            </div>
+        </li>
+        {{?}}
+        {{?airportPickupInfo.Area.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;送机服务说明：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.SendInstruction}}
+            </div>
+        </li>
+        {{?}}
+
+    </ul>
+</div>
+{{?}}
+<!--服务说明end-->
+
+<!-- 预订须知start -->
+{{?airportPickupInfo.UseInstruction.length || airportPickupInfo.Attention.length || airportPickupInfo.Refund.length}}
+<div id="ReserveInfo" data-txt="预订须知" class="ly_details_item J_NavBox order_know">
+    <h2 class="detial_tit">预订须知</h2>
+    <ul>
+        {{?airportPickupInfo.UseInstruction.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;使用说明：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.UseInstruction}}
+            </div>
+        </li>
+        {{?}}
+        {{?airportPickupInfo.Attention.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;注意事项：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.Attention}}
+            </div>
+        </li>
+        {{?}}
+        {{?airportPickupInfo.Refund.length}}
+        <li class="clearfix">
+            <div class="explain_title">•&nbsp;退改规则：</div>
+            <div class="explain_rules">
+                {{=airportPickupInfo.Refund}}
+            </div>
+        </li>
+        {{?}}
+    </ul>
+</div>
+{{?}}
+<!-- 预订须知end -->
+{{?}}
+
+<!--产品介绍start-->
+{{var exerienceList = basicInfo.PlayExerienceList;}}
+{{?exerienceList && exerienceList.length}}
+<div id="lineInfo" data-txt="产品介绍" class="ly_details_item  J_NavBox">
+    <h2 class="detial_tit">产品介绍</h2>
+    {{~exerienceList:play}}
+        <p tid="{{=play.UrlType}}">{{=play.TravelDescription}}</p>
+        {{?play.UrlType === 1}}
+            <ul class="img_p big_single_pic">
+                <li><img src="{{=play.ImgUrlA.replace('http:','')}}"></li>
+            </ul>
+        {{??play.UrlType === 2}}
+            <ul class="img_p surper_single">
+                <li class="surper_big"><img src="{{=play.ImgUrlA.replace('http:','')}}"></li>
+            </ul>
+        {{??}}
+            <ul class="img_p">
+                {{?play.ImgUrlA !== ""}}<li class="twoSmall"><img src="{{=play.ImgUrlA.replace('http:','')}}"></li>{{?}}
+                {{?play.ImgUrlB !== ""}}<li class="twoSmall last"><img src="{{=play.ImgUrlB.replace('http:','')}}"></li>{{?}}
+            </ul>
+        {{?}}
+    {{~}}
+    {{?basicInfo.ViewTitle}}
+    <h3 class="add_experience_title">【温馨提示】</h3>
+    <div class="add_experience">
+        <a href="/dujia/wanle/notes/{{=basicInfo.ProductId}}.html" target="_blank">{{=basicInfo.ViewTitle}}</a>
+    </div>
+    {{?}}
+</div>
+{{?}}
+<!--产品介绍end-->
+
+

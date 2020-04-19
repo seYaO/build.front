@@ -1,0 +1,30 @@
+{{var ProductType = info.ProductType;}}
+{{var ProductCategory = info.ProductCategory;}}
+{{var priceArr = info.PriceInfoOfType.concat(info.PriceInfo);}}
+
+
+{{?priceArr}}
+    {{var ticketType;}}
+    {{var flag = true;}}
+    {{?info.PriceInfoOfType.length > 0}}{{flag = true;}}{{??}}{{flag = false;}}{{?}}
+
+    {{? (ProductType == 9 && ProductCategory == 91) || (ProductType == 9 && ProductCategory == 93)}}
+        <section class="device_info">
+            <a href="/localfun/wanle/special-intro_{{=info.ProductId}}.html?wvc1=1&wvc2=1"><div class="part_title title1"><i></i>产品介绍<span></span></div></a>
+            <div class="device_detail">
+                {{?info.PhoneCardEntity.TalkTime != ""}}
+                <p><span>通话时长：</span>{{=info.PhoneCardEntity.TalkTime}}</p>
+                {{?}}
+                
+                {{?info.PhoneCardEntity.ShortName != ""}}
+                <p><span>流量套餐：</span>{{=info.PhoneCardEntity.ShortName}}</p>
+                {{?}}
+                
+                {{?info.PhoneCardEntity.WPCReceiveTimeDesc !=""}}
+                <p><span>快递：</span>{{=info.PhoneCardEntity.WPCReceiveTimeDesc}}</p>
+                {{?}}
+                
+            </div>
+        </section>
+    {{?}}
+{{?}}

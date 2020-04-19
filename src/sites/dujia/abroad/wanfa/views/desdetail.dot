@@ -1,0 +1,146 @@
+<div class="middle_content md_scenery">
+    <!--景点开始-->
+    {{var PlaceList = DesInfo.PlaceExtends.PlaceExtendsList;}}
+    {{?PlaceList && PlaceList.length>0}}
+        <div class="middle_header">
+            <div class="middle_title scenery">{{=destNameC}}旅游必玩景点</div>
+        </div>
+        <div class="md_scenery_list">
+            {{~PlaceList:viewList}}
+            <div class="md_scenery_item">
+            <div class="content_gp">
+                    <div class="title">{{=viewList.Name}}</div>
+                    <div class="content">
+                        {{=viewList.Description}}
+                    </div>
+                    <div class="content">
+                        门票：{{?viewList.AttractionTickets!=""}}{{=viewList.AttractionTickets}}{{??}}无{{?}}
+                    </div>
+                    <div class="content">
+                        交通：{{?viewList.AttractionTransportation!=""}}{{=viewList.AttractionTransportation}}{{??}}无{{?}}
+                </div>
+                </div>
+                {{?viewList.Pictures && viewList.Pictures.length>0}}
+                    {{~viewList.Pictures:Pics:picInd}}
+                    {{?picInd==0}}
+                    <div class="desimg">
+                        {{?Pics.AttractionPictureUrls!=""}}
+                            <img src="{{=Pics.AttractionPictureUrls.replace('http:','')}}" data-img="{{=Pics.AttractionPictureUrls.replace('http:','')}}" alt="" />
+                        {{??}}
+                            <img src="//pic3.40017.cn/line/admin/2015/10/22/14/r9EIYx.jpg" data-img="//pic3.40017.cn/line/admin/2015/10/22/14/r9EIYx.jpg" alt="" />
+                        {{?}}
+                    </div>
+                    {{?}}
+                    {{~}}
+                {{??}}
+                <div class="desimg">
+                    <img src="//pic3.40017.cn/line/admin/2015/10/22/14/r9EIYx.jpg" data-img="//pic3.40017.cn/line/admin/2015/10/22/14/r9EIYx.jpg" alt="" />
+                </div>
+                {{?}}
+        </div>
+        {{~}}
+        </div>
+    {{?}}
+    <!-- 景点结束 -->
+
+    <!-- 美食开始 -->
+    {{var rest = DesInfo.DestinationRestaurants.RestaurantLists;}}
+    {{?rest && rest.length>0}}
+        <div class="middle_header">
+            <div class="middle_title foot">{{=destNameC}}旅游推荐美食</div>
+        </div>
+        {{~rest:restList}}
+        <div class="md_scenery_list">
+            <div class="md_scenery_item">
+                <div class="content_gp">
+                    <div class="title">{{=restList.Name}}</div>
+                    <div class="content">
+                        {{?restList.Address!=""}}地址：{{=restList.Address}}{{??}}地址：无{{?}}
+                    </div>
+                    <div class="content">
+                        {{?restList.FoodDescription != ""}}{{=restList.FoodDescription}}{{??}}暂无信息{{?}}
+                    </div>
+                </div>
+                {{?restList.PhotoLists && restList.PhotoLists.length>0}}
+                    {{~restList.PhotoLists:restimg:photoInd}}
+                    {{?photoInd==0}}
+                    <div class="desimg">
+                        {{?restimg.PhotoUrl!=""}}
+                        <img src="{{=restimg.PhotoUrl.replace('http:','')}}" data-img="{{=restimg.PhotoUrl.replace('http:','')}}" alt="" />
+                        {{??}}
+                        <img src="//pic3.40017.cn/line/admin/2015/11/30/11/Z7YnhU.jpg" data-img="//pic3.40017.cn/line/admin/2015/11/30/11/Z7YnhU.jpg" alt="" />
+                        {{?}}
+                    </div>
+                    {{?}}
+                    {{~}}
+                {{??}}
+                <div class="desimg">
+                    <img src="//pic3.40017.cn/line/admin/2015/11/30/11/Z7YnhU.jpg" data-img="//pic3.40017.cn/line/admin/2015/11/30/11/Z7YnhU.jpg" alt="" />
+                </div>
+                {{?}}
+        </div>
+        </div>
+        {{~}}
+    {{?}}
+    <!-- 美食结束 -->
+
+    <!-- 购物开始 -->
+    {{var shop = DesInfo.DestinationShoppingPoints.DestinationShoppingPointsLists;}}
+    {{?shop && shop.length>0}}
+        <div class="middle_header">
+            <div class="middle_title sale">{{=destNameC}}旅游推荐购物</div>
+        </div>
+        {{~shop:shopList}}
+        <div class="md_scenery_list">
+            <div class="md_scenery_item">
+                <div class="content_gp">
+                    <div class="title">{{=shopList.ShoppingName}}</div>
+                    <div class="content">
+                    {{?shopList.ShoppingAddress!=""}}
+                        地址：{{=shopList.ShoppingAddress}}
+                    {{??}}
+                        地址：无
+                    {{?}}
+                    </div>
+                    <div class="content">
+                    {{?shopList.ShoppingDescription!=""}}
+                        {{=shopList.ShoppingDescription}}
+                    {{??}}
+                        暂无信息
+                    {{?}}
+                    </div>
+                </div>
+                {{?shopList.PhotoList && shopList.PhotoList.length>0}}
+                    {{~shopList.PhotoList:shopimgInfo:shopInd}}
+                    {{?shopInd}}
+                    <div class="desimg">
+                        {{?shopimg.PhotoUrl!=""}}
+                        <img src="{{=shopimg.PhotoUrl.replace('http:','')}}" data-img="{{=shopimg.PhotoUrl.replace('http:','')}}" alt="" />
+                        {{??}}
+                        <img src="//pic3.40017.cn/line/admin/2015/10/23/15/paGVIf.jpg" data-img="//pic3.40017.cn/line/admin/2015/10/23/15/paGVIf.jpg" alt="" />
+                        {{?}}
+                    </div>
+                    {{~}}
+                    {{?}}
+                {{??}}
+                <div class="desimg">
+                    <img src="//pic3.40017.cn/line/admin/2015/10/23/15/paGVIf.jpg" data-img="//pic3.40017.cn/line/admin/2015/10/23/15/paGVIf.jpg" alt="" />
+                </div>
+                {{?}}
+            </div>
+        </div>
+        {{~}}
+    {{?}}
+    <!-- 购物结束 -->
+
+    <!-- 其它事宜开始 -->
+    {{var content = DesInfo.DestinationPlay.OtherMatters;}}
+    {{?content}}
+        <div class="middle_header">
+            <div class="middle_title other">{{=destNameC}}旅游其他事宜</div>
+        </div>
+        <div class="md_scenery_list">{{=content}}</div>
+    {{?}}
+    <!-- 其它事宜结束 -->
+
+</div>

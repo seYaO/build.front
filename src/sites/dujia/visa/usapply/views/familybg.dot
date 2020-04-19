@@ -1,0 +1,104 @@
+<div class="borBox J_NavBox" id="part7" data-type="familybg">
+            <div class="tab_head">
+                <h4>家庭背景</h4>
+                <span class="save_btn J_saveBtn">保存资料</span>
+            </div>
+            <div class="is_show">
+                <div class="sub_title">
+                    <p><i></i>父亲</p>
+                </div>
+                <ul class="form_ul">                
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>中文姓名：</span>
+                        <div class="info_con">
+                            <input class="w130 lf" type="text" placeholder="请填写姓" validate="required cnName" vali-msg-required="请输入中文名称" vali-msggroup="msg7_1" vali-group="msg7_1" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxFATHER_SURNAME">  
+                            <input class="w130 lf" type="text" placeholder="请填写名" validate="required cnName" vali-msg-required="请输入中文名称" vali-msggroup="msg7_1" vali-group="msg7_1" vali-msggroup-breth="msg7_1" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxFATHER_GIVEN_NAME">
+                            <span class="valid_symbol none"></span>               
+                        </div>
+                    </li>  
+                    <li class="info_list">
+                        <span class="info_tit">出生日期：</span>
+                        <div class="info_con">
+                            <input type="text" class="w130 lf input_date J_dateTime" placeholder="请选择出生日期"  validate="date" vali-msg-required="请选择出生日期" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlFathersDOB">
+                            <span class="valid_symbol none" style="display:none"></span>
+                            <i class="J_tips lf" data-content="<div class='tips_con'><span>温馨提醒</span><p>若已去世可不填写</p></div>"></i>
+                        </div>
+                    </li> 
+                    <div class="is_show J_xianyin J_choose">
+                        <div class="sub_title" verify="" validate="required" vali-msg-required="请完善信息" fccontrolid="familybg_FatherID">
+                            <em class="lf">您的父亲目前是否在美国?</em>
+                            <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                            <span class="radio" data-type="0" value="N"><i></i>否</span>
+                        </div>
+                        <div class="none" type="form">
+                            <span class="info_tit"><i></i>目前所属身份:</span>
+                            <div class="info_con">
+                                <div class="select_box J_selectBox mar10_l"  hidefocus="true" tabindex="-1">
+                                    <div class="dropdown_tit pull_down w130 J_dropDown" verify-type="required" vali-msg-required="请完善信息" FCControlId="familybg_fatherInfo"></div>
+                                    <ul class="dropdown_menu none J_dropDown_list">
+                                        <li>非移民类合法停留</li>
+                                        <li>美国公民</li>
+                                        <li>美国合法长期居留</li>
+                                        <li>其他/不知道</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+            <div class="is_show">
+                <div class="sub_title">
+                    <p><i></i>母亲</p>
+                </div>
+                <ul class="form_ul">
+                    <li class="info_list">
+                        <span class="info_tit"><i>*</i>中文姓名：</span>
+                        <div class="info_con">
+                            <input class="w130 lf" type="text" placeholder="请填写姓" validate="required cnName" vali-msg-required="请输入中文名称" vali-msggroup="msg7_2" vali-group="msg7_2" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxMOTHER_SURNAME">
+                            <input class="w130 lf" type="text" placeholder="请填写名" validate="required cnName" vali-msg-required="请输入中文名称" vali-msggroup="msg7_2" vali-group="msg7_2" vali-msggroup-breth="msg7_2" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxMOTHER_GIVEN_NAME">
+                            <span class="valid_symbol none"></span>
+                        </div>
+                    </li>  
+                    <li class="info_list">
+                        <span class="info_tit">出生日期：</span>
+                        <div class="info_con">
+                            <input type="text" class="w130 lf input_date J_dateTime" placeholder="请选择出生日期" validate="date" vali-msg-required="请选择出生日期" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlMothersDOB">
+                            <span class="valid_symbol none" style="display:none"></span>
+                            <i class="J_tips lf" data-content="<div class='tips_con'><span>温馨提醒</span><p>若已去世可不填写</p></div>"></i>
+                        </div>
+                    </li> 
+                    <div class="is_show J_xianyin J_choose">
+                        <div class="sub_title" verify="" validate="required" vali-msg-required="请完善信息" fccontrolid="familybg_MotherID">
+                            <em class="lf">您的母亲目前是否在美国?</em>
+                            <span class="radio" data-type="1" value="Y"><i></i>是</span>
+                            <span class="radio" data-type="0" value="N"><i></i>否</span>
+                        </div>
+                        <div class="none" type="form">
+                            <span class="info_tit"><i></i>目前所属身份:</span>
+                            <div class="info_con">
+                                <div class="select_box J_selectBox mar10_l"  hidefocus="true" tabindex="-1">
+                                    <div class="dropdown_tit pull_down w130 J_dropDown" verify-type="required" vali-msg-required="请完善信息" FCControlId="familybg_motherInfo"></div>
+                                    <ul class="dropdown_menu none J_dropDown_list">
+                                        <li>非移民类合法停留</li>
+                                        <li>美国公民</li>
+                                        <li>美国合法长期居留</li>
+                                        <li>其他/不知道</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                </ul>
+            </div>
+            <div class="is_show J_xianyin J_choose J_AddOrDelete" data-index="1">
+
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblUS_IMMED_RELATIVE_IND">
+                    <p><i></i>您在美国是否有其他直系亲属（除父母和配偶外）?</p>
+                    <span class="radio" value="Y" data-dot="1" data-dotname="relativesDot"><i></i>是</span>
+                    <span class="radio" value="N" data-dot="1" data-dotname="otherTelDot"><i></i>否</span>
+                </div>
+                <div class="J_renderDot mar10_l"></div>
+            </div>
+        </div>

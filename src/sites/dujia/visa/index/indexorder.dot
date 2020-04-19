@@ -1,0 +1,37 @@
+{{~it:value:index}}
+    <div class="ui-resultTop">
+        <img src="{{=value.ProductImageurl.replace('http:','')}}">
+        <div class="ui-result-right">
+            <p class="ui-result-title">
+                {{=value.ProductName}}
+            </p>
+            <span class="ui-result-span">办&nbsp;&nbsp;签&nbsp;人：<em>{{=value.HandlePeople.replace(" ","，")}}</em></span>
+            <span class="ui-result-span">订&nbsp;&nbsp;单&nbsp;号：<em>{{=value.CustomerSerialId}}</em></span>
+            {{var _bookDate = value.BookDate.split("T")[0];}}
+            <span class="ui-result-span">预订日期：<em>{{=_bookDate}}</em></span>
+        </div>
+    </div>
+    <div class="ui-resultCon">
+        <div class="ui-line"></div>
+        {{var aaaa = it[0].ProcesseList;}}
+        <ul class="ui-resultCon-list">
+        {{for(var i = aaaa.length-1;i>=0;i--){ }}
+            <li>
+                {{? i === aaaa.length-1}}
+                <i class="first-i select-i"></i>
+                <div class="ui-resultInfo ui-list-first">
+                {{??}}
+                <i class="first-i "></i>
+                <div class="ui-resultInfo ui-list-first">
+                {{?}}
+                    <p >{{=value.ProcesseList[i].StatusDesc}}</p>
+                    {{var _ProcessDate = value.ProcesseList[i].ProcessDate.replace("+","T").replace(".","T");}}
+                    {{var _dateYear = _ProcessDate.split("T")[0];}}
+                    {{var _dateTime = _ProcessDate.split("T")[1];}}
+                    <p>{{=_dateYear}}   {{=_dateTime}}</p>
+                </div>
+                </li>
+        {{ }}}
+        </ul>
+    </div>
+{{~}}

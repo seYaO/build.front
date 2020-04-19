@@ -1,0 +1,421 @@
+<!--packedDetail脚本中flyandhotel detail脚本里脚本有引用，由于附加产品增加,模块单独使-->
+{{?it.Data.Flights}}
+<div class="flight-box">
+    <div class="package-title change-fly"><i></i>
+        <h2>航班信息</h2><span class="fly-warning">默认为您推荐优质机票资源，您也可点击“更换航班”选择其他航班</span>
+    </div>
+</div>
+<div class="box-fly">
+    <span class="J_trace btn-flight modify J_modify-pop" trace="changefly" data-flyParam = "{{=encodeURIComponent(JSON.stringify(it.flyParam))}}" data-trace="{{=it.Data.LineId}}" data-pop="1">更换航班<i></i></span>
+    {{~it.Data.Flights:flights:index}}
+        {{
+            var hasConnectionFlight = '';
+            if(flights.ConnectingFlights && flights.ConnectingFlights.length){
+                hasConnectionFlight = 'hasConnectionFlight';
+            }
+        }}
+        <div class="flightBox">
+            {{?it.Data.Flights.length > 2}}
+                <div class="icon-goflight hasMoreFlights {{=hasConnectionFlight}}"><span>第{{=index+1}}程</span></div>
+            {{??}}
+                <div class="icon-goflight {{=hasConnectionFlight}}"><span>{{?index == 0}}去程{{??}}返程{{?}}</span></div>
+            {{?}}
+            <div class="icon-router">
+                <span>{{=flights.DepartCity}}</span>
+                <i></i>
+                <span>{{=flights.ArriveCity}}</span>
+            </div>
+            <div class="flight-content flight-back">
+                <table class="flight-table" border="0">
+                    <tbody>
+                        <tr>
+                            <td width="80" align="center"><span style="font-size:12px">{{=flights.Flight.StartDate}}</span></td>
+                            <td width="120" align="center">
+                                <span class="if_logo if_logo_{{=flights.Flight.AirCompanyCode}}"></span>
+                                <div class="if_air">
+                                    <p title="{{=flights.Flight.AirCompany}}">{{=flights.Flight.AirCompany}}</p>
+                                    <p>{{=flights.Flight.FlightNumber}}<span>{{=flights.Flight.FlightModels}}</span></p>
+                                </div>
+                            </td>
+                            <td width="300" align="center">
+                                <table class="table-flight" border="0">
+                                    <tbody>
+                                        <tr>
+                                            <td width="120" align="center"> <strong>{{=flights.Flight.StartTime}}</strong> </td>
+                                            <td width="140" rowspan="2">
+                                                <span class="flight-icon">
+                                                    {{?flights.Flight.FlightTime}}
+                                                        <em>约{{=flights.Flight.FlightTime}}</em>
+                                                    {{?}}
+                                                    {{?flights.Flight.StopCity && flights.Flight.StopCity.length}}
+                                                        <div class="stopCity">
+                                                            <span class="stopCitySpan">{{=flights.Flight.StopCity}}</span><span class="jingting">经停</span>
+                                                        </div>
+                                                    {{?}}
+                                                </span>
+                                            </td>
+                                            <td width="120" align="center"> <span class="time"> <strong>{{=flights.Flight.EndTime}}</strong>{{?flights.Flight.IsOverNight==1}}<em data-content="受时差和飞行时间影响，航班到达日期为起飞日期的次日。显示的到达时间为当地时间。">次日</em>{{?}}  </span> </td>
+                                        </tr>
+                                        <tr>
+                                            <td width="120" align="center" title="{{=flights.Flight.DepartAirPort}}{{=flights.Flight.DepartAirFloor}}" class="overHidden" style="font-size:14px">{{=flights.Flight.DepartAirPort}}{{=flights.Flight.DepartAirFloor}}</td>
+                                            <td width="120" align="center" title="{{=flights.Flight.ArriveAirPort}}{{=flights.Flight.ArriveAirFloor}}" class="overHidden" style="font-size:14px">{{=flights.Flight.ArriveAirPort}}{{=flights.Flight.ArriveAirFloor}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                            {{
+                                var paramObj = flights.Cabins[0].MainCabin;
+                            }}
+                            <td width="100" align="center"><span>{{=paramObj.CabinName}}</span>{{?flights.Cabins[0].LeftTicket<9}}<div class="flyticket">仅剩{{=flights.Cabins[0].LeftTicket}}张</div>{{?}}</td>
+                            {{?paramObj.Consign}}
+                                <td width="110"><span class="explain-fly" data-goBookNotice="{{=paramObj.BookNotice}}" data-goChangeRule="{{=paramObj.ChangeRule}}" data-goRefundRule="{{=paramObj.RefundRule}}"  data-IsDirect="{{=flights.Cabins[0].IsDirect}}" data-goConsign ="{{=paramObj.Consign}}" data-param="{{=paramObj.ChangeRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span></td>
+                            {{??}}
+                                <td width="110"><span class="explain-fly" data-goBookNotice="{{=paramObj.BookNotice}}" data-goChangeRule="{{=paramObj.ChangeRule}}" data-goRefundRule="{{=paramObj.RefundRule}}" data-IsDirect="{{=flights.Cabins[0].IsDirect}}" data-param="{{=paramObj.ChangeRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span></td>
+                            {{?}}
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            {{?flights.ConnectingFlights && flights.ConnectingFlights.length}}
+                {{~flights.ConnectingFlights:zItems:coIndex}}
+                    <div class="Z-line">
+                        <span><i></i><b>{{=zItems.ConnectingCity}}</b><em>中转停留{{=zItems.ConnectingTime}}</em></span>
+                        {{?zItems.ConnectingFlight.TransitsSign}}
+                            <div class="J_transitsSign transitsSign" data-content='{{=zItems.ConnectingFlight.TransitsSign}}'>
+                                过境签证
+                            </div>
+                        {{?}}
+                    </div>
+                    {{var aircode1 = "if_logo_"+zItems.ConnectingFlight.AirCompanyCode;}}
+                    <div class="flight-content flight-back"  data-stopCity="{{=zItems.ConnectingFlight.StopCity}}" data-transitsSign="{{=zItems.ConnectingFlight.TransitsSign}}">
+                        <table class="flight-table" border="0">
+                            <tbody>
+                                <tr>
+                                    <td width="80" align="center"><span style="font-size:12px">{{=zItems.ConnectingFlight.StartDate}}</span></td>
+                                    <td width="120" align="center"><span class="if_logo {{=aircode1}}"></span><div class="if_air"><p title="{{=zItems.ConnectingFlight.AirCompany}}">{{=zItems.ConnectingFlight.AirCompany}}</p><p>{{=zItems.ConnectingFlight.FlightNumber}}<span>{{=zItems.ConnectingFlight.FlightModels}}</span></p></div></td>
+                                    <td width="300" align="center">
+                                        <table class="table-flight" border="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="120" align="center"> <strong>{{=zItems.ConnectingFlight.StartTime}}</strong> </td>
+                                                    <td width="140" rowspan="2">
+                                                        <span class="flight-icon">
+                                                            {{?zItems.ConnectingFlight.FlightTime}}
+                                                                <em>约{{=zItems.ConnectingFlight.FlightTime}}</em>
+                                                            {{?}}
+                                                            {{?zItems.ConnectingFlight.StopCity && zItems.ConnectingFlight.StopCity.length}}
+                                                                <div class="stopCity">
+                                                                    <span class="stopCitySpan">{{=zItems.ConnectingFlight.StopCity}}</span><span class="jingting">经停</span>
+                                                                </div>
+                                                            {{?}}
+                                                        </span>
+                                                    </td>
+                                                    <td width="120" align="center"> <span class="time"> <strong>{{=zItems.ConnectingFlight.EndTime}}</strong>{{?zItems.ConnectingFlight.IsOverNight ==1}}<em data-content="受时差和飞行时间影响，航班到达日期为起飞日期的次日。显示的到达时间为当地时间。">次日</em>{{?}}  </span> </td>
+                                                </tr>
+                                                <tr>
+                                                    <td width="120" align="center" title="{{=zItems.ConnectingFlight.DepartAirPort}}{{=zItems.ConnectingFlight.DepartAirFloor}}" class="overHidden" style="font-size:14px">{{=zItems.ConnectingFlight.DepartAirPort}}{{=zItems.ConnectingFlight.DepartAirFloor}}</td>
+                                                    <td width="120" align="center" title="{{=zItems.ConnectingFlight.ArriveAirPort}}{{=zItems.ConnectingFlight.ArriveAirFloor}}" class="overHidden" style="font-size:14px">{{=zItems.ConnectingFlight.ArriveAirPort}}{{=zItems.ConnectingFlight.ArriveAirFloor}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                    <td width="100" align="center"><span>{{=flights.Cabins[0].ConnectingCabins[coIndex].CabinName}}</span></td>
+                                    {{
+                                        var connParamObj = '';
+                                        if(flights.Cabins[0].ConnectingCabins[coIndex].Index == parseInt(coIndex + 1)){
+                                            connParamObj = flights.Cabins[0].ConnectingCabins[coIndex];
+                                        }
+                                    }}
+                                    {{?connParamObj}}
+                                        {{?connParamObj.Consign}}
+                                            <td width="110"><span class="explain-fly" data-goBookNotice="{{=connParamObj.BookNotice}}" data-goChangeRule="{{=connParamObj.ChangeRule}}" data-goRefundRule="{{=connParamObj.RefundRule}}" data-IsDirect="{{=flights.Cabins[0].IsDirect}}" data-goConsign ="{{=connParamObj.Consign}}" data-param="{{=connParamObj.ChangeRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span></td>
+                                        {{??}}
+                                            <td width="110"><span class="explain-fly" data-goBookNotice="{{=connParamObj.BookNotice}}" data-goChangeRule="{{=connParamObj.ChangeRule}}" data-goRefundRule="{{=connParamObj.RefundRule}}"  data-IsDirect="{{=flights.Cabins[0].IsDirect}}" data-param="{{=connParamObj.ChangeRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span></td>
+                                        {{?}}
+                                    {{??}}
+                                        <td width="110"><span class="explain-fly" data-gobooknotice="" data-gochangerule="" data-gorefundrule="" data-isdirect="0" data-param="" data-content="<div class=&quot;rule&quot;>   <h2>购票说明</h2>   <div class=&quot;rule&quot;>    </div>   <p>暂无退改签说明</p>     </div>">退改签及购票说明</span></td>
+                                    {{?}}
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                {{~}}
+            {{?}}
+        </div>
+        <div class="spacing {{?index == it.Data.Flights.length -1}}none{{?}}"></span></div>
+    {{~}}
+</div>
+{{?}}
+{{?it.Data.Hotels}}
+    <div class="hotel-box">
+        <div class="package-title change-hotel"><i></i>
+            <h2>酒店信息</h2>
+        </div>
+    </div>
+    {{~it.Data.Hotels:HotelItems:index}}
+    <div class="specific-hotel">
+        <span class="final-hotel-name">{{=HotelItems.City}}</span>
+        <span>入住时间</span><span>{{=HotelItems.CheckInTime}}</span><span> 至 </span><span>{{=HotelItems.CheckOutTime}}</span>
+        <span>（共<em>{{=HotelItems.Nights}}</em>晚）</span>
+    </div>
+    <div class="box-hotel" param-index="{{=index}}" data-hotelId="{{=HotelItems.HotelId}}" data-Nights="{{=HotelItems.Nights}}" data-StartDate="{{=HotelItems.CheckInTime}}" data-IsDirect="{{=HotelItems.IsDirect}}">
+        <div class="box-top-hotel clearfix">
+            <div class="hotel-small-img"><img src="{{=HotelItems.CoverImg.replace('http:','')}}" alt="{{=HotelItems.Name}}"></div>
+            <div class="hotel-info">
+                <div class="J_trace hotel-title" trace="hotelDetail{{=index}}" data-trace="{{=HotelItems.Name}}_{{=it.Data.LineId}}" title="{{=HotelItems.EnglishName}} {{=HotelItems.Name}}"data-stDate="{{=HotelItems.CheckInTime}}" data-nights="{{=HotelItems.Nights}}" data-IsDirect="{{=HotelItems.IsDirect}}" data-hotelId="{{=HotelItems.HotelId}}">
+                    <em title="{{=HotelItems.EnglishName}} {{?HotelItems.Name}}({{=HotelItems.Name}}){{?}}">{{=HotelItems.EnglishName}}{{?HotelItems.Name}} ({{=HotelItems.Name}}){{?}}</em>{{?HotelItems.Score=="0.0"}}{{??}}<span style="margin-left:10px;"> {{=HotelItems.Score}}分</span>{{?}}
+                    {{?HotelItems.Drill}}
+                        <span class="hotel-zhuan">
+                        {{var Drill = parseInt(HotelItems.Drill);}}
+                            {{for(var i=0;i<Math.floor(Drill);i++){}}
+                                {{if(i < Math.floor(Drill)){}}
+                                <i class="icon-select"></i>
+                                {{}else{}}
+                                <i></i>
+                            {{}}}
+                        {{}}}
+                        </span>
+                    {{?}}
+                </div>
+                <div class="clearfix">
+                    {{?HotelItems.Address}}
+                    <div class="hotel-adress" title="{{=HotelItems.Address}}">
+                        {{?HotelItems.BusinessCircle}}
+                            {{=HotelItems.BusinessCircle}}附近
+                        {{?}}
+                    </div>
+                    {{?}}
+                    <div class="hotel-mapInfo J_hotel-mapInfo" statspot="true"  data-name="{{=HotelItems.EnglishName||""}} ({{=HotelItems.Name||""}})" data-lat="{{=HotelItems.Latitude||""}}" data-lng="{{=HotelItems.Longitude||""}}">
+                        <i class="icons-point"></i>
+                        查看地图
+                    </div>
+                </div>
+                <div class="hotel-Facility">
+                    {{?HotelItems.Facility&&HotelItems.Facility.length}}
+                        {{~HotelItems.Facility:facItems:findex}}
+                            {{?findex<8}}
+                            <img src="{{=facItems.Icon.replace('http:','')}}" title="{{=facItems.Name}}"/>
+                            {{?}}
+                        {{~}}
+                    {{?}}
+                </div>
+            </div>
+            {{?it.HotelNotDynamicPackage && it.HotelNotDynamicPackage[0] == 0}}{{??}}<span class="J_trace btn-hotel modify J_modify-pop" data-flyParam = "{{=encodeURIComponent(JSON.stringify(it.flyParam))}}" trace="changehotel{{=index}}" data-trace="{{=it.Data.LineId}}" data-pop="1">更换酒店<i></i></span>{{?}}
+        </div>
+        <div class="t-hotel"><span class="ty-hotel1">房型</span><span class="ty-hotel2">床型</span><span class="ty-hotel7">人数上限</span><span class="ty-hotel3">早餐</span><span class="ty-hotel4">政策</span><span class="ty-hotel5">间数</span><span class="ty-hotel6">差价</span></div>
+        <div class="roomType-box">
+            <div class="hotelbox1">
+            <ul>
+                {{~HotelItems.Rooms:roomItems}}
+                {{~roomItems.Rates:itRoom:index1}}
+                {{var paramObj = {},hotelParam;
+                paramObj.RoomCount = itRoom.RoomCount;
+                paramObj.HotelId = HotelItems.HotelId;
+                paramObj.RoomId = itRoom.RoomId;
+                paramObj.BedType = itRoom.BedType;
+                paramObj.HotelName = HotelItems.Name;
+                paramObj.HotelEnglishName = HotelItems.EnglishName;
+                paramObj.RoomName = roomItems.Name;
+                paramObj.BedTypes = itRoom.BedTypes;
+                paramObj.CheckInDate = HotelItems.CheckInTime;
+                paramObj.Nights = HotelItems.Nights;
+                paramObj.IsDirect = HotelItems.IsDirect;
+                paramObj.SupplierId = itRoom.SupplierId;
+                paramObj.City = HotelItems.City;
+                paramObj.CityId = HotelItems.CityId;
+                paramObj.IsIncludeBreakfast = itRoom.IsIncludeBreakfast;
+                paramObj.Mandatories = itRoom.Mandatories;
+                paramObj.RateCode = itRoom.RateCode;
+                paramObj.Drill = HotelItems.Drill;
+                paramObj.CancleType = itRoom.CancleType;
+                paramObj.CanclePolicy = itRoom.CanclePolicy;
+                hotelParam = encodeURIComponent(JSON.stringify(paramObj));
+                var breakfastExplain = itRoom.BreakfastExplain || '';
+                var isHavePrivilege = itRoom.IsHavePrivilege || '';
+                var privilegeExplain = itRoom.PrivilegeExplain || '';
+                }}
+                <li {{?itRoom.IsSelected ==1}}class="hotel-has-select {{?itRoom.CancleType && itRoom.TargetCustomer && itRoom.TargetCustomer.length}}hasFitPeopleLi{{?}}" data-breakfastExplain="{{=breakfastExplain}}" data-isHavePrivilege="{{=isHavePrivilege}}" data-privilegeExplain="{{=privilegeExplain}}" {{?}}  data-hotelId="{{=HotelItems.HotelId}}" data-RoomId="{{=itRoom.RoomId}}" data-BedType="{{=itRoom.BedTypes}}" data-price="{{=itRoom.Price}}" data-difPri="{{=itRoom.DifferencePrice}}" data-RoomCount="{{=itRoom.RoomCount}}" data-IsDirect="{{=HotelItems.IsDirect}}" data-hotel="{{=hotelParam}}" data-SupplierId="{{=itRoom.SupplierId}}" data-RateCode="{{=itRoom.RateCode}}" data-StartDate="{{=HotelItems.CheckInTime}}"
+                data-cityid="{{=HotelItems.CityId}}" data-Nights="{{=HotelItems.Nights}}">
+                <table class="hotelTable">
+                    <tbody>
+                        <tr>
+                        <td width="265px" align="left" class="name-room" data-name="{{=roomItems.Name}}|{{=itRoom.Name}}" title="{{=roomItems.Name}}{{?itRoom.Name}}|{{=itRoom.Name}}{{?}}">
+                        <span class="hotelName">{{=roomItems.Name}}{{?itRoom.Name}}|{{=itRoom.Name}}{{?}}</span>{{?itRoom.IsInstantConfirm==1}}<span class="hotel-isconfirm">立即确认</span>{{?}}
+                        </td>
+                        <td width="100px" align="left" class="bedType" title="{{=itRoom.BedType}}"><span>{{?itRoom.BedType}}{{=itRoom.BedType}}{{??}}--{{?}}</span></td>
+                        <td width="95px" align="center" title="{{=itRoom.MaxUserDescription}}"><span>{{?itRoom.MaxUser}}{{=itRoom.MaxUser}}人{{?}}</span></td>
+                        <td width="80px" align="left">
+                            {{?itRoom.IsIncludeBreakfast==1}}
+                                <span data-content='{{?itRoom.BreakfastExplain}}{{=itRoom.BreakfastExplain}}{{?}}' class="J_breakfast">含早</span>
+                            {{??}}
+                                <span data-content='{{?itRoom.BreakfastExplain}}{{=itRoom.BreakfastExplain}}{{?}}' class="J_breakfast">不含早</span>
+                            {{?}}
+                        </td>
+                        <td width="95px" align="left">
+                            {{?itRoom.CancleType || itRoom.TargetCustomer}}
+                                {{
+                                    if(itRoom.TargetCustomer && itRoom.TargetCustomer.length){
+                                        var TCLenth = itRoom.TargetCustomer.length;
+                                        var shtml = '';
+                                        if(TCLenth <= 1){
+                                            shtml = '<div><p>{{=itRoom.TargetCustomer[0]}}</p><div>';
+                                        }else{
+                                            for(var i =0; i <TCLenth; i ++){
+                                                shtml += '<div><p>{{=i+1}}.{{=itRoom.TargetCustomer[i]}}</p><div>';
+                                            }
+                                        }
+                                    }
+                                }}
+                                {{?itRoom.CancleType && itRoom.TargetCustomer && itRoom.TargetCustomer.length}}
+                                    <span class="cancel-hotel" data-content="{{=itRoom.CanclePolicy}}">{{=itRoom.CancleType}}</span>
+                                    <span class="fitPeople" data-content="{{=shtml}}">适用人群</span>
+                                {{??itRoom.CancleType && (!itRoom.TargetCustomer || !itRoom.TargetCustomer.length)}}
+                                    <span class="cancel-hotel" data-content="{{=itRoom.CanclePolicy}}">{{=itRoom.CancleType}}</span>
+                                {{??itRoom.TargetCustomer && itRoom.TargetCustomer.length && !itRoom.CancleType}}
+                                    <span class="fitPeople" data-content="{{=shtml}}">适用人群</span>
+                                {{?}}
+                            {{?}}
+                        </td>
+                        <td width="70px" align="left" class="hotelSum"><span>{{=itRoom.RoomCount}}间</span></td>
+                        {{?itRoom.DifferencePrice>0}}
+                        <td width="70px" align="left" class="hotel-diffPri"><span class="fp-fee-add overzero">+ {{=Math.abs(itRoom.DifferencePrice)}}</span></td>
+                        {{??itRoom.DifferencePrice==0}}
+                        <td width="70px" align="left" class="hotel-diffPri"><span class="fp-fee-add equirezero"> --</span></td>
+                        {{??}}
+                        <td width="70px" align="left" class="hotel-diffPri"><span class="fp-fee-add downzero"><i>- {{=Math.abs(itRoom.DifferencePrice)}}</i></span></td>
+                        {{?}}
+                        {{?itRoom.IsSelected==1}}
+                        <td width="80px" align="center">
+                        {{?itRoom.LeftCount&&itRoom.LeftCount<10}}
+                        <span class="left-count">仅剩{{=itRoom.LeftCount}}间</span>
+                        {{?}}
+                        <span class="btn-choice-flight has-choice-hotel" data-RateCode = "{{=itRoom.RateCode}}" data-RoomId="{{=itRoom.RoomId}}" data-price="{{=itRoom.Price}}" data-hotelid="{{=HotelItems.HotelId}}">已 选<i></i></span></td>
+                        {{??}}
+                        <td width="80px" align="center">
+                        {{?itRoom.LeftCount&&itRoom.LeftCount<10}}
+                        <span class="left-count">仅剩{{=itRoom.LeftCount}}间</span>
+                        {{?}}
+                        <span class="btn-choice-flight" data-RateCode = "{{=itRoom.RateCode}}" data-RoomId="{{=itRoom.RoomId}}" data-price="{{=itRoom.Price}}" data-hotelid="{{=HotelItems.HotelId}}">选 择<i></i></span></td>
+                        {{?}}
+                        </tr>
+                    </tbody>
+                    </table>
+                </li>
+            {{~}}
+            {{~}}
+            </ul>
+            </div>
+            <div class="hotelbox2"></div>
+        </div>
+    </div>
+    <div class="choose-button"><span class="J_trace unfold J_more"  data-hotelParam="{{=encodeURIComponent(JSON.stringify(HotelItems))}}" data-trace="{{=HotelItems.Name}}_{{=it.Data.LineId}}" trace="morehotel{{=index}}" style="margin-right:-412px;"> 展开全部房型<b></b> </span> </div>
+{{~}}
+<div class="price-box" style="right:28px;">
+    <div class="title-price">费用明细</div>
+    <div class="tit-pr-mess">
+        <dl>
+            <dt>出游信息</dt>
+            <dd>
+                <div>出游日期：<span class="start-date">{{=it.Data.DepartDate}}</span> 至 <span class="end-date">{{=it.Data.ReturnDate}}</span></div>
+            </dd>
+            <dd>
+                <div>出游人数：{{=it.Data.Adult}}成人 {{?it.Data.childNum}}{{=it.Data.childNum}}儿童{{?}}</div>
+            </dd>
+        </dl>
+    </div>
+    <div class="pr-product">
+        <dl>
+            <dt>套餐价格</dt>
+            <dd class="J_packedDetail"><span class="Lbox">{{=it.Data.totalNum}}人往返机票+{{=it.Data.Nights}}晚酒店</span><span class="Rbox"><em>¥{{=it.Data.TotalPrice}}</em></span></dd>
+        </dl>
+        {{?it.Data.isback}}
+            {{?it.Data.AccidentCode || it.Data.CancelCode}}
+                <dl>
+                    <dt>保险</dt>
+                    {{?it.Data.AccidentCode}}
+                    <dd class="J_Accidents"><span class="Lbox">{{=it.Data.DefaultAcc}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultAccPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{??}}
+                    <dd class="J_Accidents none"><span class="Lbox">{{=it.Data.DefaultAcc}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultAccPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{?}}
+                    {{?it.Data.CancelCode}}
+                    <dd class="J_Cancles"><span class="Lbox">{{=it.Data.DefaultCan}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultCanPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{??}}
+                    <dd class="J_Cancles none"><span class="Lbox">{{=it.Data.DefaultCan}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultCanPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{?}}
+                </dl>
+            {{??}}
+                <dl style="display:none;">
+                    <dt>保险</dt>
+                    {{?it.Data.AccidentCode}}
+                    <dd class="J_Accidents"><span class="Lbox">{{=it.Data.DefaultAcc}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultAccPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{??}}
+                    <dd class="J_Accidents none"><span class="Lbox">{{=it.Data.DefaultAcc}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultAccPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{?}}
+                    {{?it.Data.CancelCode}}
+                    <dd class="J_Cancles"><span class="Lbox">{{=it.Data.DefaultCan}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultCanPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{??}}
+                    <dd class="J_Cancles none"><span class="Lbox">{{=it.Data.DefaultCan}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultCanPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{?}}
+                </dl>
+            {{?}}
+        {{??}}
+            {{?it.Data.DefaultCan || it.Data.DefaultAcc}}
+                <dl>
+                    <dt>保险</dt>
+                    {{?it.Data.DefaultAcc}}
+                    <dd class="J_Accidents"><span class="Lbox" title="{{=it.Data.DefaultAcc}}">{{=it.Data.DefaultAcc}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultAccPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{?}}
+                    {{?it.Data.DefaultCan}}
+                    <dd class="J_Cancles"><span class="Lbox" title="{{=it.Data.DefaultCan}}">{{=it.Data.DefaultCan}}</span><span class="Rbox"><em>¥{{=it.Data.DefaultCanPrice}}</em>x<i>{{=it.Data.totalNum}}</i></span></dd>
+                    {{?}}
+                </dl>
+            {{?}}
+        {{?}}
+
+        <div class="J_addPrice">
+
+            {{?it.Data.AdditionProducts && it.Data.AdditionProducts.length>0}}
+            {{var addList = it.Data.AdditionProducts;}}
+                {{?addList&&addList.length>0}}
+                    {{~addList:value:index}}
+                    <dl>
+                        {{
+                            var arr = [];
+                            for(i=0;i<value.Products.length;i++){
+                                if(value.Products[i].IsSelected && value.Products[i].IsSelected==1){
+                                    arr.push(value.Products[i]);
+                                }
+                            }
+                        }}
+                        {{?arr.length>0}}
+                            <dt>{{=value.Category}}</dt>
+                        {{?}}
+                        {{~arr:lists}}
+                        <dd>
+                            <span class="Lbox">{{=lists.Name}}</span>
+                            <span class="Rbox"><em>&yen;{{=lists.Book.Price}}</em>x{{=lists.Book.Count}}</span>
+                        </dd>
+                        {{~}}
+                    </dl>
+                    {{~}}
+                {{?}}
+            {{?}}
+
+        </div>
+    </div>
+    <div class="total-pr">
+        <dl>
+            <dd><span class="Lbox">套餐总价</span><span class="Rbox">¥<em>{{=it.Data.sumPrice}}</em></span></dd>
+        </dl>
+    </div>
+    {{?it.isSearch}}
+    <div class="J_booking">下一步<em>填写订单</em></div>
+    {{??}}
+    <div class="price-box-warning">机酒产品不支持部分退订，如机票或酒店任一资源需要单独退订，则必须整单同时退订。</div>
+    {{?}}
+</div>
+{{?}}
+{{?!it.Data&&!it.Data.length}}
+    <div class="error-warning"><i></i>抱歉，您所查询的日期库存不足，请更换日期重新搜索。</div>
+{{?}}

@@ -1,0 +1,136 @@
+{{?it.TotalCount>0}}
+<div class="comment-moudle {{?it.hasWide}}w1190{{??}}w950{{?}}" id="comment-moudle">
+        <div class="comm-head clearfix">
+            <div class="comm-satis">
+                <p class="satis-num">{{=it.ManYiDu}}<em>%</em></p>
+                <p class="satis-txt">满意度</p>
+            </div>
+
+            <div class="comm-count">
+                <div class="c_score_bar">
+                    <span class="bar_label">好评率</span>
+                    <span class="bar_data">
+                        <span style="width:{{=it.GoodRate}}%"></span>
+                    </span>
+                    <i>{{=it.GoodRate}}%</i>
+                </div>
+                <div class="c_score_bar">
+                    <span class="bar_label">中评率</span>
+                    <span class="bar_data">
+                        <span style="width:{{=it.MidRate}}%"></span>
+                    </span>
+                    <i>{{=it.MidRate}}%</i>
+                </div>
+                <div class="c_score_bar">
+                   <span class="bar_label">差评率</span>
+                    <span class="bar_data">
+                        <span style="width:{{=it.BadRate}}%"></span>
+                    </span>
+                    <i>{{=it.BadRate}}%</i>
+                </div>
+            </div>
+
+            <div class="comm-score" style="padding-left:20px;">
+                {{?it.CommentStore != 0}}
+                <p class="satis-num">{{=it.CommentStore}}<em>分</em></p>
+                <p class="satis-txt">综合得分</p>
+                {{??}}
+                {{?}}
+            </div>
+
+
+            <div class="comm-kinds">
+            {{?it.LineProperty ===1}}  <!--1是跟团，3是自由行，9是单品，国际景点-->
+                <p class="kinds-col"><span class="kind-name">行程</span><em>{{=it.RouteForGroup}}</em><span class="kind-name">导游</span><em>{{=it.GuideForGroup}}</em></p>
+                <p class="kinds-col"><span class="kind-name">性价比</span><em>{{=it.CostForGroup}}</em></p>
+            {{??it.LineProperty ===3}}
+                <p class="kinds-col">
+                    <span class="kind-name">交通</span><em>{{=it.TrafficForTravel}}</em>
+                    <span class="kind-name">住宿</span><em>{{=it.HotalForTravel}}</em>
+                </p>
+                <p class="kinds-col">
+                    <span class="kind-name">性价比</span><em>{{=it.CostForTravel}}</em>
+                </p>
+            {{??}}
+                <p class="kinds-col">
+                    {{?it.ServiceForSingle != 0}}
+                    <span class="kind-name">同程服务</span>
+                    <em>{{=it.ServiceForSingle}}</em>
+                    {{??}}
+                    {{?}}
+                    {{?it.ConvenientForSingle != 0 }}
+                    <span class="kind-name">产品便捷</span>
+                    <em>{{=it.ConvenientForSingle}}</em>
+                    {{??}}
+                    {{?}}
+                </p>
+                <p class="kinds-col">
+                    {{?it.ExperienceForSingle != 0}}
+                    <span class="kind-name">出游体验</span>
+                    <em>{{=it.ExperienceForSingle}}</em>
+                    {{??}}
+                    {{?}}
+                    {{?it.CostForSingle != 0}}
+                    <span class="kind-name">性价比</span>
+                    <em>{{=it.CostForSingle}}</em>
+                    {{??}}
+                    {{?}}
+                </p>
+
+            {{?}}
+            </div>
+
+            <div class="comm-commit">
+                <p class="comm-info" style="text-align:left;">您可对已购订单立刻发表点评  <a target="_blank" href="http://www.ly.com/newhelp/questionlist/6-1-451.html">如何点评&gt;&gt;</a></p>
+                <p class="comm-info" style="text-align:left;" >发表点评，通过审核即可获得1-20元奖金</p>
+                <a class="gocomm" target="_blank" href="http://member.ly.com/default.aspx">立即点评</a>
+            </div>
+
+
+
+        </div>
+
+        <div class="comm-filter clearfix">
+            <div class="fliter-left" id="J_CometTab">
+                <span data-param="dpType=0">
+			        <input id="radio1" type="radio" name="commfil" checked>
+			        <label for="radio1">全部<b>（{{=it.TotalCount}}）</b></label>
+			    </span>
+			    <span data-param="dpType=3">
+			        <input id="radio2" type="radio" name="commfil">
+			        <label for="radio2">好评<b>（{{=it.GoodCount}}）</b></label>
+			    </span>
+			    <span data-param="dpType=2">
+			        <input id="radio3" type="radio" name="commfil">
+			        <label for="radio3">中评<b>（{{=it.MidCount}}）</b></label>
+			    </span>
+			    <span data-param="dpType=1">
+			        <input id="radio4" type="radio" name="commfil">
+			        <label for="radio4">差评<b>（{{=it.BadCount}}）</b></label>
+			    </span>
+			    <span data-param="isImage=1">
+			        <input id="radio5" type="radio" name="commfil">
+			        <label for="radio5">有图<b>（{{=it.ImageCount}}）</b></label>
+			    </span>
+            </div>
+            <div class="filter-right" id="filter-sort">
+                <a style="display:none" href="javascript:void(0);" class="J_sort up" data-param="sort=1">最有价值<i></i></a>
+                <a style="display:none" href="javascript:void(0);" class="J_sort up" data-param="sort=3">时间排序<i></i></a>
+            </div>
+        </div>
+
+        <div class="comm-content">
+            <ul>
+
+            </ul>
+
+        </div>
+        <!--点评翻页-->
+        <div class="comet-pager" id="J_CometPager">
+        </div>
+        <!--点评翻页-->
+    </div>
+
+{{??}}
+<p style="text-align: center;font-size: 12px;padding-top: 50px;">同程旅游，快乐每一程，快来发表点评，与万千驴友分享您的精彩之旅吧！</p>
+{{?}}

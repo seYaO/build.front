@@ -1,0 +1,9 @@
+{
+    "dataUri": "/wanle/api/WWanleBook/GetWanleOrderDetail",
+    "query": {
+        "orderId": 3831930,
+        "isDetail": 1,
+        "siteType": 2
+    },
+    "desc": "玩乐微信订单详情"
+}

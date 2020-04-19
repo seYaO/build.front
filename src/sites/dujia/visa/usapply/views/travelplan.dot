@@ -1,0 +1,242 @@
+<div class="borBox J_NavBox" id="part3" data-type="travelplan">
+            <div class="tab_head">
+                <h4>旅行计划<em>（用英文填写,如若不能英译,请用拼音代替）</em></h4>
+                <span class="save_btn J_saveBtn">保存资料</span>
+            </div>
+            <ul class="tab_con">                
+                <li class="info_list">
+                    <span class="info_tit"><i>*</i>签证类型：</span>
+                    <div class="info_con">
+                         <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                            <div class="dropdown_tit pull_down w130 J_dropDown" verify validate="required" vali-msg-required="请选择签证类型" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dlPrincipalAppTravel_ctl00_ddlPurposeOfTrip">请选择签证类型</div>
+                            <ul class="dropdown_menu none J_dropDown_list">
+                                <li>旅游/就医(B2)</li>
+                                <li>商务/会议(B1)</li>
+                                <li>商务/个人会议(B1-B2)</li>
+                            </ul>     
+                        </div>  
+                    </div>
+                </li>    
+                <div class="J_choose">
+                    <div class="sub_title">
+                        <span class="info_tit"><i>*</i>行程安排：</span>
+                        <div class="info_con" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblSpecificTravel">
+                            <span class="radio" data-index="0" value="Y"><i></i>详细计划</span>
+                            <span class="radio" data-index="1" value="N"><i></i>大致计划</span>
+                        </div>                    
+                    </div> 
+                    <div class="">
+                        <ul class="form_ul none" type="form">              
+                            <li class="info_list clearfix">
+                                <span class="info_tit"><i>*</i>抵达时间：</span>
+                                <div class="dropdown_tit">
+                                    <input type="text" class="w130 input_date J_dateTime start" date-type="flight" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择抵达时间"  FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxARRIVAL_US_DTEYMD">
+                                </div>
+                                <span class="info_tit"><i>*</i>抵达航班：</span>
+                                <div class="dropdown_tit">
+                                    <input type="text" class="w130" placeholder="请填写抵达航班" verify-type="required charOrNum" vali-msg-required="请填写抵达航班"  FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxArriveFlight">
+                                </div>                                                 
+                            </li> 
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>抵达城市：</span>
+                                <div class="info_con">                                    
+                                    <input type="text" class="w220" placeholder="请输入抵达城市" verify-type="required enName" vali-msg-required="请完善抵达城市" vali-msggroup="msg3_1" vali-group="msg3_1" vali-msggroup-breth="msg3_1"  FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxArriveCity">
+                                    <span class="valid_symbol none"></span>                                      
+                                </div>
+                            </li>
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>所在的洲：</span>
+                                <div class="info_con">
+                                    <input type="text" class="w220" placeholder="请输入住美洲地址" verify-type="required enName" vali-msg-required="请完善在美住址" vali-msggroup="msg3_3" vali-group="msg3_3" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlTravelState">
+                                    <input type="text" class="w220" placeholder="请输入住美城市" verify-type="required enName" vali-msg-required="请完善在美住址" vali-msggroup="msg3_3" vali-group="msg3_3" vali-msggroup-breth="msg3_3" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxCity">
+                                    <span class="valid_symbol none"></span>                                             
+                                </div>
+                            </li>
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>在美住址：</span>
+                                <div class="info_con">
+                                    <input class="w220 lf" type="text" placeholder="请输入街道" verify-type="required enName" vali-msg-required="请输入街道" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxStreetAddress1">
+                                    <span class="valid_symbol none"></span>
+                                </div>
+                            </li>
+                            <li class="info_list clearfix">
+                                <span class="info_tit"><i>*</i>离开时间：</span>
+                                <div class="dropdown_tit">
+                                    <input type="text" class="w130 input_date J_dateTime end" date-type="flight" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择离开时间" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlDEPARTURE_US_DTE">
+                                </div>                 
+                                <span class="info_tit"><i>*</i>离开航班：</span>
+                                <div class="dropdown_tit">
+                                    <input type="text" class="w130" placeholder="请选择离开航班" verify-type="required charOrNum" vali-msg-required="请选择离开航班" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxDepartFlight">
+                                </div>
+                            </li>  
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>离开城市：</span>
+                                <div class="info_con">
+                                    <input type="text" class="w220" placeholder="请输入离开城市" verify-type="required enName" vali-msg-required="请完善抵达城市" vali-msggroup="msg3_4" vali-group="msg3_4" vali-msggroup-breth="msg3_4" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxDepartCity">
+                                    <span class="valid_symbol none"></span>                                      
+                                </div>
+                            </li>
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>访问地点：</span>
+                                <div class="info_con">
+                                    <input class="w575 lf" type="text" placeholder="输入您要访问的美国地点，多个城市请用逗号隔开" verify-type="required street" vali-msg-required="请输入访问地点" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_dtlTravelLoc_ctl00_tbxSPECTRAVEL_LOCATION"> 
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="form_ul clearfix none" type="form">
+                            
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>抵达城市：</span>
+                                <div class="info_con">                                    
+                                    <input type="text" class="w220" placeholder="请输入抵达城市" verify-type="required enName" vali-msg-required="请完善抵达城市" vali-msggroup="msg3_2" vali-group="msg3_2" vali-msggroup-breth="msg3_2"  FCControlId="generalPlan_info_tbxArriveCity">
+                                    <span class="valid_symbol none"></span>                                      
+                                </div>
+                            </li>
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>所在的洲：</span>
+                                <div class="info_con">
+                                    <input type="text" class="w220" placeholder="请输入住美洲地址" verify-type="required enName" vali-msg-required="请完善在美住址" vali-msggroup="msg3_5" vali-group="msg3_5" FCControlId="generalPlan_info_ddlTravelState">
+                                    <input type="text" class="w220" placeholder="请输入住美城市" verify-type="required enName" vali-msg-required="请完善在美住址" vali-msggroup="msg3_5" vali-group="msg3_5" vali-msggroup-breth="msg3_5" FCControlId="generalPlan_info_tbxCity">
+                                    <span class="valid_symbol none"></span>                                             
+                                </div>
+                            </li>
+                            <li class="info_list">
+                                <span class="info_tit"><i>*</i>在美住址：</span>
+                                <div class="info_con">
+                                    <input class="w220 lf" type="text" placeholder="请输入街道" verify-type="required street" vali-msg-required="请输入街道" FCControlId="generalPlan_info_tbxStreetAddress1">
+                                    <span class="valid_symbol none"></span>
+                                </div>
+                            </li>
+
+                            <li class="single_li">
+                                <span class="info_tit"><i>*</i>抵达时间：</span>
+                                <div class="info_con">
+                                    <div class="dropdown_tit birth_date">
+                                        <input type="text" class="w130 input_date J_dateTime future" placeholder="请选择" readonly="readonly" verify-type="required date" vali-msg-required="请选择抵达时间" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxTRAVEL_DTEYMD">
+                                    </div>
+                                </div>
+                            </li>                
+                            <li class="single_li mar10_l">
+                                <span class="info_tit"><i>*</i>停&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留：</span>
+                                <div class="info_con">
+                                    <input class="w130 lf" type="text" placeholder="请输入数字" verify-type="required onlyNumberSp" vali-msg-required="请输入停留时间" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxTRAVEL_LOS">  
+                                    <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                                        <div class="dropdown_tit pull_down w130 J_dropDown" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlTRAVEL_LOS_CD" verify-type="required" vali-msg-required="请选择" validate="required"></div>
+                                        <ul class="dropdown_menu J_dropDown_list none">
+                                            <li>天</li>
+                                            <li>周</li>
+                                            <li>月</li>
+                                            <li>年</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div> 
+                <li class="info_list">
+                    <span class="info_tit">邮政编码：</span>
+                    <div class="info_con">
+                        <input class="w130 lf" type="text" placeholder="请输入编码" validate="charOrNum" vali-msg-required="请输入邮政编码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbZIPCode">
+                        <span class="valid_symbol none"></span>
+                    </div>
+                </li>
+            </ul>              
+
+            <div class="is_show J_tabchange J_choose clearfix">
+                <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlWhoIsPaying">
+                    <p><i></i>谁为您支付本次旅行的费用?</p>
+                    <span class="radio" data-index="0" value="S"><i></i>自己支付</span>
+                    <span class="radio" data-index="1" value="O"><i></i>其他人</span>
+                    <i class="J_tips lf" data-content="<div class='tips_con'><span>温馨提醒</span><p>如无经济能力者可选此项</p></div>"></i>
+                    <span class="radio mar20_l" data-index="2" value="C"><i></i>其他组织或机构</span>                    
+                </div>
+                <div class="">
+                    <ul class="form_ul none" type="form" style="margin:0;"></ul>
+                    <ul class="form_ul clearfix none" type="form">
+                        <li class="info_list">                  
+                            <div class="single_li">
+                                <span class="info_tit"><i>*</i>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+                                <div class="info_con">
+                                    <input class="w130 lf" type="text" placeholder="请输入姓名" verify-type="required enName" vali-msg-required="请输入英文姓名" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerFullname">                  
+                                </div>
+                            </div>
+                            <div class="single_li">
+                                <span class="info_tit"><i>*</i>联系方式：</span>
+                                <div class="info_con">
+                                    <input class="w220 lf" type="text" placeholder="请输入电话" verify-type="required phone" vali-msg-required="请输入电话" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPayerPhone">                  
+                                </div>
+                            </div>
+                            <div class="single_li">
+                                <span class="info_tit"><i>*</i>关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</span>
+                                <div class="info_con">
+                                     <div class="select_box J_selectBox" hidefocus="true" tabindex="-1">
+                                        <div class="dropdown_tit pull_down w130 J_dropDown" verify-type="required" vali-msg-required="请选择关系" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlPayerRelationship">请选择关系</div>
+                                        <ul class="dropdown_menu J_dropDown_list none">
+                                            <li>父母</li>
+                                            <li>配偶</li>
+                                            <li>子女</li>
+                                            <li>朋友</li>
+                                            <li>其他亲属</li>
+                                            <li>其他</li>
+                                        </ul>
+                                    </div>                
+                                </div>
+                            </div>   
+                        </li>    
+                        <li class="info_list">                            
+                            <div class="sub_title" verify-type="required" vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblPayerAddrSameAsInd">
+                                <em class="lf">费用承担方地址是否与您邮寄地址或者家庭地址一致?</em>
+                                <span class="radio" value="Y" data-dot="0"><i></i>是</span>
+                                <span class="radio" value="N" data-dot="1" data-dotname="travelplandot"><i></i>否</span>
+                            </div>
+                            <div class="J_renderDot"></div>                    
+                        </li>                    
+                    </ul>
+                    <ul class="form_ul none" type="form">
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>公司名称：</span>
+                            <div class="info_con">
+                                <input class="w575 lf" type="text" placeholder="" verify-type="required street" vali-msg-required="请输入公司名称" FCControlId="travelplan_payer_companyName">                  
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <div class="single_li">
+                                <span class="info_tit"><i>*</i>联系方式：</span>
+                                <div class="info_con">
+                                    <input class="w220 lf" type="text" placeholder="请输入电话" verify-type="required phone" vali-msg-required="请输入联系方式" FCControlId="travelplan_payer_contactWay">                  
+                                </div>
+                            </div>
+                            <div class="single_li">
+                                <span class="info_tit"><i>*</i>关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;系：</span>
+                                <div class="info_con">
+                                    <input type="text" class="w130" placeholder="请输入关系" verify-type="required enName" vali-msg-required="请输入关系" FCControlId="travelplan_payer_relation">                 
+                                </div>
+                            </div>
+                            <div class="single_li">
+                                <span class="info_tit"><i>*</i>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;编：</span>
+                                <div class="info_con">
+                                    <input class="w220 lf" type="text" placeholder="请输入邮编" verify-type="required charOrNum" vali-msg-required="请输入" FCControlId="travelplan_payer_eMail">                 
+                                </div>
+                            </div>
+                        </li>
+                         
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>单位地址：</span>
+                            <div class="info_con">
+                                <input type="text" class="w130" placeholder="请输入国家" verify-type="required enName" vali-msg-required="请输入国家" vali-msggroup="msg3_6" vali-group="msg3_6" FCControlId="travelplan_payer_nation">
+                                <input type="text" class="w130" placeholder="请输入省份" verify-type="required enName" vali-msg-required="请输入省份" vali-msggroup="msg3_6" vali-group="msg3_6" FCControlId="travelplan_payer_province">
+                                <input type="text" class="w130" placeholder="请输入城市" verify-type="required enName" vali-msg-required="请完善家庭地址" vali-msggroup="msg3_6" vali-group="msg3_6" vali-msggroup-breth="msg3_6" FCControlId="travelplan_payer_address">                            
+                                <span class="valid_symbol none"></span>
+                            </div>
+                        </li>
+                        <li class="info_list">
+                            <span class="info_tit"><i>*</i>详细街道：</span>
+                            <div class="info_con">
+                                <input class="w575 lf" type="text" placeholder="街道详情地址不包括省市，从区开始填写，例：Industrial park with cheng yu new road no. 188 building" verify-type="required street" vali-msg-required="请输入详细街道" FCControlId="travelplan_payer_street">                  
+                            </div>
+                        </li>                         
+                    </ul>
+                </div>
+            </div>
+        </div>

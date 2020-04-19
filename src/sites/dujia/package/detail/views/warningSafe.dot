@@ -1,0 +1,21 @@
+{{?it.ImportantRemind.length || it.SafetyInstruction.length}}
+<div class="title-warnInfo">预订提醒与安全须知</div>
+{{?it.ImportantRemind.length}}
+<div class="title-all imp-warning"><i></i>重要提醒</div>
+<div class="content-text">
+{{~it.ImportantRemind:itVal}}
+    <p>{{=itVal.Title}}{{=itVal.Content}}</p>
+{{~}}
+</div>
+<p style="position: relative;"><span class="unfold more-content J_tmore"> 展开全部信息<b></b> </span></p>
+{{?}}
+{{?it.SafetyInstruction.length}}
+<div class="title-all info-safe"><i></i>安全须知</div>
+<div class="content-text">
+{{~it.SafetyInstruction:itVal}}
+   <p>{{=itVal.Title}}{{=itVal.Content}}</p>
+{{~}}
+</div>
+<p style="position: relative;"><span class="unfold more-content J_tmore"> 展开全部信息<b></b> </span></p>
+{{?}}
+{{?}}

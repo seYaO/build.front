@@ -1,0 +1,103 @@
+
+{{var contactclass="procedureBox";}}
+{{var ReceiveType = data.SubmitDetail.ReceiveType;}}
+{{var ProdcutType = data.SubmitDetail.ProdcutType;}}
+{{var RemarkNeed = data.SubmitDetail.RemarkNeed;}}
+{{var ReserveRemark = data.SubmitDetail.ReserveRemark;}}
+{{var AttributeNeed = data.SubmitDetail.AttributeNeed;}}
+{{var ContactInfoNeed = data.SubmitDetail.ContactInfoNeed;}}
+{{var ContactInfoField = data.SubmitDetail.ContactInfoField;}}
+
+
+{{? ContactInfoNeed == 1 || ContactInfoField != 0 }}
+    <div class="{{=contactclass}}">
+        <h2 class="pro_title">联系人信息</h2>
+        <div class="listbox">
+            <ul class="contactperson_info clearfix">
+                {{? (ContactInfoField & 1) == 1}}
+                    <li>
+                        <label class="UserInfo_L" for="ContactPerson"><em>*</em> 联系人：</label>
+                        <input id="ContactPerson" style="text-transform: uppercase;" maxlength="20" name="Iname" data-id="name_1" vtype="rq enOrCnWord" data-err-rq="请填写联系人" attr-value="请填写联系人" data-err-enorcnword="请填写联系人" class="con_phone Nonempty needValid inputBeforeSubmitChk" type="text" value="请填写联系人"/>
+                        <span class="error_info none">*请填写联系人</span>
+                    </li>
+                {{?}}
+                {{? (ContactInfoField & 2)== 2}}
+                    <li>
+                        <label class="contactperson_lable UserInfo_L" for="ContactMoblie"><em>*</em> 手机号码：</label>
+                        <input id="ContactMoblie" name="Iphone" vtype="rq mobile" data-err-rq="请填写手机号码" attr-value="请填写手机号码" data-err-mobile="请填写手机号码" class="con_phone Nonempty needValid inputBeforeSubmitChk" type="text" value="请填写手机号码"/>
+                        <span class="error_info none">*请填写电话号码</span>
+                    </li>
+                {{?}}
+                {{? (ContactInfoField & 4) == 4}}
+                    <li>
+                        <label for="ContactMail" class="UserInfo_L"><em>*</em> 电子邮箱：</label>
+                        <input id="ContactMail" name="Imailbox" maxlength="40" class="con_mailbox Nonempty needValid mail inputBeforeSubmitChk" vtype="rq mail" data-err-rq="请填写电子邮箱" data-err-mail="请填写电子邮箱" type="text" value="请填写电子邮箱" attr-value="请填写电子邮箱"/>
+                        <span class="error_info none">*请填写电子邮箱</span>
+                    </li>
+                {{?}}
+                <li class="add_pc none">
+                    <div class="write_list">
+                        <label class="ui-label"><em>*</em>身份证号：</label>
+                        <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk  sfcard" maxlength="30" type="text" value="请输入证件号码" attr-value="请输入证件号码" placeholder="请输入证件号码">
+                        <span class="valid_symbol" style="display: none;"></span>
+                    </div>
+                </li>
+                {{?ContactInfoField == 0}}
+                    <li class=''>
+                        <label class="UserInfo_L" for="ContactPerson"><em>*</em> 联系人：</label>
+                        <input id="ContactPerson" style="text-transform: uppercase;" maxlength="20" name="Iname" data-id="name_1" vtype="rq enOrCnWord" data-err-rq="请填写联系人" attr-value="请填写联系人" data-err-enorcnword="请填写联系人" class="con_phone Nonempty needValid inputBeforeSubmitChk" type="text" value="请填写联系人"/>
+                        <span class="error_info none">*请填写联系人</span>
+                    </li>
+                    <li class=''>
+                        <label class="contactperson_lable UserInfo_L" for="ContactMoblie"><em>*</em> 手机号码：</label>
+                        <input id="ContactMoblie" name="Iphone" maxlength="20" vtype="rq mobile" data-err-rq="请填写手机号码" attr-value="请填写手机号码" data-err-mobile="请填写手机号码" class="con_phone Nonempty needValid inputBeforeSubmitChk" type="text" value="请填写手机号码"/>
+                        <span class="error_info none">*请填写电话号码</span>
+                    </li>
+                    <li class=''>
+                        <label for="ContactMail" class="UserInfo_L"><em>*</em> 电子邮箱：</label>
+                        <input id="ContactMail" name="Imailbox" maxlength="40" class="con_mailbox Nonempty needValid mail inputBeforeSubmitChk" vtype="rq mail" data-err-rq="请填写电子邮箱" data-err-mail="请填写电子邮箱" type="text" value="请填写电子邮箱" attr-value="请填写电子邮箱"/>
+                        <span class="error_info none">*请填写电子邮箱</span>
+                    </li>
+                    <li class="add_pc none">
+                        <div class="write_list">
+                            <label class="ui-label"><em>*</em>身份证号：</label>
+                            <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk  sfcard" maxlength="30" type="text" value="请输入证件号码" attr-value="请输入证件号码" placeholder="请输入证件号码">
+                            <span class="valid_symbol" style="display: none;"></span>
+                        </div>
+                    </li>
+                {{?}}
+            </ul>
+        </div>
+    </div>
+{{??}}
+    <div class="{{=contactclass}}">
+            <h2 class="pro_title">联系人信息</h2>
+            <div class="listbox">
+                <ul class="contactperson_info clearfix">
+                    <li class=''>
+                        <label class="UserInfo_L" for="ContactPerson"><em>*</em> 联系人：</label>
+                        <input id="ContactPerson" style="text-transform: uppercase;" maxlength="20" name="Iname" data-id="name_1" vtype="rq enOrCnWord" data-err-rq="请填写联系人" attr-value="请填写联系人" data-err-enorcnword="请填写联系人" class="con_phone Nonempty needValid inputBeforeSubmitChk" type="text" value="请填写联系人"/>
+                        <span class="error_info none">*请填写联系人</span>
+                    </li>
+                    <li class=''>
+                        <label class="contactperson_lable UserInfo_L" for="ContactMoblie"><em>*</em> 手机号码：</label>
+                        <input id="ContactMoblie" name="Iphone" maxlength="20" vtype="rq mobile" data-err-rq="请填写手机号码" attr-value="请填写手机号码" data-err-mobile="请填写手机号码" class="con_phone Nonempty needValid inputBeforeSubmitChk" type="text" value="请填写手机号码"/>
+                        <span class="error_info none">*请填写电话号码</span>
+                    </li>
+                    <li class=''>
+                        <label for="ContactMail" class="UserInfo_L"><em>*</em> 电子邮箱：</label>
+                        <input id="ContactMail" name="Imailbox" maxlength="40" class="con_mailbox Nonempty needValid mail inputBeforeSubmitChk" vtype="rq mail" data-err-rq="请填写电子邮箱" data-err-mail="请填写电子邮箱" type="text" value="请填写电子邮箱" attr-value="请填写电子邮箱"/>
+                        <span class="error_info none">*请填写电子邮箱</span>
+                    </li>
+                    <li class="add_pc none">
+                         <div class="write_list">
+                             <label class="ui-label"><em>*</em>身份证号：</label>
+                             <input class="ui-input ui-select-certificate-id inputBeforeSubmitChk  sfcard" maxlength="30" type="text" value="请输入证件号码" attr-value="请输入证件号码" placeholder="请输入证件号码">
+                             <span class="valid_symbol" style="display: none;"></span>
+                         </div>
+                     </li>
+
+                </ul>
+            </div>
+        </div>
+{{?}}

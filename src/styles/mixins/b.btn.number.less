@@ -1,0 +1,91 @@
+@import "./a.global.less";
+
+@btnColor: #ff8400;
+/*加减按钮 */
+.button-content {
+    width:214/@rem;
+    height: 60/@rem;
+    border-radius: 6px;
+    border: 1px solid #dcdcdc;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: rgba(255,255,255,0);
+    position: relative;
+    top: -2px;
+	margin-top:13/@rem;
+}
+
+.button-minus,.button-plus {
+    width:66/@rem;
+	height: 60/@rem;
+	line-height:60/@rem;
+    position: relative
+}
+.button-minus:after,.button-plus:before {
+    content: '';
+    width: 12px;
+    height: 2px;
+    background: @orange;
+    display: block;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    margin-left: -6px;
+    margin-top: -1px
+}
+
+.button-minus.off:after,.button-plus.off:before {
+    background-color: @line-color;
+}
+
+.button-plus:after {
+    content: '';
+    width: 2px;
+    height: 12px;
+    background: @orange;
+    display: block;
+    top: 50%;
+    position: absolute;
+    left: 50%;
+    margin-left: -1px;
+    margin-top: -6px
+}
+.button-plus.off:after {
+    background-color: @line-color;
+}
+
+.button-minus {
+    border-radius: 6px 0 0 6px;
+}
+
+.button-plus {
+    border-radius: 0 6px 6px 0
+}
+
+.button-content input,.button-minus,.button-plus {
+    float: left
+}
+
+.button-content input {
+    box-shadow: none;
+    padding: 0;
+    color: #333;
+    font-size: 32/@rem;
+	width:75/@rem;
+    height: 60/@rem;
+    line-height:60/@rem;
+    border: 0;
+    outline: 0;
+    text-align: center;
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+    border-radius: 0
+}
+
+.button-h {
+    background: #35aa58
+}
+
+.button-h:after,.button-h:before {
+    background: #ccc
+}

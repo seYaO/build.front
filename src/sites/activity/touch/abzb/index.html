@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>亚斯岛 过新年</title>
+    <meta name="keywords" content="同程出境旅游，同程中东非旅游，阿布扎比旅游">
+    <meta name="description" content="同程旅游出境游频道为您提供特惠出境游！更多中东非出境游路线，更低中东非出境游价格尽在同程出境旅游。">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <!--<link href="index.css">-->
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <img src="img/dest/top_01.jpg" data-img-loaded="true">
+        <img src="img/dest/top_02.jpg" data-img-loaded="true">
+        <img src="img/dest/top_03.jpg" data-img-loaded="true">
+    </div>
+
+    <div class="swiper-container  J_NavBox" id="part1">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="img/dest/top_04.jpg" data-img-loaded="true"></div>
+        <div class="swiper-slide"><img src="img/dest/top_05.jpg" data-img-loaded="true"></div>
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+
+    <div class="part1 J_NavBox" id="part2">
+        <div class="prolist J_prolist J_con1" data-filter="CycleId=4641" data-tmpl="#tmpl01"></div>
+    </div>
+
+    <div class="part2 J_NavBox" id="part3">
+        <img src="img/dest/top_06.jpg" data-img-loaded="true">
+        <img src="img/dest/top_07.jpg" data-img-loaded="true">
+        <img src="img/dest/top_08.jpg" data-img-loaded="true">
+        <img src="img/dest/top_09.jpg" data-img-loaded="true">
+        <img src="img/dest/top_10.jpg" data-img-loaded="true">
+        <div class="prolist J_prolist J_con5" data-filter="CycleId=4642&DedicatLine=吃" data-tmpl="#tmpl02"></div>
+    </div>
+
+    <div class="part2 J_NavBox" id="part4">
+        <img src="img/dest/top_12.jpg" data-img-loaded="true">
+        <img src="img/dest/top_13.jpg" data-img-loaded="true">
+        <img src="img/dest/top_14.jpg" data-img-loaded="true">
+        <div class="prolist J_prolist J_con5" data-filter="CycleId=4642&DedicatLine=玩" data-tmpl="#tmpl02"></div>
+    </div>
+
+    <div class="part3">
+        <img src="img/dest/top_16.jpg" data-img-loaded="true">
+        <img src="img/dest/top_17.jpg" data-img-loaded="true">
+    </div>
+
+</div>
+
+<!-- 导航 -->
+<div class="switch">
+    <ul class="switch-cfd">
+        <li class="switch-li"><a class="active" href="#part1">官方推荐</a></li>
+        <li class="switch-li"><a href="#part2">同程主推</a></li>
+        <li class="switch-li"><a href="#part3">吃在亚斯</a></li>
+        <li class="switch-li"><a href="#part4">住在亚斯</a></li>
+    </ul>
+</div>
+
+<div id="wxShare" style="display: none;">
+    <input type="hidden" name="tcshareurl" value="//m.ly.com/dujia/zhuanti/abzbt.html">
+    <input type="hidden" name="tcshareimg" value="img/dest/share.jpg">
+    <input type="hidden" name="tcsharetext" value="玩转阿布扎比，这个新年同程旅游奉上亚斯岛全攻略，快跟小伙伴一起去感受土豪国金光闪闪的独特魅力吧！//m.ly.com/dujia/zhuanti/abzbt.html">
+    <input type="hidden" name="tcDesc" value="玩转阿布扎比，这个新年同程旅游奉上亚斯岛全攻略，快跟小伙伴一起去感受土豪国金光闪闪的独特魅力吧！">
+</div>
+
+<script id="tmpl01" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+            }}
+            <div class="pro1">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <div class="img-box">
+                        <img data-img="{{=sImgUrl.replace('http:','')}}">
+                        <div class="tczy"></div>
+                        <div class="chufa">{{=value.DepartCity}}出发/{{=LineType}}</div>
+                        <div class="maintit">{{=value.MainTitle}}</div>
+                    </div>
+                    <div class="exp">
+                        {{var _rep=decodeURIComponent("%23%23");}}
+                        {{if(value.Explosion){}}
+                        {{var Expl = value.Explosion.split(_rep);}}
+                            <li>★&nbsp{{=Expl&&Expl[0]?Expl[0]:''}}</li>
+                            <li>★&nbsp{{=Expl&&Expl[1]?Expl[1]:''}}</li>
+                            <li>★&nbsp{{=Expl&&Expl[2]?Expl[2]:''}}</li>
+                        {{}}}
+                    </div>
+                    <div class="price"><p>{{=value.Preferential}}</p></div>
+                    <div class="order"></div>
+                </a>
+            </div>
+        {{~}}
+</script>
+<script id="tmpl02" type="text/plain">
+    {{~it:value:index}}
+            {{var LineType =""; if(value.LineType==0){LineType ="跟团游"}else{ LineType ="自由行"}
+                var sImgUrl = Activity.setImageSize(value.ImgUrl,"600x300");
+                var SubTitle = value.SubTitle;
+                    if(SubTitle.length >22){
+                        SubTitle = SubTitle.substring(0, 21) + "...";
+                    }
+            }}
+            <div class="pro2">
+                <a {{=Activity.tmplProAttr(value)}}>
+                    <div class="img-box">
+                        <img data-img="{{=sImgUrl.replace('http:','')}}">
+                        <div class="pro-con">
+                            <div class="maintit">{{=value.MainTitle}}</div>
+                            <div class="subtit">{{=SubTitle}}</div>
+                            <div class="price"><p>{{=value.Preferential}}</p></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        {{~}}
+</script>
+
+<script data-loader="true" src="/modules/sea.js"></script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js,/touch/app/pub/public/share.js?v=20160113,/cn/v/2015/jqmodules/dot.js,/cn/v/2015/jqmodules/monitor/0.2.1/index.js?v=20160113,/cn/v/2015/jqmodules/statistics/0.2.0/statistics.js,/cn/v/2015/jqmodules/lazyload/0.2.1/touch.js?v=20160113"></script><!--ignore-->
+<script type="text/javascript">
+    (function () {
+        Zepto(document).on('page:resize', function (e) {
+            var _w = Zepto(document.body).width();
+            Zepto('html').css('font-size', ((_w > 640) ? 640 : _w) / 640 * 24 + 'px');
+        });
+        Zepto(document).trigger('page:resize');
+        Zepto(window).on('resize', function () {
+            Zepto(document).trigger('page:resize');
+        })
+    })();
+</script>
+<script>
+    var noLaunchApp = window.location.search.indexOf('noLaunchApp') > 0 ? false : true;
+    seajs.require("./index").init({
+        param: [
+            {"2238": [4641,4642]}
+        ],
+        host: "//www.ly.com",
+        filter: true,
+        querytype: 0,
+        IsSellOut: 1,
+        needJumpWX: true,
+        goTop:false,
+        needLaunchApp: noLaunchApp,
+        beforeRender:function(data){
+            return data;
+        }
+    });
+</script>
+<!--统计代码开始-->
+<script type="text/javascript">
+    (function() {
+        var pageview = stat.formatPageview('/出境/touch活动页/阿布扎比');
+        stat.init({
+            "baidu": {
+                "parameter": "touch"
+            },
+            "pvConfig": {
+                "PublicPlatId": "1",
+                "PageId": "51275",
+                "LineId": "0",
+                "ActivityId": "2238",
+                "ActivityPeriodId": "4641",
+                "ModuleId": "0",
+                "PVSource": "1",
+                "ak": "",
+                "url": "//www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+            },
+            "vst": [
+                ['_serialid', '0'],
+                ['_vrcode', stat.getVrcode()],
+                ['_refId', stat.getRefid()],
+                ['_userId', stat.getMemberId()],
+                ['_openTime', stat.timeDiff],
+                ['_trackPageview', pageview]
+            ]
+        });
+    })();
+</script>
+</body>
+</html>

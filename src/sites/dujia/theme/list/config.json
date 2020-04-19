@@ -1,0 +1,10 @@
+{
+    "dataUri": "/intervacation/api/PThemePage/GetThemeProductList",
+    "query": {
+        "pageType":0,
+        "queryThemeId":1,
+        "queryThemePinYin":"huwaiyundong",
+        "count":40
+    },
+    "desc": "主题游列表页"
+}

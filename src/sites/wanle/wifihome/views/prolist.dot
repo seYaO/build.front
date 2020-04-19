@@ -1,0 +1,49 @@
+{{?wifiPro.HotProductList && wifiPro.HotProductList.length}}
+<div class="product pro-wifi">
+    <div class="pro-bt">
+        <span>热门WiFi</span>随身wifi，随时随地分享
+    </div>
+    <div class="pro-lists clearfix">
+        <ul trackkit="Line_Recommend">
+        {{~wifiPro.HotProductList:wifiProduct:index}}
+            <li><a href="{{=wifiProduct.Url.replace('http:','')}}" title="{{=wifiProduct.MainTitle}}" target="_blank" trackspot="{{=wifiProduct.ProductId}}^{{=index+1}}^热门WiFi">
+                <div class="pro-img">
+                    <img data-img="{{=wifiProduct.Image.replace('.jpg','_430x270_00.jpg').replace('http:','')}}" alt="{{=wifiProduct.MainTitle}}" />
+                    <span class="icon-wifi"></span>
+                </div>
+                <div class="pro-info">
+                    {{var mainTitle = wifiProduct.MainTitle.substring(0,5);}}
+                    <p>{{=mainTitle}}</p>
+                    <span>￥<em>{{=wifiProduct.Price}}</em>起</span>
+                </div>
+            </a></li>
+        {{~}}
+        </ul>
+    </div>
+</div>
+{{?}}
+
+{{?phoneCard.HotProductList && phoneCard.HotProductList.length}}
+<div class="product pro-card">
+    <div class="pro-bt">
+        <span>电话卡</span>省心通话，沟通无距离
+    </div>
+    <div class="pro-lists clearfix">
+        <ul trackkit="Line_Recommend">
+        {{~phoneCard.HotProductList:cardProduct:index}}
+            <li><a href="{{=cardProduct.Url.replace('http:','')}}" title="{{=cardProduct.MainTitle}}" target="_blank" trackspot="{{=cardProduct.ProductId}}^{{=index+1}}^电话卡">
+                <div class="pro-img">
+                    <img data-img="{{=cardProduct.Image.replace('.jpg','_430x270_00.jpg').replace('http:','')}}" alt="{{=cardProduct.MainTitle}}"  />
+                    <span class="icon-wifi"></span>
+                </div>
+                <div class="pro-info">
+                    {{var mainTitle = cardProduct.MainTitle.substring(0,5);}}
+                    <p>{{=mainTitle}}</p>
+                    <span>￥<em>{{=cardProduct.Price}}</em>起</span>
+                </div>
+            </a></li>
+        {{~}}
+        </ul>
+    </div>
+</div>
+{{?}}

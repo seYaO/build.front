@@ -1,0 +1,449 @@
+<!--自由行首页-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" trace="pc-findex">
+{{var it = IT.Data;}}
+{{
+    var sliderList = it.SlideObj||{},
+        depList = it.DepartTigList||{},
+        endfree = it.EndProductList||{},
+        longfree = it.LongProductList||{},
+        shortfree = it.ShortProductList||{},
+        longAndShort = it.TravelModule || [],
+        StartStr = it.StartListStr;
+
+    var friendLink = it.FriendLinkInfo,
+        packagePro = it.PackageProductList,
+        cityStart = it.CityInfo;
+}}
+<!--城市-->
+{{
+    var startcityid = cityStart.CityId || "321",
+        startCity =  cityStart.CityName || "上海",
+        startCityPinyin = cityStart.CityPy ||"shanghai";
+    var lineType = "zizhu",
+        titleTxt="自由行",
+        pageTypeTxt="zizhu";
+}}
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <title>自由行自助游_自由行自助游攻略_出境自由行自助旅游网—同程旅游</title>
+    <meta name='keywords' content='自由行，自助游，自由行攻略，自助游攻略，自由行旅游网' />
+    <meta name='description' content='同程出境旅游为您提供自由行、自助游，出境自由行、自助游攻略等，精选自由行、自助游优质出境自由行旅游服务，自由行、自助游尽在同程出境游，联系电话 40077-40075，自由行当然选同程出境游。' />
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+
+    <% includeId = cnwidescreenjscss %>
+    <link rel="stylesheet" href="//modules/datepicker/0.2.1/theme/default.css">
+    <link rel="stylesheet" href="//modules/datepicker/0.2.1/theme/calendar-year.css">
+    <link rel="stylesheet" href="//modules/datepicker/0.2.1/theme/calendar-month.css">
+    <!--<link type="text/css" rel="stylesheet" href="//css.40017.cn/cn/min/??/cn/v/2015/startList/starList.04235.css?v=20150423" />-->
+    <link href="//css.40017.cn/cn/v/2015/kefu/index.08145.css" rel="stylesheet"/>
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+    <style type="text/css">
+        body {
+            font-family: 'Microsoft YaHei',Arial,sans-serif;
+        }
+        div.search-box{width:389px;}
+        .zhekou{
+            display: none;
+        }
+        .longboxl li a{
+            height: 100%;
+            overflow: hidden;
+        }
+        .proline-txt {
+            width:218px;
+        }
+    </style>
+    </head>
+<body>
+    <!-- 公共头部 开始 -->
+    <% includeId = cnwidescreenhead?channel=dujia %>
+    <!-- 前端性能监控 -->
+    <input type="hidden" id="commonMonitor" value='{"channel":"dujia","page":"free-index"}'/>
+    <!-- 公共头部 结束 -->
+
+    <!-- 主体板块 -->
+
+    <input type="hidden" id="baseUrl" value="/dujia/freetour/"  />
+    <input type="hidden" id="startCity" value="{{=startCityPinyin}}" />
+    <input type="hidden" id="startCityName" value="{{=startCity}}" />
+    <input type="hidden" id="propertyFd" value="2">
+    <input type="hidden" id="startcityId" value="{{=startcityid}}" />
+    <input type="hidden" id="nameFd" value="自由行">
+    <div id="conter" class="">
+        <div class="autotop">
+            <div class="topSearch">
+                <div class="searchbox">
+                    <div class="citybox new_city_b">
+                        <b id="city_select" class="city_b" data-scid="{{=startcityid}}" attrurl="/dujia/AjaxCallNew.aspx?type=GetQianzhengSearch&cityid=226">
+                            <strong>{{=startCity}}</strong>&nbsp;出发
+                        </b>
+                        <!-- 弹出 -->
+                        <div id="popleave" class="none" style="display: none;" test="">
+                            <div class="leavecity">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flyhotelBox">
+                        <b id="jijiu_select" class="jijiu_b"><em style="right: 0px;background-color: #ff6535;">自由搭配<i style="border-top: 6px solid #ff6535;"></i></em></b>
+                        <div id="jijiubox" style="display:none;">
+                            <div class="jijiuInfo">
+                                <div class="jijiuItems person_box clearfix">
+                                    <div class="num-item adultItem">
+                                        <input class="input-num" readonly="readonly" type="text" min="1" value="2" num="2" price-type="adult" id="adult"><i></i>
+                                        <div class="adultNumBox none">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                    <div class="num-item childItem">
+                                        <input class="input-num" readonly="readonly" type="text" min="0" value="0" num="0" price-type="child" id="child1"><i></i>
+                                        <div class="childNumBox none">
+                                            <ul></ul>
+                                        </div>
+                                        <div class="childOld-box none">
+                                            <div class="title-childOld">入住时儿童年龄</div>
+                                            <div class="box-childyear"></div><span class="childyear-submit">确定</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jijiuItems room_box clearfix">
+                                    <div class="num-item roomItem">
+                                        <input class="input-num" readonly="readonly" type="text" min="0" value="1" num="2" price-type="room" id="room"><i></i>
+                                        <div class="roomNumBox none" style="display: none;">
+                                            <ul></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="jijiuItems fly_box clearfix">
+                                    <div class="inputItems">
+                                        <input type="text" placeholder="出发地" class="ui-input input-city-fly ui-input-city J_flyDestCity" validate="required" vali-msg-required="请填写出发地">
+                                        <div class="flyMoreCity" style="display:none"></div>
+                                        <div class="defaultCity"></div>
+                                        <span class="valid_symbol none"></span>
+                                    </div>
+                                    <div class="inputItems">
+                                        <input type="text" placeholder="目的地" class="ui-input input-city-fly ui-input-city J_flyArrCity" validate="required" vali-msg-required="请填写目的地">
+                                        <div class="flyMoreCity" style="display:none"></div>
+                                        <div class="defaultCity"></div>
+                                        <span class="valid_symbol none"></span>
+                                    </div>
+                                    <div class="inputItems">
+                                        <input type="text" placeholder="yyyy-mm-dd" class="ui-input ui-input-date goDate flyDate" validate="required" vali-msg-required="请填写去程日期">
+                                        <span class="valid_symbol none"></span>
+                                    </div>
+                                    <div class="inputItems">
+                                        <input type="text" placeholder="yyyy-mm-dd" class="ui-input ui-input-date backDate flyDate" validate="required" vali-msg-required="请填写返程日期">
+                                        <span class="valid_symbol none"></span>
+                                    </div>
+                                </div>
+                                <div class="jijiuItems hotel_box clearfix">
+                                    <div class="option-hotel-items">
+                                        <div class="option-hotel-item">
+                                            <div class="clearfix">
+                                                <div class="inputItems">
+                                                    <input type="text" placeholder="入住城市" class="ui-input ui-input-city input-city-hotel" validate="required" vali-msg-required="请填写入住城市">
+                                                    <i class="delete-hotel none"></i>
+                                                    <div class="flyMoreCity" style="display:none"></div>
+                                                    <div class="defaultCity"></div>
+                                                    <span class="valid_symbol none"></span>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix">
+                                                <div class="inputItems">
+                                                    <input type="text" placeholder="yyyy-mm-dd" class="ui-input ui-input-date hotelInDate" validate="required" vali-msg-required="请填写入住时间">
+                                                    <span class="valid_symbol none"></span>
+                                                </div>
+                                                <div class="inputItems">
+                                                    <input type="text" placeholder="yyyy-mm-dd" class="ui-input ui-input-date hotelOutDate" validate="required" vali-msg-required="请填写离店时间">
+                                                    <span class="valid_symbol none"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="add-hotel">+添加住宿（支持不同城市）</div>
+                                </div>
+                                <div class="J_jijiu_search btn_jijiu">查询机+酒组合</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="udiyblock"  type="CommonSource">
+                        <div class="cj-search">
+                            <div class="search-box">
+                                <div class="search-line icon-up">
+                                    <span id="selectValue" class="selected" tid="2">自由行</span>
+                                    <ul class="search-list" style="display: none;">
+                                        <li tid="0">全部</li>
+                                        <li tid="1">跟团游</li>
+                                        <li tid="2">自由行</li>
+                                        <li tid="6">签证</li>
+                                    </ul>
+                                </div>
+                                <input id="searchinput" attrvalu="请输入目的地关键字" class="search-input" type="text" value="请输入目的地关键字">
+                            </div>
+                            <input attrurl="//www.ly.com/dujia/search.aspx" id="btnSubmit" class="search-button" type="button" value="搜 &nbsp;索">
+                        </div>
+                    </div>
+                </div>
+                <div class="hotbox">
+                    <!--城市目的地-->
+                    {{#def.depcity}}
+                </div>
+
+            </div>
+        </div>
+        <!-- 幻灯start -->
+        <div class="iv_full_screen_slider tc_ac_tr" id="ivFullScreenSlider">
+            {{?sliderList && sliderList.length>0}}
+            <div class="iv_full_screen_slider_con">
+            <ul>
+                {{~sliderList:sList}}
+                <li>
+                    <!--注：狮子座页面转义要用双斜杠，本地调试页面不需要，本地调试时可用单斜杠，上线之前注意改-->
+                    <!--replace(/http\:\/\/http\:\/\//g,"http://")-->
+                    <!--replace(/http\\:\\/\\/http\\:\\/\\//g,"http://")-->
+                    <a href='{{=sList.LinkUrl.replace(/http\\:\\/\\/http\\:\\/\\//g,"//")}}' title="{{=sList.Content}}" target="_blank">
+                        <img src="{{=sList.ImgUrl}}" alt="{{=sList.Content}}">
+                    </a>
+                </li>
+                {{~}}
+            </ul>
+            </div>
+            {{?}}
+        </div>
+        <!--产品描述-->
+        <div class="iv_info">
+            <div class="cen_box">
+                <ul>
+                    <li>
+                        <span class="price_ico"></span>
+                        <dl>
+                            <dt>透明低价</dt>
+                            <dd>透明团、无零负团费
+                            </dd>
+                            <dd>低价有保障</dd>
+                        </dl>
+                    </li>
+                    <li>
+                        <span class="line_ico"></span>
+                        <dl>
+                            <dt>海量线路</dt>
+                            <dd>全国各地万余条线路</dd>
+                            <dd>包含跟团游/自由行</dd>
+                        </dl>
+                    </li>
+                    <li class="mar_no">
+                        <span class="experience_ico"></span>
+                        <dl>
+                            <dt>真实体验</dt>
+                            <dd>真实点评和原创游记
+                            </dd>
+                            <dd>提供真实的体验</dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!--首页产品列表-->
+        <div class="mianbox">
+            <!--自由行尾货甩卖-->
+            {{?endfree && endfree.length>0}}
+                {{#def.endline}}
+            {{?}}
+            <!-- 机加酒模块-->
+            {{?friendLink && friendLink.length > 0 && packagePro && packagePro.length > 0}}
+            <div class="tpackage">
+                <div class="tptit"><i>&nbsp;</i> 机+酒任选</div>
+                <div class="tpbox J_tpbox">
+                    <ul class="tpul clearfix" data-tag="J_tplist">
+                        {{~friendLink:link:lIndex}}
+                        <li class="{{?lIndex==0}}on{{?}}" data-key="tp_{{=lIndex+1}}">
+                            <span>{{=link.CztcAnchorText}}</span><i></i>
+                        </li>
+                        {{~}}
+                    </ul>
+                    <!--机酒产品-->
+                    <div class="tplist">
+                        <div class="top ">
+                            <h3><i>&nbsp;</i>热销排行</h3>
+                            {{~friendLink:tabF:pIndex}}
+                            {{
+                                var _url = '';
+                                if(tabF.LinkUrl.indexOf('jijiu/f') > 0){
+                                    _url = tabF.LinkUrl;
+                                }else{
+                                    _url = tabF.LinkUrl + 'f' + startcityid + '/';
+                                }
+                            }}
+                            <a href="{{=_url}}"
+                            target="_blank" title="更多{{=tabF.CztcAnchorText}}线路" class="top_{{=pIndex+1}} {{?pIndex!=0}}none{{?}}">
+                                更多{{=tabF.CztcAnchorText}}线路&gt;&gt;
+                            </a>
+                            {{~}}
+                        </div>
+                        <div class="J_tplist">
+                            <ul class="prolist clearfix">
+                                {{~packagePro:packList:packInd}}
+                                <li class="{{?packInd==3}}last_1{{??packInd==4}}last_2{{?}}">
+                                    <a class="proline-link" href="//www.ly.com/dujia/tours/p{{=packList.LineId}}.html" target="_blank" />
+                                        <div class="proline-img">
+                                            <img data-src="{{=packList.ImgUrl}}" title="{{=packList.MainTitle}}" alt="{{=packList.MainTitle}}" />
+
+                                            <div class="sub-title" title="{{=packList.SubTitle}}">{{=packList.SubTitle}}
+                                            </div>
+                                        </div>
+                                        <div class="proline-txt" title="{{=packList.MainTitle}}">
+                                            <p class="proline-tit">{{=packList.MainTitle}}</p>
+                                            <p class="proline-price">
+                                                <span class="dep">{{=packList.LeaveCity}}出发</span>
+                                                {{?packList.TccpPrice == 0}}
+                                                <span class="price">实时计价</span>
+                                                {{??}}
+                                                <span class="price">&yen;{{=packList.TccpPrice}}</span>
+                                                {{?}}
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                                {{~}}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{?}}
+            <!--长短线模块-->
+            {{#def.longandshort}}
+            <div class="t_empty"></div>
+        </div>
+    </div>
+    <!-- 公共页脚 开始 -->
+    <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+    <!-- 公共页脚 结束 -->
+    <input type="hidden" id="AjaxRequestPath" value="//www.ly.com/AjaxHelper/TopLoginHandler.aspx?channel=ChuJingTravel">
+    <input type="hidden" id="TcPmsUniqueKey" value="cndujiafreetoursindex">
+    <input id="comsilderinfo" type="hidden" value='{"Url":"http://www.ly.com/scenery/zhuanti/sdlj2016pc?dhgg","SmallPic":"//pic4.40017.cn/index/slide/2016/08/11/17/Tfpauq.jpg","BigPic":"//pic4.40017.cn/index/slide/2016/08/11/17/z1b2H1.jpg","QrPic":"//pic4.40017.cn/index/slide/2016/05/18/17/6JWpBe.png"}' />
+    <script type="text/javascript" src="//js.40017.cn/cn/c/c/2016/common.0.3.1.js?v=2016030403"></script>
+    <script type="text/javascript">
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined")
+        { _timediff = new Date().getTime() - _tcopentime; }
+        _tcq.push(['_serialid', '0']);
+        _tcq.push(['_vrcode', '10002-2006-0']);
+        _tcq.push(['_refId', getRefid()]);
+        _tcq.push(['_userId', fish.getNmemberId()]);
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '/出境游/自由行首页/']);
+        _tcq.push(['_resId', fish.getProId()]);         _tcq.push(['_qdid',getQdid()]);
+    </script>
+    <script type='text/javascript' src="//vstlog.17u.cn/vst.ashx" charset="utf-8"></script>
+
+    <script type="text/javascript">
+        var cityInfo = {
+            startList: {{=StartStr.startCity}},
+            hotStartList:{{=StartStr.hotCity}}
+        };
+    </script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=16030113"></script>
+    <script src="//js.40017.cn/cn/v/2015/searchtext/searchtext.02235.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/public/2014/v_common.0.0.2.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js?v=2015103002"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/lazyload/fish/0.1.0/index.js?v=123"></script>
+
+    <script src="//js.40017.cn/cn/min/??/cn/v/public/2014/sliderBar/InterVacationPublic.js?v=2015042901" charset="utf-8"></script>
+    <script type="text/javascript">
+        var _tcHotmapx = { pid: 319, sp: 100 };
+    </script>
+    <script type="text/javascript">
+        fish.ready(function(){
+            var host = "www.ly.com";
+            var url="//"+host+"/dujia/ajaxcall.aspx?type=GetTel400";
+            fish.ajax({
+            url:url,
+            type:"jsonp",
+            fn:function(data)
+            {
+                if(data!=""&&data!=null)
+                {
+                    fish.one(".ly_p_message em").html("请拨打"+data);
+                }
+            }
+        });
+    });
+    </script>
+
+    <script data-loader="true" src="//modules/sea.js"></script>
+
+    <script>
+         window.host = "//www.ly.com";
+         seajs.require("./index");
+    </script>
+
+    <!-- 模块统计 -->
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js"></script>
+    <script>
+    SPM_MODULE&&SPM_MODULE.init({
+        module : [
+        {
+            cls: ".iv_full_screen_slider_con",
+            value : 53
+        }
+        ],
+        deliver: [".hotbox,.iv_full_screen_slider_con,.iv_favorable_slider,.longlinelist,.themebox"]
+    });
+    </script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.3.0/statistics.js?v=16030113"></script>
+    <script type="text/javascript">
+            var rtTag ={
+                "data": {
+                    "etravel_page": {
+                        "page_type": "index",
+                        "p_class1": "出境游",
+                        "p_class2": "自由行"
+                    }
+                }
+            };
+            stat.init({
+            "baidu": {
+                "parameter": "pc",
+                "hmt": [
+                    ['_setAccount', '53a0d71dba66835ff1aa907db99144d8'],
+                    ['_trackRTEvent', rtTag]
+                ]
+            },
+            "_tcHotmapx": {
+                "pid": "319",
+                "sp": "100"
+            },
+            "mvl": {
+                "_mvq": [
+                    ['$setAccount', 'm-135073-0'],
+                    ['$logConversion']
+                ],
+                "isImmediateExcu": true
+            },
+            "param":{
+            "startCity": "{{=startCity}}",
+                "lineType": "ziyouxing"
+            }
+        });
+    </script>
+    <!-- Criteo---->
+    <script type="text/javascript" src="//static.criteo.net/js/ld/ld.js" async="true"></script>
+    <script type="text/javascript">
+    window.criteo_q = window.criteo_q || [];
+    window.criteo_q.push(
+            { event: "setAccount", account: 20385 },
+            { event: "setHashedEmail", email: "" },
+            { event: "setSiteType", type: "d" },
+            { event: "viewHome" }
+    );
+    </script>
+</body>
+</html>

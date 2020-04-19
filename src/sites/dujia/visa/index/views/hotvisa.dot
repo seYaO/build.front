@@ -1,0 +1,49 @@
+<div class="ui-freeVisa" trace="trace-freeVisa">
+    <div class="ui-freeVisa-head">
+        <i class="icon-freeVisa"></i>
+        <h2>热门签证</h2>
+        <p>各大洲热卖任意选</p>
+    </div>
+    <div class="ui-freeVisa-proLists clearfix">
+        <div class="ui-proLists-head" trackkit="Destination_hot">
+            <ul class="ui-proLists-country J_proLists-country">
+                <li class="J_trace cur" data-index="1" trackspot="亚洲^1" trace="proListsCountry_1" data-url="/dujia/visa/country-asia.html" data-id="3106">亚洲</li>
+                <li class="J_trace" data-index="2" trackspot="美澳^2" trace="proListsCountry_2" data-url="/dujia/visa/country-usaus.html" data-id="3108,3109,3111">美澳</li>
+                <li class="J_trace" data-index="3" trackspot="欧洲^3" trace="proListsCountry_3" data-url="/dujia/visa/country-europe.html" data-id="3107">欧洲</li>
+            </ul>
+            <div style="display: block;" class="ui-proLists-more" trackkit="more">
+                <a target="_blank" trackspot="查看更多亚洲签证" trace="proListsMore" href="#">查看更多亚洲签证</a>
+            </div>
+        </div>
+        <div class="ui-proLists-content" trackkit="Line_Recommend">
+            {{?HotVisa && HotVisa.length>0}}
+                <div class="proLists-tab-panel">
+                    <ul>
+                        {{~HotVisa:itemList:hindex}}
+                            <li>
+                                <a trace="freeVisaArea_{{=hindex+1}}" trackspot="{{=itemList.ProductId}}^{{=hindex+1}}^亚洲^热门签证" href="/dujia/visa/visa-{{=itemList.ProductId}}.html">
+                                    <div class="ui-freeVisa-proList">
+                                        <span class="ui-freeVisa-area">{{=itemList.RegionName}}领区</span>
+                                        <img data-img="{{=itemList.VisaImg.replace('http:','')}}">
+                                        <div class="ui-freeVisa-info">
+                                            <p>{{=itemList.CountryName}}<em>|</em>{{=itemList.VisaType}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="ui-freeVisa-footer">
+                                        <p class="freeVisa-price">
+                                            <i>¥</i>
+                                            <em>{{=itemList.AmountDirect}}</em>
+                                            <em class="price-start">起</em>
+                                        </p>
+                                        <b></b>
+                                        <span>马上办理</span>
+                                    </div>
+                                </a>
+                            </li>
+                        {{~}}
+                    </ul>
+                </div>
+            {{?}}
+        </div>
+    </div>
+</div>

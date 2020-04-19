@@ -1,0 +1,198 @@
+
+
+{{?it.flight && it.flight !== null}}
+<div class="flight-module clearfix">
+{{??}}
+<div class="flight-module clearfix none">
+{{?}}
+<div class="module-name">
+     <div class="icon-contain">
+          <span></span>
+     </div>
+     <p class="module-title">航班信息</p>
+</div>
+<table class="flight-travel-info ">
+{{?it.flight && it.flight !== null}}
+    {{var flight = it.flight;}}
+                        <tbody>
+                        {{?flight.FlightGo && flight.FlightGo.length !== 0}}
+                            {{?flight.FlightGo.length >1}}
+                            {{
+                                $('.J_flight-travelInfo').attr('isChange',0);
+                            }}
+                            {{??}}
+                            {{
+                                $('.J_flight-travelInfo').attr('isChange',1);
+                            }}
+                            {{?}}
+                            {{for(var i = 0;i < flight.FlightGo.length;i++){ }}
+                                {{var flightGo = flight.FlightGo[i];}}
+                                {{?flightGo.StartTime && flightGo.StartTime !== ''}}
+                                    {{var startDate = flightGo.StartTime;}}
+                                    {{var startTime = startDate.split('T')[1].split('+')[0];}}
+                                {{?}}
+                                {{?flightGo.EndTime && flightGo.EndTime !== ''}}
+                                    {{var endDate = flightGo.EndTime;}}
+                                    {{var endTime = endDate.split('T')[1].split('+')[0];}}
+                                {{?}}
+
+                            <tr>
+                                <td class="col_01">
+                                    {{?i === 0}}
+                                    <span class="travel-type">去</span>
+                                    {{?? i === 1}}
+                                    <span class="travel-middle-change"></span>
+                                    {{?}}
+                                </td>
+                                <td class="col_02">
+                                    <p class="label-common-color label-common-size">{{=startDate.split('T')[0]}}</p>
+                                </td>
+                                <td class="col_03">
+                                    {{?flightGo.AirCompany && flightGo.AirCompany !== ''}}
+                                    <p class="label-common-color label-common-size" style="line-height:1.2;">{{=flightGo.AirCompany}}</p>
+                                    {{?}}
+                                    {{?flightGo.FlightNumber && flightGo.FlightNumber !== ''}}
+                                    <p class="label-common-color label-common-size J_flightNum">{{=flightGo.FlightNumber}}</p>
+                                    {{?}}
+                                </td>
+                                <td class="col_04">
+                                    <p class="label-common-color label-large-size">{{=startTime.substr(0,5)}}</p>
+                                    {{?flightGo.AirportOfDeparture && flightGo.AirportOfDeparture !== ''}}
+                                    <p class="label-common-color label-common-size">{{=flightGo.AirportOfDeparture}}</p>
+                                    {{?}}
+                                </td>
+                                <td class="col_05">
+                                    {{?flightGo.FlightTime && flightGo.FlightTime !== '' }}
+                                    <span class="travel-time">约{{=flightGo.FlightTime}}</span>
+                                    {{?}}
+                                    <i class="ui-arrow"></i>
+                                </td>
+                                <td class="col_06">
+                                    <p class="label-common-color label-large-size">{{=endTime.substr(0,5)}}</p>
+                                    {{?flightGo.AirportOfDestination && flightGo.AirportOfDestination !== ''}}
+                                    <p class="label-common-color label-common-size">{{=flightGo.AirportOfDestination}}</p>
+                                    {{?}}
+                                </td>
+                                <td class="col_07">
+                                    {{?flightGo.CabinType !== null}}
+                                    {{var cabinType = '';}}
+                                    {{?flightGo.CabinType === 0}}
+                                    {{cabinType = '经济舱';}}
+                                    {{?? flightGo.CabinType === 1}}
+                                    {{cabinType = '头等舱';}}
+                                    {{?? flightGo.CabinType === 2}}
+                                    {{cabinType = '商务舱';}}
+                                    {{?}}
+                                    <p class="label-common-color label-common-size">{{=cabinType}}</p>
+                                    {{?}}
+                                </td>
+                            </tr>
+                            {{?i === 0 && flight.FlightGo.length >1}}
+                            <tr>
+                                <td colspan="7">
+                                    <div class='ui-midChange-line'>
+                                         <div class='travel-midChange-info'>
+                                              <span class='travel-midChange-title'>{{=flightGo.Destination}}中转</span>
+                                              <span class='travel-midChange-title'>停留{{=flightGo.Transfer}}</span>
+                                         </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            {{?}}
+                            {{ } }}
+                            {{?}}
+                            <tr>
+                                <td colspan="7">
+                                    <div class="ui-line"></div>
+                                </td>
+                            </tr>
+
+                            {{?flight.FlightBack && flight.FlightBack.length !== 0}}
+                                {{for(var i = 0;i < flight.FlightBack.length;i++){ }}
+                                    {{var flightBack = flight.FlightBack[i];}}
+                                    {{?flightBack.StartTime && flightBack.StartTime !== ''}}
+                                        {{var startDate = flightBack.StartTime;}}
+                                        {{var startTime = startDate.split('T')[1].split('+')[0];}}
+                                    {{?}}
+                                    {{?flightBack.EndTime && flightBack.EndTime !== ''}}
+                                        {{var endDate = flightBack.EndTime;}}
+                                        {{var endTime = endDate.split('T')[1].split('+')[0];}}
+                                    {{?}}
+                            <tr>
+                                <td class="col_01">
+                                    {{?i === 0}}
+                                    <span class="travel-type">返</span>
+                                    {{??i === 1}}
+                                    <span class="travel-middle-change"></span>
+                                    {{?}}
+                                </td>
+                                <td class="col_02">
+                                    <p class="label-common-color label-common-size">{{=startDate.split('T')[0]}}</p>
+                                </td>
+                                <td class="col_03">
+                                    {{?flightBack.AirCompany && flightBack.AirCompany !== ''}}
+                                    <p class="label-common-color label-common-size" style="line-height:1.2;">{{=flightBack.AirCompany}}</p>
+                                    {{?}}
+                                    {{?flightBack.FlightNumber && flightBack.FlightNumber !== ''}}
+                                    <p class="label-common-color label-common-size J_flightNum">{{=flightBack.FlightNumber}}</p>
+                                    {{?}}
+                                </td>
+                                <td class="col_04">
+                                    <p class="label-common-color label-large-size">{{=startTime.substr(0,5)}}</p>
+                                    {{?flightBack.AirportOfDeparture && flightBack.AirportOfDeparture !== ''}}
+                                    <p class="label-common-color label-common-size">{{=flightBack.AirportOfDeparture}}</p>
+                                    {{?}}
+                                </td>
+                                <td class="col_05">
+                                    {{?flightBack.FlightTime && flightBack.FlightTime !== '' }}
+                                    <span class="travel-time">约{{=flightBack.FlightTime}}</span>
+                                    {{?}}
+                                    <i class="ui-arrow"></i>
+                                </td>
+                                <td class="col_06">
+                                    <p class="label-common-color label-large-size">{{=endTime.substr(0,5)}}</p>
+                                    <div class="dest-airport">
+                                    {{?flightBack.AirportOfDestination && flightBack.AirportOfDestination !== ''}}
+                                        <span class="label-common-color label-common-size">{{=flightBack.AirportOfDestination}}</span>
+                                    {{?}}
+                                    {{?flightBack.ConnectingFlightCrossDay && flightBack.ConnectingFlightCrossDay !== 0}}
+                                        <a class="J_flight-delay">+{{=flightBack.ConnectingFlightCrossDay}}</a>
+                                        <div class="pop-flightTips">
+                                            <p>受时差和飞行时间影响，航班到达日期为起飞日期+{{=flightBack.ConnectingFlightCrossDay}}天,显示的到达时间为当地时间</p>
+                                        </div>
+                                    {{?}}
+                                    </div>
+                                </td>
+                                <td class="col_07">
+                                    {{?flightBack.CabinType !== null}}
+                                    {{var cabinType = '';}}
+                                    {{?flightBack.CabinType === 0}}
+                                    {{cabinType = '经济舱';}}
+                                    {{?? flightBack.CabinType === 1}}
+                                    {{cabinType = '头等舱';}}
+                                    {{?? flightBack.CabinType === 2}}
+                                    {{cabinType = '商务舱';}}
+                                    {{?}}
+                                    <p class="label-common-color label-common-size">{{=cabinType}}</p>
+                                    {{?}}
+                                </td>
+                            </tr>
+                            {{?i === 0 && flight.FlightBack.length >1}}
+                                <tr>
+                                     <td colspan="7">
+                                         <div class='ui-midChange-line'>
+                                              <div class='travel-midChange-info'>
+                                                   <span class='travel-midChange-title'>{{=flightBack.Destination}}中转</span>
+                                                   <span class='travel-midChange-title'>停留{{=flightBack.Transfer}}</span>
+                                              </div>
+                                         </div>
+                                     </td>
+                                </tr>
+                            {{?}}
+                                {{} }}
+                            {{?}}
+                        </tbody>
+{{?}}
+</table>
+<a href="javascript:void(0)" class="flight-invoice label-click-color label-click-size J_flightCheck">航司托运信息</a>
+</div>

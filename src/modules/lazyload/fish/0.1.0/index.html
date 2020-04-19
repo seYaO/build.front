@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li{min-height: 100px;}
+    </style>
+    <script src="http://js.40017.cn/cn/min/??/cn/public/fish.1.4.7.js,/cn/public/fc.1.1.7.js?v=2015021101"></script>
+    <script src="http://js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script>
+    <!--<script src="../0.1.0/index.js"></script>-->
+    <script src="index.js"></script>
+    <script>
+//        (function($){
+//            $(function(){
+//                $("img").lazyload({
+//                    "data_attribute": "img",
+//                    effect: 'fadeIn'
+//                });
+//            })
+//        })(jQuery)
+        fish.ready(function(){
+            fish.all("img").lazyload({
+                "data_attribute": "img",
+                effect: 'fadeIn'
+            });
+        })
+    </script>
+</head>
+<body>
+<ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li><img src="http://pic3.40017.cn/line/admin/2015/08/05/16/ehU8M4.jpg" alt=""/></li>
+    <li><img data-img="http://pic3.40017.cn/line/admin/2015/08/06/20/nFA6Y1_640x360_00.jpg" alt=""/></li>
+    <li><img data-img="http://pic3.40017.cn/line/admin/2015/08/06/20/nFA6Y1_640x360_00.jpg" alt=""/></li>
+</ul>
+</body>
+</html>

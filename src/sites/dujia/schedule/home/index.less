@@ -1,0 +1,762 @@
+body {
+    font-family: "Microsoft Yahei";
+    font-size: 12px;
+    background-color: #f5f5f5;
+    min-width: 1200px;
+    width: 100%;
+}
+.clearfix:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
+}
+.none {
+    display: none;
+}
+.wrapper {
+    background-color: #fff;
+    z-index: 1;
+    .content {
+        margin: 0 auto;
+        width: 100%;
+        .team-top {
+            width: 100%;
+            height: 340px;
+            background: url('./images/top_bg.jpg') no-repeat top center;
+            .team-middle {
+                width: 1000px;
+                height: 340px;
+                margin: 0 auto;
+                background: url('./images/mid_bg.jpg') no-repeat top center;
+                .team-middle-btn {
+                    margin: 0 auto;
+                    padding-top: 232px;
+                    width: 352px;
+                    .team-btn {
+                        width: 156px;
+                        height: 48px;
+                        background: #ff7a06;
+                        display: inline-block;
+                        text-align: center;
+                        line-height: 48px;
+                        color: #fff;
+                        font-size: 24px;
+                        border-radius: 2px;
+                        cursor: pointer;
+                        &:first-child {
+                            margin-right: 40px;
+                        }
+                        &:hover {
+                            background: #ff6633;
+                        }
+                    } 
+                }
+            }
+        }
+        .team-flow {
+            width: 100%;
+            background: url('./images/icon_bg.jpg') repeat;
+            ul {
+                width: 1000px;
+                margin: 0 auto;
+                &.team-flow-icon {
+                    li {
+                        float: left;
+                        width: 158px;
+                        margin-left: 139px;
+                        position: relative;
+                        em {
+                            margin: 30px 0 20px 20px;
+                            display: block;
+                            width: 76px;
+                            height: 98px;
+                            &.team-demand {
+                                background: url('./images/icon_demand.png') no-repeat center;
+                            }
+                            &.team-route {
+                                background: url('./images/icon_route.png') no-repeat center;
+                            }
+                            &.team-pay {
+                                background: url('./images/icon_pays.png') no-repeat center;
+                            }
+                            &.team-tour {
+                                background: url('./images/icon_tour.png') no-repeat center;
+                            }
+                        }
+                        &:after {
+                            content: "";
+                            background: url('./images/icon_line.png') no-repeat center;
+                            position: absolute;
+                            display: inline-block;
+                            width: 96px;
+                            height: 10px;
+                            top: 71px;
+                            left: 158px;
+                        }
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                        &.team-flow-last {
+                            width: auto;
+                            margin-left: 145px;
+                            &:after {
+                                content: "";
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                &.team-flow-desc {
+                    padding-bottom: 20px;
+                    li {
+                        float: left;
+                        width: 114px;
+                        text-align: center;
+                        margin-left: 184px;
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                        &.team-flow-third {
+                            width: 122px;
+                            margin-left: 176px;
+                        }
+                        &.team-flow-last {
+                            width: 90px;
+                            margin-left: 200px;
+                        }
+                        p {
+                            font-size: 14px;
+                            color: #999;
+                            line-height: 34px;
+                            &:first-child {
+                                font-size: 16px;
+                                color: #333;
+                                line-height: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .team-module {
+            width: 100%;
+            height: auto;
+            .team-content {
+                width: 100%;
+                .team-title {
+                    text-align: center;
+                    width: 100%;
+                    padding-top: 25px;
+                    h3 {
+                        font-size: 26px;
+                        color: #333;
+                        line-height: 36px;
+                    }
+                    div {
+                        line-height: 24px;
+                        font-size: 14px;
+                        color: #999;
+                    }
+                    .team-line {
+                        width: 70px;
+                        height: 2px;
+                        background: #96c34e;
+                        margin: 10px auto 20px;
+                    }
+                }
+                .team-table {
+                    margin: 0 auto;
+                    background: #fff;
+                    width: 1000px;
+                    height: 672px;
+                    box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.1);
+                    position: relative;
+                }
+                &.team-realize {
+                    height: 881px;
+                    background: url('./images/content_bg.jpg') no-repeat top center;
+                    .team-table-head {
+                        height: 110px;
+                        margin: 0 auto;
+                        width: 960px;
+                        border-bottom: 1px dashed #d9dee2;
+                        ul {
+                            width: 648px;
+                            margin: 0 auto;
+                            .team-list {
+                                float: left;
+                                width: 216px;
+                                text-align: center;
+                                font-size: 14px;
+                                position: relative;
+                                margin: 30px 0 0;
+                                font-size: 12px;
+                                line-height: 22px;
+                                color: #333;
+                                .team-list-step {
+                                    border: 2px #d9dee2 solid;
+                                    box-sizing: border-box;
+                                    width: 26px;
+                                    height: 26px;
+                                    border-radius: 50%;
+                                    line-height: 24px;
+                                    margin: 0 auto 5px;
+                                    background: #fff;
+                                    font-size: 14px;
+                                    color: #d9dee2;
+                                }
+                            }
+                        }
+                        .t-bot {
+                            background-color: #d9dee2;
+                            height: 2px;
+                            width: 648px;
+                            margin: -40px auto;
+                            .t-sbot {
+                                background-color: #96c34e;
+                                width: 0;
+                                height: 2px;
+                                display: block;
+                            }
+                        }
+                        &.team-table-info {
+                            ul {
+                                .team-list {
+                                    .team-list-info {
+                                        color: #96c34e;
+                                        border: 2px #96c34e solid;
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                            .t-bot {
+                                .t-sbot {
+                                    width: 216px;
+                                }
+                            }
+                        }
+                        &.team-table-special {
+                            ul {
+                                .team-list {
+                                    .team-list-info {
+                                        color: #96c34e;
+                                        border: 2px #96c34e solid;
+                                        border-radius: 50%;
+                                    }
+                                    .team-list-special {
+                                        color: #96c34e;
+                                        border: 2px #96c34e solid;
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                            .t-bot {
+                                .t-sbot {
+                                    width: 432px;
+                                }
+                            }
+                        }
+                        &.team-table-contact {
+                            ul {
+                                .team-list {
+                                    .team-list-step {
+                                        color: #96c34e;
+                                        border: 2px #96c34e solid;
+                                        border-radius: 50%;
+                                    }
+                                }
+                            }
+                            .t-bot {
+                                .t-sbot {
+                                    width: 648px;
+                                }
+                            }
+                        }
+                    }
+                    .team-table-content {
+                        width: 400px;
+                        margin: 0 auto;
+                        .table-title {
+                            text-align: center;
+                            font-size: 18px;
+                            color: #333;
+                            line-height: 78px;
+                        }
+                        .table-content {
+                            &.table-content-info {
+                                .table-info {
+                                    margin-bottom: 20px;
+                                    .error-tip {
+                                        display: none;
+                                    }
+                                    &.input-error {
+                                        .table-input, .table-link-input {
+                                            border-color: #ff7800;
+                                        }
+                                        .error-tip {
+                                            display: inline-block;
+                                            line-height: 30px;
+                                            padding: 0 8px 0 30px;
+                                            border: #f4e09d 1px solid;
+                                            background: #fff7dc url("./images/icon_tip.png") no-repeat 10px 8px;
+                                            font-size: 12px;
+                                            color: #666;
+                                            position: absolute;
+                                            margin-left: 10px;
+                                        }
+                                    }
+                                    &.table-tip {
+                                        margin-top: -5px;
+                                        line-height: 14px;
+                                        .table-change {
+                                            em {
+                                                color: #ff5d17;
+                                            }
+                                        }
+                                    }
+                                    label {
+                                        text-align: right;
+                                        width: 80px;
+                                        color: #666;
+                                        font-size: 16px;
+                                        line-height: 30px;
+                                        vertical-align: -2px;
+                                        margin-right: 20px;
+                                        display: inline-block;
+                                        em {
+                                            color: #ff5d17;
+                                            font-size: 14px;
+                                            margin-right: 8px;
+                                        }
+                                    }
+                                    .table-type, .table-time {
+                                        line-height: 38px;
+                                        width: 130px;
+                                        border: #ddd 1px solid;
+                                        text-align: center;
+                                        font-size: 16px;
+                                        color: #333;
+                                        display: inline-block;
+                                        position: relative;
+                                        cursor: pointer;
+                                        border-radius: 2px;
+                                        label {
+                                            line-height: 38px;
+                                        }
+                                        i {
+                                            margin: 0;
+                                        }
+                                        &.current {
+                                            border: #96c34e 1px solid;
+                                            i {
+                                                background: url('./images/icon_check.png') center;
+                                                width: 17px;
+                                                height: 17px;
+                                                position: absolute;
+                                                top: 0;
+                                                right: 0;
+                                                margin: 0;
+                                            }
+                                        }
+                                        &.table-type-person {
+                                            margin-right: 25px;
+                                        }
+                                    }
+                                    .table-input, .table-link-input, .table-input-note {
+                                        line-height: 30px;
+                                        height: 30px;
+                                        border: 1px solid #ddd;
+                                        border-radius: 2px;
+                                        color: #333;
+                                        padding-left: 10px;
+                                        font-size: 14px;
+                                    }
+                                    .table-city, .table-person-info {
+                                        width: 278px;
+                                    }
+                                    .table-budget, .table-start, .table-end, .table-days {
+                                        width: 120px;
+                                    }
+                                    .table-start, .table-end {
+                                        background: url("./images/icon_calendar.png") no-repeat 104px;
+                                        cursor: pointer;
+                                    }
+                                    i {
+                                        font-size: 14px;
+                                        color: #666;
+                                        display: inline-block;
+                                        vertical-align: -2px;
+                                        margin: 0 5px;
+                                    }
+                                    .table-time {
+                                        width: 94px;
+                                        font-size: 14px;
+                                        margin-left: 15px;
+                                        height: 30px;
+                                        line-height: 30px;
+                                        &.table-morning {
+                                            margin-left: 0;
+                                        }
+                                    }
+                                    .peopleNum-picker {
+                                        display: inline-block;
+                                        border: 1px solid #ddd;
+                                        border-radius: 2px;
+                                        display: inline-block;
+                                        background-color: #fff;
+                                        &.people-child {
+                                            margin-left: 20px;
+                                        }
+                                        .peopleNum-picker-input {
+                                            width: 36px;
+                                            height: 30px;
+                                            line-height: 30px;
+                                            box-sizing: border-box;
+                                            border-left: 1px solid #ddd;
+                                            border-right: 1px solid #ddd;
+                                            display: inline-block;
+                                            border-top: 0;
+                                            border-bottom: 0;
+                                            text-align: center;
+                                            font-size: 14px;
+                                            padding: 0;
+                                        }
+                                        .peopleNum-picker-btn {
+                                            width: 14px;
+                                            height: 14px;
+                                            padding: 8px;
+                                            vertical-align: middle;
+                                            display: inline-block;
+                                            &.peopleNum-picker-leftBtn {
+                                                background: url(./images/icon_minus.png) no-repeat center;
+                                                &:hover {
+                                                    background: url(./images/icon_minus_hover.png) no-repeat center;
+                                                }
+                                            }
+                                            &.peopleNum-dispicker-leftBtn {
+                                                background: url(./images/icon_minus_grey.png) no-repeat center;
+                                            }
+                                            &.peopleNum-picker-rightBtn {
+                                                background: url(./images/icon_plus.png) no-repeat center;
+                                                &:hover {
+                                                    background: url(./images/icon_plus_hover.png) no-repeat center;
+                                                }
+                                            }
+                                            &.peopleNum-dispicker-rightBtn {
+                                                background: url(./images/icon_plus_grey.png) no-repeat center;
+                                            }
+                                        }
+                                    }
+                                    .days-picker {
+                                        display: inline-block;
+                                        border: 1px solid #ddd;
+                                        border-radius: 2px;
+                                        display: inline-block;
+                                        background-color: #fff;
+                                        .days-picker-input {
+                                            width: 36px;
+                                            height: 30px;
+                                            line-height: 30px;
+                                            box-sizing: border-box;
+                                            border-left: 1px solid #ddd;
+                                            border-right: 1px solid #ddd;
+                                            display: inline-block;
+                                            border-top: 0;
+                                            border-bottom: 0;
+                                            text-align: center;
+                                            font-size: 14px;
+                                            padding: 0;
+                                        }
+                                        .days-picker-btn {
+                                            width: 14px;
+                                            height: 14px;
+                                            padding: 8px;
+                                            vertical-align: middle;
+                                            display: inline-block;
+                                            &.days-picker-leftBtn {
+                                                background: url(./images/icon_minus.png) no-repeat center;
+                                                &:hover {
+                                                    background: url(./images/icon_minus_hover.png) no-repeat center;
+                                                }
+                                            }
+                                            &.days-dispicker-leftBtn {
+                                                background: url(./images/icon_minus_grey.png) no-repeat center;
+                                            }
+                                            &.days-picker-rightBtn {
+                                                background: url(./images/icon_plus.png) no-repeat center;
+                                                &:hover {
+                                                    background: url(./images/icon_plus_hover.png) no-repeat center;
+                                                }
+                                            }
+                                            &.days-dispicker-rightBtn {
+                                                background: url(./images/icon_plus_grey.png) no-repeat center;
+                                            }
+                                        }
+                                    }
+                                }
+                                .table-submit {
+                                    left: 400px;
+                                    width: 300px;
+                                    position: absolute;
+                                    bottom: 30px;
+                                    .table-submit-btn {
+                                        width: 138px;
+                                        height: 40px;
+                                        line-height: 40px;
+                                        border: 1px solid #ddd;
+                                        background: #f9f9f9;
+                                        display: inline-block;
+                                        font-size: 18px;
+                                        color: #666;
+                                        border-radius: 2px;
+                                        cursor: pointer;
+                                        &.J_SubmitBtn, &.J_Next, &.J_NextBtn {
+                                            border: 1px solid #ff7a07;
+                                            background: #ff7a07;
+                                            margin-left: 20px;
+                                            color: #fff;
+                                        }
+                                        &:hover {
+                                            border: 1px solid #ff6633;
+                                            background: #ff6633;
+                                        }
+                                        &.J_PreBtn {
+                                            &:hover {
+                                                background: #f9f9f9;
+                                                border: 1px solid #ddd;
+                                            }
+                                        }
+                                        &.table-btn {
+                                            width: 210px;
+                                            margin: 0;
+                                        }
+                                        &.disabled {
+                                            border: 1px solid #ddd;
+                                            background: #ddd;
+                                            &:hover {
+                                                border: 1px solid #ddd;
+                                                background: #ddd;
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                        &.team-contact-content {
+                            width: 418px;
+                            .table-content {
+                                .table-submit {
+                                    left: 350px;
+                                }
+                            }
+                        }
+                        &.team-special-content {
+                            width: 656px;
+                            .table-content {
+                                .table-info {
+                                    label {
+                                        line-height: 16px;
+                                    }
+                                    .table-time {
+                                        width: 94px;
+                                        height: 34px;
+                                        line-height: 34px;
+                                        margin-left: 15px;
+                                        &.table-star {
+                                            margin-left: 0;
+                                        }
+                                    }
+                                    .table-note {
+                                        vertical-align: top;
+                                        line-height: 30px;
+                                    }
+                                    .table-check {
+                                        display: none;
+                                    }
+                                    .table-check-desc {
+                                        padding-left: 24px;
+                                        font-size: 14px;
+                                        color: #333;
+                                        margin-right: 30px;
+                                        width: auto;
+                                        line-height: 14px;
+                                        background: url('./images/icon_uncheck.png') no-repeat;
+                                        cursor: pointer;
+                                        &.table-ticket {
+                                            margin: 15px 30px 0 100px;
+                                        }
+                                        &.current {
+                                            background: url('./images/icon_ticked.png') no-repeat;
+                                        }
+                                    }
+                                    .table-input-note {
+                                        width: 538px;
+                                        height: 138px;
+                                        resize: none;
+                                    }
+                                }
+                                .table-submit {
+                                    left: 350px;
+                                }
+                            }
+                        }
+                    }
+                }
+                &.team-recommend {
+                    padding-bottom: 60px;
+                    background: url('./images/icon_bg.jpg') repeat;
+                    .team-table {
+                        width: 960px;
+                        padding: 20px;
+                        height: 365px;
+                        .team-list-url {
+                            float: left;
+                            &:hover {
+                                box-shadow:  0px 0px 16px rgba(0, 0, 0, 0.7);
+                            }
+                        }
+                        .team-list {
+                            height: 135px;
+                            width: 225px;
+                            margin: 20px 20px 0 0;
+                        }
+                        .team-jp {
+                            height: 210px;
+                            width: 470px;
+                            background: url('./images/icon_japan.jpg') no-repeat;
+                        }
+                        .team-hk {
+                            height: 210px;
+                            width: 225px;
+                            margin-left: 20px;
+                            background: url('./images/icon_hk.jpg') no-repeat;
+                        }
+                        .team-mg {
+                            background: url('./images/icon_mamba.jpg') no-repeat;
+                        }
+                        .team-ep {
+                            background: url('./images/icon_europe.jpg') no-repeat;
+                        }
+                        .team-hg {
+                            background: url('./images/icon_australia.png') no-repeat;
+                        }
+                        .team-hd {
+                            float: right;
+                            height: 365px;
+                            width: 225px;
+                            background: url('./images/icon_island.jpg') no-repeat;
+                        }
+                    }
+                }
+                &.team-choose {
+                    .team-table {
+                        height: auto;
+                        box-shadow: none;
+                        ul {
+                            padding: 0 60px 38px;
+                            li {
+                                float: left;
+                                width: 440px;
+                                margin-bottom: 20px;
+                                &.team-right {
+                                    div {
+                                        float: right;
+                                    }
+                                }
+                                span {
+                                    width: 50px;
+                                    height: 58px;
+                                    float: left;
+                                    margin-top: 10px;
+                                }
+                                .team-personal {
+                                    background: url('./images/icon_personal.png') no-repeat;
+                                }
+                                .team-intimate {
+                                    background: url('./images/icon_intimate.png') no-repeat;
+                                }
+                                .team-sunshine {
+                                    background: url('./images/icon_sunshine.png') no-repeat;
+                                }
+                                .team-outing {
+                                    background: url('./images/icon_outing.png') no-repeat;
+                                }
+                                dl {
+                                    display: inline-block;
+                                    margin-left: 20px;
+                                    dt {
+                                        font-size: 16px;
+                                        color: #333;
+                                        line-height: 36px;
+                                        margin-bottom: 18px;
+                                        em {
+                                            border-bottom: 2px solid #96c34e;
+                                            padding-bottom: 8px;
+                                        }
+                                    }
+                                    dl {
+                                        font-size: 14px;
+                                        color: #999;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+.calendar-panel {
+    &.white {
+        .calendar-container {
+            width: 250px;
+        }
+        a {
+            &.previous-month, &.next-month {
+                background: url(//js.40017.cn/cn/public/module/Calendar/0.3/calendar_arrow_white.png?v=2) 0 0 no-repeat;
+            }
+            &.previous-month-disabled {
+                background-position: -100px -43px;
+                &:hover {
+                    background-position: -100px -43px;
+                }
+            }
+            &.next-month {
+                background-position: -49px 0;
+            }
+            &.previous-month {
+                background-position: -8px 0;
+            }
+        }
+        .calendar-wrapper {
+            td {
+                &.to-day:hover span {
+                    color: #fff
+                }
+                &.festival:hover span {
+                    color: #b54800
+                }
+            }
+        }
+        .d {
+            line-height: 20px;
+            height: 20px
+        }
+        .date {
+            color: #ccc;
+            cursor: default;
+            line-height: 20px;
+            height: 20px;
+            padding: 0
+        }
+    }
+}
+.submit-tip {
+    font-size: 16px;
+    line-height: 30px;
+    padding: 0 20px 20px;
+}

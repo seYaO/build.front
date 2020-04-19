@@ -1,0 +1,19 @@
+{
+    "dataUri": "/intervacation/api/PDynamicPackageProductDetail/DynamicSearchInfo",
+    "query": {
+        "siteType": 0,
+        "from": "上海",
+        "to": "香港",
+        "begin": "2016-11-12",
+        "end": "2016-11-16",
+        "checkindate": "2016-11-12",
+        "checkoutdate": "2016-11-14",
+        "adult": "2",
+        "child": "",
+        "room": 1,
+        "hotel": "香港",
+
+        "lineId": "336838"
+    },
+    "desc": "动态打包搜索结果页"
+}

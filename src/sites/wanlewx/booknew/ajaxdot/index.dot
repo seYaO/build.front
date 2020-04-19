@@ -1,0 +1,34 @@
+
+<ul>
+    <li><label>出发日期</label> <span data-date="{{=it.date}}" id="J_DepTime">{{=it.date}} <i></i></span>
+        </li>
+    {{?it.ProdcutType == "9"}}
+        <li><label data-isautoclose="0" data-type="1" data-iscount="1" data-id="66084614" data-daren="0" data-discount="0" class="J_PriceDay">出游天数</label>
+
+            <div class="label-control">
+                <div class="button-content num-ctrlbox"><i data-ctrl="-1" class="button-minus off"></i>
+                    <input type="text" name="" class="J_DayNumber" min="1" value="1" readonly="readonly" autocomplete="off"> <i data-ctrl="+1" class="button-plus"></i>
+                </div>
+            </div>
+        </li>
+    {{?}}
+    {{~it.PriceList:value:index}}
+        <li><label data-isautoclose="0" data-type="1" data-iscount="1" data-id="66084614" data-daren="0" data-discount="0" class="J_PriceType">{{=value.Name}}</label>
+            <div class="label-control">
+                {{?index == 0}}
+                <div class="button-content num-ctrlbox"><i data-ctrl="-1" class="button-minus"></i>
+                    <input type="text" name="" class="J_Number" min="0" value="1" priceId="{{=value.Id}}" attr-unit="/{{=value.PriceUnit}}" autocomplete="off">
+                {{?}}
+                {{?index > 0}}
+                <div class="button-content num-ctrlbox"><i data-ctrl="-1" class="button-minus off"></i>
+                   <input type="text" name="" class="J_Number" min="0" value="0" priceId="{{=value.Id}}" attr-unit="/{{=value.PriceUnit}}" autocomplete="off">
+                {{?}}
+                    <i data-ctrl="+1" class="button-plus"></i>
+                </div>
+            </div>
+
+            <div class="price" attr-unit="{{=value.PriceUnit}}"><span><span class="fn-rmb">￥</span><em id="J_SinglePrice" class="J_Price" data-price="{{=value.Price}}">{{=value.Price}}</em></span>{{?value.PriceUnit != ""}}/{{=value.PriceUnit}}{{?}}
+            </div>
+        </li>
+    {{~}}
+</ul>

@@ -1,0 +1,88 @@
+@import url("/styles/mixins/a.media.less");
+@import url("/styles/mixins/a.base.less");
+@import url("/styles/mixins/a.global.less");
+@import url("/styles/mixins/a.icon.less");
+.onePxBorder(@propName, @value) {
+    position: relative;
+    &:before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        bottom: -50%;
+        left: -50%;
+        right: -50%;
+        -webkit-transform: scale(.5);
+        transform: scale(.5);
+        box-sizing: border-box;
+        @{propName}: @value;
+    }
+    >*{
+        position: relative;
+        z-index: 10;
+    }
+}
+
+.onePxBorderRedius(@value) {
+    &:before {
+        border-radius: @value*2;
+    }
+    border-radius: @value;
+}
+html {
+    background-color: @bg-color;
+}
+
+.main {
+    background-color: @bg-color;
+    font-size: 32/@rem;
+    margin: 0 auto;
+    .tip {
+        padding: 0 30/@rem;
+        padding-top: (48-8)/@rem;
+        padding-bottom: (32-(40-24))/@rem;
+        background-color: white;
+        .clearfix();
+        .wrap-img{
+            width: 20%;
+            position: relative;
+            height: 80/@rem;
+            .warn{
+                width: 80/@rem;
+                height: 70/@rem;
+                position: absolute;
+                top:0;
+                left: 0;
+                background-image: url("./images/warn.png");
+                background-repeat: no-repeat;
+                background-size: 100%
+            }
+            float: left;
+        }
+        section.warn-txt {
+            width: 80%;
+            line-height: 40/@rem;
+            header{
+                color: @deepgrey;
+                font-size: 32/@rem;
+            }
+            p{
+                color: @lightgrey;
+                font-size: 24/@rem;
+            }
+            float: left;
+        }
+    }
+    .btn{
+        color: @green;
+        display: block;
+        width: 420/@rem;
+        height: 88/@rem;
+        font-size: 36/@rem;
+        line-height: 88/@rem;
+        text-align: center;
+        .onePxBorder(border,2px #e9e9e9 solid);
+        .onePxBorderRedius(15/@rem);
+        margin:60/@rem auto;
+        background-color: white;
+    }
+}

@@ -1,0 +1,61 @@
+<div class="borBox J_NavBox" id="part2" data-index="2" data-type="passportinfo">
+    <div class="tab_head">
+        <h4>护照信息</h4>
+        <span class="save_btn J_saveBtn">保存资料</span>
+    </div>
+    <ul class="tab_con">
+        <div class="sub_title">
+            <p><i></i>您当前使用的护照</p>
+        </div>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>护照号码：</span>
+            <div class="info_con">
+                <input class="w220" type="text" placeholder="" validate="required passPort" vali-msg-required="请输入护照号码" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPPT_NUM">                  
+                <span class="valid_symbol none"></span>   
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit">护照编码：</span>
+            <div class="info_con">
+                <input class="w130 lf" type="text" placeholder="护照上的右侧编码"  validate="charOrNum" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPPT_BOOK_NUM">
+                <i class="J_tips" data-content="<div class='tips_con'><span>温馨提醒</span><p>请查看护照首页右侧，竖排黑色字体</p></div>"></i>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>签发地点：</span>
+            <div class="info_con">
+                <input class="w130" type="text" validate="required charFilter" placeholder="请输入国家" vali-msg-required="请完善签发地点" vali-msggroup="msg2_1" vali-group="msg2_1" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlPPT_ISSUED_IN_CNTRY">
+                <input class="w130" type="text" validate="required charFilter" placeholder="请输入省份"vali-msg-required="请完善签发地点" vali-msggroup="msg2_1" vali-group="msg2_1" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPPT_ISSUED_IN_STATE">
+                <input class="w130" type="text" validate="required charFilter" placeholder="请输入城市" vali-msg-required="请完善签发地点" vali-msggroup="msg2_1" vali-group="msg2_1" vali-msggroup-breth="msg2_1" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_tbxPPT_ISSUED_IN_CITY">                
+                <span class="valid_symbol none"></span>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>签发日期：</span>
+            <div class="info_con">
+                <div class="dropdown_tit birth_date">
+                    <input type="text" class="w130 input_date J_dateTime start" date-type="passport" placeholder="请选择" readonly="readonly" validate="required date" vali-msg-required="请选择签发日期" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlPPT_ISSUED_DATE">
+                    <span class="valid_symbol none"></span> 
+                </div>
+            </div>
+        </li>
+        <li class="info_list">
+            <span class="info_tit"><i>*</i>有效期至：</span>
+            <div class="info_con">
+                <div class="dropdown_tit birth_date">
+                    <input type="text" class="w130 input_date J_dateTime end" date-type="passport" placeholder="请选择" readonly="readonly" validate="required date" vali-msg-required="请选择有效期" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_ddlPPT_EXPIRE_DATE">
+                    <span class="valid_symbol none"></span> 
+                </div>
+            </div>
+        </li>
+        <div class="line"></div>
+    </ul>
+    <div class="is_show J_xianyin J_choose J_AddOrDelete" data-index="1">
+        <div class="sub_title" verify validate="required"  vali-msg-required="请完善信息" FCControlId="ctl00_SiteContentPlaceHolder_FormView1_rblLOST_PPT_IND" data-dotname="cerdot">
+            <p><i></i>您之前是否有护照遗失或者盗过</p>
+            <span class="radio" value="Y" data-dot="1" data-dotname="passportInfo"><i></i>是</span>
+            <span class="radio" value="N" data-dot="0"><i></i>否</span>
+        </div> 
+        <div class="J_renderDot"></div>
+    </div>
+</div>

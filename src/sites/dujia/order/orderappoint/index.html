@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="author" content="同程旅游" /><meta name="copyright" content="同程旅游络科技股份有限公司" />
+<title>在线电子签约</title>
+<meta name="apple-itunes-app" content="app-id=475966832" />
+<link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/c/c/pay/base.0.0.2.css?v=2013102303" media="screen" />
+
+<% includeId = cnwidescreenjscss %>
+<style>
+    a:hover{
+        text-decoration: none;
+    }
+    #footer_lite {
+    margin: 20px auto 0;
+    border-top: none;
+}
+</style>
+</head>
+<body>
+<!--头部start-->
+<% includeId = cnorderhead %>
+
+<div class="content">
+    <h2 class="tit">在线签约</h2>
+    <div class="contract_con">
+        <div class="line"></div>
+        <div class="contract_doc">
+            <span class="loading_p ">请稍候,正在努力查询中···</span>
+        </div>
+        <div class="con_bg">
+            <div class="other_doc">
+                <span class="loading_c">请稍候,正在努力加载中···</span>
+            </div>
+            <a href="javascript:void(0)" class="J_appoint appoint_btu" style="display: none;"></a>
+        </div>
+    </div>
+</div>
+
+<div class="pop_box none">
+    <!--选择签约人-->
+    <div class="pop_con J_select_bg">
+    </div>
+    <div class="pop_con J_phone_bg ">
+        <!--短信验证码-->
+        <div class="com_bg J_ui_phone">
+            <div class="phone_infro">
+                <h4>已向您<em class="J_PhoneNum"></em>的手机发送验证码</h4>
+                <div class="J_phone phone_bg">
+                    <input class="J_code p_code" type="" name="" value="" placeholder="请输入验证码">
+                    <input class="J_countDown p_time" value="" readonly="readonly">
+                </div>
+                <div class="J_tipCode"></div>
+                <label>温馨提示：同一签约人的验证码10分钟有效！</label>
+                <label>签约人已仔细阅读此相关协议及附属协议，并同意相关服务条款！</label>
+            </div>
+            <div class="btu_all new_per">
+                <span class="J_phone_confirm confirm_all">确认</span>
+                <span class="J_phone_cancel cancel_all">取消</span>
+                <span class="J_s_new s_new_per">重新选择签约人</span>
+            </div>
+        </div>
+    </div>
+
+
+    <!--<span class="loading_c">请稍候,正在查询中···</span>-->
+</div>
+
+<!--底部-->
+<span id="ucFooter">
+    <div id="footer_lite"> Copyright&nbsp;©&nbsp;
+        <span class="cr_time" type="Holiday">2002-2016</span>&nbsp;版权所有&nbsp;
+        <span class="corp_name">同程网络科技股份有限公司</span>&nbsp;
+        <a class="icp_num" href="//img1.40017.cn/cn/new_ui/public/images/20141103174615.jpg" target="_blank">苏ICP证B2-20100204</a>
+    </div>
+</span>
+<!-- 底部脚本放置区 -->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/common/0.1.0/index.js"></script>
+
+
+<script data-loader="true" src="//modules/sea.js"></script>
+
+<script>
+
+    var pageurl = 'https://passport.ly.com/?pageurl=' + location.href;
+    $(".exit").attr({"href":pageurl});
+    seajs.require("./index").init();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div class="float_right">
+    <div class="par_right">
+        <div class="R_top">
+            <div class="price_tit">费用信息</div>
+            <div class="fee-info">
+            </div>
+            <dl id="scarList"></dl>
+        </div>
+        <div class="R_top none" id="discountPriceWrap">
+            <div class="">
+                <dl>
+                    <dt>优惠金额</dt>
+                    <dd>
+                        <span class="font_W boxL" style="text-align:right;"><strong style="font-weight:bold;" class="colF60" id="discountPrice">0元</strong></span>
+                    </dd>
+                </dl>
+            </div>
+
+        </div>
+        <div class="R_Bottom"><span>费用总额：</span><strong><em class="f_price">0</em>元</strong></div>
+    </div>
+</div>
+<input type="hidden" value="" id="f_price_orginal" />

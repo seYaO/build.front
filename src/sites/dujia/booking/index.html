@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html trace='pc-book-new'>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="同程旅游" />
+    <meta name="copyright" content="同程旅游网络科技股份有限公司" />
+    <title>填写订单信息_度假线路预订_同程旅游</title>
+    <link href="//css.40017.cn/cn/min/??/cn/c/c/common-aspect.1.1.2.css?v=2014112701" rel="Stylesheet" type="text/css" />
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/cn/min/??/cn/c/c/pay/base.0.0.2.css?v=2013102302" media="screen" />
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _nStartTime = new Date().getTime();
+        var loginState = window.loginState || {};
+    </script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/fish.1.4.5.js,/cn/public/fc.1.1.6.js?v=092201"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/jquery.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/modules/dot/1.0.3/dot.js"></script>
+    <link href="//css.40017.cn/cn/v/2015/book2016/order.07045.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="//css.40017.cn/cn/v/2015/book2016/touristInfo.07045.css" type="text/css" />
+    <link href="//js.40017.cn/cn/v/2015/jqmodules/activity/0.1.1/bonus/pc/source/index.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//css.40017.cn/cn/v/2015/book2016/sbupackage.07045.css">
+    <!--<link href="//61.155.159.109:8038/dujia/css/cn/v/2015/details2016/free/packageModule.06303.css" rel="stylesheet" />-->
+
+    <script type="text/javascript">
+        var page_cf = {
+            dateTimeNow: 1449642961318,
+            isLogin: 0
+        };
+    </script>
+  <style>
+    .f_price{
+          visibility: inherit;
+    }
+  </style>
+</head>
+
+<body>
+    {{var it=IT.Data;}}
+    {{var orderData = it.OrderData;}}
+    {{var lineInfo = orderData.LineInfoData;}}
+    {{var InsuranceData = orderData.InsuranceInfoData.InsuranceInfoDataList;}}
+    {{var SbuInfoData = orderData.SbuInfoData.SbuInfoDataList;}}
+    {{var SupplierInfoData = orderData.SupplierInfoData;}}
+    <input id="fangzhua" type="hidden" value="1" />
+
+    <span id="Head">	<div>
+        <div class="mLogin_iframe">
+            <div class="login_top">
+                <a href="javascript:;" onclick="closeMlogin();"></a>
+            </div>
+            <div class="login_iframe_content">
+                <iframe frameborder="no" scrolling="no" src="https://passport.ly.com/login/loginmodule"></iframe>
+            </div>
+        </div>
+        <div class="login_bg_bag"></div>
+        <script type="text/javascript" src="//js.40017.cn/cn/c/c/pay/c.0.0.8.js?v=2015120901"></script>
+        <span id="bulletin"></span>
+    <div id="header_lite">
+        <div class="logo clearfix">
+            <h1><a href='http://www.17u.cn/' title='同程旅游' target='_blank'><img
+                    src='//img1.40017.cn/cn/new_ui/public/images/logo/16652/com_logo_01.png' alt='同程旅游'/></a></h1>
+            <div class="logo_right">
+                <ul id="loginBar">
+                    <li id="loginLi" class="login">
+                        <div id="loginText" class="clearfix">
+                            <a href="javascript:;">登录 </a>
+                        </div>
+                        <div id="loginName" class="none">
+                            <span class="top_username"><a href="http://member.ly.com/" target="_blank"
+                                                              id="user_name" class="account_id"></a>，您好</span>
+                            <a href="javascript:;" class="exit">退出</a>
+                        </div>
+                    </li>
+                    <li class="zc"><a href="http://passport.17u.cn/register/index/" target="_blank">注册</a></li>
+                    <li class="lhc"><a href="http://www.17u.cn/newhelp/" title="帮助中心" target="_blank">帮助中心</a></li>
+                    <li class="login_seprator">|</li>
+                    <li class="tel">
+                        <span id="foottelephone">{{=orderData.TelephoneNo}}</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript">
+            (function() {
+                var vst = document.createElement('script');
+                vst.type = 'text/javascript';
+                vst.async = true;
+                vst.src = "//www.ly.com/AjaxHelper/TopLoginHandler.aspx?channel=Travel&action=check&callback=getLoginInfoCallback&asyncRefid=" + getRefid() + "&date=" + new Date();
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(vst, s);
+            })();
+            (function() {
+                if (fish.cookie.get('us', 'userid') || fish.cookie.get('passport_login_state', 'u_id')) {
+                    name = fish.cookie.get('us', 'nickName') || fish.cookie.get('passport_login_state', 'partner_loginname');
+                    fish.one('#user_name').html(name);
+                    fish.one('#loginName').removeClass('none');
+                    fish.one('#loginText').addClass('none');
+                    fish.one('#loginLi').removeClass('login').addClass('login_user');
+                    fish.one('.zc').addClass('none');
+                } else {}
+            })();
+        </script>
+    </div>
+    </div>
+    </span>
+    <form id="cjmain" action="" method="post">
+        <div class="content">
+           <ul class="flow_charts">
+                <li class="firstStyle state-over">1、选择产品</li>
+                <li class="on state-processing">2、填写信息</li>
+                <li class='state-next'>3、在线支付</li>
+                <li class='state-end'>4、预订成功</li>
+            </ul>
+            <div class="par_left">
+                <div class="procedureBox sbu-box">
+                    <div class='sbu-container'>
+                        <div class='sbu-headBox'>
+                            <div>
+
+                                <span class='sbu-mainTitle'>{{=lineInfo.LineMainTitle}}</span>
+                                <span class='sbu-subTitle'>{{=lineInfo.LineSubTitle}}</span>
+
+                            </div>
+                        </div>
+                        <div class='sbu-resourceBox'>
+                            <div class='sbu-itemBox'>
+                                <div class='sbu-itemBox-head'>
+                                    <span class='sbu-td-1'>线路详情</span>
+                                    <span class='sbu-td-2'>出港城市</span>
+                                    <span class='sbu-td-3'>出发时间</span>
+                                    <span class='sbu-td-4'>回团时间</span>
+                                    <span class='sbu-td-5'>预定人数</span>
+                                    <span class='sbu-td-6'>金额(单价)</span>
+                                    <span class='sbu-td-7'></span>
+                                </div>
+
+
+
+                                {{var startDate = lineInfo.LineDate,endDate = lineInfo.ReturnDate,startdate,enddate;}} {{?startDate !== ''}} {{startdate = startDate.split('T')[0];}} {{?}} {{?endDate !== ''}} {{enddate = endDate.split('T')[0];}} {{?}}
+                                <div class='sbu-itemBox-content'>
+                                    <div class='sbu-lineInfo'>
+                                        <span class='sbu-td-1'></span>
+                                        <span class='sbu-td-2 sbu-letter'>{{=lineInfo.LeavePortCity}}</span>
+                                        <span class='sbu-td-3 sbu-letter'>{{=startdate}}</span>
+                                        <span class='sbu-td-4 sbu-letter'>{{=enddate}}</span>
+                                        <span class='sbu-td-5 sbu-letter listSty'>
+                                        {{var orderPeople = lineInfo.OrderPersonInfo,priceType;}}
+                                        {{?orderPeople.length !== 0}}
+                                        {{~orderPeople:people:index}}
+                                           <p price-type='{{=people.PersonType}}' data-personCount='{{=people.PersonCount}}'>{{=people.PersonTypeDec}}x<i>{{=people.PersonCount}}</i>人</p>
+                                        {{~}}
+                                        {{?}}
+                                    </span>
+                                        <span class='sbu-td-6 sbu-sumLetter'>
+                                        {{~orderPeople:people:index}}
+                                        <p>￥<b class='sbu-strongLetter'>{{=people.OrderSinglePrice}}</b></p>
+                                        {{~}}
+                                    </span>
+                                        <span class='sbu-td-7'></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                            {{?InsuranceData.length !== 0}}
+                            <div class='sbu-itemBox sbu-safeBox'>
+                                <div class='sbu-itemBox-head'>
+                                    <span class='sbu-td-1'>保险</span>
+                                    <span class='sbu-td-2'>险种</span>
+                                    <span class='sbu-td-3-large'>保险名称</span>
+                                    <span class='sbu-td-5'>份数</span>
+                                    <span class='sbu-td-6'>金额(单价)</span>
+                                </div>
+                                <div class='sbu-itemBox-content'>
+                                    {{~InsuranceData:insurance:index}} {{var insuranceType ;}} {{?insurance.InsuranceType === 1}} {{insuranceType = '意外险';}} {{?? insurance.InsuranceType === 2}} {{insuranceType = '取消险';}} {{?}}
+                                    <div>
+                                        <span class='sbu-td-1'></span>
+                                        <span class='sbu-td-2 sbu-letter J_insurance' data-insuranceType='{{=insurance.InsuranceType}}' data-insuranceCode='{{=insurance.InsuranceId}}'>{{=insuranceType}}</span>
+                                        <span class='sbu-td-3-large sbu-letter' title="{{=insurance.SaleDec}}">{{=insurance.SaleDec}}</span>
+                                        <span class='sbu-td-5 sbu-letter'>x{{=insurance.Count}}份</span>
+                                        <span class='sbu-td-6 sbu-sumLetter'>￥<b class='sbu-strongLetter'>{{=insurance.price}}</b></span>
+                                    </div>
+                                    {{~}}
+                                </div>
+                            </div>
+                            {{?}} {{?SbuInfoData !== null && SbuInfoData.length !== 0}}
+                            <div class='sbu-itemBox sbu-resBox'>
+                                <div class='sbu-itemBox-head'>
+                                    <span class='sbu-td-1'>附加产品</span>
+                                    <span class='sbu-td-2'>类型</span>
+                                    <span class='sbu-td-3-large'>产品名称</span>
+                                    <span class='sbu-td-5'>份数</span>
+                                    <span class='sbu-td-6'>金额(单价)</span> {{?SbuInfoData.length >3}}
+                                    <span class='sbu-td-7 sbu-more sbu-moreshow J_moreBtn'>展开更多 </span> {{?}}
+                                </div>
+                                <div class='sbu-itemBox-content'>
+                                    {{~SbuInfoData:sbuInfo:index}} {{?index>2}}
+                                    <div class='sbu-itemBox-res none'>
+                                        {{??}}
+                                        <div class='sbu-itemBox-res'>
+                                            {{?}}
+                                            <span class='sbu-td-1'></span>
+                                            <span class='sbu-td-2 sbu-letter'>{{=sbuInfo.Category}}</span>
+                                            {{?sbuInfo.SbuName.length >23}}
+                                            <span class='sbu-td-3-large sbu-hide sbu-letter J_resLetter sbu-resLetter' title="{{=sbuInfo.SbuName}}" data-resourceId='{{=sbuInfo.ResourceId}}' data-days='{{=sbuInfo.AdvanceDay}}' data-time='{{=sbuInfo.AdvanceTime}}'>{{=sbuInfo.SbuName.substr(0,22)}}...</span>
+                                            {{??}}
+                                            <span class='sbu-td-3-large sbu-hide sbu-letter J_resLetter sbu-resLetter' data-resourceId='{{=sbuInfo.ResourceId}}' data-days='{{=sbuInfo.AdvanceDay}}' data-time='{{=sbuInfo.AdvanceTime}}'>{{=sbuInfo.SbuName}}</span>
+                                            {{?}}
+                                            <span class='sbu-td-5 sbu-letter'>x{{=sbuInfo.Count}}份</span>
+                                            <span class='sbu-td-6 sbu-sumLetter' data-type='{{=sbuInfo.Type}}' data-count='{{=sbuInfo.Count}}' data-personType='{{=sbuInfo.VisaPersonType}}'>￥<b class='sbu-strongLetter J_sbuPack'
+                                                data-productId='{{=sbuInfo.ProductId}}' data-resourceId='{{=sbuInfo.ResourceId}}' data-priceId='{{=sbuInfo.PriceId}}' data-usingDays='{{=sbuInfo.UsingDays}}' data-usingDate='{{=sbuInfo.UsingDate}}' data-isWifi='{{=sbuInfo.IsWifi}}'>{{=sbuInfo.Price}}</b></span>
+                                            <div class='sbu-itemPop none'>
+                                                <div class='sbu-itemPopContent'>
+                                                    <div class='sbu-itemPopInfo'>
+                                                       {{?sbuInfo.Type == 3}}
+                                                            {{?sbuInfo.Materials && sbuInfo.Materials.length >0}}
+                                                                <div class="resource-info info-border">
+                                                                    <div class="resource-visa-head info-border-bottom">
+                                                                        <ul class="clearfix J_visa-type">
+                                                                            {{~sbuInfo.Materials:materials:visaIndex}}
+                                                                            {{?visaIndex == 0}}
+                                                                            <li class="visa-type visa-type-checked">
+                                                                            {{??}}
+                                                                            <li class="visa-type visa-type-common">
+                                                                            {{?}}
+                                                                            <p>{{=materials.Person}}</p>
+                                                                            </li>
+                                                                            {{~}}
+                                                                        </ul>
+                                                                    </div>
+                                                                    {{for(var i = 0; i< sbuInfo.Materials.length;i++){　}}
+                                                                    {{?i==0 }}
+                                                                    <table class="visa-type-content">
+                                                                    {{??}}
+                                                                    <table class="visa-type-content none">
+                                                                    {{?}}
+                                                                        <tbody>
+                                                                            <tr class="info-border-bottom">
+                                                                                <td style="width: 155px;" class="visa-item-label info-border-right">
+                                                                                    <p>材料类型</p>
+                                                                                </td>
+                                                                                <td style="width: 110px;" class="visa-item-text info-border-right">
+                                                                                    <p>是否原件</p>
+                                                                                </td>
+                                                                                <td style="width: 627px;" class="visa-item-text">
+                                                                                    <p>材料说明</p>
+                                                                                </td>
+                                                                            </tr>
+                                                                    {{?sbuInfo.Materials[i].Material && sbuInfo.Materials[i].Material.length !== 0}}
+                                                                    {{~sbuInfo.Materials[i].Material:material}}
+                                                                            <tr class="info-border-bottom">
+                                                                                <td class="visa-item-label info-border-right">
+                                                                                    <p>{{=material.Name}}</p>
+                                                                                </td>
+                                                                                <td class="visa-item-text info-border-right">
+                                                                                    <p>{{=material.Type}}</p>
+                                                                                </td>
+                                                                                <td class="visa-item-content">
+                                                                                    {{=material.Description}}
+                                                                                </td>
+                                                                            </tr>
+                                                                     {{~}}
+                                                                    {{?}}
+                                                                        </tbody>
+                                                                    </table>
+                                                                    {{ } }}
+                                                                </div>
+                                                            {{?}}
+                                                       {{?}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {{~}}
+                                    </div>
+                                </div>
+                                {{?}}
+                            </div>
+
+                            {{?SbuInfoData !== null && SbuInfoData.length !== 0 && InsuranceData.length !== 0}}
+                            <div class='sbu-boxBtn sbu-boxBtn-hide J_boxBtn'>
+                                隐藏明细
+                            </div>
+                            {{?}}
+                        </div>
+                    </div>
+                    <div class="procedureBox procedurBottom">
+                        <h3 class="traveller-h">优惠信息 <span>优惠金额仅可用于团款，不可用于抵扣保险、附加产品</span></h3>
+                        <div class="listbox preferential J_preferentialContainer">
+                        </div>
+                    </div>
+                    <!-- Todo xjc start-->
+                    <div class="procedureBox pay-way">
+                        <h3>支付方式</h3>
+                        <div class="listbox"><label for="normal-pay"> <input type="radio" name="radio-group-x" id="normal-pay"
+                                                                     checked="checked" class="J_pay"/> 正常付款</label>
+                            <br/> <label for="jd-pay" class="J_tag-jd"> <input type="radio" name="radio-group-x" id="jd-pay"
+                                                                       class="J_pay J_jd-pay"/> 分期付款 </label> <i class="J_Tips J_tag-jd" data-content=""></i>
+                            <div class="pay-detail J_pay-detail none J_tag-jd"></div>
+                        </div>
+                    </div>
+                    <!-- Todo end-->
+                    <div class="procedureBox">
+                        <h3 class="traveller-t">联系人信息</h3>
+                        <div class="listbox">
+                            <ul class="contactperson_info">
+                                <li><label for="Iname" class="UserInfo_L"><em>*</em>&nbsp;联&nbsp;系&nbsp;人：</label><input id="Iname" style="text-transform:uppercase;" maxlength="20" name="Iname" data-id="name_1" class="con_name Nonempty needValid" value=""
+                                        type="text" vtype="rq enOrCnWord" data-err-rq="请输入联系人姓名" data-err-enorcnword="请输入正确联系人姓名"></li>
+                                <li><label class="contactperson_lable UserInfo_L" for="phone"><em>*</em> 手机号码：</label> <input id="Iphone" name="Iphone" vtype="rq mobile" data-err-rq="请填写手机号码" value="用于接收确认信息" attr-value="用于接收确认信息" data-err-mobile="请正确填写手机号"
+                                        class="con_phone Nonempty needValid" type="text" /></li>
+                                <li><label for="Imailbox" class="UserInfo_L"><em>*</em> 电子邮箱：</label><input id="Imailbox" name="Imailbox" class="con_mailbox Nonempty needValid mail" vtype="rq mail" data-err-rq="请填写电子邮箱" data-err-mail="请正确填写邮箱号码" type="email"
+                                        value="免费接收订单确认信息" attr-value="免费接收订单确认信息">
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="procedureBox">
+                        <h3>报销凭证</h3>
+                        <div class="listbox">
+                            <div class="radio-listbox">
+                                <input type="radio" class="radio-fp" id="not-fp" checked="checked" name="fapiao1" value="not-fp">
+                                <label class="fp-radio not-fp fpchecked" name="not-fp" class="checked" for="not-fp">不需要发票</label>
+                                <input type="radio" class="radio-fp" id="need-fp" name="fapiao1" value="need-fp">
+                                <label class="fp-radio need-fp" name="need-fp" for="need-fp">需要发票</label>
+                            </div>
+                        </div>
+                        <div class="listbox fp-xx none">
+                            <span class="fp-xx1">个人发票抬头</span>
+                            <span class="fp-xx2">旅游服务费</span>
+                            <span class="fp-xx3">修改</span>
+                        </div>
+                        <div class="listbox lb-info none">提示：我们会在您回团后2-3个工作日内尽快开出邮寄</div>
+                    </div>
+
+                    <div class="tourBox">
+                        <div class="procedureBox procedurBottom tour_favorable">
+                            <h3>出游人信息
+                                <span>为了您能顺利出行，请准确填写以下信息</span>
+                                <p class='tour_tit_load'></p>
+                            </h3>
+                            <div class="listbox">
+                                <div class="favorite-contacts" attr-url="/dujia/AjaxHelper/OrderSuccessHandler.ashx?action=GETLINKERLIST"> <a class="drop-down" href="" style="display: block;">展开<i class="icon-arrow-down"></i></a>
+                                    <dl>
+                                        <dt></dt>
+                                    </dl>
+                                </div>
+                                <div class='tour-modal-box'>
+                                    <label>模板展示：</label>
+                                    <div class='tour-modal'>
+                                        <a href="javascript:void(0)" data-title="护照首页签字&amp;护照末页签字" data-content="护照样本&amp;样本" data-url="//img.17u.cn/ly/cn/img/admin/doc/20160203095315395685.jpg,//img.17u.cn/ly/cn/img/admin/doc/20160525060326243499.jpg" class="onjob-sample">护照</a>
+                                        <a href="javascript:void(0)" data-title="港澳通行证" data-content="样本" data-url="//img1.40017.cn/cn/v/2016/booking/passport.png" class="onjob-sample">港澳通行证</a>
+                                        <a href="javascript:void(0)" data-title="台湾通行证" data-content="样本" data-url="//img.17u.cn/ly/cn/img/admin/doc/20160203103559097187.jpg" class="onjob-sample">大陆居民往来台湾通行证</a>
+                                    </div>
+                                </div>
+                                <div class="add-passenger">
+                                    {{?lineInfo.OrderPersonInfo && lineInfo.OrderPersonInfo.length !== 0}}
+                                    {{var indexs = 0;}}
+                                    {{~lineInfo.OrderPersonInfo:orderPerson:index}}
+                                    {{?orderPerson.PersonType === 1||orderPerson.PersonType === 2||orderPerson.PersonType === 3||orderPerson.PersonType === 4||orderPerson.PersonType === 8}}
+                                    {{?orderPerson.PersonCount}}
+                                    {{for(var i = 0; i< orderPerson.PersonCount;i++){ }}
+                                    {{indexs++;}}
+                                    <div class="visitor-info visitor-info1" data-index="{{=(parseInt(indexs)-1)}}">
+                                        <div class="passenger-info" id="passengerInfo{{=(parseInt(indexs)-1)}}" data-type="{{=orderPerson.PersonType}}" data-isinsert="0" data-listid="" data-linkerid="" data-index="">
+                                            <div class="passenger-info-content">
+                                                <div class="passenger-info-type type-adult">
+                                                    <p class="img"><em></em> 出游人{{=parseInt(indexs)}}</p>
+                                                    <p class="tag"> <em class="type-adult_em">{{=orderPerson.PersonTypeDec}}<i></i></em>
+                                                    </p>
+                                                </div>
+                                                <div class="passenger-info-table" data-type="{{=orderPerson.PersonType}}" data-isinsert="0">
+                                                    <div class="list">
+                                                        <label class="ui-label"><span class="required">*</span>中文姓名：</label>
+                                                        <input class="ui-input ui-input-nameZh" name="nameZh" maxlength="26" vfn="verifyCheckName" vtype="rq" data-err-rq="请填写中文名" data-err-fn="请输入中文姓名" type="text" placeholder="证件的中文姓名"> <span class="valid_symbol"
+                                                            style="display: none;"></span> <i class="help" data-type="zh"></i>
+                                                    </div>
+                                                    <div class="list">
+                                                        <label class="ui-label"><span class="required">*</span>英文姓名：</label>
+                                                        <input class="ui-input ui-input-first-name" name="firstNameEn" vfn="verifyCheckPreNameEn" vtype="rq" data-err-rq="请输入证件上的英文/拼音" data-err-fn="请输入英文或拼音" maxlength="10" type="text" placeholder="姓 拼音或英文">
+                                                        <input class="ui-input ui-input-last-name" data-showtype="static" name="lastNameEn" vfn="verifyCheckNameEn" maxlength="10" vtype="rq eng" data-err-rq="请输入证件上的英文/拼音" data-err-eng="请输入英文或拼音" data-err-fn="请输入英文或拼音" type="text" placeholder="名 拼音或英文">
+                                                        <label class="invalid_message invalid_message_right" style="display: none"><span></span>请输入证件上的英文/拼音</label> <span class="valid_symbol" style="display: none;"></span> <i class="help" data-type="en"></i>
+                                                    </div>
+                                                    <div class="list">
+                                                        <label class="ui-label" style="word-spacing:20px;"><span class="required">*</span>性 别：</label>
+                                                        <input class="ui-radio ui-radio-sex" data-value="1" type="radio" name="sex{{=indexs-1}}" checked="checked" id="sexid{{=indexs-1}}">
+                                                        <label class="mr30" for="sexid0">男</label>
+                                                        <input class="ui-radio ui-radio-sex" data-value="0" type="radio" name="sex{{=indexs-1}}" id="sexid1{{=indexs-1}}">
+                                                        <label class="" for="sexid10">女</label>
+                                                    </div>
+                                                    <div class="list" style="z-index:1;">
+                                                        <label class="ui-label"><span class="required">*</span>证件号码：</label>
+                                                        <div class="ui-select ui-select-certificate mr6"> <span class="up-down"><i></i></span>
+                                                            <dl class="ui-select_dl"> <dt class="select-certificate" data-value="2" visitor-index="0">护照</dt>
+                                                                <dd data-value="2">护照</dd>
+                                                                <dd data-value="7">港澳通行证</dd>
+                                                                <dd data-value="5">台湾通行证</dd>
+                                                                <dd data-value="6">稍后提供</dd>
+                                                            </dl>
+                                                        </div>
+                                                        <input class="ui-input ui-select-certificate-id" name="cardId" vfn="verifyIdValid" maxlength="30" vtype="rq" data-err-rq="请输入所选证件号码" data-err-idcard="请输入正确的证件号码" data-err-fn="请输入正确的证件号码" type="text" placeholder="证件号码" style="display: inline;">                                                        <span class="valid_symbol" style="display: none;"></span> <i class="help" data-type="num"></i>
+                                                    </div>
+                                                    <div class="list">
+                                                        <label class="ui-label"><span class="required">*</span>手机号码：</label>
+                                                        <input class="ui-input ui-input-mobile" name="mobile" maxlength="11" id="mobile" vtype="mobile" data-err-mobile="请输入正确手机号码" type="text" placeholder="请输入手机号码">
+                                                        <label for="mobile" class="prompt_message" style="display: none;"><span></span>请至少填写一个出游人的手机号码</label>
+                                                    </div>
+                                                    <div class="list">
+                                                        <label class="ui-label">出生日期：</label>
+                                                        <input class="ui-input ui-input-date ui-input-birthday" vtype="" data-err-rq="请填写出生日期" data-err-idcard="请填写出生日期" name="birth" maxlength="20" type="text" value="1985-01-01">
+                                                    </div>
+                                                    <div class="order-fn-btns"> <span class="save"><input type="checkbox" id="save000" checked="checked" class=""><label for="save000"> 保存为常旅客</label></span> <span class="reset"><i class="icon-trash"></i><label> 清空</label></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{ } }}
+                                    {{?}}
+                                    {{?}}
+                                    {{~}}
+                                    {{?}}
+                                    <div class="other-passenger none"> <a class="expand-down" href="javascript:void(0);">展开其他出游人<i class="icon-arrow-down"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {{?orderData.ConsultantInfoData && orderData.ConsultantInfoData != null && orderData.ConsultantInfoData.ConsultantTip != ""}}
+                    <div class="procedureBox lvgu J_lvgu ">
+                    {{??}}
+                    <div class="procedureBox lvgu J_lvgu none">
+                    {{?}}
+                        <h3>旅游顾问</h3>
+                        <div class="listbox">
+                            <input type="checkbox" id="lvguID" >
+                            <label class="checksty">{{=orderData.ConsultantInfoData.ConsultantTip}}</label>
+                        </div>
+                    </div>
+
+                    <div class="Cjbox">
+                        <div class="procedureBox procedurBottom cj_favorable">
+                            <h4><span class="cj_tit cj_tit_up">出境宝</span>
+                        <p class="cj_tit_load">您需要 登录才能使用出境宝，请点击页面右上方进行登录后操作</p></h4>
+                        </div>
+                    </div>
+
+                    <div class='procedureBox'>
+                        <h3>注意事项</h3>
+                        <div class='listbox warn-box'>
+                            <p>关注“同程旅游”公众号[微信号：tc0017]并绑定账号，及时获得订单资讯</p>
+                        </div>
+                    </div>
+
+                    <div class="check_div">
+                        <input type="checkbox" id="Icheck" />
+                        <label class="checksty" for="Icheck">我已认真阅读并同意以下条款（费用说明、预订须知、投保人告知声明、合同范本等）</label><span id="nocheck" class="err_check none">请仔细阅读合同条款并勾选确认</span>
+                    </div>
+                    <input id="cjdd" class="submit order-submit" type="submit" attr-url="/dujia/AjaxHelper/OrderSuccessHandler.ashx?action=NEWSAVEPASSENGERS" linkurl="/dujia/AjaxHelper/OrderSuccessHandler.ashx?action=ADDANDRENEWLINKER" value="提交订单" />
+                    <div class="orderInfo">
+                        {{var bottomText = orderData.BottomText;}}
+                        {{?bottomText && bottomText !== ''}}
+                        {{=bottomText}}
+                        {{?}}
+                    </div>
+
+                    <!--提示信息-->
+                    <div class="tooltip-bubble" id="tipForZhName" style="display: none">
+                        <div class="tooltip-bubble-content">
+                            <ul class="order-tips">
+                                <li><em>1.</em><span>乘客姓名必须与所持证件一致。</span></li>
+                                <li><em>2.</em><span>名字中含生僻字可直接输入拼音代替。例：“王鬳”可输入为“王 yan”或者“王-yan”。</span></li>
+                                <li><em>3.</em><span>姓名中不可含有称谓等词语，如：小姐、先生、太太、夫人等。</span></li>
+                                <li><em>4.</em><span>中文姓名不可少于 2 个汉字，英文姓名不可少于 2 个英文单词。</span></li>
+                            </ul>
+                        </div>
+                        <div class="tooltip-bubble-arrow tooltip-bubble-arrow-top">
+                            <div class="tooltip-bubble-arrow-before"></div>
+                            <div class="tooltip-bubble-arrow-after"></div>
+                        </div>
+                    </div>
+                    <div class="tooltip-bubble" id="tipForEnName" style="display: none">
+                        <div class="tooltip-bubble-content">
+                            <ul class="order-tips">
+                                <li><em>1.</em><span>必须用英文字母填写，并确保与所持证件一致。</span></li>
+                                <li><em>2.</em><span>请以姓在前名在后的方式填写，如乘客姓名为诸葛亮，则在“姓（拼音或英文）”栏中输入 ZhuGe （注：复姓中无空格或特殊符号）；在“名（拼音或英文）”栏中输入 Liang。如乘客姓名为 Green（姓）/Jim（名） Stephanie（中间名），则在“姓（拼音或英文）”栏中输入 Green；在“名（拼音或英文）”栏中输入 JimStephanie（注：中间名需空一格紧随名之后）。</span>
+                                </li>
+                                <li><em>3.</em><span>英文名字的长度不可超过 26 个字符，如名字过长请使用缩写，乘客的姓氏不能缩写，名可以缩写。姓氏中如包括空格请在输入时删掉空格。</span>
+                                </li>
+                                <li><em>4.</em><span> 英文姓名不可少于 2 个英文单词。</span></li>
+                            </ul>
+                        </div>
+                        <div class="tooltip-bubble-arrow tooltip-bubble-arrow-top">
+                            <div class="tooltip-bubble-arrow-before"></div>
+                            <div class="tooltip-bubble-arrow-after"></div>
+                        </div>
+                    </div>
+                    <div class="tooltip-bubble tooltip-bubble-cert" id="tipForNum" style="display: none">
+                        <div class="tooltip-bubble-content">
+                            <ul class="order-tips">
+                                <li><span>若无证件可选稍后提供，会有客服致电给您</span></li>
+                            </ul>
+                        </div>
+                        <div class="tooltip-bubble-arrow tooltip-bubble-arrow-top">
+                            <div class="tooltip-bubble-arrow-before"></div>
+                            <div class="tooltip-bubble-arrow-after"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="par_right">
+                    {{?SupplierInfoData.CompanyName !== null || SupplierInfoData.IVROperatingPermitNum !== null || SupplierInfoData.Address !== null}}
+                    <div class="supply_box">
+                        <div class="supply-head">
+                            <p class="supply-info">供应商信息</p>
+                        </div>
+                        <div class="supply-detail">
+                            {{?SupplierInfoData.CompanyName !== null}}
+                            <p>供应商&nbsp;:&nbsp;{{=SupplierInfoData.CompanyName}}</p>
+                            {{?}} {{?SupplierInfoData.IVROperatingPermitNum !== null}}
+                            <p>经营许可证&nbsp;:&nbsp;{{=SupplierInfoData.IVROperatingPermitNum}}</p>
+                            {{?}} {{?SupplierInfoData.Address !== null}}
+                            <p>地址&nbsp;:&nbsp;{{=SupplierInfoData.Address}}</p>
+                            {{?}}
+                        </div>
+                        <p class="confirm">您提交订单后，商家会与您联系确认</p>
+                    </div>
+                    {{?}}
+                    <div class="R_box">
+                        <div class="R_top">
+                            <div class="price_tit">费用信息</div>
+                            {{?lineInfo && lineInfo.OrderPersonInfo.length !== 0}}
+                            <div class="fee-info">
+                                <p class='price-type'>团款</p>
+                                 {{~lineInfo.OrderPersonInfo:orderPerson:index}}
+                                <dl class="calculPri_'{{=index}}'">
+                                    <dt>{{=orderPerson.PersonTypeDec}}</dt>
+                                    <dd>
+                                        <div class="boxL"><span class="univalence"><b><label
+                                    class="f_price">{{=orderPerson.OrderSinglePrice}}</label></b>元</span>×<b class="listnub">{{=orderPerson.PersonCount}}</b></div>
+                                        <span class="separate boxL">-------------------------------------------</span><span class="colF60 font_W boxL"><strong class="orderPrice f_price">{{=orderPerson.OrderPrice}}</strong>元</span></dd>
+                                </dl>
+                                {{~}}
+                            </div>
+                            {{?}}
+                             {{?InsuranceData && InsuranceData.length !== 0}}
+                            <div>
+                                <p class='price-type'>保险</p>
+                                {{~InsuranceData:insurance:index}} {{var insuranceType ;}} {{?insurance.InsuranceType === 1}} {{insuranceType = '意外险';}} {{?? insurance.InsuranceType === 2}} {{insuranceType = '取消险';}} {{?}}
+                                <dl class="InsuranceDL InsuranceDL'{{=index}}'">
+                                    <dt>{{=insuranceType}}</dt>
+                                        <dd>
+                                            <div class="boxL"><span class="univalence"><b>{{=insurance.price}}</b>元</span>×<b class="listnub" id="PeopleNub">{{=insurance.Count}}人</b></div>
+                                            <span class="separate boxL">-------------------------------------------</span><span class="colF60 font_W boxL"><strong class="orderPrice">{{=(insurance.price*insurance.Count)}}</strong>元</span></dd>
+                                    </dl>
+                            {{~}}
+                            </div>
+                            {{?}}
+                            {{?SbuInfoData && SbuInfoData.length !== 0}}
+                            <div>
+                                <p class='price-type'>附加产品</p>
+                            {{~SbuInfoData:sbuInfoData:index}}
+                            <dl class="InsuranceDL InsuranceDL'{{=index}}'">
+                                <dt>{{=sbuInfoData.Category}}</dt>
+                                <dd>
+                                    <div class="boxL"><span class="univalence"><b>{{=sbuInfoData.Price}}</b>元</span>×<b class="listnub" id="PeopleNub">{{=sbuInfoData.Count}}人</b></div>
+                                    <span class="separate boxL">-------------------------------------------</span><span class="colF60 font_W boxL"><strong class="orderPrice">{{=(sbuInfoData.Price*sbuInfoData.Count)}}</strong>元</span></dd>
+                            </dl>
+                            {{~}}
+
+                            </div>
+                           {{?}}
+
+                            <div class="allStyle none">
+                                <div class="clear_float"></div>
+                            </div>
+                        </div>
+
+                        <div class="R_Bottom">
+                            <li class="first"><span>费用总额：</span><strong>￥<em class="f_price"></em></strong></li>
+                        </div>
+
+                    </div>
+
+
+                    <div class="clear_float"></div>
+                </div>
+            </div>
+            </div>
+            <!-- 线路ID-->
+            <input name="HidLineid" type="hidden" id="HidLineid" value="{{=lineInfo.LineId}}" />
+            <input name="hidStation" type="hidden" id="hidStation" value="0" />
+            {{?lineInfo && lineInfo.OrderPersonInfo.length !== 0}}
+            {{var arr = [],str = '';}}
+               {{~lineInfo.OrderPersonInfo:orderPerson}}
+               {{
+                    str = orderPerson.PriceId+':'+orderPerson.PersonCount;
+                    arr.push(str);
+               }}
+               {{~}}
+               <!-- 价格体系-->
+            <input name="hidPriceList" type="hidden" id="hidPriceList" value="{{=arr.join('|')}}" />
+            {{?}}
+            <!-- 出发日期-->
+            <input name="hidBookDate" type="hidden" id="hidBookDate" value="{{=lineInfo.LineDate.split('T')[0]}}" />
+            <!-- 现金券-->
+            <input name="hidXjq" type="hidden" id="hidXjq" value="0" />
+            <!-- 活动-->
+            <input name="HidActvity" type="hidden" id="HidActvity" value="0" />
+            <!-- 银行立减id-->
+            <input name="HidBankid" type="hidden" id="HidBankid" value="0" />
+            <!--会员立减id-->
+            <input name="HidMemberZid" type="hidden" id="HidMemberZid" value="0" />
+            <!-- 下单渠道立减id-->
+            <input name="HidCanalId" type="hidden" id="HidCanalId" value="0" />
+            <!-- 早定优惠立减id-->
+            <input type="hidden" id="HidAdvordId" name="HidAdvordId" value="0" />
+            <!--销售类型 -->
+            <input name="HidSale" type="hidden" id="HidSale" value="1" />
+             <!--活动key -->
+            <input name="HidKey" type="hidden" id="HidKey" value='{{=lineInfo.Ak}}'/>
+            <!-- 出境宝-->
+            <input name="CjfavorableVal" attr-list="" type="hidden" attr-verify="false" id="CjfavorableVal" value="1">
+            <!-- 出发城市id-->
+            <input name="hidCityId" type="hidden" id="hidCityId" value="{{=lineInfo.LeavePortCityId}}" />
+            <!-- 出发城市id-->
+            <input name="k_city" type="hidden" id="k_city" value="{{=lineInfo.LeavePortCityId}}" />
+            <input name="hidFlightGuid" type="hidden" id="hidFlightGuid" />
+            <input name="hidOrderResource" type="hidden" id="hidOrderResource" />
+            <input name="hidProductPriceList" type="hidden" id="hidProductPriceList" />
+            <!--旅游顾问id-->
+      			{{var consultantId;}}
+      			{{?orderData.ConsultantInfoData && orderData.ConsultantInfoData.ConsultantId != null && orderData.ConsultantInfoData.ConsultantId != ""}}
+      			{{ consultantId = orderData.ConsultantInfoData.ConsultantId;}}
+      			{{??}}
+      			{{ consultantId = "";}}
+      			{{?}}
+            <input type="hidden" id="hidJobNumber" name="JobNumber" value="{{=consultantId}}">
+      			<!--旅游顾问是否默认勾选-->
+      			{{var isSelect = orderData.ConsultantInfoData.IsSelect;}}
+      			<input name="hidIsSelect" type="hidden" id="hidIsSelect" value="{{=(isSelect == null?"":isSelect)}}">
+             <!--出发城市-->
+            <input id="hidProvinceName" type="hidden" value="{{=lineInfo.LeavePortCity}}" />
+            <!--来源平台-->
+            <input name="HidFromPlatform" type="hidden" id="HidFromPlatform" value="1" />
+            <input name="hidClue" type="hidden" id="hidClue" value="0" />
+            <!--会员立减 de 钱数-->
+            <input name="MemberVal" type="hidden" id="MemberVal" value="0" />
+            <input name="HidPrice" type="hidden" id="HidPrice" value="0" />
+
+            <div class="none" id="globeAjaxAdrr" data-url="/dujia/OrderAjaxCall.aspx"></div>
+            <div style="display: none;">
+                <div id="validErr" class="voucher_main none" style="display: block;">
+                    <div class="voucher_head">
+                        <h3>系统提示</h3>
+                        <a href="javascript:void(0)" class="exit_btn">
+                            <img src="//img1.40017.cn/cn/comm/images/book/cs_book_common.png"></a>
+                    </div>
+                    <div class="voucher_info">
+                        <div class="voucher_ing01">
+                            <p>
+                                <img src="//img1.40017.cn/cn/comm/images/book/dh_02.gif">
+                            </p>
+                            <div class="p01" id="validErrTipCont">
+                            </div>
+                            <div class="p03">
+                                <a href="http://member.ly.com/dujia/DujiaOrderList.aspx" class="go_ordercenter"></a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div id="validOder" class="voucher_main none" style="display: block;">
+                    <div class="voucher_head">
+                        <h3>系统提示</h3>
+                        <a href="javascript:void(0)" class="exit_btn">
+                            <img src="//img1.40017.cn/cn/comm/images/book/cs_book_common.png"></a>
+                    </div>
+                    <div class="voucher_info">
+                        <div class="voucher_ing01">
+                            <p>
+                                <img src="//img1.40017.cn/cn/comm/images/book/dh_02.gif">
+                            </p>
+                            <div class="p01" id="Div1">
+                            </div>
+                            <div class="p03">
+                                <span style="margin-left: 25px;" title="确定" class="ensure exit_btn">确定<img alt="重试图标"
+                                                                                                   src="//img1.40017.cn/cn/comm/images/book/cs_book_common.png"
+                                                                                                   data-pinit="registered"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="alipay_login_box" class="rules_main none">
+                <div class="rules_head">
+                    <h3>账户绑定</h3>
+                    <a class="exit_btn" href="#">
+                        <img alt="" src="//img.17u.cn/comm/images/book/cs_book_common.png"></a>
+                </div>
+                <div class="wrap_login_form">
+                    <div id="sign_in_form_box_alipay">
+                        <div class="sign_fm">
+
+                            <input type="hidden" value="GetBindAli" name="Type">
+                            <p class="p_wid">
+                                亲！您的<span id="alipay_tc_name">手机号码15995430487</span>已注册，输入密码验证后将与您的<span id="zhanghuname">同程账号</span>绑定哦。
+                            </p>
+                            <div class="item none">
+                                <label for="account_alipay">
+                            帐号：</label><input type="text" id="account_alipay" name="loginname" maxlength="30" placeholderoption="手机/邮箱" style="color: rgb(102, 102, 102);">
+                            </div>
+                            <div class="item">
+                                <label for="actpwd_alipay">
+                            <span class="fot_xinghao">*</span> 登录密码：</label><input type="password" id="actpwd_alipay" name="pwd" maxlength="30"><a class="sign_lostfound" target="_blank" href="/GetPassword.aspx">忘记密码？</a>
+                            </div>
+                            <div id="sign_in_tips_out" class="sign_tip none" style="visibility: hidden;">
+                                <span id="sign_in_tips_alipay" class="sp_text" style="visibility: hidden;">密码错误，请重新输入</span>
+                            </div>
+                            <div class="item none">
+                                <input type="checkbox" id="rem_it_1w_alipay" value="7" name="remIt"><label class="ri1_label" for="rem_it_1w_alipay">记住密码（一周）</label>
+                            </div>
+                            <div class="item set_overflow">
+                                <button id="sign_in_btn_alipay" class="btn_sign_in btn_sign_gai" title="绑定">
+                            绑定
+                        </button>
+                                <span id="logining_alipay" style="display: none;" class="wait4sign">
+                                <img alt="" src="//img.17u.cn/new_ui/public/images/wait.gif"/>登录中…</span>
+                                <a id="cancel_alipay" class="cancel_sign exit_btn" href="###">取消</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="cjpopbox" class="popbox none">
+                <div class="pop_tit">
+                    <span>&nbsp;</span>
+                </div>
+                <div class="popcenter">
+                    <strong>预订成功，您的出境宝：<span id="errorCard"></span>使用失败，是否继续预订</strong>
+                    <a href="javascript:void(0);" class="popbtn">确定</a>
+                    <a href="http://member.ly.com/dujia/DujiaOrderList.aspx">取消</a>
+                </div>
+            </div>
+
+            <div class="side_nav fixed side_nav_green" style="bottom: 150px;">
+                <style>
+                    .ly_wtm,
+                    .ly_cs_link_b {
+                        background-image: url("//img1.40017.cn/cn/v/index/2014/w2m.png");
+                    }
+                </style>
+                <span class="ly_cs">
+                <a title="联系我们" href="javascript:;" class="ly_cs_link ly_cs_link_b"></a>
+                <div class="ly_phone_m">
+                    <span class="ly_p_message clear_fix">
+                        <em>请拨打<span class="ly_phone">{{=orderData.TelephoneNo}}</span></em>
+                </span>
+                <span class="ly_side_arrow"></span>
+            </div>
+            </span>
+            <span class="ly_wtw_b">
+                <a title="二维码" href="javascript:;" class="ly_wtm"></a>
+                <div class="ly_wtm_con">
+                    <div>
+                        <img src="//img1.40017.cn/cn/if/home/slide/code.png"/>
+                        <span class="ly_side_arrow"></span>
+            <span class="ly_wtw_desc">立刻扫描二维码旅游问题全搞定</span>
+        </div>
+        </div>
+        </span>
+        <a href="//livechat.ly.com/out/guest?p=7" target="_blank" title="在线客服" class="side_link">在线客服</a>
+        <a style="visibility: visible;" class="back_top" href="javascript:;" title="返回顶部"></a>
+        </div>
+        </div>
+        <div class="tip-residual" style="display: none">
+            <p>当前出发日期余位已满，无法添加更多人数</p>
+            <div class="tip-arrow">
+                <div class="tip-arrow-before"></div>
+                <div class="tip-arrow-after"></div>
+            </div>
+        </div>
+    </form>
+
+
+    <!-- 发票 -->
+    <form id="J_fp_post" method="post">
+        <div class="form-fp none">
+            <h3>报销凭证</h3>
+            <span class="close-dia-fp"></span>
+            <div class="fp-content">
+                <div class="fp-price">
+                    <span class="fp-left">发票金额</span>
+
+                    <span class="fp-price-detail">发票以实际支付团费为准，保险提供定额发票，红包，旅游卡支付金额不开具发票。</span>
+                </div>
+                <div class="fp-title">
+                    <span class="fp-left ff-left-tt">发票抬头</span>
+                    <div class="fp-ttbox ">
+                        <span class="fp-tt"></span>
+                        <span class="fp-change">修改抬头</span>
+                    </div>
+                    <div class="fp-box-fill clearright none">
+                        <input type="text" class="fp-tt-in" placeholder="请填写增加个人或公司名称" vType="rq" data-err-enorcnword="请输入正确抬头" required data-err-rq="请输入正确抬头" style="border-radius:2px;border:1px solid #ddd" onblur="if(this.value == '')this.value='请填写增加个人或公司名称';" onclick="if(this.value == '请填写增加个人或公司名称')this.value='';"
+                            value="请填写增加个人或公司名称" />
+                    </div>
+                    <div class="default-tt">
+                        <input type="checkbox" class="fp-tt-default" id="fp-tt-default" name="fp-tt-default" />
+                        <label for="fp-tt-default" class="fp-cb-default sjchecked">设为默认抬头</label>
+                    </div>
+                    <div class="default-tt">
+                        <input type="checkbox" class="fp-ei-default" id="fp-every" name="fp-every" />
+                        <label for="fp-every" class="fp-el-default">为每位旅客开具独立发票</label>
+                        <div class="default-t1">
+                            <span>单张发票金额=实际支付团费/出游人数</span>
+                        </div>
+                    </div>
+                    <div class="default-tt choose-title none">
+                        <div class="choose-invoice">
+                            <input type="checkbox" class="same-title" id="sameTitle" name="same-title" />
+                            <label for="sameTitle" data-param="1" class="choose-same-title J_SameTitle sjchecked">使用同一抬头</label>
+                        </div>
+                        <div class="choose-invoice">
+                            <input type="checkbox" class="diff-title" id="diffTitle" name="diff-title" />
+                            <label for="diffTitle" data-param="2" class="choose-diff-title J_DiffTitle">使用每位游客姓名为抬头</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="fp-shoujian ">
+                    <span class="fp-left sj-left">&nbsp;&nbsp;&nbsp;收件人</span>
+                    <div class="sjlist">
+                    </div>
+                    <div class="J-adbox">
+                    </div>
+                </div>
+                <div class="fp-adress-write-box none">
+                    <div>
+                        <input name="sendName" type="text" class="J_Name fp-adress-fill fp-adress-name " data-err-rq="请输入联系人姓名" vtype="rq enOrCnWord" style="border-radius:2px;border:1px solid #ddd;padding-left:0px" onblur="if(this.value == '')this.value='姓名';" onclick="if(this.value == '姓名')this.value='';"
+                            value="姓名" required="required" placeholder="姓名" data-err-enorcnword="请输入正确联系人姓名">
+                        <div class="clearright">
+                            <input name="sendPhoneNum" type="text" class="J_Phone fp-adress-fill fp-adress-tel " data-err-rq="请输入正确手机号码" vType="rq mobile" data-err-mobile="号码不正确" onblur="if(this.value == '')this.value='手机号码';" onclick="if(this.value == '手机号码')this.value='';" value="手机号码"
+                                style="border-radius:2px;border:1px solid #ddd;padding-left:0px" placeholder="手机号码" required="required"></div>
+                    </div>
+                    <div class="fp-xl-box">
+                        <div class="clearfix">
+                            <span class="send-pro J_send_span">省</span><span class="send-city J_send_span">市</span><span class="send-region J_send_span">区</span>
+                            <label for="linkName" class="invalid_message invalid_message_right J_invalid none"><span></span>省市区不可为空</label>
+                        </div>
+                        <ul class="send-pro-ul none J_send_ul" data-tmpl="#proDot"></ul>
+                        <ul class="send-city-ul none J_send_ul" data-tmpl="#cityDot"></ul>
+                        <ul class="send-region-ul none J_send_ul" data-tmpl="#areaDot"></ul>
+                    </div>
+                    <div class="fp-fillin clearfix">
+                        <input name="sendAddress" type="text" class="J_Area J_sendStreet" placeholder="不需要重复填写省市区" style="width: 380px;height: 28px;line-height:26px;border-radius:2px;border:1px solid #ddd;padding-left:0px" vtype="rq" data-err-rq="请填写街道地址" required="required"
+                            onblur="if(this.value == '')this.value='不需要重复填写省市区';" onclick="if(this.value == '不需要重复填写省市区')this.value='';" value="不需要重复填写省市区">
+                    </div>
+                </div>
+                <div class="fp-neirong">
+                    <span class="fp-left fp-left-nr">发票内容</span>
+                    <span class="fy-choice fp-fwf active-fp-nr">服务费</span>
+                    <span class="fy-choice fp-lyfwf">旅游服务费</span>
+                    </br>
+                    <span class="fp-info-cost">如需开具多张不等额发票或多张不同公司抬头发票，请致电客服</span>
+                </div>
+                <div style="float:left">
+                    <span class="fp-submit J_Submit">保存发票信息</span>
+                    <input type="reset" id="fp-qx" name="reset" style="display: none;" />
+                    <label for="fp-qx"><span class="fp-cancel">取消</span></label>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="order-pop" id="J_orderPop">
+        <div class="order-pop-title">
+            <span>提示</span>
+            <a class="order-pop-close" href="javascript:fish.mPop.close();" title="" target="_self"></a>
+        </div>
+        <div class="order-pop-content">
+            <i></i>
+            <ul>
+                <li class="order-pop-tip" id="J_orderTipTitle"><span>订单提交失败！</span></li>
+                <li class="order-pop-desc" id="J_orderTipDesc"><span>很抱歉，当前出游日期位置不足，您可以减少人数或换个日期重新下单。</span></li>
+                <li class="order-pop-btns">
+                    <a class="order-pop-btn oder-pop-resubmission" href="javascript:fish.mPop.close();" title="" target="_self">重新填写</a>
+                    <a class="order-pop-btn oder-pop-contact" href="//livechat.ly.com/out/guest?p=7" title="" target="_blank">联系客服</a>
+                    <span class="order-pop-phone"><i></i>4007-777-777转6</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 图样展示start -->
+    <div id="show_photo" class="none ui-dialog-content">
+        <div class="ui-tips">
+            <div id="content">
+                <div class="mslide-panel none">
+                    <h3><a href="javascript:void(0)" class="JJ_close"></a></h3>
+                    <div class="mp-content">
+                        <div class="photo-detail">
+                            <div class="photo">
+                                <a class="mslide-num" href="javascript:void(0)"></a>
+                            </div>
+                            <div class="detail">注意事项：
+                            </div>
+                        </div>
+                        <div class="photo-mslide"> <a href="javascript:void(0)" class="prev disabled"><span class="btn-prev"></span></a>
+                            <div class="list">
+                                <ul>
+                                </ul>
+                            </div>
+                            <a href="javascript:void(0)" class="next"><span class="btn-next"></span></a> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 图样展示end -->
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/c/c/common-aspect.1.1.2.js,/cn/c/c/common-aspect-qrcode.1.1.2.js?v=2014121501"></script>
+    <script src="//js.40017.cn/cn/v/2015/jqmodules/activity/0.1.1/bonus/pc/source/index.js" type="text/javascript"></script>
+    <script src="//js.40017.cn/cn/v/2015/jqmodules/sea.js" type="text/javascript"></script>
+    <!--<script type="text/javascript"
+        src="//js.40017.cn/cn/min/??/cn/public/module/dialog/0.1/dialog.js?v=13082102"></script>-->
+    <script type="text/javascript">
+        seajs.config({
+            "base": "//js.40017.cn/cn/v/2015/jqmodules/"
+        });
+        window.host = "//www.ly.com";
+        window.passenger = [{
+            "priceType": 1,
+            "num": 2
+        }, {
+            "priceType": 8,
+            "num": 0
+        }, {
+            "priceType": 5,
+            "num": 0
+        }];
+    </script>
+    <script src="//www.ly.com/dujia/config.ashx?type=1" type="text/javascript"></script>
+    <!--<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/c/c/common-aspect.1.1.2.js,/cn/c/c/common-aspect-qrcode.1.1.2.js?v=2014121501"></script>-->
+    <script type="text/javascript">
+        (function() {
+            fish.ready(function() {
+                "use strict";
+                var e = fish.browser("ms", 6),
+                    t = 50;
+                e && (t = 100);
+                fish.one("#popQdcode").mFix({
+                    showType: "fixed",
+                    bottom: 230,
+                    right: t
+                });
+                fish.one("#popQdcode").hover(function() {
+                    fish.one("#showpopQdcod").removeClass("none");
+                    fish.one("#popQdcode .qdcode").addClass("qdcode_hover")
+                }, function() {
+                    fish.one("#showpopQdcod").addClass("none");
+                    fish.one("#popQdcode .qdcode").removeClass("qdcode_hover")
+                })
+            })
+        })()
+    </script>
+    <div style="clear: both; font-size: 0; height: 0; line-height: 0; overflow: hidden;"></div>
+    <span id="ucFooter"><div id="footer_lite">
+        Copyright&nbsp;&copy;&nbsp;<span class="cr_time" type="Holiday">2002-2016</span>&nbsp;版权所有&nbsp;<span class="corp_name">同程网络科技股份有限公司</span>&nbsp;<a class="icp_num" href="//img1.40017.cn/cn/new_ui/public/images/20141103174615.jpg" target="_blank">苏ICP证B2-20100204</a></div>
+    <script type="text/javascript">
+        /*
+                                            var bd_cpro_rtid = "n1DvrHf";
+                                            */
+    </script>
+
+    <noscript>
+    <div style="display:none;">
+        <img height="0" width="0" style="border-style:none;"
+             src="http://eclick.baidu.com/rt.jpg?t=noscript&rtid=n1DvrHf"/>
+    </div>
+</noscript>
+    <script type="text/javascript" language="javascript">
+        fish.ajax({
+            url: "//js.40017.cn/cn/new_ui/comprehensive/js/other/whiteSign/whiteSign.js?v=2013031801",
+            type: "script"
+        })
+    </script>
+    <div style="display:none;">
+        <script type="text/javascript">
+            var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+            document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F0f71f0877229e4e6503de92a28cbf166' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+    </div>
+    </span>
+
+    <div id="useInputInfoUrl" data-url="/dujia/AjaxCallNew.aspx?type=GetBookMessgeNew&datatime={date}&lineid=62197&ak=&cityId=0"></div>
+    <div id="LoginUrl" data-url="/dujia/"></div>
+    <div id="TixiPriceUrl" data-url="/dujia/Ajaxcallnew.aspx?type=GetTixiPrice&PriceList={Price}&lineID={lineId}&bookdate={bookData}"></div>
+    <!--<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/monitor/0.1.1/index.js?v=2015050502"></script>-->
+    <script type="text/javascript" src="//js.40017.cn/cn/c/c/td/jq-td-all.js?v=20150504"></script>
+
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/book2016/index.07064.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/book2016/order.07064.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/book2016/tour.07064.js"></script>
+    <script type="text/javascript">
+        seajs.use("order", function(fn) {
+            fn.init();
+        });
+    </script>
+
+		    <!-- pv统计 -->
+    <script type="text/javascript">
+        var pvConfig = {
+            "PublicPlatId": "1",
+            "PageId": "2",
+            "LineId": fish.one("#HidLineid").val(),
+            "ModuleId": common.getParamFromUrl("spm"),
+            "SearchPlatId": common.getParamFromUrl("searchplatid"),
+            "PVSource": "0",
+            "ak": common.getParamFromUrl("ak"),
+            "url": "/dujia/AjaxHelper/PvHandler.ashx"
+        }
+    </script>
+
+    <script src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/pvcount_pc.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var rtTag = {
+            "data": {
+                "etravel_order": {
+                    "prod": [{
+                        "p_id": fish.one("#HidLineid").val()
+                    }]
+                }
+            }
+        };
+        var __zp_tag_params = {
+            pagetype: "order"
+        };
+    </script>
+    <!-- 底部脚本放置区 -->
+
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/common/cnpublic.03314.js?v=20150331" charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+{
+  "dataUri": "/wanle/api/WanleProduct/GetWanleShowPage",
+  "query": {
+    "siteType":0,
+    "pageid":1
+  },
+  "desc": "海外门票首页"
+}

@@ -1,0 +1,28 @@
+{{?it.list.length>0}}
+<div class="proLists-tab-panel" data-id="{{=it.id}}">
+    <ul>
+        {{~it.list:value:index}} {{var _href ="//www.ly.com/dujia/visa/visa-" + value.ProductId + ".html";}}
+        <li>
+            <a trace="freeVisaArea_{{=index}}_{{=value.ProductId}}" trackspot="{{=value.ProductId}}^{{=index+1}}^{{=it.indexName}}^热门签证" href="{{=_href}}">
+                <div class="ui-freeVisa-proList">
+                    <span class="ui-freeVisa-area">{{=value.RegionName}}领区</span>
+                    <img data-img="{{=value.VisaImg.replace('http:','')}}">
+                    <div class="ui-freeVisa-info">
+                        <p>{{=value.CountryName}}<em>|</em>{{=value.VisaType}}</p>
+                    </div>
+                </div>
+                <div class="ui-freeVisa-footer">
+                    <p class="freeVisa-price">
+                        <i>￥</i>
+                        <em>{{=value.AmountDirect}}</em>
+                        <em class="price-start">起</em>
+                    </p>
+                    <b></b>
+                    <span>马上办理</span>
+                </div>
+            </a>
+        </li>
+        {{~}}
+    </ul>
+</div>
+{{?}}

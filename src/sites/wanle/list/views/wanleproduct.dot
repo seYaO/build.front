@@ -1,0 +1,167 @@
+    {{? proList !="" && proList.length > 0 && totalCount > 0}}
+    	<div id="J_pro_list" class="pro_list">
+    	    {{~ proList:product:index}}
+               <div class="pro_li">
+                   <div class="pro_main">
+                      <a class="pro_pic" href="/dujia/wanle/{{=product.Id}}.html" target="_blank"
+                         onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/menpiao/list', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">
+                          {{var imgUrl = product.ImgUrl.replace('.jpg','_430x270_00.jpg').replace('http:','');}}
+                          <img src="{{=imgUrl}}" title="{{=product.Title}}" alt="{{=product.Title}}">
+                      </a>
+
+                      {{? product.RecdTagName && product.RecdTagName != ""}}
+                        <div class="tags"><i></i>{{=product.RecdTagName}}<em></em></div>
+                      {{?}}
+
+                      {{? product.TigNamesList != ""  && product.TigNamesList.length > 0}}
+                         <div class="tag_name">
+                            {{~ product.TigNamesList:tagName:tagIndex}}
+                                {{? tagIndex < 2}}
+                                <span>{{=tagName}}</span>
+                                {{?}}
+                            {{~}}
+                         </div>
+                      {{?}}
+
+	                     <div class="pro_info">
+	                         {{? product.Title.length > 48}}
+	                         {{ product.Title=product.Title.substring(0,48)+"...";}}
+	                         {{??}}
+	                         {{ product.Title = product.Title;}}
+	                         {{?}}
+	                         <a class="main_title" href="/dujia/wanle/{{=product.Id}}.html" title="{{=product.Title}}" target="_blank"
+	                           onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/dangdi/list', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">
+                               {{=product.Title}}
+                             </a>
+
+                             {{?product.SingleCategory != 86}}
+                                <p class="recommend">
+                                    {{?product.RecommendReasonList.length}}
+                                        {{=product.RecommendReasonList[0]}}
+                                    {{?}}
+                                </p>
+                                {{??}}
+                                <ul class="server_name">
+                                    {{?product.PickUpServiceList && product.PickUpServiceList.length > 0}}
+                                        {{~product.PickUpServiceList:pListName:pListIndex}}
+                                            {{?pListIndex < 4}}
+                                                <li><span></span>{{=pListName.Name}}</li>
+                                            {{?}}
+                                        {{~}}
+                                    {{?}}
+                                </ul>
+                            {{?}}
+	                         <ul class="pro_tips">
+	                         {{? product.DcList && product.DcList.length > 0}}
+                                {{var destAll = "";}}
+                                 {{var destShow = "";}}
+                                 {{~ product.DcList:destItem:dIndex}}
+                                     {{? destAll == ""}}
+                                         {{destAll = destItem.Name;}}
+                                     {{??}}
+                                         {{destAll = destAll + "&nbsp;&nbsp;" + destItem.Name;}}
+                                     {{?}}
+                                     {{? dIndex < 3}}
+                                         {{ destShow = destAll;}}
+                                     {{?}}
+                                 {{~}}
+                                 {{? product.DcList.Count > 3}}
+                                     {{destShow = destShow +"&nbsp;&nbsp;" + "...";}}
+                                 {{?}}
+
+                                {{?}}
+                                 {{?product.SingleCategory != 86}}
+                                    {{?product.DcList.length == 0}}
+                                    <li class="bourn_city none" title = "{{=destShow}}">目的地：<em>{{=destShow}}</em></li>
+                                    {{??}}
+                                    <li class="bourn_city" title = "{{=destShow}}">目的地：<em>{{=destShow}}</em></li>
+                                    {{?}}
+                                {{??}}
+                                    {{?product.MinAdvanceDay == 0}}
+                                        {{?product.MinAdvanceTime == "00:00:00" && product.MinAdvanceDayStr == "今天"}}
+                                            <li class="book_time">预订时间：最早可订明天</li>
+                                        {{??}}
+                                            {{var hour = product.MinAdvanceTime.split(":")[0];}}
+                                            {{var minute = product.MinAdvanceTime.split(":")[1];}}
+                                            <li class="book_time">预订时间：{{=hour}}:{{=minute}}点前可订今日</li>
+                                        {{?}}
+                                    {{??}}
+                                        <li class="book_time">预订时间：最早可订{{=product.MinAdvanceDayStr}}</li>
+                                    {{?}}
+                                {{?}}
+                            {{?product.SingleCategory != 86}}
+                                {{var languages = product.SingleLanguageName.split(";");}}
+                                {{? languages!="" && languages.length > 0}}
+                                    {{ var languageAll = "";}}
+                                    {{ var languageShow = "";}}
+                                    {{~ languages:language:lanIndex}}
+                                        {{?languageAll == ""}}
+                                            {{languageAll = language;}}
+                                        {{??}}
+                                            {{languageAll = languageAll + "&nbsp;&nbsp;" + language;}}
+                                        {{?}}
+
+                                        {{? lanIndex < 3}}
+                                            {{languageShow = languageAll;}}
+                                        {{?}}
+                                    {{~}}
+                                    {{? languages.length > 3}}
+                                        {{languageShow =languageShow + "&nbsp;&nbsp;" + "...";}}
+                                    {{?}}
+
+                                    {{?languages.length == 0}}
+                                    <li class="serve_lang  none" title="{{=languageAll}}">服务语言：<em>{{=languageShow}}</em></li>
+                                    {{??}}
+                                    <li class="serve_lang" title="{{=languageAll}}">服务语言：<em>{{=languageShow}}</em></li>
+                                    {{?}}
+                                {{?}}
+                            {{??}}
+                                 {{?product.CarTypeList && product.CarTypeList.length > 0}}
+                                    {{var list_car ="" ;}}
+                                    {{~product.CarTypeList:carListName:carListIndex}}
+                                        {{list_car =list_car + carListName.TypeName + "/";}}
+                                        {{var last_num = list_car.lastIndexOf("/");}}
+                                        {{TypeNameList = list_car.substring(last_num,"");}}
+                                    {{~}}
+                                    <li title="{{=TypeNameList}}">车型：{{=TypeNameList}}</li>
+                                {{?}}
+
+                            {{?}}
+
+                             <div class="clearfix"></div>
+
+                                {{?product.SatDeg == 0}}
+                                <li class="pro_csi none"><em><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;暂无点评</i></em></li>
+                                {{??}}
+                                <li class="pro_csi">满意度：<em><i>{{=product.SatDeg}}%</i>好评</em></li>
+                                {{?}}
+
+                                {{? product.OrdCount == 0}}
+                                <li class="pro_sales"><em>新品上线</em></li>
+                                {{??}}
+                                <li class="pro_sales">月销量：<em>{{=product.OrdCount}}</em></li>
+                                {{?}}
+                             </ul>
+	                     </div>
+
+                         <div class="pro_opera">
+                            <p class="mk_price">市场价：¥{{=product.MinMarketPrice}}起</p>
+                            <p class="tc_price">同程价：<em>¥<i>{{=product.MinTcPrice}}</i>起</em></p>
+                            <a class="pro_btn" href="/dujia/wanle/{{=product.Id}}.html" target="_blank"
+                               onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/menpiao/list', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">查看详情</a>
+                        </div>
+                   </div>
+               </div>
+           {{~}}
+        </div>
+    {{??}}
+        <div id="j_flip_no_main" class="flip_no_main">
+            <i></i><span>亲，筛选无结果啦，重新筛选吧！</span>
+            <a class="flip_no_btn">重新筛选</a>
+        </div>
+    {{?}}
+<div id="j_flip_no_main" class="flip_no_main none">
+    <i></i><span>亲，筛选无结果啦，重新筛选吧！</span>
+    <a class="flip_no_btn">重新筛选</a>
+</div>
+<div id="aysnPager" class="paging aysnPager"></div>

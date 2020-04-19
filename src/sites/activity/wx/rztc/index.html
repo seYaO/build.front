@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>入驻同程</title>
+
+    <meta name="description" content="入驻同程，一路同程">
+    <meta name="keywords" content="导游 同程 入驻">
+
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta content="telephone=no" name="format-detection"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+
+    <link rel="stylesheet" href="./index.css">
+
+</head>
+<body>
+<div class="container">
+    <form action="#" method="post" id="form">
+        <section class="info-section base-info">
+            <ul class="guide-info">
+                <li class="info-item info-item-name border-bottom">
+                    <label for="userName" class="label">姓名</label>
+                    <input type="text" id="userName" name="userName" class="textinput" placeholder="请输入您的真实姓名" maxlength="8" focus>
+                </li>
+
+                <li class="info-item info-item-gender border-bottom">
+                    <label for="gender" class="label">性别</label>
+                    <div class="textinput">
+                        <input type="radio" name="gender" value="1"><span style="vertical-align: middle; margin: 0 24px 0 8px;">男</span>
+                        <input type="radio" name="gender" value="2"><span style="vertical-align: middle; margin-left: 8px;">女</span>
+                    </div>
+                </li>
+
+                <li class="info-item info-item-identification border-bottom">
+                    <label for="identification" class="label">身份证号</label>
+                    <input type="text" id="identification" name="identification" class="textinput" placeholder="请输入您的有效身份证号码" maxlength="18">
+                </li>
+
+                <li class="info-item border-bottom">
+                    <label for="area" class="label">所属区域</label>
+                    
+                    <select name="area" id="area" class="select-area">
+                        <option value="0">请选择所属区域</option>
+                        <option value="1">华东</option>
+                        <option value="2">华南</option>
+                        <option value="3">华西</option>
+                        <option value="4">华北</option>
+                        <option value="5">华中</option>
+                    </select>
+                </li>
+
+                <li class="info-item">
+                    <label for="phoneNum" class="label">手机号码</label>
+                    <input type="phone" id="phoneNum" name="phoneNum" class="textinput" placeholder="请留下您的手机号码" maxlength="11">
+                    <span class="getVeriCode disabled" style="display: none;">获取验证码</span>
+                </li>
+
+                <li class="info-item" style="display: none;">
+                    <label for="verificationCode" class="label">验证码</label>
+                    <input type="text" id="verificationCode" name="verificationCode" class="textinput" placeholder="请输入您收到的验证码" maxlength="6">
+                </li>
+            </ul>
+        </section>
+
+        <section class="info-section card-info">
+            <ul class="guide-info">
+                <li class="info-item border-bottom">
+                    <label for="guide-card" class="label">导游证</label>
+                    <input type="text" id="guide-card" name="guide-card" class="textinput" placeholder="请正确输入您的导游证号">
+                </li>
+
+                <li class="info-item border-bottom">
+                    <label for="leader-card" class="label">领队证</label>
+                    <input type="text" id="leader-card" name="leader-card" class="textinput" placeholder="若无，则无需填写">
+                </li>
+
+                <li class="info-item">
+                    <label for="guide-date" class="label">带团时间</label>
+                    <input type="month" id="date" name="date" class="select-date" placeholder="YYYY-MM">
+                </li>
+            </ul>
+        </section>
+
+        <div class="submitBtnWrap">
+            <button type="submit" class="submitBtn" id="submitBtn">提交申请</button>
+        </div>
+    </form>
+
+    <div class="verify-tip" id="verify-tip"></div>
+
+    <div class="result-tip result-tip-success" id="result-tip-success">
+        <div class="innerWrap">
+            <div class="table-cell">
+                <i class="icon icon-success"></i>
+                <div class="tip-title">入驻申请提交成功！</div>
+                <span class="tip-sub-info">保持电话畅通，3个工作日内将与您联系</span>
+            </div>
+            <span class="result-btn mask-close-btn">我知道了</span>
+        </div>
+    </div>
+
+    <div class="result-tip result-tip-error" id="result-tip-error">
+        <div class="innerWrap">
+            <div class="table-cell">
+                <i class="icon icon-error"></i>
+                <div class="tip-title" style="margin-bottom: 0;">很抱歉，您的申请未通过！</div>
+            </div>
+            <span class="result-btn mask-close-btn">我知道了</span>
+        </div>
+    </div>
+
+    <div class="result-tip result-tip-invalid" id="result-tip-invalid">
+        <div class="innerWrap">
+            <div class="table-cell">
+                <i class="icon icon-warning"></i>
+                <div class="tip-title">申请已失效，重新提交？</div>
+                <div class="result-invalid-decide">
+                    <span class="decide-btn">考虑一下</span>
+                    <span class="decide-btn">提交申请</span>
+                </div>
+            </div>
+
+            <span class="result-btn mask-close-btn">我知道了</span>
+        </div>
+    </div>
+
+    <div class="result-tip result-tip-valid" id="result-tip-valid">
+        <div class="innerWrap">
+            <div class="table-cell">
+                <i class="icon icon-warning"></i>
+                <div class="tip-title" style="margin-bottom: 0;">信息已存在，请勿重复提交！</div>
+                <span class="tip-sub-info" style="display: none;">点击<a href="#">查看个人信息</a></span>
+            </div>
+
+            <span class="result-btn mask-close-btn">我知道了</span>
+        </div>
+    </div>
+
+    <div class="result-tip" id="result-tip-catch">
+        <div class="innerWrap">
+            <div class="table-cell">
+                <i class="icon icon-warning"></i>
+                <div class="tip-title" style="margin-bottom: 0;">网络繁忙，请重新提交！</div>
+            </div>
+
+            <span class="result-btn mask-close-btn">我知道了</span>
+        </div>
+    </div>
+</div>
+
+<script data-loader="true" src="/modules/sea.js"></script>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js,/cn/v/2015/jqmodules/statistics/0.2.0/statistics.js"></script>
+
+<script>
+    seajs.require('./index')
+</script>
+
+<!--统计代码开始-->
+<script type="text/javascript">
+    var pageview = stat.formatPageview('/出境/touch活动页/入驻同程');
+    stat.init({
+        "baidu": {
+            "parameter": "touch"//PC端传“pc”，touch站传“touch”
+        },//百度统计
+        "pvConfig": {//PV统计
+            "PublicPlatId": "1",
+            "PageId": "9006",
+            "LineId": "0",
+            "ActivityId": "1290",
+            "ActivityPeriodId": "2234",
+            "ModuleId": "0",
+            "PVSource": "1",
+            "ak": "",
+            "url": "http://www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+        },
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', stat.getVrcode()],
+            ['_refId', stat.getRefid()],
+            ['_userId',stat.getMemberId()],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', pageview]
+        ]
+    });
+</script>
+
+</body>
+</html>

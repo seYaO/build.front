@@ -1,0 +1,9 @@
+{{?it.Data&&it.Data.length}}
+{{~it.Data:itItems:index}}
+	{{?itItems.Id ==it.Data.proid}}
+		{{~itItems.Citys:cityItems:index1}}
+			<li data-id="{{=cityItems.Id}}">{{=cityItems.Name}}</li>
+		{{~}}
+	{{?}}
+{{~}}
+{{?}}

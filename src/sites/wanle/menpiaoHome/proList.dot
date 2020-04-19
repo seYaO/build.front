@@ -1,0 +1,25 @@
+
+<ul class="{{="J_proList_" + it._key}}" trackkit="Line_Recommend">
+    {{~it.ProductList:data:index}}
+    {{?index < 8}}
+    <li class="pro-line">
+        <a target="_blank" href="//www.ly.com/dujia/wanle/{{=data.ResourceId}}.html" trackspot="{{=data.ResourceId}}^{{=index+1}}^{{=it.tabName}}^热门目的地">
+        <div class="pro-img">
+            <img data-img="{{=data.ImgUrl.replace(".jpg","_430x270_00.jpg").replace('http:','')}}" alt="{{=data.MainTitle}}"/>
+            <p class="mainTitle"><span title="{{=data.MainTitle}}">{{=data.MainTitle}}</span></p>
+        </div>
+        <div class="pro-intro">
+            <span class="subTitle">{{=data.SubTitle}}</span>
+            <p class="extra">
+                <span class="money">
+                    <label>¥<b>{{=data.TcPrice}}</b><em>起</em></label>
+                    <span class="older">¥{{=data.MarketPrice}}</span>
+                </span>
+            </p>
+        </div>
+        </a>
+    </li>
+    {{?}}
+    {{~}}
+</ul>
+

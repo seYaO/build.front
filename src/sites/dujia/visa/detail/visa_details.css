@@ -1,0 +1,1005 @@
+body {
+    font-family: "Microsoft Yahei";
+}
+
+body #content {
+    min-width: 1190px;
+    width: 1190px;
+    margin: 0 auto;
+    font-size: 14px;
+    font-family: "Microsoft Yahei";
+}
+
+.none {
+    display: none;
+}
+
+.box-top {
+    margin-bottom: 20px;
+}
+
+.nav {
+    width: 100%;
+    padding-bottom: 30px;
+    font-size: 12px;
+    height: 30px;
+}
+
+.nav h1 {
+    font-size: 16px;
+    float: right;
+    display: inline;
+    margin-right: 21px;
+}
+
+.nav span h2 {
+    display: inline-block;
+    font-size: 12px;
+}
+
+.nav,
+.nav h1 {
+    line-height: 50px;
+}
+
+.box-about {
+    width: 1190px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 2px solid #fff3ea;
+    position: relative;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+    background: url("images/icon-building.png") no-repeat right bottom;
+}
+
+.box-about-tips {
+    width: 29px;
+    height: 47px;
+    display: inline-block;
+    top: -5px;
+    left: 30px;
+    position: absolute;
+    background: url("images/icon-tips.png") no-repeat;
+}
+
+.box-about-content {
+    margin-left: 50px;
+}
+
+.box-about-message span {
+    display: block;
+    height: 25px;
+    line-height: 25px;
+    color: #666;
+}
+
+.box-about-content h3 {
+    color: #50b400;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.box-main {
+    width: 1190px;
+    margin-bottom: 40px;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+}
+
+.clearfix {
+    clear: both;
+}
+
+.box-main-nav {
+    width: 1190px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 4;
+    top: 0;
+    background: #eceff2;
+}
+
+.content-nav-inner {
+    float: left;
+}
+
+.content-nav-inner a {
+    width: 113px;
+    height: 37px;
+    line-height: 37px;
+    text-align: center;
+    border-top: 2px solid #e8e8e8;
+    border-right: 1px solid #ddd;
+    font-size: 16px;
+    background: #eceff2;
+    color: #333;
+    float: left;
+}
+
+.content-nav-inner a:hover {
+    color: #333;
+}
+
+.content-nav-inner a.on {
+    background-color: #fff;
+    border-top: 2px solid #50b400;
+    border-bottom: none;
+    color: #50b400;
+}
+
+.content-nav-inner a.on span {
+    display: inline-block;
+    width: 113px;
+    height: 41px;
+    background-color: #fff;
+}
+
+.box-main-content {
+    padding: 0 20px;
+}
+
+.nav-tit {
+    border-bottom: 1px dotted #ccc;
+    color: #50b400;
+    font-size: 16px;
+    padding-bottom: 8px;
+}
+
+.reserve-btn {
+    float: right;
+    background-color: #ff8417;
+    color: #fff;
+    font-size: 18px;
+    width: 120px;
+    height: 30px;
+    line-height: 30px;
+    margin-top: 4px;
+    margin-right: 20px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+.reserve-btn:hover {
+    background-color: #ff6600;
+    color: #fff;
+    text-decoration: none
+}
+
+.box-tel {
+    float: right;
+    height: 37px;
+    line-height: 37px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.box-tel span {
+    color: #f63;
+}
+
+.box-icons {
+    width: 21px;
+    height: 21px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    margin-right: 2px;
+}
+
+.icons-phone {
+    background: url("images/icon-visa.png") no-repeat -61px -185px;
+}
+
+.icons-data {
+    background: url("images/icon-visa.png") no-repeat -2px -204px;
+}
+
+.icons-flow {
+    background: url("images/icon-visa.png") no-repeat -21px -204px;
+}
+
+.icons-notice {
+    background: url("images/icon-visa.png") no-repeat -42px -204px;
+}
+
+.icons-comments {
+    background: url("images/icon-visa.png") no-repeat -65px -204px;
+}
+
+.nav-tit h3 {
+    font-size: 16px;
+    background-color: #fff;
+    display: inline-block;
+}
+
+.nav-tit h6 {
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    display: inline-block;
+    margin: 0 20px;
+    color: #999;
+}
+
+.data-content {
+    padding-top: 15px;
+    width: 100%;
+}
+
+.tab-title {
+    display: inline-block;
+}
+
+.tab-title li {
+    width: 145px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    position: relative;
+    float: left;
+    color: #333;
+    background-color: #fff;
+}
+
+.tab-title-line {
+    border-right: 1px solid #e8e8e8;
+}
+
+.tab-title li.cur {
+    color: #fff;
+    background-color: #50b400;
+}
+
+.tab-title li.cur i {
+    position: absolute;
+    border: 5px solid transparent;
+    border-top-color: #50b400;
+    border-bottom-width: 0;
+    left: 50%;
+    bottom: -5px;
+    margin-left: -6px;
+}
+
+.tab-order {
+    margin: 20px 0;
+}
+
+.tab-order-content {
+    padding: 8px 0;
+}
+
+.tab-order-title,
+.tab-order-footer {
+    text-indent: 20px;
+    line-height: 30px;
+    height: 30px;
+    font-size: 14px;
+    background: #f5f5f5;
+    border-bottom: 2px solid #ff9b26;
+}
+
+h4.icon-star:before {
+    content: "★";
+    font-size: 16px;
+}
+
+h4.icon-round:before {
+    content: "●";
+    font-size: 16px;
+}
+
+.tab-content {
+    margin-top: 15px;
+}
+
+.pane-none {
+    display: none;
+}
+
+.process {
+    float: right;
+    margin-top: 9px;
+}
+
+a.print,
+a.btn-email {
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    padding-left: 20px;
+    padding-top: 1px;
+    width: 80px;
+    height: 23px;
+    color: #666;
+    cursor: pointer;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+}
+
+a.print:hover,
+a.btn-email:hover {
+    color: #fff;
+}
+
+a.print {
+    display: inline-block;
+    width: 80px;
+    height: 23px;
+    background: url("images/icon-visa.png") no-repeat -3px -52px;
+    margin-right: 7px;
+}
+
+a.print:hover {
+    background: url("images/icon-visa.png") no-repeat -3px -77px;
+}
+
+a.btn-email {
+    background: url("images/icon-visa.png") no-repeat -2px -2px;
+}
+
+a.btn-email:hover {
+    background: url("images/icon-visa.png") no-repeat -2px -27px;
+}
+
+.onjob {
+    display: inline-block;
+}
+
+.mustTitle {
+    height: 26px;
+    border-bottom: 2px solid #ff9b26;
+}
+
+.mustTitle span{
+    display: block;
+    float: left;
+    width: 110px;
+    text-align: center;
+    line-height: 28px;
+    position: relative;
+    color: #fff;
+    background-color: #ff9b26;
+}
+.mustTitle i{
+    float: left;
+    width: 0;
+    height: 0;
+    border-bottom: 26px solid #ff9b26;
+    border-right: 26px solid transparent;
+}
+
+.onjob-left {
+    padding: 8px 0 5px 0;
+    margin: 10px 0;
+    border-right: 1px solid #e8e8e8;
+    width: 870px;
+    display: inline-block;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+}
+
+.onjob-list {
+    border-bottom: 1px solid #e8e8e8;
+    position: relative;
+}
+
+.line-none {
+    border-bottom: 0 !important;
+}
+
+.onjob-left span {
+    display: block;
+}
+
+.onjob-logo {
+    vertical-align: text-top;
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+}
+
+.onjob-left h4 {
+    font-size: 14px;
+    display: inline-block;
+    font-weight: 600;
+    /*margin: 0 7px 0 15px;*/
+}
+
+.onjob-left .onjob-body {
+    height: auto;
+    width: 770px;
+    line-height: 27px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.onjob-right {
+    display: inline-block;
+    width: 273px;
+}
+
+.onjob-sample {
+    color: #ff7800;
+    padding: 4px 10px;
+    border: 1px solid #ddd;
+    position: absolute;
+    top: 36%;
+    margin: 0px 98px 0px 97px;
+}
+
+.onjob-sample:hover {
+    background-color: #f0f0f0;
+}
+
+.passport-logo {
+    background: url("images/icon-visa.png") no-repeat -3px -104px;
+}
+
+
+/*.passport-sample {
+    line-height: 264px;
+}*/
+
+.copy-logo {
+    background: url("images/icon-visa.png") no-repeat -35px -104px;
+}
+
+
+/*.copy-sample {
+    line-height: 114px;
+}*/
+
+.photo-logo {
+    background: url("images/icon-visa.png") no-repeat -67px -104px;
+}
+
+
+/*.photo-sample {
+    line-height: 87px;
+}*/
+
+.person-logo {
+    background: url("images/icon-visa.png") no-repeat -3px -137px;
+}
+
+
+/*.person-sample {
+    line-height: 195px;
+}*/
+
+.job-logo {
+    background: url("images/icon-visa.png") no-repeat -35px -137px;
+}
+
+
+/*.job-sample {
+    line-height: 76px;
+}*/
+
+.funds-logo {
+    background: url("images/icon-visa.png") no-repeat -67px -137px;
+}
+
+
+/*.funds-sample {
+    line-height: 88px;
+}*/
+
+.others-logo {
+    background: url("images/icon-visa.png") no-repeat -3px -170px;
+}
+
+
+/*.others-sample {
+    line-height: 76px;
+}*/
+
+.flow-content {
+    width: 1148px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+}
+
+.flow-left {
+    height: 50px;
+    width: 20px;
+    float: left;
+    margin-top: 80px;
+}
+
+.flow-right {
+    height: 50px;
+    width: 20px;
+    float: left;
+    margin-top: 80px;
+}
+
+.flow-scroll-left {
+    cursor: pointer;
+    border-color: transparent #e8e8e8 transparent transparent;
+    border-width: 20px 20px 20px 0;
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-style: solid;
+}
+
+.flow-scroll-left:hover {
+    border-color: transparent #d9d9d9 transparent transparent;
+}
+
+.flow-scroll-right:hover {
+    border-color: transparent transparent transparent #d9d9d9;
+}
+
+.flow-scroll-right {
+    cursor: pointer;
+    border-color: transparent transparent transparent #e8e8e8;
+    border-width: 20px 0px 20px 20px;
+    display: inline-block;
+    height: 0;
+    width: 0;
+    border-style: solid;
+}
+
+.flow-info {
+    margin-top: 5px;
+}
+
+.flow-icon {
+    margin-bottom: 10px;
+}
+
+.flow-nums {
+    margin: 16px 0 13px 116px;
+    width: 2100px;
+}
+
+.flow-nums span {
+    font-size: 40px;
+    font-family: Arial, serif;
+    color: #50b400;
+    font-weight: 700;
+}
+
+.flow-nums i {
+    width: 133px;
+    height: 8px;
+    background: url("images/icon-visa.png") no-repeat -2px -260px;
+    display: inline-block;
+    margin: 6px 12px 0;
+    vertical-align: top;
+}
+
+.flow-info li {
+    width: 212px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+    text-align: center;
+    display: inline-block;
+    vertical-align: text-top;
+    float: left;
+}
+
+.flow-msg {
+    float: left;
+    width: 1061px;
+    margin: 20px 23px 0 23px;
+    overflow: hidden;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+}
+
+.flow-msg h2 {
+    font-size: 40px;
+    font-family: Arial, serif;
+    color: #50b400;
+    vertical-align: middle;
+    font-weight: 700;
+    display: inline-block;
+    height: 44px;
+    line-height: 44px;
+    margin: 0 13px;
+}
+
+.flow-msg ul {
+    width: 2100px;
+}
+
+.flow-border {
+    border-left: 1px solid #e8e8e8;
+}
+
+.icon-line-1 {
+    width: 66px;
+    height: 8px;
+    display: inline-block;
+    margin-top: 17px;
+    float: right;
+    background: url("images/icon-visa.png") no-repeat -2px -259px;
+}
+
+.icon-line-2 {
+    width: 66px;
+    height: 8px;
+    display: inline-block;
+    margin-top: 17px;
+    float: left;
+    background: url("images/icon-visa.png") no-repeat -2px -271px;
+}
+
+.flow-info li p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.flow-info li span {
+    display: block;
+    font-size: 12px;
+    color: #999;
+    margin: 0 15px;
+    height: 100px;
+}
+
+.notice-content {
+    margin-top: 20px;
+}
+
+.notice-tit {
+    background-color: #f5f5f5;
+}
+
+.notice-tit i {
+    background: url("images/icon-visa.png") no-repeat -37px -174px;
+    width: 11px;
+    height: 25px;
+    margin-right: 9px;
+    vertical-align: bottom;
+    display: inline-block;
+}
+
+.notice-tit span {
+    line-height: 24px;
+}
+
+.notice-msg {
+    margin: 14px 0 15px 20px;
+}
+
+.notice-msg li {
+    line-height: 27px;
+}
+
+.list-box {
+    padding: 10px 0 20px;
+}
+
+.data-loading {
+    position: absolute;
+    z-index: 3;
+    width: 80%;
+    height: 150px;
+    top: 50px;
+    display: block;
+}
+
+.data-loading .bg {
+    width: 100%;
+    height: 100%;
+    background: white;
+}
+
+.data-loading span {
+    background: url("//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif") no-repeat;
+    padding-left: 86px;
+    height: 70px;
+    position: absolute;
+    left: 26%;
+    top: 50%;
+    margin-left: -147px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 70px;
+}
+
+.data-outer-loading {
+    min-height: 200px;
+    position: relative;
+}
+
+.carousel-ul-wrap {
+    overflow: hidden;
+    position: relative;
+    z-index: 2;
+    left: 0px;
+    width: 690px;
+}
+
+.carousel-ul-wrap ul {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    list-style: none;
+    z-index: 1;
+    width: 1150px;
+    left: 0px;
+}
+
+.carousel-ul-wrap ul li {
+    overflow: hidden;
+    float: left;
+    width: 105px;
+    height: 105px;
+}
+
+.service {
+    z-index: 100 !important;
+}
+
+.no-remark {
+    text-align: center;
+    font-size: 12px;
+    padding: 50px 0;
+}
+
+
+/*邮箱验证start*/
+
+.dialog_modal_gp {
+    font-family: "microsoft yahei" !important;
+}
+
+.send-email,
+body .none {
+    display: none;
+}
+
+.headbox {
+    padding: 15px;
+    padding-top: 0;
+}
+
+.headbox h3 {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.headbox h3 span {
+    font-size: 14px;
+    color: #ff0000;
+    padding-left: 5px;
+}
+
+.headbox label {
+    display: inline-block;
+    font-size: 12px;
+    color: #666;
+    margin-right: 14px;
+}
+
+.head_left {
+    width: 330px;
+    float: left;
+}
+
+.input_box {
+    width: 380px;
+}
+
+.code_input_box {
+    display: inline-block;
+}
+
+.mail_input_box {
+    margin-top: 15px;
+}
+
+.mail_input_box,
+.code_input_box {
+    height: 28px;
+    line-height: 28px;
+    position: relative;
+    margin-bottom: 15px;
+    float: left;
+}
+
+.mail_input_box span,
+.code_input_box span {
+    font-size: 14px;
+    color: #333;
+    float: left;
+    height: 28px;
+    line-height: 28px;
+}
+
+.mail_input_box input,
+.code_input_box input {
+    margin-right: 5px;
+    float: left;
+    font-family: Arial;
+    font-size: 14px;
+    line-height: 28px;
+    height: 28px;
+    border: 1px solid #ddd;
+    width: 190px;
+}
+
+.code_input_box input {
+    width: 91px;
+}
+
+.code_view_box {
+    height: 28px;
+    line-height: 28px;
+    display: inline-block;
+    float: left;
+    border: 1px solid #ddd;
+}
+
+.code_view_con {
+    height: 28px;
+    width: 65px;
+    vertical-align: top;
+}
+
+.change_code_btn {
+    display: inline-block;
+    background: url("images/icon-visa.png") no-repeat -109px -225px;
+    width: 26px;
+    height: 100%;
+    cursor: pointer;
+    border-left: 1px solid #dedede;
+    float: right;
+}
+
+.prompt-info {
+    width: 450px;
+    height: 20px;
+    display: inline-block;
+    padding-top: 10px;
+    color: red;
+    font-size: 14px;
+}
+
+.send_submit,
+.print_submit {
+    display: inline-block;
+    width: 93px;
+    height: 25px;
+    background-color: #ff7800;
+    line-height: 24px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+    color: #fff;
+    border-radius: 5px;
+    margin-left: 85px;
+}
+
+.print_submit {
+    margin-left: 0px;
+}
+
+.print-btn {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.send_cancel {
+    display: inline-block;
+    width: 93px;
+    height: 23px;
+    line-height: 23px;
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #dcdcdc;
+    background-color: #fbfbfb;
+    border-radius: 5px;
+    vertical-align: bottom;
+}
+
+.send_submit:hover,
+.print_submit:hover {
+    color: #fff;
+}
+
+.send_cancel:hover {
+    color: #333;
+}
+
+
+/*邮箱验证end*/
+
+body .calendar-panel.white:after {
+    display: none;
+}
+
+.calendar-panel.white a.previous-month,
+.calendar-panel.white a.next-month {
+    background: url("//js.40017.cn/cn/public/module/Calendar/0.3/calendar_arrow_white.png?v=2") 0 0 no-repeat;
+}
+
+.calendar-panel.white a.previous-month-disabled,
+.calendar-panel.white a.previous-month-disabled:hover {
+    background-position: -100px -43px;
+}
+
+.calendar-panel.white a.next-month {
+    background-position: -49px 0;
+}
+
+.calendar-panel.white a.previous-month:hover {}
+
+.calendar-panel.white a.previous-month {
+    background-position: -8px 0;
+}
+
+.calendar-panel.white .calendar-wrapper td.to-day:hover span {
+    color: #fff
+}
+
+.calendar-panel.white .calendar-wrapper td.festival:hover span {
+    color: #b54800
+}
+
+.disabled {
+    background: #ccc;
+}
+
+.disabled:hover {
+    background: #ccc;
+}
+
+
+/*侧边栏*/
+
+.onjob-body ul li span {
+    display: inline;
+}
+.box-about-message span {
+    display: inline-block;
+}
+.pro-title p{
+    display:block;
+}
+.box-top .pro-right .pro-details .pro-meal span{
+    width:205px;
+}
+/*2016/10/17 hly add*/
+.m_List{
+    position: relative;
+}
+.m_List .m_title{
+    font-weight: bold;
+}

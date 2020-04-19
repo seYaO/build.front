@@ -1,0 +1,128 @@
+{{
+    var getLineCount = function(type) {
+        var typemap = {
+            'adult': ['1'],
+            'child': ['2', '8'],
+            'all': ['1', '2', '8']
+        };
+        var searchtype = typemap[type] ? typemap[type] : typemap['all'];
+        var result = 0;
+
+        $(".listSty input").each(function() {
+            var pricetype = $(this).attr('price-type');
+            if(searchtype.indexOf(pricetype)>=0) {
+                result += parseInt($(this).val());
+            }
+        });
+        return result;
+    };
+
+    var getLinePrice = function(type) {
+        var typemap = {
+            'single': 0,
+            'totalWithInsurance': 1,
+            'totalWithoutInsurance': 2
+        };
+        var searchtype = typemap[type] !== undefined ? typemap[type] : typemap['single'];
+        var result = 0;
+
+        switch(searchtype) {
+            case 0:
+                var $input = $('input[type=text][price-type="1"]');
+                result = parseFloat($input.closest('.listSty').find('.f_price').text());
+                break;
+            case 1:
+                $('.R_box .fee-info .orderPrice, .R_box .InsuranceDL .orderPrice').each(function() {
+                    result += parseFloat($(this).text());
+                });
+                break;
+            case 2:
+                $('.R_box .fee-info .orderPrice').each(function() {
+                    result += parseFloat($(this).text());
+                });
+                break;
+        }
+
+        return isNaN(result) ? 0 : result;
+    };
+}}
+{{
+    function numOffCalc(data,num,price){
+        var discountprice = data.PreferentialPrice;
+        var offnum = data.DiscountOverPerson;
+        var offtype = data.PreferentialPriceType;
+        var pricesingle = price;
+        var pricenum = num;
+        var _discountprice = 0;
+
+        var num = Math.floor(parseInt(pricenum)/parseInt(offnum));
+        if(parseInt(offtype)===0){
+            _discountprice = parseInt(discountprice)*num;
+        }else{
+            var discount = parseInt(discountprice)/100;
+            _discountprice = Math.ceil(pricesingle*discount)*num;
+        }
+        return _discountprice;
+    }
+}}
+
+{{~it:iconItem:i}}
+{{
+    var rule = iconItem.PreferentialConfig;
+    var price = rule.PreferentialPrice;
+    var count = 0;
+    var mode = '单';
+    var sum = 0;
+    var title = iconItem.IconInfo.IconContent;
+    switch(rule.PreferentialMode) {
+        case 0:
+            count = getLineCount('adult');
+            mode = '人';
+            break;
+        case 1:
+            count = 1;
+            mode = '单';
+            break;
+        case 2:
+            count = getLineCount('all');
+            mode = '人';
+            break;
+        case 3:
+            count = iconItem.Num;
+            mode = '份';
+            break;
+    }
+
+    if(rule.PreferentialType === 2) {
+        var batchInfo = {};
+        for(var j=0,len=rule.HongBaoBatchList.length; j<len; j++) {
+            if(rule.HongBaoBatchList[j].CouponNo === iconItem.CouponNo) {
+                batchInfo = rule.HongBaoBatchList[j];
+                break;
+            }
+        }
+        price = batchInfo.ParValue;
+        count = 1;
+    }
+    if(rule.PreferentialType === 4) {
+         price = numOffCalc(rule,getLineCount('adult'),getLinePrice('single'));
+         count = 1;
+         mode = '单';
+    }
+
+    title = title ? title : '';
+    price = isNaN(price) ? 0 : price;
+    count = isNaN(count) ? 0 : count;
+    sum = price * count;
+}}
+{{?sum}}
+<dl class="ReductionDL-new">
+    <dt>{{=title}}</dt>
+    <dd>
+        <div class="boxL"><span class="univalence"><b>{{=price}}</b>元</span>×<b class="listnub">{{=count}}</b>{{=mode}}</div>
+        <span class="separate boxL">-------------------------------------------</span>
+        <span class="colF60 font_W boxL"><strong class="orderPrice">-{{=sum}}</strong>元</span>
+    </dd>
+</dl>
+{{?}}
+{{~}}

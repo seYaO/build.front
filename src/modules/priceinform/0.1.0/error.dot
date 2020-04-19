@@ -1,0 +1,7 @@
+<div class="content_gp">          
+            <div class="ct_title">提交失败！</div>
+            <div class="ct_content">
+                很抱歉，提交失败，请重新提交。          
+            </div>
+            <span class="btn_close" id="btnjj_reset">重新提交</span>
+        </div>

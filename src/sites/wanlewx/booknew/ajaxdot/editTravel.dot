@@ -1,0 +1,32 @@
+<ul>
+{{var travelInfo = it.showTravelInfo;}}
+{{~it.ContactList:value}}
+    {{?travelInfo.LinkerName}}
+        <li data-submit="LinkerName"><label>姓名</label> <input type="text" class="J_EditTravel" maxlength="30" data-checktype="name" placeholder="{{=value.LinkerName}}" name="ContactPerson" value="{{=value.LinkerName}}" attr-tips="请正确填写中文姓名"></li>
+    {{?}}
+    {{?travelInfo.EnglishMing}}
+        <li data-submit="EnglishMing"><label>英文名</label> <input type="text" class="J_EditTravel" maxlength="20" data-checktype="english" placeholder="{{=value.EnglishMing}}" name="ContactFirst" value="{{=value.EnglishMing}}" attr-tips="请正确填写英文名"></li>
+    {{?}}
+    {{?travelInfo.EnglishXin}}
+        <li data-submit="EnglishXin"><label>英文姓</label> <input type="text" class="J_EditTravel" maxlength="20" data-checktype="english" placeholder="{{=value.EnglishXin}}" name="ContactGiven" value="{{=value.EnglishXin}}" attr-tips="请正确填写英文姓"></li>
+    {{?}}
+    {{?travelInfo.DefaultCertType}}
+        <li data-submit="DefaultCertType"><label>证件类型</label><span class="cert_id_type"><input class="J_EditTravel" maxlength="20" name="CertType" data-checktype="notnull" data-desc="请选择证件类型" placeholder="{{=value.DefaultCertType}}" value="{{=value.DefaultCertType}}" attr-tips="请选择证件类型"><i></i></span></li>
+    {{?}}
+    {{?travelInfo.CertNo}}
+        <li data-submit="CertNo"><label>证件号码</label> <input type="text" class="card_number J_EditTravel" name="CertNum" maxlength="30" data-checktype="notnull" placeholder="{{=value.CertNo}}" name="ContactId" value="{{=value.CertNo}}" attr-tips="请正确填写证件号码"></li>
+    {{?}}
+    {{?travelInfo.Mobile}}
+        <li data-submit="Mobile"><label>手机</label> <input type="text" class="J_EditTravel" maxlength="11" data-checktype="phone" placeholder="{{=value.Mobile}}" name="ContactMoblie" value="{{=value.Mobile}}" attr-tips="请正确填写手机号码"></li>
+    {{?}}
+    {{?travelInfo.Sex}}
+        <li data-submit="Sex"><label>性别</label><span class="choose_sex"><input class="J_EditTravel" name="Sex" data-checktype="notnull" data-desc="请选择性别"  placeholder="{{?value.Sex === 1}}男{{??value.Sex === 0}}女{{?}}" value="{{?value.Sex === 1}}男{{??value.Sex === 0}}女{{?}}" attr-tips="请选择性别"><i></i></span></li>
+    {{?}}
+    {{?travelInfo.Nationality}}
+        <li data-submit="Nationality"><label>国籍</label><span class="addEdit_country"><input class="J_EditTravel" name="Country" data-checktype="notnull" data-desc="请选择国籍" placeholder="{{=value.Nationality}}" attr-tips="请选择国籍" value={{=value.Nationality}}><i></i></span></li>
+    {{?}}
+    {{?travelInfo.Birthday}}
+        <li data-submit="Birthday"><label>出生日期</label><input class="edit_birthday J_EditTravel" readonly="readonly" data-curPage="edit_person" data-checktype="notnull" name="BirthDay" placeholder="{{=value.BirthDay}}" attr-tips="选择出生日期" value={{=value.BirthDay}}></li>
+    {{?}}
+{{~}}
+</ul>

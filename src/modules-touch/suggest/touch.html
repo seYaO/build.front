@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>suggestion-zepto</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="" rel="stylesheet">
+    <style type="text/css">
+        html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            margin: 0;
+            padding: 0;
+            vertical-align: baseline
+        }
+
+        article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+            display: block
+        }
+
+        ol, ul {
+            list-style: none
+        }
+
+        blockquote, q {
+            quotes: none
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0
+        }
+
+        input {
+            border: 0;
+            margin: 0;
+            padding: 0
+        }
+
+        body {
+            background: #f0f1f1;
+            color: #777;
+            font-size: 14px;
+            font-family: "Microsoft yahei", Hei, arial, sans-serif
+        }
+
+        a {
+            color: #36c;
+            text-decoration: none
+        }
+
+        h1, h2 {
+            color: #000
+        }
+    </style>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<form action="//www.so.com/s" method="get" target="_self">
+    <div class="search">
+        <div class="search-input">
+            <input type="text" id="input" name="q" placeholder="请输入小说名称">
+        </div>
+        <div class="search-button">
+            <input type="submit" value="搜索">
+        </div>
+    </div>
+</form>
+<script type="text/javascript" data-loader="true" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script>
+<!-- <script src="//s0.qhimg.com/lib/jquery/191.js"></script> -->
+<script type="text/javascript" src="./index.js"></script>
+<script type="text/javascript">
+    var localData = {
+            "DepartCity": {
+                "Hot": [{"Name": "上海", "PinYin": "shanghai"}, {
+                    "Name": "北京",
+                    "PinYin": "beijing"
+                }, {"Name": "杭州", "PinYin": "hangzhou"}, {"Name": "广州", "PinYin": "guangzhou"}, {
+                    "Name": "南京",
+                    "PinYin": "nanjing"
+                }, {"Name": "深圳", "PinYin": "shenzhen"}, {"Name": "成都", "PinYin": "chengdu"}, {
+                    "Name": "武汉",
+                    "PinYin": "wuhan"
+                }, {"Name": "天津", "PinYin": "tianjin"}, {"Name": "重庆", "PinYin": "ChongQing"}, {
+                    "Name": "沈阳",
+                    "PinYin": "shenyang"
+                }, {"Name": "苏州", "PinYin": "suzhou"}, {"Name": "西安", "PinYin": "xian"}, {
+                    "Name": "青岛",
+                    "PinYin": "qingdao"
+                }, {"Name": "长沙", "PinYin": "changsha"}, {"Name": "常州", "PinYin": "changzhou"}, {
+                    "Name": "宁波",
+                    "PinYin": "ningbo"
+                }, {"Name": "无锡", "PinYin": "wuxi"}, {"Name": "厦门", "PinYin": "xiamen"}, {
+                    "Name": "合肥",
+                    "PinYin": "hefei"
+                }, {"Name": "济南", "PinYin": "jinan"}, {"Name": "南昌", "PinYin": "nanchang"}, {
+                    "Name": "福州",
+                    "PinYin": "fuzhou"
+                }, {"Name": "温州", "PinYin": "wenzhou"}],
+                "A": [{"Name": "阿拉善盟", "PinYin": "ALaShanMeng"}, {"Name": "安顺", "PinYin": "anshun"}, {
+                    "Name": "安庆",
+                    "PinYin": "anqing"
+                }, {"Name": "阿克苏", "PinYin": "akesu"}, {"Name": "安阳", "PinYin": "anyang"}, {
+                    "Name": "阿勒泰",
+                    "PinYin": "aletai"
+                }, {"Name": "阿坝藏族羌族自治州", "PinYin": "ABaZangZuQiangZuZiZhiZhou"}, {
+                    "Name": "鞍山",
+                    "PinYin": "anshan"
+                }, {"Name": "阿里", "PinYin": "ali"}, {"Name": "阿拉尔", "PinYin": "alaer"}, {
+                    "Name": "安康",
+                    "PinYin": "ankang"
+                }, {"Name": "澳门", "PinYin": "aomen"}],
+                "B": [{"Name": "北京", "PinYin": "beijing"}, {"Name": "白城", "PinYin": "baicheng"}, {
+                    "Name": "白银",
+                    "PinYin": "baiyin"
+                }, {"Name": "百色", "PinYin": "baise"}, {
+                    "Name": "保亭黎族苗族自治县",
+                    "PinYin": "BaoTingLiZuMiaoZuZiZhiXian"
+                }, {"Name": "博尔塔拉蒙古自治州", "PinYin": "BoErTaLaMengGuZiZhiZhou"}, {
+                    "Name": "宝鸡",
+                    "PinYin": "baoji"
+                }, {"Name": "白沙黎族自治县", "PinYin": "BaiShaLiZuZiZhiXian"}, {
+                    "Name": "巴彦淖尔市",
+                    "PinYin": "BaYanNaoErShi"
+                }, {"Name": "巴音郭楞蒙古自治州", "PinYin": "BaYinGuoLengMengGuZiZhiZhou"}, {
+                    "Name": "北海",
+                    "PinYin": "beihai"
+                }, {"Name": "包头", "PinYin": "baotou"}, {"Name": "滨州", "PinYin": "binzhou"}, {
+                    "Name": "巴中",
+                    "PinYin": "bazhong"
+                }, {"Name": "蚌埠", "PinYin": "bengbu"}, {"Name": "毕节", "PinYin": "bijie"}, {
+                    "Name": "本溪",
+                    "PinYin": "benxi"
+                }, {"Name": "保定", "PinYin": "baoding"}, {"Name": "白山", "PinYin": "baishan"}, {
+                    "Name": "保山",
+                    "PinYin": "baoshan"
+                }],
+                "C": [{"Name": "成都", "PinYin": "chengdu"}, {"Name": "重庆", "PinYin": "ChongQing"}, {
+                    "Name": "长沙",
+                    "PinYin": "changsha"
+                }, {"Name": "常州", "PinYin": "changzhou"}, {"Name": "昌都", "PinYin": "changdu"}, {
+                    "Name": "朝阳",
+                    "PinYin": "chaoyang"
+                }, {"Name": "长白山保护区", "PinYin": "changbaishanbaohuqu"}, {"Name": "滁州", "PinYin": "chuzhou"}, {
+                    "Name": "澄迈县",
+                    "PinYin": "ChengMaiXian"
+                }, {"Name": "赤峰", "PinYin": "chifeng"}, {"Name": "长治", "PinYin": "changzhi"}, {
+                    "Name": "巢湖",
+                    "PinYin": "chaohu"
+                }, {"Name": "郴州", "PinYin": "chenzhou"}, {"Name": "崇左", "PinYin": "chongzuo"}, {
+                    "Name": "楚雄彝族自治州",
+                    "PinYin": "ChuXiongYiZuZiZhiZhou"
+                }, {"Name": "承德", "PinYin": "chengde"}, {
+                    "Name": "昌吉回族自治州",
+                    "PinYin": "ChangJiHuiZuZiZhiZhou"
+                }, {"Name": "潮州", "PinYin": "chaozhou"}, {"Name": "常德", "PinYin": "changde"}, {
+                    "Name": "池州",
+                    "PinYin": "chizhou"
+                }, {"Name": "沧州", "PinYin": "cangzhou"}, {
+                    "Name": "昌江黎族自治县",
+                    "PinYin": "ChangJiangLiZuZiZhiXian"
+                }, {"Name": "长春", "PinYin": "changchun"}],
+                "D": [{"Name": "大兴安岭", "PinYin": "daxinganling"}, {"Name": "大理", "PinYin": "dali"}, {
+                    "Name": "德阳",
+                    "PinYin": "deyang"
+                }, {"Name": "大庆", "PinYin": "daqing"}, {"Name": "丹东", "PinYin": "dandong"}, {
+                    "Name": "定西",
+                    "PinYin": "dingxi"
+                }, {"Name": "儋州", "PinYin": "danzhou"}, {"Name": "达州", "PinYin": "dazhou"}, {
+                    "Name": "东方",
+                    "PinYin": "dongfang"
+                }, {"Name": "定安县", "PinYin": "DingAnXian"}, {"Name": "东营", "PinYin": "dongying"}, {
+                    "Name": "迪庆藏族自治州",
+                    "PinYin": "DiQingZangZuZiZhiZhou"
+                }, {"Name": "德宏傣族景颇族自治州", "PinYin": "DeHongDaiZuJingPoZuZiZhiZhou"}, {
+                    "Name": "德州",
+                    "PinYin": "dezhou"
+                }, {"Name": "大同", "PinYin": "datong"}, {"Name": "东莞", "PinYin": "dongguan"}, {
+                    "Name": "大连",
+                    "PinYin": "dalian"
+                }],
+                "E": [{"Name": "恩施土家族苗族自治州", "PinYin": "EnShiTuJiaZuMiaoZuZiZhiZhou"}, {
+                    "Name": "鄂州",
+                    "PinYin": "ezhou"
+                }, {"Name": "鄂尔多斯", "PinYin": "eerduosi"}],
+                "F": [{"Name": "阜新", "PinYin": "fuxin"}, {"Name": "防城港", "PinYin": "fangchenggang"}, {
+                    "Name": "抚顺",
+                    "PinYin": "fushun"
+                }, {"Name": "抚州", "PinYin": "FuZhou"}, {"Name": "阜阳", "PinYin": "fuyang"}, {
+                    "Name": "佛山",
+                    "PinYin": "foshan"
+                }, {"Name": "福州", "PinYin": "fuzhou"}],
+                "G": [{"Name": "广州", "PinYin": "guangzhou"}, {"Name": "贵港", "PinYin": "guigang"}, {
+                    "Name": "果洛藏族自治州",
+                    "PinYin": "GuoLuoZangZuZiZhiZhou"
+                }, {"Name": "广元", "PinYin": "guangyuan"}, {"Name": "固原", "PinYin": "guyuan"}, {
+                    "Name": "桂林",
+                    "PinYin": "guilin"
+                }, {"Name": "广安", "PinYin": "guangan"}, {"Name": "高雄", "PinYin": "gaoxiong"}, {
+                    "Name": "甘孜藏族自治州",
+                    "PinYin": "GanZiZangZuZiZhiZhou"
+                }, {"Name": "甘南藏族自治州", "PinYin": "GanNanZangZuZiZhiZhou"}, {
+                    "Name": "赣州",
+                    "PinYin": "ganzhou"
+                }, {"Name": "贵阳", "PinYin": "guiyang"}],
+                "H": [{"Name": "杭州", "PinYin": "hangzhou"}, {"Name": "湖州", "PinYin": "huzhou"}, {
+                    "Name": "合肥",
+                    "PinYin": "hefei"
+                }, {"Name": "海东", "PinYin": "haidong"}, {
+                    "Name": "红河哈尼族彝族自治州",
+                    "PinYin": "HongHeHaNiZuYiZuZiZhiZhou"
+                }, {"Name": "淮南", "PinYin": "huainan"}, {"Name": "和田", "PinYin": "hetian"}, {
+                    "Name": "菏泽",
+                    "PinYin": "heze"
+                }, {"Name": "鹤岗", "PinYin": "hegang"}, {"Name": "淮北", "PinYin": "huaibei"}, {
+                    "Name": "汉中",
+                    "PinYin": "hanzhong"
+                }, {"Name": "衡水", "PinYin": "hengshui"}, {
+                    "Name": "黄南藏族自治州",
+                    "PinYin": "HuangNanZangZuZiZhiZhou"
+                }, {"Name": "邯郸", "PinYin": "handan"}, {"Name": "哈密", "PinYin": "hami"}, {
+                    "Name": "贺州",
+                    "PinYin": "hezhou"
+                }, {"Name": "鹤壁", "PinYin": "hebi"}, {"Name": "怀化", "PinYin": "huaihua"}, {
+                    "Name": "葫芦岛",
+                    "PinYin": "huludao"
+                }, {"Name": "花莲", "PinYin": "hualian"}, {"Name": "黑河", "PinYin": "heihe"}, {
+                    "Name": "黄石",
+                    "PinYin": "huangshi"
+                }, {"Name": "海南藏族自治州", "PinYin": "HaiNanZangZuZiZhiZhou"}, {
+                    "Name": "惠州",
+                    "PinYin": "huizhou"
+                }, {"Name": "黄冈", "PinYin": "huanggang"}, {"Name": "河源", "PinYin": "heyuan"}, {
+                    "Name": "衡阳",
+                    "PinYin": "hengyang"
+                }, {"Name": "海西蒙古族藏族自治州", "PinYin": "HaiXiMengGuZuZangZuZiZhiZhou"}, {
+                    "Name": "黄山",
+                    "PinYin": "huangshan"
+                }, {"Name": "海北藏族自治州", "PinYin": "HaiBeiZangZuZiZhiZhou"}, {
+                    "Name": "亳州",
+                    "PinYin": "HaoZhou"
+                }, {"Name": "呼伦贝尔", "PinYin": "hulunbeier"}, {"Name": "河池", "PinYin": "hechi"}, {
+                    "Name": "淮安",
+                    "PinYin": "huaian"
+                }, {"Name": "海口", "PinYin": "haikou"}, {"Name": "哈尔滨", "PinYin": "haerbin"}, {
+                    "Name": "呼和浩特",
+                    "PinYin": "huhehaote"
+                }],
+                "J": [{"Name": "嘉兴", "PinYin": "jiaxing"}, {"Name": "吉安", "PinYin": "jian"}, {
+                    "Name": "揭阳",
+                    "PinYin": "jieyang"
+                }, {"Name": "荆门", "PinYin": "jingmen"}, {"Name": "济源", "PinYin": "jiyuan"}, {
+                    "Name": "景德镇",
+                    "PinYin": "jingdezhen"
+                }, {"Name": "吉林", "PinYin": "jilin"}, {"Name": "晋中", "PinYin": "jinzhong"}, {
+                    "Name": "基隆",
+                    "PinYin": "jilong"
+                }, {"Name": "嘉峪关", "PinYin": "jiayuguan"}, {"Name": "荆州", "PinYin": "jingzhou"}, {
+                    "Name": "焦作",
+                    "PinYin": "jiaozuo"
+                }, {"Name": "嘉义", "PinYin": "jiayi"}, {"Name": "江门", "PinYin": "jiangmen"}, {
+                    "Name": "鸡西",
+                    "PinYin": "jixi"
+                }, {"Name": "锦州", "PinYin": "jinzhou"}, {"Name": "金门", "PinYin": "jinmen"}, {
+                    "Name": "济宁",
+                    "PinYin": "jining"
+                }, {"Name": "九江", "PinYin": "jiujiang"}, {"Name": "晋城", "PinYin": "jincheng"}, {
+                    "Name": "金昌",
+                    "PinYin": "jinchang"
+                }, {"Name": "佳木斯", "PinYin": "jiamusi"}, {"Name": "酒泉", "PinYin": "jiuquan"}, {
+                    "Name": "济南",
+                    "PinYin": "jinan"
+                }, {"Name": "金华", "PinYin": "jinhua"}],
+                "K": [{"Name": "开封", "PinYin": "kaifeng"}, {"Name": "喀什", "PinYin": "kashi"}, {
+                    "Name": "克拉玛依",
+                    "PinYin": "kelamayi"
+                }, {"Name": "克孜勒苏柯尔克孜自治州", "PinYin": "KeZiLeSuKeErKeZiZiZhiZhou"}, {"Name": "昆明", "PinYin": "kunming"}],
+                "L": [{"Name": "六安", "PinYin": "liuan"}, {"Name": "陇南", "PinYin": "longnan"}, {
+                    "Name": "聊城",
+                    "PinYin": "liaocheng"
+                }, {"Name": "六盘水", "PinYin": "liupanshui"}, {"Name": "丽江", "PinYin": "lijiang"}, {
+                    "Name": "来宾",
+                    "PinYin": "laibin"
+                }, {"Name": "丽水", "PinYin": "lishui"}, {"Name": "辽源", "PinYin": "liaoyuan"}, {
+                    "Name": "临汾",
+                    "PinYin": "linfen"
+                }, {"Name": "连云港", "PinYin": "lianyungang"}, {"Name": "洛阳", "PinYin": "luoyang"}, {
+                    "Name": "临夏回族自治州",
+                    "PinYin": "LinXiaHuiZuZiZhiZhou"
+                }, {"Name": "临沂", "PinYin": "linyi"}, {"Name": "吕梁", "PinYin": "lvliang"}, {
+                    "Name": "陵水黎族自治县",
+                    "PinYin": "LingShuiLiZuZiZhiXian"
+                }, {"Name": "乐东黎族自治县", "PinYin": "LeDongLiZuZiZhiXian"}, {"Name": "莱芜", "PinYin": "laiwu"}, {
+                    "Name": "拉萨",
+                    "PinYin": "lasa"
+                }, {"Name": "泸州", "PinYin": "luzhou"}, {"Name": "柳州", "PinYin": "liuzhou"}, {
+                    "Name": "林芝",
+                    "PinYin": "linzhi"
+                }, {"Name": "乐山", "PinYin": "leshan"}, {"Name": "龙岩", "PinYin": "longyan"}, {
+                    "Name": "凉山彝族自治州",
+                    "PinYin": "LiangShanYiZuZiZhiZhou"
+                }, {"Name": "辽阳", "PinYin": "liaoyang"}, {"Name": "娄底", "PinYin": "loudi"}, {
+                    "Name": "临沧",
+                    "PinYin": "lincang"
+                }, {"Name": "临高县", "PinYin": "LinGaoXian"}, {"Name": "漯河", "PinYin": "luohe"}, {
+                    "Name": "兰州",
+                    "PinYin": "lanzhou"
+                }, {"Name": "廊坊", "PinYin": "langfang"}],
+                "M": [{"Name": "茂名", "PinYin": "maoming"}, {"Name": "梅州", "PinYin": "meizhou"}, {
+                    "Name": "苗栗",
+                    "PinYin": "miaoli"
+                }, {"Name": "牡丹江", "PinYin": "mudanjiang"}, {"Name": "眉山", "PinYin": "meishan"}, {
+                    "Name": "绵阳",
+                    "PinYin": "mianyang"
+                }, {"Name": "马鞍山", "PinYin": "maanshan"}],
+                "N": [{"Name": "南京", "PinYin": "nanjing"}, {"Name": "宁波", "PinYin": "ningbo"}, {
+                    "Name": "宁德",
+                    "PinYin": "ningde"
+                }, {"Name": "南阳", "PinYin": "nanyang"}, {
+                    "Name": "怒江傈僳族自治州",
+                    "PinYin": "NuJiangLiSuZuZiZhiZhou"
+                }, {"Name": "南投", "PinYin": "nantou"}, {"Name": "南平", "PinYin": "nanping"}, {
+                    "Name": "那曲",
+                    "PinYin": "naqu"
+                }, {"Name": "南充", "PinYin": "nanchong"}, {"Name": "内江", "PinYin": "neijiang"}, {
+                    "Name": "南宁",
+                    "PinYin": "nanning"
+                }, {"Name": "南昌", "PinYin": "nanchang"}, {"Name": "南通", "PinYin": "nantong"}],
+                "P": [{"Name": "攀枝花", "PinYin": "panzhihua"}, {"Name": "莆田", "PinYin": "putian"}, {
+                    "Name": "濮阳",
+                    "PinYin": "puyang"
+                }, {"Name": "屏东", "PinYin": "pingdong"}, {"Name": "萍乡", "PinYin": "pingxiang"}, {
+                    "Name": "盘锦",
+                    "PinYin": "panjin"
+                }, {"Name": "澎湖", "PinYin": "penghu"}, {"Name": "普洱", "PinYin": "puer"}, {
+                    "Name": "平凉",
+                    "PinYin": "pingliang"
+                }, {"Name": "平顶山", "PinYin": "pingdingshan"}],
+                "Q": [{"Name": "青岛", "PinYin": "qingdao"}, {"Name": "衢州", "PinYin": "quzhou"}, {
+                    "Name": "琼海",
+                    "PinYin": "qionghai"
+                }, {"Name": "曲靖", "PinYin": "qujing"}, {"Name": "清远", "PinYin": "qingyuan"}, {
+                    "Name": "齐齐哈尔",
+                    "PinYin": "qiqihaer"
+                }, {"Name": "潜江", "PinYin": "qianjiang"}, {"Name": "七台河", "PinYin": "qitaihe"}, {
+                    "Name": "黔南布依族苗族自治州",
+                    "PinYin": "QianNanBuYiZuMiaoZuZiZhiZhou"
+                }, {"Name": "琼中黎族苗族自治县", "PinYin": "QiongZhongLiZuMiaoZuZiZhiXian"}, {
+                    "Name": "秦皇岛",
+                    "PinYin": "qinhuangdao"
+                }, {"Name": "黔东南苗族侗族自治州", "PinYin": "QianDongNanMiaoZuDongZuZiZhiZhou"}, {
+                    "Name": "黔西南布依族苗族自治州",
+                    "PinYin": "QianXiNanBuYiZuMiaoZuZiZhiZhou"
+                }, {"Name": "庆阳", "PinYin": "qingyang"}, {"Name": "钦州", "PinYin": "qinzhou"}, {
+                    "Name": "泉州",
+                    "PinYin": "quanzhou"
+                }],
+                "R": [{"Name": "日喀则", "PinYin": "rikaze"}, {"Name": "日照", "PinYin": "rizhao"}],
+                "S": [{"Name": "上海", "PinYin": "shanghai"}, {"Name": "深圳", "PinYin": "shenzhen"}, {
+                    "Name": "沈阳",
+                    "PinYin": "shenyang"
+                }, {"Name": "苏州", "PinYin": "suzhou"}, {"Name": "绍兴", "PinYin": "shaoxing"}, {
+                    "Name": "上饶",
+                    "PinYin": "shangrao"
+                }, {"Name": "三明", "PinYin": "sanming"}, {"Name": "三门峡", "PinYin": "sanmenxia"}, {
+                    "Name": "商洛",
+                    "PinYin": "shangluo"
+                }, {"Name": "双鸭山", "PinYin": "shuangyashan"}, {"Name": "松原", "PinYin": "songyuan"}, {
+                    "Name": "石河子",
+                    "PinYin": "shihezi"
+                }, {"Name": "韶关", "PinYin": "shaoguan"}, {"Name": "四平", "PinYin": "siping"}, {
+                    "Name": "邵阳",
+                    "PinYin": "shaoyang"
+                }, {"Name": "十堰", "PinYin": "shiyan"}, {"Name": "遂宁", "PinYin": "SuiNing"}, {
+                    "Name": "汕尾",
+                    "PinYin": "shanwei"
+                }, {"Name": "石嘴山", "PinYin": "shizuishan"}, {"Name": "商丘", "PinYin": "shangqiu"}, {
+                    "Name": "神农架林区",
+                    "PinYin": "ShenNongJiaLinQu"
+                }, {"Name": "宿州", "PinYin": "SuZhouShi"}, {"Name": "山南", "PinYin": "shannan"}, {
+                    "Name": "朔州",
+                    "PinYin": "shuozhou"
+                }, {"Name": "三沙市", "PinYin": "SANSHASHI"}, {"Name": "随州", "PinYin": "suizhou"}, {
+                    "Name": "绥化",
+                    "PinYin": "SuiHua"
+                }, {"Name": "宿迁", "PinYin": "suqian"}, {"Name": "汕头", "PinYin": "shantou"}, {
+                    "Name": "三亚",
+                    "PinYin": "sanya"
+                }, {"Name": "石家庄", "PinYin": "shijiazhuang"}],
+                "T": [{"Name": "天津", "PinYin": "tianjin"}, {"Name": "泰州", "PinYin": "TaiZhou"}, {
+                    "Name": "台州",
+                    "PinYin": "taizhou"
+                }, {"Name": "桃园", "PinYin": "taoyuan"}, {"Name": "塔城", "PinYin": "tacheng"}, {
+                    "Name": "铜陵",
+                    "PinYin": "tongling"
+                }, {"Name": "通化", "PinYin": "tonghua"}, {"Name": "铜川", "PinYin": "tongchuan"}, {
+                    "Name": "铁岭",
+                    "PinYin": "tieling"
+                }, {"Name": "台东", "PinYin": "taidong"}, {"Name": "天水", "PinYin": "tianshui"}, {
+                    "Name": "台南",
+                    "PinYin": "tainan"
+                }, {"Name": "台北", "PinYin": "TaiBei"}, {"Name": "铜仁", "PinYin": "tongren"}, {
+                    "Name": "通辽",
+                    "PinYin": "tongliao"
+                }, {"Name": "屯昌县", "PinYin": "TunChangXian"}, {"Name": "天门", "PinYin": "tianmen"}, {
+                    "Name": "唐山",
+                    "PinYin": "tangshan"
+                }, {"Name": "图木舒克", "PinYin": "tumushuke"}, {"Name": "吐鲁番", "PinYin": "tulufan"}, {
+                    "Name": "台中",
+                    "PinYin": "taizhong"
+                }, {"Name": "泰安", "PinYin": "taian"}, {"Name": "太原", "PinYin": "taiyuan"}],
+                "W": [{"Name": "武汉", "PinYin": "wuhan"}, {"Name": "无锡", "PinYin": "wuxi"}, {
+                    "Name": "潍坊",
+                    "PinYin": "weifang"
+                }, {"Name": "乌海", "PinYin": "wuhai"}, {
+                    "Name": "文山壮族苗族自治州",
+                    "PinYin": "WenShanZhuangZuMiaoZuZiZhiZhou"
+                }, {"Name": "乌兰察布市", "PinYin": "WuLanChaBuShi"}, {"Name": "威海", "PinYin": "weihai"}, {
+                    "Name": "武威",
+                    "PinYin": "wuwei"
+                }, {"Name": "五家渠", "PinYin": "wujiaqu"}, {"Name": "渭南", "PinYin": "weinan"}, {
+                    "Name": "五指山",
+                    "PinYin": "wuzhishan"
+                }, {"Name": "梧州", "PinYin": "wuzhou"}, {"Name": "万宁", "PinYin": "wanning"}, {
+                    "Name": "文昌",
+                    "PinYin": "wenchang"
+                }, {"Name": "芜湖", "PinYin": "wuhu"}, {"Name": "乌苏里江", "PinYin": "wusulijiang"}, {
+                    "Name": "吴忠",
+                    "PinYin": "wuzhong"
+                }, {"Name": "乌鲁木齐", "PinYin": "wulumuqi"}, {"Name": "温州", "PinYin": "wenzhou"}],
+                "X": [{"Name": "西安", "PinYin": "xian"}, {"Name": "厦门", "PinYin": "xiamen"}, {
+                    "Name": "咸宁",
+                    "PinYin": "xianning"
+                }, {"Name": "仙桃", "PinYin": "xiantao"}, {"Name": "兴安盟", "PinYin": "xinganmeng"}, {
+                    "Name": "锡林郭勒盟",
+                    "PinYin": "XiLinGuoLeMeng"
+                }, {"Name": "忻州", "PinYin": "xinzhou"}, {"Name": "湘潭", "PinYin": "xiangtan"}, {
+                    "Name": "新北",
+                    "PinYin": "XinBei"
+                }, {"Name": "新余", "PinYin": "xinyu"}, {"Name": "兴城", "PinYin": "xingcheng"}, {
+                    "Name": "西宁",
+                    "PinYin": "xining"
+                }, {"Name": "咸阳", "PinYin": "xianyang"}, {"Name": "许昌", "PinYin": "xuchang"}, {
+                    "Name": "新竹",
+                    "PinYin": "xinzhu"
+                }, {"Name": "襄阳", "PinYin": "xiangyang"}, {"Name": "宣城", "PinYin": "xuancheng"}, {
+                    "Name": "孝感",
+                    "PinYin": "xiaogan"
+                }, {"Name": "信阳", "PinYin": "xinyang"}, {"Name": "新乡", "PinYin": "xinxiang"}, {
+                    "Name": "邢台",
+                    "PinYin": "xingtai"
+                }, {"Name": "西双版纳傣族自治州", "PinYin": "XiShuangBanNaDaiZuZiZhiZhou"}, {
+                    "Name": "湘西土家族苗族自治州",
+                    "PinYin": "XiangXiTuJiaZuMiaoZuZiZhiZhou"
+                }, {"Name": "徐州", "PinYin": "xuzhou"}, {"Name": "香港", "PinYin": "XiangGang"}],
+                "Y": [{"Name": "云林", "PinYin": "yunlin"}, {
+                    "Name": "伊犁哈萨克自治州",
+                    "PinYin": "YiLiHaSaKeZiZhiZhou"
+                }, {"Name": "阳江", "PinYin": "yangjiang"}, {"Name": "玉溪", "PinYin": "yuxi"}, {
+                    "Name": "榆林",
+                    "PinYin": "YuLin"
+                }, {"Name": "阳泉", "PinYin": "yangquan"}, {"Name": "岳阳", "PinYin": "yueyang"}, {
+                    "Name": "宜春",
+                    "PinYin": "YiChun"
+                }, {"Name": "雅安", "PinYin": "yaan"}, {"Name": "宜宾", "PinYin": "yibin"}, {
+                    "Name": "玉树藏族自治州",
+                    "PinYin": "YuShuZangZuZiZhiZhou"
+                }, {"Name": "伊春", "PinYin": "yichun"}, {"Name": "宜昌", "PinYin": "yichang"}, {
+                    "Name": "延安",
+                    "PinYin": "yanan"
+                }, {"Name": "银川", "PinYin": "yinchuan"}, {"Name": "营口", "PinYin": "yingkou"}, {
+                    "Name": "云浮",
+                    "PinYin": "yunfu"
+                }, {"Name": "宜兰", "PinYin": "yilan"}, {
+                    "Name": "延边朝鲜族自治州",
+                    "PinYin": "YanBianChaoXianZuZiZhiZhou"
+                }, {"Name": "运城", "PinYin": "yuncheng"}, {"Name": "永州", "PinYin": "yongzhou"}, {
+                    "Name": "鹰潭",
+                    "PinYin": "yingtan"
+                }, {"Name": "玉林", "PinYin": "yulin"}, {"Name": "益阳", "PinYin": "yiyang"}, {
+                    "Name": "扬州",
+                    "PinYin": "yangzhou"
+                }, {"Name": "盐城", "PinYin": "yancheng"}, {"Name": "烟台", "PinYin": "yantai"}],
+                "Z": [{"Name": "镇江", "PinYin": "zhenjiang"}, {"Name": "舟山", "PinYin": "zhoushan"}, {
+                    "Name": "枣庄",
+                    "PinYin": "zaozhuang"
+                }, {"Name": "自贡", "PinYin": "zigong"}, {"Name": "张家界", "PinYin": "zhangjiajie"}, {
+                    "Name": "昭通",
+                    "PinYin": "zhaotong"
+                }, {"Name": "中卫", "PinYin": "zhongwei"}, {"Name": "肇庆", "PinYin": "zhaoqing"}, {
+                    "Name": "彰化",
+                    "PinYin": "zhanghua"
+                }, {"Name": "张掖", "PinYin": "zhangye"}, {"Name": "中山", "PinYin": "zhongshan"}, {
+                    "Name": "资阳",
+                    "PinYin": "ziyang"
+                }, {"Name": "漳州", "PinYin": "zhangzhou"}, {"Name": "湛江", "PinYin": "zhanjiang"}, {
+                    "Name": "株洲",
+                    "PinYin": "zhuzhou"
+                }, {"Name": "驻马店", "PinYin": "zhumadian"}, {"Name": "周口", "PinYin": "zhoukou"}, {
+                    "Name": "张家口",
+                    "PinYin": "zhangjiakou"
+                }, {"Name": "遵义", "PinYin": "zunyi"}, {"Name": "淄博", "PinYin": "zibo"}, {
+                    "Name": "珠海",
+                    "PinYin": "zhuhai"
+                }, {"Name": "郑州", "PinYin": "zhengzhou"}]
+            }, "AjaxIsRequestSuccess": 4000, "AjaxDetailCode": 0
+        };
+    var sug = new Suggest({
+        template: {
+            /* suggest提示框结构模板 */
+            sug  : '<div class="sug">'+
+            '<div class="sug-list">'+
+            '</div>'+
+            '</div>',
+            /* 每条结果结构模板 */
+            item : '<div class="sug-item" data-item="{0}">'+
+            '{0}<i>{1}</i>'+
+            '</div>',
+            /* 历史记录结构模板,历史记录里的变量固定为path:0 */
+            history : '<div class="sug-item" data-item="{0}">'+
+            '{0}'+
+            '</div>'
+        },
+        requestData: localData.DepartCity,
+        requestUrl: '//gmu.baidu.com/demo/data/suggestion.php',
+        requestQueryKey: 'wd',
+        requestCallbackKey: 'cb',
+        requestParam: null,
+        responseDataPath: 's'
+    });
+</script>
+</body>
+</html>

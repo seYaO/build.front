@@ -1,0 +1,24 @@
+{{?it && it.length}}
+<ul>
+{{~it:val}}
+    <li class="part-order clearfix">
+        <h5>
+            <i></i><span>{{=val.MainTitle}}</span>
+            <span class="part-price">￥{{=val.TotalAllMoney}}</span>
+        </h5>
+        <p class="sdate">出行日期：{{=val.StartDate}}</p>
+        <p class="sdate">出行人数：{{=val.AllPersons}}人</p>
+        {{var isExtra = val.IsUnCommonOrder ? ("&isExtra=1") : "";}}
+        <div class="comment-btn">
+            <a class="J_Btn" href="http://m.ly.com/dujia/ordercomment_ID.html?commentComeFrom=message&orderid={{=val.OrderId}}&memberId={{=val.MemberId}}&mobile={{=val.ContactMoblie + isExtra}}&fromSite=8">我要点评</a>
+        </div>
+    </li>
+{{~}}
+</ul>
+{{??}}
+<div class="searchResult">
+    <span class="img-noresult"></span>
+    <p>你的点评订单空空如也</p>
+    <a class="home-btn" href="/ivacation/">去首页看看</a>
+</div>
+{{?}}

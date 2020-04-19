@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+{{ var it = IT.Data;}}
+{{
+    var cInfor = it.wanFa||{},
+        selectLine = it.selectionLine||{},
+        hotplay = it.hotWanfa||{},
+        recommend = it.recommendation||{},
+        hotLine = it.hotLine||{},
+        hotCity = it.hotCity||{},
+        cityId = it.cityId,
+        cityName = it.cityName;
+}}
+{{
+    var DesInfo = cInfor.DestinationPlay,
+        destNameC = cInfor.DestName,
+        destCityN = DesInfo.DestinationPlay.PlayName,
+        destination = DesInfo.DestinationPlay.Destination,
+        destPinYin = DesInfo.DestinationPlay.DestinationPinYin;
+}}
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    <meta name="keywords" content="{{=destCityN}}日本旅游报价,{{=destCityN}}日本跟团游,{{=destCityN}}日本国自助游,{{=destCityN}}日本旅游线路" />
+     <meta name="description" content="同程旅游（LY.COM）为您提供出境旅游攻略，境外旅游线路推荐，包括出境热门城市，精彩游记，交通出行，游玩路线，美食推荐，购物指南。让您的出境游更精彩。" />
+    <title>{{=destCityN}}日本旅游报价_{{=destCityN}}日本跟团游_{{=destCityN}}日本自助游_{{=destCityN}}日本旅游线路_自由行_攻略_同程出境游</title>
+
+    <% includeId = cnwidescreenjscss %>
+    <link href="//css.40017.cn/cn/v/2015/destination/destination.05134.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- 公共头部 开始 -->
+    <% includeId = cnwidescreenhead?channel=dujia %>
+    <!-- 公共头部 结束 -->
+    <div class="container">
+        <div class="part">
+            <div class="center clearfix">
+                <!--页面导航-->
+                <div class="navigation_bars">您所在位置：<a href="/">同程首页</a>><a href="/dujia/">出境游</a>> {{=destCityN}}
+                    <span class="c_phone c_phone_add" attr-url="/dujia/ajaxcall.aspx?type=GetTel400">客服电话：4007-777-777</span>
+                </div>
+                <div class="country_title">
+                    <div class="title">{{=destCityN}}旅游</div>
+                </div>
+            </div>
+        </div>
+        <div class="part">
+            <div class="center clearfix">
+                <!--左侧内容-->
+                <div class="middle_gp">
+                    <!--路线详情 start-->
+                    {{var lineDetail = DesInfo.DestinationPlay.DestinationPlayDetailList;}}
+                    {{?lineDetail && lineDetail.length>0}}
+                        <div class="middle_panel md_path">
+                            <div class="middle_content">
+                            <div class='play-detail'>玩法详情</div>
+                            {{~lineDetail:lDetail}}
+                                <div class="md_path_item">
+                                    <div class="title_gp">
+                                        <span class="headtit icon">D{{=lDetail.TheDay}}</span>
+                                        {{?lDetail.DestinationPlayLineList && lDetail.DestinationPlayLineList.length>0}}
+                                        {{~lDetail.DestinationPlayLineList:Lines}}
+                                            {{?Lines.Topic == 1|| Lines.Topic == 2 || Lines.Topic == 3}}
+                                            <span class="headtxt icon">{{=Lines.Name}}</span>
+                                            {{??Lines.Topic == 4 && Lines.Local == 1}}
+                                            <span class="headimg icon"><i class="train"></i></span>
+                                            {{??Lines.Topic == 4 && Lines.Local == 2}}
+                                            <span class="headimg icon"><i class="subway"></i></span>
+                                            {{??Lines.Topic == 4 && Lines.Local == 3}}
+                                            <span class="headimg icon"><i class="walk"></i></span>
+                                            {{??Lines.Topic == 4 && Lines.Local == 4}}
+                                            <span class="headimg icon"><i class="plane"></i></span>
+                                            {{??Lines.Topic == 4 && Lines.Local == 5}}
+                                            <span class="headimg icon"><i class="bus"></i></span>
+                                            {{??Lines.Topic == 4 && Lines.Local == 7}}
+                                            <span class="headimg icon"><i class="drive"></i></span>
+                                            {{?}}
+
+                                            <span class="headimg icon"><i class="arrow"></i></span>
+                                        {{~}}
+                                        {{?}}
+                                    </div>
+                                    <div class="content_gp">{{=lDetail.PlayDescription}}</div>
+                                </div>
+                            {{~}}
+                            </div>
+                        </div>
+                    {{?}}
+                    <!--路线详情 end-->
+                    <!--精选线路-->
+                    <div class="middle_panel">
+                        {{#def.selectline}}
+                    </div>
+
+                    <!-- 热门玩法 -->
+                    {{?hotplay && hotplay.length>0}}
+                    <div class="middle_panel">
+                        <div class="middle_content">
+                            <div class="middle_header">
+                                <div class="middle_title skin3">{{=destNameC}}热门玩法</div>
+                            </div>
+                            <div class="md_playing">
+                            {{~hotplay:hot:hIndex}}
+                                <a  href= "/dujia/wanfa-{{=hot.PlayId}}/" title="{{=hot.PlayName}}"><i class="limit-len">{{=hot.PlayName}}</i></a>
+                            {{~}}
+                            </div>
+                        </div>
+                    </div>
+                    {{?}}
+
+                    <!-- 城市说明 景点购物和注意事项等 -->
+                    <div class="middle_panel">
+                        {{#def.desdetail}}
+                    </div>
+
+                    <!--小编推荐-->
+                    <div class="middle_panel md_recommend">
+                        <div class="middle_content">
+                            <div class="middle_header">
+                                <div class="middle_title skin4">小编推荐</div>
+                            </div>
+                            {{?recommend.ProductList && recommend.ProductList.length>0}}
+                                <div class="md_recommend_title">
+                                    如果您对以上玩法感兴趣，同程为您准备了几条线路：
+                                </div>
+                                {{~recommend.ProductList:rem}}
+                                <div class="md_recommend_content">
+                                <a  href="//www.ly.com/dujia/tours/{{=rem.LineId}}.html">{{=rem.MainTitle}}&lt;{{=rem.SubTitle}}&gt;</a>
+                                </div>
+                                {{~}}
+                            {{??}}
+                                <div class="md_line_nothing">
+                                    没有线路哦，您可以选择附近出发地查看更多线路！或者来一次<a href="//www.ly.com/dujia/schedule.html" class="fontstyle">定制</a>吧！
+                                </div>
+                            {{?}}
+                        </div>
+                    </div>
+                </div>
+                <div class="right_gp">
+                    <!--热门旅游线路-->
+                    {{?hotLine.HotLines && hotLine.HotLines.length>0}}
+                    <div class="right_panel">
+                        <div class="right_gp_header">
+                            <div class="right_gp_title skin1">热门旅游线路</div>
+                        </div>
+                        <div class="right_line_list">
+                        {{~hotLine.HotLines:hotlist:hotInd}}
+                            {{?hotInd==0}}
+                            <div class="item_item">
+                                <span class="item_index disvisibility">{{=hotInd+1}}</span>
+                                <a href="//www.ly.com/dujia/tours/{{=hotlist.LineId}}/" class="item_aimgs">
+                                    <div class="item_img">
+                                        <img src="{{=hotlist.ImageUrl}}" alt=""/>
+                                    </div>
+                                    <div class="left_top">
+                                        <span class="font1">1</span>
+                                        <span class="font2">st</span>
+                                    </div>
+                                </a>
+                                <a href= "//www.ly.com/dujia/tours/{{=hotlist.LineId}}/" class="item_text">
+                                    {{=hotlist.MainTitle}}&lt;{{=hotlist.SubTitle}}>
+                                </a>
+                            </div>
+                            {{??}}
+                            <div class="item_item item_height">
+                                <span class="item_index">{{=hotInd+1}}</span>
+                                <a href= "//www.ly.com/dujia/tours/{{=hotlist.LineId}}/" class="item_aimgs none">
+                                    <div class="item_img">
+                                        <img src="{{=hotlist.ImageUrl}}" alt=""/>
+                                    </div>
+                                    <div class="left_top">
+                                        <span class="font1">{{=hotInd+1}}</span>
+                                        {{?hotInd==0}}
+                                        <span class="font2">st</span>
+                                        {{??hotInd==1}}
+                                        <span class="font2">nd</span>
+                                        {{??hotInd==2}}
+                                        <span class="font2">rd</span>
+                                        {{??}}
+                                        <span class="font2">th</span>
+                                        {{?}}
+                                    </div>
+                                </a>
+                                <a href= "//www.ly.com/dujia/tours/{{=hotlist.LineId}}/" class="item_text text_height">
+                                    {{=hotlist.MainTitle}}&lt;{{=hotlist.SubTitle}}&gt;
+                                </a>
+                            </div>
+                            {{?}}
+                        {{~}}
+                        </div>
+                    </div>
+                    {{?}}
+                    <!--相关推荐-->
+                    {{?hotCity && hotCity.length>0}}
+                    <div class="right_panel">
+                        <div class="right_gp_header">
+                            <div class="right_gp_title skin3">{{=destNameC}}相关推荐</div>
+                        </div>
+                        <div class="right_country_gp">
+                        {{~hotCity:hotcityL}}
+                            <a  href= "/dujia/des-{{=hotcityL.DestinationPinyin}}{{=hotcityL.DestinationId}}-c/" title="{{=hotcityL.DestinationName}}">{{=hotcityL.DestinationName}}</a>
+                        {{~}}
+                        </div>
+                    </div>
+                    {{?}}
+                    <!--热门目的地推荐-->
+                     <div class="right_panel">
+                        <div class="right_gp_header">
+                            <div class="right_gp_title skin2">热门目的地推荐</div>
+                        </div>
+                        <div class="right_country_gp">
+                            <a href="/dujia/des-riben2847/">日本</a>
+                            <a href="/dujia/des-taiguo2946/">泰国</a>
+                            <a href="/dujia/des-pujidao3144-c/">普吉岛</a>
+                            <a href="/dujia/des-xianggang395-c/">香港</a>
+                            <a href="/dujia/des-faguo3144/">法国</a>
+                            <a href="/dujia/des-xiaweiyi4252-c/">夏威夷</a>
+                            <a href="/dujia/des-jianada2780/">加拿大</a>
+                            <a href="/dujia/des-chaoxian2896/">朝鲜</a>
+                            <a href="/dujia/des-jianpuzhai2778/"><span>柬埔寨</span><span class="desti_label">落地签</span></a>
+                            <a href="/dujia/des-changtandao5687-c/">长滩岛</a>
+                            <a href="/dujia/des-balidao20996-c/"><span>巴厘岛</span><span class="desti_label free">免签</span></a>
+                            <a href="/dujia/des-xila2825/">希腊</a>
+                            <a href="/dujia/des-meiguo2960/">美国</a>
+                            <a href="/dujia/des-nanfei2931/">南非</a>
+                            <a href="/dujia/des-dibai3257-c/">迪拜</a>
+                            <a href="/dujia/abroad/">更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--侧边栏begin-->
+    <div class="service">
+        <div class="service-kind" data-name="number" style="background-image: url(//img1.40017.cn/cn/v/2015/kefu/wifi_gif.gif)">
+        </div>
+        <a class="service-kind J_Kefu" target="_blank" href="#" style="background-image: url(//img1.40017.cn/cn/v/2015/kefu/Customer-service_gif.gif)"></a>
+        <div class="service-kind" data-name="erwei" style="background-image: url(//img1.40017.cn/cn/v/2015/kefu/QRcode_gif.gif)"></div>
+        <a style="visibility: visible;" class="back_top" href="javascript:;" title="返回顶部"></a>
+    </div>
+
+    <script type="text/javascript" src="//js.40017.cn/cn/public/jquery/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/kefu/index.08194.js?v=15081915">
+    </script>
+    <!-- 侧边栏初始化 -->
+    <script type="text/javascript">
+        ESQ.init({
+            url:"//livechat.ly.com/out/guest?p=2&c=3"
+        });
+    </script>
+    <!--侧边栏end-->
+
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script>
+    <!-- 公共页脚 开始 -->
+    <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+    <!-- 公共页脚 结束 -->
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script>
+    <script src="//js.40017.cn/cn/v/2015/jqmodules/sea.js"></script>
+    <script>
+      seajs.config({
+            "base": "//js.40017.cn/cn/v/2015/jqmodules/"
+      })
+    </script>
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/destination/destination.04185.js"></script>
+    <script>
+        var host = "//www.ly.com";
+        var config = {
+            cityapi: "//www.ly.com/dujia/AjaxActivity.aspx?type=QueryIndexTotalCity&lineType={0}&_=1447638942373",
+            cityselect: (host || "") + "/dujia/AjaxHelper/DestinationHandler.ashx?Type=SpecialLineForDestination",
+            recommend: (host || "") + "/dujia/AjaxHelper/DestinationHandler.ashx?Type=RecommendLineForDestination&lineType=1"
+        };
+        $(document).ready(function() {
+            seajs.use("Destination", function(Destination) {
+                Destination.departureInit(config);
+            });
+        })
+    </script>
+</body>
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.3.0/statistics.js?v=16012120"></script>
+<script type="text/javascript">
+    stat.init({
+        "baidu": {
+            "parameter": "pc"
+        },
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', stat.getVrcode()],
+            ['_refId', stat.getRefid()],
+            ['_userId', stat.getMemberId()],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', '/出境/PC目的地/玩法页/']
+        ]
+    });
+</script>
+</html>

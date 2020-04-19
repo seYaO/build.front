@@ -1,0 +1,20 @@
+{{~it.Preferential:item:i}}
+<div class="yh-item">
+	<p><span class="content">{{=item.IconContent.PrefernentialStringWithTime.replace(/\n/g, '<br />')}}</span></p>
+	<div class="top-wrap">
+	    {{?item.MarkId === 21}}
+		<span class="icons-default icons-zdh"
+			style="background-color: {{=item.IconColor}};"><em>{{=item.IconName}}</em><i class="icons-default-patch"
+				style="border-right-color: {{=item.IconColor}};"></i></span>
+		{{??}}
+		<span class="icons-default"
+			style="background-color: {{=item.IconColor}};"><em>{{=item.IconName}}</em><i class="icons-default-patch"
+				style="border-right-color: {{=item.IconColor}};"></i></span>
+		{{?}}
+
+		{{?item.PreferentialType === 1}}
+		<a href="javascript:void(0)" class="J_bonus"><i></i><em>戳我领红包</em></a>
+		{{?}}
+	</div>
+</div>
+{{~}}

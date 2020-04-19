@@ -1,0 +1,88 @@
+<div class="appoint_tip">
+    <div class="tip_con">在线签约必须维护完全出游人信息，请您维护出游人信息。</div>
+</div>
+<div class="add-passenger J_passenger">
+    <h4 class="pas_tit">出游人信息</h4>
+    {{?it.OrderPassegerLst&&it.OrderPassegerLst.length>0}}
+        {{~it.OrderPassegerLst:list:index}}
+        <div class="visitor-info visitor-info1 {{?index==0}}no_border{{?}}" data-index="{{=index}}">
+            <div class="passenger-info" id="passengerInfo{{=index}}"  data-isAdult="{{=list.IsAdult}}" data-IsContact={{=list.IsContactPerson}} data-email="{{=list.CustomerEmail}}" data-linkerid="{{=list.CustomerId}}" data-index="{{=index}}">
+                {{
+                    var typeN = "";
+                    if(list.IsAdult=="1"){
+                        typeN = "成人";
+                    }else{
+                        typeN = "儿童";
+                    }
+                }}
+                <div class="passenger-info-content">
+                    <div class="passenger-info-type">
+                        <p class="img"><em></em> 出游人{{=index+1}}</p>
+                    </div>
+                    <div class="passenger-info-table">
+                        <div class="list">
+                            <label class="ui-label"><span class="required">*</span>中文姓名：</label>
+                            <input class="ui-input ui-input-nameZh" value="{{=list.CustomerName}}" name="nameZh" maxlength="26" vfn="verifyCheckName" vtype="rq" data-err-rq="请填写中文名" data-err-fn="请输入中文姓名" type="text" placeholder="证件的中文姓名"> <span class="valid_symbol" style="display: none;"></span>  <i class="help" data-type="zh"></i>
+                        </div>
+                        <div class="list" style="z-index:1;">
+                            {{
+                                var CerN = "",
+                                    cerName= "",
+                                    cType = "";
+                                if(list.CertType=="2" || list.CertType=="7" || list.CertType=="5" || list.CertType=="1"){
+                                    if(list.CertType=="2"){
+                                        cerName = "护照";
+                                        cType = "2";
+                                    }else if(list.CertType=="7"){
+                                        cerName = "港澳通行证";
+                                        cType = "7";
+                                    }else if(list.CertType=="5"){
+                                        cerName = "台湾通行证";
+                                        cType = "5";
+                                    }else{
+                                        cerName = "身份证";
+                                        cType = "1";
+                                    }
+                                    CerN = list.CertNo;
+                                }else{
+                                    cerName = "身份证";
+                                    cType = "1";
+                                    CerN = "";
+                                }
+                            }}
+                            <label class="ui-label"><span class="required">*</span>证件号码：</label>
+                            <div class="ui-select ui-select-certificate mr6"> <span class="up-down"><i></i></span>
+                                <dl class="ui-select_dl"> <dt class="select-certificate" data-value='{{=cType}}' visitor-index="0">{{=cerName}}</dt>
+                                    <dd data-value="1">身份证</dd>
+                                    <dd data-value="2">护照</dd>
+                                    <dd data-value="7">港澳通行证</dd>
+                                    <dd data-value="5">台湾通行证</dd>
+                                </dl>
+                            </div>
+                            <input class="ui-input ui-select-certificate-id" value='{{=CerN}}' name="cardId" vfn="verifyIdValid" maxlength="30" vtype="rq" data-err-rq="请输入所选证件号码" data-err-idcard="请输入正确的证件号码" data-err-fn="请输入正确的证件号码" type="text" placeholder="证件号码" style="display: inline;"> 
+                            <span class="valid_symbol" style="display: none;"></span>
+                            <input class="ui-input ui-input-date ui-input-calDate" vtype="rq" data-err-rq="请输入所选证件号码和有效期" data-err-idcard="请填写证件有效期" name="calDate" maxlength="20" type="text" placeholder="证件有效期" readonly="readonly" value='{{=list.CertValidity.split("T")[0]||1985-01-01}}'><b class="cert-tip">此处填写证件有效期</b>
+                            
+                            <p class="cerDateTip"><i></i>为了您的顺利出行，请确认您的行程结束时间至少比证件有效期早6个月</p>
+                        </div>
+                        <div class="list">
+                            <label class="ui-label"><span class="required">*</span>手机号码：</label>
+                            <input class="ui-input ui-input-mobile" value="{{=list.MobileNo}}" name="mobile" maxlength="11" id="mobile" vtype="rq mobile" data-err-rq="请填写手机号码" data-err-mobile="请输入正确手机号码" type="text" placeholder="请输入手机号码">
+                            <label for="mobile" class="prompt_message" style="display: none;"><span></span>请至少填写一个出游人的手机号码</label>
+                        </div>
+                        <div class="list">
+                            <label class="ui-label"><span class="required">*</span>出生日期：</label>
+                            <input class="ui-input ui-input-date ui-input-birthday" value='{{=list.BirdyDay.split("T")[0] ||1985-01-01}}' vtype="rq" data-err-rq="请填写出生日期" data-err-idcard="请填写出生日期" placeholder="请填写出生日期" name="birth" maxlength="20" type="text"  readonly="readonly">
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{~}}
+    {{?}}
+</div>
+<div class="go_appoint">
+    <span>注：申请付款后签约，请联系4007-777-777</span>
+    <a href="javascript:void(0)" class="J_goAppoint">去签约</a>
+</div>    

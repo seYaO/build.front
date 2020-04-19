@@ -1,0 +1,813 @@
+.dj-calendar-panel {
+    background: #f6f6f6;
+    font: 12px/20px Arial,'Microsoft YaHei',sans-serif,SimSun;
+    color: #666;
+    padding-top: 10px;
+    width: 570px;
+    height: 385px;
+}
+.dj-calendar-panel:after {
+    content: ".";
+    height: 0;
+    overflow: hidden;
+    clear: both;
+    display: block;
+}
+
+.dj-calendar-panel .previous-month, .dj-calendar-panel .next-month {
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    top: 8px;
+    cursor: pointer;
+    background: url(//js.40017.cn/cn/public/module/Calendar/0.1/calendar_arrow.png) scroll no-repeat 0 0 transparent;
+    overflow: hidden;
+    outline: none;
+}
+.dj-calendar-panel .previous-month {
+    left: 10px;
+}
+.dj-calendar-panel .next-month {
+    right: 10px;
+    background-position: -17px 0;
+}
+.dj-calendar-panel .previous-month:hover {
+    background-position: 0 -17px;
+}
+.dj-calendar-panel .next-month:hover {
+    background-position: -17px -17px;
+}
+.dj-calendar-panel .previous-month-disabled, .dj-calendar-panel .previous-month-disabled:hover {
+    cursor: default;
+    background-position: 0 -34px;
+}
+.dj-calendar-panel .next-month-disabled, .dj-calendar-panel .next-month-disabled:hover {
+    cursor: default;
+    background-position: -17px -34px;
+}
+.dj-calendar-panel .loading {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    background: url(//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif) scroll no-repeat center center transparent;
+}
+.dj-calendar-panel .calendar-wrapper {
+
+    border-top: 0 none;
+}
+.dj-calendar-panel .calendar-wrapper h6 {
+    margin: 0;
+    padding: 0;
+    height: 34px;
+    background: #2fa1e7;
+    text-align: center;
+    color: #fff;
+}
+.dj-calendar-panel h6 span {
+    margin-top: 8px;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 18px;
+    height: 18px;
+}
+.dj-calendar-panel h6 .year-wrapper, .dj-calendar-panel h6 .month-wrapper {
+    height: 18px;
+    float: left;
+    padding-right: 10px;
+    background: #F8F8F8;
+    position: relative;
+}
+.dj-calendar-panel h6 .year-str, .dj-calendar-panel h6 .month-str {
+    float: left;
+    font-style: normal;
+    font-weight: bold;
+    margin-left: 3px;
+    _padding-top: 1px;
+    _height: 17px;
+}
+.dj-calendar-panel h6 .year-str {
+    margin-right: 3px;
+}
+.dj-calendar-panel h6 .year-wrapper i, .dj-calendar-panel h6 .month-wrapper i {
+    position: absolute;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    border-color: #333 #F8F8F8;
+    border-style: solid;
+    border-width: 4px 4px 0;
+    top: 7px;
+    right: 2px;
+}
+.dj-calendar-panel h6 .year-wrapper input, .dj-calendar-panel h6 .month-wrapper input {
+    float: left;
+    border: none;
+    text-align: center;
+    height: 18px;
+    line-height: 18px;
+    padding: 0;
+    background: #F8F8F8;
+    color: #333;
+    font-size: 14px;
+    outline: none;
+    position: relative;
+}
+.dj-calendar-panel h6 .year-wrapper input {
+    width: 42px;
+}
+.dj-calendar-panel h6 .month-wrapper input {
+    width: 24px;
+}
+.dj-calendar-panel h6 .year-wrapper input:focus, .dj-calendar-panel h6 .month-wrapper input:focus {
+    border: 0;
+}
+
+.dj-calendar-panel .calendar-wrapper .calendar-container {
+    position: relative;
+    width: 100%;
+    background: white;
+}
+.dj-calendar-panel .calendar-wrapper .behind-month {
+    position: absolute;
+    width: 196px;
+    font-size: 124px;
+    line-height: 124px;
+    color: #EEE;
+    text-align: center;
+    padding-top: 30px;
+    font-family: 'Helvetica Neue',Helvetica,Arial,Sans-serif;
+}
+
+.dj-calendar-panel .calendar-wrapper table {
+    margin: 0;
+    padding: 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+    width: 100%;
+    position: relative;
+    height: 300px;
+}
+.dj-calendar-panel .calendar-wrapper .header {
+    height: 14px;
+}
+.dj-calendar-panel .calendar-wrapper th {
+    width: 80px;
+    padding: 0;
+    border: none;
+    border-top: none;
+    vertical-align: middle;
+    text-align: center;
+    font-weight: normal;
+    line-height: 30px;
+    background: #71808c;
+    color: white;
+}
+.dj-calendar-panel .calendar-wrapper tr {
+    /* height: 29px; */
+}
+.dj-calendar-panel .calendar-wrapper td {
+    padding: 0;
+    border: 1px solid #dcdcdc;
+    border-top: none;
+    text-align: left;
+    vertical-align: top;
+    cursor: pointer;
+    line-height: 18px;
+    height: 48px;
+    position: relative;
+}
+.dj-calendar-panel .calendar-wrapper .dataprice{
+    vertical-align: bottom;
+    color: #f60;
+}
+.dj-calendar-panel .calendar-wrapper .dataprice span{
+    vertical-align: bottom;
+}
+.dj-calendar-panel .calendar-wrapper .dataprace{
+    display: inline;
+}
+.dj-calendar-panel .calendar-wrapper .date{
+    vertical-align: top;
+    padding-left: 3px;
+}
+.dj-calendar-panel .calendar-wrapper td .d {
+    height: 20px;
+    display: block;
+    margin: 5px 1px 0;
+}
+.dj-calendar-panel .calendar-wrapper td div{
+    line-height: 14px;
+    /* height: 16px; */
+    padding: 3px 3px 0 3px;
+    text-align: center;
+}
+
+.dj-calendar-panel .calendar-wrapper td.saturday,
+.dj-calendar-panel .calendar-wrapper td.sunday {
+    /*font-weight: bold;*/
+}
+
+
+.dj-calendar-panel .calendar-wrapper .festival ,
+.dj-calendar-panel .calendar-wrapper .festival .date{
+    color: #b54800;
+}
+
+.dj-calendar-panel .calendar-wrapper .today {
+    color: #ffa63c;
+}
+.dj-calendar-panel .calendar-wrapper td .date{
+    color: #333;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.not-this-day{
+    background: #f5f5f5;
+}
+
+.dj-calendar-panel .calendar-wrapper .today,
+.dj-calendar-panel .calendar-wrapper .to-day,
+.dj-calendar-panel .calendar-wrapper .selected-day,
+.dj-calendar-panel .calendar-wrapper .current-day,
+.dj-calendar-panel .calendar-wrapper .hover-from-day,
+.dj-calendar-panel .calendar-wrapper .hover-to-day{
+    background: #fff3ea;
+}
+
+
+
+.dj-calendar-panel .calendar-wrapper .from-day .d,
+.dj-calendar-panel .calendar-wrapper .to-day .d,
+.dj-calendar-panel .calendar-wrapper .selected-day .d,
+.dj-calendar-panel .calendar-wrapper .current-day .d,
+.dj-calendar-panel .calendar-wrapper .hover-from-day .d,
+.dj-calendar-panel .calendar-wrapper .hover-to-day .d {
+    border-bottom: 3px solid #f60;
+    color: #333;
+}
+
+
+.dj-calendar-panel .calendar-wrapper .hover-day .d,
+.dj-calendar-panel .calendar-wrapper .range-day .d {
+    border-bottom: 3px solid #ddd;
+}
+
+
+.dj-calendar-panel .calendar-wrapper .previous-month-day {
+    color: #005BB5;
+}
+.dj-calendar-panel .calendar-wrapper .next-month-day {
+    color: #005BB5;
+}
+
+
+.dj-calendar-panel .calendar-wrapper .invalid-day,
+.dj-calendar-panel .calendar-wrapper .invalid-day .d {
+    color: #999999;
+    cursor: default;
+    /* background-color: #f5f5f5; */
+}
+.dj-calendar-panel .calendar-wrapper .invalid-day .dataprice{
+    color: #ccc;
+}
+.dj-calendar-panel .calendar-wrapper .over .dataprace,
+.dj-calendar-panel .calendar-wrapper .over .dataprice{
+    color: #ff6600;
+    display: block;
+    height: 15px;
+}
+.dj-calendar-panel .calendar-wrapper .dataedition{
+    display: inline-block;
+    height: 14px;
+}
+.dj-calendar-panel .calendar-wrapper .enough .dataprace,
+.dj-calendar-panel .calendar-wrapper .enough .dataprice,
+.dj-calendar-panel .calendar-wrapper .invalid-day .dataprace,
+.dj-calendar-panel .calendar-wrapper .invalid-day .dataprice{
+    display: block;
+}
+.dj-calendar-panel .calendar-wrapper .enough .dataprace{
+    color: #7faf47;
+}
+.dj-calendar-panel .calendar-wrapper .enough .dataprice{
+    color: #ff6600;
+}
+.dj-calendar-panel .calendar-wrapper .invalid-day .date{
+    color: #ccc;
+}
+
+
+.dj-calendar-panel .month-panel, .dj-calendar-panel .year-panel {
+    position: absolute;
+    display: none;
+    width: 40px;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+.dj-calendar-panel .year-panel {
+    width: 50px;
+}
+.dj-calendar-panel .month-panel a, .dj-calendar-panel .year-panel a {
+    display: block;
+    margin: 0;
+    padding: 0 0 0 10px;
+    line-height: 16px;
+    cursor: pointer;
+    background: #fff;
+    _width: 30px;
+    color: #333;
+    text-decoration: none;
+}
+.dj-calendar-panel .year-panel a {
+    _width: 40px;
+}
+.dj-calendar-panel .month-panel a:hover, .dj-calendar-panel .year-panel a:hover {
+    text-decoration: none;
+    background: #f0f0f0;
+}
+.dj-calendar-panel .year-panel .invalid-year, .dj-calendar-panel .month-panel .invalid-month {
+    color: #999;
+    cursor: default;
+}
+.dj-calendar-panel .year-panel .invalid-year:hover, .dj-calendar-panel .month-panel .invalid-month:hover {
+    background: #fff;
+}
+.dj-calendar-panel .year-nav {
+    height: 16px;
+    border-top: 1px solid #ddd;
+    position: relative;
+}
+.dj-calendar-panel .year-nav .previous, .dj-calendar-panel .year-nav .next {
+    position: absolute;
+    top: 2px;
+    line-height: 0;
+    cursor: pointer;
+    height: 12px;
+    overflow: hidden;
+}
+.dj-calendar-panel .year-nav .previous {
+    left: 6px;
+}
+.dj-calendar-panel .year-nav .next {
+    right: 6px;
+}
+
+.dj-calendar-panel .year-nav .previous i, .dj-calendar-panel .year-nav .next i {
+    border-style: solid;
+    border-color: #fff #ccc #fff #ccc;
+    border-width: 6px 6px 6px 0;
+    display: inline-block;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+.dj-calendar-panel .year-nav .next i {
+    border-width: 6px 0 6px 6px;
+}
+.dj-calendar-panel .year-nav .previous:hover i, .dj-calendar-panel .year-nav .next:hover i {
+    border-color: #fff #f60 #fff #f60;
+}
+.dj-calendar-panel .year-nav .previous em, .dj-calendar-panel .year-nav .next em {
+    border-style: solid;
+    border-color: #ccc #fff #ccc #fff;
+    border-width: 3px 3px 3px 0;
+    position: absolute;
+    height: 0;
+    line-height: 0;
+    overflow: hidden;
+    top: 3px;
+    right: 0;
+    width: 0;
+}
+.dj-calendar-panel .year-nav .next em {
+    border-width: 3px 0 3px 3px;
+    left: 0;
+}
+.dj-calendar-panel .year-nav .previous:hover em, .dj-calendar-panel .year-nav .next:hover em {
+    border-color: #f60 #fff #f60 #fff;
+}
+.dj-calendar-panel .year-nav .invalid-nav {
+    visibility: hidden;
+    cursor: default;
+}
+
+.dj-calendar-panel.green .calendar-wrapper h6 {
+    background: #8ab923;
+}
+.dj-calendar-panel.green .previous-month, .dj-calendar-panel.green .next-month {
+    background-image: url(//js.40017.cn/cn/public/module/Calendar/0.2/calendar_arrow_green.png);
+}
+
+.calendar-header{
+    height: 60px;
+    background: #eceff2;
+    position: relative;
+}
+.calendar-header-inner{
+    position: relative;
+    margin: 0 35px;
+    height: 60px;
+    overflow: hidden;
+}
+.calendar-header-inner ul{
+    position: absolute;
+    width: 200%;
+    left: 0;
+}
+.calendar-header .prev,
+.calendar-header .next{
+    position: absolute;
+    background: black;
+    top: 8px;
+    cursor: pointer;
+    padding: 15px 3px;
+}
+.calendar-header .prev,
+.calendar-header .next,
+.calendar-header .prev:visited,
+.calendar-header .next:visited{
+    background: #8AB923;
+}
+.calendar-header .prev{
+    left: 10px;
+}
+.calendar-header .next{
+    right: 10px;
+}
+.calendar-header .prev span,
+.calendar-header .next span{
+    height: 13px;
+    width: 8px;
+    display: block;
+}
+.calendar-header a:hover{
+    background-color: #8c96a2;
+    color: white;
+}
+.calendar-header .disable{
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    cursor: default;
+
+}
+.calendar-header .disable:hover{
+    background-color: #8ab923;
+}
+.calendar-header .prev span{
+    /*background-image: url("//img1.40017.cn/cn/v/2015/modules/calchart/0.1.0/prev.png");*/
+    background-image: url("//img1.40017.cn/cn/v/2015/newdetails/cal-left-arrow.png");
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+}
+.calendar-header .next span{
+    background-image: url("//img1.40017.cn/cn/v/2015/modules/calchart/0.1.0/next.png");
+}
+.calendar-header ul{
+
+}
+.calendar-header li{
+    list-style:none;
+    display: inline-block;
+    width: 8.3%;
+    line-height: 30px;
+    text-align: center;
+}
+.calendar-header li span{
+    display: block;
+    color: #666;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 15px;
+    padding-top: 15px;
+}
+.calendar-header li a{
+    color: #999;
+    display: block;
+    height: 100%;
+    cursor: pointer;
+}
+.calendar-header li a.J_NoPrice{
+    cursor: default;
+}
+.calendar-header li.active a{
+    background: #4c5a65;
+    color: white;
+}
+.calendar-header li em{
+    font-style: normal;
+}
+.calendar-header li.price-date a {
+    color:#ff6600;
+}
+.calendar-header li.price-date a:hover {
+    color:#fff;
+}
+.calendar-header li.active a span,
+.calendar-header li a:hover span{
+    color: white;
+}
+.calendar-header li.active a em{
+    color: white;
+}
+
+.calendar-title{
+    height: 30px;
+    line-height: 30px;
+    background: #fff7e4;
+    font-size: 12px;
+}
+.calendar-title h4{
+    color: #666;
+    display: inline-block;
+    margin-left: 10px;
+    float: left;
+    line-height: 30px;
+}
+.calendar-title h4 span{
+    color: #333;
+}
+.calendar-title ul{
+    float: right;
+    display: inline-block;
+}
+.calendar-title li{
+    display: inline-block;
+    margin-right: 20px;
+    color: #999;
+
+}
+.mCal{
+}
+.calendar-outer{
+    background: #f6f6f6;
+    position: relative;
+}
+.calendar-body{
+    padding-bottom: 10px;
+}
+.dj-calendar-panel,.calendar-header{/* background-color: transparent */}
+.dj-calendar-panel{
+    padding-top: 0;
+    z-index: 9999;
+}
+.mCal .calendar-wrapper td{
+    position: relative;
+}
+.mCal .calendar-wrapper td .icon-discount{
+    position: absolute;
+    right: 0;
+    background: #ff7d27;
+    color: white;
+    padding: 2px;
+    font-size: 12px;
+    line-height: 12px;
+}
+.discount-tip{
+    color: #666;
+    line-height: 20px;
+    position: absolute;
+    background: white;
+    width: 270px;
+    z-index: 10000;
+    text-align: left;
+    padding: 10px;
+    top: 325px;
+    left: 200px;
+    box-shadow: 0 0 16px 2px rgba(0,0,0,.3);
+    -ms-filter:"progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135, Color='#000000')";
+    filter:progid:DXImageTransform.Microsoft.Shadow(Strength=4,Direction=135,Color='#000000');
+}
+.discount-tip:after {
+    content: ' ';
+    position: absolute;
+    display: block;
+    height: 0;
+    width: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: hidden;
+    border-color: transparent transparent #fff;
+    border-style: dashed dashed solid;
+    border-width: 8px;
+    z-index: 9999;
+    top: -16px;
+    left: 15px;
+}
+.discount-tip ul {
+    margin-bottom: 4px;
+}
+.discount-tip .title {
+    font-size: 14px;
+    font-weight: 700;
+}
+.discount-tip hr {
+    margin: 6px auto;
+}
+.discount-tip span{
+    font-size: 12px;
+    color:#ff9f20;
+    font-family: "microsoft yahei";
+}
+.discount-tip span b{
+    color:#ff9255;
+}
+.invalid-day .icon-discount,
+.need-check-login{
+    display: none;
+}
+.is-login .need-check-login{
+    display: block;
+}
+.is-login .invalid-day .need-check-login{
+    display: none;
+}
+.calendar-month-bg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    color: #f9f9f9;
+    left: 0;
+    top: 0;
+    font-size: 180px;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 277px;
+    font-family: "Microsoft Yahei";
+    font-weight: bold;
+    *display: none;
+    display: none \9;
+}
+
+.dj-calendar-panel .calendar-wrapper .previous-month-day,
+.dj-calendar-panel .calendar-wrapper .next-month-day{
+    background: #f5f5f5;
+}
+/*.pop-cal {*/
+    /*display: none;*/
+    /*position: absolute;*/
+    /*background: white;*/
+    /*border: 1px solid #f0f0f0;*/
+    /*border-width: 3px;*/
+    /*border-bottom: 3px double #f0f0f0;*/
+    /*border-right: 3px double #f0f0f0;*/
+    /*box-shadow: 2px 2px 2px #CCC;*/
+    /*width: 364px;*/
+    /*font-family: "微软雅黑";*/
+    /*z-index: 100*/
+/*}*/
+.ui-dialog-content .cal-content-inner{
+    width: 411px;
+}
+.listSty {
+    padding-top: 14px;
+    line-height: 20px;
+    height: 20px;
+    font-family: "微软雅黑";
+    clear: both
+}
+.groupSpan{
+    display: inline-block;
+    float: right;
+    font-size: 12px;
+    color:#f63;
+}
+.groupSpan b{
+    margin-left: 5px;
+}
+.groupSpan i{
+    color:#8ab923;
+    margin-left: 5px;
+}
+
+.listSty1 {
+    margin-bottom: 10px;
+    line-height: 20px;
+    height: 30px;
+    background: #f0f0f0;
+    padding-top: 10px;
+    font-family: "微软雅黑"
+}
+
+.linename {
+    width: 182px;
+    float: left;
+    padding-left: 9px;
+    font-family: "微软雅黑"
+}
+
+.lineprice {
+    line-height: 21px;
+    float: left;
+    width: 76px;
+    font-family: "微软雅黑"
+}
+
+.lineprice em {
+    color: #f60;
+    font-family: "微软雅黑"
+}
+
+.num_box {
+    width: 68px;
+    height: 20px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    float: right;
+    clear: none;
+    font-family: "微软雅黑"
+}
+
+.num_box a.sub_btn {
+    border-right: 1px solid #ddd;
+    background-position: 6px -28px;
+    font-family: "微软雅黑"
+}
+
+.num_box input {
+    width: 24px;
+    height: 20px;
+    font: 14px/20px "simsun";
+    float: left;
+    overflow: hidden;
+    border: 0;
+    color: #333;
+    text-align: center;
+    background-color: #fff;
+    font-family: "微软雅黑"
+}
+
+.num_box label {
+    font: 14px/20px "simsun"
+}
+
+.num_box a.add_btn {
+    border-left: 1px solid #ddd;
+    background-position: -14px -28px
+}
+
+.num_box a {
+    display: block;
+    width: 20px;
+    height: 20px;
+    overflow: hidden;
+    float: left;
+    background: url(//img1.40017.cn/cn/v/book/2014/cjSpirit.png) no-repeat 0 0
+}
+
+.num_box a.add_btn {
+    border-left: 1px solid #ddd;
+    background-position: -14px -28px
+}
+.pop-cal .btn-order {
+    width: 116px;
+    background: url(//img1.40017.cn/cn/v/details/2014/total.png) no-repeat -80px -437px;
+    position: relative;
+    padding-bottom: 10px;
+    margin-left: 142px;
+    font-size: 16px;
+    color: white;
+    padding-top: 19px;
+    display: block;
+    text-align: center;
+}
+.num_box a.sub_btn_false {
+    background: url(//img1.40017.cn/cn/v/book/2014/cjSpirit.png) no-repeat 6px -44px;
+    cursor: default;
+}
+.num_box a.add_btn_false {
+    background-position: -14px -43px;
+    cursor: default;
+}
+.dj-calendar-panel .calendar-header .next,
+.dj-calendar-panel .calendar-header .prev{
+    background: #eceff2;
+}
+.dj-calendar-panel .calendar-header .next span {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background-image: url(//img1.40017.cn/cn/v/2015/newdetails/cal-right-arrow.png);
+}
+.dj-calendar-panel .calendar-wrapper td .icon-discount {
+    position: absolute;
+    right: 0;
+    background: #ff7d27;
+    color: white;
+    padding: 2px;
+    font-size: 12px;
+    line-height: 12px;
+}
+.dj-calendar-panel .calendar-wrapper .header{
+    border-left: 1px solid #dcdcdc;
+    border-right: 1px solid #dcdcdc;
+}
+.pick-calendar-panel .calendar-header{
+    border: 1px solid #dcdcdc;
+    border-bottom: 0 none;
+}

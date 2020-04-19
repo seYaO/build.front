@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title></title>
+	<meta charset="utf-8" />   
+    <script src="../../jquery.js"></script>
+    <script src="../../sea.js"></script>
+</head>
+<body>
+    <input type="file" />
+    <script>
+        seajs.config({
+            base: "../../../jqmodule/"
+            //        "base": "http://js.40017.cn/cn/v/2015/jqmodules/"
+        });
+
+        seajs.use("imgupload/0.1.0/imgupload", function (ImgUpload) {            
+            $('input').change(function (e) {
+                ImgUpload.init({
+                    ele: this,                 
+                    callback: function (rst) {                        
+                        alert(rst.fileLen);
+                        $.ajax({
+                            url: 'http://10.101.42.14:8005/handler1.ashx',
+                            type: 'POST',
+                            data: rst.formData,
+                            dataType: 'json',
+                            contentType: false,
+                            processData: false,
+                            success: function (data) {
+                                alert("ok");
+                            }
+                        });
+                    }
+                });
+
+
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+<div class="form-warp">
+    <div class="form-li">
+        <input type="text" class="form-txt J_phone" maxlength="11" placeholder="输入手机号">
+        <div class="form-tip" data-err="请输入正确的手号"></div>
+    </div>
+    <div class="form-li">
+        <input type="text" class="form-txt J_smsg_code" maxlength="6" placeholder="输入验证码">
+        <div class="code-warp J_smsg_send">获取验证码</div>
+        <div class="form-tip" data-err="验证码错误"></div>
+    </div>
+    <div class="form-li">
+        <a class="form-btn J_sub_1">确认</a>
+    </div>
+</div>
+<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js"></script>
+<script src="index.js"></script>
+<script>
+    $(function(){
+        function getUrlRefId() {
+            var url = location.href,
+                hasRefId = /[#\?&]refid=(\d+)/i.exec(url);
+            return hasRefId && hasRefId[1] || "";
+        }
+        /**/
+        $(".form-txt,.form-btn").on("click keydown", function () {
+            $(".form-tip").html("");
+        });
+        /**/
+        $(".J_smsg_send").on("click", function () {
+            var ret = self.verifyCheck.verify($('.J_phone'), 'phone');
+            if (ret) {
+                var phone = $('.J_phone').val();
+                window.smsCheck.send({el:$(this),phone:phone});
+            }
+        });
+        var isSubmiting;
+        $(".J_sub_1").on("click", function () {
+            var Jphone = $(".J_phone"),
+                Jsmsgcode = $(".J_smsg_code");
+            var params = {
+                Mobile : encodeURIComponent(Jphone.val()),
+                UserName : '0',
+                Email : 'ly@ly.com',
+                CityId : '',
+                CityName : '',
+                WhetherPassPort : '0',
+                ExperienceAbroad : '0',
+                TagInfo : '0',
+                HomeUrl: encodeURIComponent(getUrlRefId()),
+                BbsAccount : '0',
+                TravelExperience : '0',
+                Platform : '3',
+                ActivityId : '28684',
+                PeriodId : '28684',
+                key : '',
+                code : encodeURIComponent(Jsmsgcode.val())
+            };
+            var thisCfg = $.extend(params,window.smscfg||{});
+
+            var ret1 = window.verifyCheck.verify(Jphone, 'phone');
+            var ret2 = window.verifyCheck.verify(Jsmsgcode, 'code');
+            if (ret1 && ret2 && !isSubmiting) {
+                isSubmiting = true;
+                $.ajax({
+                    url:"http://m.ly.com/dujia/ajaxhelper/SendMessageSite",
+                    type:"POST",
+                    dataType:"json",
+                    data: thisCfg,
+                    success:function(data){
+                        var status = parseInt(data.status);
+                        isSubmiting = false;
+                        switch (status){
+                            case 100 :
+                                alert("100");
+                                break;
+                            case 200 :
+                                window.verifyCheck.verify(Jsmsgcode,'code',true,data.desc);
+                                break;
+                            default :
+                                window.verifyCheck.verify(Jsmsgcode,'code',true,"提交失败");
+                                break;
+                        }
+                    },
+                    error:function(){
+                        window.verifyCheck.verify(Jsmsgcode,'code',true,"提交失败");
+                    }
+                });
+            }
+
+        });
+    });
+</script>
+</body>
+</html>

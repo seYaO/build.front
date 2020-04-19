@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>新版日历测试</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413" />
+    <script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+    <script src="../../jquery.js" type="text/javascript"></script>
+    <script>
+        seajs.config({
+            base: "../../"
+        });
+    </script>
+</head>
+
+<body>
+<div class="mCal" attr-order="/dujia/bookNew.aspx?bookdate=" attr-url="/dujia/Book.ashx?requestNum=1&orderdate={year}-{month}-01&lineId=204169" attr-TimeB="2015-03-05" attr-TimeE="">
+</div>
+<script>
+    seajs.use(["calendar/0.1.1/index","calendar/0.1.1/discount"],function(Cal,CalDiscount){
+        Cal.init({
+            data: window.page_cf,
+            tripTime: $(".mCal").attr("attr-TimeB"),
+            afterRender: function(wrapper){
+                var calDiscount = new CalDiscount();
+                calDiscount.init({
+                    wrapper: wrapper,
+                    calendar: Cal
+                });
+            },
+            itemClick: function(){
+                console.log("itemClick",arguments);
+            }
+        });
+    });
+</script>
+</body>
+</html>

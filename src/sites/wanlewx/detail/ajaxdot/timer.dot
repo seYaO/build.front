@@ -1,0 +1,8 @@
+{{var value = it.Body[0];}}
+<span>限时抢购</span>
+<span class="all-djs">
+<span class="djstxt">活动开始:</span>
+<span class="djs" data-time = "{{=new Date(value.PIBeginTime.replace(/\-/gi,'/').replace('T',' ')).getTime()}}|{{=new Date(value.PIEndTime.replace(/\-/gi,'/').replace('T',' ')).getTime()}}">
+<span>0</span>:<span>00</span>:<span>00</span>:<span>00</span>
+</span>
+</span>

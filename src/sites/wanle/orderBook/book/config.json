@@ -1,0 +1,10 @@
+{
+  "dataUri": "/wanle/api/WanleProduct/GetNewSingleProductBySubmitDetail",
+  "query": {
+    "siteType": 0,
+    "ProductId": 430252,
+    "SupplierRelationId": 199519,
+    "ResourceId":32720
+  },
+  "desc": "玩乐wifi预订页"
+}

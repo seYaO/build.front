@@ -1,0 +1,52 @@
+{
+  "name": "pc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node build/dev",
+    "qa": "node build/build --env testing",
+    "prod": "node build/build --env production",
+    "build": "node build/build --env production && node build/deploy --env production",
+    "deploy": "node build/build --env testing && node build/deploy --env testing",
+    "server": "node build/dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    ""
+  ],
+  "author": "",
+  "license": "BSD",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "dependencies": {
+    "fis3": "^3.4.35"
+  },
+  "devDependencies": {
+    "archiver": "^1.0.0",
+    "bagpipe": "^0.3.5",
+    "co": "^4.6.0",
+    "connect-history-api-fallback": "^1.2.0",
+    "dot": "^1.0.3",
+    "ejs": "^2.4.2",
+    "express": "^4.14.0",
+    "form-data": "^1.0.0-rc4",
+    "glob": "^7.0.5",
+    "html": "^1.0.0",
+    "http-proxy-middleware": "^0.17.0",
+    "lodash": "^4.14.1",
+    "minimist": "^1.2.0",
+    "node-fetch": "^1.5.3",
+    "ora": "^0.3.0",
+    "promise": "^7.1.1",
+    "shelljs": "^0.7.0",
+    "socket.io": "^1.4.8",
+    "socket.io-client": "^1.4.8",
+    "socket.io-stream": "^0.9.0"
+  }
+}

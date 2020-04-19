@@ -1,0 +1,59 @@
+ {{?it.LongTripProduct.ProductList && it.LongTripProduct.ProductList.length != 0}}
+<div class="prolist">
+   <ul class="clearfix">
+
+    {{~it.LongTripProduct.ProductList:longTripProduct:longTripProductIndex}}
+    {{var traceLineId = longTripProduct.LineId;}}
+    {{?longTripProduct.IsChengYiProduct}}
+        {{var traceType = 3;}}
+    {{??longTripProduct.IsTCSpecialLine}}
+        {{var traceType = 1;}}
+    {{??}}
+        {{var traceType = 0;}}
+    {{?}}
+    {{?longTripProduct.Property === 1||longTripProduct.Property==="1"}}
+        {{var traceLineType = 1;}}
+    {{??}}
+        {{var traceLineType = 3;}}
+    {{?}}
+       <li class='proline'>
+            {{?it.Label.LongTripLabel.LabelNames && it.Label.LongTripLabel.LabelNames.length>0}}
+            <a class='proline__link' target='_blank' trackspot="{{=it.CityName}}^{{=longTripProduct.LineId}}^{{=longTripProductIndex+1}}^{{=it.Label.LongTripLabel.LabelNames[0].Name}}^出境长线" trace="{{=longTripProductIndex}}" data-trace="{{= 3 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + longTripProduct.LineId + (longTripProduct.Property === 1 ? ".html" : "/")}}'>
+            {{??}}
+            <a class='proline__link' target='_blank'  trace="{{=longTripProductIndex}}" data-trace="{{= 3 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + longTripProduct.LineId + (longTripProduct.Property === 1 ? ".html" : "/")}}'>
+            {{?}}
+
+                <div class='proline__img'>
+                    <img data-img="{{=longTripProduct.ImgUrl.replace('http:','')}}" title="{{=longTripProduct.MainTitle}}" alt="{{=longTripProduct.MainTitle}}">
+                    <div class="sub-title" title="{{=longTripProduct.SubTitle}}">
+                        {{=longTripProduct.SubTitle}}
+                    </div>
+                </div>
+                <div class='proline__txt'>
+                    <p class='proline__title' title="{{=longTripProduct.MainTitle}}">{{=longTripProduct.MainTitle}}</p>
+                    <p class='proline__price'>
+                        ¥<em>{{=longTripProduct.TcPrice}}</em><b>起</b>
+                        <i class="proline__depcity">{{=longTripProduct.LeaveCity}}出发</i>
+                    </p>
+                </div>
+                        {{var tag ,tagClass;}}
+                        {{?longTripProduct.Property == 1}}
+                        {{tag = "跟团游";}}
+                        {{tagClass = "proline__kind-gt";}}
+                        {{??longTripProduct.Property == 3}}
+                        {{tag = "自由行";}}
+                        {{tagClass = "proline__kind-zy";}}
+                        {{??}}
+                        {{tag = "目的地参团";}}
+                        {{tagClass = "proline__kind-mdd";}}
+                        {{?}}
+                <span class='{{=tagClass }}'>
+                    {{=tag}}
+                </span>
+            </a>
+       </li>
+       {{~}}
+
+   </ul>
+</div>
+{{?}}

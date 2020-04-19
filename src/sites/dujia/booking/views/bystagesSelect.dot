@@ -1,0 +1,5 @@
+{{var dealAmount = function(a){return (Math.round(a*100)/100);};}}
+{{~it.PeriodList:stage:index}}
+	<label for="stageNumber{{=index}}"><input class="J_pay-type" type="radio" name="radio-group-y" id="stageNumber{{=index}}" data-index="{{=index}}">首付￥{{=dealAmount(stage.FirstPay)}}+￥{{=dealAmount(stage.EveryPay)}}x{{=stage.Period-1}}期<span>（{{=(stage.EveryRateAmount===0)?"0手续费":("含手续费"+dealAmount(stage.EveryRateAmount)+"元/期")}}）</span></label><br>
+{{~}}
+<p class="explain J_explain"></p>

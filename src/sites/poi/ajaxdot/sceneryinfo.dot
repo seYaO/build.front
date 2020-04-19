@@ -1,0 +1,33 @@
+<div class="sceneryTop" data-type="{{=it.type}}">
+    <span class="sceneryClose"></span>
+    <p class="sceneryName" data-poiid = "{{=it.poiid}}">{{=it.poiname}}</p>
+    <span class="sceneryAdd"></span>
+</div>
+<div class="sceneryBox mt10">
+    <img src="{{=it.imgurl}}" alt="{{=it.poiname}}" class="sLeft">
+    <div class="sRight">
+        <p class="sceneryGrade"><span>{{=it.score}}</span>分</p>
+        <div class="sUl">
+        {{?it.brightspot}}
+            <p>亮点:</p>
+            <div>{{=it.brightspot.replace(/\r\n/g,"<br>")}}</div>
+        {{?}}
+            <p class="sceneryHour">{{=it.playtime}}</p>
+        </div>
+    </div>
+</div>
+<div class="sceneryAbs mt10">
+    <p class="titleName absIcon"><i></i><span>简介：</span></p>
+    <p>{{=it.intro.replace(/\n/g,"<br>")}}</p>
+</div>
+<div class="sceneryAbs mt10">
+    <p class="outside absIcon"><i></i><span>开放时间：</span></p>
+    <p>{{=it.shoptime.replace(/\r\n/g,"<br>")}}</p>
+    <p class="ticket absIcon"><i></i><span>门票信息：</span></p>
+    <p>{{=it.ticketinfo}}</p>
+    <p class="warning absIcon"><i></i><span>贴心提示：</span></p>
+    <p>{{=it.specialtips.replace(/\n/g,"<br/>")}}</p>
+</div>
+<div class="sceneryMap mt10" data-gglon="{{=it.gglon}}" data-gglat="{{=it.gglat}}">
+    <div id='ui-sceneryMap'></div>
+</div>

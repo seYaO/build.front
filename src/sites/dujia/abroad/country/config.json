@@ -1,0 +1,11 @@
+{
+    "dataUri":  "/intervacation/api/CountryDestination/GetCountryTravelDetail",
+    "query": {
+        "siteType":0,
+        "pageType":30,
+        "destType":0,
+        "destId":2847,
+        "destPinYin":"riben"
+    },
+    "desc": "出境目的地国家页"
+}

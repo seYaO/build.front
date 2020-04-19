@@ -1,0 +1,134 @@
+<div class="crumlist">
+    {{?it.LineClassification.length>0}}
+
+    <div class="rowbox" data-key="lineQuality" data-list="2" data-openurl="false" data-MultiSelect="false" attr-name="线路玩法">
+        <h4>线路分类 :</h4>
+        <div class="rowlist J_lineQuality">
+            {{~it.LineClassification:_LineClassification}}
+            <a href="javascript:;" data-value="{{=_LineClassification.Value}}" title="{{=_LineClassification.Title}}">{{=_LineClassification.Name}}</a>
+            {{~}}
+            <div class="btns none">
+                <span attr-data="" class="submit">确定</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div>
+        <div class="operationbox">
+            <span class="more-btn">更多</span>
+        </div>
+    </div>
+    {{?}}
+    {{?it.LinePlay.length>0}}
+
+    <div class="rowbox" data-key="specialNickId" data-list="2" data-openurl="false" data-MultiSelect="false" attr-name="线路玩法">
+        <h4>线路玩法 :</h4>
+        <div class="rowlist J_linePlay">
+            {{~it.LinePlay:_plateList}}
+            <a href="javascript:;" data-value="{{=_plateList.Value}}" title="{{=_plateList.Title}}">{{=_plateList.Name}}</a>
+            {{~}}
+            <div class="btns none">
+                <span attr-data="" class="submit">确定</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div>
+        <div class="operationbox">
+            <a class="multibtn" href="javascript:void(0);" title="">多选</a>
+            <span class="more-btn">更多</span>
+        </div>
+    </div>
+    {{?}}
+    {{?it.PlayDay.length>0}}
+    <div class="rowbox" data-key="days" data-list="3" data-OpenUrl="false" data-MultiSelect="false" attr-name="游玩天数">
+        <h4>游玩天数 :</h4>
+        <div class="rowlist J_lineDays">
+            {{~it.PlayDay:_daysList}}
+            <a href="javascript:;" title="{{=_daysList.Title}}" data-value="{{=_daysList.Value}}">{{=_daysList.Name}}</a>
+            {{~}}
+            <div class="btns none">
+                <span attr-data="" class="submit">确定</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div>
+        <div class="operationbox">
+            <a class="multibtn" href="javascript:void(0);" title="">多选</a>
+            <span class="more-btn">更多</span>
+        </div>
+    </div>
+    {{?}}
+    {{?it.FromCity.length>0}}
+    <div class="rowbox" data-key="lpCity" data-list="5" data-openurl="false" data-MultiSelect="false" attr-name="出游城市">
+        <h4>出发城市 :</h4>
+        <div class="rowlist J_lineCity">
+            {{~it.FromCity:_lpCityList}}
+            <a href="javascript:;" data-value="{{=_lpCityList.Value}}" title="{{=_lpCityList.Title}}">{{=_lpCityList.Name}}</a>
+            {{~}}
+            <div class="btns none">
+                <span attr-data="" class="submit">确定</span>
+                <span class="cancel">取消</span>
+            </div>
+        </div>
+        <div class="operationbox">
+            <a class="multibtn" href="javascript:void(0);" title="">多选</a>
+            <span class="more-btn">更多</span>
+        </div>
+    </div>
+    {{?}}
+    {{?it.LineFeature.length}}
+        <div class="rowbox" data-key="rcImgTitleId" data-list="6" data-openurl="false" data-MultiSelect="false" attr-name="线路特色">
+            <h4>线路特色 :</h4>
+            <div class="rowlist J_lineFeature">
+                {{~it.LineFeature:_rcImgUrlTitleList}}
+                <a href="javascript:;" title="{{=_rcImgUrlTitleList.Title}}" data-value="{{=_rcImgUrlTitleList.Value}}">{{=_rcImgUrlTitleList.Name}}</a>
+                {{~}}
+                <div class="btns none">
+                    <span attr-data="" class="submit">确定</span>
+                    <span class="cancel">取消</span>
+                </div>
+            </div>
+            <div class="operationbox">
+                <span class="more-btn">更多</span>
+            </div>
+        </div>
+    {{?}}
+
+</div>
+<div class="sort-row">
+    <div class="sort-left">
+    <ul class="sort-ul">
+        <li class="cur"><a href="javascript:;" title="综合排序">综合排序</a></li>
+        <li><a class="sortsty " href="javascript:;" title="按照30天销量排序">销量</a></li>
+        <li><a class="sortsty " href="javascript:;" title="按照线路满意度从高到低排序">点评</a></li>
+        <li><a class="sortsty" href="javascript:;" title="价格">价格</a></li>
+    </ul>
+    <div class="pricebox">
+        <div id="priceinner">
+            <!--<span class="inner-text none">请输入价格范围：</span>-->
+            <div class="inputbox">
+                <input class="min" type="text"maxlength="6"placeholder="¥" value=""/>
+                <em>~</em>
+                <input class="max" type="text"maxlength="6"placeholder="¥" value=""/>
+            </div>
+            <div class="price-bot none"><span>清除价格</span><a href="javascript:;" title="确定">确定</a></div>
+       </div>
+    </div>
+    </div>
+    <div class="extra">
+        {{?it.IsExistTcSpecialLine===1}}
+            <span data-content="<div class='extra-all'><div class='extra-left'><img class='extra-lyline' src=//pic3.40017.cn/line/admin/2015/09/17/10/iF01ez.png /></div><div class='extra-right'><p class='p1'>什么是程意正品?</p><p class='p2'>同程旅游联合境内外优质供应商为用户甄选提供更专业更高品质的产品。</p></div></div>" class="chengylab J_ChengYi J_Tips"><i>&nbsp;</i>{{?it.IsTCSpecialLine}}&nbsp;|{{?}}</span>
+        {{?}}
+        {{?it.IsTCSpecialLine===1}}
+            <span data-content="<div class='extra-all'><div class='extra-left'><img class='extra-lyline' src=//pic3.40017.cn/line/admin/2015/10/27/18/0n16g0.png /></div><div class='extra-right'><p>严格选品，金牌线路</p><p>优质行程，服务保障<a class='extra-more' href='http://www.ly.com/zhuanti/tczxzx' target='_blank'>了解更多&gt&gt</a></p></div></div>" class="chengylab tc-line J_TcLine J_Tips"><i>&nbsp;</i></span>
+        {{?}}
+    </div>
+</div>
+{{?it.Service.length>0}}
+<div class="sort-service">
+<div class="sort-service-box">
+{{~it.Service:inVal}}
+    <a href="javascript:;" title="{{=inVal.Title}}" data-value="{{=inVal.Value}}" class="addinput">{{=inVal.Name}}</a>
+{{~}}
+</div>
+{{?it.Service.length>16}}
+<span class="more-tese J_moreTese">展开更多<i></i><span>
+{{?}}
+</div>
+{{?}}

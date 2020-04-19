@@ -1,0 +1,31 @@
+<span class="grayword">当地同程门店信息：</span>
+{{?it.proResult && it.cityList}}
+<div class="select-item">
+    {{~it.proResult.proList:proList:index}}
+    {{?proList.id==it.proResult.currentProId}}
+    <span class="select J_currentShopProvince togglemore open" data-provinceId="{{=it.proResult.currentProId}}">{{=proList.name}}</span>
+    {{?}}
+    {{~}}
+    {{?it.proResult.proList}}
+    <ul class="J_shopprovince none">
+    {{~it.proResult.proList:proList:index}}
+        <li data-provinceId="{{=proList.id}}">{{=proList.name}}</li>
+    {{~}}
+    </ul>
+    {{?}}
+</div>
+<div class="select-item">
+    {{~it.cityList.cityList:city:index}}
+    {{?city.cityId==it.cityList.currentCityId}}
+    <span class="select J_currentShopCity togglemore open"data-cityId="{{=it.cityList.currentCityId}}">{{=city.name}}</span>
+    {{?}}
+    {{~}}
+    {{?it.cityList.cityList}}
+    <ul class="J_shopcity none">
+    {{~it.cityList.cityList:city:index}}
+        <li data-cityId="{{=city.cityId}}">{{=city.name}}</li>
+    {{~}}
+    </ul>
+    {{?}}
+</div>
+{{?}}

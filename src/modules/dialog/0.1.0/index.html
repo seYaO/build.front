@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<button data-event="test">open dialog</button>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script src="../../jquery.js" type="text/javascript"></script>
+<script>
+    seajs.config({
+        base: "../../"
+    });
+</script>
+
+<script>
+    seajs.use("dialog/0.1.0/index", function (dialog) {
+        jQuery('button[data-event=test]').on('click', function () {
+            var d;
+            d = dialog({
+                title: '消息',
+                content: '风吹起的青色衣衫，夕阳里的温暖容颜，你比以前更加美丽，像盛开的花<br>——许巍《难忘的一天》',
+                okValue: '确 定',
+                ok: function () {
+                    d.title('提示2')
+                        .content('hello world')
+                        .button([{
+                            value: '打开',
+                            autofocus: true,
+                            callback: function () {
+                                d.title('提示')
+                                    .showModal();
+                                }
+                            }])
+                        .show();
+                    return false;
+                },
+                cancelValue: '取消',
+                cancel: function () {}
+            });
+            d.showModal();
+        });
+    });
+</script>
+</body>
+</html>

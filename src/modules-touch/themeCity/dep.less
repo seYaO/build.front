@@ -1,0 +1,322 @@
+@import "../../styles/mixins/a.icon.less";
+@import "../../styles/mixins/b.search.less";
+.dep-page{
+    display: block;
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    background: #e9ecf1;
+}
+.city-notice {
+    background: @bg-color;
+    position: relative;
+}
+
+.city-notice.none {
+    display: none
+}
+
+.city-tab {
+    background: #e9ecf1;
+    border-width: 1px 0;
+    border-image: url(//img1.40017.cn/touch/public/borderImage/border-dc.png) 2 0 stretch;
+    line-height: 40px;
+    color: #666;
+    font-size: 15px
+}
+
+.city-tab li {
+    float: left;
+    width: 50%;
+    text-align: center;
+    box-sizing: border-box;
+    padding-left: 15%
+}
+
+.city-tab li.active {
+    color: #50b400;
+    position: relative
+}
+
+.city-tab li:last-child {
+    padding-left: 0;
+    padding-right: 15%
+}
+
+.city-tab li.active:after {
+    content: '';
+    position: absolute;
+    left: 65%;
+    bottom: 0;
+    width: 100px;
+    height: 2px;
+    background: #50b400;
+    margin-left: -50px
+}
+
+.city-tab li:last-child:after {
+    padding-left: 0;
+    left: 35%
+}
+
+.city-wrapper {
+}
+
+.c-wrapper {
+    padding-top: 8px;
+    color: #666
+}
+
+.c-wrapper.none {
+    display: none
+}
+
+.c-wrapper h3 {
+    height: 30px;
+    padding-left: 20px;
+    line-height: 30px;
+    color: #777;
+    font-weight: 400;
+    font-size:14px;
+}
+
+.c-wrapper h3.city-key-dw,
+.c-wrapper h3.city-key-rm {
+    line-height: 33px;
+    height: 33px;
+    font-size:14px;
+}
+
+.c-wrapper h3.city-key-rm {
+    margin-top: 5px
+}
+.c-wrapper h3.city-key-ls a{
+    float:right;
+    margin-right:10px;
+}
+.c-wrapper .city-key:after {
+    content: '';
+    float: right;
+    width: 11px;
+    height: 11px;
+    border-left: 1px solid #bbb;
+    border-top: 1px solid #bbb;
+    margin: 12px 16px 0 0;
+    -webkit-transform: rotate(-135deg);
+    transform: rotate(-135deg);
+    transition: transform .2s linear;
+    -webkit-transform-origin: 3px 3px;
+    transform-origin: 3px 3px;
+    transition: -webkit-transform .2s linear
+}
+
+.c-wrapper .city-key.open {
+    color: #50b400
+}
+
+.c-wrapper .city-key.open:after {
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg)
+}
+
+.c-wrapper li {
+    height: 44px;
+    padding: 0 20px;
+    line-height: 44px;
+    background: #fff
+}
+
+.c-wrapper .sort-city,
+.c-wrapper .require-key {
+    border-width: 1px 0;
+    // border-image: url(//img1.40017.cn/touch/public/borderImage/border-dc.png) 2 0 stretch;
+}
+
+.c-wrapper .require-key {
+    border-width: 0 0 1px;
+}
+
+.c-wrapper .sort-city li,
+.c-wrapper .require-city li {
+    .line-top();
+    background-color: white;
+    &:last-child{
+        .line-top-bottom();
+        background-color: white;
+    }
+    position: relative;
+    overflow: hidden;
+}
+
+// .c-wrapper .sort-city li:before,
+// .c-wrapper .require-city li:before {
+//     position: absolute;
+//     content: '';
+//     left: 20px;
+//     bottom: 0;
+//     height: 1px;
+//     width: 100%;
+
+// }
+
+// .c-wrapper .sort-city li:last-child:before,
+// .c-wrapper .require-city li:last-child:before {
+//     display: none
+// }
+
+.c-wrapper li.select {
+    color: #50b400;
+    position: relative
+}
+
+.c-wrapper li.select:after {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 9px;
+    right: 45px;
+    top: 12px;
+    border-left: 4px solid #50b400;
+    border-bottom: 4px solid #50b400;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.c-wrapper .hot-city-ul li.select:after {
+    display: none
+}
+
+.c-wrapper .dw-city {
+    padding: 0 35px 0 15px
+}
+
+.c-wrapper .dw-city li {
+    background: #fff;
+    border: 1px solid #ddd;
+    color: @green;
+    font-size: 16px;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.c-wrapper .dw-city li span {
+    color: #999;
+    font-size: 12px
+}
+
+.c-wrapper .hot-city-ul {
+    padding: 0 0 0 5px
+}
+
+.c-wrapper .hot-city-ul li {
+    padding: 0;
+    margin: 0 0 10px 10px;
+    background: #fff;
+    border: 1px solid #dcdcdc;
+    border-radius: 3px;
+    padding: 0;
+    width: 81px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    float: left;
+    overflow: hidden;
+}
+
+.c-wrapper .closed {
+    display: none
+}
+
+.city-nav {
+    position: fixed;
+    right: 0;
+    top: 60px;
+    font-size: 12px;
+    color: #50b400;
+    background: rgba(242, 244, 247, .7);
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    z-index: 100000;
+    -webkit-transform: translateZ(0);
+}
+
+.city-nav.nav-fixed-top {
+    top: 100px
+}
+
+.city-nav.none,
+.city-nav.hidden {
+    display: none
+}
+
+.city-nav li {
+    line-height: 20px;
+    padding: 0 2px;
+    text-align: center;
+    position: relative;
+    font-size: 16px;
+    z-index: 10000;
+    cursor: pointer;
+}
+
+.city-nav .nav-city-dw,
+.city-nav .nav-city-rm {
+    font-size: 14px
+}
+
+.city-nav li span {
+    position: absolute;
+    right: 100%;
+    top: 0;
+    background: rgba(80, 180, 0, .7);
+    line-height: 20px;
+    font-size: 18px;
+    color: #fff;
+    border-radius: 2px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 3px 6px;
+    display: none
+}
+
+.city-nav li:active span,
+.city-nav .nav-active span{
+    display: block
+}
+
+.city-nav li span:after {
+    content: '';
+    right: -7px;
+    top: 50%;
+    margin-top: -4px;
+    border-color: transparent transparent transparent rgba(80, 180, 0, .7);
+    border-style: dashed dashed dashed solid;
+    border-width: 4px;
+    position: absolute
+}
+
+.search-complete .autofill-wrap {
+    position: relative
+}
+
+@media screen and (width:375px) {
+    .c-wrapper .hot-city-ul {
+        padding: 0 0 0 11px
+    }
+    .c-wrapper .hot-city-ul li {
+        margin: 0 0 10px 4px
+    }
+}
+.is-ios.dep-outer{
+    height:100%;
+    width: 100%;
+    overflow: hidden;
+    position:absolute;
+    .city-nav{
+        position: absolute;
+    }
+}

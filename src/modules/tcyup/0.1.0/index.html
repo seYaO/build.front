@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
+<div class="tcyup" id="tcyup">tcyup</div>
+<div class="tcyup" id="tcyup1">tcyup</div>
+<div class="tcyup11" id="tcyup2">tcyup2</div>
+
+<!--
+<div class="tcyup-dialog">
+    <div class="tcyup-content">
+        <div class="tcyup-header">
+            <button type="button" class="tcyup-close">×</button>
+        </div>
+        <div class="tcyup-body">
+            <div class="tcyup-main">
+                <p class="tcyup-title">请使用手机微信扫描二维码</p>
+                <div class="tcyup-qrcode">
+                    <div class="tcyup-qrcode-loading"></div>
+                    <div class="tcyup-qrcode-body"></div>
+                </div>
+                <p class="tcyup-tip">二维码10分钟内有效，若超时请重新打开本页面</p>
+            </div>
+            <div class="tcyup-preview">
+                <div class="tcyup-pretip"><span>您已上传以下文件</span></div>
+                <div class="tcyup-prebox">
+                    <div class="tcyup-prebox-loading"></div>
+                    <div class="tcyup-prebox-failing">
+                        <p>矮油，没找到您上传的文件哦</p>
+                        <div>您可以点击刷新试试，也可以重新上传</div>
+                    </div>
+                    <div class="tcyup-prelist">
+                        <div class="tcyup-preitem"></div>
+                        <div class="tcyup-preitem"></div>
+                        <div class="tcyup-preitem"></div>
+                        <div class="tcyup-preitem"></div>
+                        <div class="tcyup-preitem"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="tcyup-footer">
+            <p class="tcyup-btns1">
+                <button type="button" class="tcyup-btn tcyup-btn-ok tcyup-uploaded">我已手机上传完成</button>
+            </p>
+            <p class="tcyup-btns2">
+                <button type="button" class="tcyup-btn tcyup-btn-info tcyup-refresh">刷新</button>
+                <button type="button" class="tcyup-btn tcyup-btn-ok tcyup-finish">确认完成</button>
+            </p>
+
+        </div>
+    </div>
+</div>
+-->
+
+<!--<div class="tcyup-slider" style="display: none">-->
+    <!--<div class="tcyupl-main">-->
+        <!--<div class="tcyupl-header" >-->
+            <!--<div class="tcyupl-title">-->
+                <!--<span class="tcyupl-tally">(1/6)</span>-->
+            <!--</div>-->
+            <!--<button type="button" class="tcyupl-close">×</button>-->
+        <!--</div>-->
+        <!--<div class="tcyupl-body">-->
+            <!--<div class="tcyupl-image">-->
+                <!--<img src="dakar.jpg">-->
+            <!--</div>-->
+
+            <!--<div class="tcyupl-controls">-->
+                <!--<div class="tcyupl-previous">-->
+                    <!--<a href='#' class='tcyupl-previous-link'>&laquo; 上一张</a>-->
+                <!--</div>-->
+                <!--<div class="tcyupl-next">-->
+                    <!--<a href='#' class='tcyupl-next-link'>上一张 &raquo;</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+
+
+<script src="http://libs.baidu.com/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="index.js"></script>
+<script type="text/javascript">
+$(function(){
+//    http://10.14.40.49:7051/dujia/ajaxhelper/checkcodetest
+    $(".tcyup").tcyup({
+        token: 'WyUSqpMuHGKTt4KkCW%2fwj%2bP4WNhCLrP36XwlhF2u7ZA%3d',
+        title: '测试上传',
+        pagesize: 3,
+        host : 'http://10.14.40.49:7051',
+        projectid: 1234,
+        subprojectid: 1234,
+        isvalidate: false,
+        success: function (data) {
+            debugger;
+            alert(data);
+        }
+    });
+    $("#tcyup2").tcyup({
+        token: '1%2fYjo%2bqOjemsJmWPs%2bquZJR7%2fatQ3LpOU8ZG%2bYUsmC8%3d',
+        title: '测试上传',
+        pagesize: 3,
+        auto : true,
+        projectid: 1234,
+        subprojectid: 1234,
+        isvalidate: false,
+        success: function (data) {
+            debugger;
+            alert(data);
+        }
+    });
+
+});
+</script>
+</body>
+</html>

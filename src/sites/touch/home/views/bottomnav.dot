@@ -1,0 +1,45 @@
+<div class="page-list">
+    <div class="goodline">
+        <div class="tab_box">
+            <div class="listTab"><span class="active" data-type="1">风情东南亚</span><span data-type="1">热情海岛</span><span data-type="3">免签</span><span data-type="3">落地签</span></div>
+            <div class="listTabSbox">
+                <div class="J_listTabS">
+                    <span class="active">泰国</span>
+                    <span>清迈</span>
+                    <span>新加坡</span>
+                    <span>柬埔寨</span>
+                    <span>曼谷</span>
+                    <span>吴哥窟</span>
+                </div>
+            </div>
+            <div class="listTabSbox none">
+                <div class="J_listTabS">
+                    <span class="active">马尔代夫</span>
+                    <span>普吉岛</span>
+                    <span>巴厘岛</span>
+                    <span>塞班岛</span>
+                </div>
+            </div>
+            <div class="listTabSbox none">
+                <div class="J_listTabS">
+                    <span class="active">巴厘岛</span>
+                    <span>塞班岛</span>
+                    <span>塞舌尔</span>
+                    <span>毛里求斯</span>
+                </div>
+            </div>
+            <div class="listTabSbox none">
+                <div class="J_listTabS">
+                    <span class="active">泰国</span>
+                    <span>越南</span>
+                    <span>柬埔寨</span>
+                    <span>马尔代夫</span>
+                    <span>老挝</span>
+                    <span>斐济</span>
+                    <span>帕劳</span>
+                </div>
+            </div>
+        </div>
+        <ul></ul>
+    </div>
+</div>

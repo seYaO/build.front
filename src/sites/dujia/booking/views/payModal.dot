@@ -1,0 +1,102 @@
+{{var datas = it,data = it.Data;}}
+<div id="J_paymask" class="mpay-mask"></div>
+<div id="J_paymodal" class="mpay-modal">
+    <div class="mpay-head">
+        <a id="J_pay_close" class="mpay-close" href="javascript:void(0);"></a>
+    </div>
+	<div id="J_mpay_box" class="mpay-box">
+	    <div class="mpay-switch">
+	    	{{?datas.Mode==0||datas.Mode==1}}
+	        <div class="switch-li">正常支付</div>
+	        {{?}}
+	        {{?datas.Mode==0||datas.Mode==2}}
+	        <div class="switch-li">分期支付</div>
+	        {{?}}
+	    </div>
+
+	    {{?datas.Mode==0||datas.Mode==1}}
+	    <div class="switch-cont mpay-cont1">
+	        <!---->
+	        <div class="mpay-price">
+	            <span class="price-info">{{=datas.usualpriceTmpl}}</span>
+	            <span class="price-pay {{?datas.TotalPrice<=500}}none{{?}}">点击这里可以设置<a>分次付款</a>哦！</span>
+	            <span class="price-put none">
+	                <em>本次支付金额：</em>
+	                <input id="J_pay_money" class="pay-money placehold" type="text" value="请输入金额" attr-value="请输入金额">&nbsp;<span>元&nbsp;</span>
+	                <span class="tips-pay"></span>
+	            </span>
+	        </div>
+	        <!-- -->
+	        <div class="mpay-check">
+	            <label class="check-btn" for="mpayCheck"><input type="checkbox" id="mpayCheck">我已经阅读，并知晓安全告知书的细节</label>
+	            <span id="J_pay_sub" class="sub-btn">去付款</span>
+	        </div>
+	        <!-- -->
+	        <div class="mpay-treaty">{{=datas.treatyTmpl}}</div>
+	        <!-- -->
+	    </div>
+	    {{?}}
+
+	    {{?datas.Mode==0||datas.Mode==2}}
+	    <div class="switch-cont mpay-cont2">
+	        <div class="mpay-price">
+	            <span class="price-info">{{=datas.iouspriceTmpl}}</span>
+	        </div>
+	        <ul class="mpay-form">
+	            <li>
+	                <span class="form-l"><label for="mpayName">联&nbsp;&nbsp;系&nbsp;人：</label></span>
+	                    <span class="form-r">
+	                        <input id="mpayName" maxlength="20" class="ipt-txt" value="{{=data.Linker.LinkName||''}}" type="text" {{?data.IsCanEdit==0}}disabled{{?}}><span class="form-tip" data-tip="联系人必须是出游人之一，分期支付后联系人姓名不可更改">联系人必须是出游人之一，分期支付后联系人姓名不可更改</span>
+	                    </span>
+	            </li>
+	            <li>
+	                <span class="form-l"><label for="mpayIdenty">身份证号：</label></span>
+	                    <span class="form-r">
+	                        <input id="mpayIdenty" maxlength="20" class="ipt-txt" value="{{=data.Linker.IdentityID||''}}" type="text" {{?data.IsCanEdit==0}}disabled{{?}}><span class="form-tip"></span>
+	                    </span>
+	            </li>
+	            <li>
+	                <span class="form-l"><label for="mpayPhone">手机号码：</label></span>
+	                    <span class="form-r">
+	                        <input id="mpayPhone" name="Iphone" class="ipt-txt" value="{{=data.Linker.Telephone||''}}" type="text" {{?data.IsCanEdit==0}}disabled{{?}}><span class="form-tip"></span>
+	                    </span>
+	            </li>
+	        </ul>
+	        <!-- -->
+	        <div id="J_pay_radio" class="mpay-cate">
+	            分期支付金额：
+	            {{~data.JDPeriodInfo:priceLi:i}}
+	            <label for="mpaycate{{=i}}">
+		            <input id="mpaycate{{=i}}" name="mpaycate" {{?data.ChoosePeriod==priceLi.JdPeriodNum}}checked{{?}}  {{?data.IsCanEdit==0}}disabled{{?}}   type="radio"  data-price="{{=priceLi.PerPrice}}" data-num="{{=priceLi.JdPeriodNum}}">
+		            首付¥{{= (Math.round((priceLi.PerPrice)*100))/100}}+¥{{=(Math.round((priceLi.PerPrice+priceLi.JdCounterFee)*100))/100}}x{{=priceLi.JdPeriodNum-1}}期<em>{{?priceLi.JdCounterFee==0}}(免手续费){{??}}(含手续费¥{{=(Math.round((priceLi.JdCounterFee)*100))/100}}/期){{?}}</em>
+	            </label>
+	            {{~}}
+	        </div>
+	        <!-- -->
+	        <div class="mpay-check">
+	            <label class="check-btn" for="mpayCheck2"><input type="checkbox" id="mpayCheck2">我已经阅读，并知晓安全告知书的细节</label>
+	            <span id="J_pay_sub2" class="sub-btn">去付款</span>
+	        </div>
+	        <!-- -->
+	        <form id="J_jd_post" method="post" action="http://go.jd.com/order/receiveOrder">
+				<input type="hidden" id="jd_version" name="version" value="">
+				<input type="hidden" id="jd_charset" name="charset" value="">
+				<input type="hidden" id="jd_tradeType" name="tradeType" value="">
+				<input type="hidden" id="jd_merchantCode" name="merchantCode" value=""/>
+				<input type="hidden" id="jd_data" name="data" value="">
+				<input type="hidden" id="jd_sign" name="sign" value="">
+			</form>
+	        <!-- -->
+	      	<div class="mpay-treaty">{{=datas.treatyTmpl}}</div>
+	        <!-- -->
+	    </div>
+	    {{?}}
+	</div>
+</div>
+<div id="J_payalert" class="mpay-alert" style="display: none">
+    <div class="mpay-head"><a class="mpay-close" href="javascript:void(0);"></a></div>
+    <div class="alert-cont">
+        <strong></strong>
+        <a href="javascript:void(0);" class="alert-btn">确定</a>
+    </div>
+</div>

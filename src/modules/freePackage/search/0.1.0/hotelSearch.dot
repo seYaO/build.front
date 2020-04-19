@@ -1,0 +1,24 @@
+<span class="mNotice-arrows"></span>
+{{?it.Code == 4000}}
+	{{?it.Data&&it.Data.length}}
+		{{?it.Data.length}}
+			<div class="flycityBox hotelcityBox">
+			<div class="title-hotel-more">{{=it.val}}，若需缩小范围，请输入更多条件</div>
+			    {{~it.Data:itVal:index}}
+			    {{var html1 = itVal.CityName.replace(it.val,it.val1),
+			    	html2 = itVal.ProvinceName.replace(it.val,it.val1),
+			    	html3 = itVal.CountryName.replace(it.val,it.val1),
+			    	html4 = itVal.EnglishName.replace(it.val,it.val1);
+			    	var nClass = "";
+			    	if(index==0){nClass="select";}
+			    }}
+			    <div class="flycityItem {{=nClass}}" data-name="{{=itVal.CityName}}">{{=html1}} , {{=html2}} , {{=html2}} （{{=html4}}）</div>
+			    {{~}}
+			</div>
+		{{?}}
+	{{??}}
+		<div class="noresult-fly">对不起，无法找到该地点</div>
+	{{?}}
+{{??}}
+<div class="noresult-fly">对不起，无法找到该地点</div>
+{{?}}

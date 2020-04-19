@@ -1,0 +1,40 @@
+<div class="team-table-content team-special-content none">
+    <div class="table-title">特色定制</div>
+    <div class="table-content table-content-info">
+        <div class="table-info J_Company_Theme none">
+            <label>出游主题</label><span class="table-time table-star">团建拓展<i></i></span>
+            <span class="table-time">奖励旅游<i></i></span>
+            <span class="table-time">会议会务<i></i></span>
+            <span class="table-time">商务考察<i></i></span>
+            <span class="table-time">企业年会<i></i></span>
+        </div>
+        <div class="table-info J_Hotel_Info">
+            <label>酒店星级</label><span class="table-time table-star" data-id="8">舒适型<i></i></span>
+            <span class="table-time" data-id="9">高档型<i></i></span>
+            <span class="table-time" data-id="10">豪华型<i></i></span>
+        </div>
+        <div class="table-info J_Person_Theme">
+            <label>出游主题</label><input type="checkbox" class="table-check"><label class="table-check-desc">休闲</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">观光</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">会议</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">购物</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">美食</label>
+        </div>
+        <div class="table-info J_OtherNeed">
+            <label>其他需求</label><input type="checkbox" class="table-check"><label class="table-check-desc">线路设计</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">机票</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">用车</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">导游</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">酒店</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">签证</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc table-ticket">门票</label>
+            <input type="checkbox" class="table-check"><label class="table-check-desc">用餐</label>
+        </div>
+        <div class="table-info">
+            <label class="table-note">备注</label><textarea class="table-input-note J_Note" placeholder="如您已经中意的ID可留言给我们或者其他，比如：导游、聚餐、房间数等要求"></textarea>
+        </div>
+        <div class="table-submit">
+            <input type="button" class="table-submit-btn J_PreBtn" value="上一步" /><input type="button" class="table-submit-btn J_NextBtn" value="下一步" />
+        </div>
+    </div>
+</div>

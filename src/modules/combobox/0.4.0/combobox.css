@@ -1,0 +1,127 @@
+@charset "UTF-8";
+.skin-blue .module-listbox {
+    width: 100%;
+    color: #333333; }
+.skin-blue .module-listbox .list-default {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    padding: 0 6px;
+    position: relative;
+    background-color: #10a3ff;
+    color: #fff; }
+.skin-blue .module-listbox .list-title {
+    width: 100%;
+    height: 30px;
+    display: block;
+    line-height: 30px;
+    font-weight: bolder;
+    background-color: #f8f8f8; }
+.skin-blue .module-listbox .list-title span {
+    display: inline-block; }
+.skin-blue .module-listbox .list-title .bico {
+    color: #10a3ff;
+    font-weight: bolder;
+    height: 30px;
+    line-height: 30px; }
+.skin-blue .module-listbox .list-item {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    padding: 0 6px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    /*多选选中*/
+    /*单选选中*/ }
+.skin-blue .module-listbox .list-item:hover {
+    background-color: #f7f8fa; }
+.skin-blue .module-listbox .list-item.selected {
+    color: #999999; }
+.skin-blue .module-listbox .list-item.selected > .bico {
+    position: absolute;
+    top: 0;
+    right: 6px;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer; }
+.skin-blue .module-listbox .list-item.selected:hover {
+    background-color: #f7f8fa;
+    color: #333333; }
+.skin-blue .module-listbox .list-item.single-selected {
+    background-color: #10a3ff;
+    color: #fff; }
+.skin-blue .module-listbox .list-item.empty {
+    background-color: #f6b63a;
+    color: #fff; }
+
+@charset "UTF-8";
+.skin-green {
+    /*$size-pading:10px;*/ }
+.skin-green .module-listbox {
+    width: 100%;
+    color: #333333; }
+.skin-green .module-listbox .list-default {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    padding: 0 6px;
+    position: relative;
+    background-color: #8bb923;
+    color: #fff; }
+.skin-green .module-listbox .list-title {
+    width: 100%;
+    height: 30px;
+    display: block;
+    line-height: 30px;
+    font-weight: bolder;
+    background-color: #f8f8f8; }
+.skin-green .module-listbox .list-title span {
+    display: inline-block; }
+.skin-green .module-listbox .list-title .bico {
+    color: #8bb923;
+    font-weight: bolder;
+    height: 30px;
+    line-height: 30px; }
+.skin-green .module-listbox .list-item {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    padding: 0 6px;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    /*多选选中*/
+    /*单选选中*/ }
+.skin-green .module-listbox .list-item:hover {
+    background-color: #f7f8fa; }
+.skin-green .module-listbox .list-item.selected {
+    color: #999999; }
+.skin-green .module-listbox .list-item.selected > .bico {
+    position: absolute;
+    top: 0;
+    right: 6px;
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer; }
+.skin-green .module-listbox .list-item.selected:hover {
+    background-color: #f7f8fa;
+    color: #333333; }
+.skin-green .module-listbox .list-item.single-selected {
+    background-color: #8bb923;
+    color: #fff; }
+.skin-green .module-listbox .list-item.empty {
+    background-color: #f6b63a;
+    color: #fff; }

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计分开加载</title>
+</head>
+<body>
+<script src="http://js.40017.cn/touch/app/public/zepto.20140624.js?V=824" charset="utf-8"></script>
+<script src="statistics.js"></script>
+<script>
+    stat.init({
+        "baidu": {
+            "parameter": "touch"//PC端传“pc”，touch站传“touch”
+        },//百度统计
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', '10004-2006-0'],
+            ['_refId', stat.getRefid()],
+            ['_userId', '0'],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', '/出境/touch活动页/####']
+        ]
+    });
+    stat.init({
+        "pvConfig": {//PV统计
+            "PublicPlatId": "1",
+            "PageId": "####",
+            "LineId": "0",
+            "ActivityId": "####",
+            "ActivityPeriodId": "####",
+            "ModuleId": "0",
+            "PVSource": "1",
+            "ak": "",
+            "url": "http://www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+        }
+    })
+</script>
+</body>
+</html>

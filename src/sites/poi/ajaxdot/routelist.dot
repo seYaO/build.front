@@ -1,0 +1,24 @@
+{{~it:data:index}}
+<div class="sceneryShow sceneryLi" data-type="{{=data.PIType1Id}}" data-local="list" data-poiid = "{{=data.PIPOISerialNumber}}" data-gglon="{{=data.PILonGG}}" data-gglat="{{=data.PILatGG}}">
+<img data-img="{{=data.PEImageUrl}}" data-poiid = "{{=data.PIPOISerialNumber}}">
+<div class="showInfo">
+<span class="title" title="{{=data.PIName}}">{{=data.PIName}}</span>
+<span class="information">{{=data.PINameEN}}</span>
+{{var stars;}}
+{{?data.PIStars == 5}}
+{{stars = 'A';}}
+{{??data.PIStars == 4}}
+{{stars = 'B';}}
+{{??data.PIStars == 3}}
+{{stars = 'C';}}
+{{??data.PIStars == 2}}
+{{stars = 'D';}}
+{{??data.PIStars == 1}}
+{{stars = 'E';}}
+{{?}}
+<span class="information">优质度：{{=stars}}</span>
+<span class="information playTime">游玩时间：{{?data.PEPlayTime}}{{=data.PEPlayTime}}{{??}}暂无{{?}}</span>
+<span class="action">+添加到行程</span>
+</div>
+</div>
+{{~}}

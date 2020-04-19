@@ -1,0 +1,309 @@
+{{
+    var it = IT.Data;
+}}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" trace="pc-package-flightList">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit"/>
+    <title>更换航班</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="apple-itunes-app" content="app-id=475966832" />
+    <script type="text/javascript">
+    </script>
+    <% includeId = cnwidescreenjscss %>
+    <link href="//css.40017.cn/cn/min/???/cn/if/comm/2013/iflight_logo.0.0.5.css" rel="stylesheet" type="text/css" /><!--ignore-->
+    <link href="./index.css" rel="stylesheet" /><!--ignore-->
+    <!--通栏样式-->
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.07044.css" rel="stylesheet">
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/fish.1.4.7.js,/cn/public/fc.1.1.7.js?v=2015021101"></script><!--ignore-->
+    <script type="text/javascript" src="/modules/jquery.js"></script><!--ignore-->
+    <style>
+        #module-slider .module-slider-header, #module-slider .module-slider-top {
+            display: none;
+        }
+        #module-slider{
+            min-height: 274px;
+            height: auto;
+            bottom: 0;
+            top: auto;
+        }
+        #module-slider .ico.c-4 {
+            background-position: -80px -94px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="hidden" id="lineId" {{?it.PostBack && it.PostBack != null}} value="{{=it.PostBack.LineId}}"{{?}}/>
+    <input type="hidden" id="goOrBack" {{?it.PostBack && it.FlightsParam}} value="{{=it.PostBack.FlightIndex}}" data-FlightEndIndex = "{{=it.PostBack.Flights.length}}"{{?}}>
+    {{?it.IsCct && it.IsCct == 1}}
+        <input type="hidden" id="cctParam" name="cctParam" value='{{=it.CctParam}}'>
+    {{?}}
+    <!-- 公共头部 start -->
+    <div {{?it.IsCct && it.IsCct == 1}}style="display:none;"{{?}}>
+        <% includeId = cnwidescreenhead?channel=dujia %>
+    </div>
+    <!-- 公共头部 end -->
+    {{?!it.PostBack}}
+        <div class="wrapper">
+            <div id="content">
+                <div class="clearfix">
+                    <div class="title-flow"><div class="changeTitle">更换航班</div>
+                        <i class="flow-go">1、选择去程</i><i class="flow-finish">2、选择返程</i><i class="flow-finish">3、完成</i>
+                    </div>
+                </div>
+                <div class="J_tophas"></div>
+                <div class="flight-panel" id="modify_pop1">
+                    <div class="J_flightList">
+                        <div class="J_filter"></div>
+                    </div>
+                    <div class='search_loading'></div>
+                    <div class="fp-list J_fp-list">
+                        <div class="temai-noresult">
+                            <img src="//img1.40017.cn/cn/v/2015/yushou/no-result.png" alt="">
+                            <p>很抱歉，搜索无结果，请更换关键词搜索</p>
+                            </div>
+                            <div class="back-page">返回套餐<i></i>
+                            </div>
+                        </div>
+                    <div id="J_CometPager"></div>
+                </div>
+            </div>
+            <form id="hotelForm"  action="" method ="post" redirectType="Temporary" type="Redirect">
+                <input type="hidden" name="productParam" id="productParam" value=''>
+                {{?it.IsCct && it.IsCct == 1}}
+                    <input type="hidden" name="CctParam" id="fromCctParam" value=''>
+                {{?}}
+            </form>
+        </div>
+    {{??}}
+        <div class="wrapper">
+            <div id="content">
+                <div class="clearfix">
+                    {{
+                        var flightLen = it.PostBack.Flights.length;
+                    }}
+                    {{?it.PostBack.Flights.length > 2}}
+                        <div class="title-flow"><div class="changeTitle">更换航班</div>
+                            {{~it.PostBack.Flights:flights:fIndex}}
+                                {{
+                                    var flowDown = '';
+                                    if(fIndex == it.PostBack.FlightIndex -1){
+                                        flowDown = 'flow-back';
+                                    }
+                                }}
+                                {{?fIndex == 0}}
+                                    <i class="flow-go">{{=fIndex+1}}、选择第{{=fIndex+1}}程</i>
+                                {{??}}
+                                    {{?fIndex < it.PostBack.FlightIndex + 1 }}
+                                        <i class="flow-back">{{=fIndex+1}}、选择第{{=fIndex+1}}程</i>
+                                    {{??}}
+                                        <i class="flow-finish">{{=fIndex+1}}、选择第{{=fIndex+1}}程</i>
+                                    {{?}}
+                                {{?}}
+                            {{~}}
+                            <i class="flow-finish">{{=flightLen+1}}、完成</i>
+                        </div>
+                    {{??}}
+                        <div class="title-flow"><div class="changeTitle">更换航班</div>
+                            <i class="flow-go">1、选择去程</i><i class="{{?it.PostBack.FlightIndex == 1}}flow-back{{??}}flow-finish{{?}}">2、选择返程</i><i class="flow-finish">3、完成</i>
+                        </div>
+                    {{?}}
+                </div>
+                <div class="J_tophas">
+                    {{?it.PostBack.SelectFlights}}
+                        {{~it.PostBack.SelectFlights:sFlight:sIndex}}
+                            <div class="had-goFlight clearfix">
+                                <div class="left-had">
+                                    <div class="title-hasGo">
+                                        {{?it.PostBack.Flights.length > 2}}
+                                            已选第{{=sIndex+1}}程
+                                        {{??}}
+                                            已选去程
+                                        {{?}}
+                                        <span class="hasGo-city" title="{{=sFlight.DepartCity}}-{{=sFlight.ArriveCity}}">{{=sFlight.DepartCity}}-{{=sFlight.ArriveCity}}</span>
+                                        <span class="hasGo-date">{{=sFlight.Flight.StartDate}}</span>
+                                    </div>
+                                </div>
+                                <div class="right-hasGo">
+                                    <div class="flightBox">
+                                        {{?it.PostBack.Flights.length > 2}}
+                                            <a class="reset-flight">重选第{{=sIndex + 1}}程</a>
+                                        {{??}}
+                                            <a class="reset-flight">重选去程</a>
+                                        {{?}}
+                                        <div class="flight-content flight-go">
+                                            <table class="flight-table"  border="0">
+                                                <tbody>
+                                                    <tr>
+                                                    <td width="125" align="center"><span style="font-size:16px">{{=sFlight.Flight.StartDate}}</span></td>
+                                                    <td width="125" align="center"><span style="font-size:14px">{{=sFlight.Flight.AirCompany}}{{=sFlight.Flight.FlightNumber}} </span></td>
+                                                    <td width="350" align="center"><table class="table-flight" border="0">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td width="120" align="center"> <strong>{{=sFlight.Flight.StartTime}}</strong> </td>
+                                                                <td width="140" rowspan="2">
+                                                                    <span class="flight-icon">
+                                                                        <em>约{{=sFlight.Flight.FlightTime}}</em>
+                                                                        {{?sFlight.Flight.StopCity && sFlight.Flight.StopCity.length}}
+                                                                            <div class="stopCity">
+                                                                                <span class="stopCitySpan">{{=sFlight.Flight.StopCity}}</span><span class="jingting">经停</span>
+                                                                            </div>
+                                                                        {{?}}
+                                                                    </span>
+                                                                </td>
+                                                                <td width="90" align="center"> <span class="time"> <strong>{{=sFlight.Flight.EndTime}}</strong>  </span> </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td width="120" align="center" class="overHidden" title="{{=sFlight.Flight.DepartAirPort}}{{=sFlight.Flight.DepartAirFloor}}" style="font-size:16px">{{=sFlight.Flight.DepartAirPort}}{{=sFlight.Flight.DepartAirFloor}}</td>
+                                                                <td width="90" align="center" class="overHidden" title="{{=sFlight.Flight.ArriveAirPort}}{{=sFlight.Flight.ArriveAirFloor}}" style="font-size:16px">{{=sFlight.Flight.ArriveAirPort}}{{=sFlight.Flight.ArriveAirFloor}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table></td>
+                                                    <td width="100" align="center"><span>{{=sFlight.Cabins[0].MainCabin.CabinName}}</span></td>
+                                                    {{?sFlight.Cabins[0].MainCabin.Consign}}
+                                                        <td width="170" align="center"><span class="explain-fly" data-goBookNotice="{{=sFlight.Cabins[0].MainCabin.BookNotice}}" data-goChangeRule="{{=sFlight.Cabins[0].MainCabin.ChangeRule}}" data-goRefundRule="{{=sFlight.Cabins[0].MainCabin.RefundRule}}" data-goConsign ="{{=sFlight.Cabins[0].MainCabin.Consign}}" data-isdirect="{{=sFlight.Cabins[0].IsDirect}}" data-param="{{=sFlight.Cabins[0].MainCabin.ChangeRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span></td>
+                                                    {{??}}
+                                                        <td width="170" align="center"><span class="explain-fly" data-goBookNotice="{{=sFlight.Cabins[0].MainCabin.BookNotice}}" data-goChangeRule="{{=sFlight.Cabins[0].MainCabin.ChangeRule}}" data-goRefundRule="{{=sFlight.Cabins[0].MainCabin.RefundRule}}"  data-param="{{=sFlight.Cabins[0].MainCabin.ChangeRule}}" data-isdirect="{{=sFlight.Cabins[0].IsDirect}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span></td>
+                                                    {{?}}
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        {{?sFlight.ConnectingFlights&&sFlight.ConnectingFlights.length}}
+                                            {{~sFlight.ConnectingFlights:zhuanItems:index}}
+                                                <div class="Z-line">
+                                                    <span><i></i><b>{{=zhuanItems.ConnectingCity}}</b><em>中转停留{{=zhuanItems.ConnectingTime}}</em></span>
+                                                    {{?zhuanItems.ConnectingFlight.TransitsSign}}
+                                                        <div class="J_transitsSign transitsSign" data-content='{{=zhuanItems.ConnectingFlight.TransitsSign}}'>
+                                                            过境签证
+                                                        </div>
+                                                    {{?}}
+                                                </div>
+                                                <div class="flight-content flight-go flight-zhuan">
+                                                    <table class="flight-table"  border="0">
+                                                        <tbody>
+                                                        <tr>
+                                                        <td width="125" align="center"><span style="font-size:16px">{{=zhuanItems.ConnectingFlight.StartDate}}</span></td>
+                                                        <td width="125" align="center"><span style="font-size:14px">{{=zhuanItems.ConnectingFlight.AirCompany}}{{=zhuanItems.ConnectingFlight.FlightNumber}} </span></td>
+                                                        <td width="350" align="center"><table class="table-flight" border="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td width="120" align="center"> <strong>{{=zhuanItems.ConnectingFlight.StartTime}}</strong> </td>
+                                                                    <td width="140" rowspan="2">
+                                                                        <span class="flight-icon">
+                                                                            <em>约{{=zhuanItems.ConnectingFlight.FlightTime}}</em>
+                                                                            {{?zhuanItems.ConnectingFlight.StopCity && zhuanItems.ConnectingFlight.StopCity.length}}
+                                                                                <div class="stopCity">
+                                                                                    <span class="stopCitySpan">{{=zhuanItems.ConnectingFlight.StopCity}}</span><span class="jingting">经停</span>
+                                                                                </div>
+                                                                            {{?}}
+                                                                        </span>
+                                                                    </td>
+                                                                    <td width="90" align="center"> <span class="time"> <strong>{{=zhuanItems.ConnectingFlight.EndTime}}</strong>  </span> </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td width="120" align="center" class="overHidden" title="{{=zhuanItems.ConnectingFlight.DepartAirPort}}{{=zhuanItems.ConnectingFlight.DepartAirFloor}}" style="font-size:16px">{{=zhuanItems.ConnectingFlight.DepartAirPort}}{{=zhuanItems.ConnectingFlight.DepartAirFloor}}</td>
+                                                                    <td width="90" align="center" class="overHidden" title="{{=zhuanItems.ConnectingFlight.ArriveAirPort}}{{=zhuanItems.ConnectingFlight.ArriveAirFloor}}" style="font-size:16px">{{=zhuanItems.ConnectingFlight.ArriveAirPort}}{{=zhuanItems.ConnectingFlight.ArriveAirFloor}}</td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table></td>
+                                                        <td width="100" align="center"><span>{{=sFlight.Cabins[0].ConnectingCabins[index].CabinName}}</span></td>
+                                                        {{
+                                                            var connParamObj = '';
+                                                            if(sFlight.Cabins[0].ConnectingCabins[index].Index == parseInt(index + 1)){
+                                                                connParamObj = sFlight.Cabins[0].ConnectingCabins[index];
+                                                            }
+                                                        }}
+                                                        {{?connParamObj}}
+                                                            {{?connParamObj.Consign}}
+                                                                <td width="170" align="center"><span class="explain-fly" data-goBookNotice="{{=connParamObj.BookNotice}}" data-goChangeRule="{{=connParamObj.ChangeRule}}" data-goRefundRule="{{=connParamObj.RefundRule}}" data-IsDirect="{{=sFlight.Cabins[0].IsDirect}}" data-goConsign ="{{=connParamObj.Consign}}" data-param="{{=connParamObj.ChangeRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span></td>
+                                                            {{??}}
+                                                                <td width="170" align="center"><span class="explain-fly" data-goBookNotice="{{=connParamObj.BookNotice}}" data-goChangeRule="{{=connParamObj.ChangeRule}}" data-goRefundRule="{{=connParamObj.RefundRule}}"  data-IsDirect="{{=sFlight.Cabins[0].IsDirect}}" data-param="{{=connParamObj.ChangeRule}}" data-content="<div class='data-loading'><div class='bg'></div><span>努力加载中，请稍等...</span></div>">退改签及购票说明</span></td>
+                                                            {{?}}
+                                                        {{??}}
+                                                            <td width="170"><span class="explain-fly" data-gobooknotice="" data-gochangerule="" data-gorefundrule="" data-isdirect="0" data-param="" data-content="<div class=&quot;rule&quot;>   <h2>购票说明</h2>   <div class=&quot;rule&quot;>    </div>   <p>暂无退改签说明</p>     </div>">退改签及购票说明</span></td>
+                                                        {{?}}
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            {{~}}
+                                        {{?}}
+                                    </div>
+                                </div>
+                            </div>
+                        {{~}}
+                    {{?}}
+                </div>
+                <div class="flight-panel" id="modify_pop1">
+                    <div class="J_flightList">
+                        <div class="J_filter"></div>
+                    </div>
+                    <div class='search_loading'></div>
+                    <div class="fp-list">
+                        <div class="J_fp-list box-fly product-box"></div>
+                    </div>
+                    <div id="J_CometPager"></div>
+                </div>
+            </div>
+            <form id="hotelForm"  action="" method ="post" redirectType="Temporary" type="Redirect">
+                <input type="hidden" name="productParam" id="productParam" value=''>
+                {{?it.IsCct && it.IsCct == 1}}
+                    <input type="hidden" name="CctParam" id="fromCctParam" value=''>
+                {{?}}
+            </form>
+        </div>
+    {{?}}
+    <script type="text/javascript">
+        var product =  {
+            "isvalid":{{=it.IsPostBack}},
+            "param": {{=JSON.stringify(it.FlightsParam)}},
+            "Data": {{=JSON.stringify(it.PostBack)}}
+        };
+    </script><!--ignore-->
+    <!-- 公共页脚 开始 -->
+    <div {{?it.IsCct && it.IsCct == 1}}style="display:none;"{{?}}>
+        <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+    </div>
+    <!-- 公共页脚 结束 -->
+    <script src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js"></script><!--ignore-->
+    <script src="/modules/sea.js"  data-loader="true" type="text/javascript"></script>
+    <script type="text/javascript" src="/modules/common/0.1.0/index.js"></script>
+    <script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/dialog/0.0.1/dialog.js" type="text/javascript"></script><!--ignore-->
+    <script>
+        seajs.require("./index").init();
+    </script>
+    <!-- 统计相关功能 -->
+    {{?it.IsCct && it.IsCct == 1}}
+    {{??}}
+        <% includeId = node_dj_common_stat %>
+        <script type="text/javascript">
+            window.__stat_aggs__ =[{
+                key: 'pc-package-flightList',
+                text: '动态打包航班列表页'
+            }];
+            stat.init({
+                "_tcHotmapx": {
+                    "pid": "801",
+                    "sp": "100"
+                },
+                "vst": [
+                    ['_serialid', '0'],
+                    ['_vrcode', stat.getVrcode()],
+                    ['_refId', stat.getRefid()],
+                    ['_userId', stat.getMemberId()],
+                    ['_openTime', stat.timeDiff],
+                    ['_trackPageview', '/出境/动态打包/航班列表页/']
+                ]
+            });
+        </script><!--ignore-->
+    {{?}}
+
+</body>
+
+</html>

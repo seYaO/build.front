@@ -1,0 +1,130 @@
+@import url("/styles/mixins/combine.less");
+@import url("./search.less");
+body {
+    font-family: "Hiragino Sans GB","microsoft yahei","WenQuanYi Micro Hei", sans-serif !important;
+    height: 100%;
+}
+.page-box{
+    position: relative;
+}
+.city-dest{
+    ul{
+        margin-bottom: -0.83333333rem;
+        .clearfix();
+    }
+    h3{
+        color: #333;
+        font-weight: 400;
+        padding-left: 40/@rem;
+        margin-bottom: 0.25rem;
+        font-size: 28/@rem;
+        .city-icon{
+            width: 36/@rem;
+            height: 36/@rem;
+            display: block;
+            float: left;
+            margin-right: 20/@rem;
+            //margin-top: 3/@rem;
+            span{
+                display: block;
+            }
+        }
+        .city-history{
+            //background: red;
+            background: url("./images/h_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+        .city-icon0{
+            background: url("./images/hot_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+        .city-icon1{
+            background: url("./images/rh_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+        .city-icon2,.wifi-icon3{
+            background: url("./images/dny_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+        .city-icon3,.wifi-icon2{
+            background: url("./images/gat_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+        .city-icon5,.wifi-icon4{
+            background: url("./images/hd_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+        .city-icon6,.wifi-icon5{
+            background: url("./images/oma_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+        .city-icon7,.wifi-icon6{
+            background: url("./images/zdf_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+    }
+    .clear-his{
+        text-align: center;
+        display: block;
+        width: 228/@rem;
+        overflow: hidden;
+        margin: 0 auto 20/@rem;
+        .city-icon{
+            width: 36/@rem;
+            height: 36/@rem;
+            display: block;
+            float: left;
+            margin-right: 20/@rem;
+            margin-top: 3/@rem;
+            span{
+                display: block;
+                float: left;
+            }
+        }
+        .city-delete{
+            // background: red;
+            background: url("./images/delete_icon.png") no-repeat center center;
+            background-size: 36/@rem 36/@rem;
+        }
+    }
+    ul{
+        .clearfix();
+        width:580*100/640%;
+        margin:0 auto;
+        padding-left: 20/@rem;
+        padding-right: 20/@rem;
+        padding-bottom: 30/@rem;
+        li{
+            color: @grey;
+            box-sizing: border-box;
+            margin-left: 3.4482%;
+            margin-top: 25/@rem;
+            background: #fff;
+            border: 1px solid #dcdcdc;
+            border-radius: 3px;
+            width: 31.034483%;
+            height: 60/@rem;
+            line-height: 60/@rem;
+            text-align: center;
+            float: left;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            &:nth-child(3n+1){
+                margin-left: 0;
+            }
+            a{
+                color: #666;
+                display: inline-block;
+                width: 100%;
+            }
+        }
+    }
+}
+.J_History{
+    border-bottom: 1px solid #dcdcdc;
+    margin-bottom: 20/@rem;
+}
+.dest-page{
+    background: #efeff4;
+}

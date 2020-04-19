@@ -1,0 +1,45 @@
+{{var pageType = baseData.PageType, linePro;}}
+{{?(pageType == 1 || pageType == 3) && baseData.SearchType == 0}}
+{{?hotDest}}
+    <div>
+        <div class="nearby">
+            <p class="near-title">附近目的地</p>
+            <div class="near-des">
+                {{?pageType == "1"}}
+                {{linePro = "gentuan";}}
+                {{??pageType == "3"}}
+                {{linePro = "zizhu";}}
+                {{?}}
+                {{~hotDest:hot}}
+                    <a href="/dujia/{{=hot.PinYin}}{{=hot.Id}}-{{=linePro}}/" target="_blank">{{=hot.Name}}</a>
+                {{~}}
+            </div>
+        </div>
+    </div>
+{{?}}
+{{??}}
+    <div>
+        <div class="nearby">
+            <p class="near-title">热门目的地</p>
+            <div class="near-des J_destination">
+                {{?pageType == "10"}}
+                    {{linePro = "local";}}
+                {{??pageType == "0"}}
+                    {{linePro = "lvyou";}}
+                {{?}}
+                <a href="/dujia/riben-{{=linePro}}/" target="_blank">日本</a>
+                <a href="/dujia/gangao-{{=linePro}}/" target="_blank">港澳</a>
+                <a href="/dujia/dongjing-{{=linePro}}/" target="_blank">东京</a>
+                <a href="/dujia/jianpuzhai-{{=linePro}}/" target="_blank">柬埔寨</a>
+                <a href="/dujia/daban-{{=linePro}}/" target="_blank">大阪</a>
+                <a href="/dujia/taiguo-{{=linePro}}/" target="_blank">泰国</a>
+                <a href="/dujia/jipudao-{{=linePro}}/" target="_blank">普吉岛</a>
+                <a href="/dujia/changtandao-{{=linePro}}/" target="_blank">长滩岛</a>
+                <a href="/dujia/balidao-{{=linePro}}/" target="_blank">巴厘岛</a>
+                <a href="/dujia/mangu-{{=linePro}}/" target="_blank">曼谷</a>
+                <a href="/dujia/qingmai-{{=linePro}}/" target="_blank">清迈</a>
+                <a href="/dujia/xinjiapo-{{=linePro}}/" target="_blank">新加坡</a>
+            </div>
+        </div>
+    </div>
+{{?}}

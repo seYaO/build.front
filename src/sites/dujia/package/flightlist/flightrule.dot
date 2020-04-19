@@ -1,0 +1,41 @@
+<!--BackFlight 脚本里也有引用-->
+{{?it.IsDirect == 0}}
+<div class="rule">
+    {{?it.consign || it.data}}
+        <h2>购票说明</h2>
+        {{?it.consign && it.consign.length}}
+            <p class="title">托运说明 :</p>
+            <p>{{=it.consign}}</p>
+        {{?}}
+        {{?it.data}}
+            <div class="rule">
+            {{?it.data.RefundRule}}
+                <p class="title">退票说明 :</p>
+                <p>{{=it.data.RefundRule}}</p>
+            {{?}}
+            {{?it.data.ChangeRule}}
+                <p class="title">改签说明 :</p>
+                <p>{{=it.data.ChangeRule}}</p>
+            {{?}}
+                {{?it.data.BookNotice}}
+                    <p class="title">误机说明 :</p>
+                    <p>{{=it.data.BookNotice}}</p>
+                {{?}}
+            </div>
+        {{?}}
+    {{?}}
+    {{?!it.consign && !it.data.RefundRule &&!it.data.ChangeRule &&!it.data.BookNotice}}
+        <p>暂无退改签说明</p>
+    {{?}}   
+</div>
+{{??it.IsDirect == 1}}
+<div class="rule">
+    <h2>购票说明</h2>
+    {{?it.consign && it.consign.length}}
+        <p class="title">托运说明 :</p>
+        <p>{{=it.consign}}</p>
+    {{?}}
+        <p class="title">退改签说明 :</p>
+        <p>该机票为供应商提供的优惠机票，一经出票不退不改，如您计划可能有变，请谨慎预定。</p>
+</div>
+{{?}}

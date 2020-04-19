@@ -1,0 +1,160 @@
+@import "../../styles/mixins/a.global.less";
+@import "../../styles/mixins/btn.number.less";
+.filter-panel{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 46px;
+    //    height: e("calc(100% - 35px)");
+    //    height: e("-webkit-calc(100% - 35px)");
+    -webkit-box-sizing: border-box;
+    display: none;
+    .cond-panels{
+        background: white;
+        height: 100%;
+        .cond-panel{
+            width: 100%;
+            &.active .label{
+                position: relative;
+                &:after{
+                    content: "";
+                    display: block;
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    top: 7px;
+                    left: 10px;
+                    background: #f60;
+                    border-radius: 50%;
+                }
+            }
+        }
+        .cond-panel-wrap{
+            width: 140px;
+            background: #f0f0f0;
+            height: 100%;
+            position: relative;
+        }
+        .label{
+
+            height: 46px;
+            line-height: 46px;
+            text-indent: 20px;
+            display: block;
+        }
+        .flow-box{
+            position: absolute;
+            top: 0;
+            right: -180px;
+            width: 172px;
+            padding-left: 8px;
+            height: 100%;
+            background: white;
+            overflow: hidden;
+            display: none;
+            padding-bottom: 92px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            li{
+                border-bottom: @borderStyle;
+                line-height: 44px;
+                color: #333;
+                text-indent: 10px;
+                position: relative;
+            }
+            li:last-child{
+                border-bottom: 0 none;
+            }
+            li span:after{
+                display: none;
+                position: absolute;
+                width: 8px;
+                height: 16px;
+                right: 30px;
+                top: 7px;
+                content: '';
+                border-bottom: 2px solid @greenColor;
+                border-right: 2px solid @greenColor;
+                transform: rotate(45deg);
+                -webkit-transform: rotate(45deg);
+                margin-left: 10px;
+            }
+            li.active span:after{
+                display: inline-block;
+            }
+            li.active span{
+                color: @greenColor;
+            }
+        }
+        .flow-box-inner{
+            height: 100%;
+            overflow: hidden;
+        }
+        .num-ctrlbox{
+            width: 140px;
+            margin-left: 5px;
+            input{
+                width: 80px;
+                color: #b5b5b5;
+            }
+            input:disabled{
+                color: #b5b5b5;
+                background: white;
+            }
+        }
+        .cond-panel.selected{
+            .label{
+                background: white;
+            }
+            .flow-box{
+                display: block;
+            }
+        }
+    }
+}
+
+/*操作区域 */
+@telWidth: 110px;
+.ctrl-panel{
+    bottom: 35px;
+    position: absolute;
+    width: 100%;
+}
+.ctrl-box {
+    padding: 8px 15px;
+    background: @grayColor;
+    height: 41px;
+    .confirm {
+        float: right;
+        display: block;
+        width: 100%;
+    }
+    .reset {
+        float: right;
+        margin-right: -@telWidth;
+    }
+    .reset span, .confirm span {
+        font-size: 18px;
+        color: white;
+        border-radius: 6px;
+        line-height: 40px;
+        text-align: center;
+        display: block;
+    }
+    .reset span {
+        background: #ccc;
+        width: @telWidth;
+        color: #333;
+    }
+    .confirm span {
+        background: @orangeColor;
+        margin-left: @telWidth+10;
+    }
+}
+.has-download-ads .filter-panel{
+    background: transparent;
+}
+.filter-panel .cond-panels .num-ctrlbox input.error{
+    border-color: red;
+}

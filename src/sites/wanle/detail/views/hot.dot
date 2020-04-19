@@ -1,0 +1,69 @@
+
+{{?hotList && hotList.length && hotList[0].LineList.length}}
+
+<div id="J_hot_pro" class="hotproduct">
+    <p class="hotproduct-title">
+        <i class="hotTitle">热销排行榜</i>
+        <i class="update" data-click="0"></i>
+    </p>
+    <div class="lists-box">
+    {{var onePageNum = 0;}}
+    {{var twoPageNum = 0;}}
+    {{var threePageNum = 0;}}
+    {{var index = 0;}}
+    {{~hotList:list}}
+        {{?list.LineList.length}}
+            {{var page = 1;}}
+            {{var sortSign = 1;}}
+            {{~list.LineList:product:i}}
+                {{?i < 2}}
+                    {{page = 1;}}
+                    {{onePageNum = onePageNum + 1;}}
+                    {{sortSign = onePageNum;}}
+                {{??i < 4}}
+                    {{page = 2;}}
+                    {{twoPageNum = twoPageNum + 1;}}
+                    {{sortSign = twoPageNum;}}
+                {{??}}
+                    {{page = 3;}}
+                    {{threePageNum = threePageNum + 1;}}
+                    {{sortSign = threePageNum;}}
+                {{?}}
+                {{var isShow = "display: block";}}
+                {{var isHidden = "display: none";}}
+                <div class="list-box list{{=page}}" {{?page !== 1}}style="{{=isHidden}}"{{?}}>
+                    <a class="hot_pic show" style="{{?sortSign === 1}}{{=isShow}}{{??}}{{=isHidden}}{{?}};" href="/dujia/wanle/{{=product.Id}}.html" target="_blank" trace="hot_{{=(index+1)*(i+1)}}">
+                        <img src="{{=product.ImgUrl.replace('.jpg','_430x270_00.jpg').replace('http:','')}}" title="{{=product.Title}}" alt="{{=product.Title}}">
+                        <b class="img_ico1">{{=sortSign}}<i>{{?sortSign === 1}}st{{??sortSign === 2}}nd{{??sortSign === 3}}rd{{??}}th{{?}}</i></b>
+                    </a>
+                    <a class="hot_title show" style="{{?sortSign === 1}}{{=isShow}}{{??}}{{=isHidden}}{{?}};" href="/dujia/wanle/{{=product.Id}}.html" target="_blank" title="{{=product.Title}}" trace="hot_{{=(index+1)*(i+1)}}">
+                        <span>{{?product.Title.length > 12}}{{=product.Title.substring(0,12)}}...{{??}}{{=product.Title}}{{?}}</span>
+                        <span class="hot_price"><i>¥{{=product.MinTcPrice}}</i>起</span>
+                    </a>
+                    <a class="hot_maintitle none" style="{{?sortSign === 1}}{{=isHidden}}{{??}}{{=isShow}}{{?}};" href="/dujia/wanle/{{=product.Id}}.html" target="_blank" title="{{=product.Title}}" trace="hot_{{=(index+1)*(i+1)}}">
+                        <i class="hot_num">{{=sortSign}}</i>{{=product.Title}}</a>
+                </div>
+            {{~}}
+            {{index = index + 1;}}
+        {{?}}
+    {{~}}
+    </div>
+    <input type="hidden" value="{{=onePageNum}}" id="onePage">
+    <input type="hidden" value="{{=twoPageNum}}" id="twoPage">
+    <input type="hidden" value="{{=threePageNum}}" id="threePage">
+</div>
+{{?}}
+
+
+{{?rightBanner}}
+<div class="focus_pic">
+    {{~rightBanner.HotProductList:adPicture:i}}
+        {{?i<5}}
+        <a target="_blank" href="{{=adPicture.Url.replace('http:','')}}">
+            <span></span>
+            <img src="{{=adPicture.Image.replace('http:','')}}" title="{{=adPicture.MainTitle}}" alt="{{=adPicture.MainTitle}}">
+        </a>
+        {{?}}
+    {{~}}
+</div>
+{{?}}

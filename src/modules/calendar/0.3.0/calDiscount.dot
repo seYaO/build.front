@@ -1,0 +1,25 @@
+<div class="J_DiscountTip discount-tip">
+{{?it.list && it.list.length!=0}}
+    {{~it.list:icon}}
+        <ul>
+
+            <li class="title">{{=icon.IconName}}<hr /></li>
+            <li>{{=icon.IconContent.Title}}</li>
+            {{?icon.IconContent.Tips && icon.IconContent.Tips.length !=0}}
+
+            {{  var tipLen = icon.IconContent.Tips.length;
+            var tips = icon.IconContent.Tips;
+            var num = "";
+            for(var i=0;i<tipLen;i++){
+                if(tipLen > 1){
+                    num = i+1+".";
+                }
+            }}
+            <li>{{=num}}{{=tips[i].Tips}}<br />{{?tips[i].IsEffectCalendar==0}}<span class="have_discount">下单时选择可参与此优惠</span>{{??}}<span class="have_discount">当前价格已享受此优惠</span>{{?}}</li>
+            {{ } }}
+
+            {{?}}
+        </ul>
+    {{~}}
+{{?}}
+</div>

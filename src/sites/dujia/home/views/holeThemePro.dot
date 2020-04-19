@@ -1,0 +1,57 @@
+{{?it && it.length != 0}}
+<div class="prolist">
+   <ul class="clearfix">
+    {{~it:themeProductList:themeProductListIndex}}
+    {{var traceLineId = themeProductList.LineId;}}
+    {{?themeProductList.IsChengYiProduct}}
+        {{var traceType = 3;}}
+    {{??themeProductList.IsTCSpecialLine}}
+        {{var traceType = 1;}}
+    {{??}}
+        {{var traceType = 0;}}
+    {{?}}
+    {{?themeProductList.Property === 1||themeProductList.Property==="1"}}
+        {{var traceLineType = 1;}}
+    {{??}}
+        {{var traceLineType = 3;}}
+    {{?}}
+       <li class='proline'>
+            <a class='proline__link' target='_blank' trace="{{=themeProductListIndex}}" data-trace="{{= 4 + '^'+ traceLineType + '^' + '^' + traceLineId + '^' + traceType}}" href='{{="//www.ly.com/dujia/tours/" + themeProductList.LineId + (themeProductList.Property === 1 ? ".html" : "/")}}'>
+                <div class='proline__img'>
+                    <img data-img="{{=themeProductList.ImgUrl.replace('http:','')}}" title="{{=themeProductList.MainTitle}}" alt="{{=themeProductList.MainTitle}}">
+                    <div class="sub-title" title="{{=themeProductList.SubTitle}}">
+                        {{=themeProductList.SubTitle}}
+                    </div>
+                </div>
+                <div class='proline__txt'>
+                    <p class='proline__title' title="{{=themeProductList.MainTitle}}">{{=themeProductList.MainTitle}}</p>
+                    <p class='proline__price'>
+                        ¥<em>{{=themeProductList.TcPrice}}</em><b>起</b>
+                        {{? themeProductList.Property == 10}}
+                        <i class="proline__depcity">当地出发</i>
+                        {{??}}
+                        <i class="proline__depcity">{{=themeProductList.LeaveCity}}出发</i>
+                        {{?}}
+                    </p>
+                </div>
+                        {{var tag ,tagClass;}}
+                        {{?themeProductList.Property == 1}}
+                        {{tag = "跟团游";}}
+                        {{tagClass = "proline__kind-gt";}}
+                        {{??themeProductList.Property == 3}}
+                        {{tag = "自由行";}}
+                        {{tagClass = "proline__kind-zy";}}
+                        {{??}}
+                        {{tag = "目的地参团";}}
+                        {{tagClass = "proline__kind-mdd";}}
+                        {{?}}
+                <span class='{{=tagClass }}'>
+                    {{=tag}}
+                </span>
+            </a>
+       </li>
+       {{~}}
+
+   </ul>
+</div>
+{{?}}

@@ -1,0 +1,8 @@
+define("datepicker/0.2.0/tmpl/datepicker",[],function(require,exports,module) {
+
+module.exports = function anonymous(it
+/**/) {
+var out='﻿';var month=it;out+='<div class="month-group" style="width:'+(month.width)+';"> <div class="month-title"> <span class="group_title" data-month="'+(month.month)+'">'+(month.title)+'</span> </div> <div class="group_month" data-month="'+(month.month)+'"> <table class="month-panel"> <thead> <tr class="header"> ';if((it.weekModel!=1)){out+=' <th class="sunday" data-weekday="0">日</th> ';}out+=' <th data-weekday="1">一</th> <th data-weekday="2">二</th> <th data-weekday="3">三</th> <th data-weekday="4">四</th> <th data-weekday="5">五</th> <th class="saturday" data-weekday="6">六</th> ';if((it.weekModel==1)){out+=' <th class="sunday" data-weekday="0">日</th> ';}out+=' </tr> </thead> <tbody> ';var arr1=month.weeks;if(arr1){var week,index=-1,l1=arr1.length-1;while(index<l1){week=arr1[index+=1];out+=' <tr> ';var arr2=week;if(arr2){var day,weekday=-1,l2=arr2.length-1;while(weekday<l2){day=arr2[weekday+=1];out+=' ';var tdclass='';if(weekday==0) tdclass='sunday'; if(weekday==6) tdclass='saturday';out+=' ';var dayval=day.value;out+=' ';if(day.enable){tdclass+=' over'} else {tdclass+=' disable'};out+=' ';if(day.issel)tdclass+=' select';out+=' ';if(day.monthmodel=='prev') { tdclass+=' prevmonthday'; dayval=day.day;} out+=' ';if(day.monthmodel=='next') { tdclass+=' nextmonthday'; dayval=day.day;} out+=' <td class="'+(tdclass)+'" data-date="'+(day.date||'')+'" data-dayindex="'+(day.dayindex)+'" data-tagdata="'+(day.tagdate)+'">'+(dayval)+'</td> ';} } out+=' </tr> ';} } out+=' </tbody> </table> </div></div>';return out;
+}
+
+});

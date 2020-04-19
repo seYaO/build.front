@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button class="btn-refresh">refresh</button>
+<button class="btn">加li</button>
+<ul class="trigger">
+    <li class="item"><a href="http://www.ly.com/dujia/">ly</a> </li>
+    <li class="item"><a href="http://www.ly.com/dujia/">ly</a> </li>
+    <li class="item"><a href="http://www.ly.com/dujia/">ly</a> </li>
+    <li class="item"><a href="http://www.ly.com/dujia/">ly</a> </li>
+    <li class="item"><a href="http://www.ly.com/dujia/">ly</a> </li>
+</ul>
+
+<ul class="pass">
+</ul>
+
+<a class="class" href="http://www.ly.com/dujia/">ly</a>
+
+</body>
+<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js?v=20150413"></script>
+<script type="text/javascript" src="spm_module.js"></script>
+<script type="text/javascript">
+    $(".btn-refresh").on("click",function(){
+        var url = SPM_HANDLE.addParams(window.location.href,"spm",2);
+        window.location.href = url;
+    })
+
+    $(".btn").on("click",function(){
+        var str = '<li class="item"><a href="http://www.ly.com/dujia/">ly</a> </li>';
+        $(".pass").append(str);
+        SPM_HANDLE.asynPass($(".pass a"));
+    })
+
+    SPM_HANDLE.init({
+         //设定模块绑定器
+         setBlock : [{
+         cls : ".trigger",//绑定的选择器(唯一)
+         value : 1,//模块传递值
+         mode : 2//传递方式1：选择器内链接值逐步加1，选择期内链接值不变
+         }],
+         //设定模块传递器
+         setBlockPass : [".class"]
+    });
+</script>
+</html>

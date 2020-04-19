@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413" />
+</head>
+<body>
+<button id="test">打开登录</button>
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script src="../../jquery.js" type="text/javascript"></script>
+<script>
+    seajs.config({
+        base: "../../"
+    });
+</script>
+
+<script>
+    jQuery("#test").on("click",function(){
+        seajs.use("login/0.1.0/index", function (Login) {
+            var login = new Login({
+                loginSuccess: function(){
+                    alert("登录成功!");
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

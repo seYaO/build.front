@@ -1,0 +1,123 @@
+{{?it.Data&&it.Data.length}}
+<div class="t-hotel none"><span class="ty-hotel1">房型</span><span class="ty-hotel2">床型</span><span class="ty-hotel7">人数上限</span><span class="ty-hotel3">早餐</span><span class="ty-hotel4">政策</span><span class="ty-hotel5">间数</span><span class="ty-hotel6">差价</span> </div>
+<div class="box-hotelType">
+{{~it.Data:itval:index}}
+<div class="t-hotelName">{{=itval.Name}}</div>
+<ul>
+{{~itval.Rates:rateItems:index1}}
+{{
+  var roomParam={};
+  roomParam.Name = itval.Name;
+  roomParam.IsSelected = itval.IsSelected;
+  roomParam.Rates = [];
+  roomParam.Rates.push(rateItems);
+  roomParam = encodeURIComponent(JSON.stringify(roomParam));
+}}
+    <li class="roomLi {{?rateItems.CancleType && rateItems.TargetCustomer && rateItems.TargetCustomer.length}}hasFitPeopleLi{{?}}" data-roomParam="{{=roomParam}}" data-RoomId="{{=rateItems.RoomId}}"  data-RateCode="{{=rateItems.RateCode}}" data-SupplierId="{{=rateItems.SupplierId}}" data-roomCount="{{=rateItems.RoomCount}}">
+            <table class="hotelTable">
+                  <tbody>
+                    <tr>
+                      <td width="230" class="name-room" data-name="{{=rateItems.Name}}" align="left" title="{{=rateItems.Name}}">
+                          {{?rateItems.IsHavePrivilege && rateItems.IsHaveGift && rateItems.IsHavePrivilege == 1 && rateItems.IsHaveGift == 1}}
+                                <em class="promotation {{?rateItems.PrivilegeExplain && rateItems.PrivilegeExplain.length}}J_promotation{{?}}" data-content="{{=rateItems.PrivilegeExplain}}" title="">促</em>
+                                {{
+                                    var content = '';
+                                    if(rateItems.GiftExplain && rateItems.GiftExplain.length){
+                                        if(rateItems.GiftExplain.length == 1){
+                                            content = "<div><p class='gift-content'>房型礼盒信息</p>" + "<p>"+ rateItems.GiftExplain[0] + "</p></div>";
+                                        }else{
+                                            var giftCon = '';
+                                            for(var i =0; i <rateItems.GiftExplain.length; i ++){
+                                                giftCon += "<p>" + (i+1) + "." + rateItems.GiftExplain[i] + "</p>";
+                                            }
+                                            content = "<div><p class='gift-content'>房型礼盒信息</p>" +  giftCon + "</div>";
+                                        }
+                                    }
+                                }}
+                                <em class="gift J_gift" data-content="{{=content}}" title="">礼</em>
+                          {{??rateItems.IsHavePrivilege && rateItems.IsHavePrivilege == 1 || rateItems.IsHaveGift && rateItems.IsHaveGift == 1}}
+                                {{?rateItems.IsHavePrivilege == 1}}
+                                    <em class="promotation {{?rateItems.PrivilegeExplain && rateItems.PrivilegeExplain.length}}J_promotation{{?}}" data-content="{{=rateItems.PrivilegeExplain}}" title="">促</em>
+                                {{??rateItems.IsHaveGift == 1}}
+                                    {{
+                                        var content = '';
+                                        if(rateItems.GiftExplain && rateItems.GiftExplain.length){
+                                            if(rateItems.GiftExplain.length == 1){
+                                                content = "<div><p class='gift-content'>房型礼盒信息</p>" + "<p>"+ rateItems.GiftExplain[0] + "</p></div>";
+                                            }else{
+                                                var giftCon = '';
+                                                for(var i =0; i <rateItems.GiftExplain.length; i ++){
+                                                    giftCon += "<p>" + (i+1) + "." + rateItems.GiftExplain[i] + "</p>";
+                                                }
+                                                content = "<div><p class='gift-content'>房型礼盒信息</p>" +  giftCon + "</div>";
+                                            }
+                                        }
+                                    }}
+                                    <em class="promotation J_gift" data-content="{{=content}}" title="">礼</em>
+                                {{?}}
+                          {{?}}
+                          <span class="hotelName">{{=rateItems.Name}}</span>{{?rateItems.IsInstantConfirm==1}}<span class="hotel-isconfirm">立即确认</span>{{?}}
+                      </td>
+                      <td width="130" class="bedType" align="left" title="{{=rateItems.BedType}}"><span>{{?rateItems.BedType}}{{=rateItems.BedType}}{{??}}--{{?}}</span></td>
+                      <td width="60" align="left" title="{{=rateItems.MaxUserDescription}}">{{?rateItems.MaxUser}}{{=rateItems.MaxUser}}人{{?}}</td>
+                      <td width="75" align="left">
+                        {{?rateItems.IsIncludeBreakfast==1}}
+                          <span data-content='{{?rateItems.BreakfastExplain}}{{=rateItems.BreakfastExplain}}{{?}}' class="J_breakfast">含早</span>
+                        {{??}}
+                          <span data-content='{{?rateItems.BreakfastExplain}}{{=rateItems.BreakfastExplain}}{{?}}' class="J_breakfast">不含早</span>
+                        {{?}}
+                      </td>
+                      <td width="75" align="left">
+                        {{?rateItems.CancleType || rateItems.TargetCustomer}}
+                            {{
+                                if(rateItems.TargetCustomer && rateItems.TargetCustomer.length){
+                                    var TCLenth = rateItems.TargetCustomer.length;
+                                    var shtml = '';
+                                    if(TCLenth <= 1){
+                                        shtml = '<div><p>{{=rateItems.TargetCustomer[0]}}</p><div>';
+                                    }else{
+                                        for(var i =0; i <TCLenth; i ++){
+                                            shtml += '<div><p>{{=i+1}}.{{=rateItems.TargetCustomer[i]}}</p><div>';
+                                        }
+                                    }
+                                }
+                            }}
+                            {{?rateItems.CancleType && rateItems.TargetCustomer && rateItems.TargetCustomer.length}}
+                                <span class="cancel-hotel" data-content="{{=rateItems.CanclePolicy}}">{{=rateItems.CancleType}}</span>
+                                <p class="fitPeople" data-content="{{=shtml}}">适用人群</p>
+                            {{??rateItems.CancleType && (!rateItems.TargetCustomer || !rateItems.TargetCustomer.length)}}
+                                <span class="cancel-hotel" data-content="{{=rateItems.CanclePolicy}}">{{=rateItems.CancleType}}</span>
+                            {{??rateItems.TargetCustomer && rateItems.TargetCustomer.length && !rateItems.CancleType}}
+                                <p class="fitPeople" data-content="{{=shtml}}">适用人群</p>
+                            {{?}}
+                        {{?}}
+                      </td>
+                      <td width="70" align="left" class="hotelSum"><span>{{=rateItems.RoomCount}} 间</span></td>
+                      {{?rateItems.DifferencePrice>0}}
+                          <td width="65" align="left" class="hotel-diffPri"><span class="fp-fee-add overzero">+{{=rateItems.DifferencePrice}}</span></td>
+                      {{??rateItems.DifferencePrice==0}}
+                          <td width="65" align="left" class="hotel-diffPri"><span class="fp-fee-add equirezero">--</span></td>
+                      {{??}}
+                          <td width="65" align="left" class="hotel-diffPri"><span class="fp-fee-add downzero">{{=rateItems.DifferencePrice}}</span></td>
+                      {{?}}
+                      <td width="48" align="center">
+                      {{?rateItems.LeftCount&&rateItems.LeftCount<10}}
+                        <span class="left-count">仅剩{{=rateItems.LeftCount}}间</span>
+                      {{?}}
+                      </td>
+                      {{?rateItems.IsSelected==1}}
+                        <td width="70" align="center"><span class="btn-choice-flight has-choice-hotel">已 选<i></i></span></td>
+                      {{??}}
+                        <td width="70" align="center"><span class="btn-choice-flight" data-RateCode = "">选 择<i></i></span></td>
+                    {{?}}
+                    </tr>
+                  </tbody>
+                </table>
+    </li>
+{{~}}
+</ul>
+{{~}}
+</div>
+{{??}}
+<div class="nomoreRoom">没有更多房型啦</div>
+{{?}}

@@ -1,0 +1,109 @@
+.pt-page-rotateRoomTopOut {
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-animation: rotateRoomTopOut .8s both ease;
+    animation: rotateRoomTopOut .8s both ease;
+}
+
+.pt-page-rotateRoomTopIn {
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-animation: rotateRoomTopIn .8s both ease;
+    animation: rotateRoomTopIn .8s both ease;
+}
+
+.pt-page-rotateRoomBottomOut {
+    -webkit-transform-origin: 50% 0%;
+    transform-origin: 50% 0%;
+    -webkit-animation: rotateRoomBottomOut .8s both ease;
+    animation: rotateRoomBottomOut .8s both ease;
+}
+
+.pt-page-rotateRoomBottomIn {
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+    -webkit-animation: rotateRoomBottomIn .8s both ease;
+    animation: rotateRoomBottomIn .8s both ease;
+}
+
+
+
+@-webkit-keyframes rotateRoomTopOut {
+    from {
+        opacity: 1;
+        -webkit-transform: translateY(0) rotateX(0deg);
+    }
+    to {
+        opacity: .3;
+        -webkit-transform: translateY(-100%) rotateX(-90deg);
+    }
+}
+
+@keyframes rotateRoomTopOut {
+    from {
+    }
+    to {
+        opacity: .3;
+        -webkit-transform: translateY(-100%) rotateX(-90deg);
+        transform: translateY(-100%) rotateX(-90deg);
+    }
+}
+
+@-webkit-keyframes rotateRoomTopIn {
+    from {
+        opacity: .3;
+        -webkit-transform: translateY(100%) rotateX(90deg);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0) rotateX(0deg);
+    }
+}
+
+@keyframes rotateRoomTopIn {
+    from {
+        opacity: .3;
+        -webkit-transform: translateY(100%) rotateX(90deg);
+        transform: translateY(100%) rotateX(90deg);
+    }
+}
+
+@-webkit-keyframes rotateRoomBottomOut {
+    from {
+        opacity: 1;
+        -webkit-transform: translateY(0) rotateX(0deg);
+    }
+    to {
+        opacity: .3;
+        -webkit-transform: translateY(100%) rotateX(90deg);
+    }
+}
+
+@keyframes rotateRoomBottomOut {
+    from {
+    }
+    to {
+        opacity: .3;
+        -webkit-transform: translateY(100%) rotateX(90deg);
+        transform: translateY(100%) rotateX(90deg);
+    }
+}
+
+@-webkit-keyframes rotateRoomBottomIn {
+    from {
+        opacity: .3;
+        -webkit-transform: translateY(-100%) rotateX(-90deg);
+    }
+    to {
+        opacity: 1;
+        -webkit-transform: translateY(0) rotateX(0deg);
+    }
+}
+
+@keyframes rotateRoomBottomIn {
+    from {
+        opacity: .3;
+        -webkit-transform: translateY(-100%) rotateX(-90deg);
+        transform: translateY(-100%) rotateX(-90deg);
+    }
+}

@@ -1,0 +1,58 @@
+/*from tccdn minify at 2015-4-13 13:39:46,file：/cn/v/public/index.css?v=1030*/
+@charset"UTF-8";
+/**
+ * 公共方法样式
+ * @authors Elvis.Xia (xlh4909@ly.com)
+ * @date    2014-10-29 14:31:14
+ * @version 0.1
+ */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+html {
+    background-color: #ccc;
+}
+table {
+    width: 100%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+#actKeyEncryption, #actKeyDecode {
+    width: 500px;
+    float: left;
+    margin:0 20px 20px 0;
+}
+#result, #decresult {
+    width: 80%;
+}
+.result-tip {
+    color: red;
+}
+button {
+    width: 100px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+#pc-actKeyEncryption, #pc-actKeyDecode {
+    width: 500px;
+    float: left;
+    margin:0 20px 20px 0;
+}
+#pc-actKeyEncryption{
+    clear: left;
+}
+#pc-result, #pc-decresult {
+    width: 80%;
+}
+.result-tip {
+    color: red;
+}
+button {
+    width: 100px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}

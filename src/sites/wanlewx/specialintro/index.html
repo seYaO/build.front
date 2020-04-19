@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{{var it = IT.Data.productDetail;}}
+{{var info = IT.Data.productDetail;}}
+{{var ProductType = info.ProductType;}}
+{{var ProductCategory = info.ProductCategory;}}
+<html>
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <link rel="dns-prefetch" href="//vstlog.17u.cn" />
+    <link rel="dns-prefetch" href="//js.40017.cn" />
+    <link rel="dns-prefetch" href="//css.40017.cn" />
+    <link rel="dns-prefetch" href="//img.17u.cn" />
+    <link rel="dns-prefetch" href="//pic2.40017.cn" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"
+    />
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script><!--ignore-->
+    <script type="text/javascript">
+        var _tcopentime = new Date().getTime();
+        var _hmt = _hmt || [];
+        var _tcHotmapx = { pid: 212, sp: 100 };
+    </script>
+    <title>特色介绍</title>
+    <!-- 公共样式表 -->
+    <script src="/modules-lite/mod.js" data-loader="true"></script>
+    <!-- 页面样式表 -->
+
+
+</head>
+
+<body onselectstart="return false;">
+<!-- 页面内容块 -->
+
+<div class="page-body">
+    <div class="page-box" id="J_pageBox">
+
+        <section class="layout-main" id="layout-main">
+            {{?it}}
+                {{var phoneCardInfo = info.PhoneCardEntity;}}
+                {{?ProductType == 9 && ProductCategory == 91}}
+                    <div>
+                        <p><strong>流量：</strong><br/>{{=phoneCardInfo.NetFlow}}<p><br>
+                        <p><strong>适用机型：</strong><br/>{{=phoneCardInfo.NetFlow}}<p><br>    
+                        <p><strong>产品类型：</strong><br/>{{=phoneCardInfo.FitPhoneStyle}}<p><br>
+                        <p><strong>SIM卡大小：</strong><br/>{{=phoneCardInfo.Sim}}<p><br> 
+                        <p><strong>激活方法：</strong><br/>{{=phoneCardInfo.ActiveMethod}}<p><br> 
+                        <p><strong>信号覆盖：</strong><br/>{{=phoneCardInfo.NetArea}}<p><br> 
+                    </div>
+                {{?}}
+
+                {{var lists = it.PlayExerienceList;}}
+                {{?lists}}
+                    {{~lists:list}}
+                        {{?list.TravelDescription}}
+                        <div>{{=list.TravelDescription}}</div>
+                        {{?}}
+                        {{?list.ImgUrlA}}
+                        <img data-original="{{=list.ImgUrlA}}" onerror="Monitor.log(this.src,'image')" data-img-loaded="true" style="opacity: 1; width: 100%;"/>
+                        {{?}}
+                        {{?list.ImgUrlB}}
+                        <img data-original="{{=list.ImgUrlB}}" onerror="Monitor.log(this.src,'image')" data-img-loaded="true" style="opacity: 1; width: 100%;"/>
+                        {{?}}
+                    {{~}}
+                {{?}}
+            {{?}}
+
+        </section>
+    </div>
+</div>
+
+
+<!-- 公共页脚 -->
+<script type="text/javascript" charset="utf-8" src="//wx.40017.cn/touch/min/??/touch/weixin/public/js/comQdid.js"></script>
+<script type="text/javascript">
+    var _tcq = _tcq || [];
+    var _timediff = -1;
+    if (typeof _tcopentime != "undefined")
+    { _timediff = new Date().getTime() - _tcopentime; }
+    _tcq.push(['_serialid', '0']);
+    _tcq.push(['_vrcode', '10003-2027-0']);
+    _tcq.push(['_refId', 107075804]);
+    _tcq.push(['_userId', "{{=it.UserId || 0}}"]);
+    _tcq.push(['_openTime', _timediff]);
+    _tcq.push(['_trackPageview', '{{=it.OpenId ||""}}||微信/玩乐/特色介绍']);
+</script>
+<script>
+    var SpecialIntro = require("./index");
+    SpecialIntro.init();
+</script>
+
+<script type='text/javascript' src="http://vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+{{var ProductType = info.ProductType;}}
+{{var ProductCategory = info.ProductCategory;}}
+{{var priceArr = info.PriceInfoOfType.concat(info.PriceInfo);}}
+
+{{?priceArr}}
+    {{var ticketType;}}
+    {{var flag = true;}}
+    {{?info.PriceInfoOfType.length > 0}}{{flag = true;}}{{??}}{{flag = false;}}{{?}}
+
+    {{?ProductType == 9 && ProductCategory == 92}}
+        {{?info.WifiReceiveReturnPlaceList != null && info.WifiReceiveReturnPlaceList.length > 0}}
+        <section class="take_note">
+            <div class="part_title title3"><i></i>取还说明</div>
+            <div class="small_title"><i></i>取还地点及时间</div>
+            <div class="place_part">
+                <ul class="place_list">                    
+                   {{~info.WifiReceiveReturnPlaceList:placeInfo:placeindex}}
+                       {{? placeindex > 2}}
+                           {{var placeDiv = "placeHidden none"; }}
+                       {{??}}
+                           {{var placeDiv = "placeShow";}}
+                       {{?}}
+
+                       <li class="{{=placeDiv}}">
+                            {{var type = placeInfo.Type;}}
+                            <p>【{{=placeInfo.AirPort}}{{=placeInfo.Terminal}}】{{=placeInfo.FullName}}</p>
+                            <span>{{=placeInfo.BusunessHour}}</span>
+                            {{?type == 0}}
+                                <span>取件</span>
+                            {{??type == 1}}
+                                <span>还件</span>
+                            {{??type == 2}}
+                                <span>取件/还件</span>
+                            {{?}}
+                        </li>     
+                   {{~}} 
+                </ul>
+                {{?info.WifiReceiveReturnPlaceList.length > 3}}
+                    <div class="more_place"><em>展开更多</em><i></i></div>
+                {{?}}
+
+            </div>
+            <div class="small_title"><i></i>注意事项</div>
+            <div class="notice_part">
+                <p>{{=info.WifiIntroduction.Instruction}}</p>
+            </div>
+        </section>
+        {{?}}
+    {{?}}
+{{?}}

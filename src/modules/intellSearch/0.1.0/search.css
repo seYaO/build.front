@@ -1,0 +1,192 @@
+.ly_search {
+  width: 100%;
+  height: 45px;
+  float: left;
+  position: relative;
+  line-height: 40px;
+  vertical-align: middle;
+  display: table;
+  /*border:1px;*/
+  /*border:1px;*/
+}
+.ly_search .ly_search_row {
+  width: 100%;
+  display: table-row;
+}
+.ly_search .ly_search_inputgp {
+  width: auto;
+  height: 45px;
+  display: table-cell;
+  padding: 0;
+  position: relative;
+}
+.ly_search .ly_search_inputgp input {
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
+  margin: 0;
+  border: 2px solid #ff7800;
+  outline: 0;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  text-indent: 10px;
+  font-size: 14px;
+}
+.ly_search .ly_search_gp {
+  width: 596px;
+  height: auto;
+  background-color: #fff;
+  border: 1px solid #ddd9d9;
+  font-size: 12px;
+  line-height: 20px;
+  padding: 0;
+  position: absolute;
+  display: none;
+  z-index: 1000;
+  top: 45px;
+  left: 0;
+}
+.ly_search .ly_search_gp .ly_search_panel {
+  width: 100%;
+  height: auto;
+  display: block;
+  min-height: 30px;
+}
+.ly_search .ly_search_gp .ly_search_panel.hidden {
+  display: none;
+}
+.ly_search .ly_search_gp .splitline {
+  width: 100%;
+}
+.ly_search .ly_search_gp .close {
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-decoration: none;
+}
+.ly_search .ly_search_btn {
+  width: 150px;
+  text-align: center;
+  color: #fff;
+  font-size: 16px;
+  letter-spacing: 5px;
+  cursor: pointer;
+  display: table-cell;
+  background-color: #ff7800;
+}
+.ly_search .hotcity {
+  width: 100%;
+  height: auto;
+  /*outline: 1px solid @color2;*/
+  padding: 0 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ly_search .hotcity .hotcity_gp {
+  /*margin: 10px;*/
+  width: 100%;
+  font-size: 12px;
+  line-height: 30px;
+}
+.ly_search .hotcity .hotcity_gp .g_header {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  font-size: 14px;
+  color: #999999;
+  border-bottom: 1px solid #dddddd;
+}
+.ly_search .hotcity .hotcity_gp .g_list {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  overflow: hidden;
+}
+.ly_search .hotcity .hotcity_gp .g_list .g_item {
+  width: 125px;
+  height: 30px;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+  /*float:left;*/
+}
+.ly_search .hotcity .hotcity_gp .g_list .g_item b {
+  vertical-align: -2px;
+}
+.ly_search .history {
+  width: 100%;
+  height: auto;
+  /*outline: 1px solid @color2;*/
+  padding: 0 10px;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.ly_search .history .history_gp {
+  /*margin: 10px;*/
+  width: 100%;
+  font-size: 12px;
+  line-height: 30px;
+}
+.ly_search .history .history_gp .g_header {
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  font-size: 14px;
+  color: #999999;
+  border-bottom: 1px solid #dddddd;
+}
+.ly_search .history .history_gp .g_list {
+  width: 100%;
+  height: auto;
+  text-align: left;
+  overflow: hidden;
+}
+.ly_search .history .history_gp .g_list .g_item {
+  width: auto;
+  height: 30px;
+  padding: 0 10px 0 0;
+  display: inline-block;
+  cursor: pointer;
+  /*float:left;*/
+}
+.ly_search .history .history_gp .g_list .g_item b {
+  vertical-align: -2px;
+}
+.ly_search .history .history_gp .g_list .g_clear {
+  color: #006dae;
+}
+.ly_search.theme_play input {
+  padding-right: 130px;
+}
+.ly_search.theme_play .ly_search_gp {
+  width: 572px;
+}
+.ly_search.theme_play .theme-label {
+  margin-right: 10px;
+  position: absolute;
+  top: 14px;
+  right: 0;
+}
+.ly_search.theme_play .theme-label a {
+  display: block;
+  float: right;
+  height: 16px;
+  margin-left: 4px;
+  line-height: 16px;
+  padding: 0 3px;
+  font-size: 12px;
+  border: 1px solid #ff7800;
+  border-radius: 3px;
+  color: #ff7800;
+}

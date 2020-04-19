@@ -1,0 +1,28 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>dotjsdemo</title>
+</head>
+<body>
+<div id="output1"></div>
+<div id="output2"></div>
+<script src="../../../sea.js"></script>
+<script src="../../../jquery.js"></script>
+<script>
+    seajs.use("newbie/dotjs/tmpl/test",function(dotFunc){
+        //构造假数据1
+        var data1 = {
+            "newbie": true,
+            "name": "菜鸟"
+        };
+        //构造假数据2
+        var data2 = {
+            "newbie": false,
+            "name": "老手"
+        };
+        $("#output1").html(dotFunc(data1));
+        $("#output2").html(dotFunc(data2));
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+ {{?it}}
+	<b></b>
+	<span class="user">
+	    <i>{{=it.Name}}</i>
+	    <i>{{=it.Mobile}}</i>
+	</span>
+	<span class="address">
+	    <i>{{=it.Province}}</i>
+	    <i>{{=it.City}}</i>
+	    <i>{{=it.Region}}</i>
+	    <i>{{=it.Street}}</i>
+	</span> 
+{{?}}

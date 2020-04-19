@@ -1,0 +1,17 @@
+<ul class="J_dest_Detail{{=it.index}} clearfix">
+{{var index = 0;}}
+{{~it.Data:value}}
+    {{?index < 6 &&  value.ProductId == 20228}}
+    {{index = index + 1;}}
+    <li>
+         <a href="javascript:;" data-href="{{=value.Url}}">
+             <img src="{{=value.Image}}">
+             <div class="city_name">
+                 <p class="name_chinese">{{=value.MainTitle}}</p>
+                 <p class="name_en">{{=value.SubTitle}}</p>
+             </div>
+         </a>
+    </li>
+    {{?}}
+{{~}}
+</ul>

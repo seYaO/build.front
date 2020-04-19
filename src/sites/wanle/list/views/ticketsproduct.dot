@@ -1,0 +1,186 @@
+	{{? proList !="" && proList.length > 0 && totalCount > 0}}
+	<div id="J_pro_list" class="pro_list">
+	    {{~ proList:product:index}}
+	    <div class="pro_li">
+            <div class="pro_main">
+                <a class="pro_pic" href="/dujia/wanle/{{=product.Id}}.html" target="_blank"
+                   onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/menpiao/list', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">
+                    {{var imgUrl = product.ImgUrl.replace('.jpg','_430x270_00.jpg').replace('http:','');}}
+                    <img src="{{=imgUrl}}" title="{{=product.Title}}" alt="{{=product.Title}}">
+                </a>
+
+                {{? product.RecdTagName && product.RecdTagName != ""}}
+                <div class="tags"><i></i>{{=product.RecdTagName}}<em></em></div>
+                {{?}}
+
+                {{? product.TigNamesList != ""  && product.TigNamesList.length > 0}}
+                <div class="tag_name">
+                    {{~ product.TigNamesList:tagName:tagIndex}}
+                        {{? tagIndex < 2}}
+                        <span>{{=tagName}}</span>
+                        {{?}}
+                    {{~}}
+                </div>
+                {{?}}
+
+                <div class="pro_info">
+                    {{? product.Title.length > 48}}
+                    {{ product.Title=product.Title.substring(0,48)+"...";}}
+                    {{??}}
+                    {{ product.Title = product.Title;}}
+                    {{?}}
+                    <a class="main_title" href="/dujia/wanle/{{=product.Id}}.html" title="{{=product.Title}}" target="_blank"
+                       onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/list/menpiao', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">{{=product.Title}}</a>
+                    <p class="recommend">{{=product.RecommendReasonList[0]}}</p>
+                    <p class="location">{{=product.SceneryAddress}}</p>
+                    <ul class="pro_tips">
+
+                        {{?product.SatDeg == 0}}
+                        <li class="pro_csi none"><em><i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;暂无点评</i></em></li>
+                        {{??}}
+                        <li class="pro_csi">满意度：<em><i>{{=product.SatDeg}}%</i>好评</em></li>
+                        {{?}}
+
+                        {{? product.OrdCount == 0}}
+                        <li class="pro_sales"><em>新品上线</em></li>
+                        {{??}}
+                        <li class="pro_sales">月销量：<em>{{=product.OrdCount}}</em></li>
+                        {{?}}
+
+                    </ul>
+                </div>
+
+                <div class="pro_opera">
+                    <p class="mk_price">市场价：¥{{=product.MinMarketPrice}}起</p>
+                    <p class="tc_price">同程价：<em>¥<i>{{=product.MinTcPrice}}</i>起</em></p>
+                    <a class="pro_btn" href="/dujia/wanle/{{=product.Id}}.html" target="_blank"
+                       onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/menpiao/list', '/detail', '|*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|jpTp:0|*|resId:{{=product.Id}}|*|')">查看详情</a>
+                </div>
+            </div>
+
+            {{? product.PriceList!="" && product.PriceList.length > 0}}
+            <div class="main_book">
+                <div class="book_tt">
+                    <span class="td1">名称</span>
+                    <span class="td2">可订时间</span>
+                    <span class="td3"></span>
+                    <span class="td4">同程价</span>
+                </div>
+                <div class="book_bd">
+                    {{~ product.PriceList:subProduct:subIndex}}
+                    {{var subProductClass = "";}}
+                    {{? subIndex > 2}}
+                    {{var subProductClass = "none";}}
+                    {{?}}
+                    <div class="book_li {{=subProductClass}}">
+                        <dl class="book_li_tt clearfix">
+                            <dt class="td1">
+                            <div class="book_name">
+                                <a href="javascript:void(0);" class="name">
+                                    <span class="txt" title="{{=subProduct.PriceDsc}}">
+                                        <i class="txt_i">{{=subProduct.PriceDsc}}</i>
+                                        <em class="i_arrow"><i></i></em>
+                                    </span>
+                                </a>
+                            </div>
+                            </dt>
+                            <dd class="td2">
+                                <span class="booktime" fx>
+                                {{?subProduct.AdvanceDay != 0}}
+                                    {{?subProduct.AdvanceType != 0}}
+                                    <span class="timetip"><i></i>
+                                        如需预订，您最晚要在游玩前{{=subProduct.AdvanceDay}}个工作日{{=subProduct.AdvanceTime}}前下单，请尽早预订。
+                                    </span>
+                                    <span class="tip">游玩前{{=subProduct.AdvanceDay}}个工作日</span>
+                                    <span class="time">{{=subProduct.AdvanceTime}}前</span>
+                                    {{??}}
+                                    <span class="timetip"><i></i>
+                                        如需预订，您最晚要在游玩前{{=subProduct.AdvanceDay}}天{{=subProduct.AdvanceTime}}前下单，请尽早预订。
+                                    </span>
+                                    <span class="tip">游玩前{{=subProduct.AdvanceDay}}天</span>
+                                    <span class="time">{{=subProduct.AdvanceTime}}前</span>
+                                    {{?}}
+                                {{??}}
+                                    <span class="timetip"><i></i>
+                                        <p>如需预订，您最晚要在游玩当天{{=subProduct.AdvanceTime}}前下单，请尽早预订。</p>
+                                    </span>
+                                    <span class="tip">游玩当天</span>
+                                    <span class="time">{{=subProduct.AdvanceTime}}前</span>
+                                {{?}}
+                                </span>
+                            </dd>
+                            <dd class="td3">
+                                {{? subProduct.WanLeProductDiscountList != "" && subProduct.WanLeProductDiscountList.length > 0}}
+                                {{var iconLength = 0;}}
+                                {{~ subProduct.WanLeProductDiscountList:discountInfo:iconIndex}}
+                                {{? iconIndex == 0 &&  discountInfo.IconName.length <= 6}}
+                                {{iconLength = discountInfo.IconName.length;}}
+                                <span class="youhui J_Tips" data-content="<div><strong>{{=discountInfo.IconName}}</strong><hr />{{=discountInfo.LongContent}}</div>">{{=discountInfo.IconName}}</span>
+                                {{?? iconIndex == 1 && (iconLength + discountInfo.IconName.length <= 6)}}
+                                <span class="youhui J_Tips" data-content="<div><strong>{{=discountInfo.IconName}}</strong><hr />{{=discountInfo.LongContent}}</div>">{{=discountInfo.IconName}}</span>
+                                {{?}}
+                                {{~}}
+                                {{??}}
+                                &nbsp;
+                                {{?}}
+                            </dd>
+
+                            <dd class="td4"><span class="tcprice"><b>￥</b>{{=subProduct.TcPrice}}</span></dd>
+                            <dd class="td5">
+                                <a class="bookbtn" target="_blank" href="/wanle/bookwanle.html?productId={{=subProduct.LineId}}&supplyId={{=subProduct.SupplierId}}&resourceId={{=product.Id}}"
+                                   onclick="_tcTraObj._tcTrackEvent('search', '/lineWanle/menpiao/list', '/book', |*|pos:{{=index+1}}|*|k:{{=destName}}|*|pjId:2027|*|resId:{{=product.Id}}|*|')">预订</a>
+                            </dd>
+                        </dl>
+                        <div class="book_li_bd">
+                            <i class="arrow"></i>
+                            <ul class="book_info">
+                               {{? subProduct.AdvanceDay != 0 || subProduct.AdvanceTime != "00:00"}}
+                                <li><span class="r_name">预订时间：</span>
+                                    <div class="r_content">
+                                        {{? subProduct.AdvanceDay != 0}}
+                                            {{? subProduct.AdvanceType != 0}}
+                                                <p>如需预订，您最晚要在游玩前{{=subProduct.AdvanceDay}}个工作日{{=subProduct.AdvanceTime}}前下单，请尽早预订。</p>
+                                            {{??}}
+                                                <p>如需预订，您最晚要在游玩前{{=subProduct.AdvanceDay}}天{{=subProduct.AdvanceTime}}前下单，请尽早预订。</p>
+                                            {{?}}
+
+                                        {{??}}
+                                        <p>如需预订，您最晚要在游玩当天{{=subProduct.AdvanceTime}}前下单，请尽早预订。</p>
+                                        {{?}}
+                                    </div>
+                                </li>
+                                {{?}}
+                                <li><span class="r_name">预订说明：</span>
+                                    <div class="r_content">
+                                        <p>{{=subProduct.PriceRemark}}</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{~}}
+                </div>
+                {{?product.PriceList.length > 3}}
+                <div class="book_more">
+                    <a href="javascript:void(0);" class="more_opera">
+                        <em>展开所有</em><i></i>
+                    </a>
+                </div>
+                {{?}}
+            </div>
+            {{?}}
+        </div>
+	    {{~}}
+	</div>
+	{{??}}
+	<div id="j_flip_no_main" class="flip_no_main">
+	    <i></i><span>亲，筛选无结果啦，重新筛选吧！</span>
+	    <a class="flip_no_btn">重新筛选</a>
+	</div>
+	{{?}}
+
+<div id="j_flip_no_main" class="flip_no_main none">
+    <i></i><span>亲，筛选无结果啦，重新筛选吧！</span>
+    <a class="flip_no_btn">重新筛选</a>
+</div>
+<div id="aysnPager" class="paging aysnPager"></div>

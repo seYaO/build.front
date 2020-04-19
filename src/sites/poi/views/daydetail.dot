@@ -1,0 +1,227 @@
+	{{for(var i=0;i<it.totalDays;i++){}}
+        <div class="routeList contentList {{?i!=0}}none{{?}}" data-date="day_{{=i+1}}" data-day="{{=i+1}}">
+            <div class="routeTime">
+                <div class="dayBox">
+                    <div class="dayWrap">
+                        <span class="prev dayBtn cursorBtn"><</span>
+                        <span class="dayNum">第{{=i+1}}天</span>
+                        <span class="next dayBtn cursorBtn">></span>
+                    </div>
+                </div>
+                <div class="addBox cursorBtn">+</div>
+                <ul class="addUserBox none">
+                    <li data-user="1">添加自由文本</li>
+                    <li data-user="2">添加城际交通</li>
+                </ul>
+            </div>
+
+            <div class="routeCity routeBox">
+                <div class="cityBox">
+                <!--目的地+途径地-->
+                {{?it.destId !="" && it.transRoutes && it.transRoutes.length > 0}}
+                    {{?it.details && it.details.length>0}}
+                        {{?it.details[i] && it.details[i].dests}}
+                            {{?i==0}}
+                                <input type="hidden" id="startCity" value="{{=it.details[i].startCityId}}">
+                                <span class="route_start_city" data-startCityid = "{{=it.details[i].startCityId}}" data-startCityName="{{=it.details[i].startCityName}}">出发地</span>
+                                {{?it.details[i].dests.length==0}}
+                                <i>-</i><span class="day_city day_city_name" data-cityId="{{=it.destId}}" title="{{=it.destName}}">{{=it.destName}}</span>
+                                {{??}}
+                                {{~it.details[i].dests:dest:dIndex}}
+                                    {{?dIndex < it.details[i].dests.length && it.details[i].dests.length <=3}}<i>-</i>{{?}}
+                                    {{?it.details[i].dests.length <=3 && dIndex<3}}
+                                        <span class="day_city day_city_name" data-cityId="{{=dest.id}}" title="{{=dest.name}}">{{=dest.name}}</span>
+                                    {{?}}
+                                {{~}}
+                                {{?}}
+                            {{??}}
+                                {{~it.details[i].dests:dest:dIndex}}
+                                    {{?dIndex < it.details[i].dests.length && it.details[i].dests.length <=3 && dIndex!=0}}<i>-</i>{{?}}
+                                    {{?it.details[i].dests.length <=3 && dIndex<3}}
+                                        <span class="day_city day_city_name" data-cityId="{{=dest.id}}" title="{{=dest.name}}">{{=dest.name}}</span>
+                                    {{?}}
+                                {{~}}
+                            {{?}}
+
+                            {{?it.details[i].dests.length <3 && dIndex<3}}
+                                <span class="addCity chooseBtn cursorBtn">+增加城市</span>
+                            {{??it.details[i].dests.length >=3 || dIndex>=2}}
+                              <span class="addCity chooseBtn cursorBtn none">+增加城市</span>
+                            {{?}}
+                        {{??}}
+                            {{?i==0}}
+                                <span class="route_start_city" data-startCityid = "0" data-startCityName="出发地">出发地</span>
+                                <i>-</i><span class="day_city day_city_name" data-cityId="{{=it.destId}}" title="{{=it.destName}}">{{=it.destName}}</span>
+                                <span class="addCity chooseBtn cursorBtn">+增加城市</span>
+                            {{??}}
+                                <span class="addCity chooseBtn cursorBtn">+增加城市</span>
+                            {{?}}
+                        {{?}}
+                    {{??}}
+                        {{?i==0}}
+                            <span class="route_start_city" data-startCityid = "0" data-startCityName="出发地">出发地</span>
+                            <i>-</i><span class="day_city day_city_name" data-cityId="{{=it.destId}}" title="{{=it.destName}}">{{=it.destName}}</span>
+                            <span class="addCity chooseBtn cursorBtn">+增加城市</span>
+                        {{??}}
+                            <span class="addCity chooseBtn cursorBtn">+增加城市</span>
+                        {{?}}
+                    {{?}}
+                {{??}}<!--目的地-->
+                    {{?i==0}}
+                        <span class="route_start_city" data-startCityid = "{{=it.destId}}" data-startCityName="{{=it.destName}}">{{=it.destName}}</span>
+                        <i>-</i><span class="day_city_one day_city_name" data-cityId="{{=it.destId}}" title="{{=it.destName}}">{{=it.destName}}</span>
+                        <span class="addCity chooseBtn cursorBtn none">+增加城市</span>
+                    {{??}}
+                        <span class="day_city_one day_city_name" data-cityId="{{=it.destId}}" title="{{=it.destName}}">{{=it.destName}}</span>
+                        <span class="addCity chooseBtn cursorBtn none">+增加城市</span>
+                    {{?}}
+                {{?}}
+
+                </div>
+                <ul class="cityList none">
+                    <li data-cityId="{{=it.destId}}">{{=it.destName}}</li>
+                    {{~it.transRoutes:city:index}}
+                        <li data-cityId="{{=city.id}}">{{=city.name}}</li>
+                    {{~}}
+                </ul>
+            </div>
+
+            <div class="routeLine routeBox">
+            {{var idList=[];}}
+                <ul class="routeInfo">
+                {{?it.details && it.details.length>0}}
+                {{?it.details[i]}}
+                    {{?it.details[i].points && it.details[i].points.length >0}}
+                    {{var pointIndex = 0;}}
+                        {{~it.details[i].points:point:pIndex}}
+                        {{idList.push(point.id);}}
+                        {{? point.type!=0 }}<!--0是自定义-->
+                        <li class="drag_Box journey" data-route="{{=pointIndex+1}}" data-start="{{=pointIndex+1}}">
+                            <div class="route route_{{=pointIndex+1}} sceneryLi" data-name="{{=point.name}}" data-type="{{=point.type}}" data-poiid="{{=point.id}}" data-gglon="{{=point.ggLon}}" data-gglat="{{=point.ggLat}}">
+                                {{?point.img.length>0}}
+                                <img src="{{=point.img[0].picurl}}" data-poiid="{{=point.id}}" data-imgName="{{=point.img[0].picname}}" data-imgId="{{=point.img[0].picid}}">
+                                {{?}}
+                                <p class="title">
+                                    <span><span class="number">{{=pointIndex+1}}</span>.{{=point.name}}</span>
+                                    <span class="playTime">{{=point.playTime}}</span>
+                                </p>
+                                <span class="action"></span>
+                            </div>
+                            <div class="traffic route {{?pIndex == it.details[i].points.length-1 || (pIndex != it.details[i].points.length-1 && it.details[i].points[pIndex+1].type ==0)}}none{{?}}">
+								{{?point.trafficType == 0 && point.distance == 0}}
+				                    <span class="trafficType noTraffic" data-type="{{=point.trafficType}}">暂时无数据，请选择其他交通方式</span>
+	                                <span class="trafficDistance" data-distance="{{=point.distance}}"></span>
+			                    {{??}}
+				                    <span class="trafficType" data-type="{{=point.trafficType}}">{{=point.trafficTypeName}}</span>
+				                    <span class="trafficDistance" data-distance="{{=point.distance}}">{{=point.distance}}km</span>
+			                    {{?}}
+			                    <span class="action_choose" data-click="0">选择默认交通方式</span>
+			                </div>
+                            <div class="t_choose none">
+                                <ul class="c_traffic">
+                                    <li {{?point.trafficType==1 || point.trafficType==0}}class="active"{{?}} data-type="1" data-name="步行"><i class="walk"></i>步行</li>
+                                    <li {{?point.trafficType==2}}class="active"{{?}} data-type="2" data-name="公交"><i class="subway"></i>公交</li>
+                                    <li {{?point.trafficType==3}}class="active"{{?}} data-type="3" data-name="自驾"><i class="self-driving"></i>自驾</li>
+                                </ul>
+                                <ul class="trafficInfo">
+                                    <li class="t_info {{?point.trafficType!=1 && point.trafficType!=0}}none{{?}}" data-type="1">
+                                        {{?point.trafficType==1}}
+                                        <p class="traffic_check active">已设默认</p>
+                                        {{??}}
+                                        <p class="traffic_check">设为默认</p>
+                                        {{?}}
+                                        <div class="routeLineBox"></div>
+                                    </li>
+                                    <li class="t_info {{?point.trafficType!=2}}none{{?}}" data-type="2">
+                                        {{?point.trafficType==2}}
+                                        <p class="traffic_check active">已设默认</p>
+                                        {{??}}
+                                        <p class="traffic_check">设为默认</p>
+                                        {{?}}
+                                        <div class="routeLineBox"></div>
+                                    </li>
+                                    <li class="t_info {{?point.trafficType!=3}}none{{?}}" data-type="3">
+                                        {{?point.trafficType==3}}
+                                        <p class="traffic_check active">已设默认</p>
+                                        {{??}}
+                                        <p class="traffic_check">设为默认</p>
+                                        {{?}}
+                                        <div class="routeLineBox"></div>
+                                    </li>
+                                </ul>
+                                <div class="close"></div>
+                            </div>
+                        </li>
+                        {{pointIndex = pointIndex+1;}}
+                        {{??}}
+                            {{? point.routeType == 1}}<!--自定义文本-->
+                            <li class="drag_Box" data-type="{{=point.routeType}}" data-user="1">
+                                <div class="scenery userText user_text mb_20">
+                                    <div class="customTitle mb_20">
+                                        <span>自由文本</span>
+                                        <span class="customDel action"></span>
+                                    </div>
+                                    <div class="btnList mb_20 userInput">
+                                        <span class="btn_title {{?point.title!=""}}active{{?}}" {{?point.title!=""}}data-click="0"{{??}}data-click="1"{{?}} data-channel="1">+添加标题</span>
+                                        <span class="btn_text {{?point.content!=""}}active{{?}}" {{?point.content!=""}}data-click="0"{{??}}data-click="1"{{?}} data-channel="2">+添加内容</span>
+                                    </div>
+                                    <div class="scenery_title sceneryInput {{?point.title==""}}none{{?}} mb_20" data-channel="1">
+                                        <input type="text" placeholder="请输入标题" class="textIn" maxlength="200" value="{{=point.title}}">
+                                        <i class="title_close i_close"></i>
+                                    </div>
+                                    <div class="scenery_text sceneryInput {{?point.content==""}}none{{?}} mb_20" data-channel="2">
+                                        <textarea cols="30" rows="3" class="textIn textareaIn" placeholder="请输入内容" maxlength="450" data-value="{{=point.content}}"></textarea>
+                                        <i class="text_close i_close"></i>
+                                    </div>
+                                    <div class="picselect userInput"></div>
+                                    {{?point.img && point.img.length > 0}}
+                                       <div class="imageBox none">
+                                       {{~point.img:image}}
+                                       <p data-src="{{=image.picurl}}" data-id="{{=image.picid}}" data-name="{{=image.picname}}"></p>
+                                       {{~}}
+                                       </div>
+                                    {{?}}
+                                </div>
+                            </li>
+                            {{?? point.routeType == 2}}
+                            <!--自定义交通-->
+                            <li class="drag_Box" data-type="{{=point.routeType}}" data-user="2">
+                                <div class="scenery userTraffic user_traffic mb_20">
+                                    <div class="customTitle mb_20">
+                                        <span>城际交通</span>
+                                        <span class="customDel action"></span>
+                                    </div>
+                                    <div class="cityChooseBox customBox mb_20 userInput">
+                                        <div class="startCity">
+                                            <input class="firstCity" placeholder="出发城市" maxlength="20" value="{{=point.startCityName}}">
+                                        </div>
+                                        <span>--</span>
+                                        <div class="endCity">
+                                            <input class="lastCity" placeholder="目的城市" maxlength="20" value="{{=point.destName}}">
+                                        </div>
+                                        <div class="warningBox">*城市必填</div>
+                                    </div>
+                                    <div class="trafficChooseBox customBox userInput">
+                                        <select name="" id="" class="trafficIN">
+                                            <option value="0" {{?point.trafficType==0}}selected="selected"{{?}}>--请选择交通方式--</option>
+                                            <option value="4" {{?point.trafficType==4}}selected="selected"{{?}}>飞机</option>
+                                            <option value="5" {{?point.trafficType==5}}selected="selected"{{?}}>巴士</option>
+                                            <option value="6" {{?point.trafficType==6}}selected="selected"{{?}}>火车</option>
+                                            <option value="7" {{?point.trafficType==7}}selected="selected"{{?}}>轮船</option>
+                                            <option value="8" {{?point.trafficType==8}}selected="selected"{{?}}>地铁</option>
+                                        </select>
+                                        <div class="warningBox">*交通必选</div>
+                                    </div>
+                                </div>
+                            </li>
+                            {{?}}
+                        {{?}}
+                        {{~}}
+                    {{?}}
+                {{?}}
+                {{?}}
+                </ul>
+                <input type="hidden" id="idList" value={{=idList}}>
+            </div>
+        </div>
+        {{}}}

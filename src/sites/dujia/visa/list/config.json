@@ -1,0 +1,11 @@
+{
+    "dataUri":  "/intervacation/api/VisaInfo/GetVisaList",
+    "query": {
+        "countryName":"japan",
+        "relatedId":"",
+        "depCityId":"321",
+        "siteType":0,
+        "count":8
+    },
+    "desc": "签证列表页"
+}

@@ -1,0 +1,53 @@
+<div class="dj-calendar editor">
+    <div class="panel">
+        <div class="month-nav">
+            <a href="javascript:;" hidefocus="true" class="ico previous-month" data-btn-premonth></a>
+            <a href="javascript:;" hidefocus="true" class="ico next-month" data-btn-nextmonth></a>
+            <span class="title">
+                <a class="year" href="javascript:;">{{=it.months[0].year}}年</a>              
+                {{for(var i=0;i<6;i++){ }}
+                {{var _month=i+it.months[0].month;if(_month>12)_month=_month-12;}}
+                <a href="javascript:;" data-addmonth="{{=i}}" data-year="{{=it.year}}"
+                    data-month="{{=it.months[0].month}}" class="month J_changemonth">{{=_month}}月</a>
+                {{ } }}
+                    
+            </span>
+        </div>
+        <table class="month-panel">
+            <thead>
+                <tr class="header">
+                    <th>{{=it.months[0].month}}月</th>
+                    {{?(it.weekModel!=1)}}
+                    <th class="sunday">星期日</th>
+                    {{?}}  
+                    <th>星期一</th>
+                    <th>星期二</th>
+                    <th>星期三</th>
+                    <th>星期四</th>
+                    <th>星期五</th>
+                    <th class="saturday">星期六</th>
+                    {{?(it.weekModel==1)}}
+                    <th class="sunday">星期日</th>
+                    {{?}}
+                </tr>
+            </thead>
+            <tbody>
+                {{~it.months[0].weeks:week:index}}
+                <tr class="daterow">
+                    <td>日期</td>
+                    {{~week:day:weekday}}
+                    {{var tdclass='';if(weekday==0) tdclass='sunday'; if(weekday==6) tdclass='saturday';}}
+                    <td class="{{=tdclass}}" data-date="{{=day.date}}">{{=(day.date)?day.date:''}}</td>
+                    {{~}}
+                </tr>
+                <tr>
+                    <td>{{=it.weekTmpl}}</td>
+                    {{~week:day:weekday}}
+                    <td class="J_day_data" data-date="{{=day.date}}" data-value="{{=day.value}}" data-day="{{=day.day}}">{{=it.dayTmpl}}</td>
+                    {{~}}
+                </tr>
+                {{~}}
+            </tbody>
+        </table>
+    </div>
+</div>

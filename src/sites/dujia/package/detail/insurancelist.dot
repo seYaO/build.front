@@ -1,0 +1,97 @@
+<!--packedDetail 里脚本有引用-->
+{{?it.Data.Insurance}}
+<div class="other-box">
+    <div class="package-title change-other"><i></i>
+        <h2>其他产品</h2>
+    </div>
+</div>
+<div class="specific-others">
+    <span>类型</span><span>产品名称</span><span>同程价</span><span>份数</span><span>合计</span>
+</div>
+<div class="box-others">
+    <div class="allother-list">
+        <div class="others-list Accidents-list">
+        <span class="otherType">意外险</span>
+        {{var hasDefalut = false;
+        var arr = [];
+            for(var i=0;i<it.Data.Insurance.Accidents.length;i++){
+                if(it.Data.Insurance.Accidents[i].IsSelected==1){
+                    hasDefalut =true;
+                    arr.push(it.Data.Insurance.Accidents[i]);
+                    break;
+                }
+            }
+            for(var i=0;i<it.Data.Insurance.Accidents.length;i++){
+                if(it.Data.Insurance.Accidents[i].IsSelected==0){
+                    arr.push(it.Data.Insurance.Accidents[i]);
+                }
+            }
+        }}
+        {{~arr:AccItems:index}}
+        {{var totalNum = parseInt(it.Data.totalNum),price = parseInt(AccItems.Price);
+            var accPrice = totalNum*price;
+        }}
+            <div class="other-content {{?!index==0}}none{{?}}" data-name="{{=AccItems.Name}}" data-id="{{=AccItems.Id}}" data-num="{{=totalNum}}" data-single="{{=AccItems.Price}}" data-all="{{=accPrice}}">
+                <span class="product-others baoxian-others" data-content='<p>{{=AccItems.Name}}</p><p>最高赔{{=AccItems.Coverage}}</p>{{=AccItems.Detail}}{{=AccItems.ClauseUrl}}'>{{=AccItems.Name}}</span>
+                <span class="tc-other-price">￥{{=AccItems.Price}}</span>
+                <span class="num-others">{{=totalNum}}</span>
+                <span class="total-num-others">￥{{=accPrice}}</span>
+                {{?hasDefalut}}
+                    {{?AccItems.IsSelected==1}}
+                    <input class="others-check" type="checkbox" checked value="{{=AccItems.Id}}">
+                    {{??}}
+                    <input class="others-check" type="checkbox" value="{{=AccItems.Id}}">
+                    {{?}}
+                {{??}}
+                    {{?it.Data.AccidentCode || it.Data.AccidentCode == ""}}
+                        <input class="others-check" type="checkbox" value="{{=AccItems.Id}}">
+                    {{??}}
+                        {{?index==0}}
+                        <input class="others-check" type="checkbox" checked value="{{=AccItems.Id}}">
+                        {{??}}
+                        <input class="others-check" type="checkbox" value="{{=AccItems.Id}}">
+                        {{?}}
+                    {{?}}
+                {{?}}
+            </div>
+        {{~}}
+            <span class="more-others">更多意外险<i></i></span>
+        </div>
+        {{?it.Data.Insurance.Cancles && it.Data.Insurance.Cancles.length > 0}}
+            {{var flightPrice,hotelPrice;
+                totalPrice = it.Data.TotalPrice/it.Data.totalNum;
+                var minValue=0,maxValue=0,valueKey=0;
+                var canLength = it.Data.Insurance.Cancles.length;
+                for(var j=0;j<canLength;j++){
+                    minValue=it.Data.Insurance.Cancles[j].MinValue-1;
+                    maxValue=it.Data.Insurance.Cancles[j].MaxValue+1;
+                    if(totalPrice>minValue && totalPrice<maxValue){
+                        valueKey = j;
+                        break;
+                    }
+                }
+                if(totalPrice>it.Data.Insurance.Cancles[canLength-1].MaxValue){
+                    valueKey = canLength-1;
+                }
+            }}
+            {{~it.Data.Insurance.Cancles:Cancles:index}}
+            {{?index === valueKey}}
+            {{var totalNum = parseInt(it.Data.totalNum),price = parseInt(Cancles.Insurance.Price);
+                        var accPrice = totalNum*price;
+            }}
+            <div class="others-list Cancles-list">
+                <div class="other-content" data-id="{{=Cancles.Insurance.Id}}" data-num="{{=totalNum}}" data-single="{{=Cancles.Insurance.Price}}" data-all="{{=accPrice}}">
+                    <span class="otherType">取消险</span>
+                    <span class="product-others baoxian-others" data-content='<p>{{=Cancles.Insurance.Name}}</p><p>最高赔{{=Cancles.Insurance.Coverage}}</p>{{=Cancles.Insurance.Detail}}{{=Cancles.Insurance.ClauseUrl}}'>{{=Cancles.Insurance.Name}}</span>
+                    <span class="tc-other-price">￥{{=Cancles.Insurance.Price}}</span>
+                    <span class="num-others">{{=totalNum}}</span>
+                    <span class="total-num-others">￥{{=accPrice}}</span>
+                    <input class="others-check" type="checkbox" {{?!it.Data.CancelCode && it.Data.CancelCode == ""}}{{??}}checked{{?}} value="{{=Cancles.Insurance.Id}}">
+                </div>
+            </div>
+            {{?}}
+            {{~}}
+        {{?}}
+    </div>
+</div>
+{{?}}

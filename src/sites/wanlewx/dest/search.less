@@ -1,0 +1,112 @@
+@rem:24rem;
+.search {
+    width:100%-2000/640%;
+    height:60/@rem;
+    background-color: #efeff4;
+    padding-left:2000/640%;
+    padding-top: 1600/640%;
+    padding-bottom: 1600/640%;
+}
+
+.search-reset {
+    padding-right: 8/@rem
+}
+
+.search, .city-panel {
+    -webkit-user-select: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    -webkit-user-drag: none
+}
+
+.search input {
+    display: block;
+    position:absolute;
+    width: 76%;
+    height: 50/@rem;
+    padding-top: 5/@rem;
+    padding-left: 65/@rem;
+    padding-right: 60/@rem;
+    border-radius: 10/@rem;
+    border: 0;
+    line-height: 30/@rem;
+    box-sizing: border-box;
+    font-size: 28/@rem;
+}
+
+.search .clear {
+    position: absolute;
+    display:none;
+    right: 23.5%;
+    top: 28/@rem;
+
+}
+
+.search .clear i {
+    display: block;
+    width: 32/@rem;
+    height: 32/@rem;
+    background: #ccc;
+    border-radius: 50%;
+    line-height: 32/@rem;
+    font-size: 24/@rem;
+    color: #fff;
+    text-align: center;
+    font-style: normal
+}
+
+.search .onsearch {
+    position: absolute;
+    width: 65/@rem;
+    height: 60/@rem;
+    top: 13/@rem;
+    right: 40/@rem;
+    text-align: center;
+    font-size: 28/@rem;
+    line-height: 60/@rem;
+    color:#09bb07
+}
+
+
+.search .search-icon {
+    position: absolute;
+    left: 6%;
+    top: 1.3rem;
+    width: 20/@rem;
+    height: 20/@rem;
+    border: 1px solid #aaa;
+    border-radius: 50%
+}
+
+.search .search-icon:after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 10/@rem;
+    left: 20/@rem;
+    top: 17/@rem;
+    background: #aaa;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg)
+}
+
+.search-complete {
+    display: none
+}
+
+.search-complete .autofill-wrap {
+    border: 0
+}
+
+.search-complete table tr {
+    height: 44px;
+    line-height: 44px;
+    font-size: 14px
+}
+
+.search-complete table tr div {
+    font-family: "微软雅黑";
+    font-size: 14px
+}

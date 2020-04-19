@@ -1,0 +1,427 @@
+{{
+    var baseData = IT[0] ? IT[0].Data : {};
+    var visaExistData =  IT[1] ? IT[1].Data : {};
+    var overSeaExistData = IT[2] ? IT[2].Data : {};
+    var intervacationExistData =  IT[3] ? IT[3].response : {};
+    var localExistData =  IT[4] ? IT[4].response : {};
+    var startCities =  IT[5] ? IT[5].Data : {};
+    var destCity =  IT[6] ? IT[6].Data : {};
+    var hotRecommend =  IT[7] ? IT[7].Data : {};
+    var responseData =  IT[8] ? IT[8].response : [];
+    var it = responseData[0];
+    var friendLink =  IT[9] ? IT[9].Data : {};
+    var hotDest =  IT[10] ? IT[10].Data : {};
+}}
+{{ it.BaseData = baseData; }}
+{{
+    var destC = baseData.DestName || '';
+    var destEn = baseData.DestPinYin || '';
+    var StartCityId = baseData.StartCityId || 0;
+    var StartCityName = baseData.StartCityName || '';
+    var StartCityEn = baseData.StartCityPinYin || '';
+    var traceKey = '';
+}}
+{{? baseData.SearchType === 0 }}
+    {{? baseData.PageType === 0 }}
+        {{ traceKey = "PC_dujia_all_list"; }}
+    {{?? baseData.PageType === 1 }}
+        {{ traceKey = "PC_dujia_group_list"; }}
+    {{?? baseData.PageType === 3 }}
+        {{ traceKey = "PC_dujia_free_list"; }}
+    {{?? baseData.PageType === 10 }}
+        {{ traceKey = "PC_dujia_local_list"; }}
+    {{?}}
+{{??}}
+    {{? baseData.PageType === 0 }}
+        {{ traceKey = "PC_dujia_all_search"; }}
+    {{?? baseData.PageType === 1 }}
+        {{ traceKey = "PC_dujia_group_search"; }}
+    {{?? baseData.PageType === 3 }}
+        {{ traceKey = "PC_dujia_free_search"; }}
+    {{?? baseData.PageType === 10 }}
+        {{ traceKey = "PC_dujia_local_search"; }}
+    {{?}}
+{{?}}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" trace="{{=traceKey}}">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit">
+    {{ var title = baseData.TDKInfo ? baseData.TDKInfo.Title : ''; }}
+    <title>{{= title }}</title>
+    <meta name='keywords' content='{{=baseData.TDKInfo.KeyWords}}' />
+    <meta name='description' content='{{=baseData.TDKInfo.Description}}' />
+    <% includeId =cnwidescreenjscss %>
+    <style>
+        .rightpic{position: relative;}
+    </style>
+</head>
+<body>
+<!-- 公共头部 start -->
+<% includeId =cnwidescreenhead?channel=dujia %>
+<!-- 前端性能监控 -->
+<input type="hidden" id="commonMonitor" value='{"channel":"dujia","page":"dujia-index"}'/>
+<!-- 公共头部 end -->
+
+<!-- 主体内容 start -->
+<div class="content">
+    <!-- 面包屑导航begin -->
+    <div class="bread">
+        {{
+            var breadTitle = '';
+            var tourHref = '/dujia/' + destEn + '-lvyou/';
+            var breadTour = '';
+            var breadHead = '';
+            var trace0 = '';
+            var trace1 = '';
+            var trace2 = '';
+        }}
+        {{? baseData.SearchType === 0 }}
+            {{? baseData.PageType === 0 }}
+                {{ breadTitle = StartCityName + '到' + destC + '旅游'; }}
+            {{?? baseData.PageType === 1}}
+                {{ breadTitle = StartCityName + '到' + destC + '跟团游'; }}
+                {{ breadTour = '<a href="/dujia/' + destEn + baseData.GroupLabelId + '-gentuan/" trace="3">' + destC + '跟团游</a> &gt; '; }}
+                {{ trace0 = "0"; }}
+                {{ trace1 = "1"; }}
+                {{ trace2 = "2"; }}
+            {{?? baseData.PageType === 3 }}
+                {{ breadTitle = StartCityName + "到" + destC + "自助游"; }}
+                {{ breadTour = '<a href="/dujia/' + destEn + baseData.FreeLabelId + '-zizhu/" trace="3">' + destC + '自助游</a> &gt; '; }}
+                {{ trace0 = "0"; }}
+                {{ trace1 = "1"; }}
+                {{ trace2 = "2"; }}
+            {{?? baseData.PageType === 10}}
+                {{ breadTitle = destC + "目的地参团"; }}
+                {{ tourHref = "/dujia/" + destEn + "-local/"; }}
+            {{?}}
+            {{ breadHead = '<a href="' + tourHref + '" rel="nofollow" trace=' + trace2 + '>' + destC + '旅游</a> &gt; ' + breadTour + '<h1>' + breadTitle + '</h1>'; }}
+        {{??}}
+            {{ breadHead = '<h1>' + StartCityName + '到' + destC + ((baseData.PageType == 1) ? "跟团游" : ((baseData.PageType == 3) ? "自由行" : "")) + '</h1>'; }}
+        {{?}}
+        <div class="clearfix">您所在位置：<a href="/" rel="nofollow" trace={{=trace0}}>同程首页</a> &gt; <a href="/dujia/" rel="nofollow" trace={{=trace1}}> 出境游</a> &gt; {{=breadHead}}
+            <!--<span class="c_phone c_phone_add" attr-url="/dujia/ajaxcall.aspx?type=GetTel400"><b></b><em>4007-777-777</em></span>-->
+        </div>
+    </div>
+    <!-- 面包屑导航end -->
+    <!-- 内容begin -->
+    <div class="main">
+        <!-- 左侧内容begin -->
+        <div class="main-left">
+            {{#def.destination}}
+            <div class="left-module promise">
+                <h3><span>同程出境旅游承诺</span></h3>
+                <div class="promise-txt">
+                    <p><i class="promise1"></i><span>万余条线路，遍布全球</span></p>
+                    <p><i class="promise2"></i><span>真实价格，透明行程</span></p>
+                    <p><i class="promise3"></i><span>全天候专业客服服务</span></p>
+                    <p><i class="promise4"></i><span>专注旅游11年，品质保障</span></p>
+                </div>
+            </div>
+            <!--攻略-->
+            <div class="left-module list_strategy"></div>
+            <div class="left-module nearshop">
+                <h3><span></span></h3>
+                <ul></ul>
+            </div>
+            <div class="left-module">
+                <a href="/dujia/schedule.html" target="_blank">
+                    <img class="left-img" src="//pic3.40017.cn/line/admin/2015/09/28/09/xV7c40.jpg" />
+                </a>
+            </div>
+            <div class="left-module">
+                <a href="/dujia/schedule_team.html" target="_blank">
+                    <img class="left-img" src="//pic3.40017.cn/line/admin/2015/09/28/09/gP5rHf.jpg" />
+                </a>
+            </div>
+            <div attr-url="/dujia/Ajaxcalltravel.aspx?type=GetBrowsingHistoryNew" class="left-module record"></div>
+        </div>
+        <!-- 左侧内容end -->
+        <!-- 右侧内容begin -->
+        <div class="main-right">
+            <div class="sousuo clearfix">
+                <div class="topBox">
+                    <div class="citybox new-scity-tips">
+                        <b attrurl="//www.ly.com/dujia/AjaxCallNew.aspx?type=GetQianzhengSearch" class="city_b" id="city_select">
+                            <span class="city_span"><strong>{{=StartCityName}}</strong><span class="city_span">出发</span></span>
+                        </b>
+                        <!--热门出发城市-->
+                        <div class="udiy" id="common-djchujinghotout">
+                            <div id="popleave" class="none" style="display: none;" test="">
+                                <div class="leavecity"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="top_rigth">
+                        <div class="udiy" id="common-djchujinghotsearchyp">
+                            <link href="//js.40017.cn/cn/v/2015/jqmodules/search/0.1.0/index.css" rel="stylesheet"/>
+                            <div class="cj-search">
+                                <div class="search-box">
+                                    <div class="search-line icon-up">
+                                        {{ 
+                                            var defaultValue = ""; 
+                                            var defaultType = 0;
+                                        }}
+                                        {{? baseData.PageType === 0 }}
+                                            {{ defaultValue = "全部"; }}
+                                        {{?? baseData.PageType === 1 }}
+                                            {{ defaultValue = "跟团游"; }}
+                                            {{ defaultType = 1; }}
+                                        {{?? baseData.PageType === 3}}
+                                            {{ defaultValue = "自由行"; }}
+                                            {{ defaultType = 2; }}
+                                        {{??}}
+                                            {{ defaultValue = "目的地参团"; }}
+                                            {{ defaultType = 10; }}
+                                        {{?}}
+                                        <span id="selectValue" class="selected" tid="{{=defaultType}}">{{= defaultValue }}</span>
+                                        <ul class="search-list" style="display: none;">
+                                            <li tid="0">全部</li>
+                                            <li tid="1">跟团游</li>
+                                            <li tid="2">自由行</li>
+                                            <li tid="10">目的地参团</li>
+                                            <li tid="6">签证</li>
+                                            <li tid="7">机酒任选</li>
+                                        </ul>
+                                    </div>
+                                    <input id="searchinput" attrValu="请输入目的地、主题或关键词" data-keyword="{{=destC}}" class="search-input" type="text" value="请输入目的地、主题或关键词"/>
+                                </div>
+                                <input attrurl="/dujia/search.aspx" id="btnSubmit" class="search-button" type="button" value="搜 &nbsp;索" />
+                            </div>
+                            <script src="//js.40017.cn/cn/v/2015/searchtext/v_search.0.0.1.10205.js"></script>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="udiyblock"  type="CommonSource">
+                <input type="hidden" id="hidIsLocalGroup" value="{{=baseData.PageType}}" />
+                <input type="hidden" id="hidSearchType" value="{{=baseData.SearchType}}">
+                <input type="hidden" id="hidDestName" value="{{=baseData.DestName}}">
+                <input type="hidden" id="hidDestPinYin" value="{{=baseData.DestPinYin}}">
+                <input type="hidden" id="hidGroupLabelId" value="{{=baseData.GroupLabelId}}">
+                <input type="hidden" id="hidFreeLabelId" value="{{=baseData.FreeLabelId}}">
+                <input type="hidden" id="hidCityId" value="{{=StartCityId}}" />
+                <input type="hidden" id="hidTotalCount" value="{{=it.totalCount}}" />
+
+                <div id="seafilter" class="searchParte">
+                    <ul class="seacrhtab">
+                        {{
+                            var allClass = "";
+                            var groupClass = "";
+                            var freeClass = "";
+                            var localClass = "";
+                            var groupDest = "";
+                            var freeDest = "";
+                        }}
+                        {{? baseData.PageType === 0 }}
+                            {{ allClass = "onStyle"; }}
+                        {{?? baseData.PageType === 1 }}
+                            {{ groupClass = "onStyle"; }}
+                            {{ groupDest = destC; }}
+                        {{?? baseData.PageType === 3 }}
+                            {{ freeClass = "onStyle"; }}
+                            {{ freeDest = destC; }}
+                        {{??}}
+                            {{ localClass = "onStyle"; }}
+                        {{?}}
+                        {{ 
+                            var allLink = '';
+                            var groupLink = '';
+                            var freeLink = '';
+                            var superFreeLink = '';
+                            var destGroupLink = '';
+                            var visaLink = '/dujia/search.aspx?src=' + StartCityName + '&dest=' + destC + '&prop=6';
+                            var overSeaLink = '/dujia/wanle/searchlist_' + destEn + '.html';
+                        }}
+                        {{? baseData.SearchType === 0}}
+                            {{
+                                allLink = '/dujia/' + destEn + '-lvyou/f' + StartCityId + '/';
+                                groupLink = '/dujia/' + destEn + baseData.GroupLabelId + '-gentuan/f' + StartCityId + '/';
+                                freeLink = '/dujia/' + destEn + baseData.FreeLabelId + '-zizhu/f' + StartCityId + '/';
+                                superFreeLink = '/dujia/' + destEn + '-jijiu/f' + StartCityId + '/';
+                                destGroupLink = '/dujia/' + destEn + '-local/f' + StartCityId + '/';
+                            }}
+                        {{??}}
+                            {{
+                                allLink = '/dujia/search.aspx?src=' + StartCityName + '&dest=' + destC + '&prop=0';
+                                groupLink = '/dujia/search.aspx?src=' + StartCityName + '&dest=' + destC + '&prop=1';
+                                freeLink = '/dujia/search.aspx?src=' + StartCityName + '&dest=' + destC + '&prop=2';
+                                superFreeLink = '/dujia/search.aspx?src=' + StartCityName + '&dest=' + destC + '&prop=7';
+                                destGroupLink = '/dujia/search.aspx?src=' + StartCityName + '&dest=' + destC + '&prop=10';
+                            }}
+                        {{?}}
+                        {{var isShowLocal = false;}}
+                        {{?localExistData && localExistData[0] && localExistData[0].totalCount != 0}}
+                            {{isShowLocal = true;}}
+                        {{?}}
+                        {{?intervacationExistData && intervacationExistData[0] && intervacationExistData[0].propList && intervacationExistData[0].propList[0] && intervacationExistData[0].propList[0].prop && intervacationExistData[0].propList[0].prop.length > 0 }}
+                            <li class="{{=allClass}}"><a href="{{= allLink }}" title="全部">全部</a></li>
+                            {{
+                                var isShowGroup = false;
+                                var isShowFree = false;
+                                var isShowDestGroup = false;
+                                var props = intervacationExistData[0].propList[0].prop;
+                            }}
+                            {{?props && props.length}}
+                                {{~props:linePro}}
+                                    {{?linePro.id === '1'}}
+                                        {{isShowGroup = true;}}
+                                    {{?}}
+                                    {{?linePro.id === '3'}}
+                                        {{isShowFree = true;}}
+                                    {{?}}
+                                {{~}}
+                            {{?}}
+                            {{?isShowGroup}}
+                                <li class="{{=groupClass}}"><a href="{{= groupLink }}" title="{{=groupDest}}跟团游">{{=groupDest}}跟团游</a></li>
+                            {{?}}
+                            {{?isShowFree}}
+                                <li class="{{=freeClass}}"><a href="{{= freeLink }}" title="{{=freeDest}}自由行">{{=freeDest}}自由行</a></li>
+                            {{?}}
+                            {{?isShowLocal}}
+                                <li class="{{=localClass}}"><a href="{{= destGroupLink }}" title="目的地参团">目的地参团</a>
+                                <em style="width: 23px;height: 10px;position: absolute;top: -2px;right: 9px;color: #ff7800;font-size: 12px;">NEW</em></li>
+                            {{?}}
+                            {{?isShowFree}}
+                                <li><a href="{{=superFreeLink}}" class="J_PlaneHotel" title="机酒任选">机酒任选</a>
+                                <em style="width: 23px;height: 10px;position: absolute;top: -2px;right: 9px;color: #ff7800;font-size: 12px;">NEW</em></li>
+                            {{?}}
+                        {{?}}
+                        {{? visaExistData && visaExistData.IsShow}}
+                            <li><a href="{{= visaLink }}" title="签证">签证</a></li>
+                        {{?}}
+                        {{? overSeaExistData && overSeaExistData.IsShow}}
+                            <li><a href="{{= overSeaLink }}" title="当地玩乐">当地玩乐</a></li>
+                        {{?}}
+                    </ul>
+                    <a class="ui-costomize" href="//www.ly.com/dujia/schedule.html" target="_blank">出境定制</a>
+                    <div class="crumbox" >
+                        <h4>已选条件：</h4>
+                        <span class="removeall">全部清除</span>
+                    </div>
+
+                    <div id="filter">
+                        {{#def.filter}}
+                    </div>
+                </div>
+
+                <a href="/dujia/zhuanti/321.html" target="_blank" class="fes-zt"></a>
+                <div class="loading none">
+                    <div class="loading-img"></div>
+                    <p class="loading-txt">正在努力加载中…</p>
+                </div>
+                <div id="tagList">
+                    {{#def.product}}
+                </div>
+                <div id="J_LablePager" class="lable-page"></div>
+            </div>
+            <div id="J_NoLine" class="noresult">
+                <div class="warnning">
+                    <i class="icon-warn"></i><span class="warn-txt">没有线路了哦!您还可以到热门目的地查看更多线路！</span>
+                </div>
+                {{#def.hotdest}}
+            </div>
+        </div>
+        <!-- 右侧内容end -->
+    </div>
+    <!-- 内容end -->
+</div>
+<!-- 主体内容 end -->
+
+<!--对比框begin-->
+<div class="contrastBox" attr-show="false" attr-url="/dujia/AjaxCallNew.aspx?type=GetBiaoqianPK">
+    <div class="contrastit">
+        <div class="float_L">
+            <i></i>对比中的产品<span class="font_arial">（<span id="seleline">0</span>/3）</span>
+        </div>
+        <b class="dow_b"></b><span class="contraprompt none">对不起，您最多只可以添加3条线路，请先删除对比栏中的一些线路后再添加。</span>
+    </div>
+    <div class="contrasdiv">
+        <ul>
+            <li class="">
+                <p class="addinfo">您还可以继续添加产品</p>
+            </li>
+            <li class="">
+                <p class="addinfo">您还可以继续添加产品</p>
+            </li>
+            <li class="bor_no">
+                <p class="addinfo">您还可以继续添加产品</p>
+            </li>
+        </ul>
+        <div class="contrastbtn">
+            <a id="contrbegin" attr-url="/dujia/pk/" href="javascript:void(0);" title="" class="contrasta">开始对比</a>
+            <a href="javascript:void(0)" title="" class="clear_list">清空所有产品</a>
+        </div>
+    </div>
+</div>
+<!--对比框end-->
+{{?baseData.SearchType == 0}}
+{{#def.recommenddest}}
+{{?}}
+<!-- 标签页搜索页判断参数 -->
+<input type="hidden" id="hidIsLabel" value="1" />
+
+<!-- 公共页脚 开始 -->
+<%ctx.pageview = "/出境/标签页/";%><!--ignore-->
+<% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+<!-- 公共页脚 结束 -->
+<script type="text/javascript">
+    fish.admin.config({
+        autoComplete: {v: '0.4.4', css: 1, g: '20161226001'}
+    });
+</script><!--ignore-->
+<script type="text/javascript">
+    var cityInfo = {{=JSON.stringify(startCities)}};
+</script>
+<script type="text/javascript" src="/modules/jquery.js"></script><!--ignore-->
+<script src="/modules/sea.js" type="text/javascript"></script><!--ignore-->
+ <script type="text/javascript" src="//js.40017.cn/cn/c/c/2016/common.0.3.5.js?v=2016030415"></script>
+<script type="text/javascript" src="/modules/monitor/0.3.0/index.js"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2015072201" charset="utf-8"></script>
+<script data-loader="true" src="//js.40017.cn/cn/min/??/cn/v/2015/startList/vPublic.03115.js?v=2015031101"></script>
+<script data-loader="true" src="//js.40017.cn/cn/min/??/cn/v/2015/startList/starList.03193.js?v=20150801"></script>
+<script type="text/javascript">
+    StartList.init();
+    seajs.require("./index").init({
+        dest: "{{=destC}}",
+        lcCity: "{{=StartCityId}}",
+        fangzhua: 0,
+        prop: {{=baseData.PageType}},
+        el: ".search",
+        hotCityTmpl: $('#hd_hotcityhtml').html(),
+        initCityID: "{{=StartCityId}}",
+        initCityName: "{{=StartCityName || ''}}",
+        searchLabelData: [
+            {
+                hotName: "泰国",
+                hotUrl: "//www.ly.com/dujia/taiguo-lvyou/f321/"
+            },
+            {
+                hotName: "日本",
+                hotUrl: "//www.ly.com/dujia/riben-lvyou/f321/"
+            }
+        ]
+    });
+</script>
+
+<!-- 统计相关功能 -->
+<script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js"></script>
+<script>
+    SPM_MODULE && SPM_MODULE.init({ deliver: [".desCity", ".seacrhtab", ".pro-img", ".pro-title", ".pro-btn", ".J_lineCity"] });
+</script>
+<% includeId = node_dj_common_stat %>
+<script type="text/javascript">
+    stat.init({
+        "baidu": {
+            "parameter": "pc"
+        },
+        "_tcHotmapx": {
+            "pid": "495",
+            "sp": "100"
+        }
+    });
+</script>
+</body>
+</html>

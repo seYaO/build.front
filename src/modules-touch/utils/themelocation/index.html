@@ -1,0 +1,18 @@
+<link rel="import" href="/app/assets/header/index.html?__inline" />
+<div id="showCityPage" class="page current" style="display: block;">
+
+</div>
+<link rel="import" href="/app/assets/footer/index.html?__inline" />
+<script>
+    var loc = require("modules-touch/utils/location/index");
+    loc.get({
+        callback: {
+            success: function(cityName){
+                alert("成功"+cityName);
+            },
+            failure: function(cityName){
+                alert("失败"+cityName);
+            }
+        }
+    });
+</script>

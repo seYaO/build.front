@@ -1,0 +1,95 @@
+<ul class="daylistBox">
+    <!--目的地+途径地-->
+    {{?it.destId !="" && it.transRoutes && it.transRoutes.length > 0}}
+        {{var dayTotal = it.totalDays;}}
+        {{for(var i=0;i<dayTotal;i++){}}
+            {{?it.details && it.details.length > 0}}
+	            <li class="day_{{=i}} {{?i==0}}active{{?}}" data-start="{{=i+1}}">
+	            {{?it.details[i] && it.details[i].dests}}
+	                {{?i==0}}
+	                    {{?it.details[i].dests.length > 0}}
+	                        <div class="dayBox">
+	                            <span class="day_icon">D{{=i+1}}</span>
+	                            <span class="choose_city chooseBtn none" data-index="{{=i}}">选择城市</span>
+	                            {{~it.details[i].dests:dest:dIndex}}
+	                            <span class="day_city day_city_name" data-cityId="{{=dest.id}}" title="{{=dest.name}}">{{=dest.name}}</span>
+	                            {{?dIndex < it.details[i].dests.length-1}}<i>-</i>{{?}}
+	                            {{~}}
+	                            <span class="day_add chooseBtn {{?it.details[i].dests.length>=3}}none{{?}}" data-index="{{=i}}"></span>
+	                        </div>
+	                    {{??it.details[i].dests.length==0}}
+	                        <div class="dayBox">
+	                            <span class="day_icon">D{{=i+1}}</span>
+	                            <span class="choose_city chooseBtn none" data-index="{{=i}}">选择城市</span>
+	                            <span class="day_city day_city_name" data-cityId="{{=it.destId}}" title="{{=it.destName}}">{{=it.destName}}</span>
+	                            <span class="day_add chooseBtn" data-index="{{=i}}"></span>
+	                        </div>
+	                    {{?}}
+	                {{??}}
+	                    {{?it.details[i].dests.length > 0}}
+	                    <div class="dayBox">
+	                        <span class="day_icon">D{{=i+1}}</span>
+	                        <span class="choose_city chooseBtn none" data-index="{{=i}}">选择城市</span>
+	                        {{~it.details[i].dests:dest:dIndex}}
+	                        <span class="day_city day_city_name" data-cityId="{{=dest.id}}" title="{{=dest.name}}">{{=dest.name}}</span>
+	                        {{?dIndex < it.details[i].dests.length-1}}<i>-</i>{{?}}
+	                        {{~}}
+	                        <span class="day_add chooseBtn {{?it.details[i].dests.length>=3}}none{{?}}" data-index="{{=i}}"></span>
+	                    </div>
+	                    {{??it.details[i].dests.length==0}}
+	                        <div class="dayBox">
+	                            <span class="day_icon">D{{=i+1}}</span>
+	                            <span class="choose_city chooseBtn" data-index="{{=i}}">选择城市</span>
+	                            <span class="day_add chooseBtn none" data-index="{{=i}}"></span>
+	                        </div>
+	                    {{?}}
+	                {{?}}
+	            {{??}}
+	                <div class="dayBox">
+                        <span class="day_icon">D{{=i+1}}</span>
+                        <span class="choose_city chooseBtn" data-index="{{=i}}">选择城市</span>
+                        <span class="day_add chooseBtn none" data-index="{{=i}}"></span>
+                    </div>
+	            {{?}}
+	            </li>
+            {{??}}
+                <li class="day_{{=i}} {{?i==0}}active{{?}}" data-start="{{=i+1}}">
+                {{?i==0}}
+					<div class="dayBox">
+                        <span class="day_icon">D{{=i+1}}</span>
+                        <span class="choose_city chooseBtn none" data-index="{{=i}}">选择城市</span>
+                        <span class="day_city day_city_name" data-cityId="{{=it.destId}}" title="{{=it.destName}}">{{=it.destName}}</span>
+                        <span class="day_add chooseBtn" data-index="{{=i}}"></span>
+                    </div>
+                {{??}}
+                    <div class="dayBox">
+                        <span class="day_icon">D{{=i+1}}</span>
+                        <span class="choose_city chooseBtn" data-index="{{=i}}">选择城市</span>
+                        <span class="day_add chooseBtn none" data-index="{{=i}}"></span>
+                    </div>
+                {{?}}
+                </li>
+            {{?}}
+        {{}}}
+    {{??}}
+    <!--目的地-->
+        {{var dayTotal = it.totalDays;}}
+        {{for(var i=0;i<dayTotal;i++){}}
+	        <li class="day_{{=i}} {{?i==0}}active{{?}}" data-start="{{=i+1}}">
+                <div class="dayBox">
+                    <span class="day_icon">D{{=i+1}}</span>
+                    <span class="day_city_one day_city_name" data-cityId="{{=it.destId}}" title="{{=it.destName}}">{{=it.destName}}</span>
+                    <span class="day_add chooseBtn none" data-index="{{=i}}"></span>
+                </div>
+            </li>
+        {{}}}
+    {{?}}
+</ul>
+<ul class="cityList none">
+{{?it.destId !="" && it.transRoutes && it.transRoutes.length > 0}}
+    <li data-cityId="{{=it.destId}}">{{=it.destName}}</li>
+    {{~it.transRoutes:city:index}}
+    <li data-cityId="{{=city.id}}">{{=city.name}}</li>
+    {{~}}
+{{?}}
+</ul>

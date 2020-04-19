@@ -1,0 +1,13 @@
+<div class="history">
+    <div class="history_gp">
+        <div class="g_header">
+            最近搜索
+        </div>
+        <div class="g_list">
+            {{~it:value:index}}            
+            <div class="g_item" history-item data-value="{{=value.name}}">{{=value.name}}</div>          
+            {{~}}
+            <a class="g_item g_clear" href="javascript:;" history-clear>清除记录</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+﻿<div class="ly_intelsearch">
+    {{var count=(it.list?it.list.length:0);}}
+    {{var n=0;}}
+    {{~it.list:item:index}}
+    {{var _level=item.level||1;}}
+    {{?item.isdata===false}}
+    <div class="intelsearch_item">
+        {{=item.showvalue}}
+    </div>
+    {{??}}
+    {{var _select=(n==0)?"select":"";}}
+    <div class="intelsearch_item {{=_select}}" intelsearch-item style="text-indent: {{=(_level*20)}}px;"
+         data-value="{{=item.value}}" data-text="{{=item.text}}" title="{{=item.text}}" data-link="{{=item.link}}">
+        {{=item.showvalue}}
+    </div>
+    {{n++;}}
+    {{?}}
+    {{~}}
+    {{?it.showCount}}
+    <div class="intelsearch_tip">约<span class="count">{{=n}}</span>个结果</div>
+    {{?}}
+
+</div>

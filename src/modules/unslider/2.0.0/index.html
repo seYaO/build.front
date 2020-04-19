@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Unslider &mdash; 一个超小的 jQuery轮播（slider）插件</title>
+	<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+	<!-- hover -->
+	<div class="hover">
+		<div class="hover-slider">
+			<ul>
+              	<li data-img="http://pic3.40017.cn/line/admin/2016/01/14/15/Li1fWu.jpg">
+				  <a href="http://www.ly.com/dujia/tours/253168.html?ak=BD90A054A5F16A079FB871E78C56B6CDB39BDFD21653D01B&amp;cityId=226" title="韩国" trace="trace_1">韩国</a>
+				</li>
+				<li data-img="http://pic3.40017.cn/line/admin/2016/01/14/14/JVbVzB.jpg">
+				  <a href="http://www.ly.com/dujia/tours/251020.html?ak=22F9CDD65182E7A59FB871E78C56B6CDB39BDFD21653D01B&amp;cityId=226" title="泰国" trace="trace_2">泰国</a>
+				</li>
+				<li data-img="http://pic3.40017.cn/line/admin/2016/01/14/15/EOVFW6.jpg">
+				  <a href="http://www.ly.com/dujia/tours/276430.html?ak=86F8CC86129BA5999FB871E78C56B6CDB39BDFD21653D01B&amp;cityId=226" title="日本" trace="trace_3">日本</a>
+				</li>
+				<li data-img="http://pic3.40017.cn/line/admin/2016/01/14/15/uOStRj.jpg">
+				  <a href="http://www.ly.com/dujia/tours/211989.html?ak=CE4CA40F8405C5619FB871E78C56B6CDB39BDFD21653D01B&amp;cityId=226" title="香港首发" trace="trace_4">香港首发</a>
+				</li>
+             </ul>
+		</div>
+	</div>
+	
+	<script src="../../jquery.js"></script>
+	<script src="index.js"></script>
+	<script>
+		/**
+		 * source form
+		 * http://unslider.com/
+		 */
+
+		///////////////////////////////////////////////////// default
+		var defaultSliderEle = $(".default-slider").unslider({
+			autoplay: true,
+			keys: true,  			  // 支持键盘
+			arrows: true,             // unslider-arrow  default arrows   or  false
+			nav: true,				  // unslider-nav
+			animation: "horizontal",  // vertical  fade
+			arrows: {				  // arrows 定制
+				//  Unslider default behaviour
+				prev: '<a class="unslider-arrow prev">Previous slide</a>',
+				next: '<a class="unslider-arrow next">Next slide</a>',
+
+				//  Example: generate buttons to start/stop the slider autoplaying
+				stop: '<a class="unslider-pause">Stop</a>',
+				start: '<a class="unslider-play">Play</a>'
+			}
+		});
+
+		// pause: true
+		var defaultSlider = defaultSliderEle.data("unslider");
+		// console.log(defaultSlider)
+		defaultSliderEle.hover(function (e) {
+			defaultSlider.stop();
+		}, function (e) {
+			defaultSlider.start();
+		});
+
+
+
+
+
+		//////////////////////////////////////////////////// hover
+		var hoverSliderEle = $(".hover-slider").unslider({
+			autoplay: true,
+			speed: 500,
+			delay: 3000,
+			keys: false,
+			arrows: false,
+			animation: "fade",
+			nav: function (index, label) {				// nav 定制
+				return "nav-" + (index + 1);
+			}
+		});
+
+		// console.log(hoverSlider);
+		var hoverSlider = hoverSliderEle.data("unslider");
+		// trigger type: hover
+		var hoverSliderTris = hoverSliderEle.parent().find(".unslider-nav").find("li");
+		hoverSliderTris.on("mouseover", function (e) {
+			var index = hoverSliderTris.index($(this));
+			hoverSlider.animate(index);
+		});
+
+		// lazy load image
+
+		// hoverSliderEle.on('unslider.ready', function() {
+			
+			console.log('unslider.ready');
+			// load first img
+			var firstSlide = hoverSliderEle.find("[data-img]").eq(0);
+			var firstImg = firstSlide.data("img");
+			firstSlide.css("background-image", "url("+ firstImg +")")
+					  .attr("data-img-loaded", "true");
+		// });
+
+		hoverSliderEle.on('unslider.change', function(event, index, slide) {
+			console.log('Slide has been changed to ' + index);
+			
+			if ($(slide).attr("data-img-loaded") !== "true") {
+				var img = $(slide).data("img");
+				$(slide).css("background-image", "url("+ img +")")
+						.attr("data-img-loaded", "true");
+			}
+		});
+
+
+	</script>
+</body>
+</html>

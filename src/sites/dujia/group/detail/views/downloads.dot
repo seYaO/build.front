@@ -1,0 +1,14 @@
+{{?it}}
+<div class="download-info">
+    <div class="download-con clearfix">
+        <div class="route-type">行程类型：</div>
+        <ul>
+            {{=it}}
+        </ul>
+    </div>
+    <div class="download-handle">
+        <span class="confirm-download J_Download" data-dialog-hide>查看并下载</span>
+        <span class="cancel-download close" data-dialog-hide>取消</span>
+    </div>
+</div>
+{{?}}

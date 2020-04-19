@@ -1,0 +1,41 @@
+﻿{{var month=it;}}
+<div class="month-group" style="width:{{=month.width}};">
+    <div class="month-title">
+        <span class="group_title" data-month="{{=month.month}}">{{=month.title}}</span>
+    </div>
+    <div class="group_month" data-month="{{=month.month}}">
+        <table class="month-panel">
+            <thead>
+                <tr class="header">
+                    {{?(it.weekModel!=1)}}
+                    <th class="sunday" data-weekday="0">日</th>
+                    {{?}}
+                    <th data-weekday="1">一</th>
+                    <th data-weekday="2">二</th>
+                    <th data-weekday="3">三</th>
+                    <th data-weekday="4">四</th>
+                    <th data-weekday="5">五</th>
+                    <th class="saturday" data-weekday="6">六</th>
+                    {{?(it.weekModel==1)}}
+                    <th class="sunday" data-weekday="0">日</th>
+                    {{?}}
+                </tr>
+            </thead>
+            <tbody>
+                {{~month.weeks:week:index}}
+                <tr>
+                    {{~week:day:weekday}}
+                    {{var tdclass='';if(weekday==0) tdclass='sunday'; if(weekday==6) tdclass='saturday';}}
+                    {{var dayval=day.value;}}
+                    {{if(day.enable){tdclass+=' over'} else {tdclass+=' disable'};}}
+                    {{if(day.issel)tdclass+=' select';}}
+                    {{if(day.monthmodel=='prev') { tdclass+=' prevmonthday'; dayval=day.day;} }}
+                    {{if(day.monthmodel=='next') { tdclass+=' nextmonthday'; dayval=day.day;} }}
+                    <td class="{{=tdclass}}" data-date="{{=day.date||''}}" data-dayindex="{{=day.dayindex}}" data-tagdata="{{=day.tagdate}}">{{=dayval}}</td>
+                    {{~}}
+                </tr>
+                {{~}}
+            </tbody>
+        </table>
+    </div>
+</div>

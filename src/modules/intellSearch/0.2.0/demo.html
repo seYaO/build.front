@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <link href="search.css" rel="stylesheet" />
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413" />
+</head>
+<body>
+
+    <div class="city-search">
+        <div class="search-con">
+            <div class="citybox"></div>
+            <div class="search-box">
+                <div class="search"></div>
+            </div>
+        </div>
+    </div>
+    <script src="../../jquery.js"></script>
+    <script src="../../sea.js"></script>
+    <script src="../../dot.js"></script>
+
+    <script>
+        seajs.config({
+            base: "../../"
+        });
+        seajs.use(["intellsearch/0.2.0/search", "intellsearch/0.2.0/intellsearch", "intellsearch/0.2.0/history"
+            , "intellsearch/0.2.0/track", 'intellsearch/0.2.0/hotcity', 'intellSearch/0.2.0/search-label', "departure/0.2.0/index"]
+           , function (Search, intellSearch, history, track, hotcity, searchLabel, Departure) {
+
+               //智能搜索配置
+               var searchconf = {
+                   input: "#search",
+                   highLightStyle: "color:#ff6a00;font-weight:bolder;",//高亮显示内容样式
+                   apiurl: "http://10.1.56.20:1000/dujia/ajaxhelper/homepagehandler.ashx?type=SearchList&keyWord={keyword}&locationCityId={l_cityid}&selectCityId={s_cityid}",
+                   itemNumber: 8,//显示的条数
+                   //dotTemplate: searchTmpl,
+                   reqData: function (keyword, res) {
+                       var self = this;
+                       var _data = new Array();
+                       var url = this.get("apiurl"),
+                           l_cityid = "321",
+                           s_cityid = "321";
+                       url = url.replace("{keyword}", keyword).replace("{l_cityid}", l_cityid).replace("{s_cityid}", s_cityid);
+
+                       this.getJsonp(url, function (data) {
+                           if (data != null && data.code == 4000) {
+                               for (var i = 0; i < data.data.length && (i < self.itemNumber) ; i++) {
+                                   var item = data.data[i];
+                                   var value = item.content;
+                                   var link = item.link;
+                                   //var type = item.itemType;
+                                   var level = (item.itemType == "list") ? 1 : 2;
+                                   _data.push(self.itemDataFormat(keyword, { value: value, link: link, text: value, level: level }));
+                               }
+                               res(_data);
+                           }
+                           else {
+                               res(null);
+                           }
+                       });
+                   },
+               };
+               //热门城市配置
+               var hotcityconf = {
+                   apiurl: "//www.ly.com/dujia/AjaxActivity.aspx?type=QueryIndexTotalCity",
+                   itemNumber: 20,//显示的条数
+               };
+
+               /*
+               * @desc 热门城市配置
+               */
+               hotCityConf = {
+                   dotTemplate: $(""),
+                   reqData: function (res) {
+                       res(null);
+                   }
+               };
+
+               //历史记录配置
+               var historyconf = {
+                   "name": "search",
+                   "user": "ly",
+                   //"dotTemplate": historyTmpl,
+                   itemNumber: 15,//显示的条数
+               };
+
+
+               var option = {
+                   el: ".search",
+                   width: "100%",
+                   modules: {}
+               }
+
+               //智能搜索
+               option.modules.intellSearch = {
+                   type: 'module',
+                   key: 'intellSearch',
+                   config: searchconf,
+                   module: intellSearch
+               };
+
+               //热门城市
+               option.modules.hotcity = {
+                   type: 'module',
+                   key: 'hotcity',
+                   module: hotcity,
+                   config: hotCityConf
+               };
+
+               //历史记录
+               option.modules.history = {
+                   type: 'module',
+                   key: 'history',
+                   config: historyconf,
+                   module: history
+               };
+
+               //搜索标签
+               option.modules.searchLabel = {
+                   type: 'module',
+                   key: 'searchLabel',
+                   config: {
+                       data: [{ hotName: "苏州", hotUrl: "http://www.ly.com" },
+                           { hotName: "上海", hotUrl: "http://www.ly.com" },
+                           { hotName: "北京", hotUrl: "http://www.ly.com?cityId={{replace}}" }
+                       ]
+                   },
+                   group: 'searchlabel',
+                   module: searchLabel
+               };
+
+               //监控
+               option.modules.track = {
+                   type: 'module',
+                   key: 'track',
+                   hasPanel: false,
+                   config: {},
+                   module: track
+               };
+
+
+               //初始化
+               var o_intel = new Search(option);
+
+
+               var departure = function (callback) {
+                   new Departure({
+                       className: '.citybox',
+                       eventType: 'click',
+                       //cityId: $('#Startcityid').val(),
+                       //cityName: $('#Startcityname').val(),
+                       success: function () {
+                           callback && callback();
+                       }
+                   }).init();
+               }
+               departure();
+           });
+    </script>
+</body>
+</html>

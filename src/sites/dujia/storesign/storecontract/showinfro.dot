@@ -1,0 +1,77 @@
+{{?it}}
+    <ul>
+        {{
+            var cerName = "",
+                signstatusText="";
+            if(it.CertificatesCode==0){
+                cerName = "未知证件";
+            }else if(it.CertificatesCode==1){
+                cerName = "身份证";
+            }else if(it.CertificatesCode==2){
+                cerName = "护照";
+            }else if(it.CertificatesCode==3){
+                cerName = "军官证";
+            }else if(it.CertificatesCode==5){
+                cerName = "台胞证";
+            }else if(it.CertificatesCode==7){
+                cerName = "港澳通行证";
+            }else if(it.CertificatesCode==8){
+                cerName = "台湾通行证";
+            }else{
+                cerName = "其他";
+            }
+
+            if(it.SignStatus&&it.SignStatus==2){
+                signstatusText = "已签约";
+            }else{
+                signstatusText = "未签约";
+            }
+        }}
+        <li class="sign-title">签约信息</li>
+        <li class="form-group">
+            <label class="form-group-left">当前门店主体</label><span class="form-group-right">{{=it.StoreSignBodyName}}</span>
+        </li>
+        <li class="form-group">
+            <label class="form-group-left">签约主体</label><span class="form-group-right">{{?it.SignBodyName!=""}}{{=it.SignBodyName}}{{??}}未查询到信息{{?}}</span>
+        </li>
+        <li class="form-group">
+            <label class="form-group-left">姓名</label><span class="form-group-right">{{?it.SignCustomerName!=""}}{{=it.SignCustomerName}}{{??}}未查询到信息{{?}}</span>
+        </li>
+        <li class="form-group">
+            <label class="form-group-left">手机号</label><span class="form-group-right">{{?it.SignCustomerMobile!=""}}{{=it.SignCustomerMobile}}{{??}}未维护{{?}}</span>
+        </li>
+        <li class="form-group">
+            <label class="form-group-left">证件类型</label><span class="form-group-right">{{=cerName}}</span>
+        </li>
+        <li class="form-group">
+            <label class="form-group-left">证件号码</label><span class="form-group-right">{{?it.CertificatesNumber!=""}}{{=it.CertificatesNumber}}{{??}}未维护{{?}}</span>
+        </li>
+        <li class="form-group">
+            <label class="form-group-left">签约状态</label><span class="form-group-right">{{=signstatusText}}</span>
+        </li>
+    </ul>
+    <div class="app_box clearfix">
+        <a href="javascript:void(0);" class="btn btn-primary J_getQrcode get_qrcode">签约二维码
+            <div class="qrcode">
+                <p class="h1">请使用手机微信扫描二维码</p>
+                <div class="qrcode-img"><span class="loading_c">请稍候,正在努力加载中···</span></div>
+                <p>二维码10分钟内有效，<br>若超时请重新打开本页面</p>
+            </div>
+        </a>
+        <a href="javascript:void(0);" class="btn btn-primary J_sendMessage send_message">发送到手机</a>
+        <a href="javascript:void(0);" class="btn J_getAppoint get_appoint">生成合同</a>
+    </div>
+    <div class="show_tip">
+        <div class="show_tip_title">电子签约小科普</div>
+        <ul>
+            <li>
+                <p>电子合同是否具有有效性？</p>
+                <p class="small">电子合同是《合同法》认可的合同形式，只要使用有效的电子签名就具有法律效应</p>
+            </li>
+            <li>
+                <p>什么是电子签名？</p>
+                <p class="small">通过签约人姓名+证件号生成一串代码或数据，这些代码或数据能表明签名人的真实身份</p>
+            </li>
+        </ul>
+    </div>
+{{?}}

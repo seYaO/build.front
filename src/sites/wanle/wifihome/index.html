@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" trace="PC_WiFi_home">
+    {{var it=IT.Data;}}
+    {{var wifiPro = it.HotDestDic.hotWiFi;}}
+    {{var phoneCard = it.HotDestDic.hotPhoneCard;}}
+
+<head>
+    <meta charset="UTF-8">
+    <title>随身wifi,旅行wifi,移动wifi预订【同程玩乐】</title>
+    <meta name="description" content="随身wifi预订,同程玩乐提供全球旅行随身wifi预订，让你出国旅行也能随时随地用wifi，同程玩乐提供最便捷的旅行wifi预订方式。">
+    <meta name="keywords" content="随身wifi,旅行wifi,移动wifi预订">
+    <link rel="canonical" href="//www.ly.com/dujia/wifi"/>
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="//m.ly.com/localfun/wifi/">
+    <meta name="mobile-agent" content="format=xhtml; url=//m.ly.com/localfun/wifi/">
+    <meta name="mobile-agent" content="format=html5; url=//m.ly.com/localfun/wifi/">
+    <meta name="mobile-agent" content="format=wml; url=//m.ly.com/localfun/wifi/">
+
+    <% includeId = cnwidescreenjscss %>
+    <!--<link rel="stylesheet" href="//js.40017.cn/cn/v/wanle/2015/jqmodules/slidertoolbar/0.1.0/index.css">-->
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet">
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js" data-loader= "true"></script><!--ignore-->
+
+</head>
+<body>
+    <!--公共头部start-->
+    <% includeId = cnwidescreenhead?channel=dujia %>
+    <!-- 前端性能监控 -->
+    <input type="hidden" id="commonMonitor" value='{"channel":"wanle","page":"wifiHome-index"}'/>
+    <!--公共头部end-->
+
+    <div class="head-search">
+        <div class="head-img"></div>
+        <div class="search-box">
+            <input id="txtScenicValue" attrvalue="香港迪士尼" value="香港迪士尼" style="color: rgb(153, 153, 153);">
+            <a class="search_btn" href="javascript:;" trace="wanle-search">搜索</a>
+            <ul id="matchContent" class="matchContent none"></ul>
+            {{#def.hotsearch}}
+        </div>
+    </div>
+
+    <!--幻灯开始-->
+    <div class="csliderMain">
+        <div class="sliderDiv" id="sliderDiv">
+            <span></span>
+            <ul class="sliderCon clearfix" trackkit="AD">
+                {{#def.banner}}
+            </ul>
+        </div>
+    </div>
+    <!--幻灯结束-->
+
+    <!--导航 start-->
+    <div class="naviga" trace="trace-dest">
+        <div class="naviga-box">
+            <div class="naviga-bt">
+                <span>选择出行国家</span>
+                <a href="/dujia/wanle/searchlist_通讯WiFi.html" target="_blank">全部WiFi/电话卡<em>&gt;&gt;</em></a>
+            </div>
+            <ul trackkit="Destination_navigate">
+                <li>
+                    <h4>亚&nbsp;&nbsp;洲</h4>
+                    <div>
+                        <a class="red" href="/dujia/wanle/riben-tongxun/" target="_blank" trackspot="日本^1^亚洲">日本</a>
+                        <a href="/dujia/wanle/taiwan-tongxun/" target="_blank" trackspot="台湾^1^亚洲">台湾</a>
+                        <a href="/dujia/wanle/taiguo-tongxun/" target="_blank" trackspot="泰国^1^亚洲">泰国</a>
+                        <a href="/dujia/wanle/xianggang-tongxun/" target="_blank" trackspot="香港^1^亚洲">香港</a>
+                        <a href="/dujia/wanle/xinjiapo-tongxun/" target="_blank" trackspot="新加坡^1^亚洲">新加坡</a>
+                        <a href="/dujia/wanle/yindunixiya-tongxun/" target="_blank" trackspot="巴厘岛/印尼^1^亚洲">巴厘岛/印尼</a>
+
+                        <a href="/dujia/wanle/yuenan-tongxun/" target="_blank" trackspot="越南^1^亚洲">越南</a>
+                        <a href="/dujia/wanle/malaixiya-tongxun/" target="_blank" trackspot="马来西亚^1^亚洲">马来西亚</a>
+                        <a href="/dujia/wanle/maerdaifu-tongxun/" target="_blank" trackspot="马尔代夫^1^亚洲">马尔代夫</a>
+                        <a href="/dujia/wanle/jianpuzhai-tongxun/" target="_blank" trackspot="柬埔寨^1^亚洲">柬埔寨</a>
+
+                        <a href="/dujia/wanle/feilvbin-tongxun/" target="_blank" trackspot="菲律宾^1^亚洲">菲律宾</a>
+                        <a href="/dujia/wanle/sililanka-tongxun/" target="_blank" trackspot="斯里兰卡^1^亚洲">斯里兰卡</a>
+                        <a href="/dujia/wanle/aomen-tongxun/" target="_blank" trackspot="澳门^1^亚洲">澳门</a>
+                        <a href="/dujia/wanle/yindunixiya-tongxun/" target="_blank" trackspot="印度^1^亚洲">印度</a>
+
+                        <a class="red" href="/dujia/wanle/searchlist_港澳通用.html" target="_blank" trackspot="港澳通用^1^亚洲">港澳通用</a>
+                        <a class="red" href="/dujia/wanle/searchlist_东南亚7国.html" target="_blank" trackspot="东南亚7国^1^亚洲">东南亚7国</a>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>欧&nbsp;&nbsp;洲</h4>
+                    <div>
+                        <a href="/dujia/wanle/tuerqi-tongxun/" target="_blank" trackspot="土耳其^2^欧洲">土耳其</a>
+                        <a href="/dujia/wanle/yingguo-tongxun/" target="_blank" trackspot="英国^2^欧洲" >英国</a>
+                        <a href="/dujia/wanle/eluosi-tongxun/" target="_blank" trackspot="俄罗斯^2^欧洲">俄罗斯</a>
+                        <a class="red" href="/dujia/wanle/ouzhou-tongxun/" target="_blank" trackspot="欧洲通用^2^欧洲">欧洲通用</a>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>美&nbsp;&nbsp;洲</h4>
+                    <div>
+                        <a class="red" href="/dujia/wanle/meiguo-tongxun/" target="_blank" trackspot="美国^3^美洲">美国</a>
+                        <a href="/dujia/wanle/saibandao-tongxun/" target="_blank" trackspot="塞班岛^3^美洲">塞班岛</a>
+                        <a href="/dujia/wanle/guandao-tongxun/" target="_blank" trackspot="关岛^3^美洲">关岛</a>
+                        <a href="/dujia/wanle/jianada-tongxun/" target="_blank" trackspot="加拿大^3^美洲">加拿大</a>
+                        <a class="red" href="/dujia/wanle/searchlist_美加通用.html" target="_blank" trackspot="美加通用^3^美洲">美加通用</a>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>大洋洲</h4>
+                    <div>
+                        <a href="/dujia/wanle/aodaliya-tongxun/" target="_blank" trackspot="澳大利亚^4^大洋洲">澳大利亚</a>
+                        <a href="/dujia/wanle/xinxilan-tongxun/" target="_blank" trackspot="新西兰^4^大洋洲">新西兰</a>
+                        <a class="red" href="/dujia/wanle/searchlist_澳新.html" target="_blank" trackspot="澳新通用^4^大洋洲">澳新通用</a>
+                        <a href="/dujia/wanle/feiji-tongxun/" target="_blank" trackspot="斐济^4^大洋洲">斐济</a>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>中东非</h4>
+                    <div>
+                        <a class="red" href="/dujia/wanle/aiji-tongxun/" target="_blank" trackspot="埃及^5^中东非">埃及</a>
+                        <a class="red" href="/dujia/wanle/alianqiu-tongxun/" target="_blank" trackspot="阿联酋^5^中东非">阿联酋</a>
+                        <a href="/dujia/wanle/nanfei-tongxun/" target="_blank" trackspot="南非^5^中东非">南非</a>
+                        <a href="/dujia/wanle/yiselie-tongxun/" target="_blank" trackspot="以色列^5^中东非">以色列</a>
+                        <a href="/dujia/wanle/maoliqiusi-tongxun/" target="_blank" trackspot="毛里求斯^5^中东非">毛里求斯</a>
+                    </div>
+                </li>
+
+                <li>
+                    <h4>通用类</h4>
+                    <div>
+                        <a class="red" href="/dujia/wanle/searchlist_全球通用WiFi.html" target="_blank" trackspot="全球通用WiFi^6^通用类">全球通用WiFi</a>
+                        <div class="clearfix"></div>
+                        <a class="red" href="/dujia/wanle/searchlist_全球上网卡.html" target="_blank" trackspot="全球上网卡^6^通用类">全球上网卡</a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    <!--导航 end-->
+
+    <div class="mainBox">
+        <div class="title"></div>
+        {{#def.prolist}}
+    </div>
+
+    <div class="ft_bestselect">
+        {{#def.bottom}}
+    </div>
+
+    <!--侧边栏广告位 start-->
+    {{#def.sliderbar}}
+    <!--侧边栏广告位 end-->
+
+    <!--公共底部 start-->
+    <% includeId = cnwidescreenfoot?vrcode=10002-2027-0 %>
+    <!--公共底部 end-->
+
+    <!--友情提示start-->
+    {{?it.LinkList && it.LinkList.length}}
+    <div class="seodiv">
+        <div class="iv-bottomlink">
+            <dl>
+                <dt>友情链接：</dt>
+                <dd class="iv-hotlink">
+                    {{~it.LinkList:linker}}
+                        <a href="{{=linker.LinkUrl}}" target="_blank">{{=linker.LinkName}}</a>
+                    {{~}}
+                </dd>
+            </dl>
+        </div>
+    </div>
+    {{?}}
+    <!--友情提示end-->
+    <!--产品精选start-->
+    {{?it.ReferralLink && it.ReferralLink.length}}
+    <div class="seodiv">
+        <div class="products-featured">
+            {{~it.ReferralLink:ReferralLink}}
+                {{?ReferralLink.Links && ReferralLink.Links.length}}
+                    <div class="dl">
+                        {{?ReferralLink.Type == "Ploy"}}
+                            <div class="dt">海外玩乐产品精选：</div>
+                        {{??ReferralLink.Type == "Traffic"}}
+                            <div class="dt">海外交通产品精选：</div>
+                        {{??ReferralLink.Type == "Food"}}
+                            <div class="dt">海外美食餐厅精选：</div>
+                        {{??ReferralLink.Type == "Wifi"}}
+                            <div class="dt">海外wifi精选：</div>
+                        {{?}}
+                        <div class="dd hotlink">
+                            {{~ReferralLink.Links:Links}}
+                                <a href="{{=Links.LinkUrl}}" target="_blank">{{=Links.LinkName}}</a>
+                            {{~}}
+                        </div>
+                        <div class="click-more">
+                            <a href="javascript:;">更多<i></i></a>
+                        </div>
+                    </div>
+                {{?}}  
+            {{~}}
+        </div>
+    </div>
+    {{?}}
+    <!--产品精选end-->
+
+    <!-- 统计相关功能 -->
+    <% includeId = node_dj_common_stat %>
+
+    <img src="images/ewm.png" alt="" class="none" id="wxQRcode">
+
+<input type="hidden" id="repleaceType" value="//www.ly.com/wanle/AjaxHelperWanle/SingleProductSearch?stp=recommend">
+<input type="hidden" id="matchDest" value="//www.ly.com/wanle/AjaxHelperWanle/GetSearchSelectData?NeedCount=10&ChannelId=1">
+
+<script type="text/javascript" src="//js.40017.cn/cn/v/wanle/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script>
+
+<script src="//modules/sea.js" data-loader= "true"></script>
+<script type="text/javascript">
+    seajs.require("./index.js");
+</script>
+<div style="display:none;">Holiday</div>
+<% includeId = dj_wanle_common_stat %>
+<script type="text/javascript">
+    var rtTag ={
+        "data": {
+            "etravel_page": {
+                "page_type": "index",
+                "p_class1": "全球wifi",
+                "p_class2": "首页"
+            }
+        }
+    };
+    stat.init({
+        "baidu": {
+            "parameter": "pc",
+            "hmt": [
+                ['_setAccount', '53a0d71dba66835ff1aa907db99144d8'],
+                ['_trackRTEvent', rtTag]
+            ]
+        },
+        "_tcHotmapx": {
+            "pid": "287",
+            "sp": "100"
+        },
+        "mvl": {
+            "_mvq": [
+                ['$setAccount', 'm-135073-0'],
+                ['$logConversion']
+            ],
+            "isImmediateExcu": true
+        }
+    });
+</script>
+
+<div class="udiy" id="common-foot"></div>
+
+<script type="text/javascript">
+    var _tcHotmapx = {pid : 627, sp : 100 };
+</script>
+</body>
+</html>

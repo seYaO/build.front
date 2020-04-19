@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="http://css.40017.cn/cn/c/c/common.0.0.3.css?v=2015060413"/>
+    <link rel="stylesheet" href="index.css"/>
+</head>
+<body>
+<button>测试</button>
+
+<script src="http://js.40017.cn/cn/min/??/cn/v/2015/modules/core/0.1.0/sea.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://js.40017.cn/cn/min/??/cn/public/fish.1.4.5.js,/cn/public/fc.1.1.7.js?v=14050601"></script>
+<script src="../../jquery.js" type="text/javascript"></script>
+<script>
+    seajs.config({
+        base: "../../"
+    });
+</script>
+
+<script>
+    $(function () {
+        seajs.use("payModal/0.1.0/index", function () {
+
+
+            $("button").click(function () {
+                payModal({
+                    Mode: 0,//支付方式(Mode=0综合支付;Mode=1正常支付;Mode=2分期支付;)
+                    CustomerSerialid: 8964778,//客户流水id（必传）
+                    OrderId: 243814//订单id（必传）
+                });
+            })
+        });
+
+
+    })
+
+
+</script>
+</body>
+</html>

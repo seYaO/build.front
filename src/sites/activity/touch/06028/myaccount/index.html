@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta charset="utf-8" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta content="telephone=no" name="format-detection">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <title>海外分公司导游报账系统</title>
+
+  <link rel="stylesheet" href="http://js.40017.cn/cn/v/v1/backend/libs/prodev/guide/jqmodule/tc/myaccount/index.css" />
+</head>
+<body>
+<div class="page-header">
+  <a href="javascript:void(0)" class="page-back"></a>
+  <p class="tai">การเบิกเงินของฉัน</p>
+  <p>我的报账</p>
+</div>
+<div class="page-body">
+  <div class="page-box" id="J_pageBox">
+    <div id="mainPage" class="viewport">
+      <section class="content">
+        <div class="account-list J_accountList"></div>
+        <div class="data-loader" style="display: none;"></div>
+        <div class="no-result">抱歉，暂时没有报账记录！</div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="page-footer J_footer">
+  <a class="J_btnAdd" attr-href="/dujia/zhuanti/addaccount.html" href="javascript:void(0)"><i class="icons-add"></i>新增报账</a>
+</div>
+
+<script src="http://js.40017.cn/cn/v/v1/backend/libs/prodev/guide/jqmodule/zepto.js"></script>
+<script src="http://js.40017.cn/cn/v/v1/backend/jqmodule/require.js"></script>
+<script type="text/javascript">
+  requirejs.config({
+    baseUrl: 'http://js.40017.cn/cn/v/v1/backend/libs/prodev/guide/'
+  });
+  require(['jqmodule/tc/myaccount/index']);
+</script>
+
+</body>
+</html>

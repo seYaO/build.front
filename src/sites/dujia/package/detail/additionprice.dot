@@ -1,0 +1,23 @@
+{{?it&&it.length>0}}
+    {{~it:value:index}}
+    <dl> 
+        {{
+            var arr = [];
+            for(i=0;i<value.Products.length;i++){
+                if(value.Products[i].IsSelected && value.Products[i].IsSelected==1){
+                    arr.push(value.Products[i]);
+                }
+            }
+        }}
+        {{?arr.length>0}}
+            <dt>{{=value.Category}}</dt>
+        {{?}}
+        {{~arr:lists}}
+        <dd>
+            <span class="Lbox">{{=lists.Name}}</span>
+            <span class="Rbox"><em>&yen;{{=lists.Book.Price}}</em>x{{=lists.Book.Count}}</span>
+        </dd> 
+        {{~}}
+    </dl>
+    {{~}}
+{{?}}

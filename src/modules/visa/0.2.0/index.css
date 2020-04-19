@@ -1,0 +1,246 @@
+/**
+ * 终页签证模块
+ *
+ **/
+/*签证*/
+.visa-content {
+  padding: 25px 0 0 10px;
+}
+.visa-content .visa-notice {
+  padding: 15px 10px 0;
+}
+.visa-content .visa-notice p {
+  line-height: 24px;
+}
+.visa-content h3 {
+  height: 25px;
+  line-height: 25px;
+  background: #f6f6f6;
+  position: relative;
+  margin: 0 0;
+  padding: 0 0;
+}
+.visa-content h3 a {
+  position: absolute;
+  right: 10px;
+  color: #666;
+}
+.visa-content h3 label {
+  margin-right: 20px;
+  padding: 0 10px;
+  color: #666;
+}
+.visa-content h3 label em {
+  color: #ff9b26;
+}
+.visa-content h3 span {
+  color: #333;
+  margin-right: 15px;
+}
+.visa-content .visa-item {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.visa-content .visa-item p {
+  margin-bottom: 10px;
+}
+.visa-content .visa-item p b {
+  color: red;
+  width: 20px;
+  text-align: center;
+  display: inline-block;
+}
+.visa-content .visa-item p span {
+  display: inline-block;
+}
+.visa-content .visa-info {
+  width: 880px;
+  padding-bottom: 20px;
+}
+.visa-content .visa-info p {
+  margin-top: 0px;
+}
+.visa-detail {
+  height: 350px;
+  overflow-y: auto;
+  border: solid 1px #e8e8e8;
+  margin-top: 5px;
+}
+.visa-detail .title {
+  padding: 0 15px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #333;
+  font-family: "microsoft yahei";
+}
+.visa-detail .title p {
+  float: left;
+}
+.visa-detail table {
+  margin: 0 auto;
+  margin-top: 10px;
+  /*border: 1px solid #ccc;*/
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.visa-detail table {
+  width: 100%;
+}
+/*table 表格*/
+.visa-detail th,
+.visa-detail td {
+  color: #666;
+  font-size: 12px;
+  line-height: 19px;
+  border: 1px solid #e8e8e8;
+}
+.visa-detail th.righttd,
+.visa-detail td.righttd {
+  border-right: none;
+}
+.visa-detail th {
+  background-color: #f5f5f5;
+  padding: 8px 16px;
+}
+.visa-detail th.leftth {
+  width: 116px;
+  border-left: none;
+}
+.visa-detail td {
+  padding: 3px 16px;
+}
+.visa-detail td.lefttd {
+  color: #333;
+  border-left: none;
+}
+.visaInfo {
+  padding-left: 22px;
+  font-size: 14px;
+  color: #666;
+  position: relative;
+  padding-bottom: 20px;
+}
+.visaInfo li {
+  line-height: 25px;
+  position: relative;
+}
+.visaInfo li span {
+  color: #333;
+  display: inline-block;
+  vertical-align: top;
+}
+/*.visaInfo li span.visaCountry span {
+  border: 2px solid #dedede;
+  padding: 0 23px;
+  position: relative;
+  cursor: pointer;
+  margin-right: 8px;
+}*/
+/*.visaInfo li span.visaCountry span.cur {
+  border: 2px solid #50b400;
+  color: #50b400;
+}
+.visaInfo li span.visaCountry span.cur:after {
+  position: absolute;
+  right: -1px;
+  bottom: -1px;
+  display: block;
+  content: '';
+  background: url(//img1.40017.cn/cn/v/2015/details2016/icons-all.png) 0 -802px no-repeat;
+  width: 18px;
+  height: 18px;
+}*/
+.visaInfo .tip_import {
+  height: 25px;
+  overflow: hidden;
+  position: relative;
+}
+.visaInfo .tip_import span {
+  padding: 0 51px 0 74px;
+}
+.visaInfo .tip_import em {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.visaInfo .tip_import a {
+  color: #005bb5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-block;
+  padding-right: 20px;
+}
+.visaInfo .tip_import a:after {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  content: '';
+  border: 5px solid transparent;
+  border-top: 5px solid #000;
+  top: 11px;
+  right: 8px;
+}
+.visaInfo .tip_importHover {
+  height: auto;
+  overflow: visible;
+}
+.visaInfo .tip_importHover a:after {
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  content: '';
+  border: 5px solid transparent;
+  border-bottom: 5px solid #000;
+  top: 6px;
+  right: 8px;
+}
+.visaInfo .btn-email {
+  font-size: 12px;
+  padding-left: 20px;
+  padding-top: 1px;
+  width: 80px;
+  height: 23px;
+  color: #666;
+  cursor: pointer;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  background: url("//img1.40017.cn/cn/v/2015/details2016/icons-all.png") no-repeat -59px -368px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.visaInfo .btn-email:hover {
+  color: #fff;
+  background: url("//img1.40017.cn/cn/v/2015/details2016/icons-all.png") no-repeat -59px -406px;
+}
+.visa-content .moduleInfo-name {
+  height: 26px;
+  line-height: 26px;
+  font-size: 14px;
+  color: #000;
+  background-color: #f5f5f5;
+}
+.visa-content .moduleInfo-name i {
+  display: inline-block;
+  width: 20px;
+  height: 30px;
+  vertical-align: -5px;
+}
+.visa-content .moduleInfo-name i.ziyou-right-arrow {
+  background-image: url(//img1.40017.cn/cn/v/2015/details2016/icons-all.png);
+  background-position: 0 -327px;
+}
+.visa-content .moduleInfo-name span {
+  vertical-align: 6px;
+}
+.visa-content .moduleInfo-name em {
+  vertical-align: 6px;
+  color: #666;
+  font-size: 12px;
+  font-style: normal;
+}
+.visa-content .moduleInfo-name{
+  margin-bottom: 14px;
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <style type="text/css">
+      #map{
+        width: 100%;
+        height: 1000px;
+        margin: 0 auto;
+        overflow: hidden;
+      }
+    </style>
+    <title>高德地图demo</title>
+  </head>
+  <body>
+    <div id='map'></div>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+    <script src="/modules/sea.js" data-loader="true" type="text/javascript"></script>
+    <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=e2d30fc6f5f6fc3df46120c9c1b452c1"></script>
+    <script src="index.js"></script>
+    <script>
+        seajs.require("./index").init();
+    </script>
+  </body>
+</html>

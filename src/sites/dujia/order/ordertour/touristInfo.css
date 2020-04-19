@@ -1,0 +1,797 @@
+@charset "UTF-8";
+/**
+ * @desc:出游人填写样式
+ * @author: ym10862
+ * @createTime: 2016/10/18 18:34
+ * @desc 调用用页面：预订成功页，出境订单详情页的电子签约页面的出游人
+ */
+body {
+  font-family: "Microsoft Yahei";
+}
+.tour-title {
+  font-size: 18px;
+  font-weight: bold;
+  font-family: "Microsoft Yahei";
+  border-left: 5px #50b400 solid;
+  padding-left: 5px;
+  line-height: 22px;
+}
+.ui-select i,
+.icon-date,
+.icon-succeed,
+.ui-select i,
+.passenger-info .passenger-info-type .img em,
+.passenger-info .passenger-info-table .help {
+  background: url("//img1.40017.cn/cn/v/2015/orderList/departures.png") no-repeat;
+}
+.link-listD {
+  margin: 10px auto 40px;
+  width: 130px;
+}
+.link-ordSty {
+  height: 32px;
+  text-align: center;
+  font: 20px/32px "microsoft yahei";
+  color: #fff;
+  display: block;
+  background: #ff7800;
+  border-radius: 5px;
+}
+.link-ordSty:hover {
+  color: #fff;
+  text-decoration: initial;
+}
+.favorite-contacts {
+  width: 714px;
+  font: 12px/40px "宋体";
+  padding: 6px 20px 6px 92px;
+  height: 40px;
+  overflow: hidden;
+  border-bottom: 1px dotted #e4e4e4;
+}
+.favorite-contacts dl {
+  zoom: 1;
+}
+.favorite-contacts dt {
+  float: left;
+  margin-left: -85px;
+  font-weight: bold;
+  color: #666;
+}
+.favorite-contacts dd {
+  display: inline-block;
+  margin: 0 0 0 40px;
+  width: 86px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.favorite-contacts dd label {
+  vertical-align: middle;
+  padding-leff: 5px;
+}
+.other-passenger {
+  position: absolute;
+  bottom: 35px;
+  right: 15px;
+}
+.drop-down,
+.expand-down {
+  float: right;
+  color: #006dae;
+}
+.icon-arrow-down {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #006dae;
+  margin-left: 5px;
+}
+.favorite-contacts.active {
+  height: auto;
+}
+.favorite-contacts.active .icon-arrow-down {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #006dae;
+  border-top: none;
+}
+.other-passenger.active .icon-arrow-down {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #006dae;
+  border-top: none;
+}
+.add-passenger {
+  padding: 0 0 20px 9px;
+}
+.add-passenger.active {
+  height: auto;
+  max-height: inherit;
+}
+.passenger-info {
+  padding: 2px 0 15px 0;
+}
+.icon-trash {
+  display: inline-block;
+  vertical-align: middle;
+  width: 13px;
+  height: 13px;
+  background: url("img/dest/icon_delete.png") no-repeat;
+}
+.passenger-info .passenger-info-content {
+  zoom: 1;
+  position: relative;
+  font: normal normal normal 12px/20px "Microsoft Yahei", Arial, sans-serif;
+}
+.passenger-info .passenger-info-content .label-margin {
+  margin-left: 22px;
+}
+.passenger-info .passenger-info-content:after {
+  content: "";
+  display: table;
+  visibility: hidden;
+  line-height: 0;
+  clear: both;
+}
+.passenger-info .passenger-info-type {
+  margin: 2px 40px 10px 0;
+}
+.passenger-info .passenger-info-type .img em {
+  background: url("//img1.40017.cn/cn/v/2015/orderList/departures.png") no-repeat -10px -315px;
+  width: 12px;
+  height: 12px;
+  display: inline-block;
+  margin-bottom: -2px;
+}
+.passenger-info .passenger-info-type .tag {
+  margin-top: 10px;
+  display: inline-block;
+  height: 17px;
+  line-height: 17px;
+  background: #8d97a1;
+  width: 64px;
+  text-align: center;
+  color: #fff;
+}
+.passenger-info .passenger-info-type .img {
+  display: inline-block;
+  margin-right: 10px;
+}
+.passenger-info .passenger-info-table {
+  display: inline-block;
+}
+.passenger-info .passenger-info-table .ui-select {
+  z-index: 1;
+}
+.passenger-info .passenger-info-table .list {
+  margin-bottom: 10px;
+  line-height: 24px;
+  position: relative;
+}
+.passenger-info .passenger-info-table .help {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  line-height: 14px;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+  vertical-align: middle;
+  overflow: hidden;
+  background-position: -10px -291px;
+  margin-left: 4px;
+}
+.valid_symbol {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: url("//img1.40017.cn/cn/v/2015/orderList/departures.png") no-repeat scroll -10px -245px transparent;
+  vertical-align: middle;
+  overflow: hidden;
+}
+.mr30 {
+  margin-right: 30px;
+}
+.save {
+  margin-right: 20px;
+  padding: 2px 4px;
+  color: #50b400;
+}
+.passenger-info .reset {
+  padding: 2px 4px;
+  color: #8d97a1;
+}
+.passenger-info .save .icon-trash,
+.passenger-info .reset .icon-trash,
+.passenger-info .save input,
+.passenger-info .reset input {
+  margin-right: 4px;
+}
+.passenger-info .save:hover,
+.passenger-info .reset:hover {
+  background: #eaf9c9;
+}
+.prompt_message {
+  margin-left: 6px;
+  position: relative;
+  display: none;
+  width: auto;
+  padding: 5px;
+  color: #333;
+  font: 12px/12px arial, SimSun;
+  background: #fff4d9;
+  border: 1px solid #FFD5A1;
+}
+.prompt_message span {
+  width: 6px;
+  height: 11px;
+  position: absolute;
+  left: -6px;
+  top: 6px;
+  background: url(//js.40017.cn/cn/public/module/verify/0.4.1/img/verify_img.png) scroll no-repeat 0 -112px transparent;
+  overflow: hidden;
+}
+/*表单*/
+.required {
+  color: #FF8400;
+  font-family: serif;
+  margin-right: 2px;
+}
+.ui-input {
+  height: 21px;
+  width: 204px;
+  line-height: 21px;
+  border: 1px solid #ddd;
+  padding-left: 6px;
+  color: #333;
+  font-family: "Airal", serif;
+  outline: none;
+  border-radius: 2px;
+}
+.ui-input:focus {
+  border: 1px solid #8ab923;
+}
+.ui-select-certificate-id {
+  margin-left: 10px;
+}
+.placeholder {
+  color: #ccc;
+}
+.ui-label {
+  width: 68px;
+  display: inline-block;
+  text-align: right;
+}
+.ui-radio {
+  margin-right: 5px;
+}
+.ui-select {
+  display: inline-block;
+  width: 124px;
+  height: 22px;
+  line-height: 22px;
+  vertical-align: middle;
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  background: url(about:blank);
+}
+.ui-select.hover i {
+  background-position: -10px -568px;
+}
+.ui-select.hover .ui-select_dl {
+  height: auto;
+}
+.ui-select.hover .select-certificate {
+  border: #8ab923 1px solid;
+}
+.up-down {
+  border-left: #ddd 1px solid;
+  float: right;
+  height: 100%;
+}
+.ui-select i {
+  width: 9px;
+  height: 6px;
+  display: inline-block;
+  background-position: -10px -10px;
+  margin: 8px;
+}
+.ui-select .ui-select_dl {
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #ddd;
+  cursor: default;
+  z-index: 1000;
+}
+.ui-select .ui-select_dl dt,
+.ui-select .ui-select_dl dd {
+  height: 100%;
+  border-right: #ddd 1px solid;
+  border-left: #ddd 1px solid;
+}
+.ui-select .ui-select_dl dt {
+  padding-left: 5px;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  border-radius: 2px;
+}
+.ui-select .ui-select_dl dd {
+  background: #fff;
+  padding-left: 5px;
+}
+.ui-select .ui-select_dl dd:hover {
+  background: #8ab923;
+  color: #fff;
+  cursor: default;
+}
+.passenger-info .passenger-info-table .ui-select.ui-select-certificate {
+  *display: inline;
+  z-index: 10;
+  cursor: pointer;
+}
+.ui-input-first-name {
+  margin-right: 6px;
+}
+.ui-input-first-name,
+.ui-input-last-name {
+  width: 95px;
+}
+.ui-input-date {
+  width: 118px;
+  position: relative;
+  display: inline-block;
+  background: url("//img1.40017.cn/cn/comm/images/book/dujia/1226/icon-date.png") no-repeat 104px center;
+}
+.ui-input-date .icon-date {
+  position: absolute;
+  top: 6px;
+  left: 104px;
+}
+.ui-input-country {
+  width: 118px;
+}
+.ui-input-mobile {
+  width: 118px;
+}
+.ui-input-span {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  border: 1px solid #ddd;
+  width: 124px;
+  zoom: 1;
+}
+.ui-input-span:after {
+  content: "";
+  display: table;
+  visibility: hidden;
+  line-height: 0;
+  clear: both;
+}
+.ui-input-span .icon-date {
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+.ui-input-span .ui-input {
+  float: left;
+  width: 74%;
+  border: 0;
+  border-right: 1px solid #ddd;
+}
+.input_error {
+  border: 1px solid #ff6600;
+}
+/*Order-tips*/
+.order-tips {
+  padding-left: 18px;
+}
+.tooltip-bubble-cert .order-tips {
+  padding: 0;
+}
+.order-tips em {
+  float: left;
+  margin-left: -18px;
+}
+/*tooltip bubble*/
+.tooltip-bubble {
+  position: absolute;
+  border: 5px solid #ddd;
+  width: 376px;
+  line-height: 17px;
+  background-color: #fff;
+  z-index: 10;
+}
+.tooltip-bubble-cert {
+  width: auto;
+  text-align: center;
+}
+.tooltip-bubble-content {
+  border: 1px solid #999;
+  padding: 10px;
+}
+.tooltip-bubble-arrow {
+  position: absolute;
+  top: 20px;
+}
+.tooltip-bubble-arrow-right {
+  right: 1px;
+}
+.tooltip-bubble-arrow-left {
+  left: -8px;
+}
+.tooltip-bubble-arrow-top {
+  left: 20px;
+  top: 1px;
+}
+.tooltip-bubble-arrow-bottom {
+  left: 20px;
+  bottom: 1px;
+}
+.tooltip-bubble-arrow-right .tooltip-bubble-arrow-before {
+  display: block;
+  position: absolute;
+  height: 0;
+  top: -9px;
+  border: 9px solid;
+  border-color: transparent #999;
+  border-right-width: 0;
+}
+.tooltip-bubble-arrow-right .tooltip-bubble-arrow-after {
+  display: block;
+  position: absolute;
+  height: 0;
+  top: -8px;
+  border: 8px solid;
+  border-color: transparent #fff;
+  border-right-width: 0;
+}
+.tooltip-bubble-arrow-left .tooltip-bubble-arrow-before {
+  display: block;
+  position: absolute;
+  height: 0;
+  top: -9px;
+  border: 9px solid;
+  border-color: transparent #999;
+  border-left-width: 0;
+}
+.tooltip-bubble-arrow-left .tooltip-bubble-arrow-after {
+  display: block;
+  position: absolute;
+  height: 0;
+  top: -8px;
+  border: 8px solid;
+  border-color: transparent #fff;
+  border-left-width: 0;
+  left: 1px;
+}
+.tooltip-bubble-arrow-top .tooltip-bubble-arrow-before {
+  display: block;
+  position: absolute;
+  height: 0;
+  top: -9px;
+  border: 9px solid;
+  border-color: #999 transparent;
+  border-top-width: 0;
+}
+.tooltip-bubble-arrow-top .tooltip-bubble-arrow-after {
+  display: block;
+  position: absolute;
+  height: 0;
+  top: -8px;
+  border: 8px solid;
+  border-color: #fff transparent;
+  border-top-width: 0;
+  left: 1px;
+}
+.tooltip-bubble-arrow-bottom .tooltip-bubble-arrow-before {
+  display: block;
+  position: absolute;
+  height: 0;
+  top: -9px;
+  border: 9px solid;
+  border-color: #999 transparent;
+  border-bottom-width: 0;
+}
+.tooltip-bubble-arrow-bottom .tooltip-bubble-arrow-after {
+  display: block;
+  position: absolute;
+  height: 0;
+  top: -8px;
+  border: 8px solid;
+  border-color: #fff transparent;
+  border-bottom-width: 0;
+  left: 1px;
+}
+.icon-checkNomal {
+  background: url('../source/img/dest/icon-checknomal.png') no-repeat;
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.icon-checked {
+  background: url('../source/img/dest/icon-checked.png') no-repeat;
+  width: 13px;
+  height: 13px;
+  display: inline-block;
+  vertical-align: middle;
+}
+/*pop*/
+.mpop {
+  width: 400px;
+}
+.mpop .pop-content {
+  padding: 20px 20px 25px 120px;
+}
+.mpop img {
+  float: left;
+  margin-left: -90px;
+  margin-top: 10px;
+}
+p.mt15 {
+  text-align: center;
+  margin-top: 10px;
+}
+.mpop .topBag {
+  border-color: transparent;
+  background-color: #F0F0F0;
+}
+.mpop .topBag .closeImg {
+  margin-top: 4px;
+}
+.mpop .button {
+  margin-right: 4px;
+}
+.order-passenger .button,
+.mpop .button {
+  display: inline-block;
+  width: 71px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  color: #64a10a;
+  background: url("//img1.40017.cn/cn/comm/images/book/dujia/1226/spt-order.png") no-repeat -75px -47px;
+}
+.order-passenger .button:hover,
+.mpop .button:hover {
+  background: url("//img1.40017.cn/cn/comm/images/book/dujia/1226/spt-order.png") no-repeat -153px -47px;
+  color: #fff;
+  text-decoration: none;
+}
+span.signal-language {
+  color: #999;
+  margin-left: 5px;
+}
+.smallC .add-passenger,
+.smallC .visitor-info,
+.smallC .passenger-info {
+  width: 664px;
+}
+.smallC .favorite-contacts {
+  width: 544px;
+}
+.smallC .passenger-info .passenger-info-type {
+  margin: 2px 30px 0 0;
+}
+.tour-modal-box {
+  margin-top: 15px;
+  padding-left: 9px;
+}
+.tour-modal {
+  display: inline-block;
+  margin-left: 6px;
+}
+.tour-modal a {
+  margin-right: 10px;
+}
+.ui-input-calDate {
+  margin-left: 10px;
+}
+.cert-tip {
+  color: #999;
+  margin-left: 10px;
+  font-size: 12px;
+}
+.cerDateTip {
+  margin-top: 10px;
+  margin-left: 73px;
+  font-size: 12px;
+  color: #666;
+}
+.cerDateTip i {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  vertical-align: middle;
+  margin: 0 5px;
+  background: url(//img1.40017.cn/cn/v/2015/visa/icon-warning.png) 100% 50% no-repeat;
+}
+/*签证弹窗style*/
+.comment .ui-tips {
+  padding: 0;
+}
+.comment .ui-tips:after {
+  border: 0;
+}
+.mslide-panel {
+  border: solid 20px #4c4c4c;
+  border-right-width: 15px;
+  border-left-width: 15px;
+  z-index: 999999;
+}
+.mslide-panel h3 {
+  height: 60px;
+  line-height: 60px;
+  background: #38414c;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  position: relative;
+}
+.mslide-panel h3 span {
+  width: 720px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mslide-panel h3 a {
+  width: 21px;
+  height: 21px;
+  display: inline-block;
+  background: url("//img1.40017.cn/cn/v/2015/jqmodules/comment/0.2.0/close.png") no-repeat center;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.mp-content {
+  background: #f0f0f0;
+  padding: 20px;
+}
+.mp-content .photo-detail {
+  overflow: hidden;
+}
+.mp-content .photo-detail .photo {
+  width: 530px;
+  height: 400px;
+  padding: 0 95px 0 65px;
+  float: left;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.mp-content .photo-detail .photo img {
+  max-width: 100%;
+  height: 100%;
+}
+.mp-content .photo-detail .photo .mslide-num {
+  width: 45px;
+  height: 24px;
+  display: inline-block;
+  line-height: 24px;
+  position: absolute;
+  right: 10px;
+  bottom: 0;
+  color: #fff;
+  font-size: 16px;
+  background: #484848;
+  text-align: center;
+}
+.mp-content .photo-detail .detail {
+  background: #fff;
+  width: 180px;
+  height: 360px;
+  padding: 16px 20px 24px 20px;
+  float: left;
+  font-size: 12px;
+  font-family: "microsoft yahei";
+  color: #000;
+}
+.mp-content .photo-detail .detail p {
+  line-height: 21px;
+}
+.mp-content .photo-detail .detail .date {
+  color: #999;
+  margin-bottom: 10px;
+}
+.mp-content .photo-mslide {
+  position: relative;
+}
+.mp-content .photo-mslide .prev,
+.mp-content .photo-mslide .next {
+  width: 25px;
+  height: 50px;
+  display: inline-block;
+  background: #000;
+  filter: alpha(opacity=70);
+  opacity: 0.7;
+  z-index: 3;
+}
+.mp-content .photo-mslide .next {
+  position: absolute;
+  right: 250px;
+  top: 28px;
+}
+.mp-content .photo-mslide .prev {
+  position: absolute;
+  left: 20px;
+  top: 28px;
+}
+.mp-content .photo-mslide .list {
+  width: 690px;
+  margin-top: 20px;
+  overflow: hidden;
+}
+.mp-content .photo-mslide ul {
+  width: 1200px;
+  overflow: hidden;
+}
+.mp-content .photo-mslide li {
+  width: 105px;
+  height: 105px;
+  float: left;
+  margin-right: 10px;
+  background: #fff;
+  filter: alpha(opacity=60);
+  opacity: 0.6;
+}
+.mp-content .photo-mslide li.active {
+  filter: alpha(opacity=100);
+  opacity: 1;
+}
+.mp-content .photo-mslide li img {
+  width: 100%;
+  height: 100%;
+}
+.mp-content .photo-mslide .btn-prev {
+  width: 20px;
+  height: 32px;
+  display: inline-block;
+  background: url("//img1.40017.cn/cn/v/2015/jqmodules/comment/0.2.0/icons-prev.png") no-repeat center;
+  position: relative;
+  top: 10px;
+  left: 4px;
+  margin-top: 0;
+}
+.mp-content .photo-mslide .btn-next {
+  width: 20px;
+  height: 32px;
+  display: inline-block;
+  background: url("//img1.40017.cn/cn/v/2015/jqmodules/comment/0.2.0/icons-next.png") no-repeat center;
+  position: relative;
+  top: 10px;
+  left: 2px;
+  margin-top: 0;
+}
+.add-passenger {
+  padding-left: 0;
+}
+.add-passenger .pas_tit {
+  font-size: 14px;
+  font-weight: bold;
+  height: 20px;
+  line-height: 20px;
+}
+.add-passenger .passenger-info {
+  padding: 14px 0 10px 0;
+}
+.visitor-info {
+  border-top: 1px dotted #e4e4e4;
+}
+.visitor-info.no_border {
+  border-top: none;
+}

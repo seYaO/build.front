@@ -1,0 +1,9 @@
+{
+    "dataUri": "/intervacation/api/PDynamicPackageFlight/ChooseFlightInfo",
+    "query": {
+        "siteType": 0,
+        "cityId": 321,
+        "lineId": "336838"
+    },
+    "desc": "动态打包机票列表"
+}

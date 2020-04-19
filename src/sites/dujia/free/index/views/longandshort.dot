@@ -1,0 +1,79 @@
+<!--自由行长线游-->
+{{?longAndShort && longAndShort.length>0}}
+{{~longAndShort:typeMode}}
+    {{var type = "long";}}
+    {{?typeMode.Type == "自由行短线游"}}
+        {{type = "short";}}
+    {{?}}
+    <div class="{{=type}}line">
+        <div class="longtit">
+            <i>&nbsp;</i> {{=typeMode.Type}}
+        </div>
+        <div class="longlinebox">
+            <ul class="longul J_{{=type}}Tab">
+            {{?typeMode.Detail && typeMode.Detail.length}}
+                {{~typeMode.Detail:longV:longInd}}
+                    <li class="{{?longInd==0}}on{{?}}" data-dest="{{=longV.Name}}" data-index="{{=longInd}}"><a href="javascript:void(0);">{{=longV.Name}}</a>
+                    <i>&nbsp;</i>
+                    </li>
+                {{~}}
+            {{?}}
+            </ul>
+            <!-- 产品 -->
+            {{?typeMode.Detail && typeMode.Detail.length}}
+            {{~typeMode.Detail:longDes:desInd}}
+                <div class="longlinelist J_{{=type}}Con {{?desInd!=0}}none{{?}}"  data-index="{{=desInd}}">
+                    <div class="longboxl" data-id = "{{=desInd}}">
+                        <h3>当季热门</h3>
+                        <ul>
+                        {{?longDes.Data[0].List}}
+                            {{?longDes.Data[0].List.length >= 3}}
+                                {{~longDes.Data[0].List:action:acInd}}
+                                    {{?acInd <= 3}}
+                                        <li>
+                                            <a href="{{=action.Link}}" target="_blank" title="{{=action.Name}}"">
+                                                {{=action.Name}}
+                                            </a>
+                                        </li>
+                                    {{?}}
+                                {{~}}
+                            {{??}}
+                                {{var count = 0;}}
+                                {{~longDes.Data[0].List:action:acInd}}
+                                    {{count++;}}
+                                    <li>
+                                        <a href="{{=action.Link}}" target="_blank" title="{{=action.Name}}">{{=action.Name}}</a>
+                                    </li>   
+                                {{~}}
+                                {{for (var i = 0; i <= (4 - count); i++) { }}
+                                    <li>
+                                        <a href="javascript:void(0)" title="" id="A{{=i+2}}">
+                                            &nbsp;
+                                        </a>
+                                    </li>
+                                {{ }}}
+                            {{?}}
+                        {{?}}
+                        </ul>
+                        {{?longDes.Data[1].List && longDes.Data[1].List.length}}
+                        {{var imgData = longDes.Data[1].List[0];}}
+                        <a href="{{=imgData.Link}}" target="_blank" title="{{=imgData.Name}}" class="{{?imgData.Image && imgData.Image!=""}}boxl_pic{{?}}">
+                            {{?imgData.Image && imgData.Image!=""}}<img data-src="{{=imgData.Image}}" alt="pic" />{{?}}
+                        </a>
+                        {{?}}
+                    </div>
+                    <div class="longboxr longboxr_{{=type}}_{{=desInd}}">
+                        <div class="r_top">
+                            <h3>热销排行</h3>
+                            <a href="{{=longDes.Link.replace('http:', '')}}" target="_blank" title="更多{{=longDes.Name}}线路">
+                                更多{{=longDes.Name}}线路&gt;&gt;
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            {{~}}
+            {{?}}
+        </div>
+    </div>
+{{~}}
+{{?}}

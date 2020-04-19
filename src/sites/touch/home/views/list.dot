@@ -1,0 +1,76 @@
+{{var lineList = it.lineList;}}
+{{?lineList && lineList.length && lineList[0].line && lineList[0].line.length}}
+{{~lineList[0].line:value:listIndex}}
+    {{?value}}
+        {{var tracePos;}}
+        {{var traceLineType;}}
+        {{var traceLineId;}}
+        {{var traceType;}}
+        {{var _isHot = value.scoreTopRecd>0 && it.Page==1;}}
+        {{?value.prop == "1"}}
+            {{tracePos = 1;}}
+            {{traceLineType = 1;}}
+        {{??}}
+            {{tracePos = 3;}}
+            {{traceLineType = 3;}}
+        {{?}}
+        {{traceLineId = value.id;}}
+        {{?value.isTCSpecialLine == 1}}
+            {{traceType = 1;}}
+        {{??value.isExtraordinary == 1}}
+            {{traceType = 2;}}
+        {{??}}
+            {{traceType = 0;}}
+        {{?}}
+        <li data-isHot="{{?_isHot && (listIndex < 3)}}1{{?}}">
+            <a href="/dujia/tours/{{=value.id}}.html"  data-trace = "{{=tracePos + '^' + traceLineType + '^'+'^' + traceLineId + '^' + traceType}}">
+            <div class="J_ListArea">
+                <img data-img="{{=value.absImgURL.replace('http:','')}}"/>
+                {{?value.prop == "1"}}<span class="gentuan_tip">跟团游</span>{{?}}
+                {{?value.prop == "3"}}<span class="free_tip">自由行</span>{{?}}
+                {{?value.portCity}}<b>{{=value.portCity}}出发</b>{{?}}
+            </div>
+            <div class="title-box">
+                <div class="tit-infro">
+                    <h4>&lt;{{=value.title}}&gt;<em>{{=value.subTitle}}</em></h4>
+                    <p class="special_tip">
+                            {{?value.isTCSpecialLine == 1}}<em class="zx_tip">同程专线</em>{{?}}
+                            {{?value.isExtraordinary == 1}}<em>非凡系列</em>{{?}}
+                            {{?value.isStrict == 1 && value.strictContent}}
+                                <em>同程严选</em>
+                            {{?}}
+                            {{?value.isSuper == 1 && value.superContent}}
+                                <em>VIP超值购</em>
+                            {{?}}
+                            {{?value.isBlh == 1 && value.blhContent}}
+                                <em>积分抵扣</em>
+                            {{?}}
+                            {{var disList = value.disList;}}
+                            {{?disList && disList.length && disList[0].discount && disList[0].discount.length}}
+                                {{~disList[0].discount:rule}}
+                                    {{?rule.name != '积分抵扣' && rule.name != 'VIP超值购' && rule.name != 'vip超值购' && rule.name != '同程严选'}}
+                                        <em>{{=rule.name}}</em>
+                                    {{?}}
+                                {{~}}
+                            {{?}}
+                            {{?value.lineQualityName!=""}}
+                                <em class="s_tip">{{=value.lineQualityName}}</em>
+                            {{?}}
+                    </p>
+                </div>
+                {{?value.satDeg == "0.0"}}
+                    <div class="reward-in">新品</div>
+                {{??}}
+                    {{var index=value.satDeg.indexOf(".");}}
+                    {{var count=value.satDeg.substring(0,index);}}
+                    <div class="reward-in">{{=count}}%满意<em>|</em>{{=value.cmtCount}}条点评</div>
+                {{?}}
+                <div class="p_r">
+                    <em class="prize_tc"><i>￥</i><span>{{=value.tcPrice}}</span>起</em>
+                </div>
+            </div>
+            </a>
+        </li>
+    {{?}}
+{{~}}
+{{?}}

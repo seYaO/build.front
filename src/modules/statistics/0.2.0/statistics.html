@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="http://js.40017.cn/touch/app/public/zepto.20140624.js?V=824" charset="utf-8"></script>
+<script src="statistics.js"></script>
+<script>
+    var pageview = stat.formatPageview('/出境/touch活动页/####');
+    stat.init({
+        "baidu": {
+            "parameter": "touch"//PC端传“pc”，touch站传“touch”
+        },//百度统计
+        "pvConfig": {//PV统计
+            "PublicPlatId": "1",
+            "PageId": "####",
+            "LineId": "0",
+            "ActivityId": "####",
+            "ActivityPeriodId": "####",
+            "ModuleId": "0",
+            "PVSource": "1",
+            "ak": "",
+            "url": "http://www.ly.com/dujia/AjaxHelper/PvHandler.ashx"
+        },
+        "vst": [
+            ['_serialid', '0'],
+            ['_vrcode', stat.getVrcode()],
+            ['_refId', stat.getRefid()],
+            ['_userId', stat.getMemberId()],
+            ['_openTime', stat.timeDiff],
+            ['_trackPageview', pageview]
+        ]
+    });
+</script>
+</body>
+</html>

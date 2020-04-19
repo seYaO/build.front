@@ -1,0 +1,450 @@
+@import url("/modules-lite/wanleCommon/common.less");
+body{
+    background: #f3f4f8;
+}
+@rem : 24rem;
+@fam6: "Hiragino Sans GB W6";
+@fam3: "Hiragino Sans GB W3";
+@p-100: 100%;
+.size(@w,@h){
+    width: @w;
+    height: @h;
+}
+.imgBg(@w,@h){
+    background-size: @w @h;
+    background-repeat: no-repeat;
+}
+.layout-main{
+    position: relative;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto;
+    h3 b{
+        color: #333;
+    }
+    img{
+        width: 100%;
+    }
+}
+.foot_pic{
+    background: #f3f4f8;
+    img{
+      width: 100%;      
+    }
+    
+    
+}
+.call_here{
+    position: fixed;
+    float: right;
+    right: 10px;
+    bottom: 80px;
+    width: 32px;
+    height: 32px;
+    display: block;
+    //background: red;
+    background: url("./images/call_ico.png");
+    background-size: 100%;
+}
+.faq_link{
+   position: fixed;
+    float: right;
+    right: 10px;
+    bottom: 25px;
+    width: 80/@rem;
+    height: 80/@rem;
+    border-radius:50%; 
+    display: block;
+    background:rgba(0,0,0,.5); 
+    color: #fff;
+    font-size: 24/@rem;
+    text-align: center;
+    p:first-child{
+        margin-top: 5px;
+        line-height: 14px;
+    }
+    span{
+        vertical-align:middle;
+    }
+}
+@bk1:#ebeced;
+@bk2:#fff;
+@c1:#aaa;
+
+.page-body{
+    background: #fff;
+    /*padding-bottom: 10px;*/
+    overflow: hidden;
+}
+//搜索开始
+.search_out{
+    padding: 0 22/@rem;
+    .search{
+    /*width: 710/@rem;*/
+    /*height: 56/@rem;*/
+    background: #f3f4f8;
+    color: #aaaeb8;
+    display: block;
+    text-align: center;
+    border-radius: 54/@rem;
+    margin: 23/@rem auto;
+    padding: 0;
+    span{
+        width:60000/640%;
+        height:60/@rem;
+        background-color: @bk2;
+        color:#333;
+        display:block;
+        text-align: center;
+        border-radius: 10/@rem;
+        margin: 15/@rem auto;
+        color:@c1;
+    }
+    i{
+        font-size: 28/@rem;
+        line-height:60/@rem;
+        font-style: normal;
+        padding-left: 5px;
+    }
+    em{
+        width : 20/ @rem ;
+        height : 20/ @rem ;
+        border : 1px solid #999;
+        border-radius : 50%;
+        position:relative;
+        display: inline-block;
+        &:after{
+            content : '';
+            width:1px;
+            height:10/@rem ;
+            background:#999;
+            position:absolute;
+            left:20/@rem ;
+            top:17/@rem ;
+            -webkit-transform:rotate(-45deg) ;
+            -moz-transform:rotate(-45deg) ;
+            -ms-transform:rotate(-45deg) ;
+            -o-transform:rotate(-45deg) ;
+            transform:rotate(-45deg)
+
+        }
+    }
+    }
+}
+
+//热门WIFI开始
+@h1:80/@rem;
+@h2:30/@rem;
+@h3:14/@rem;
+@bk3:#dcdcdc;
+@cl1:#04b102;
+@fc2:#666;
+h3{
+    max-width: 640px;
+    height:@h1;
+    background-color: @bk2;
+    line-height:@h1;
+    padding-left: 20/@rem;
+    font-size:28/@rem;
+    color:@fc2;
+    b{
+        line-height: @h1;
+        /*border-left: 4/@rem solid @cl1;*/
+        padding-left: 15/@rem;
+        color: #666;
+        font-weight:normal;
+    }
+    em{
+        content: '';
+        display: block;
+        width: 14/@rem;
+        height: 14/@rem;
+        border-right: 2px solid #dcdcdc;
+        border-bottom: 2px solid #dcdcdc;
+        float: right;
+        margin-top: 29/@rem;
+        margin-right: 24/@rem;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+        -o-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+}
+//WIFI列表
+.wifi_list{
+    width: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
+    background-color: #fff;
+    padding:10*100/640% 20*100/640% 10*100/640% 20*100/640%;//用来填补大的列表框的上下左右间距,右间距要减去6个边框的宽度
+    margin-top:-20*100/640%;
+    div{
+        float: left;
+        width: 31%;
+        box-sizing: border-box;
+        /*margin:9*100/640% ;//控制每个小块的上下左右间距*/
+        margin: 0.29rem;
+        height: 173/@rem; 
+        a{
+            width: 100%;
+            position: relative;
+            display: block;
+        }
+        img{
+            position: absolute;
+            float: left;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 173/@rem; 
+            border-radius: 5/@rem;
+        }
+        span{
+            position: absolute;
+            display: block;
+            width: 100%;
+            color:#fff;
+            border-radius: 4px;
+            text-align: center;
+            height: 68/@rem;
+            line-height: 38/@rem;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            font-size: 28/@rem;
+            padding-top: 56/@rem;
+            em{
+                margin-top: 14/@rem;
+                font-weight: bold; 
+            }
+            i {
+                font-size: 26/@rem;
+                font-style: normal;
+            }
+        }
+        .select{
+            background-color: #e9fff0;
+            color:#09bb07;
+            border:1px solid #09bb07;
+            em{
+                color:#09bb07;
+                font-size: 24/@rem;
+            }
+            i {
+                color:#09bb07;
+                font-size: 24/@rem;
+                font-style: normal;
+            }
+        }
+    }
+    
+}
+.all_list{
+        background: #fff;
+        padding-bottom: 10px;
+        text-align: center;
+        display: block;
+        color: #666666;
+        font-size: 26/@rem;
+        em{
+            display: inline-block;
+            width: 14/@rem;
+            height: 0.9999999rem;
+            background: url(./images/point_right.png) no-repeat center center;
+            background-size: 100% 100%;
+            /*vertical-align: middle;*/
+            margin-left: 5/@rem;
+        }
+    }
+.good_rec{
+    background-color: #fff;
+    margin-top:20/@rem;
+    h3 b{
+        /*border-left: 4/@rem solid #ff8a01;*/
+        color: #fc6f48;
+        span{
+            display: inline-block;
+            width: 30/@rem;
+            height: 30/@rem;
+            background: url(./images/ico_time.png) no-repeat left center; 
+            background-size: 100% 100%;
+            vertical-align: sub;
+            margin-right: 5/@rem;
+        }
+        
+    }
+    ul{
+        list-style: none;
+        overflow: hidden;
+        /*display: -webkit-box;*/
+       
+        li{
+            /*-webkit-box-flex:1;*/
+            border-right:1px solid #eeeeee; 
+            border-bottom:1px solid #eeeeee; 
+            width: 50%;
+            box-sizing: border-box;
+            float: left;
+            .buying_box{
+                padding: 20/@rem 28/@rem;
+                overflow: hidden;
+                img{
+                    height: 177/@rem;
+                }
+                p{
+                    width: 100%;
+                    height: 76/@rem;
+                    font-size: 24/@rem;
+                    color: #333333;
+                }
+                .buy_bottom{
+                    width: 100%;
+                    .buy_price{
+                        float: left;
+                        b{
+                            font-size:36/@rem; 
+                            em{
+                                font-size: 24/@rem;    
+                            }
+                        }
+                                            
+                    }
+                    .satisfaction{
+                        float: right;
+                        font-size: 22/@rem;
+                        color: #999999;
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+}
+// 查看更多海外产品
+.look{
+    background: #fff;
+    margin-top:0.83333333rem;
+    h3{
+        font-size: 28/@rem;
+        height: 130/@rem;
+        line-height: 80/@rem;
+        padding-left: 20/@rem;
+        font-weight: normal;
+        position: relative;
+        i{
+            height:72/@rem;
+            width:75/@rem;
+            background: url("./images/icon.png");
+            padding-left: 4px;
+            margin-right: 15px;
+            display:block;
+            position: absolute;
+            top:27/@rem;
+            background-size: 100% 100%;
+        }
+        span{
+            position: absolute;
+            display:block;
+            margin-left:110/@rem;
+            top:28/@rem;
+            color:#333;
+            font-size:32/@rem;
+            line-height: 32/@rem;
+        }
+        p{
+            position: absolute;
+            display:block;
+            margin-left:110/@rem;
+            top:78/@rem;
+            font-size: 24/@rem;
+            color:#999;
+            line-height:24/@rem;
+        }
+        em{
+            content: '';
+            display: block;
+            width: 14/@rem;
+            height: 14/@rem;
+            border-right: 2px solid #dcdcdc;
+            border-bottom: 2px solid #dcdcdc;
+            float: right;
+            margin-top: 58/@rem;
+            margin-right: 30/@rem;
+            -webkit-transform: rotate(-45deg);
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -o-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+
+
+        }
+    }
+}
+
+.m_slider{
+    box-sizing: border-box;
+    /*margin-bottom: 10/@rem;*/
+    text-align: center;
+}
+.m_slider li{
+    position: relative;
+    width: 100%;
+}
+.m_slider li i{
+    position: absolute;
+    float: left;
+    left: 0;
+    bottom: 0;
+    width: 46/@rem;
+    height: 18/@rem;
+    background: url("//pic4.40017.cn/index/slide/2016/09/01/11/Ovkn51.png") no-repeat ;
+    background-size: 100% 100%;
+}
+.page-body .slider a>img{
+    width: 100%;
+    //height: 218/@rem;
+}
+
+
+.enter-icon, .toggle-icon {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-right: 2px solid #ccc;
+    border-bottom: 2px solid #ccc;
+}
+.enter-icon {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+}
+.toggle-icon {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.content {
+    margin: 10px 10px 20px;
+}
+.content a {
+    display: block;
+    margin: 5px 0;
+    line-height: 44px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    position: relative;
+}
+.content .enter-icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    margin-top: -5px;
+}

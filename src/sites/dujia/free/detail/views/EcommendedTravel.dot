@@ -1,0 +1,104 @@
+{{var item = travelData;}}
+{{?item.EcommendedTravel && item.EcommendedTravel.length>0}}
+<div class="comm_cuts none" id="ImgShow">
+    <div class="comm_mian"><img alt="大图" src="//img1.40017.cn/cn/comm/images/cn/public/transparent_loading_v2.gif"></div>
+</div>
+<div class="route-part none">
+    {{~item.EcommendedTravel:ecommend}}
+    <div class="route-list">
+        <div class="route-list-line"></div>
+        <h3 class="toggle">
+            {{ecommend.PassCity = ecommend.PassCity.replace(/\${(\w+)}/g,function($0,$1){
+                    return '<span class="icons-'+$1+'"></span>';
+            });}}
+            <b>第{{=ecommend.TravelDay}}天</b>{{=ecommend.PassCity}}
+			{{?ecommend.CheckInHotel && ecommend.CheckInHotel.length>0}}
+			  <span class="hotel">入住：{{=ecommend.CheckInHotel}}{{?ecommend.TravelHotelDining}}(含{{=ecommend.TravelHotelDining}}){{?}}</span>
+			{{?}}
+            {{?ecommend.TravelDay==1}}<a class="arrow-up">{{??}}<a class="arrow-down">{{?}}</a>
+        </h3>
+        {{?ecommend.TravelDetailList && ecommend.TravelDetailList.length}}
+            {{~ecommend.TravelDetailList:travel}}
+                {{?ecommend.TravelDay==1}}<div class="station-list">{{??}}<div class="station-list none">{{?}}
+                    <b class="icons-station">第{{=travel.TravelSite}}站</b>
+                    <div class="every-station">
+                        {{?(travel.ScenicAddress||travel.NearbyFood||travel.ScenicDescript)}}
+                        <div class="station">
+                            <p class="title"><span class="title-icon J-icon"></span><span class="title-desc">{{=travel.ScenicName}}</span></p>
+                            {{?travel.ScenicAddress}}
+                            <div class="item">
+                                <p>
+                                    <span class="every-item">景点地址：</span>
+                                    <span class="every-item-info">{{=travel.ScenicAddress}}</span>
+                                </p>
+                            </div>
+                            {{?}}
+                            {{?travel.NearbyFood}}
+                            <div class="item">
+                                <p>
+                                    <span class="every-item">附近美食：</span>
+                                    <span class="every-item-info">{{=travel.NearbyFood}}</span>
+                                </p>
+                            </div>
+                            {{?}}
+                            {{?travel.ScenicDescript}}
+                                <div class="item">
+                                    <p>
+                                        <span class="every-item">景点简介：</span>
+                                        <span class="every-item-info">{{=travel.ScenicDescript}}</span>
+                                    </p>
+                                    <div class="img_holiday">
+                                        {{?travel.DetailImage && travel.DetailImage.length}}
+                                            {{var imgLen = travel.DetailImage.length;}}
+                                            {{for(var i=0,len = imgLen >3?3:imgLen;i<len;i++){}}
+                                            {{?travel.DetailImage[i].ImageUrl}}
+                                            <div class="recommend_list_img hoverBig">
+                                                <img alt="" data-img='{{=travel.DetailImage[i].ImageUrl.replace("http:","")}}'>
+                                                <span class="img-wrap">{{=travel.DetailImage[i].ImageName}}</span>
+                                            </div>
+                                            {{?}}
+                                            {{}}}
+                                        {{?}}
+                                    </div>
+                                </div>
+                            {{?}}
+                        </div>
+                        {{?}}
+                        {{?travel.TraveRemark}}
+                        <div class="station">
+                            <p class="title remark-route"><span class="title-icon B-icon"></span><span class="title-desc">备<em></em>注：</span><b>{{=travel.TraveRemark}}</b></p>
+                        </div>
+                        {{?}}
+                        {{?travel.ShopDetailList.length>0}}
+                        <div class="station remark-shop">
+                            <p class="title"><span class="title-icon R-icon"></span><span class="title-desc">推荐购物点</span></p>
+                            <div class="item">
+                                <table class="shopping" border="0" cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                    <tr class="shopping-title">
+                                        <th>购物点名称</th>
+                                        <th>营业产品</th>
+                                        <th>停留时间</th>
+                                        <th>说明</th>
+                                    </tr>
+                                    {{~travel.ShopDetailList:shops}}
+                                    <tr>
+                                        <td>{{=shops.ShopName}}</td><td>{{=shops.ShopProduct}}</td><td class="shopping-spe-td">{{=shops.StayTime}}分钟</td><td>{{=shops.Explain}}</td>
+                                    </tr>
+                                    {{~}}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        {{?}}
+                    {{?travel.TrafficRecommand!=""}}
+                    <div class="distance"><b class="icons-distance"></b><i>{{=travel.TrafficRecommand}}</i></div>
+                        {{?}}
+                    </div>
+                </div>
+            {{~}}
+        {{?}}
+    </div>
+    {{~}}
+</div>
+{{?}}

@@ -1,0 +1,39 @@
+﻿ {{~it.Data:list:index}}
+  <div class="item">
+    <h3>
+	   <div class="group-no">
+		   <p class="tai">กรุ๊ปโค๊ด</p>
+		   <p><label>团号：</label>{{=list.GroupNo}}</p>
+	   </div>
+	   <div class="tours">
+	   	   <p class="tai">No.</p>
+		   <p><label>团次：</label>{{=list.Number}}</p>
+	   <div>
+	</h3>
+	 <ul>
+        <li>		     
+			 <div>
+			   <p class="tai">ประเภท</p>
+			    <p>
+				   <label>类型：</label>{{=list.FeeType}}
+				</p>
+				
+			 </div> 
+			 <div>
+			   <p class="tai">ประเภท</p>
+			    <p>
+				   <label>金额：</label>{{=list.Amount}}
+				</p>			
+			 </div> 
+		 </li>
+        <li> 
+		   <div>
+				<p class="tai">หมายเหตุ์</p>
+				<p>
+					<label>备注：</label><span>{{=list.Remarks}}</div>
+				</p>
+		   </div>		   		      
+		</li>                            
+     </ul>
+</div>
+{{~}}

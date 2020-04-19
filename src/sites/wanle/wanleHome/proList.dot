@@ -1,0 +1,17 @@
+
+<ul class="{{="J_proList_" + it._key}}" trackkit="Line_Recommend">
+    {{~it.ProductList:data:index}}
+    {{?index < 6}}
+     <li>
+         <a href="//www.ly.com/dujia/wanle/{{=data.ResourceId}}.html" target="_blank" trackspot="{{=data.ResourceId}}^{{=index+1}}^{{=it.tabName}}^{{=it.parName}}">
+             <img data-img="{{=data.ImgUrl.replace(".jpg","_430x270_00.jpg").replace('http:','')}}">
+             <div>
+                 <span class="mainTitle" title="{{=data.MainTitle}}">{{=data.MainTitle}}</span>
+                 <span class="subTitle">{{=data.SubTitle}}</span>
+                 <p><i>¥</i>{{=data.TcPrice}}<b>起</b></p>
+             </div>
+         </a>
+     </li>
+     {{?}}
+     {{~}}
+ </ul>

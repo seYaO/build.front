@@ -1,0 +1,7 @@
+<div id="J_AddressTip" class="address-tip">
+    <div>
+        <p>我们发现你目前位置在 <span>{{=it.now}}</span></p>
+        <a class="J_CancelBtn" data-address="{{=it.last}}" href="javascript:void(0);">留在{{=it.last}}</a>
+        <a class="J_ConfirmBtn" data-address="{{=it.now}}" href="javascript:void(0);">切换到{{=it.now}}</a>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <img data-img="http://pic3.40017.cn/line/admin/2015/07/17/13/gelfbn_430x270_00.jpg" />
+    <img data-img="http://pic3.40017.cn/line/admin/2015/11/27/11/AgF2K5.jpg" />
+</body>
+<script src="../../jquery.js"></script>
+<script src="../../lazyload/0.3.0/index.js"></script>
+<script>
+    $("img").lazyload({
+        data_attribute:"img"
+    });
+</script>
+</html>

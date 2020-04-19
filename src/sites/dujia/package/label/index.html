@@ -1,0 +1,590 @@
+{{
+    var it = IT.Data;
+}}
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" trace="pc-package-list">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="renderer" content="webkit"/>
+    <title>{{=it.StartCityName}}到{{=it.DestCityName}}自助游_{{=it.StartCityName}}到{{=it.DestCityName}}自助游费用_{{=it.StartCityName}}到{{=it.DestCityName}}自助游攻略_同程旅游出境游</title>
+    <meta name='keywords' content='{{=it.StartCityName}}到{{=it.DestCityName}}自助游,{{=it.StartCityName}}到{{=it.DestCityName}}自助旅游,{{=it.StartCityName}}到{{=it.DestCityName}}自助游价格,{{=it.StartCityName}}到{{=it.DestCityName}}自助,{{=it.StartCityName}}到{{=it.DestCityName}}自助游攻略' />
+    <meta name='description' content='{{=it.StartCityName}}到{{=it.DestCityName}}自助游：同程旅游提供海量优质、安全有保障的{{=it.StartCityName}}到{{=it.DestCityName}}自助游，您可以详细了解{{=it.StartCityName}}到{{=it.DestCityName}}自助游的经典线路、价格等{{=it.StartCityName}}到{{=it.DestCityName}}自助游信息。{{=it.StartCityName}}到{{=it.DestCityName}}自助游，就上同程网。' />
+    <% includeId = cnwidescreenjscss %>
+    <link href="//css.40017.cn/cn/min/??/cn/v/public/2013/v_public.0.5.css?v=2014061811" rel="stylesheet" type="text/css" /><!--ignore-->
+    <link href="//css.40017.cn/cn/v/2015/startList/starList.04235.css?v=20150423" rel="stylesheet" type="text/css" /><!--ignore-->
+    <link href="index.css" rel="stylesheet" type="text/css" /><!--ignore-->
+    <!--通栏样式-->
+    <link href="//css.40017.cn/cn/v/2015/index2016/slidertoolbar.06144.css" rel="stylesheet">
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/fish.1.4.7.js,/cn/public/fc.1.1.7.js?v=2015021101"></script><!--ignore-->
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/jquery.js"></script><!--ignore-->
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/monitor/0.3.0/index.js?v=2015113004"></script><!--ignore-->
+    <link rel="stylesheet" href="//modules/pager/0.1.0/index.css">
+    <style>
+        #module-slider .module-slider-header {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 公共头部 start -->
+    <% includeId = cnwidescreenhead?channel=dujia %>
+    <!-- 公共头部 end -->
+
+    <!-- 主体内容 start -->
+    <div class="content">
+        <!-- 面包屑导航begin -->
+        <div class="udiy" id="ivacation-tag-bread">
+            <div class="bread">
+                <div class="clearfix">您所在位置：
+                    <a href="http://www.ly.com/" rel="nofollow" trace="0"> 同程首页</a> &gt;
+                    <a href="//www.ly.com/dujia/" rel="nofollow" trace="1"> 出境游</a> &gt;
+                    <a href="/dujia/{{=it.DestCityPinYin}}-lvyou/" trace="2">{{=it.DestCityName}}旅游</a> &gt;
+                    <h1>{{=it.StartCityName}}到{{=it.DestCityName}}自助游</h1>
+                </div>
+            </div>
+        </div>
+        <!-- 面包屑导航end -->
+
+        <!-- 内容begin -->
+        <div class="main">
+            <!-- 左侧内容begin -->
+            <div class="main-left">
+                <div class="udiy" id="ivacation-tag-dest">
+                    <div class="left-module desCity">
+                        <h3>机酒任选目的地</h3>
+                        <div class="city-list" trace="city-list">
+                            {{?it.DestNavigate}}
+                                {{~it.DestNavigate:destNavigateItem}}
+                                    <div class="des-item">
+                                        <div class="list-conn">
+                                            <img attr-image="{{=destNavigateItem.Icon.replace('http:','')}}" attr-imageh="{{=destNavigateItem.HoverIcon.replace('http:','')}}" src="{{=destNavigateItem.Icon.replace('http:','')}}">
+                                            <dl>
+                                                <dt>
+                                                    {{~destNavigateItem.DestGroups:destGroupsItem:destGroupIndex}}
+                                                        <a trace="title-1-{{=destGroupIndex}}" target="_blank" href="//www.ly.com/dujia/{{=destGroupsItem.PinYin}}-jijiu/f{{=it.StartCityId}}/">{{=destGroupsItem.Name}}</a>
+                                                    {{~}}
+                                                </dt>
+                                                <dd>
+                                                    {{~destNavigateItem.DestGroups:destGroupsItem2}}
+                                                        {{~destGroupsItem2.Dests:dests:destIndex}}
+                                                            {{?dests.IsRecommend == 1}}
+                                                                <a trace="list-1-{{=destIndex}}" href="//www.ly.com/dujia/{{=dests.Pinyin}}-jijiu/f{{=it.StartCityId}}/" target="_blank" title="{{=dests.Name}}" rel="nofollow">{{=dests.Name}}</a>
+                                                            {{?}}
+                                                        {{~}}
+                                                    {{~}}
+                                                </dd>
+                                            </dl>
+                                        </div>
+                                        <div class="showlist none">
+                                            {{~destNavigateItem.DestGroups:destGroupsItem:destGroupIndex}}
+                                                <div class="showbox">
+                                                    <h4>
+                                                        <a trace="cont-title-1-1-{{=destGroupIndex}}" target="_blank" href="//www.ly.com/dujia/{{=destGroupsItem.PinYin}}-jijiu/f{{=it.StartCityId}}/" rel="nofollow">{{=destGroupsItem.Name}}</a>
+                                                    </h4>
+                                                    <dl class="hotcitylist">
+                                                        <dt>热门目的地</dt>
+                                                        {{~destNavigateItem.DestGroups:destGroupsItem2}}
+                                                            {{~destGroupsItem2.Dests:dests:destIndex}}
+                                                                <dd>
+                                                                    <a trace="cont-list-1-1-{{=destIndex}}" {{?dests.IsHot == 1}} class="f60" {{?}} href="//www.ly.com/dujia/{{=dests.Pinyin}}-jijiu/f{{=it.StartCityId}}/" target="_blank" rel="nofollow" title="{{=dests.Name}}">{{=dests.Name}}</a>
+                                                                </dd>
+                                                            {{~}}
+                                                        {{~}}
+                                                    </dl>
+
+                                                    <a trace="cont-img-1-1-{{=destGroupIndex}}" href="{{=destGroupsItem.PromotionLink.replace('http:','')}}" rel="nofollow" target="_blank" class="show_ico">
+                                                        <img src="{{=destGroupsItem.PromotionPicture.replace('http:','')}}" alt="图片">
+                                                    </a>
+                                                </div>
+                                            {{~}}
+                                        </div>
+                                    </div>
+                                {{~}}
+                            {{?}}
+                        </div>
+                    </div>
+                </div>
+                <div class="left-module promise">
+                    <h3><span>同程出境旅游承诺</span></h3>
+                    <div class="promise-txt">
+                        <p><i class="promise1"></i><span>万余条线路，遍布全球</span></p>
+                        <p><i class="promise2"></i><span>真实价格，透明行程</span></p>
+                        <p><i class="promise3"></i><span>全天候专业客服服务</span></p>
+                        <p><i class="promise4"></i><span>专注旅游11年，品质保障</span></p>
+                    </div>
+                </div>
+                <div class="left-module nearshop">
+                    <h3><span></span></h3>
+                    <ul></ul>
+                </div>
+            </div>
+            <!-- 左侧内容end -->
+
+            <!-- 右侧内容begin -->
+            <div class="main-right">
+                <div class="sousuo clearfix">
+                    <div class="topBox">
+                        <div class="citybox new-scity-tips">
+                            <b attrurl="//www.ly.com/dujia/AjaxCallNew.aspx?type=GetQianzhengSearch" class="city_b" id="city_select">
+                                <span class="city_span"><strong>{{=it.StartCityName}}</strong><span class="city_span">出发</span></span>
+                            </b>
+                            <!--热门出发城市-->
+                            <div class="udiy" id="common-djchujinghotout">
+                                <div id="popleave" class="none" style="display: none;" test="">
+                                    <div class="leavecity"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="top_rigth">
+                            <div class="udiy" id="common-djchujinghotsearchyp">
+                                <link href="//css.40017.cn/cn/min/??/cn/v/v.public.branch/v_search_570.0.0.1.css?v=2014072504" rel="stylesheet"/>
+                                <div class="cj-search">
+                                    <div class="search-box">
+                                        <div class="search-line icon-up">
+                                            <span id="selectValue" class="selected" tid="7">机酒任选</span>
+                                            <ul class="search-list" style="display: none;">
+                                                <li tid="0">全部</li>
+                                                <li tid="1">跟团游</li>
+                                                <li tid="2">自由行</li>
+                                                <li tid="6">签证</li>
+                                                <li tid="7">机酒任选</li>
+                                            </ul>
+                                        </div>
+                                        <input id="searchinput" attrValu="请输入目的地、主题或关键词" data-keyword="{{=it.DestCityName}}" class="search-input" type="text" value="请输入目的地、主题或关键词"/>
+                                    </div>
+                                    <input attrurl="/dujia/search.aspx" id="btnSubmit" class="search-button" type="button" value="搜 &nbsp;索" />
+                                </div>
+                                <script src="//js.40017.cn/cn/v/2015/searchtext/v_search.0.0.1.10205.js"></script>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!--筛选主体开始-->
+                <div class="udiy" id="ivacation-search-title">
+                    <input type="hidden" id="hidIsLabelOrSearch" {{?it.PageType == 0}} value="Search" {{??}}value="Label"{{?}}/>
+                    <input type="hidden" id="hidTotalCount" {{?it.LabelProduct && it.LabelProduct != null}} value="{{=it.LabelProduct.TotalCount}}" {{?}}/>
+                    <div id="seafilter" class="searchParte">
+                        <ul class="seacrhtab">
+                            {{?it.PageType == 0}}
+                                <li>
+                                    <a href="/dujia/search.aspx?src={{=it.StartCityName}}&dest={{=it.DestCityName}}&prop=0" title="全部">全部</a>
+                                </li>
+                                <li>
+                                    <a href="/dujia/search.aspx?src={{=it.StartCityName}}&dest={{=it.DestCityName}}&prop=1" title="跟团游">跟团游</a>
+                                </li>
+                                <li>
+                                    <a href="/dujia/search.aspx?src={{=it.StartCityName}}&dest={{=it.DestCityName}}&prop=10" title="目的地参团">目的地参团<em style="width: 23px;height: 10px;position: absolute;top: -2px;right: 9px;color: #ff7800;font-size: 12px;">NEW</em></a>
+                                </li>
+                                <li>
+                                    <a href="/dujia/search.aspx?src={{=it.StartCityName}}&dest={{=it.DestCityName}}&prop=2" title="自由行">自由行</a>
+                                </li>
+                                <li class="onStyle">
+                                    <a href="/dujia/search.aspx?src={{=it.StartCityName}}&dest={{=it.DestCityName}}&prop=7" title="机酒任选">机酒任选<em style="width: 23px;height: 10px;position: absolute;top: -2px;right: 9px;color: #ff7800;font-size: 12px;">NEW</em></a>
+                                </li>
+                                <li>
+                                    <a href="/dujia/wanle/searchlist_{{=it.DestCityPinYin}}.html" title="当地玩乐">当地玩乐</a>
+                                </li>
+                                {{?it.IsShowVisa && it.IsShowVisa == 1}}
+                                    <li>
+                                        <a href="/dujia/search.aspx?src={{=it.StartCityName}}&dest={{=it.DestCityName}}&prop=6" title="签证">签证</a>
+                                    </li>
+                                {{?}}
+                            {{??}}
+                               <li>
+                                    <a href="/dujia/{{=it.DestCityPinYin}}-lvyou/f{{=it.StartCityId}}/" title="全部">全部</a>
+                                </li>
+                                <li>
+                                    <a href="/dujia/{{=it.DestCityPinYin}}{{=it.GroupLabelId}}-gentuan/f{{=it.StartCityId}}/" title="跟团游">跟团游</a>
+                                </li>
+                                <li>
+                                    <a href="/dujia/{{=it.DestCityPinYin}}-local/" title="目的地参团">目的地参团<em style="width: 23px;height: 10px;position: absolute;top: -2px;right: 9px;color: #ff7800;font-size: 12px;">NEW</em></a>
+                                </li>
+                                <li>
+                                    <a href="/dujia/{{=it.DestCityPinYin}}{{=it.FreeLabelId}}-zizhu/f{{=it.StartCityId}}/" title="自由行">自由行</a>
+                                </li>
+                                <li class="onStyle">
+                                    <a href="/dujia/{{=it.DestCityPinYin}}-jijiu/f{{=it.StartCityId}}/" title="机酒任选">机酒任选<em style="width: 23px;height: 10px;position: absolute;top: -2px;right: 9px;color: #ff7800;font-size: 12px;">NEW</em></a>
+                                </li>
+                                <li>
+                                    <a href="/dujia/wanle/searchlist_{{=it.DestCityPinYin}}.html" title="当地玩乐">当地玩乐</a>
+                                </li>
+                                {{?it.IsShowVisa && it.IsShowVisa == 1}}
+                                    <li>
+                                        <a href="/dujia/search.aspx?src={{=it.StartCityName}}&dest={{=it.DestCityName}}&prop=6" title="签证">签证</a>
+                                    </li>
+                                {{?}}
+                            {{?}}
+                        </ul>
+                        <a class="ui-costomize" href="//www.ly.com/dujia/schedule.html" target="_blank">出境定制</a>
+
+                        <div class="crumbox" >
+                            <h4>已选条件 : </h4>
+                            <span class="removeall">全部清除</span>
+                        </div>
+
+                        <div id="filter">
+                            <div class="crumlist">
+                                {{?it.LabelProduct && it.LabelProduct != null}}
+                                    {{?it.LabelProduct.Conditions.LineClassification && it.LabelProduct.Conditions.LineClassification.length > 0}}
+                                        <div class="rowbox" data-key="lineQuality" data-list="1" data-openurl="false" data-multiselect="false" attr-name="线路分类">
+                                            <h4>线路分类 :</h4>
+                                            <div class="rowlist J_lineQuality">
+                                                {{~it.LabelProduct.Conditions.LineClassification:lineQuality}}
+                                                    <a href="javascript:;" data-value="{{=lineQuality.Value}}" title="{{=lineQuality.Title}}">{{=lineQuality.Name}}</a>
+                                                {{~}}
+                                                <div class="btns none">
+                                                    <span attr-data="" class="submit">确定</span>
+                                                    <span class="cancel">取消</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {{?}}
+                                    {{?it.LabelProduct.Conditions.LinePlay && it.LabelProduct.Conditions.LinePlay.length > 0}}
+                                        <div class="rowbox" data-key="specialNickId" data-list="2" data-openurl="false" data-multiselect="false" attr-name="线路玩法" $!{wanfaClass}>
+                                            <h4>线路玩法 :</h4>
+                                            <div class="rowlist J_linePlay">
+                                                {{~it.LabelProduct.Conditions.LinePlay:linePlay}}
+                                                    <a href="javascript:;" data-value="{{=linePlay.Value}}" title="{{=linePlay.Title}}">{{=linePlay.Name}}</a>
+                                                {{~}}
+                                                <div class="btns none">
+                                                    <span attr-data="" class="submit">确定</span>
+                                                    <span class="cancel">取消</span>
+                                                </div>
+                                            </div>
+                                            <div class="operationbox">
+                                                <a class="multibtn" href="javascript:void(0);" title="">多选</a>
+                                                <span class="more-btn">更多</span>
+                                            </div>
+                                        </div>
+                                    {{?}}
+                                    {{?it.LabelProduct.Conditions.PlayDay && it.LabelProduct.Conditions.PlayDay.length > 0}}
+                                        <div class="rowbox" data-key="days" data-list="3" data-openurl="false" data-multiselect="false" attr-name="游玩天数" $!{daysClass}>
+                                            <h4>游玩天数 :</h4>
+                                            <div class="rowlist J_lineDays">
+                                                    {{~it.LabelProduct.Conditions.PlayDay:playDay}}
+                                                        <a href="javascript:;" data-value="{{=playDay.Value}}" title="{{=playDay.Name}}">{{=playDay.Name}}</a>
+                                                    {{~}}
+                                                <div class="btns none">
+                                                    <span attr-data="" class="submit">确定</span>
+                                                    <span class="cancel">取消</span>
+                                                </div>
+                                            </div>
+                                            <div class="operationbox">
+                                                <a class="multibtn" href="javascript:void(0);" title="">多选</a>
+                                                <span class="more-btn">更多</span>
+                                            </div>
+                                        </div>
+                                    {{?}}
+                                    {{?it.LabelProduct.Conditions.FromCity && it.LabelProduct.Conditions.FromCity.length > 0}}
+                                        <div class="rowbox" data-list="5" data-key="lpCity" data-openurl="false" data-multiselect="false" attr-name="出游城市">
+                                            <h4>出发城市 :</h4>
+                                            <div class="rowlist J_lineCity">
+                                                    {{~it.LabelProduct.Conditions.FromCity:fromCity}}
+                                                        <a href="javascript:;" data-value="{{=fromCity.Value}}" title="{{=fromCity.Title}}">{{=fromCity.Name}}</a>
+                                                    {{~}}
+                                                <div class="btns none">
+                                                    <span attr-data="" class="submit">确定</span>
+                                                    <span class="cancel">取消</span>
+                                                </div>
+                                            </div>
+                                            <div class="operationbox">
+                                                <a class="multibtn" href="javascript:void(0);" title="">多选</a>
+                                                <span class="more-btn">更多</span>
+                                            </div>
+                                        </div>
+                                    {{?}}
+                                    {{?it.LabelProduct.Conditions.LineFeature && it.LabelProduct.Conditions.LineFeature.length > 0}}
+                                        <div class="rowbox" data-key="rcImgTitleId" data-list="6" data-openurl="false" data-multiselect="false" attr-name="线路特色">
+                                            <h4>线路特色 :</h4>
+                                            <div class="rowlist J_lineFeature">
+                                                    {{~it.LabelProduct.Conditions.LineFeature:lineFeature}}
+                                                        <a href="javascript:;" data-value="{{=lineFeature.Value}}" title="{{=lineFeature.Title}}">{{=lineFeature.Name}}</a>
+                                                    {{~}}
+                                                <div class="btns none">
+                                                    <span attr-data="" class="submit">确定</span> <span class="cancel">取消</span>
+                                                </div>
+                                            </div>
+                                            <div class="operationbox">
+                                                <span class="more-btn">更多</span>
+                                            </div>
+                                        </div>
+                                    {{?}}
+                                    <div class="sort-row">
+                                        <div class="sort-left">
+                                            <ul class="sort-ul">
+                                                <li class="cur">
+                                                    <a href="javascript:;" title="综合排序">综合排序</a>
+                                                </li>
+                                                <li>
+                                                    <a class="sortsty " href="javascript:;" title="按照30天销量排序">销量</a>
+                                                </li>
+                                                <li>
+                                                    <a class="sortsty " href="javascript:;" title="按照线路满意度从高到低排序">点评</a>
+                                                </li>
+                                                <li>
+                                                    <a class="sortsty" href="javascript:;" title="价格">价格</a>
+                                                </li>
+                                            </ul>
+                                            <div class="pricebox">
+                                                <div id="priceinner">
+                                                    <div class="inputbox">
+                                                        <input class="min" type="text" maxlength="6" placeholder="¥" value=""/>
+                                                        <em>~</em>
+                                                        <input class="max" type="text" maxlength="6" placeholder="¥" value=""/>
+                                                    </div>
+                                                    <div class="price-bot none">
+                                                        <span>清除价格</span>
+                                                        <a href="javascript:;" title="确定">确定</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{?it.LabelProduct.Conditions.Service && it.LabelProduct.Conditions.Service.length > 0}}
+                                        <div class="sort-service">
+                                            <div class="sort-service-box">
+                                                {{~it.LabelProduct.Conditions.Service:service}}
+                                                    <a href="javascript:;" data-value="{{=service.Value}}" title="{{=service.Title}}" class="addinput">{{=service.Name}}</a>
+                                                {{~}}
+                                            </div>
+                                            {{?it.LabelProduct.Conditions.Service.length > 16}}
+                                                <span class="more-tese J_moreTese">展开更多<i></i></span>
+                                            {{?}}
+                                        </div>
+                                    {{?}}
+                                {{?}}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="loading none">
+                        <div class="loading-img"></div>
+                        <p class="loading-txt">正在努力加载中…</p>
+                    </div>
+                    <div id="tagList">
+                        {{?it.LabelProduct && it.LabelProduct != null}}
+                            {{?it.LabelProduct.Products && it.LabelProduct.Products.length > 0}}
+                                {{~it.LabelProduct.Products:products}}
+                                    <div class="pro-title">
+                                        <a title="{{=products.Title}}" href="/dujia/tours/p{{=products.LineId}}.html" target="_blank" trace="goDetail">{{=products.Title}}</a>
+                                    </div>
+                                    <div class="module">
+                                        <div class="mod-list normal-style">
+                                            <ul class="prolist">
+                                                <li class="pro-line">
+                                                    <div class="pro-redu">
+                                                        <div class="pro-desc">
+                                                            {{~products.Products:pros}}
+                                                                <div class="pro-tree clearfix">
+                                                                    <div class="pro-img">
+                                                                        <a href="/dujia/tours/p{{=pros.LineId}}.html" target="_blank" data-paramed="true" trace="goDetail">
+                                                                            <img data-img="{{=pros.Image.replace('http:','')}}" src="{{=pros.Image.replace('http:','')}}"  data-img-loaded="true" style="display: block;">
+                                                                        </a>
+                                                                        <span class="mark">机酒任选</span>
+                                                                    </div>
+                                                                    <div class="pro-branch clearfix">
+                                                                        <div class="pro-info">
+                                                                          {{
+                                                                            var fullTitle = pros.CustomTitle + '•' + pros.SubTitle;
+                                                                            var showTitle = "";
+                                                                            var fullLength = 45;
+                                                                            if(pros.CustomTitle.length > fullLength){
+                                                                              showTitle = pros.CustomTitle.substring(0,fullLength)+'...';
+                                                                            }else{
+                                                                              var leftLength = fullLength - pros.CustomTitle.length;
+                                                                              if(pros.SubTitle.length > leftLength){
+                                                                                showTitle = pros.CustomTitle + '<b>' + '•' + pros.SubTitle.substring(0,leftLength)+'...</b>';
+                                                                              }else{
+                                                                                showTitle = pros.CustomTitle + '<b>' + '•' + pros.SubTitle + '</b>'
+                                                                              }
+                                                                            }
+                                                                          }}
+                                                                            <p class="sub-title">
+                                                                                <a title="{{=pros.CustomTitle}}•{{=pros.SubTitle}}" href="/dujia/tours/p{{=pros.LineId}}.html" target="_blank" data-paramed="true" trace="goDetail">{{=showTitle}}</a>
+                                                                            </p>
+                                                                            <p class="pro-pre">
+                                                                                {{?pros.WhiteBarType && pros.WhiteBarType > 0}}
+                                                                                    <span data-content="<div>{{=pros.WhiteBarTip}}<br/></div>" class="J_Tips">分期付款</span>
+                                                                                {{?}}
+                                                                                {{?pros.Services && pros.Services.length > 0 && pros.Services.length <= 3}}
+                                                                                    {{for(var i =0; i <pros.Services.length; i ++){}}
+                                                                                        <span class="stars">
+                                                                                            <span class="stars-txt">{{=pros.Services[i]}}</span>
+                                                                                        </span>
+                                                                                    {{}}}
+                                                                                {{?}}
+                                                                            </p>
+                                                                            <div class="branch_style">
+                                                                                <p class="pro-tip">
+                                                                                    <span class="pro-dep"><i></i>{{=pros.DepartCity}}出发</span>
+                                                                                </p>
+                                                                                <p class="pro-date">
+                                                                                    <span class="pro-text">出发日期：</span><span class="date-list">天天发团</span>
+                                                                                </p>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="pro-detail">
+                                                                            <span class="pro-price" >
+                                                                                {{?pros.Price == 0}}
+                                                                                    <i>实时计价</i>
+                                                                                {{??}}
+                                                                                    <em>¥</em>{{=pros.Price}}<em>/人起</em>
+                                                                                {{?}}
+                                                                            </span>
+                                                                            <a href="/dujia/tours/p{{=pros.LineId}}.html" target="_blank" class="pro-btn stages spm-deliver" data-paramed="true" trace="goDetail">查看详情</a>
+                                                                            {{?pros.Satisfaction == "0.0"}}
+                                                                                <p class="newpro">新产品</p>
+                                                                            {{??}}
+                                                                                <p class="pro-comm"><em>{{=pros.Satisfaction}}%</em>满意度 <em>{{=pros.Comments}}</em>条评论</p>
+                                                                            {{?}}
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            {{~}}
+                                                        </div>
+                                                    </div>
+                                                    <div class="pro-cal none"></div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        {{?products.Products.length > 5}}
+                                            <div class="choose-button">
+                                                <span class="unfold J_more">展开更多<b></b></span>
+                                            </div>
+                                        {{?}}
+                                    </div>
+                                {{~}}
+                            {{?}}
+                        {{?}}
+                    </div>
+                </div>
+                <!--筛选主体结束-->
+                <div id="J_LablePager" class="lable-page"></div>
+                <div id="J_ClearFilter" class="noresult">
+                    <div class="warnning">
+                        <i class="icon-warn"></i><span class="warn-txt">亲，筛选无结果啦，重新筛选吧！</span><a href="javascript:;" class="del-filter">清除筛选条件</a>
+                    </div>
+                </div>
+                <div id="J_NoLine" class="noresult">
+                    <div class="warnning">
+                        <i class="icon-warn"></i><span class="warn-txt">没有线路了哦!您还可以到热门目的地查看更多线路！</span>
+                    </div>
+                    <div class="udiy" id="ivacation-tag-near">
+                        <div class="nearby">
+                            <p class="near-title">热门目的地</p>
+                            <div class="near-des">
+                                <a href="/dujia/riben-jijiu/f{{=it.StartCityId}}/" target="_blank">日本</a>
+                                <a href="/dujia/gangao-jijiu/f{{=it.StartCityId}}/" target="_blank">港澳</a>
+                                <a href="/dujia/dongjing-jijiu/f{{=it.StartCityId}}/" target="_blank">东京</a>
+                                <a href="/dujia/jianpuzhai-jijiu/f{{=it.StartCityId}}/" target="_blank">柬埔寨</a>
+                                <a href="/dujia/daban-jijiu/f{{=it.StartCityId}}/" target="_blank">大阪</a>
+                                <a href="/dujia/taiguo-jijiu/f{{=it.StartCityId}}/" target="_blank">泰国</a>
+                                <a href="/dujia/pujidao-jijiu/f{{=it.StartCityId}}/" target="_blank">普吉岛</a>
+                                <a href="/dujia/changtandao-jijiu/f{{=it.StartCityId}}/" target="_blank">长滩岛</a>
+                                <a href="/dujia/balidao-jijiu/f{{=it.StartCityId}}/" target="_blank">巴厘岛</a>
+                                <a href="/dujia/mangu-jijiu/f{{=it.StartCityId}}/" target="_blank">曼谷</a>
+                                <a href="/dujia/qingmai-jijiu/f{{=it.StartCityId}}/" target="_blank">清迈</a>
+                                <a href="/dujia/xinjiapo-jijiu/f{{=it.StartCityId}}/" target="_blank">新加坡</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 右侧内容end -->
+        </div>
+        <!-- 内容end -->
+    </div>
+    <!-- 主体内容 end -->
+    <!-- 公共页脚 开始 -->
+    <% includeId = cnwidescreenfoot?vrcode=10002-2006-0 %>
+    <div class="udiy" id="intervacation-citylist">
+
+    </div>
+    <script type="text/javascript">
+        var cityInfo = {{=JSON.stringify(it.StartCitys)}}
+    </script>
+    <!-- 公共页脚 结束 -->
+    <script src="//modules/sea.js" data-loader="true" type="text/javascript"></script>
+
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/public/jquery/calendar/0.0.1/calendar.js?v=2015072201" charset="utf-8"></script>
+    <script src="//js.40017.cn/cn/min/??/cn/v/2015/startList/vPublic.03115.js?v=2015031101"></script>
+    <script src="//js.40017.cn/cn/min/??/cn/v/2015/startList/starList.03193.js?v=20150801"></script>
+    <script type="text/javascript" src="/modules/common/0.1.0/index.js"></script>
+    <script type="text/javascript">
+        {{?it.StartCitys && it.StartCitys!=null}}
+            StartList.init();
+        {{?}}
+    </script>
+    <!--<script src="//www.ly.com/dujia/config.ashx?nocache=1" type="text/javascript"></script>-->
+    <script type="text/javascript">
+        seajs.require("./index").init({
+                dest: "{{=it.DestCityName}}",
+                scId: "{{=it.StartCityId}}",
+                lcCityId: "{{=it.StartCityId}}"
+            });
+
+    </script>
+    <!-- 统计相关功能 -->
+    <script type="text/javascript" src="//js.40017.cn/cn/v/2015/jqmodules/statistics/0.1.0/spm_module.js"></script>
+    <script>
+        /*初始化模块统计*/
+        SPM_MODULE && SPM_MODULE.init();
+        </script>
+        <script type="text/javascript">
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?ca5679d0986b1f42f800098b798c7008";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+    <% includeId = node_dj_common_stat %>
+    <script type="text/javascript">
+        window.__stat_aggs__ =[
+            {
+                key: 'pc-package-ablist',
+                text: '泛打包新版标签'
+            },
+            {
+                key: 'pc-package-list',
+                text: '泛打包老版标签'
+            }
+        ];
+        var rtTag = {
+            "data": {
+                "etravel_page": {
+                    "page_type": "index",
+                    "p_class1": "出境游",
+                    "p_class2": "泛打包老版标签页"
+                }
+            }
+        };
+        stat.init({
+            "_tcHotmapx": {
+                "pid": "799",
+                "sp": "100"
+            },
+            "mvl": {
+                "_mvq": [
+                    ['$setAccount', 'm-135073-0'],
+                    ['$logConversion']
+                ],
+                "isImmediateExcu": true
+            },
+            "vst": [
+                ['_serialid', '0'],
+                ['_vrcode', stat.getVrcode()],
+                ['_refId', stat.getRefid()],
+                ['_userId', stat.getMemberId()],
+                ['_openTime', stat.timeDiff],
+                ['_trackPageview', '/出境/动态打包老版标签页']
+            ]
+        });
+    </script>
+</body>
+
+</html>

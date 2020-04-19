@@ -1,0 +1,135 @@
+{{?it.hotelInfo && it.hotelInfo.length>0}}
+<div class="hotel-module clearfix ">
+{{??}}
+<div class="hotel-module clearfix none">
+{{?}}
+<div class="module-name">
+     <div class="icon-contain">
+          <span></span>
+     </div>
+     <p class="module-title">酒店信息</p>
+</div>
+<div class="hotel-contains">
+<div>
+{{~it.hotelInfo:hotelInfo:hotelInfoindex}}
+{{?hotelInfoindex == 0}}
+<div class="traffic-hotel clearfix">
+{{??}}
+<div class="traffic-hotel none clearfix">
+{{?}}
+
+  {{?hotelInfo.HotelImage && hotelInfo.HotelImage[0] && hotelInfo.HotelImage[0].length}}
+    <img class="hotel-img" data-img="{{=hotelInfo.HotelImage[0].replace('http:','')}}" />
+  {{??}}
+    <img class="hotel-img" src="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png" />
+  {{?}}
+  <div class="hotel-info">
+    <p class="hotel-title">
+      <a class="J_hotelTitle hotelName" trace="hotel-title" title='{{=hotelInfo.HotelName}}'>{{=hotelInfo.HotelName}}</a>
+      {{?hotelInfo.HotelStar&&hotelInfo.HotelStarFigure&&hotelInfo.HotelStarFigure>0}}
+      <span class='level' data-name='{{=hotelInfo.HotelStar}}'>
+      {{for(var i = 0; i<Math.ceil(hotelInfo.HotelStarFigure);i++){}}
+         {{?i <Math.floor(hotelInfo.HotelStarFigure) }}
+         <em class="diamond"></em>
+         {{??}}
+         <em></em>
+         {{?}}
+     {{}}}
+     </span>
+     {{?}}
+    </p>
+    {{?hotelInfo.HotelAddress}}<p class="hotel-address" title="{{=hotelInfo.HotelAddress}}">地址：{{=hotelInfo.HotelAddress}}</p>{{?}}
+    {{?hotelInfo.HotelDescribe}}
+        {{var hotelDescribe = hotelInfo.HotelDescribe.replace(/<\/?\w[^>]*?>/g, "").replace(/\s/g, "");}}
+        <p class="hotel-describe" title="{{=hotelDescribe}}">简介：{{?hotelDescribe.length > 100}}{{=hotelDescribe.substring(0,100)}}...{{??}}{{=hotelDescribe}}{{?}}
+            <a class="J_hotelTitle detail-hotel">查看详情</a>
+        </p>
+    {{?}}
+    <p class="date-type">
+      {{?(parseInt(hotelInfo.CheckDate.split("T")[0]) > 2000)}}
+         入住时间：<em>
+        {{=hotelInfo.CheckDate.split("T")[0]}}
+      {{?}}
+        {{?hotelInfo.StayTime>0}}（
+        住{{=hotelInfo.StayTime}}晚）
+        {{?}}
+      </em>{{?hotelInfo.RoomType}}房型：<em>{{=hotelInfo.RoomType}}</em>{{?}}
+    </p>
+  </div>
+</div>
+<div class="pop popHotel">
+    <div class="content">
+      <div class="hotel-detail">
+        <div class="img-text">
+          <div class="mSlider mSlider-pop img">
+            <div class="mSlider_img">
+              {{?hotelInfo.HotelImage && hotelInfo.HotelImage[0] && hotelInfo.HotelImage[0].length}}
+                 <img id="focusPic" alt="" data-img="{{=hotelInfo.HotelImage[0].replace('http:','')}}">
+              {{??}}
+                 <img id="focusPic" alt="" data-img="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png">
+              {{?}}
+            </div>
+            <div class="pro_msli_pop clearfix">
+              <a href="javascript:void(0);" rel="nofollow" class="group_left" id="">
+                <span class="button-prev"></span>
+              </a>
+              <div class="pro_msli_bd">
+                <ul class="clearfix">
+                  {{~hotelInfo.HotelImage:hotelImg}}
+                  <li class="">
+                    {{?hotelImg && hotelImg.length}}
+                    <a class="linka mleft" _bsrc="{{=hotelImg.replace('http:','')}}" href="javascript:void(0);" title="" nsrc="{{=hotelImg.replace('http:','')}}" >
+                      <img data-img="{{=hotelImg.replace('http:','')}}" hover-img="{{=hotelImg.replace('http:','')}}" alt="">
+                    </a>
+                    {{??}}
+                    <a class="linka mleft" _bsrc="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png" href="javascript:void(0);" title="" nsrc="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png" >
+                      <img data-img="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png" hover-img="//pic3.40017.cn/line/admin/2015/07/01/15/SbORAc.png" alt="">
+                    </a>
+                    {{?}}
+                  </li>
+                  {{~}}
+                </ul>
+              </div>
+              <a rel="nofollow" href="javascript:void(0);" class="group_right">
+                <span class="button-next"></span>
+              </a>
+            </div>
+          </div>
+          <div class="text">
+            <h4 class='hotelName'>{{=hotelInfo.HotelName}}</h4>
+            {{?hotelInfo.HotelStar&&hotelInfo.HotelStarFigure&&hotelInfo.HotelStarFigure>0}}
+                  <span class='level' data-name='{{=hotelInfo.HotelStar}}'>
+                  {{for(var i = 0; i<Math.ceil(hotelInfo.HotelStarFigure);i++){}}
+                     {{?i <Math.floor(hotelInfo.HotelStarFigure) }}
+                     <em class="diamond"></em>
+                     {{??}}
+                     <em></em>
+                     {{?}}
+                 {{}}}
+                 </span>
+                 {{?}}
+            <div class="icons">
+              <p>
+                {{?hotelInfo.Service.length}}
+                {{~hotelInfo.Service:service}}<i class="{{='icon-' + service.ServeMark}}" title="{{=service.ServeName}}"></i>{{~}}
+                {{?}}
+              </p>
+            </div>
+            <p class="address">地址：{{=hotelInfo.HotelAddress}}</p>
+            <div class="desc">
+              <p>描述：{{=hotelInfo.HotelDescribe}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{~}}
+</div>
+{{?it.hotelInfo && it.hotelInfo.length>1}}
+<div class="hotel-cuttle ui-hotel-hide">
+      <a href="javascript:void(0)" class="label-click-color label-click-size J_moreHotel">展开更多酒店</a>
+</div>
+{{?}}
+</div>
+</div>

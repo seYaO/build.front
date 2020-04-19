@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+    <style>
+        #card1 {
+            left: 0;
+        }
+
+        #card2 {
+            left: 254px;
+        }
+
+        #card3 {
+            left: 508px;
+        }
+
+        #card4 {
+            left: 762px;
+        }
+
+        #card5 {
+            left: 1016px;
+        }
+
+        #btn {
+            margin-top: 280px;
+        }
+    </style>
+</head>
+<body class="">
+
+
+<div class="container">
+    <div id="card1" class="flipper">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+    <div id="card2" class="flipper">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+    <div id="card3" class="flipper">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+    <div id="card4" class="flipper">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+    <div id="card5" class="flipper">
+        <div class="front"></div>
+        <div class="back"></div>
+    </div>
+</div>
+
+<button id="btn">teset</button>
+
+<!--<script src="//js.40017.cn/cn/min/??/cn/v/2015/jqmodules/zepto.js"></script>-->
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.js"></script>
+<script src="index.js"></script>
+<script>
+    var fscard = {
+        cardPos: [
+            {left: 0, top: 0},
+            {left: '254px', top: 0},
+            {left: '508px', top: 0},
+            {left: '762px', top: 0},
+            {left: '1016px', top: 0}
+        ],
+        cardCls: ['yicard','ercard','sancard','sicard','wucard'],
+        cardList: ['card1', 'card2', 'card3', 'card4', 'card5'],
+        count: 10,
+        countdown: function (num, callback) {
+            var self = this,
+                args = arguments;
+            self.timer = setTimeout(function () {
+                var ret = callback.call(self, --num);
+                if (ret !== true) {
+                    self.countdown.apply(self, args);
+                }
+            }, 300);
+        },
+        init: function () {
+            var self = this;
+            //初始card数据
+
+            self.events();
+        },
+        events: function () {
+            var self = this;
+            //
+            var isShuffled = false;
+            $('#btn').on('click', function () {
+                var Jself = $(this);
+                if(Jself.hasClass('runout')){
+                    return;
+                }
+                //
+                if (!isShuffled) {
+                    isShuffled = true;
+                    var count = self.count;
+                    //随机选择card
+                    self.random = parseInt(Math.random()*5)||1;
+                    $('body').removeClass(self.cardCls.join(' ')).addClass(self.cardCls[self.random-1]);
+                    //
+                    $('.flipper').addClass('flipped');
+                    setTimeout(function () {
+                        //先全显示在洗牌
+                        $('.flipper').removeClass("flipped");
+                        self.countdown(count, function (count) {
+                            //
+                            self.cardList.sort(function () {
+                                return Math.random() * 10 > 5 ? 1 : -1;
+                            });
+                            for (var i = 0; i < self.cardList.length; i++) {
+                                $('#' + self.cardList[i]).animate(self.cardPos[i], 300, 'swing');
+                            }
+                            if (!count) {
+                                console.log(count);
+                                //
+                                isShuffled = false;
+
+                            }
+                            return !count;
+                        });
+
+                    }, 1000);
+                }
+            });
+            //
+            $('.flipper').on('click', function (e) {
+                e.preventDefault();
+                if(!isShuffled){
+                    var Jself = $(this),
+                        Jall = Jself.parent().find('.flipper');
+                    if (!Jall.hasClass('flipped')) {
+                        Jself.addClass("flipped");
+                        //
+                        if(Jself.attr('id') == ('card' + self.random)){
+                            //
+                            if(self.success){
+                                self.success ++;
+                            }else{
+                                self.success = 1;
+                            }
+                            //
+                            $('#btn').html(self.success);
+
+                            if(self.success ==3){
+                                alert('yh1');
+                            }
+
+                            if(self.success ==6){
+                                alert('yh2');
+                            }
+                        }
+                    }
+                }
+            });
+
+
+        }
+    };
+    fscard.init();
+
+</script>
+</body>
+</html>

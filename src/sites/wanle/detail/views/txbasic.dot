@@ -1,0 +1,103 @@
+{{var mainTitle = basicInfo.MainTitle;}}
+<div class="info_Top">
+    <span class="resourceId">编号：<b title="{{=basicInfo.ProductId}}">{{=basicInfo.ProductId}}</b></span>
+    <span><em>*</em>本产品由同程国旅及其关联公司旅行社及具有资质的合作旅行社提供相关服务</span> 
+</div>
+<h1 style="max-height:72px;overflow:hidden;"title="{{=mainTitle}}">{{=mainTitle}}</h1>
+<ul class="info_items clearfix">
+    {{?comment}}
+    {{var commentScore = comment.CommentStore;}}
+        {{?commentScore !== "0"}}
+        <li>
+            <div class="c_star_rate">
+                <ul class="rate_star" data-score="{{=commentScore}}">
+                    <li class="rate_item"></li>
+                    <li class="rate_item"></li>
+                    <li class="rate_item"></li>
+                    <li class="rate_item"></li>
+                    <li class="rate_item"></li>
+                </ul>
+                <span class="rate_tag">{{=commentScore}}分</span>
+            </div>
+        </li>
+        <li><a href="#commentInfo">{{=comment.TotalCount}}条点评</a></li>
+        {{?}}
+    {{?}}
+
+    {{?basicInfo.ValidOrderNumber}}
+        <li class="items_right"><span>月销量：<em>{{=basicInfo.ValidOrderNumber}}</em></span></li>
+    {{?}}
+</ul>
+
+{{var wifiDesc = basicInfo.WifiIntroduction;}}
+{{?basicInfo.ProductCategory === 92}}
+	<ul class="tx_special wifi_sign">
+
+	    {{?basicInfo.SupplierBrandNameSum.length}}
+	    <li class="col_1">品牌名称：{{=basicInfo.SupplierBrandNameSum[0]}}</li>
+	    {{?}}
+	    {{?wifiDesc !== null && wifiDesc.NetSpeed}}
+	    <li class="col_2">网&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;速：{{=wifiDesc.NetSpeed}}G</li>
+	    {{?}}
+	    {{?wifiDesc !== null && wifiDesc.StandbyTime}}
+	    <li class="col_3">待机时长：{{=wifiDesc.StandbyTime}}</li>
+	    {{?}}
+	    {{?wifiDesc !== null && wifiDesc.DeviceNumber}}
+	    <li class="col_4">连接设备数：{{=wifiDesc.DeviceNumber}}设备</li>
+	    {{?}}
+	</ul>
+	{{?wifiDesc !== null && wifiDesc.NetArea}}
+	    {{var wifiDescChange  = wifiDesc.NetArea.replace(/\\'/g,'"');}}
+	    <div class="lineNet"><p class="J_Tips J_online"   data-content='<div>{{=wifiDescChange}}</div>'>网络覆盖：<span>{{=wifiDesc.NetArea}}</span></p></div>
+	{{?}}
+	{{?wifiDesc !== null && wifiDesc.StandardConfig}}
+	    {{var standardChange  = wifiDesc.StandardConfig.replace(/\\'/g,'"');}}
+	    <div class="lineNet"><p class="J_Tips J_online"   data-content='<div>{{=standardChange}}</div>'>标准配置：<span>{{=wifiDesc.StandardConfig}}</span></p></div>
+	{{?}}
+{{??}}
+	<ul class="tx_special nowifi_sign">
+	    <li class="col_1">产品类型：{{?basicInfo.ProductCategory === 91}}电话卡，支持上网和通话{{??}}上网卡，仅能上网{{?}}</li>
+	    {{?basicInfo.PhoneCardEntity && basicInfo.PhoneCardEntity.Sim.length}}
+	    <li class="col_2">SIM卡：{{=basicInfo.PhoneCardEntity.Sim}}</li>
+	    {{?}}
+	    {{?basicInfo.PhoneCardEntity && basicInfo.PhoneCardEntity.ShortName.length}}
+	    <li class="col_3">套餐内容：{{=basicInfo.PhoneCardEntity.ShortName}}</li>
+	    {{?}}
+	</ul>
+
+	{{?basicInfo.PhoneCardEntity && basicInfo.PhoneCardEntity.ActiveMethod.length}}
+	{{var ActiveMethodChange  = basicInfo.PhoneCardEntity.ActiveMethod.replace(/\\'/g,'"');}}
+	<div class="lineNet"><p class="J_Tips J_online"   data-content='<div>{{=ActiveMethodChange}}</div>'>激活方式：<span>{{=basicInfo.PhoneCardEntity.ActiveMethod}}</span></p></div>
+	{{?}}
+	{{?basicInfo.PhoneCardEntity && basicInfo.PhoneCardEntity.NetArea.length}}
+	{{var NetAreaChange  = basicInfo.PhoneCardEntity.NetArea.replace(/\\'/g,'"');}}
+	    <div class="lineNet"><p class="J_Tips J_online"   data-content='<div>{{=NetAreaChange}}</div>'>网络覆盖：<span>{{=basicInfo.PhoneCardEntity.NetArea}}</span></p></div>
+	{{?}}
+{{?}}
+
+{{? basicInfo.ProductCategory === 92 && (basicInfo.ReceiveTypeSum.indexOf("机场自取") > -1 || basicInfo.ReceiveTypeSum.indexOf("市内自取") > -1) && basicInfo.WifiReceivePlaceSum !== null && basicInfo.WifiReceivePlaceSum.length}}
+<div class="invite J_invite">
+    <em>自&nbsp;&nbsp;取&nbsp;点：</em>
+    <span>{{=basicInfo.WifiReceivePlaceSum}}</span>
+    {{?basicInfo.WifiReceivePlaceSum.length > 42}}
+    <i>更多</i>
+    {{?}}
+</div>
+{{?}}
+
+<div style="display:none">{{=basicInfo.ProductTypeTag.length}}</div>
+<div class="info_opera">
+    <span>同程价格：</span>
+    <span class="price">￥<b>{{=basicInfo.AmountDirect}}</b>起</span>
+    {{?basicInfo.ProductTypeTag && basicInfo.ProductTypeTag.length}}
+        {{~basicInfo.ProductTypeTag:tag:tagIndex}}
+        {{?tagIndex < 2}}
+        <a  class="sign" href="javascript:;">{{=tag}}</a>
+        {{?}}
+        {{~}}
+    {{?}}
+    <a class="sign J_Tips"  href="#commentInfo"  data-content="<div>购买此产品并发表点评即刻获得最高¥20的奖金（满200可提现）</div>">点评返现</a>
+
+    <a href="#booking" class="reserve">立即预订</a>
+</div>
+

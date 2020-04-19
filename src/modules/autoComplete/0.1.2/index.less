@@ -1,0 +1,103 @@
+@p-100: 100%;
+.search-box{
+    width: 756px;
+    height: 41px;
+    border: 2px solid #ff7800;
+    border-radius: 2px;
+    position: relative;
+    input{
+        width: 570px;
+        padding-left: 40px;
+        height: 41px;
+        line-height: 41px;
+        font-size: 14px;
+        color: #999;
+        border: none;
+        background: url("img/dest/index_v1.png") no-repeat 5px -309px;
+        float: left;
+    }
+    .search_btn{
+        width: 145px;
+        height: @p-100;
+        line-height: 41px;
+        text-align: center;
+        font-size: 18px;
+        font-family: "microsoft yahei";
+        background-color: #ff7800;
+        color: #fff;
+        display: inline-block;
+        float: right;
+    }
+}
+.matchContent{
+    width: 610px;
+    background-color: #fff;
+    border: 2px solid #ff7800;
+    position: absolute;
+    top: 41px;
+    left: -2px;
+    z-index: 99999;
+    overflow: hidden;
+    li{
+        width: 100%;
+        padding: 0 10px;
+        font: 14px/26px "microsoft yahei";
+        color: #333;
+        text-align: left;
+        height: auto;
+        display: block;
+        background-color: #fff;
+        &.current{
+            background-color: #ff7800;
+            color: #fff;
+        }
+    }
+    .search-box-red{
+        color: red;
+    }
+    .jump-label{
+        padding-left: 40px;
+    }
+}
+.HotSearch{
+    position: absolute;
+    top: 43px;
+    z-index: 999;
+    width: 586px;
+    padding: 0 20px;
+    background: #ffffff;
+    box-shadow: 1px 1px 8px #a5a5a5;
+    font-family: "microsoft yahei";
+    font-size: 14px;
+    .g_header{
+        height: 42px;
+        line-height: 42px;
+        font-weight: bold;
+        border-bottom: 1px dashed #cccccc;
+    }
+    .g_list{
+        padding: 10px 0;
+        .g_item{
+            margin-right: 24px;
+            line-height: 30px;
+            color: #333333;
+            cursor: pointer;
+        }
+    }
+}
+
+.searchLabel{
+    position: absolute;
+    z-index: 999;
+    right: 100px;
+    line-height: 41px;
+    .h_label{
+        background: #f0f0f0;
+        border-radius: 11px;
+        padding: 4px 12px;
+        margin-right: 2px;
+        font-family: "microsoft yahei";
+        font-size: 14px;
+        color: #999999;
+    }
+}

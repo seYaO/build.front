@@ -1,0 +1,259 @@
+@media only screen and (max-width: 300px) {
+  html {
+    font-size: 62.5%;
+  }
+  .viewport {
+    max-width: 300px;
+  }
+}
+@media only screen and (max-width: 310px) and (min-width: 300px) {
+  html {
+    font-size: 62.5%;
+  }
+  .viewport {
+    max-width: 310px;
+  }
+}
+@media only screen and (max-width: 320px) and (min-width: 310px) {
+  html {
+    font-size: 62.5%;
+  }
+  .viewport {
+    max-width: 320px;
+  }
+}
+@media only screen and (max-width: 350px) and (min-width: 320px) {
+  html {
+    font-size: 75%;
+  }
+  .viewport {
+    max-width: 350px;
+  }
+}
+@media only screen and (max-width: 360px) and (min-width: 350px) {
+  html {
+    font-size: 75%;
+  }
+  .viewport {
+    max-width: 360px;
+  }
+}
+@media only screen and (max-width: 400px) and (min-width: 360px) {
+  html {
+    font-size: 75%;
+  }
+  .viewport {
+    max-width: 400px;
+  }
+}
+@media only screen and (max-width: 470px) and (min-width: 400px) {
+  html {
+    font-size: 87.5%;
+  }
+  .viewport {
+    max-width: 470px;
+  }
+}
+@media only screen and (max-width: 480px) and (min-width: 470px) {
+  html {
+    font-size: 93.75%;
+  }
+  .viewport {
+    max-width: 480px;
+  }
+}
+@media only screen and (max-width: 540px) and (min-width: 480px) {
+  html {
+    font-size: 100%;
+  }
+  .viewport {
+    max-width: 540px;
+  }
+}
+@media only screen and (max-width: 560px) and (min-width: 540px) {
+  html {
+    font-size: 112.5%;
+  }
+  .viewport {
+    max-width: 560px;
+  }
+}
+@media only screen and (max-width: 570px) and (min-width: 560px) {
+  html {
+    font-size: 112.5%;
+  }
+  .viewport {
+    max-width: 570px;
+  }
+}
+@media only screen and (max-width: 630px) and (min-width: 570px) {
+  html {
+    font-size: 125%;
+  }
+  .viewport {
+    max-width: 630px;
+  }
+}
+@media only screen and (max-width: 640px) and (min-width: 630px) {
+  html {
+    font-size: 125%;
+  }
+  .viewport {
+    max-width: 640px;
+  }
+}
+@media only screen and (max-width: 710px) and (min-width: 640px) {
+  html {
+    font-size: 150%;
+  }
+  .viewport {
+    max-width: 710px;
+  }
+}
+@media only screen and (max-width: 720px) and (min-width: 710px) {
+  html {
+    font-size: 150%;
+  }
+  .viewport {
+    max-width: 720px;
+  }
+}
+@media only screen and (min-width: 720px) {
+  html {
+    font-size: 150%;
+  }
+  .viewport {
+    width: 720px;
+  }
+}
+em,
+i {
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  background: #edf0f5;
+}
+.clearfix:after,
+.clearfix:before {
+  display: table;
+  content: "";
+}
+ul {
+  list-style: none;
+}
+.none {
+  display: none;
+}
+.content {
+  width: 100%;
+  max-width: 640px;
+  /*是否为全屏宽度*/
+  margin: 0 auto;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+}
+.content .part .part-body {
+  padding: 0 0.41666667rem;
+}
+.content .part .part-body .part-list .part-order {
+  margin-top: 0.83333333rem;
+  background: #fff;
+  border-radius: 5px;
+  padding: 1.25rem;
+}
+.content .part .part-body .part-list .part-order h5 {
+  font-size: 1.25rem;
+  line-height: 1.54166667rem;
+  color: #333;
+  margin-bottom: 0.625rem;
+}
+.content .part .part-body .part-list .part-order h5 i {
+  width: 1.375rem;
+  height: 1.54166667rem;
+  margin-right: 0.83333333rem;
+  display: inline-block;
+  vertical-align: sub;
+  background: url("images/icon_tree.png") no-repeat center;
+  background-size: contain;
+}
+.content .part .part-body .part-list .part-order h5 .part-price {
+  color: #ff5346;
+  float: right;
+}
+.content .part .part-body .part-list .part-order .sdate {
+  font-size: 1.08333333rem;
+  line-height: 2rem;
+  color: #999;
+  padding-left: 2.20833333rem;
+}
+.content .part .part-body .part-list .part-order .comment-btn {
+  float: right;
+  width: 6.66666667rem;
+  text-align: center;
+  background: #ff5346;
+  border-radius: 5px;
+}
+.content .part .part-body .part-list .part-order .comment-btn a {
+  color: #fff;
+  line-height: 2.5rem;
+  font-size: 1.16666667rem;
+}
+.content .part .part-body .searchResult {
+  text-align: center;
+  margin-top: 35%;
+  color: #c0c5d0;
+}
+.content .part .part-body .searchResult .img-noresult {
+  width: 6.66666667rem;
+  height: 6rem;
+  display: inline-block;
+  background: url(images/icon_result.png) no-repeat center;
+  background-size: contain;
+}
+.content .part .part-body .searchResult p {
+  font-size: 1.5rem;
+  line-height: 3.16666667rem;
+  color: #c0c5d0;
+  margin: 0.83333333rem auto;
+}
+.content .part .part-body .searchResult .home-btn {
+  line-height: 2.91666667rem;
+  font-size: 1.16666667rem;
+  color: #fff;
+  border-radius: 5px;
+  background: #23beae;
+  width: 7.91666667rem;
+  margin: 0 auto;
+  display: block;
+}
+.loading,
+.data-loader {
+  background: #fff;
+  position: relative;
+}
+.data-loader {
+  height: 3.33333333rem;
+  line-height: 3.33333333rem;
+  text-align: center;
+  margin: 0.83333333rem 0.41666667rem;
+  border-radius: 5px;
+}
+.loading {
+  padding-left: 1.25rem;
+  margin: 0.83333333rem 0.41666667rem;
+}
+.loading i {
+  background: url(//img1.40017.cn/touch/cn/holiday/tchoutput/img/po-loading_87a33b1.gif?t=20169291021) no-repeat;
+  display: inline-block;
+  width: 2.91666667rem;
+  height: 2.91666667rem;
+  background-size: 2.91666667rem 2.91666667rem;
+  position: absolute;
+  top: 0;
+  left: 7.08333333rem;
+}

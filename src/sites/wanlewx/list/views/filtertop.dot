@@ -1,0 +1,11 @@
+{{?it.sourceId == 0}}
+    <a class="" data-info="reserve=1">今日可用</a>
+    <a class=""  data-info='advanceDay=1&bookDate=20170316'>明日可用</a>
+    {{~condition.CategoryList:value}}
+    <a data-index="{{=value.Id}}"  data-info="singleCategorys={{=value.Id}}">{{=value.Name}}</a>
+    {{~}}
+{{??}}
+    {{~condition.ThemeList:value}}
+    <a data-index="{{=value.Id}}" {{?value.Id == it.singleType}}class="select"{{?}}>{{=value.Name}}</a>
+    {{~}}
+{{?}}

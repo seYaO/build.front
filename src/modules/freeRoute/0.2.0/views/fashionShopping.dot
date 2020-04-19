@@ -1,0 +1,30 @@
+{{var item = it;}}
+{{?item.fashionNowShopping && item.fashionNowShopping.length>0}}
+<div class="route-part none">
+    <ul class="shop">
+        {{~item.fashionNowShopping:its}}
+        <li class="shop-list">
+            <div class="shop-left">
+                 <h4 class="title">{{=its.StoreName}}</h4>
+                 {{?its.TypesOfShops}}<p><span class="every-item">商店类型：</span><span class="every-item-info">{{=its.TypesOfShops}}</span></p>{{?}}
+                 {{?its.MainProduct}}<p><span class="every-item">主营产品：</span><span class="every-item-info">{{=its.MainProduct}}</span></p>{{?}}
+                 {{?its.StoreAddress}}<p><span class="every-item">商店地址：</span><span class="every-item-info">{{=its.StoreAddress}}</span></p>{{?}}
+            </div>
+            <div class="shop-right">
+                 {{?its.StoreDescript}}<div class="shop-info">{{=its.StoreDescript}}</div>{{?}}
+                 <div>
+                 {{?its.StoreImage}}
+                 {{~its.StoreImage:imgs}}
+                     <div class="shop-img hoverBig">
+                          <img src="{{=common.setImageSize(imgs,"450x250").replace('http:','')}}" alt="">
+                     </div>
+                 {{~}}
+                 {{?}}
+                 </div>
+                 <em></em>
+            </div>
+        </li>
+        {{~}}
+    </ul>
+</div>
+{{?}}
