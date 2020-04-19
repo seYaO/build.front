@@ -1,0 +1,334 @@
+{
+    "SaleDetailList": [
+        {
+            "LineId": "140334",
+            "DateStr": "2月25日",
+            "LineDate": "2017-02-25",
+            "Date": "/Date(1487952000000)/",
+            "ProTitle": "",
+            "LabelRight": "",
+            "Price": 1799,
+            "StlSortNo": 9,
+            "Recommand": "2月公主抄底价！！！日韩三地1799起！",
+            "Key": "232046226040127226019062129000118090095198135003247242191041071173202074004055168205086217143207",
+            "TransPort": "上海-济州-釜山-长崎-上海",
+            "ShipName": "蓝宝石公主号",
+            "OtherSite": 40,
+            "Day": "6",
+            "Night": "5",
+            "Pic": "//pic4.40017.cn/cruises/2017/01/16/17/Sqff90_420x272_00.jpg",
+            "LabelList": [
+                "2月公主抄底价！！！日韩三地1799起！"
+            ],
+            "LabelStr": null,
+            "SimShipName": null,
+            "Title": "【美国公主邮轮-蓝宝石公主号】2017年02月25日 上海-济州-釜山-长崎-上海 5晚6日游",
+            "Week": null,
+            "TagStr": null,
+            "LinkUrl": null,
+            "IsRegionLine": 1,
+            "beginTime": "1900-01-01 00:00:00",
+            "endTime": "1900-01-01 00:00:00",
+            "departureCitys": "上海",
+            "LineRegionInfo": [
+                {
+                    "RegionId": 10,
+                    "RegionName": "华东"
+                },
+                {
+                    "RegionId": 13,
+                    "RegionName": "华中"
+                },
+                {
+                    "RegionId": 14,
+                    "RegionName": "华西"
+                }
+            ],
+            "CrpsNameUp": null,
+            "PromotionSailDateStr": [
+                "2017-02-25"
+            ],
+            "LineType": 0
+        },
+        {
+            "LineId": "140314",
+            "DateStr": "2月14日",
+            "LineDate": "2017-02-14",
+            "Date": "/Date(1487001600000)/",
+            "ProTitle": "",
+            "LabelRight": "2月",
+            "Price": 1599,
+            "StlSortNo": 8,
+            "Recommand": "第二人1314元，限内舱双和海景双，活动截止1.19，下单后客服会进行改价噢",
+            "Key": "232046226040127226019062131140096063249166002234183223216086076156032036075232105065199024057185",
+            "TransPort": "上海-济州-佐世保-上海",
+            "ShipName": "新世纪号",
+            "OtherSite": 64,
+            "Day": "5",
+            "Night": "4",
+            "Pic": "//pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg",
+            "LabelList": [
+                "第二人1314元，限内舱双和海景双，活动截止1.19，下单后客服会进行改价噢"
+            ],
+            "LabelStr": null,
+            "SimShipName": null,
+            "Title": "【天海邮轮-新世纪号】2017年2月14日 上海-济州-佐世保-上海 4晚5日",
+            "Week": null,
+            "TagStr": null,
+            "LinkUrl": null,
+            "IsRegionLine": 1,
+            "beginTime": "1900-01-01 00:00:00",
+            "endTime": "1900-01-01 00:00:00",
+            "departureCitys": "上海",
+            "LineRegionInfo": [
+                {
+                    "RegionId": 10,
+                    "RegionName": "华东"
+                },
+                {
+                    "RegionId": 13,
+                    "RegionName": "华中"
+                },
+                {
+                    "RegionId": 14,
+                    "RegionName": "华西"
+                }
+            ],
+            "CrpsNameUp": null,
+            "PromotionSailDateStr": [
+                "2017-02-14"
+            ],
+            "LineType": 0
+        },
+        {
+            "LineId": "140525",
+            "DateStr": "2月12日",
+            "LineDate": "2017-02-12",
+            "Date": "/Date(1486828800000)/",
+            "ProTitle": "",
+            "LabelRight": "",
+            "Price": 3469,
+            "StlSortNo": 200,
+            "Recommand": "情人节好礼【船票买1送1】页面为买1送1后价格",
+            "Key": "236178225207196161116026145212160117096090044015083191066233180223027163065051183031116054159021",
+            "TransPort": "广州-越南岘港-越南下龙湾-广州",
+            "ShipName": "云顶梦号",
+            "OtherSite": 10,
+            "Day": "6",
+            "Night": "5",
+            "Pic": "//pic4.40017.cn/cruises/2017/01/17/14/gJB1Un_420x272_00.jpg",
+            "LabelList": [
+                "情人节好礼【船票买1送1】页面为买1送1后价格"
+            ],
+            "LabelStr": null,
+            "SimShipName": null,
+            "Title": "【限时抢购】【团队游】【星梦邮轮-云顶梦号】逢周日出发 广州-越南岘港-越南下龙湾-广州5晚6天",
+            "Week": null,
+            "TagStr": null,
+            "LinkUrl": null,
+            "IsRegionLine": 0,
+            "beginTime": "1900-01-01 00:00:00",
+            "endTime": "1900-01-01 00:00:00",
+            "departureCitys": "广州",
+            "LineRegionInfo": [
+                {
+                    "RegionId": 11,
+                    "RegionName": "华南"
+                }
+            ],
+            "CrpsNameUp": null,
+            "PromotionSailDateStr": [
+                "2017-02-12"
+            ],
+            "LineType": 0
+        },
+        {
+            "LineId": "140307",
+            "DateStr": "2月13日",
+            "LineDate": "2017-02-13",
+            "Date": "/Date(1486915200000)/",
+            "ProTitle": "",
+            "LabelRight": "",
+            "Price": 1929,
+            "StlSortNo": 150,
+            "Recommand": "情人节好礼买1送1：原价3858元/人，现价：1929元/人",
+            "Key": "232046226040127226019062172050206227011175016092067068157099086103136188125020107091110235119035",
+            "TransPort": "深圳太子港-岘港（过夜）-深圳太子港5天4晚",
+            "ShipName": "处女星号",
+            "OtherSite": 16,
+            "Day": "5",
+            "Night": "4",
+            "Pic": "//pic4.40017.cn/cruises/2017/01/13/17/csU9wo_420x272_00.jpg",
+            "LabelList": [
+                "情人节好礼买1送1：原价3858元/人，现价：1929元/人"
+            ],
+            "LabelStr": null,
+            "SimShipName": null,
+            "Title": "【海上情人节】【丽星处女星号】深圳-岘港（过夜）-深圳5天4晚",
+            "Week": null,
+            "TagStr": null,
+            "LinkUrl": null,
+            "IsRegionLine": 0,
+            "beginTime": "1900-01-01 00:00:00",
+            "endTime": "1900-01-01 00:00:00",
+            "departureCitys": "深圳",
+            "LineRegionInfo": [
+                {
+                    "RegionId": 11,
+                    "RegionName": "华南"
+                }
+            ],
+            "CrpsNameUp": null,
+            "PromotionSailDateStr": [
+                "2017-02-13"
+            ],
+            "LineType": 0
+        },
+        {
+            "LineId": "98829",
+            "DateStr": "1月28日",
+            "LineDate": "2017-01-28",
+            "Date": "/Date(1485532800000)/",
+            "ProTitle": "",
+            "LabelRight": "",
+            "Price": 2990,
+            "StlSortNo": 0,
+            "Recommand": "",
+            "Key": "115172133148184162227046246111160199159129030227136002121003070139071214152247069055039152006136",
+            "TransPort": "重庆-宜昌",
+            "ShipName": "黄金系列",
+            "OtherSite": 40,
+            "Day": "4",
+            "Night": "3",
+            "Pic": "//pic4.40017.cn/cruises/2016/12/23/14/WBKTv4_420x272_00.jpg",
+            "LabelList": [],
+            "LabelStr": null,
+            "SimShipName": null,
+            "Title": "<春节特惠  冬季航线>【黄金系列游轮】【豪华阳台标间】重庆-宜昌  3晚4日游",
+            "Week": null,
+            "TagStr": null,
+            "LinkUrl": null,
+            "IsRegionLine": 0,
+            "beginTime": "1900-01-01 00:00:00",
+            "endTime": "1900-01-01 00:00:00",
+            "departureCitys": "重庆",
+            "LineRegionInfo": [
+                {
+                    "RegionId": 13,
+                    "RegionName": "华中"
+                },
+                {
+                    "RegionId": 14,
+                    "RegionName": "华西"
+                }
+            ],
+            "CrpsNameUp": null,
+            "PromotionSailDateStr": [
+                "2017-01-28"
+            ],
+            "LineType": 0
+        },
+        {
+            "LineId": "71561",
+            "DateStr": "3月6日",
+            "LineDate": "2017-03-06",
+            "Date": "/Date(1488729600000)/",
+            "ProTitle": "",
+            "LabelRight": "",
+            "Price": 1530,
+            "StlSortNo": 0,
+            "Recommand": "",
+            "Key": "086242154175230110051140036186134215031185215217135117106220238154039093238075084048054073160200",
+            "TransPort": "宜昌-重庆",
+            "ShipName": "世纪辉煌号",
+            "OtherSite": 40,
+            "Day": "5",
+            "Night": "4",
+            "Pic": "//pic4.40017.cn/cruises/2016/12/23/14/NNiflv_420x272_00.jpg",
+            "LabelList": [],
+            "LabelStr": null,
+            "SimShipName": null,
+            "Title": "【世纪-天子/辉煌号】宜昌-重庆 4晚5日  三峡魅力之旅",
+            "Week": null,
+            "TagStr": null,
+            "LinkUrl": null,
+            "IsRegionLine": 0,
+            "beginTime": "1900-01-01 00:00:00",
+            "endTime": "1900-01-01 00:00:00",
+            "departureCitys": "宜昌",
+            "LineRegionInfo": [
+                {
+                    "RegionId": 13,
+                    "RegionName": "华中"
+                },
+                {
+                    "RegionId": 14,
+                    "RegionName": "华西"
+                }
+            ],
+            "CrpsNameUp": null,
+            "PromotionSailDateStr": [
+                "2017-03-06"
+            ],
+            "LineType": 0
+        }
+    ],
+    "AllLabelList": [
+        "如果专题统计不满足于refid，则需在专题投放的时候，在专题地址refid的后面添加参数“"
+    ],
+    "CityId": "321",
+    "TopicRemarkList": [
+        {
+            "Key": "10",
+            "Name": "华东活动规则",
+            "Value": "http://pic4.40017.cn/cruises/2016/03/15/14/eWBrFu.jpg##\n华东活动规则1华东活动规则1华东活动规则1华东活动规则\n1华东活动规则1华东活动规则1华东活动规则1华东活动规则\n1华东活动规则1|华东活动规则2华东活动规则2华东活动规则2华东活动规则2华东活动规则2华东活动规则2华东活动规则2华东活动规则2华东活动规则2|华东活动规则3华东活动规则3华东活动规则3华东活动规则3华东活动规则3华东活动规则3华东活动规则3华东活动规则3华东活动规则3华东活动规则3|华东活动规则4华东活动规则4华东活动规则4华东活动规则4华东活动规则4华东活动规则4华东活动规则4华东活动规则4华东活动规则4\n|华东活动规则\n5华东活动规则5华东活动规则5华东活动规则5华东活动规则5华东活动规则5华东活动规则5华东活动规则5华东活动规则5华东活动规则5华东活动规则5|华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6华东活动规则6",
+            "Type": 0,
+            "RelationId": 253
+        },
+        {
+            "Key": "11",
+            "Name": "华南活动规则",
+            "Value": "http://pic4.40017.cn/cruises/2017/01/10/16/31rAvc_224x146_00.jpg.webp##\n华南活动规则，华南活动规则，华南活动规则，华南活动规则，华南活动规则，华南活动规则",
+            "Type": 0,
+            "RelationId": 253
+        },
+        {
+            "Key": "12",
+            "Name": "华北活动规则",
+            "Value": "http://pic4.40017.cn/cruises/2017/01/04/11/XANkrn_224x146_00.jpg.webp##\n华北活动规则，华北活动规则，华北活动规则，华北活动规则，华北活动规则，华北活动规则",
+            "Type": 0,
+            "RelationId": 253
+        },
+        {
+            "Key": "13",
+            "Name": "华中活动规则",
+            "Value": "http://pic4.40017.cn/cruises/2017/01/13/19/GpqXcv_224x146_00.jpg.webp##\n华西活动规则，华西活动规则，华西活动规则，\n华西活动规则，华西活动规则，\n华西活动规则",
+            "Type": 0,
+            "RelationId": 253
+        },
+        {
+            "Key": "14",
+            "Name": "华西活动规则",
+            "Value": "http://pic3.40017.cn/cruises/2016/05/14/00/VU1Daw.jpg.webp##\n全部活动规则，全部活动规则，全部活动规则，全部活动规则，全部活动规则，全部活动规则",
+            "Type": 0,
+            "RelationId": 253
+        },
+        {
+            "Key": "15",
+            "Name": "另个活动的活动规则",
+            "Value": "另个活动的活动规则另个活动的活动规则另个活动的活动规则另个活动的活动规则另个活动的活动规则另个活动的活动规则另个活动的活动规则",
+            "Type": 0,
+            "RelationId": 253
+        }
+    ],
+    "ModuleRemarkList": [
+        {
+            "Item1": "StartTime",
+            "Item2": "2017-01-18 20:35:06"
+        },
+        {
+            "Item1": "EndTime",
+            "Item2": "2017-01-28 21:35:09"
+        }
+    ]
+}

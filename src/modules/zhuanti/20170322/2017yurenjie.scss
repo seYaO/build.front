@@ -1,0 +1,619 @@
+$urlStr:"/img/modules/zhuanti/20170322/img/";
+@function px($fs) { 
+	@return #{$fs/28}rem;
+}
+@media screen and (min-width:320px){
+	html {font-size:14px;}
+}
+@media screen and (min-width:360px){
+	html {font-size:16px;}
+}
+@media screen and (min-width:400px){
+	html {font-size:18px;}
+}
+@media screen and (min-width:440px){
+	html {font-size:20px;}
+}
+@media screen and (min-width:480px){
+	html {font-size:22px;}
+}
+@media screen and (min-width:640px){
+	html {font-size:28px;}
+}
+body, html {
+	position: relative;
+	height:100%;
+	width:100%;
+	overflow:hidden;
+	z-index: -4;
+	background: #fff;
+}
+body {
+	font-size: 1rem;
+}
+.none{
+	display: none;
+}
+.body_dom,.first_dom, .second_dom,.third_dom,.fourth_dom,.fifth_dom,.sixth_dom,.seventh_dom,.eighth_dom,.ninth_dom,.tenth_dom,.eleventh_dom,.twelfth_dom,.thirteenth_dom,.fourteenth_dom{
+	max-width:640px;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+}
+.first_dom,.second_dom,.third_dom,.fourth_dom,.fifth_dom,.sixth_dom,.seventh_dom,.eighth_dom,.ninth_dom,.tenth_dom,.eleventh_dom,.twelfth_dom,.thirteenth_dom,.fourteenth_dom{
+	position: absolute;
+	top: 100%;
+	font-family:"\5FAE\8F6F\96C5\9ED1";
+	overflow: hidden;
+	z-index: -2;
+    background: #342815;
+       img{
+        width:100%;
+        height: 50%;
+    }
+    .first{
+        width: 79.53125%;
+        height: 36.727273%;
+        position: absolute;
+        top:19.0909%;
+        left:10%;
+        &.act{
+            em{
+                display: block;
+                position: relative;
+                background: url(/modules/zhuanti/20170322/img/choose.png) no-repeat center;
+                background-size: 100% 100%;
+                width:px(70);
+                height: px(75);
+                float: right;
+                top:100%;
+                margin-top:-2.75rem;
+            }
+        }
+    }
+    .second{
+        width: 79.53125%;
+        height: 22.272727%;
+        position: absolute;
+        top:59.363636%;
+        left:10%; 
+        .left{
+            width:55.599214%;
+            margin-right:3.62%;
+            height: 100%;
+            position: relative;
+            float:left;
+        }
+        .right{
+            width: 40.667976%;
+            height: 100%;
+            position: relative;
+            float:left;
+        }
+        .act{
+            em{
+                display: block;
+                position: relative;
+                background: url(/modules/zhuanti/20170322/img/choose.png) no-repeat center;
+                background-size: 100% 100%;
+                width:px(70);
+                height: px(75);
+                float: right;
+                top:100%;
+                margin-top:-2.76rem;
+            }
+        }
+    }
+}
+.body_dom{
+	position: relative;
+	z-index: -3;
+}
+.body_dom img{
+	display: block;
+}
+.home_img{
+	display: none;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.arrow{
+	position: absolute;
+	left: 50%;
+	bottom: 1em;
+	width: 1em;
+	height: 1em;
+	margin-left: -0.5em;
+	z-index: 11;
+    transform: roate(-45deg);
+    -webkit-transform: rotate(-45deg);
+	animation:up_key 1s linear infinite;
+	-webkit-animation:up_key 1s linear infinite;
+}
+@keyframes up_key {
+    0% {bottom:2%;}
+    50% {bottom:5%;}
+    100% {bottom:2%;}
+}
+@-webkit-keyframes up_key {
+    0% {bottom:2%;}
+    50% {bottom:5%;}
+    100% {bottom:2%;}
+}
+.fuli{
+    position:absolute;
+    width: px(106);
+    height: px(106);
+    right: px(43);
+    bottom:px(43);
+    background: url(/modules/zhuanti/20170322/img/fuli.png) no-repeat;
+    background-size:contain;
+    animation:fuli 8s infinite;
+    -webkit-animation:fuli 8s infinite;
+}
+@keyframes fuli {
+    0% {transform: scale(1);}
+    25%{transform: scale(1.2);}
+    50% {transform: scale(1);}
+    75%{transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+@-webkit-keyframes fuli {
+    0% {-webkit-transform: scale(1);}
+    25%{-webkit-transform: scale(1.2);}
+    50% {-webkit-transform: scale(1);}
+    75%{-webkit-transform: scale(1.2);}
+    100% {-webkit-transform: scale(1);}
+}
+.goolve_btn{
+    width: px(160);
+    height:px(37);
+    left:7.03125%;
+    top:12.818182%;
+    position: absolute;
+    color: #fff;
+    font-size: px(24);
+    text-align: center;
+    animation:goolve 8s infinite;
+    -webkit-animation:goolve 8s infinite;
+}
+@keyframes goolve {
+    0% {transform: scale(1);}
+    25%{transform: scale(1.2);}
+    50% {transform: scale(1);}
+    75%{transform: scale(1.2);}
+    100% {transform: scale(1);}
+}
+@-webkit-keyframes goolve {
+    0% {-webkit-transform: scale(1);}
+    25%{-webkit-transform: scale(1.2);}
+    50% {-webkit-transform: scale(1);}
+    75%{-webkit-transform: scale(1.2);}
+    100% {-webkit-transform: scale(1);}
+}
+.tip_layer{
+    font-family: \5FAE\8F6F\96C5\9ED1;
+    -webkit-box-sizing: border-box;
+    padding: 10px 15px;
+    color: #fff;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 12px;
+    z-index: 999;
+    border-radius: 5px;
+    left: 50%;
+    top: 50%;
+    display: none;
+    white-space: nowrap;
+    margin-left: px(-75);
+}
+/* 1屏 */
+.first_dom{
+	top:0;
+	background: #342815;
+    img {
+        width:100%;
+        height: 50%;
+    }    
+    .imgbox{
+        position:absolute;
+        top: 0;
+        left: 0;
+        width:100%;
+        height: 50%;
+        img {
+            position:absolute;
+            bottom:px(-115);
+            left: px(30);
+            width:px(600);
+            height: px(375);
+        }
+    }
+    .arrow{
+        border-left:2px solid #d9c391;
+        border-bottom:2px solid #d9c391;
+    }
+}
+/* 2屏 */
+.second_dom {
+	color: #fff;
+    img{
+        width:100%;
+        height: 50%;
+    }	
+    .first{
+        width: 79.53125%;
+        height: 36.727273%;
+        position: absolute;
+        top:19.0909%;
+        left:10%;
+        &.act{
+            em{
+                display: block;
+                position: relative;
+                background: url(/modules/zhuanti/20170322/img/choose.png) no-repeat center;
+                background-size: 100% 100%;
+                width:px(70);
+                height: px(75);
+                float: right;
+                top:100%;
+                margin-top:-2.75rem;
+            }
+        }
+    }
+    .second{
+        width: 79.53125%;
+        height: 22.272727%;
+        position: absolute;
+        top:59.363636%;
+        left:10%; 
+        .left{
+            width:55.599214%;
+            margin-right:3.62%;
+            height: 100%;
+            position: relative;
+            float:left;
+        }
+        .right{
+            width: 40.667976%;
+            height: 100%;
+            position: relative;
+            float:left;
+        }
+        .act{
+            em{
+                display: block;
+                position: relative;
+                background: url(/modules/zhuanti/20170322/img/choose.png) no-repeat center;
+                background-size: 100% 100%;
+                width:px(70);
+                height: px(75);
+                float: right;
+                top:100%;
+                margin-top:-2.76rem;
+            }
+        }
+    }
+    .arrow{
+        border-left:2px solid #5a0a07;
+        border-bottom:2px solid #5a0a07;
+    }
+}
+/* 3屏 */
+.third_dom{
+	color: #fff;
+	img{
+        width:100%;
+        height: 50%;
+    }
+    .first{
+        width: 79.53125%;
+        height: 36.727273%;
+        position: absolute;
+        top:19.0909%;
+        left:10%;
+        &.act{
+            em{
+                display: block;
+                position: relative;
+                background: url(/modules/zhuanti/20170322/img/choose.png) no-repeat center;
+                background-size: 100% 100%;
+                width:px(70);
+                height: px(75);
+                float: right;
+                top:100%;
+                margin-top:-2.75rem;
+            }
+        }
+    }
+    .second{
+        width: 79.53125%;
+        height: 22.272727%;
+        position: absolute;
+        top:59.363636%;
+        left:10%; 
+        .left{
+            width:55.599214%;
+            margin-right:3.62%;
+            height: 100%;
+            position: relative;
+            float:left;
+        }
+        .right{
+            width: 40.667976%;
+            height: 100%;
+            position: relative;
+            float:left;
+        }
+        .act{
+            em{
+                display: block;
+                position: relative;
+                background: url(/modules/zhuanti/20170322/img/choose.png) no-repeat center;
+                background-size: 100% 100%;
+                width:px(70);
+                height: px(75);
+                float: right;
+                top:100%;
+                margin-top:-2.76rem;
+            }
+        }
+    }
+    .arrow{
+        border-left:2px solid #5a0a07;
+        border-bottom:2px solid #5a0a07;
+    }
+}
+/*4屏*/
+.fourth_dom{
+	   img{
+        width:100%;
+        height: 50%;
+    }
+    .first{
+        width: 79.53125%;
+        height: 36.727273%;
+        position: absolute;
+        top:19.0909%;
+        left:10%;
+        &.act{
+            em{
+                display: block;
+                position: relative;
+                background: url(/modules/zhuanti/20170322/img/choose.png) no-repeat center;
+                background-size: 100% 100%;
+                width:px(70);
+                height: px(75);
+                float: right;
+                top:100%;
+                margin-top:-2.75rem;
+            }
+        }
+    }
+    .second{
+        width: 79.53125%;
+        height: 22.272727%;
+        position: absolute;
+        top:59.363636%;
+        left:10%; 
+        .left{
+            width:55.599214%;
+            margin-right:3.62%;
+            height: 100%;
+            position: relative;
+            float:left;
+        }
+        .right{
+            width: 40.667976%;
+            height: 100%;
+            position: relative;
+            float:left;
+        }
+        .act{
+            em{
+                display: block;
+                position: relative;
+                background: url(/modules/zhuanti/20170322/img/choose.png) no-repeat center;
+                background-size: 100% 100%;
+                width:px(70);
+                height: px(75);
+                float: right;
+                top:100%;
+                margin-top:-2.76rem;
+            }
+        }
+    }
+}
+/*攻略弹窗*/
+.goolve{
+	.content{
+		background: url(/modules/zhuanti/20170322/img/goonlve.png) no-repeat;
+		background-size:100%;
+		width:px(508);
+		height: px(683);
+		position: absolute;
+		top: 22%;
+		left: 50%;
+        margin-left: px(-254);
+	}
+}
+.game_over{
+	.content{
+		background: url(/modules/zhuanti/20170322/img/over.png) no-repeat;
+		background-size:100%;
+		width:px(508);
+        height:px(488);
+		position: absolute;
+		top: 22%;
+		left: 50%;
+        margin-left: px(-254);
+	}
+    .look{
+        position:absolute;
+        left: px(149);
+        top:px(383);
+        width: px(201);
+        height: px(45);
+        background: url(/modules/zhuanti/20170322/img/look.png) no-repeat center;
+        background-size:100% 100%;
+    }
+}
+.participated{
+	.content{
+		background: url(/modules/zhuanti/20170322/img/participated.png) no-repeat;
+		background-size:100%;
+		width:px(508);
+		height: px(448);
+		position: absolute;
+		top: 22%;
+		left: 50%;
+        margin-left: px(-254);
+	}
+    .look{
+        position:absolute;
+        left: px(149);
+        top:px(383);
+        width: px(201);
+        height: px(45);
+        background: url(/modules/zhuanti/20170322/img/look.png) no-repeat center;
+        background-size:100% 100%;
+    }
+}
+.lose{
+	.content{
+		background: url(/modules/zhuanti/20170322/img/lose.png) no-repeat;
+		background-size:100%;
+		width:px(508);
+		height: px(448);
+		position: absolute;
+		top: 22%;
+		left: 50%;
+        margin-left: px(-254);
+	}
+    .share{
+        position:absolute;
+        left: px(57);
+        top:px(383);
+        width: px(174);
+        height: px(45);
+        background: url(/modules/zhuanti/20170322/img/share.png) no-repeat center;
+        background-size:100% 100%;
+    }
+    .look{
+        position:absolute;
+        left: px(242);
+        top:px(383);
+        width: px(201);
+        height: px(45);
+        background: url(/modules/zhuanti/20170322/img/look.png) no-repeat center;
+        background-size:100% 100%;
+    }
+}
+.success{
+	.content{
+		background: url(/modules/zhuanti/20170322/img/success.png) no-repeat;
+		background-size:100%;
+		width:px(508);
+		height: px(448);
+		position: absolute;
+		top: 22%;
+		left: 50%;
+        margin-left: px(-254);
+	}
+    .share{
+        position:absolute;
+        left: px(57);
+        top:px(383);
+        width: px(174);
+        height: px(45);
+        background: url(/modules/zhuanti/20170322/img/share.png) no-repeat center;
+        background-size:100% 100%;
+    }
+    .look{
+        position:absolute;
+        left: px(242);
+        top:px(383);
+        width: px(201);
+        height: px(45);
+        background: url(/modules/zhuanti/20170322/img/look.png) no-repeat center;
+        background-size:100% 100%;
+    }
+}
+.answer{
+	.content{
+		background: url(/modules/zhuanti/20170322/img/answer.png) no-repeat center;
+		background-size:100% 100%;
+		width:px(508);
+		height: px(683);
+		position: absolute;
+		bottom: 12%;
+		left: 50%;
+        margin-left: px(-254);
+		.info{
+			position: relative;
+			width: px(436);
+			height: px(308);
+			margin:px(282) auto;
+			dl{
+				color:#ebdbb2;
+				font-size: px(20);
+				dt{
+					position: relative;
+					text-align: center;
+					padding: px(20) px(30) px(14) px(48);
+				}
+				dd{
+					padding-left:px(38);
+					padding-bottom: px(10);
+					input{
+						background: #ebdbb2;
+						border-radius: 5px 5px;
+						color:#521011;
+						padding-left:px(10);
+                        border:0;
+					}
+					&.tip{
+						margin-top:px(0);
+						font-size: px(16);
+					}
+					&.submit{
+						width: px(120);
+						height: px(45);
+						margin:auto;
+						padding-left:0;
+                        background: url(/modules/zhuanti/20170322/img/submit.png) no-repeat;
+                        background-size:100% 100%;
+					}
+				}
+			}
+
+		}
+	}
+}
+.close{
+	width: 4rem;
+	height:4rem;
+	top:0;
+	position: relative;
+	float:right;
+}
+.bg{
+	width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 150;
+}
+.toShare{
+    position:absolute;
+    top: px(10);
+    right: px(10);
+    width: px(173);
+    height: px(204);
+    background: url(/modules/zhuanti/20170322/img/arrow.png) no-repeat;
+    background-size:100% 100%;
+}

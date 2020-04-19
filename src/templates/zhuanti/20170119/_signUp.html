@@ -1,0 +1,50 @@
+<div class="content">
+    <div class="page-img">
+        <img class="big-img" src="<%=ctx.imgPage%>20170119-upload-top.png" alt="">
+    </div>
+    <div class="info-wrap">
+        <form method="post" enctype="multipart/form-data" action="/youlun/zhuanti/CruiseSpringFestivalUpload2017" id="applyForm">
+            <div class="info-box">
+                <span class="title"><em class="point">*</em>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名：</span>
+                <p class="info">
+                    <input type="text" class="fill" id="infoName" placeholder="" name="userName" maxlength="8">
+                </p>
+            </div>
+            <div class="info-box">
+                <span class="title"><em class="point">*</em>联系电话：</span>
+                <p class="info">
+                    <input type="text" class="fill" id="infoPhone" placeholder="方便邮寄礼品" name="mobile" maxlength="11">
+                </p>
+            </div>
+            <div class="info-box">
+                <span class="title"><em class="point">&nbsp;</em>联系地址：</span>
+                <p class="info">
+                    <input type="text" class="fill" id="infoAddress" placeholder="方便邮寄礼品" name="address" maxlength="50">
+                </p>
+            </div>
+            <div class="info-box">
+                <p class="info">
+                    <textarea id="infoComment" name="comment" placeholder="*2017年想对父母说的话：" maxlength="100"></textarea>
+                </p>
+            </div>
+            <div class="info-box">
+                <div class="img">
+                    <div class="log"><span></span></div>
+                    <p>*上传照片
+                        <br>（JPG/PNG/GIF 5M以内）</p>
+                    <input class="addImg" type="file" name="file1" accept="image/*">
+                    <img class="photo none">
+                </div>
+            </div>
+        </form>
+        <div class="info-btn">
+            <span class="btn">确定</span>
+        </div>
+    </div>
+    <div class="page-img page-bottom">
+        <img class="big-img" src="<%=ctx.imgPage%>20170119-upload-bottom.png" alt="">
+    </div>
+</div>
+<div class="pop">
+    <div class="pop-contain"></div>
+</div>

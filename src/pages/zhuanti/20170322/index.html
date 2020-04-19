@@ -1,0 +1,165 @@
+<% include common/CruiseConfig.html %>
+<%?
+    ctx.request(ctx.webApiUrl + "/specialInfo/GetFoolApplyModule?specialId=818",function(err,httpResponse,body){
+        if(err || httpResponse.statusCode!=200){
+            ctx.areaData = {};
+        }else{
+            try{
+                ctx.areaData=body;
+                ctx.areaData=JSON.parse(ctx.areaData);
+            }catch(e){
+                ctx.areaData=JSON.parse('{}');
+            }
+        }
+        ctx.areaData = ctx.areaData.Data ? ctx.areaData.Data : {};//防止报错 最好做下控制判断
+        aries();
+    });
+%>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- meta信息，可维护 -->
+    <meta charset="UTF-8" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+    <!--UC强制全屏-->
+    <meta name="full-screen" content="yes" />
+    <!--QQ强制全屏-->
+    <meta name="x5-fullscreen" content="true" />
+    <!--UC应用模式-->
+    <meta name="browsermode" content="application" />
+    <!--QQ应用模式-->
+    <meta name="x5-page-mode" content="app" />
+
+    <link rel="stylesheet" href="http://css.40017.cn/touch/cn/public/base.2.0.css?v=20140526140001" />
+    <link rel="stylesheet" href="http://css.40017.cn/cn/min/??/touch/public/common/0.0.3/common.css" />
+    <script type="text/javascript" src="//js.40017.cn/touch/public/zepto.1.2.0.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/touch/public/common/0.7.4/common.js?v=100914141"></script>
+    <title>人愚日报</title>
+    <meta name="keywords" content="愚人节、邮轮、出境、购物卡、同程旅游" />
+    <meta name="description" content="愚人节参与新闻竞猜，壕礼领不停！" />
+    <!-- 当前样式表 -->
+    <link rel="stylesheet" href="/2017yurenjie.css" />
+</head>
+<body onselectstart="return false;">
+<div class="body_dom">
+    <div class="first_dom box_0">
+        <img src="/modules/zhuanti/20170322/img/11-1.jpg">
+        <img src="/modules/zhuanti/20170322/img/11-2.jpg">
+        <div class="imgbox"><img class="gif" src="/modules/zhuanti/20170322/img/gif.gif"></div>
+        <div class="arrow"></div>
+    </div>
+    <div class="second_dom box_1">
+       <img src="/modules/zhuanti/20170322/img/22-1.jpg">
+        <img src="/modules/zhuanti/20170322/img/22-2.jpg">
+        <div class="goolve_btn">读报攻略&gt;</div>
+        <div class="first " attr-id="1"><em></em></div>
+        <div class="second">
+            <div class="left " attr-id="0"><em></em></div>
+            <div class="right " attr-id="0"><em></em></div>
+        </div>
+        <a href="<%=ctx.areaData[0].StmRemark %>" class="fuli"></a>
+        <div class="arrow"></div>
+    </div>
+    <div class="third_dom box_2">
+        <img src="/modules/zhuanti/20170322/img/33-1.jpg">
+        <img src="/modules/zhuanti/20170322/img/33-2.jpg">
+        <div class="goolve_btn">读报攻略&gt;</div>
+        <div class="first " attr-id="1"><em></em></div>
+        <div class="second">
+            <div class="left " attr-id="0"><em></em></div>
+            <div class="right " attr-id="0"><em></em></div>
+        </div>
+        <a href="<%=ctx.areaData[0].StmRemark %>" class="fuli"></a>
+        <div class="arrow"></div>
+    </div>
+    <div class="fourth_dom box_3">
+        <img src="/modules/zhuanti/20170322/img/44-1.jpg">
+        <img src="/modules/zhuanti/20170322/img/44-2.jpg">
+        <div class="goolve_btn">读报攻略&gt;</div>
+        <div class="first " attr-id="0"><em></em></div>
+        <div class="second">
+            <div class="left " attr-id="0"><em></em></div>
+            <div class="right " attr-id="1"><em></em></div>
+        </div>
+        <a href="<%=ctx.areaData[0].StmRemark %>" class="fuli"></a>
+    </div>
+</div>
+<div class="goolve bg none">
+    <div class="content"><div class="close"></div></div>
+</div>
+<div class="game_over bg none">
+    <div class="content"><div class="close"></div><a href="<%=ctx.areaData[0].StmRules %>" class="look"></a></div>
+
+</div>
+<div class="answer bg none">
+    <div class="content">
+        <div class="close"></div>
+        <div class="info">
+            <dl>
+                <dt>你太牛了，提交个人信息，静候中奖时刻的到来吧！</dt>
+                <dd>姓名&nbsp&nbsp<input type="text" name="name" value="" placeholder="请输入姓名" id="infoName"></dd>
+                <dd>电话&nbsp&nbsp<input class="phone" type="text" name="mobile" placeholder="请输入手机号码" maxlength="20" id="infoPhone"></dd>
+                <dd class="tip">*正确填写电话，方便中奖后与您联系哦！</dd>
+                <dd class="submit"></dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div class="participated bg none">
+    <div class="content"><div class="close"></div><a href="<%=ctx.areaData[0].StmRules %>" class="look"></a></div>
+</div>
+<div class="success bg none">
+    <div class="content"><div class="close"></div><a class="share"></a><a href="<%=ctx.areaData[0].StmRules %>" class="look"></a></div>
+</div>
+<div class="lose bg none">
+    <div class="content"><div class="close"></div><a class="share"></a><a href="<%=ctx.areaData[0].StmRules %>" class="look"></a></div>
+</div>
+<div class="todoshare bg none"><div class="toShare"></div></div>
+<div id="tip_layer" class="tip_layer"></div>
+<!--专题统计-->
+<script type="text/javascript">
+    var _sid = 818,
+        _pid = 1,
+        _ptype = 0;
+</script>
+<script src="//js.40017.cn/cn/min/??/cn/y/16/spe_sta/speSta.1.0.js?v=2016030306"></script>
+<div id="wxShare" style="display: none;">
+    <input type="hidden" name="tcshareurl" value="https://m.ly.com/youlun/zt/2017yurenjie.html">
+    <input type="hidden" name="tcshareimg" value="/modules/zhuanti/20170322/img/icon.png">
+    <input type="hidden" name="tcsharetext" value="在人愚日报，我可能看了很多假新闻。https://m.ly.com/youlun/zt/2017yurenjie.html?lid=84">
+    <input type="hidden" name="tcDesc" value="在人愚日报，我可能看了很多假新闻。https://m.ly.com/youlun/zt/2017yurenjie.html?lid=84">
+</div>
+<script src="/2017yurenjie.js"></script>
+<script type="text/javascript" src="http://js.40017.cn/touch/cn/public/wxshare/wxshare.js"></script>
+<script type='text/javascript'>
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined") {
+            _timediff = new Date().getTime() - _tcopentime;
+        }
+        _tcq.push(['_serialid', '0']); //如果是下单页面，需要传入订单号，多个订单号用下划分割 "_"  一个项目一个下单页
+        _tcq.push(['_vrcode', '10004-2007-0']);
+        _tcq.push(['_refId', '10758821']); //Refid需要传入来源refid，不同平台的读取方法不同，项目自己看
+        _tcq.push(['_userId', 0]); //传入访问者中登录的会员ID，未登录的为0
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '/邮轮/愚人节']); //虚拟url，项目自己定义,如:/Touch站/首页
+        _tcq.push(['_qdid', getQdid()]); //市场渠道id（用于区分市场中心各个部门）
+</script>
+<!--接入精准营销统计 -->
+<script type='text/javascript' src="//vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+<script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/p/hijack/hijack.2.0.0.js?v=2016082201"></script>
+<script type="text/javascript">
+    fed_hijack.init({
+        whiteList: "cpic.com|ssgdfs.com|visitkorea.or.kr|ocvb.or.jp|jeju.go.kr|welcome2japan.cn|visitseoul.net|guolv.com|abroad.cncn.com|lavago.com|ship.mangocity.com|zglxw.com|9191fh.com|chunyun.cn|keyunzhan.com|uzai.com|lvmama.com|h5.ffan.com|qlogo.cn",
+        projectTag: "youlun",
+        pageName: "",
+        platform: "touch",
+        removeError: false
+    });
+</script>
+</body>
+</html>

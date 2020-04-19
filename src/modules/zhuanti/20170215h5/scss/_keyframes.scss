@@ -1,0 +1,134 @@
+@import "_variable";
+// 放大缩小
+@keyframes bounce {
+    0%,
+    100% {
+        transform: scale(1.0);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+@-moz-keyframes bounce {
+    0%,
+    100% {
+        -moz-transform: scale(1.0);
+    }
+    50% {
+        -moz-transform: scale(1.3);
+    }
+}
+
+@-webkit-keyframes bounce {
+    0%,
+    100% {
+        -webkit-transform: scale(1.0);
+    }
+    50% {
+        -webkit-transform: scale(1.3);
+    }
+}
+
+@-o-keyframes bounce {
+    0%,
+    100% {
+        -o-transform: scale(1.0);
+    }
+    50% {
+        -o-transform: scale(1.3);
+    }
+}
+
+// 波动
+@keyframes bounce-wave {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-#{10/$baseNum/2}rem);
+    }
+}
+
+@-webkit-keyframes bounce-wave {
+    0%,
+    100% {
+        -webkit-transform: translateY(0);
+    }
+    50% {
+        -webkit-transform: translateY(-#{10/$baseNum/2}rem);
+    }
+}
+
+@-moz-keyframes bounce-wave {
+    0%,
+    100% {
+        -moz-transform: translateY(0);
+    }
+    50% {
+        -moz-transform: translateY(-#{10/$baseNum/2}rem);
+    }
+}
+
+@-o-keyframes bounce-wave {
+    0%,
+    100% {
+        -o-transform: translateY(0);
+    }
+    50% {
+        -o-transform: translateY(-#{10/$baseNum/2}rem);
+    }
+}
+
+// loading
+@-webkit-keyframes loading {
+    0% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 1;
+    }
+}
+
+@keyframes loading {
+    0% {
+        opacity: 1;
+    }
+    45% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 1;
+    }
+}
+
+// 上下跳动
+@-webkit-keyframes bounce-up {
+    25% {
+        -webkit-transform: translateY(#{10/$baseNum/2}rem);
+    }
+    50%,
+    100% {
+        -webkit-transform: translateY(0);
+    }
+    75% {
+        -webkit-transform: translateY(-#{10/$baseNum/2}rem);
+    }
+}
+
+@keyframes bounce-up {
+    25% {
+        transform: translateY(#{10/$baseNum/2}rem);
+    }
+    50%,
+    100% {
+        transform: translateY(0);
+    }
+    75% {
+        transform: translateY(-#{10/$baseNum/2}rem);
+    }
+}

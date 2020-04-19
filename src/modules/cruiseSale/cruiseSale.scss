@@ -1,0 +1,996 @@
+@import './scss/_mixinfns.scss';
+$imgUrl: "modules/cruiseSale/images";
+// $imgUrl : "./images";
+.box-border {
+    border: 1px solid #ccc;
+    @include box-sizing(border-box);
+}
+
+body,
+html {
+    background-color: #722cf3;
+    overflow:visible;
+}
+
+body {
+    width: px(640);
+    margin: auto;
+}
+
+.content {
+    /*
+	*头图
+	 */
+    .top {
+        position: relative;
+        .top_img {
+            display: block;
+            width: 100%;
+            min-height: px(400);
+        }
+        .top_img.none{
+            display:none;
+        }
+        .area_change_div {
+            position: absolute;
+            font-size: px(26);
+            color: #722cf3;
+            padding: 0 px(20);
+            height: px(50);
+            line-height: px(50);
+            @include border-radius(px(30), px(30), px(30), px(30));
+            background-color: #29e2ff;
+            bottom: px(17);
+            left: px(20);
+        }
+        .area_change_div:after {
+            display: inline-block;
+            vertical-align: middle;
+            content: "";
+            background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat px(-32) px(-20);
+            width: px(25);
+            height: px(15);
+            background-size: px(200) px(185);
+            margin-left: px(16);
+            margin-top: px(-7);
+        }
+        .area_change_div.active:after {
+            background-position: px(-33) 0;
+        }
+    }
+    //tab按钮
+    .tab_con_div {
+        position: relative;
+        width: px(640);
+        height: px(88);
+        .bus_cons {
+            position: absolute;
+            width: px(640);
+            height: px(88);
+            top: 0;
+            left: 50%;
+            margin-left: px(-320);
+            z-index:3;
+            background-color:#722cf3;
+            .buts {
+                background: url('#{$imgUrl}/tabs_but_nas.0.1.png') no-repeat 0 0;
+                width: px(314);
+                height: px(88);
+                background-size: px(647) px(195);
+            }
+            .buts.buts_left {
+                float: left;
+                background-position: 0 0;
+            }
+            .buts.buts_right {
+                float: right;
+                background-position: px(-333) 0;
+            }
+            .buts.buts_left.active {
+                background-position: 0 px(-107);
+            }
+            .buts.buts_right.active {
+                background-position: px(-333) px(-107);
+            }
+        }
+        .bus_cons.to_fixed{
+            position:fixed;
+        }
+    }
+    .tab_con_div.sticky{
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        height: px(90);
+    }
+    .divs_con {
+        margin: 0 auto;
+        width: px(600);
+    }
+    //游轮特卖
+    .divs_con_temai {
+        .act_rule_con {
+            margin: px(15) 0 px(35) 0;
+        }
+    }
+}
+
+//活动规则
+.act_rule_con {
+    border: px(4) solid #0be8c7;
+    @include border-radius(px(20),
+    px(20),
+    px(20),
+    px(20));
+    .div_tit {
+        text-align: center;
+        .tit {
+            display: inline-block;
+            position: relative;
+            top: px(-2);
+            z-index: 2;
+            .sp_txt {
+                display: block;
+                line-height: px(33);
+                height: px(33);
+                color: #4e5fff;
+                font-size: px(24);
+                background-color: #0be8c7;
+                padding: 0 px(8);
+                max-width: px(360);
+                overflow: hidden;
+            }
+        }
+        .tit:after {
+            position: absolute;
+            content: "";
+            top: 0;
+            right: px(-16);
+            background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat 0 0;
+            width: px(18);
+            height: px(33);
+            background-size: px(200) px(185);
+            z-index: 1;
+        }
+        .tit:before {
+            position: absolute;
+            content: "";
+            top: 0;
+            left: px(-16);
+            ;
+            background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat 0 px(-46);
+            width: px(18);
+            height: px(33);
+            background-size: px(200) px(185);
+            z-index: 1;
+        }
+    }
+    .tsxt_show {
+        height: px(46);
+        overflow: hidden;
+        margin: px(18) 0 px(25) 0;
+        .ts_sp {
+            font-size: px(20);
+            line-height: px(24);
+            color: #fff;
+            padding: 0 px(20);
+            >p{
+                 font-size: px(20);
+                line-height: px(24);
+            }
+        }
+    }
+    .more_a {
+        // display:block;
+        display: none;
+        margin: 0 auto;
+        width: px(40);
+        height: px(40);
+        position: relative;
+        margin-top: px(-25);
+    }
+    .more_a:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat px(-74) 0;
+        width: px(24);
+        height: px(14);
+        background-size: px(200) px(185);
+    }
+    .more_a.has_more:after {
+        background-position: px(-75) px(-21);
+    }
+}
+
+.act_rule_con.rule_con_has_more {
+    .more_a {
+        display: block;
+    }
+    .tsxt_show.show_more {
+        height: auto;
+    }
+    .ts_sp {
+        overflow: hidden;
+        // display: -webkit-box;
+        // -webkit-box-orient: vertical;
+        // -webkit-line-clamp: 2;
+        // height: px(48);
+        // overflow: hidden;
+    }
+}
+
+//标题图片
+.scon_div {
+    margin-top: px(35);
+    .d_tit {
+        .tit_img_s {
+            display: block;
+            width: 100%;
+        }
+        .fu_tit{
+            font-size:px(24);
+            text-align:center;
+            margin-top:px(14);
+            .txt{
+                display:inline-block;
+                max-width:px(420);
+                color:#fff;
+                margin:0 px(6);
+                // line-height:px(30);
+                height:px(30);
+                overflow:hidden;
+                position:relative;
+                padding:0 px(45);
+                .em_s{
+                    top:px(11);
+                    position:absolute;
+                    background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat px(-162) px(-127);
+                    width: px(40);
+                    height: px(14);
+                    background-size:px(200) px(185);
+
+                    // position:relative;
+                    // vertical-align:middle;
+                }
+                .em_s.em_s_right{
+                    right:0;
+                    background-position:px(-162) px(-127);
+                }
+                .em_s.em_s_left{
+                    left:0;
+                    background-position:px(-162) px(-145);
+                }
+            }
+        }
+    }
+    .con_list {
+        padding: px(26) 0;
+    }
+}
+.scon_div.scon_zjz4{
+	.act_rule_con{
+		margin-top:px(25);
+	}
+}
+
+//倒计时
+.timer_con {
+    margin-top: px(20);
+    .t_c {
+        text-align: center;
+        @include border-radius(px(8),
+        px(8),
+        px(8),
+        px(8));
+        height: px(91);
+        line-height: px(91);
+        font-size: px(26);
+        color: #fff;
+        background-color: rgba(0, 0, 0, 0.2);
+        .t_tysd {
+            .em_s {
+                display: inline-block;
+                background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat px(-150) 0;
+                width: px(35);
+                height: px(54);
+                line-height: px(54);
+                background-size: px(200) px(185);
+                margin-right: px(8);
+                color: #0215c9;
+            }
+        }
+    }
+}
+
+//产品样式
+.con_list {
+    a.pro_a {
+        display: block;
+        background-color: #fff;
+        color: #333;
+    }
+    //第一种的大图的产品
+    a.pro_a.pro_a_type_01 {
+        @include border-radius(0,
+        0,
+        px(8),
+        px(8));
+        margin-top: px(20);
+        .img_box {
+            position: relative;
+            overflow: hidden;
+            height: px(300);
+            .act_port {
+                position: absolute;
+                background-color: rgba(0, 0, 0, 0.5);
+                @include border-radius(0,
+                px(15),
+                px(15),
+                0);
+                line-height: px(30);
+                height: px(30);
+                padding: 0 px(12) 0 px(6);
+                color: #fff;
+                font-size: px(18);
+                left: 0;
+                top: px(20);
+                overflow:hidden;
+            }
+            .pro_img {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+            .pro_tit_x {
+                position: absolute;
+                z-index: 1;
+                width: 100%;
+                left: 0;
+                bottom: 0;
+                height: px(130);
+                background:url('#{$imgUrl}/big_shadow_bg.png') no-repeat;
+                background-size: 100% 100%;
+                .sv {
+                    position: absolute;
+                    width: 100%;
+                    left: 0;
+                    bottom: 0;
+                    > h4 {
+                        font-size: px(20);
+                        color: #fff;
+                        line-height: px(30);
+                        padding: px(5) px(20);
+                        font-weight: normal;
+                        overflow: hidden;
+                        max-height: px(60);
+                        display: -webkit-box;
+                        -webkit-box-orient: vertical;
+                        -webkit-line-clamp: 2;
+                    }
+                }
+            }
+            .s_show_bg {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                z-index: 2;
+                background-color: rgba(0, 0, 0, 0.6);
+                left: 0;
+                top: 0;
+                display: none;
+            }
+            .s_show_bg:after {
+                content: "";
+                position: absolute;
+                background: url('#{$imgUrl}/sale_type_nas.0.1.png') no-repeat 0 px(-220);
+                width: px(360);
+                height: px(189);
+                left: px(68);
+                top: 50%;
+                margin-top:px(-94);
+                background-size: px(360) px(409);
+            }
+        }
+        .text_box {
+            padding: px(25) px(20) px(20) px(20);
+            position: relative;
+            .recom_d {
+                position: relative;
+                padding-left: px(40);
+                font-size: px(20);
+                line-height: px(24);
+                .s_em {
+                    position: absolute;
+                    top: px(-4);
+                    left: 0;
+                    background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat px(-111) 0;
+                    width: px(26);
+                    height: px(25);
+                    background-size: px(200) px(185);
+                }
+            }
+            .recom_d.recom_d_t_18 {
+                margin-top: px(18);
+            }
+            .price_div {
+                font-size: px(24);
+                color: #ff3688;
+                line-height: px(60);
+                height: px(60);
+                margin-top: px(5);
+                .sp_txt {
+                    margin-right: px(10);
+                }
+                .price_s {
+                    font-size: px(22);
+                    margin-right: px(10);
+                    >strong {
+                        font-size: px(40);
+                        font-weight: normal;
+                    }
+                }
+                .cu_s {
+                    display: inline-block;
+                    border: 1px solid #ff7800;
+                    line-height: px(24);
+                    height: px(24);
+                    width: px(34);
+                    text-align: center;
+                    font-size: px(18);
+                    margin-left: px(10);
+                    position: relative;
+                    top: px(-3);
+                    color:#ff7800;
+                }
+            }
+            .s_but {
+                position: absolute;
+                width: px(176);
+                height: px(60);
+                line-height: px(60);
+                background-color: #ff3688;
+                @include border-radius(px(4),
+                px(4),
+                px(4),
+                px(4));
+                text-align: center;
+                font-size: px(24);
+                color: #fff100;
+                right: px(20);
+                bottom: px(20);
+            }
+            .s_but.pos_top_20 {
+                bottom: auto;
+                top: px(20);
+            }
+        }
+        .text_box.text_p_t_12 {
+            padding-top: px(12);
+        }
+    }
+    a.pro_a.pro_a_type_01:first-child {
+        margin-top: 0;
+    }
+    a.pro_a.pro_a_type_01.sale_end {
+        .s_but {
+            color: #fff;
+            background-color: #ccc;
+        }
+        .s_show_bg {
+            display: block;
+        }
+        .s_show_bg:after {
+            background-position: 0 px(-220);
+        }
+    }
+    a.pro_a.pro_a_type_01.sale_nobegin {
+        .s_but {
+            // color: #fff;
+            // background-color: #ccc;
+        }
+        .s_show_bg {
+            display: block;
+        }
+        .s_show_bg:after {
+            background-position: 0 0;
+        }
+    }
+    //第二种的小图的产品
+    a.pro_a.pro_a_type_02 {
+        overflow: hidden;
+        margin-top:px(20);
+        .dis_c {
+            overflow: hidden;
+            padding:px(20);
+            .img_box {
+                position: relative;
+                overflow: hidden;
+                width: px(180);
+                height: px(180);
+                float:left;
+                .act_port {
+                    position: absolute;
+                    background-color: rgba(0, 0, 0, 0.5);
+                    @include border-radius(0,px(15),px(15),0);
+                    line-height: px(30);
+                    height: px(30);
+                    padding: 0 px(12) 0 px(6);
+                    color: #fff;
+                    font-size: px(18);
+                    left: 0;
+                    top: px(10);
+                    overflow:hidden;
+                }
+                .pro_img {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    @include border-radius(px(5),px(5),px(5),px(5));
+                }
+                .pro_tit_x {
+                    position: absolute;
+                    z-index: 1;
+                    width: 100%;
+                    left: 0;
+                    bottom: 0;
+                    height: px(78);
+                    background:url('#{$imgUrl}/small_shdow_bg.png') no-repeat;
+                    background-size: 100% 100%;
+                    @include border-radius(0,0,px(5),px(5));
+                    .sv {
+                        position: absolute;
+                        width: 100%;
+                        left: 0;
+                        bottom: 0;
+                        > h4 {
+                            font-size: px(18);
+                            color: #fff;
+                            line-height: px(26);
+                            height:px(26);
+                            padding:0 px(3);
+                            overflow:hidden;
+                            font-weight:normal;
+                            text-align:center;
+                        }
+                    }
+                }
+                .s_show_bg:after {
+                    content: "";
+                    position: absolute;
+                    background: url('#{$imgUrl}/sale_type_nas.0.1.png') no-repeat 0 px(-220);
+                    width: px(360);
+                    height: px(189);
+                    left: px(68);
+                    top: 50%;
+                    margin-top:px(-94);
+                    background-size: px(360) px(409);
+                }
+            }
+            .text_box{
+            	width:px(360);
+            	float:right;
+            	height: px(180);
+            	.tit_h4{
+                    font-weight:normal;
+            		font-size:px(28);
+            		color:#333;
+            		line-height:px(32);
+            		white-space:nowrap;          /* 不换行 */
+					overflow:hidden;               /* 内容超出宽度时隐藏超出部分的内容 */
+					text-overflow:ellipsis;         /* 当对象内文本溢出时显示省略标记(...) ；需与overflow:hidden;一起使用。*/	
+            	}
+            	.s_ps{
+            		display: -webkit-box;
+        		    -webkit-box-orient: vertical;
+					-webkit-line-clamp: 2;
+					font-size:px(24);
+					line-height:px(38);
+					max-height:px(76);
+					color:#999;
+					overflow:hidden;
+					margin:px(14) 0 px(14) 0;
+            	}
+            	.price_div {
+	                font-size: px(24);
+	                color: #ff3688;
+	                line-height: px(44);
+	                height: px(44);
+	                margin-top: px(5);
+	                .price_s {
+	                    font-size: px(22);
+	                    margin-right: px(10);
+	                    >strong {
+	                        font-size: px(40);
+	                        font-weight: normal;
+	                    }
+	                }
+	                .cu_s {
+	                    display: inline-block;
+	                    border: 1px solid #ff7800;
+	                    line-height: px(24);
+	                    height: px(24);
+	                    width: px(34);
+	                    text-align: center;
+	                    font-size: px(18);
+	                    margin-left: px(10);
+	                    position: relative;
+	                    top: px(-3);
+                        color:#ff7800;
+	                }
+	            }
+            }
+        }
+        .recom_d{
+        	position:relative;
+        	border-top:1px solid #ddd;
+        	position: relative;
+            padding:px(20) px(20) px(20) px(45);
+            font-size: px(20);
+            line-height: px(24);
+            .s_em {
+                position: absolute;
+                top:px(20);
+                left:px(10);
+                background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat px(-111) 0;
+                width: px(26);
+                height: px(25);
+                background-size: px(200) px(185);
+            }
+        }
+    }
+    a.pro_a.pro_a_type_02:first-child{
+    	margin-top:0;
+    }
+    //第三种的大图的产品
+    a.pro_a.pro_a_type_03 {
+        position:relative;
+        @include border-radius(0,0,px(8),px(8));
+        margin-top: px(20);
+        .img_box {
+            position: relative;
+            overflow: hidden;
+            height: px(440);
+            .pro_img {
+                display: block;
+                width: 100%;
+                height: 100%;
+                // min-height: px(300);
+            }
+            .s_s_shadow_bg{
+                // @include border-radius(0,0,px(8),px(8));
+                position:absolute;
+                width: 100%;
+                height: 100%;
+                left:0;
+                top:0;
+                background-color:rgba(0,0,0,0.6);
+                z-index:1;
+                display:none;
+            }
+            .s_s_shadow_bg:after{
+                content: "";
+                position: absolute;
+                background: url('#{$imgUrl}/sale_type_nas.0.1.png') no-repeat 0 px(-220);
+                width: px(360);
+                height: px(189);
+                left: px(86);
+                top: 50%;
+                background-size: px(360) px(409);
+                margin-top:px(-94);
+            }
+        }
+        .text_box {
+            padding: px(25) px(20) px(30) px(20);
+            position: relative;
+            .h4_tst{
+            	font-weight:normal;
+            	color:#333;
+            	font-size:px(24);
+            	line-height:px(34);
+            	max-height:px(68);
+            	overflow:hidden;
+				display: -webkit-box;
+				-webkit-box-orient: vertical;
+				-webkit-line-clamp: 2;
+            	>strong{
+            		font-weight:bold;
+            	}
+            }
+            .price_div {
+                font-size: px(24);
+                color: #ff3688;
+                line-height: px(60);
+                height: px(60);
+                margin-top: px(5);
+                .price_s {
+                    font-size: px(22);
+                    margin-right: px(10);
+                    >strong {
+                        font-size: px(40);
+                        font-weight: normal;
+                    }
+                }
+                .cu_fen {
+                    font-size:px(18);
+                    color:#00c7ff;
+                    margin-right:px(10);
+                }
+                .q_gou{
+                	display:inline-block;
+					background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat px(-88) px(-65);
+					width: px(100);
+					height: px(31);
+					background-size: px(200) px(185);
+					position:relative;
+					top:px(4);
+                }
+            }
+            .s_but {
+                position: absolute;
+                width: px(176);
+                height: px(60);
+                line-height: px(60);
+                // background-color: #ff3688;
+                @include border-radius(px(4),
+                px(4),
+                px(4),
+                px(4));
+                text-align: center;
+                font-size: px(24);
+                color: #ff3688;
+                right: px(20);
+                bottom: px(20);
+                border:px(2) solid #ff3688;
+            }
+            .qiang_gou_percent{
+                position:absolute;
+                font-size:px(18);
+                left:px(20);
+                bottom:px(4);
+                color:#999;
+            }
+        }
+    }
+    a.pro_a.pro_a_type_03:first-child {
+        margin-top: 0;
+    }
+    a.pro_a.pro_a_type_03.sale_end{
+        .s_but {
+            color: #ccc;
+            border-color: #ccc;
+        }
+        .s_s_shadow_bg{
+            display:block;
+        }
+        .s_s_shadow_bg:after{
+            background-position: 0 px(-220);
+        }
+        .qiang_gou_percent{
+            display:none;
+        }
+        .price_div{
+            .q_gou{
+                display:none;
+            }
+            .cu_fen{
+                display:none;
+            }
+        }
+    }
+    a.pro_a.pro_a_type_03.sale_nobegin{
+        .s_but {
+            color: #ccc;
+            border-color: #ccc;
+        }
+        .s_s_shadow_bg{
+            display:block;
+        }
+        .s_s_shadow_bg:after{
+            background-position: 0 0;
+        }
+        .qiang_gou_percent{
+            display:none;
+        }
+        .price_div{
+            .q_gou{
+                display:none;
+            }
+        }
+    }
+}
+
+#toTop {
+    width: px(100);
+    height: px(100);
+    background: url('//img1.40017.cn/touch/cn/y/16/z/summerholiday/top.png') no-repeat center;
+    background-size: 100% 100%;
+    position: fixed;
+    bottom: px(100);
+    right: px(20);
+    z-index: 11;
+}
+
+
+/*区域弹框*/
+
+.area_box {
+    position: fixed;
+    // overflow:hidden;
+    background-color: #fff;
+    z-index: 100;
+    // height: 538/@bfSize;
+    padding-bottom: px(46);
+    width: px(380);
+    border-radius: px(10);
+    -webkit-border-radius: px(10);
+    left: 50%;
+    top: 50%;
+    margin: px(-538/2) 0 0 px(-380/2);
+    .close_but {
+        position: absolute;
+        right: px(-40);
+        top: px(-40);
+        z-index: 1;
+        background: url('#{$imgUrl}/icon_nas.0.1.png') no-repeat 0 px(-107);
+        width: px(77);
+        height: px(78);
+        background-size: px(200) px(185);
+    }
+    // .close_but.hover_class {
+    //     background-position: px(-104) px(-306);
+    // }
+    .area_ul_list {
+        margin-top: px(48);
+        >li {
+            width: px(255);
+            margin: px(17) auto 0 auto;
+            text-align: center;
+            font-size: px(30);
+            color: #722cf3;
+            line-height: px(75);
+            height: px(75);
+            border: 1px solid #e2e2e2;
+            border-radius: px(40);
+            -webkit-border-radius: px(40);
+        }
+        >li.act {
+            color: #fff;
+            border-color: #722cf3;
+            background-color: #722cf3;
+        }
+    }
+}
+.shadow_bg{
+    position: fixed;
+    width: px(640);
+    margin-left: px(-320);
+    left: 50%;
+    top: 0;
+    height: 100%;
+    z-index: 99;
+    background-color: rgba(0,0,0,0.6);
+}
+
+//loading
+.loading_div{
+    position:fixed;
+    left:0;
+    top:0;
+    background-color:#fff;
+    width: 100%;
+    height: 100%;
+    z-index:1000;
+    .loader{
+        position:absolute;
+        text-align:center;
+        width:px(300);
+        // height:px(44);
+        // line-height:px(44);
+        left:50%;
+        top:50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        > em{
+            display:block;
+            background: url('#{$imgUrl}/loading_pics.png') no-repeat 0 0;
+            // width: px(132);
+            // height: px(132);
+            // background-size:px(660) px(660);
+            margin:0 auto;
+            width: 66px;
+            height: 66px;
+            background-size:330px 330px;
+        }
+        >span{
+            display:block;
+            // font-size:px(28);
+            // line-height:px(32);
+            color:#999;
+
+            font-size:14px;
+            line-height:16px;
+        }
+    }
+     $n : 0;
+    @for $i from 0 to 5 {
+        @for $j from 0 to 5{
+            @if $n < 22 {
+                .loader.loader_an_#{$n}{
+                    > em{
+                        // background-position:px(-$j * 132) px(-$i * 132);
+                        background-position:#{-$j * 66}px #{-$i * 66}px;
+                    }
+                }
+                $n : $n + 1;                
+            }
+        }
+       
+    }
+}
+//二倍屏
+[data-dpr="2"]{
+    .loading_div{
+        .loader{
+            > em{
+                width: #{66*2}px;
+                height: #{66*2}px;
+                background-size:#{330*2}px #{330*2}px;
+            }
+            > span{
+                font-size:#{14*2}px;
+                line-height:#{16*2}px;
+            }
+        }
+        $n : 0;
+        @for $i from 0 to 5 {
+            @for $j from 0 to 5{
+                @if $n < 22 {
+                    .loader.loader_an_#{$n}{
+                        > em{
+                            // background-position:px(-$j * 132) px(-$i * 132);
+                            background-position:#{-$j * 66 * 2}px #{-$i * 66 * 2}px;
+                        }
+                    }
+                    $n : $n + 1;                
+                }
+            }  
+        }
+    }
+}
+//三倍屏
+[data-dpr="3"]{
+    .loading_div{
+        .loader{
+            > em{
+                width: #{66*3}px;
+                height: #{66*3}px;
+                background-size:#{330*3}px #{330*3}px;
+            }
+            > span{
+                font-size:#{14*3}px;
+                line-height:#{16*3}px;
+            }
+        }
+        $n : 0;
+        @for $i from 0 to 5 {
+            @for $j from 0 to 5{
+                @if $n < 22 {
+                    .loader.loader_an_#{$n}{
+                        > em{
+                            // background-position:px(-$j * 132) px(-$i * 132);
+                            background-position:#{-$j * 66 * 3}px #{-$i * 66 * 3}px;
+                        }
+                    }
+                    $n : $n + 1;                
+                }
+            }  
+        }
+    }
+}

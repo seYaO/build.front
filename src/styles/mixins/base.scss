@@ -1,0 +1,55 @@
+// 半透明
+@mixin opacity($p:0.5) {
+    $pp: $p * 100;
+    filter: alpha(opacity=$pp);
+    -moz-opacity: $p;
+    opacity: $p;
+}
+
+// 单行省略号
+@mixin ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 多行省略号
+@mixin mutil-ellipsis($num:2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+}
+
+@mixin box-sizing ($sizing) {
+    box-sizing: $sizing;
+    -webkit-box-sizing: $sizing;
+    -moz-box-sizing: $sizing;
+    -o-box-sizing: $sizing;
+    -ms-box-sizing: $sizing;
+}
+
+@mixin border-radius ($a, $b, $c, $d) {
+    border-radius: $a $b $c $d;
+    -webkit-border-radius: $a $b $c $d;
+    -moz-border-radius: $a $b $c $d;
+    -o-border-radius: $a $b $c $d;
+    -ms-border-radius: $a $b $c $d;
+}
+
+@mixin display-box($b:horizontal, $c:center) {
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: $b;
+    box-orient: $b;
+    -moz-box-align: $c;
+    -webkit-box-align: $c;
+    -o-box-align: $c;
+    box-align: $c;
+}
+
+@mixin box-flex($num:1) {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}

@@ -1,0 +1,54 @@
+<%
+ctx.stringToJson = function(str) {
+    try {
+        return JSON.parse(str);
+    } catch (ex) {
+        return "";
+    }
+}
+ctx._parseTime = function(str) {
+    function typeDeepOf(obj) {
+        if (typeof obj !== "object") return typeof obj;
+        return Object.prototype.toString.apply(obj).slice(8, -1).toLowerCase();
+    }
+    var _str, _obj = [];
+    if (typeDeepOf(str) === "date") return str;
+    if (typeof(str) !== "string" || str.indexOf("/Date(") != 0) {
+        _str = new Date();
+        _obj.push(_str.getFullYear());
+        _obj.push(_str.getMonth() < 9 ? "0" + (_str.getMonth() + 1) : (_str.getMonth() + 1));
+        _obj.push(_str.getDate() < 10 ? "0" + _str.getDate() : _str.getDate());
+        return _obj.join("-");
+    }
+    var _str = str.slice(1, -1),
+        _obj = [];
+    _str = (new Function("return new " + _str))();
+    _obj.push(_str.getFullYear());
+    _obj.push(_str.getMonth() < 9 ? "0" + (_str.getMonth() + 1) : (_str.getMonth() + 1));
+    _obj.push(_str.getDate() < 10 ? "0" + _str.getDate() : _str.getDate());
+    return _obj.join("-");
+};
+// 非空判断 (null undefined NaN 情况下转换为"") 
+ctx._noEmpty = function(str) {
+    let _str = str || "";
+    return _str;
+};
+// 协议处理
+ctx.doProtocol = function(data) {
+    let regx = /[a-z]+:(?=\/\/)/ig;
+    if (typeof data === "string" && data.length) {
+        return data.replace(regx, "");
+    }
+    return data;
+};
+ctx.trim = function(str) {
+    var rwhite = /\S/,
+        trimLeft = /^\s+/,
+        trimRight = /\s+$/;
+    if (!rwhite.test('\xA0')) {
+        trimLeft = /^[\s\xA0]+/;
+        trimRight = /[\s\xA0]+$/;
+    }
+    return (str === undefined || str === '') ? '' : str.toString().replace(trimLeft, '').replace(trimRight, '');
+};
+%>

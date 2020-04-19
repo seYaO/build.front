@@ -1,0 +1,39 @@
+// 半透明
+@mixin opacity($p:0.5) {
+    $pp: $p * 100;
+    filter: alpha(opacity=$pp);
+    -moz-opacity: $p;
+    opacity: $p;
+}
+
+// 单行省略号
+@mixin ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 多行省略号
+@mixin mutil-ellipsis($num:2) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $num;
+    -webkit-box-orient: vertical;
+}
+
+@mixin display-box($b:horizontal) {
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: $b;
+    box-orient: $b;
+}
+
+@mixin box-flex($num:1) {
+    -webkit-box-flex: 1;
+    box-flex: 1;
+}
+
+$baseNum:64;
+// $urlStr:"modules/zhuanti/20170119/img/";
+$urlStr:"//file.40017.cn/youlun/m/img/zt/20170119/";

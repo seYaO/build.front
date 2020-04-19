@@ -1,0 +1,242 @@
+<div class="content">
+    <div class="top">
+        <img class="big-img" src="<%=ctx.imgPage%>20170119-top.png" alt="">
+        <div class="area-box">
+            <i class="act"></i>
+            <div class="area-intro">
+                <%
+                let cityList = ctx.areaCityList;
+                let spanHtml = '';
+                let listHtml = '';
+                cityList.forEach(function(item,index){
+                    if(item['selected'] == 1){
+                        spanHtml = '<span class="txt" attr-city-id="'+item['cityId']+'">'+item['cityName']+'出发</span>';
+                    }else{
+                        listHtml += '<span attr-city-id="'+item['cityId']+'">'+item['cityName']+'出发</span>';
+                    }                    
+                });
+                listHtml = spanHtml+'<div class="list">'+listHtml+'</div>';
+                %>
+                <%-listHtml%>
+            </div>
+        </div>
+    </div>
+    <div class="page-img">
+        <img class="big-img" src="<%=ctx.imgPage%>20170119-img1.png" alt="">
+    </div>
+    <div class="detail-unit unit-go">
+        <!-- <div class="data-line">
+            <img src="<%=ctx.imgPage%>go-tianhai.png" alt="" class="big-img">
+            <a class="data-box">
+                <div class="data-img">
+                    <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                    <span class="price"><em>¥<i>16999</i></em>起</span>
+                </div>
+                <div class="data-intro">
+                    <div class="tit" title="2017年4月20日 上海-济州-冲绳-上海 ">2017年4月20日 上海-济州-冲绳-上海上海-济州-冲绳-上海上海-济州-冲绳-上海 </div>
+                    <div class="label"><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span></div>
+                </div>
+                <div class="data-soldOut"></div>
+            </a>
+        </div>
+        <div class="data-line">
+            <img src="<%=ctx.imgPage%>go-tianhai.png" alt="" class="big-img">
+            <a class="data-box">
+                <div class="data-img">
+                    <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                    <span class="price"><em>¥<i>16999</i></em>起</span>
+                </div>
+                <div class="data-intro">
+                    <div class="tit" title="2017年4月20日 上海-济州-冲绳-上海 ">2017年4月20日 上海-济州-冲绳-上海上海-济州-冲绳-上海上海-济州-冲绳-上海 </div>
+                    <div class="label"><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span></div>
+                </div>
+            </a>
+        </div>
+        <div class="data-line">
+            <img src="<%=ctx.imgPage%>go-tianhai.png" alt="" class="big-img">
+            <a class="data-box">
+                <div class="data-img">
+                    <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                    <span class="price"><em>¥<i>16999</i></em>起</span>
+                </div>
+                <div class="data-intro">
+                    <div class="tit" title="2017年4月20日 上海-济州-冲绳-上海 ">2017年4月20日 上海-济州-冲绳-上海上海-济州-冲绳-上海上海-济州-冲绳-上海 </div>
+                    <div class="label"><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span></div>
+                </div>
+            </a>
+        </div> -->
+    </div>
+    <div class="page-img">
+        <img class="big-img" src="<%=ctx.imgPage%>20170119-img2.png" alt="">
+    </div>
+    <div class="detail-unit unit-see">
+        <!-- <img src="<%=ctx.imgPage%>go-tianhai.png" alt="" class="big-img">
+        <div class="data-line">
+            <a class="data-box">
+                <div class="data-img">
+                    <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                    <span class="price"><em>¥<i>16999</i></em>起</span>
+                </div>
+                <div class="data-intro">
+                    <div class="tit" title="2017年4月20日 上海-济州-冲绳-上海 ">2017年4月20日 上海-济州-冲绳-上海上海-济州-冲绳-上海上海-济州-冲绳-上海 </div>
+                    <div class="label"><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span></div>
+                </div>
+            </a>
+        </div>
+        <div class="data-line">
+            <a class="data-box">
+                <div class="data-img">
+                    <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                    <span class="price"><em>¥<i>16999</i></em>起</span>
+                </div>
+                <div class="data-intro">
+                    <div class="tit" title="2017年4月20日 上海-济州-冲绳-上海 ">2017年4月20日 上海-济州-冲绳-上海上海-济州-冲绳-上海上海-济州-冲绳-上海 </div>
+                    <div class="label"><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span></div>
+                </div>
+            </a>
+        </div>
+        <img src="<%=ctx.imgPage%>go-tianhai.png" alt="" class="big-img">
+        <div class="data-line">
+            <a class="data-box">
+                <div class="data-img">
+                    <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                    <span class="price"><em>¥<i>16999</i></em>起</span>
+                </div>
+                <div class="data-intro">
+                    <div class="tit" title="2017年4月20日 上海-济州-冲绳-上海 ">2017年4月20日 上海-济州-冲绳-上海上海-济州-冲绳-上海上海-济州-冲绳-上海 </div>
+                    <div class="label"><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span></div>
+                </div>
+            </a>
+        </div>
+        <div class="data-line">
+            <a class="data-box">
+                <div class="data-img">
+                    <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                    <span class="price"><em>¥<i>16999</i></em>起</span>
+                </div>
+                <div class="data-intro">
+                    <div class="tit" title="2017年4月20日 上海-济州-冲绳-上海 ">2017年4月20日 上海-济州-冲绳-上海上海-济州-冲绳-上海上海-济州-冲绳-上海 </div>
+                    <div class="label"><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span><span>请假出游</span></div>
+                </div>
+            </a>
+        </div> -->
+    </div>
+    <div class="page-img">
+        <div class="page-bgColor"></div>
+        <img class="big-img" src="<%=ctx.imgPage%>20170119-img3.png" alt="">
+    </div>
+    <div class="detail-unit unit-in ">
+        <!-- <div class="in-data clearfix">
+            <div class="in-box">
+                <a href="" class="in-link">
+                    <div class="in-img">
+                        <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                        <span class="price"><em>¥<i>16999</i></em>起</span>
+                    </div>
+                    <div class="in-intro">
+                        <p class="tit">海洋量子号 4月30日</p>
+                        <p class="tit">上海-济州-福冈-上海 5晚6日</p>
+                    </div>
+                </a>
+            </div>
+            <div class="in-box">
+                <a href="" class="in-link">
+                    <div class="in-img">
+                        <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                        <span class="price"><em>¥<i>16999</i></em>起</span>
+                    </div>
+                    <div class="in-intro">
+                        <p class="tit">海洋量子号 4月30日</p>
+                        <p class="tit">上海-济州-福冈-上海 5晚6日</p>
+                    </div>
+                </a>
+            </div>
+            <div class="in-box">
+                <a href="" class="in-link">
+                    <div class="in-img">
+                        <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                        <span class="price"><em>¥<i>16999</i></em>起</span>
+                    </div>
+                    <div class="in-intro">
+                        <p class="tit">海洋量子号 4月30日</p>
+                        <p class="tit">上海-济州-福冈-上海 5晚6日</p>
+                    </div>
+                </a>
+            </div>
+            <div class="in-box">
+                <a href="" class="in-link">
+                    <div class="in-img">
+                        <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                        <span class="price"><em>¥<i>16999</i></em>起</span>
+                    </div>
+                    <div class="in-intro">
+                        <p class="tit">海洋量子号 4月30日</p>
+                        <p class="tit">上海-济州-福冈-上海 5晚6日</p>
+                    </div>
+                </a>
+            </div>
+            <div class="in-box">
+                <a href="" class="in-link">
+                    <div class="in-img">
+                        <img src="http://pic4.40017.cn/cruises/2017/01/10/16/FM2wK4_420x272_00.jpg.webp" alt="">
+                        <span class="price"><em>¥<i>16999</i></em>起</span>
+                    </div>
+                    <div class="in-intro">
+                        <p class="tit">海洋量子号 4月30日</p>
+                        <p class="tit">上海-济州-福冈-上海 5晚6日</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="in-more">
+            <a href="" class="link">查看更多</a>
+        </div> -->
+    </div>
+    <div class="page-img">
+        <img class="big-img" src="<%=ctx.imgPage%>20170119-img4.png" alt="">
+    </div>
+    <div class="page-img page-5">
+        <img class="big-img" src="<%=ctx.imgPage%>20170119-img5.png" alt="">
+    </div>
+    <div class="detail-unit unit-note">
+        <div class="note-link">
+            <a href="/zhuanti/peiban/upload/" class="link">上传我的全家福</a>
+            <!-- <a href="youlun/zhuanti/peiban/upload/" class="link">上传我的全家福</a> -->
+        </div>
+        <div class="note-intro">
+            <span class="tit">上传全家福，有惊喜：</span>
+            <p><span class="bold">惊喜一：</span>
+                <br>春节期间，参与上传全家福活动的用户购买邮轮航次可赠送<span class="bold">价值129元的贺岁礼品血压计</span>或<span class="bold">价值109元的贺岁礼品料理机</span>。</p>
+            <p><span class="bold">惊喜二：</span>
+                <br>上传的全家福照片还将打印出来用<span class="bold">邮轮定制的相框</span>装裱起来邮寄给您的父母，作为年后送给他们的惊喜和陪伴。</p>
+        </div>
+    </div>
+    <script type="text/html" id="dataTemplate">
+        <a {0} class="data-box">
+            <div class="data-img">
+                <img class="nsrc-img" data-nsrc="{1}" alt="">
+                <span class="price"><em>¥<i>{2}</i></em>起</span>
+            </div>
+            <div class="data-intro">
+                <div class="tit" title="{3}">{3}</div>
+                <div class="label">{4}</div>
+            </div>
+            {5}
+        </a>
+    </script>
+    <script type="text/html" id="linkTemplate">
+        <div class="in-box">
+            <a {0} class="in-link">
+                <div class="in-img">
+                    <img class="nsrc-img" data-nsrc="{1}" alt="">
+                    <span class="price"><em>¥<i>{2}</i></em>起</span>
+                </div>
+                <div class="in-intro">
+                    <p class="tit">{3}</p>
+                    <p class="tit">{4}</p>
+                </div>
+                {5}
+            </a>
+        </div>
+    </script>
+</div>

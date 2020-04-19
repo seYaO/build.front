@@ -1,0 +1,118 @@
+//loading
+.loading_div {
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: #fff;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    .loader {
+        position: absolute;
+        text-align: center;
+        width: px(300);
+        // height:px(44);
+        // line-height:px(44);
+        left: 50%;
+        top: 50%;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        >em {
+            display: block;
+            background: url('http://file.40017.cn/youlun/img/modules/cruiseSale/images/loading_pics-98f56ce2b7.png') no-repeat 0 0;
+            // width: px(132);
+            // height: px(132);
+            // background-size:px(660) px(660);
+            margin: 0 auto;
+            width: 66px;
+            height: 66px;
+            background-size: 330px 330px;
+        }
+        >span {
+            display: block;
+            // font-size:px(28);
+            // line-height:px(32);
+            color: #999;
+            font-size: 14px;
+            line-height: 16px;
+        }
+    }
+    $n: 0;
+    @for $i from 0 to 5 {
+        @for $j from 0 to 5 {
+            @if $n < 22 {
+                .loader.loader_an_#{$n} {
+                    >em {
+                        // background-position:px(-$j * 132) px(-$i * 132);
+                        background-position:#{-$j * 66}px #{-$i * 66}px;
+                    }
+                }
+                $n: $n+1;
+            }
+        }
+    }
+}
+
+//二倍屏
+[data-dpr="2"] {
+    .loading_div {
+        .loader {
+            >em {
+                width: #{66*2}px;
+                height: #{66*2}px;
+                background-size:#{330*2}px #{330*2}px;
+            }
+            >span {
+                font-size:#{14*2}px;
+                line-height:#{16*2}px;
+            }
+        }
+        $n: 0;
+        @for $i from 0 to 5 {
+            @for $j from 0 to 5 {
+                @if $n < 22 {
+                    .loader.loader_an_#{$n} {
+                        >em {
+                            // background-position:px(-$j * 132) px(-$i * 132);
+                            background-position:#{-$j * 66 * 2}px #{-$i * 66 * 2}px;
+                        }
+                    }
+                    $n: $n+1;
+                }
+            }
+        }
+    }
+}
+
+//三倍屏
+[data-dpr="3"] {
+    .loading_div {
+        .loader {
+            >em {
+                width: #{66*3}px;
+                height: #{66*3}px;
+                background-size:#{330*3}px #{330*3}px;
+            }
+            >span {
+                font-size:#{14*3}px;
+                line-height:#{16*3}px;
+            }
+        }
+        $n: 0;
+        @for $i from 0 to 5 {
+            @for $j from 0 to 5 {
+                @if $n < 22 {
+                    .loader.loader_an_#{$n} {
+                        >em {
+                            // background-position:px(-$j * 132) px(-$i * 132);
+                            background-position:#{-$j * 66 * 3}px #{-$i * 66 * 3}px;
+                        }
+                    }
+                    $n: $n+1;
+                }
+            }
+        }
+    }
+}

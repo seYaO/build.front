@@ -1,0 +1,189 @@
+<%?
+    ctx.webApiUrl = "http://tcinnerapi.17usoft.com/cruise/front/api";
+    ctx.request(ctx.webApiUrl+"/RegionInfo/GetCruiseAreaInfo?areaType=2&ip=" + ctx.reqIPAddr,function(err,httpResponse,body){
+        if(err || httpResponse.statusCode!=200){
+            ctx.data = {};
+        }else{
+            try{
+                ctx.data=body;
+                ctx.data=JSON.parse(ctx.data);
+            }catch(e){
+                ctx.data=JSON.parse('{}');
+            }
+        }
+        ctx.data = ctx.data.Data ? ctx.data.Data : {};//防止报错 最好做下控制判断
+        aries();
+    });
+%>
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>邮轮特卖汇</title>
+    <meta name='keywords' content='邮轮、特卖、便宜、集合页' />
+    <meta name='description' content='同程邮轮特卖汇，汇集全站有优惠~' />
+    <meta name="wap-font-scale" content="no">
+    <!--UC强制全屏-->
+    <!--QQ强制全屏-->
+    <meta name="x5-fullscreen" content="true" />
+    <!--UC应用模式-->
+    <meta name="browsermode" content="application" />
+    <!--QQ应用模式-->
+    <link rel="stylesheet" type="text/css" href="//css.40017.cn/touch/public/common/0.2.3/common.css?v=03021706" />
+    <script src="//js.40017.cn/cn/min/??/touch/cn/y/common/flexible.js?v=03161707"></script>
+    <link rel="stylesheet" type="text/css" href="/cruiseSale.css" />
+    <!-- update -->
+</head>
+
+<body>
+    <div class="content none">
+        <div class="top">
+            <img defaultSrc="/modules/cruiseSale/images/top_img.jpg" src="/modules/cruiseSale/images/top_img.jpg" class="top_img top_img_default" alt="" />
+            <!--区域切换按钮-->
+            <div class="area_change_div none">
+                <span class="txt_sp">华东</span>
+            </div>
+        </div>
+        <div class="cons_div">
+            <div class="tab_con_div none">
+                <div class="bus_cons clearfix ">
+                    <div class="buts buts_left but_yltm" _sk="divs_con_temai" onclick="_cruiseTrackEvent(68,567);"></div>
+                    <div class="buts buts_right but_jchd" _sk="divs_con_goodAct" onclick="_cruiseTrackEvent(68,568);"></div>
+                </div>
+            </div>
+        </div>
+        <!--邮轮特卖-->
+        <div class="divs_con divs_con_temai none">
+            <div class="act_rule_con rule_temai_rule none" _moduleId="887">
+                <div class="div_tit">
+                    <h4 class="tit">
+						<span class="sp_txt">活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则活动规则</span>
+					</h4>
+                </div>
+                <div class="tsxt_show">
+                    <div class="ts_sp hide_more">
+                        <p>1.活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容活动规则内容</p>
+                    </div>
+                </div>
+                <a class="more_a has_more" href="javascript:void(0);"></a>
+            </div>
+            <!--今日疯抢-->
+            <div class="scon_div scon_div_jrfq none" _moduleId="884">
+                <div class="d_tit">
+                    <img class="tit_img_s" src="/modules/cruiseSale/images/img_tit_jrfq.png" alt="" class="src">
+                    <p class="fu_tit none"><span class="txt"><em class="em_s em_s_left"></em><span class="show_txt"></span><em class="em_s em_s_right"></em></span></p>
+                </div>
+                <div class="timer_con">
+                    <div class="t_c">
+                        <span class="t_type_txt">距离抢购结束</span>
+                        <span class="t_tysd">
+							<em class="em_s em_DD">00</em>天
+							<em class="em_s em_HH">00</em>:
+							<em class="em_s em_MM">00</em>:
+							<em class="em_s em_SS">00</em>
+						</span>
+                    </div>
+                </div>
+                <div class="con_list"></div>
+            </div>
+            <!--劲爆尾仓-->
+            <div class="scon_div scon_div_jbwc none" _moduleId="882">
+                <div class="d_tit">
+                    <img class="tit_img_s" src="/modules/cruiseSale/images/img_tit_jbwc.png" alt="" class="src">
+                    <p class="fu_tit none"><span class="txt"><em class="em_s em_s_left"></em><span class="show_txt"></span><em class="em_s em_s_right"></em></span></p>
+                </div>
+                <div class="con_list"></div>
+            </div>
+            <!--热销严选-->
+            <div class="scon_div scon_div_rxyx none" _moduleId="883">
+                <div class="d_tit">
+                    <img class="tit_img_s" src="/modules/cruiseSale/images/img_tit_rxyx.png" alt="" class="src">
+                    <p class="fu_tit none"><span class="txt"><em class="em_s em_s_left"></em><span class="show_txt"></span><em class="em_s em_s_right"></em></span></p>
+                </div>
+                <div class="con_list"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--loading 效果-->
+    <div class="loading_div" ontouchmove="return false;">
+        <!-- <div class="loader">加载中...</div> -->
+        <div class="loader">
+            <em></em>
+            <span>努力加载中</span>
+        </div>
+    </div>
+
+    <!--顶部按钮-->
+    <div id="toTop" class="none"></div>
+    <!--弹框 S-->
+    <div class="shadow_bg none"></div>
+    <!--区域弹框-->
+    <div class="area_box none">
+        <span class="close_but"></span>
+        <ul class="area_ul_list">
+            <li class="act" _areaid="10" _showtxt="华东">华东</li>
+            <li _areaid="11" _showtxt="华南">华南</li>
+            <li _areaid="12" _showtxt="华北">华北</li>
+            <li _areaid="13" _showtxt="华中">华中</li>
+            <li _areaid="14" _showtxt="华西">华西</li>
+        </ul>
+    </div>
+    <!-- 隐藏域 -->
+    <input type="hidden" id="hidAreaId" value="<%=ctx.data.AreaId || 10 %>" />
+    <input type="hidden" id="hidCityId" value="<%=ctx.data.CityId || 226 %>" />
+    <input type="hidden" id="hidIp" value="<%=ctx.reqIPAddr%>" />
+    <!-- 隐藏域 E-->
+    <!-- 微信分享 -->
+    <div id="wxShare" style="display: none;">
+        <input type="hidden" name="tcshareurl" value="https://m.ly.com/youlun/cruisesale?lid=403">
+        <input type="hidden" name="tcshareimg" value="/modules/cruiseSale/images/wxShare.jpg">
+        <input type="hidden" name="tcsharetext" value="同程邮轮特卖汇，汇聚全站最好玩最优惠的航次！">
+        <input type="hidden" name="tcDesc" value="同程邮轮特卖汇，汇聚全站最好玩最优惠的航次！">
+    </div>
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/zepto.20140212.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/touch/public/common/0.1.1/common.js?v=03161523"></script>
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/wxshare/wxshare.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/y/14/ms/getClientinfo.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/cn/y/16/z/jobNumber/jobNumber.js?v=1606153958"></script>
+    <script type="text/javascript" src="//js.40017.cn/touch/hb/c/webp/webpjs.min.js?v=2015101308"></script>
+    <script src="//js.40017.cn/cn/min/??/touch/public/lazyload/0.0.1/lazyload.js"></script>
+    <!--专题统计-->
+    <script type="text/javascript">
+    var _sid = 280,
+        _pid = 1,
+        _ptype = 0;
+    </script>
+    <script src="//js.40017.cn/cn/min/??/cn/y/16/spe_sta/speSta.1.0.js?v=2016030306"></script>
+    <!--当前页面脚本-->
+    <script src="/cruiseSale.js"></script>
+    <script type='text/javascript'>
+    var _tcq = _tcq || [];
+    var _timediff = -1;
+    if (typeof _tcopentime != "undefined") {
+        _timediff = new Date().getTime() - _tcopentime;
+    }
+    _tcq.push(['_serialid', '0']); //如果是下单页面，需要传入订单号，多个订单号用下划分割 "_"  一个项目一个下单页
+    _tcq.push(['_vrcode', '10004-2007-0']);
+    _tcq.push(['_refId', '10758821']); //Refid需要传入来源refid，不同平台的读取方法不同，项目自己看
+    _tcq.push(['_userId', 0]); //传入访问者中登录的会员ID，未登录的为0
+    _tcq.push(['_openTime', _timediff]);
+    _tcq.push(['_trackPageview', '/邮轮/天天特惠列表页']); //虚拟url，项目自己定义,如:/Touch站/首页
+    _tcq.push(['_qdid', getQdid()]); //市场渠道id（用于区分市场中心各个部门）
+    </script>
+    <!--接入精准营销统计 -->
+    <script type='text/javascript' src="//vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/p/hijack/hijack.2.0.0.js?v=2016082201"></script>
+    <script type="text/javascript">
+    fed_hijack.init({
+        whiteList: "cpic.com|ssgdfs.com|visitkorea.or.kr|ocvb.or.jp|jeju.go.kr|welcome2japan.cn|visitseoul.net|guolv.com|abroad.cncn.com|lavago.com|ship.mangocity.com|zglxw.com|9191fh.com|chunyun.cn|keyunzhan.com|uzai.com|lvmama.com|h5.ffan.com|qlogo.cn",
+        projectTag: "youlun",
+        pageName: "",
+        platform: "touch",
+        removeError: false
+    });
+    </script>
+</body>
+
+</html>

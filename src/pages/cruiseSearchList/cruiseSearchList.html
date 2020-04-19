@@ -1,0 +1,451 @@
+<%
+	ctx.redirectUrl = '/youlun/cruise-line-{0}-{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}-{9}.html?'+ctx.querystring.stringify(ctx.query);
+    ctx.lineUrlParam = [];
+	if(ctx.params['$1']){
+        ctx.lineUrlParam = ctx.params["$1"].split('-');
+    }
+	switch(ctx.lineUrlParam.length){
+        case 10:
+            break;
+        case 0:
+            break;
+        default:
+            ctx.redirect(ctx.redirectUrl
+                 .replace('{0}',ctx.lineUrlParam[0] || 0) //RouteLineId 航线ID
+                 .replace('{1}',ctx.lineUrlParam[1] || 0) //BeginCity 出发城市
+                 .replace('{2}',ctx.lineUrlParam[2] || 0) //TravelDays 行程天数
+                 .replace('{3}',ctx.lineUrlParam[3] || 0) //Company 邮轮公司
+                 .replace('{4}',ctx.lineUrlParam[4] || 0) //month 月份
+                 .replace('{5}',ctx.lineUrlParam[5] || 0) //minprice  价格区间  最小价格
+                 .replace('{6}',ctx.lineUrlParam[6] || 0) //maxprice  价格区间  最高价格
+                 .replace('{7}',ctx.lineUrlParam[7] || 0) //ShipId   船ID
+                 .replace('{8}',ctx.lineUrlParam[8] || 0) //subRouteId
+                 .replace('{9}','1') //IsLyLineInfo  是否同程专线 1（默认）不是同程专线  2：是同程专线
+            );
+            break;
+    }
+	if(!ctx.lineUrlParam[0] && ctx.query.RouteLineId){
+	ctx.lineUrlParam[0] = ctx.query.RouteLineId;
+	}
+	if(!ctx.lineUrlParam[3] && ctx.query.Company){
+	ctx.lineUrlParam[3] = ctx.query.Company;
+	}
+	if(!ctx.lineUrlParam[7] && ctx.query.ShipId){
+	ctx.lineUrlParam[7] = ctx.query.ShipId;
+	}
+	
+%>
+    <%?
+if(!ctx.params) return false;
+ctx.requestUrl = 'http://m.ly.com/youlun/json/LowPriceLines.html?RouteLineId='+ctx.lineUrlParam[0]+'&BeginCity=&Month='+ctx.lineUrlParam[4]+'&Company='+ctx.lineUrlParam[3]+'&TravelDays='+ctx.lineUrlParam[2]+'&SubRouteId='+ctx.lineUrlParam[8]+'&ShipId='+ctx.lineUrlParam[7];
+ctx.request(ctx.requestUrl,function(err,httpResponse,body){
+if(err || httpResponse.statusCode!=200) return aries();
+try{
+    ctx.BasicData=JSON.parse(body);
+}catch(e){
+    ctx.BasicData=JSON.parse('{}');
+}
+aries();
+});
+%>
+
+        <%
+ctx.rname = [];
+if(ctx.params){
+    if(ctx.lineUrlParam[3]>0){
+        if(ctx.lineUrlParam[7]>0 && ctx.BasicData.cruiseList && ctx.BasicData.cruiseList.ShipInfos){
+            ctx.BasicData.cruiseList.ShipInfos.forEach(function(item,index){
+                if(item.ShipId == ctx.lineUrlParam[7]){
+                    ctx.rname.push(item.ShipName);
+                }
+            })
+        }
+
+        if(ctx.BasicData.cruiseList && ctx.BasicData.cruiseList.Companys){
+            ctx.BasicData.cruiseList.Companys.forEach(function(item,index){
+                if(item.CompanyId == ctx.lineUrlParam[3]){
+                    ctx.rname.push(item.CompanyName);
+                }
+            })
+        }
+    }
+
+    if(ctx.lineUrlParam[1]>0 && ctx.BasicData.cruiseList && ctx.BasicData.cruiseList.RoutePorts){
+        ctx.BasicData.cruiseList.RoutePorts.forEach(function(item,index){
+            if(item.PtId == ctx.lineUrlParam[1]){
+                ctx.rname.push(item.PtName+"出发");
+            }
+        })
+    }    
+
+    if(ctx.lineUrlParam[0]>0 && ctx.BasicData.cruiseList && ctx.BasicData.cruiseList.CrusieRouteLines && ctx.BasicData.cruiseList.CrusieRouteLines.length){
+        ctx.BasicData.cruiseList.CrusieRouteLines.forEach(function(item,index) {
+            if(item.CrusieRouteLineId != ctx.lineUrlParam[0]) return false;
+            if(ctx.lineUrlParam[8]>0 && item.CruiseSubRouteList && item.CruiseSubRouteList.length >0){
+                item.CruiseSubRouteList.forEach(function(itemI,indexI){
+                    if(itemI.CruiseSubRouteLineId != ctx.lineUrlParam[8]) return false;
+                    ctx.rname.push(itemI.CruiseSubRouteLineName + '航线');
+                })
+            }else{
+                ctx.rname.push(item.CrusieRouteLineName + '航线');
+            }
+        })
+    }
+
+    if(ctx.lineUrlParam[4] > 0 && String(ctx.lineUrlParam[4]).length > 5) {
+        let dateName = String(ctx.lineUrlParam[4]).substr(4,2);
+        if(dateName != 10 || dateName != 11 || dateName != 12){
+            dateName = dateName.replace('0','') + '月';
+        }else{
+            dateName += '月';
+        }
+        ctx.rname.push(dateName);
+    }
+
+    if(ctx.lineUrlParam[2] > 0){
+        let saildateName = ctx.lineUrlParam[2]*1;
+        switch(saildateName){
+            case 1:
+                saildateName = "1-3天";
+                break;
+            case 2:
+                saildateName = "4-7天";
+                break;
+            case 3:
+                saildateName = "8-14天";
+                break;
+            case 4:
+                saildateName = "14天以上";
+                break;
+        }
+        ctx.rname.push(saildateName);
+    }
+}
+
+//根据航线id 筛选出航线名称
+let rname1 = '';
+if(ctx.rname.length>1){
+    rname1 = ctx.rname[0] + ctx.rname[1] + ''; 
+}else if(ctx.rname.length == 1){
+    rname1 = ctx.rname[0];
+}
+
+ctx.title = rname1 + "邮轮旅游_" + rname1 + "航线邮轮_" + rname1 + "邮轮价格_预订_同程旅游";
+%>
+
+            <!DOCTYPE html>
+            <html>
+
+            <head>
+                <!-- meta信息，可维护 -->
+                <meta charset="UTF-8" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+                <meta content="telephone=no" name="format-detection" />
+                <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+                <!--cntouchcommoncss.leonid.start.v11753110906101112-->
+                <script type="text/javascript">
+                    var _tcopentime = new Date().getTime();
+                    var _hmt = _hmt || [];
+                </script>
+                <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+                <link rel="stylesheet" type="text/css" href="//css.40017.cn/touch/public/common/0.2.5/common.css?v=07121704" />
+                <!--cntouchcommoncss.leonid.end-->
+                <script type="text/javascript">
+                    var _tcopentime = new Date().getTime();
+                    var _hmt = _hmt || [];
+                </script>
+                <title>
+                    <%= ctx.title %>
+                </title>
+                <!-- 公共样式表 -->
+                <!-- 页面样式表 -->
+
+                <!-- 页面样式表 -->
+                <!--UC强制全屏-->
+                <meta name="full-screen" content="yes">
+                <!--QQ强制全屏-->
+                <meta name="x5-fullscreen" content="true">
+                <!--UC应用模式-->
+                <meta name="browsermode" content="application">
+                <!--QQ应用模式-->
+                <meta name="x5-page-mode" content="app">
+                <meta name="keywords" content="精选航线、邮轮线路、邮轮价格" />
+                <meta name="description" content="同程旅游为您推荐最新邮轮线路及价格查询，专业的邮轮旅游服务团队，体验邮轮魅力之旅尽在同程旅游。" />
+                <link rel="stylesheet" type="text/css" href="//css.40017.cn/touch/public/page/0.0.2/page.css" />
+                <link rel="stylesheet" type="text/css" href="//css.40017.cn/touch/public/dataLoader/0.0.1/dataLoader.css?v=20140808" />
+
+                <link rel="stylesheet" href="/cruiseSearchList.css" />
+
+                <style type="text/css">
+                    .header-menu,
+                    .header-menu.open {
+                        text-align: left;
+                    }
+                    
+                    .header {
+                        background-color: transparent;
+                    }
+                </style>
+            </head>
+
+            <body onselectstart="return false;">
+
+                <!-- 公共页头 -->
+                <div id="publicNotice" data-channel="youlun"></div>
+                <!-- 页面内容块 -->
+
+                <input type="hidden" data-url="/youlun/json/LowPriceLines.html" id="showline" />
+                <input type="hidden" id="hidCityId" value="226" />
+                <div id="mainPage">
+                    <input type="hidden" id="crusieRouteLineId" value="<%= ctx.lineUrlParam[0] || ((ctx.lineUrlParam.length>0 || ctx.query.Cruisedest) ? 0 : 3) %>" />
+                    <input type="hidden" id="StartcityId" value="<%= ctx.lineUrlParam[1] || 0 %>" />
+                    <input type="hidden" id="days" value="<%= ctx.lineUrlParam[2] || 0 %>" />
+                    <input type="hidden" id="companyId" value="<%= ctx.lineUrlParam[3] || 0 %>" />
+                    <input type="hidden" id="month" value="<%= ctx.lineUrlParam[4] || 0 %>" />
+                    <input type="hidden" id="minprice" value="<%= ctx.lineUrlParam[5] || 0 %>" />
+                    <input type="hidden" id="maxprice" value="<%= ctx.lineUrlParam[6] || 0 %>" />
+                    <input type="hidden" id="subShipId" value="<%= ctx.lineUrlParam[7] || 0 %>" />
+                    <input type="hidden" id="subRouteId" value="<%= ctx.lineUrlParam[8] || 0 %>" />
+                    <input type="hidden" id="subIsLyLine" value="<%= ctx.lineUrlParam[9] == 2 ? ctx.lineUrlParam[9] : 1 %>" />
+
+                    <input type="hidden" id="sortType" value="4" />
+                    <input type="hidden" id="dest" value="<%= ctx.query.Cruisedest || '' %>" />
+                    <input type="hidden" id="prop" value="0" />
+                    <input type="hidden" id="isBlh" value="<%= ctx.query.IsTcBlh || 0 %>" />
+
+                    <div class="filter-wrap">
+                        <div class="search-box">
+                            <a class="search-btn" href="javascript:;">目的地、船队或关键词</a>
+                        </div>
+
+                        <div class="filter-box">
+                            <div class="filter-title">
+                                <a class="" href="javascript:;">全部航线</a>
+                                <a href="javascript:;">全部船队</a>
+                                <a href="javascript:;">筛选</a>
+                                <a href="javascript:;">智能排序</a>
+                            </div>
+                            <div class="filter-dropdown">
+                                <div class="filter-line none">
+                                </div>
+                                <div class="filter-ships none">
+                                    <div class="fs-left">
+                                    </div>
+                                    <div class="fs-right">
+                                    </div>
+                                </div>
+                                <div class="filter-sub none">
+                                    <div class="fsub-selected">
+                                    </div>
+                                    <div class="fsub-option">
+                                        <div class="fsub-left">
+                                        </div>
+                                        <div class="fsub-right">
+                                        </div>
+                                    </div>
+                                    <div class="fsub-btn">
+                                        <a href="javascript:;" class="btn-reset">重置全部</a>&nbsp;&nbsp;
+                                        <a href="javascript:;" class="btn-submit">确定</a>
+                                    </div>
+                                </div>
+                                <div class="filter-sort none">
+                                    <a href="javascript:;" val-attr="4" class="active">销量优先</a>
+                                    <a href="javascript:;" val-attr="1">航期最近</a>
+                                    <a href="javascript:;" val-attr="2">价格最低</a>
+                                    <a href="javascript:;" val-attr="5">好评优先</a>
+                                    <a href="javascript:;" val-attr="6">离我最近</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="layer none"></div>
+                    <div class="pro2"></div>
+                </div>
+                <div id="searchPage" class="page">
+                    <div class="search">
+                        <div class="search-ipt">
+                            <form action="/youlun/CruiseSearchList.html" method="get" autocapitalize="off" autocorrect="off" autocomplete="off">
+                                <input type="search" id="Cruisedest" name="Cruisedest" placeholder="目的地、船队或关键词" autocapitalize="off" autocorrect="off" autocomplete="off">
+                            </form>
+                            <a class="none search-clear" href="javascript:;"></a>
+                            <a href="javascript:;" class="search-back">取消</a>
+                        </div>
+                        <div class="search-rs"></div>
+                        <dl class="search-history">
+                            <ul>
+                                <li attr-text="韩国">
+                                    <a href="/youlun/CruiseSearchList.html?Cruisedest=韩国" attr-text="韩国">韩国</a>
+                                    <a href="javascript:;"></a>
+                                </li>
+                            </ul>
+                            <a href="javascript:;">清除历史记录</a>
+                        </dl>
+                    </div>
+                    <div class="module-route">
+                        <p class="route-title route-histroy">历史记录</p>
+                        <div class="route-list clearfix" id="routeList">
+
+                        </div>
+                        <p class="route-title route-hotline">热门线路</p>
+                        <div class="route-list clearfix" id="routeList">
+                            <a href="/youlun/CruiseSearchList.html?RouteLineId=3&lid=76">日韩航线</a>
+                            <a href="/youlun/CruiseSearchList.html?RouteLineId=8&lid=76">国内航线</a>
+                            <a href="/youlun/CruiseSearchList.html?RouteLineId=317&lid=76">南极航线</a>
+                            <a href="/youlun/CruiseSearchList.html?RouteLineId=1&lid=76">东南亚航线</a>
+                            <a href="/youlun/CruiseSearchList.html?RouteLineId=137&lid=76">加勒比海航线</a>
+                            <a href="/youlun/CruiseSearchList.html?RouteLineId=134&lid=76">港澳台航线</a>
+                        </div>
+
+                        <p class="route-title route-hotship">热门船队</p>
+                        <div class="route-list clearfix" id="shipList">
+                            <a href="/youlun/CruiseSearchList.html?Company=3&ShipId=123&lid=76">赛琳娜号</a>
+                            <a href="/youlun/CruiseSearchList.html?Company=42&ShipId=207&lid=76">新世纪号</a>
+                            <a href="/youlun/CruiseSearchList.html?Company=3&ShipId=95&lid=76">大西洋号</a>
+                            <a href="/youlun/CruiseSearchList.html?Company=2&ShipId=162&lid=76">海洋量子号</a>
+                            <a href="/youlun/CruiseSearchList.html?Company=2&ShipId=313&lid=76">海洋赞礼号</a>
+                            <a href="/youlun/CruiseSearchList.html?Company=2&ShipId=44&lid=76">海洋水手号</a>
+                        </div>
+                    </div>
+                </div>
+                <a class="back"></a>
+                <span class="total"></span>
+                <input id="commonDownload" type="hidden" value="{&quot;whiteList&quot;:&quot;cpic.com|ssgdfs.com|visitkorea.or.kr|ocvb.or.jp|jeju.go.kr|welcome2japan.cn|visitseoul.net|guolv.com|abroad.cncn.com|lavago.com|ship.mangocity.com|zglxw.com|9191fh.com|chunyun.cn|keyunzhan.com|uzai.com|lvmama.com|h5.ffan.com|qlogo.cn&quot;,&quot;removeError&quot;:&quot;true&quot;,&quot;channel&quot;:&quot;youlun&quot;,&quot;page&quot;:&quot;youlun-list&quot;}"
+                />
+                <!-- 公共页脚 -->
+
+
+
+                <input type="hidden" id="appUpLayerConfig" value='{"projectName":"youlun","img":"//img1.40017.cn/touch/cn/cruise/home/youlunad.png","url":"//m.17u.cn/client/qr/36019733/tchome|tchome"}' />
+                <!--Trace-->
+                <script type="text/javascript">
+                    var toptitle = "低价邮轮早知道";
+                    var pageview = '/邮轮/低价邮轮早知道';
+
+                    var backlink = '';
+                </script>
+                <!--cntouchcommonjs.leonid.start.v11753110906101112-->
+
+                <script type="text/javascript" src="//js.40017.cn/touch/public/zepto.1.2.0.js"></script>
+                <script type="text/javascript" src="//js.40017.cn/touch/public/common/0.7.2/common.js?v=100914141"></script>
+
+                <script type="text/javascript">
+                    var channels = {
+                        "selftravel": "周边游",
+                        "guoneiyou": "国内游",
+                        "dujia": "出境游",
+                        "youlun": "邮轮",
+                        "scenery": "景点门票",
+                        "hotel": "酒店预订",
+                        "traintickets": "火车票",
+                        "wl": "玩乐",
+                        "movie": "电影票",
+                        "flight": "国内机票预订",
+                        "iflight": "国际机票预订",
+                        "none": "同程旅游"
+                    };
+                    try {
+                        if (toptitle && toptitle.length > 0) {
+                            $(".page-header h2").html(toptitle);
+                        }
+                    } catch (e) {
+                        var t_tag = JSON.parse($("#commonDownload").val() || '{"channel":"none"}').channel || "none";
+                        $(".page-header h2").html(channels[t_tag]);
+                    }
+                    try {
+                        if (backlink && backlink.length > 0) {
+                            $(".page-header .page-back").attr("href", backlink);
+                        }
+                    } catch (e) {
+                        $(".page-header .page-back").css("display", "none");
+                    }
+                    if (typeof pageview == "undefined") {
+                        var pageview = '/';
+                        if (pageview == "/") {
+                            pageview += document.title;
+                        }
+                    }
+
+                    var openid = getopenid() ? getopenid() + '||' : '';
+                    pageview = openid + pageview;
+                </script>
+                <script src="//js.40017.cn/touch/hb/c/2/js/fedapm.1.2.0.js?v2016121602"></script>
+                <script>
+                    $(function() {
+                        var _config = document.getElementById('commonDownload'),
+                            commonValue;
+
+                        if (_config) {
+                            try {
+                                commonValue = JSON.parse(_config.value);
+                                if (commonValue.removeError !== undefined && commonValue.removeError.toString() !== '') {
+                                    fed_hijack.init({
+                                        whiteList: commonValue.whiteList,
+                                        projectTag: commonValue.channel,
+                                        removeError: commonValue.removeError.toString() === "true"
+                                    });
+                                }
+
+                                if (commonValue && commonValue['channel'] && commonValue['page']) {
+                                    fedApm.start({
+                                        project: commonValue['channel'],
+                                        pageName: commonValue['page'],
+                                        errStat: 1,
+                                        resTimingStat: 1,
+                                        ajaxTiming: 1
+                                    });
+                                }
+
+                            } catch (e) {}
+                        }
+                    })
+                </script>
+                <script type="text/javascript">
+                    var _tcq = _tcq || [];
+                    var _timediff = -1;
+                    if (typeof _tcopentime != "undefined") {
+                        _timediff = new Date().getTime() - _tcopentime;
+                    }
+                    _tcq.push(['_serialid', '0']);
+                    _tcq.push(['_vrcode', '10004-2007-0']);
+                    _tcq.push(['_refId', getRefid()]);
+                    _tcq.push(['_userId', getNmemberId()]);
+                    _tcq.push(['_openTime', _timediff]);
+                    _tcq.push(['_trackPageview', pageview]);
+                    _tcq.push(['_resId', getProId()]);
+                    _tcq.push(['_qdid', getQdid()]);
+                </script>
+                <script type='text/javascript' src="//vstlog.17u.cn/vst.ashx" charset="utf-8"></script>
+                <script type='text/javascript' src="//js.40017.cn/cn/min/??/touch/public/common/download/common-download.0.0.7.js" charset="utf-8"></script>
+                <!--cntouchcommonjs.leonid.end-->
+
+                <script type="text/javascript" src="//js.40017.cn/touch/public/page/0.0.2/page.js"></script>
+                <script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/public/lazyload/0.0.1/lazyload.js,/touch/public/dataLoader/0.0.1/dataLoader.js?v=20140808"></script>
+                <script type="text/javascript" src="//js.40017.cn/touch/hb/c/webp/webpjs.min.js?v=2015101302"></script>
+                <script type="text/javascript" src="/cruiseSearchList.js"></script>
+
+                <!--Baidu-->
+                <script>
+                    var _hmt = _hmt || [];
+                    (function() {
+                        var hm = document.createElement("script");
+                        hm.src = "//hm.baidu.com/hm.js?ca5679d0986b1f42f800098b798c7008";
+                        var s = document.getElementsByTagName("script")[0];
+                        s.parentNode.insertBefore(hm, s);
+                    })();
+                </script>
+                <script src="//js.40017.cn/cn/min/??/touch/hb/p/hijack/hijack.2.0.1.js?v=201609291437"></script>
+                <script type="text/javascript">
+                    fed_hijack.init({
+                        whiteList: "cpic.com|ssgdfs.com|visitkorea.or.kr|ocvb.or.jp|jeju.go.kr|welcome2japan.cn|visitseoul.net|guolv.com|abroad.cncn.com|lavago.com|ship.mangocity.com|zglxw.com|9191fh.com|chunyun.cn|keyunzhan.com|uzai.com|lvmama.com|h5.ffan.com|qlogo.cn",
+                        projectTag: "youlun",
+                        pageName: "",
+                        platform: "touch",
+                        removeError: false
+                    });
+                </script>
+            </body>
+
+            </html>

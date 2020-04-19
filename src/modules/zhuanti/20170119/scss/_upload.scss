@@ -1,0 +1,227 @@
+@import "_variable";
+html,
+body {
+    background-color: #d23232;
+}
+
+address,
+cite,
+dfn,
+em,
+var,
+i {
+    font-style: normal;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+// upload
+.content {
+    position: relative;
+    background-color: #d23232;
+    // height: 100%;
+    // padding-bottom: 150rem/$baseNum;
+    img {
+        display: block;
+        border: 0;
+    }
+}
+
+.big-img {
+    position: relative;
+    width: 100%;
+    display: block;
+    z-index: 2;
+}
+
+.page-bottom {
+    // position: absolute;
+    // bottom: 0;
+    // width: 100%;
+}
+
+.info- {
+    &wrap {
+        width: 460rem/$baseNum;
+        margin: 0 auto;
+        padding: 30rem/$baseNum 0 90rem/$baseNum;
+    }
+    &box {
+        padding: 10rem/$baseNum 0;
+        color: #fdde76;
+        @include display-box();
+        .title {
+            display: block;
+            width: 160rem/$baseNum;
+            font-size: 26rem/$baseNum;
+        }
+        .info {
+            background: #fff;
+            padding: 0 10rem/$baseNum;
+            @include box-flex();
+        }
+        .img {
+            position: relative;
+            width: 100%;
+            background-color: #999;
+            height: 240rem/$baseNum;
+            text-align: center;
+            color: #fff;
+        }
+        .log {
+            padding-top: 40rem/$baseNum;
+            text-align: center;
+            span {
+                display: inline-block;
+                width: 98rem/$baseNum;
+                height: 77rem/$baseNum;
+                background-image:url(#{$urlStr}20170119-upload-logo.png);
+                background-repeat: no-repeat;
+                background-position: 0 0;
+                background-size: 100% 100%;
+            }
+        }
+        .addImg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 6;
+            opacity: 0;
+        }
+        .photo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 5;
+            border: 0;
+            &.none {
+                display: none;
+            }
+        }
+        input,
+        textarea {
+            border: 0;
+            background: 0;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+            -webkit-appearance: none;
+            line-height: normal;
+            font-size: 20rem/$baseNum;
+        }
+        input {
+            height: 43rem/$baseNum;
+            width: 100%;
+        }
+        textarea {
+            margin: 10rem/$baseNum 0;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            line-height: 1.5;
+            height: 170rem/$baseNum;
+        }
+    }
+    &btn {
+        padding: 20rem/$baseNum;
+        text-align: center;
+        .btn {
+            font-size: 52rem/$baseNum;
+            line-height: 1;
+            color: #d23232;
+            font-weight: bold;
+            padding: 10rem/$baseNum 80rem/$baseNum;
+            background-color: #fdde76;
+            border-radius: 40rem/$baseNum;
+        }
+    }
+}
+
+
+/* 弹窗 */
+
+.pop- {
+    &bg {
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8);
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+    }
+    &box {
+        &-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            width: 90%;
+            height: 100%;
+            box-sizing: border-box;
+            background: #fff;
+            overflow: hidden;
+        }
+    }
+    // 交通
+    &traffic {
+        width: 96%;
+        height: 80%;
+        border-radius: 10rem/$baseNum;
+        padding: 20rem/$baseNum;
+        h3 {
+            height: 80rem/$baseNum;
+            font-size: 32rem/$baseNum;
+            color: #000;
+            text-align: center;
+            padding-top: 15rem/$baseNum;
+        }
+        .close {
+            position: absolute;
+            top: 30rem/$baseNum;
+            right: 30rem/$baseNum;
+            width: 60rem/$baseNum;
+            height: 60rem/$baseNum;
+            background-image:url(#{$urlStr}close.png);
+            background-repeat: no-repeat;
+            background-size: 48rem/$baseNum 48rem/$baseNum;
+            background-position: 0 0;
+        }
+        .info {
+            font-size: 24rem/$baseNum;
+            line-height: 1.5;
+            color: #999;
+            overflow: auto;
+        }
+    }
+}
+
+
+/* 提示信息 */
+
+.tip_layer {
+    max-width: 90%;
+    font-family: \5FAE\8F6F\96C5\9ED1;
+    -webkit-box-sizing: border-box;
+    padding: 20rem/$baseNum 30rem/$baseNum;
+    color: #fff;
+    position: fixed;
+    background: rgba(0, 0, 0, 0.6);
+    font-size: 24rem/$baseNum;
+    line-height: 24rem/$baseNum;
+    z-index: 999;
+    border-radius: 10rem/$baseNum;
+    left: 50%;
+    top: 50%;
+    display: none;
+    white-space: nowrap;
+}

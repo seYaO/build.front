@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>邮轮</title>
+</head>
+<style>
+    body,pre{font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei"}
+</style>
+<body>
+
+<h2>SITE MAP</h2>
+<% var entries = ctx.entries %>
+<ul>
+    <% for(var i=0; i<entries.length; i++) {%>
+    <li>
+        <span><%= entries[i].title %></span>
+        <% var example = entries[i].example %>
+        <% if(example && example.length){ %>
+          <% for(var j=0; j<example.length; j++){ %>
+          <a target="_blank" href="<%= example[j] %>"><%= example[j] %></a>&nbsp;&nbsp;
+          <% }%>
+        <% }else{ %>
+        <a target="_blank" href="<%= entries[i].address %>"><%= entries[i].address %></a></li>
+        <% } %>
+    <% } %>
+</ul>
+<h2>NOTICE</h2>
+<ul>
+    <li>所有公共模板如：cnwidescreenfoot都需要用 includeId 的方式来引入<p>例如：<code>&lt;% includeId = cnwidescreenhead %&gt;</code></p></li>
+    <li>所有公用模板与页面模板都使用 include 的方式来引入 <p>例如：<code>&lt;% include demo/demo.html %&gt;</code></p></li>
+    <li>注意上面两种引入方式的区别, 另外要注意无法注释掉 include 与 includeId 
+        <p><code>&lt;!--&lt;% includeId = cnwidescreenhead %&gt;--&gt;</code>  这种写法是无效的</p></li>
+    <li>关于资源（脚本样式图片）的引用，理论上都是按照资源的相对路径或是绝对路径来引用，但是由于编译过程中对脚本和样式的路径有调整（图片没有）
+        所以要特别注意。
+        <p><b>脚本样式只能使用 “绝对路径” 比如:'/demo.js'</b></p>
+        <p><b>图片可使用相对路径 '../img/a.png' 或者绝对路径 '/modules/demo/img/a.png'</b></p>
+        </li>
+    <li>ctx.redis 功能暂未实现</li>
+</ul>
+<h3>分支策略</h3>
+</body>
+</html>

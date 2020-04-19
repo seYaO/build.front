@@ -1,0 +1,49 @@
+@function ptr($value) {
+    //px to rem  默认html字体大小为16px;
+    @return $value / 14px / 2 * 1rem;
+}
+
+@mixin icon {
+    background: url(../img/icon.0.3.png) no-repeat;
+    vertical-align: middle;
+    background-size: ptr(320px) ptr(190px);
+}
+
+@mixin icons {
+    // 图标
+    background: url(../img/icon.0.2.png) no-repeat;
+    -webkit-background-size: 11.42857143rem 5rem;
+    -moz-background-size: 11.42857143rem 5rem;
+    background-size: 11.42857143rem 5rem;
+    vertical-align: middle;
+}
+
+@mixin icons2 {
+    background: url(../img/icon.png) no-repeat;
+    -webkit-background-size: 7.14285714rem 1.42857143rem;
+    -moz-background-size: 7.14285714rem 1.42857143rem;
+    background-size: 7.14285714rem 1.42857143rem;
+    vertical-align: middle;
+}
+
+@mixin borderRadius($deg) {
+    // 定义圆角
+    -webkit-border-radius: $deg;
+    -moz-border-radius: $deg;
+    -o-border-radius: $deg;
+    border-radius: $deg;
+}
+
+@mixin boxShadow($argus) {
+    // 定义阴影
+    -webkit-box-shadow: $argus;
+    -moz-box-shadow: $argus;
+    box-shadow: $argus;
+}
+
+@mixin textOverflow {
+    //文字超出显示省略号
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

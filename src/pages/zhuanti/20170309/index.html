@@ -1,0 +1,98 @@
+<% include common/CruiseConfig.html %>
+<% ctx.imgPage = '//file.40017.cn/youlun/m/img/zt/20170309/'; %>
+<%?
+    <!-- ctx.webApiUrl = "http://10.101.42.61:8090/youlun/api"; -->
+    ctx.request(ctx.webApiUrl + "/SpecialInfo/GetTTOAreaList?ipAddress=" + ctx.clientIp,function(err,httpResponse,body){
+        if(err || httpResponse.statusCode!=200){
+            ctx.areaData = {};
+        }else{
+            try{
+                ctx.areaData=body;
+                ctx.areaData=JSON.parse(ctx.areaData);
+            }catch(e){
+                ctx.areaData=JSON.parse('{}');
+            }
+        }
+        ctx.areaData = ctx.areaData.Data ? ctx.areaData.Data : {};//防止报错 最好做下控制判断
+        aries();
+    });
+%>
+<%
+   let areaId = ctx.areaData.DefAreaId;
+   areaId = areaId ? areaId : "10";
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>旅游节vs会员日 玩转新特色</title>
+    <meta name="keywords" content="321旅游节、会员日、邮轮、赠礼、后返" />
+    <meta name="description" content="同程321旅游节，3.10-3.15，赠礼&后返享不停" />
+    <% include common/CruiseCss.html %>
+    <link rel="stylesheet" href="/wzxts.css">
+</head>
+
+<body>
+    <!-- 线下 -->
+    <!-- <input type="hidden" value="356" id="HidSpecialId">
+    <input type="hidden" value="1094,1097,1096,1095,1098" id="HidModuleId"> -->
+    
+    <!-- 线上 -->
+    <!-- 1595爆款抢购,1596小资赏花购物之旅,1597浪漫奢华之旅,1598挑战冒险之旅,1657跳转入口 -->
+    <input type="hidden" value="794" id="HidSpecialId">
+    <input type="hidden" value="1595,1596,1597,1598,1657" id="HidModuleId">
+
+    <input type="hidden" value="<%=areaId%>" id="HidAreaId">
+    <!-- <input type="hidden" value="11" id="HidAreaId"> -->
+
+    <% include zhuanti/20170309/_index.html %>
+    <!--公共脚本-->
+    <script type="text/javascript" src="//js.40017.cn/touch/public/common/0.1.1/common.js?v=03161523"></script>
+    <script type="text/javascript" src="//js.40017.cn/touch/hb/c/webp/webpjs.min.js?v=2015101308"></script>
+    <script src="//js.40017.cn/cn/min/??/touch/public/lazyload/0.0.1/lazyload.js"></script>
+    <!-- 微信分享 -->
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/wxshare/wxshare.js"></script>
+    <div id="wxShare" style="display: none;">
+        <input type="hidden" name="tcshareurl" id="tcshareurl" value="https://m.ly.com/youlun/zt/wzxt.html" />
+        <input type="hidden" name="tcshareimg" value="https://file.40017.cn/youlun/m/img/zt/20170309/wzxts-share.png" />
+        <input type="hidden" name="tcsharetext" value="3.10-3.15，旅游节vs会员日，限量抢购，赠礼&返现享不停！" />
+        <input type="hidden" name="tcDesc" value="3.10-3.15，旅游节vs会员日，限量抢购，赠礼&返现享不停！" />
+    </div>
+    <!--专题统计-->
+    <script type="text/javascript">
+    var _sid = 794,
+        _pid = 1,
+        _ptype = 0;
+    </script>
+    <script src="//js.40017.cn/cn/min/??/cn/y/16/spe_sta/speSta.1.0.js?v=2016030306"></script>
+    <script src="/wzxts.js"></script>
+    <script type='text/javascript'>
+    var _tcq = _tcq || [];
+    var _timediff = -1;
+    if (typeof _tcopentime != "undefined") {
+        _timediff = new Date().getTime() - _tcopentime;
+    }
+    _tcq.push(['_serialid', '0']); //如果是下单页面，需要传入订单号，多个订单号用下划分割 "_"  一个项目一个下单页
+    _tcq.push(['_vrcode', '10004-2007-0']);
+    _tcq.push(['_refId', '10758821']); //Refid需要传入来源refid，不同平台的读取方法不同，项目自己看
+    _tcq.push(['_userId', 0]); //传入访问者中登录的会员ID，未登录的为0
+    _tcq.push(['_openTime', _timediff]);
+    _tcq.push(['_trackPageview', '/邮轮/321促销2期']); //虚拟url，项目自己定义,如:/Touch站/首页
+    _tcq.push(['_qdid', getQdid()]); //市场渠道id（用于区分市场中心各个部门）
+    </script>
+    <!--接入精准营销统计 -->
+    <script type='text/javascript' src="//vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/p/hijack/hijack.2.0.0.js?v=2016082201"></script>
+    <script type="text/javascript">
+    fed_hijack.init({
+        whiteList: "cpic.com|ssgdfs.com|visitkorea.or.kr|ocvb.or.jp|jeju.go.kr|welcome2japan.cn|visitseoul.net|guolv.com|abroad.cncn.com|lavago.com|ship.mangocity.com|zglxw.com|9191fh.com|chunyun.cn|keyunzhan.com|uzai.com|lvmama.com|h5.ffan.com|qlogo.cn",
+        projectTag: "youlun",
+        pageName: "",
+        platform: "touch",
+        removeError: false
+    });
+    </script>
+</body>
+
+</html>

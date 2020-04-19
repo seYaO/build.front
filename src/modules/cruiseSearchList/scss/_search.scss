@@ -1,0 +1,354 @@
+.search-box {
+    display: block;
+    overflow-x: hidden;
+    background-color: $bodyBg;
+    position: relative;
+    z-index: 4;
+}
+
+.search-btn {
+    display: block;
+    background-color: #fff;
+    margin: 0.5rem 0.71428571rem;
+    height: 1rem;
+    line-height: 1rem;
+    padding: 0.5rem 1.07142857rem;
+    color: #bbb;
+    font-size: 1rem;
+    @include borderRadius(0.25em);
+}
+
+.search-btn:before {
+    content: " ";
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.57142857rem;
+    @include icon;
+    background-position: 0 0;
+}
+
+.filter-wrap {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1002;
+    left: 0;
+}
+
+.filter-box {
+    background-color: #fff;
+    position: relative;
+    border: 1px solid #dcdcdc;
+    border-left: none;
+    border-right: none;
+    border-top-color: #e5e8ec;
+    z-index: 2;
+    @include boxShadow(0 0.07142857rem 0.07142857rem #dee0e3);
+}
+
+.filter-title {
+    display: table;
+    width: 100%;
+    padding: 0.82142857rem 0;
+    z-index: 2;
+    position: relative;
+    background-color: #fff;
+    a {
+        display: table-cell;
+        width: 25%;
+        text-align: center;
+        font-size: 0.92857143rem;
+        color: #666;
+        height: 1.28571429rem;
+        line-height: 1.28571429rem;
+        border-left: 1px solid #e6e6e6;
+        &:after {
+            content: " ";
+            display: inline-block;
+            height: 0.71428571rem;
+            width: 0.71428571rem;
+            margin-left: 0.14285714rem;
+            @include icon;
+            background-position: -1.28571429rem -0.5rem
+        }
+        &:first-child {
+            border-left: none;
+        }
+        &.active {
+            color: $active;
+            &:after {
+                background-position: -1.28571429rem 0.21428571rem;
+            }
+        }
+    }
+}
+
+.filter-dropdown {
+    background-color: #fff;
+    position: absolute;
+    width: 100%;
+}
+
+.filter-line,
+.filter-sort {
+    border: 1px solid #e6e6e6;
+    border-left: none;
+    border-right: none;
+    max-height: 20.71428571rem;
+    overflow: hidden;
+    margin-top: -2.84285714rem;
+    a {
+        display: block;
+        border-bottom: 1px solid #e6e6e6;
+        font-size: 1.07142857rem;
+        padding: 0.71428571rem 0;
+        margin: 0.07142857rem 0;
+        margin-left: 1.07142857rem;
+        position: relative;
+        @include textOverflow;
+        &.fl-sub {
+            text-indent: 1.07142857rem;
+        }
+        &:last-child {
+            border: none;
+        }
+        &.active {
+            color: $active;
+            &:after {
+                content: " ";
+                height: 0.71428571rem;
+                width: 1.07142857rem;
+                position: absolute;
+                right: 0.71428571rem;
+                top: 1.35714286rem;
+                @include icon;
+                background-position: -2.14285714rem -0.71428571rem;
+            }
+        }
+        span.fl-icon {
+            overflow: hidden;
+            background-color: #ff63b7;
+            height: 0;
+            font-size: 0.71428571rem;
+            color: #fff;
+            margin-left: 0.35714286rem;
+            line-height: 0.71428571rem;
+            padding: 0.17857143rem 0.57142857rem;
+            @include borderRadius(0.53571429rem);
+            vertical-align: 0.07142857rem;
+        }
+    }
+}
+
+.filter-line {
+    height: 20.71428571rem;
+}
+
+.filter-ships {
+    border: 1px solid #e6e6e6;
+    border-left: none;
+    border-right: none;
+    height: 20.71428571rem;
+    margin-top: -2.84285714rem;
+    overflow: hidden;
+    .fs-left {
+        float: left;
+        width: 44%;
+        background-color: #e9ecf0;
+        height: 100%;
+        a {
+            display: block;
+            padding: 0.78571429rem 0;
+            font-size: 1.07142857rem;
+            position: relative;
+            text-indent: 1.07142857rem;
+            @include textOverflow;
+            p {
+                width: 89%;
+                @include textOverflow;
+            }
+            &.active {
+                background-color: #fff;
+            }
+            &.current:after {
+                content: " ";
+                display: inline-block;
+                position: absolute;
+                background-color: $active;
+                height: 0.57142857rem;
+                width: 0.57142857rem;
+                right: 0.57142857rem;
+                top: 1.35714286rem;
+                @include borderRadius(50%);
+            }
+        }
+    }
+    .fs-right {
+        float: left;
+        width: 56%;
+        height: 100%;
+        a {
+            float: left;
+            width: 93%;
+            padding: 0.71428571rem 0;
+            margin: 0.07142857rem 0;
+            font-size: 1.07142857rem;
+            position: relative;
+            @include textOverflow;
+            margin-left: 1.07142857rem;
+            border-bottom: 1px solid #e6e6e6;
+            &:last-child {
+                border: none;
+            }
+            &.active {
+                color: $active;
+                &:after {
+                    content: " ";
+                    height: 0.71428571rem;
+                    width: 1.07142857rem;
+                    position: absolute;
+                    right: 0.71428571rem;
+                    top: 1.35714286rem;
+                    @include icon;
+                    background-position: -2.14285714rem -0.71428571rem;
+                }
+            }
+            span.fs-icon {
+                display: inline-block;
+                width: 1.42857143rem;
+                height: 1.35714286rem;
+                margin-left: 0.35714286rem;
+                @include icon;
+                background-position: -3.57142857rem 0;
+                vertical-align: -0.21428571rem;
+            }
+        }
+    }
+}
+
+.filter-sub {
+    border: 1px solid #e6e6e6;
+    border-left: none;
+    border-right: none;
+    margin-top: -2.84285714rem;
+    position: relative;
+    overflow: hidden;
+    .fsub-selected {
+        border-bottom: 1px solid #d3d4d6;
+        padding: 0 0.71428571rem 0.85714286rem;
+        >span {
+            display: inline-block;
+            border: 1px solid #09bb07;
+            background-color: #eeffdf;
+            color: #09bb07;
+            white-space: nowrap;
+            margin: 0.85714286rem 0.35714286rem 0;
+            height: 1.07142857rem;
+            line-height: 1.07142857rem;
+            padding: 0.21428571rem 0.5rem;
+            font-size: 0.85714286rem;
+            >a {
+                display: inline-block;
+                height: 0.85714286rem;
+                width: 0.85714286rem;
+                @include icon;
+                background-position: -1.92857143rem 0.10714286rem;
+            }
+        }
+    }
+    .fsub-option {
+        overflow: hidden;
+        padding-bottom: 3.92857143rem;
+        height: 18.35714286rem;
+    }
+    .fsub-left {
+        float: left;
+        width: 36%;
+        background-color: #e9ecf0;
+        height: 100%;
+        a {
+            display: block;
+            padding: 0.71428571rem 0;
+            margin: 0.07142857rem 0;
+            font-size: 1.07142857rem;
+            position: relative;
+            text-indent: 1.07142857rem;
+            @include textOverflow;
+            &.current:after {
+                content: " ";
+                display: inline-block;
+                position: absolute;
+                background-color: $active;
+                height: 0.57142857rem;
+                width: 0.57142857rem;
+                right: 1.07142857rem;
+                top: 1.35714286rem;
+                @include borderRadius(50%);
+            }
+            &.active {
+                background-color: #fff;
+            }
+        }
+    }
+    .fsub-right {
+        float: left;
+        width: 64%;
+        height: 100%;
+        a {
+            display: block;
+            padding: 0.71428571rem 0;
+            margin: 0.07142857rem 0;
+            font-size: 1.07142857rem;
+            position: relative;
+            @include textOverflow;
+            margin-left: 1.07142857rem;
+            border-bottom: 1px solid #e6e6e6;
+            &.active {
+                color: $active;
+                &:after {
+                    content: " ";
+                    height: 0.71428571rem;
+                    width: 1.07142857rem;
+                    position: absolute;
+                    right: 0.71428571rem;
+                    top: 1.35714286rem;
+                    @include icon;
+                    background-position: -2.14285714rem -0.71428571rem;
+                }
+            }
+        }
+    }
+    .fsub-btn {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3.92857143rem;
+        background-color: #e9ecf0;
+        text-align: center;
+        &>a {
+            display: inline-block;
+            height: 1.28571429rem;
+            padding: 0.57142857rem;
+            line-height: 1.28571429rem;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            margin-top: 0.75rem;
+            width: 8.14285714rem;
+            font-size: 1.07142857rem;
+            @include borderRadius(0.17857143rem);
+            &.btn-submit {
+                border-color: $active;
+                color: #fff;
+                background-color: $active;
+            }
+        }
+    }
+}
+
+.filter-list {
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}

@@ -1,0 +1,7 @@
+@import "../../../../styles/mixins/base.scss";
+$baseNum:64;
+// $urlStr:"modules/zhuanti/20170316/img/";
+$urlStr:"//file.40017.cn/youlun/m/img/zt/20170316/";
+@function px($fs) {
+    @return #{$fs/$baseNum}rem;
+}

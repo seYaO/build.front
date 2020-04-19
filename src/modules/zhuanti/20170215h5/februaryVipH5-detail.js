@@ -1,0 +1,1 @@
+require("./js/_detail.js");

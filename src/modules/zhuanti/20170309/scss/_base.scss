@@ -1,0 +1,371 @@
+@import "_variable";
+@import "../../../../styles/mixins/loading.scss";
+html,
+body {
+    background-color: #fb3558;
+    color: #333;
+}
+
+body {
+    background-image: url(#{$urlStr}wzxts-bg.png);
+    background-repeat: repeat;
+    background-size: px(16) px(16);
+}
+
+address,
+cite,
+dfn,
+em,
+var,
+i {
+    font-style: normal;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    outline: 0;
+}
+
+img {
+    border: 0;
+    margin: 0;
+    display: block;
+}
+
+.icon-img {
+    background-image: url('#{$urlStr}icon_nas.png');
+    background-repeat: no-repeat;
+    background-size: px(162) px(185);
+}
+
+.wzxts- {
+    &top {
+        position: relative;
+        .area_change_div {
+            position: absolute;
+            font-size: px(30);
+            padding: 0 px(22);
+            height: px(50);
+            line-height: px(56);
+            @include border-radius(px(30),
+            px(30),
+            px(30),
+            px(30));
+            background-color: #ffdf02;
+            bottom: px(70);
+            right: px(20);
+        }
+        .area_change_div:after {
+            display: inline-block;
+            vertical-align: middle;
+            content: "";
+            background: url('#{$urlStr}icon_nas.png') no-repeat 0 px(-24);
+            width: px(36);
+            height: px(20);
+            background-size: px(162) px(185);
+            margin-left: px(10);
+            margin-top: px(-7);
+        }
+        .area_change_div.active:after {
+            background-position: 0 0;
+        }
+    }
+}
+
+.unit- {
+    &title {}
+    &img {
+        width: 100%;
+    }
+    &gift {
+        position: relative;
+        top: px(-26);
+    }
+    &shopping,
+    &luxury,
+    &adventure {
+        .unit-title {
+            padding: px(10) 0;
+        }
+    }
+    &banner {
+        padding: px(20) px(20);
+        img {
+            width: 100%;
+            min-height: px(200);
+        }
+    }
+}
+
+.gift- {
+    &pro {
+        position: relative;
+        margin-top: px(30);
+    }
+    &box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @include display-box();
+        a {
+            display: block;
+            height: 100%;
+            @include box-flex();
+        }
+    }
+    &pop {
+        position: fixed;
+        z-index: 100;
+        width: 100%;
+        top: 50%;
+        margin-top: px(-620);
+        .close {
+            position: absolute;
+            top: px(-28);
+            right: px(22);
+            width: px(56);
+            height: px(56);
+            background: url('#{$urlStr}wzxts-gift-close.png') no-repeat 0 0;
+            background-size: 100% 100%;
+        }
+    }
+}
+
+.hot- {
+    &pro {
+        padding: px(20);
+    }
+    &link {
+        background-color: #fff;
+    }
+    &img {
+        position: relative;
+        img {
+            width: 100%;
+            min-height: px(320);
+        }
+        .hot {
+            position: absolute;
+            top: px(10);
+            left: px(10);
+            background-position: px(-54) 0;
+            width: px(108);
+            height: px(63);
+        }
+        .line {
+            position: absolute;
+            bottom: -1px;
+            width: 100%;
+            height: px(94);
+            background: url('#{$urlStr}wzxts-hot-bg.png') bottom repeat-x;
+            background-size: auto px(94);
+        }
+        .title {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            color: #fff;
+            font-size: px(24);
+            padding: px(5) 0;
+            .t {
+                font-size: px(28);
+                font-weight: bold;
+            }
+            p {
+                margin: 0 px(20);
+                @include ellipsis;
+            }
+        }
+    }
+    &intro {
+        background-color: #fff;
+        padding: px(10);
+        font-size: px(20);
+        .label {
+            position: relative;
+            padding-left: px(35);
+            padding-top: px(4);
+            margin-top: px(8);
+            // @include mutil-ellipsis();
+            i {
+                position: absolute;
+                left: 0;
+                top: px(2);
+                width: px(28);
+                height: px(28);
+                background-position: 0 px(-58);
+            }
+        }
+        .info {
+            margin-top: px(5);
+            @include display-box();
+        }
+        .price {
+            display: block;
+            font-size: px(30);
+            @include box-flex();
+            em {
+                font-size: px(58);
+                font-weight: bold;
+                color: #ff2f47;
+            }
+        }
+        .btn {
+            display: block;
+            font-size: px(30);
+            color: #fff;
+            margin-left: px(10);
+            height: px(60);
+            line-height: px(60);
+            padding: 0 px(35);
+            @include border-radius(px(30),
+            px(30),
+            px(30),
+            px(30));
+            background-color: #fb3359;
+        }
+    }
+}
+
+.data- {
+    &pro {
+        padding: 0 px(10);
+    }
+    &box {
+        width: 50%;
+        float: left;
+        box-sizing: border-box;
+        padding: px(10);
+    }
+    &link {
+        display: block;
+        padding: px(8);
+        height: px(364);
+        background-color: #fff;
+    }
+    &img {
+        position: relative;
+        img {
+            width: 100%;
+            height: px(160);
+        }
+        .city {
+            position: absolute;
+            top: px(4);
+            left: 0;
+            color: #fff;
+            padding-left: px(6);
+            padding-right: px(15);
+            background-color: rgba(0, 0, 0, 0.6);
+            @include border-radius(0,
+            px(15),
+            px(15),
+            0);
+        }
+    }
+    &intro {
+        margin-top: px(5);
+        font-size: px(20);
+        .tit {
+            // max-height: px(58);
+            line-height: 1.5;
+            @include mutil-ellipsis();
+        }
+        .label {
+            margin-top: px(8);
+            height: px(38);
+            span {
+                font-size: px(15);
+                border: 1px solid #14cbcd;
+                color: #14cbcd;
+                padding: px(4) px(4);
+                margin-right: px(5);
+            }
+        }
+        .info {
+            // @include display-box();
+        }
+        .price {
+            // display: block;
+            font-size: px(24);
+            em {
+                font-size: px(42);
+                font-weight: bold;
+                color: #ff2f47;
+            }
+        }
+        .integral {
+            display: inline-block;
+            padding: px(4) px(5);
+            font-size: px(15);
+            color: #fff;
+            background-color: #ff9000;
+        }
+    }
+}
+
+
+/*区域弹框*/
+
+.area_box {
+    position: fixed;
+    background-color: #fff;
+    z-index: 100;
+    padding-bottom: px(46);
+    width: px(380);
+    @include border-radius(px(10),
+    px(10),
+    px(10),
+    px(10));
+    left: 50%;
+    top: 50%;
+    margin: px(-538/2) 0 0 px(-380/2);
+    .close_but {
+        position: absolute;
+        right: px(-40);
+        top: px(-40);
+        z-index: 1;
+        background-position: 0 px(-107);
+        width: px(77);
+        height: px(78);
+    }
+    .area_ul_list {
+        margin-top: px(48);
+        >li {
+            width: px(255);
+            margin: px(17) auto 0 auto;
+            text-align: center;
+            font-size: px(30);
+            color: #fb4156;
+            line-height: px(75);
+            height: px(75);
+            border: 1px solid #e2e2e2;
+            @include border-radius(px(40),
+            px(40),
+            px(40),
+            px(40));
+        }
+        >li.act {
+            color: #fff;
+            border-color: #fb4156;
+            background-color: #fb4156;
+        }
+    }
+}
+
+.shadow_bg {
+    position: fixed;
+    width: px(640);
+    margin-left: px(-320);
+    left: 50%;
+    top: 0;
+    height: 100%;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, 0.6);
+}

@@ -1,0 +1,98 @@
+<% include common/CruiseConfig.html %>
+<% ctx.imgPage = '//file.40017.cn/youlun/m/img/zt/20170316/'; %>
+<%?
+    ctx.request(ctx.webApiUrl + "/SpecialInfo/GetTTOAreaList?ipAddress=" + ctx.clientIp,function(err,httpResponse,body){
+        if(err || httpResponse.statusCode!=200){
+            ctx.areaData = {};
+        }else{
+            try{
+                ctx.areaData=body;
+                ctx.areaData=JSON.parse(ctx.areaData);
+            }catch(e){
+                ctx.areaData=JSON.parse('{}');
+            }
+        }
+        ctx.areaData = ctx.areaData.Data ? ctx.areaData.Data : {};//防止报错 最好做下控制判断
+        aries();
+    });
+%>
+<%
+   let areaId = ctx.areaData.DefAreaId;
+   areaId = areaId ? areaId : "10";
+%>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>全民出邮季_邮轮旅游_321旅游节</title>
+    <meta name="keywords" content="321旅游节大促、邮轮、豪华邮轮、邮轮旅游" />
+    <meta name="description" content="321旅游节全民出邮季，邮轮优惠特权享不停！" />
+    <% include common/CruiseCss.html %>
+    <link rel="stylesheet" href="/wzxts_3.css">
+</head>
+
+<body>
+    <!-- 线下 -->
+     <!--<input type="hidden" value="357" id="HidSpecialId">
+    <input type="hidden" value="1102,1103,1104,1105" id="HidModuleId"> -->
+    
+    <!-- 线上 -->
+    <!-- high翻8点,爆款尖货,引爆周三,跳转入口 -->
+    <input type="hidden" value="810" id="HidSpecialId">
+    <input type="hidden" value="1638,1632,1633,1667" id="HidModuleId">
+
+    <input type="hidden" value="<%=areaId%>" id="HidAreaId">
+    <!-- <input type="hidden" value="11" id="HidAreaId"> -->
+
+    <% include zhuanti/20170316/_index.html %>
+    <!--公共脚本-->
+    <script type="text/javascript" src="//js.40017.cn/touch/public/common/0.1.1/common.js?v=03161523"></script>
+    <script type="text/javascript" src="//js.40017.cn/touch/hb/c/webp/webpjs.min.js?v=2015101308"></script>
+    <script src="//js.40017.cn/cn/min/??/touch/public/lazyload/0.0.1/lazyload.js"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/cn/y/14/ms/getClientinfo.js"></script>
+    <!-- 微信分享 -->
+    <script type="text/javascript" src="//js.40017.cn/touch/cn/public/wxshare/wxshare.js"></script>
+    <div id="wxShare" style="display: none;">
+        <input type="hidden" name="tcshareurl" id="tcshareurl" value="https://m.ly.com/youlun/zt/qmcyj.html" />
+        <input type="hidden" name="tcshareimg" value="http://file.40017.cn/youlun/m/img/zt/20170316/wzxts_3-share.jpg" />
+        <input type="hidden" name="tcsharetext" value="全民出邮季，邮轮优惠特权享不停，叫上皮皮虾，我们走>>" />
+        <input type="hidden" name="tcDesc" value="全民出邮季，邮轮优惠特权享不停，叫上皮皮虾，我们走>>" />
+    </div>
+    <!--专题统计-->
+    <script type="text/javascript">
+        var _sid = 810,
+            _pid = 1,
+            _ptype = 0;
+    </script>
+    <script src="//js.40017.cn/cn/min/??/cn/y/16/spe_sta/speSta.1.0.js?v=2016030306"></script>
+    <script src="/wzxts_3.js"></script>
+    <script type='text/javascript'>
+        var _tcq = _tcq || [];
+        var _timediff = -1;
+        if (typeof _tcopentime != "undefined") {
+            _timediff = new Date().getTime() - _tcopentime;
+        }
+        _tcq.push(['_serialid', '0']); //如果是下单页面，需要传入订单号，多个订单号用下划分割 "_"  一个项目一个下单页
+        _tcq.push(['_vrcode', '10004-2007-0']);
+        _tcq.push(['_refId', '10758821']); //Refid需要传入来源refid，不同平台的读取方法不同，项目自己看
+        _tcq.push(['_userId', 0]); //传入访问者中登录的会员ID，未登录的为0
+        _tcq.push(['_openTime', _timediff]);
+        _tcq.push(['_trackPageview', '/邮轮/321促销3期']); //虚拟url，项目自己定义,如:/Touch站/首页
+        _tcq.push(['_qdid', getQdid()]); //市场渠道id（用于区分市场中心各个部门）
+    </script>
+    <!--接入精准营销统计 -->
+    <script type='text/javascript' src="//vstlog.17usoft.com/vst.ashx" charset="utf-8"></script>
+    <script type="text/javascript" src="//js.40017.cn/cn/min/??/touch/hb/p/hijack/hijack.2.0.0.js?v=2016082201"></script>
+    <script type="text/javascript">
+        fed_hijack.init({
+            whiteList: "cpic.com|ssgdfs.com|visitkorea.or.kr|ocvb.or.jp|jeju.go.kr|welcome2japan.cn|visitseoul.net|guolv.com|abroad.cncn.com|lavago.com|ship.mangocity.com|zglxw.com|9191fh.com|chunyun.cn|keyunzhan.com|uzai.com|lvmama.com|h5.ffan.com|qlogo.cn",
+            projectTag: "youlun",
+            pageName: "",
+            platform: "touch",
+            removeError: false
+        });
+    </script>
+</body>
+
+</html>

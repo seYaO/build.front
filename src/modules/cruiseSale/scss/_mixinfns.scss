@@ -1,0 +1,18 @@
+@mixin box-sizing ($sizing) {
+	box-sizing: $sizing;
+    -webkit-box-sizing: $sizing;
+    -moz-box-sizing: $sizing;
+	-o-box-sizing: $sizing;
+    -ms-box-sizing: $sizing;    
+}
+@mixin border-radius ($a,$b,$c,$d) {
+	border-radius:$a $b $c $d;
+	-webkit-border-radius:$a $b $c $d;
+	-moz-border-radius:$a $b $c $d;
+	-o-border-radius:$a $b $c $d;
+	-ms-border-radius:$a $b $c $d;
+}
+
+@function px($fs) { 
+	@return #{$fs/64}rem;
+}
