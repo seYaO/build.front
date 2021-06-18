@@ -46,12 +46,19 @@ module.exports = {
 
         nav: [ // 导航栏配置
             // { text: '前端基础', link: '/accumulate/' },
-            // { text: '算法题库', link: '/algorithm/' },
+            {
+                text: '技能教程',
+                items:[
+                    { text: 'css3和css', link: 'https://seya-skilltutorial.surge.sh/csstutorial/' },
+                    { text: 'tool工具', link: 'https://seya-skilltutorial.surge.sh/tooltutorial/' },
+                ]
+            },
             {
                 text: 'javascript',
                 items: [
-                    { text: 'es6', link: '/es6tutorial/' },
-                    { text: 'js', link: '/jstutorial/introduction/' },
+                    { text: 'es6教程', link: 'https://seya-es6tutorial.surge.sh/es6tutorial/' },
+                    // { text: 'es6', link: '/es6tutorial/' },
+                    { text: 'js教程', link: 'https://seya-jstutorial.surge.sh/jstutorial/introduction/' },
                     // {
                     //     text: 'js',
                     //     items: [
