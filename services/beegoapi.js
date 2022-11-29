@@ -98,7 +98,45 @@ const practiceChapter = (params) => {
             success(res) {
                 resolve(res.data)
                 if (res.data && res.data.data) {
-                    console.log('practice', res.data.data)
+                    // console.log('practice', res.data.data)
+                }
+            }
+        })
+    })
+}
+
+// 模拟考试
+const exam = (params) => {
+    return new Promise((resolve, reject) => {
+        wx.request({
+            url: `https://beegoapi.beeeeego.com/mobile/mockExam/getCourseOtherDate?courseId=${params.courseId}`,
+            method: 'GET',
+            header: {
+                token: params.token
+            },
+            success(res) {
+                resolve(res.data)
+                if (res.data && res.data.data) {
+                    // console.log('courseInformationList', res.data.data.courseInformationList)
+                }
+            }
+        })
+    })
+}
+
+// 模拟考试1
+const mockExam = (params) => {
+    return new Promise((resolve, reject) => {
+        wx.request({
+            url: `https://beegoapi.beeeeego.com/mobile/mockExam/getMockExam?specialProjectId=130012&cstId=10393&courseId=34-06090&isRedo=1&simRecordType=2`,
+            method: 'GET',
+            header: {
+                token: params.token
+            },
+            success(res) {
+                resolve(res.data)
+                if (res.data && res.data.data) {
+                    // console.log('courseInformationList', res.data.data.courseInformationList)
                 }
             }
         })
@@ -110,5 +148,7 @@ module.exports = {
     list,
     detail,
     chapter,
-    practiceChapter
+    practiceChapter,
+    exam,
+    mockExam
 }
