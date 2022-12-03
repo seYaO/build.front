@@ -1,0 +1,11 @@
+<view class="listBox">
+    <block wx:for="{{list}}" wx:key="index">
+        <view class="list">
+            <view class="titBox">
+                <image class="bg" mode="widthFix" src="{{item.coverImages.backgroundImg}}" />
+                <image class="img" mode="widthFix" src="{{item.coverImages.contextImg}}" />
+                <image class="img img2" mode="widthFix" src="{{item.coverImages.textImg}}" />
+            </view>
+        </view>
+    </block>
+</view>

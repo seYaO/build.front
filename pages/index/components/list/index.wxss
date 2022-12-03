@@ -1,0 +1,24 @@
+.listBox{}
+
+.listBox .list{}
+
+.listBox .titBox{
+    position: relative;
+    width: 50%;
+    overflow: hidden;
+    border-radius: 10rpx;
+}
+
+.listBox .titBox .bg{
+    width: 100%;
+}
+
+.listBox .titBox .img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+.listBox .titBox .img2{
+    top:20rpx;
+}
