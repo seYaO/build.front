@@ -88,22 +88,22 @@ Page({
 
         // 获取模拟考试
         {
-            console.log('mock', LIST[idx])
-            const item = LIST[idx]
-            const exam = await api.exam({ token: wx.getStorageSync('token'), courseId: item.courseId })
-            console.log('exam',exam)
-            if(exam){
-                exam.map(async (exam)=>{
-                    const exerList = await api.mockExam({ token: wx.getStorageSync('token'), courseId: item.courseId, cstId: item.cstId,specialProjectId:exam.specialProjectId })
-                    exam.exerList = exerList
-                })
-                setTimeout(() => {
-                    console.log('exam===================')
-                    console.log('exam===================')
-                    console.log('exam===================')
-                    console.log(JSON.stringify(exam))
-                }, 12000)
-            }
+            // console.log('mock', LIST[idx])
+            // const item = LIST[idx]
+            // const exam = await api.exam({ token: wx.getStorageSync('token'), courseId: item.courseId })
+            // console.log('exam',exam)
+            // if(exam){
+            //     exam.map(async (exam)=>{
+            //         const exerList = await api.mockExam({ token: wx.getStorageSync('token'), courseId: item.courseId, cstId: item.cstId,specialProjectId:exam.specialProjectId })
+            //         exam.exerList = exerList
+            //     })
+            //     setTimeout(() => {
+            //         console.log('exam===================')
+            //         console.log('exam===================')
+            //         console.log('exam===================')
+            //         console.log(JSON.stringify(exam))
+            //     }, 12000)
+            // }
         }
     },
 
