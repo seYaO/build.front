@@ -1,4 +1,13 @@
 import api from '../../services/beegoapi'
+import mock from '../../JSON/mock.js'
+
+const LIST = mock.list
+let CourseDetail = null
+LIST.map(item => {
+    if (item.courseDetail && item.productId == 24884128) {
+        CourseDetail = item.courseDetail
+    }
+})
 
 Page({
 
@@ -6,103 +15,130 @@ Page({
      * 页面的初始数据
      */
     data: {
-        token: '',
-        users: null
     },
-    token: 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI1ODY5NzMwIiwidWdpZCI6MSwiZXhwIjoxNjcwMzE0OTIxLCJ1c2VySWQiOjU4Njk3MzAsImlhdCI6MTY2OTcxMDEyMX0.0X56HisDStB8_XQq1hRSOxw5VE-Og3ev1eGJ1pRUJwem1f7LuqP7F1Z8dAFO1kcRHCsZSALm6X0JdT-58SOGdQ',
-    users: {
-        "district": null,
-        "adminId": 47232,
-        "token": null,
-        "lastLoginTime": "2022-11-29 16:20:54",
-        "userSetUp": null,
-        "verifyStatus": 1,
-        "isUpdateUserName": null,
-        "num": 1,
-        "tgIds": "",
-        "lastCourseId": "34-06090",
-        "lastUmcId": null,
-        "unsubscribe": 0,
-        "probationary": 0,
-        "mobileLoginCheck": null,
-        "wxMiniOpenId": null,
-        "wxNickName": null,
-        "follow": 0,
-        "lastUpdatePasswordTime": "2022-11-23T07:26:22.000+00:00",
-        "passwordErrorCount": 0,
-        "isAes": 0,
-        "aesPassword": null,
-        "realStatus": 0,
-        "realOff": 0,
-        "faceToken": null,
-        "productRealOff": 0,
-        "productId": "24881383,24881477,24881535,24881557,24884037,24884128,24884132,24884133,24884134,24884135,24884183",
-        "type": 22127,
-        "state": 0,
-        "valid": true,
-        "parentId": 0,
-        "userId": 5869730,
-        "agencyId": 9772,
-        "isValid": true,
-        "nickName": "lily",
-        "pic": "",
-        "mobile": "13140982991",
-        "userName": "LH13140982991",
-        "ugid": 1,
-        "mdomain": "szlhpx.beeeeego.com",
-        "password": "053c4314eb93716073b03d00d4583ddd",
-        "associated": false,
-        "regFrom": 13,
-        "remark": null,
-        "registerTime": "2022-11-23T07:26:23.000+00:00",
-        "sign": "",
-        "qq": "",
-        "email": "",
-        "openId": null,
-        "province": "江苏省",
-        "city": "苏州市",
-        "sex": "女",
-        "realName": "王莉",
-        "ticketNo": "",
-        "integration": 0,
-        "weChat": "",
-        "born": "",
-        "stuNo": "",
-        "machine": "",
-        "verifyCode": "",
-        "verifyTimes": 0,
-        "verifyTime": "2022-11-29 16:20:55",
-        "sign2": "",
-        "signChg": false,
-        "timeOut": 0,
-        "isAssociated": false,
-        "isSignChg": false
-    },
-
     async onLoad(options) {
-        // const user = await api.login()
-        // if (user.code == 200 && user.data) {
-        //     const { token, users } = user.data
-        //     this.setData({ token, users })
-        //     this.token = token
-        //     this.users = users
+        const token = wx.getStorageSync('token')
+        if (!token) {
+            const user = await api.login()
 
-        //     api.list(this.token)
+            if (!user) {
+                this.showModal()
+                return
+            }
 
-        //     this.getDetail(24884128)
+            wx.setStorageSync('token', user.token)
+        }
 
+        //获取所有课程信息
+        {
+            // let list = await api.list(wx.getStorageSync('token'))
 
+            // if (!list) {
+            //     this.showModal()
+            //     return
+            // }
 
-        // }
+            // list.map(async (item) => {
+            //     const courseID = await api.test({ token: wx.getStorageSync('token'), productId: item.productId })
+            //     item.courseId = courseID
+            //     const cstId = await api.detail({ token: wx.getStorageSync('token'), courseId: courseID, productId: item.productId })
+            //     item.cstId = cstId
+            //     item.chapterList = []
+            //     item.examList = []
+            // })
+            // console.log('list', list)
+            // setTimeout(() => {
+            //     console.log(JSON.stringify(list))
+            // }, 12000)
+        }
 
+        let idx = 10
 
-        api.list(this.token)
+        // 获取课程信息
+        {
+            // console.log('mock', LIST[idx])
+            // const item = LIST[idx]
+            // const chapter = await api.chapter({ token: wx.getStorageSync('token'), courseId: item.courseId, cstId: item.cstId })
+            // console.log('chapter', chapter)
+            // if (chapter) {
+            //     chapter.map(async (chapter) => {
+            //         chapter.children.map(async (child) => {
+            //             const exerList = await await api.practiceChapter({
+            //                 token: wx.getStorageSync('token'),
+            //                 courseId: item.courseId,
+            //                 cstId: item.cstId,
 
-        this.getDetail(24884128)
+            //                 catId: child.catId,
+            //                 linkName: child.linkName,
+            //                 name: child.name,
+            //             })
+            //             child.exerList = exerList
+            //         })
+            //     })
+                
+            //     setTimeout(() => {
+            //         console.log('chapter===================')
+            //         console.log('chapter===================')
+            //         console.log('chapter===================')
+            //         console.log(JSON.stringify(chapter))
+            //     }, 12000)
+            // }
+
+        }
+
+        // 获取模拟考试
+        {
+            console.log('mock', LIST[idx])
+            const item = LIST[idx]
+            const exam = await api.exam({ token: wx.getStorageSync('token'), courseId: item.courseId })
+            console.log('exam',exam)
+            if(exam){
+                exam.map(async (exam)=>{
+                    const exerList = await api.mockExam({ token: wx.getStorageSync('token'), courseId: item.courseId, cstId: item.cstId,specialProjectId:exam.specialProjectId })
+                    exam.exerList = exerList
+                })
+                setTimeout(() => {
+                    console.log('exam===================')
+                    console.log('exam===================')
+                    console.log('exam===================')
+                    console.log(JSON.stringify(exam))
+                }, 12000)
+            }
+        }
+    },
+
+    showModal() {
+        wx.showModal({
+            title: '提示',
+            content: '登录失败，是否重新登录？',
+            success: (res) => {
+                if (res.confirm) {
+                    wx.setStorageSync('token', '')
+                    this.onLoad()
+                    // console.log('用户点击确定')
+                } else if (res.cancel) {
+                    // console.log('用户点击取消')
+                }
+            }
+        })
+    },
+
+    async getList(list) {
+        list.map(async (item) => {
+            const courseID = await api.test({ token: wx.getStorageSync('token'), productId: item.productId })
+            item.courseId = courseID
+            const cstId = await api.detail({ token: wx.getStorageSync('token'), courseId: courseID, productId: item.productId })
+            item.cstId = cstId
+            // console.log('detail',detail)
+        })
+        console.log('list', list)
+        setTimeout(() => {
+            console.log(JSON.stringify(list))
+        }, 12000)
     },
 
     async getDetail(productId) {
-        const detail = await api.detail({ token: this.token, courseId: '34-06090', productId })
+        const detail = await api.detail({ token: wx.getStorageSync('token'), courseId: '34-06090', productId })
         if (detail.code == 200 && detail.data) {
             // console.log('detail',detail.data)
 
@@ -120,7 +156,7 @@ Page({
     },
 
     async getChapter(cstId) {
-        const chapter = await api.chapter({ token: this.token, courseId: '34-06090', cstId })
+        const chapter = await api.chapter({ token: wx.getStorageSync('token'), courseId: '34-06090', cstId })
         // console.log('chapter', chapter)
         if (chapter.code == 200 && chapter.data) {
             const practiceChapter = chapter.data.practiceChapter
@@ -139,7 +175,7 @@ Page({
 
             setTimeout(() => {
                 console.log(JSON.stringify(practiceChapter))
-            },12000)
+            }, 12000)
 
 
         }
@@ -147,7 +183,7 @@ Page({
 
     async getPractice(child) {
         const practice = await api.practiceChapter({
-            token: this.token,
+            token: wx.getStorageSync('token'),
             courseId: '34-06090',
             catId: child.catId,
             cstId: child.cstId,
