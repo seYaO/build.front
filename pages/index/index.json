@@ -1,5 +1,4 @@
 {
-    "enablePullDownRefresh": true,
     "usingComponents": {
         "list": "./components/list/index",
         "detail": "./components/detail/index",

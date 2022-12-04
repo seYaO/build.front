@@ -1,7 +1,5 @@
 Component({
     data: {
-        show: true,
-        type: 1,
         exerList: []
     },
     created() {
@@ -19,9 +17,6 @@ Component({
         setShowPop() {
             this.exerMask.showPopMasker()
         },
-        setShow(flag) {
-            this.setData({ show: flag })
-        },
         init(data) {
             this.setConfig()
 
@@ -30,19 +25,13 @@ Component({
             })
             this.setData({ exerList: data })
         },
-        click(e) {
-            const { item, type } = e.currentTarget.dataset
-            console.log(item)
-            // const { chapterList, examList } = item
-            // this.triggerEvent('button', { chapterList, examList, type });
-        },
-        clickMore(e) {
+        clickShow(e) {
             const { item, idx } = e.currentTarget.dataset
-            let chapterList = this.data.chapterList
-            item.showMore = !item.showMore
-            chapterList[idx] = item
-            this.setData({ chapterList })
+            item.showAnalyze = !item.showAnalyze
+            let exerList = this.data.exerList
+            exerList[idx] = item
+            console.log(item)
+            this.setData({ exerList })
         },
-        clickHide(e) { }
     }
 })

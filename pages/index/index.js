@@ -1,7 +1,4 @@
 import api from '../../services/beegoapi'
-import mock from '../../JSON/mock.js'
-
-const LIST = mock.list
 
 Page({
 
@@ -15,17 +12,17 @@ Page({
     async onLoad(options) {
         this.setConfigComponent()
 
-        const token = wx.getStorageSync('token')
-        if (!token) {
-            const user = await api.login()
+        // const token = wx.getStorageSync('token')
+        // if (!token) {
+        //     const user = await api.login()
 
-            if (!user) {
-                this.showModal()
-                return
-            }
+        //     if (!user) {
+        //         this.showModal()
+        //         return
+        //     }
 
-            wx.setStorageSync('token', user.token)
-        }
+        //     wx.setStorageSync('token', user.token)
+        // }
 
         // this.getApi()
         this.getMock()
@@ -127,8 +124,17 @@ Page({
         }
     },
 
-    getMock() {
-        this.listComponent.init(LIST)
+    async getMock() {
+        // const mock = wx.getStorageSync('mock')
+        // if(!mock){
+        //     const info = await api.mockList()
+        //     wx.setStorageSync('mock', info)
+        // }
+        
+        // this.listComponent.init(wx.getStorageSync('mock'))
+
+        const mock = await api.mockList()
+        this.listComponent.init(mock)
     },
     setConfigComponent() {
         this.listComponent = this.selectComponent('#listComponent')

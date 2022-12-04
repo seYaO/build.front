@@ -1,17 +1,25 @@
 .exer-scroll-content {
     padding: 20rpx;
 }
-
+.intro-scroll{
+    max-height: 1000rpx;
+}
 .exer {
+    padding: 30rpx 0;
     font-size: 30rpx;
 }
 
 .exer .title {
+    line-height: 48rpx;
 }
 
 .exer .title .tag {
+    margin-right: 5rpx;
+    padding: 0 5rpx;
     color: #fe9f10;
     font-size: 28rpx;
+    line-height: 48rpx;
+    background: #fff8e7;
 }
 
 .exer .title .name {
@@ -24,8 +32,26 @@
     margin-right: 20rpx;
 }
 
-.exer .analyze {}
+.exer .analyze {
+    position: relative;
+    margin-top: 40rpx;
+    border: 1rpx solid #cedbf6;
+    border-radius: 30rpx;
+    padding: 30rpx 20rpx;
+}
 
-.exer .analyze .btn {}
+.exer .analyze .tag {
+    position: absolute;
+    top: -20rpx;
+    left: 40rpx;
+    width: 5em;
+    text-align: center;
+    font-size: 24rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    color: #165ae4;
+    background: #f1f4f9;
+    
+}
 
 .exer .analyze .txt {}

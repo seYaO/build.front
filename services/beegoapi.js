@@ -168,69 +168,6 @@ const chapter = (params) => {
     })
 }
 
-const sss = {
-    "simID": 11606,
-    "examName": "人员素质测评理论与方法模拟题二",
-    "courseID": "34-06090",
-    "examDate": "2010",
-    "totalScore": 100,
-    "passScore": 60,
-    "exerNum": 40,
-    "zone": "全国",
-    "simType": "模拟题",
-    "examTime": 150,
-    "memo": "                2020/8/7\r\n",
-    "isVaild": 1,
-    "getScoreCondition": null,
-    "sequence": 11606,
-    "scoringMethod": 1,
-    "simExamCount": null,
-    "startTime": null,
-    "endTime": null,
-    "authentication": 0,
-    "verifyCode": null,
-    "exerSortType": 1,
-    "createTime": null,
-    "agencyId": 0,
-    "topicOrder": null,
-    "isSelectExam": false,
-    "isSample": 0,
-    "sampleNum": null,
-    "srId": 8880221,
-    "typeName": null,
-    "mark": 0,
-    "isExamination": 0,
-    "catalogName": null,
-    "doRecordNum": 0,
-    "cstId": null,
-    "title": null,
-    "sampleNumJson": null,
-    "isFinish": null,
-    "isCollection": 0,
-    "score": 0,
-    "openStartDate": "",
-    "openEndDate": "",
-    "doTimes": 150,
-    "doNum": -1,
-    "sortType": 0,
-    "intro": null,
-    "courseName": null,
-    "lastPosition": 0,
-    "specialProjectId": 130012,
-    "lastExam": 0,
-    "isOpen": 1,
-    "projectName": "人员素质测评理论与方法模拟题二",
-    "myCollectionId": null,
-    "collectionType": null,
-    "isTrailers": 1,
-    "productId": 0,
-    "simRecordType": 2,
-    "expiredStatus": false,
-    "umcId": 30534611,
-    "prname": null,
-    "courseNo": null
-}
-
 // 每小节练习题
 const practiceChapter = (params) => {
     return new Promise((resolve, reject) => {
@@ -360,6 +297,19 @@ const mockExam = (params) => {
     })
 }
 
+// mock数据
+const mockList=()=>{
+    return new Promise((resolve, reject) => {
+        wx.request({
+            url: `https://seyao.github.io/mock.json`,
+            method: 'GET',
+            success(res) {
+                resolve(res.data)
+            }
+        })
+    })
+}
+
 module.exports = {
     login,
     test,
@@ -368,5 +318,6 @@ module.exports = {
     chapter,
     practiceChapter,
     exam,
-    mockExam
+    mockExam,
+    mockList
 }
