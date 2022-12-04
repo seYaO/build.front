@@ -1,1 +1,3 @@
-<list id="listComponent" />
+<list id="listComponent" bind:button="bindButton" />
+<detail id="detailComponent" bind:pop="bindPop" bind:back="bindBack" />
+<exerList id="exerListComponent" bind:pop="bindPop" />

@@ -1,0 +1,26 @@
+<popMask id='exerMask' style="z-index: 111; position: relative;">
+    <view class="exer-scroll-content">
+        <block wx:if="{{exerList.length}}">
+        <view class="exer" wx:for="{{exerList}}" wx:key="index">
+            <view class="title">
+                <text class="tag">{{item.keyType}}</text>
+                <text class="name">{{item.title}}</text>
+            </view>
+            <view class="select" wx:if="{{item.a}}">
+                <text class="txt" wx:if="{{item.a}}">A:{{item.a}}</text>
+                <text class="txt" wx:if="{{item.b}}">B:{{item.b}}</text>
+                <text class="txt" wx:if="{{item.c}}">C:{{item.c}}</text>
+                <text class="txt" wx:if="{{item.d}}">D:{{item.d}}</text>
+                <text class="txt" wx:if="{{item.e}}">E:{{item.e}}</text>
+                <text class="txt" wx:if="{{item.f}}">F:{{item.f}}</text>
+                <text class="txt" wx:if="{{item.g}}">G:{{item.g}}</text>
+                <text class="txt" wx:if="{{item.h}}">H:{{item.h}}</text>
+            </view>
+            <view class="analyze">
+                <view class="btn">答案解析</view>
+                <view class="txt">答案解析：{{item.analyze}}</view>
+            </view>
+        </view>
+        </block>
+    </view>
+</popMask>

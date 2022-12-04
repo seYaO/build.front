@@ -9,6 +9,8 @@ Page({
      * 页面的初始数据
      */
     data: {
+        showList: true,
+        showChapter: false,
     },
     async onLoad(options) {
         this.setConfigComponent()
@@ -127,12 +129,28 @@ Page({
 
     getMock() {
         this.listComponent.init(LIST)
-
-        let idx = 5
-        console.log('mock', LIST[idx])
-        const item = LIST[idx]
     },
-    setConfigComponent(){
+    setConfigComponent() {
         this.listComponent = this.selectComponent('#listComponent')
+        this.detailComponent = this.selectComponent('#detailComponent')
+        this.exerListComponent = this.selectComponent('#exerListComponent')
+    },
+    bindButton(e) {
+        const { chapterList, examList, type } = e.detail
+        // console.log(chapterList, examList)
+        this.setData({ showList: false, showChapter: true })
+        this.listComponent.setShow(false)
+        this.detailComponent.setShow(true)
+        this.detailComponent.init({ chapterList, examList, type })
+
+    },
+    bindPop(e) {
+        const { exerList } = e.detail
+        this.exerListComponent.init(exerList)
+        this.exerListComponent.setShowPop()
+    },
+    bindBack(){
+        this.listComponent.setShow(true)
+        this.detailComponent.setShow(false)
     }
 })

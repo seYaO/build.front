@@ -1,0 +1,64 @@
+.detailBox {}
+
+.detailBox .button {
+    margin: 20rpx;
+    background: #fff8e7;
+    color: #fe9f10;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+}
+
+.chapterBox {
+    margin-left: 10rpx;
+    border-bottom: 1rpx solid #e1e1e1;
+}
+
+.chapterBox .title {
+    padding: 10rpx;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.chapterBox .title .name {
+    font-size: 34rpx;
+    font-weight: bold;
+}
+
+.chapterBox .title .arrow {
+    margin-right: 10rpx;
+    width: 34rpx;
+    height: 34rpx;
+    transition: all 0.3s;
+    flex-shrink: 0;
+}
+
+.chapterBox .title.more .arrow {
+    transform: rotate(-180deg);
+}
+
+.chapterBox .hideMore {
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.childBox {
+    padding-bottom: 20rpx;
+    
+}
+
+.childBox .child {
+    padding: 10rpx;
+    margin-top: 20rpx;
+}
+
+.childBox .child .name {
+    font-size: 30rpx;
+    font-weight: bold;
+}

@@ -1,0 +1,19 @@
+<view class="detailBox" wx:if="{{show}}">
+    <view class="button" bindtap="goBack">返回列表</view>
+    <block wx:if="{{type==1}}">
+    <view class="chapterBox" wx:for="{{chapterList}}" wx:key="index">
+        <view class="title {{item.showMore ? 'more' : ''}}" data-item="{{item}}" data-idx="{{index}}" bindtap="clickMore">
+            <image class="arrow" src="../../../../image/arrow_down.png" />
+            <view class="name">{{item.name}}</view>
+        </view>
+        <view class="childBox" wx:if="{{item.showMore&&item.children&&item.children.length}}">
+            <block wx:for="{{item.children}}" wx:key="cidx" wx:for-item="child" wx:for-index="cidx">
+                <view class="child {{child.showMore ? 'more' : ''}}" data-item="{{child}}" data-idx="{{cidx}}" bindtap="clickPop">
+                    <view class="name">{{child.name}}</view>
+                </view>
+            </block>
+        </view>
+        <view class="hideMore" wx:if="{{item.showMore}}" data-item="{{item}}" data-idx="{{index}}"  bindtap="clickMore">收起</view>
+    </view>
+    </block>
+</view>

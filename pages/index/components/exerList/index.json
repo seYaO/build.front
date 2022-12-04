@@ -1,0 +1,6 @@
+{
+    "component": true,
+    "usingComponents": {
+        "popMask": "../../../../components/popMask/index"
+    }
+}

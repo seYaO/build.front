@@ -1,10 +1,15 @@
-<view class="listBox">
+<view class="listBox" wx:if="{{show}}">
     <block wx:for="{{list}}" wx:key="index">
         <view class="list">
             <view class="titBox">
                 <image class="bg" mode="widthFix" src="{{item.coverImages.backgroundImg}}" />
                 <image class="img" mode="widthFix" src="{{item.coverImages.contextImg}}" />
                 <image class="img img2" mode="widthFix" src="{{item.coverImages.textImg}}" />
+            </view>
+            <view class="btnBox">
+                <view class="btn btn1" data-item="{{item}}" data-type="1" bindtap="click">章节练习</view>
+                <view class="btn btn2" data-item="{{item}}" data-type="2" bindtap="click">模拟考试</view>
+                <view class="btn btn3" data-item="{{item}}" data-type="3" bindtap="click">重点学习</view>
             </view>
         </view>
     </block>

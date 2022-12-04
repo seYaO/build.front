@@ -1,0 +1,81 @@
+var deltaY = 0,
+    lastDeltaY = 0,
+    pointY = 0,
+    hideLength = 40,
+    isAnimating = false,
+    isMove = false,
+    isLock = false,
+    endTime = '',
+    hideTime = '';
+
+function touchstart(e, ins) {
+    // var dataSet = e.instance.getDataset();
+    // hideLength = dataSet.hidelength;
+    // isAnimating = dataSet.isanimating;
+    // if (isAnimating) {
+    //     return
+    // }
+    // if (isMove) {
+    //     isLock = true;
+    //     return
+    // } else {
+    //     isLock = false;
+    // }
+    // if (endTime && (getDate() - endTime < 200)) { //防止多次触发
+    //     isLock = true;
+    //     return
+    // } else {
+    //     isLock = false;
+    //     endTime = '';
+    // }
+    // let touches = e.touches || e.changedTouches;
+    // if (touches.length == 1) {
+    //     deltaY = 0;
+    //     lastDeltaY = 0;
+    //     pointY = touches[0].pageY; //当前手指坐标
+    // }
+}
+
+function touchmove(e, ins) {
+    // isMove = true;
+    // if (isAnimating || isLock) {
+    //     return
+    // }
+    // deltaY = (e.touches[0] || e.changedTouches[0]).pageY - pointY; //移动距离
+    // if (deltaY < 0) deltaY = 0;
+    // if (deltaY !== lastDeltaY) {
+    //     ins.selectComponent('.popup-mask-box').setStyle('-webkit-transform:translate3d(0, ' + deltaY + 'px, 0);transform:translate3d(0, ' + deltaY + 'px, 0);-webkit-transition:none;transition:none;');
+    //     lastDeltaY = deltaY + 0;
+    // }
+}
+
+function touchend(e, ins) {
+    // if (deltaY == 0 || isAnimating) {
+    //     isMove = false;
+    //     return
+    // }
+    // let touches = e.touches || e.changedTouches;
+    // if (touches.length && touches[0].identifier == 0) {
+    //     isMove = false;
+    //     return
+    // }
+    // endTime = getDate();
+    // if (deltaY >= hideLength) {
+    //     if (!hideTime || (endTime - hideTime >= 300)) { //300ms内不再触发
+    //         hideTime = getDate();
+    //         ins.callMethod('_cancel');
+    //     }
+    // } else {
+    //     ins.selectComponent('.popup-mask-box').setStyle('-webkit-transform:translate3d(0, 0, 0);transform:translate3d(0, 0, 0);-webkit-transition:transform 200ms ease-out;transition:transform 200ms ease-out;');
+    // }
+    // isMove = false;
+}
+
+module.exports = {
+    propObserver: function (newValue, oldValue, ins) {
+        // ins.selectComponent('.popup-mask-box').setStyle(newValue);
+    },
+    _onStart: touchstart,
+    _onMove: touchmove,
+    _onEnd: touchend
+}

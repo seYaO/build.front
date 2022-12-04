@@ -1,6 +1,8 @@
 {
     "enablePullDownRefresh": true,
     "usingComponents": {
-        "list": "./components/list/index"
+        "list": "./components/list/index",
+        "detail": "./components/detail/index",
+        "exerList": "./components/exerList/index"
     }
 }

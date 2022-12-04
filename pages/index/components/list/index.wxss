@@ -1,24 +1,59 @@
-.listBox{}
+.listBox {}
 
-.listBox .list{}
+.listBox .list {
+    margin-left: 20rpx;
+    padding: 20rpx;
+    padding-left: 0;
+    display: flex;
+    border-bottom: 1rpx solid #e1e1e1;
+}
 
-.listBox .titBox{
+.listBox .titBox {
     position: relative;
     width: 50%;
     overflow: hidden;
-    border-radius: 10rpx;
+    border-radius: 20rpx;
 }
 
-.listBox .titBox .bg{
+.listBox .titBox .bg {
+    display: block;
     width: 100%;
 }
 
-.listBox .titBox .img{
+.listBox .titBox .img {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
 }
-.listBox .titBox .img2{
-    top:20rpx;
+
+.listBox .titBox .img2 {
+    top: 20rpx;
+}
+.listBox .btnBox{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+.listBox .btnBox .btn{
+    width: 80%;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+    font-size: 30rpx;
+    border-radius: 30rpx;
+}
+.listBox .btnBox .btn1{
+    background: #fff8e7;
+    color: #fe9f10;
+}
+.listBox .btnBox .btn2{
+    background: #cedbf6;
+    color: #165ae4;
+}
+.listBox .btnBox .btn3{
+    background: #f1c6c1;
+    color: #dc412e;
 }

@@ -1,0 +1,31 @@
+.exer-scroll-content {
+    padding: 20rpx;
+}
+
+.exer {
+    font-size: 30rpx;
+}
+
+.exer .title {
+}
+
+.exer .title .tag {
+    color: #fe9f10;
+    font-size: 28rpx;
+}
+
+.exer .title .name {
+    font-weight: bold;
+}
+
+.exer .select {}
+
+.exer .select .txt {
+    margin-right: 20rpx;
+}
+
+.exer .analyze {}
+
+.exer .analyze .btn {}
+
+.exer .analyze .txt {}
