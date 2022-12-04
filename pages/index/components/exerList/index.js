@@ -9,7 +9,7 @@ Component({
         setConfig() {
             this.exerMask = this.selectComponent("#exerMask")
             this.exerMask.setConfig({
-                top: '',
+                top: '10',
                 title: '练习',
             });
         },

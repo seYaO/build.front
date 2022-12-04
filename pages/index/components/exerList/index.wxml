@@ -1,6 +1,6 @@
 <popMask id='exerMask' style="z-index: 111; position: relative;">
     <view class="exer-scroll-content">
-        <scroll-view class="intro-scroll" scroll-y="true" style="height:100%">
+        <!-- <scroll-view class="intro-scroll" scroll-y="true" style="height:100%"> -->
             <block wx:if="{{exerList.length}}">
                 <view class="exer" wx:for="{{exerList}}" wx:key="index">
                     <view class="title" data-item="{{item}}" data-idx="{{index}}" bindtap="clickShow">
@@ -24,6 +24,6 @@
                     </view>
                 </view>
             </block>
-        </scroll-view>
+        <!-- </scroll-view> -->
     </view>
 </popMask>
