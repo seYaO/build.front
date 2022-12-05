@@ -1,6 +1,8 @@
 Component({
     data: {
-        exerList: []
+        exerList: [],
+        idx: 0,
+        keynoteList: null,
     },
     created() {
 
@@ -19,19 +21,35 @@ Component({
         },
         init(data) {
             this.setConfig()
-
-            data.map(exer => {
-                exer.showAnalyze = false
-            })
-            this.setData({ exerList: data })
+            const { exerList, type, idx, keynoteList } = data
+            if (exerList && exerList.length) {
+                exerList.map(exer => {
+                    exer.showAnalyze = false
+                })
+            }
+            if (keynoteList && keynoteList.length) {
+                if (idx != 0) {
+                    keynoteList.map(exer => {
+                        exer.showAnalyze = false
+                    })
+                }
+            }
+            console.log('keynoteList', keynoteList)
+            this.setData({ exerList, keynoteList, idx })
         },
         clickShow(e) {
             const { item, idx } = e.currentTarget.dataset
             item.showAnalyze = !item.showAnalyze
-            let exerList = this.data.exerList
-            exerList[idx] = item
-            console.log(item)
-            this.setData({ exerList })
+            if (this.data.exerList && this.data.exerList.length) {
+                let exerList = this.data.exerList
+                exerList[idx] = item
+                this.setData({ exerList })
+            }
+            if (this.data.keynoteList && this.data.keynoteList.length) {
+                let keynoteList = this.data.keynoteList
+                keynoteList[idx] = item
+                this.setData({ keynoteList })
+            }
         },
     }
 })

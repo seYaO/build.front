@@ -19,8 +19,14 @@
     <block wx:elif="{{type==2}}">
          <view class="chapterBox" wx:for="{{examList}}" wx:key="index">
             <view class="title" data-item="{{item}}" data-idx="{{index}}" bindtap="clickPop">
-                <image class="arrow" src="../../../../image/arrow_down.png" />
                 <view class="name">{{item.examName}}</view>
+            </view>
+        </view>
+    </block>
+    <block wx:elif="{{type==3 && keynote}}">
+        <view class="chapterBox" wx:for="{{['一、单选题','二、名词解释','三、填空题','四、多选题','五、简答题','六、论述题（切记：考试时需要进行展开，不然全对只有一半分）']}}" wx:key="index">
+            <view class="title" data-idx="{{index}}" bindtap="clickPop">
+                <view class="name">{{item}}</view>
             </view>
         </view>
     </block>

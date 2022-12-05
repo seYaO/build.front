@@ -3,7 +3,8 @@ Component({
         show: true,
         type: 1,
         chapterList: [],
-        examList: []
+        examList: [],
+        keynote: null
     },
     created() {
 
@@ -14,7 +15,7 @@ Component({
         },
         init(data) {
             console.log('data', data)
-            const { chapterList, examList, type } = data
+            const { chapterList, examList, keynote, type } = data
             chapterList.map(item => {
                 item.showMore = false
 
@@ -22,7 +23,7 @@ Component({
             examList.map(item => {
                 item.showMore = false
             })
-            this.setData({ chapterList, examList, type })
+            this.setData({ chapterList, examList, keynote, type })
         },
         goBack(e) {
             this.triggerEvent('back');
@@ -35,9 +36,8 @@ Component({
             this.setData({ chapterList })
         },
         clickPop(e) {
-            const { item, idx } = e.currentTarget.dataset
-            console.log(item.exerList)
-            this.triggerEvent('pop', { exerList: item.exerList });
+            const { item = {}, idx } = e.currentTarget.dataset
+            this.triggerEvent('pop', { exerList: item.exerList, type: this.data.type, idx, keynoteList: this.data.keynote[`list` + (idx + 1)] });
         }
     }
 })

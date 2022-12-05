@@ -125,16 +125,16 @@ Page({
     },
 
     async getMock() {
-        // const mock = wx.getStorageSync('mock')
-        // if(!mock){
-        //     const info = await api.mockList()
-        //     wx.setStorageSync('mock', info)
-        // }
-        
-        // this.listComponent.init(wx.getStorageSync('mock'))
+        const mock = wx.getStorageSync('mock')
+        if (!mock) {
+            const info = await api.mockList()
+            wx.setStorageSync('mock', info)
+        }
 
-        const mock = await api.mockList()
-        this.listComponent.init(mock)
+        this.listComponent.init(wx.getStorageSync('mock'))
+
+        // const mock = await api.mockList()
+        // this.listComponent.init(mock)
     },
     setConfigComponent() {
         this.listComponent = this.selectComponent('#listComponent')
@@ -142,20 +142,20 @@ Page({
         this.exerListComponent = this.selectComponent('#exerListComponent')
     },
     bindButton(e) {
-        const { chapterList, examList, type } = e.detail
+        const { chapterList, examList, keynote, type } = e.detail
         // console.log(chapterList, examList)
         this.setData({ showList: false, showChapter: true })
         this.listComponent.setShow(false)
         this.detailComponent.setShow(true)
-        this.detailComponent.init({ chapterList, examList, type })
+        this.detailComponent.init({ chapterList, examList, keynote, type })
 
     },
     bindPop(e) {
-        const { exerList } = e.detail
-        this.exerListComponent.init(exerList)
+        const { exerList, type, idx, keynoteList = null } = e.detail
+        this.exerListComponent.init({ exerList, type, idx, keynoteList })
         this.exerListComponent.setShowPop()
     },
-    bindBack(){
+    bindBack() {
         this.listComponent.setShow(true)
         this.detailComponent.setShow(false)
     }

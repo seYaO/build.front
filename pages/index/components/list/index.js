@@ -15,8 +15,8 @@ Component({
         },
         click(e) {
             const { item, type } = e.currentTarget.dataset
-            const { chapterList, examList } = item
-            this.triggerEvent('button', { chapterList, examList, type });
+            const { chapterList, examList, keynote = null } = item
+            this.triggerEvent('button', { chapterList, examList, keynote, type });
         }
     }
 })
