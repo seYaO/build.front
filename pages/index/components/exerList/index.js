@@ -21,9 +21,29 @@ Component({
         setShowPop() {
             this.exerMask.showPopMasker()
         },
+        setText(text) {
+            let list = []
+            const reg1 = /(【.*?】)/igm, reg2 = /(（.*?）)/igm, reg3 = /【(.*?)】/igm, reg4 = /（(.*?)）/igm
+            let arr = text.replace(reg1, '|$1').replace(reg1, '$1|').replace(reg2, '|$1').replace(reg2, '$1|').split('|')
+            arr.map(item => {
+                let txt = '', tag = ''
+                if (reg3.test(item)) {
+                    txt = item.replace(reg3, '$1')
+                    tag = 'red'
+                } else if (reg4.test(item)) {
+                    txt = item.replace(reg4, '（$1）')
+                    tag = 'orange'
+                } else {
+                    txt = item
+                }
+                list.push({ txt, tag })
+            })
+            return list
+        },
         init(data) {
             this.setConfig()
             const { exerList, type, idx, keynoteList } = data
+
             if (exerList && exerList.length) {
                 exerList.map(exer => {
                     exer.showAnalyze = false
@@ -32,6 +52,8 @@ Component({
             if (keynoteList && keynoteList.length) {
                 if (idx != 0) {
                     keynoteList.map(exer => {
+                        const titleArr = this.setText(exer.title)
+                        exer.titleArr = titleArr
                         exer.showAnalyze = false
                     })
                 }

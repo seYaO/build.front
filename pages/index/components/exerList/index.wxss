@@ -1,9 +1,11 @@
 .exer-scroll-content {
     padding: 20rpx;
 }
-.intro-scroll{
+
+.intro-scroll {
     max-height: 1000rpx;
 }
+
 .exer {
     padding: 30rpx 0;
     font-size: 30rpx;
@@ -51,7 +53,15 @@
     line-height: 40rpx;
     color: #165ae4;
     background: #f1f4f9;
-    
+
 }
 
 .exer .analyze .txt {}
+
+.orange {
+    color: #fe9f10;
+}
+
+.red {
+    color: #dc412e;
+}

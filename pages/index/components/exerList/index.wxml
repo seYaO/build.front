@@ -32,11 +32,11 @@
                 </block>
                 <block wx:else>
                     <view class="title" data-item="{{item}}" data-idx="{{index}}" bindtap="clickShow">
-                        <text class="name">{{item.title}}</text>
+                        <text class="name {{title.tag}}" wx:for="{{item.titleArr}}" wx:key="idx" wx:for-item="title" wx:for-index="idx">{{title.txt}}</text>
                     </view>
-                    <view class="analyze" wx:if="{{item.showAnalyze}}">
+                    <view class="analyze" wx:if="{{item.showAnalyze&&item.analyze.length}}">
                         <text class="tag">答案解析</text>
-                        <view class="txt" wx:for="{{item.analyze}}" wx:for-item="analyze" wx:for-index="idx">{{analyze}}</view>
+                        <view class="txt" wx:for="{{item.analyze}}" wx:key="idx" wx:for-item="analyze" wx:for-index="idx">{{analyze}}</view>
                     </view>
                 </block>
             </view>
