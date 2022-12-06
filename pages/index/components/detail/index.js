@@ -14,8 +14,11 @@ Component({
             this.setData({ show: flag })
         },
         init(data) {
-            console.log('data', data)
-            const { chapterList, examList, keynote, type } = data
+            const { value, type } = data
+            let chapterList = wx.getStorageSync(`chapterList${value.productId}`)
+            let examList = wx.getStorageSync(`examList${value.productId}`)
+            let keynote = wx.getStorageSync(`keynote${value.productId}`) || null
+
             chapterList.map(item => {
                 item.showMore = false
 

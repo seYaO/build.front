@@ -123,18 +123,33 @@ Page({
             // }
         }
     },
-
+    setMockStorage(mock) {
+        let list = []
+        mock.map(item => {
+            const { chapterList, examList, keynote, ...other } = item
+            list.push(other)
+            if (chapterList && chapterList.length) wx.setStorageSync(`chapterList${item.productId}`, chapterList)
+            if (examList && examList.length) wx.setStorageSync(`examList${item.productId}`, examList)
+            if (keynote) wx.setStorageSync(`keynote${item.productId}`, keynote)
+        })
+        wx.setStorageSync('list', list)
+    },
     async getMock() {
-        const mock = wx.getStorageSync('mock')
-        if (!mock) {
-            const info = await api.mockList()
-            wx.setStorageSync('mock', info)
+        // const mock = wx.getStorageSync('mock')
+        // if (!mock) {
+        //     const info = await api.mockList()
+        //     wx.setStorageSync('mock', info)
+        // }
+
+        // this.listComponent.init(wx.getStorageSync('mock'))
+
+        const list = wx.getStorageSync('list')
+        if (!list) {
+            const mock = await api.mockList()
+            this.setMockStorage(mock)
         }
 
-        this.listComponent.init(wx.getStorageSync('mock'))
-
-        // const mock = await api.mockList()
-        // this.listComponent.init(mock)
+        this.listComponent.init(wx.getStorageSync('list'))
     },
     setConfigComponent() {
         this.listComponent = this.selectComponent('#listComponent')
@@ -142,16 +157,16 @@ Page({
         this.exerListComponent = this.selectComponent('#exerListComponent')
     },
     bindButton(e) {
-        const { chapterList, examList, keynote, type } = e.detail
-        // console.log(chapterList, examList)
+        const { value, type } = e.detail
         this.setData({ showList: false, showChapter: true })
         this.listComponent.setShow(false)
         this.detailComponent.setShow(true)
-        this.detailComponent.init({ chapterList, examList, keynote, type })
+        this.detailComponent.init({ value, type })
 
     },
     bindPop(e) {
         const { exerList, type, idx, keynoteList = null } = e.detail
+        // console.log(e.detail)
         this.exerListComponent.init({ exerList, type, idx, keynoteList })
         this.exerListComponent.setShowPop()
     },

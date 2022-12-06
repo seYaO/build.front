@@ -7,9 +7,9 @@
                 <image class="img img2" mode="widthFix" src="{{item.coverImages.textImg}}" />
             </view>
             <view class="btnBox">
-                <view class="btn btn1" data-item="{{item}}" data-type="1" bindtap="click">章节练习</view>
-                <view class="btn btn2" data-item="{{item}}" data-type="2" bindtap="click">模拟考试</view>
-                <view class="btn btn3" data-item="{{item}}" data-type="3" bindtap="click">重点学习</view>
+                <view class="btn btn1" data-value="{{item}}" data-type="1" bindtap="click">章节练习</view>
+                <view class="btn btn2" data-value="{{item}}" data-type="2" bindtap="click">模拟考试</view>
+                <view class="btn btn3" data-value="{{item}}" data-type="3" bindtap="click">重点学习</view>
             </view>
         </view>
     </block>

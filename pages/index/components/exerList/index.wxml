@@ -1,6 +1,6 @@
 <popMask id='exerMask' style="z-index: 111; position: relative;">
     <view class="exer-scroll-content">
-        <block wx:if="{{exerList&&exerList.length}}">
+        <block wx:if="{{type!= 3 && exerList&&exerList.length}}">
             <view class="exer" wx:for="{{exerList}}" wx:key="index">
                 <view class="title" data-item="{{item}}" data-idx="{{index}}" bindtap="clickShow">
                     <text class="tag">{{item.keyType}}</text>
@@ -23,7 +23,7 @@
                 </view>
             </view>
         </block>
-        <block wx:if="{{keynoteList&&keynoteList.length}}">
+        <block wx:if="{{type== 3 && keynoteList&&keynoteList.length}}">
             <view class="exer" wx:for="{{keynoteList}}" wx:key="index">
                 <block wx:if="{{idx==0}}">
                     <view class="title">

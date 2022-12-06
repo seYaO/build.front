@@ -1,5 +1,6 @@
 Component({
     data: {
+        type: 1,
         exerList: [],
         idx: 0,
         keynoteList: null,
@@ -14,6 +15,7 @@ Component({
                 top: '10',
                 title: '练习',
             });
+            this.setData({ exerList: [], keynoteList: null })
         },
         // 外部展开筛选
         setShowPop() {
@@ -34,8 +36,8 @@ Component({
                     })
                 }
             }
-            console.log('keynoteList', keynoteList)
-            this.setData({ exerList, keynoteList, idx })
+            // console.log('keynoteList', keynoteList)
+            this.setData({ exerList, keynoteList, idx, type })
         },
         clickShow(e) {
             const { item, idx } = e.currentTarget.dataset

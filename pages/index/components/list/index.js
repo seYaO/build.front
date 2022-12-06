@@ -14,9 +14,8 @@ Component({
             this.setData({ list: data })
         },
         click(e) {
-            const { item, type } = e.currentTarget.dataset
-            const { chapterList, examList, keynote = null } = item
-            this.triggerEvent('button', { chapterList, examList, keynote, type });
+            const { value, type } = e.currentTarget.dataset
+            this.triggerEvent('button', { value, type });
         }
     }
 })
