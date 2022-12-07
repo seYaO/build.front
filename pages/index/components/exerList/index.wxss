@@ -56,7 +56,9 @@
 
 }
 
-.exer .analyze .txt {}
+.exer .analyze .txt {
+    font-size: 26rpx;
+}
 
 .orange {
     color: #fe9f10;

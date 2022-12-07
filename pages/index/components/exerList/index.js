@@ -24,7 +24,7 @@ Component({
         setText(text) {
             let list = []
             const reg1 = /(【.*?】)/igm, reg2 = /(（.*?）)/igm, reg3 = /【(.*?)】/igm, reg4 = /（(.*?)）/igm
-            let arr = text.replace(reg1, '|$1').replace(reg1, '$1|').replace(reg2, '|$1').replace(reg2, '$1|').split('|')
+            let arr = text.replace(reg1, '｜$1').replace(reg1, '$1｜').replace(reg2, '｜$1').replace(reg2, '$1｜').split('｜')
             arr.map(item => {
                 let txt = '', tag = ''
                 if (reg3.test(item)) {
@@ -55,10 +55,17 @@ Component({
                         const titleArr = this.setText(exer.title)
                         exer.titleArr = titleArr
                         exer.showAnalyze = false
+                        if (exer.analyze && exer.analyze.length) {
+                            exer.analyzeList = []
+                            exer.analyze.map(analyze => {
+                                const arr = this.setText(analyze)
+                                exer.analyzeList.push(arr)
+                            })
+                        }
                     })
                 }
             }
-            // console.log('keynoteList', keynoteList)
+            console.log('keynoteList', keynoteList)
             this.setData({ exerList, keynoteList, idx, type })
         },
         clickShow(e) {
