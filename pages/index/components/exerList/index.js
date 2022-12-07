@@ -24,7 +24,7 @@ Component({
         setText(text) {
             let list = []
             const reg1 = /(【.*?】)/igm, reg2 = /(（.*?）)/igm, reg3 = /【(.*?)】/igm, reg4 = /（(.*?)）/igm
-            let arr = text.replace(reg1, '｜$1').replace(reg1, '$1｜').replace(reg2, '｜$1').replace(reg2, '$1｜').split('｜')
+            let arr = text.replace(reg1, '|$1').replace(reg1, '$1|').replace(reg2, '|$1').replace(reg2, '$1|').split('|')
             arr.map(item => {
                 let txt = '', tag = ''
                 if (reg3.test(item)) {
@@ -58,8 +58,14 @@ Component({
                         if (exer.analyze && exer.analyze.length) {
                             exer.analyzeList = []
                             exer.analyze.map(analyze => {
-                                const arr = this.setText(analyze)
-                                exer.analyzeList.push(arr)
+                                let list = analyze.split('｜'),listArr=[]
+                                list.map(list=>{
+                                    const arr = this.setText(list)
+                                    listArr.push(arr)
+                                })
+                                // exer.analyzeList.push(analyze.split('｜'))
+                                // const arr = this.setText(analyze)
+                                exer.analyzeList.push(listArr)
                             })
                         }
                     })

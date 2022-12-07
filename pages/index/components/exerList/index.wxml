@@ -37,7 +37,9 @@
                     <view class="analyze" wx:if="{{item.showAnalyze&&item.analyze.length}}">
                         <text class="tag">答案解析</text>
                         <block wx:for="{{item.analyzeList}}" wx:key="idx" wx:for-item="analyze" wx:for-index="idx">
-                            <view class="txt {{child.tag}}" wx:for="{{analyze}}" wx:key="cidx" wx:for-item="child" wx:for-index="cidx">{{child.txt}}</view>
+                            <view wx:for="{{analyze}}" wx:key="cidx" wx:for-item="child" wx:for-index="cidx">
+                                <text class="txt {{list.tag}}" wx:for="{{child}}" wx:key="lidx" wx:for-item="list" wx:for-index="lidx">{{list.txt}}</text>
+                            </view>
                         </block>
                         
                     </view>
