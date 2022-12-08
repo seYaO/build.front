@@ -24,7 +24,7 @@ Component({
 
             })
 
-            this.setData({ chapterList, examList, keynoteList, keynote, type })
+            this.setData({ chapterList, examList, keynoteList, type })
         },
         goBack(e) {
             this.triggerEvent('back');

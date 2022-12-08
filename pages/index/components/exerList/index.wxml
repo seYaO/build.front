@@ -17,7 +17,7 @@
                     <text class="txt" wx:if="{{item.g}}">G:{{item.g}}</text>
                     <text class="txt" wx:if="{{item.h}}">H:{{item.h}}</text>
                 </view>
-                <view class="analyze" wx:if="{{item.showAnalyze}}">
+                <view class="analyze" wx:if="{{item.showAnalyze && item.analyze}}">
                     <text class="tag">答案解析</text>
                     <view class="txt" wx:if="{{item.rightKey}}">答案：{{item.rightKey}}</view>
                     <block wx:if="{{item.analyzeList && item.analyzeList.length}}">

@@ -126,11 +126,10 @@ Page({
     setMockStorage(mock) {
         let list = []
         mock.map(item => {
-            const { chapterList, examList, keynote, keynoteList, ...other } = item
+            const { chapterList, examList, keynoteList, ...other } = item
             list.push(other)
             if (chapterList && chapterList.length) wx.setStorageSync(`chapterList${item.productId}`, chapterList)
             if (examList && examList.length) wx.setStorageSync(`examList${item.productId}`, examList)
-            if (keynote) wx.setStorageSync(`keynote${item.productId}`, keynote)
             if (keynoteList) wx.setStorageSync(`keynoteList${item.productId}`, keynoteList)
         })
         wx.setStorageSync('list', list)
