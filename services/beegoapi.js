@@ -301,7 +301,7 @@ const mockExam = (params) => {
 const mockList=()=>{
     return new Promise((resolve, reject) => {
         wx.request({
-            url: `https://seyao.github.io/mock.json`,
+            url: `https://seyao.github.io/mock.json?v=${new Date().getTime()}`,
             method: 'GET',
             success(res) {
                 console.log(res)
