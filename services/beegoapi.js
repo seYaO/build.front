@@ -304,6 +304,7 @@ const mockList=()=>{
             url: `https://seyao.github.io/mock.json`,
             method: 'GET',
             success(res) {
+                console.log(res)
                 resolve(res.data)
             }
         })

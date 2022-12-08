@@ -126,11 +126,12 @@ Page({
     setMockStorage(mock) {
         let list = []
         mock.map(item => {
-            const { chapterList, examList, keynote, ...other } = item
+            const { chapterList, examList, keynote, keynoteList, ...other } = item
             list.push(other)
             if (chapterList && chapterList.length) wx.setStorageSync(`chapterList${item.productId}`, chapterList)
             if (examList && examList.length) wx.setStorageSync(`examList${item.productId}`, examList)
             if (keynote) wx.setStorageSync(`keynote${item.productId}`, keynote)
+            if (keynoteList) wx.setStorageSync(`keynoteList${item.productId}`, keynoteList)
         })
         wx.setStorageSync('list', list)
     },
@@ -146,6 +147,7 @@ Page({
         const list = wx.getStorageSync('list')
         if (!list) {
             const mock = await api.mockList()
+            // console.log('mock',mock)
             this.setMockStorage(mock)
         }
 
@@ -165,9 +167,9 @@ Page({
 
     },
     bindPop(e) {
-        const { exerList, type, idx, keynoteList = null } = e.detail
-        // console.log(e.detail)
-        this.exerListComponent.init({ exerList, type, idx, keynoteList })
+        const { exerList, name } = e.detail
+        console.log(e.detail)
+        this.exerListComponent.init({ exerList, name })
         this.exerListComponent.setShowPop()
     },
     bindBack() {

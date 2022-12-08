@@ -9,13 +9,13 @@ Component({
 
     },
     methods: {
-        setConfig() {
+        setConfig(title) {
             this.exerMask = this.selectComponent("#exerMask")
             this.exerMask.setConfig({
                 top: '10',
-                title: '练习',
+                title: title,
             });
-            this.setData({ exerList: [], keynoteList: null })
+            this.setData({ exerList: [] })
         },
         // 外部展开筛选
         setShowPop() {
@@ -41,38 +41,32 @@ Component({
             return list
         },
         init(data) {
-            this.setConfig()
-            const { exerList, type, idx, keynoteList } = data
+            const { exerList, name } = data
+            this.setConfig(name)
 
             if (exerList && exerList.length) {
                 exerList.map(exer => {
                     exer.showAnalyze = false
-                })
-            }
-            if (keynoteList && keynoteList.length) {
-                if (idx != 0) {
-                    keynoteList.map(exer => {
-                        const titleArr = this.setText(exer.title)
-                        exer.titleArr = titleArr
-                        exer.showAnalyze = false
+
+                    const titleArr = this.setText(exer.title)
+                    exer.titleArr = titleArr
+
+                    if (typeof exer.analyze == 'object') {
                         if (exer.analyze && exer.analyze.length) {
                             exer.analyzeList = []
                             exer.analyze.map(analyze => {
-                                let list = analyze.split('｜'),listArr=[]
-                                list.map(list=>{
+                                let list = analyze.split('｜'), listArr = []
+                                list.map(list => {
                                     const arr = this.setText(list)
                                     listArr.push(arr)
                                 })
-                                // exer.analyzeList.push(analyze.split('｜'))
-                                // const arr = this.setText(analyze)
                                 exer.analyzeList.push(listArr)
                             })
                         }
-                    })
-                }
+                    }
+                })
             }
-            console.log('keynoteList', keynoteList)
-            this.setData({ exerList, keynoteList, idx, type })
+            this.setData({ exerList })
         },
         clickShow(e) {
             const { item, idx } = e.currentTarget.dataset
@@ -81,11 +75,6 @@ Component({
                 let exerList = this.data.exerList
                 exerList[idx] = item
                 this.setData({ exerList })
-            }
-            if (this.data.keynoteList && this.data.keynoteList.length) {
-                let keynoteList = this.data.keynoteList
-                keynoteList[idx] = item
-                this.setData({ keynoteList })
             }
         },
     }
