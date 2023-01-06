@@ -4,7 +4,7 @@ Component({
         type: 1,
         chapterList: [],
         examList: [],
-        keynote: null
+        keynoteList: []
     },
     created() {
 
@@ -17,16 +17,14 @@ Component({
             const { value, type } = data
             let chapterList = wx.getStorageSync(`chapterList${value.productId}`)
             let examList = wx.getStorageSync(`examList${value.productId}`)
-            let keynote = wx.getStorageSync(`keynote${value.productId}`) || null
+            let keynoteList = wx.getStorageSync(`keynoteList${value.productId}`) || []
 
             chapterList.map(item => {
                 item.showMore = false
 
             })
-            examList.map(item => {
-                item.showMore = false
-            })
-            this.setData({ chapterList, examList, keynote, type })
+
+            this.setData({ chapterList, examList, keynoteList, type })
         },
         goBack(e) {
             this.triggerEvent('back');
@@ -40,7 +38,7 @@ Component({
         },
         clickPop(e) {
             const { item = {}, idx } = e.currentTarget.dataset
-            this.triggerEvent('pop', { exerList: item.exerList, type: this.data.type, idx, keynoteList: this.data.keynote[`list` + (idx + 1)] });
+            this.triggerEvent('pop', { name: item.name || item.examName, exerList: item.exerList });
         }
     }
 })

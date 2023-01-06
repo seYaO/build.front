@@ -12,6 +12,7 @@
 }
 
 .exer .title {
+    min-height: 48rpx;
     line-height: 48rpx;
 }
 

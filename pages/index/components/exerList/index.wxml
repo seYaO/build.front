@@ -1,10 +1,11 @@
 <popMask id='exerMask' style="z-index: 111; position: relative;">
     <view class="exer-scroll-content">
-        <block wx:if="{{type!= 3 && exerList&&exerList.length}}">
+        <block wx:if="{{exerList&&exerList.length}}">
             <view class="exer" wx:for="{{exerList}}" wx:key="index">
                 <view class="title" data-item="{{item}}" data-idx="{{index}}" bindtap="clickShow">
-                    <text class="tag">{{item.keyType}}</text>
-                    <text class="name">{{item.title}}</text>
+                    <text class="tag" wx:if="{{item.keyType}}">{{item.keyType}}</text>
+                    <!-- <text class="name">{{item.title}}</text> -->
+                    <text class="name {{title.tag}}" wx:for="{{item.titleArr}}" wx:key="idx" wx:for-item="title" wx:for-index="idx">{{title.txt}}</text>
                 </view>
                 <view class="select" wx:if="{{item.a}}">
                     <text class="txt" wx:if="{{item.a}}">A:{{item.a}}</text>
@@ -16,34 +17,18 @@
                     <text class="txt" wx:if="{{item.g}}">G:{{item.g}}</text>
                     <text class="txt" wx:if="{{item.h}}">H:{{item.h}}</text>
                 </view>
-                <view class="analyze" wx:if="{{item.showAnalyze}}">
+                <view class="analyze" wx:if="{{item.showAnalyze && item.analyze}}">
                     <text class="tag">答案解析</text>
-                    <view class="txt">答案：{{item.rightKey}}</view>
-                    <view class="txt">{{item.analyze}}</view>
-                </view>
-            </view>
-        </block>
-        <block wx:if="{{type== 3 && keynoteList&&keynoteList.length}}">
-            <view class="exer" wx:for="{{keynoteList}}" wx:key="index">
-                <block wx:if="{{idx==0}}">
-                    <view class="title">
-                        <text class="name">{{item}}</text>
-                    </view>
-                </block>
-                <block wx:else>
-                    <view class="title" data-item="{{item}}" data-idx="{{index}}" bindtap="clickShow">
-                        <text class="name {{title.tag}}" wx:for="{{item.titleArr}}" wx:key="idx" wx:for-item="title" wx:for-index="idx">{{title.txt}}</text>
-                    </view>
-                    <view class="analyze" wx:if="{{item.showAnalyze&&item.analyze.length}}">
-                        <text class="tag">答案解析</text>
+                    <view class="txt" wx:if="{{item.rightKey}}">答案：{{item.rightKey}}</view>
+                    <block wx:if="{{item.analyzeList && item.analyzeList.length}}">
                         <block wx:for="{{item.analyzeList}}" wx:key="idx" wx:for-item="analyze" wx:for-index="idx">
                             <view wx:for="{{analyze}}" wx:key="cidx" wx:for-item="child" wx:for-index="cidx">
                                 <text class="txt {{list.tag}}" wx:for="{{child}}" wx:key="lidx" wx:for-item="list" wx:for-index="lidx">{{list.txt}}</text>
                             </view>
                         </block>
-                        
-                    </view>
-                </block>
+                    </block>
+                    <view class="txt" wx:else>{{item.analyze}}</view>
+                </view>
             </view>
         </block>
     </view>
