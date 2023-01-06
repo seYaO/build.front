@@ -28,6 +28,8 @@ Page({
         this.getMock()
 
     },
+    // 分享
+    onShareAppMessage(){},
 
     showModal() {
         wx.showModal({
